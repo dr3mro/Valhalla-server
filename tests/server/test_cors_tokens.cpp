@@ -43,9 +43,8 @@
 
 // Trimming tabs/spaces is what lets header values with incidental whitespace
 // compare and validate correctly.
-TEST_CASE("CorsTokens::trim removes tabs and spaces",
-          "[server][cors]")  // Whitespace-only and padded inputs.
-{
+// Whitespace-only and padded inputs.
+TEST_CASE("CorsTokens::trim removes tabs and spaces", "[server][cors]") {
   using CorsTokens::trim;  // Shorthand for the function under test.
   CHECK(trim("\t content-type ") ==
         "content-type");     // Leading tab and trailing space are removed.
@@ -53,9 +52,8 @@ TEST_CASE("CorsTokens::trim removes tabs and spaces",
 }
 
 // Consecutive commas must not produce empty tokens in the reflected list.
-TEST_CASE("CorsTokens::tokens drops empty entries",
-          "[server][cors]")  // Splitting behaviour.
-{
+// Splitting behaviour.
+TEST_CASE("CorsTokens::tokens drops empty entries", "[server][cors]") {
   std::vector<std::string_view>
        values;  // Holds the tokens copied out of the lazy view.
   auto toks = CorsTokens::tokens("a,,b");  // Get a view that splits on commas.
@@ -71,9 +69,9 @@ TEST_CASE("CorsTokens::tokens drops empty entries",
 
 // Reject non-ASCII and over-limit (1025-byte) header lists while allowing the
 // boundary case at 1024, to keep the preflight echo bounded and safe.
+// Validation limits.
 TEST_CASE("CorsTokens::sanitizeRequestedHeaders validates tokens",
-          "[server][cors]")  // Validation limits.
-{
+          "[server][cors]") {
   using CorsTokens::sanitizeRequestedHeaders;  // Shorthand for the function
                                                // under test.
   CHECK(sanitizeRequestedHeaders("\t content-type ,  x-custom  ") ==
@@ -91,9 +89,8 @@ TEST_CASE("CorsTokens::sanitizeRequestedHeaders validates tokens",
 
 // Merging a token into an existing Vary must be case-insensitive, preserve a
 // wildcard, tolerate empty/odd input, and append exactly once.
-TEST_CASE("CorsTokens::mergeVary is case-insensitive",
-          "[server][cors]")  // Vary merge rules.
-{
+// Vary merge rules.
+TEST_CASE("CorsTokens::mergeVary is case-insensitive", "[server][cors]") {
   using CorsTokens::mergeVary;  // Shorthand for the function under test.
   CHECK(mergeVary("Accept-Encoding, access-control-request-headers",
                   "Access-Control-Request-Headers") ==

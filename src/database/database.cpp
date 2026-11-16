@@ -81,15 +81,15 @@
  * the cached string. conn: Connection moved into this Database.
  */
 Database::Database(std::shared_ptr<pqxx::connection>&& conn)
-    : connection(std::move(conn))  // The initializer list stores the moved-in
-                                   // connection before the body runs.
-{
-  try  // Probing the connection can throw, so it is done inside a guarded
-       // block.
-  {
-    if (connection != nullptr)  // A null pointer is tolerated: there is
-                                // nothing to validate in that case.
-    {
+    // The initializer list stores the moved-in
+    // connection before the body runs.
+    : connection(std::move(conn)) {
+  // Probing the connection can throw, so it is done inside a guarded
+  // block.
+  try {
+    // A null pointer is tolerated: there is
+    // nothing to validate in that case.
+    if (connection != nullptr) {
       pqxx::nontransaction ntxn(
           *connection);  // A nontransaction runs a statement without
                          // starting a transaction; it is scoped to this
@@ -98,15 +98,14 @@ Database::Database(std::shared_ptr<pqxx::connection>&& conn)
       ntxn.exec("SELECT 1");  // A trivial round trip that proves the link
                               // works and the server responds.
 
-      connection_info =
-          connection->connection_string();  // Cache the credentials so
-                                            // reconnect() can rebuild the
-                                            // link later.
+      // Cache the credentials so
+      // reconnect() can rebuild the
+      // link later.
+      // A broken link is reported, but
+      // construction still succeeds.
+      connection_info = connection->connection_string();
     }
-  }
-  catch (const std::exception&
-             e)  // A broken link is reported, but construction still succeeds.
-  {
+  } catch (const std::exception& e) {
     Message::CriticalMessage(
         fmt::format("Exception caught during database connection: {}",
                     e.what()));  // Log the exact driver error for diagnosis.
@@ -116,8 +115,7 @@ Database::Database(std::shared_ptr<pqxx::connection>&& conn)
 /**
  * @brief Logs that this connection wrapper is being destroyed.
  */
-Database::~Database()
-{
+Database::~Database() {
   Message::InfoMessage(
       fmt::format("Database connection {} is now exterminated.",
                   static_cast<const void*>(this)));
@@ -135,11 +133,10 @@ Database::~Database()
  */
 bool Database::checkExists(const std::string& table,
                            const std::string& column,
-                           const std::string& value)
-{
-  try  // Any SQL error is converted into a false return below instead of
-       // escaping the function.
-  {
+                           const std::string& value) {
+  // Any SQL error is converted into a false return below instead of
+  // escaping the function.
+  try {
     std::string query =
         fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = $1);",
                     connection->quote_name(table),
@@ -147,8 +144,9 @@ bool Database::checkExists(const std::string& table,
                         column));  // quote_name escapes identifiers (which
                                    // cannot be bound as parameters); only the
                                    // value uses $1.
-    pqxx::result result;           // Empty result holder, kept alive after the
-                                   // transaction object is destroyed.
+    // Empty result holder, kept alive after the
+    // transaction object is destroyed.
+    pqxx::result result;
     {
       pqxx::nontransaction txn(
           *connection);  // A short-lived, non-transactional execution
@@ -159,12 +157,12 @@ bool Database::checkExists(const std::string& table,
                    pqxx::params{value});  // Send the SQL with the value bound
                                           // separately, avoiding SQL injection.
     }
-    return result[0][0].as<bool>();  // EXISTS always returns one
-                                     // row/column: read it as a boolean.
-  }
-  catch (const std::exception& e)  // A query failure is indistinguishable
-                                   // from "not found" for callers.
-  {
+    // EXISTS always returns one
+    // row/column: read it as a boolean.
+    // A query failure is indistinguishable
+    // from "not found" for callers.
+    return result[0][0].as<bool>();
+  } catch (const std::exception& e) {
     Message::CriticalMessage(
         fmt::format("Error executing query: {}",
                     e.what()));  // Still log it so the failure is visible in
@@ -179,23 +177,20 @@ bool Database::checkExists(const std::string& table,
  * @return `true` only if the pointer is non-null, the probe succeeded and the
  * socket is open.
  */
-bool Database::check_connection()
-{
-  if (connection ==
-      nullptr)  // There is no connection to probe, so it cannot be healthy.
-  {
+bool Database::check_connection() {
+  // There is no connection to probe, so it cannot be healthy.
+  if (connection == nullptr) {
     return false;  // Report unhealthy immediately.
   }
-  try  // exec() throws if the link is broken; that means "unhealthy" rather
-       // than a program error.
-  {
+  // exec() throws if the link is broken; that means "unhealthy" rather
+  // than a program error.
+  try {
     pqxx::nontransaction ntxn(
-        *connection);       // Minimal execution context for the probe.
-    ntxn.exec("SELECT 1");  // If this completes, the server answered.
-  }
-  catch (
-      const std::exception& e)  // Any driver exception means the probe failed.
-  {
+        *connection);  // Minimal execution context for the probe.
+    // If this completes, the server answered.
+    // Any driver exception means the probe failed.
+    ntxn.exec("SELECT 1");
+  } catch (const std::exception& e) {
     return false;  // Signal that this link needs reconnecting.
   }
   return connection->is_open();  // Confirm the underlying socket is still
@@ -214,22 +209,20 @@ bool Database::check_connection()
  * @pre check_connection() returned false, or a reconnect was otherwise
  * requested.
  */
-bool Database::reconnect()
-{
-  try  // Opening a new connection can throw (bad credentials, server down,
-       // timeout).
-  {
+bool Database::reconnect() {
+  // Opening a new connection can throw (bad credentials, server down,
+  // timeout).
+  try {
     {
       connection = std::make_shared<pqxx::connection>(
           connection_info);  // Build a fresh connection from the cached
                              // string; the old one is released here.
     }
-    return check_connection();  // Only report success if the new link also
-                                // passes a real probe.
-  }
-  catch (const std::exception&
-             e)  // A failure leaves the old pointer in place; report it.
-  {
+    // Only report success if the new link also
+    // passes a real probe.
+    // A failure leaves the old pointer in place; report it.
+    return check_connection();
+  } catch (const std::exception& e) {
     Message::CriticalMessage(
         fmt::format("Failed to reconnect to database,{}",
                     e.what()));  // Log the driver's reason for the reconnect
@@ -248,10 +241,9 @@ bool Database::reconnect()
  * keyed by name, data type and nullability.
  */
 std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(
-    const std::string& tableName)
-{
-  try  // Catalog queries can fail, so the whole read is guarded.
-  {
+    const std::string& tableName) {
+  // Catalog queries can fail, so the whole read is guarded.
+  try {
     pqxx::result result;  // Holds the returned metadata rows.
 
     {
@@ -276,8 +268,8 @@ std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(
                  // automatically.
 
     for (const auto& row :
-         result)  // One iteration per column found in the catalog.
-    {
+         // One iteration per column found in the catalog.
+         result) {
       api::v2::ColumnInfo
           column;  // Fill a value object from the four selected fields.
       column.Name =
@@ -296,10 +288,10 @@ std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(
           "YES";  // Convert the catalog's "YES"/"NO" into a boolean.
       schema.insert(column);  // Add the finished column to the set.
     }
-    return schema;  // Return the complete set to the caller.
-  }
-  catch (const std::exception& e)  // A failed query must not crash the caller.
-  {
+    // Return the complete set to the caller.
+    // A failed query must not crash the caller.
+    return schema;
+  } catch (const std::exception& e) {
     Message::CriticalMessage(
         fmt::format("Error executing query: {}",
                     e.what()));  // Log the failure with the driver's message.
@@ -314,10 +306,9 @@ std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(
  * @details Uses a `pqxx::work` (committed implicitly when it goes out of scope)
  * even though the statement is read-only.
  */
-std::optional<std::unordered_set<std::string>> Database::getAllTables()
-{
-  try  // Guard against catalog query failures.
-  {
+std::optional<std::unordered_set<std::string>> Database::getAllTables() {
+  // Guard against catalog query failures.
+  try {
     pqxx::result result;  // Holds the table-name rows.
 
     {
@@ -332,15 +323,15 @@ std::optional<std::unordered_set<std::string>> Database::getAllTables()
     std::unordered_set<std::string>
         tables;  // A set removes duplicates and gives fast lookup.
 
-    for (const auto& row : result)  // One iteration per table name returned.
-    {
+    // One iteration per table name returned.
+    for (const auto& row : result) {
       tables.insert(
           row["table_name"].as<std::string>());  // Copy the name into the set.
     }
-    return tables;  // Return all discovered table names.
-  }
-  catch (const std::exception& e)  // A failed query must not crash the caller.
-  {
+    // Return all discovered table names.
+    // A failed query must not crash the caller.
+    return tables;
+  } catch (const std::exception& e) {
     Message::CriticalMessage(fmt::format("Error executing query: {}",
                                          e.what()));  // Log the failure.
     return std::nullopt;  // Signal that the table list could not be read.
@@ -363,8 +354,7 @@ std::optional<std::unordered_set<std::string>> Database::getAllTables()
  */
 template <typename jsonType, typename TransactionType>
 std::optional<jsonType> Database::executeQuery(const std::string&  query,
-                                               const pqxx::params& params)
-{
+                                               const pqxx::params& params) {
   static_assert(std::is_same_v<jsonType, jsoncons::json> ||
                     std::is_same_v<jsonType, jsoncons::json::array>,
                 "Unsupported jsonType specialization");  // Fail at compile time
@@ -372,8 +362,8 @@ std::optional<jsonType> Database::executeQuery(const std::string&  query,
                                                          // an unsupported JSON
                                                          // shape.
 
-  try  // Any conversion or SQL error becomes an empty optional below.
-  {
+  // Any conversion or SQL error becomes an empty optional below.
+  try {
     pqxx::result results;  // Kept outside the transaction scope so rows
                            // survive after it closes.
 
@@ -386,12 +376,11 @@ std::optional<jsonType> Database::executeQuery(const std::string&  query,
                          params);  // Run the SQL with the parameters bound
                                    // separately.
 
-      if constexpr (std::is_same_v<TransactionType,
-                                   pqxx::work>)  // Only a real transaction
-                                                 // needs an explicit commit;
-                                                 // this check happens at
-                                                 // compile time.
-      {
+      // Only a real transaction
+      // needs an explicit commit;
+      // this check happens at
+      // compile time.
+      if constexpr (std::is_same_v<TransactionType, pqxx::work>) {
         txn.commit();  // Make the writes permanent for work
                        // transactions.
       }
@@ -400,14 +389,14 @@ std::optional<jsonType> Database::executeQuery(const std::string&  query,
     jsonType reply;  // Either a JSON array to fill, or a default JSON
                      // object for the single-row case.
 
-    for (const auto& row : results)  // Walk every row returned by the query.
-    {
+    // Walk every row returned by the query.
+    for (const auto& row : results) {
       // A fresh object per row, so no field can leak from one row into
       // the next.
       jsoncons::json object;  // Build one JSON object for this row.
 
-      for (const auto& field : row)  // Walk every column in the current row.
-      {
+      // Walk every column in the current row.
+      for (const auto& field : row) {
         const std::string_view field_name =
             field.name();  // A view avoids copying the column name; it
                            // stays valid for the row's lifetime.
@@ -415,17 +404,15 @@ std::optional<jsonType> Database::executeQuery(const std::string&  query,
             field.type();  // PostgreSQL type OID, used below to pick
                            // the right conversion.
 
-        if (field.is_null())  // SQL NULL has to become JSON null, not
-                              // the string "null".
-        {
+        // SQL NULL has to become JSON null, not
+        // the string "null".
+        if (field.is_null()) {
           object[field_name] = nullptr;  // Represent a SQL NULL explicitly in
                                          // the JSON output.
-        }
-        else
-        {
-          switch (field_type)  // Dispatch on the column's OID so
-                               // values keep their proper JSON type.
-          {
+        } else {
+          // Dispatch on the column's OID so
+          // values keep their proper JSON type.
+          switch (field_type) {
             case TEXT:  // TEXT or VARCHAR: database text becomes a
                         // JSON string.
               object[field_name] =
@@ -467,28 +454,25 @@ std::optional<jsonType> Database::executeQuery(const std::string&  query,
           }
         }
       }
-      if constexpr (std::is_same_v<jsonType,
-                                   jsoncons::json::array>)  // For the array
-                                                            // shape, accumulate
-                                                            // every row at
-                                                            // compile time.
-      {
+      // For the array
+      // shape, accumulate
+      // every row at
+      // compile time.
+      if constexpr (std::is_same_v<jsonType, jsoncons::json::array>) {
         reply.push_back(
             std::move(object));  // Transfer this row's object into the
                                  // result array without copying.
-      }
-      else
-      {
+      } else {
         return object;  // For the single-object shape, return the first
                         // row immediately and ignore the rest.
       }
     }
-    return reply;  // For the array shape, return all collected rows after
-                   // the loop.
-  }
-  catch (const std::exception&
-             e)  // A SQL or conversion error must not propagate to the caller.
-  {
+    // For the array shape, return all collected rows after
+    // the loop.
+    // A SQL or conversion error must not
+    // propagate to the caller.
+    return reply;
+  } catch (const std::exception& e) {
     Message::ErrorMessage(
         "Error executing query:");  // Print a short marker first.
     Message::InfoMessage(query);    // Log the exact SQL to make the failing
@@ -509,10 +493,9 @@ std::optional<jsonType> Database::executeQuery(const std::string&  query,
  */
 template <typename T>
 std::optional<T> Database::doSimpleQuery(const std::string&  query,
-                                         const pqxx::params& params)
-{
-  try  // Guard against SQL and conversion errors.
-  {
+                                         const pqxx::params& params) {
+  // Guard against SQL and conversion errors.
+  try {
     pqxx::result result;  // Holds rows after the transaction scope ends.
 
     {
@@ -523,16 +506,14 @@ std::optional<T> Database::doSimpleQuery(const std::string&  query,
                         params);  // Run the query with bound parameters.
     }
 
-    return result.empty()
-               ? std::nullopt
-               : result[0][0]
-                     .as<std::optional<T>>();  // No rows means no value;
-                                               // the optional conversion
-                                               // also turns a SQL NULL into
-                                               // nullopt.
-  }
-  catch (const std::exception& e)  // Convert any error into the empty result.
-  {
+    return result.empty() ? std::nullopt
+                          // No rows means no value;
+                          // the optional conversion
+                          // also turns a SQL NULL into
+                          // nullopt.
+                          // Convert any error into the empty result.
+                          : result[0][0].as<std::optional<T>>();
+  } catch (const std::exception& e) {
     Message::ErrorMessage("Error executing query:");  // Marker line in the log.
     Message::InfoMessage(query);         // The failing SQL statement.
     Message::CriticalMessage(e.what());  // The error text from libpqxx.

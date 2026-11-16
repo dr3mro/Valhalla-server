@@ -74,10 +74,8 @@ using Read_t = api::v2::Types::Read_t;  // Carrier holding the column set and id
 
 template <typename T>
 inline void __attribute((always_inline)) EntityController<T>::Create(
-    CALLBACK_&& callback, const Requester&& requester, std::string_view data)
-{
-  try
-  {
+    CALLBACK_&& callback, const Requester&& requester, std::string_view data) {
+  try {
     bool success = false;  // Starts false; validation sets it true only for
                            // a usable body.
     HttpError error;       // Filled with a code/message when validation or
@@ -91,22 +89,18 @@ inline void __attribute((always_inline)) EntityController<T>::Create(
 
     std::optional<jsoncons::json> request_j;  // Will hold the parsed body;
                                               // empty means parsing failed.
-    try
-    {
+    try {
       // A malformed body is a client error; reject before authorization
       // or any DB work.
       request_j = jsoncons::json::parse(
           data);  // Turn the raw body text into a JSON value.
-    }
-    catch (const std::exception&)
-    {
+    } catch (const std::exception&) {
       std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
                           "Invalid request body: malformed JSON.");
       return;
     }
 
-    if (!request_j.has_value())
-    {
+    if (!request_j.has_value()) {
       std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
                           "Invalid request body.");
       return;
@@ -122,8 +116,7 @@ inline void __attribute((always_inline)) EntityController<T>::Create(
                                                         // against the table's
                                                         // create schema.
 
-    if (!success)
-    {
+    if (!success) {
       std::move(callback)(error.code,
                           fmt::format("Failed to validate request body, {}.",
                                       error.message));
@@ -132,8 +125,7 @@ inline void __attribute((always_inline)) EntityController<T>::Create(
 
     // Authorization runs before the entity is constructed, so a denied
     // request never reaches the DB.
-    if (!gateKeeper->canCreate<T>(requester, request_j, error))
-    {
+    if (!gateKeeper->canCreate<T>(requester, request_j, error)) {
       std::move(callback)(error.code, error.message);
       return;
     }
@@ -151,9 +143,7 @@ inline void __attribute((always_inline)) EntityController<T>::Create(
                        std::move(
                            callback));  // Delegate the INSERT; the callback
                                         // receives the final answer.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     CRITICALMESSAGERESPONSE  // Unexpected error: log it and answer with a
                              // mapped 5xx status.
   }
@@ -161,18 +151,15 @@ inline void __attribute((always_inline)) EntityController<T>::Create(
 
 template <typename T>
 inline void __attribute((always_inline)) EntityController<T>::Read(
-    CALLBACK_&& callback, const Requester&& requester, std::string_view data)
-{
-  try
-  {
+    CALLBACK_&& callback, const Requester&& requester, std::string_view data) {
+  try {
     jsoncons::json request_j;  // Will hold the parsed read body.
     uint64_t       _id;        // The target entity id extracted from the body.
     std::unordered_set<std::string>
         schema;  // The columns the caller wants returned.
     // A read needs both a numeric id and a column list; missing/invalid
     // fields are answered with 400.
-    try
-    {
+    try {
       request_j = jsoncons::json::parse(
           data);  // Turn the raw body text into a JSON value.
       _id =
@@ -181,9 +168,7 @@ inline void __attribute((always_inline)) EntityController<T>::Read(
                    .at("schema")
                    // Extract the list of columns to return.
                    .as<std::unordered_set<std::string>>();
-    }
-    catch (const std::exception&)
-    {
+    } catch (const std::exception&) {
       std::move(
           callback)(api::v2::Http::Status::BAD_REQUEST,
                     "Invalid request body: malformed JSON or missing/invalid "
@@ -194,8 +179,7 @@ inline void __attribute((always_inline)) EntityController<T>::Read(
 
     // Ownership/role check runs against the target id before the column
     // list is validated.
-    if (!gateKeeper->canRead<T>(requester, _id, error))
-    {
+    if (!gateKeeper->canRead<T>(requester, _id, error)) {
       std::move(callback)(error.code, error.message);
       return;
     }
@@ -208,15 +192,13 @@ inline void __attribute((always_inline)) EntityController<T>::Read(
 
     if (!Validator::validateDatabaseReadSchema(
             schema,
-            []()
-            {
+            []() {
               static const std::string cached =
                   std::format("{}_safe", T::getTableName());
               return cached;
             }(),
             error,
-            rule))
-    {
+            rule)) {
       std::move(callback)(error.code,
                           fmt::format("Failed to validate request body, {}.",
                                       error.message));
@@ -230,9 +212,7 @@ inline void __attribute((always_inline)) EntityController<T>::Read(
     Controller::Read(entity,
                      std::move(callback));  // Delegate the SELECT for the
                                             // requested columns.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     CRITICALMESSAGERESPONSE  // Unexpected error: log it and answer with a
                              // mapped 5xx status.
   }
@@ -242,10 +222,8 @@ inline void __attribute((always_inline)) EntityController<T>::Update(
     CALLBACK_&&                   callback,
     const Requester&&             requester,
     std::string_view              data,
-    const std::optional<uint64_t> _id)
-{
-  try
-  {
+    const std::optional<uint64_t> _id) {
+  try {
     bool success = false;  // Starts false; validation sets it true only for
                            // a usable body.
     api::v2::Http::Error error;  // Filled with a code/message when
@@ -253,8 +231,7 @@ inline void __attribute((always_inline)) EntityController<T>::Update(
 
     // An update without a target row is meaningless, so reject before
     // parsing the body.
-    if (!_id.has_value())
-    {
+    if (!_id.has_value()) {
       std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
                           "No id provided.");
       return;
@@ -262,20 +239,16 @@ inline void __attribute((always_inline)) EntityController<T>::Update(
 
     std::optional<jsoncons::json> request_json;  // Will hold the parsed body;
                                                  // empty means parsing failed.
-    try
-    {
+    try {
       request_json = jsoncons::json::parse(
           data);  // Turn the raw body text into a JSON value.
-    }
-    catch (const std::exception&)
-    {
+    } catch (const std::exception&) {
       std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
                           "Invalid request body: malformed JSON.");
       return;
     }
 
-    if (!request_json.has_value())
-    {
+    if (!request_json.has_value()) {
       std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
                           "Invalid request body.");
       return;
@@ -292,8 +265,7 @@ inline void __attribute((always_inline)) EntityController<T>::Update(
                                                         // against the table's
                                                         // update schema.
 
-    if (!success)
-    {
+    if (!success) {
       std::move(callback)(error.code,
                           fmt::format("Failed to validate request body, {}.",
                                       error.message));
@@ -301,8 +273,7 @@ inline void __attribute((always_inline)) EntityController<T>::Update(
     }
 
     // The requester must be allowed to modify this specific row.
-    if (!gateKeeper->canUpdate<T>(requester, _id.value(), error))
-    {
+    if (!gateKeeper->canUpdate<T>(requester, _id.value(), error)) {
       std::move(callback)(error.code, error.message);
       return;
     }
@@ -316,9 +287,7 @@ inline void __attribute((always_inline)) EntityController<T>::Update(
 
     Controller::Update(entity,
                        std::move(callback));  // Delegate the UPDATE statement.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     CRITICALMESSAGERESPONSE  // Unexpected error: log it and answer with a
                              // mapped 5xx status.
   }
@@ -328,14 +297,11 @@ template <typename T>
 inline void __attribute((always_inline)) EntityController<T>::Delete(
     CALLBACK_&&                   callback,
     const Requester&&             requester,
-    const std::optional<uint64_t> _id)
-{
-  try
-  {
+    const std::optional<uint64_t> _id) {
+  try {
     // A delete without a target id is not acceptable (406); no further work
     // is done.
-    if (!_id.has_value())
-    {
+    if (!_id.has_value()) {
       std::move(callback)(api::v2::Http::Status::NOT_ACCEPTABLE,
                           "Invalid id provided");
       return;
@@ -345,8 +311,7 @@ inline void __attribute((always_inline)) EntityController<T>::Delete(
 
     // Check delete permission on the target row before constructing the
     // entity.
-    if (!gateKeeper->canDelete<T>(requester, _id.value(), error))
-    {
+    if (!gateKeeper->canDelete<T>(requester, _id.value(), error)) {
       std::move(callback)(error.code, error.message);
       return;
     }
@@ -356,9 +321,7 @@ inline void __attribute((always_inline)) EntityController<T>::Delete(
 
     Controller::Delete(entity,
                        std::move(callback));  // Delegate the DELETE statement.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     CRITICALMESSAGERESPONSE  // Unexpected error: log it and answer with a
                              // mapped 5xx status.
   }
@@ -368,24 +331,19 @@ template <typename T>
 inline void __attribute((always_inline)) EntityController<T>::Search(
     CALLBACK_&&                        callback,
     [[maybe_unused]] const Requester&& requester,
-    std::string_view                   data)
-{
+    std::string_view                   data) {
   jsoncons::json request_json;  // Will hold the parsed search body.
-  try
-  {
+  try {
     // Malformed JSON is a client error; answer 400 rather than letting the
     // parser exception escape.
     request_json = jsoncons::json::parse(
         data);  // Turn the raw search body text into a JSON value.
-  }
-  catch (const std::exception&)
-  {
+  } catch (const std::exception&) {
     std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
                         "Invalid request body: malformed JSON.");
     return;
   }
-  try
-  {
+  try {
     bool success = false;  // Search carrier sets this true only when the
                            // criteria parse successfully.
     // Search_t validates and binds all criteria; success=false means the
@@ -394,20 +352,15 @@ inline void __attribute((always_inline)) EntityController<T>::Search(
                        success)));  // The carrier parses criteria and reports
                                     // success via the flag.
 
-    if (success)
-    {
+    if (success) {
       Controller::Search(entity,
                          std::move(callback));  // Delegate the paginated search
                                                 // query.
-    }
-    else
-    {
+    } else {
       std::move(callback)(api::v2::Http::Status::NOT_ACCEPTABLE,
                           "Failed to search");
     }
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     CRITICALMESSAGERESPONSE  // Unexpected error: log it and answer with a
                              // mapped 5xx status.
   }
@@ -416,10 +369,8 @@ inline void __attribute((always_inline)) EntityController<T>::Search(
 template <typename T>
 drogon::Task<void> EntityController<T>::CreateAsync(CALLBACK_&&       callback,
                                                     const Requester&& requester,
-                                                    std::string_view  data)
-{
-  try
-  {
+                                                    std::string_view  data) {
+  try {
     bool success = false;  // Starts false; validation sets it true only for
                            // a usable body.
     HttpError error;       // Filled with a code/message when validation or
@@ -433,22 +384,18 @@ drogon::Task<void> EntityController<T>::CreateAsync(CALLBACK_&&       callback,
 
     std::optional<jsoncons::json> request_j;  // Will hold the parsed body;
                                               // empty means parsing failed.
-    try
-    {
+    try {
       // A malformed body is a client error; reject before authorization
       // or any DB work.
       request_j = jsoncons::json::parse(
           data);  // Turn the raw body text into a JSON value.
-    }
-    catch (const std::exception&)
-    {
+    } catch (const std::exception&) {
       std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
                           "Invalid request body: malformed JSON.");
       co_return;
     }
 
-    if (!request_j.has_value())
-    {
+    if (!request_j.has_value()) {
       std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
                           "Invalid request body.");
       co_return;
@@ -464,8 +411,7 @@ drogon::Task<void> EntityController<T>::CreateAsync(CALLBACK_&&       callback,
                                                         // against the table's
                                                         // create schema.
 
-    if (!success)
-    {
+    if (!success) {
       std::move(callback)(error.code,
                           fmt::format("Failed to validate request body, {}.",
                                       error.message));
@@ -474,8 +420,7 @@ drogon::Task<void> EntityController<T>::CreateAsync(CALLBACK_&&       callback,
 
     // The async gate check is awaited on the IO loop; a denial still
     // short-circuits before any DB work.
-    if (!co_await gateKeeper->canCreateAsync<T>(requester, request_j, error))
-    {
+    if (!co_await gateKeeper->canCreateAsync<T>(requester, request_j, error)) {
       std::move(callback)(error.code, error.message);
       co_return;
     }
@@ -490,9 +435,7 @@ drogon::Task<void> EntityController<T>::CreateAsync(CALLBACK_&&       callback,
                                      std::move(
                                          callback));  // Await the async INSERT
                                                       // before finishing.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     CRITICALMESSAGERESPONSE  // Unexpected error: log it and answer with a
                              // mapped 5xx status.
   }
@@ -500,18 +443,15 @@ drogon::Task<void> EntityController<T>::CreateAsync(CALLBACK_&&       callback,
 template <typename T>
 drogon::Task<void> EntityController<T>::ReadAsync(CALLBACK_&&       callback,
                                                   const Requester&& requester,
-                                                  std::string_view  data)
-{
-  try
-  {
+                                                  std::string_view  data) {
+  try {
     jsoncons::json request_j;  // Will hold the parsed read body.
     uint64_t       _id;        // The target entity id extracted from the body.
     std::unordered_set<std::string>
         schema;  // The columns the caller wants returned.
     // A read needs both a numeric id and a column list; missing/invalid
     // fields are answered with 400.
-    try
-    {
+    try {
       request_j = jsoncons::json::parse(
           data);  // Turn the raw body text into a JSON value.
       _id =
@@ -520,9 +460,7 @@ drogon::Task<void> EntityController<T>::ReadAsync(CALLBACK_&&       callback,
                    .at("schema")
                    // Extract the list of columns to return.
                    .as<std::unordered_set<std::string>>();
-    }
-    catch (const std::exception&)
-    {
+    } catch (const std::exception&) {
       std::move(
           callback)(api::v2::Http::Status::BAD_REQUEST,
                     "Invalid request body: malformed JSON or missing/invalid "
@@ -532,8 +470,7 @@ drogon::Task<void> EntityController<T>::ReadAsync(CALLBACK_&&       callback,
     HttpError error;
 
     // Ownership/role check is awaited before the column list is validated.
-    if (!co_await gateKeeper->canReadAsync<T>(requester, _id, error))
-    {
+    if (!co_await gateKeeper->canReadAsync<T>(requester, _id, error)) {
       std::move(callback)(error.code, error.message);
       co_return;
     }
@@ -546,15 +483,13 @@ drogon::Task<void> EntityController<T>::ReadAsync(CALLBACK_&&       callback,
 
     if (!Validator::validateDatabaseReadSchema(
             schema,
-            []()
-            {
+            []() {
               static const std::string cached =
                   std::format("{}_safe", T::getTableName());
               return cached;
             }(),
             error,
-            rule))
-    {
+            rule)) {
       std::move(callback)(error.code,
                           fmt::format("Failed to validate request body, {}.",
                                       error.message));
@@ -568,9 +503,7 @@ drogon::Task<void> EntityController<T>::ReadAsync(CALLBACK_&&       callback,
     co_await Controller::ReadAsync(entity,
                                    std::move(
                                        callback));  // Await the async SELECT.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     CRITICALMESSAGERESPONSE  // Unexpected error: log it and answer with a
                              // mapped 5xx status.
   }
@@ -580,10 +513,8 @@ drogon::Task<void> EntityController<T>::UpdateAsync(
     CALLBACK_&&                   callback,
     const Requester&&             requester,
     std::string_view              data,
-    const std::optional<uint64_t> _id)
-{
-  try
-  {
+    const std::optional<uint64_t> _id) {
+  try {
     bool success = false;  // Starts false; validation sets it true only for
                            // a usable body.
     api::v2::Http::Error error;  // Filled with a code/message when
@@ -591,8 +522,7 @@ drogon::Task<void> EntityController<T>::UpdateAsync(
 
     // An update without a target row is meaningless, so reject before
     // parsing the body.
-    if (!_id.has_value())
-    {
+    if (!_id.has_value()) {
       std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
                           "No id provided.");
       co_return;
@@ -600,20 +530,16 @@ drogon::Task<void> EntityController<T>::UpdateAsync(
 
     std::optional<jsoncons::json> request_json;  // Will hold the parsed body;
                                                  // empty means parsing failed.
-    try
-    {
+    try {
       request_json = jsoncons::json::parse(
           data);  // Turn the raw body text into a JSON value.
-    }
-    catch (const std::exception&)
-    {
+    } catch (const std::exception&) {
       std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
                           "Invalid request body: malformed JSON.");
       co_return;
     }
 
-    if (!request_json.has_value())
-    {
+    if (!request_json.has_value()) {
       std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
                           "Invalid request body.");
       co_return;
@@ -630,8 +556,7 @@ drogon::Task<void> EntityController<T>::UpdateAsync(
                                                         // against the table's
                                                         // update schema.
 
-    if (!success)
-    {
+    if (!success) {
       std::move(callback)(error.code,
                           fmt::format("Failed to validate request body, {}.",
                                       error.message));
@@ -639,8 +564,9 @@ drogon::Task<void> EntityController<T>::UpdateAsync(
     }
 
     // The requester must be allowed to modify this specific row.
-    if (!co_await gateKeeper->canUpdateAsync<T>(requester, _id.value(), error))
-    {
+    if (!co_await gateKeeper->canUpdateAsync<T>(requester,
+                                                _id.value(),
+                                                error)) {
       std::move(callback)(error.code, error.message);
       co_return;
     }
@@ -655,9 +581,7 @@ drogon::Task<void> EntityController<T>::UpdateAsync(
     co_await Controller::UpdateAsync(entity,
                                      std::move(
                                          callback));  // Await the async UPDATE.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     CRITICALMESSAGERESPONSE  // Unexpected error: log it and answer with a
                              // mapped 5xx status.
   }
@@ -666,14 +590,11 @@ template <typename T>
 drogon::Task<void> EntityController<T>::DeleteAsync(
     CALLBACK_&&                   callback,
     const Requester&&             requester,
-    const std::optional<uint64_t> _id)
-{
-  try
-  {
+    const std::optional<uint64_t> _id) {
+  try {
     // A delete without a target id is not acceptable (406); no further work
     // is done.
-    if (!_id.has_value())
-    {
+    if (!_id.has_value()) {
       std::move(callback)(api::v2::Http::Status::NOT_ACCEPTABLE,
                           "Invalid id provided");
       co_return;
@@ -683,8 +604,9 @@ drogon::Task<void> EntityController<T>::DeleteAsync(
 
     // Check delete permission on the target row before constructing the
     // entity.
-    if (!co_await gateKeeper->canDeleteAsync<T>(requester, _id.value(), error))
-    {
+    if (!co_await gateKeeper->canDeleteAsync<T>(requester,
+                                                _id.value(),
+                                                error)) {
       std::move(callback)(error.code, error.message);
       co_return;
     }
@@ -695,9 +617,7 @@ drogon::Task<void> EntityController<T>::DeleteAsync(
     co_await Controller::DeleteAsync(entity,
                                      std::move(
                                          callback));  // Await the async DELETE.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     CRITICALMESSAGERESPONSE  // Unexpected error: log it and answer with a
                              // mapped 5xx status.
   }
@@ -706,24 +626,19 @@ template <typename T>
 drogon::Task<void> EntityController<T>::SearchAsync(
     CALLBACK_&&                        callback,
     [[maybe_unused]] const Requester&& requester,
-    std::string_view                   data)
-{
+    std::string_view                   data) {
   jsoncons::json request_json;  // Will hold the parsed search body.
-  try
-  {
+  try {
     // Malformed JSON is a client error; answer 400 rather than letting the
     // parser exception escape.
     request_json = jsoncons::json::parse(
         data);  // Turn the raw search body text into a JSON value.
-  }
-  catch (const std::exception&)
-  {
+  } catch (const std::exception&) {
     std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
                         "Invalid request body: malformed JSON.");
     co_return;
   }
-  try
-  {
+  try {
     bool success = false;  // Search carrier sets this true only when the
                            // criteria parse successfully.
     // Search_t validates and binds all criteria; success=false means the
@@ -732,20 +647,15 @@ drogon::Task<void> EntityController<T>::SearchAsync(
                        success)));  // The carrier parses criteria and reports
                                     // success via the flag.
 
-    if (success)
-    {
+    if (success) {
       co_await Controller::SearchAsync(entity,
                                        std::move(callback));  // Await the async
                                                               // search.
-    }
-    else
-    {
+    } else {
       std::move(callback)(api::v2::Http::Status::NOT_ACCEPTABLE,
                           "Failed to search");
     }
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     CRITICALMESSAGERESPONSE  // Unexpected error: log it and answer with a
                              // mapped 5xx status.
   }

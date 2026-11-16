@@ -53,18 +53,16 @@ SCHEMA_t
  * startup condition. Note: The exit(EXIT_FAILURE) / "Exiting..." statements
  * after the throw are unreachable; the throw is the active error path.
  */
-DatabaseSchema::DatabaseSchema()
-{
+DatabaseSchema::DatabaseSchema() {
   auto dbctl =
       Store::getObject<DatabaseController>();  // Fetch the shared controller
                                                // that can query the database.
   auto tables = dbctl->getAllTables();  // Ask it for the list of table names
                                         // (an optional that may be empty).
 
-  if (!tables.has_value() ||
-      tables->empty())  // No table list at all, or an empty list, is a fatal
-                        // startup error.
-  {
+  // No table list at all, or an empty list, is a fatal
+  // startup error.
+  if (!tables.has_value() || tables->empty()) {
     throw std::runtime_error(
         "No tables found in database.\n");  // Report the failure as an
                                             // exception to the caller.
@@ -76,8 +74,8 @@ DatabaseSchema::DatabaseSchema()
   }
 
   for (const auto& table :
-       tables.value())  // Visit each table name that was returned.
-  {
+       // Visit each table name that was returned.
+       tables.value()) {
     populateSchema(table);  // Load that table's columns into the shared map.
   }
   // printSchema();
@@ -91,22 +89,20 @@ DatabaseSchema::DatabaseSchema()
  * logged and exit(EXIT_FAILURE) is called rather than leaving a partially
  * populated cache.
  */
-void DatabaseSchema::populateSchema(const std::string& tableName)
-{
+void DatabaseSchema::populateSchema(const std::string& tableName) {
   auto dbctl =
       Store::getObject<DatabaseController>();  // Get the controller used to
                                                // query this table's schema.
   auto schema = dbctl->getTableSchema(
-      tableName);          // Ask for the columns of this table (an optional).
-  if (schema.has_value())  // The query succeeded and produced column
-                           // descriptions.
-  {
-    databaseSchema[tableName] = dbctl->getTableSchema(tableName)
-                                    .value();  // Store the columns under the
-                                               // table name in the shared map.
-  }
-  else  // The table's schema could not be read.
-  {
+      tableName);  // Ask for the columns of this table (an optional).
+  // The query succeeded and produced column
+  // descriptions.
+  if (schema.has_value()) {
+    // Store the columns under the
+    // table name in the shared map.
+    // The table's schema could not be read.
+    databaseSchema[tableName] = dbctl->getTableSchema(tableName).value();
+  } else {
     Message::WarningMessage(
         fmt::format("Table not found.\n",
                     tableName));  // Log a warning naming the problem.
@@ -120,8 +116,7 @@ void DatabaseSchema::populateSchema(const std::string& tableName)
 /**
  * See DatabaseSchema::getDatabaseSchema.
  */
-const SCHEMA_t& DatabaseSchema::getDatabaseSchema()
-{
+const SCHEMA_t& DatabaseSchema::getDatabaseSchema() {
   return databaseSchema;
 }  // Hand out a read-only reference to the shared map, no copy needed.
 
@@ -130,15 +125,14 @@ const SCHEMA_t& DatabaseSchema::getDatabaseSchema()
  * Emits one info-level line per column, including table name, column name, data
  * type, constraint and nullability. Read-only diagnostic helper.
  */
-void DatabaseSchema::printSchema()
-{
+void DatabaseSchema::printSchema() {
   for (const auto& [tableName, columns] :
-       databaseSchema)  // Walk every (table name, column set) pair in the
-                        // cache.
-  {
+       // Walk every (table name, column set) pair in the
+       // cache.
+       databaseSchema) {
     for (const auto& column :
-         columns)  // Walk every column description inside that table.
-    {
+         // Walk every column description inside that table.
+         columns) {
       Message::InfoMessage(
           fmt::format("{} : {} - {} - {} - {} \n",
                       tableName,

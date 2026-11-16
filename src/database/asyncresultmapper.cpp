@@ -54,8 +54,7 @@
 // does not log.
 #include "utils/message/message.hpp"
 
-namespace asyncdb
-{
+namespace asyncdb {
   /**
    * @brief Converts one row into a JSON object using name- and value-based
    * type inference.
@@ -65,8 +64,7 @@ namespace asyncdb
    * form.
    */
   jsoncons::json mapRow(const drogon::orm::Result&    result,
-                        drogon::orm::Result::SizeType row)
-  {
+                        drogon::orm::Result::SizeType row) {
     jsoncons::json object;  // A fresh, empty JSON object for this row;
                             // nothing from another row can leak into it.
 
@@ -74,18 +72,18 @@ namespace asyncdb
         result.columns();  // How many columns this result has, so we know
                            // how far to walk.
     for (drogon::orm::Result::RowSizeType i = 0; i < column_count;
-         ++i)  // Visit each column exactly once, from left to right; stop
-               // after the last column.
-    {
+         // Visit each column exactly once, from left to right; stop
+         // after the last column.
+         ++i) {
       const std::string_view field_name =
           result.columnName(i);  // A non-owning view of the column's name, used
                                  // for comparisons and as the JSON key.
       const auto field = result[row][i];  // The single cell at (row, column):
                                           // its value and null flag.
 
-      if (field.isNull())  // SQL NULL must become JSON null, not the
-                           // string "NULL" or an empty string.
-      {
+      // SQL NULL must become JSON null, not the
+      // string "NULL" or an empty string.
+      if (field.isNull()) {
         object[std::string(field_name)] =
             nullptr;  // Copy the name into an owning string for the
                       // key, then store a JSON null value.
@@ -100,61 +98,53 @@ namespace asyncdb
           field.c_str());  // Read the cell as text; copying it keeps the
                            // data valid after the Result is touched again.
 
-      if (name == "active")  // The active flag is known to be a boolean,
-                             // whatever text PostgreSQL used.
-      {
+      // The active flag is known to be a boolean,
+      // whatever text PostgreSQL used.
+      if (name == "active") {
         // PostgreSQL emits t/f for booleans; accept the common truthy
         // spellings too.
-        object[name] =
-            (value == "t" || value == "true" ||
-             value == "1");  // The comparison produces a C++ bool, which
-                             // jsoncons stores as JSON true or false.
-      }
-      else if (name == "id" || name.ends_with("_id") ||
-               name == "appointment_duration" ||
-               name == "appointment_payment_amount")  // These column names
-                                                      // mark values that the
-                                                      // API exposes as whole
-                                                      // numbers.
-      {
+        // The comparison produces a C++ bool, which
+        // jsoncons stores as JSON true or false.
+        // These column names
+        // mark values that the
+        // API exposes as whole
+        // numbers.
+        object[name] = (value == "t" || value == "true" || value == "1");
+      } else if (name == "id" || name.ends_with("_id") ||
+                 name == "appointment_duration" ||
+                 name == "appointment_payment_amount") {
         // These columns are numbers in the API, but keep the text if it
         // does not parse.
-        try
-        {
-          object[name] =
-              std::stoi(value);  // Convert the text to an integer; stoi throws
-                                 // if the text is not a valid number.
+        try {
+          // Convert the text to an integer; stoi throws
+          // if the text is not a valid number.
+          // Catch every exception type from the conversion,
+          // including out-of-range numbers.
+          object[name] = std::stoi(value);
+        } catch (...) {
+          // Fall back to the original text so a single
+          // odd value cannot abort the row.
+          // A value starting with a brace or bracket
+          // is probably a JSON object or array.
+          object[name] = value;
         }
-        catch (...)  // Catch every exception type from the conversion,
-                     // including out-of-range numbers.
-        {
-          object[name] = value;  // Fall back to the original text so a single
-                                 // odd value cannot abort the row.
-        }
-      }
-      else if (!value.empty() &&
-               (value.front() == '{' ||
-                value.front() ==
-                    '['))  // A value starting with a brace or bracket
-                           // is probably a JSON object or array.
-      {
+      } else if (!value.empty() &&
+                 (value.front() == '{' || value.front() == '[')) {
         // json/jsonb arrive as text; a failed parse degrades to a plain
         // string.
-        try
-        {
-          object[name] =
-              jsoncons::json::parse(value);  // Parse the text into real nested
-                                             // JSON when it is well formed.
+        try {
+          // Parse the text into real nested
+          // JSON when it is well formed.
+          // Any parse error is deliberately ignored here.
+          object[name] = jsoncons::json::parse(value);
+        } catch (...) {
+          // Keep the raw text as a string instead of
+          // failing the whole request.
+          // No special rule matched, so this is an ordinary text
+          // column.
+          object[name] = value;
         }
-        catch (...)  // Any parse error is deliberately ignored here.
-        {
-          object[name] = value;  // Keep the raw text as a string instead of
-                                 // failing the whole request.
-        }
-      }
-      else  // No special rule matched, so this is an ordinary text
-            // column.
-      {
+      } else {
         object[name] = value;  // Store the value as a plain JSON string.
       }
     }
@@ -169,11 +159,10 @@ namespace asyncdb
    * @details The emptiness check also avoids indexing into a result with no
    * rows.
    */
-  jsoncons::json mapResultToObject(const drogon::orm::Result& result)
-  {
-    if (result.empty())  // A SELECT can legitimately return no rows, e.g. a
-                         // lookup for a missing id.
-    {
+  jsoncons::json mapResultToObject(const drogon::orm::Result& result) {
+    // A SELECT can legitimately return no rows, e.g. a
+    // lookup for a missing id.
+    if (result.empty()) {
       return jsoncons::json();  // A default-constructed jsoncons::json is
                                 // a JSON null, matching the synchronous
                                 // path.
@@ -187,15 +176,14 @@ namespace asyncdb
    * @brief Maps rows sequentially into an array, preserving the query's row
    * order.
    */
-  jsoncons::json::array mapResultToArray(const drogon::orm::Result& result)
-  {
+  jsoncons::json::array mapResultToArray(const drogon::orm::Result& result) {
     jsoncons::json::array
         reply;  // Empty array that will hold one JSON object per row.
 
     for (drogon::orm::Result::SizeType row = 0; row < result.size();
-         ++row)  // Walk rows from first to last; stop when every row has
-                 // been converted.
-    {
+         // Walk rows from first to last; stop when every row has
+         // been converted.
+         ++row) {
       reply.push_back(mapRow(result,
                              row));  // Convert the row and append it, keeping
                                      // the database's order intact.

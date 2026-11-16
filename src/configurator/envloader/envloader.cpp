@@ -46,11 +46,10 @@
 
 // Reads a string variable: return the stored text verbatim, or the default when
 // it is absent.
-std::string EnvLoader::getEnvironmentVariable(
-    const std::string& key,
-    const std::string& defaultValue)  // Returns the raw text or the fallback
-                                      // when the name is missing.
-{
+// Returns the raw text or the fallback
+// when the name is missing.
+std::string EnvLoader::getEnvironmentVariable(const std::string& key,
+                                              const std::string& defaultValue) {
   auto value = get(key);  // Fetch the raw value through EnvVars; an empty
                           // optional means "not set".
   return value.has_value() ? value.value()
@@ -59,11 +58,10 @@ std::string EnvLoader::getEnvironmentVariable(
 }
 
 // Reads a boolean variable: only the exact word "true" counts as true.
-bool EnvLoader::getEnvironmentVariable(
-    const std::string& key,
-    bool defaultValue)  // True for "true", false for any other present value,
-                        // default when unset.
-{
+// True for "true", false for any other present value,
+// default when unset.
+bool EnvLoader::getEnvironmentVariable(const std::string& key,
+                                       bool               defaultValue) {
   auto value = get(key);  // Fetch the raw value through EnvVars.
   // Only the exact literal "true" means true; any other present value is
   // false. The default applies exclusively when the variable is not set at
@@ -74,41 +72,38 @@ bool EnvLoader::getEnvironmentVariable(
 }
 
 // Reads a duration in whole seconds, rejecting negative or invalid numbers.
+// Interprets the value as seconds, or keeps the default
+// on bad input.
 std::chrono::seconds EnvLoader::getEnvironmentVariable(
-    const std::string& key,
-    const std::chrono::seconds&
-        defaultValue)  // Interprets the value as seconds, or keeps the default
-                       // on bad input.
-{
-  auto value = get(key);   // Fetch the raw value through EnvVars.
-  if (!value.has_value())  // Variable absent: there is nothing to convert.
-  {
+    const std::string& key, const std::chrono::seconds& defaultValue) {
+  auto value = get(key);  // Fetch the raw value through EnvVars.
+  // Variable absent: there is nothing to convert.
+  if (!value.has_value()) {
     return defaultValue;  // Hand back the safe fallback.
   }
-  try  // Parsing text to a number can fail, so recover instead of letting an
-       // exception escape.
-  {
+  // Parsing text to a number can fail, so recover instead of letting an
+  // exception escape.
+  try {
     auto count = std::stoll(value.value());  // Convert the text to a 64-bit
                                              // integer (wider than stoi's int).
     // Durations are stored as unsigned seconds; a negative input cannot be
     // represented, so keep the default instead of wrapping it through the
     // cast.
-    if (count < 0)  // A negative length of time makes no sense for a
-                    // timeout/duration.
-    {
+    // A negative length of time makes no sense for a
+    // timeout/duration.
+    if (count < 0) {
       Message::ErrorMessage("Negative duration for env var " + key +
                             "; using default.");  // Log the offending variable
                                                   // so it can be fixed.
       return defaultValue;  // Refuse the negative value and keep the safe
                             // default.
     }
-    return std::chrono::seconds(
-        static_cast<uint64_t>(count));  // Wrap the count in a type that clearly
-                                        // represents "this many seconds".
-  }
-  catch (const std::exception&)  // std::stoll throws when the text is not
-                                 // numeric or is out of range.
-  {
+    // Wrap the count in a type that clearly
+    // represents "this many seconds".
+    // std::stoll throws when the text is not
+    // numeric or is out of range.
+    return std::chrono::seconds(static_cast<uint64_t>(count));
+  } catch (const std::exception&) {
     Message::ErrorMessage("Invalid duration value for env var " + key +
                           "; using default.");  // Report the bad variable name.
     return defaultValue;  // Recover so malformed settings cannot stop
@@ -118,10 +113,9 @@ std::chrono::seconds EnvLoader::getEnvironmentVariable(
 
 // Reads a comma-separated variable into a set; missing or empty means an empty
 // set.
+// Returns a set of unique tokens, or an empty set when unset.
 std::unordered_set<std::string> EnvLoader::getEnvironmentVariable(
-    const std::string&
-        key)  // Returns a set of unique tokens, or an empty set when unset.
-{
+    const std::string& key) {
   auto value = get(key);  // Fetch the raw value through EnvVars.
   // An unset variable is treated the same as an empty list, not as an error.
   return value.has_value()
@@ -132,21 +126,18 @@ std::unordered_set<std::string> EnvLoader::getEnvironmentVariable(
 
 // Splits a comma-separated string into a trimmed set of unique, non-empty
 // tokens.
-std::unordered_set<std::string> EnvLoader::parseSet(
-    const std::string& str)  // Turns "a, b, c" into {"a","b","c"} with spaces
-                             // and blanks removed.
-{
+// Turns "a, b, c" into {"a","b","c"} with spaces
+// and blanks removed.
+std::unordered_set<std::string> EnvLoader::parseSet(const std::string& str) {
   std::unordered_set<std::string>
       result;  // The output set; duplicates disappear automatically because a
                // set holds unique values only.
   std::stringstream ss(str);  // Wrap the text so getline can pull out
                               // comma-delimited pieces one at a time.
   std::string       item;     // Temporary holder for each piece as it is read.
-  while (std::getline(ss,
-                      item,
-                      ','))  // Keep reading until no more comma-separated
-                             // pieces remain; each pass handles one token.
-  {
+  // Keep reading until no more comma-separated
+  // pieces remain; each pass handles one token.
+  while (std::getline(ss, item, ',')) {
     // Trim any leading or trailing whitespace
     item.erase(item.find_last_not_of(" \n\r\t") +
                1);  // Cut off trailing spaces/newlines by erasing from just
@@ -157,9 +148,9 @@ std::unordered_set<std::string> EnvLoader::parseSet(
                                  // up to the first non-space character.
     // Drop empty tokens so "a,,b" and a string of only whitespace yield no
     // empty member.
-    if (!item.empty())  // Skip pieces that are empty after trimming (the
-                        // gap between two commas, for example).
-    {
+    // Skip pieces that are empty after trimming (the
+    // gap between two commas, for example).
+    if (!item.empty()) {
       result.insert(item);  // Add the cleaned token to the set.
     }
   }
@@ -167,20 +158,19 @@ std::unordered_set<std::string> EnvLoader::parseSet(
 }
 
 // Replaces a zero "auto" count with a multiple of the machine's CPU count.
-void EnvLoader::optimize_performance(
-    uint16_t&     parameter,
-    const uint8_t factor)  // Grows a zero value to CPUs times factor, leaving
-                           // explicit values alone.
-{
+// Grows a zero value to CPUs times factor, leaving
+// explicit values alone.
+void EnvLoader::optimize_performance(uint16_t&     parameter,
+                                     const uint8_t factor) {
   uint16_t ncpus = (std::thread::hardware_concurrency() > 0)
                        ? std::thread::hardware_concurrency()
                        : 1;  // Ask the OS for the CPU count, treating an
                              // unknown count (0) as one CPU.
   // Zero is the "let the runtime size it" sentinel; a nonzero explicit value
   // is respected.
-  if (parameter < 1)  // Only an unset/zero count needs auto-sizing; a
-                      // positive value was chosen deliberately.
-  {
+  // Only an unset/zero count needs auto-sizing; a
+  // positive value was chosen deliberately.
+  if (parameter < 1) {
     parameter = ncpus * factor;  // Scale with the hardware so a bigger machine
                                  // gets more workers/connections by default.
   }

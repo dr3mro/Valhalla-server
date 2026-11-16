@@ -122,8 +122,7 @@ using GateKeeper =
  * is not specified here.
  * @see EntityController, DatabaseController
  */
-class Controller
-{
+class Controller {
  public:
   /**
    * @brief Resolves the shared `DatabaseController` service from the `Store`
@@ -134,17 +133,13 @@ class Controller
    * @throws std::runtime_error if the database controller cannot be obtained
    * (a critical message is logged first).
    */
-  Controller()
-  {
-    try
-    {
+  Controller() {
+    try {
       databaseController =
           Store::getObject<DatabaseController>();  // Ask the service locator
                                                    // for the single shared DB
                                                    // gateway.
-    }
-    catch (const std::exception& e)
-    {
+    } catch (const std::exception& e) {
       CRITICALMESSAGE  // Log a critical, file/line-tagged error before
                        // giving up.
           throw std::runtime_error(
@@ -189,8 +184,7 @@ class Controller
    * @see cruds
    */
   template <typename T>
-  void Create(T& entity, CALLBACK_&& callback)
-  {
+  void Create(T& entity, CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlCreateStatement;  // Pointer to the INSERT builder; may
                                     // return no statement if data is
@@ -214,8 +208,7 @@ class Controller
    * @see crudsAsync, Create
    */
   template <typename T>
-  drogon::Task<void> CreateAsync(T& entity, CALLBACK_&& callback)
-  {
+  drogon::Task<void> CreateAsync(T& entity, CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlCreateStatement;  // Pointer to the INSERT builder; may
                                     // return no statement if data is
@@ -238,8 +231,7 @@ class Controller
    * @see cruds
    */
   template <typename T>
-  void Read(T& entity, CALLBACK_&& callback)
-  {
+  void Read(T& entity, CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlReadStatement;  // Pointer to the SELECT builder for
                                   // reading selected columns.
@@ -261,8 +253,7 @@ class Controller
    * @see crudsAsync, Read
    */
   template <typename T>
-  drogon::Task<void> ReadAsync(T& entity, CALLBACK_&& callback)
-  {
+  drogon::Task<void> ReadAsync(T& entity, CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlReadStatement;  // Pointer to the SELECT builder for
                                   // reading selected columns.
@@ -284,8 +275,7 @@ class Controller
    * @see cruds
    */
   template <typename T>
-  void Update(T& entity, CALLBACK_&& callback)
-  {
+  void Update(T& entity, CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlUpdateStatement;  // Pointer to the UPDATE builder for the
                                     // target row.
@@ -307,8 +297,7 @@ class Controller
    * @see crudsAsync, Update
    */
   template <typename T>
-  drogon::Task<void> UpdateAsync(T& entity, CALLBACK_&& callback)
-  {
+  drogon::Task<void> UpdateAsync(T& entity, CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlUpdateStatement;  // Pointer to the UPDATE builder for the
                                     // target row.
@@ -329,8 +318,7 @@ class Controller
    * @see cruds
    */
   template <typename T>
-  void Delete(T& entity, CALLBACK_&& callback)
-  {
+  void Delete(T& entity, CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlDeleteStatement;  // Pointer to the DELETE builder for the
                                     // target id.
@@ -352,8 +340,7 @@ class Controller
    * @see crudsAsync, Delete
    */
   template <typename T>
-  drogon::Task<void> DeleteAsync(T& entity, CALLBACK_&& callback)
-  {
+  drogon::Task<void> DeleteAsync(T& entity, CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlDeleteStatement;  // Pointer to the DELETE builder for the
                                     // target id.
@@ -384,8 +371,7 @@ class Controller
    * @see executeSearchQuery (DatabaseController)
    */
   template <typename T>
-  void Search(T& entity, CALLBACK_&& callback)
-  {
+  void Search(T& entity, CALLBACK_&& callback) {
     jsoncons::json response_json;
     response_json["more"]   = false;  // Assume no further page until the
                                       // row-count probe proves otherwise.
@@ -398,8 +384,7 @@ class Controller
     std::optional<std::string> query;  // Holds the built SQL; empty means the
                                        // entity produced nothing to run.
 
-    try
-    {
+    try {
       pqxx::params params;  // The bag of values bound to the SQL
                             // placeholders ($1, $2, ...).
       // The entity builds both the parameterized statement and its bound
@@ -408,8 +393,7 @@ class Controller
           params);  // Ask the entity to build the SQL and fill the
                     // parameter bag.
 
-      if (query.has_value())
-      {
+      if (query.has_value()) {
         query_results_json_array =
             databaseController
                 ->executeSearchQuery(query.value(),
@@ -417,15 +401,13 @@ class Controller
                                                // to a JSON array.
 
         if (query_results_json_array.has_value() &&
-            !query_results_json_array->empty())
-        {
+            !query_results_json_array->empty()) {
           size_t results_count =
               query_results_json_array->size();  // Count rows to detect the
                                                  // extra probe row (limit + 1).
           // More rows than requested means an over-fetch: drop the
           // extra row and advertise the next page.
-          if (results_count > std::get<Search_t>(entity.getData()).limit)
-          {
+          if (results_count > std::get<Search_t>(entity.getData()).limit) {
             response_json["more"] = true;  // An extra row exists, so tell the
                                            // client another page is available.
             response_json["offset"] =
@@ -442,12 +424,9 @@ class Controller
       }
       // Absent results still yield a well-formed envelope with an empty
       // array.
-      if (query_results_json_array.has_value())
-      {
+      if (query_results_json_array.has_value()) {
         response_json["results"] = std::move(query_results_json_array.value());
-      }
-      else
-      {
+      } else {
         response_json["results"] =
             jsoncons::json::array();  // Guarantee an empty array
                                       // instead of a null when nothing
@@ -457,9 +436,7 @@ class Controller
       // Marshal the envelope and answer once.
       std::move(callback)(api::v2::Http::Status::OK,
                           response_json.as<std::string>());
-    }
-    catch (const std::exception& e)
-    {
+    } catch (const std::exception& e) {
       CRITICALMESSAGERESPONSE  // Log a critical error and answer through
                                // the callback with a mapped status.
     }
@@ -478,8 +455,7 @@ class Controller
    * @see Search, crudsAsync
    */
   template <typename T>
-  drogon::Task<void> SearchAsync(T& entity, CALLBACK_&& callback)
-  {
+  drogon::Task<void> SearchAsync(T& entity, CALLBACK_&& callback) {
     jsoncons::json response_json;
     response_json["more"]   = false;  // Assume no further page until the
                                       // row-count probe proves otherwise.
@@ -492,16 +468,14 @@ class Controller
     std::optional<std::string> query;  // Holds the built SQL; empty means the
                                        // entity produced nothing to run.
 
-    try
-    {
+    try {
       pqxx::params params;  // The bag of values bound to the SQL
                             // placeholders ($1, $2, ...).
       query = entity.getSqlSearchStatement(
           params);  // Ask the entity to build the SQL and fill the
                     // parameter bag.
 
-      if (query.has_value())
-      {
+      if (query.has_value()) {
         query_results_json_array =
             co_await databaseController
                 ->executeSearchQueryCoro(query.value(),
@@ -510,13 +484,11 @@ class Controller
                                                    // loop.
 
         if (query_results_json_array.has_value() &&
-            !query_results_json_array->empty())
-        {
+            !query_results_json_array->empty()) {
           size_t results_count =
               query_results_json_array->size();  // Count rows to detect the
                                                  // extra probe row (limit + 1).
-          if (results_count > std::get<Search_t>(entity.getData()).limit)
-          {
+          if (results_count > std::get<Search_t>(entity.getData()).limit) {
             response_json["more"] = true;  // An extra row exists, so tell the
                                            // client another page is available.
             response_json["offset"] =
@@ -531,12 +503,9 @@ class Controller
           }
         }
       }
-      if (query_results_json_array.has_value())
-      {
+      if (query_results_json_array.has_value()) {
         response_json["results"] = std::move(query_results_json_array.value());
-      }
-      else
-      {
+      } else {
         response_json["results"] =
             jsoncons::json::array();  // Guarantee an empty array
                                       // instead of a null when nothing
@@ -545,9 +514,7 @@ class Controller
 
       std::move(callback)(api::v2::Http::Status::OK,
                           response_json.as<std::string>());
-    }
-    catch (const std::exception& e)
-    {
+    } catch (const std::exception& e) {
       CRITICALMESSAGERESPONSE  // Log a critical error and answer through
                                // the callback with a mapped status.
     }
@@ -664,22 +631,19 @@ class Controller
     std::optional<std::string> query;  // Holds the built SQL; empty means the
                                        // entity produced nothing to run.
 
-    try
-    {
+    try {
       pqxx::params params;  // The bag of values bound to the SQL
                             // placeholders ($1, $2, ...).
       query = entity.getSqlGetServicesStatement(
           params);  // Build the SELECT for this client's services.
 
-      if (query.has_value())
-      {
+      if (query.has_value()) {
         services = databaseController
                        ->executeSearchQuery(query.value(),
                                             params);  // Blocking lookup of the
                                                       // service rows.
 
-        if (services.has_value())
-        {
+        if (services.has_value()) {
           std::move(callback)(api::v2::Http::Status::OK,
                               api::v2::JsonHelper::stringify(services.value()));
           return;
@@ -688,9 +652,7 @@ class Controller
                             "[]");  // No services found still yields a valid
                                     // empty JSON array.
       }
-    }
-    catch (const std::exception& e)
-    {
+    } catch (const std::exception& e) {
       CRITICALMESSAGERESPONSE  // Log a critical error and answer through
                                // the callback with a mapped status.
     }
@@ -717,15 +679,13 @@ class Controller
     std::optional<std::string> query;  // Holds the built SQL; empty means the
                                        // entity produced nothing to run.
 
-    try
-    {
+    try {
       pqxx::params params;  // The bag of values bound to the SQL
                             // placeholders ($1, $2, ...).
       query = entity.getSqlGetServicesStatement(
           params);  // Build the SELECT for this client's services.
 
-      if (query.has_value())
-      {
+      if (query.has_value()) {
         auto db =
             Store::cachedObject<DatabaseController>();  // Thread-local cached
                                                         // handle: cheap
@@ -736,8 +696,7 @@ class Controller
                                                 params);  // Await the async
                                                           // service lookup.
 
-        if (services.has_value())
-        {
+        if (services.has_value()) {
           std::move(callback)(api::v2::Http::Status::OK,
                               api::v2::JsonHelper::stringify(services.value()));
           co_return;
@@ -746,9 +705,7 @@ class Controller
                             "[]");  // No services found still yields a valid
                                     // empty JSON array.
       }
-    }
-    catch (const std::exception& e)
-    {
+    } catch (const std::exception& e) {
       CRITICALMESSAGERESPONSE  // Log a critical error and answer through
                                // the callback with a mapped status.
     }
@@ -776,15 +733,13 @@ class Controller
                             // statement is produced.
     std::optional<std::string> query;
 
-    try
-    {
+    try {
       pqxx::params params;  // The bag of values bound to the SQL
                             // placeholders ($1, $2, ...).
       query = entity.getSqlGetVisitsStatement(
           params);  // Build the SELECT for this patient's visits.
 
-      if (query.has_value())
-      {
+      if (query.has_value()) {
         visits =
             databaseController
                 ->executeSearchQuery(query.value(),
@@ -793,9 +748,7 @@ class Controller
 
       std::move(callback)(api::v2::Http::Status::OK,
                           api::v2::JsonHelper::stringify(visits));
-    }
-    catch (const std::exception& e)
-    {
+    } catch (const std::exception& e) {
       CRITICALMESSAGERESPONSE  // Log a critical error and answer through
                                // the callback with a mapped status.
     }
@@ -820,15 +773,13 @@ class Controller
                             // statement is produced.
     std::optional<std::string> query;
 
-    try
-    {
+    try {
       pqxx::params params;  // The bag of values bound to the SQL
                             // placeholders ($1, $2, ...).
       query = entity.getSqlGetVisitsStatement(
           params);  // Build the SELECT for this patient's visits.
 
-      if (query.has_value())
-      {
+      if (query.has_value()) {
         auto db =
             Store::cachedObject<DatabaseController>();  // Thread-local cached
                                                         // handle: cheap
@@ -842,9 +793,7 @@ class Controller
 
       std::move(callback)(api::v2::Http::Status::OK,
                           api::v2::JsonHelper::stringify(visits));
-    }
-    catch (const std::exception& e)
-    {
+    } catch (const std::exception& e) {
       CRITICALMESSAGERESPONSE  // Log a critical error and answer through
                                // the callback with a mapped status.
     }
@@ -899,21 +848,18 @@ class Controller
              S& sqlstatement,
              std::optional<jsoncons::json> (DatabaseController::*func)(
                  const std::string&, const pqxx::params&),
-             CALLBACK_&& callback)
-  {
+             CALLBACK_&& callback) {
     std::optional<jsoncons::json>
         results_j;  // Will hold the single result object returned by the DB
                     // helper.
     pqxx::params params;
-    try
-    {
+    try {
       std::optional<std::string> query =
           (entity.*sqlstatement)(params);  // Call the chosen builder on the
                                            // entity; it also fills params.
       // A nullopt statement means the entity could not describe the
       // operation: reject before touching the DB.
-      if (!query.has_value())
-      {
+      if (!query.has_value()) {
         std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
                             fmt::format("Failed to get SQL statement for {}.",
                                         entity.getTableName()));
@@ -926,10 +872,8 @@ class Controller
           (*databaseController.*
            func)(query.value(),
                  params);  // Run SQL through the chosen read/write executor.
-      if (results_j.has_value())
-      {
-        if (!results_j->empty())
-        {
+      if (results_j.has_value()) {
+        if (!results_j->empty()) {
           std::move(callback)(api::v2::Http::Status::OK,
                               results_j.value().as<std::string>());
           return;
@@ -943,9 +887,7 @@ class Controller
 
       std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
                           "Failed to create sql query");
-    }
-    catch (const std::exception& e)
-    {
+    } catch (const std::exception& e) {
       CRITICALMESSAGERESPONSE  // Log a critical error and answer through
                                // the callback with a mapped status.
     }
@@ -975,19 +917,16 @@ class Controller
       S& sqlstatement,
       drogon::Task<std::optional<jsoncons::json>> (DatabaseController::*func)(
           const std::string&, const pqxx::params&),
-      CALLBACK_&& callback)
-  {
+      CALLBACK_&& callback) {
     std::optional<jsoncons::json>
         results_j;  // Will hold the single result object returned by the DB
                     // helper.
     pqxx::params params;
-    try
-    {
+    try {
       std::optional<std::string> query =
           (entity.*sqlstatement)(params);  // Call the chosen builder on the
                                            // entity; it also fills params.
-      if (!query.has_value())
-      {
+      if (!query.has_value()) {
         std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
                             fmt::format("Failed to get SQL statement for {}.",
                                         entity.getTableName()));
@@ -1001,10 +940,8 @@ class Controller
                                query.value(),
                                params);  // Invoke the async executor member on
                                          // the cached DB object.
-      if (results_j.has_value())
-      {
-        if (!results_j->empty())
-        {
+      if (results_j.has_value()) {
+        if (!results_j->empty()) {
           std::move(callback)(api::v2::Http::Status::OK,
                               results_j.value().as<std::string>());
           co_return;
@@ -1018,9 +955,7 @@ class Controller
 
       std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
                           "Failed to create sql query");
-    }
-    catch (const std::exception& e)
-    {
+    } catch (const std::exception& e) {
       CRITICALMESSAGERESPONSE  // Log a critical error and answer through
                                // the callback with a mapped status.
     }
@@ -1036,8 +971,7 @@ class Controller
    * @see cruds
    */
   template <typename T>
-  void addStaff(T& entity, CALLBACK_&& callback)
-  {
+  void addStaff(T& entity, CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlAddStaffStatement;  // Pointer to the builder that links a
                                       // staff member.
@@ -1054,8 +988,7 @@ class Controller
    * @see cruds
    */
   template <typename T>
-  void removeStaff(T& entity, CALLBACK_&& callback)
-  {
+  void removeStaff(T& entity, CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlRemoveStaffStatement;  // Pointer to the builder that
                                          // unlinks a staff member.
@@ -1073,8 +1006,7 @@ class Controller
    * @see crudsAsync, addStaff
    */
   template <typename T>
-  drogon::Task<void> addStaffAsync(T& entity, CALLBACK_&& callback)
-  {
+  drogon::Task<void> addStaffAsync(T& entity, CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlAddStaffStatement;  // Pointer to the builder that links a
                                       // staff member.
@@ -1095,8 +1027,7 @@ class Controller
    * @see crudsAsync, removeStaff
    */
   template <typename T>
-  drogon::Task<void> removeStaffAsync(T& entity, CALLBACK_&& callback)
-  {
+  drogon::Task<void> removeStaffAsync(T& entity, CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlRemoveStaffStatement;  // Pointer to the builder that
                                          // unlinks a staff member.

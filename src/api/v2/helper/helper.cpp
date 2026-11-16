@@ -52,11 +52,10 @@ using Helper = api::v2::Helper;  // Local alias so the definitions below can be
  * @brief Build a 500 response whose body carries a "Failure" status tag.
  * @see Helper::failureResponse
  */
+// Unexpected internal error -> status 500.
 void Helper::failureResponse(
-    const std::string& message,
-    std::function<void(const drogon::HttpResponsePtr&)>&&
-        callback)  // Unexpected internal error -> status 500.
-{
+    const std::string&                                    message,
+    std::function<void(const drogon::HttpResponsePtr&)>&& callback) {
   reply(std::move(callback),
         drogon::k500InternalServerError,
         prepare(FAILURE,
@@ -68,12 +67,11 @@ void Helper::failureResponse(
  * @brief Build a response with the given status and an "Error" status tag.
  * @see Helper::errorResponse
  */
+// Expected error (400, 403, 503, ...).
 void Helper::errorResponse(
-    const drogon::HttpStatusCode& code,
-    const std::string&            message,
-    std::function<void(const drogon::HttpResponsePtr&)>&&
-        callback)  // Expected error (400, 403, 503, ...).
-{
+    const drogon::HttpStatusCode&                         code,
+    const std::string&                                    message,
+    std::function<void(const drogon::HttpResponsePtr&)>&& callback) {
   reply(std::move(callback),
         code,
         prepare(ERROR,
@@ -86,11 +84,10 @@ void Helper::errorResponse(
  * already JSON).
  * @see Helper::successResponse
  */
+// Successful request -> status 200.
 void Helper::successResponse(
-    const std::string& message,
-    std::function<void(const drogon::HttpResponsePtr&)>&&
-        callback)  // Successful request -> status 200.
-{
+    const std::string&                                    message,
+    std::function<void(const drogon::HttpResponsePtr&)>&& callback) {
   reply(std::move(callback),
         drogon::k200OK,
         message);  // Send the controller's JSON body unchanged (no Status tag).
@@ -101,12 +98,11 @@ void Helper::successResponse(
  * via the callback.
  * @see Helper::reply
  */
+// The one function that really builds and sends every reply.
 void Helper::reply(
     std::function<void(const drogon::HttpResponsePtr&)>&& callback,
     const drogon::HttpStatusCode&                         code,
-    const std::string&
-        message)  // The one function that really builds and sends every reply.
-{
+    const std::string&                                    message) {
   auto res = drogon::HttpResponse::newHttpResponse();  // Create an empty HTTP
                                                        // response object.
   res->setStatusCode(code);  // Set the HTTP status (200, 400, 500, ...).
@@ -114,9 +110,9 @@ void Helper::reply(
       drogon::CT_APPLICATION_JSON);  // Tell clients the body is JSON so they
                                      // parse it.
   res->setBody(message);             // Store the prepared body text.
-  if (code == drogon::k503ServiceUnavailable)  // A 503 means "temporarily
-                                               // overloaded".
-  {
+  // A 503 means "temporarily
+  // overloaded".
+  if (code == drogon::k503ServiceUnavailable) {
     res->addHeader("Retry-After",
                    "1");  // Advise the client to retry after one second.
   }

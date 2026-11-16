@@ -32,9 +32,9 @@
 #include <json/value.h>
 
 // jsoncons' json type used by the validation code.
+// Groups this utility with the version-2 API code.
 #include <jsoncons/json.hpp>
-namespace api::v2  // Groups this utility with the version-2 API code.
-{
+namespace api::v2 {
   /**
    * @class JsonHelper
    * @brief Stateless bridge between the two JSON libraries and response
@@ -47,9 +47,9 @@ namespace api::v2  // Groups this utility with the version-2 API code.
    * libraries.
    * @see Validator
    */
-  class JsonHelper  // A class used only through static functions; it is never
-                    // instantiated.
-  {
+  // A class used only through static functions; it is never
+  // instantiated.
+  class JsonHelper {
    public:
     /**
      * No instances: the class is a namespace for static helpers.

@@ -84,8 +84,7 @@ using Requester =
  * StaffController.
  * @see StaffController, Controller, GateKeeper
  */
-class StaffControllerBase
-{
+class StaffControllerBase {
  public:
   /** @brief Default construction; the interface holds no state of its own. */
   explicit StaffControllerBase() =

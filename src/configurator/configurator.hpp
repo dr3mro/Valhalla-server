@@ -109,9 +109,9 @@ concept Config =
  * concurrent mutation is unsafe.
  * @see EnvLoader, Defaults, Store
  */
-class Configurator  // The single owner of every settings section; built once,
-                    // then read by the rest of the server.
-{
+// The single owner of every settings section; built once,
+// then read by the rest of the server.
+class Configurator {
  public:  // Everything below is Configurator's public interface, callable by
           // other code.
   /** @brief Default-constructs every configuration section (each reads the
@@ -132,9 +132,9 @@ class Configurator  // The single owner of every settings section; built once,
    * default. The test-only Testing section is deliberately not printed.
    * @note Diagnostic output only; no validation or mutation is performed.
    */
-  void printValues() const  // Called at startup to show operators the effective
-                            // settings; const so it cannot change them.
-  {
+  // Called at startup to show operators the effective
+  // settings; const so it cannot change them.
+  void printValues() const {
     dos_detector_config_.printValues();  // Print DoS-detection limits first.
     server_config_.printValues();        // Print the HTTP server's identity,
                                          // networking and logging settings.
@@ -163,9 +163,9 @@ class Configurator  // The single owner of every settings section; built once,
    * fingerprints.
    */
   using DOSDetectorConfig = struct DOSDetectorConfig
-      : public EnvLoader  // Declares a struct and an alias of the same name,
-                          // inheriting the env helpers.
-  {
+      // Declares a struct and an alias of the same name,
+      // inheriting the env helpers.
+      : public EnvLoader {
     /** @brief Maximum requests accepted within one @ref period before
      * limiting applies. */
     uint32_t max_requests;  // How many requests one client may make per period.
@@ -241,26 +241,26 @@ class Configurator  // The single owner of every settings section; built once,
                                                                // rate-limit
                                                                // length in
                                                                // seconds.
-          ban_duration(getEnvironmentVariable("BAN_DURATION",
-                                              std::chrono::seconds(
-                                                  // BAN_DURATION = ban length
-                                                  // in seconds.
-                                                  Defaults::DosDetector::
-                                                      BAN_DURATION_))),
-          whitelist(getEnvironmentVariable(
-              "WHITELIST")),  // Comma-separated list of exempt
-                              // fingerprints; no default means an empty
-                              // set.
-          blacklist(getEnvironmentVariable(
-              "BLACKLIST"))  // Comma-separated list of always-limited
-                             // fingerprints; empty when unset.
-    {
+          ban_duration(
+              getEnvironmentVariable("BAN_DURATION",
+                                     std::chrono::seconds(
+                                         // BAN_DURATION = ban length
+                                         // in seconds.
+                                         Defaults::DosDetector::
+                                             // Comma-separated list of exempt
+                                             // fingerprints; no default means
+                                             // an empty set. Comma-separated
+                                             // list of always-limited
+                                             // fingerprints; empty when unset.
+                                         BAN_DURATION_))),
+          whitelist(getEnvironmentVariable("WHITELIST")),
+          blacklist(getEnvironmentVariable("BLACKLIST")) {
     }
 
     /** @brief Logs all DOS limits and both fingerprint sets. */
-    void printValues() const override  // Required by EnvLoader; prints this
-                                       // section's effective values.
-    {
+    // Required by EnvLoader; prints this
+    // section's effective values.
+    void printValues() const override {
       Message::ConfMessage(
           // Decorative separator line for readable output.
           "------------------------------------------------");
@@ -314,9 +314,9 @@ class Configurator  // The single owner of every settings section; built once,
    * override DB_PASS in any non-test deployment.
    */
   using DatabaseConfig = struct DatabaseConfig
-      : public EnvLoader  // Settings for connecting to PostgreSQL, inheriting
-                          // the env helpers.
-  {
+      // Settings for connecting to PostgreSQL, inheriting
+      // the env helpers.
+      : public EnvLoader {
     /** @brief Whether the PostgreSQL connection uses SSL. */
     bool ssl;    // true means encrypt the connection; bool because it is a
                  // simple on/off choice.
@@ -395,9 +395,9 @@ class Configurator  // The single owner of every settings section; built once,
                                                        // secret, never logged.
           host(getEnvironmentVariable("DB_HOST",
                                       Defaults::Database::
-                                          DB_HOST_))  // DB_HOST selects the
-                                                      // server address.
-    {
+                                          // DB_HOST selects the
+                                          // server address.
+                                      DB_HOST_)) {
       optimize_performance(max_conn,
                            5);  // Turn a zero pool size into roughly five
                                 // connections per CPU core.
@@ -405,9 +405,9 @@ class Configurator  // The single owner of every settings section; built once,
 
     /** @brief Logs connection settings; the password is shown as
      * "[redacted]". */
-    void printValues() const override  // Prints connection settings while
-                                       // protecting the password.
-    {
+    // Prints connection settings while
+    // protecting the password.
+    void printValues() const override {
       Message::ConfMessage(
           // Decorative separator line.
           "------------------------------------------------");
@@ -452,8 +452,8 @@ class Configurator  // The single owner of every settings section; built once,
    * @see VALHALLA_GIT_TAG
    */
   using ServerConfig = struct ServerConfig
-      : public EnvLoader  // Settings for the Drogon HTTP server itself.
-  {
+      // Settings for the Drogon HTTP server itself.
+      : public EnvLoader {
     /** @brief Interface the HTTP server binds to. */
     std::string host;  // Network interface to listen on; text because it is
                        // an address such as 0.0.0.0.
@@ -555,13 +555,12 @@ class Configurator  // The single owner of every settings section; built once,
                                      Defaults::Server::
                                          SERVER_LOG_FILE_)),  // Sets the log
                                                               // file name.
-          upload_dir(
-              getEnvironmentVariable("SERVER_UPLOAD_DIR",
-                                     Defaults::Server::
-                                         SERVER_UPLOAD_DIR_))  // Sets where
-                                                               // uploads are
-                                                               // stored.
-    {
+          upload_dir(getEnvironmentVariable("SERVER_UPLOAD_DIR",
+                                            Defaults::Server::
+                                                // Sets where
+                                                // uploads are
+                                                // stored.
+                                            SERVER_UPLOAD_DIR_)) {
       optimize_performance(threads,
                            4);  // Turn a zero thread count into roughly four IO
                                 // threads per CPU core.
@@ -569,9 +568,8 @@ class Configurator  // The single owner of every settings section; built once,
 
     /** @brief Logs server identity, networking, threading and logging
      * settings. */
-    void printValues()
-        const override  // Prints the server's effective settings.
-    {
+    // Prints the server's effective settings.
+    void printValues() const override {
       Message::ConfMessage(
           // Decorative separator line.
           "------------------------------------------------");
@@ -621,9 +619,9 @@ class Configurator  // The single owner of every settings section; built once,
    * TOKEN_SECRET to a secure value in production.
    */
   using TokenManagerParameters = struct TokenManagerParameters
-      : public EnvLoader  // Settings for signing and checking authentication
-                          // tokens.
-  {
+      // Settings for signing and checking authentication
+      // tokens.
+      : public EnvLoader {
     /** @brief Token lifetime in minutes. */
     uint64_t validity;  // How long a token stays valid, in minutes; 64-bit
                         // because the default is large.
@@ -659,11 +657,11 @@ class Configurator  // The single owner of every settings section; built once,
                                                           // type identifier.
           secret(getEnvironmentVariable("TOKEN_SECRET",
                                         Defaults::TokenParameters::
-                                            TOKEN_SECRET_))  // TOKEN_SECRET
-                                                             // supplies the
-                                                             // signing key,
-                                                             // never logged.
-    {
+                                            // TOKEN_SECRET
+                                            // supplies the
+                                            // signing key,
+                                            // never logged.
+                                        TOKEN_SECRET_)) {
     }
 
     /**
@@ -672,10 +670,9 @@ class Configurator  // The single owner of every settings section; built once,
      * @details Emits a warning when the secret still equals the shipped
      * default.
      */
-    void printValues()
-        const override  // Prints token settings, hiding the secret and
-                        // warning if it is still the default.
-    {
+    // Prints token settings, hiding the secret and
+    // warning if it is still the default.
+    void printValues() const override {
       Message::ConfMessage(
           // Decorative separator line.
           "------------------------------------------------");
@@ -694,11 +691,10 @@ class Configurator  // The single owner of every settings section; built once,
                       validity));  // Show lifetime with its unit.
       Message::ConfMessage("Secret: [redacted]");  // Hide the secret instead of
                                                    // printing it.
-      if (secret ==
-          Defaults::TokenParameters::
-              TOKEN_SECRET_)  // Compare against the public placeholder to
-                              // detect an insecure deployment.
-      {
+      if (secret == Defaults::TokenParameters::
+                        // Compare against the public placeholder to
+                        // detect an insecure deployment.
+          TOKEN_SECRET_) {
         Message::WarningMessage(
             "TOKEN_SECRET is set to the default value; set a secure "
             "secret for production.");  // Warn operators to replace the
@@ -715,9 +711,9 @@ class Configurator  // The single owner of every settings section; built once,
    * in production.
    */
   using FrontEndConfig = struct FrontEndConfig
-      : public EnvLoader  // Settings for reaching the browser frontend and
-                          // allowing CORS requests.
-  {
+      // Settings for reaching the browser frontend and
+      // allowing CORS requests.
+      : public EnvLoader {
     /** @brief Frontend HTTP port. */
     uint16_t port;  // Port where the frontend runs; 16-bit unsigned covers
                     // the port range.
@@ -741,28 +737,26 @@ class Configurator  // The single owner of every settings section; built once,
                                                     // frontend port.
           host(getEnvironmentVariable("FRONTEND_HOST",
                                       Defaults::FrontEnd::
-                                          HOST_)),  // FRONTEND_HOST sets the
-                                                    // frontend base URL.
-          invite_path(getEnvironmentVariable(
-              "FRONTEND_INVITE_PATH",
-              Defaults::FrontEnd::INVITE_PATH_)),  // FRONTEND_INVITE_PATH
-                                                   // sets the invite link
-                                                   // path.
-          cors_allowed_origins(
-              getEnvironmentVariable("CORS_ALLOWED_ORIGINS",
-                                     std::string(
-                                         "*")))  // Defaults to "*" (allow all
-                                                 // origins); wrap the literal
-                                                 // in std::string to match the
-                                                 // field type.
-    {
+                                          // FRONTEND_HOST sets the
+                                          // frontend base URL.
+                                          // FRONTEND_INVITE_PATH
+                                          // sets the invite link
+                                          // path.
+                                          // Defaults to "*" (allow all
+                                          // origins); wrap the literal
+                                          // in std::string to match the
+                                          // field type.
+                                      HOST_)),
+          invite_path(getEnvironmentVariable("FRONTEND_INVITE_PATH",
+                                             Defaults::FrontEnd::INVITE_PATH_)),
+          cors_allowed_origins(getEnvironmentVariable("CORS_ALLOWED_ORIGINS",
+                                                      std::string("*"))) {
     }
 
     /** @brief Logs frontend host, port, invite path and allowed CORS
      * origins. */
-    void printValues()
-        const override  // Prints the frontend's effective settings.
-    {
+    // Prints the frontend's effective settings.
+    void printValues() const override {
       Message::ConfMessage(
           // Decorative separator line.
           "------------------------------------------------");
@@ -792,9 +786,9 @@ class Configurator  // The single owner of every settings section; built once,
    * holds where to reach it and which queue endpoint to enqueue onto.
    */
   using EmailSenderConfig = struct EmailSenderConfig
-      : public EnvLoader  // Settings for contacting the separate
-                          // email-delivery service.
-  {
+      // Settings for contacting the separate
+      // email-delivery service.
+      : public EnvLoader {
     /** @brief Email-sender daemon port. */
     uint16_t port;  // Port of the email daemon; 16-bit unsigned fits a port
                     // number.
@@ -820,14 +814,13 @@ class Configurator  // The single owner of every settings section; built once,
               getEnvironmentVariable("EMAIL_SENDER_QUEUE_PATH",
                                      // EMAIL_SENDER_QUEUE_PATH sets the enqueue
                                      // path.
-                                     Defaults::EmailSenderDaemon::QUEUE_PATH_))
-    {
+                                     Defaults::EmailSenderDaemon::
+                                         QUEUE_PATH_)) {
     }
 
     /** @brief Logs the email-sender host, port and queue path. */
-    void printValues()
-        const override  // Prints the email-sender's effective settings.
-    {
+    // Prints the email-sender's effective settings.
+    void printValues() const override {
       Message::ConfMessage(
           // Decorative separator line.
           "------------------------------------------------");
@@ -855,9 +848,9 @@ class Configurator  // The single owner of every settings section; built once,
    * seconds.
    */
   using PermissionCacheConfig = struct PermissionCacheConfig
-      : public EnvLoader  // Settings for how long permission-check results
-                          // are remembered.
-  {
+      // Settings for how long permission-check results
+      // are remembered.
+      : public EnvLoader {
     std::chrono::seconds
         ttl;  // idle lifetime of a cached permission; 0 disables the cache
 
@@ -866,13 +859,12 @@ class Configurator  // The single owner of every settings section; built once,
     PermissionCacheConfig()
         : ttl(getEnvironmentVariable("PERMISSION_CACHE_TTL",
                                      std::chrono::seconds(
-                                         Defaults::PermissionCache::TTL_)))
-    {
+                                         Defaults::PermissionCache::TTL_))) {
     }  // Reads the TTL as seconds and wraps the default in the same
        // duration type.
     /** @brief Logs the configured idle TTL in seconds. */
-    void printValues() const override  // Prints the cache's effective lifetime.
-    {
+    // Prints the cache's effective lifetime.
+    void printValues() const override {
       Message::ConfMessage(
           // Decorative separator line.
           "------------------------------------------------");
@@ -897,9 +889,9 @@ class Configurator  // The single owner of every settings section; built once,
    * operations are waiting, new ones are refused with HTTP 503.
    */
   using PasswordWorkerConfig = struct PasswordWorkerConfig
-      : public EnvLoader  // Settings for the slow password-hashing worker
-                          // pool.
-  {
+      // Settings for the slow password-hashing worker
+      // pool.
+      : public EnvLoader {
     uint16_t workers;    // 0 runs password work on the request thread
     uint32_t queue_max;  // queued operations before a new one is refused
                          // with 503
@@ -913,20 +905,18 @@ class Configurator  // The single owner of every settings section; built once,
                                          WORKERS_)),  // PASSWORD_WORKERS sets
                                                       // the thread count; 0
                                                       // means run inline.
-          queue_max(
-              getEnvironmentVariable("PASSWORD_QUEUE_MAX",
-                                     Defaults::PasswordWorker::
-                                         QUEUE_MAX_))  // PASSWORD_QUEUE_MAX
-                                                       // bounds queued work
-                                                       // before rejecting with
-                                                       // 503.
-    {
+          queue_max(getEnvironmentVariable("PASSWORD_QUEUE_MAX",
+                                           Defaults::PasswordWorker::
+                                               // PASSWORD_QUEUE_MAX
+                                               // bounds queued work
+                                               // before rejecting with
+                                               // 503.
+                                           QUEUE_MAX_)) {
     }
 
     /** @brief Logs the worker count and queue capacity. */
-    void printValues()
-        const override  // Prints the password worker's effective settings.
-    {
+    // Prints the password worker's effective settings.
+    void printValues() const override {
       Message::ConfMessage(
           // Decorative separator line.
           "------------------------------------------------");
@@ -955,9 +945,9 @@ class Configurator  // The single owner of every settings section; built once,
    * query.
    */
   using DbExecutorConfig = struct DbExecutorConfig
-      : public EnvLoader  // Settings for the component that schedules
-                          // database work.
-  {
+      // Settings for the component that schedules
+      // database work.
+      : public EnvLoader {
     uint16_t workers;    // 0 runs database work on the request thread (tests)
     uint32_t queue_max;  // queued requests before a new one is refused with 503
     bool     io_fast_path;  // answer requests that need no database on the IO
@@ -982,13 +972,12 @@ class Configurator  // The single owner of every settings section; built once,
                                                         // queued database work
                                                         // before rejecting with
                                                         // 503.
-          io_fast_path(
-              getEnvironmentVariable("DB_IO_FASTPATH",
-                                     Defaults::DbExecutor::
-                                         IO_FAST_PATH_))  // DB_IO_FASTPATH
-                                                          // toggles the
-                                                          // IO-thread shortcut.
-    {
+          io_fast_path(getEnvironmentVariable("DB_IO_FASTPATH",
+                                              Defaults::DbExecutor::
+                                                  // DB_IO_FASTPATH
+                                                  // toggles the
+                                                  // IO-thread shortcut.
+                                              IO_FAST_PATH_)) {
       workers =
           getEnvironmentVariable("DB_WORKERS",
                                  workers);  // DB_WORKERS, if set, replaces the
@@ -997,9 +986,8 @@ class Configurator  // The single owner of every settings section; built once,
     }
 
     /** @brief Logs worker count, queue capacity and fast-path setting. */
-    void printValues()
-        const override  // Prints the database executor's effective settings.
-    {
+    // Prints the database executor's effective settings.
+    void printValues() const override {
       Message::ConfMessage(
           // Decorative separator line.
           "------------------------------------------------");
@@ -1024,9 +1012,9 @@ class Configurator  // The single owner of every settings section; built once,
              // callers cannot invoke it.
     // One worker per database connection, using the same pool size the
     // connection pool will use.
-    uint16_t defaultWorkers()  // Computes a worker count that matches the
-                               // connection pool size.
-    {
+    // Computes a worker count that matches the
+    // connection pool size.
+    uint16_t defaultWorkers() {
       auto pool = static_cast<uint16_t>(
           getEnvironmentVariable("DB_MAX_CONN",
                                  static_cast<uint16_t>(
@@ -1051,10 +1039,9 @@ class Configurator  // The single owner of every settings section; built once,
    * connection. It defaults to false and is never relied upon by production
    * request handling.
    */
-  using Testing =
-      struct Testing : public EnvLoader  // Test-only switch section; not
-                                         // printed with the production config.
-  {
+  // Test-only switch section; not
+  // printed with the production config.
+  using Testing = struct Testing : public EnvLoader {
    public:  // The switch field and its constructor/logger are public, like
             // the other sections.
     bool no_db;
@@ -1066,15 +1053,15 @@ class Configurator  // The single owner of every settings section; built once,
     /** @brief Reads VALHALLA_TEST_NO_DB with @ref Defaults::Testing
      * fallback. */
     Testing()
-        : no_db(getEnvironmentVariable("VALHALLA_TEST_NO_DB",
-                                       Defaults::Testing::VALHALLA_TEST_NO_DB_))
-    {
+        : no_db(
+              getEnvironmentVariable("VALHALLA_TEST_NO_DB",
+                                     Defaults::Testing::VALHALLA_TEST_NO_DB_)) {
     }  // Reads the opt-out switch, defaulting to false so tests use the
        // real database.
     /** @brief Logs the test-only no_db switch. */
-    void printValues() const override  // Prints the single test-only switch
-                                       // (normally not called in production).
-    {
+    // Prints the single test-only switch
+    // (normally not called in production).
+    void printValues() const override {
       Message::ConfMessage(
           // Decorative separator line.
           "------------------------------------------------");

@@ -43,13 +43,10 @@ void ClinicController<T>::CreateImpl(CALLBACK_&&       callback,
   requires(!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value)
 {
   jsoncons::json request_json;  // Will hold the parsed create body.
-  try
-  {
+  try {
     request_json = jsoncons::json::parse(
         data);  // Turn the raw body into JSON; malformed text throws.
-  }
-  catch (const std::exception&)
-  {
+  } catch (const std::exception&) {
     callback(api::v2::Http::Status::BAD_REQUEST,
              "Invalid request body: malformed JSON.");
     return;
@@ -65,16 +62,14 @@ void ClinicController<T>::CreateImpl(CALLBACK_&&       callback,
 
   api::v2::Http::Error
       error;  // Receives a code/message if authorization fails.
-  try
-  {
+  try {
     success =
         Validator::validateDatabaseCreateSchema(T::getTableName(),
                                                 request_json,
                                                 error,
                                                 rule);  // Schema check with
                                                         // 'id' exempted.
-    if (!success)
-    {
+    if (!success) {
       callback(error.code, error.message);
       return;
     }
@@ -86,8 +81,7 @@ void ClinicController<T>::CreateImpl(CALLBACK_&&       callback,
     // "id" (see `rule`), so it has to be checked explicitly here before the
     // .at() call, or it falls through uncaught into the generic 500 handler
     // below.
-    if (!request_json.contains("id"))
-    {
+    if (!request_json.contains("id")) {
       callback(api::v2::Http::Status::BAD_REQUEST, "id not provided.");
       return;
     }
@@ -98,26 +92,21 @@ void ClinicController<T>::CreateImpl(CALLBACK_&&       callback,
     // catch here rather than falling through to the generic 500 handler
     // below.
     std::optional<uint64_t> id;  // Explicit client-supplied id, filled below.
-    try
-    {
+    try {
       id = request_json.at("id").as<uint64_t>();  // Read the id as a 64-bit
                                                   // unsigned integer.
-    }
-    catch (const std::exception&)
-    {
+    } catch (const std::exception&) {
       callback(api::v2::Http::Status::BAD_REQUEST,
                "id must be a non-negative integer that fits in 64 bits.");
       return;
     }
-    if (!id.has_value())
-    {
+    if (!id.has_value()) {
       callback(api::v2::Http::Status::BAD_REQUEST, "id not provided.");
       return;
     }
 
     // Authorize before constructing the entity and issuing the write.
-    if (!gateKeeper->canCreate<T>(requester, request_json, error))
-    {
+    if (!gateKeeper->canCreate<T>(requester, request_json, error)) {
       callback(error.code, error.message);
       return;
     }
@@ -133,9 +122,7 @@ void ClinicController<T>::CreateImpl(CALLBACK_&&       callback,
     Controller::Create(entity,
                        std::move(callback));  // Delegate the INSERT to the
                                               // persistence engine.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     CRITICALMESSAGERESPONSE  // Unexpected error: log it and answer with a
                              // mapped 5xx status.
   }
@@ -176,13 +163,10 @@ drogon::Task<void> ClinicController<T>::CreateAsyncImpl(
   requires(!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value)
 {
   jsoncons::json request_json;  // Will hold the parsed create body.
-  try
-  {
+  try {
     request_json = jsoncons::json::parse(
         data);  // Turn the raw body into JSON; malformed text throws.
-  }
-  catch (const std::exception&)
-  {
+  } catch (const std::exception&) {
     callback(api::v2::Http::Status::BAD_REQUEST,
              "Invalid request body: malformed JSON.");
     co_return;
@@ -198,16 +182,14 @@ drogon::Task<void> ClinicController<T>::CreateAsyncImpl(
 
   api::v2::Http::Error
       error;  // Receives a code/message if authorization fails.
-  try
-  {
+  try {
     success =
         Validator::validateDatabaseCreateSchema(T::getTableName(),
                                                 request_json,
                                                 error,
                                                 rule);  // Schema check with
                                                         // 'id' exempted.
-    if (!success)
-    {
+    if (!success) {
       callback(error.code, error.message);
       co_return;
     }
@@ -219,8 +201,7 @@ drogon::Task<void> ClinicController<T>::CreateAsyncImpl(
     // "id" (see `rule`), so it has to be checked explicitly here before the
     // .at() call, or it falls through uncaught into the generic 500 handler
     // below.
-    if (!request_json.contains("id"))
-    {
+    if (!request_json.contains("id")) {
       callback(api::v2::Http::Status::BAD_REQUEST, "id not provided.");
       co_return;
     }
@@ -231,26 +212,23 @@ drogon::Task<void> ClinicController<T>::CreateAsyncImpl(
     // catch here rather than falling through to the generic 500 handler
     // below.
     std::optional<uint64_t> id;  // Explicit client-supplied id, filled below.
-    try
-    {
+    try {
       id = request_json.at("id").as<uint64_t>();  // Read the id as a 64-bit
                                                   // unsigned integer.
-    }
-    catch (const std::exception&)
-    {
+    } catch (const std::exception&) {
       callback(api::v2::Http::Status::BAD_REQUEST,
                "id must be a non-negative integer that fits in 64 bits.");
       co_return;
     }
-    if (!id.has_value())
-    {
+    if (!id.has_value()) {
       callback(api::v2::Http::Status::BAD_REQUEST, "id not provided.");
       co_return;
     }
 
     // Async authorization gate; a denial short-circuits before any write.
-    if (!co_await gateKeeper->canCreateAsync<T>(requester, request_json, error))
-    {
+    if (!co_await gateKeeper->canCreateAsync<T>(requester,
+                                                request_json,
+                                                error)) {
       callback(error.code, error.message);
       co_return;
     }
@@ -267,9 +245,7 @@ drogon::Task<void> ClinicController<T>::CreateAsyncImpl(
                                      std::move(
                                          callback));  // Await the async INSERT.
     co_return;
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     CRITICALMESSAGERESPONSE  // Unexpected error: log it and answer with a
                              // mapped 5xx status.
         co_return;
@@ -371,12 +347,10 @@ void ClinicController<T>::GetVisitsImpl(CALLBACK_&&             callback,
   requires(std::is_same<U, Patient>::value)
 {
   Http::Error error;  // Receives a code/message if authorization fails.
-  try
-  {
+  try {
     // Without a patient id there is no visit history to fetch; reject with
     // 400 before authorization.
-    if (!patient_id.has_value())
-    {
+    if (!patient_id.has_value()) {
       callback(api::v2::Http::Status::BAD_REQUEST, "Missing patient id.");
       return;
     }
@@ -384,8 +358,7 @@ void ClinicController<T>::GetVisitsImpl(CALLBACK_&&             callback,
         patient_id.value())));  // Minimal entity carrying the patient id.
 
     // Reuse the read permission: visits are sensitive patient data.
-    if (!gateKeeper->canRead<T>(requester, patient_id.value(), error))
-    {
+    if (!gateKeeper->canRead<T>(requester, patient_id.value(), error)) {
       callback(error.code, error.message);
       return;
     }
@@ -393,9 +366,7 @@ void ClinicController<T>::GetVisitsImpl(CALLBACK_&&             callback,
     Controller::GetVisits(entity,
                           std::move(
                               callback));  // Delegate the visit lookup query.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     CRITICALMESSAGERESPONSE  // Unexpected error: log it and answer with a
                              // mapped 5xx status.
   }
@@ -421,8 +392,7 @@ void ClinicController<T>::GetVisitsImpl(
 template <typename T>
 void ClinicController<T>::Create(CALLBACK_&&       callback,
                                  const Requester&& requester,
-                                 std::string_view  data)
-{
+                                 std::string_view  data) {
   CreateImpl(std::move(callback),
              std::move(requester),
              data);  // Choose the right create helper at compile time.
@@ -431,8 +401,7 @@ void ClinicController<T>::Create(CALLBACK_&&       callback,
 template <typename T>
 drogon::Task<void> ClinicController<T>::CreateAsync(CALLBACK_&&       callback,
                                                     const Requester&& requester,
-                                                    std::string_view  data)
-{
+                                                    std::string_view  data) {
   co_await CreateAsyncImpl(std::move(callback),
                            std::move(requester),
                            data);  // Coroutine create dispatch.
@@ -441,8 +410,7 @@ drogon::Task<void> ClinicController<T>::CreateAsync(CALLBACK_&&       callback,
 template <typename T>
 void ClinicController<T>::Read(CALLBACK_&&       callback,
                                const Requester&& requester,
-                               std::string_view  data)
-{
+                               std::string_view  data) {
   EntityController<T>::Read(std::move(callback),
                             std::move(requester),
                             data);  // Read is generic for all clinic types.
@@ -451,8 +419,7 @@ void ClinicController<T>::Read(CALLBACK_&&       callback,
 template <typename T>
 drogon::Task<void> ClinicController<T>::ReadAsync(CALLBACK_&&       callback,
                                                   const Requester&& requester,
-                                                  std::string_view  data)
-{
+                                                  std::string_view  data) {
   co_await EntityController<T>::ReadAsync(std::move(callback),
                                           std::move(requester),
                                           data);  // Coroutine read reuse.
@@ -462,8 +429,7 @@ template <typename T>
 void ClinicController<T>::Update(CALLBACK_&&                   callback,
                                  const Requester&&             requester,
                                  std::string_view              data,
-                                 const std::optional<uint64_t> id)
-{
+                                 const std::optional<uint64_t> id) {
   EntityController<T>::Update(std::move(callback),
                               std::move(requester),
                               data,
@@ -475,8 +441,7 @@ drogon::Task<void> ClinicController<T>::UpdateAsync(
     CALLBACK_&&                   callback,
     const Requester&&             requester,
     std::string_view              data,
-    const std::optional<uint64_t> id)
-{
+    const std::optional<uint64_t> id) {
   co_await EntityController<T>::UpdateAsync(std::move(callback),
                                             std::move(requester),
                                             data,
@@ -486,8 +451,7 @@ drogon::Task<void> ClinicController<T>::UpdateAsync(
 template <typename T>
 void ClinicController<T>::Delete(CALLBACK_&&                   callback,
                                  const Requester&&             requester,
-                                 const std::optional<uint64_t> id)
-{
+                                 const std::optional<uint64_t> id) {
   DeleteImpl(std::move(callback),
              std::move(requester),
              id);  // Choose supported vs not-implemented delete.
@@ -497,8 +461,7 @@ template <typename T>
 drogon::Task<void> ClinicController<T>::DeleteAsync(
     CALLBACK_&&                   callback,
     const Requester&&             requester,
-    const std::optional<uint64_t> id)
-{
+    const std::optional<uint64_t> id) {
   co_await DeleteAsyncImpl(std::move(callback),
                            std::move(requester),
                            id);  // Coroutine delete dispatch.
@@ -507,8 +470,7 @@ drogon::Task<void> ClinicController<T>::DeleteAsync(
 template <typename T>
 void ClinicController<T>::Search(CALLBACK_&&       callback,
                                  const Requester&& requester,
-                                 std::string_view  data)
-{
+                                 std::string_view  data) {
   SearchImpl(std::move(callback),
              std::move(requester),
              data);  // Patient vs not-implemented search.
@@ -517,8 +479,7 @@ void ClinicController<T>::Search(CALLBACK_&&       callback,
 template <typename T>
 void ClinicController<T>::GetVisits(CALLBACK_&&                   callback,
                                     const Requester&&             requester,
-                                    const std::optional<uint64_t> patient_id)
-{
+                                    const std::optional<uint64_t> patient_id) {
   GetVisitsImpl(std::move(callback),
                 std::move(requester),
                 patient_id);  // Patient vs not-implemented visit lookup.
@@ -533,12 +494,10 @@ drogon::Task<void> ClinicController<T>::GetVisitsAsyncImpl(
   requires(std::is_same<U, Patient>::value)
 {
   Http::Error error;  // Receives a code/message if authorization fails.
-  try
-  {
+  try {
     // Without a patient id there is no visit history to fetch; reject with
     // 400 before authorization.
-    if (!patient_id.has_value())
-    {
+    if (!patient_id.has_value()) {
       callback(api::v2::Http::Status::BAD_REQUEST, "Missing patient id.");
       co_return;
     }
@@ -548,8 +507,7 @@ drogon::Task<void> ClinicController<T>::GetVisitsAsyncImpl(
     // Await the read permission before loading visits.
     if (!co_await gateKeeper->canReadAsync<T>(requester,
                                               patient_id.value(),
-                                              error))
-    {
+                                              error)) {
       callback(error.code, error.message);
       co_return;
     }
@@ -558,9 +516,7 @@ drogon::Task<void> ClinicController<T>::GetVisitsAsyncImpl(
                                         std::move(
                                             callback));  // Await the async
                                                          // visit lookup.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     CRITICALMESSAGERESPONSE  // Unexpected error: log it and answer with a
                              // mapped 5xx status.
   }
@@ -586,8 +542,7 @@ template <typename T>
 drogon::Task<void> ClinicController<T>::GetVisitsAsync(
     CALLBACK_&&                   callback,
     const Requester&&             requester,
-    const std::optional<uint64_t> patient_id)
-{
+    const std::optional<uint64_t> patient_id) {
   co_await GetVisitsAsyncImpl(std::move(callback),
                               std::move(requester),
                               patient_id);  // Coroutine visit dispatch.

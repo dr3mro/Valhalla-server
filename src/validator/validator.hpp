@@ -68,8 +68,7 @@
  * used, otherwise table lookups fail and the validators return false.
  * @see Rule, DatabaseSchema, api::v2::Http::Error
  */
-class Validator
-{
+class Validator {
  public:
   /** @brief Default constructor; the class is stateless. */
   Validator() = default;
@@ -97,15 +96,13 @@ class Validator
    * with the bitwise operators.
    * @note Copying/moving is implicit; the key sets own their strings.
    */
-  struct Rule
-  {
+  struct Rule {
     /**
      * @brief Bitmask of validation relaxations/assertions that make up a
      * rule.
      * @details Values are powers of two and may be combined with operator|.
      */
-    enum Action : std::uint8_t
-    {
+    enum Action : std::uint8_t {
       NONE = 0,  // No flags set: the "do nothing" value used when testing
                  // flags.
       IGNORE_IF_MISSING_FROM_SCHEMA = 1U
@@ -132,8 +129,7 @@ class Validator
      * belongs to a flag group that intersects @p check.
      */
     // NOLINT
-    bool check(const Action& check, const std::string& key) const
-    {
+    bool check(const Action& check, const std::string& key) const {
       bool isMatch = hasMatch(check);  // True when this rule's flags
                                        // include the flag we are testing.
       bool isKey =
@@ -153,8 +149,7 @@ class Validator
      * never match.
      */
     explicit Rule(Action _action, const std::unordered_set<std::string>&& _keys)
-        : action(_action)
-    {
+        : action(_action) {
       this->keys[action] = _keys;
     }
 
@@ -163,8 +158,7 @@ class Validator
 
     // Overload | operator
     /** @brief Combines two action flags into one bitmask. */
-    friend Action operator|(Action first, Action second)
-    {
+    friend Action operator|(Action first, Action second) {
       return static_cast<Action>(
           static_cast<std::uint8_t>(first) |
           static_cast<std::uint8_t>(second));  // OR the raw bytes, then treat
@@ -173,8 +167,7 @@ class Validator
 
     // Overload & operator
     /** @brief Returns the intersection of two action bitmasks. */
-    friend Action operator&(Action first, Action second)
-    {
+    friend Action operator&(Action first, Action second) {
       return static_cast<Action>(
           static_cast<std::uint8_t>(first) &
           static_cast<std::uint8_t>(
@@ -183,8 +176,7 @@ class Validator
 
     // Overload |= operator
     /** @brief Adds @p second's flags to @p first in place. */
-    friend Action& operator|=(Action& first, Action second)
-    {
+    friend Action& operator|=(Action& first, Action second) {
       first = first | second;  // Reuse operator| and store the combined
                                // flags back into first.
       return first;  // Return the updated object so calls can be chained.
@@ -192,8 +184,7 @@ class Validator
 
     // Overload &= operator
     /** @brief Keeps only the flags common to @p first and @p second. */
-    friend Action& operator&=(Action& first, Action second)
-    {
+    friend Action& operator&=(Action& first, Action second) {
       first = first & second;  // Reuse operator& and store the narrowed
                                // flags back into first.
       return first;  // Return the updated object so calls can be chained.
@@ -202,29 +193,25 @@ class Validator
     // Invert operator
     /** @brief Inverts all eight bits; include NONE filtering at the call
      * site. */
-    friend Action operator~(Action first)
-    {
+    friend Action operator~(Action first) {
       return static_cast<Action>(~static_cast<std::uint8_t>(first));
     }
 
     // Check if any flag is set
     /** @brief Convenience conversion: true when at least one action flag is
      * set. */
-    explicit operator bool() const
-    {
+    explicit operator bool() const {
       return static_cast<int>(action) != 0;
     }
 
    private:
     // check if rule is set
     /** @brief True when the rule's combined action intersects @p check. */
-    bool hasMatch(const Action& check) const
-    {
+    bool hasMatch(const Action& check) const {
       return (action & check) != NONE;
     }  // NOLINT
     /** @brief True when a stored flag group intersects @p check. */
-    bool hasMatch(const Action& key, const Action& check) const
-    {
+    bool hasMatch(const Action& key, const Action& check) const {
       return (key & check) != NONE;
     }  // NOLINT
 
@@ -234,11 +221,9 @@ class Validator
     bool hasKey(
         // NOLINT
         const Action&      check,
-        const std::string& element) const
-    {
+        const std::string& element) const {
       return std::ranges::find_if(this->keys,
-                                  [&](const auto& key)
-                                  {
+                                  [&](const auto& key) {
                                     return (hasMatch(key.first, check)) &&
                                            (key.second.contains(element));
                                   }) !=

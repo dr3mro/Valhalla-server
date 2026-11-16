@@ -82,8 +82,7 @@
  * during tests.)
  * @see tests/support/fake_db.hpp
  */
-class Store
-{
+class Store {
  public:
   /**
    * Default construction; all state is static, so a Store object holds
@@ -135,15 +134,13 @@ class Store
    * @throws std::runtime_error if an object of type T is already registered.
    */
   template <typename T, typename... Args>
-  static std::shared_ptr<T> registerObject(Args&&... args)
-  {
+  static std::shared_ptr<T> registerObject(Args&&... args) {
     {
       std::scoped_lock lock(inventoryMutex);  // lock only for the check, then
                                               // release at the closing brace
-      if (inventory.find(typeid(T)) !=
-          inventory.end())  // end() means "not found", so anything else
-                            // means a duplicate
-      {
+      // end() means "not found", so anything else
+      // means a duplicate
+      if (inventory.find(typeid(T)) != inventory.end()) {
         throw std::runtime_error(
             "Object type already registered." +
             std::string(typeid(T).name()));  // refuse: there may be
@@ -190,16 +187,14 @@ class Store
   [[nodiscard(
       "Warning: You should never discard the returned object")]] static std::
       shared_ptr<T>
-      getObject(Args&&... args)
-  {
+      getObject(Args&&... args) {
     {
       std::scoped_lock lock(inventoryMutex);  // hold the lock only while
                                               // searching the shared map
       auto             object = inventory.find(
           typeid(T));  // find gives an iterator pointing at the entry, or end()
-      if (object !=
-          inventory.end())  // found: somebody already registered this type
-      {
+      // found: somebody already registered this type
+      if (object != inventory.end()) {
         return std::static_pointer_cast<T>(
             object->second);  // relabel the stored void pointer as T
                               // and return it
@@ -217,8 +212,8 @@ class Store
       std::scoped_lock lock(inventoryMutex);  // re-check while locked: another
                                               // thread may have won the race
       auto object = inventory.find(typeid(T));  // look for the type again
-      if (object != inventory.end())  // another thread published one first
-      {
+      // another thread published one first
+      if (object != inventory.end()) {
         return std::static_pointer_cast<T>(
             object->second);  // return their instance; our candidate is
                               // discarded
@@ -262,8 +257,7 @@ class Store
   // built per request); long-lived objects can keep calling getObject<T>()
   // once.
   template <typename T>
-  [[nodiscard]] static std::shared_ptr<T> cachedObject()
-  {
+  [[nodiscard]] static std::shared_ptr<T> cachedObject() {
     thread_local std::shared_ptr<T>
         cached;  // one copy per thread, so reading it needs no lock at all
     thread_local uint64_t seen = 0;  // the generation this thread last saw;
@@ -271,9 +265,9 @@ class Store
     const uint64_t        now  = generation.load(
         std::memory_order_acquire);  // acquire: pairs with release in
                                      // replaceObject()
-    if (!cached || seen != now)      // empty cache, or the registry was changed
-                                     // since last time
-    {
+    // empty cache, or the registry was changed
+    // since last time
+    if (!cached || seen != now) {
       cached = getObject<T>();  // pay for the full locked lookup and
                                 // remember the answer
       seen   = now;             // mark our cache as up to date with the current
@@ -302,8 +296,7 @@ class Store
   // Replace an already-registered singleton without throwing.
   // Used by test harnesses to inject fakes (see tests/support/fake_db.hpp).
   template <typename T>
-  static void replaceObject(std::shared_ptr<T> obj)
-  {
+  static void replaceObject(std::shared_ptr<T> obj) {
     std::scoped_lock lock(inventoryMutex);  // only one thread may change
                                             // the registry at a time
     inventory[typeid(T)] =

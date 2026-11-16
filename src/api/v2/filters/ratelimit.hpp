@@ -55,8 +55,8 @@
 #include "gatekeeper/gatekeeper.hpp"
 // Store/service locator provides the shared objects.
 #include "store/store.hpp"
-namespace api::v2::Filters  // Filters for the v2 API live here.
-{
+// Filters for the v2 API live here.
+namespace api::v2::Filters {
   /**
    * @class RateLimit
    * @brief Drogon filter that screens requests for DoS/rate-limit violations
@@ -71,20 +71,19 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
    * branch).
    */
   class RateLimit
-      : public drogon::HttpFilter<RateLimit>  // Inherit Drogon's filter
-                                              // template so it can be
-                                              // registered by name.
-  {
+      // Inherit Drogon's filter
+      // template so it can be
+      // registered by name.
+      : public drogon::HttpFilter<RateLimit> {
    public:
     /** @brief Obtain the shared GateKeeper and DOSDetector from the service
      * locator. */
     RateLimit()  // Constructor fetches the two shared objects once, when
                  // the filter is created.
+        // Look up both singletons
+        // from the Store.
         : gateKeeper(Store::getObject<GateKeeper>()),
-          dos_detector(
-              Store::getObject<DOSDetector>())  // Look up both singletons
-                                                // from the Store.
-    {
+          dos_detector(Store::getObject<DOSDetector>()) {
     }
     /**
      * @brief Classify the request and continue the chain or send a
@@ -100,12 +99,11 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
      * @param[in,out] fccb Chain callback invoked when the request is
      * permitted.
      */
+    // Drogon calls this on every request passing through this
+    // filter.
     void doFilter(const drogon::HttpRequestPtr& req,
                   drogon::FilterCallback&&      fcb,
-                  drogon::FilterChainCallback&& fccb)
-        override  // Drogon calls this on every request passing through this
-                  // filter.
-    {
+                  drogon::FilterChainCallback&& fccb) override {
       DOSDetector::Request request =
           {.ip = req->peerAddr().toIp(),  // Designated initializers fill each
                                           // field by name: caller IP address.
@@ -126,9 +124,9 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
 
       // Permit verdicts continue the chain; every rejection sends one
       // response and stops here.
-      switch (status)  // Map each verdict to "continue" or a specific
-                       // error reply.
-      {
+      // Map each verdict to "continue" or a specific
+      // error reply.
+      switch (status) {
         case DOSDetector::Status::ALLOWED:      // Normal, permitted
                                                 // traffic.
         case DOSDetector::Status::WHITELISTED:  // Explicitly trusted
@@ -178,12 +176,10 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
      * @param[in] code HTTP status code to set.
      * @param[in] cb Filter callback invoked with the response.
      */
-    void reply(
-        const std::string&&    msg,
-        drogon::HttpStatusCode code,
-        const drogon::FilterCallback&&
-            cb)  // Small helper to avoid repeating response-building code.
-    {
+    // Small helper to avoid repeating response-building code.
+    void reply(const std::string&&            msg,
+               drogon::HttpStatusCode         code,
+               const drogon::FilterCallback&& cb) {
       auto resp =
           drogon::HttpResponse::newHttpResponse();  // Build an empty HTTP
                                                     // reply object.

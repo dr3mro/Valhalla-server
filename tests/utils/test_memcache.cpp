@@ -46,8 +46,7 @@
 #include "support/fake_clock.hpp"
 #include "utils/memcache/memcache.hpp"  // The MemCache template under test.
 
-namespace
-{
+namespace {
   using StringCache =
       MemCache<std::string>;  // A cache storing strings, measured with the
                               // real steady clock.
@@ -58,8 +57,7 @@ namespace
 
 // The most basic contract: insert a value, read it back, and miss on an unknown
 // key.
-TEST_CASE("MemCache stores and retrieves values", "[utils][memcache]")
-{
+TEST_CASE("MemCache stores and retrieves values", "[utils][memcache]") {
   StringCache cache(10,
                     std::chrono::seconds{
                         100});  // Capacity of 10 entries, default lifetime of
@@ -77,8 +75,7 @@ TEST_CASE("MemCache stores and retrieves values", "[utils][memcache]")
 // Inserting the same key twice must replace the value, not create a duplicate
 // entry.
 TEST_CASE("MemCache insert on an existing key updates the value",
-          "[utils][memcache]")
-{
+          "[utils][memcache]") {
   StringCache cache(10,
                     std::chrono::seconds{
                         100});  // A fresh cache for this scenario.
@@ -92,8 +89,7 @@ TEST_CASE("MemCache insert on an existing key updates the value",
 }
 
 // remove deletes an entry and reports whether it actually found one.
-TEST_CASE("MemCache removes entries", "[utils][memcache]")
-{
+TEST_CASE("MemCache removes entries", "[utils][memcache]") {
   StringCache cache(10, std::chrono::seconds{100});  // A fresh cache.
 
   cache.insert("k", "v");    // Put one entry in.
@@ -105,8 +101,7 @@ TEST_CASE("MemCache removes entries", "[utils][memcache]")
 
 // With capacity 2, a read ("touch") changes which entry is considered oldest.
 TEST_CASE("MemCache evicts the least recently used entry when full",
-          "[utils][memcache]")
-{
+          "[utils][memcache]") {
   StringCache cache(2, std::chrono::seconds{100});  // Only two entries fit.
 
   cache.insert("a", "1");  // First entry; it is initially the most recent.
@@ -128,8 +123,7 @@ TEST_CASE("MemCache evicts the least recently used entry when full",
 
 // Without reads, insertion order decides the victim: the oldest entry goes
 // first.
-TEST_CASE("MemCache LRU eviction without any touch", "[utils][memcache]")
-{
+TEST_CASE("MemCache LRU eviction without any touch", "[utils][memcache]") {
   StringCache cache(2, std::chrono::seconds{100});  // Capacity of two again.
 
   cache.insert("a", "1");  // Oldest entry.
@@ -149,8 +143,7 @@ TEST_CASE("MemCache LRU eviction without any touch", "[utils][memcache]")
 // A zero default TTL makes every entry expired immediately, which lets us test
 // expiry without sleeping.
 TEST_CASE("MemCache entries with defaultTTL=0 are already expired on read",
-          "[utils][memcache]")
-{
+          "[utils][memcache]") {
   // With defaultTTL = 0 an entry expires the moment it is inserted: the
   // expiration time is Clock::now() and get() compares <= now. This makes
   // expiry testable without sleeping on the real clock.
@@ -167,8 +160,7 @@ TEST_CASE("MemCache entries with defaultTTL=0 are already expired on read",
 // insert() treats a zero TTL as "use the default" - it cannot express "expire
 // now".
 TEST_CASE("MemCache insert with an explicit zero ttl uses the default ttl",
-          "[utils][memcache]")
-{
+          "[utils][memcache]") {
   // insert() cannot express "expire immediately": a ttl of zero is treated
   // as "use defaultTTL_" (documented quirk, tests/README.md).
   StringCache cache(10,
@@ -187,8 +179,7 @@ TEST_CASE("MemCache insert with an explicit zero ttl uses the default ttl",
 // Many threads writing and reading at once must not corrupt the cache or lose
 // entries.
 TEST_CASE("MemCache survives concurrent insert/get traffic",
-          "[utils][memcache]")
-{
+          "[utils][memcache]") {
   StringCache
       cache(1000,
             std::chrono::seconds{
@@ -197,39 +188,38 @@ TEST_CASE("MemCache survives concurrent insert/get traffic",
   std::vector<std::thread>
       threads;  // Holds the worker threads we are about to launch.
   for (int t = 0; t < 4;
-       ++t)  // Four workers; t becomes part of each key so keys stay unique.
-  {
-    threads.emplace_back(  // Build a thread in place from the lambda below.
-        [&cache,
-         t]  // Capture the cache by reference (shared) and t by value
-             // (each thread's own copy).
-        {
-          for (int i = 0; i < 100; ++i)  // Each worker inserts 100 keys.
-          {
-            const auto key =
-                "k" +
-                std::to_string(t * 100 +
-                               i);  // Unique key such as "k0", "k1" ... "k399".
-            cache.insert(key,
-                         key);  // Store the key as both the lookup key and the
-                                // value.
-            (void)cache.get(key);  // Read it back; the (void) cast says
-                                   // "ignore this result on purpose".
-          }
-        });  // The closing brace ends the lambda body, ); ends
-             // emplace_back.
+       // Four workers; t becomes part of each key so keys stay unique.
+       ++t) {
+    // Build a thread in place from the lambda below.
+    // Capture the cache by reference (shared) and t by value
+    // (each thread's own copy).
+    threads.emplace_back([&cache, t] {
+      // Each worker inserts 100 keys.
+      for (int i = 0; i < 100; ++i) {
+        const auto key =
+            "k" +
+            std::to_string(t * 100 +
+                           i);  // Unique key such as "k0", "k1" ... "k399".
+        cache.insert(key,
+                     key);     // Store the key as both the lookup key and the
+                               // value.
+        (void)cache.get(key);  // Read it back; the (void) cast says
+                               // "ignore this result on purpose".
+      }
+    });  // The closing brace ends the lambda body, ); ends
+         // emplace_back.
   }
-  for (auto& thread : threads)  // Walk the list of workers.
-  {
+  // Walk the list of workers.
+  for (auto& thread : threads) {
     thread.join();  // Wait for each to finish before checking the final
                     // state.
   }
 
   // All 400 distinct keys fit (maxSize 1000) and must be readable.
-  for (int t = 0; t < 4; ++t)  // Revisit the same key range.
-  {
-    for (int i = 0; i < 100; ++i)  // Same 100 values per worker.
-    {
+  // Revisit the same key range.
+  for (int t = 0; t < 4; ++t) {
+    // Same 100 values per worker.
+    for (int i = 0; i < 100; ++i) {
       const auto key =
           "k" + std::to_string(t * 100 + i);  // Rebuild the same key string.
       CHECK(cache.get(key) ==
@@ -242,8 +232,7 @@ TEST_CASE("MemCache survives concurrent insert/get traffic",
 // Bug 6 fixed: move constructor now stops and joins the source's cleaner
 // before moving state, then starts a fresh cleaner on the destination.
 TEST_CASE("MemCache move constructor transfers entries to the destination",
-          "[utils][memcache]")
-{
+          "[utils][memcache]") {
   StringCache src(10,
                   std::chrono::seconds{
                       100});  // Source cache that owns the entries.
@@ -268,8 +257,7 @@ TEST_CASE("MemCache move constructor transfers entries to the destination",
 // genuine custom TTL (a positive value) is covered by the ManualClock cases
 // below.
 TEST_CASE("MemCache custom TTL per insert takes precedence over default",
-          "[utils][memcache]")
-{
+          "[utils][memcache]") {
   // Default TTL is 100s; insert one entry with TTL=0 (the special "use
   // default" value).
   StringCache cache(10,
@@ -288,8 +276,7 @@ TEST_CASE("MemCache custom TTL per insert takes precedence over default",
 }
 
 // Removing two different keys one after another must each behave correctly.
-TEST_CASE("MemCache handles multiple removes correctly", "[utils][memcache]")
-{
+TEST_CASE("MemCache handles multiple removes correctly", "[utils][memcache]") {
   StringCache cache(10, std::chrono::seconds{100});  // A fresh cache.
 
   cache.insert("a", "1");  // Add the first key.
@@ -306,8 +293,7 @@ TEST_CASE("MemCache handles multiple removes correctly", "[utils][memcache]")
 
 // Repeated inserts with the same key keep one entry whose value is the newest.
 TEST_CASE("MemCache update resets value but entry remains accessible",
-          "[utils][memcache]")
-{
+          "[utils][memcache]") {
   StringCache cache(10, std::chrono::seconds{100});  // A fresh cache.
 
   cache.insert("k", "original");  // First value.
@@ -326,8 +312,7 @@ TEST_CASE("MemCache update resets value but entry remains accessible",
 // At 9999 ms of a 10 s lifetime the entry must still be alive (just before
 // expiry).
 TEST_CASE("MemCache entry is present just before its TTL elapses",
-          "[utils][memcache][ttl]")
-{
+          "[utils][memcache][ttl]") {
   ManualClock::reset();  // Start the shared fake clock at zero so this test
                          // is independent.
   ManualStrCache cache(10,
@@ -342,8 +327,8 @@ TEST_CASE("MemCache entry is present just before its TTL elapses",
 }
 
 // Reaching the lifetime boundary exactly must count as expired (get uses <=).
-TEST_CASE("MemCache entry is gone after TTL elapses", "[utils][memcache][ttl]")
-{
+TEST_CASE("MemCache entry is gone after TTL elapses",
+          "[utils][memcache][ttl]") {
   ManualClock::reset();                                // Clock back to zero.
   ManualStrCache cache(10, std::chrono::seconds{10});  // Ten-second lifetime.
 
@@ -355,8 +340,7 @@ TEST_CASE("MemCache entry is gone after TTL elapses", "[utils][memcache][ttl]")
 }
 
 // Re-inserting an existing key restarts its lifetime from the new insert time.
-TEST_CASE("MemCache re-insert refreshes TTL", "[utils][memcache][ttl]")
-{
+TEST_CASE("MemCache re-insert refreshes TTL", "[utils][memcache][ttl]") {
   ManualClock::reset();                                // Clock back to zero.
   ManualStrCache cache(10, std::chrono::seconds{10});  // Ten-second lifetime.
 
@@ -380,8 +364,7 @@ TEST_CASE("MemCache re-insert refreshes TTL", "[utils][memcache][ttl]")
 // Different entries can have different TTLs; one may expire while another
 // survives.
 TEST_CASE("MemCache expired entries are absent while fresh entries remain",
-          "[utils][memcache][ttl]")
-{
+          "[utils][memcache][ttl]") {
   ManualClock::reset();  // Clock back to zero.
   ManualStrCache cache(10,
                        std::chrono::seconds{

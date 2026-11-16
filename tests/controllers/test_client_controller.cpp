@@ -61,8 +61,7 @@ using Requester =
     api::v2::Requester;  // A short alias for the verbose fully qualified name.
 
 /** @brief The status and body passed to a CALLBACK_ invocation. */
-struct Result
-{
+struct Result {
   int status = 0;  // The HTTP status code; 0 means the callback never fired.
   std::string
       body;  // The response text; starts empty and is filled by the callback.
@@ -70,19 +69,18 @@ struct Result
 
 /** @brief Invokes @p fn with a capturing callback and returns what it received.
  */
-static Result capture(auto fn)  // Converts a callback-style controller call
-                                // into a return value a test can inspect.
-{
+// Converts a callback-style controller call
+// into a return value a test can inspect.
+static Result capture(auto fn) {
   Result r;  // Default result (status 0, empty body), ready to be filled in
              // place.
-  fn(  // Invoke the caller's lambda, passing it the capturing callback below.
-      [&](int                s,
-          const std::string& b)  // The callback captures r by reference so
-                                 // writing to it here is visible outside.
-      {
-        r.status = s;  // Record the status code chosen by the controller.
-        r.body   = b;  // Record the body produced by the controller.
-      });
+  // Invoke the caller's lambda, passing it the capturing callback below.
+  // The callback captures r by reference so
+  // writing to it here is visible outside.
+  fn([&](int s, const std::string& b) {
+    r.status = s;  // Record the status code chosen by the controller.
+    r.body   = b;  // Record the body produced by the controller.
+  });
   return r;  // Give the captured answer back to the test.
 }
 
@@ -94,16 +92,13 @@ static Result capture(auto fn)  // Converts a callback-style controller call
 
 // A broken JSON body is rejected before any user record is built or queried.
 TEST_CASE("ClientController<User>::Create rejects malformed JSON",
-          "[controllers][client]")
-{
+          "[controllers][client]") {
   ClientController<User> ctrl;  // A fresh controller for User clients; it
                                 // keeps no per-call state.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Create(std::move(cb), Requester(0, "users"), "not json{{");
-      });  // Call Create with invalid JSON; the anonymous-style requester (id
-           // 0) is fine because parsing fails first.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Create(std::move(cb), Requester(0, "users"), "not json{{");
+  });  // Call Create with invalid JSON; the anonymous-style requester (id
+                         // 0) is fine because parsing fails first.
   CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);  // Proves bad JSON is
                                                           // refused with 400.
   CHECK_FALSE(r.body.empty());  // Proves the client also gets an explanatory
@@ -112,14 +107,11 @@ TEST_CASE("ClientController<User>::Create rejects malformed JSON",
 
 // An empty body is simply invalid JSON, so it must be refused the same way.
 TEST_CASE("ClientController<User>::Create rejects empty body",
-          "[controllers][client]")
-{
+          "[controllers][client]") {
   ClientController<User> ctrl;  // A fresh User-client controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Create(std::move(cb), Requester(0, "users"), "");
-      });  // Pass an empty string as the body.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Create(std::move(cb), Requester(0, "users"), "");
+  });  // Pass an empty string as the body.
   // Empty string is invalid JSON → BAD_REQUEST
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves the empty-body edge case
@@ -128,14 +120,11 @@ TEST_CASE("ClientController<User>::Create rejects empty body",
 
 // Suspend needs a target id; none means the request cannot be acted on (406).
 TEST_CASE("ClientController<User>::Suspend returns 406 for missing id",
-          "[controllers][client]")
-{
+          "[controllers][client]") {
   ClientController<User> ctrl;  // A fresh User-client controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Suspend(std::move(cb), Requester(1, "users"), std::nullopt);
-      });  // std::nullopt means "no id supplied".
+  auto                   r = capture([&](auto cb) {
+    ctrl.Suspend(std::move(cb), Requester(1, "users"), std::nullopt);
+  });  // std::nullopt means "no id supplied".
   CHECK(r.status ==
         api::v2::Http::Status::NOT_ACCEPTABLE);  // Proves a missing id is
                                                  // refused before any
@@ -147,18 +136,15 @@ TEST_CASE("ClientController<User>::Suspend returns 406 for missing id",
 TEST_CASE(
     "ClientController<User>::Suspend with id calls permission check (group "
     "mismatch → 403)",
-    "[controllers][client]")
-{
+    "[controllers][client]") {
   ClientController<User> ctrl;  // A fresh User-client controller.
   // Requester group "admins" does not match "users" table → FORBIDDEN
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.Suspend(std::move(cb),
-                     Requester(42, "admins"),
-                     std::optional<uint64_t>{42});
-      });  // An id is supplied, so the permission check runs and should fail
-           // on the group mismatch.
+  auto r = capture([&](auto cb) {
+    ctrl.Suspend(std::move(cb),
+                 Requester(42, "admins"),
+                 std::optional<uint64_t>{42});
+  });  // An id is supplied, so the permission check runs and should fail
+       // on the group mismatch.
   CHECK(r.status ==
         api::v2::Http::Status::FORBIDDEN);  // Proves cross-group suspension
                                             // is blocked with 403.
@@ -166,14 +152,11 @@ TEST_CASE(
 
 // The same missing-id rule applies to Activate.
 TEST_CASE("ClientController<User>::Activate returns 406 for missing id",
-          "[controllers][client]")
-{
+          "[controllers][client]") {
   ClientController<User> ctrl;  // A fresh User-client controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Activate(std::move(cb), Requester(1, "users"), std::nullopt);
-      });  // Activate with no target id.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Activate(std::move(cb), Requester(1, "users"), std::nullopt);
+  });  // Activate with no target id.
   CHECK(r.status ==
         api::v2::Http::Status::NOT_ACCEPTABLE);  // Proves Activate refuses a
                                                  // missing id with 406.
@@ -183,16 +166,13 @@ TEST_CASE("ClientController<User>::Activate returns 406 for missing id",
 // a user.
 TEST_CASE(
     "ClientController<User>::Activate with id and mismatched requester → 403",
-    "[controllers][client]")
-{
+    "[controllers][client]") {
   ClientController<User> ctrl;  // A fresh User-client controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Activate(std::move(cb),
-                      Requester(99, "providers"),
-                      std::optional<uint64_t>{5});
-      });  // Id 5 present, but the caller is in the wrong group.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Activate(std::move(cb),
+                  Requester(99, "providers"),
+                  std::optional<uint64_t>{5});
+  });  // Id 5 present, but the caller is in the wrong group.
   CHECK(r.status ==
         api::v2::Http::Status::FORBIDDEN);  // Proves the group check runs
                                             // before the database is touched.
@@ -201,14 +181,11 @@ TEST_CASE(
 // GetServices must reject a missing client id; the exact error is less
 // important than "not success".
 TEST_CASE("ClientController<User>::GetServices returns error for missing id",
-          "[controllers][client]")
-{
+          "[controllers][client]") {
   ClientController<User> ctrl;  // A fresh User-client controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.GetServices(std::move(cb), Requester(1, "users"), std::nullopt);
-      });  // GetServices with no id.
+  auto                   r = capture([&](auto cb) {
+    ctrl.GetServices(std::move(cb), Requester(1, "users"), std::nullopt);
+  });  // GetServices with no id.
   // GetServices rejects a missing client_id up front with 400, before the
   // permission check and Controller::GetServices. The loose assertion only
   // pins down that no successful response is produced.
@@ -220,16 +197,13 @@ TEST_CASE("ClientController<User>::GetServices returns error for missing id",
 
 // A present id still requires a matching requester group for GetServices.
 TEST_CASE("ClientController<User>::GetServices with mismatched requester → 403",
-          "[controllers][client]")
-{
+          "[controllers][client]") {
   ClientController<User> ctrl;  // A fresh User-client controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.GetServices(std::move(cb),
-                         Requester(10, "providers"),
-                         std::optional<uint64_t>{10});
-      });  // Id present but caller is in "providers", not "users".
+  auto                   r = capture([&](auto cb) {
+    ctrl.GetServices(std::move(cb),
+                     Requester(10, "providers"),
+                     std::optional<uint64_t>{10});
+  });  // Id present but caller is in "providers", not "users".
   CHECK(r.status == api::v2::Http::Status::FORBIDDEN);  // Proves the permission
                                                         // gate blocks the call.
 }
@@ -238,17 +212,11 @@ TEST_CASE("ClientController<User>::GetServices with mismatched requester → 403
 // reply.
 TEST_CASE(
     "ClientController<User>::Login delegates to gatekeeper (bad JSON → error)",
-    "[controllers][client]")
-{
+    "[controllers][client]") {
   ClientController<User> ctrl;  // A fresh User-client controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Login(std::move(cb),
-                   Requester(0, "users"),
-                   "bad json",
-                   "127.0.0.1");
-      });  // Pass broken JSON credentials and a client IP.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Login(std::move(cb), Requester(0, "users"), "bad json", "127.0.0.1");
+  });  // Pass broken JSON credentials and a client IP.
   CHECK(r.status != api::v2::Http::Status::OK);  // Proves no login is granted
                                                  // on unparsable input.
   CHECK_FALSE(
@@ -260,17 +228,14 @@ TEST_CASE(
 TEST_CASE(
     "ClientController<User>::Logout delegates to gatekeeper (empty token → "
     "error)",
-    "[controllers][client]")
-{
+    "[controllers][client]") {
   ClientController<User> ctrl;  // A fresh User-client controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Logout(std::move(cb),
-                    Requester(0, "users"),
-                    std::nullopt,
-                    "127.0.0.1");
-      });  // std::nullopt means "no token supplied".
+  auto                   r = capture([&](auto cb) {
+    ctrl.Logout(std::move(cb),
+                Requester(0, "users"),
+                std::nullopt,
+                "127.0.0.1");
+  });  // std::nullopt means "no token supplied".
   // No token → gatekeeper returns an error
   CHECK(r.status != api::v2::Http::Status::OK);  // Proves a token-less logout
                                                  // is not treated as a success.
@@ -278,17 +243,14 @@ TEST_CASE(
 
 // Update checks JSON validity before applying anything.
 TEST_CASE("ClientController<User>::Update with malformed JSON → 400",
-          "[controllers][client]")
-{
+          "[controllers][client]") {
   ClientController<User> ctrl;  // A fresh User-client controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Update(std::move(cb),
-                    Requester(5, "users"),
-                    "{{bad",
-                    std::optional<uint64_t>{5});
-      });  // Bad JSON with an otherwise valid id.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Update(std::move(cb),
+                Requester(5, "users"),
+                "{{bad",
+                std::optional<uint64_t>{5});
+  });  // Bad JSON with an otherwise valid id.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves the body is validated
                                               // even when the id is present.
@@ -296,14 +258,11 @@ TEST_CASE("ClientController<User>::Update with malformed JSON → 400",
 
 // Delete, like Suspend/Activate, refuses a missing id with 406.
 TEST_CASE("ClientController<User>::Delete with no id → 406",
-          "[controllers][client]")
-{
+          "[controllers][client]") {
   ClientController<User> ctrl;  // A fresh User-client controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Delete(std::move(cb), Requester(1, "users"), std::nullopt);
-      });  // Delete with no target id.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Delete(std::move(cb), Requester(1, "users"), std::nullopt);
+  });  // Delete with no target id.
   CHECK(r.status ==
         api::v2::Http::Status::NOT_ACCEPTABLE);  // Pins down the 406 response
                                                  // for a missing id.
@@ -311,16 +270,13 @@ TEST_CASE("ClientController<User>::Delete with no id → 406",
 
 // Delete also enforces the group match before any deletion.
 TEST_CASE("ClientController<User>::Delete with mismatched requester → 403",
-          "[controllers][client]")
-{
+          "[controllers][client]") {
   ClientController<User> ctrl;  // A fresh User-client controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Delete(std::move(cb),
-                    Requester(99, "users"),
-                    std::optional<uint64_t>{5});
-      });  // Same group name but a different id (99 vs target 5) → mismatch.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Delete(std::move(cb),
+                Requester(99, "users"),
+                std::optional<uint64_t>{5});
+  });  // Same group name but a different id (99 vs target 5) → mismatch.
   CHECK(r.status ==
         api::v2::Http::Status::FORBIDDEN);  // Proves id-level authorisation
                                             // blocks the delete.
@@ -328,14 +284,11 @@ TEST_CASE("ClientController<User>::Delete with mismatched requester → 403",
 
 // Read rejects bodies it cannot parse.
 TEST_CASE("ClientController<User>::Read with malformed JSON → 400",
-          "[controllers][client]")
-{
+          "[controllers][client]") {
   ClientController<User> ctrl;  // A fresh User-client controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Read(std::move(cb), Requester(1, "users"), "{{bad");
-      });  // Invalid JSON body for Read.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Read(std::move(cb), Requester(1, "users"), "{{bad");
+  });  // Invalid JSON body for Read.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves Read validates
                                               // JSON first.
@@ -343,15 +296,12 @@ TEST_CASE("ClientController<User>::Read with malformed JSON → 400",
 
 // Read also needs both an id and a schema; valid JSON without them is rejected.
 TEST_CASE("ClientController<User>::Read with missing id → 400",
-          "[controllers][client]")
-{
+          "[controllers][client]") {
   ClientController<User> ctrl;  // A fresh User-client controller.
   // Valid JSON but no "id" or "schema" field
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.Read(std::move(cb), Requester(1, "users"), R"({"foo":"bar"})");
-      });  // Parses fine, but neither required field is present.
+  auto r = capture([&](auto cb) {
+    ctrl.Read(std::move(cb), Requester(1, "users"), R"({"foo":"bar"})");
+  });  // Parses fine, but neither required field is present.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves required-field
                                               // validation runs after parsing.
@@ -359,14 +309,11 @@ TEST_CASE("ClientController<User>::Read with missing id → 400",
 
 // Search refuses a body that is not JSON.
 TEST_CASE("ClientController<User>::Search with malformed JSON → 400",
-          "[controllers][client]")
-{
+          "[controllers][client]") {
   ClientController<User> ctrl;  // A fresh User-client controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Search(std::move(cb), Requester(1, "users"), "not-json");
-      });  // Plain text that is not JSON.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Search(std::move(cb), Requester(1, "users"), "not-json");
+  });  // Plain text that is not JSON.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves Search rejects
                                               // unparsable input.
@@ -375,15 +322,12 @@ TEST_CASE("ClientController<User>::Search with malformed JSON → 400",
 // Search needs its specific fields (keyword, filter, etc.); an unrelated object
 // is refused.
 TEST_CASE("ClientController<User>::Search with missing search fields → 406",
-          "[controllers][client]")
-{
+          "[controllers][client]") {
   ClientController<User> ctrl;  // A fresh User-client controller.
   // Valid JSON but Search_t will fail to parse → NOT_ACCEPTABLE
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.Search(std::move(cb), Requester(1, "users"), R"({"foo":"bar"})");
-      });  // Parses as JSON but cannot become a Search_t request.
+  auto r = capture([&](auto cb) {
+    ctrl.Search(std::move(cb), Requester(1, "users"), R"({"foo":"bar"})");
+  });  // Parses as JSON but cannot become a Search_t request.
   CHECK(r.status ==
         api::v2::Http::Status::NOT_ACCEPTABLE);  // Proves incomplete search
                                                  // criteria yield 406.
@@ -392,14 +336,12 @@ TEST_CASE("ClientController<User>::Search with missing search fields → 406",
 // ResetPassword is currently a no-op; the important behaviour is that it never
 // crashes.
 TEST_CASE("ClientController<User>::ResetPassword is a no-op (does not crash)",
-          "[controllers][client]")
-{
+          "[controllers][client]") {
   ClientController<User> ctrl;  // A fresh User-client controller.
   bool called = false;  // A flag we flip inside the callback to see whether
                         // it is ever used.
   ctrl.ResetPassword(
-      [&](int, const std::string&)
-      {
+      [&](int, const std::string&) {
         called = true;
       },
       Requester(1, "users"),
@@ -415,29 +357,23 @@ TEST_CASE("ClientController<User>::ResetPassword is a no-op (does not crash)",
 // representative pre-database paths rather than repeating the whole User suite.
 
 TEST_CASE("ClientController<Provider>::Create rejects malformed JSON",
-          "[controllers][client][provider]")
-{
+          "[controllers][client][provider]") {
   ClientController<Provider>
        ctrl;  // A controller instantiated for Provider clients.
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.Create(std::move(cb), Requester(0, "providers"), "bad{");
-      });  // Same bad-JSON Create call through the Provider specialization.
+  auto r = capture([&](auto cb) {
+    ctrl.Create(std::move(cb), Requester(0, "providers"), "bad{");
+  });  // Same bad-JSON Create call through the Provider specialization.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves Provider parses input
                                               // the same way as User.
 }
 
 TEST_CASE("ClientController<Provider>::Suspend returns 406 for missing id",
-          "[controllers][client][provider]")
-{
+          "[controllers][client][provider]") {
   ClientController<Provider> ctrl;  // A fresh Provider-client controller.
-  auto                       r = capture(
-      [&](auto cb)
-      {
-        ctrl.Suspend(std::move(cb), Requester(1, "providers"), std::nullopt);
-      });  // Suspend with no id.
+  auto                       r = capture([&](auto cb) {
+    ctrl.Suspend(std::move(cb), Requester(1, "providers"), std::nullopt);
+  });  // Suspend with no id.
   CHECK(r.status ==
         api::v2::Http::Status::NOT_ACCEPTABLE);  // Proves the missing-id rule
                                                  // holds for Providers too.
@@ -445,16 +381,11 @@ TEST_CASE("ClientController<Provider>::Suspend returns 406 for missing id",
 
 TEST_CASE(
     "ClientController<Provider>::GetServices returns error for missing id",
-    "[controllers][client][provider]")
-{
+    "[controllers][client][provider]") {
   ClientController<Provider> ctrl;  // A fresh Provider-client controller.
-  auto                       r = capture(
-      [&](auto cb)
-      {
-        ctrl.GetServices(std::move(cb),
-                         Requester(1, "providers"),
-                         std::nullopt);
-      });                                        // GetServices with no id.
+  auto                       r = capture([&](auto cb) {
+    ctrl.GetServices(std::move(cb), Requester(1, "providers"), std::nullopt);
+  });                                            // GetServices with no id.
   CHECK(r.status != api::v2::Http::Status::OK);  // Proves no success is
                                                  // reported without an id.
   CHECK_FALSE(r.body.empty());  // Proves an error message is still returned

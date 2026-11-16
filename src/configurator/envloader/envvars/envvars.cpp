@@ -40,10 +40,9 @@
 // Provides Message::ErrorMessage used to log a failed set operation.
 #include "utils/message/message.hpp"
 
-std::optional<std::string> EnvVars::get(
-    const std::string& key)  // Returns the raw value or an empty optional when
-                             // the variable is not set.
-{
+// Returns the raw value or an empty optional when
+// the variable is not set.
+std::optional<std::string> EnvVars::get(const std::string& key) {
   // Retrieve the value associated with the environment variable key
   const char* _key = key.c_str();  // The C API needs a null-terminated char
                                    // array, so convert the C++ string to one.
@@ -52,9 +51,9 @@ std::optional<std::string> EnvVars::get(
                           // the name does not exist.
 
   // If the value exists, copy it into a std::string that outlives this call
-  if (value != nullptr)  // A non-null pointer means the variable is present;
-                         // otherwise it is absent.
-  {
+  // A non-null pointer means the variable is present;
+  // otherwise it is absent.
+  if (value != nullptr) {
     return std::string(
         value);  // Copy the C string into a C++ string so the caller owns
                  // the memory after getenv's buffer may change.
@@ -65,17 +64,14 @@ std::optional<std::string> EnvVars::get(
                         // returning an empty string.
 }
 
-void EnvVars::set(
-    const std::string& key,
-    const std::string& value)  // Stores value under key; used by tests to fake
-                               // settings, not on the request path.
-{
+// Stores value under key; used by tests to fake
+// settings, not on the request path.
+void EnvVars::set(const std::string& key, const std::string& value) {
   // Overwrite = 1 so repeated calls replace the existing value rather than
   // being ignored.
-  if (setenv(key.c_str(), value.c_str(), 1) !=
-      0)  // The OS returns 0 on success; any other result means the write
-          // failed (bad name, no memory, etc.).
-  {
+  // The OS returns 0 on success; any other result means the write
+  // failed (bad name, no memory, etc.).
+  if (setenv(key.c_str(), value.c_str(), 1) != 0) {
     Message::ErrorMessage(
         fmt::format("Failed to set environment variable {}.",
                     key));  // Log the failure with the variable name; do not

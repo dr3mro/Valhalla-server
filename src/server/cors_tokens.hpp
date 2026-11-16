@@ -47,9 +47,9 @@
  * @details Kept independent of the HTTP framework so token parsing can be
  * reasoned about, and tested, on its own.
  */
-namespace CorsTokens  // Group the token helpers, keeping them independent of
-                      // the HTTP framework.
-{
+// Group the token helpers, keeping them independent of
+// the HTTP framework.
+namespace CorsTokens {
   /**
    * Punctuation permitted in an HTTP token, per the token grammar used by the
    * header parsers below.
@@ -65,10 +65,10 @@ namespace CorsTokens  // Group the token helpers, keeping them independent of
    * This rejects values that could inject extra headers.
    * @param[in] c Character to classify.
    * @return true when c may appear in a token.
+   // Decide whether one character is legal
+   // inside an HTTP header token.
    */
-  constexpr bool isTokenChar(char c)  // Decide whether one character is legal
-                                      // inside an HTTP header token.
-  {
+  constexpr bool isTokenChar(char c) {
     return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') ||
            (c >= '0' && c <= '9') ||
            tokenPunctuation.find(c) != std::string_view::npos;  // Valid char.
@@ -82,15 +82,14 @@ namespace CorsTokens  // Group the token helpers, keeping them independent of
    * @return A subview of value with leading/trailing whitespace removed, or
    * an empty view if value is all whitespace.
    */
-  inline std::string_view trim(
-      std::string_view value)  // Return a view with leading and trailing
-                               // spaces/tabs removed.
-  {
+  // Return a view with leading and trailing
+  // spaces/tabs removed.
+  inline std::string_view trim(std::string_view value) {
     const std::size_t first = value.find_first_not_of(
         " \t");  // Find the first character that is not a space or tab.
-    if (first == std::string_view::npos)  // If there is none, the entire
-                                          // view is whitespace.
-    {
+    // If there is none, the entire
+    // view is whitespace.
+    if (first == std::string_view::npos) {
       return {};  // Hand back an empty view.
     }
     const std::size_t last = value.find_last_not_of(
@@ -112,39 +111,35 @@ namespace CorsTokens  // Group the token helpers, keeping them independent of
    * @param[in] value Header value to split.
    * @return A lazy range of std::string_view tokens.
    */
-  inline auto tokens(
-      std::string_view value)  // Build a lazy range that splits, trims and
-                               // filters a header value.
-  {
+  // Build a lazy range that splits, trims and
+  // filters a header value.
+  inline auto tokens(std::string_view value) {
     return value | std::views::split(',') |  // Split at commas into sub-ranges
                                              // without copying the string.
-           std::views::transform(  // Convert each sub-range into a trimmed
-                                   // string_view.
-               [](auto range)      // This lambda handles one split piece.
-               {
-                 if (range.begin() ==
-                     range.end())  // An empty piece (e.g. from two
-                                   // adjacent commas) needs no work.
-                 {
-                   return std::string_view{};  // Return an empty view
-                                               // so the filter below
-                                               // removes it.
-                 }
-                 // std::ranges::distance returns a signed ptrdiff_t; the
-                 // range is non-empty here, so converting it to
-                 // string_view's unsigned length is safe.
-                 return trim(
-                     std::string_view(&*range.begin(),
-                                      static_cast<std::size_t>(
-                                          std::ranges::distance(
-                                              range))));  // Trim this piece's
-                                                          // whitespace.
-               }) |
-           std::views::filter(
-               [](std::string_view token)
-               {
-                 return !token.empty();
-               });  // Drop empty tokens left by extra commas or spaces.
+           // Convert each sub-range into a trimmed
+           // string_view.
+           // This lambda handles one split piece.
+           std::views::transform([](auto range) {
+             // An empty piece (e.g. from two
+             // adjacent commas) needs no work.
+             if (range.begin() == range.end()) {
+               return std::string_view{};  // Return an empty view
+                                           // so the filter below
+                                           // removes it.
+             }
+             // std::ranges::distance returns a signed ptrdiff_t; the
+             // range is non-empty here, so converting it to
+             // string_view's unsigned length is safe.
+             return trim(
+                 std::string_view(&*range.begin(),
+                                  static_cast<std::size_t>(
+                                      std::ranges::distance(
+                                          range))));  // Trim this piece's
+                                                      // whitespace.
+           }) |
+           std::views::filter([](std::string_view token) {
+             return !token.empty();
+           });  // Drop empty tokens left by extra commas or spaces.
   }
 
   /**
@@ -157,21 +152,16 @@ namespace CorsTokens  // Group the token helpers, keeping them independent of
    * @return true when the strings have equal length and match after ASCII
    * lowercasing.
    */
-  inline bool iequals(std::string_view a,
-                      std::string_view b)  // Compare two strings ignoring the
-                                           // case of ASCII letters.
-  {
-    auto lower = [](char c)
-    {
+  // Compare two strings ignoring the
+  // case of ASCII letters.
+  inline bool iequals(std::string_view a, std::string_view b) {
+    auto lower = [](char c) {
       return (c >= 'A' && c <= 'Z') ? static_cast<char>(c + ('a' - 'A')) : c;
     };  // Fold A-Z to a-z; other bytes unchanged.
     return a.size() == b.size() &&
-           std::ranges::equal(a,
-                              b,
-                              [lower](char x, char y)
-                              {
-                                return lower(x) == lower(y);
-                              });  // Same length and content.
+           std::ranges::equal(a, b, [lower](char x, char y) {
+             return lower(x) == lower(y);
+           });  // Same length and content.
   }
 
   /**
@@ -188,32 +178,29 @@ namespace CorsTokens  // Group the token helpers, keeping them independent of
    * string when nothing is acceptable. An empty result tells Cors::apply() to
    * fall back to the default header list.
    */
-  inline std::string sanitizeRequestedHeaders(
-      std::string_view requested)  // Keep only safe, valid tokens from a
-                                   // client-supplied header value.
-  {
-    if (requested.empty() ||
-        requested.size() > 1024)  // Reject empty or very long values
-                                  // outright to avoid abuse.
-    {
+  // Keep only safe, valid tokens from a
+  // client-supplied header value.
+  inline std::string sanitizeRequestedHeaders(std::string_view requested) {
+    // Reject empty or very long values
+    // outright to avoid abuse.
+    if (requested.empty() || requested.size() > 1024) {
       return {};  // Return empty so the caller falls back to its default
                   // header list.
     }
 
     std::string result;  // Accumulates the safe tokens, separated by ", ".
     for (std::string_view token :
-         tokens(requested))  // Iterate the lazily split and trimmed tokens.
-    {
-      if (!std::ranges::all_of(token,
-                               isTokenChar))  // Drop any token containing
-                                              // invalid characters such as CRLF
-                                              // or quotes.
-      {
+         // Iterate the lazily split and trimmed tokens.
+         tokens(requested)) {
+      // Drop any token containing
+      // invalid characters such as CRLF
+      // or quotes.
+      if (!std::ranges::all_of(token, isTokenChar)) {
         continue;  // Skip this token and move on to the next one.
       }
-      if (!result.empty())  // Add a separator only when a token has
-                            // already been written.
-      {
+      // Add a separator only when a token has
+      // already been written.
+      if (!result.empty()) {
         result += ", ";  // Separate tokens with a comma and a space.
       }
       result.append(token);  // Append the validated token to the result.
@@ -235,10 +222,9 @@ namespace CorsTokens  // Group the token helpers, keeping them independent of
    * @param[in] value Token to add.
    * @return The merged Vary value.
    */
-  inline std::string mergeVary(
-      std::string_view existing,
-      std::string_view value)  // Append a token to Vary unless it is redundant.
-  {
+  // Append a token to Vary unless it is redundant.
+  inline std::string mergeVary(std::string_view existing,
+                               std::string_view value) {
     std::string combined;  // Rebuilds the header list with tokens separated
                            // by ", ".
     bool        hasWildcard = false;  // True if the existing value already
@@ -246,35 +232,34 @@ namespace CorsTokens  // Group the token helpers, keeping them independent of
     bool        present =
         false;  // True if the requested token is already in the list.
     for (std::string_view token :
-         tokens(existing))  // Walk each token of the existing header value.
-    {
-      if (token == "*")  // A wildcard means every response is already variable.
-      {
+         // Walk each token of the existing header value.
+         tokens(existing)) {
+      // A wildcard means every response is already variable.
+      if (token == "*") {
         hasWildcard = true;  // Remember that no change is needed.
       }
-      if (iequals(token,
-                  value))  // Compare case-insensitively, as header names are
-                           // case-insensitive.
-      {
+      // Compare case-insensitively, as header names are
+      // case-insensitive.
+      if (iequals(token, value)) {
         present = true;  // Remember that the token is already present.
       }
-      if (!combined.empty())  // Add a separator before all tokens except
-                              // the first.
-      {
+      // Add a separator before all tokens except
+      // the first.
+      if (!combined.empty()) {
         combined += ", ";  // Keep the list readable and syntactically correct.
       }
       combined.append(token);  // Copy this token into the rebuilt list.
     }
 
-    if (hasWildcard || present)  // No change is useful if it is already
-                                 // wildcard or already present.
-    {
+    // No change is useful if it is already
+    // wildcard or already present.
+    if (hasWildcard || present) {
       return std::string(
           existing);  // Return a copy of the original value, unchanged.
     }
-    if (!combined.empty())  // If existing tokens were copied, separate the
-                            // new one from them.
-    {
+    // If existing tokens were copied, separate the
+    // new one from them.
+    if (!combined.empty()) {
       combined += ", ";  // Insert the separator before appending.
     }
     combined.append(value);  // Add the new token at the end of the list.

@@ -97,30 +97,27 @@ using HttpStatus = api::v2::Http::Status;  // Short alias for HTTP status codes.
 // All collaborators are process-wide singletons from Store; GateKeeper only
 // holds shared handles.
 GateKeeper::GateKeeper()
-    : sessionManager_(
-          Store::getObject<SessionManager>()),  // Fetch (or lazily create) the
-                                                // shared session manager.
-      tokenManager_(
-          Store::getObject<api::v2::TokenManager>()),  // Fetch the shared JWT
-                                                       // manager.
-      dosDetector_(
-          Store::getObject<DOSDetector>()),  // Fetch the shared abuse detector.
-      permissionManager_(
-          Store::getObject<api::v2::PermissionManager>()),  // Fetch the shared
-                                                            // permission
-                                                            // manager.
-      passwordWorker_(
-          Store::getObject<PasswordWorker>())  // Fetch the shared password
-                                               // worker pool.
-{
+    // Fetch (or lazily create) the
+    // shared session manager.
+    // Fetch the shared JWT
+    // manager.
+    // Fetch the shared abuse detector.
+    // Fetch the shared
+    // permission
+    // manager.
+    // Fetch the shared password
+    // worker pool.
+    : sessionManager_(Store::getObject<SessionManager>()),
+      tokenManager_(Store::getObject<api::v2::TokenManager>()),
+      dosDetector_(Store::getObject<DOSDetector>()),
+      permissionManager_(Store::getObject<api::v2::PermissionManager>()),
+      passwordWorker_(Store::getObject<PasswordWorker>()) {
 }
 void GateKeeper::login(CALLBACK_&&        callback,
                        std::string_view   data,
                        const std::string& ip_address,
-                       std::string_view   group)
-{
-  try
-  {
+                       std::string_view   group) {
+  try {
     bool success = false;  // Set true only if JSON and both fields parse;
                            // starts false ("not proven").
     std::string
@@ -131,10 +128,9 @@ void GateKeeper::login(CALLBACK_&&        callback,
 
     // Malformed JSON or missing fields fail fast before any database or
     // worker work.
-    if (!success ||
-        !credentials.has_value())  // Either the parse failed or no credentials
-                                   // came back: reject immediately.
-    {
+    // Either the parse failed or no credentials
+    // came back: reject immediately.
+    if (!success || !credentials.has_value()) {
       std::move(
           callback)(HttpStatus::BAD_REQUEST,
                     "credentials parse error : " +
@@ -160,8 +156,8 @@ void GateKeeper::login(CALLBACK_&&        callback,
                                            // means unknown account.
     // A missing hash means the account is unknown or unusable; report
     // UNAUTHORIZED without hinting which.
-    if (!password_hash.has_value())  // No hash -> do not continue the login.
-    {
+    // No hash -> do not continue the login.
+    if (!password_hash.has_value()) {
       std::move(callback)(Http::Status::UNAUTHORIZED,
                           "Login failure: " +
                               message);  // Deliberately vague so attackers
@@ -181,20 +177,18 @@ void GateKeeper::login(CALLBACK_&&        callback,
          credentials     = std::move(credentials),
          password_hash   = std::move(password_hash).value(),
          clientLoginData = std::move(clientLoginData),
-         message         = std::move(message)](CALLBACK_&& callback) mutable
-        {
-          try
-          {
+         message         = std::move(message)](CALLBACK_&& callback) mutable {
+          try {
             // Password comparison plus session write happen together on
             // the worker; failure here is deliberately
             // indistinguishable from a bad password.
+            // Wrong password OR no
+            // session data -> fail.
             if (!sessionManager->completeLogin(credentials,
                                                password_hash,
                                                clientLoginData,
                                                message) ||
-                !clientLoginData.has_value())  // Wrong password OR no
-                                               // session data -> fail.
-            {
+                !clientLoginData.has_value()) {
               callback(Http::Status::UNAUTHORIZED,
                        "Login failure: " + message);  // Same vague error as a
                                                       // missing account.
@@ -203,10 +197,9 @@ void GateKeeper::login(CALLBACK_&&        callback,
 
             // Token creation depends on the fully populated
             // clientLoginData above.
-            if (!tokenManager->generateToken(
-                    clientLoginData))  // Build and sign the JWT from
-                                       // the identity fields.
-            {
+            // Build and sign the JWT from
+            // the identity fields.
+            if (!tokenManager->generateToken(clientLoginData)) {
               callback(Http::Status::INTERNAL_SERVER_ERROR,
                        "failed to generate token");  // Internal problem
                                                      // signing the token
@@ -229,23 +222,19 @@ void GateKeeper::login(CALLBACK_&&        callback,
             token_object["ipAddress"] =
                 clientLoginData->ip_address;  // Echo the bound IP.
 
-            callback(Http::Status::OK,
-                     token_object
-                         .as<std::string>());  // Reply 200 with the JSON
-                                               // serialized to a string.
-          }
-          catch (const std::exception&
-                     e)  // Any unexpected error inside the worker task.
-          {
-            CRITICALMESSAGERESPONSE  // Log it and answer through
-                                     // callback with the right HTTP
-                                     // status.
+            // Reply 200 with the JSON
+            // serialized to a string.
+            // Any unexpected error inside the worker task.
+            callback(Http::Status::OK, token_object.as<std::string>());
+          } catch (const std::exception& e) {
+            // Log it and answer through
+            // callback with the right HTTP
+            // status.
+            // Any unexpected error during parsing or hash lookup.
+            CRITICALMESSAGERESPONSE
           }
         });
-  }
-  catch (const std::exception&
-             e)  // Any unexpected error during parsing or hash lookup.
-  {
+  } catch (const std::exception& e) {
     CRITICALMESSAGERESPONSE  // Log and reply; the callback is guaranteed to
                              // be called exactly once.
   }
@@ -254,18 +243,16 @@ void GateKeeper::login(CALLBACK_&&        callback,
 drogon::Task<void> GateKeeper::loginAsync(CALLBACK_&&        callback,
                                           std::string_view   data,
                                           const std::string& ip_address,
-                                          std::string_view   group)
-{
-  try
-  {
+                                          std::string_view   group) {
+  try {
     bool success = false;  // Tracks whether JSON and required fields parsed.
     std::string                       message;  // Collects failure details.
     std::optional<Types::Credentials> credentials =
         parse_credentials(data, message, success);  // Same parsing as login().
 
-    if (!success || !credentials.has_value())  // Bad body: fail before any
-                                               // awaited or worker work.
-    {
+    // Bad body: fail before any
+    // awaited or worker work.
+    if (!success || !credentials.has_value()) {
       std::move(callback)(HttpStatus::BAD_REQUEST,
                           "credentials parse error : " +
                               message);  // Reply 400 with the parse error.
@@ -286,8 +273,8 @@ drogon::Task<void> GateKeeper::loginAsync(CALLBACK_&&        callback,
                                     clientLoginData,
                                     message);  // Await the DB read; nullopt
                                                // means no account.
-    if (!password_hash.has_value())            // Unknown/unusable account.
-    {
+    // Unknown/unusable account.
+    if (!password_hash.has_value()) {
       std::move(callback)(Http::Status::UNAUTHORIZED,
                           "Login failure: " + message);  // Vague 401 reply.
       co_return;
@@ -302,22 +289,19 @@ drogon::Task<void> GateKeeper::loginAsync(CALLBACK_&&        callback,
                          password_hash   = std::move(password_hash).value(),
                          clientLoginData = std::move(clientLoginData),
                          message =
-                             std::move(message)](CALLBACK_&& callback) mutable
-                        {
-                          try
-                          {
+                             std::move(message)](CALLBACK_&& callback) mutable {
+                          try {
                             // Password comparison plus session write happen
                             // together on the worker; failure here is
                             // deliberately indistinguishable from a bad
                             // password.
+                            // Bad password or
+                            // missing session data.
                             if (!sessionManager->completeLogin(credentials,
                                                                password_hash,
                                                                clientLoginData,
                                                                message) ||
-                                !clientLoginData
-                                     .has_value())  // Bad password or
-                                                    // missing session data.
-                            {
+                                !clientLoginData.has_value()) {
                               callback(Http::Status::UNAUTHORIZED,
                                        "Login failure: " +
                                            message);  // Vague 401 reply.
@@ -326,10 +310,9 @@ drogon::Task<void> GateKeeper::loginAsync(CALLBACK_&&        callback,
 
                             // Token creation depends on the fully populated
                             // clientLoginData above.
-                            if (!tokenManager->generateToken(
-                                    clientLoginData))  // Sign the JWT from the
-                                                       // identity fields.
-                            {
+                            // Sign the JWT from the
+                            // identity fields.
+                            if (!tokenManager->generateToken(clientLoginData)) {
                               callback(Http::Status::INTERNAL_SERVER_ERROR,
                                        "failed to generate token");  // Signing
                                                                      // failed
@@ -352,21 +335,19 @@ drogon::Task<void> GateKeeper::loginAsync(CALLBACK_&&        callback,
                             token_object["ipAddress"] =
                                 clientLoginData->ip_address;  // Bound IP.
 
+                            // Reply 200 with
+                            // JSON text.
+                            // Unexpected worker error.
                             callback(Http::Status::OK,
-                                     token_object
-                                         .as<std::string>());  // Reply 200 with
-                                                               // JSON text.
-                          }
-                          catch (const std::exception&
-                                     e)  // Unexpected worker error.
-                          {
-                            CRITICALMESSAGERESPONSE  // Log and answer through
-                                                     // callback.
+                                     token_object.as<std::string>());
+                          } catch (const std::exception& e) {
+                            // Log and answer through
+                            // callback.
+                            // Unexpected error before/around the await.
+                            CRITICALMESSAGERESPONSE
                           }
                         });
-  }
-  catch (const std::exception& e)  // Unexpected error before/around the await.
-  {
+  } catch (const std::exception& e) {
     CRITICALMESSAGERESPONSE  // Log and reply.
   }
   co_return;  // Coroutine form always exits with co_return (even after a
@@ -376,10 +357,8 @@ drogon::Task<void> GateKeeper::loginAsync(CALLBACK_&&        callback,
 void GateKeeper::logout(CALLBACK_&&                       callback,
                         const std::optional<std::string>& token,
                         const std::string&                ip_address,
-                        const std::string&                group)
-{
-  try
-  {
+                        const std::string&                group) {
+  try {
     // Only the fields needed by SessionManager::logout are populated here.
     std::optional<ClientLoginData> clientLoginData =
         ClientLoginData{};  // Minimal identity bag for the logout helper.
@@ -388,14 +367,11 @@ void GateKeeper::logout(CALLBACK_&&                       callback,
     clientLoginData->group = group;  // Group selects the session table.
     clientLoginData->ip_address =
         ip_address;  // IP recorded in the logout data.
-    sessionManager_
-        ->logout(std::move(callback),
-                 clientLoginData);  // Delegate the actual logout/write, passing
-                                    // the reply callback along.
-  }
-  catch (const std::exception&
-             e)  // Unexpected error while preparing or delegating.
-  {
+    // Delegate the actual logout/write, passing
+    // the reply callback along.
+    // Unexpected error while preparing or delegating.
+    sessionManager_->logout(std::move(callback), clientLoginData);
+  } catch (const std::exception& e) {
     CRITICALMESSAGERESPONSE  // Log and reply with an appropriate HTTP
                              // status.
   }
@@ -403,22 +379,19 @@ void GateKeeper::logout(CALLBACK_&&                       callback,
 
 bool GateKeeper::isAuthenticationValid(
     std::optional<Types::ClientLoginData>& clientLoginData,
-    std::string&                           message)
-{
+    std::string&                           message) {
   // Fast path: a live session avoids re-verifying the JWT signature.
-  if (sessionManager_->clientHasValidSession(clientLoginData,
-                                             message))  // Is there a cached,
-                                                        // still-valid session?
-  {
+  // Is there a cached,
+  // still-valid session?
+  if (sessionManager_->clientHasValidSession(clientLoginData, message)) {
     return true;  // Yes: authenticated, no need to check the token.
   }
 
   // Cold path: validate the token, then rehydrate the session cache from its
   // claims.
-  if (tokenManager_->isTokenValid(clientLoginData,
-                                  message))  // No session, so check the JWT
-                                             // signature and claims.
-  {
+  // No session, so check the JWT
+  // signature and claims.
+  if (tokenManager_->isTokenValid(clientLoginData, message)) {
     return sessionManager_
         ->storeSession(clientLoginData,
                        message);  // Token ok: rebuild the session cache and
@@ -429,22 +402,18 @@ bool GateKeeper::isAuthenticationValid(
 
 drogon::Task<bool> GateKeeper::isAuthenticationValidAsync(
     std::optional<Types::ClientLoginData>& clientLoginData,
-    std::string&                           message)
-{
-  if (sessionManager_->clientHasValidSession(clientLoginData,
-                                             message))  // Cached session still
-                                                        // valid? (synchronous)
-  {
+    std::string&                           message) {
+  // Cached session still
+  // valid? (synchronous)
+  if (sessionManager_->clientHasValidSession(clientLoginData, message)) {
     co_return true;  // Fast path success.
   }
 
   // Only the token verification is awaited; both session calls remain
   // synchronous.
-  if (co_await tokenManager_
-          ->isTokenValidCoro(clientLoginData,
-                             message))  // Await the token check without
-                                        // blocking a thread.
-  {
+  // Await the token check without
+  // blocking a thread.
+  if (co_await tokenManager_->isTokenValidCoro(clientLoginData, message)) {
     co_return sessionManager_
         ->storeSession(clientLoginData,
                        message);  // Rebuild the session cache and return that
@@ -454,8 +423,7 @@ drogon::Task<bool> GateKeeper::isAuthenticationValidAsync(
 }
 
 void GateKeeper::removeSession(std::optional<uint64_t> client_id,
-                               const std::string&      group)
-{
+                               const std::string&      group) {
   std::optional<ClientLoginData> clientLoginData =
       ClientLoginData{};  // Minimal bag for the remove helper.
   clientLoginData->clientId =
@@ -465,8 +433,8 @@ void GateKeeper::removeSession(std::optional<uint64_t> client_id,
       clientLoginData);  // Delegate the actual removal.
 }
 
-DOSDetector::Status GateKeeper::isDosAttack(const DOSDetector::Request& request)
-{
+DOSDetector::Status GateKeeper::isDosAttack(
+    const DOSDetector::Request& request) {
   return dosDetector_->is_dos_attack(request);
 }  // One-line forwarder; the filter interprets the verdict.
 
@@ -474,17 +442,13 @@ std::optional<jsoncons::json> GateKeeper::
     parse_data(/* NOLINT(readability-convert-member-functions-to-static)*/
                std::string_view data,
                std::string&     message,
-               bool&            success)
-{
+               bool&            success) {
   success = false;          // Assume failure until parsing actually succeeds.
   jsoncons::json object_j;  // Will hold the parsed JSON document.
-  try
-  {
+  try {
     object_j = jsoncons::json::parse(
         data);  // Turn the raw body text into a JSON object.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     // Accumulate diagnostics into message rather than throwing across the
     // callback boundary.
     message = fmt::format("Json parsing error : {} - {}",
@@ -499,22 +463,18 @@ std::optional<jsoncons::json> GateKeeper::
 
 std::optional<Credentials> GateKeeper::parse_credentials(std::string_view data,
                                                          std::string& message,
-                                                         bool&        success)
-{
+                                                         bool&        success) {
   success = false;  // Assume failure until both fields are extracted.
 
   std::optional<jsoncons::json> credentials_j =
       parse_data(data, message, success);  // Step 1: parse the JSON.
-  if (!success ||
-      !credentials_j
-           .has_value())  // If parsing failed there is nothing to read.
-  {
+  // If parsing failed there is nothing to read.
+  if (!success || !credentials_j.has_value()) {
     return std::nullopt;  // Propagate failure.
   }
 
   Types::Credentials credentials;  // Result object, filled in below.
-  try
-  {
+  try {
     // at() throws for a missing key; as<std::string>() throws for the wrong
     // type.
     credentials.username =
@@ -525,9 +485,7 @@ std::optional<Credentials> GateKeeper::parse_credentials(std::string_view data,
         credentials_j.value()
             .at("password")
             .as<std::string>();  // Read the "password" member as text.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     message = fmt::format("Credentials parsing error : {} - {}",
                           message,
                           e.what());  // Append why extraction failed.
@@ -545,8 +503,7 @@ std::optional<Credentials> GateKeeper::parse_credentials(std::string_view data,
 template <typename T>
 bool GateKeeper::canCreate(const Requester&                     requester,
                            const std::optional<jsoncons::json>& data_j,
-                           Http::Error&                         error)
-{
+                           Http::Error&                         error) {
   return permissionManager_
       ->canCreate<T>(requester,
                      data_j,
@@ -556,8 +513,7 @@ bool GateKeeper::canCreate(const Requester&                     requester,
 template <typename T>
 bool GateKeeper::canRead(const Requester& requester,
                          const uint64_t   entity_id,
-                         Http::Error&     error)
-{
+                         Http::Error&     error) {
   return permissionManager_
       ->canRead<T>(requester,
                    entity_id,
@@ -567,8 +523,7 @@ bool GateKeeper::canRead(const Requester& requester,
 template <typename T>
 bool GateKeeper::canUpdate(const Requester& requester,
                            const uint64_t   entity_id,
-                           Http::Error&     error)
-{
+                           Http::Error&     error) {
   return permissionManager_
       ->canUpdate<T>(requester,
                      entity_id,
@@ -578,8 +533,7 @@ bool GateKeeper::canUpdate(const Requester& requester,
 template <typename T>
 bool GateKeeper::canDelete(const Requester& requester,
                            const uint64_t   entity_id,
-                           Http::Error&     error)
-{
+                           Http::Error&     error) {
   return permissionManager_
       ->canDelete<T>(requester,
                      entity_id,
@@ -589,8 +543,7 @@ bool GateKeeper::canDelete(const Requester& requester,
 template <typename T>
 bool GateKeeper::canManageStaff(const Requester& requester,
                                 uint64_t         _id,
-                                Http::Error&     error)
-{
+                                Http::Error&     error) {
   return permissionManager_
       ->canManageStaff<T>(requester,
                           _id,
@@ -600,8 +553,7 @@ bool GateKeeper::canManageStaff(const Requester& requester,
 template <Client_t T>
 bool GateKeeper::canToggleActive(const Requester& requester,
                                  const uint64_t   _id,
-                                 Http::Error&     error)
-{
+                                 Http::Error&     error) {
   return permissionManager_->canToggleActive<
       T>(requester,
          _id,
@@ -611,8 +563,7 @@ bool GateKeeper::canToggleActive(const Requester& requester,
 template <Client_t T>
 bool GateKeeper::canGetServices(const Requester& requester,
                                 const uint64_t   _id,
-                                Http::Error&     error)
-{
+                                Http::Error&     error) {
   return permissionManager_->canGetServices<
       T>(requester,
          _id,
@@ -623,8 +574,7 @@ template <typename T>
 drogon::Task<bool> GateKeeper::canCreateAsync(
     const Requester&                     requester,
     const std::optional<jsoncons::json>& data_j,
-    Http::Error&                         error)
-{
+    Http::Error&                         error) {
   co_return co_await permissionManager_
       ->canCreateAsync<T>(requester,
                           data_j,
@@ -634,8 +584,7 @@ drogon::Task<bool> GateKeeper::canCreateAsync(
 template <typename T>
 drogon::Task<bool> GateKeeper::canReadAsync(const Requester& requester,
                                             const uint64_t   entity_id,
-                                            Http::Error&     error)
-{
+                                            Http::Error&     error) {
   co_return co_await permissionManager_
       ->canReadAsync<T>(requester,
                         entity_id,
@@ -645,8 +594,7 @@ drogon::Task<bool> GateKeeper::canReadAsync(const Requester& requester,
 template <typename T>
 drogon::Task<bool> GateKeeper::canUpdateAsync(const Requester& requester,
                                               const uint64_t   entity_id,
-                                              Http::Error&     error)
-{
+                                              Http::Error&     error) {
   co_return co_await permissionManager_
       ->canUpdateAsync<T>(requester,
                           entity_id,
@@ -656,8 +604,7 @@ drogon::Task<bool> GateKeeper::canUpdateAsync(const Requester& requester,
 template <typename T>
 drogon::Task<bool> GateKeeper::canDeleteAsync(const Requester& requester,
                                               const uint64_t   entity_id,
-                                              Http::Error&     error)
-{
+                                              Http::Error&     error) {
   co_return co_await permissionManager_
       ->canDeleteAsync<T>(requester,
                           entity_id,
@@ -667,8 +614,7 @@ drogon::Task<bool> GateKeeper::canDeleteAsync(const Requester& requester,
 template <typename T>
 drogon::Task<bool> GateKeeper::canManageStaffAsync(const Requester& requester,
                                                    uint64_t         _id,
-                                                   Http::Error&     error)
-{
+                                                   Http::Error&     error) {
   co_return co_await permissionManager_->canManageStaffAsync<
       T>(requester, _id, error);  // Await the manager and return its verdict.
 }
@@ -676,8 +622,7 @@ drogon::Task<bool> GateKeeper::canManageStaffAsync(const Requester& requester,
 template <Client_t T>
 drogon::Task<bool> GateKeeper::canToggleActiveAsync(const Requester& requester,
                                                     const uint64_t   _id,
-                                                    Http::Error&     error)
-{
+                                                    Http::Error&     error) {
   co_return co_await permissionManager_->canToggleActiveAsync<
       T>(requester, _id, error);  // Await the manager and return its verdict.
 }
@@ -685,8 +630,7 @@ drogon::Task<bool> GateKeeper::canToggleActiveAsync(const Requester& requester,
 template <Client_t T>
 drogon::Task<bool> GateKeeper::canGetServicesAsync(const Requester& requester,
                                                    const uint64_t   _id,
-                                                   Http::Error&     error)
-{
+                                                   Http::Error&     error) {
   co_return co_await permissionManager_->canGetServicesAsync<
       T>(requester, _id, error);  // Await the manager and return its verdict.
 }

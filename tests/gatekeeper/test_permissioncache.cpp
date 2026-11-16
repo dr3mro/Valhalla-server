@@ -43,8 +43,7 @@
 #include "gatekeeper/permissionmanager/permissioncache.hpp"
 #include "support/fake_clock.hpp"  // ManualClock, the controllable time source.
 
-namespace
-{
+namespace {
   /** @brief Cache instantiated with the manual clock so TTLs are
    * deterministic.
    *
@@ -61,10 +60,9 @@ namespace
                                                      // every test.
 }  // namespace
 
-TEST_CASE("PermissionCache miss then hit",
-          "[gatekeeper][permissioncache]")  // Registers the basic
-                                            // store-and-retrieve test.
-{
+// Registers the basic
+// store-and-retrieve test.
+TEST_CASE("PermissionCache miss then hit", "[gatekeeper][permissioncache]") {
   ManualClock::reset();  // Reset the global fake clock so this test starts
                          // from a known time.
   TestCache cache(
@@ -84,10 +82,9 @@ TEST_CASE("PermissionCache miss then hit",
         1);  // Prove the retrieved JSON is the exact document we put in.
 }
 
-TEST_CASE(
-    "PermissionCache entries expire after the idle TTL",
-    "[gatekeeper][permissioncache]")  // Registers the test for TTL expiry.
-{
+// Registers the test for TTL expiry.
+TEST_CASE("PermissionCache entries expire after the idle TTL",
+          "[gatekeeper][permissioncache]") {
   ManualClock::reset();  // Start the global fake clock at a known point.
   TestCache cache(std::chrono::seconds{300});  // Five-minute idle TTL.
   cache.put("q1", kPerm, cache.generation());  // Store one entry at time zero.
@@ -102,17 +99,17 @@ TEST_CASE(
                                              // and is no longer returned.
 }
 
+// Registers the test that reads
+// keep an entry alive.
 TEST_CASE("PermissionCache use renews the idle timer",
-          "[gatekeeper][permissioncache]")  // Registers the test that reads
-                                            // keep an entry alive.
-{
+          "[gatekeeper][permissioncache]") {
   ManualClock::reset();  // Start the shared clock from zero.
   TestCache cache(std::chrono::seconds{300});  // Five-minute idle TTL.
   cache.put("q1", kPerm, cache.generation());  // Store the entry once.
 
-  for (int i = 0; i < 5; ++i)  // Repeatedly advance by less than the TTL;
-                               // each read should restart the timer.
-  {
+  // Repeatedly advance by less than the TTL;
+  // each read should restart the timer.
+  for (int i = 0; i < 5; ++i) {
     ManualClock::advance(std::chrono::seconds{
         200});  // Move 200 s forward, still under the 300 s limit.
     REQUIRE(cache.get("q1").has_value());  // Prove the entry survives and
@@ -125,11 +122,10 @@ TEST_CASE("PermissionCache use renews the idle timer",
                                      // reads were what kept it alive earlier.
 }
 
-TEST_CASE(
-    "PermissionCache sweeps idle entries that are never read again",
-    "[gatekeeper][permissioncache]")  // Registers the test that old entries are
-                                      // cleaned up on a later write.
-{
+// Registers the test that old entries are
+// cleaned up on a later write.
+TEST_CASE("PermissionCache sweeps idle entries that are never read again",
+          "[gatekeeper][permissioncache]") {
   ManualClock::reset();  // Start the clock from a known point.
   TestCache cache(std::chrono::seconds{300});  // Five-minute idle TTL.
   cache.put("idle",
@@ -146,10 +142,10 @@ TEST_CASE(
                              // stale one was swept.
 }
 
+// Registers the test for clearing
+// the whole cache.
 TEST_CASE("PermissionCache invalidateAll drops every entry",
-          "[gatekeeper][permissioncache]")  // Registers the test for clearing
-                                            // the whole cache.
-{
+          "[gatekeeper][permissioncache]") {
   ManualClock::reset();  // Start the shared clock from zero.
   TestCache cache(std::chrono::seconds{
       30});  // Short TTL, though expiry is not involved in this test.
@@ -165,10 +161,10 @@ TEST_CASE("PermissionCache invalidateAll drops every entry",
         0);  // Prove the cache is completely empty, not just returning misses.
 }
 
+// Registers the test for the
+// generation-counter race guard.
 TEST_CASE("PermissionCache drops a put that raced with an invalidation",
-          "[gatekeeper][permissioncache]")  // Registers the test for the
-                                            // generation-counter race guard.
-{
+          "[gatekeeper][permissioncache]") {
   ManualClock::reset();  // Start the shared clock from zero.
   TestCache cache(std::chrono::seconds{30});  // Cache under test.
 
@@ -188,10 +184,10 @@ TEST_CASE("PermissionCache drops a put that raced with an invalidation",
                           // invalidated permissions cannot reappear.
 }
 
+// Registers the test for the "turn
+// the cache off" configuration.
 TEST_CASE("PermissionCache with TTL 0 is disabled",
-          "[gatekeeper][permissioncache]")  // Registers the test for the "turn
-                                            // the cache off" configuration.
-{
+          "[gatekeeper][permissioncache]") {
   ManualClock::reset();  // Start the shared clock from zero.
   TestCache cache(std::chrono::seconds{
       0});  // A zero TTL is the documented way to disable caching.

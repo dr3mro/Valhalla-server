@@ -61,16 +61,16 @@ using PowerLevel = Permissions::PowerLevel;  // Short alias for the bit-mask
  * Requires staff membership plus the @p powerlevel capability bit.
  * error: FORBIDDEN with a reason when the requester is not staff.
  */
+// Definition of the staff-capability check (signature
+// continues next line).
+// Rest of hasPermission's signature: the required bit,
+// a name for messages, and the error output.
 bool PermissionManagerPrivate::hasPermission(
-    const Requester& requester,
-    const std::optional<jsoncons::json>&
-        permissions_j,  // Definition of the staff-capability check (signature
-                        // continues next line).
-    const Permissions::PowerLevel& powerlevel,
-    const std::string&             service_name,
-    Http::Error& error)  // Rest of hasPermission's signature: the required bit,
-                         // a name for messages, and the error output.
-{
+    const Requester&                     requester,
+    const std::optional<jsoncons::json>& permissions_j,
+    const Permissions::PowerLevel&       powerlevel,
+    const std::string&                   service_name,
+    Http::Error&                         error) {
   auto entityStaffPermissions =
       isStaffOfService(requester,
                        permissions_j,
@@ -78,9 +78,9 @@ bool PermissionManagerPrivate::hasPermission(
                        error);  // First find the caller's staff entry; it also
                                 // fills in error on failure.
 
-  if (!entityStaffPermissions.has_value())  // No staff entry means the caller
-                                            // is not on this service's team.
-  {
+  // No staff entry means the caller
+  // is not on this service's team.
+  if (!entityStaffPermissions.has_value()) {
     error.code = Http::Status::FORBIDDEN;  // 403 Forbidden: malformed data
                                            // is treated as a denial.
     error.message =
@@ -94,19 +94,19 @@ bool PermissionManagerPrivate::hasPermission(
                               // non-zero means they have it.
 }
 /** @brief Compares the requester id with `owner_id` in the permission JSON. */
-bool PermissionManagerPrivate::isOwnerOfService(  // Definition of the owner-id
-                                                  // comparison (signature
-                                                  // continues next line).
+// Definition of the owner-id
+// comparison (signature
+// continues next line).
+// Rest of the signature: caller, permission document,
+// service name and error output.
+bool PermissionManagerPrivate::isOwnerOfService(
     const Requester&                     requester,
     const std::optional<jsoncons::json>& permissions_j,
     const std::string&                   service_name,
-    Http::Error& error)  // Rest of the signature: caller, permission document,
-                         // service name and error output.
-{
-  if (!permissions_j.has_value() ||
-      permissions_j->empty())  // No permission document means we cannot
-                               // decide; treat as a bad request.
-  {
+    Http::Error&                         error) {
+  // No permission document means we cannot
+  // decide; treat as a bad request.
+  if (!permissions_j.has_value() || permissions_j->empty()) {
     error.message =
         "Failed get service permissions for." +
         service_name;  // Say which service's permissions could not be read.
@@ -115,10 +115,9 @@ bool PermissionManagerPrivate::isOwnerOfService(  // Definition of the owner-id
     return false;                             // Deny the request.
   }
 
-  if (!requester.idMatch(permissions_j.value()["owner_id"]
-                             .as<uint64_t>()))  // Compare the caller's id with
-                                                // the stored owner_id.
-  {
+  // Compare the caller's id with
+  // the stored owner_id.
+  if (!requester.idMatch(permissions_j.value()["owner_id"].as<uint64_t>())) {
     error.code = Http::Status::FORBIDDEN;  // 403 Forbidden: wrong identity
                                            // for this operation.
     error.message +=
@@ -130,19 +129,19 @@ bool PermissionManagerPrivate::isOwnerOfService(  // Definition of the owner-id
 }
 
 /** @brief Compares the requester id with `admin_id` in the permission JSON. */
-bool PermissionManagerPrivate::isAdminOfService(  // Definition of the admin-id
-                                                  // comparison (signature
-                                                  // continues next line).
+// Definition of the admin-id
+// comparison (signature
+// continues next line).
+// Rest of the signature: caller, permission document,
+// service name and error output.
+bool PermissionManagerPrivate::isAdminOfService(
     const Requester&                     requester,
     const std::optional<jsoncons::json>& permissions_j,
     const std::string&                   service_name,
-    Http::Error& error)  // Rest of the signature: caller, permission document,
-                         // service name and error output.
-{
-  if (!permissions_j.has_value() ||
-      permissions_j->empty())  // No permission document means we cannot
-                               // decide; treat as a bad request.
-  {
+    Http::Error&                         error) {
+  // No permission document means we cannot
+  // decide; treat as a bad request.
+  if (!permissions_j.has_value() || permissions_j->empty()) {
     error.message =
         "Failed get service permissions for." +
         service_name;  // Say which service's permissions could not be read.
@@ -151,10 +150,9 @@ bool PermissionManagerPrivate::isAdminOfService(  // Definition of the admin-id
     return false;                             // Deny the request.
   }
 
-  if (!requester.idMatch(permissions_j.value()["admin_id"]
-                             .as<uint64_t>()))  // Compare the caller's id with
-                                                // the stored admin_id.
-  {
+  // Compare the caller's id with
+  // the stored admin_id.
+  if (!requester.idMatch(permissions_j.value()["admin_id"].as<uint64_t>())) {
     error.code = Http::Status::FORBIDDEN;  // 403 Forbidden: wrong identity
                                            // for this operation.
     error.message += "You are not the admin of " +
@@ -171,21 +169,21 @@ bool PermissionManagerPrivate::isAdminOfService(  // Definition of the admin-id
  * non-match also leaves FORBIDDEN in @p error. The mask is decoded into
  * PowerLevel bits.
  */
+// Definition of the staff lookup
+// (signature continues next line).
+// Rest of the signature: caller, permission document,
+// service name and error output.
 std::optional<Permissions::StaffPermission>
-PermissionManagerPrivate::isStaffOfService(  // Definition of the staff lookup
-                                             // (signature continues next line).
+PermissionManagerPrivate::isStaffOfService(
     const Requester&                     requester,
     const std::optional<jsoncons::json>& permissions_j,
     const std::string&                   service_name,
-    Http::Error& error)  // Rest of the signature: caller, permission document,
-                         // service name and error output.
-{
-  try  // JSON access and number parsing can throw, so guard them.
-  {
-    if (!permissions_j.has_value() ||
-        permissions_j->empty())  // No permission document means we cannot
-                                 // decide; treat as a bad request.
-    {
+    Http::Error&                         error) {
+  // JSON access and number parsing can throw, so guard them.
+  try {
+    // No permission document means we cannot
+    // decide; treat as a bad request.
+    if (!permissions_j.has_value() || permissions_j->empty()) {
       error.message = "Failed get service permissions for." +
                       service_name;  // Say which service's permissions
                                      // could not be read.
@@ -200,16 +198,16 @@ PermissionManagerPrivate::isStaffOfService(  // Definition of the staff lookup
                                          // permission document.
 
     for (const auto& [role, members] :
-         staff.object_range())  // Walk every role; structured binding gives
-                                // the role name and its member list.
-    {
+         // Walk every role; structured binding gives
+         // the role name and its member list.
+         staff.object_range()) {
       for (const auto& member :
-           members.array_range())  // Walk each member string inside that
-                                   // role's list.
-      {
-        if (!member.as<std::string>().empty())  // Skip blank entries so they
-                                                // cannot cause parse errors.
-        {
+           // Walk each member string inside that
+           // role's list.
+           members.array_range()) {
+        // Skip blank entries so they
+        // cannot cause parse errors.
+        if (!member.as<std::string>().empty()) {
           auto raw_str =
               member.as<std::string>();    // The entry is stored as text
                                            // in the form '<id>:<mask>'.
@@ -222,31 +220,29 @@ PermissionManagerPrivate::isStaffOfService(  // Definition of the staff lookup
           std::string right =
               raw_str.substr(pos + 1);  // Everything after the colon is the
                                         // permission mask as text.
-          if (left == std::to_string(
-                          requester.getId()))  // Is this entry for the caller?
-                                               // Compare the id strings.
-          {
+          // Is this entry for the caller?
+          // Compare the id strings.
+          if (left == std::to_string(requester.getId())) {
+            // Found a match: build the result
+            // object
+            // describing this staff member.
+            // Convert id and mask
+            // strings to
+            // numbers, and flag this as a real
+            // match.
+            // Runs when a staff entry is malformed
+            // (bad number or missing colon).
             return std::optional<Permissions::StaffPermission>(
-                Permissions::StaffPermission{// Found a match: build the result
-                                             // object
-                                             // describing this staff member.
-                                             .staff_id = static_cast<uint64_t>(
+                Permissions::StaffPermission{.staff_id = static_cast<uint64_t>(
                                                  std::stoull(left)),
                                              .power = static_cast<PowerLevel>(
                                                  std::stoi(right)),
-                                             .isMember =
-                                                 true});  // Convert id and mask
-                                                          // strings to
-            // numbers, and flag this as a real
-            // match.
+                                             .isMember = true});
           }
         }
       }
     }
-  }
-  catch (const std::exception& e)  // Runs when a staff entry is malformed
-                                   // (bad number or missing colon).
-  {
+  } catch (const std::exception& e) {
     error.code = Http::Status::FORBIDDEN;  // 403 Forbidden: malformed data
                                            // is treated as a denial.
     error.message =
@@ -265,17 +261,15 @@ PermissionManagerPrivate::isStaffOfService(  // Definition of the staff lookup
 
 /** @brief Allows access only when both the requester's group and id match the
  * target. */
+// Definition of the group+id check for client records.
 bool PermissionManagerPrivate::assert_group_id_match(
     const Requester&   requester,
     const std::string& groupname,
     uint64_t           client_id,
-    Http::Error& error)  // Definition of the group+id check for client records.
-{
-  if (!requester.groupMatch(groupname) ||
-      !requester.idMatch(
-          client_id))  // Both must match; either mismatch means the caller is
-                       // touching someone else's record.
-  {
+    Http::Error&       error) {
+  // Both must match; either mismatch means the caller is
+  // touching someone else's record.
+  if (!requester.groupMatch(groupname) || !requester.idMatch(client_id)) {
     error.code = Http::Status::FORBIDDEN;  // 403 Forbidden: malformed data
                                            // is treated as a denial.
     error.message =
@@ -291,14 +285,14 @@ bool PermissionManagerPrivate::assert_group_id_match(
  * Validates service creation: payload present, ids extractable, caller is the
  * provider. error: BAD_REQUEST with a reason on failure.
  */
+// Definition of the service-creation validation.
 bool api::v2::PermissionManagerPrivate::preServiceCreateChecks(
     const Requester&                     requester,
     const std::optional<jsoncons::json>& service_j,
-    Http::Error& error)  // Definition of the service-creation validation.
-{
-  if (!service_j.has_value())  // A creation request without a body cannot be
-                               // validated.
-  {
+    Http::Error&                         error) {
+  // A creation request without a body cannot be
+  // validated.
+  if (!service_j.has_value()) {
     error.code    = Http::Status::BAD_REQUEST;  // 400 Bad Request: the payload
                                                 // or id was missing/invalid.
     error.message = "Service data is not provided.";  // Explain that the
@@ -311,18 +305,17 @@ bool api::v2::PermissionManagerPrivate::preServiceCreateChecks(
   uint64_t admin_id =
       0;  // Will hold the admin id parsed from the payload; starts at zero.
 
-  try  // JSON access and number parsing can throw, so guard them.
-  {
+  // JSON access and number parsing can throw, so guard them.
+  try {
     owner_id =
         service_j->at("owner_id").as<uint64_t>();  // Read the initial owner
                                                    // id from the JSON body.
-    admin_id =
-        service_j->at("admin_id").as<uint64_t>();  // Read the initial admin
-                                                   // id from the JSON body.
-  }
-  catch (const std::exception& e)  // Runs when a staff entry is malformed
-                                   // (bad number or missing colon).
-  {
+    // Read the initial admin
+    // id from the JSON body.
+    // Runs when a staff entry is malformed
+    // (bad number or missing colon).
+    admin_id = service_j->at("admin_id").as<uint64_t>();
+  } catch (const std::exception& e) {
     error.code = Http::Status::BAD_REQUEST;  // 400 Bad Request: the payload
                                              // or id was missing/invalid.
     error.message =
@@ -331,10 +324,9 @@ bool api::v2::PermissionManagerPrivate::preServiceCreateChecks(
     return false;  // Deny the request.
   }
 
-  if (!requester.idMatch(owner_id) ||
-      !requester.idMatch(admin_id))  // The caller must be both the initial
-                                     // owner and admin of the new service.
-  {
+  // The caller must be both the initial
+  // owner and admin of the new service.
+  if (!requester.idMatch(owner_id) || !requester.idMatch(admin_id)) {
     error.code = Http::Status::BAD_REQUEST;  // 400 Bad Request: the payload
                                              // or id was missing/invalid.
     error.message =
@@ -343,9 +335,8 @@ bool api::v2::PermissionManagerPrivate::preServiceCreateChecks(
     return false;       // Deny the request.
   }
 
-  if (!requester
-           .isProvider())  // Only providers are allowed to create a service.
-  {
+  // Only providers are allowed to create a service.
+  if (!requester.isProvider()) {
     error.code = Http::Status::BAD_REQUEST;  // 400 Bad Request: the payload
                                              // or id was missing/invalid.
     error.message =
@@ -370,24 +361,17 @@ bool api::v2::PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(
     const std::string& service_name,
     Http::Error&       error,
     Permissions::PowerLevel
-        required)  // Rest of the signature: service name, error output and the
-                   // required capability bit.
-{
-  if (isOwnerOrAdmin(requester,
-                     permissions_j,
-                     service_name,
-                     error))  // First door: owner or admin passes immediately.
-  {
+        // Rest of the signature: service name, error output and the
+        // required capability bit.
+        required) {
+  // First door: owner or admin passes immediately.
+  if (isOwnerOrAdmin(requester, permissions_j, service_name, error)) {
     return true;  // First door succeeded, so allow.
   }
 
-  if (!hasPermission(requester,
-                     permissions_j,
-                     required,
-                     service_name,
-                     error))  // Second door: staff must have the required
-                              // capability bit.
-  {
+  // Second door: staff must have the required
+  // capability bit.
+  if (!hasPermission(requester, permissions_j, required, service_name, error)) {
     error.code = Http::Status::FORBIDDEN;  // 403 Forbidden: malformed data
                                            // is treated as a denial.
     error.message =
@@ -406,14 +390,14 @@ bool api::v2::PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(
  * succeeds.
  */
 bool api::v2::PermissionManagerPrivate::
-    isOwnerOrAdmin(  // Definition of the owner-or-admin rule (signature
-                     // continues next line).
-        const Requester&                     requester,
-        const std::optional<jsoncons::json>& permissions_j,
-        const std::string&                   service_name,
-        Http::Error& error)  // Rest of the signature: caller, permission
-                             // document, service name and error output.
-{
+    // Definition of the owner-or-admin rule (signature
+    // continues next line).
+    // Rest of the signature: caller, permission
+    // document, service name and error output.
+    isOwnerOrAdmin(const Requester&                     requester,
+                   const std::optional<jsoncons::json>& permissions_j,
+                   const std::string&                   service_name,
+                   Http::Error&                         error) {
   return (isOwnerOfService(requester, permissions_j, service_name, error) ||
           isAdminOfService(requester,
                            permissions_j,

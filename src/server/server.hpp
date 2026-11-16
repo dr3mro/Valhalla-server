@@ -75,9 +75,9 @@ class DatabaseSchema;  // Forward declaration: avoids pulling the whole schema
  * deleted.
  * @see Cors, Store, Configurator
  */
-class Server  // The one object that drives startup and an orderly shutdown of
-              // the whole server.
-{
+// The one object that drives startup and an orderly shutdown of
+// the whole server.
+class Server {
  public:  // Members below are callable from outside the class (mainly by
           // main()).
   /**

@@ -64,24 +64,21 @@ namespace Http =
     api::v2::Http;  // A short alias so assertions read as Http::Status::OK.
 using api::v2::Requester;  // Bring the requester type into this file's scope.
 
-namespace  // An anonymous namespace keeps these helpers private to this test
-           // file.
-{
+// An anonymous namespace keeps these helpers private to this test
+// file.
+namespace {
   /** @brief The status code and body passed to a controller callback. */
-  struct CR
-  {
+  struct CR {
     int code = -1;     // The HTTP status; -1 means the callback never fired.
     std::string body;  // The response text, filled by the callback.
   };
 
   /** @brief Builds a callback that records its code/body into @p r. */
-  CALLBACK_ cap(
-      CR& r)  // Returns a "call me later" function that writes into r.
-  {
-    return [&r](int                c,
-                const std::string& b)  // The lambda captures r by reference so
-                                       // the result is visible to the caller.
-    {
+  // Returns a "call me later" function that writes into r.
+  CALLBACK_ cap(CR& r) {
+    // The lambda captures r by reference so
+    // the result is visible to the caller.
+    return [&r](int c, const std::string& b) {
       r.code = c;  // Store the status the controller reported.
       r.body = b;  // Store the body the controller reported.
     };
@@ -89,20 +86,17 @@ namespace  // An anonymous namespace keeps these helpers private to this test
 
   /** @brief The placeholder requester for Login/Logout; those methods ignore
    * it. */
-  Requester anonRequester()
-  {
+  Requester anonRequester() {
     return Requester(0, "users");
   }  // A throwaway identity; authentication uses the username/password
      // instead.
 
   /** @brief Builds the password_result fixture with id, hash and active flag.
    */
-  jsoncons::json makePasswordResult(
-      uint64_t           id,
-      const std::string& hash,
-      bool               active =
-          true)  // Shapes the row the fake returns from the password lookup.
-  {
+  // Shapes the row the fake returns from the password lookup.
+  jsoncons::json makePasswordResult(uint64_t           id,
+                                    const std::string& hash,
+                                    bool               active = true) {
     jsoncons::json j =
         jsoncons::json::object();  // Start with an empty JSON object.
     j["id"]       = id;            // The user's id.
@@ -114,11 +108,10 @@ namespace  // An anonymous namespace keeps these helpers private to this test
 
   /** @brief Builds the query_result fixture for the session login-time write.
    */
+  // Shapes the row returned by the
+  // session UPDATE.
   jsoncons::json makeSessionResult(
-      const std::string& lastLogout =
-          "2026-01-01 00:00:00 +0000")  // Shapes the row returned by the
-                                        // session UPDATE.
-  {
+      const std::string& lastLogout = "2026-01-01 00:00:00 +0000") {
     jsoncons::json j =
         jsoncons::json::object();  // Start with an empty JSON object.
     j["last_logout"] =
@@ -128,10 +121,9 @@ namespace  // An anonymous namespace keeps these helpers private to this test
 
   /** @brief Hashes a fixture password with the real PasswordCrypt so
    * verification is exercised. */
-  std::string hashKnownPassword(
-      const std::string& pw)  // Produce a genuine hash for the fake row, so
-                              // Login compares against real cryptography.
-  {
+  // Produce a genuine hash for the fake row, so
+  // Login compares against real cryptography.
+  std::string hashKnownPassword(const std::string& pw) {
     PasswordCrypt crypt;              // The real password-hashing helper.
     auto h = crypt.hashPassword(pw);  // Hash the known password; hashing can
                                       // fail, so the result is optional-like.
@@ -152,8 +144,7 @@ namespace  // An anonymous namespace keeps these helpers private to this test
 
 // An unknown username yields no password row and must not authenticate.
 TEST_CASE("ClientController::Login returns UNAUTHORIZED when user not in DB",
-          "[controller][client][login][db]")
-{
+          "[controller][client][login][db]") {
   // A shared fake for this case.
   auto fake             = std::make_shared<FakeDatabaseController>();
   fake->password_result = std::nullopt;  // user does not exist
@@ -174,8 +165,7 @@ TEST_CASE("ClientController::Login returns UNAUTHORIZED when user not in DB",
 
 // A correct password is still refused when the account is marked inactive.
 TEST_CASE("ClientController::Login returns UNAUTHORIZED when user is suspended",
-          "[controller][client][login][db]")
-{
+          "[controller][client][login][db]") {
   auto hash =
       hashKnownPassword("secret");  // Hash the real password for the fake row.
   // A shared fake.
@@ -207,8 +197,7 @@ TEST_CASE("ClientController::Login returns UNAUTHORIZED when user is suspended",
 // Even a valid, active user is refused if the session-update query fails.
 TEST_CASE(
     "ClientController::Login returns UNAUTHORIZED when session INSERT fails",
-    "[controller][client][login][db]")
-{
+    "[controller][client][login][db]") {
   auto hash = hashKnownPassword("secret");  // A valid password hash.
   // A shared fake.
   auto fake = std::make_shared<FakeDatabaseController>();
@@ -235,8 +224,7 @@ TEST_CASE(
 
 // A wrong password must fail verification and leave the session row untouched.
 TEST_CASE("ClientController::Login returns UNAUTHORIZED for wrong password",
-          "[controller][client][login][db]")
-{
+          "[controller][client][login][db]") {
   auto hash = hashKnownPassword(
       "correct_password");  // The stored hash is for a DIFFERENT password.
   // A shared fake.
@@ -274,8 +262,7 @@ TEST_CASE("ClientController::Login returns UNAUTHORIZED for wrong password",
 // write.
 TEST_CASE(
     "ClientController::Login returns 200 and token on correct credentials",
-    "[controller][client][login][db]")
-{
+    "[controller][client][login][db]") {
   auto hash = hashKnownPassword(
       "secret");  // The stored hash matches the supplied password.
   // A shared fake.
@@ -308,8 +295,7 @@ TEST_CASE(
 // A non-JSON credentials body is refused before any database lookup.
 TEST_CASE(
     "ClientController::Login returns BAD_REQUEST for malformed credentials",
-    "[controller][client][login][db]")
-{
+    "[controller][client][login][db]") {
   ClientController<User> ctrl;  // A fresh controller; no fake needed because
                                 // parsing fails first.
   CR                     r;     // Holds the answer.
@@ -328,8 +314,7 @@ TEST_CASE(
 TEST_CASE(
     "ClientController::Login returns UNAUTHORIZED for SQL injection in "
     "username",
-    "[controller][client][login][db]")
-{
+    "[controller][client][login][db]") {
   // A shared fake.
   auto fake             = std::make_shared<FakeDatabaseController>();
   fake->password_result = std::nullopt;  // Arrange no matching user, as a
@@ -354,8 +339,7 @@ TEST_CASE(
 // When the pool is exhausted, login must report a retryable 503, not a failed
 // login.
 TEST_CASE("ClientController::Login returns 503 when the database is busy",
-          "[controller][client][login][db][busy]")
-{
+          "[controller][client][login][db][busy]") {
   // A shared fake.
   auto fake  = std::make_shared<FakeDatabaseController>();
   fake->busy = true;  // Make the fake's queries throw DatabaseBusy.
@@ -378,8 +362,7 @@ TEST_CASE("ClientController::Login returns 503 when the database is busy",
 // A correctly signed token is decoded and accepted; the logout-time write
 // result is ignored.
 TEST_CASE("ClientController::Logout returns 200 for a valid token",
-          "[controller][client][logout][db]")
-{
+          "[controller][client][logout][db]") {
   // Build a token signed with the test fixture key/issuer, not production
   // credentials. The session manager decodes it and calls setNowLogoutTime
   // (fire-and-forget, no return check).
@@ -448,8 +431,7 @@ TEST_CASE("ClientController::Logout returns 200 for a valid token",
 // Logout with no token must not crash, whatever response it ultimately
 // produces.
 TEST_CASE("ClientController::Logout handles empty token gracefully",
-          "[controller][client][logout][db]")
-{
+          "[controller][client][logout][db]") {
   ClientController<User> ctrl;  // A fresh controller.
   CR                     r;     // Holds the answer.
   ctrl.Logout(cap(r),

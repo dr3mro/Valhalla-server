@@ -64,9 +64,9 @@
  * from.
  * @see Service, Entity, ServiceController, StaffController, PermissionManager
  */
-class Pharmacies : public Service  // Inherits every CRUD/search/staff method;
-                                   // this class only fixes the table name.
-{
+// Inherits every CRUD/search/staff method;
+// this class only fixes the table name.
+class Pharmacies : public Service {
  private:  // Implementation details kept hidden from outside callers.
   /** @brief Table bound to this entity; also used as the service name in
    * staff permission queries. */
@@ -93,17 +93,15 @@ class Pharmacies : public Service  // Inherits every CRUD/search/staff method;
   template <typename T>  // T is deduced from the wrapper the caller passes,
                          // so many wrapper types fit this one constructor.
   Pharmacies(const T& _data)
-      : Service(_data,
-                TABLENAME)  // Hand the data and table name to Service, which
-                            // copies them into Entity.
-  {
+      // Hand the data and table name to Service, which
+      // copies them into Entity.
+      : Service(_data, TABLENAME) {
   }
   /**
    * @brief Returns the table this entity is bound to.
    * @return The constant `pharmacies` string.
    */
-  static constexpr auto getTableName()
-  {
+  static constexpr auto getTableName() {
     return TABLENAME;
   }  // Returns the compile-time table name so callers (e.g.
      // PermissionManager) can build the right SQL.

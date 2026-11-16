@@ -106,8 +106,7 @@ using Requester =
  * interface itself adds no state.
  * @see ServiceController, EntityControllerBase, Controller
  */
-class ServiceControllerBase
-{
+class ServiceControllerBase {
  public:
   /** @brief Default construction; the interface holds no state of its own. */
   explicit ServiceControllerBase() =

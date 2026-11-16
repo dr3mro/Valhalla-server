@@ -67,9 +67,9 @@ using StaffData =
  * and is used as a permission cache key.
  * @see Entity, api::v2::Types::StaffData
  */
-class Service : public Entity  // Inherits all CRUD builders; adds
-                               // staff-specific and permission helpers.
-{
+// Inherits all CRUD builders; adds
+// staff-specific and permission helpers.
+class Service : public Entity {
  public:
   /**
    * @brief Non-copyable and non-movable; construct in place for the request
@@ -90,8 +90,8 @@ class Service : public Entity  // Inherits all CRUD builders; adds
    */
   template <typename T>
   Service(const T& data, const std::string& tablename)
-      : Entity(data, tablename)  // Forward both values to the base unchanged.
-  {
+      // Forward both values to the base unchanged.
+      : Entity(data, tablename) {
   }
   // Service(const std::string &tablename) : Entity(tablename) {};
   /**
@@ -110,11 +110,9 @@ class Service : public Entity  // Inherits all CRUD builders; adds
    * @return UPDATE ... RETURNING id, or std::nullopt if the payload is not
    * StaffData or an exception occurs.
    */
-  std::optional<std::string> getSqlAddStaffStatement(
-      pqxx::params& params)  // Builds the "add team member" statement.
-  {
-    try
-    {
+  // Builds the "add team member" statement.
+  std::optional<std::string> getSqlAddStaffStatement(pqxx::params& params) {
+    try {
       auto idata =
           std::get<StaffData>(getData());  // The payload must be StaffData;
                                            // std::get throws otherwise.
@@ -135,14 +133,14 @@ class Service : public Entity  // Inherits all CRUD builders; adds
           "UPDATE {} SET mjson = jsonb_set(mjson, "
           "'{{payload,providers,Doctors}}', "
           "((mjson->'payload'->'providers'->'Doctors') || "
+          // Two adjacent string literals form one SQL
+          // string; the placeholders are filled in order.
+          // Wrong payload type or formatting error.
           "to_jsonb({}::text))) WHERE id={} RETURNING id;",
           tablename,
           nominee_ph,
-          entity_ph);  // Two adjacent string literals form one SQL
-                       // string; the placeholders are filled in order.
-    }
-    catch (const std::exception& e)  // Wrong payload type or formatting error.
-    {
+          entity_ph);
+    } catch (const std::exception& e) {
       Message::ErrorMessage(
           "Error creating query for add member.");  // Log a
                                                     // human-readable
@@ -163,11 +161,9 @@ class Service : public Entity  // Inherits all CRUD builders; adds
    * @return UPDATE ... RETURNING id, or std::nullopt if the payload is not
    * StaffData or an exception occurs.
    */
-  std::optional<std::string> getSqlRemoveStaffStatement(
-      pqxx::params& params)  // Builds the "remove team member" statement.
-  {
-    try
-    {
+  // Builds the "remove team member" statement.
+  std::optional<std::string> getSqlRemoveStaffStatement(pqxx::params& params) {
+    try {
       auto idata =
           std::get<StaffData>(getData());  // Must be a StaffData payload.
       Binder binder(params);  // Fresh binder for the two parameters.
@@ -187,14 +183,14 @@ class Service : public Entity  // Inherits all CRUD builders; adds
           "(SELECT jsonb_agg(elem) FROM "
           "jsonb_array_elements(mjson->'payload'->'providers'->'Doctors')"
           " AS elem "
+          // Placeholders fill the nominee comparison and the
+          // row id.
+          // Wrong payload type or formatting error.
           "WHERE elem <> to_jsonb({}::text))) WHERE id={} RETURNING id;",
           tablename,
           nominee_ph,
-          entity_ph);  // Placeholders fill the nominee comparison and the
-                       // row id.
-    }
-    catch (const std::exception& e)  // Wrong payload type or formatting error.
-    {
+          entity_ph);
+    } catch (const std::exception& e) {
       Message::ErrorMessage(
           // Log a human-readable failure.
           "Error creating query for remove member.");
@@ -212,11 +208,10 @@ class Service : public Entity  // Inherits all CRUD builders; adds
    * @param[in] service_id Primary key of the service row.
    * @return A SELECT statement (always produced by this implementation).
    */
+  // Static: called directly by the permission
+  // layer, no object needed.
   static std::optional<std::string> getServicePermissionsQuery(
-      const std::string& service_name,
-      std::uint64_t service_id)  // Static: called directly by the permission
-                                 // layer, no object needed.
-  {
+      const std::string& service_name, std::uint64_t service_id) {
     return fmt::format(
         "SELECT owner_id,admin_id,staff FROM {} WHERE id = '{}' LIMIT 1;",
         service_name,

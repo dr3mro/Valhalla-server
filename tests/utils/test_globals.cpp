@@ -58,8 +58,7 @@
 #include "utils/global/requester.hpp"  // The Requester value object under test.
 
 // Compile-time checks on the entity concepts (STATIC_REQUIRE).
-namespace
-{
+namespace {
   using ::Provider;       // Bring the global Provider class into this anonymous
                           // namespace for shorter names below.
   using ::User;           // Same for User, so Client_t<User> reads cleanly.
@@ -70,8 +69,7 @@ namespace
 // These checks happen during compilation: an accepted type lets a generic
 // controller instantiate, a rejected one does not.
 TEST_CASE("Entity concepts classify the entity hierarchy at compile time",
-          "[utils][concepts]")
-{
+          "[utils][concepts]") {
   STATIC_REQUIRE(
       Client_t<User>);  // Compile-time assert: User satisfies Client_t, so
                         // controllers accept it as a client.
@@ -91,8 +89,8 @@ TEST_CASE("Entity concepts classify the entity hierarchy at compile time",
 
 // Requester carries an id plus a group and exposes the matching helpers used by
 // permission rules.
-TEST_CASE("Requester exposes id and group with matchers", "[utils][requester]")
-{
+TEST_CASE("Requester exposes id and group with matchers",
+          "[utils][requester]") {
   const api::v2::Requester
       requester(42,
                 "providers");  // Make an immutable caller with numeric id 42 in
@@ -124,8 +122,7 @@ TEST_CASE("Requester exposes id and group with matchers", "[utils][requester]")
 
 // A Requester is a cheap value type: copying is independent and setters mutate
 // only the original.
-TEST_CASE("Requester can be copied and mutated", "[utils][requester]")
-{
+TEST_CASE("Requester can be copied and mutated", "[utils][requester]") {
   api::v2::Requester
       original(1, "users");    // A mutable caller object we will change later.
   const auto copy = original;  // Take a snapshot; changing original must not
@@ -143,8 +140,7 @@ TEST_CASE("Requester can be copied and mutated", "[utils][requester]")
 
 // The Status enum mirrors standard HTTP numbers; clients depend on those exact
 // values.
-TEST_CASE("Http::Status uses the expected status codes", "[utils][http]")
-{
+TEST_CASE("Http::Status uses the expected status codes", "[utils][http]") {
   // static_cast turns the plain number into the enum type so the two can be
   // compared.
   CHECK(api::v2::Http::Status::OK ==
@@ -164,8 +160,7 @@ TEST_CASE("Http::Status uses the expected status codes", "[utils][http]")
 // Each known code maps to its standard reason phrase; unknown codes fall back
 // safely instead of crashing.
 TEST_CASE("Http::getDescription maps codes to their reason phrases",
-          "[utils][http]")
-{
+          "[utils][http]") {
   CHECK(api::v2::Http::getDescription(api::v2::Http::Status::OK) ==
         "OK");  // 200 -> "OK".
   CHECK(api::v2::Http::getDescription(api::v2::Http::Status::UNAUTHORIZED) ==
@@ -180,8 +175,7 @@ TEST_CASE("Http::getDescription maps codes to their reason phrases",
 
   // SECTION creates an isolated branch: Catch2 reruns the parent test case
   // for it.
-  SECTION("unknown codes report as unknown")
-  {
+  SECTION("unknown codes report as unknown") {
     CHECK(api::v2::Http::getDescription(static_cast<api::v2::Http::Status>(
               599)) == "Unknown Status Code");
   }  // 599 is not in the table, so the documented fallback phrase must come
@@ -190,8 +184,7 @@ TEST_CASE("Http::getDescription maps codes to their reason phrases",
 
 // Error is a plain struct: its fields are public and are set directly, with no
 // constructor call needed.
-TEST_CASE("Http::Error is a plain aggregate", "[utils][http]")
-{
+TEST_CASE("Http::Error is a plain aggregate", "[utils][http]") {
   api::v2::Http::Error error;  // Default-construct the simple payload holder.
   error.code = api::v2::Http::Status::BAD_REQUEST;  // Store a numeric problem
                                                     // code (400) for machines.
@@ -206,8 +199,7 @@ TEST_CASE("Http::Error is a plain aggregate", "[utils][http]")
 // A broader sweep: every status family the server actually returns must have
 // the right phrase.
 TEST_CASE("Http::getDescription covers all defined status codes",
-          "[utils][http]")
-{
+          "[utils][http]") {
   using api::v2::Http::getDescription;  // Shorthand so the checks below read
                                         // plainly.
   using api::v2::Http::Status;          // Shorthand for the enum type.
@@ -248,8 +240,7 @@ TEST_CASE("Http::getDescription covers all defined status codes",
 // The isX helpers compare hard-coded strings, so exact spelling (and capital S
 // for Super) matters.
 TEST_CASE("Requester isAdmin/isStaff/isOwner/isSuper use the right group names",
-          "[utils][requester]")
-{
+          "[utils][requester]") {
   CHECK(api::v2::Requester(1, "admins")
             .isAdmin());  // The literal "admins" is what unlocks isAdmin.
   CHECK(api::v2::Requester(1, "staff")

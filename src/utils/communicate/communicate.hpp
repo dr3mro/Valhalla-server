@@ -47,9 +47,9 @@
  *          to the caller by an empty optional rather than by an exception.
  * @note Only GET and POST are supported; all calls are blocking.
  */
-class Communicate  // A class used only through static functions; it has no
-                   // instance state.
-{
+// A class used only through static functions; it has no
+// instance state.
+class Communicate {
  public:
   /**
    * @brief Sends an HTTP request and returns the response body.

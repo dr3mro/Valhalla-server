@@ -27,10 +27,9 @@
 // The declarations of the three JsonHelper static functions implemented below.
 #include "jsonhelper.hpp"
 
-Json::Value api::v2::JsonHelper::jsonify(
-    const std::string& message)  // Fully-qualified name identifies which
-                                 // class's static function this is.
-{
+// Fully-qualified name identifies which
+// class's static function this is.
+Json::Value api::v2::JsonHelper::jsonify(const std::string& message) {
   // Uniform single-key shape for simple status and error bodies.
   Json::Value object;  // An empty JsonCpp value; assigning to
                        // object["Message"] turns it into a JSON object.
@@ -39,10 +38,8 @@ Json::Value api::v2::JsonHelper::jsonify(
   return object;  // Returns the object by value for the caller to use as a
                   // response body.
 }
-std::string api::v2::JsonHelper::stringify(
-    const jsoncons::json&
-        json)  // Overload for the jsoncons type used by validation.
-{
+// Overload for the jsoncons type used by validation.
+std::string api::v2::JsonHelper::stringify(const jsoncons::json& json) {
   // dump_pretty writes into the supplied string; used for validation results.
   std::string json_string;  // Empty receiving string; dump_pretty appends the
                             // formatted JSON to it.
@@ -50,7 +47,6 @@ std::string api::v2::JsonHelper::stringify(
       json_string);    // jsoncons fills the string with indented JSON text.
   return json_string;  // Hands the finished text back to the caller.
 }
-std::string api::v2::JsonHelper::stringify(const Json::Value& json)
-{
+std::string api::v2::JsonHelper::stringify(const Json::Value& json) {
   return json.toStyledString();
 }  // JsonCpp builds the pretty text directly and returns it.

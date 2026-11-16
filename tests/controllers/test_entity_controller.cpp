@@ -60,27 +60,25 @@ using Requester =
     api::v2::Requester;  // A short alias for the verbose fully qualified name.
 
 /** @brief The status HTTP code and the body text a controller produced. */
-struct Result
-{
+struct Result {
   int         status = 0;  // The HTTP status; 0 means the callback never fired.
   std::string body;        // The response text, filled by the callback.
 };
 
 /** @brief Invokes @p fn with a capturing callback and returns what it received.
  */
-static Result capture(auto fn)  // Converts a callback-style controller call
-                                // into a return value a test can check.
-{
+// Converts a callback-style controller call
+// into a return value a test can check.
+static Result capture(auto fn) {
   Result r;  // Default result (status 0, empty body), ready to be filled in
              // place.
-  fn(  // Run the caller's lambda, passing it the capturing callback below.
-      [&](int                s,
-          const std::string& b)  // The callback captures r by reference so
-                                 // writes here persist.
-      {
-        r.status = s;  // Store the status the controller reported.
-        r.body   = b;  // Store the body the controller reported.
-      });
+  // Run the caller's lambda, passing it the capturing callback below.
+  // The callback captures r by reference so
+  // writes here persist.
+  fn([&](int s, const std::string& b) {
+    r.status = s;  // Store the status the controller reported.
+    r.body   = b;  // Store the body the controller reported.
+  });
   return r;  // Hand the captured answer back to the test.
 }
 
@@ -89,16 +87,13 @@ static Result capture(auto fn)  // Converts a callback-style controller call
 // Create rejects a body it cannot parse before attempting to build or store an
 // entity.
 TEST_CASE("EntityController::Create rejects malformed JSON",
-          "[controllers][entity]")
-{
+          "[controllers][entity]") {
   EntityController<User> ctrl;  // A fresh controller for the User entity; it
                                 // holds no per-call state.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Create(std::move(cb), Requester(1, "users"), "{{bad");
-      });  // Invalid JSON; std::move passes the callback through without
-           // copying.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Create(std::move(cb), Requester(1, "users"), "{{bad");
+  });  // Invalid JSON; std::move passes the callback through without
+                         // copying.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves malformed JSON
                                               // is refused with 400.
@@ -111,14 +106,11 @@ TEST_CASE("EntityController::Create rejects malformed JSON",
 
 // An unparsable Read body is rejected immediately.
 TEST_CASE("EntityController::Read rejects malformed JSON",
-          "[controllers][entity]")
-{
+          "[controllers][entity]") {
   EntityController<User> ctrl;  // A fresh User controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Read(std::move(cb), Requester(1, "users"), "not-json");
-      });  // Plain text instead of JSON.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Read(std::move(cb), Requester(1, "users"), "not-json");
+  });  // Plain text instead of JSON.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves Read validates
                                               // JSON first.
@@ -126,47 +118,36 @@ TEST_CASE("EntityController::Read rejects malformed JSON",
 
 // A valid object still needs an "id" field to know which record to read.
 TEST_CASE("EntityController::Read rejects body missing 'id'",
-          "[controllers][entity]")
-{
+          "[controllers][entity]") {
   EntityController<User> ctrl;  // A fresh User controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Read(std::move(cb),
-                  Requester(1, "users"),
-                  R"({"schema":["name"]})");
-      });  // A schema is present but the id is not.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Read(std::move(cb), Requester(1, "users"), R"({"schema":["name"]})");
+  });  // A schema is present but the id is not.
   CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);  // Proves the missing
                                                           // id is caught.
 }
 
 // Likewise an "id" without a "schema" is incomplete.
 TEST_CASE("EntityController::Read rejects body missing 'schema'",
-          "[controllers][entity]")
-{
+          "[controllers][entity]") {
   EntityController<User> ctrl;  // A fresh User controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Read(std::move(cb), Requester(1, "users"), R"({"id":5})");
-      });  // An id is present but no schema fields are requested.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Read(std::move(cb), Requester(1, "users"), R"({"id":5})");
+  });  // An id is present but no schema fields are requested.
   CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);  // Proves the missing
                                                           // schema is caught.
 }
 
 // A caller may only read a record whose id they own; a mismatch is forbidden.
 TEST_CASE("EntityController::Read with mismatched requester → 403",
-          "[controllers][entity]")
-{
+          "[controllers][entity]") {
   EntityController<User> ctrl;  // A fresh User controller.
   // id=5 but requester id=99 → assert_group_id_match fails
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.Read(std::move(cb),
-                  Requester(99, "users"),
-                  R"({"id":5,"schema":["name"]})");
-      });  // Both fields are valid, but caller 99 is not owner 5.
+  auto r = capture([&](auto cb) {
+    ctrl.Read(std::move(cb),
+              Requester(99, "users"),
+              R"({"id":5,"schema":["name"]})");
+  });  // Both fields are valid, but caller 99 is not owner 5.
   CHECK(r.status ==
         api::v2::Http::Status::FORBIDDEN);  // Proves the permission check
                                             // blocks cross-account reads.
@@ -175,17 +156,15 @@ TEST_CASE("EntityController::Read with mismatched requester → 403",
 // ── Update ──────────────────────────────────────────────────────────────────
 
 // Update cannot act without knowing which record to change (400, not 406).
-TEST_CASE("EntityController::Update with no id → 400", "[controllers][entity]")
-{
+TEST_CASE("EntityController::Update with no id → 400",
+          "[controllers][entity]") {
   EntityController<User> ctrl;  // A fresh User controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Update(std::move(cb),
-                    Requester(1, "users"),
-                    R"({"name":"x"})",
-                    std::nullopt);
-      });  // Valid JSON but no id argument.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Update(std::move(cb),
+                Requester(1, "users"),
+                R"({"name":"x"})",
+                std::nullopt);
+  });  // Valid JSON but no id argument.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Pins down Update's 400
                                               // response for a missing id.
@@ -193,17 +172,14 @@ TEST_CASE("EntityController::Update with no id → 400", "[controllers][entity]"
 
 // Even with an id, a malformed body is refused.
 TEST_CASE("EntityController::Update with malformed JSON → 400",
-          "[controllers][entity]")
-{
+          "[controllers][entity]") {
   EntityController<User> ctrl;  // A fresh User controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Update(std::move(cb),
-                    Requester(5, "users"),
-                    "{{bad",
-                    std::optional<uint64_t>{5});
-      });  // Id 5 supplied, but the body is not JSON.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Update(std::move(cb),
+                Requester(5, "users"),
+                "{{bad",
+                std::optional<uint64_t>{5});
+  });  // Id 5 supplied, but the body is not JSON.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves body validation is not
                                               // skipped when an id is present.
@@ -213,14 +189,12 @@ TEST_CASE("EntityController::Update with malformed JSON → 400",
 
 // Delete signals a missing id with 406, deliberately different from Update's
 // 400.
-TEST_CASE("EntityController::Delete with no id → 406", "[controllers][entity]")
-{
+TEST_CASE("EntityController::Delete with no id → 406",
+          "[controllers][entity]") {
   EntityController<User> ctrl;  // A fresh User controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Delete(std::move(cb), Requester(1, "users"), std::nullopt);
-      });  // No target id.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Delete(std::move(cb), Requester(1, "users"), std::nullopt);
+  });  // No target id.
   CHECK(r.status ==
         api::v2::Http::Status::NOT_ACCEPTABLE);  // Pins down the 406 response
                                                  // for a missing id.
@@ -228,16 +202,13 @@ TEST_CASE("EntityController::Delete with no id → 406", "[controllers][entity]"
 
 // A caller may only delete their own record.
 TEST_CASE("EntityController::Delete with mismatched requester → 403",
-          "[controllers][entity]")
-{
+          "[controllers][entity]") {
   EntityController<User> ctrl;  // A fresh User controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Delete(std::move(cb),
-                    Requester(99, "users"),
-                    std::optional<uint64_t>{5});
-      });  // Caller 99 tries to delete record 5.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Delete(std::move(cb),
+                Requester(99, "users"),
+                std::optional<uint64_t>{5});
+  });  // Caller 99 tries to delete record 5.
   CHECK(r.status ==
         api::v2::Http::Status::FORBIDDEN);  // Proves the permission check
                                             // blocks cross-account deletes.
@@ -248,17 +219,14 @@ TEST_CASE("EntityController::Delete with mismatched requester → 403",
 TEST_CASE(
     "EntityController::Delete with matching requester proceeds to DB "
     "(unavailable)",
-    "[controllers][entity]")
-{
+    "[controllers][entity]") {
   EntityController<User> ctrl;  // A fresh User controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Delete(std::move(cb),
-                    Requester(5, "users"),
-                    std::optional<uint64_t>{5});
-      });  // Caller 5 deletes record 5, so permissions pass and the DB is
-           // reached.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Delete(std::move(cb),
+                Requester(5, "users"),
+                std::optional<uint64_t>{5});
+  });  // Caller 5 deletes record 5, so permissions pass and the DB is
+                         // reached.
   CHECK_FALSE(
       r.body.empty());  // Proves a response body is still produced rather
                         // than crashing when the DB is unavailable.
@@ -271,14 +239,11 @@ TEST_CASE(
 
 // Search refuses a body that is not JSON.
 TEST_CASE("EntityController::Search with malformed JSON → 400",
-          "[controllers][entity]")
-{
+          "[controllers][entity]") {
   EntityController<User> ctrl;  // A fresh User controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Search(std::move(cb), Requester(1, "users"), "not-json");
-      });  // Plain text instead of JSON.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Search(std::move(cb), Requester(1, "users"), "not-json");
+  });  // Plain text instead of JSON.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves unparsable input is
                                               // refused with 400.
@@ -286,14 +251,11 @@ TEST_CASE("EntityController::Search with malformed JSON → 400",
 
 // Search also refuses JSON that parses but lacks the fields it needs.
 TEST_CASE("EntityController::Search with incomplete search data → 406",
-          "[controllers][entity]")
-{
+          "[controllers][entity]") {
   EntityController<User> ctrl;  // A fresh User controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Search(std::move(cb), Requester(1, "users"), R"({"foo":"bar"})");
-      });  // Valid JSON, but no recognised search fields.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Search(std::move(cb), Requester(1, "users"), R"({"foo":"bar"})");
+  });  // Valid JSON, but no recognised search fields.
   CHECK(r.status ==
         api::v2::Http::Status::NOT_ACCEPTABLE);  // Proves incomplete criteria
                                                  // yield 406.
@@ -303,18 +265,15 @@ TEST_CASE("EntityController::Search with incomplete search data → 406",
 TEST_CASE(
     "EntityController::Search with valid search fields proceeds to DB "
     "(unavailable)",
-    "[controllers][entity]")
-{
+    "[controllers][entity]") {
   EntityController<User> ctrl;  // A fresh User controller.
-  auto                   r = capture(
-      [&](auto cb)
-      {
-        ctrl.Search(
-            std::move(cb),
-            Requester(1, "users"),
-            R"({"keyword":"alice","filter":"name","order_by":"id","direction":0,"limit":10,"offset":0})");
-      });  // All required fields present, so parsing succeeds and the DB path
-           // is reached.
+  auto                   r = capture([&](auto cb) {
+    ctrl.Search(
+        std::move(cb),
+        Requester(1, "users"),
+        R"({"keyword":"alice","filter":"name","order_by":"id","direction":0,"limit":10,"offset":0})");
+  });  // All required fields present, so parsing succeeds and the DB path
+                         // is reached.
   CHECK_FALSE(r.body.empty());  // Proves a body is returned even though the
                                 // DB could not be contacted.
 }

@@ -66,8 +66,8 @@
 #include "store/store.hpp"
 // Turns a message string into a JSON body.
 #include "utils/jsonhelper/jsonhelper.hpp"
-namespace api::v2::Filters  // Filters for the v2 API live here.
-{
+// Filters for the v2 API live here.
+namespace api::v2::Filters {
   /**
    * @class Auth
    * @brief Drogon filter that validates the Bearer token and identifies the
@@ -86,9 +86,9 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
    * filter (SECURE).
    */
   class Auth
-      : public drogon::HttpFilter<Auth>  // Inherit Drogon's filter template
-                                         // so Drogon can discover and run it.
-  {
+      // Inherit Drogon's filter template
+      // so Drogon can discover and run it.
+      : public drogon::HttpFilter<Auth> {
    public:
     /** @brief Default-constructs the filter; the GateKeeper is obtained
      * from the service locator. */
@@ -110,12 +110,11 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
      * @param[in,out] fccb Chain callback invoked on success to run the next
      * filter/handler.
      */
+    // Drogon calls this for every request on the filter
+    // chain.
     void doFilter(const drogon::HttpRequestPtr& req,
                   drogon::FilterCallback&&      fcb,
-                  drogon::FilterChainCallback&& fccb)
-        override  // Drogon calls this for every request on the filter
-                  // chain.
-    {
+                  drogon::FilterChainCallback&& fccb) override {
       const std::string bearer =
           "Bearer ";  // The exact prefix a valid Authorization header
                       // must start with.
@@ -131,12 +130,11 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
 
       // Check for "Bearer " prefix using a fast substring
       // comparison
+      // Reject missing, too-short or wrong-prefix
+      // headers before any DB work.
       if (auth_header.empty() || auth_header.size() <= bearerMagic ||
           auth_header[bearerMagic - 1] != ' ' ||
-          auth_header.substr(0, bearerMagic) !=
-              bearer)  // Reject missing, too-short or wrong-prefix
-                       // headers before any DB work.
-      {
+          auth_header.substr(0, bearerMagic) != bearer) {
         // Malformed or non-Bearer header -> short-circuit with a JSON
         // 401.
         auto resp =
@@ -178,9 +176,9 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
                                       ->get<Configurator::DatabaseConfig>()
                                       .async;  // Cached so the setting is read
                                                // only once, not per request.
-      if (asyncDb)  // Choose the coroutine path when asynchronous
-                    // database access is configured.
-      {
+      // Choose the coroutine path when asynchronous
+      // database access is configured.
+      if (asyncDb) {
         const size_t bearerMagicLocal =
             bearerMagic;  // Copy by value so the coroutine does not
                           // capture a reference to a local.
@@ -190,119 +188,113 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
         // Move the callbacks into storage owned by the coroutine frame:
         // async_run moves the factory (and its captures) into the
         // coroutine, so they outlive every suspension.
-        drogon::async_run(
-            [req,
-             bearerMagicLocal,
-             gateKeeperLocal,
-             fcb  = std::move(fcb),
-             fccb = std::move(fccb)]() mutable
-                -> drogon::Task<void>  // Capture everything by value;
-                                       // mutable lets us move the
-                                       // callbacks out later.
-            {
-              std::optional<Types::ClientLoginData> clientLoginData =
-                  Types::ClientLoginData{};  // Rebuild credentials
-                                             // inside the coroutine
-                                             // (its own stack frame).
-              clientLoginData->token =
-                  req->getHeader("Authorization")
-                      .substr(bearerMagicLocal);  // Re-read the token
-                                                  // using the saved
-                                                  // prefix length.
-              clientLoginData->ip_address =
-                  req->getPeerAddr().toIp();  // Re-read the peer IP
-                                              // inside the coroutine.
-              std::string message;  // Reason text for a failed validation.
-              bool        valid = false;  // Result of the validation call.
-              drogon::FilterCallback cb =
-                  std::move(fcb);  // Move the rejection callback into the
-                                   // coroutine so it survives suspension.
-              drogon::FilterChainCallback chain =
-                  std::move(fccb);  // Move the success callback in as well.
-              try                   // Validation may throw when the database is
-                                    // overloaded.
-              {
-                valid =
-                    co_await gateKeeperLocal
-                        ->isAuthenticationValidAsync(clientLoginData,
-                                                     message);  // Suspend until
-                                                                // the async
-                                                                // check
-                                                                // finishes;
-                                                                // fill valid
-                                                                // and message.
-              }
-              catch (const DatabaseBusy& e)  // Too many DB requests in flight.
-              {
-                auto resp =
-                    drogon::HttpResponse::newHttpResponse();  // Build the retry
-                                                              // response.
-                resp->setStatusCode(drogon::HttpStatusCode::
-                                        // 503 tells the client the server is
-                                        // temporarily unavailable.
-                                    k503ServiceUnavailable);
-                resp->setContentTypeCode(
-                    // Body is JSON.
-                    drogon::CT_APPLICATION_JSON);
-                resp->addHeader("Retry-After",
-                                "1");  // Ask the client to retry in one second.
-                resp->setBody(JsonHelper::stringify(
-                    JsonHelper::jsonify(e.what())));  // Send the exception text
-                                                      // as JSON.
-                std::move(cb)(resp);  // Deliver the 503 and end this path.
-                co_return;            // Exit the coroutine (do not continue
-                                      // the chain).
-              }
-              if (!valid)  // The token was rejected.
-              {
-                auto resp =
-                    drogon::HttpResponse::newHttpResponse();  // Build the
-                                                              // unauthorized
-                                                              // response.
-                resp->setStatusCode(drogon::HttpStatusCode::
-                                        k401Unauthorized);  // 401 = not
+        // Capture everything by value;
+        // mutable lets us move the
+        // callbacks out later.
+        drogon::async_run([req,
+                           bearerMagicLocal,
+                           gateKeeperLocal,
+                           fcb  = std::move(fcb),
+                           fccb = std::move(
+                               fccb)]() mutable -> drogon::Task<void> {
+          std::optional<Types::ClientLoginData> clientLoginData =
+              Types::ClientLoginData{};  // Rebuild credentials
+                                         // inside the coroutine
+                                         // (its own stack frame).
+          clientLoginData->token =
+              req->getHeader("Authorization")
+                  .substr(bearerMagicLocal);  // Re-read the token
+                                              // using the saved
+                                              // prefix length.
+          clientLoginData->ip_address =
+              req->getPeerAddr().toIp();  // Re-read the peer IP
+                                          // inside the coroutine.
+          std::string message;        // Reason text for a failed validation.
+          bool        valid = false;  // Result of the validation call.
+          drogon::FilterCallback cb =
+              std::move(fcb);  // Move the rejection callback into the
+                               // coroutine so it survives suspension.
+          drogon::FilterChainCallback chain =
+              std::move(fccb);  // Move the success callback in as well.
+          // Validation may throw when the database is
+          // overloaded.
+          try {
+            // Suspend until
+            // the async
+            // check
+            // finishes;
+            // fill valid
+            // and message.
+            // Too many DB requests in flight.
+            valid = co_await gateKeeperLocal
+                        ->isAuthenticationValidAsync(clientLoginData, message);
+          } catch (const DatabaseBusy& e) {
+            auto resp =
+                drogon::HttpResponse::newHttpResponse();  // Build the retry
+                                                          // response.
+            resp->setStatusCode(drogon::HttpStatusCode::
+                                    // 503 tells the client the server is
+                                    // temporarily unavailable.
+                                k503ServiceUnavailable);
+            resp->setContentTypeCode(
+                // Body is JSON.
+                drogon::CT_APPLICATION_JSON);
+            resp->addHeader("Retry-After",
+                            "1");  // Ask the client to retry in one second.
+            resp->setBody(JsonHelper::stringify(
+                JsonHelper::jsonify(e.what())));  // Send the exception text
+                                                  // as JSON.
+            std::move(cb)(resp);  // Deliver the 503 and end this path.
+            co_return;            // Exit the coroutine (do not continue
+                                  // the chain).
+          }
+          // The token was rejected.
+          if (!valid) {
+            auto resp =
+                drogon::HttpResponse::newHttpResponse();  // Build the
+                                                          // unauthorized
+                                                          // response.
+            resp->setStatusCode(
+                drogon::HttpStatusCode::k401Unauthorized);  // 401 = not
                                                             // authenticated.
-                resp->setContentTypeCode(
-                    // Body is JSON.
-                    drogon::CT_APPLICATION_JSON);
-                resp->setBody(JsonHelper::stringify(
-                    JsonHelper::jsonify(message)));  // Explain why validation
-                                                     // failed.
-                std::move(cb)(resp);                 // Send the 401.
-                co_return;  // Stop here; the handler must not run.
-              }
+            resp->setContentTypeCode(
+                // Body is JSON.
+                drogon::CT_APPLICATION_JSON);
+            resp->setBody(JsonHelper::stringify(
+                JsonHelper::jsonify(message)));  // Explain why validation
+                                                 // failed.
+            std::move(cb)(resp);                 // Send the 401.
+            co_return;  // Stop here; the handler must not run.
+          }
 
-              // Populate the identity attributes consumed by
-              // controllers' permission checks.
-              req->attributes()
-                  ->insert("clientID",
-                           clientLoginData->clientId
-                               .value());  // Store the authenticated client id
-                                           // on the request.
-              req->attributes()
-                  ->insert("clientGroup",
-                           clientLoginData->group
-                               .value());  // Store the client's group used for
-                                           // permission checks.
+          // Populate the identity attributes consumed by
+          // controllers' permission checks.
+          req->attributes()->insert("clientID",
+                                    clientLoginData->clientId
+                                        .value());  // Store the authenticated
+                                                    // client id on the request.
+          req->attributes()
+              ->insert("clientGroup",
+                       clientLoginData->group
+                           .value());  // Store the client's group used for
+                                       // permission checks.
 
-              // Token is valid, pass control to the next
-              // filter/handler
-              std::move(chain)();  // Continue the chain so the actual
-                                   // route handler runs.
-            });
+          // Token is valid, pass control to the next
+          // filter/handler
+          std::move(chain)();  // Continue the chain so the actual
+                               // route handler runs.
+        });
         return;  // The coroutine owns the rest; leave doFilter now.
       }
 
       bool valid = false;  // Blocking-mode result of the validation call.
-      try                  // Guard against a busy database.
-      {
-        valid = gateKeeper
-                    ->isAuthenticationValid(clientLoginData,
-                                            message);  // Blocking check; fills
-                                                       // valid and message.
-      }
-      catch (const DatabaseBusy& e)  // Connection pool exhausted.
-      {
+      // Guard against a busy database.
+      try {
+        // Blocking check; fills
+        // valid and message.
+        // Connection pool exhausted.
+        valid = gateKeeper->isAuthenticationValid(clientLoginData, message);
+      } catch (const DatabaseBusy& e) {
         auto resp =
             // Build the retry response.
             drogon::HttpResponse::newHttpResponse();
@@ -317,8 +309,8 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
         std::move(fcb)(resp);                 // Deliver the 503.
         return;                               // Stop; no handler runs.
       }
-      if (!valid)  // Token rejected.
-      {
+      // Token rejected.
+      if (!valid) {
         auto resp =
             drogon::HttpResponse::newHttpResponse();  // Build the unauthorized
                                                       // response.

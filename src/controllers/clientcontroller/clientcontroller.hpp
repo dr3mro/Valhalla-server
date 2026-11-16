@@ -78,8 +78,8 @@
  * @see ClientControllerBase, EntityController, PasswordWorker
  */
 template <Client_t T>
-class ClientController : public EntityController<T>, public ClientControllerBase
-{
+class ClientController : public EntityController<T>,
+                         public ClientControllerBase {
  public:
   ClientController() =
       default;  // Services are initialized by their member initializers.

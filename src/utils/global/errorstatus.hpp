@@ -35,9 +35,9 @@
 // Provides the Status enum with the 500/503 values returned here.
 #include "utils/global/http.hpp"
 
-namespace api::v2::Http  // Same namespace as the Status enum, so the helper
-                         // sits beside the codes it returns.
-{
+// Same namespace as the Status enum, so the helper
+// sits beside the codes it returns.
+namespace api::v2::Http {
   // 503 when no database connection was available (the client should retry),
   // 500 for any other failure.
   /**
@@ -51,10 +51,9 @@ namespace api::v2::Http  // Same namespace as the Status enum, so the helper
    * @note Classification uses dynamic_cast, so it relies on the exception
    *       being polymorphic (as all std::exception-derived types are).
    */
-  inline Status statusForException(
-      const std::exception& e)  // Takes the exception by const reference: no
-                                // copy, and it is only inspected.
-  {
+  // Takes the exception by const reference: no
+  // copy, and it is only inspected.
+  inline Status statusForException(const std::exception& e) {
     // dynamic_cast checks at runtime whether e is really a DatabaseBusy; if
     // so, "retry later" (503), else generic 500.
     return dynamic_cast<const DatabaseBusy*>(&e) != nullptr

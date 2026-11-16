@@ -65,8 +65,7 @@
  * unless the test fills it). This avoids a real database while still letting
  * tests observe results and call counts.
  */
-class FakeDatabaseController : public DatabaseController
-{
+class FakeDatabaseController : public DatabaseController {
  public:
   std::optional<jsoncons::json>
       query_result;  // Answer returned by executeQuery (write queries).
@@ -105,73 +104,64 @@ class FakeDatabaseController : public DatabaseController
   int query_calls =
       0;  // Counter used to prove whether a code path performed a write.
 
-  std::optional<jsoncons::json> executeQuery(const std::string&,
-                                             const pqxx::params& = {})
-      override  // Write query: may throw if busy, then counts the call and
-                // returns query_result.
-  {
+  // Write query: may throw if busy, then counts the call and
+  // returns query_result.
+  std::optional<jsoncons::json> executeQuery(
+      const std::string&, const pqxx::params& = {}) override {
     throwIfBusy();        // Simulate a busy pool by throwing before doing any
                           // work.
     ++query_calls;        // Record that a write was attempted.
     return query_result;  // Hand back whatever the test configured.
   }
 
+  // Read query: may throw if busy,
+  // otherwise returns read_result.
   std::optional<jsoncons::json> executeReadQuery(
-      const std::string&,
-      const pqxx::params& = {}) override  // Read query: may throw if busy,
-                                          // otherwise returns read_result.
-  {
+      const std::string&, const pqxx::params& = {}) override {
     throwIfBusy();       // Keep busy behaviour consistent across query methods.
     return read_result;  // Return the configured read answer.
   }
 
+  // Search query: returns a list of rows.
   std::optional<jsoncons::json::array> executeSearchQuery(
-      const std::string&, const pqxx::params& = {})
-      override  // Search query: returns a list of rows.
-  {
+      const std::string&, const pqxx::params& = {}) override {
     throwIfBusy();         // Simulate a busy pool here too.
     return search_result;  // Return the configured list of rows.
   }
 
+  // Raw read: returns plain text rather than JSON.
   std::optional<std::string> doReadQuery(const std::string&,
-                                         const pqxx::params& = {})
-      override  // Raw read: returns plain text rather than JSON.
-  {
+                                         const pqxx::params& = {}) override {
     throwIfBusy();          // Same busy simulation.
     return do_read_result;  // Return the configured text answer.
   }
 
+  // Existence check: answers yes/no from a field.
   std::optional<bool> checkItemExists(const std::string&,
                                       const std::string&,
-                                      const std::string&)
-      override  // Existence check: answers yes/no from a field.
-  {
+                                      const std::string&) override {
     throwIfBusy();         // Same busy simulation.
     return exists_result;  // Return the configured yes/no answer.
   }
 
+  // Looks up a stored password hash.
   std::optional<jsoncons::json> getPasswordHashForUserName(
-      const std::string&,
-      const std::string&) override  // Looks up a stored password hash.
-  {
+      const std::string&, const std::string&) override {
     throwIfBusy();           // Same busy simulation.
     return password_result;  // Return the configured hash.
   }
 
   std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(
-      const std::string&) override
-  {
+      const std::string&) override {
     return schema_result;
   }  // Metadata lookup: ignores `busy` on purpose.
 
-  std::optional<std::unordered_set<std::string>> getAllTables() override
-  {
+  std::optional<std::unordered_set<std::string>> getAllTables() override {
     return tables_result;
   }  // Metadata lookup: ignores `busy` on purpose.
 
-  std::optional<jsoncons::json> getPermissions(
-      const std::string&) override  // Permission lookup for a table.
-  {
+  // Permission lookup for a table.
+  std::optional<jsoncons::json> getPermissions(const std::string&) override {
     throwIfBusy();  // A permissions query is treated like a normal query.
     return permissions_result;  // Return the configured permissions.
   }
@@ -182,10 +172,9 @@ class FakeDatabaseController : public DatabaseController
   int coro_calls =
       0;  // how many async queries ran, to check a path used the async seam
 
+  // Async write query: mirrors executeQuery.
   drogon::Task<std::optional<jsoncons::json>> executeQueryCoro(
-      const std::string&, const pqxx::params& = {})
-      override  // Async write query: mirrors executeQuery.
-  {
+      const std::string&, const pqxx::params& = {}) override {
     throwIfBusy();           // Simulate a busy pool in the async path too.
     ++query_calls;           // Count it as a write, just like the synchronous
                              // version.
@@ -194,66 +183,60 @@ class FakeDatabaseController : public DatabaseController
                              // coroutine.
   }
 
+  // Async read query.
   drogon::Task<std::optional<jsoncons::json>> executeReadQueryCoro(
-      const std::string&,
-      const pqxx::params& = {}) override  // Async read query.
-  {
+      const std::string&, const pqxx::params& = {}) override {
     throwIfBusy();          // Same busy simulation.
     ++coro_calls;           // Record use of the async seam.
     co_return read_result;  // Return the configured read answer.
   }
 
+  // Async search query.
   drogon::Task<std::optional<jsoncons::json::array>> executeSearchQueryCoro(
-      const std::string&,
-      const pqxx::params& = {}) override  // Async search query.
-  {
+      const std::string&, const pqxx::params& = {}) override {
     throwIfBusy();            // Same busy simulation.
     ++coro_calls;             // Record use of the async seam.
     co_return search_result;  // Return the configured list of rows.
   }
 
+  // Async raw-text read.
   drogon::Task<std::optional<std::string>> doReadQueryCoro(
-      const std::string&,
-      const pqxx::params& = {}) override  // Async raw-text read.
-  {
+      const std::string&, const pqxx::params& = {}) override {
     throwIfBusy();             // Same busy simulation.
     ++coro_calls;              // Record use of the async seam.
     co_return do_read_result;  // Return the configured text answer.
   }
 
+  // Async existence check.
   drogon::Task<std::optional<bool>> checkItemExistsCoro(
-      const std::string&,
-      const std::string&,
-      const std::string&) override  // Async existence check.
-  {
+      const std::string&, const std::string&, const std::string&) override {
     throwIfBusy();            // Same busy simulation.
     ++coro_calls;             // Record use of the async seam.
     co_return exists_result;  // Return the configured yes/no answer.
   }
 
+  // Async password lookup.
   drogon::Task<std::optional<jsoncons::json>> getPasswordHashForUserNameCoro(
-      const std::string&,
-      const std::string&) override  // Async password lookup.
-  {
+      const std::string&, const std::string&) override {
     throwIfBusy();              // Same busy simulation.
     ++coro_calls;               // Record use of the async seam.
     co_return password_result;  // Return the configured hash.
   }
 
+  // Async permission lookup.
   drogon::Task<std::optional<jsoncons::json>> getPermissionsCoro(
-      const std::string&) override  // Async permission lookup.
-  {
+      const std::string&) override {
     throwIfBusy();                 // Same busy simulation.
     ++coro_calls;                  // Record use of the async seam.
     co_return permissions_result;  // Return the configured permissions.
   }
 
  private:
-  void throwIfBusy() const  // One shared helper so every query method behaves
-                            // the same when busy.
-  {
-    if (busy)  // Only throw when the test has asked for busy behaviour.
-    {
+  // One shared helper so every query method behaves
+  // the same when busy.
+  void throwIfBusy() const {
+    // Only throw when the test has asked for busy behaviour.
+    if (busy) {
       throw DatabaseBusy();  // Throw the same exception a real timed-out
                              // pool would throw.
     }
@@ -268,15 +251,12 @@ class FakeDatabaseController : public DatabaseController
  * Store::getObject<DatabaseController>().
  * @brief Temporarily replaces the Store's database object with a fake.
  */
-struct FakeDbGuard
-{
+struct FakeDbGuard {
   std::shared_ptr<DatabaseController>
       original;  // Keeps the real object so it can be restored later.
 
-  explicit FakeDbGuard(
-      std::shared_ptr<FakeDatabaseController>
-          fake)  // `explicit` prevents accidental implicit conversion.
-  {
+  // `explicit` prevents accidental implicit conversion.
+  explicit FakeDbGuard(std::shared_ptr<FakeDatabaseController> fake) {
     original =
         Store::getObject<DatabaseController>();  // Save whatever object is
                                                  // currently registered.
@@ -284,8 +264,7 @@ struct FakeDbGuard
         std::move(fake));  // Install the fake in its place.
   }
 
-  ~FakeDbGuard()
-  {
+  ~FakeDbGuard() {
     Store::replaceObject<DatabaseController>(original);
   }  // Put the original object back at scope exit.
 

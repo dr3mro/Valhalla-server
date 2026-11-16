@@ -40,10 +40,9 @@
 #include "store/store.hpp"  // Store locates the shared Configurator instance.
 // Logger backed by asynchronous spdlog; not a crow handler.
 
-Logger::Logger()  // Constructor performs all logger setup and registration.
-{
-  try
-  {
+// Constructor performs all logger setup and registration.
+Logger::Logger() {
+  try {
     auto configurator =
         Store::getObject<Configurator>();  // Fetch the process-wide
                                            // Configurator from the service
@@ -102,16 +101,16 @@ Logger::Logger()  // Constructor performs all logger setup and registration.
     std::vector<std::shared_ptr<spdlog::sinks::sink>>
         sinks;  // Holds the sinks that are actually enabled by
                 // configuration.
-    if (server_config.log_to_console)  // Only include the console sink when
-                                       // the config asks for it.
-    {
+    // Only include the console sink when
+    // the config asks for it.
+    if (server_config.log_to_console) {
       sinks.push_back(
           console_sink);  // Add the console sink to the enabled set.
     }
 
-    if (server_config.log_to_file)  // Only include the file sink when the
-                                    // config asks for it.
-    {
+    // Only include the file sink when the
+    // config asks for it.
+    if (server_config.log_to_file) {
       sinks.push_back(
           file_sink);  // Add the rotating file sink to the enabled set.
     }
@@ -136,12 +135,12 @@ Logger::Logger()  // Constructor performs all logger setup and registration.
     // Optional: set as the default logger
     spdlog::set_default_logger(
         logger_);  // Makes this the logger used by spdlog's free functions.
-    trantor::Logger::enableSpdLog(logger_);  // Tells Trantor to forward its own
-                                             // records to this logger too.
-  }
-  catch (const spdlog::spdlog_ex& e)  // Catches spdlog setup errors, notably
-                                      // a duplicate registration.
-  {
+    // Tells Trantor to forward its own
+    // records to this logger too.
+    // Catches spdlog setup errors, notably
+    // a duplicate registration.
+    trantor::Logger::enableSpdLog(logger_);
+  } catch (const spdlog::spdlog_ex& e) {
     // Report via stdout, not the logger being constructed, to avoid
     // depending on the very object whose initialisation failed.
     fmt::print("SPDLog initialization failed: {}",
@@ -150,14 +149,13 @@ Logger::Logger()  // Constructor performs all logger setup and registration.
   }
 }
 // Receives Trantor log records and forwards them to the spdlog backend.
-void Logger::log(const std::string&        message,
-                 trantor::Logger::LogLevel level)  // Called for each Trantor
-                                                   // record that needs logging.
-{
+// Called for each Trantor
+// record that needs logging.
+void Logger::log(const std::string& message, trantor::Logger::LogLevel level) {
   // Unknown or out-of-range levels fall through the default branch and are
   // dropped.
-  switch (level)  // Choose the spdlog severity that matches the Trantor level.
-  {
+  // Choose the spdlog severity that matches the Trantor level.
+  switch (level) {
     case trantor::Logger::LogLevel::kDebug:  // Debug level.
       logger_->debug(message);              // Forward as a spdlog debug record.
       break;                                // Leave the switch.
@@ -179,9 +177,8 @@ void Logger::log(const std::string&        message,
   }
 }
 
-std::string Logger::get_color(
-    Color color)  // Looks up the escape sequence for one colour.
-{
+// Looks up the escape sequence for one colour.
+std::string Logger::get_color(Color color) {
   static const std::unordered_map<Logger::Color, std::string> color_map = {
       // A read-only map built once from colour names to ANSI codes.
       {Logger::Color::Red, "\033[1;91m"},     // Bright Red for errors

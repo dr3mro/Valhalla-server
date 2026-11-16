@@ -52,10 +52,10 @@ using GateKeeper =
 
 // ── isDosAttack (uses singleton DOSDetector from Store) ─────────────────────
 
+// Registers the test that a never-seen request
+// passes the DoS check.
 TEST_CASE("GateKeeper::isDosAttack allows a fresh request",
-          "[gatekeeper][dos]")  // Registers the test that a never-seen request
-                                // passes the DoS check.
-{
+          "[gatekeeper][dos]") {
   GateKeeper gk;  // The facade; it finds its dependencies from process-wide
                   // singletons.
   const DOSDetector::Request req{
@@ -76,10 +76,10 @@ TEST_CASE("GateKeeper::isDosAttack allows a fresh request",
                                         // blocked by the detector.
 }
 
+// Registers the test that the facade only ever
+// returns known verdicts.
 TEST_CASE("GateKeeper::isDosAttack returns a valid status for every request",
-          "[gatekeeper][dos]")  // Registers the test that the facade only ever
-                                // returns known verdicts.
-{
+          "[gatekeeper][dos]") {
   // The singleton DOSDetector uses whatever threshold is in the environment.
   // We only verify the return type is one of the known Status values — the
   // threshold logic is exhaustively tested in test_dosdetector.cpp.
@@ -110,10 +110,10 @@ TEST_CASE("GateKeeper::isDosAttack returns a valid status for every request",
 
 // ── isAuthenticationValid (Store singletons, no DB) ─────────────────────────
 
+// Registers the test for the "no login info at
+// all" case.
 TEST_CASE("GateKeeper::isAuthenticationValid rejects an empty ClientLoginData",
-          "[gatekeeper][auth]")  // Registers the test for the "no login info at
-                                 // all" case.
-{
+          "[gatekeeper][auth]") {
   GateKeeper gk;  // The facade under test.
   std::optional<api::v2::Types::ClientLoginData>
               empty;  // An empty optional: there is no login data to validate.
@@ -127,10 +127,10 @@ TEST_CASE("GateKeeper::isAuthenticationValid rejects an empty ClientLoginData",
 
 TEST_CASE(
     "GateKeeper::isAuthenticationValid rejects a token with an invalid "
+    // Registers the test for a correctly shaped but
+    // wrongly signed token.
     "signature",
-    "[gatekeeper][auth]")  // Registers the test for a correctly shaped but
-                           // wrongly signed token.
-{
+    "[gatekeeper][auth]") {
   GateKeeper        gk;  // The facade under test.
   const std::string llodt =
       "2026-01-01 00:00:00 +0000";  // Fixed last-logout time so the token is

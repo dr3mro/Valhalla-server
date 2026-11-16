@@ -50,12 +50,10 @@
 // FakeDatabaseController and FakeDbGuard for hermetic DB answers.
 #include "support/fake_db.hpp"
 
-namespace
-{
+namespace {
   /** @brief Exposes the protected validateToken so it can be driven with a
    * fake DB. */
-  struct TestKeeprValidate : api::v2::KeeprBase
-  {
+  struct TestKeeprValidate : api::v2::KeeprBase {
     using KeeprBase::validateToken;  // Widen access to the protected
                                      // function without changing its
                                      // behaviour.
@@ -73,11 +71,10 @@ namespace
    * Builds a JSON row that getLastLogoutTimeIfActive() expects:
    * { "id": <id>, "last_logout": <llodt>, "active": <active> }
    */
-  jsoncons::json makeSessionRow(
-      uint64_t           id,
-      const std::string& llodt,
-      bool active)  // Builds one fake DB row describing a session.
-  {
+  // Builds one fake DB row describing a session.
+  jsoncons::json makeSessionRow(uint64_t           id,
+                                const std::string& llodt,
+                                bool               active) {
     jsoncons::json row =
         jsoncons::json::object();  // Start with an empty JSON object rather
                                    // than an array.
@@ -89,12 +86,12 @@ namespace
   }
 }  // namespace
 
+// Registers the test that a
+// token issued before a logout
+// is rejected.
 TEST_CASE(
     "KeeprBase::validateToken returns false when llodt mismatches DB value",
-    "[gatekeeper][keeprbase][validatetoken]")  // Registers the test that a
-                                               // token issued before a logout
-                                               // is rejected.
-{
+    "[gatekeeper][keeprbase][validatetoken]") {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
   FakeDbGuard guard(fake);  // Inject it before any keeper is built.
@@ -139,11 +136,10 @@ TEST_CASE(
                              // actual cause.
 }
 
-TEST_CASE(
-    "KeeprBase::validateToken returns false when account is inactive",
-    "[gatekeeper][keeprbase][validatetoken]")  // Registers the test that a
-                                               // suspended account is blocked.
-{
+// Registers the test that a
+// suspended account is blocked.
+TEST_CASE("KeeprBase::validateToken returns false when account is inactive",
+          "[gatekeeper][keeprbase][validatetoken]") {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
   FakeDbGuard guard(fake);  // Inject it before the keeper is built.
@@ -188,11 +184,11 @@ TEST_CASE(
 
 TEST_CASE(
     "KeeprBase::validateToken proceeds with caller-set values when DB returns "
+    // Registers the test documenting
+    // behaviour when the session row
+    // is missing.
     "no row",
-    "[gatekeeper][keeprbase][validatetoken]")  // Registers the test documenting
-                                               // behaviour when the session row
-                                               // is missing.
-{
+    "[gatekeeper][keeprbase][validatetoken]") {
   // validateToken ignores the bool returned by getLastLogoutTimeIfActive(),
   // so when the DB returns nullopt it falls through using whatever the caller
   // pre-set in clientLoginData. With llodt and active matching, it succeeds.
@@ -237,12 +233,12 @@ TEST_CASE(
                                     // automatic rejection.
 }
 
+// Registers the test that
+// tampering can never lead to
+// acceptance.
 TEST_CASE(
     "KeeprBase::validateToken returns false for a structurally malformed token",
-    "[gatekeeper][keeprbase][validatetoken]")  // Registers the test that
-                                               // tampering can never lead to
-                                               // acceptance.
-{
+    "[gatekeeper][keeprbase][validatetoken]") {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
   FakeDbGuard guard(fake);  // Inject it before the keeper is built.
@@ -278,8 +274,7 @@ TEST_CASE(
   TestKeeprValidate k;  // Instance used to reach the protected function.
   // jwt::decode on a tampered token may throw or produce a decodable token
   // that fails verify(). Either way validateToken must not succeed.
-  try
-  {
+  try {
     auto decoded = jwt::decode<jwt::traits::kazuho_picojson>(
         data->token.value());  // Try to decode the tampered text.
     std::string message;       // Receives any error text.
@@ -287,9 +282,7 @@ TEST_CASE(
                                 message,
                                 decoded));  // If decoding worked, prove
                                             // validation still rejects it.
-  }
-  catch (...)
-  {
+  } catch (...) {
     // decode itself threw — that's also acceptable (token was malformed).
     SUCCEED("jwt::decode threw for tampered token");  // A throw from decode is
                                                       // a valid outcome; mark
@@ -298,11 +291,10 @@ TEST_CASE(
   }
 }
 
-TEST_CASE(
-    "KeeprBase::validateToken returns true for a valid active token",
-    "[gatekeeper][keeprbase][validatetoken]")  // Registers the positive case
-                                               // for a healthy session.
-{
+// Registers the positive case
+// for a healthy session.
+TEST_CASE("KeeprBase::validateToken returns true for a valid active token",
+          "[gatekeeper][keeprbase][validatetoken]") {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
   FakeDbGuard guard(fake);  // Inject it before the keeper is built.

@@ -55,9 +55,9 @@ class Database;  // Forward declaration: the handler only passes around a
  * codebase.
  * @see DatabaseConnectionPool, DatabaseBusy
  */
-class DatabaseHanndler  // A short-lived guard that owns exactly one connection
-                        // borrowed from the pool.
-{
+// A short-lived guard that owns exactly one connection
+// borrowed from the pool.
+class DatabaseHanndler {
  public:
   /**
    * @brief Leases a connection using the pool obtained from the Store.

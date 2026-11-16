@@ -68,11 +68,10 @@
  * atomic stop flag each iteration.
  * @throws std::logic_error If a monitor thread is already joinable.
  */
-WatchDog::WatchDog()
-{
-  if (monitor_thread.joinable())  // A fresh object has no thread; this guard
-                                  // prevents accidentally replacing a live one.
-  {
+WatchDog::WatchDog() {
+  // A fresh object has no thread; this guard
+  // prevents accidentally replacing a live one.
+  if (monitor_thread.joinable()) {
     throw std::logic_error(
         "WatchDog thread already running!");  // Fail loudly rather than
                                               // lose track of a running
@@ -80,136 +79,131 @@ WatchDog::WatchDog()
   }
 
   // Start the monitoring thread
-  monitor_thread = std::thread(  // Launch the loop on its own thread; it runs
-                                 // until should_monitor becomes false.
-      [this]()  // Capture `this` so the loop can read the flag,
-                // interval and call members; the destructor joins
-                // before `this` dies.
-      {
-        while (should_monitor)  // The atomic stop flag is checked
-                                // every cycle for a prompt,
-                                // race-free shutdown.
-        {
-          try  // Keep one bad iteration from killing the whole
-               // monitoring thread.
-          {
-            // RAII lease: the connection is returned to the
-            // pool when the handler dies.
-            std::unique_ptr<DatabaseHanndler> dbHandler =
-                std::make_unique<DatabaseHanndler>();  // Heap allocation
-                                                       // keeps the lease
-                                                       // alive for the whole
-                                                       // iteration and
-                                                       // returns it
-                                                       // automatically.
-            std::shared_ptr<Database> db_ptr =
-                dbHandler->get_connection();  // Reach the actual
-                                              // connection to check.
+  // Launch the loop on its own thread; it runs
+  // until should_monitor becomes false.
+  // Capture `this` so the loop can read the flag,
+  // interval and call members; the destructor joins
+  // before `this` dies.
+  monitor_thread = std::thread([this]() {
+    // The atomic stop flag is checked
+    // every cycle for a prompt,
+    // race-free shutdown.
+    while (should_monitor) {
+      // Keep one bad iteration from killing the whole
+      // monitoring thread.
+      try {
+        // RAII lease: the connection is returned to the
+        // pool when the handler dies.
+        std::unique_ptr<DatabaseHanndler> dbHandler =
+            std::make_unique<DatabaseHanndler>();  // Heap allocation
+                                                   // keeps the lease
+                                                   // alive for the whole
+                                                   // iteration and
+                                                   // returns it
+                                                   // automatically.
+        std::shared_ptr<Database> db_ptr =
+            dbHandler->get_connection();  // Reach the actual
+                                          // connection to check.
 
-            if (db_ptr == nullptr)  // Defensive: the handler normally
-                                    // throws instead of returning null.
-            {
-              Message::WarningMessage(
-                  "WatchDog could not acquire a database "
-                  "connection "
-                  "within timeout.");  // Warn that this cycle
-                                       // could not run.
-              std::this_thread::sleep_for(
-                  check_interval);  // Wait before retrying so
-                                    // the loop does not spin.
-              continue;             // Skip the rest of this cycle and
-                                    // check the stop flag again.
+        // Defensive: the handler normally
+        // throws instead of returning null.
+        if (db_ptr == nullptr) {
+          Message::WarningMessage(
+              "WatchDog could not acquire a database "
+              "connection "
+              "within timeout.");  // Warn that this cycle
+                                   // could not run.
+          std::this_thread::sleep_for(
+              check_interval);  // Wait before retrying so
+                                // the loop does not spin.
+          continue;             // Skip the rest of this cycle and
+                                // check the stop flag again.
+        }
+
+        // A failed SELECT 1
+        // probe means the
+        // link is dead.
+        if (!db_ptr->check_connection()) {
+          Message::WarningMessage(
+              "Database connection lost. Attempting to "
+              "reconnect...");  // Human-readable notice
+                                // of the repair attempt.
+          Message::CriticalMessage(
+              fmt::format("Database connection {} link is lost.",
+                          static_cast<const void*>(
+                              db_ptr.get())));  // Include the
+                                                // connection address
+                                                // for tracing.
+          // Reconnecting can throw, so isolate it
+          // from the outer loop handler.
+          try {
+            // Rebuild this
+            // connection from
+            // its cached
+            // credentials.
+            if (db_ptr->reconnect()) {
+              Message::InfoMessage(
+                  fmt::format("Database connection "
+                              "{} is re-established "
+                              "successfully",
+                              static_cast<void*>(
+                                  // Log the repaired link. Also
+                                  // refresh the rest of the idle pool
+                                  // after this link recovered.
+                                  db_ptr.get())));
+              // Ask the pool to refresh all other idle
+              // connections too.
+              dbHandler->reconnect_all();
+            } else {
+              Message::ErrorMessage(
+                  "Failed to reconnect to "
+                  // Report a
+                  // non-throwing
+                  // reconnect
+                  // failure.
+                  // A driver exception
+                  // during reconnect should
+                  // not stop monitoring.
+                  "database");
             }
-
-            if (!db_ptr->check_connection())  // A failed SELECT 1
-                                              // probe means the
-                                              // link is dead.
-            {
-              Message::WarningMessage(
-                  "Database connection lost. Attempting to "
-                  "reconnect...");  // Human-readable notice
-                                    // of the repair attempt.
-              Message::CriticalMessage(
-                  fmt::format("Database connection {} link is lost.",
-                              static_cast<const void*>(
-                                  db_ptr.get())));  // Include the
-                                                    // connection address
-                                                    // for tracing.
-              try  // Reconnecting can throw, so isolate it
-                   // from the outer loop handler.
-              {
-                if (db_ptr->reconnect())  // Rebuild this
-                                          // connection from
-                                          // its cached
-                                          // credentials.
-                {
-                  Message::InfoMessage(
-                      fmt::format("Database connection "
-                                  "{} is re-established "
-                                  "successfully",
-                                  static_cast<void*>(
-                                      // Log the repaired link. Also
-                                      // refresh the rest of the idle pool
-                                      // after this link recovered.
-                                      db_ptr.get())));
-                  // Ask the pool to refresh all other idle
-                  // connections too.
-                  dbHandler->reconnect_all();
-                }
-                else
-                {
-                  Message::ErrorMessage(
-                      "Failed to reconnect to "
-                      "database");  // Report a
-                                    // non-throwing
-                                    // reconnect
-                                    // failure.
-                }
-              }
-              catch (const std::exception& e)  // A driver exception
-                                               // during reconnect should
-                                               // not stop monitoring.
-              {
-                Message::CriticalMessage(
-                    fmt::format("Reconnect exception: {}",
-                                e.what()));  // Record the exception
-                                             // text.
-              }
-            }
-
-            std::this_thread::sleep_for(
-                check_interval);  // Pace the loop so health
-                                  // checks happen once per
-                                  // interval.
-          }
-          // A saturated pool is not a fault: log and try again
-          // after the interval.
-          catch (const DatabaseBusy&)  // Expected under load: all
-                                       // connections were leased
-                                       // when the watchdog tried.
-          {
-            Message::WarningMessage(
-                "WatchDog could not acquire a database "
-                "connection "
-                "within timeout.");  // Note the skipped check
-                                     // without treating it as a
-                                     // crash.
-            std::this_thread::sleep_for(check_interval);  // Back off before the
-                                                          // next attempt.
-          }
-          catch (const std::exception& e)  // Any other error is logged
-                                           // but never ends the thread.
-          {
-            Message::CriticalMessage(
-                fmt::format("Monitoring exception: {}",
-                            e.what()));  // Include the exception text
-                                         // for diagnosis.
-            std::this_thread::sleep_for(
-                check_interval);  // Sleep so a persistent error
-                                  // cannot hot-loop.
+          } catch (const std::exception& e) {
+            Message::CriticalMessage(fmt::format("Reconnect exception: {}",
+                                                 e.what()));  // Record the
+                                                              // exception text.
           }
         }
-      });
+
+        std::this_thread::sleep_for(check_interval);  // Pace the loop so health
+                                                      // checks happen once per
+                                                      // interval.
+      }
+      // A saturated pool is not a fault: log and try again
+      // after the interval.
+      // Expected under load: all
+      // connections were leased
+      // when the watchdog tried.
+      catch (const DatabaseBusy&) {
+        Message::WarningMessage(
+            "WatchDog could not acquire a database "
+            "connection "
+            "within timeout.");  // Note the skipped check
+                                 // without treating it as a
+                                 // crash.
+        // Back off before the
+        // next attempt.
+        // Any other error is logged
+        // but never ends the thread.
+        std::this_thread::sleep_for(check_interval);
+      } catch (const std::exception& e) {
+        Message::CriticalMessage(
+            fmt::format("Monitoring exception: {}",
+                        e.what()));  // Include the exception text
+                                     // for diagnosis.
+        std::this_thread::sleep_for(check_interval);  // Sleep so a persistent
+                                                      // error cannot hot-loop.
+      }
+    }
+  });
 }
 
 /**
@@ -219,13 +213,12 @@ WatchDog::WatchDog()
  * destruction. This must happen before the pool the thread borrows from is torn
  * down.
  */
-WatchDog::~WatchDog()
-{
+WatchDog::~WatchDog() {
   // Ensure proper cleanup
-  should_monitor = false;         // Signal the loop to stop at its next check
-                                  // (atomic, so no data race).
-  if (monitor_thread.joinable())  // Only join a thread that is still running.
-  {
+  should_monitor = false;  // Signal the loop to stop at its next check
+                           // (atomic, so no data race).
+  // Only join a thread that is still running.
+  if (monitor_thread.joinable()) {
     monitor_thread.join();  // Wait for it to finish so it cannot touch
                             // `this` after destruction.
   }

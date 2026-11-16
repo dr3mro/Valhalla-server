@@ -45,9 +45,9 @@
 // Needed for the text fields (token, username, group, ip, timestamps).
 #include <string>
 
-namespace api::v2::Types  // Groups these types under the "api version 2 /
-                          // Types" namespace so names do not clash.
-{
+// Groups these types under the "api version 2 /
+// Types" namespace so names do not clash.
+namespace api::v2::Types {
   /**
    * @struct ClientLoginData
    * @brief Mutable accumulator that carries a client's identity through login
@@ -76,8 +76,7 @@ namespace api::v2::Types  // Groups these types under the "api version 2 /
    *          optional, so they start as `false` after `ClientLoginData{}` and
    * must be explicitly set from the database before they mean anything.
    */
-  using ClientLoginData = struct ClientLoginData
-  {
+  using ClientLoginData = struct ClientLoginData {
     std::optional<std::string>
         token; /**< JWT issued on login; supplied by the client on
                   subsequent requests. Optional because it only exists after
@@ -140,8 +139,7 @@ namespace api::v2::Types  // Groups these types under the "api version 2 /
    * lambda that runs on a worker thread, so keeping it cheap to copy/move
    * avoids extra work.
    */
-  using Credentials = struct Credentials
-  {
+  using Credentials = struct Credentials {
     std::string
         username;         /**< The user's username. Plain string because it is
                              required; used to look up the stored password hash. */

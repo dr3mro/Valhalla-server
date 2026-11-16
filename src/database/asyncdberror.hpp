@@ -56,8 +56,7 @@
  * `std::exception` because coroutine awaits surface their failures through that
  * base type.
  */
-namespace asyncdb
-{
+namespace asyncdb {
   /**
    * @brief Tests whether an exception represents a busy database (pool
    * exhaustion or timeout).

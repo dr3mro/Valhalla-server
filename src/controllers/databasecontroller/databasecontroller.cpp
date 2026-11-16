@@ -53,13 +53,12 @@
 #include "store/store.hpp"                      // Service locator for backends.
 #include "utils/global/types.hpp"               // ColumnInfo and shared types.
 
-DatabaseController::DatabaseController()
-{
+DatabaseController::DatabaseController() {
 }  // Deliberately empty: backends are created lazily on first query.
 
-void DatabaseController::ensureBackends()  // Thread-safe one-time creation of
-                                           // pool + watchdog.
-{
+// Thread-safe one-time creation of
+// pool + watchdog.
+void DatabaseController::ensureBackends() {
   // Lazily create the connection pool and watchdog on first use instead of
   // in the constructor: the pool constructor calls exit(EXIT_FAILURE) when
   // PostgreSQL is unreachable, which made the whole class unconstructible in
@@ -72,10 +71,9 @@ void DatabaseController::ensureBackends()  // Thread-safe one-time creation of
   // atomic load. The mutex is only taken during the first calls; the
   // release/acquire pair makes the pointers written below visible to every
   // thread that sees the flag set.
-  if (backendsReady_.load(
-          std::memory_order_acquire))  // Fast path: already initialized, so
-                                       // return immediately.
-  {
+  // Fast path: already initialized, so
+  // return immediately.
+  if (backendsReady_.load(std::memory_order_acquire)) {
     return;
   }
 
@@ -83,24 +81,22 @@ void DatabaseController::ensureBackends()  // Thread-safe one-time creation of
                                        // first-init path.
   std::scoped_lock  lock(backendInitMutex);  // RAII lock: held only in this
                                              // scope, released automatically.
-  if (backendsReady_.load(
-          std::memory_order_relaxed))  // Re-check after locking: another
-                                       // thread may have initialized.
-  {
+  // Re-check after locking: another
+  // thread may have initialized.
+  if (backendsReady_.load(std::memory_order_relaxed)) {
     return;
   }
-  if (!databaseConnectionPool_)  // Only create backends if they do not exist
-                                 // yet.
-  {
+  // Only create backends if they do not exist
+  // yet.
+  if (!databaseConnectionPool_) {
     // Hermetic unit-test seam: when VALHALLA_TEST_NO_DB is set (the unit
     // test binary sets it before any Configurator is created), the pool
     // and watchdog are never created. Every query path then reports
     // "database unavailable" (std::nullopt) deterministically, with no
     // sockets opened and no retries. Production never sets the variable,
     // so behaviour is unchanged there.
-    if (!testing_config_
-             ->no_db)  // Skip creation entirely in hermetic test mode.
-    {
+    // Skip creation entirely in hermetic test mode.
+    if (!testing_config_->no_db) {
       databaseConnectionPool_ =
           Store::getObject<DatabaseConnectionPool>();  // Resolve the shared
                                                        // pool from the service
@@ -114,8 +110,7 @@ void DatabaseController::ensureBackends()  // Thread-safe one-time creation of
 }
 
 std::optional<jsoncons::json> DatabaseController::executeQuery(
-    const std::string& query, const pqxx::params& params)
-{
+    const std::string& query, const pqxx::params& params) {
   // Non-transactional execution: a single statement owns its connection until
   // the handler is destroyed.
   return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json,
@@ -126,8 +121,7 @@ std::optional<jsoncons::json> DatabaseController::executeQuery(
 }
 
 std::optional<jsoncons::json> DatabaseController::executeReadQuery(
-    const std::string& query, const pqxx::params& params)
-{
+    const std::string& query, const pqxx::params& params) {
   return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json,
                                                           pqxx::nontransaction>,
                                   query,
@@ -136,8 +130,7 @@ std::optional<jsoncons::json> DatabaseController::executeReadQuery(
 }
 
 std::optional<jsoncons::json::array> DatabaseController::executeSearchQuery(
-    const std::string& query, const pqxx::params& params)
-{
+    const std::string& query, const pqxx::params& params) {
   return executer<
       jsoncons::json::array>(&Database::executeQuery<jsoncons::json::array,
                                                      pqxx::nontransaction>,
@@ -146,8 +139,7 @@ std::optional<jsoncons::json::array> DatabaseController::executeSearchQuery(
 }
 
 std::optional<std::string> DatabaseController::doReadQuery(
-    const std::string& query, const pqxx::params& params)
-{
+    const std::string& query, const pqxx::params& params) {
   return executer<std::string>(&Database::doSimpleQuery<std::string>,
                                query,
                                params);  // Map the first value to a string.
@@ -156,8 +148,7 @@ std::optional<std::string> DatabaseController::doReadQuery(
 std::optional<bool> DatabaseController::checkItemExists(
     const std::string& table,
     const std::string& column,
-    const std::string& value)
-{
+    const std::string& value) {
   return executer<bool>(&Database::checkExists,
                         table,
                         column,
@@ -165,13 +156,10 @@ std::optional<bool> DatabaseController::checkItemExists(
 }
 
 std::optional<jsoncons::json> DatabaseController::getPasswordHashForUserName(
-    const std::string& username, const std::string& tablename)
-{
+    const std::string& username, const std::string& tablename) {
   // Identifiers cannot be bound: only the two client tables are accepted.
-  if (tablename != "users" &&
-      tablename !=
-          "providers")  // Only fixed table names are safe to interpolate.
-  {
+  // Only fixed table names are safe to interpolate.
+  if (tablename != "users" && tablename != "providers") {
     Message::ErrorMessage(
         fmt::format("Unknown client table: {}",
                     tablename));  // Log a rejected identifier.
@@ -188,22 +176,19 @@ std::optional<jsoncons::json> DatabaseController::getPasswordHashForUserName(
 }
 
 std::optional<std::unordered_set<api::v2::ColumnInfo>>
-DatabaseController::getTableSchema(const std::string& tableName)
-{
+DatabaseController::getTableSchema(const std::string& tableName) {
   return executer<std::unordered_set<
       api::v2::ColumnInfo>>(&Database::getTableSchema,
                             tableName);  // Delegate the schema load.
 }
 
 std::optional<std::unordered_set<std::string>>
-DatabaseController::getAllTables()
-{
+DatabaseController::getAllTables() {
   return executer<std::unordered_set<std::string>>(&Database::getAllTables);
 }  // One-line delegation to the shared helper.
 
 std::optional<jsoncons::json> DatabaseController::getPermissions(
-    const std::string& query)
-{
+    const std::string& query) {
   return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json,
                                                           pqxx::nontransaction>,
                                   query,
@@ -218,22 +203,18 @@ std::optional<jsoncons::json> DatabaseController::getPermissions(
 
 drogon::Task<std::optional<jsoncons::json>>
 DatabaseController::executeQueryCoro(const std::string&  query,
-                                     const pqxx::params& params)
-{
+                                     const pqxx::params& params) {
   // All coroutine entry points share this guard: no async client means the DB
   // is unavailable, so report nullopt rather than throwing. The client is
   // obtained from the Store, not held as controller state.
   auto asyncClient = Store::getObject<AsyncDbClient>(
       nullptr);  // Look up the async client; nullptr if not configured.
-  if (asyncClient == nullptr ||
-      asyncClient->client() ==
-          nullptr)  // No client means the DB is unavailable.
-  {
+  // No client means the DB is unavailable.
+  if (asyncClient == nullptr || asyncClient->client() == nullptr) {
     co_return std::nullopt;  // Return an empty result; callers treat this
                              // as unavailable or failed.
   }
-  try
-  {
+  try {
     // Drogon transaction: BEGIN is sent on creation, COMMIT on destruction,
     // ROLLBACK on exception - the asynchronous counterpart of the
     // pqxx::work used by the synchronous path.
@@ -248,16 +229,14 @@ DatabaseController::executeQueryCoro(const std::string&  query,
                                                 // transaction.
     co_return asyncdb::mapResultToObject(
         result);  // Convert the rows into a JSON object.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     Message::CriticalMessage(
         fmt::format("Exception occurred during async query execution: {}",
                     e.what()));
     // A busy database is not a failed query: propagate DatabaseBusy so the
     // HTTP layer can answer 503.
-    if (asyncdb::isBusy(e))  // Distinct from a failed query: signals overload.
-    {
+    // Distinct from a failed query: signals overload.
+    if (asyncdb::isBusy(e)) {
       throw DatabaseBusy();  // Propagate so the HTTP layer can answer
                              // 503.
     }
@@ -268,19 +247,15 @@ DatabaseController::executeQueryCoro(const std::string&  query,
 
 drogon::Task<std::optional<jsoncons::json>>
 DatabaseController::executeReadQueryCoro(const std::string&  query,
-                                         const pqxx::params& params)
-{
+                                         const pqxx::params& params) {
   auto asyncClient = Store::getObject<AsyncDbClient>(
       nullptr);  // Look up the async client; nullptr if not configured.
-  if (asyncClient == nullptr ||
-      asyncClient->client() ==
-          nullptr)  // No client means the DB is unavailable.
-  {
+  // No client means the DB is unavailable.
+  if (asyncClient == nullptr || asyncClient->client() == nullptr) {
     co_return std::nullopt;  // Return an empty result; callers treat this
                              // as unavailable or failed.
   }
-  try
-  {
+  try {
     const auto result =
         co_await asyncdb::execSqlCoro(*asyncClient->client(),
                                       query,
@@ -288,14 +263,12 @@ DatabaseController::executeReadQueryCoro(const std::string&  query,
                                                 // transaction.
     co_return asyncdb::mapResultToObject(
         result);  // Convert the rows into a JSON object.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     Message::CriticalMessage(
         fmt::format("Exception occurred during async read query execution: {}",
                     e.what()));
-    if (asyncdb::isBusy(e))  // Distinct from a failed query: signals overload.
-    {
+    // Distinct from a failed query: signals overload.
+    if (asyncdb::isBusy(e)) {
       throw DatabaseBusy();  // Propagate so the HTTP layer can answer
                              // 503.
     }
@@ -306,19 +279,15 @@ DatabaseController::executeReadQueryCoro(const std::string&  query,
 
 drogon::Task<std::optional<jsoncons::json::array>>
 DatabaseController::executeSearchQueryCoro(const std::string&  query,
-                                           const pqxx::params& params)
-{
+                                           const pqxx::params& params) {
   auto asyncClient = Store::getObject<AsyncDbClient>(
       nullptr);  // Look up the async client; nullptr if not configured.
-  if (asyncClient == nullptr ||
-      asyncClient->client() ==
-          nullptr)  // No client means the DB is unavailable.
-  {
+  // No client means the DB is unavailable.
+  if (asyncClient == nullptr || asyncClient->client() == nullptr) {
     co_return std::nullopt;  // Return an empty result; callers treat this
                              // as unavailable or failed.
   }
-  try
-  {
+  try {
     const auto result =
         co_await asyncdb::execSqlCoro(*asyncClient->client(),
                                       query,
@@ -326,15 +295,13 @@ DatabaseController::executeSearchQueryCoro(const std::string&  query,
                                                 // transaction.
     co_return asyncdb::mapResultToArray(
         result);  // Convert the rows into a JSON array.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     Message::CriticalMessage(
         fmt::
             format("Exception occurred during async search query execution: {}",
                    e.what()));
-    if (asyncdb::isBusy(e))  // Distinct from a failed query: signals overload.
-    {
+    // Distinct from a failed query: signals overload.
+    if (asyncdb::isBusy(e)) {
       throw DatabaseBusy();  // Propagate so the HTTP layer can answer
                              // 503.
     }
@@ -344,41 +311,35 @@ DatabaseController::executeSearchQueryCoro(const std::string&  query,
 }
 
 drogon::Task<std::optional<std::string>> DatabaseController::doReadQueryCoro(
-    const std::string& query, const pqxx::params& params)
-{
+    const std::string& query, const pqxx::params& params) {
   auto asyncClient = Store::getObject<AsyncDbClient>(
       nullptr);  // Look up the async client; nullptr if not configured.
-  if (asyncClient == nullptr ||
-      asyncClient->client() ==
-          nullptr)  // No client means the DB is unavailable.
-  {
+  // No client means the DB is unavailable.
+  if (asyncClient == nullptr || asyncClient->client() == nullptr) {
     co_return std::nullopt;  // Return an empty result; callers treat this
                              // as unavailable or failed.
   }
-  try
-  {
+  try {
     const auto result =
         co_await asyncdb::execSqlCoro(*asyncClient->client(),
                                       query,
                                       params);  // Run SQL without an explicit
                                                 // transaction.
     // A simple read has no value to return when the result set is empty.
-    if (result.empty())  // No row means there is no value to return.
-    {
+    // No row means there is no value to return.
+    if (result.empty()) {
       co_return std::nullopt;  // Return an empty result; callers treat
                                // this as unavailable or failed.
     }
     co_return std::string(
         result[0][0].c_str());  // Return the very first cell as a string.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     Message::CriticalMessage(
         fmt::
             format("Exception occurred during async simple query execution: {}",
                    e.what()));
-    if (asyncdb::isBusy(e))  // Distinct from a failed query: signals overload.
-    {
+    // Distinct from a failed query: signals overload.
+    if (asyncdb::isBusy(e)) {
       throw DatabaseBusy();  // Propagate so the HTTP layer can answer
                              // 503.
     }
@@ -390,19 +351,15 @@ drogon::Task<std::optional<std::string>> DatabaseController::doReadQueryCoro(
 drogon::Task<std::optional<bool>> DatabaseController::checkItemExistsCoro(
     const std::string& table,
     const std::string& column,
-    const std::string& value)
-{
+    const std::string& value) {
   auto asyncClient = Store::getObject<AsyncDbClient>(
       nullptr);  // Look up the async client; nullptr if not configured.
-  if (asyncClient == nullptr ||
-      asyncClient->client() ==
-          nullptr)  // No client means the DB is unavailable.
-  {
+  // No client means the DB is unavailable.
+  if (asyncClient == nullptr || asyncClient->client() == nullptr) {
     co_return std::nullopt;  // Return an empty result; callers treat this
                              // as unavailable or failed.
   }
-  try
-  {
+  try {
     const std::string query =
         fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = $1);",
                     table,
@@ -412,21 +369,19 @@ drogon::Task<std::optional<bool>> DatabaseController::checkItemExistsCoro(
                                                       pqxx::params{value});
     // EXISTS always yields one row; an empty result means something went
     // wrong, not "false".
-    if (result.empty())  // No row means there is no value to return.
-    {
+    // No row means there is no value to return.
+    if (result.empty()) {
       co_return std::nullopt;  // Return an empty result; callers treat
                                // this as unavailable or failed.
     }
     co_return result[0][0]
         .as<bool>();  // EXISTS always yields one row; read its boolean.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     Message::CriticalMessage(
         fmt::format("Exception occurred during async exists check: {}",
                     e.what()));
-    if (asyncdb::isBusy(e))  // Distinct from a failed query: signals overload.
-    {
+    // Distinct from a failed query: signals overload.
+    if (asyncdb::isBusy(e)) {
       throw DatabaseBusy();  // Propagate so the HTTP layer can answer
                              // 503.
     }
@@ -436,13 +391,10 @@ drogon::Task<std::optional<bool>> DatabaseController::checkItemExistsCoro(
 }
 
 drogon::Task<std::optional<jsoncons::json>>
-DatabaseController::getPasswordHashForUserNameCoro(const std::string& username,
-                                                   const std::string& tablename)
-{
-  if (tablename != "users" &&
-      tablename !=
-          "providers")  // Only fixed table names are safe to interpolate.
-  {
+DatabaseController::getPasswordHashForUserNameCoro(
+    const std::string& username, const std::string& tablename) {
+  // Only fixed table names are safe to interpolate.
+  if (tablename != "users" && tablename != "providers") {
     Message::ErrorMessage(
         fmt::format("Unknown client table: {}",
                     tablename));  // Log a rejected identifier.
@@ -460,19 +412,15 @@ DatabaseController::getPasswordHashForUserNameCoro(const std::string& username,
 }
 
 drogon::Task<std::optional<std::unordered_set<api::v2::ColumnInfo>>>
-DatabaseController::getTableSchemaCoro(const std::string& tableName)
-{
+DatabaseController::getTableSchemaCoro(const std::string& tableName) {
   auto asyncClient = Store::getObject<AsyncDbClient>(
       nullptr);  // Look up the async client; nullptr if not configured.
-  if (asyncClient == nullptr ||
-      asyncClient->client() ==
-          nullptr)  // No client means the DB is unavailable.
-  {
+  // No client means the DB is unavailable.
+  if (asyncClient == nullptr || asyncClient->client() == nullptr) {
     co_return std::nullopt;  // Return an empty result; callers treat this
                              // as unavailable or failed.
   }
-  try
-  {
+  try {
     const std::string query =
         "SELECT column_name, data_type, column_default, is_nullable FROM "
         "information_schema.columns WHERE table_name = $1 AND column_name "
@@ -492,8 +440,8 @@ DatabaseController::getTableSchemaCoro(const std::string& tableName)
     // Map each information_schema row; a NULL default becomes "None" and
     // isNullable follows the "YES" flag.
     for (drogon::orm::Result::SizeType row = 0; row < result.size();
-         ++row)  // One iteration per returned column.
-    {
+         // One iteration per returned column.
+         ++row) {
       api::v2::ColumnInfo column;  // One column's metadata record.
       column.Name = std::string(
           result[row][0].c_str());  // Column name from the first field.
@@ -508,14 +456,12 @@ DatabaseController::getTableSchemaCoro(const std::string& tableName)
       schema.insert(column);  // Store the record in the set for the validator.
     }
     co_return schema;  // Hand the column set back to the caller.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     Message::CriticalMessage(
         fmt::format("Exception occurred during async schema load: {}",
                     e.what()));
-    if (asyncdb::isBusy(e))  // Distinct from a failed query: signals overload.
-    {
+    // Distinct from a failed query: signals overload.
+    if (asyncdb::isBusy(e)) {
       throw DatabaseBusy();  // Propagate so the HTTP layer can answer
                              // 503.
     }
@@ -525,19 +471,15 @@ DatabaseController::getTableSchemaCoro(const std::string& tableName)
 }
 
 drogon::Task<std::optional<std::unordered_set<std::string>>>
-DatabaseController::getAllTablesCoro()
-{
+DatabaseController::getAllTablesCoro() {
   auto asyncClient = Store::getObject<AsyncDbClient>(
       nullptr);  // Look up the async client; nullptr if not configured.
-  if (asyncClient == nullptr ||
-      asyncClient->client() ==
-          nullptr)  // No client means the DB is unavailable.
-  {
+  // No client means the DB is unavailable.
+  if (asyncClient == nullptr || asyncClient->client() == nullptr) {
     co_return std::nullopt;  // Return an empty result; callers treat this
                              // as unavailable or failed.
   }
-  try
-  {
+  try {
     const auto result = co_await asyncdb::
         execSqlCoro(*asyncClient->client(),
                     "SELECT table_name FROM information_schema.tables WHERE "
@@ -546,20 +488,18 @@ DatabaseController::getAllTablesCoro()
 
     std::unordered_set<std::string> tables;  // Collected table names.
     for (drogon::orm::Result::SizeType row = 0; row < result.size();
-         ++row)  // One iteration per returned column.
-    {
+         // One iteration per returned column.
+         ++row) {
       tables.insert(std::string(
           result[row][0].c_str()));  // Add each table name to the set.
     }
     co_return tables;  // Hand the table set back to the caller.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     Message::CriticalMessage(
         fmt::format("Exception occurred during async table list: {}",
                     e.what()));
-    if (asyncdb::isBusy(e))  // Distinct from a failed query: signals overload.
-    {
+    // Distinct from a failed query: signals overload.
+    if (asyncdb::isBusy(e)) {
       throw DatabaseBusy();  // Propagate so the HTTP layer can answer
                              // 503.
     }
@@ -569,32 +509,26 @@ DatabaseController::getAllTablesCoro()
 }
 
 drogon::Task<std::optional<jsoncons::json>>
-DatabaseController::getPermissionsCoro(const std::string& query)
-{
+DatabaseController::getPermissionsCoro(const std::string& query) {
   auto asyncClient = Store::getObject<AsyncDbClient>(
       nullptr);  // Look up the async client; nullptr if not configured.
-  if (asyncClient == nullptr ||
-      asyncClient->client() ==
-          nullptr)  // No client means the DB is unavailable.
-  {
+  // No client means the DB is unavailable.
+  if (asyncClient == nullptr || asyncClient->client() == nullptr) {
     co_return std::nullopt;  // Return an empty result; callers treat this
                              // as unavailable or failed.
   }
-  try
-  {
+  try {
     const auto result = co_await asyncdb::execSqlCoro(*asyncClient->client(),
                                                       query,
                                                       pqxx::params{});
     co_return asyncdb::mapResultToObject(
         result);  // Convert the rows into a JSON object.
-  }
-  catch (const std::exception& e)
-  {
+  } catch (const std::exception& e) {
     Message::CriticalMessage(
         fmt::format("Exception occurred during async permissions query: {}",
                     e.what()));
-    if (asyncdb::isBusy(e))  // Distinct from a failed query: signals overload.
-    {
+    // Distinct from a failed query: signals overload.
+    if (asyncdb::isBusy(e)) {
       throw DatabaseBusy();  // Propagate so the HTTP layer can answer
                              // 503.
     }

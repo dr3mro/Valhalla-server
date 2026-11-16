@@ -47,9 +47,9 @@
  * @see Appointment
  */
 class PharmacyAppointment
-    : public Appointment  // Public inheritance keeps the base CRUD interface
-                          // available.
-{
+    // Public inheritance keeps the base CRUD interface
+    // available.
+    : public Appointment {
  private:
   /**
    * @brief Database table holding pharmacy appointments.
@@ -73,10 +73,9 @@ class PharmacyAppointment
    */
   template <typename T>
   explicit PharmacyAppointment(const T& _data)
-      : Appointment(_data,
-                    TABLENAME)  // "explicit" requires a direct call; TABLENAME
-                                // fixes the target table.
-  {
+      // "explicit" requires a direct call; TABLENAME
+      // fixes the target table.
+      : Appointment(_data, TABLENAME) {
   }
   /**
    * @brief Non-copyable and non-movable; construct in place for the request
@@ -93,16 +92,14 @@ class PharmacyAppointment
   /**
    * @brief Returns the pharmacy appointment table name.
    */
-  static constexpr auto getTableName()
-  {
+  static constexpr auto getTableName() {
     return TABLENAME;
   }  // Static accessor for the table name.
 
   /**
    * @brief Returns the owning organisation name ("pharmacies").
    */
-  static constexpr auto getOrgName()
-  {
+  static constexpr auto getOrgName() {
     return ORGNAME;
   }  // Static accessor for the organisation name.
 
@@ -117,10 +114,9 @@ class PharmacyAppointment
    * @param[in] service_id Organisation row id.
    * @return SELECT of the pharmacy's owner/admin/staff.
    */
+  // Public wrapper with the expected name.
   static std::optional<std::string> getServicePermissionsQuery(
-      const std::string& service_name,
-      std::uint64_t      service_id)  // Public wrapper with the expected name.
-  {
+      const std::string& service_name, std::uint64_t service_id) {
     return getServicePermissionsQueryImpl(service_name,
                                           service_id);  // Delegate to the
                                                         // shared base
@@ -133,9 +129,9 @@ class PharmacyAppointment
    * @param[in] appointment_id Appointment row id.
    * @return SELECT of the owning pharmacy's owner/admin/staff.
    */
+  // Public wrapper for the owner lookup.
   static std::optional<std::string> getPermissionsQueryForRead(
-      std::uint64_t appointment_id)  // Public wrapper for the owner lookup.
-  {
+      std::uint64_t appointment_id) {
     return getPermissionsQueryForReadImpl(ORGNAME,
                                           TABLENAME,
                                           appointment_id);  // Supply this

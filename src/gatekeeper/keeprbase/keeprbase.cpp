@@ -71,8 +71,8 @@
 using KeeprBase =
     api::v2::KeeprBase;  // Short alias for the class name used below.
 
-namespace  // Anonymous namespace: sessionsTable is private to this .cpp file.
-{
+// Anonymous namespace: sessionsTable is private to this .cpp file.
+namespace {
   /**
    * @brief Maps a client group to its session table via a fixed allowlist.
    * @details Table names cannot be bound as query parameters, so
@@ -88,11 +88,9 @@ namespace  // Anonymous namespace: sessionsTable is private to this .cpp file.
    */
   // Identifiers cannot be bound as parameters, so the session table is chosen
   // from a fixed allowlist.
-  std::optional<std::string> sessionsTable(const std::string& group)
-  {
-    if (group == "users" ||
-        group == "providers")  // Only these two groups are allowed.
-    {
+  std::optional<std::string> sessionsTable(const std::string& group) {
+    // Only these two groups are allowed.
+    if (group == "users" || group == "providers") {
       return group + "_sessions";  // Build "users_sessions" /
                                    // "providers_sessions" from the known
                                    // safe value.
@@ -111,15 +109,13 @@ namespace  // Anonymous namespace: sessionsTable is private to this .cpp file.
  * When the database is busy.
  */
 bool KeeprBase::getLastLogoutTimeIfActive(
-    std::optional<Types::ClientLoginData>& clientLoginData)
-{
-  try
-  {
+    std::optional<Types::ClientLoginData>& clientLoginData) {
+  try {
     const auto sessions = sessionsTable(
         clientLoginData->group.value());  // Resolve the table name from the
                                           // group (allowlisted).
-    if (!sessions.has_value())  // Unknown group -> cannot build a safe query.
-    {
+    // Unknown group -> cannot build a safe query.
+    if (!sessions.has_value()) {
       Message::ErrorMessage("Unknown client group.");  // Log the bad group.
       return false;                                    // Fail: no state loaded.
     }
@@ -143,10 +139,10 @@ bool KeeprBase::getLastLogoutTimeIfActive(
                                params);  // Run the read query through the
                                          // shared controller.
 
-    if (results.has_value())  // Did the query return a result set at all?
-    {
-      if (!results->empty())  // Did it find a matching row?
-      {
+    // Did the query return a result set at all?
+    if (results.has_value()) {
+      // Did it find a matching row?
+      if (!results->empty()) {
         clientLoginData->is_active =
             results.value()
                 .at("active")
@@ -158,15 +154,15 @@ bool KeeprBase::getLastLogoutTimeIfActive(
         return true;           // State loaded successfully.
       }
     }
-    return false;  // No result or no row: nothing was loaded.
-  }
-  catch (const DatabaseBusy&)  // Database is overloaded.
-  {
-    throw;  // Rethrow so the caller can apply its retry/back-pressure
-            // policy.
-  }
-  catch (std::exception& e)  // Any other unexpected error.
-  {
+    // No result or no row: nothing was loaded.
+    // Database is overloaded.
+    return false;
+  } catch (const DatabaseBusy&) {
+    // Rethrow so the caller can apply its retry/back-pressure
+    // policy.
+    // Any other unexpected error.
+    throw;
+  } catch (std::exception& e) {
     CRITICALMESSAGE  // Log it with function/file/line details.
   }
   return false;  // Failed to load state.
@@ -182,26 +178,23 @@ bool KeeprBase::getLastLogoutTimeIfActive(
  * upserted. Throws DatabaseBusy: When the database is busy.
  */
 bool KeeprBase::setNowLoginTimeGetLastLogoutTime(
-    std::optional<Types::ClientLoginData>& clientLoginData)
-{
-  try
-  {
+    std::optional<Types::ClientLoginData>& clientLoginData) {
+  try {
     clientLoginData->nowLoginTime =
         current_time_to_utc_string();  // Generate the timestamp for this
                                        // login.
 
+    // Both are needed to build the row.
     if (!clientLoginData->group.has_value() ||
-        !clientLoginData->clientId
-             .has_value())  // Both are needed to build the row.
-    {
+        !clientLoginData->clientId.has_value()) {
       Message::ErrorMessage(
           "group or client id is empty");  // Log the missing input.
       return false;                        // Cannot proceed.
     }
     const auto sessions = sessionsTable(
         clientLoginData->group.value());  // Resolve the table name safely.
-    if (!sessions.has_value())            // Unknown group.
-    {
+    // Unknown group.
+    if (!sessions.has_value()) {
       // Log it.
       Message::ErrorMessage("Unknown client group.");
       return false;  // Refuse.
@@ -222,27 +215,27 @@ bool KeeprBase::setNowLoginTimeGetLastLogoutTime(
         databaseController()->executeQuery(param_query,
                                            params);  // Run the write query.
 
-    if (!result.has_value())  // Query failed to return a result.
-    {
+    // Query failed to return a result.
+    if (!result.has_value()) {
       Message::ErrorMessage("Error updating login time.");  // Log the failure.
       return false;                                         // Report failure.
     }
 
-    if (!result->empty())  // The RETURNING clause gave back the old logout
-                           // time.
-    {
+    // The RETURNING clause gave back the old logout
+    // time.
+    if (!result->empty()) {
       clientLoginData->lastLogoutTime =
           result->at("last_logout")
               .as_string();  // Save it for the token's "llodt" claim.
     }
-    return true;  // Upsert succeeded.
-  }
-  catch (const DatabaseBusy&)  // Database overloaded.
-  {
-    throw;  // Let the caller back off.
-  }
-  catch (const std::exception& e)  // Other unexpected error.
-  {
+    // Upsert succeeded.
+    // Database overloaded.
+    return true;
+  } catch (const DatabaseBusy&) {
+    // Let the caller back off.
+    // Other unexpected error.
+    throw;
+  } catch (const std::exception& e) {
     // Log context.
     Message::ErrorMessage("Error updating login time.");
     Message::CriticalMessage(e.what());  // Log details.
@@ -256,17 +249,15 @@ bool KeeprBase::setNowLoginTimeGetLastLogoutTime(
  * rethrown. _id: Client id. _group: Client group selecting the session table.
  * Throws DatabaseBusy: When the database is busy.
  */
-void KeeprBase::setNowLogoutTime(uint64_t _id, const std::string& _group)
-{
-  try
-  {
+void KeeprBase::setNowLogoutTime(uint64_t _id, const std::string& _group) {
+  try {
     std::string logout_time =
         current_time_to_utc_string();  // Timestamp marking "logged out at".
 
     const auto sessions =
         sessionsTable(_group);  // Resolve the table name from the group.
-    if (!sessions.has_value())  // Unknown group.
-    {
+    // Unknown group.
+    if (!sessions.has_value()) {
       // Log it.
       Message::ErrorMessage("Unknown client group.");
       return;  // Nothing to do.
@@ -284,20 +275,19 @@ void KeeprBase::setNowLogoutTime(uint64_t _id, const std::string& _group)
     auto result = databaseController()->executeQuery(param_query,
                                                      params);  // Run the write.
 
-    if (!result.has_value())  // No result returned.
-    {
-      Message::CriticalMessage(
-          "Error updating login time.");  // Log a critical failure
-                                          // (message text says "login"
-                                          // though this is logout).
+    // No result returned.
+    if (!result.has_value()) {
+      // Log a critical failure
+      // (message text says "login"
+      // though this is logout).
+      // Database overloaded.
+      Message::CriticalMessage("Error updating login time.");
     }
-  }
-  catch (const DatabaseBusy&)  // Database overloaded.
-  {
-    throw;  // Let the caller back off.
-  }
-  catch (const std::exception& e)  // Other error.
-  {
+  } catch (const DatabaseBusy&) {
+    // Let the caller back off.
+    // Other error.
+    throw;
+  } catch (const std::exception& e) {
     // Log context.
     Message::ErrorMessage("Error updating logout time.");
     Message::CriticalMessage(e.what());  // Log details.
@@ -311,11 +301,10 @@ void KeeprBase::setNowLogoutTime(uint64_t _id, const std::string& _group)
  * @return The timestamp, or std::nullopt for an unknown group or missing row.
  */
 std::optional<std::string> KeeprBase::getLastLoginTime(
-    uint64_t _id, const std::string& _group)
-{
+    uint64_t _id, const std::string& _group) {
   const auto sessions = sessionsTable(_group);  // Resolve the safe table name.
-  if (!sessions.has_value())                    // Unknown group.
-  {
+  // Unknown group.
+  if (!sessions.has_value()) {
     Message::ErrorMessage("Unknown client group.");  // Log it.
     return std::nullopt;                             // No timestamp available.
   }
@@ -340,8 +329,7 @@ std::optional<std::string> KeeprBase::getLastLoginTime(
  * @return The formatted timestamp.
  * @throws std::runtime_error If gmtime_r fails.
  */
-std::string KeeprBase::current_time_to_utc_string()
-{
+std::string KeeprBase::current_time_to_utc_string() {
   constexpr int YEAR_OFFSET = 1900;  // std::tm stores years since 1900, so
                                      // add this to get a real year.
   // Get current time as a time_point
@@ -353,9 +341,8 @@ std::string KeeprBase::current_time_to_utc_string()
 
   // Convert time_t to tm structure in UTC
   std::tm mtime{};  // Zero-initialized broken-down time structure.
-  if (gmtime_r(&now_t, &mtime) ==
-      nullptr)  // Thread-safe UTC conversion; returns null on failure.
-  {
+  // Thread-safe UTC conversion; returns null on failure.
+  if (gmtime_r(&now_t, &mtime) == nullptr) {
     throw std::runtime_error(
         "Failed to convert time to UTC");  // Fail loudly rather than
                                            // returning a bogus time.
@@ -389,10 +376,8 @@ std::string KeeprBase::current_time_to_utc_string()
 bool KeeprBase::decodeToken(
     std::optional<Types::ClientLoginData>&          clientLoginData,
     std::string&                                    message,
-    jwt::decoded_jwt<jwt::traits::kazuho_picojson>& decoedToken)
-{
-  try
-  {
+    jwt::decoded_jwt<jwt::traits::kazuho_picojson>& decoedToken) {
+  try {
     // Validate token expiration
     auto now = std::chrono::system_clock::now()
                    .time_since_epoch();  // Current time as a duration since
@@ -402,18 +387,17 @@ bool KeeprBase::decodeToken(
             .as_date()
             .time_since_epoch();  // Read the "exp" claim as a duration.
 
-    if (now >= clientLoginData->expireTime)  // Current time at or past expiry.
-    {
+    // Current time at or past expiry.
+    if (now >= clientLoginData->expireTime) {
       message = "Token expired";  // Explain why.
       return false;               // Reject.
     }
 
     // Bind the token to the originating IP; a copied token from elsewhere
     // is rejected.
+    // IP claim must equal the request IP.
     if (clientLoginData->ip_address !=
-        decoedToken.get_payload_claim("ip_address")
-            .as_string())  // IP claim must equal the request IP.
-    {
+        decoedToken.get_payload_claim("ip_address").as_string()) {
       message =
           // Explain the mismatch.
           "Token ip address does not match user ip address";
@@ -427,15 +411,14 @@ bool KeeprBase::decodeToken(
     clientLoginData->username =
         decoedToken.get_subject();  // Read the subject (username) claim.
 
-    return true;  // Claims look good (signature checked separately).
-  }
-  catch (const DatabaseBusy&)  // Database overloaded.
-  {
-    throw;  // Let the caller back off.
-  }
-  catch (
-      const std::exception& e)  // Missing/malformed claim or conversion error.
-  {
+    // Claims look good (signature checked separately).
+    // Database overloaded.
+    return true;
+  } catch (const DatabaseBusy&) {
+    // Let the caller back off.
+    // Missing/malformed claim or conversion error.
+    throw;
+  } catch (const std::exception& e) {
     message = fmt::format("Error storing session:{}",
                           e.what());    // Build a diagnostic message.
     Message::CriticalMessage(message);  // Log it.
@@ -455,27 +438,24 @@ bool KeeprBase::decodeToken(
 bool KeeprBase::validateToken(
     std::optional<Types::ClientLoginData>&          clientLoginData,
     std::string&                                    message,
-    jwt::decoded_jwt<jwt::traits::kazuho_picojson>& decodedToken)
-{
-  try
-  {
+    jwt::decoded_jwt<jwt::traits::kazuho_picojson>& decodedToken) {
+  try {
     // Refresh logout/active state; the token's "llodt" claim must still
     // match.
     getLastLogoutTimeIfActive(clientLoginData);  // Reload last_logout and
                                                  // is_active from the database.
+    // Did a logout happen after this token was
+    // issued?
     if (clientLoginData->lastLogoutTime !=
-        decodedToken.get_payload_claim("llodt")
-            .as_string())  // Did a logout happen after this token was
-                           // issued?
-    {
+        decodedToken.get_payload_claim("llodt").as_string()) {
       message =
           // Explain.
           "Client is logged out from server, Please login again.";
       return false;  // Reject the stale token.
     }
 
-    if (!clientLoginData->is_active)  // Account suspended.
-    {
+    // Account suspended.
+    if (!clientLoginData->is_active) {
       message =
           // Explain.
           "Account is suspend, please contact the administrator.";
@@ -492,23 +472,22 @@ bool KeeprBase::validateToken(
                         // throws on failure.
 
     // Token is valid
-    return true;  // All checks passed.
-  }
-  catch (const jwt::error::token_verification_exception&
-             e)  // Signature or claim verification failed.
-  {
+    // All checks passed.
+    // Signature or claim verification failed.
+    return true;
+  } catch (const jwt::error::token_verification_exception& e) {
     message =
         // Explain.
         fmt::format("Token verification failed:{}", e.what());
     Message::CriticalMessage(message);  // Log it.
-    return false;                       // Reject.
-  }
-  catch (const DatabaseBusy&)  // Database overloaded.
-  {
-    throw;  // Let the caller back off.
-  }
-  catch (const std::exception& e)  // Other unexpected error.
-  {
+    // Reject.
+    // Database overloaded.
+    return false;
+  } catch (const DatabaseBusy&) {
+    // Let the caller back off.
+    // Other unexpected error.
+    throw;
+  } catch (const std::exception& e) {
     message =
         // Explain.
         fmt::format("Error validating Token:{}", e.what());
@@ -527,14 +506,12 @@ bool KeeprBase::validateToken(
  * the database is busy.
  */
 drogon::Task<bool> KeeprBase::getLastLogoutTimeIfActiveCoro(
-    std::optional<Types::ClientLoginData>& clientLoginData)
-{
-  try
-  {
+    std::optional<Types::ClientLoginData>& clientLoginData) {
+  try {
     const auto sessions = sessionsTable(
         clientLoginData->group.value());  // Resolve the safe table name.
-    if (!sessions.has_value())            // Unknown group.
-    {
+    // Unknown group.
+    if (!sessions.has_value()) {
       // Log it.
       Message::ErrorMessage("Unknown client group.");
       co_return false;  // No state loaded.
@@ -556,10 +533,10 @@ drogon::Task<bool> KeeprBase::getLastLogoutTimeIfActiveCoro(
                                    params);  // Await the DB read without
                                              // blocking the thread.
 
-    if (results.has_value())  // Got a result set.
-    {
-      if (!results->empty())  // Found a row.
-      {
+    // Got a result set.
+    if (results.has_value()) {
+      // Found a row.
+      if (!results->empty()) {
         clientLoginData->is_active =
             results.value().at("active").as_bool();  // Fill active flag.
         clientLoginData->lastLogoutTime =
@@ -567,14 +544,14 @@ drogon::Task<bool> KeeprBase::getLastLogoutTimeIfActiveCoro(
         co_return true;                                     // State loaded.
       }
     }
-    co_return false;  // No result or no row.
-  }
-  catch (const DatabaseBusy&)  // Database overloaded.
-  {
-    throw;  // Rethrow for the caller.
-  }
-  catch (std::exception& e)  // Other error.
-  {
+    // No result or no row.
+    // Database overloaded.
+    co_return false;
+  } catch (const DatabaseBusy&) {
+    // Rethrow for the caller.
+    // Other error.
+    throw;
+  } catch (std::exception& e) {
     CRITICALMESSAGE  // Log it.
   }
   co_return false;  // Failed to load state.
@@ -593,25 +570,22 @@ drogon::Task<bool> KeeprBase::getLastLogoutTimeIfActiveCoro(
 drogon::Task<bool> KeeprBase::validateTokenCoro(
     std::optional<Types::ClientLoginData>&          clientLoginData,
     std::string&                                    message,
-    jwt::decoded_jwt<jwt::traits::kazuho_picojson>& decodedToken)
-{
-  try
-  {
+    jwt::decoded_jwt<jwt::traits::kazuho_picojson>& decodedToken) {
+  try {
     // Await refreshed session state before comparing the "llodt" claim.
     co_await getLastLogoutTimeIfActiveCoro(
         clientLoginData);  // Await the DB-backed state refresh.
+    // Stale token after a logout?
     if (clientLoginData->lastLogoutTime !=
-        decodedToken.get_payload_claim("llodt")
-            .as_string())  // Stale token after a logout?
-    {
+        decodedToken.get_payload_claim("llodt").as_string()) {
       message =
           // Explain.
           "Client is logged out from server, Please login again.";
       co_return false;  // Reject.
     }
 
-    if (!clientLoginData->is_active)  // Suspended account.
-    {
+    // Suspended account.
+    if (!clientLoginData->is_active) {
       message =
           // Explain.
           "Account is suspend, please contact the administrator.";
@@ -625,23 +599,22 @@ drogon::Task<bool> KeeprBase::validateTokenCoro(
     verifier.verify(decodedToken);  // Check signature and claims.
 
     // Token is valid
-    co_return true;  // All checks passed.
-  }
-  catch (const jwt::error::token_verification_exception&
-             e)  // Verification failed.
-  {
+    // All checks passed.
+    // Verification failed.
+    co_return true;
+  } catch (const jwt::error::token_verification_exception& e) {
     message =
         // Explain.
         fmt::format("Token verification failed:{}", e.what());
     Message::CriticalMessage(message);  // Log it.
-    co_return false;                    // Reject.
-  }
-  catch (const DatabaseBusy&)  // Database overloaded.
-  {
-    throw;  // Rethrow.
-  }
-  catch (const std::exception& e)  // Other error.
-  {
+    // Reject.
+    // Database overloaded.
+    co_return false;
+  } catch (const DatabaseBusy&) {
+    // Rethrow.
+    // Other error.
+    throw;
+  } catch (const std::exception& e) {
     message =
         // Explain.
         fmt::format("Error validating Token:{}", e.what());
@@ -664,12 +637,10 @@ drogon::Task<bool> KeeprBase::validateTokenCoro(
  */
 jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson>
 KeeprBase::createTokenVerifier(
-    const std::optional<Types::ClientLoginData>& clientLoginData) const
-{
+    const std::optional<Types::ClientLoginData>& clientLoginData) const {
+  // Guard the claims that are explicitly checked.
   if (!clientLoginData || !clientLoginData->username ||
-      !clientLoginData->clientId ||
-      !clientLoginData->group)  // Guard the claims that are explicitly checked.
-  {
+      !clientLoginData->clientId || !clientLoginData->group) {
     throw std::runtime_error(
         "Invalid client login data");  // Missing essential identity: cannot
                                        // build a verifier.
@@ -713,8 +684,7 @@ KeeprBase::createTokenVerifier(
  * Returns JSON result from storage, or std::nullopt when not found.
  */
 std::optional<jsoncons::json> api::v2::KeeprBase::getPasswordHashForUserName(
-    const std::string& username, const std::string& _group)
-{
+    const std::string& username, const std::string& _group) {
   return databaseController()
       ->getPasswordHashForUserName(username, _group);  // Pure forwarder to the
                                                        // database controller.
@@ -730,8 +700,7 @@ std::optional<jsoncons::json> api::v2::KeeprBase::getPasswordHashForUserName(
  */
 drogon::Task<std::optional<jsoncons::json>>
 api::v2::KeeprBase::getPasswordHashForUserNameCoro(const std::string& username,
-                                                   const std::string& _group)
-{
+                                                   const std::string& _group) {
   co_return co_await databaseController()
       ->getPasswordHashForUserNameCoro(username,
                                        _group);  // Await the DB controller and

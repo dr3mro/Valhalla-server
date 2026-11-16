@@ -70,9 +70,9 @@
  * @see EnvVars, Configurator
  */
 class EnvLoader
-    : public EnvVars  // Inherits the raw environment accessors and adds typed,
-                      // default-aware conversions on top.
-{
+    // Inherits the raw environment accessors and adds typed,
+    // default-aware conversions on top.
+    : public EnvVars {
  public:  // The conversion helpers below are available to derived sections
           // and their callers.
   /** @brief Default constructor; no state of its own beyond the inherited
@@ -106,31 +106,30 @@ class EnvLoader
    * @see getEnvironmentVariable(const std::string&, const
    * std::chrono::seconds&)
    */
-  template <typename T>  // T is filled in from the type of defaultValue at
-                         // each call site (e.g. uint32_t or uint16_t).
-  T getEnvironmentVariable(const std::string& key,
-                           T defaultValue)  // Returns the parsed number or
-                                            // defaultValue if the variable
-                                            // is missing or invalid.
-  {
+  // T is filled in from the type of defaultValue at
+  // each call site (e.g. uint32_t or uint16_t).
+  // Returns the parsed number or
+  // defaultValue if the variable
+  // is missing or invalid.
+  template <typename T>
+  T getEnvironmentVariable(const std::string& key, T defaultValue) {
     auto value = get(key);  // Fetch the raw text via the inherited helper;
                             // an empty optional means "not set".
-    if (!value)  // No value stored under this name, so there is nothing to
-                 // parse.
-    {
+    // No value stored under this name, so there is nothing to
+    // parse.
+    if (!value) {
       return defaultValue;  // Give the caller the safe fallback
                             // immediately.
     }
-    try  // Parsing text can fail (e.g. "abc"), so guard it and recover
-         // instead of letting an exception escape.
-    {
-      return static_cast<T>(std::stoi(
-          value.value()));  // Convert text to int then to the requested
-                            // type (uint32_t, uint8_t, etc.).
-    }
-    catch (const std::exception&)  // std::stoi throws when the text is not
-                                   // a number or is out of int range.
-    {
+    // Parsing text can fail (e.g. "abc"), so guard it and recover
+    // instead of letting an exception escape.
+    try {
+      // Convert text to int then to the requested
+      // type (uint32_t, uint8_t, etc.).
+      // std::stoi throws when the text is not
+      // a number or is out of int range.
+      return static_cast<T>(std::stoi(value.value()));
+    } catch (const std::exception&) {
       Message::ErrorMessage(
           "Invalid numeric value for env var " + key +
           "; using default.");  // Log the bad variable name so an

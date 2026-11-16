@@ -29,12 +29,13 @@
 
 #pragma once  // Include this header at most once per translation unit.
 // Provides fixed-width integer types such as uint64_t and uint8_t.
-#include <cstdint>
-#include <string>  // std::string holds the group name.
+// std::string holds the group name.
 // std::move is used in the constructor to avoid copying the group string.
+// Groups this type with the version-2 API code.
+#include <cstdint>
+#include <string>
 #include <utility>
-namespace api::v2  // Groups this type with the version-2 API code.
-{
+namespace api::v2 {
   /**
    * @struct Requester
    * @brief Value object describing who issued a request.
@@ -47,9 +48,9 @@ namespace api::v2  // Groups this type with the version-2 API code.
    *       (isSuper matches "Super" with a capital S). The GroupId enumeration
    *       is declared but is not used to validate or store `group`.
    */
-  using Requester = struct Requester  // A named struct exposed through a
-                                      // "using" alias so both spellings work.
-  {
+  // A named struct exposed through a
+  // "using" alias so both spellings work.
+  using Requester = struct Requester {
    private:
     /**
      * @brief Opaque identity of the requester, compared by idMatch.
@@ -71,10 +72,10 @@ namespace api::v2  // Groups this type with the version-2 API code.
      *          This enumerator is informational: group membership is stored
      *          and checked as a string, not as a GroupId.
      */
-    enum class GroupId : uint8_t  // A scoped enum (accessed as
-                                  // GroupId::Users) stored compactly as
-                                  // 8-bit integers.
-    {
+    // A scoped enum (accessed as
+    // GroupId::Users) stored compactly as
+    // 8-bit integers.
+    enum class GroupId : uint8_t {
       Users,      // A normal user account.
       Providers,  // A healthcare provider account.
       Owners,     // An owner account.
@@ -90,8 +91,7 @@ namespace api::v2  // Groups this type with the version-2 API code.
      * @param[in] _group Group name, copied/moved into the group field.
      */
     explicit Requester(uint64_t _id, std::string _group)
-        : id(_id), group(std::move(_group))
-    {
+        : id(_id), group(std::move(_group)) {
     }  // "explicit" prevents accidental implicit conversion from two
        // values; std::move avoids copying the string.
     /**
@@ -133,58 +133,50 @@ namespace api::v2  // Groups this type with the version-2 API code.
     /**
      * @brief Returns the requester's opaque id.
      */
-    [[nodiscard]] uint64_t getId() const
-    {
+    [[nodiscard]] uint64_t getId() const {
       return id;
     }  // [[nodiscard]] warns if the caller ignores the returned id; const
        // means no change to the object.
     /**
      * @brief Returns the requester's group name.
      */
-    [[nodiscard]] const std::string& getGroup() const
-    {
+    [[nodiscard]] const std::string& getGroup() const {
       return group;
     }  // Returns by const reference to avoid copying the string.
     /**
      * @brief Tests membership of the "admins" group.
      */
-    [[nodiscard]] bool isAdmin() const
-    {
+    [[nodiscard]] bool isAdmin() const {
       return groupMatch("admins");
     }  // Convenience wrapper around the literal string comparison.
     /**
      * @brief Tests membership of the "users" group.
      */
-    [[nodiscard]] bool isUser() const
-    {
+    [[nodiscard]] bool isUser() const {
       return groupMatch("users");
     }  // True when the stored group is exactly "users".
     /**
      * @brief Tests membership of the "providers" group.
      */
-    [[nodiscard]] bool isProvider() const
-    {
+    [[nodiscard]] bool isProvider() const {
       return groupMatch("providers");
     }  // True when the stored group is exactly "providers".
     /**
      * @brief Tests membership of the "staff" group.
      */
-    [[nodiscard]] bool isStaff() const
-    {
+    [[nodiscard]] bool isStaff() const {
       return groupMatch("staff");
     }  // True when the stored group is exactly "staff".
     /**
      * @brief Tests membership of the "owners" group.
      */
-    [[nodiscard]] bool isOwner() const
-    {
+    [[nodiscard]] bool isOwner() const {
       return groupMatch("owners");
     }  // True when the stored group is exactly "owners".
     /**
      * @brief Tests membership of the "Super" group (capital S).
      */
-    [[nodiscard]] bool isSuper() const
-    {
+    [[nodiscard]] bool isSuper() const {
       return groupMatch("Super");
     }  // Case matters: only the exact string "Super" matches.
     /**
@@ -192,8 +184,7 @@ namespace api::v2  // Groups this type with the version-2 API code.
      * @param[in] _group Exact group name to match.
      * @return True if the names are equal.
      */
-    [[nodiscard]] bool groupMatch(const std::string& _group) const
-    {
+    [[nodiscard]] bool groupMatch(const std::string& _group) const {
       return this->group == _group;
     }  // Plain string equality; every isX helper funnels through here.
     /**
@@ -201,16 +192,14 @@ namespace api::v2  // Groups this type with the version-2 API code.
      * @param[in] _id Id to match.
      * @return True if the ids are equal.
      */
-    [[nodiscard]] bool idMatch(uint64_t _id) const
-    {
+    [[nodiscard]] bool idMatch(uint64_t _id) const {
       return this->id == _id;
     }  // Used to check e.g. whether a requester owns a particular resource.
     /**
      * @brief Replaces the stored id.
      * @param[in] _id New id.
      */
-    void setId(uint64_t _id)
-    {
+    void setId(uint64_t _id) {
       this->id = _id;
     }  // Overwrites the identity with the supplied number.
     /**
@@ -218,8 +207,7 @@ namespace api::v2  // Groups this type with the version-2 API code.
      * @param[in] group New group name; must match the literal used by the
      *          relevant isX helper for permission checks to succeed.
      */
-    void setGroup(const std::string& group)
-    {
+    void setGroup(const std::string& group) {
       this->group = group;
     }  // Takes a const reference and copies it into the stored string.
   };

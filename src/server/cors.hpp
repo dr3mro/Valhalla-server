@@ -62,9 +62,9 @@
  * lower-cased name, and addHeader replaces an existing value
  * (HttpResponseImpl.h:194-210), so a header can never appear twice.
  */
-namespace Cors  // Group the CORS helper functions together without needing an
-                // object instance.
-{
+// Group the CORS helper functions together without needing an
+// object instance.
+namespace Cors {
   /**
    * Short alias so call sites can use detail:: for the Drogon-free token
    * helpers.
@@ -80,10 +80,9 @@ namespace Cors  // Group the CORS helper functions together without needing an
    * @return A process-lifetime constant string, returned by reference to
    * avoid a copy per response.
    */
-  inline const std::string&
-  allowedMethods()  // Return the fixed list of methods the server advertises
-                    // as allowed.
-  {
+  // Return the fixed list of methods the server advertises
+  // as allowed.
+  inline const std::string& allowedMethods() {
     static const std::string value =
         // Built once and reused; inline means one copy in the program.
         "GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS";
@@ -97,10 +96,9 @@ namespace Cors  // Group the CORS helper functions together without needing an
    * @return A process-lifetime constant string, returned by reference to
    * avoid a copy per response.
    */
-  inline const std::string&
-  defaultAllowedHeaders()  // Return the standard list of request headers
-                           // allowed cross-origin.
-  {
+  // Return the standard list of request headers
+  // allowed cross-origin.
+  inline const std::string& defaultAllowedHeaders() {
     static const std::string value =
         // Created once at first use, not on each call.
         "Content-Type, Authorization, Accept, X-Requested-With";
@@ -112,10 +110,9 @@ namespace Cors  // Group the CORS helper functions together without needing an
    * @return A process-lifetime constant string, returned by reference to
    * avoid a copy per response.
    */
-  inline const std::string&
-  exposedHeaders()  // Return the response headers that JavaScript is
-                    // permitted to read.
-  {
+  // Return the response headers that JavaScript is
+  // permitted to read.
+  inline const std::string& exposedHeaders() {
     static const std::string value =
         "Retry-After, Content-Length";  // A shared constant; built only
                                         // once.
@@ -127,10 +124,9 @@ namespace Cors  // Group the CORS helper functions together without needing an
    * responses.
    * @return A process-lifetime constant string; 7200 matches the browser cap.
    */
-  inline const std::string&
-  preflightMaxAge()  // Return how long, in seconds, a browser may cache a
-                     // preflight result.
-  {
+  // Return how long, in seconds, a browser may cache a
+  // preflight result.
+  inline const std::string& preflightMaxAge() {
     static const std::string value =
         "7200";    // browsers cap this at 2 hours anyway
     return value;  // Return by reference to keep the hot path copy-free.
@@ -146,10 +142,9 @@ namespace Cors  // Group the CORS helper functions together without needing an
    * @param[in,out] resp Response whose Vary header may be updated.
    * @param[in] value Header name to add, for example "Origin".
    */
-  inline void addToVary(
-      const drogon::HttpResponsePtr& resp,
-      std::string_view value)  // Add one token to Vary only when it is missing.
-  {
+  // Add one token to Vary only when it is missing.
+  inline void addToVary(const drogon::HttpResponsePtr& resp,
+                        std::string_view               value) {
     const std::string& existing =
         resp->getHeader("vary");  // Read the current Vary header (empty
                                   // string when absent).
@@ -157,9 +152,9 @@ namespace Cors  // Group the CORS helper functions together without needing an
         detail::mergeVary(existing,
                           value);  // Reuse the helper that appends without
                                    // duplicates.
-    if (merged != existing)        // Only touch the response if the merge
-                                   // actually changed the list.
-    {
+    // Only touch the response if the merge
+    // actually changed the list.
+    if (merged != existing) {
       resp->addHeader("Vary",
                       merged);  // Store the updated list back on the response.
     }
@@ -175,25 +170,23 @@ namespace Cors  // Group the CORS helper functions together without needing an
    * @param[in] value Raw configuration value.
    * @return Origins in configuration order.
    */
-  inline std::vector<std::string> splitOrigins(
-      const std::string&
-          value)  // Split the configured comma-separated string into origins.
-  {
+  // Split the configured comma-separated string into origins.
+  inline std::vector<std::string> splitOrigins(const std::string& value) {
     std::vector<std::string> out;  // Accumulates the origins found, keeping
                                    // their original order.
     std::string
         cur;  // Holds the characters of the origin currently being built.
-    for (char c : value)  // Examine every character in the configured value.
-    {
-      if (c == ',')  // A comma ends the current origin.
-      {
+    // Examine every character in the configured value.
+    for (char c : value) {
+      // A comma ends the current origin.
+      if (c == ',') {
         if (!cur.empty())
           out.push_back(cur);  // Save a non-empty origin; ignore
                                // empty ones from stray commas.
-        cur.clear();           // Reset the buffer for the next origin.
-      }
-      else if (c != ' ')  // Skip spaces but keep every other character.
-      {
+        // Reset the buffer for the next origin.
+        // Skip spaces but keep every other character.
+        cur.clear();
+      } else if (c != ' ') {
         cur.push_back(c);  // Add this character to the origin being built.
       }
     }
@@ -225,11 +218,9 @@ namespace Cors  // Group the CORS helper functions together without needing an
    * through Store's thread-local cache.
    * @see CorsTokens::sanitizeRequestedHeaders(), CorsTokens::mergeVary()
    */
-  inline void apply(
-      const drogon::HttpRequestPtr& req,
-      const drogon::HttpResponsePtr&
-          resp)  // Write the correct CORS headers onto this response.
-  {
+  // Write the correct CORS headers onto this response.
+  inline void apply(const drogon::HttpRequestPtr&  req,
+                    const drogon::HttpResponsePtr& resp) {
     static const std::string originKey =
         "access-control-allow-origin";      // Drogon keys headers in lowercase;
                                             // built once at first use.
@@ -237,10 +228,8 @@ namespace Cors  // Group the CORS helper functions together without needing an
                                             // can inspect what is already set.
     const auto  originIt =
         headers.find(originKey);  // Look for an existing allow-origin header.
-    if (originIt != headers.end() &&
-        originIt->second ==
-            "*")  // If a wildcard was already set, there is nothing to add.
-    {
+    // If a wildcard was already set, there is nothing to add.
+    if (originIt != headers.end() && originIt->second == "*") {
       return;  // Leave the response untouched; another layer already
                // allowed every origin.
     }
@@ -256,18 +245,17 @@ namespace Cors  // Group the CORS helper functions together without needing an
         false;  // Starts false; only an exact origin match will turn it on.
     std::string allowOrigin = "*";  // Default to wildcard; replaced if
                                     // specific origins are configured.
-    if (allowed != "*")  // A concrete list is configured, so we must choose
-                         // one origin.
-    {
+    // A concrete list is configured, so we must choose
+    // one origin.
+    if (allowed != "*") {
       auto origins = splitOrigins(allowed);  // Break the configured string into
                                              // individual origins.
-      for (const auto& o : origins)          // Compare each configured origin
-                                             // with the request's Origin.
-      {
-        if (!requestOrigin.empty() &&
-            o == requestOrigin)  // An exact match is safe to reflect
-                                 // and allow credentials for.
-        {
+      // Compare each configured origin
+      // with the request's Origin.
+      for (const auto& o : origins) {
+        // An exact match is safe to reflect
+        // and allow credentials for.
+        if (!requestOrigin.empty() && o == requestOrigin) {
           allowOrigin    = requestOrigin;  // Reflect exactly what the
                                            // browser sent back to it.
           useCredentials = true;           // Credentials require an exact
@@ -275,26 +263,23 @@ namespace Cors  // Group the CORS helper functions together without needing an
           break;  // Stop searching once a match is found.
         }
       }
-      if (allowOrigin == "*" &&
-          !origins.empty())  // No exact match, but a list exists: fall
-                             // back to its first entry.
-      {
+      // No exact match, but a list exists: fall
+      // back to its first entry.
+      if (allowOrigin == "*" && !origins.empty()) {
         allowOrigin = origins.front();  // Use the first configured
                                         // origin, without credentials.
       }
     }
 
-    if (originIt == headers.end() ||
-        originIt->second !=
-            allowOrigin)  // Write the header only if missing or different.
-    {
+    // Write the header only if missing or different.
+    if (originIt == headers.end() || originIt->second != allowOrigin) {
       resp->addHeader("Access-Control-Allow-Origin",
                       allowOrigin);  // Tell the browser which origin may read
                                      // this response.
     }
-    if (useCredentials)  // Add the credentials flag only for an exact
-                         // origin match.
-    {
+    // Add the credentials flag only for an exact
+    // origin match.
+    if (useCredentials) {
       resp->addHeader("Access-Control-Allow-Credentials",
                       "true");  // Allow cookies/auth to be sent cross-origin.
       addToVary(resp,
@@ -318,14 +303,14 @@ namespace Cors  // Group the CORS helper functions together without needing an
                                    // header list.
     std::string echoed;  // Will hold the sanitized copy of the client's
                          // requested headers.
-    if (req->method() == drogon::Options)  // Only preflight requests carry
-                                           // Access-Control-Request-Headers.
-    {
+    // Only preflight requests carry
+    // Access-Control-Request-Headers.
+    if (req->method() == drogon::Options) {
       echoed = detail::sanitizeRequestedHeaders(
-          requested);       // Filter the request value down to safe tokens.
-      if (!echoed.empty())  // Use the echo only if some valid tokens
-                            // survived filtering.
-      {
+          requested);  // Filter the request value down to safe tokens.
+      // Use the echo only if some valid tokens
+      // survived filtering.
+      if (!echoed.empty()) {
         allowedHeaders = &echoed;  // Point at the echoed list instead
                                    // of the default one.
       }

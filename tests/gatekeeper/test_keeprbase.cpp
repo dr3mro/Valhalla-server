@@ -51,15 +51,13 @@
 // FakeDatabaseController / FakeDbGuard, used in the final test.
 #include "support/fake_db.hpp"
 
-namespace
-{
+namespace {
   /** @brief Exposes KeeprBase's protected helpers so they can be tested
    * directly.
    *
    * No behaviour is overridden; the `using` declarations only widen access.
    */
-  struct TestKeepr : api::v2::KeeprBase
-  {
+  struct TestKeepr : api::v2::KeeprBase {
     using KeeprBase::createTokenVerifier;         // Make the protected verifier
                                                   // factory public for testing.
     using KeeprBase::current_time_to_utc_string;  // Make the protected time
@@ -85,11 +83,11 @@ namespace
       "JWS";  // Expected token type string used when signing test tokens.
 }  // namespace
 
+// Registers the test that the formatter
+// produces the exact text shape expected
+// inside tokens.
 TEST_CASE("KeeprBase::current_time_to_utc_string returns a UTC timestamp",
-          "[gatekeeper][keeprbase]")  // Registers the test that the formatter
-                                      // produces the exact text shape expected
-                                      // inside tokens.
-{
+          "[gatekeeper][keeprbase]") {
   const std::string ts =
       TestKeepr::current_time_to_utc_string();  // Ask the helper for the
                                                 // current time as a string.
@@ -110,10 +108,10 @@ TEST_CASE("KeeprBase::current_time_to_utc_string returns a UTC timestamp",
                                         // misread the timestamp.
 }
 
+// Registers a second, simpler check on
+// the UTC suffix.
 TEST_CASE("KeeprBase::current_time_to_utc_string ends with '+0000'",
-          "[gatekeeper][keeprbase]")  // Registers a second, simpler check on
-                                      // the UTC suffix.
-{
+          "[gatekeeper][keeprbase]") {
   const std::string ts =
       TestKeepr::current_time_to_utc_string();  // Get another timestamp from
                                                 // the helper.
@@ -126,10 +124,10 @@ TEST_CASE("KeeprBase::current_time_to_utc_string ends with '+0000'",
 
 TEST_CASE(
     "KeeprBase::getTokenManagerParameters returns values matching the test "
+    // Registers the test that config is read from
+    // environment variables.
     "environment",
-    "[gatekeeper][keeprbase]")  // Registers the test that config is read from
-                                // environment variables.
-{
+    "[gatekeeper][keeprbase]") {
   TestKeepr k;  // Instance used to call the protected getter.
   const Configurator::TokenManagerParameters params =
       k.getTokenManagerParameters();  // Fetch the settings the token manager
@@ -147,10 +145,10 @@ TEST_CASE(
 
 TEST_CASE(
     "KeeprBase::createTokenVerifier constructs a verifier that accepts a valid "
+    // Registers the test that a correctly signed
+    // token can be verified.
     "token",
-    "[gatekeeper][keeprbase]")  // Registers the test that a correctly signed
-                                // token can be verified.
-{
+    "[gatekeeper][keeprbase]") {
   TestKeepr         k;  // Instance used to reach the protected factory.
   const std::string llodt =
       "2026-01-01 00:00:00 +0000";  // Fixed last-logout time embedded in the
@@ -173,12 +171,10 @@ TEST_CASE(
                                                   // secret and issuer.
 
   // createTokenVerifier must not throw for valid data.
-  REQUIRE_NOTHROW(
-      [&]
-      {
-        (void)k.createTokenVerifier(data);
-      }());  // Wrap in a lambda because the macro needs one expression; prove
-             // valid data does not cause an exception.
+  REQUIRE_NOTHROW([&] {
+    (void)k.createTokenVerifier(data);
+  }());  // Wrap in a lambda because the macro needs one expression; prove
+         // valid data does not cause an exception.
 
   // The verifier should accept the token we just created.
   auto verifier = k.createTokenVerifier(
@@ -190,14 +186,13 @@ TEST_CASE(
                        // mean valid tokens are being rejected.
 }
 
+// Registers the test that incomplete data
+// is rejected loudly.
 TEST_CASE("KeeprBase::createTokenVerifier throws when login data is incomplete",
-          "[gatekeeper][keeprbase]")  // Registers the test that incomplete data
-                                      // is rejected loudly.
-{
+          "[gatekeeper][keeprbase]") {
   TestKeepr k;  // Instance used to reach the protected factory.
 
-  SECTION("empty optional")
-  {
+  SECTION("empty optional") {
     std::optional<api::v2::Types::ClientLoginData>
         empty;  // No login data at all.
     CHECK_THROWS_AS(k.createTokenVerifier(empty),
@@ -206,8 +201,7 @@ TEST_CASE("KeeprBase::createTokenVerifier throws when login data is incomplete",
                                           // returning a broken verifier.
   }
 
-  SECTION("missing username")
-  {
+  SECTION("missing username") {
     std::optional<api::v2::Types::ClientLoginData> data =
         valhalla_test::makeLoginData(501,
                                      "users");  // Build data that is complete
@@ -220,10 +214,10 @@ TEST_CASE("KeeprBase::createTokenVerifier throws when login data is incomplete",
   }
 }
 
+// Registers the test that claims are
+// copied out of a good token.
 TEST_CASE("KeeprBase::decodeToken extracts claims from a valid JWT",
-          "[gatekeeper][keeprbase]")  // Registers the test that claims are
-                                      // copied out of a good token.
-{
+          "[gatekeeper][keeprbase]") {
   const std::string llodt =
       "2026-01-01 00:00:00 +0000";  // Fixed last-logout time to embed as a
                                     // claim.
@@ -263,10 +257,10 @@ TEST_CASE("KeeprBase::decodeToken extracts claims from a valid JWT",
         "drsmith");  // Prove the subject claim survived.
 }
 
+// Registers the test that a token is
+// bound to the IP it was issued for.
 TEST_CASE("KeeprBase::decodeToken rejects a mismatched IP address",
-          "[gatekeeper][keeprbase]")  // Registers the test that a token is
-                                      // bound to the IP it was issued for.
-{
+          "[gatekeeper][keeprbase]") {
   const std::string llodt =
       "2026-01-01 00:00:00 +0000";  // Fixed last-logout time.
   // Token is issued for IP 192.168.1.1 but data claims 192.168.1.2.
@@ -300,10 +294,10 @@ TEST_CASE("KeeprBase::decodeToken rejects a mismatched IP address",
                              // callers get a useful clue.
 }
 
+// Registers the test that expiry is
+// enforced during decode.
 TEST_CASE("KeeprBase::decodeToken rejects an expired token",
-          "[gatekeeper][keeprbase]")  // Registers the test that expiry is
-                                      // enforced during decode.
-{
+          "[gatekeeper][keeprbase]") {
   const std::string llodt =
       "2026-01-01 00:00:00 +0000";  // Fixed last-logout time.
   std::optional<api::v2::Types::ClientLoginData> data =
@@ -342,10 +336,10 @@ TEST_CASE("KeeprBase::decodeToken rejects an expired token",
 // nullopt.
 TEST_CASE(
     "KeeprBase::setNowLoginTimeGetLastLogoutTime returns false when DB returns "
+    // Registers the regression test for the
+    // empty-DB-result crash.
     "nullopt",
-    "[gatekeeper][keeprbase]")  // Registers the regression test for the
-                                // empty-DB-result crash.
-{
+    "[gatekeeper][keeprbase]") {
   // Create the fake DB controller.
   auto fake          = std::make_shared<FakeDatabaseController>();
   fake->query_result = std::nullopt;  // Make it report "no row found", the

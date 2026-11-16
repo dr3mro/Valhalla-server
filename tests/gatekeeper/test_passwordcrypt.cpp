@@ -51,9 +51,9 @@ using ::PasswordCrypt;  // Alias for the global PasswordCrypt class under test.
 // verifying both current Argon2id hashes and legacy scrypt hashes, and
 // rejecting malformed input without ever throwing.
 
+// Registers the basic round-trip test.
 TEST_CASE("PasswordCrypt hashes and verifies a password",
-          "[gatekeeper][password]")  // Registers the basic round-trip test.
-{
+          "[gatekeeper][password]") {
   PasswordCrypt crypt;  // The hasher/verifier under test.
 
   const auto hash = crypt.hashPassword(
@@ -69,10 +69,9 @@ TEST_CASE("PasswordCrypt hashes and verifies a password",
                                                 // (the core contract).
 }
 
-TEST_CASE("PasswordCrypt rejects a wrong password",
-          "[gatekeeper][password]")  // Registers the test that a near-miss
-                                     // password is refused.
-{
+// Registers the test that a near-miss
+// password is refused.
+TEST_CASE("PasswordCrypt rejects a wrong password", "[gatekeeper][password]") {
   PasswordCrypt crypt;  // The hasher/verifier under test.
 
   const auto hash = crypt.hashPassword(
@@ -87,10 +86,10 @@ TEST_CASE("PasswordCrypt rejects a wrong password",
 
 TEST_CASE(
     "PasswordCrypt salts: hashing the same password twice yields different "
+    // Registers the test that each hash gets a fresh
+    // random salt.
     "hashes",
-    "[gatekeeper][password]")  // Registers the test that each hash gets a fresh
-                               // random salt.
-{
+    "[gatekeeper][password]") {
   PasswordCrypt crypt;  // The hasher/verifier under test.
 
   const auto first =
@@ -113,10 +112,9 @@ TEST_CASE(
                                                 // equally usable.
 }
 
-TEST_CASE("PasswordCrypt handles boundary inputs",
-          "[gatekeeper][password]")  // Registers the test for unusual password
-                                     // shapes.
-{
+// Registers the test for unusual password
+// shapes.
+TEST_CASE("PasswordCrypt handles boundary inputs", "[gatekeeper][password]") {
   PasswordCrypt crypt;  // The hasher/verifier under test.
 
   // Empty, single-character, long, non-ASCII/multibyte, and embedded-
@@ -146,10 +144,10 @@ TEST_CASE("PasswordCrypt handles boundary inputs",
                                             // makes verification fail.
 }
 
+// Registers the robustness test for
+// corrupt stored data.
 TEST_CASE("PasswordCrypt does not crash on malformed or truncated hashes",
-          "[gatekeeper][password]")  // Registers the robustness test for
-                                     // corrupt stored data.
-{
+          "[gatekeeper][password]") {
   PasswordCrypt crypt;  // The verifier under test.
 
   const auto& badHash =
@@ -173,10 +171,10 @@ TEST_CASE("PasswordCrypt does not crash on malformed or truncated hashes",
                                        // instead of throwing or crashing.
 }
 
+// Registers the test that the stored
+// format and cost are pinned down.
 TEST_CASE("PasswordCrypt hash output is an Argon2id encoded string",
-          "[gatekeeper][password]")  // Registers the test that the stored
-                                     // format and cost are pinned down.
-{
+          "[gatekeeper][password]") {
   PasswordCrypt crypt;  // The hasher under test.
 
   const auto hash =
@@ -191,10 +189,10 @@ TEST_CASE("PasswordCrypt hash output is an Argon2id encoded string",
                              // intended cost so it cannot silently weaken.
 }
 
+// Registers the backward-compatibility
+// test for migrated accounts.
 TEST_CASE("PasswordCrypt still verifies hashes made with the old scrypt scheme",
-          "[gatekeeper][password]")  // Registers the backward-compatibility
-                                     // test for migrated accounts.
-{
+          "[gatekeeper][password]") {
   PasswordCrypt crypt;  // The verifier under test.
 
   // Backward-compatibility contract: hashes written by the previous server
@@ -228,10 +226,10 @@ TEST_CASE("PasswordCrypt still verifies hashes made with the old scrypt scheme",
                                                    // rejects a wrong password.
 }
 
+// Registers the test for unrecognised
+// encoding schemes.
 TEST_CASE("PasswordCrypt rejects a hash with an unknown algorithm prefix",
-          "[gatekeeper][password]")  // Registers the test for unrecognised
-                                     // encoding schemes.
-{
+          "[gatekeeper][password]") {
   PasswordCrypt crypt;  // The verifier under test.
   CHECK_FALSE(crypt.verifyPassword(
       "any",

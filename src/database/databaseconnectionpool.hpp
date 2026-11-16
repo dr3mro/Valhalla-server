@@ -73,9 +73,9 @@ class Configurator;  // Forward declaration: the pool stores a shared_ptr and
  * `exit(EXIT_FAILURE)`.
  * @see BlockingPool, DatabaseHanndler, DatabaseBusy
  */
-class DatabaseConnectionPool  // A fixed-size, thread-safe library of database
-                              // connections shared by the whole server.
-{
+// A fixed-size, thread-safe library of database
+// connections shared by the whole server.
+class DatabaseConnectionPool {
  public:
   /**
    * @brief Builds the pool from the Configurator, creating all connections up

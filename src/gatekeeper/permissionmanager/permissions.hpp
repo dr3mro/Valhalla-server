@@ -52,8 +52,8 @@
  * switches are on. Testing "is any of these switches on?" is a fast bitwise
  * AND.
  */
-struct Permissions  // A value type; it simply groups the bit helpers together.
-{
+// A value type; it simply groups the bit helpers together.
+struct Permissions {
  public:
   /**
    * @brief Individual authorization bits. Values are powers of two and may be
@@ -62,9 +62,9 @@ struct Permissions  // A value type; it simply groups the bit helpers together.
    * USER, PROVIDER and IS_SUPER are declared but identity is enforced via
    * Requester string helpers.
    */
-  enum class PowerLevel : std::uint8_t  // Named on/off switches stored in
-                                        // exactly one byte (8 bits).
-  {
+  // Named on/off switches stored in
+  // exactly one byte (8 bits).
+  enum class PowerLevel : std::uint8_t {
     NONE       = 0x00U, /**< No powers; 00000000. */
     USER       = 0x01U, /**< Identity bit for ordinary users; 00000001. */
     PROVIDER   = 0x02U, /**< Identity bit for providers; 00000010. */
@@ -80,8 +80,7 @@ struct Permissions  // A value type; it simply groups the bit helpers together.
   /** @brief Constructs a rule wrapping a single (possibly combined)
    * PowerLevel mask. */
   // constructor for rule
-  explicit Permissions(PowerLevel _powerLevel) : powerLevel(_powerLevel)
-  {
+  explicit Permissions(PowerLevel _powerLevel) : powerLevel(_powerLevel) {
   }  // Stores the supplied mask; "explicit"
      // prevents accidental implicit conversions.
   virtual ~Permissions() =
@@ -101,18 +100,15 @@ struct Permissions  // A value type; it simply groups the bit helpers together.
    * @param[in] check Mask of bits to look for.
    * @return `true` if at least one checked bit is set.
    */
-  bool hasPower(const PowerLevel& check)
-  {
+  bool hasPower(const PowerLevel& check) {
     return static_cast<int>(powerLevel & check) != 0;
   }  // ANDs the masks; non-zero means at least one requested bit is present.
 
   /** @brief Returns the bitwise OR of two masks. */
   // Overload | operator
-  friend PowerLevel operator|(
-      PowerLevel first,
-      PowerLevel second)  // Combines two masks so the result holds every bit
-                          // from both.
-  {
+  // Combines two masks so the result holds every bit
+  // from both.
+  friend PowerLevel operator|(PowerLevel first, PowerLevel second) {
     return static_cast<PowerLevel>(
         static_cast<uint8_t>(first) |
         static_cast<uint8_t>(second));  // Work on raw bytes, then wrap back
@@ -125,8 +121,8 @@ struct Permissions  // A value type; it simply groups the bit helpers together.
   friend PowerLevel operator&(
       PowerLevel first,
       PowerLevel
-          second)  // Keeps only the bits present in both masks (the overlap).
-  {
+          // Keeps only the bits present in both masks (the overlap).
+          second) {
     return static_cast<PowerLevel>(
         static_cast<uint8_t>(first) &
         static_cast<uint8_t>(
@@ -136,8 +132,7 @@ struct Permissions  // A value type; it simply groups the bit helpers together.
   /** @brief Adds the bits of @p second to @p first in place. @return
    * Reference to @p first. */
   // Overload |= operator
-  friend PowerLevel& operator|=(PowerLevel& first, PowerLevel second)
-  {
+  friend PowerLevel& operator|=(PowerLevel& first, PowerLevel second) {
     first = first | second;  // Add the other mask's bits to this one.
     return first;            // Return by reference so calls can be chained.
   }
@@ -145,23 +140,20 @@ struct Permissions  // A value type; it simply groups the bit helpers together.
   /** @brief Keeps only the bits shared by @p first and @p second. @return
    * Reference to @p first. */
   // Overload &= operator
-  friend PowerLevel& operator&=(PowerLevel& first, PowerLevel second)
-  {
+  friend PowerLevel& operator&=(PowerLevel& first, PowerLevel second) {
     first = first & second;  // Keep only the bits the two masks share.
     return first;            // Return by reference so calls can be chained.
   }
 
   /** @brief Returns the one's-complement of the 8-bit mask. */
   // Invert operator
-  friend PowerLevel operator~(PowerLevel value)
-  {
+  friend PowerLevel operator~(PowerLevel value) {
     return static_cast<PowerLevel>(~static_cast<uint8_t>(value));
   }  // Flips every bit: on switches become off and vice versa.
 
   /** @brief Converts to `true` when at least one power bit is set. */
   // Check if any flag is set
-  explicit operator bool() const
-  {
+  explicit operator bool() const {
     return static_cast<int>(powerLevel) != 0;
   }  // True when at least one switch is on; "explicit" avoids accidental use
      // as a number.
@@ -171,10 +163,9 @@ struct Permissions  // A value type; it simply groups the bit helpers together.
    * @details `staff_id`/`power` are parsed from an `"<id>:<mask>"` string;
    * `isMember` marks a successful parse.
    */
-  using StaffPermission =
-      struct staffPermission  // An alias for the small struct below,
-                              // describing one staff member's rights.
-  {
+  // An alias for the small struct below,
+  // describing one staff member's rights.
+  using StaffPermission = struct staffPermission {
     uint64_t staff_id = 0; /**< Numeric staff/client id parsed from the
                               entry; uint64_t matches database ids. */
     PowerLevel power = PowerLevel::NONE; /**< Permission mask parsed from the
@@ -190,8 +181,7 @@ struct Permissions  // A value type; it simply groups the bit helpers together.
   /** @brief Tests whether @p permission and @p check share any bit. */
   // check if rule is set
   [[nodiscard]] static bool hasMatch(const PowerLevel& permission,
-                                     const PowerLevel& check)
-  {
+                                     const PowerLevel& check) {
     return static_cast<int>(permission & check) != 0;
   }  // Private "any shared bit?" test; [[nodiscard]] warns if the result is
      // ignored.

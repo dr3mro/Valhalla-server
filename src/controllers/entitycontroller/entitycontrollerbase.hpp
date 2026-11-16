@@ -75,8 +75,7 @@ using Requester =
  * assuming ownership is transferred.
  * @see EntityController, Controller
  */
-class EntityControllerBase
-{
+class EntityControllerBase {
  public:
   explicit EntityControllerBase() =
       default;  // Nothing to initialize; the interface holds no state.

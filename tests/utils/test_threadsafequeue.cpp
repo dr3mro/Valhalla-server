@@ -43,8 +43,7 @@
 #include "utils/threadsafequeue/threadsafequeue.hpp"
 
 // Items must come out in the same order they went in (first in, first out).
-TEST_CASE("ThreadSafeQueue is FIFO", "[utils][queue]")
-{
+TEST_CASE("ThreadSafeQueue is FIFO", "[utils][queue]") {
   ThreadSafeQueue<int> queue;  // A thread-safe queue holding integers.
 
   queue.push(1);  // Add 1 at the back.
@@ -66,8 +65,7 @@ TEST_CASE("ThreadSafeQueue is FIFO", "[utils][queue]")
 // was always non-blocking (returns nullopt); the CV was never waited on.
 TEST_CASE(
     "ThreadSafeQueue pop on an empty queue returns nullopt without blocking",
-    "[utils][queue]")
-{
+    "[utils][queue]") {
   ThreadSafeQueue<std::string> queue;  // An empty queue of strings.
 
   CHECK(queue.pop() == std::nullopt);  // Popping with nothing inside returns
@@ -77,8 +75,7 @@ TEST_CASE(
 }
 
 // front() peeks at the oldest item without removing it.
-TEST_CASE("ThreadSafeQueue front peeks without consuming", "[utils][queue]")
-{
+TEST_CASE("ThreadSafeQueue front peeks without consuming", "[utils][queue]") {
   ThreadSafeQueue<int> queue;  // An empty integer queue.
 
   CHECK(queue.front() ==
@@ -93,13 +90,12 @@ TEST_CASE("ThreadSafeQueue front peeks without consuming", "[utils][queue]")
 }
 
 // clear() must discard everything currently in the queue.
-TEST_CASE("ThreadSafeQueue clear empties the queue", "[utils][queue]")
-{
+TEST_CASE("ThreadSafeQueue clear empties the queue", "[utils][queue]") {
   ThreadSafeQueue<int> queue;  // An empty integer queue.
 
   for (int i = 0; i < 5;
-       ++i)  // Add five items; the loop stops once i reaches 5.
-  {
+       // Add five items; the loop stops once i reaches 5.
+       ++i) {
     queue.push(i);  // Insert the current value.
   }
   CHECK_FALSE(queue.empty());  // After the loop the queue must not be empty.
@@ -111,11 +107,10 @@ TEST_CASE("ThreadSafeQueue clear empties the queue", "[utils][queue]")
 }
 
 // emplace builds an element directly in the queue from constructor arguments.
-TEST_CASE("ThreadSafeQueue emplace constructs in place", "[utils][queue]")
-{
-  struct Point  // A tiny local type with an x and y coordinate, built from
-                // two ints.
-  {
+TEST_CASE("ThreadSafeQueue emplace constructs in place", "[utils][queue]") {
+  // A tiny local type with an x and y coordinate, built from
+  // two ints.
+  struct Point {
     int x;  // Horizontal coordinate.
     int y;  // Vertical coordinate.
   };
@@ -139,27 +134,26 @@ TEST_CASE("ThreadSafeQueue emplace constructs in place", "[utils][queue]")
 // Several producers push while one consumer pops; no item may be lost or
 // duplicated.
 TEST_CASE("ThreadSafeQueue handles concurrent producers and consumers",
-          "[utils][queue]")
-{
+          "[utils][queue]") {
   constexpr int kProducers = 4;  // Number of producer threads.
   constexpr int kItemsPerThread =
       250;  // Items each producer pushes; 4 x 250 = 1000 total.
 
   ThreadSafeQueue<int> queue;  // The shared queue all threads use.
 
-  std::vector<std::thread> producers;   // Holds the producer threads.
-  for (int t = 0; t < kProducers; ++t)  // Launch each producer.
-  {
-    producers.emplace_back(  // Create a thread running the lambda below.
-        [&queue, t]          // Capture the queue by reference and t by value.
-        {
-          for (int i = 0; i < kItemsPerThread;
-               ++i)  // Each producer pushes its share.
-          {
-            queue.push(t * kItemsPerThread +
-                       i);  // Unique value per item: 0..249, 250..499, etc.
-          }
-        });
+  std::vector<std::thread> producers;  // Holds the producer threads.
+  // Launch each producer.
+  for (int t = 0; t < kProducers; ++t) {
+    // Create a thread running the lambda below.
+    // Capture the queue by reference and t by value.
+    producers.emplace_back([&queue, t] {
+      for (int i = 0; i < kItemsPerThread;
+           // Each producer pushes its share.
+           ++i) {
+        queue.push(t * kItemsPerThread +
+                   i);  // Unique value per item: 0..249, 250..499, etc.
+      }
+    });
   }
 
   std::vector<int> consumed;  // Collects everything the consumer pops.
@@ -169,40 +163,37 @@ TEST_CASE("ThreadSafeQueue handles concurrent producers and consumers",
 
   // Consume while the producers are still running; pop() is non-blocking,
   // so spin until everything has been consumed.
-  while (
-      consumed.size() <
-      static_cast<size_t>(
-          kProducers * kItemsPerThread))  // Keep going until we have all
-                                          // 1000; the cast matches the types.
-  {
-    while (auto value = queue.pop())  // Drain all items currently available;
-                                      // each pass binds the optional to value.
-    {
+  // Keep going until we have all
+  // 1000; the cast matches the types.
+  while (consumed.size() < static_cast<size_t>(kProducers * kItemsPerThread)) {
+    // Drain all items currently available;
+    // each pass binds the optional to value.
+    while (auto value = queue.pop()) {
       consumed.push_back(
           *value);  // *value unwraps the optional to get the integer.
     }
   }
 
-  for (auto& producer : producers)  // Walk the producer threads.
-  {
+  // Walk the producer threads.
+  for (auto& producer : producers) {
     producer.join();  // Wait for them to finish.
   }
 
   // Drain whatever is left, then compare as sets.
-  while (auto value = queue.pop())  // Pick up any final items pushed after
-                                    // the main loop ended.
-  {
+  // Pick up any final items pushed after
+  // the main loop ended.
+  while (auto value = queue.pop()) {
     consumed.push_back(*value);  // Add them to the collected values.
   }
 
   std::vector<int> expected;  // Will hold the values we should have received.
   expected.reserve(consumed.size());  // Match the size to avoid reallocations.
   for (int t = 0; t < kProducers;
-       ++t)  // Rebuild the same value ranges the producers generated.
-  {
+       // Rebuild the same value ranges the producers generated.
+       ++t) {
     for (int i = 0; i < kItemsPerThread;
-         ++i)  // Same inner range as the producer side.
-    {
+         // Same inner range as the producer side.
+         ++i) {
       expected.push_back(t * kItemsPerThread +
                          i);  // Identical formula produces the identical value.
     }
@@ -221,8 +212,7 @@ TEST_CASE("ThreadSafeQueue handles concurrent producers and consumers",
 
 // push(T&&) moves the object in, so the caller's string is transferred rather
 // than copied.
-TEST_CASE("ThreadSafeQueue push rvalue moves the object in", "[utils][queue]")
-{
+TEST_CASE("ThreadSafeQueue push rvalue moves the object in", "[utils][queue]") {
   ThreadSafeQueue<std::string> queue;  // A queue of strings.
 
   std::string s = "moved-string";  // The source string we will hand over.
@@ -237,8 +227,7 @@ TEST_CASE("ThreadSafeQueue push rvalue moves the object in", "[utils][queue]")
 
 // size() and empty() must stay in sync with pushes, pops and clears.
 TEST_CASE("ThreadSafeQueue size tracks insertions and removals",
-          "[utils][queue]")
-{
+          "[utils][queue]") {
   ThreadSafeQueue<int> queue;  // An empty integer queue.
 
   CHECK(queue.size() == 0);  // A new queue has zero elements.

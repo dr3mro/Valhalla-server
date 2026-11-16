@@ -103,8 +103,7 @@ class WatchDog;     // Forward declaration of the pool watchdog.
  * so callers can answer 503 with Retry-After instead of 500.
  * @see Controller, Store, DatabaseBusy
  */
-class DatabaseController
-{
+class DatabaseController {
  public:
   /**
    * @brief Constructs the controller without creating database backends.
@@ -401,19 +400,16 @@ class DatabaseController
    * are logged and swallowed.
    */
   template <typename Result, typename Func, typename... Args>
-  std::optional<Result> executer(const Func& func, Args&&... args)
-  {
+  std::optional<Result> executer(const Func& func, Args&&... args) {
     DbProbe::check();  // on the IO-thread fast path this throws WouldBlock:
                        // the request moves to the DB executor
-    try
-    {
+    try {
       ensureBackends();
 
       // Hermetic test mode: no backends were created, so report the
       // database as unavailable without constructing a handler (which
       // would create a pool via Store and exit() on init failure).
-      if (!databaseConnectionPool_)
-      {
+      if (!databaseConnectionPool_) {
         return std::nullopt;
       }
 
@@ -421,35 +417,27 @@ class DatabaseController
           std::make_unique<DatabaseHanndler>(databaseConnectionPool_);
       std::shared_ptr<Database> db_ptr = dbHandler->get_connection();
 
-      if (db_ptr == nullptr)
-      {
+      if (db_ptr == nullptr) {
         return std::nullopt;
       }
 
       std::optional<Result> results =
           std::invoke(func, db_ptr.get(), std::forward<Args>(args)...);
 
-      if (results.has_value())
-      {
+      if (results.has_value()) {
         return results;
       }
 
       return std::nullopt;
-    }
-    catch (const DatabaseBusy&)
-    {
+    } catch (const DatabaseBusy&) {
       throw;  // the pool is exhausted: callers answer 503 instead of
               // treating it as a failed query
-    }
-    catch (const std::exception& e)
-    {
+    } catch (const std::exception& e) {
       Message::CriticalMessage(
           fmt::format("Exception occurred during query execution: {}",
                       e.what()));
       return std::nullopt;
-    }
-    catch (...)
-    {
+    } catch (...) {
       Message::CriticalMessage(
           "Unknown exception occurred during query execution.");
       return std::nullopt;

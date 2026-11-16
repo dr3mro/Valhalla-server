@@ -90,12 +90,12 @@
 template <Appointment_t T>  // "template" means T is chosen by the caller;
                             // "Appointment_t" only allows appointment types.
 class AppointmentController
+    // Inherits real CRUD+S work from
+    // EntityController<T> and the
+    // appointment interface from
+    // AppointmentControllerBase.
     : public EntityController<T>,
-      public AppointmentControllerBase  // Inherits real CRUD+S work from
-                                        // EntityController<T> and the
-                                        // appointment interface from
-                                        // AppointmentControllerBase.
-{
+      public AppointmentControllerBase {
  public:
   /** @brief Default construction; dependencies are owned by @ref
    * EntityController. */

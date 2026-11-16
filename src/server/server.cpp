@@ -102,39 +102,36 @@
  */
 Server::Server()  // Initialise every member: fetch shared singletons from the
                   // Store and snapshot the configuration.
-    : logger_(Store::getObject<Logger>()),  // Fetch (or create) the shared
-                                            // logger from the global Store.
-      configurator_(
-          Store::getObject<Configurator>()),  // Fetch the shared settings
-                                              // object, also used later for
-                                              // printValues() and CORS.
-      config_(
-          configurator_
-              ->get<Configurator::ServerConfig>()),  // Copy the server settings
-                                                     // so later changes cannot
-                                                     // alter this run.
-      db_config_(configurator_->get<
-                 Configurator::DatabaseConfig>()),  // Copy the DB settings,
-                                                    // including the flag that
-                                                    // selects async mode.
-      databaseSchema_(
-          Store::getObject<DatabaseSchema>()),  // Fetch the shared schema
-                                                // validator used by request
-                                                // handling.
-      auth_filter_(
-          std::make_shared<
-              api::v2::Filters::Auth>()),  // Create one authentication filter
-                                           // instance owned by this Server.
-      elapsed_time_(
-          std::make_shared<
-              api::v2::MiddleWares::ElapsedTime>()),  // Create one
-                                                      // request-timing
-                                                      // middleware instance.
-      rate_limit_(std::make_shared<
-                  api::v2::Filters::RateLimit>())  // Create one rate-limit
-                                                   // filter instance (last, so
-                                                   // no trailing comma).
-{
+    // Fetch (or create) the shared
+    // logger from the global Store.
+    // Fetch the shared settings
+    // object, also used later for
+    // printValues() and CORS.
+    // Copy the server settings
+    // so later changes cannot
+    // alter this run.
+    // Copy the DB settings,
+    // including the flag that
+    // selects async mode.
+    // Fetch the shared schema
+    // validator used by request
+    // handling.
+    // Create one authentication filter
+    // instance owned by this Server.
+    // Create one
+    // request-timing
+    // middleware instance.
+    // Create one rate-limit
+    // filter instance (last, so
+    // no trailing comma).
+    : logger_(Store::getObject<Logger>()),
+      configurator_(Store::getObject<Configurator>()),
+      config_(configurator_->get<Configurator::ServerConfig>()),
+      db_config_(configurator_->get<Configurator::DatabaseConfig>()),
+      databaseSchema_(Store::getObject<DatabaseSchema>()),
+      auth_filter_(std::make_shared<api::v2::Filters::Auth>()),
+      elapsed_time_(std::make_shared<api::v2::MiddleWares::ElapsedTime>()),
+      rate_limit_(std::make_shared<api::v2::Filters::RateLimit>()) {
 }
 /**
  * @brief Configures and runs the Drogon application, then drains the worker
@@ -154,56 +151,61 @@ Server::Server()  // Initialise every member: fetch shared singletons from the
  *       destructors.
  * @see print_banner(), Cors::apply(), Store::getObject()
  */
-int Server::run()  // Configure Drogon, serve requests, then drain the worker
-                   // pools and return an exit code.
-{
-  try  // Catch any exception from setup or teardown so it can be reported
-       // cleanly.
-  {
+// Configure Drogon, serve requests, then drain the worker
+// pools and return an exit code.
+int Server::run() {
+  // Catch any exception from setup or teardown so it can be reported
+  // cleanly.
+  try {
     print_banner();  // Show the effective settings and the logo before the
                      // framework starts logging.
-    if (db_config_.async)  // Only asynchronous DB mode needs a separate
-                           // client registered up front.
-    {
+    // Only asynchronous DB mode needs a separate
+    // client registered up front.
+    if (db_config_.async) {
       Store::registerObject<AsyncDbClient>(
           AsyncDbClient::createClient());  // Build an async DB client and
                                            // put it in the Store for
                                            // controllers to use.
     }
-    drogon::app()  // Get the single global Drogon application; the chain below
-                   // configures it before run() is called.
-        .addListener(std::string(config_.host),
-                     config_.port)          // Listen on the configured host
-                                            // address and TCP port.
-        .setThreadNum(config_.threads)      // Use the configured number of
-                                            // I/O worker threads.
-        .setUploadPath(config_.upload_dir)  // Tell Drogon where to
-                                            // store uploaded files.
-        .disableSigtermHandling()           // Let the event loops drive
-                                            // shutdown instead of
-                                            // Drogon's own SIGTERM
-                                            // handler.
-        .setLogLevel(static_cast<trantor::Logger::LogLevel>(
-            config_.debug_level))   // Convert the numeric config
-                                    // value into the framework's
-                                    // log-level enum.
-        .registerPreRoutingAdvice(  // Install a hook that runs
-                                    // before routing: answer
-                                    // preflights and reject odd
-                                    // methods.
+    // Get the single global Drogon application; the chain below
+    // configures it before run() is called.
+    // Listen on the configured host
+    // address and TCP port.
+    // Use the configured number of
+    // I/O worker threads.
+    // Tell Drogon where to
+    // store uploaded files.
+    // Let the event loops drive
+    // shutdown instead of
+    // Drogon's own SIGTERM
+    // handler.
+    // Convert the numeric config
+    // value into the framework's
+    // log-level enum.
+    // Install a hook that runs
+    // before routing: answer
+    // preflights and reject odd
+    // methods.
+    // Request + callbacks.
+    drogon::app()
+        .addListener(std::string(config_.host), config_.port)
+        .setThreadNum(config_.threads)
+        .setUploadPath(config_.upload_dir)
+        .disableSigtermHandling()
+        .setLogLevel(
+            static_cast<trantor::Logger::LogLevel>(config_.debug_level))
+        .registerPreRoutingAdvice(
             [](const drogon::HttpRequestPtr& req,
                drogon::AdviceCallback&&      callback,
-               drogon::AdviceChainCallback&&
-                   chainedcallback)  // Request + callbacks.
-            {
+               drogon::AdviceChainCallback&& chainedcallback) {
               // CORS preflights are answered once, here, with
               // 204 and no body; they never reach a
               // controller.
-              if (req->method() == drogon::Options)  // A browser's preflight
-                                                     // check uses OPTIONS and
-                                                     // expects a quick empty
-                                                     // reply.
-              {
+              // A browser's preflight
+              // check uses OPTIONS and
+              // expects a quick empty
+              // reply.
+              if (req->method() == drogon::Options) {
                 auto resp =
                     drogon::HttpResponse::newHttpResponse();  // Create a fresh,
                                                               // empty response
@@ -219,12 +221,12 @@ int Server::run()  // Configure Drogon, serve requests, then drain the worker
               }
               // Uncommon methods are rejected before routing;
               // Allow advertises what is accepted.
-              else if (!isConventionalMethod(req->method()))  // If the method
-                                                              // is unsupported,
-                                                              // stop before any
-                                                              // route is
-                                                              // matched.
-              {
+              // If the method
+              // is unsupported,
+              // stop before any
+              // route is
+              // matched.
+              else if (!isConventionalMethod(req->method())) {
                 auto resp =
                     drogon::HttpResponse::newHttpResponse();  // Create a
                                                               // response object
@@ -240,12 +242,12 @@ int Server::run()  // Configure Drogon, serve requests, then drain the worker
                                                           // methods the
                                                           // server does
                                                           // accept.
-                std::move(callback)(resp);  // Respond now; the request never
-                                            // reaches a controller.
-              }
-              else  // The method is acceptable, so let normal
-                    // routing continue.
-              {
+                // Respond now; the request never
+                // reaches a controller.
+                // The method is acceptable, so let normal
+                // routing continue.
+                std::move(callback)(resp);
+              } else {
                 std::move(chainedcallback)();  // Call the chain
                                                // callback to pass
                                                // the request to
@@ -254,12 +256,10 @@ int Server::run()  // Configure Drogon, serve requests, then drain the worker
             })
         // The only place CORS headers are written: runs once per
         // response, after every filter and pre-routing reply.
-        .registerPreSendingAdvice(
-            [](const drogon::HttpRequestPtr&  req,
-               const drogon::HttpResponsePtr& resp)
-            {
-              Cors::apply(req, resp);
-            })  // CORS headers.
+        .registerPreSendingAdvice([](const drogon::HttpRequestPtr&  req,
+                                     const drogon::HttpResponsePtr& resp) {
+          Cors::apply(req, resp);
+        })  // CORS headers.
         .setCustom404Page(drogon::HttpResponse::newHttpJsonResponse(
             api::v2::JsonHelper::jsonify(
                 "Endpoint not found.")))  // JSON body for
@@ -276,13 +276,12 @@ int Server::run()  // Configure Drogon, serve requests, then drain the worker
     Store::getObject<DbExecutor>()
         ->shutdown();  // Drain the DB task queue and stop its threads
                        // before the DB singletons disappear.
-    Store::getObject<PasswordWorker>()
-        ->shutdown();  // Then drain password-hashing work, which DB tasks
-                       // may have queued.
-  }
-  catch (const std::exception& e)  // Reached if any of the setup or teardown
-                                   // above threw an exception.
-  {
+    // Then drain password-hashing work, which DB tasks
+    // may have queued.
+    // Reached if any of the setup or teardown
+    // above threw an exception.
+    Store::getObject<PasswordWorker>()->shutdown();
+  } catch (const std::exception& e) {
     Message::ErrorMessage(
         fmt::format("Failed to start server on {}:{}.",
                     config_.host,
@@ -301,9 +300,9 @@ int Server::run()  // Configure Drogon, serve requests, then drain the worker
  * before framework logging begins. The displayed version comes from the
  * build-time VALHALLA_GIT_TAG, not from the Configurator snapshot.
  */
-void Server::print_banner()  // Print the configuration summary and the ASCII
-                             // logo, then flush stdout.
-{
+// Print the configuration summary and the ASCII
+// logo, then flush stdout.
+void Server::print_banner() {
   // Print Config
   Banner::print_line();  // Draw a separator line before the configuration
                          // block.
@@ -360,10 +359,9 @@ void Server::print_banner()  // Print the configuration summary and the ASCII
  * others, notably PATCH. Note: PATCH is advertised by Cors::allowedMethods()
  * but is not accepted here; the two lists differ in the current implementation.
  */
-bool Server::isConventionalMethod(
-    drogon::HttpMethod method)  // Return true only for the six methods this
-                                // server is willing to route.
-{
+// Return true only for the six methods this
+// server is willing to route.
+bool Server::isConventionalMethod(drogon::HttpMethod method) {
   return method == drogon::Get || method == drogon::Post ||
          method == drogon::Put || method == drogon::Delete ||
          method == drogon::Options ||  // Accepted.

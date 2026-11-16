@@ -50,9 +50,9 @@
  * @see BoundedExecutor, runOnPasswordWorker
  */
 class PasswordWorker
-    : public BoundedExecutor  // Inherits all queueing and thread behaviour from
-                              // BoundedExecutor.
-{
+    // Inherits all queueing and thread behaviour from
+    // BoundedExecutor.
+    : public BoundedExecutor {
  public:  // The following constructors are available to callers.
   /** @brief Constructs the pool sized from Configurator (PASSWORD_WORKERS,
    * PASSWORD_QUEUE_MAX). */
@@ -83,11 +83,11 @@ class PasswordWorker
  * 503 reply).
  * @param[in,out] body Work to run on the password worker.
  */
+// Submits a password job to the pool.
 template <typename Body>
 void runOnPasswordWorker(PasswordWorker& worker,
                          CALLBACK_&&     callback,
-                         Body&& body)  // Submits a password job to the pool.
-{
+                         Body&&          body) {
   // Hand off to the generic helper with a password-specific "busy" message.
   // std::forward keeps the job's value category intact.
   runOnExecutor(worker,

@@ -44,9 +44,9 @@
  *          All methods are static; instances carry no state.
  * @see Logger
  */
-class Message  // A class used only through static functions; instances hold no
-               // data.
-{
+// A class used only through static functions; instances hold no
+// data.
+class Message {
  public:
   /**
    * @brief Default construction; Message is stateless.

@@ -54,22 +54,21 @@
 // protected members. The "Bug N fixed" notes above some cases document the
 // regression each case guards, not merely the expected value.
 
-namespace  // Anonymous namespace keeps the helpers private to this file.
-{
+// Anonymous namespace keeps the helpers private to this file.
+namespace {
   /**
    * EnvLoader exposes its helpers as protected members; this subclass
    * re-exports them for direct testing.
    */
-  struct TestLoader : EnvLoader  // Inherits so protected helpers can be
-                                 // brought into public view.
-  {
+  // Inherits so protected helpers can be
+  // brought into public view.
+  struct TestLoader : EnvLoader {
     using EnvLoader::getEnvironmentVariable;  // the template overload is
                                               // public already
     using EnvLoader::optimize_performance;    // Re-export the worker-count
                                               // tuner.
     using EnvLoader::parseSet;  // Re-export the comma-separated set parser.
-    void printValues() const override
-    {
+    void printValues() const override {
     }  // Pure virtual from the base; empty because tests do not print.
   };
 
@@ -77,18 +76,18 @@ namespace  // Anonymous namespace keeps the helpers private to this file.
    * RAII guard that sets an environment variable for the duration of a
    * scope and restores the previous state afterwards.
    */
-  struct ScopedEnv  // Changes one variable, then undoes the change at scope
-                    // exit.
-  {
+  // Changes one variable, then undoes the change at scope
+  // exit.
+  struct ScopedEnv {
     ScopedEnv(const std::string& key, const std::string& value)
-        : key_(key)  // Remember which key to restore.
-    {
+        // Remember which key to restore.
+        : key_(key) {
       const char* previous =
           std::getenv(key.c_str());  // Read the old value before overwriting.
       hadPrevious_ =
           previous != nullptr;  // Record whether there was an old value.
-      if (hadPrevious_)         // Only copy when there is something to copy.
-      {
+      // Only copy when there is something to copy.
+      if (hadPrevious_) {
         previous_ = previous;  // Store our own copy of the old value.
       }
       setenv(key.c_str(),
@@ -96,15 +95,14 @@ namespace  // Anonymous namespace keeps the helpers private to this file.
              1);  // Install the new value (overwrite).
     }
 
-    ~ScopedEnv()  // Restore the environment when the test scope ends.
-    {
-      if (hadPrevious_)  // There was an old value, so put it back.
-      {
-        setenv(key_.c_str(), previous_.c_str(),
-               1);  // Restore with overwrite.
-      }
-      else  // There was no old value.
-      {
+    // Restore the environment when the test scope ends.
+    ~ScopedEnv() {
+      // There was an old value, so put it back.
+      if (hadPrevious_) {
+        // Restore with overwrite.
+        // There was no old value.
+        setenv(key_.c_str(), previous_.c_str(), 1);
+      } else {
         unsetenv(key_.c_str());  // Remove the variable again.
       }
     }
@@ -115,21 +113,21 @@ namespace  // Anonymous namespace keeps the helpers private to this file.
   };
 }  // namespace
 
+// Basic override semantics.
 TEST_CASE("EnvLoader string overload returns override or default",
-          "[configurator][envloader]")  // Basic override semantics.
-{
+          "[configurator][envloader]") {
   TestLoader loader;  // The loader under test.
 
-  SECTION("missing variable yields the default")  // Nothing set in the
-                                                  // environment.
-  {
+  // Nothing set in the
+  // environment.
+  SECTION("missing variable yields the default") {
     CHECK(loader.getEnvironmentVariable("VALHALLA_TEST_DEFINITELY_UNSET",
                                         std::string("fallback")) ==
           "fallback");  // The supplied default is returned.
   }
 
-  SECTION("present variable overrides the default")  // Variable is set.
-  {
+  // Variable is set.
+  SECTION("present variable overrides the default") {
     ScopedEnv guard("VALHALLA_TEST_DEFINITELY_UNSET",
                     "override");  // Set it for this section only.
     CHECK(loader.getEnvironmentVariable("VALHALLA_TEST_DEFINITELY_UNSET",
@@ -138,13 +136,13 @@ TEST_CASE("EnvLoader string overload returns override or default",
   }
 }
 
+// Only the exact word "true" is true.
 TEST_CASE("EnvLoader bool overload parses 'true' strictly",
-          "[configurator][envloader]")  // Only the exact word "true" is true.
-{
+          "[configurator][envloader]") {
   TestLoader loader;  // The loader under test.
 
-  SECTION("missing variable yields the default")  // Nothing set.
-  {
+  // Nothing set.
+  SECTION("missing variable yields the default") {
     CHECK(loader.getEnvironmentVariable("VALHALLA_TEST_DEFINITELY_UNSET",
                                         true));  // A true default stays true.
     CHECK_FALSE(
@@ -152,8 +150,8 @@ TEST_CASE("EnvLoader bool overload parses 'true' strictly",
                                       false));  // A false default stays false.
   }
 
-  SECTION("value 'true' maps to true")  // Exact match.
-  {
+  // Exact match.
+  SECTION("value 'true' maps to true") {
     ScopedEnv guard("VALHALLA_TEST_DEFINITELY_UNSET",
                     "true");  // Set the value.
     CHECK(loader.getEnvironmentVariable("VALHALLA_TEST_DEFINITELY_UNSET",
@@ -162,8 +160,7 @@ TEST_CASE("EnvLoader bool overload parses 'true' strictly",
   }
 
   // Explicit false.
-  SECTION("value 'false' maps to false regardless of the default")
-  {
+  SECTION("value 'false' maps to false regardless of the default") {
     ScopedEnv guard("VALHALLA_TEST_DEFINITELY_UNSET",
                     "false");  // Set the value.
     CHECK_FALSE(
@@ -172,8 +169,8 @@ TEST_CASE("EnvLoader bool overload parses 'true' strictly",
                                     true));  // False wins over a true default.
   }
 
-  SECTION("any other non-empty value maps to false")  // Strict parsing.
-  {
+  // Strict parsing.
+  SECTION("any other non-empty value maps to false") {
     // getEnvironmentVariable(bool) compares against the literal "true";
     // everything else (including "1" and "TRUE") is false.
     ScopedEnv guard("VALHALLA_TEST_DEFINITELY_UNSET",
@@ -184,20 +181,20 @@ TEST_CASE("EnvLoader bool overload parses 'true' strictly",
   }
 }
 
+// Duration parsing.
 TEST_CASE("EnvLoader chrono-seconds overload parses integer seconds",
-          "[configurator][envloader]")  // Duration parsing.
-{
+          "[configurator][envloader]") {
   TestLoader loader;  // The loader under test.
 
-  SECTION("missing variable yields the default")  // Nothing set.
-  {
+  // Nothing set.
+  SECTION("missing variable yields the default") {
     CHECK(loader.getEnvironmentVariable("VALHALLA_TEST_DEFINITELY_UNSET",
                                         std::chrono::seconds{7}) ==
           std::chrono::seconds{7});  // Seven seconds is returned.
   }
 
-  SECTION("present variable is parsed")  // Value is set.
-  {
+  // Value is set.
+  SECTION("present variable is parsed") {
     // Set "42".
     ScopedEnv guard("VALHALLA_TEST_DEFINITELY_UNSET", "42");
     CHECK(loader.getEnvironmentVariable("VALHALLA_TEST_DEFINITELY_UNSET",
@@ -206,19 +203,18 @@ TEST_CASE("EnvLoader chrono-seconds overload parses integer seconds",
   }
 }
 
+// Integer parsing.
 TEST_CASE("EnvLoader integer template overload uses std::stoi",
-          "[configurator][envloader]")  // Integer parsing.
-{
+          "[configurator][envloader]") {
   TestLoader loader;  // The loader under test.
 
-  SECTION("missing variable yields the default")
-  {
+  SECTION("missing variable yields the default") {
     CHECK(loader.getEnvironmentVariable<int>("VALHALLA_TEST_DEFINITELY_UNSET",
                                              3) == 3);
   }  // Nothing set: default of 3.
 
-  SECTION("present variable is parsed with stoi")  // Value is set.
-  {
+  // Value is set.
+  SECTION("present variable is parsed with stoi") {
     // Set "17".
     ScopedEnv guard("VALHALLA_TEST_DEFINITELY_UNSET", "17");
     CHECK(loader.getEnvironmentVariable<int>("VALHALLA_TEST_DEFINITELY_UNSET",
@@ -234,15 +230,15 @@ TEST_CASE("EnvLoader integer template overload uses std::stoi",
 // integer overload now wraps std::stoi in try/catch, and the chrono overload
 // wraps std::stoll in try/catch with an explicit negative-value guard. Both
 // fall back to the default on error (see envloader.hpp/.cpp).
+// Malformed input safety.
 TEST_CASE(
     "EnvLoader integer overload falls back to default on non-numeric input",
-    "[configurator][envloader]")  // Malformed input safety.
-{
+    "[configurator][envloader]") {
   TestLoader loader;  // The loader under test.
 
-  SECTION("non-numeric value returns the default")  // Text where a number is
-                                                    // expected.
-  {
+  // Text where a number is
+  // expected.
+  SECTION("non-numeric value returns the default") {
     ScopedEnv guard("VALHALLA_TEST_DEFINITELY_UNSET",
                     "not-a-number");  // Set a non-numeric string.
     CHECK(loader.getEnvironmentVariable<int>("VALHALLA_TEST_DEFINITELY_UNSET",
@@ -250,9 +246,9 @@ TEST_CASE(
           3);  // Falls back to 3 instead of throwing.
   }
 
-  SECTION("negative chrono value returns the default")  // Negative durations
-                                                        // are rejected.
-  {
+  // Negative durations
+  // are rejected.
+  SECTION("negative chrono value returns the default") {
     ScopedEnv guard("VALHALLA_TEST_NEG_DURATION",
                     "-5");  // Set a negative number.
     CHECK(loader.getEnvironmentVariable("VALHALLA_TEST_NEG_DURATION",
@@ -261,8 +257,7 @@ TEST_CASE(
   }
 
   // Text where a duration is expected.
-  SECTION("non-numeric chrono value returns the default")
-  {
+  SECTION("non-numeric chrono value returns the default") {
     ScopedEnv guard("VALHALLA_TEST_BAD_DURATION",
                     "banana");  // Set a non-numeric string.
     CHECK(loader.getEnvironmentVariable("VALHALLA_TEST_BAD_DURATION",
@@ -271,9 +266,9 @@ TEST_CASE(
   }
 }
 
+// Set parsing basics.
 TEST_CASE("EnvLoader parseSet splits on commas and trims whitespace",
-          "[configurator][envloader]")  // Set parsing basics.
-{
+          "[configurator][envloader]") {
   TestLoader loader;  // The loader under test.
 
   CHECK(loader.parseSet("a,b,c") ==
@@ -290,9 +285,9 @@ TEST_CASE("EnvLoader parseSet splits on commas and trims whitespace",
 
 // Bug 9 fixed: parseSet now skips empty tokens, so "a,,b" yields exactly
 // {"a","b"}.
+// Regression guard.
 TEST_CASE("EnvLoader parseSet skips empty tokens from consecutive commas",
-          "[configurator][envloader]")  // Regression guard.
-{
+          "[configurator][envloader]") {
   TestLoader loader;  // The loader under test.
 
   const auto parsed =
@@ -303,9 +298,9 @@ TEST_CASE("EnvLoader parseSet skips empty tokens from consecutive commas",
   CHECK(parsed.size() == 2);      // No extra empty entry snuck in.
 }
 
+// Set-valued getter.
 TEST_CASE("EnvLoader set-of-strings overload falls back to an empty set",
-          "[configurator][envloader]")  // Set-valued getter.
-{
+          "[configurator][envloader]") {
   TestLoader loader;  // The loader under test.
 
   const auto unset = loader.getEnvironmentVariable(
@@ -322,11 +317,11 @@ TEST_CASE("EnvLoader set-of-strings overload falls back to an empty set",
                                                        // into the set.
 }
 
+// EnvVars wrapper around getenv.
 TEST_CASE("EnvVars get reads the process environment",
-          "[configurator][envloader]")  // EnvVars wrapper around getenv.
-{
-  struct Getter : EnvVars  // Subclass to expose the protected get method.
-  {
+          "[configurator][envloader]") {
+  // Subclass to expose the protected get method.
+  struct Getter : EnvVars {
     using EnvVars::get;  // Bring get into public scope.
   };
 
@@ -342,12 +337,11 @@ TEST_CASE("EnvVars get reads the process environment",
 
 // Bug 5 fixed: EnvVars::set() now uses setenv() which copies both key and
 // value internally — no dangling pointer.
-TEST_CASE(
-    "EnvVars::set stores a value that is readable via get after return",
-    "[configurator][envloader]")  // Regression guard for a dangling pointer.
-{
-  struct Setter : EnvVars  // Subclass to expose the protected methods.
-  {
+// Regression guard for a dangling pointer.
+TEST_CASE("EnvVars::set stores a value that is readable via get after return",
+          "[configurator][envloader]") {
+  // Subclass to expose the protected methods.
+  struct Setter : EnvVars {
     using EnvVars::get;  // Bring get into public scope.
     using EnvVars::set;  // Bring set into public scope.
   };
@@ -366,13 +360,13 @@ TEST_CASE(
                                                // it does not leak.
 }
 
+// Worker-count tuning.
 TEST_CASE("EnvLoader optimize_performance raises sub-1 values to ncpus*factor",
-          "[configurator][envloader]")  // Worker-count tuning.
-{
+          "[configurator][envloader]") {
   TestLoader loader;  // The loader under test.
 
-  SECTION("zero is raised")  // Zero means "let the library decide".
-  {
+  // Zero means "let the library decide".
+  SECTION("zero is raised") {
     uint16_t value = 0;                     // Start from zero.
     loader.optimize_performance(value, 5);  // Apply the tuner with factor 5.
     const auto ncpus = std::max<
@@ -383,8 +377,8 @@ TEST_CASE("EnvLoader optimize_performance raises sub-1 values to ncpus*factor",
     CHECK(value == ncpus * 5);  // It becomes CPUs times the factor.
   }
 
-  SECTION("a positive value is left alone")  // Explicit values are respected.
-  {
+  // Explicit values are respected.
+  SECTION("a positive value is left alone") {
     uint16_t value = 3;                     // A positive setting.
     loader.optimize_performance(value, 5);  // Apply the tuner.
     CHECK(value == 3);                      // It is unchanged.
@@ -394,17 +388,16 @@ TEST_CASE("EnvLoader optimize_performance raises sub-1 values to ncpus*factor",
 // End-to-end check that the process-wide test environment (set in
 // tests/support/global_env.cpp before main) is actually consumed by the
 // Configurator singleton: defaults, worker counts and token parameters.
+// Whole-config sanity check.
 TEST_CASE("Configurator exposes the configured singleton through Store",
-          "[configurator][configurator]")  // Whole-config sanity check.
-{
+          "[configurator][configurator]") {
   auto configurator = Store::getObject<Configurator>();  // Fetch the singleton
                                                          // created at startup.
   REQUIRE(configurator != nullptr);                      // It must exist.
 
   SECTION(
       // Rate-limit settings.
-      "DOSDetectorConfig uses the compiled-in defaults (env unset)")
-  {
+      "DOSDetectorConfig uses the compiled-in defaults (env unset)") {
     const auto& config =
         configurator->get<Configurator::DOSDetectorConfig>();  // Read that
                                                                // config block.
@@ -429,8 +422,7 @@ TEST_CASE("Configurator exposes the configured singleton through Store",
 
   SECTION(
       // Database settings.
-      "DatabaseConfig uses the compiled-in defaults (env unset)")
-  {
+      "DatabaseConfig uses the compiled-in defaults (env unset)") {
     const auto& config =
         // Read that config block.
         configurator->get<Configurator::DatabaseConfig>();
@@ -457,8 +449,8 @@ TEST_CASE("Configurator exposes the configured singleton through Store",
 
   SECTION(
       "DbExecutorConfig: tests run database work inline, the queue size is "
-      "the default")  // Executor settings.
-  {
+      // Executor settings.
+      "the default") {
     const auto& config =
         configurator
             ->get<Configurator::DbExecutorConfig>();  // Read that config block.
@@ -470,8 +462,8 @@ TEST_CASE("Configurator exposes the configured singleton through Store",
 
   SECTION(
       "PasswordWorkerConfig: tests run password work inline, other values "
-      "are the defaults")  // Password settings.
-  {
+      // Password settings.
+      "are the defaults") {
     const auto& config = configurator->get<
         Configurator::PasswordWorkerConfig>();  // Read that config block.
     CHECK(config.workers ==
@@ -484,8 +476,7 @@ TEST_CASE("Configurator exposes the configured singleton through Store",
 
   SECTION(
       // Token settings.
-      "TokenManagerParameters come from the test environment")
-  {
+      "TokenManagerParameters come from the test environment") {
     // tests/support/global_env.cpp sets TOKEN_* before the Configurator
     // singleton was created; the values must have been picked up there.
     const auto& config = configurator->get<

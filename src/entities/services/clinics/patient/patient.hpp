@@ -84,9 +84,9 @@ using Data_t = api::v2::Types::Data_t;  // Shorter name for the wrapper that
  * from.
  * @see Case, Entity, PermissionManager, ClinicController
  */
-class Patient : public Case  // Inherits the CRUD builders and adds
-                             // patient-specific permission and visits helpers.
-{
+// Inherits the CRUD builders and adds
+// patient-specific permission and visits helpers.
+class Patient : public Case {
  private:  // Implementation details kept hidden from outside callers.
   /** @brief Table bound to this entity; used by CRUD builders and the
    * permission joins. */
@@ -128,10 +128,9 @@ class Patient : public Case  // Inherits the CRUD builders and adds
   template <typename T>  // The wrapper type is deduced from the caller's
                          // argument.
   explicit Patient(const T& _data)
-      : Case(_data,
-             TABLENAME)  // `explicit` prevents accidental implicit conversion;
-                         // data and table name go up to Case.
-  {
+      // `explicit` prevents accidental implicit conversion;
+      // data and table name go up to Case.
+      : Case(_data, TABLENAME) {
   }
   /**
    * @brief Default destructor; the entity owns nothing beyond the data
@@ -145,16 +144,14 @@ class Patient : public Case  // Inherits the CRUD builders and adds
    * @brief Returns the table this entity is bound to.
    * @return The constant `patients` string.
    */
-  static constexpr auto getTableName()
-  {
+  static constexpr auto getTableName() {
     return TABLENAME;
   }  // Lets callers (e.g. PermissionManager) build SQL for the correct table.
   /**
    * @brief Returns the create-payload key used to resolve the owning clinic.
    * @return The constant `clinic_id` string.
    */
-  static constexpr auto getCreateKey()
-  {
+  static constexpr auto getCreateKey() {
     return CREATE_KEY;
   }  // Exposes the JSON field name so the controller can read the clinic id
      // consistently.
@@ -175,10 +172,9 @@ class Patient : public Case  // Inherits the CRUD builders and adds
    * @note These exceptions are not caught here; the controller's handler
    * catches them.
    */
-  std::optional<std::string> getSqlGetVisitsStatement(
-      pqxx::params& params)  // Returns the SQL text; `params` receives the
-                             // bound id separately.
-  {
+  // Returns the SQL text; `params` receives the
+  // bound id separately.
+  std::optional<std::string> getSqlGetVisitsStatement(pqxx::params& params) {
     params = {};  // Reset the parameter list so no value from an earlier
                   // call leaks into this query.
     params.append(
@@ -206,22 +202,20 @@ class Patient : public Case  // Inherits the CRUD builders and adds
    * the key throws; the exception is logged via CRITICALMESSAGE.
    * @see Case::getPermissionsQueryForCreatePatientImpl
    */
+  // Returns a query string, or nothing if the payload is
+  // malformed.
   static std::optional<std::string> getPermissionsQueryForCreate(
-      const std::optional<jsoncons::json>&
-          data_j)  // Returns a query string, or nothing if the payload is
-                   // malformed.
-  {
+      const std::optional<jsoncons::json>& data_j) {
     uint64_t id;  // Will hold the clinic id pulled from the JSON payload.
-    try  // Reading JSON can fail (missing field or wrong type), so guard
-         // it.
-    {
-      id = data_j->at(CREATE_KEY)
-               .as<uint64_t>();  // Dereference the optional payload, look
-                                 // up "clinic_id" and convert it to an
-                                 // integer.
-    }
-    catch (const std::exception& e)  // Any read/conversion problem lands here.
-    {
+    // Reading JSON can fail (missing field or wrong type), so guard
+    // it.
+    try {
+      // Dereference the optional payload, look
+      // up "clinic_id" and convert it to an
+      // integer.
+      // Any read/conversion problem lands here.
+      id = data_j->at(CREATE_KEY).as<uint64_t>();
+    } catch (const std::exception& e) {
       CRITICALMESSAGE  // Log the failure (macro uses the caught
                        // exception) so the problem is visible in server
                        // logs.
@@ -245,8 +239,7 @@ class Patient : public Case  // Inherits the CRUD builders and adds
    * the optional return.
    */
   static std::optional<std::string> getPermissionsQueryForRead(
-      const uint64_t id)
-  {
+      const uint64_t id) {
     return getPermissionsQueryForReadImp(id, TABLENAME);
   }  // One-line pass-through to Case, swapping in this class's table name.
 
@@ -258,8 +251,7 @@ class Patient : public Case  // Inherits the CRUD builders and adds
    * the optional return.
    */
   static std::optional<std::string> getPermissionsQueryForUpdate(
-      const uint64_t id)
-  {
+      const uint64_t id) {
     return getPermissionsQueryForUpdateImpl(id, TABLENAME);
   }  // Same idea for update: build the permission SELECT with our table name.
 
@@ -271,8 +263,7 @@ class Patient : public Case  // Inherits the CRUD builders and adds
    * the optional return.
    */
   static std::optional<std::string> getPermissionsQueryForDelete(
-      const uint64_t id)
-  {
+      const uint64_t id) {
     return getPermissionsQueryForDeleteImp(id, TABLENAME);
   }  // Same idea for delete: build the permission SELECT with our table name.
 };

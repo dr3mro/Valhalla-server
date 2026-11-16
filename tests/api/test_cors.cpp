@@ -44,8 +44,8 @@
 // emitted, which are preflight-only, and how the preflight echo is hardened so
 // a client cannot inject arbitrary header values.
 
-namespace  // Anonymous namespace keeps the helper private to this file.
-{
+// Anonymous namespace keeps the helper private to this file.
+namespace {
   /** @brief Builds a request with the method and optional preflight header
    * list that Cors::apply branches on. */
   /**
@@ -54,16 +54,15 @@ namespace  // Anonymous namespace keeps the helper private to this file.
    * Access-Control-Request-Headers header.
    */
   drogon::HttpRequestPtr makeRequest(drogon::HttpMethod method,
-                                     const std::string& requestedHeaders = "")
-  {
+                                     const std::string& requestedHeaders = "") {
     auto request =
         drogon::HttpRequest::newHttpRequest();  // Start with a fresh, empty
                                                 // request.
     request->setMethod(
         method);  // Set the method so Cors can tell preflight from normal.
-    if (!requestedHeaders.empty())  // Only add the header when the caller
-                                    // supplied a value.
-    {
+    // Only add the header when the caller
+    // supplied a value.
+    if (!requestedHeaders.empty()) {
       request->addHeader("Access-Control-Request-Headers",
                          requestedHeaders);  // Attach the header a browser
                                              // sends on preflight.
@@ -75,9 +74,9 @@ namespace  // Anonymous namespace keeps the helper private to this file.
 // A normal response always advertises origins/methods/headers and exposes
 // Retry-After; preflight-only headers (Max-Age, and the reflected header list)
 // must be absent.
+// The baseline normal-response contract.
 TEST_CASE("Cors::apply sets the full header set on a normal response",
-          "[api][cors]")  // The baseline normal-response contract.
-{
+          "[api][cors]") {
   auto response =
       drogon::HttpResponse::newHttpResponse();  // A fresh response to fill
                                                 // with CORS headers.
@@ -105,9 +104,9 @@ TEST_CASE("Cors::apply sets the full header set on a normal response",
 
 // Sanitization must reject non-ASCII bytes and normalize separators so the
 // reflected header value stays a safe, well-formed ASCII token list.
+// Tests the low-level sanitizer directly.
 TEST_CASE("Cors::detail helpers are ASCII-only and trim tokens",
-          "[api][cors]")  // Tests the low-level sanitizer directly.
-{
+          "[api][cors]") {
   using Cors::detail::sanitizeRequestedHeaders;  // Shorthand for the function
                                                  // under test.
 
@@ -129,10 +128,8 @@ TEST_CASE("Cors::detail helpers are ASCII-only and trim tokens",
 
 // Vary de-duplication compares tokens case-insensitively, as HTTP field values
 // are case-insensitive, so an existing lowercase entry is not duplicated.
-TEST_CASE(
-    "Cors::detail addToVary is case-insensitive",
-    "[api][cors]")  // Same header in different case must not be added twice.
-{
+// Same header in different case must not be added twice.
+TEST_CASE("Cors::detail addToVary is case-insensitive", "[api][cors]") {
   auto response = drogon::HttpResponse::newHttpResponse();  // A fresh response.
   response->addHeader("Vary",
                       // Pre-seed the token in lowercase.
@@ -149,9 +146,9 @@ TEST_CASE(
 }
 
 // An Allow-Origin already set by an upstream layer must not be emitted twice.
+// Guards against duplicate headers.
 TEST_CASE("Cors::apply does not duplicate a pre-existing Allow-Origin",
-          "[api][cors]")  // Guards against duplicate headers.
-{
+          "[api][cors]") {
   auto response = drogon::HttpResponse::newHttpResponse();  // A fresh response.
   response->addHeader("Access-Control-Allow-Origin",
                       "*");  // Pretend an earlier layer already set it.
@@ -166,9 +163,9 @@ TEST_CASE("Cors::apply does not duplicate a pre-existing Allow-Origin",
 
 // apply may run more than once per response (e.g. filter and handler), so it
 // must be idempotent: a second call leaves the header set unchanged.
+// Repeated application is safe.
 TEST_CASE("Cors::apply is idempotent: applying it twice changes nothing",
-          "[api][cors]")  // Repeated application is safe.
-{
+          "[api][cors]") {
   // The response being modified.
   auto       response = drogon::HttpResponse::newHttpResponse();
   const auto request =
@@ -188,16 +185,15 @@ TEST_CASE("Cors::apply is idempotent: applying it twice changes nothing",
 
 // Vary must not be clobbered: a wildcard stays a wildcard, existing tokens in
 // any case are preserved, and non-preflight responses do not introduce Vary.
-TEST_CASE("Cors::apply Vary edge cases",
-          "[api][cors]")  // Several independent Vary rules.
-{
+// Several independent Vary rules.
+TEST_CASE("Cors::apply Vary edge cases", "[api][cors]") {
   auto response =
       drogon::HttpResponse::newHttpResponse();  // Shared response; each
                                                 // SECTION starts from a fresh
                                                 // test run.
 
-  SECTION("Vary: * stays unchanged")  // Wildcard must survive untouched.
-  {
+  // Wildcard must survive untouched.
+  SECTION("Vary: * stays unchanged") {
     response->addHeader("Vary", "*");  // Set the wildcard.
     Cors::apply(makeRequest(drogon::Options, "content-type"),
                 response);                      // Apply a preflight request.
@@ -206,8 +202,7 @@ TEST_CASE("Cors::apply Vary edge cases",
 
   SECTION(
       // Case-insensitive de-duplication.
-      "a Vary token in a different case is not duplicated")
-  {
+      "a Vary token in a different case is not duplicated") {
     response->addHeader("Vary",
                         // Seed tokens in mixed case.
                         "accept-encoding, ACCESS-CONTROL-REQUEST-HEADERS");
@@ -220,17 +215,16 @@ TEST_CASE("Cors::apply Vary edge cases",
 
   SECTION(
       // Only preflight adds these headers.
-      "a non-preflight response gets no Max-Age or Vary")
-  {
+      "a non-preflight response gets no Max-Age or Vary") {
     Cors::apply(makeRequest(drogon::Get), response);  // Normal request.
     CHECK(response->getHeader("Access-Control-Max-Age")
               .empty());                         // No cache hint.
     CHECK(response->getHeader("Vary").empty());  // No Vary header.
   }
 
-  SECTION("apply twice yields identical headers")  // Idempotence across the
-                                                   // whole header set.
-  {
+  // Idempotence across the
+  // whole header set.
+  SECTION("apply twice yields identical headers") {
     Cors::apply(makeRequest(drogon::Get), response);  // First call.
     const auto first = response->headers();           // Snapshot all headers.
     Cors::apply(makeRequest(drogon::Get), response);  // Second call.
@@ -240,14 +234,13 @@ TEST_CASE("Cors::apply Vary edge cases",
 
 // Existing Vary values from other layers must survive; our token is appended
 // exactly once even when apply runs repeatedly.
-TEST_CASE("Cors::apply preserves and appends Vary",
-          "[api][cors]")  // Rules for appending our Vary token.
-{
+// Rules for appending our Vary token.
+TEST_CASE("Cors::apply preserves and appends Vary", "[api][cors]") {
   auto response = drogon::HttpResponse::newHttpResponse();  // Shared response
                                                             // for the sections.
 
-  SECTION("no existing Vary gets exactly ours")  // Nothing to preserve.
-  {
+  // Nothing to preserve.
+  SECTION("no existing Vary gets exactly ours") {
     Cors::apply(makeRequest(drogon::Options, "content-type"),
                 response);  // Preflight with no prior Vary.
     CHECK(response->getHeader("Vary") ==
@@ -256,8 +249,7 @@ TEST_CASE("Cors::apply preserves and appends Vary",
 
   SECTION(
       // Combine with an existing token.
-      "an existing Vary is preserved and ours is appended")
-  {
+      "an existing Vary is preserved and ours is appended") {
     response->addHeader("Vary",
                         "Accept-Encoding");  // Pre-existing token from another
                                              // layer.
@@ -268,9 +260,9 @@ TEST_CASE("Cors::apply preserves and appends Vary",
           "Accept-Encoding, Access-Control-Request-Headers");
   }
 
-  SECTION("applying twice does not duplicate the token")  // Repeated appends
-                                                          // are collapsed.
-  {
+  // Repeated appends
+  // are collapsed.
+  SECTION("applying twice does not duplicate the token") {
     Cors::apply(makeRequest(drogon::Options, "content-type"),
                 response);  // First preflight.
     Cors::apply(makeRequest(drogon::Options, "content-type"),
@@ -283,15 +275,14 @@ TEST_CASE("Cors::apply preserves and appends Vary",
 // The requested-header list is attacker-controlled input. Oversized values,
 // embedded spaces/control characters and mixed invalid tokens must never widen
 // the response beyond the default allow-list.
-TEST_CASE("Cors::apply hardens the preflight echo",
-          "[api][cors]")  // Security-focused cases for hostile input.
-{
+// Security-focused cases for hostile input.
+TEST_CASE("Cors::apply hardens the preflight echo", "[api][cors]") {
   auto response = drogon::HttpResponse::newHttpResponse();  // Shared response
                                                             // for the sections.
 
-  SECTION("oversized value falls back to the default")  // Too-long input is
-                                                        // rejected wholesale.
-  {
+  // Too-long input is
+  // rejected wholesale.
+  SECTION("oversized value falls back to the default") {
     const std::string
         huge(1025, 'a');  // Build a value just over the 1024-byte limit.
     Cors::apply(makeRequest(drogon::Options, huge),
@@ -302,8 +293,7 @@ TEST_CASE("Cors::apply hardens the preflight echo",
 
   SECTION(
       // Embedded whitespace/control bytes are unsafe.
-      "a value with a space or control character is rejected")
-  {
+      "a value with a space or control character is rejected") {
     Cors::apply(makeRequest(drogon::Options, "x bad"),
                 response);  // A space inside a token.
     CHECK(response->getHeader("Access-Control-Allow-Headers") ==
@@ -318,8 +308,7 @@ TEST_CASE("Cors::apply hardens the preflight echo",
 
   SECTION(
       // Partial acceptance.
-      "mixed valid and invalid tokens keeps only the valid ones")
-  {
+      "mixed valid and invalid tokens keeps only the valid ones") {
     Cors::apply(makeRequest(drogon::Options,
                             "content-type, not a token, x-custom"),
                 response);  // One invalid token among valid ones.
@@ -327,17 +316,17 @@ TEST_CASE("Cors::apply hardens the preflight echo",
           "content-type, x-custom");  // Only the valid tokens survive.
   }
 
-  SECTION("empty value falls back to the default")  // No requested headers
-                                                    // means use the default.
-  {
+  // No requested headers
+  // means use the default.
+  SECTION("empty value falls back to the default") {
     Cors::apply(makeRequest(drogon::Options, ""),
                 response);  // Preflight with an empty header value.
     CHECK(response->getHeader("Access-Control-Allow-Headers") ==
           Cors::defaultAllowedHeaders());  // Safe default is used.
   }
 
-  SECTION("preflight sets Vary")  // Confirm preflight's Vary side effect.
-  {
+  // Confirm preflight's Vary side effect.
+  SECTION("preflight sets Vary") {
     Cors::apply(makeRequest(drogon::Options, "content-type"),
                 response);  // Preflight.
     CHECK(response->getHeader("Vary") ==
@@ -348,11 +337,11 @@ TEST_CASE("Cors::apply hardens the preflight echo",
 
 // Only an OPTIONS preflight reflects and caches the requested headers; a
 // normal GET must always use the fixed default list.
+// Contrasts preflight and normal.
 TEST_CASE("Cors::apply echoes the requested headers on a preflight only",
-          "[api][cors]")  // Contrasts preflight and normal.
-{
-  SECTION("preflight")  // OPTIONS request.
-  {
+          "[api][cors]") {
+  // OPTIONS request.
+  SECTION("preflight") {
     auto response = drogon::HttpResponse::newHttpResponse();  // Fresh response.
     Cors::apply(makeRequest(drogon::Options, "content-type, x-custom"),
                 response);  // Preflight echoing two headers.
@@ -363,9 +352,9 @@ TEST_CASE("Cors::apply echoes the requested headers on a preflight only",
           Cors::preflightMaxAge());  // A cache lifetime is added for
                                      // preflight.
   }
-  SECTION("a normal request never echoes request headers")  // GET request with
-                                                            // a header value.
-  {
+  // GET request with
+  // a header value.
+  SECTION("a normal request never echoes request headers") {
     auto response = drogon::HttpResponse::newHttpResponse();  // Fresh response.
     Cors::apply(makeRequest(drogon::Get, "x-evil"),
                 response);  // Normal request trying to inject a header.

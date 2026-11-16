@@ -52,68 +52,63 @@ using HttpError = api::v2::Http::Error;  // Shorthand for the error struct
                                          // filled on validation failure.
 namespace Types = api::v2::Types;  // Shorthand for the data-type namespace.
 
-namespace  // Anonymous namespace keeps the helper private to this file.
-{
+// Anonymous namespace keeps the helper private to this file.
+namespace {
   /** @brief Builds a string-valued JSON object from key/value pairs for the
    * regex-validation cases. */
+  // Turns pairs into a JSON object.
   jsoncons::json makeJsonObject(
-      std::initializer_list<std::pair<const char*, std::string>>
-          items)  // Turns pairs into a JSON object.
-  {
+      std::initializer_list<std::pair<const char*, std::string>> items) {
     jsoncons::json object =
-        jsoncons::json::object();           // Start with an empty object.
-    for (const auto& [key, value] : items)  // Loop over each pair.
-    {
+        jsoncons::json::object();  // Start with an empty object.
+    // Loop over each pair.
+    for (const auto& [key, value] : items) {
       object[key] = value;  // Store the value under its key.
     }
     return object;  // Return the finished object.
   }
 }  // namespace
 
-TEST_CASE("Validator::Rule flag semantics",
-          "[validator][rule]")  // How rule flags match keys and combine.
-{
+// How rule flags match keys and combine.
+TEST_CASE("Validator::Rule flag semantics", "[validator][rule]") {
   using Action = Validator::Rule::Action;  // Shorthand for the action enum.
 
   const Validator::Rule
       rule(Action::ASSERT_IMMUTABLE,
            {"id", "created_at"});  // A rule covering two keys for one action.
 
-  SECTION(
-      "a key covered by the rule matches")  // Both listed keys should match.
-  {
+  // Both listed keys should match.
+  SECTION("a key covered by the rule matches") {
     CHECK(rule.check(Action::ASSERT_IMMUTABLE, "id"));  // "id" is covered.
     CHECK(rule.check(Action::ASSERT_IMMUTABLE,
                      "created_at"));  // "created_at" is covered.
   }
 
-  SECTION("a key not covered does not match")
-  {
+  SECTION("a key not covered does not match") {
     CHECK_FALSE(rule.check(Action::ASSERT_IMMUTABLE, "name"));
   }  // "name" is not in the rule's set.
 
   SECTION(
       // Action must also match.
-      "a different action does not match even for covered keys")
-  {
+      "a different action does not match even for covered keys") {
     CHECK_FALSE(rule.check(Action::ASSERT_NOT_PRESENT,
                            "id"));  // Same key, different action: no match.
     CHECK_FALSE(rule.check(Action::IGNORE_IF_MISSING_FROM_SCHEMA,
                            "id"));  // And another different action.
   }
 
-  SECTION("explicit operator bool reflects the action")  // Truthiness follows
-                                                         // whether an action
-                                                         // is set.
-  {
+  // Truthiness follows
+  // whether an action
+  // is set.
+  SECTION("explicit operator bool reflects the action") {
     CHECK(static_cast<bool>(rule));  // The rule has an action, so it is truthy.
     const Validator::Rule none(Action::NONE, {"id"});  // A rule with no action.
     CHECK_FALSE(static_cast<bool>(none));              // No action means falsy.
   }
 
-  SECTION("bit operators behave as flags")  // Actions can be combined with
-                                            // bitwise operators.
-  {
+  // Actions can be combined with
+  // bitwise operators.
+  SECTION("bit operators behave as flags") {
     auto flags = Action::ASSERT_IMMUTABLE;  // Start with one flag.
     flags |= Action::ASSERT_NOT_PRESENT;    // Add a second flag.
     CHECK((flags & Action::ASSERT_IMMUTABLE) ==
@@ -127,9 +122,8 @@ TEST_CASE("Validator::Rule flag semantics",
   }
 }
 
-TEST_CASE("Validator::Rule keeps key sets per action",
-          "[validator][rule]")  // Keys are stored per action.
-{
+// Keys are stored per action.
+TEST_CASE("Validator::Rule keeps key sets per action", "[validator][rule]") {
   using Action = Validator::Rule::Action;  // Shorthand for the action enum.
 
   // The keys map is keyed by action, so a rule can cover several actions.
@@ -143,9 +137,9 @@ TEST_CASE("Validator::Rule keeps key sets per action",
                          "other"));  // A different key does not.
 }
 
+// Valid fields pass and are collected.
 TEST_CASE("Validator::clientRegexValidation accepts known-good client data",
-          "[validator][regex]")  // Valid fields pass and are collected.
-{
+          "[validator][regex]") {
   jsoncons::json data = makeJsonObject({
       // A well-formed client record.
       {"username", "john_doe"},
@@ -171,9 +165,9 @@ TEST_CASE("Validator::clientRegexValidation accepts known-good client data",
 
 TEST_CASE(
     "Validator::clientRegexValidation rejects values that do not match their "
+    // Bad fields are rejected.
     "pattern",
-    "[validator][regex]")  // Bad fields are rejected.
-{
+    "[validator][regex]") {
   const std::vector<std::pair<std::string, std::string>> invalid = {
       // A list of invalid field/value pairs.
       {"username", "1starts_with_digit"},
@@ -183,8 +177,8 @@ TEST_CASE(
       {"gender", "male"},     // case sensitive
   };
 
-  for (const auto& [key, value] : invalid)  // Try each invalid pair in turn.
-  {
+  // Try each invalid pair in turn.
+  for (const auto& [key, value] : invalid) {
     CAPTURE(key,
             value);  // Show the failing pair in the test output if it fails.
 
@@ -204,9 +198,9 @@ TEST_CASE(
   }
 }
 
+// Password strength rules.
 TEST_CASE("Validator::clientRegexValidation password policy",
-          "[validator][regex]")  // Password strength rules.
-{
+          "[validator][regex]") {
   const std::vector<std::string> valid = {
       // Passwords that meet the policy.
       "Abcdef1!",  // lower, upper, digit, special, 8 chars
@@ -221,8 +215,8 @@ TEST_CASE("Validator::clientRegexValidation password policy",
       "Ab1!",       // shorter than 8
   };
 
-  for (const auto& password : valid)  // Check the accepted passwords.
-  {
+  // Check the accepted passwords.
+  for (const auto& password : valid) {
     CAPTURE(password);  // Print the password if a check fails.
     jsoncons::json data =
         makeJsonObject({{"password", password}});  // One-field payload.
@@ -234,8 +228,8 @@ TEST_CASE("Validator::clientRegexValidation password policy",
                                            db_data));  // Must be accepted.
   }
 
-  for (const auto& password : invalid)  // Check the rejected passwords.
-  {
+  // Check the rejected passwords.
+  for (const auto& password : invalid) {
     CAPTURE(password);  // Print the password if a check fails.
     jsoncons::json data =
         makeJsonObject({{"password", password}});  // One-field payload.
@@ -251,9 +245,9 @@ TEST_CASE("Validator::clientRegexValidation password policy",
   }
 }
 
+// Empty field values fail.
 TEST_CASE("Validator::clientRegexValidation rejects empty values",
-          "[validator][regex]")  // Empty field values fail.
-{
+          "[validator][regex]") {
   jsoncons::json data =
       makeJsonObject({{"username", ""}});  // An empty username.
 
@@ -269,10 +263,10 @@ TEST_CASE("Validator::clientRegexValidation rejects empty values",
         std::string::npos);  // The message names the offending field.
 }
 
+// Unknown fields are allowed.
 TEST_CASE(
     "Validator::clientRegexValidation passes through keys without a validator",
-    "[validator][regex]")  // Unknown fields are allowed.
-{
+    "[validator][regex]") {
   jsoncons::json data = makeJsonObject(
       {{"first_name", "anything at all"}});  // A field with no specific rule.
 
@@ -286,9 +280,9 @@ TEST_CASE(
         1);  // The pair is passed through unchanged.
 }
 
+// Full valid search object.
 TEST_CASE("Types::Search_t parses a valid search request",
-          "[validator][search]")  // Full valid search object.
-{
+          "[validator][search]") {
   // A complete, well-formed search request.
   jsoncons::json search_j = jsoncons::json::parse(R"({
         "keyword": "fever",
@@ -311,9 +305,8 @@ TEST_CASE("Types::Search_t parses a valid search request",
   CHECK(search.offset == 20);              // Offset parsed.
 }
 
-TEST_CASE("Types::Search_t direction 1 maps to DESC",
-          "[validator][search]")  // Direction mapping.
-{
+// Direction mapping.
+TEST_CASE("Types::Search_t direction 1 maps to DESC", "[validator][search]") {
   // Another search request, this time descending.
   jsoncons::json search = jsoncons::json::parse(R"({
         "keyword": "x", "filter": "f", "order_by": "o",
@@ -327,9 +320,9 @@ TEST_CASE("Types::Search_t direction 1 maps to DESC",
   CHECK(parsed.direction == "DESC");  // Direction 1 becomes the string "DESC".
 }
 
+// Malformed input is handled gracefully.
 TEST_CASE("Types::Search_t reports failure for a missing key without throwing",
-          "[validator][search]")  // Malformed input is handled gracefully.
-{
+          "[validator][search]") {
   // The constructor catches exceptions internally and signals failure via
   // success=false rather than re-throwing, so callers can reply with a 400
   // instead of a 500. A search request with the "offset" field omitted.
@@ -349,13 +342,11 @@ TEST_CASE("Types::Search_t reports failure for a missing key without throwing",
 TEST_CASE(
     "Types::Search_t only accepts plain identifiers for filter and order_by",
     "[validator][search]")  // Injection guard.
+// Returns true only when Search_t accepts both fields as valid identifiers.
+// Helper that builds a request and parses it.
 {
-  // Returns true only when Search_t accepts both fields as valid identifiers.
-  const auto parse =
-      [](const std::string& filter,
-         const std::string&
-             order_by)  // Helper that builds a request and parses it.
-  {
+  const auto parse = [](const std::string& filter,
+                        const std::string& order_by) {
     jsoncons::json search_j;                   // Build the payload.
     search_j["keyword"]           = "x";       // A benign keyword.
     search_j["filter"]            = filter;    // The filter under test.
@@ -392,9 +383,9 @@ TEST_CASE(
 // dereferenced.
 TEST_CASE(
     "Validator::validateDatabaseCreateSchema returns false for an unknown "
+    // Regression guard for undefined behaviour.
     "table without crashing",
-    "[validator]")  // Regression guard for undefined behaviour.
-{
+    "[validator]") {
   // With an empty DatabaseSchema (no DB connected), every table name is
   // unknown. The fix ensures we get false + an error message instead of UB.
   Validator            v;        // The validator under test.
@@ -414,11 +405,11 @@ TEST_CASE(
   CHECK_FALSE(error.message.empty());  // And explains why.
 }
 
+// Type checking of fields.
 TEST_CASE("Types::Search_t rejects fields with wrong JSON types",
-          "[validator][search]")  // Type checking of fields.
-{
-  SECTION("keyword is a number, not a string")  // keyword must be text.
-  {
+          "[validator][search]") {
+  // keyword must be text.
+  SECTION("keyword is a number, not a string") {
     // Here "keyword" is a number instead of a string.
     const jsoncons::json search_j = jsoncons::json::parse(R"({
             "keyword": 123, "filter": "f", "order_by": "o",
@@ -429,8 +420,8 @@ TEST_CASE("Types::Search_t rejects fields with wrong JSON types",
     CHECK_FALSE(success);                            // Wrong type is rejected.
   }
 
-  SECTION("direction is a string, not a number")  // direction must be numeric.
-  {
+  // direction must be numeric.
+  SECTION("direction is a string, not a number") {
     // Here "direction" is a string instead of a number.
     const jsoncons::json search_j = jsoncons::json::parse(R"({
             "keyword": "x", "filter": "f", "order_by": "o",
@@ -441,8 +432,8 @@ TEST_CASE("Types::Search_t rejects fields with wrong JSON types",
     CHECK_FALSE(success);                            // Wrong type is rejected.
   }
 
-  SECTION("limit is a string, not a number")  // limit must be numeric.
-  {
+  // limit must be numeric.
+  SECTION("limit is a string, not a number") {
     // Here "limit" is a string instead of a number.
     const jsoncons::json search_j = jsoncons::json::parse(R"({
             "keyword": "x", "filter": "f", "order_by": "o",
@@ -454,9 +445,9 @@ TEST_CASE("Types::Search_t rejects fields with wrong JSON types",
   }
 }
 
+// Zero is a legal value.
 TEST_CASE("Types::Search_t with zero limit and offset is valid",
-          "[validator][search]")  // Zero is a legal value.
-{
+          "[validator][search]") {
   // A search with zero limit and offset.
   const jsoncons::json  search_j = jsoncons::json::parse(R"({
         "keyword": "", "filter": "all", "order_by": "id",

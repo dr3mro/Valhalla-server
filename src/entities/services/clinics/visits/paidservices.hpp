@@ -64,9 +64,9 @@
  * from.
  * @see Case, Entity, PermissionManager, ClinicController
  */
-class PaidServices : public Case  // Inherits the CRUD builders and adds
-                                  // paid-services permission-query helpers.
-{
+// Inherits the CRUD builders and adds
+// paid-services permission-query helpers.
+class PaidServices : public Case {
  private:  // Implementation details kept hidden from outside callers.
   /** @brief Table bound to this entity; used by CRUD builders and the
    * read/update/delete permission joins. */
@@ -102,26 +102,23 @@ class PaidServices : public Case  // Inherits the CRUD builders and adds
   template <typename T>  // T is deduced from the wrapper the caller passes,
                          // so several wrapper types work here.
   PaidServices(const T& _data)
-      : Case(_data,
-             TABLENAME)  // Pass the data and table name up to Case, which
-                         // stores them in Entity.
-  {
+      // Pass the data and table name up to Case, which
+      // stores them in Entity.
+      : Case(_data, TABLENAME) {
   }
 
   /**
    * @brief Returns the table this entity is bound to.
    * @return The constant `clinics_paidservices` string.
    */
-  static constexpr auto getTableName()
-  {
+  static constexpr auto getTableName() {
     return TABLENAME;
   }  // Lets callers (e.g. PermissionManager) build SQL for the correct table.
   /**
    * @brief Returns the create-payload key used to resolve the owning clinic.
    * @return The constant `id` string (the visit id).
    */
-  static constexpr auto getCreateKey()
-  {
+  static constexpr auto getCreateKey() {
     return CREATE_KEY;
   }  // Exposes the JSON field name so the controller can read the visit id
      // consistently.
@@ -148,23 +145,21 @@ class PaidServices : public Case  // Inherits the CRUD builders and adds
    * the key throws; the exception is logged via CRITICALMESSAGE.
    * @see Case::getPermissionsQueryForCreateImpl
    */
+  // Returns a query string, or nothing if the payload is
+  // malformed.
   static std::optional<std::string> getPermissionsQueryForCreate(
-      const std::optional<jsoncons::json>&
-          data_j)  // Returns a query string, or nothing if the payload is
-                   // malformed.
-  {
+      const std::optional<jsoncons::json>& data_j) {
     uint64_t id;  // Will hold the visit id pulled from the JSON payload; an
                   // unsigned 64-bit integer matches database ids.
-    try  // Reading JSON can fail (missing field or wrong type), so guard
-         // it.
-    {
-      id = data_j->at(CREATE_KEY)
-               .as<uint64_t>();  // Dereference the optional payload, look
-                                 // up the "id" field and convert it to an
-                                 // integer.
-    }
-    catch (const std::exception& e)  // Any read/conversion problem lands here.
-    {
+    // Reading JSON can fail (missing field or wrong type), so guard
+    // it.
+    try {
+      // Dereference the optional payload, look
+      // up the "id" field and convert it to an
+      // integer.
+      // Any read/conversion problem lands here.
+      id = data_j->at(CREATE_KEY).as<uint64_t>();
+    } catch (const std::exception& e) {
       CRITICALMESSAGE  // Log the failure (macro uses the caught
                        // exception) so the problem is visible in server
                        // logs.
@@ -194,8 +189,7 @@ class PaidServices : public Case  // Inherits the CRUD builders and adds
    * the optional return.
    */
   static std::optional<std::string> getPermissionsQueryForRead(
-      const uint64_t id)
-  {
+      const uint64_t id) {
     return getPermissionsQueryForReadImp(id, TABLENAME);
   }  // One-line pass-through to Case, swapping in this class's table name.
   /**
@@ -206,8 +200,7 @@ class PaidServices : public Case  // Inherits the CRUD builders and adds
    * the optional return.
    */
   static std::optional<std::string> getPermissionsQueryForUpdate(
-      const uint64_t id)
-  {
+      const uint64_t id) {
     return getPermissionsQueryForUpdateImpl(id, TABLENAME);
   }  // Same idea for update: build the permission SELECT with our table name.
   /**
@@ -218,8 +211,7 @@ class PaidServices : public Case  // Inherits the CRUD builders and adds
    * the optional return.
    */
   static std::optional<std::string> getPermissionsQueryForDelete(
-      const uint64_t id)
-  {
+      const uint64_t id) {
     return getPermissionsQueryForDeleteImp(id, TABLENAME);
   }  // Same idea for delete: build the permission SELECT with our table name.
 };

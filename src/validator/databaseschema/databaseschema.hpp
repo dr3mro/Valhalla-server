@@ -59,8 +59,7 @@
  * prerequisite.
  * @see Validator, DatabaseController, Store, SCHEMA_t
  */
-class DatabaseSchema
-{
+class DatabaseSchema {
  public:
   /**
    * @brief Eagerly loads the schema for every table reported by

@@ -63,8 +63,8 @@
  * @see ClinicControllerBase, EntityController
  */
 template <typename T>
-class ClinicController : public EntityController<T>, public ClinicControllerBase
-{
+class ClinicController : public EntityController<T>,
+                         public ClinicControllerBase {
  private:
   /**
    * Shared authorization service used by the specialized create/delete/visit

@@ -40,10 +40,10 @@
 // (503); everything else is a 500. isBusy() also recognises Drogon errors by
 // message text, but these cases cover the typed DatabaseBusy and a generic one.
 
+// Registers the test for the one
+// retryable DB failure.
 TEST_CASE("error mapping maps DatabaseBusy to 503",
-          "[database][async][error]")  // Registers the test for the one
-                                       // retryable DB failure.
-{
+          "[database][async][error]") {
   DatabaseBusy busy;  // Construct the specific exception thrown when the
                       // connection pool has no free connection.
   CHECK(asyncdb::isBusy(busy));  // Prove it is classified as "busy", the
@@ -53,10 +53,10 @@ TEST_CASE("error mapping maps DatabaseBusy to 503",
                                           // tells clients "try again later".
 }
 
+// Registers the test for every other,
+// non-retryable DB error.
 TEST_CASE("error mapping maps generic errors to 500",
-          "[database][async][error]")  // Registers the test for every other,
-                                       // non-retryable DB error.
-{
+          "[database][async][error]") {
   std::runtime_error generic(
       "boom");  // A plain exception with no special meaning, standing in for
                 // an unexpected fault.

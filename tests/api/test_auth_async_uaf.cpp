@@ -59,8 +59,8 @@
 using AuthFilter =
     api::v2::Filters::Auth;  // Shorter name for the filter type under test.
 
-namespace  // Anonymous namespace keeps the fake private to this file.
-{
+// Anonymous namespace keeps the fake private to this file.
+namespace {
   /** @brief Test seam that forces the asynchronous authentication branch.
    *
    * Overriding only isAuthenticationValidAsync makes the filter take its
@@ -68,9 +68,9 @@ namespace  // Anonymous namespace keeps the fake private to this file.
    * the way a successful validation would (filling in the client identity),
    * so the resumed callback observes realistic state. */
   class FakeGateKeeper
-      : public api::v2::GateKeeper  // Inherits the real interface but
-                                    // replaces one method.
-  {
+      // Inherits the real interface but
+      // replaces one method.
+      : public api::v2::GateKeeper {
    public:
     drogon::Task<bool> isAuthenticationValidAsync(
         std::optional<api::v2::Types::ClientLoginData>& cd, std::string& /*m*/)
@@ -85,9 +85,9 @@ namespace  // Anonymous namespace keeps the fake private to this file.
   };
 }  // namespace
 
+// Tags let CI select this test by area.
 TEST_CASE("Auth filter async path invokes the chain callback",
-          "[api][auth][async]")  // Tags let CI select this test by area.
-{
+          "[api][auth][async]") {
   auto fake = std::make_shared<FakeGateKeeper>();  // The fake gatekeeper, kept
                                                    // alive for the whole test.
   auto orig =
@@ -111,12 +111,10 @@ TEST_CASE("Auth filter async path invokes the chain callback",
   filter.doFilter(  // Start filtering; callbacks may run later from the
                     // coroutine.
       request,      // The request being authenticated.
-      [&cbCount](const drogon::HttpResponsePtr&)
-      {
+      [&cbCount](const drogon::HttpResponsePtr&) {
         ++cbCount;
       },  // Rejection callback: just count the call.
-      [&chainCalled]
-      {
+      [&chainCalled] {
         chainCalled = true;
       });  // Chain callback: signal that the filter let the request through.
 
@@ -124,9 +122,9 @@ TEST_CASE("Auth filter async path invokes the chain callback",
   // after doFilter returns. Poll briefly with atomics instead of sleeping a
   // fixed amount; the 1 ms x 100 bound keeps a regression from hanging.
   for (int i = 0; i < 100 && !chainCalled.load() && cbCount.load() == 0;
-       ++i)  // Stop as soon as a callback fires, otherwise cap the wait at
-             // ~100 ms.
-  {
+       // Stop as soon as a callback fires, otherwise cap the wait at
+       // ~100 ms.
+       ++i) {
     std::this_thread::sleep_for(std::chrono::milliseconds(
         1));  // Give the coroutine a millisecond to make progress.
   }

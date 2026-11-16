@@ -87,8 +87,7 @@
  * validated connection.
  * @see DatabaseConnectionPool, DatabaseHanndler
  */
-class Database
-{
+class Database {
  public:
   // Non-copyable/non-movable: the pool owns the shared_ptr, borrowers only
   // hold a reference to it.

@@ -41,18 +41,15 @@
 // std::string and its find() method, used to scan the error message.
 #include <string>
 
-namespace asyncdb
-{
-  bool isBusy(const std::exception& error)
-  {
+namespace asyncdb {
+  bool isBusy(const std::exception& error) {
     // A DatabaseBusy thrown by our own code is authoritative; Drogon
     // failures are recognised by message text. "Authoritative" means: if
     // our own code raised it, we trust the type and do not need to guess
     // from words.
-    if (dynamic_cast<const DatabaseBusy*>(&error) !=
-        nullptr)  // dynamic_cast returns a real pointer only when the
-                  // object actually is a DatabaseBusy.
-    {
+    // dynamic_cast returns a real pointer only when the
+    // object actually is a DatabaseBusy.
+    if (dynamic_cast<const DatabaseBusy*>(&error) != nullptr) {
       return true;  // Our own busy exception is definitive: no further
                     // checks are needed.
     }
@@ -76,13 +73,12 @@ namespace asyncdb
                                    // "connection" is deliberately broad.
   }
 
-  drogon::HttpStatusCode toHttpStatus(const std::exception& error)
-  {
+  drogon::HttpStatusCode toHttpStatus(const std::exception& error) {
     // Busy is a retryable condition, so it is the only case answered with
     // 503.
-    if (isBusy(error))  // Ask the shared classifier instead of repeating
-                        // the string checks here.
-    {
+    // Ask the shared classifier instead of repeating
+    // the string checks here.
+    if (isBusy(error)) {
       return drogon::k503ServiceUnavailable;  // 503 tells the caller
                                               // "service temporarily
                                               // unavailable, try again
@@ -93,13 +89,12 @@ namespace asyncdb
                                              // failure (500).
   }
 
-  void throwIfBusy(const std::exception& error)
-  {
+  void throwIfBusy(const std::exception& error) {
     // Re-classify at the boundary so the HTTP layer can keep its single
     // DatabaseBusy handling path.
-    if (isBusy(error))  // Only busy errors are re-thrown; other failures
-                        // are left for the caller to handle.
-    {
+    // Only busy errors are re-thrown; other failures
+    // are left for the caller to handle.
+    if (isBusy(error)) {
       throw DatabaseBusy();  // Throwing unwinds the coroutine so the
                              // existing 503 + Retry-After handler takes
                              // over.

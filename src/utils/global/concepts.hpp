@@ -31,10 +31,10 @@
 #pragma once  // Include this file at most once per translation unit.
 
 // Provides std::is_base_of_v used by each concept below.
+// The nested namespace api::v2 groups the version-2 API
+// code.
 #include <type_traits>
-namespace api::v2  // The nested namespace api::v2 groups the version-2 API
-                   // code.
-{
+namespace api::v2 {
   class Client;  // Forward declaration: "this class exists elsewhere", so we
                  // can refer to it without including its full definition.
 }  // namespace api::v2

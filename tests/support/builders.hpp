@@ -48,9 +48,9 @@
 // Defines Requester, the caller-identity value built below.
 #include "utils/global/requester.hpp"
 
-namespace valhalla_test  // A dedicated namespace keeps test helpers from
-                         // clashing with production names.
-{
+// A dedicated namespace keeps test helpers from
+// clashing with production names.
+namespace valhalla_test {
   using api::v2::Types::ClientLoginData;  // Shorthand so tests can write
                                           // ClientLoginData directly.
 
@@ -63,12 +63,10 @@ namespace valhalla_test  // A dedicated namespace keeps test helpers from
    * @param ip Caller's IP address; defaults to the local loopback address.
    * @return A ready-to-use login record for authentication tests.
    */
-  inline ClientLoginData makeLoginData(
-      const uint64_t     clientId = 1,
-      const std::string& group    = "users",
-      const std::string& ip =
-          "127.0.0.1")  // Defaults describe a typical "normal user" caller.
-  {
+  // Defaults describe a typical "normal user" caller.
+  inline ClientLoginData makeLoginData(const uint64_t     clientId = 1,
+                                       const std::string& group    = "users",
+                                       const std::string& ip = "127.0.0.1") {
     ClientLoginData
         data{};  // Value-initialise first so nothing is left random.
     data.clientId =
@@ -94,8 +92,7 @@ namespace valhalla_test  // A dedicated namespace keeps test helpers from
    * @brief Wraps the constructor for Requester in a named helper.
    */
   inline api::v2::Requester makeRequester(const uint64_t     id,
-                                          const std::string& group)
-  {
+                                          const std::string& group) {
     return api::v2::Requester(id, group);
   }  // Returns the caller id and group bundled into one value.
 
@@ -116,8 +113,8 @@ namespace valhalla_test  // A dedicated namespace keeps test helpers from
       const std::string&         ip,
       const std::string&         lastLogoutTime,
       const std::chrono::minutes validity = std::chrono::minutes{
-          60})  // `validity` defaults to one hour, matching normal tokens.
-  {
+          // `validity` defaults to one hour, matching normal tokens.
+          60}) {
     return jwt::create<
                jwt::traits::
                    kazuho_picojson>()  // Start a new token using the picojson
@@ -164,8 +161,7 @@ namespace valhalla_test  // A dedicated namespace keeps test helpers from
    * A token signed with the *wrong* key (for tampering/verification tests).
    * @brief Corrupts a token's signature so verification must fail.
    */
-  inline std::string makeTamperedToken(const std::string& token)
-  {
+  inline std::string makeTamperedToken(const std::string& token) {
     // Flip a character in the middle of the signature (the third JWT
     // segment, after the last '.'). We deliberately avoid the last
     // character: for a 32-byte HMAC-SHA256 output the signature is 43

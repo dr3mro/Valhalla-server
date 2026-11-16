@@ -31,8 +31,8 @@
 // Provides setenv and unsetenv for writing the process environment.
 #include <cstdlib>
 
-namespace  // Anonymous namespace keeps this setup object private to this file.
-{
+// Anonymous namespace keeps this setup object private to this file.
+namespace {
   // Deterministic process-wide configuration for tests that go through the
   // Store singletons (Configurator, DOSDetector, SessionManager, ...).
   //
@@ -49,12 +49,12 @@ namespace  // Anonymous namespace keeps this setup object private to this file.
   //   ever opens a socket to PostgreSQL - even when a dev database is
   //   running on localhost - and query paths report "unavailable"
   //   deterministically instead of calling exit(EXIT_FAILURE).
-  struct TestEnvironmentSetup  // A type whose constructor performs the
-                               // one-time setup.
-  {
-    TestEnvironmentSetup()  // Runs automatically before main() because a
-                            // static instance is defined below.
-    {
+  // A type whose constructor performs the
+  // one-time setup.
+  struct TestEnvironmentSetup {
+    // Runs automatically before main() because a
+    // static instance is defined below.
+    TestEnvironmentSetup() {
       setenv("TOKEN_SECRET",
              "valhalla-unit-test-secret-key",
              1);  // Fixed secret so token tests know what to sign with.

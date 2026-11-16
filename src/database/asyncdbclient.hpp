@@ -67,8 +67,7 @@
  * thread-safety comes from the underlying Drogon DbClient.
  * @see createClient, asyncdb::execSqlCoro, DatabaseController::executeQueryCoro
  */
-class AsyncDbClient
-{
+class AsyncDbClient {
  public:
   /**
    * @brief Constructs the wrapper around an already-created Drogon client.
@@ -145,8 +144,7 @@ class AsyncDbClient
    * @return Const reference to the stored `shared_ptr`; it remains valid for
    * the lifetime of this wrapper.
    */
-  [[nodiscard]] const std::shared_ptr<drogon::orm::DbClient>& client() const
-  {
+  [[nodiscard]] const std::shared_ptr<drogon::orm::DbClient>& client() const {
     return client_;
   }  // `[[nodiscard]]` warns if a caller ignores the answer; the reference
      // avoids copying the pointer.

@@ -49,11 +49,11 @@
 // distinct from an empty string, hence nullptr maps to nullopt.
 
 // Mixed types become strings in order; nullptr must remain nullopt.
+// Registers the test with Catch2 under
+// tags so it can be run by name or
+// filtered by tag.
 TEST_CASE("adapter converts pqxx params to text params in order",
-          "[database][async][adapter]")  // Registers the test with Catch2 under
-                                         // tags so it can be run by name or
-                                         // filtered by tag.
-{
+          "[database][async][adapter]") {
   pqxx::params
       params;  // An empty, ordered list of SQL parameters built with libpqxx.
   params.append(
@@ -83,10 +83,10 @@ TEST_CASE("adapter converts pqxx params to text params in order",
 }
 
 // Empty input must yield an empty vector, with no parameters to convert.
+// Registers the edge-case test for a
+// query that has zero parameters.
 TEST_CASE("adapter handles an empty parameter list",
-          "[database][async][adapter]")  // Registers the edge-case test for a
-                                         // query that has zero parameters.
-{
+          "[database][async][adapter]") {
   pqxx::params params;  // Nothing is appended, so this really is an empty
                         // parameter list.
   const auto   values = asyncdb::toTextParams(

@@ -70,14 +70,12 @@
  * @note get() treats an expired entry as a miss but does not erase it; physical
  *       removal is left to the cleaner. remove() does not check expiry.
  */
-template <
-    typename T,
-    typename ClockT =
-        std::chrono::steady_clock>  // T is the stored value type; ClockT can be
-                                    // swapped in tests to control time.
-class MemCache                      // A thread-safe, expiring,
-                                    // size-bounded cache.
-{
+// T is the stored value type; ClockT can be
+// swapped in tests to control time.
+// A thread-safe, expiring,
+// size-bounded cache.
+template <typename T, typename ClockT = std::chrono::steady_clock>
+class MemCache {
  public:
   /**
    * @brief Clock type used for expiration timestamps.
@@ -98,11 +96,9 @@ class MemCache                      // A thread-safe, expiring,
    * given.
    */
   MemCache(size_t maxSize, std::chrono::seconds defaultTTL)
-      : maxSize_(maxSize),
-        defaultTTL_(defaultTTL),
-        stopCleaner_(false)  // Initialises the limits and the "keep running"
-                             // flag; the list/map start empty.
-  {
+      // Initialises the limits and the "keep running"
+      // flag; the list/map start empty.
+      : maxSize_(maxSize), defaultTTL_(defaultTTL), stopCleaner_(false) {
     cleanerThread_ =
         std::thread(&MemCache::cleanExpiredEntries,
                     this);  // Start the background cleaner, passing this object
@@ -125,11 +121,11 @@ class MemCache                      // A thread-safe, expiring,
    * thread.
    */
   MemCache(MemCache&& other) noexcept
+      // Move constructor copies the simple settings; a
+      // new cleaner will be started for this object.
       : maxSize_(other.maxSize_),
         defaultTTL_(other.defaultTTL_),
-        stopCleaner_(false)  // Move constructor copies the simple settings; a
-                             // new cleaner will be started for this object.
-  {
+        stopCleaner_(false) {
     // Stop the source's cleaner before moving state so the thread never
     // runs against the moved-from object.
     {
@@ -140,9 +136,8 @@ class MemCache                      // A thread-safe, expiring,
     other.cleanerCv_
         .notify_one();  // Wake the source's cleaner so it notices the stop
                         // flag without waiting a full second.
-    if (other.cleanerThread_
-            .joinable())  // Only join a thread that is actually running.
-    {
+    // Only join a thread that is actually running.
+    if (other.cleanerThread_.joinable()) {
       other.cleanerThread_.join();  // Wait for the source's cleaner to
                                     // finish before its state is moved.
     }
@@ -170,22 +165,21 @@ class MemCache                      // A thread-safe, expiring,
    * @note Self-assignment is a no-op. Both cleaners are stopped before any
    *       state is moved, and a fresh cleaner is started for `*this`.
    */
-  MemCache& operator=(
-      MemCache&& other) noexcept  // Move assignment transfers another cache's
-                                  // state into this one.
-  {
-    if (this != &other)  // Guard against assigning an object to itself,
-                         // which would destroy its own state.
-    {
+  // Move assignment transfers another cache's
+  // state into this one.
+  MemCache& operator=(MemCache&& other) noexcept {
+    // Guard against assigning an object to itself,
+    // which would destroy its own state.
+    if (this != &other) {
       // Stop this object's cleaner first.
       {
         std::lock_guard<std::mutex> lock(
             mutex_);          // Lock this object while setting its stop flag.
         stopCleaner_ = true;  // Ask this object's cleaner to exit.
       }
-      cleanerCv_.notify_one();        // Wake it immediately.
-      if (cleanerThread_.joinable())  // Check that there is a thread to join.
-      {
+      cleanerCv_.notify_one();  // Wake it immediately.
+      // Check that there is a thread to join.
+      if (cleanerThread_.joinable()) {
         cleanerThread_.join();  // Wait for this object's cleaner to stop.
       }
 
@@ -197,9 +191,8 @@ class MemCache                      // A thread-safe, expiring,
         other.stopCleaner_ = true;  // Ask the source's cleaner to exit.
       }
       other.cleanerCv_.notify_one();  // Wake the source's cleaner immediately.
-      if (other.cleanerThread_
-              .joinable())  // Check that the source has a thread to join.
-      {
+      // Check that the source has a thread to join.
+      if (other.cleanerThread_.joinable()) {
         other.cleanerThread_.join();  // Wait for the source's cleaner to stop.
       }
 
@@ -228,18 +221,17 @@ class MemCache                      // A thread-safe, expiring,
   /**
    * @brief Stops the cleaner and waits for it before members are destroyed.
    */
-  virtual ~MemCache()  // Destructor shuts the cleaner down before the cache
-                       // members disappear.
-  {
+  // Destructor shuts the cleaner down before the cache
+  // members disappear.
+  virtual ~MemCache() {
     {
       std::lock_guard<std::mutex> lock(
           mutex_);          // Lock while flipping the stop flag.
       stopCleaner_ = true;  // Request cleaner termination.
     }
     cleanerCv_.notify_one();  // Wake the cleaner so it exits promptly.
-    if (cleanerThread_
-            .joinable())  // Check that the cleaner thread is still running.
-    {
+    // Check that the cleaner thread is still running.
+    if (cleanerThread_.joinable()) {
       cleanerThread_.join();  // Wait for it to finish; otherwise it would
                               // touch destroyed members.
     }
@@ -255,13 +247,11 @@ class MemCache                      // A thread-safe, expiring,
    *          capacity is already reached the least recently used entry is
    *          evicted first. Safe to call concurrently with other operations.
    */
-  void insert(
-      const std::string&   key,
-      const T&             value,
-      std::chrono::seconds ttl =
-          std::chrono::seconds::zero())  // Adds or refreshes an entry; a zero
-                                         // ttl means "use the default".
-  {
+  // Adds or refreshes an entry; a zero
+  // ttl means "use the default".
+  void insert(const std::string&   key,
+              const T&             value,
+              std::chrono::seconds ttl = std::chrono::seconds::zero()) {
     TimePoint expiration =
         Clock::now() + (ttl == std::chrono::seconds::zero()
                             ? defaultTTL_
@@ -270,9 +260,8 @@ class MemCache                      // A thread-safe, expiring,
     std::lock_guard<std::mutex> lock(
         mutex_);  // Lock for the whole operation so state stays consistent.
 
-    if (cacheMap_.find(key) !=
-        cacheMap_.end())  // Check whether this key is already present.
-    {
+    // Check whether this key is already present.
+    if (cacheMap_.find(key) != cacheMap_.end()) {
       // Update value and expiration
       auto item = cacheMap_[key];  // Get the list iterator stored for
                                    // this key (cacheMap_ uses [] which
@@ -280,12 +269,9 @@ class MemCache                      // A thread-safe, expiring,
       item->setValue(value);       // Replace the stored value with the new one.
       item->setExpiration(expiration);  // Give the entry a fresh expiry time.
       moveToFront(item);                // Mark it as most recently used.
-    }
-    else
-    {
-      if (cacheMap_.size() >=
-          maxSize_)  // If the cache is full, make room first.
-      {
+    } else {
+      // If the cache is full, make room first.
+      if (cacheMap_.size() >= maxSize_) {
         evictOldest();  // Remove the least recently used entry.
       }
 
@@ -305,19 +291,17 @@ class MemCache                      // A thread-safe, expiring,
    * @note An expired entry is reported as a miss but is left for the cleaner
    * to remove; a hit refreshes recency, not the entry's expiration.
    */
-  std::optional<T> get(
-      const std::string& key)  // Returns the value for a key, or nothing if
-                               // it is missing/expired.
-  {
+  // Returns the value for a key, or nothing if
+  // it is missing/expired.
+  std::optional<T> get(const std::string& key) {
     std::lock_guard<std::mutex> lock(
         mutex_);  // Lock while looking up and updating recency.
     auto item =
         cacheMap_.find(key);  // Find the key in the map; end() means absent.
+    // Miss if absent or if the expiry time has
+    // passed.
     if (item == cacheMap_.end() ||
-        item->second->getExpiration() <=
-            Clock::now())  // Miss if absent or if the expiry time has
-                           // passed.
-    {
+        item->second->getExpiration() <= Clock::now()) {
       return std::nullopt;  // Report a miss; physical removal is the
                             // cleaner's job.
     }
@@ -333,15 +317,14 @@ class MemCache                      // A thread-safe, expiring,
    * @note Expiry is not checked here: an expired entry not yet cleaned is
    * still removed and reported as present.
    */
-  bool remove(const std::string& key)  // Deletes an entry by key, reporting
-                                       // whether it existed.
-  {
+  // Deletes an entry by key, reporting
+  // whether it existed.
+  bool remove(const std::string& key) {
     std::lock_guard<std::mutex> lock(
         mutex_);                      // Lock for the lookup and both erases.
     auto item = cacheMap_.find(key);  // Locate the key in the map.
-    if (item ==
-        cacheMap_.end())  // If the key is absent, there is nothing to do.
-    {
+    // If the key is absent, there is nothing to do.
+    if (item == cacheMap_.end()) {
       return false;  // Report that no entry was removed.
     }
 
@@ -355,8 +338,8 @@ class MemCache                      // A thread-safe, expiring,
   /**
    * @brief One cache record: key, value and expiration time point.
    */
-  class CacheEntry  // The data stored for each cache item.
-  {
+  // The data stored for each cache item.
+  class CacheEntry {
    private:
     /**
      * @brief Lookup key, also used to erase the map entry during cleaning.
@@ -381,44 +364,38 @@ class MemCache                      // A thread-safe, expiring,
      * @param[in] _exp Expiration time point.
      */
     CacheEntry(std::string _key, const T& _value, TimePoint _exp)
-        : key(std::move(_key)), value(_value), expiration(_exp)
-    {
+        : key(std::move(_key)), value(_value), expiration(_exp) {
     }  // Stores all three pieces; the key is moved for efficiency.
     /**
      * @brief Returns a copy of the key.
      */
-    [[nodiscard]] std::string getKey() const
-    {
+    [[nodiscard]] std::string getKey() const {
       return key;
     }  // A copy is fine because keys are small strings.
     /**
      * @brief Returns a copy of the cached value.
      */
-    T getValue() const
-    {
+    T getValue() const {
       return value;
     }  // Returns by value so callers get their own copy.
     /**
      * @brief Returns the expiration time point.
      */
-    [[nodiscard]] TimePoint getExpiration() const
-    {
+    [[nodiscard]] TimePoint getExpiration() const {
       return expiration;
     }  // Used to decide whether the entry is stale.
     /**
      * @brief Replaces the cached value.
      * @param[in] _value New value.
      */
-    void setValue(const T& _value)
-    {
+    void setValue(const T& _value) {
       this->value = _value;
     }  // Overwrites the stored data on a refresh.
     /**
      * @brief Replaces the expiration time point.
      * @param[in] _exp New expiration time.
      */
-    void setExpiration(const TimePoint& _exp)
-    {
+    void setExpiration(const TimePoint& _exp) {
       this->expiration = _exp;
     }  // Extends or changes the entry's lifetime.
   };
@@ -469,8 +446,7 @@ class MemCache                      // A thread-safe, expiring,
    * @brief Moves an entry to the most-recently-used end of the list.
    * @param[in,out] item Iterator to the entry; the caller must hold mutex_.
    */
-  void moveToFront(typename std::list<CacheEntry>::iterator& item)
-  {
+  void moveToFront(typename std::list<CacheEntry>::iterator& item) {
     cacheList_.splice(cacheList_.begin(), cacheList_, item);
   }  // splice relinks the node without copying; the caller holds the lock.
 
@@ -478,8 +454,8 @@ class MemCache                      // A thread-safe, expiring,
    * @brief Evicts the least recently used entry (the list's back).
    * @pre cacheList_ is non-empty and the caller holds mutex_.
    */
-  void evictOldest()  // Removes the back (oldest/least recently used) entry.
-  {
+  // Removes the back (oldest/least recently used) entry.
+  void evictOldest() {
     auto last = cacheList_.end();  // Start from the one-past-end iterator.
     --last;  // Step back to the last real element (the LRU entry).
     cacheMap_.erase(
@@ -494,24 +470,21 @@ class MemCache                      // A thread-safe, expiring,
    *          stopCleaner_ and exit. Otherwise it scans the entire list
    * because move-to-front can leave expired entries away from the back.
    */
-  void cleanExpiredEntries()  // The background loop run by cleanerThread_.
-  {
-    while (true)  // Repeat until the stop flag tells us to quit.
-    {
+  // The background loop run by cleanerThread_.
+  void cleanExpiredEntries() {
+    // Repeat until the stop flag tells us to quit.
+    while (true) {
       {
         std::unique_lock<std::mutex> lock(
             mutex_);  // Lock with a unique_lock, which the condition
                       // variable can release while waiting.
-        cleanerCv_.wait_for(lock,
-                            std::chrono::seconds(1),
-                            [this]
-                            {
-                              return stopCleaner_;
-                            });  // Sleep up to one second, waking early if
-                                 // notified and the predicate is true.
+        cleanerCv_.wait_for(lock, std::chrono::seconds(1), [this] {
+          return stopCleaner_;
+        });  // Sleep up to one second, waking early if
+             // notified and the predicate is true.
 
-        if (stopCleaner_)  // Check whether shutdown was requested.
-        {
+        // Check whether shutdown was requested.
+        if (stopCleaner_) {
           break;  // Leave the loop so the thread can finish.
         }
 
@@ -520,16 +493,14 @@ class MemCache                      // A thread-safe, expiring,
         // Expired entries can live anywhere after move-to-front, so
         // scan the whole list instead of only evicting from the back.
         auto it = cacheList_.begin();  // Start at the most recently used entry.
-        while (it != cacheList_.end())  // Walk every entry in the list.
-        {
-          if (it->getExpiration() <= now)  // If it has already expired.
-          {
+        // Walk every entry in the list.
+        while (it != cacheList_.end()) {
+          // If it has already expired.
+          if (it->getExpiration() <= now) {
             cacheMap_.erase(it->getKey());  // Remove its key from the map.
             it = cacheList_.erase(it);      // Erase the list node and
                                             // advance to the next one.
-          }
-          else
-          {
+          } else {
             ++it;  // Otherwise just move to the next entry.
           }
         }

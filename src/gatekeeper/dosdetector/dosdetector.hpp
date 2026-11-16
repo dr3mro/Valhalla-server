@@ -98,13 +98,12 @@
  * different lists at the same time. The "injectable clock" simply means tests
  * can supply a fake time source instead of the real one.
  */
-class DOSDetector
-{
+class DOSDetector {
  public:
   /** @brief Verdict returned for a classified request. */
-  enum Status : uint8_t  // Stored as an 8-bit number because there are only
-                         // six verdicts.
-  {
+  // Stored as an 8-bit number because there are only
+  // six verdicts.
+  enum Status : uint8_t {
     ALLOWED,     /**< No rule matched; request may proceed. */
     WHITELISTED, /**< IP matched the whitelist; never counted or blocked. */
     BLACKLISTED, /**< IP matched the blacklist; rejected outright. */
@@ -115,8 +114,7 @@ class DOSDetector
            */
   };
   /** @brief Lightweight view of a request supplied by the HTTP filter. */
-  using Request = struct Request
-  {
+  using Request = struct Request {
     std::string ip; /**< Peer IP used for list matching and per-IP counters.
                        Owned string so the detector can keep it as a map key. */
     std::string_view
@@ -151,12 +149,11 @@ class DOSDetector
    * each other out.
    */
   template <typename Range>
-  static std::uint64_t hashHeaders(const Range& headers)
-  {
+  static std::uint64_t hashHeaders(const Range& headers) {
     std::uint64_t h = 0;  // Start at zero; XOR-ing values into zero just
                           // yields those values.
-    for (const auto& kv : headers)  // Visit every header in the collection.
-    {
+    // Visit every header in the collection.
+    for (const auto& kv : headers) {
       h ^= XXH3_64bits(kv.second.data(),
                        kv.second.size());  // Hash only the value (kv.second)
                                            // and fold it in with XOR.
@@ -227,8 +224,7 @@ class DOSDetector
                                              either the Store or
                                              owned_config_. A reference avoids
                                              copying the settings. */
-  ClockFn clock_ = []
-  {
+  ClockFn clock_ = [] {
     return std::chrono::steady_clock::now();
   }; /**< Time source (real clock in production, injected in tests). Default
         lambda returns the real time. */

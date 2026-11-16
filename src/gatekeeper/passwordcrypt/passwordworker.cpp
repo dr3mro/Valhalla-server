@@ -33,13 +33,12 @@
 // Store, the registry that holds the global Configurator object.
 #include "store/store.hpp"
 
-namespace  // An unnamed namespace keeps these helpers private to this .cpp
-           // file.
-{
+// An unnamed namespace keeps these helpers private to this .cpp
+// file.
+namespace {
   /** @brief Fetches the password-worker sizing from the globally configured
    * Configurator. */
-  const Configurator::PasswordWorkerConfig& config()
-  {
+  const Configurator::PasswordWorkerConfig& config() {
     return Store::getObject<Configurator>()
         ->get<Configurator::PasswordWorkerConfig>();
   }  // Looks up the shared config and returns its password-worker section by
@@ -49,14 +48,12 @@ namespace  // An unnamed namespace keeps these helpers private to this .cpp
 /** @brief Sizes the pool from the Configurator; see
  * PasswordWorker::PasswordWorker(). */
 PasswordWorker::PasswordWorker()
-    : BoundedExecutor(config().workers, config().queue_max, "Password worker")
-{
+    : BoundedExecutor(config().workers, config().queue_max, "Password worker") {
 }  // Forwards configured worker count, queue limit and a log label to the base
    // class.
 
 /** @brief Sizes the pool explicitly; see
  * PasswordWorker::PasswordWorker(std::size_t, std::size_t). */
 PasswordWorker::PasswordWorker(std::size_t workers, std::size_t queue_max)
-    : BoundedExecutor(workers, queue_max, "Password worker")
-{
+    : BoundedExecutor(workers, queue_max, "Password worker") {
 }  // Forwards caller-supplied sizes to the base class; handy for tests.

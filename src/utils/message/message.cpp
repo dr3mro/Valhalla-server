@@ -42,39 +42,31 @@
 #include <string>     // std::string operations used throughout.
 #include <unordered_map>  // The static colour map keyed by log level.
 
-void Message::DebugMessage(const std::string& status_message)
-{
+void Message::DebugMessage(const std::string& status_message) {
   MessageImpl(status_message, trantor::Logger::LogLevel::kDebug);
 }  // Forwards text with the debug level.
-void Message::InfoMessage(const std::string& status_message)
-{
+void Message::InfoMessage(const std::string& status_message) {
   MessageImpl(status_message, trantor::Logger::LogLevel::kInfo);
 }  // Forwards text with the info level.
-void Message::WarningMessage(const std::string& status_message)
-{
+void Message::WarningMessage(const std::string& status_message) {
   MessageImpl(status_message, trantor::Logger::LogLevel::kWarn);
 }  // Forwards text with the warning level.
-void Message::ErrorMessage(const std::string& status_message)
-{
+void Message::ErrorMessage(const std::string& status_message) {
   MessageImpl(status_message, trantor::Logger::LogLevel::kError);
 }  // Forwards text with the error level.
-void Message::CriticalMessage(const std::string& status_message)
-{
+void Message::CriticalMessage(const std::string& status_message) {
   MessageImpl(status_message, trantor::Logger::LogLevel::kFatal);
 }  // Forwards text with the fatal level.
-void Message::ConfMessage(const std::string& status_message)
-{
+void Message::ConfMessage(const std::string& status_message) {
   MessageImpl(status_message, "config");
 }  // Startup notice tagged "config", printed to stdout.
-void Message::InitMessage(const std::string& status_message)
-{
+void Message::InitMessage(const std::string& status_message) {
   MessageImpl(status_message, "init");
 }  // Startup notice tagged "init", printed to stdout.
 
-std::string Message::get_color(
-    trantor::Logger::LogLevel level)  // Takes the severity and returns the
-                                      // matching ANSI escape sequence.
-{
+// Takes the severity and returns the
+// matching ANSI escape sequence.
+std::string Message::get_color(trantor::Logger::LogLevel level) {
   static const std::unordered_map<trantor::Logger::LogLevel, std::string>
       color_map =
           {// A read-only map built once, pairing each level with its colour.
@@ -95,11 +87,10 @@ std::string Message::get_color(
                                // std::out_of_range if it is somehow missing.
 }
 
-void Message::MessageImpl(
-    const std::string& _status_message,
-    trantor::Logger::LogLevel
-        _level)  // Implementation shared by the severity helpers.
-{
+void Message::MessageImpl(const std::string& _status_message,
+                          trantor::Logger::LogLevel
+                              // Implementation shared by the severity helpers.
+                              _level) {
   // Route through Trantor so these records reach the configured spdlog sinks.
   trantor::Logger(_level).stream()
       << fmt::format("{}{}{}",
@@ -132,9 +123,8 @@ void Message::MessageImpl(
              removeNewLine(_status_message));  // The message
 }
 
-std::string Message::removeNewLine(
-    const std::string& _str)  // Takes text that might span lines.
-{
+// Takes text that might span lines.
+std::string Message::removeNewLine(const std::string& _str) {
   // Keep each record on a single line so log prefixes stay meaningful.
   std::string status_message =
       _str;  // Work on a copy so the caller's original string is untouched.

@@ -63,9 +63,9 @@
  * used as a cache key by PermissionManager.
  * @see Entity, PermissionManager
  */
-class Case : public Entity  // Inherits the full CRUD interface, then adds
-                            // permission-query helpers.
-{
+// Inherits the full CRUD interface, then adds
+// permission-query helpers.
+class Case : public Entity {
  public:
   /**
    * @brief Organisation this case belongs to; used as the permission service
@@ -92,17 +92,15 @@ class Case : public Entity  // Inherits the full CRUD interface, then adds
    */
   template <typename Data>
   Case(const Data& data, const std::string& tablename)
-      : Entity(data,
-               tablename)  // Just pass both arguments up to the base; Case
-                           // itself adds no state.
-  {
+      // Just pass both arguments up to the base; Case
+      // itself adds no state.
+      : Entity(data, tablename) {
   }
 
   /**
    * @brief Returns the owning organisation name ("clinics").
    */
-  static constexpr auto getOrgName()
-  {
+  static constexpr auto getOrgName() {
     return ORGNAME;
   }  // Static accessor so callers can ask for the organisation without an
      // object.
@@ -122,10 +120,10 @@ class Case : public Entity  // Inherits the full CRUD interface, then adds
    * @return SELECT statement, or std::nullopt if it cannot be built
    * (currently it always returns the formatted text).
    */
+  // Used when creating the patient itself, where the
+  // clinic id is known directly.
   static std::optional<std::string> getPermissionsQueryForCreatePatientImpl(
-      const uint64_t id)  // Used when creating the patient itself, where the
-                          // clinic id is known directly.
-  {
+      const uint64_t id) {
     // The SQL below selects owner_id, admin_id and staff from the clinics
     // table for one clinic (WHERE id = <the clinic id>). Those three
     // columns tell PermissionManager who is allowed to act on a patient in
@@ -159,12 +157,10 @@ class Case : public Entity  // Inherits the full CRUD interface, then adds
    * @param[in] tablename Table holding the record's clinic_id foreign key.
    * @return SELECT statement (always produced by this implementation).
    */
+  // Used when the record points at a patient, so the
+  // owning clinic must be found via a join.
   static std::optional<std::string> getPermissionsQueryForCreateImpl(
-      const uint64_t id,
-      const std::string&
-          tablename)  // Used when the record points at a patient, so the
-                      // owning clinic must be found via a join.
-  {
+      const uint64_t id, const std::string& tablename) {
     // create and return the query
     // The SQL joins clinics (alias c) to the record table (alias p) on c.id
     // = p.clinic_id, then filters to the one record id. It returns the
@@ -200,11 +196,9 @@ class Case : public Entity  // Inherits the full CRUD interface, then adds
    * @return SELECT statement identifying the owning clinic's
    * owner/admin/staff.
    */
+  // Same shape as create, used for read authorisation.
   static std::optional<std::string> getPermissionsQueryForReadImp(
-      const uint64_t id,
-      const std::string&
-          tablename)  // Same shape as create, used for read authorisation.
-  {
+      const uint64_t id, const std::string& tablename) {
     // create and return the query
     // Joins clinics to the record table on clinic_id and filters by this
     // record id, returning the clinic's owner/admin/staff so read access
@@ -237,11 +231,9 @@ class Case : public Entity  // Inherits the full CRUD interface, then adds
    * @return SELECT statement identifying the owning clinic's
    * owner/admin/staff.
    */
+  // Same shape, used for update authorisation.
   static std::optional<std::string> getPermissionsQueryForUpdateImpl(
-      const uint64_t id,
-      const std::string&
-          tablename)  // Same shape, used for update authorisation.
-  {
+      const uint64_t id, const std::string& tablename) {
     // create and return the query
     // Joins clinics to the record table on clinic_id and filters by this
     // record id, returning the clinic's owner/admin/staff so write access
@@ -274,11 +266,9 @@ class Case : public Entity  // Inherits the full CRUD interface, then adds
    * @return SELECT statement identifying the owning clinic's
    * owner/admin/staff.
    */
+  // Same shape, used for delete authorisation.
   static std::optional<std::string> getPermissionsQueryForDeleteImp(
-      const uint64_t id,
-      const std::string&
-          tablename)  // Same shape, used for delete authorisation.
-  {
+      const uint64_t id, const std::string& tablename) {
     // create and return the query
     // Joins clinics to the record table on clinic_id and filters by this
     // record id, returning the clinic's owner/admin/staff so delete access

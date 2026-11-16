@@ -37,13 +37,13 @@
 
 #include "store/store.hpp"  // Store, the registry whose cache is under test.
 
-namespace  // Anonymous namespace keeps the probe type private to this file.
-{
+// Anonymous namespace keeps the probe type private to this file.
+namespace {
   /** @brief Neutral registration type used to observe the Store cache. Its
    * content is irrelevant; pointer identity is what the tests compare. */
-  struct CachedProbe  // A minimal object; only its address matters for these
-                      // tests.
-  {
+  // A minimal object; only its address matters for these
+  // tests.
+  struct CachedProbe {
     int value = 1;  // A field so the object is not empty; its value is
                     // never asserted.
   };
@@ -54,9 +54,9 @@ namespace  // Anonymous namespace keeps the probe type private to this file.
 // observed without any explicit per-thread signal.
 TEST_CASE(
     "Store::cachedObject returns the registered object and follows "
+    // Same-thread cache coherence.
     "replaceObject",
-    "[store][cache]")  // Same-thread cache coherence.
-{
+    "[store][cache]") {
   auto original =
       Store::getObject<CachedProbe>();  // Get (and register if needed) the
                                         // current object.
@@ -80,9 +80,9 @@ TEST_CASE(
 
 // The cache invalidation must be cross-thread, not just local: a replacement
 // made on another thread has to be seen by this thread's cached lookup.
+// Cross-thread cache coherence.
 TEST_CASE("Store::cachedObject notices a replace made by another thread",
-          "[store][cache]")  // Cross-thread cache coherence.
-{
+          "[store][cache]") {
   auto original =
       Store::getObject<CachedProbe>();  // The object this thread will cache.
   auto replacement = std::make_shared<CachedProbe>();  // The object another
@@ -90,11 +90,9 @@ TEST_CASE("Store::cachedObject notices a replace made by another thread",
   REQUIRE(Store::cachedObject<CachedProbe>() ==
           original);  // this thread has cached the original
 
-  std::thread other(
-      [&]
-      {
-        Store::replaceObject<CachedProbe>(replacement);
-      });        // Replace the object from a separate thread.
+  std::thread other([&] {
+    Store::replaceObject<CachedProbe>(replacement);
+  });            // Replace the object from a separate thread.
   other.join();  // Wait for that thread to finish before checking the result.
 
   CHECK(Store::cachedObject<CachedProbe>() ==

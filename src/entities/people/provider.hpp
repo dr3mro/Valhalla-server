@@ -68,9 +68,9 @@ using Client = api::v2::Client;  // Short global name so Provider can derive
  * because it is used both as a numeric key and as a JSON text value.
  * @see Client, Types::Data_t
  */
-class Provider : public Client  // Inherits validated account behaviour; adds
-                                // the services lookup.
-{
+// Inherits validated account behaviour; adds
+// the services lookup.
+class Provider : public Client {
  public:
   /**
    * @brief Non-copyable and non-movable; construct in place for the request
@@ -89,10 +89,9 @@ class Provider : public Client  // Inherits validated account behaviour; adds
    */
   template <typename ClientData_t>
   explicit Provider(const ClientData_t& data)
-      : Client(data,
-               TABLENAME)  // "explicit" prevents implicit conversions;
-                           // TABLENAME fixes the target table.
-  {
+      // "explicit" prevents implicit conversions;
+      // TABLENAME fixes the target table.
+      : Client(data, TABLENAME) {
   }
   // Provider() : Client(std::string(TABLENAME)) {}
   /**
@@ -103,8 +102,7 @@ class Provider : public Client  // Inherits validated account behaviour; adds
   /**
    * @brief Returns the providers table name.
    */
-  static constexpr auto getTableName()
-  {
+  static constexpr auto getTableName() {
     return TABLENAME;
   }  // Static accessor for the table name.
 
@@ -123,17 +121,15 @@ class Provider : public Client  // Inherits validated account behaviour; adds
    * @note Bindings are made into explicit params entries because the two uses
    * need different SQL types.
    */
-  std::optional<std::string> getSqlGetServicesStatement(
-      pqxx::params& params)  // Builds the "which organisations is this
-                             // provider in?" query.
-  {
-    try
-    {
+  // Builds the "which organisations is this
+  // provider in?" query.
+  std::optional<std::string> getSqlGetServicesStatement(pqxx::params& params) {
+    try {
       client_id = std::get<Data_t>(getData())
-                      .get_id();   // Pull the provider id from the id-only
-                                   // payload into the cached member.
-      if (!client_id.has_value())  // Without an id the query cannot be scoped.
-      {
+                      .get_id();  // Pull the provider id from the id-only
+                                  // payload into the cached member.
+      // Without an id the query cannot be scoped.
+      if (!client_id.has_value()) {
         Message::ErrorMessage(
             // Log the caller mistake.
             "Failed to get services for provider: no id.");
@@ -172,13 +168,11 @@ class Provider : public Client  // Inherits validated account behaviour; adds
                         ) AS combined
                         JOIN vars ON jsonb_path_exists(combined.staff, '$.** ? (@ == $v)'::jsonpath, jsonb_build_object('v', $2::text))
                                 OR combined.admin_id = vars.id
+                                // the caller.
+                                // Wrong payload type or a formatting problem.
                                 OR combined.owner_id = vars.id;
                         )");  // Wrap the raw SQL literal in a std::string for
-                              // the caller.
-    }
-    catch (
-        const std::exception& e)  // Wrong payload type or a formatting problem.
-    {
+    } catch (const std::exception& e) {
       Message::ErrorMessage(
           fmt::format("Failed to create query for GetServicesStatement {}.",
                       tablename));         // Log the table.

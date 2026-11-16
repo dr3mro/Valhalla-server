@@ -46,8 +46,7 @@
  * the Store.
  */
 DatabaseHanndler::DatabaseHanndler()
-    : DatabaseHanndler(Store::getObject<DatabaseConnectionPool>())
-{
+    : DatabaseHanndler(Store::getObject<DatabaseConnectionPool>()) {
 }  // Delegating constructor: find the global pool once, then let the other
    // constructor do the leasing.
 
@@ -57,8 +56,7 @@ DatabaseHanndler::DatabaseHanndler()
  * Throws DatabaseBusy: If the pool's acquire timeout expires.
  */
 DatabaseHanndler::DatabaseHanndler(std::shared_ptr<DatabaseConnectionPool> pool)
-    : databaseConnectionPool(std::move(pool))
-{
+    : databaseConnectionPool(std::move(pool)) {
   db_ptr = databaseConnectionPool->get_connection();
 }  // Store the pool, then lease a connection immediately; if none is free this
    // throws, so a half-built handler never exists.
@@ -68,11 +66,10 @@ DatabaseHanndler::DatabaseHanndler(std::shared_ptr<DatabaseConnectionPool> pool)
  * @details The null check makes destruction safe even after a connection was
  * moved out.
  */
-DatabaseHanndler::~DatabaseHanndler()
-{
-  if (db_ptr != nullptr)  // Only return a real lease; a null pointer means it
-                          // was already moved away.
-  {
+DatabaseHanndler::~DatabaseHanndler() {
+  // Only return a real lease; a null pointer means it
+  // was already moved away.
+  if (db_ptr != nullptr) {
     databaseConnectionPool->return_connection(
         std::move(db_ptr));  // Hand the connection back, waking one waiter
                              // in the pool.
@@ -83,8 +80,7 @@ DatabaseHanndler::~DatabaseHanndler()
  * @brief Returns the borrowed connection without transferring ownership.
  * @return The connection leased in the constructor.
  */
-std::shared_ptr<Database> DatabaseHanndler::get_connection()
-{
+std::shared_ptr<Database> DatabaseHanndler::get_connection() {
   return db_ptr;
 }  // A copy of the shared_ptr: the handler keeps its own reference until
    // destruction.
@@ -92,7 +88,6 @@ std::shared_ptr<Database> DatabaseHanndler::get_connection()
 /**
  * @brief Forwards the reconnect request to the owning pool.
  */
-void DatabaseHanndler::reconnect_all()
-{
+void DatabaseHanndler::reconnect_all() {
   databaseConnectionPool->reconnect_all();
 }  // The handler does not own the reconnect logic; the pool does.

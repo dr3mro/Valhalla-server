@@ -73,9 +73,9 @@
 #include "utils/message/message.hpp"
 // Validator: schema and regex validation of request bodies.
 #include "validator/validator.hpp"
-namespace api::v2::Types  // Nested namespace; names here are referenced as
-                          // api::v2::Types::X.
-{
+// Nested namespace; names here are referenced as
+// api::v2::Types::X.
+namespace api::v2::Types {
   /**
    * @class Entity_t
    * @brief Immutable payload-plus-optional-id base for the CRUD operation
@@ -90,8 +90,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
    * @see Create_t, Read_t, Update_t, Delete_t, Data_t
    */
   template <typename S>
-  struct Entity_t
-  {
+  struct Entity_t {
    public:
     // Entity_t(const Entity_t &)            = delete;
     // Entity_t(Entity_t &&)                 = delete;
@@ -105,8 +104,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * assign/omit it.
      */
     Entity_t(const S& _data, const std::optional<uint64_t> _id)
-        : data(_data), id(_id)
-    {
+        : data(_data), id(_id) {
     }  // Copy both inputs into const members so the operation description
        // cannot change later.
 
@@ -114,8 +112,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * @brief Returns the optional primary key associated with the
      * operation.
      */
-    [[nodiscard]] std::optional<uint64_t> get_id() const
-    {
+    [[nodiscard]] std::optional<uint64_t> get_id() const {
       return id;
     }  // Return by value; optional is tiny, and callers can check
        // has_value().
@@ -123,8 +120,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
     /**
      * @brief Returns the immutable operation payload.
      */
-    [[nodiscard]] const S& get_data() const
-    {
+    [[nodiscard]] const S& get_data() const {
       return this->data;
     }  // Return a const reference to avoid copying potentially large JSON.
 
@@ -159,10 +155,10 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
    * the id column is omitted so the database generates it.
    */
   using Create_t = struct Create_t
-      : public Entity_t<jsoncons::json>  // "using X = struct X ..." gives the
-                                         // anonymous struct the name
-                                         // Create_t.
-  {
+      // "using X = struct X ..." gives the
+      // anonymous struct the name
+      // Create_t.
+      : public Entity_t<jsoncons::json> {
     // Create_t(const Create_t &)            = default;
     // Create_t(Create_t &&)                 = default;
     // Create_t &operator=(const Create_t &) = default;
@@ -174,8 +170,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * @param[in] id Primary key to insert.
      */
     Create_t(const jsoncons::json& _data, const uint64_t id)
-        : Entity_t(_data, id)
-    {
+        : Entity_t(_data, id) {
     }  // Two-argument form: keep the caller's id in the INSERT.
 
     // No id: the database assigns it (the column default is nextval of the
@@ -186,8 +181,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * @param[in] _data JSON object whose members become INSERT columns.
      */
     explicit Create_t(const jsoncons::json& _data)
-        : Entity_t(_data, std::nullopt)
-    {
+        : Entity_t(_data, std::nullopt) {
     }  // One-argument form: nullopt tells the builder to leave the id
        // column out.
 
@@ -206,8 +200,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
    * build time.
    */
   using Read_t =
-      struct Read_t : public Entity_t<const std::unordered_set<std::string>>
-  {
+      struct Read_t : public Entity_t<const std::unordered_set<std::string>> {
     // Read_t(const Read_t &)            = delete;
     // Read_t(Read_t &&)                 = delete;
     // Read_t &operator=(const Read_t &) = delete;
@@ -219,8 +212,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * @param[in] _id Primary key of the row to read.
      */
     Read_t(const std::unordered_set<std::string>& _data, const uint64_t _id)
-        : Entity_t(_data, _id)
-    {
+        : Entity_t(_data, _id) {
     }  // An unordered set avoids duplicate column names and makes
        // membership checks fast.
 
@@ -235,8 +227,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
    * @brief Entity_t carrying the JSON object of fields to change and the row
    * id.
    */
-  using Update_t = struct Update_t : public Entity_t<jsoncons::json>
-  {
+  using Update_t = struct Update_t : public Entity_t<jsoncons::json> {
     // Update_t(const Update_t &)            = delete;
     // Update_t(Update_t &&)                 = delete;
     // Update_t &operator=(const Update_t &) = delete;
@@ -248,8 +239,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * @param[in] _id Primary key of the row to update.
      */
     Update_t(const jsoncons::json& _data, const uint64_t _id)
-        : Entity_t(_data, _id)
-    {
+        : Entity_t(_data, _id) {
     }  // The id scopes the UPDATE so it touches only one row.
 
     /**
@@ -264,8 +254,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
    * @details The char payload is an unused sentinel; the id is the only
    * meaningful state.
    */
-  using Delete_t = struct Delete_t : public Entity_t<char>
-  {
+  using Delete_t = struct Delete_t : public Entity_t<char> {
     // Delete_t(const Delete_t &)            = delete;
     // Delete_t(Delete_t &&)                 = delete;
     // Delete_t &operator=(const Delete_t &) = delete;
@@ -275,8 +264,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * @brief Constructs a delete operation for the given id.
      * @param[in] _id Primary key of the row to delete.
      */
-    explicit Delete_t(const uint64_t _id) : Entity_t('\0', _id)
-    {
+    explicit Delete_t(const uint64_t _id) : Entity_t('\0', _id) {
     }  // '\0' is a throwaway placeholder because
        // Entity_t still requires some payload type.
 
@@ -293,8 +281,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
    * @details Like Delete_t, the char payload is an unused sentinel and the id
    * is the state.
    */
-  using Data_t = struct Data_t : public Entity_t<char>
-  {
+  using Data_t = struct Data_t : public Entity_t<char> {
     // Data_t(const Data_t &)            = delete;
     // Data_t(Data_t &&)                 = delete;
     // Data_t &operator=(const Data_t &) = delete;
@@ -304,8 +291,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * @brief Constructs an id-only lookup operation.
      * @param[in] _id Client id to look up.
      */
-    explicit Data_t(const uint64_t _id) : Entity_t('\0', _id)
-    {
+    explicit Data_t(const uint64_t _id) : Entity_t('\0', _id) {
     }  // Same sentinel trick as Delete_t; only
        // the id matters for the lookup.
 
@@ -327,8 +313,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
    * builders.
    * @see Entity::buildSearchStatement
    */
-  using Search_t = struct Search_t
-  {
+  using Search_t = struct Search_t {
     /**
      * @brief Substring to match (wrapped in %...% when bound).
      */
@@ -376,10 +361,9 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * client error instead of throwing. On any problem it is set false and
      * the remaining fields must not be used.
      */
-    Search_t(const jsoncons::json& search_j,
-             bool& success)  // The bool is an output parameter: parsing never
-                             // throws at the caller for a bad body.
-    {
+    // The bool is an output parameter: parsing never
+    // throws at the caller for a bad body.
+    Search_t(const jsoncons::json& search_j, bool& success) {
       // A missing/malformed field here (e.g. an empty "{}" body) is a
       // client error, not a server error. success=false tells the caller
       // (EntityController::Search) to reply with a normal "Failed to
@@ -387,8 +371,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
       // success=false used to defeat that signal and escape uncaught into
       // the generic 500 handler, leaking the server's file path in the
       // response body.
-      try
-      {
+      try {
         const jsoncons::json
             &kw = search_j.at("keyword"),
             &fl = search_j.at("filter"), &ob = search_j.at("order_by"),
@@ -403,11 +386,10 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
         // first so a mismatch is treated the same as any other
         // malformed search body - success=false, not silently-coerced
         // garbage.
+        // Reject wrong JSON types before coercion
+        // can hide them.
         if (!kw.is_string() || !fl.is_string() || !ob.is_string() ||
-            !dr.is_int64() || !lm.is_int64() ||
-            !of.is_int64())  // Reject wrong JSON types before coercion
-                             // can hide them.
-        {
+            !dr.is_int64() || !lm.is_int64() || !of.is_int64()) {
           success = false;  // Mark the body unusable.
           return;           // Stop early; the member fields are left unset but
                             // will not be read.
@@ -422,12 +404,12 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
                                       // keyword, never raw user text.
         limit     = lm.as<size_t>();  // Convert the numeric limit to a count.
         offset    = of.as<size_t>();  // Convert the numeric offset to a count.
-        success   = validate(search_j);  // Final gate: exact key set and
-                                         // safe identifiers.
-      }
-      catch (const std::exception&)  // Covers a missing key (.at) or a
-                                     // bad numeric conversion.
-      {
+        // Final gate: exact key set and
+        // safe identifiers.
+        // Covers a missing key (.at) or a
+        // bad numeric conversion.
+        success = validate(search_j);
+      } catch (const std::exception&) {
         success = false;  // Any parsing problem means the body must not
                           // be used.
       }
@@ -444,28 +426,21 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * @return true only when the name is non-empty, within the length limit
      * and plain.
      */
-    static bool isPlainIdentifier(
-        const std::string& name)  // Static because it needs no object state; a
-                                  // free-standing helper on the struct.
-    {
+    // Static because it needs no object state; a
+    // free-standing helper on the struct.
+    static bool isPlainIdentifier(const std::string& name) {
       constexpr size_t MAX_IDENTIFIER_LENGTH =
           63;  // PostgreSQL's limit; longer names would be truncated.
+      // Reject empty, too long, or starting with a digit
+      // (which would be an invalid SQL identifier).
       if (name.empty() || name.size() > MAX_IDENTIFIER_LENGTH ||
-          std::isdigit(static_cast<unsigned char>(name.front())) !=
-              0)  // Reject empty, too long, or starting with a digit
-                  // (which would be an invalid SQL identifier).
-      {
+          std::isdigit(static_cast<unsigned char>(name.front())) != 0) {
         return false;  // Unsafe name.
       }
-      return std::ranges::all_of(name,
-                                 [](char c)
-                                 {
-                                   return std::isalnum(
-                                              static_cast<unsigned char>(c)) !=
-                                              0 ||
-                                          c == '_';
-                                 });  // Every character must be a letter, digit
-                                      // or underscore.
+      return std::ranges::all_of(name, [](char c) {
+        return std::isalnum(static_cast<unsigned char>(c)) != 0 || c == '_';
+      });  // Every character must be a letter, digit
+           // or underscore.
     }
 
     /**
@@ -475,10 +450,9 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * @return true when the key set is exact and filter/order_by are plain
      * identifiers.
      */
-    bool validate(
-        const jsoncons::json& search_j)  // Non-static because it reads the
-                                         // already-parsed member fields.
-    {
+    // Non-static because it reads the
+    // already-parsed member fields.
+    bool validate(const jsoncons::json& search_j) {
       static const std::unordered_set<std::string> keys =
           {"keyword",
            "filter",
@@ -488,8 +462,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
            "offset"};  // The complete allowed key set, built once.
       return search_j.size() == keys.size() &&
              std::ranges::all_of(keys,
-                                 [&search_j](const std::string& key)
-                                 {
+                                 [&search_j](const std::string& key) {
                                    return search_j.find(key).has_value();
                                  }) &&
              isPlainIdentifier(filter) &&
@@ -509,8 +482,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
    * flat set is available to subclasses.
    * @see CreateClient_t, UpdateClient_t
    */
-  struct ClientData_t
-  {
+  struct ClientData_t {
    public:
     /**
      * @brief Parses the raw request body into data_j and reports status via
@@ -526,28 +498,27 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
                  const std::optional<uint64_t> _id,
                  api::v2::Http::Error&         error,
                  bool&                         success)
-        : id(_id)  // string_view avoids copying the body; only the id is
-                   // stored here initially.
-    {
-      try
-      {
+        // string_view avoids copying the body; only the id is
+        // stored here initially.
+        : id(_id) {
+      try {
         data_j = jsoncons::json::parse(
-            _data);               // Turn the raw text into a JSON value.
-        if (!data_j.has_value())  // A null result means the text was
-                                  // not valid JSON.
-        {
+            _data);  // Turn the raw text into a JSON value.
+        // A null result means the text was
+        // not valid JSON.
+        if (!data_j.has_value()) {
           error = {.code = api::v2::Http::Status::BAD_REQUEST,
                    .message =
                        "Failed to parse body."};  // A bad body is the
                                                   // client's fault (400).
           Message::ErrorMessage(error.message);   // Log it for operators.
           success = false;  // Tell the caller not to proceed.
-          return;           // Stop before the success = true at the end.
+          // Stop before the success = true at the end.
+          // An unexpected exception while
+          // parsing is a server-side problem.
+          return;
         }
-      }
-      catch (const std::exception& e)  // An unexpected exception while
-                                       // parsing is a server-side problem.
-      {
+      } catch (const std::exception& e) {
         error =
             {.code = api::v2::Http::Status::INTERNAL_SERVER_ERROR,
              .message =
@@ -565,8 +536,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
     /**
      * @brief Returns the parsed body, if parsing succeeded.
      */
-    const std::optional<jsoncons::json>& get_data_json() const
-    {
+    const std::optional<jsoncons::json>& get_data_json() const {
       return data_j;
     }  // Const reference avoids copying; callers must check has_value()
        // first.
@@ -574,8 +544,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
     /**
      * @brief Returns the optional client id supplied at construction.
      */
-    std::optional<uint64_t> get_id() const
-    {
+    std::optional<uint64_t> get_id() const {
       return id;
     }  // Return by value; callers check has_value() before using it.
 
@@ -607,26 +576,24 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * @note Operates on the flat pair set rather than data_j, so it must
      * run after validation has populated data_set.
      */
-    bool hashPassword()  // Protected so subclasses can choose whether to
-                         // hash (creates do, updates do not).
-    {
-      auto passwd_itr = std::ranges::find_if(data_set,
-                                             [&](const auto& item)
-                                             {
-                                               return item.first == "password";
-                                             });  // Look for a column named
-                                                  // "password" in the flat set.
-      if (passwd_itr != data_set.end())  // Only act if such an entry exists.
-      {
+    // Protected so subclasses can choose whether to
+    // hash (creates do, updates do not).
+    bool hashPassword() {
+      auto passwd_itr = std::ranges::find_if(data_set, [&](const auto& item) {
+        return item.first == "password";
+      });  // Look for a column named
+           // "password" in the flat set.
+      // Only act if such an entry exists.
+      if (passwd_itr != data_set.end()) {
         std::string password_raw =
             passwd_itr->second;  // Copy the plaintext out before erasing it.
         std::optional<std::string> hashed_password =
             passwordCrypt->hashPassword(
-                password_raw);             // Ask the shared hasher; may fail
-                                           // (nullopt).
-        if (!hashed_password.has_value())  // Hashing failed - do not write a
-                                           // plaintext password.
-        {
+                password_raw);  // Ask the shared hasher; may fail
+                                // (nullopt).
+        // Hashing failed - do not write a
+        // plaintext password.
+        if (!hashed_password.has_value()) {
           return false;  // Signal failure so the caller can react.
         }
         data_set.erase(passwd_itr);  // Remove the plaintext pair.
@@ -656,8 +623,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
    * their own key, runs regex validation to build data_set, then hashes the
    * password before the INSERT is built.
    */
-  struct CreateClient_t : public ClientData_t
-  {
+  struct CreateClient_t : public ClientData_t {
    public:
     /**
      * @brief Parses and validates a client-create body, populating
@@ -673,14 +639,10 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
                    const std::string&    tablename,
                    api::v2::Http::Error& error,
                    bool&                 success)
-        : ClientData_t(_data,
-                       std::nullopt,
-                       error,
-                       success)  // Creates have no id yet, so pass nullopt to
-                                 // the base.
-    {
-      try
-      {
+        // Creates have no id yet, so pass nullopt to
+        // the base.
+        : ClientData_t(_data, std::nullopt, error, success) {
+      try {
         Validator::Rule rule(Validator::Rule::Action::ASSERT_NOT_PRESENT,
                              {"id"});  // Build a rule saying "id must not be in
                                        // the body".
@@ -690,8 +652,8 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
                                          error,
                                          rule);  // Check the body against the
                                                  // table's create schema.
-        if (!success)                            // Schema validation failed.
-        {
+        // Schema validation failed.
+        if (!success) {
           Message::ErrorMessage(error.message);  // Log the validation error.
           return;  // Leave success false and stop.
         }
@@ -702,16 +664,16 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
                                              data_set);  // Regex-validate
                                                          // fields and fill the
                                                          // (column, value) set.
-        if (!success)  // Regex validation failed.
-        {
+        // Regex validation failed.
+        if (!success) {
           Message::ErrorMessage(error.message);  // Log it.
           return;                                // Stop with success false.
         }
-        hashPassword();  // Now that data_set exists, replace any
-                         // plaintext password with its hash.
-      }
-      catch (const std::exception& e)  // Unexpected error during validation.
-      {
+        // Now that data_set exists, replace any
+        // plaintext password with its hash.
+        // Unexpected error during validation.
+        hashPassword();
+      } catch (const std::exception& e) {
         error = {.code    = api::v2::Http::Status::INTERNAL_SERVER_ERROR,
                  .message = fmt::format("Failed while parsing client data: {}.",
                                         e.what())};  // Report 500.
@@ -727,8 +689,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * for the INSERT.
      */
     const std::unordered_set<std::pair<std::string, std::string>>&
-    get_data_set() const
-    {
+    get_data_set() const {
       return data_set;
     }  // Const reference so callers cannot mutate the validated data.
   };
@@ -741,8 +702,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
    * rule is provided by the caller because different update endpoints permit
    * different field sets.
    */
-  struct UpdateClient_t : public ClientData_t
-  {
+  struct UpdateClient_t : public ClientData_t {
    public:
     /**
      * @brief Parses and validates a client-update body, populating
@@ -768,14 +728,10 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
                    const Validator::Rule&
                        rule)  // The extra rule parameter lets each endpoint
                               // decide which fields are allowed.
-        : ClientData_t(_data,
-                       _id,
-                       error,
-                       success)  // Pass the id through to the base for later
-                                 // use by the UPDATE builder.
-    {
-      try
-      {
+        // Pass the id through to the base for later
+        // use by the UPDATE builder.
+        : ClientData_t(_data, _id, error, success) {
+      try {
         success = Validator::
             validateDatabaseUpdateSchema(tablename,
                                          get_data_json(),
@@ -783,8 +739,8 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
                                          rule);  // Validate against the table's
                                                  // update schema and the
                                                  // supplied rule.
-        if (!success)                            // Validation failed.
-        {
+        // Validation failed.
+        if (!success) {
           Message::ErrorMessage(error.message);  // Log it.
           return;                                // Stop.
         }
@@ -794,14 +750,14 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
                                   error,
                                   data_set);  // Build the flat set with regex
                                               // checks, like the create path.
-        if (!success)                         // Regex validation failed.
-        {
+        // Regex validation failed.
+        if (!success) {
           Message::ErrorMessage(error.message);  // Log it.
-          return;                                // Stop.
+          // Stop.
+          // Unexpected validation error.
+          return;
         }
-      }
-      catch (const std::exception& e)  // Unexpected validation error.
-      {
+      } catch (const std::exception& e) {
         error = {.code    = api::v2::Http::Status::INTERNAL_SERVER_ERROR,
                  .message = fmt::format("Failed while parsing client data: {}.",
                                         e.what())};  // Report 500.
@@ -817,8 +773,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * clause.
      */
     const std::unordered_set<std::pair<std::string, std::string>>&
-    get_data_set() const
-    {
+    get_data_set() const {
       return data_set;
     }  // Const reference keeps the validated data read-only.
   };
@@ -828,8 +783,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
    * @brief Carries the client id used by the suspend/activate statement
    * builders.
    */
-  struct SuspendData
-  {
+  struct SuspendData {
     /**
      * @brief Id of the client whose active flag will be toggled.
      */
@@ -840,8 +794,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * @brief Stores the target client id.
      * @param[in] _client_id Id of the client to suspend or activate.
      */
-    SuspendData(const uint64_t _client_id)
-    {
+    SuspendData(const uint64_t _client_id) {
       client_id = _client_id;
     }  // Copy the id into the member for the builder to read later.
   };
@@ -857,8 +810,7 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
    * @note parse_status must be checked before relying on the other fields; a
    * missing key leaves them uninitialised.
    */
-  struct StaffData
-  {
+  struct StaffData {
     /**
      * @brief Whether all required JSON fields were parsed successfully.
      */
@@ -912,11 +864,10 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * @note On a missing or mistyped key an error is logged and
      * parse_status is set false.
      */
-    StaffData(const jsoncons::json& json)  // Construct by extracting every
-                                           // required field from the JSON body.
-    {
-      try
-      {
+    // Construct by extracting every
+    // required field from the JSON body.
+    StaffData(const jsoncons::json& json) {
+      try {
         nominee_id = json.at("nominee_id")
                          .as<uint64_t>();  // .at throws if the key is missing;
                                            // as<> converts the value.
@@ -931,10 +882,10 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
             json.at("entity_name").as<std::string>();  // Entity name as text.
         project_name = servercfg_.name;  // Read from configuration,
                                          // never from client input.
-        parse_status = true;             // All fields were read successfully.
-      }
-      catch (const std::exception& e)  // A missing or mistyped key lands here.
-      {
+        // All fields were read successfully.
+        // A missing or mistyped key lands here.
+        parse_status = true;
+      } catch (const std::exception& e) {
         Message::ErrorMessage(
             "Error while parsing json: " +
             std::string(e.what()));  // Log the parsing problem.
@@ -954,12 +905,10 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * @return true when the fields were added; false if an exception
      * occurred.
      */
-    bool toInviteJson(
-        jsoncons::json& invite_json)  // Takes the JSON by reference so it
-                                      // is modified in place.
-    {
-      try
-      {
+    // Takes the JSON by reference so it
+    // is modified in place.
+    bool toInviteJson(jsoncons::json& invite_json) {
+      try {
         std::string encoded_invite_data = cppcodec::base64_rfc4648::encode(
             invite_json.to_string());  // Base64 makes the JSON safe
                                        // to place in a URL token.
@@ -980,11 +929,11 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
         invite_json["project_name"] =
             project_name;  // Pass the project name to the template.
         invite_json["generate_body"] =
-            "";       // Empty placeholder the mail layer fills in.
-        return true;  // All fields added.
-      }
-      catch (const std::exception& e)  // Encoding or formatting failed.
-      {
+            "";  // Empty placeholder the mail layer fills in.
+        // All fields added.
+        // Encoding or formatting failed.
+        return true;
+      } catch (const std::exception& e) {
         Message::ErrorMessage("Error while creating invite json: " +
                               std::string(e.what()));  // Log the failure.
         return false;  // Signal that the invite JSON is incomplete.

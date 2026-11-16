@@ -46,8 +46,7 @@
 
 // Every severity helper must accept a plain message without throwing.
 TEST_CASE("Message logging levels accept messages without throwing",
-          "[utils][message]")
-{
+          "[utils][message]") {
   CHECK_NOTHROW(Message::DebugMessage(
       "debug"));  // Verbose developer detail must be accepted.
   CHECK_NOTHROW(Message::InfoMessage(
@@ -67,8 +66,8 @@ TEST_CASE("Message logging levels accept messages without throwing",
 
 // The helpers flatten newlines and handle long text, so odd-looking strings
 // must still be safe.
-TEST_CASE("Message logging is tolerant of awkward strings", "[utils][message]")
-{
+TEST_CASE("Message logging is tolerant of awkward strings",
+          "[utils][message]") {
   CHECK_NOTHROW(Message::InfoMessage(""));  // An empty message is still valid.
   CHECK_NOTHROW(Message::InfoMessage(
       "line1\nline2\twith\ttabs"));  // Newlines and tabs get flattened; no
@@ -82,8 +81,7 @@ TEST_CASE("Message logging is tolerant of awkward strings", "[utils][message]")
 // get_color must return a non-empty ANSI colour string for each level it
 // supports.
 TEST_CASE("Message::get_color returns a colour for every log level",
-          "[utils][message]")
-{
+          "[utils][message]") {
   const std::vector<trantor::Logger::LogLevel> levels = {
       // List every severity from the lowest to the highest.
       trantor::Logger::LogLevel::kTrace,  // Lowest severity: very detailed
@@ -96,9 +94,9 @@ TEST_CASE("Message::get_color returns a colour for every log level",
       trantor::Logger::LogLevel::kFatal,  // Highest severity: a fatal error.
   };
 
-  for (const auto level : levels)  // Visit each level once; the loop stops
-                                   // after the last element.
-  {
+  // Visit each level once; the loop stops
+  // after the last element.
+  for (const auto level : levels) {
     CAPTURE(static_cast<int>(level));  // If a check fails, Catch2 prints this
                                        // number to show which level failed.
     CHECK_FALSE(

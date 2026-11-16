@@ -91,9 +91,9 @@
   RATELIMIT, ELAPSED  // Public routes: rate limit + timing, no login required.
 #define SECURE INSECURE, AUTH  // Protected routes: also require a valid token.
 
-namespace api::v2  // Everything in the v2 API lives in this namespace to avoid
-                   // name clashes.
-{
+// Everything in the v2 API lives in this namespace to avoid
+// name clashes.
+namespace api::v2 {
   /**
    * @brief Safely parse a numeric id query parameter, replying 400 on
    * failure.
@@ -114,26 +114,25 @@ namespace api::v2  // Everything in the v2 API lives in this namespace to avoid
    * calling executeControllerMethod, otherwise a second response would be
    * sent.
    */
-  inline std::optional<int64_t>
-  parseIdParam(  // "inline" lets this live in a header without
-                 // duplicate-definition errors.
-      const drogon::HttpRequestPtr& req,
-      const std::string&            name,
-      std::function<void(const drogon::HttpResponsePtr&)>&
-          callback)  // req supplies the parameter; callback is answered on
-                     // error.
-  {
+  // "inline" lets this live in a header without
+  // duplicate-definition errors.
+  // req supplies the parameter; callback is answered on
+  // error.
+  inline std::optional<int64_t> parseIdParam(
+      const drogon::HttpRequestPtr&                        req,
+      const std::string&                                   name,
+      std::function<void(const drogon::HttpResponsePtr&)>& callback) {
     const std::string& raw =
         req->getParameter(name);  // Read the raw text value (empty string
                                   // when the parameter is missing).
-    try  // Guard the conversion because stoll throws on bad input.
-    {
-      return std::stoll(raw);  // Convert text like "42" into a 64-bit integer;
-                               // throws if it is not a valid number.
-    }
-    catch (const std::exception&)  // Catches invalid_argument (not a
-                                   // number) and out_of_range (too big).
-    {
+    // Guard the conversion because stoll throws on bad input.
+    try {
+      // Convert text like "42" into a 64-bit integer;
+      // throws if it is not a valid number.
+      // Catches invalid_argument (not a
+      // number) and out_of_range (too big).
+      return std::stoll(raw);
+    } catch (const std::exception&) {
       Helper::errorResponse(drogon::k400BadRequest,
                             fmt::format("Missing or invalid '{}' parameter.",
                                         name),
@@ -180,10 +179,12 @@ namespace api::v2  // Everything in the v2 API lives in this namespace to avoid
    * @param[in] args Extra arguments forwarded to the controller (e.g. body,
    * parsed id).
    */
-  template <typename Func,
-            typename Registry,
-            typename... Args>  // Generic over the method, the map and any extra
-                               // arguments.
+  // Generic over the method, the map and any extra
+  // arguments.
+  // "static" at namespace scope
+  // gives this helper internal
+  // linkage.
+  template <typename Func, typename Registry, typename... Args>
   static void executeControllerMethod(
       DbExecutor&                                           executor,
       const Registry&                                       registry,
@@ -191,14 +192,11 @@ namespace api::v2  // Everything in the v2 API lives in this namespace to avoid
       Func                                                  method,
       const drogon::HttpRequestPtr&                         req,
       std::function<void(const drogon::HttpResponsePtr&)>&& callback,
-      Args&&... args)  // "static" at namespace scope
-                       // gives this helper internal
-                       // linkage.
-  {
+      Args&&... args) {
     auto ctl = registry.find(key);  // Look up the controller variant for
                                     // this URL's type segment.
-    if (ctl == registry.end())      // An unknown type key cannot be dispatched.
-    {
+    // An unknown type key cannot be dispatched.
+    if (ctl == registry.end()) {
       Helper::errorResponse(drogon::k400BadRequest,
                             fmt::format("Type mapping not found for: {}", key),
                             std::move(
@@ -207,29 +205,27 @@ namespace api::v2  // Everything in the v2 API lives in this namespace to avoid
       return;  // Nothing else to do; the callback was already answered.
     }
 
-    try  // Whole dispatch is guarded so no exception escapes to Drogon as
-         // an empty 500.
-    {
-      std::visit(  // std::variant holds one of several controller pointer
-                   // types; visit picks the right one.
-          [&](const auto& controller)  // This lambda is called with whichever
-                                       // controller type is stored.
-          {
+    // Whole dispatch is guarded so no exception escapes to Drogon as
+    // an empty 500.
+    try {
+      // std::variant holds one of several controller pointer
+      // types; visit picks the right one.
+      // This lambda is called with whichever
+      // controller type is stored.
+      std::visit(
+          [&](const auto& controller) {
             // Adapts the controller's numeric status callback to an
             // HTTP response.
-            CALLBACK_ mcb =
-                [callback](int code,
-                           const std::string&
-                               content)  // The controller replies with an
-                                         // int code and a JSON string.
-            {
+            // The controller replies with an
+            // int code and a JSON string.
+            CALLBACK_ mcb = [callback](int code, const std::string& content) {
               using Reply = std::function<void(
                   const drogon::HttpResponsePtr&)>;  // Short alias for the
                                                      // callback type we must
                                                      // pass to Helper.
-              switch (code)  // Translate the numeric result into the
-                             // matching JSON HTTP reply.
-              {
+              // Translate the numeric result into the
+              // matching JSON HTTP reply.
+              switch (code) {
                 // Controller succeeded.
                 case api::v2::Http::Status::OK:
                   Helper::successResponse(content,
@@ -274,39 +270,36 @@ namespace api::v2  // Everything in the v2 API lives in this namespace to avoid
             // cache) never queues; the first query throws WouldBlock
             // before anything was written, and the request goes to the
             // executor and runs again from the start.
-            if (executor.ioFastPath())  // Is the cheap in-thread path
-                                        // enabled?
-            {
-              try  // The probe call may throw; handle each case
-                   // below.
-              {
+            // Is the cheap in-thread path
+            // enabled?
+            if (executor.ioFastPath()) {
+              // The probe call may throw; handle each case
+              // below.
+              try {
                 DbProbe   probe;  // Guard object that throws WouldBlock
                                   // if a real DB connection is needed.
                 CALLBACK_ probe_cb =
                     mcb;  // its own copy: the real one must still
                           // be there if the probe gives up
                 std::apply(
-                    [&](auto&... unpacked)
-                    {
+                    [&](auto&... unpacked) {
                       std::invoke(method,
                                   controller.get(),
                                   std::move(probe_cb),
                                   std::move(requester),
                                   unpacked...);
                     },
-                    packed);  // Try the controller right here on
-                              // the IO thread.
-                return;       // It completed without needing the
-                              // database, so we are done.
-              }
-              catch (const WouldBlock&)  // The probe says a
-                                         // connection is required.
+                    packed);               // Try the controller right here on
+                                           // the IO thread.
+                return;                    // It completed without needing the
+                                           // database, so we are done.
+              } catch (const WouldBlock&)  // The probe says a
+                                           // connection is required.
+              // needs the database: queue it below
+              // Some other error happened on
+              // the fast path.
               {
-                // needs the database: queue it below
-              }
-              catch (const std::exception& e)  // Some other error happened on
-                                               // the fast path.
-              {
+              } catch (const std::exception& e) {
                 Helper::failureResponse(e.what(),
                                         std::move(
                                             callback));  // Reply 500 with the
@@ -318,60 +311,59 @@ namespace api::v2  // Everything in the v2 API lives in this namespace to avoid
             // Queue the call on the DB workers when the fast path was
             // disabled or gave up; runOnDbExecutor answers 503 itself
             // if the bounded queue is full.
-            runOnDbExecutor(
-                executor,
-                std::move(mcb),  // Hand the response adapter to the
-                                 // executor wrapper.
-                [method,
-                 target = controller.get(),
-                 req,
-                 callback,
-                 requester = std::move(requester),
-                 packed    = std::move(packed)](
-                    CALLBACK_&& cb) mutable  // Capture everything by
-                                             // value: this runs later
-                                             // on another thread.
-                {
-                  try  // The queued controller call can also fail.
-                  {
-                    std::apply(
-                        [&](auto&... unpacked)
-                        {
-                          std::invoke(method,
-                                      target,
-                                      std::move(cb),
-                                      std::move(requester),
-                                      unpacked...);
-                        },
-                        packed);  // Run the real controller method
-                                  // now that DB access is allowed.
-                  }
-                  catch (const DatabaseBusy&
-                             e)  // The connection pool is exhausted.
-                  {
-                    // Exhausted connection pool -> retryable 503
-                    // (Helper adds Retry-After).
-                    Helper::errorResponse(drogon::k503ServiceUnavailable,
-                                          e.what(),
-                                          std::move(
-                                              callback));  // Tell the client to
-                                                           // try again shortly.
-                  }
-                  catch (const std::exception& e)  // Any other failure.
-                  {
-                    Helper::failureResponse(e.what(),
-                                            std::move(
-                                                callback));  // Reply 500 with
-                                                             // the error text.
-                  }
-                });
+            // Hand the response adapter to the
+            // executor wrapper.
+            // Capture everything by
+            // value: this runs later
+            // on another thread.
+            runOnDbExecutor(executor,
+                            std::move(mcb),
+                            [method,
+                             target = controller.get(),
+                             req,
+                             callback,
+                             requester = std::move(requester),
+                             packed =
+                                 std::move(packed)](CALLBACK_&& cb) mutable {
+                              // The queued controller call can also fail.
+                              try {
+                                std::apply(
+                                    [&](auto&... unpacked) {
+                                      // Run the real controller method
+                                      // now that DB access is allowed.
+                                      // The connection pool is exhausted.
+                                      std::invoke(method,
+                                                  target,
+                                                  std::move(cb),
+                                                  std::move(requester),
+                                                  unpacked...);
+                                    },
+                                    packed);
+                              } catch (const DatabaseBusy& e) {
+                                // Exhausted connection pool -> retryable 503
+                                // (Helper adds Retry-After).
+                                // Tell the client to
+                                // try again shortly.
+                                // Any other failure.
+                                Helper::
+                                    errorResponse(drogon::
+                                                      k503ServiceUnavailable,
+                                                  e.what(),
+                                                  std::move(callback));
+                              } catch (const std::exception& e) {
+                                // Reply 500 with
+                                // the error text.
+                                // Pass the selected controller variant to
+                                // std::visit.
+                                // Backstop for errors while setting up the
+                                // visit.
+                                Helper::failureResponse(e.what(),
+                                                        std::move(callback));
+                              }
+                            });
           },
-          ctl->second);  // Pass the selected controller variant to
-                         // std::visit.
-    }
-    catch (const std::exception&
-               e)  // Backstop for errors while setting up the visit.
-    {
+          ctl->second);
+    } catch (const std::exception& e) {
       Helper::failureResponse(e.what(),
                               std::move(
                                   callback));  // Always answer exactly once.

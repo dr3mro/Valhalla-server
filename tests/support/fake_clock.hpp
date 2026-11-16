@@ -46,8 +46,7 @@
  * Reset to epoch zero before each test to avoid inter-test contamination.
  * @brief A clock made of static members, so every caller sees the same "now".
  */
-struct ManualClock
-{
+struct ManualClock {
   using duration = std::chrono::milliseconds;  // The smallest time step this
                                                // clock measures.
   using rep =
@@ -61,25 +60,21 @@ struct ManualClock
   static constexpr bool is_steady =
       true;  // Claim steadiness: time only moves when a test says so.
 
-  static time_point now() noexcept
-  {
+  static time_point now() noexcept {
     return current_;
   }  // Return the current fake time; cannot throw.
 
-  static void advance(std::chrono::milliseconds ms)
-  {
+  static void advance(std::chrono::milliseconds ms) {
     current_ += ms;
   }  // Move fake time forward by milliseconds.
-  static void advance(std::chrono::seconds s)
-  {
+  static void advance(std::chrono::seconds s) {
     current_ += s;
   }  // Move fake time forward by whole seconds.
 
   /**
    * Call at the start of each test so tests are independent.
    */
-  static void reset()
-  {
+  static void reset() {
     current_ = time_point{};
   }  // Set fake time back to the epoch (zero).
 
@@ -95,24 +90,20 @@ struct ManualClock
  * @details It can produce a callable for DOSDetector so the detector reads this
  * object's time instead of the real system clock.
  */
-class FakeClock
-{
+class FakeClock {
  public:
   using TimePoint = std::chrono::time_point<
       std::chrono::steady_clock>;  // Use the steady clock's time-point type
                                    // as a stand-in.
 
-  FakeClock() : now_(std::chrono::steady_clock::now())
-  {
+  FakeClock() : now_(std::chrono::steady_clock::now()) {
   }  // Start at the real current time so values look realistic.
 
-  void advance(const std::chrono::seconds seconds)
-  {
+  void advance(const std::chrono::seconds seconds) {
     now_ += seconds;
   }  // Jump fake time forward without really waiting.
 
-  [[nodiscard]] TimePoint now() const
-  {
+  [[nodiscard]] TimePoint now() const {
     return now_;
   }  // Return the fake time; [[nodiscard]] warns if the result is ignored.
 
@@ -121,10 +112,8 @@ class FakeClock
    * The returned lambda captures `this` by reference, so this FakeClock must
    * outlive the detector (and any callbacks) that hold the ClockFn.
    */
-  [[nodiscard]] DOSDetector::ClockFn callable()
-  {
-    return [this]
-    {
+  [[nodiscard]] DOSDetector::ClockFn callable() {
+    return [this] {
       return now_;
     };  // The lambda reads this object's time whenever the detector asks.
   }

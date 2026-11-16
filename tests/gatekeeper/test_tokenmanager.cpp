@@ -60,8 +60,7 @@ using ClientLoginData =
 using valhalla_test::makeLoginData;   // Import the builder so tests can use it
                                       // unqualified.
 
-namespace
-{
+namespace {
   // Test token parameters - must match tests/support/global_env.cpp, which
   // sets them before the Configurator singleton is created.
   constexpr const char* kSecret =
@@ -74,9 +73,9 @@ namespace
       60;  // Expected gap between issue time and expiry.
 }  // namespace
 
+// Registers the basic token-generation test.
 TEST_CASE("TokenManager issues a token for valid login data",
-          "[gatekeeper][token]")  // Registers the basic token-generation test.
-{
+          "[gatekeeper][token]") {
   TokenManager manager;  // The class under test.
 
   std::optional<ClientLoginData> loginData =
@@ -96,10 +95,10 @@ TEST_CASE("TokenManager issues a token for valid login data",
                     ->empty());  // Prove the token is a real non-empty string.
 }
 
+// Registers the test that every required
+// claim is present and correct.
 TEST_CASE("TokenManager token contains the expected claims",
-          "[gatekeeper][token]")  // Registers the test that every required
-                                  // claim is present and correct.
-{
+          "[gatekeeper][token]") {
   TokenManager manager;  // The class under test.
 
   std::optional<ClientLoginData> loginData =
@@ -143,10 +142,10 @@ TEST_CASE("TokenManager token contains the expected claims",
                                              // was applied exactly.
 }
 
+// Registers the test that only the correct
+// secret verifies the signature.
 TEST_CASE("TokenManager token signature round-trips with the configured secret",
-          "[gatekeeper][token]")  // Registers the test that only the correct
-                                  // secret verifies the signature.
-{
+          "[gatekeeper][token]") {
   TokenManager manager;  // The class under test.
 
   std::optional<ClientLoginData> loginData =
@@ -178,10 +177,9 @@ TEST_CASE("TokenManager token signature round-trips with the configured secret",
                                       // is what makes the signature meaningful.
 }
 
-TEST_CASE(
-    "TokenManager fails cleanly when login data is incomplete",
-    "[gatekeeper][token]")  // Registers the test for a missing required field.
-{
+// Registers the test for a missing required field.
+TEST_CASE("TokenManager fails cleanly when login data is incomplete",
+          "[gatekeeper][token]") {
   TokenManager manager;  // The class under test.
 
   std::optional<ClientLoginData> loginData =
@@ -197,10 +195,10 @@ TEST_CASE(
                                                 // left behind on failure.
 }
 
+// Registers the positive validation case.
 TEST_CASE(
     "TokenManager validates a well-formed token whose session fields match",
-    "[gatekeeper][token]")  // Registers the positive validation case.
-{
+    "[gatekeeper][token]") {
   TokenManager manager;  // The class under test.
 
   // isTokenValid() consults the database for the last logout time; with no
@@ -234,10 +232,10 @@ TEST_CASE(
   CHECK(message.empty());  // Prove no error message was produced on success.
 }
 
+// Registers the test that a foreign signature
+// is refused.
 TEST_CASE("TokenManager rejects a token signed with the wrong secret",
-          "[gatekeeper][token]")  // Registers the test that a foreign signature
-                                  // is refused.
-{
+          "[gatekeeper][token]") {
   TokenManager manager;  // The class under test.
 
   auto loginData = std::optional<ClientLoginData>(
@@ -263,10 +261,9 @@ TEST_CASE("TokenManager rejects a token signed with the wrong secret",
   CHECK_FALSE(message.empty());  // Prove a reason is given for the rejection.
 }
 
-TEST_CASE("TokenManager rejects a tampered token",
-          "[gatekeeper][token]")  // Registers the test that altered content is
-                                  // detected.
-{
+// Registers the test that altered content is
+// detected.
+TEST_CASE("TokenManager rejects a tampered token", "[gatekeeper][token]") {
   TokenManager manager;  // The class under test.
 
   auto loginData = std::optional<ClientLoginData>(
@@ -291,10 +288,10 @@ TEST_CASE("TokenManager rejects a tampered token",
   CHECK_FALSE(message.empty());                  // Prove a reason is given.
 }
 
+// Registers the robustness test for
+// unparseable token strings.
 TEST_CASE("TokenManager rejects a malformed token without crashing",
-          "[gatekeeper][token]")  // Registers the robustness test for
-                                  // unparseable token strings.
-{
+          "[gatekeeper][token]") {
   TokenManager manager;  // The class under test.
 
   const auto& malformed =
@@ -319,14 +316,13 @@ TEST_CASE("TokenManager rejects a malformed token without crashing",
                                        // rejected rather than crashing.
   CHECK_FALSE(message.empty());        // Prove a reason is given.
 }
+// Registers the tests that each required
+// claim is genuinely required.
 TEST_CASE("TokenManager generateToken fails cleanly for each missing field",
-          "[gatekeeper][token]")  // Registers the tests that each required
-                                  // claim is genuinely required.
-{
+          "[gatekeeper][token]") {
   TokenManager manager;  // The class under test.
 
-  SECTION("missing clientId")
-  {
+  SECTION("missing clientId") {
     auto loginData = std::optional<ClientLoginData>(
         makeLoginData(42, "users", "1.2.3.4"));  // Start with complete data.
     loginData->username       = "u";             // Set the username.
@@ -340,8 +336,7 @@ TEST_CASE("TokenManager generateToken fails cleanly for each missing field",
     CHECK_FALSE(loginData->token.has_value());  // Prove no token was produced.
   }
 
-  SECTION("missing ip_address")
-  {
+  SECTION("missing ip_address") {
     auto loginData = std::optional<ClientLoginData>(
         makeLoginData(42, "users", "1.2.3.4"));  // Complete data.
     loginData->username       = "u";             // Set username.
@@ -353,8 +348,7 @@ TEST_CASE("TokenManager generateToken fails cleanly for each missing field",
         manager.generateToken(loginData));  // Prove the IP is required.
   }
 
-  SECTION("missing group")
-  {
+  SECTION("missing group") {
     auto loginData = std::optional<ClientLoginData>(
         makeLoginData(42, "users", "1.2.3.4"));  // Complete data.
     loginData->username       = "u";             // Set username.
@@ -365,8 +359,7 @@ TEST_CASE("TokenManager generateToken fails cleanly for each missing field",
         manager.generateToken(loginData));  // Prove the group is required.
   }
 
-  SECTION("missing lastLogoutTime")
-  {
+  SECTION("missing lastLogoutTime") {
     auto loginData = std::optional<ClientLoginData>(
         makeLoginData(42, "users", "1.2.3.4"));  // Complete data.
     loginData->username = "u";                   // Set username.
@@ -378,10 +371,10 @@ TEST_CASE("TokenManager generateToken fails cleanly for each missing field",
   }
 }
 
+// Registers the test that expiry is checked
+// during validation.
 TEST_CASE("TokenManager rejects an already-expired token",
-          "[gatekeeper][token]")  // Registers the test that expiry is checked
-                                  // during validation.
-{
+          "[gatekeeper][token]") {
   TokenManager manager;  // The class under test.
 
   // Build a token that expired 1 minute ago.

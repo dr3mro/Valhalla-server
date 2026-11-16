@@ -63,8 +63,7 @@
  * binary format.
  * @see execSqlCoro, bindParams, toTextParams
  */
-namespace asyncdb
-{
+namespace asyncdb {
   /**
    * @brief Converts pqxx parameters into an ordered list of optional
    * plain-text values.

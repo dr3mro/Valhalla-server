@@ -62,27 +62,25 @@ using Requester =
     api::v2::Requester;  // A short alias for the verbose fully qualified name.
 
 /** @brief The status and body passed to a controller callback. */
-struct Result
-{
+struct Result {
   int         status = 0;  // The HTTP status; 0 means the callback never fired.
   std::string body;        // The response text, filled by the callback.
 };
 
 /** @brief Invokes @p fn with a capturing callback and returns what it received.
  */
-static Result capture(auto fn)  // Converts a callback-style controller call
-                                // into a return value a test can check.
-{
+// Converts a callback-style controller call
+// into a return value a test can check.
+static Result capture(auto fn) {
   Result r;  // Default result (status 0, empty body), ready to be filled in
              // place.
-  fn(  // Run the caller's lambda, passing it the capturing callback below.
-      [&](int                s,
-          const std::string& b)  // The callback captures r by reference so
-                                 // writes here persist.
-      {
-        r.status = s;  // Store the status the controller reported.
-        r.body   = b;  // Store the body the controller reported.
-      });
+  // Run the caller's lambda, passing it the capturing callback below.
+  // The callback captures r by reference so
+  // writes here persist.
+  fn([&](int s, const std::string& b) {
+    r.status = s;  // Store the status the controller reported.
+    r.body   = b;  // Store the body the controller reported.
+  });
   return r;  // Hand the captured answer back to the test.
 }
 
@@ -92,16 +90,13 @@ static Result capture(auto fn)  // Converts a callback-style controller call
 // 500.
 TEST_CASE(
     "StaffController<Clinics>::AddStaffToEntity with malformed JSON → 500",
-    "[controllers][staff]")
-{
+    "[controllers][staff]") {
   StaffController<Clinics>
        ctrl;  // A fresh controller for Clinics; it holds no per-call state.
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.AddStaffToEntity(std::move(cb), Requester(1, "owners"), "bad{");
-      });  // Invalid JSON; the exception is caught and converted to a 500
-           // reply.
+  auto r = capture([&](auto cb) {
+    ctrl.AddStaffToEntity(std::move(cb), Requester(1, "owners"), "bad{");
+  });  // Invalid JSON; the exception is caught and converted to a 500
+       // reply.
   CHECK(r.status ==
         api::v2::Http::Status::INTERNAL_SERVER_ERROR);  // Pins down the current
                                                         // 500-on-bad-JSON
@@ -114,16 +109,13 @@ TEST_CASE(
 TEST_CASE(
     "StaffController<Clinics>::AddStaffToEntity with missing 'payload' key → "
     "500",
-    "[controllers][staff]")
-{
+    "[controllers][staff]") {
   StaffController<Clinics> ctrl;  // A fresh Clinics controller.
-  auto                     r = capture(
-      [&](auto cb)
-      {
-        ctrl.AddStaffToEntity(std::move(cb),
-                              Requester(1, "owners"),
-                              R"({"no_payload":1})");
-      });  // Parsable JSON, but the expected key is absent.
+  auto                     r = capture([&](auto cb) {
+    ctrl.AddStaffToEntity(std::move(cb),
+                          Requester(1, "owners"),
+                          R"({"no_payload":1})");
+  });  // Parsable JSON, but the expected key is absent.
   // at("payload") throws → CRITICALMESSAGERESPONSE
   CHECK(r.status ==
         api::v2::Http::Status::INTERNAL_SERVER_ERROR);  // Proves a missing key
@@ -136,18 +128,15 @@ TEST_CASE(
 TEST_CASE(
     "StaffController<Clinics>::AddStaffToEntity with valid payload proceeds to "
     "DB",
-    "[controllers][staff]")
-{
+    "[controllers][staff]") {
   StaffController<Clinics> ctrl;  // A fresh Clinics controller.
   // Minimal valid payload for StaffData
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.AddStaffToEntity(
-            std::move(cb),
-            Requester(1, "owners"),
-            R"({"id":1,"payload":{"staff_id":10,"role":"nurse"}})");
-      });  // Both the entity id and the nested staff data are present.
+  auto r = capture([&](auto cb) {
+    ctrl.AddStaffToEntity(
+        std::move(cb),
+        Requester(1, "owners"),
+        R"({"id":1,"payload":{"staff_id":10,"role":"nurse"}})");
+  });  // Both the entity id and the nested staff data are present.
   // Passes JSON parse; reaches DB (unavailable) or returns a response — must
   // not crash
   CHECK_FALSE(r.body.empty());  // Proves the controller produced some answer
@@ -159,16 +148,11 @@ TEST_CASE(
 // Broken JSON throws on the Remove path too, yielding 500.
 TEST_CASE(
     "StaffController<Clinics>::RemoveStaffFromEntity with malformed JSON → 500",
-    "[controllers][staff]")
-{
+    "[controllers][staff]") {
   StaffController<Clinics> ctrl;  // A fresh Clinics controller.
-  auto                     r = capture(
-      [&](auto cb)
-      {
-        ctrl.RemoveStaffFromEntity(std::move(cb),
-                                   Requester(1, "owners"),
-                                   "bad{");
-      });  // Invalid JSON body.
+  auto                     r = capture([&](auto cb) {
+    ctrl.RemoveStaffFromEntity(std::move(cb), Requester(1, "owners"), "bad{");
+  });  // Invalid JSON body.
   CHECK(r.status == api::v2::Http::Status::
                         INTERNAL_SERVER_ERROR);  // Proves the 500-on-bad-JSON
                                                  // contract holds here as well.
@@ -177,16 +161,13 @@ TEST_CASE(
 // Missing the "id" key throws when looked up, producing 500.
 TEST_CASE(
     "StaffController<Clinics>::RemoveStaffFromEntity with missing 'id' → 500",
-    "[controllers][staff]")
-{
+    "[controllers][staff]") {
   StaffController<Clinics> ctrl;  // A fresh Clinics controller.
-  auto                     r = capture(
-      [&](auto cb)
-      {
-        ctrl.RemoveStaffFromEntity(std::move(cb),
-                                   Requester(1, "owners"),
-                                   R"({"payload":{"staff_id":10}})");
-      });  // The payload exists but the top-level id does not.
+  auto                     r = capture([&](auto cb) {
+    ctrl.RemoveStaffFromEntity(std::move(cb),
+                               Requester(1, "owners"),
+                               R"({"payload":{"staff_id":10}})");
+  });  // The payload exists but the top-level id does not.
   // at("id") throws → 500
   CHECK(r.status ==
         api::v2::Http::Status::INTERNAL_SERVER_ERROR);  // Proves a missing id
@@ -199,20 +180,17 @@ TEST_CASE(
 TEST_CASE(
     "StaffController<Clinics>::RemoveStaffFromEntity with mismatched requester "
     "returns error",
-    "[controllers][staff]")
-{
+    "[controllers][staff]") {
   StaffController<Clinics> ctrl;  // A fresh Clinics controller.
   // requester id=99, service id=1 → canManageStaff fails; DB unavailable →
   // 400
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.RemoveStaffFromEntity(
-            std::move(cb),
-            Requester(99, "users"),
-            R"({"id":1,"payload":{"staff_id":10,"role":"nurse"}})");
-      });  // Caller 99 tries to modify clinic 1; the permission check should
-           // stop it.
+  auto r = capture([&](auto cb) {
+    ctrl.RemoveStaffFromEntity(
+        std::move(cb),
+        Requester(99, "users"),
+        R"({"id":1,"payload":{"staff_id":10,"role":"nurse"}})");
+  });  // Caller 99 tries to modify clinic 1; the permission check should
+       // stop it.
   CHECK(r.status != api::v2::Http::Status::OK);  // Proves the removal is not
                                                  // reported as a success.
   CHECK_FALSE(
@@ -227,14 +205,11 @@ TEST_CASE(
 // Broken JSON throws on the Invite path too, yielding 500.
 TEST_CASE(
     "StaffController<Clinics>::InviteStaffToEntity with malformed JSON → 500",
-    "[controllers][staff]")
-{
+    "[controllers][staff]") {
   StaffController<Clinics> ctrl;  // A fresh Clinics controller.
-  auto                     r = capture(
-      [&](auto cb)
-      {
-        ctrl.InviteStaffToEntity(std::move(cb), Requester(1, "owners"), "bad{");
-      });  // Invalid JSON body.
+  auto                     r = capture([&](auto cb) {
+    ctrl.InviteStaffToEntity(std::move(cb), Requester(1, "owners"), "bad{");
+  });  // Invalid JSON body.
   CHECK(r.status == api::v2::Http::Status::
                         INTERNAL_SERVER_ERROR);  // Proves the 500-on-bad-JSON
                                                  // contract holds for invites.
@@ -244,16 +219,13 @@ TEST_CASE(
 TEST_CASE(
     "StaffController<Clinics>::InviteStaffToEntity with missing 'nominee_id' → "
     "500",
-    "[controllers][staff]")
-{
+    "[controllers][staff]") {
   StaffController<Clinics> ctrl;  // A fresh Clinics controller.
-  auto                     r = capture(
-      [&](auto cb)
-      {
-        ctrl.InviteStaffToEntity(std::move(cb),
-                                 Requester(1, "owners"),
-                                 R"({"no_nominee":1})");
-      });  // Parsable JSON without the required nominee id.
+  auto                     r = capture([&](auto cb) {
+    ctrl.InviteStaffToEntity(std::move(cb),
+                             Requester(1, "owners"),
+                             R"({"no_nominee":1})");
+  });  // Parsable JSON without the required nominee id.
   CHECK(r.status ==
         api::v2::Http::Status::INTERNAL_SERVER_ERROR);  // Proves the missing
                                                         // key yields the 500
@@ -264,15 +236,13 @@ TEST_CASE(
 TEST_CASE(
     "StaffController<Clinics>::InviteStaffToEntity with mismatched requester "
     "returns error",
-    "[controllers][staff]")
-{
+    "[controllers][staff]") {
   StaffController<Clinics> ctrl;  // A fresh Clinics controller.
   // requester id=99 ≠ nominee_id=5; canManageStaff fails; DB unavailable →
   // 400
   auto r = capture(  // Call capture with a multi-line lambda holding the
                      // request.
-      [&](auto cb)
-      {
+      [&](auto cb) {
         ctrl.InviteStaffToEntity(  // Call InviteStaffToEntity with the full
                                    // invite JSON.
             std::move(cb),
@@ -292,15 +262,12 @@ TEST_CASE(
 // compiled and works.
 TEST_CASE(
     "StaffController<Pharmacies>::AddStaffToEntity with malformed JSON → 500",
-    "[controllers][staff]")
-{
+    "[controllers][staff]") {
   StaffController<Pharmacies>
        ctrl;  // A controller instantiated for Pharmacies.
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.AddStaffToEntity(std::move(cb), Requester(1, "owners"), "bad{");
-      });  // Same bad-JSON call through this specialization.
+  auto r = capture([&](auto cb) {
+    ctrl.AddStaffToEntity(std::move(cb), Requester(1, "owners"), "bad{");
+  });  // Same bad-JSON call through this specialization.
   CHECK(r.status == api::v2::Http::Status::
                         INTERNAL_SERVER_ERROR);  // Proves Pharmacies shares the
                                                  // 500-on-bad-JSON behaviour.
@@ -309,17 +276,12 @@ TEST_CASE(
 TEST_CASE(
     "StaffController<Laboratories>::RemoveStaffFromEntity with malformed JSON "
     "→ 500",
-    "[controllers][staff]")
-{
+    "[controllers][staff]") {
   StaffController<Laboratories>
        ctrl;  // A controller instantiated for Laboratories.
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.RemoveStaffFromEntity(std::move(cb),
-                                   Requester(1, "owners"),
-                                   "bad{");
-      });  // Bad-JSON Remove on this type.
+  auto r = capture([&](auto cb) {
+    ctrl.RemoveStaffFromEntity(std::move(cb), Requester(1, "owners"), "bad{");
+  });  // Bad-JSON Remove on this type.
   CHECK(r.status ==
         api::v2::Http::Status::INTERNAL_SERVER_ERROR);  // Proves Laboratories
                                                         // follows the same
@@ -329,15 +291,12 @@ TEST_CASE(
 TEST_CASE(
     "StaffController<RadiologyCenters>::InviteStaffToEntity with malformed "
     "JSON → 500",
-    "[controllers][staff]")
-{
+    "[controllers][staff]") {
   StaffController<RadiologyCenters>
        ctrl;  // A controller instantiated for RadiologyCenters.
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.InviteStaffToEntity(std::move(cb), Requester(1, "owners"), "bad{");
-      });  // Bad-JSON Invite on this type.
+  auto r = capture([&](auto cb) {
+    ctrl.InviteStaffToEntity(std::move(cb), Requester(1, "owners"), "bad{");
+  });  // Bad-JSON Invite on this type.
   CHECK(r.status ==
         api::v2::Http::Status::INTERNAL_SERVER_ERROR);  // Proves the last
                                                         // service type behaves

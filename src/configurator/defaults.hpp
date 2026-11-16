@@ -52,16 +52,16 @@ extern const char* const
  * secret, wildcard CORS) and must be overridden in production.
  * @see Configurator, EnvLoader
  */
-namespace Defaults  // Groups all fallback constants so callers write
-                    // Defaults::Server::SERVER_PORT_, etc.
-{
+// Groups all fallback constants so callers write
+// Defaults::Server::SERVER_PORT_, etc.
+namespace Defaults {
   /**
    * @namespace Defaults::DosDetector
    * @brief Default thresholds and durations for the DoS detector.
    */
-  namespace DosDetector  // DoS = denial of service; these values decide when
-                         // a client is sending too many requests.
-  {
+  // DoS = denial of service; these values decide when
+  // a client is sending too many requests.
+  namespace DosDetector {
 
     /**
      * Default values for DOSDetector configuration.
@@ -91,9 +91,9 @@ namespace Defaults  // Groups all fallback constants so callers write
    * @namespace Defaults::Database
    * @brief Default PostgreSQL connection settings.
    */
-  namespace Database  // Settings used when opening connections to the
-                      // PostgreSQL database.
-  {
+  // Settings used when opening connections to the
+  // PostgreSQL database.
+  namespace Database {
     /**
      * Default values for Database configuration.
      */
@@ -142,8 +142,8 @@ namespace Defaults  // Groups all fallback constants so callers write
    * @brief Default Drogon server identity, networking, logging and upload
    * settings.
    */
-  namespace Server  // Identity and behaviour of the HTTP server itself.
-  {
+  // Identity and behaviour of the HTTP server itself.
+  namespace Server {
     /**
      * Default values for Server configuration.
      */
@@ -201,9 +201,9 @@ namespace Defaults  // Groups all fallback constants so callers write
    * @warning TOKEN_SECRET_ is a public development placeholder and must be
    * overridden.
    */
-  namespace TokenParameters  // Settings for issuing and verifying
-                             // authentication tokens.
-  {
+  // Settings for issuing and verifying
+  // authentication tokens.
+  namespace TokenParameters {
     const uint64_t TOKEN_VALIDITY_ =
         43200;  // minutes: 43200 = 30 days. 64-bit because the value is
                 // large; overridden with TOKEN_VALIDITY.
@@ -226,8 +226,8 @@ namespace Defaults  // Groups all fallback constants so callers write
    * @namespace Defaults::FrontEnd
    * @brief Default frontend host, port and invitation path.
    */
-  namespace FrontEnd  // Where the browser-based frontend can be reached.
-  {
+  // Where the browser-based frontend can be reached.
+  namespace FrontEnd {
     /** @brief Default frontend base URL. */
     const std::string HOST_ =
         "http://172.20.0.5";  // Hard-coded address of the frontend service
@@ -246,9 +246,9 @@ namespace Defaults  // Groups all fallback constants so callers write
    * @namespace Defaults::EmailSenderDaemon
    * @brief Default endpoint of the external email-sender daemon.
    */
-  namespace EmailSenderDaemon  // Location of the separate service that
-                               // delivers emails.
-  {
+  // Location of the separate service that
+  // delivers emails.
+  namespace EmailSenderDaemon {
     /** @brief Default daemon base URL. */
     const std::string HOST_ =
         "http://172.20.0.6";  // Address of the email-sender service on the
@@ -265,9 +265,9 @@ namespace Defaults  // Groups all fallback constants so callers write
    * @namespace Defaults::PermissionCache
    * @brief Default idle lifetime for cached permission decisions.
    */
-  namespace PermissionCache  // How long permission-check results are
-                             // remembered.
-  {
+  // How long permission-check results are
+  // remembered.
+  namespace PermissionCache {
     const uint32_t TTL_ = 300;  // seconds a cached permission may stay idle:
                                 // 300 = 5 minutes; 0 would disable caching.
   }  // namespace PermissionCache
@@ -276,9 +276,9 @@ namespace Defaults  // Groups all fallback constants so callers write
    * @namespace Defaults::PasswordWorker
    * @brief Default sizing of the password hashing/verification worker pool.
    */
-  namespace PasswordWorker  // Background threads that do slow password
-                            // hashing off the request path.
-  {
+  // Background threads that do slow password
+  // hashing off the request path.
+  namespace PasswordWorker {
     const uint16_t WORKERS_ =
         2;  // threads that hash and verify passwords; 0 = run on the
             // request thread (tests). Small unsigned count fits.
@@ -291,9 +291,9 @@ namespace Defaults  // Groups all fallback constants so callers write
    * @namespace Defaults::DbExecutor
    * @brief Default sizing/back-pressure for the database request executor.
    */
-  namespace DbExecutor  // Worker/queue settings for the component that
-                        // schedules database work.
-  {
+  // Worker/queue settings for the component that
+  // schedules database work.
+  namespace DbExecutor {
     const uint32_t QUEUE_MAX_ =
         256;  // waiting database requests before new ones get 503 (workers
               // default to DB_MAX_CONN); caps queued work.
@@ -306,9 +306,9 @@ namespace Defaults  // Groups all fallback constants so callers write
    * @namespace Defaults::Testing
    * @brief Defaults for test-only switches.
    */
-  namespace Testing  // Switches used only by the test harness, never needed
-                     // in normal production requests.
-  {
+  // Switches used only by the test harness, never needed
+  // in normal production requests.
+  namespace Testing {
     /** @brief Real database is used unless a test explicitly opts out. */
     const bool VALHALLA_TEST_NO_DB_ =
         false;  // false means tests use a real database; true lets a test

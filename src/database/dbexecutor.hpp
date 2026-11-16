@@ -61,9 +61,9 @@
  * @see BoundedExecutor, DbProbe, runOnDbExecutor
  */
 class DbExecutor
-    : public BoundedExecutor  // Reuses the generic worker pool; only the
-                              // database-specific setup is added here.
-{
+    // Reuses the generic worker pool; only the
+    // database-specific setup is added here.
+    : public BoundedExecutor {
  public:
   /**
    * @brief Constructs the executor sized and configured from the
@@ -91,8 +91,7 @@ class DbExecutor
    * @return `true` only when configured and the executor is not in inline
    * mode.
    */
-  [[nodiscard]] bool ioFastPath() const
-  {
+  [[nodiscard]] bool ioFastPath() const {
     return io_fast_path_ && !inlineMode();
   }  // Inline mode (zero workers) has no IO thread to offload from, so the
      // fast path is pointless there.
@@ -123,8 +122,7 @@ class DbExecutor
  * caller) runs.
  */
 template <typename Body>
-void runOnDbExecutor(DbExecutor& executor, CALLBACK_&& callback, Body&& body)
-{
+void runOnDbExecutor(DbExecutor& executor, CALLBACK_&& callback, Body&& body) {
   runOnExecutor(executor,
                 std::move(callback),
                 "The server is busy, try again shortly.",

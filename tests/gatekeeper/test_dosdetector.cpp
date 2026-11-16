@@ -57,28 +57,26 @@
 using DOSDetector = ::DOSDetector;  // Alias that makes the global detector type
                                     // shorter to refer to below.
 
-namespace
-{
+namespace {
   /**
    * Builds a DOSDetectorConfig with explicit, test-controlled values
    * (overrides whatever the environment produced in the constructor).
    */
+  // Thresholds: repeats of one fingerprint, then number of
+  // distinct fingerprints.
+  // Sliding window length, then how long a
+  // rate limit lasts.
+  // Ban length, then IPs allowed regardless of traffic.
+  // IPs blocked outright; defaults keep existing tests unchanged
+  // when omitted.
   Configurator::DOSDetectorConfig makeConfig(
-      const uint32_t maxRequests = 10,
-      const uint32_t maxFingerprints =
-          10,  // Thresholds: repeats of one fingerprint, then number of
-               // distinct fingerprints.
-      const std::chrono::seconds period = std::chrono::seconds{60},
-      const std::chrono::seconds rlDuration =
-          std::chrono::seconds{30},  // Sliding window length, then how long a
-                                     // rate limit lasts.
-      const std::chrono::seconds banDuration = std::chrono::seconds{3600},
-      const std::unordered_set<std::string> whitelist =
-          {},  // Ban length, then IPs allowed regardless of traffic.
-      const std::unordered_set<std::string> blacklist =
-          {})  // IPs blocked outright; defaults keep existing tests unchanged
-               // when omitted.
-  {
+      const uint32_t             maxRequests     = 10,
+      const uint32_t             maxFingerprints = 10,
+      const std::chrono::seconds period          = std::chrono::seconds{60},
+      const std::chrono::seconds rlDuration      = std::chrono::seconds{30},
+      const std::chrono::seconds banDuration     = std::chrono::seconds{3600},
+      const std::unordered_set<std::string> whitelist = {},
+      const std::unordered_set<std::string> blacklist = {}) {
     Configurator::DOSDetectorConfig config;  // A fresh settings object to fill
                                              // with the explicit values above.
     config.max_requests =
@@ -109,13 +107,12 @@ namespace
    * Method and path are fixed; only the fields that influence a fingerprint
    * (ip, body and the hashed headers) vary between cases.
    */
+  // Builds a request with a fixed method/path and
+  // caller-supplied IP, body and headers.
   DOSDetector::Request makeRequest(
       const std::string&                                 ip,
       const std::string&                                 body,
-      const std::unordered_map<std::string, std::string> headers =
-          {})  // Builds a request with a fixed method/path and
-               // caller-supplied IP, body and headers.
-  {
+      const std::unordered_map<std::string, std::string> headers = {}) {
     return DOSDetector::Request{.ip     = ip,
                                 .method = "GET",
                                 .path   = "/users/read",
@@ -131,8 +128,7 @@ namespace
    * Detector + fake clock pair. The clock starts "now" and is advanced by
    * tests to simulate time passing without any real waiting.
    */
-  struct DetectorFixture
-  {
+  struct DetectorFixture {
     FakeClock clock;  // The controllable clock injected into the detector;
                       // advancing it simulates time passing instantly.
     std::unique_ptr<DOSDetector> detector;  // The component under test, owned
@@ -142,16 +138,13 @@ namespace
 
     explicit DetectorFixture(Configurator::DOSDetectorConfig config)
         : detector(std::make_unique<DOSDetector>(std::move(config),
-                                                 clock.callable()))
-    {
+                                                 clock.callable())) {
     }  // Build the detector with the fake clock's callable; 'explicit'
        // prevents an accidental implicit conversion from config.
 
-    DOSDetector::Status send(
-        const std::string& ip,
-        const std::string& body)  // Sends a request with no extra headers
-                                  // and returns the detector's verdict.
-    {
+    // Sends a request with no extra headers
+    // and returns the detector's verdict.
+    DOSDetector::Status send(const std::string& ip, const std::string& body) {
       bodies.push_back(body);  // body is captured as string_view -- keep
                                // the string alive in the vector.
       return detector->is_dos_attack(
@@ -161,13 +154,12 @@ namespace
                                         // / etc.
     }
 
+    // Overload that also varies the headers, which change
+    // the fingerprint.
     DOSDetector::Status send(
-        const std::string& ip,
-        const std::string& body,
-        const std::unordered_map<std::string, std::string>&
-            headers)  // Overload that also varies the headers, which change
-                      // the fingerprint.
-    {
+        const std::string&                                  ip,
+        const std::string&                                  body,
+        const std::unordered_map<std::string, std::string>& headers) {
       bodies.push_back(body);  // body is captured as string_view -- keep
                                // the string alive in the vector.
       return detector->is_dos_attack(
@@ -184,10 +176,10 @@ namespace
                                           // tests never target a real machine.
 }  // namespace
 
+// Registers the test that a whitelist entry
+// must match exactly, not as a broad prefix.
 TEST_CASE("DoSDetector anchored whitelist patterns do not over-match",
-          "[gatekeeper][dos]")  // Registers the test that a whitelist entry
-                                // must match exactly, not as a broad prefix.
-{
+          "[gatekeeper][dos]") {
   DetectorFixture fixture(
       makeConfig(/*maxRequests*/ 10,
                  /*maxFingerprints*/ 100,
@@ -208,18 +200,18 @@ TEST_CASE("DoSDetector anchored whitelist patterns do not over-match",
                                           // normally, not whitelisted.
 }
 
+// Registers the test for the normal,
+// below-threshold case.
 TEST_CASE("DoSDetector allows requests under the repeat limit",
-          "[gatekeeper][dos]")  // Registers the test for the normal,
-                                // below-threshold case.
-{
+          "[gatekeeper][dos]") {
   DetectorFixture fixture(
       makeConfig(/*maxRequests*/ 5, /*maxFingerprints*/
                  100));  // A ban needs more than 5 repeats; the other threshold
                          // is high enough not to interfere.
 
-  for (int i = 1; i <= 5; ++i)  // Send exactly the allowed number of repeats;
-                                // the loop stops after the 5th.
-  {
+  // Send exactly the allowed number of repeats;
+  // the loop stops after the 5th.
+  for (int i = 1; i <= 5; ++i) {
     CAPTURE(i);  // If an assertion fails, Catch2 prints the current i so we
                  // know which request failed.
     REQUIRE(fixture.send(IP, "same-body") ==
@@ -230,9 +222,9 @@ TEST_CASE("DoSDetector allows requests under the repeat limit",
 
 TEST_CASE(
     "DoSDetector bans an IP when one request fingerprint repeats more than "
+    // Registers the test for the repeat-count ban.
     "MAX_REQUESTS times",
-    "[gatekeeper][dos]")  // Registers the test for the repeat-count ban.
-{
+    "[gatekeeper][dos]") {
   DetectorFixture fixture(
       makeConfig(/*maxRequests*/ 5,
                  /*maxFingerprints*/ 100,
@@ -240,9 +232,9 @@ TEST_CASE(
                  std::chrono::seconds{30},
                  std::chrono::seconds{30}));  // Ban lasts 30 s; window is 60 s.
 
-  for (int i = 0; i < 5; ++i)  // Send the five requests that are still allowed;
-                               // stop before the threshold is crossed.
-  {
+  // Send the five requests that are still allowed;
+  // stop before the threshold is crossed.
+  for (int i = 0; i < 5; ++i) {
     REQUIRE(fixture.send(IP, "same-body") ==
             DOSDetector::Status::ALLOWED);  // Each of the first five identical
                                             // requests stays allowed.
@@ -258,10 +250,9 @@ TEST_CASE(
                                          // blocked while the ban is active.
 }
 
-TEST_CASE("DoSDetector ban expires after BAN_DURATION",
-          "[gatekeeper][dos]")  // Registers the test for ban expiry, using two
-                                // sections for different elapsed times.
-{
+// Registers the test for ban expiry, using two
+// sections for different elapsed times.
+TEST_CASE("DoSDetector ban expires after BAN_DURATION", "[gatekeeper][dos]") {
   DetectorFixture fixture(
       makeConfig(/*maxRequests*/ 2,
                  /*maxFingerprints*/ 100,
@@ -281,8 +272,7 @@ TEST_CASE("DoSDetector ban expires after BAN_DURATION",
           DOSDetector::Status::BANNED);  // Third identical request crosses
                                          // the limit and bans the IP.
 
-  SECTION("still banned before the ban duration elapses")
-  {
+  SECTION("still banned before the ban duration elapses") {
     fixture.clock.advance(
         std::chrono::seconds{29});  // Move the fake clock 29 s forward,
                                     // just short of the 30 s ban.
@@ -293,8 +283,7 @@ TEST_CASE("DoSDetector ban expires after BAN_DURATION",
 
   SECTION(
       "allowed again once the ban duration has elapsed (window also rolled "
-      "over)")
-  {
+      "over)") {
     fixture.clock.advance(std::chrono::seconds{
         61});  // > BAN_DURATION and > PERIOD -- jump past both limits.
     REQUIRE(fixture.send(IP, "body") ==
@@ -306,10 +295,10 @@ TEST_CASE("DoSDetector ban expires after BAN_DURATION",
 
 TEST_CASE(
     "DoSDetector rate-limits an IP whose distinct request fingerprints exceed "
+    // Registers the test for the distinct-fingerprint
+    // (rate-limit) rule.
     "MAX_FPS",
-    "[gatekeeper][dos]")  // Registers the test for the distinct-fingerprint
-                          // (rate-limit) rule.
-{
+    "[gatekeeper][dos]") {
   DetectorFixture fixture(
       makeConfig(/*maxRequests*/ 100,
                  /*maxFingerprints*/ 2,
@@ -335,11 +324,11 @@ TEST_CASE(
                                               // the timer has not advanced.
 }
 
+// Registers the test showing which request fields
+// form a fingerprint.
 TEST_CASE(
     "DoSDetector treats different bodies and headers as different fingerprints",
-    "[gatekeeper][dos]")  // Registers the test showing which request fields
-                          // form a fingerprint.
-{
+    "[gatekeeper][dos]") {
   DetectorFixture fixture(
       makeConfig(/*maxRequests*/ 100, /*maxFingerprints*/
                  4));  // Four distinct fingerprints allowed, so none of these
@@ -361,11 +350,11 @@ TEST_CASE(
 
 TEST_CASE(
     "DoSDetector rate limit expires after RL_DURATION and then re-arms while "
+    // Registers the test for the subtle interaction
+    // between the rate-limit timer and the sliding
+    // window.
     "the window is saturated",
-    "[gatekeeper][dos]")  // Registers the test for the subtle interaction
-                          // between the rate-limit timer and the sliding
-                          // window.
-{
+    "[gatekeeper][dos]") {
   DetectorFixture fixture(
       makeConfig(/*maxRequests*/ 100,
                  /*maxFingerprints*/ 2,
@@ -405,12 +394,11 @@ TEST_CASE(
 
 TEST_CASE(
     "DoSDetector window rollover: old requests no longer count against the "
+    // Registers the test showing windows and bans expire
+    // independently.
     "repeat limit",
-    "[gatekeeper][dos]")  // Registers the test showing windows and bans expire
-                          // independently.
-{
-  SECTION("while the ban is still active, the IP stays banned")
-  {
+    "[gatekeeper][dos]") {
+  SECTION("while the ban is still active, the IP stays banned") {
     DetectorFixture fixture(
         makeConfig(/*maxRequests*/ 3,
                    /*maxFingerprints*/ 100,
@@ -421,8 +409,8 @@ TEST_CASE(
                        3600}));  // A 30 s window but a long 1-hour ban.
 
     for (int i = 0; i < 3;
-         ++i)  // Build up exactly the allowed number of repeats.
-    {
+         // Build up exactly the allowed number of repeats.
+         ++i) {
       REQUIRE(fixture.send(IP, "same-body") ==
               DOSDetector::Status::ALLOWED);  // Each of the first three
                                               // requests is allowed.
@@ -440,8 +428,7 @@ TEST_CASE(
                                            // NOT cancel an active ban.
   }
 
-  SECTION("after both ban and window expired the request is allowed again")
-  {
+  SECTION("after both ban and window expired the request is allowed again") {
     DetectorFixture fixture(
         makeConfig(/*maxRequests*/ 3,
                    /*maxFingerprints*/ 100,
@@ -452,8 +439,8 @@ TEST_CASE(
                        30}));  // Here both the window and the ban last 30 s.
 
     for (int i = 0; i < 3;
-         ++i)  // Build up the repeat count without checking each step.
-    {
+         // Build up the repeat count without checking each step.
+         ++i) {
       (void)fixture.send(IP,
                          "same-body");  // Send a repeat; the ban check below is
                                         // the one that matters.
@@ -471,10 +458,10 @@ TEST_CASE(
   }
 }
 
+// Registers the test for the two whitelist
+// forms: literal and regular-expression.
 TEST_CASE("DoSDetector whitelists IPs by exact match and regex",
-          "[gatekeeper][dos]")  // Registers the test for the two whitelist
-                                // forms: literal and regular-expression.
-{
+          "[gatekeeper][dos]") {
   auto config = makeConfig();  // Start from default thresholds.
   config
       .whitelist = {"192.168.1.5",
@@ -487,20 +474,17 @@ TEST_CASE("DoSDetector whitelists IPs by exact match and regex",
         DOSDetector::Status::WHITELISTED);  // Prove an exact whitelist entry
                                             // is honoured.
 
-  SECTION("regex whitelist match")
-  {
+  SECTION("regex whitelist match") {
     CHECK(fixture.send("10.0.42.7", "x") == DOSDetector::Status::WHITELISTED);
   }  // Prove the regex matches an IP in the 10.0.* range.
 
-  SECTION("a non-matching IP is processed normally")
-  {
+  SECTION("a non-matching IP is processed normally") {
     CHECK(fixture.send("192.168.1.6", "x") == DOSDetector::Status::ALLOWED);
   }  // Prove an IP that matches neither pattern is not whitelisted.
 }
 
-TEST_CASE("DoSDetector blacklists IPs before processing",
-          "[gatekeeper][dos]")  // Registers the test for outright blocking.
-{
+// Registers the test for outright blocking.
+TEST_CASE("DoSDetector blacklists IPs before processing", "[gatekeeper][dos]") {
   auto config      = makeConfig();      // Start from default thresholds.
   config.blacklist = {"203.0.113.99"};  // Put one dummy IP on the blacklist.
   DetectorFixture fixture(
@@ -516,10 +500,9 @@ TEST_CASE("DoSDetector blacklists IPs before processing",
                                               // without building up counters.
 }
 
-TEST_CASE("DoSDetector whitelist wins over blacklist",
-          "[gatekeeper][dos]")  // Registers the test for precedence when an IP
-                                // is on both lists.
-{
+// Registers the test for precedence when an IP
+// is on both lists.
+TEST_CASE("DoSDetector whitelist wins over blacklist", "[gatekeeper][dos]") {
   auto config      = makeConfig();      // Start from default thresholds.
   config.whitelist = {"203.0.113.50"};  // Add the IP to the allow list...
   config.blacklist = {
@@ -532,11 +515,11 @@ TEST_CASE("DoSDetector whitelist wins over blacklist",
                                               // priority over the blacklist.
 }
 
+// Registers the robustness test for bad
+// configuration.
 TEST_CASE(
     "DoSDetector ignores invalid whitelist regex patterns instead of crashing",
-    "[gatekeeper][dos]")  // Registers the robustness test for bad
-                          // configuration.
-{
+    "[gatekeeper][dos]") {
   auto config = makeConfig();  // Start from default thresholds.
   config.whitelist =
       {"[invalid-regex",
@@ -552,11 +535,11 @@ TEST_CASE(
                                         // nothing and does not crash.
 }
 
+// Registers the test that the
+// detector is safe when many
+// threads call it at once.
 TEST_CASE("DoSDetector handles concurrent callers without deadlock",
-          "[gatekeeper][dos][concurrency]")  // Registers the test that the
-                                             // detector is safe when many
-                                             // threads call it at once.
-{
+          "[gatekeeper][dos][concurrency]") {
   DetectorFixture fixture(
       makeConfig(/*maxRequests*/ 100000,
                  /*maxFingerprints*/
@@ -589,14 +572,13 @@ TEST_CASE("DoSDetector handles concurrent callers without deadlock",
                                         // a status we did not expect.
 
   for (int t = 0; t < kThreads;
-       ++t)  // Start one worker thread per entry in threadBodies.
-  {
+       // Start one worker thread per entry in threadBodies.
+       ++t) {
     workers.emplace_back(
-        [&fixture, &allowedCount, &unexpected, &threadBodies, t]()
-        {
+        [&fixture, &allowedCount, &unexpected, &threadBodies, t]() {
           for (int i = 0; i < kRequests;
-               ++i)  // Each worker sends its own pre-built requests.
-          {
+               // Each worker sends its own pre-built requests.
+               ++i) {
             const auto req =
                 makeRequest("203.0.113.77",
                             threadBodies[t][i]);  // Build a request from this
@@ -604,23 +586,20 @@ TEST_CASE("DoSDetector handles concurrent callers without deadlock",
             const auto status = fixture.detector->is_dos_attack(
                 req);  // Call the detector concurrently; this must not
                        // crash or deadlock.
-            if (status ==
-                DOSDetector::Status::ALLOWED)  // Expected outcome: the
-                                               // high thresholds should
-                                               // allow everything.
-            {
+            // Expected outcome: the
+            // high thresholds should
+            // allow everything.
+            if (status == DOSDetector::Status::ALLOWED) {
               ++allowedCount;  // Count a successful request.
-            }
-            else
-            {
+            } else {
               unexpected = true;  // Flag any other status so the
                                   // final assertion fails.
             }
           }
         });
   }
-  for (auto& worker : workers)  // Iterate over all workers.
-  {
+  // Iterate over all workers.
+  for (auto& worker : workers) {
     worker.join();  // Wait for each to finish; without this, the test could
                     // read counters while threads still write them.
   }
@@ -633,10 +612,10 @@ TEST_CASE("DoSDetector handles concurrent callers without deadlock",
                                   // allowed: 4 × 25 = 100.
 }
 
+// Registers the test that lazy expiry works
+// without the background cleaner.
 TEST_CASE("DoSDetector keeps working after the configured cleanup never fires",
-          "[gatekeeper][dos]")  // Registers the test that lazy expiry works
-                                // without the background cleaner.
-{
+          "[gatekeeper][dos]") {
   // clean_freq is 3600s (real time) in these fixtures: the background
   // cleaner does not run during a test, which must not affect correctness
   // of the per-request paths (they trim windows and expire blocks lazily).
@@ -667,11 +646,11 @@ TEST_CASE("DoSDetector keeps working after the configured cleanup never fires",
 // Bug 7 fixed (docs): README.md now correctly describes:
 //   MAX_REQUESTS — repeat-count threshold before BAN
 //   MAX_FPS      — distinct-fingerprint threshold before RATE-LIMIT
+// Registers the test that documents which rule fires
+// for repeated identical requests.
 TEST_CASE(
     "DoSDetector: MAX_REQUESTS triggers a ban; MAX_FPS triggers a rate-limit",
-    "[gatekeeper][dos]")  // Registers the test that documents which rule fires
-                          // for repeated identical requests.
-{
+    "[gatekeeper][dos]") {
   // "MAX_REQUESTS=2 bans after 3 identical requests" — rate-limit would be
   // the documented expectation; ban is the actual result.
   DetectorFixture fixture(

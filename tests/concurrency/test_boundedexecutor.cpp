@@ -55,31 +55,31 @@
 using namespace std::chrono_literals;  // Lets us write 5s / 10ms instead of
                                        // verbose chrono durations.
 
-namespace  // Anonymous namespace keeps the helper private to this file.
-{
+// Anonymous namespace keeps the helper private to this file.
+namespace {
   // Lets a blocked task go when the test scope ends, even if a REQUIRE threw,
   // so the worker can be joined.
-  struct ReleaseOnExit  // RAII guard that unblocks a task and shuts down the
-                        // executor at scope exit.
-  {
+  // RAII guard that unblocks a task and shuts down the
+  // executor at scope exit.
+  struct ReleaseOnExit {
     std::promise<void>& promise;  // The promise a blocked task waits on.
     bool released = false;        // Remembers whether we already signalled it.
     BoundedExecutor* executor =
         nullptr;  // joined before the objects the blocked task uses go away
-    void now()    // Release the blocked task exactly once.
-    {
-      if (!released)  // Avoid calling set_value twice.
-      {
+    // Release the blocked task exactly once.
+    void now() {
+      // Avoid calling set_value twice.
+      if (!released) {
         released = true;      // Mark this guard as spent.
         promise.set_value();  // Wake the waiting task.
       }
     }
-    ~ReleaseOnExit()  // Runs even when a REQUIRE throws, so no worker stays
-                      // blocked.
-    {
-      now();                    // Release the task first.
-      if (executor != nullptr)  // Only shut down if one was supplied.
-      {
+    // Runs even when a REQUIRE throws, so no worker stays
+    // blocked.
+    ~ReleaseOnExit() {
+      now();  // Release the task first.
+      // Only shut down if one was supplied.
+      if (executor != nullptr) {
         executor->shutdown();  // Drain and join before local objects
                                // are destroyed.
       }
@@ -87,19 +87,17 @@ namespace  // Anonymous namespace keeps the helper private to this file.
   };
 }  // namespace
 
+// Inline mode.
 TEST_CASE("BoundedExecutor with zero workers runs the task inline",
-          "[concurrency][executor]")  // Inline mode.
-{
+          "[concurrency][executor]") {
   BoundedExecutor executor(0, 4, "test");  // Zero workers, queue size four.
   CHECK(executor.inlineMode());            // Report inline mode.
   CHECK(executor.workerCount() == 0);      // No worker threads were created.
 
   std::thread::id ran_on;  // Will hold the id of the thread that ran the task.
-  REQUIRE(executor.submit(
-      [&]
-      {
-        ran_on = std::this_thread::get_id();
-      }));  // Submit a task that records its thread.
+  REQUIRE(executor.submit([&] {
+    ran_on = std::this_thread::get_id();
+  }));  // Submit a task that records its thread.
   CHECK(ran_on == std::this_thread::get_id());  // It ran on the calling thread,
                                                 // as inline mode promises.
 }
@@ -108,9 +106,9 @@ TEST_CASE("BoundedExecutor with zero workers runs the task inline",
 // pool: a worker of a different executor is deliberately not recognized.
 TEST_CASE(
     "BoundedExecutor runs tasks on its own threads and knows which thread is a "
+    // Worker identity.
     "worker",
-    "[concurrency][executor]")  // Worker identity.
-{
+    "[concurrency][executor]") {
   BoundedExecutor executor(2, 8, "test");  // Two workers.
   CHECK(executor.workerCount() == 2);      // Both workers were created.
   CHECK_FALSE(
@@ -119,11 +117,9 @@ TEST_CASE(
   std::promise<std::pair<std::thread::id, bool>>
        done;  // Delivers the worker's thread id and its self-check.
   auto future = done.get_future();  // Future the test waits on.
-  REQUIRE(executor.submit(
-      [&]
-      {
-        done.set_value({std::this_thread::get_id(), executor.onWorkerThread()});
-      }));  // Ask a worker to report where it is.
+  REQUIRE(executor.submit([&] {
+    done.set_value({std::this_thread::get_id(), executor.onWorkerThread()});
+  }));  // Ask a worker to report where it is.
 
   REQUIRE(future.wait_for(5s) ==
           std::future_status::ready);  // The task must finish in time.
@@ -138,20 +134,18 @@ TEST_CASE(
   std::promise<bool> other_says;  // Delivers whether `other`'s worker is seen
                                   // as `executor`'s worker.
   auto other_future = other_says.get_future();  // Future for that answer.
-  REQUIRE(other.submit(
-      [&]
-      {
-        other_says.set_value(executor.onWorkerThread());
-      }));  // Ask the other pool's worker to check.
+  REQUIRE(other.submit([&] {
+    other_says.set_value(executor.onWorkerThread());
+  }));  // Ask the other pool's worker to check.
   REQUIRE(other_future.wait_for(5s) ==
           std::future_status::ready);  // Wait for the answer.
   CHECK_FALSE(other_future.get());     // a worker of another executor is not a
                                        // worker of this one
 }
 
+// Queue limit enforcement.
 TEST_CASE("BoundedExecutor refuses work when the queue is full",
-          "[concurrency][executor]")  // Queue limit enforcement.
-{
+          "[concurrency][executor]") {
   std::promise<void>
        started_promise;  // Signalled when the blocking task starts.
   auto started = started_promise.get_future();  // Future for that signal.
@@ -168,8 +162,7 @@ TEST_CASE("BoundedExecutor refuses work when the queue is full",
              &executor};  // Guard that always releases and shuts down.
 
     REQUIRE(executor.submit(  // Occupy the only worker with a blocking task.
-        [&]
-        {
+        [&] {
           started_promise.set_value();  // Tell the test we have started.
           release.wait();               // Block until released.
           ++ran;                        // Count this task when it finishes.
@@ -177,16 +170,12 @@ TEST_CASE("BoundedExecutor refuses work when the queue is full",
     REQUIRE(started.wait_for(5s) ==
             std::future_status::ready);  // the only worker is busy now
 
-    CHECK(executor.submit(
-        [&]
-        {
-          ++ran;
-        }));  // fills the queue (size 1)
-    CHECK_FALSE(executor.submit(
-        [&]
-        {
-          ++ran;
-        }));  // refused
+    CHECK(executor.submit([&] {
+      ++ran;
+    }));  // fills the queue (size 1)
+    CHECK_FALSE(executor.submit([&] {
+      ++ran;
+    }));  // refused
     CHECK(executor.pending() ==
           1);  // Exactly one task is waiting in the queue.
 
@@ -197,32 +186,28 @@ TEST_CASE("BoundedExecutor refuses work when the queue is full",
 
 // A throwing task must not kill the worker: the pool stays usable for work
 // submitted afterwards.
+// Exception resilience.
 TEST_CASE("BoundedExecutor survives a task that throws",
-          "[concurrency][executor]")  // Exception resilience.
-{
+          "[concurrency][executor]") {
   BoundedExecutor executor(1, 4, "test");  // One worker.
-  REQUIRE(executor.submit(
-      []
-      {
-        throw std::runtime_error("boom");
-      }));  // Submit a task that throws.
+  REQUIRE(executor.submit([] {
+    throw std::runtime_error("boom");
+  }));  // Submit a task that throws.
 
   std::promise<void> done;  // Signalled by the follow-up task.
   auto               future = done.get_future();  // Future the test waits on.
-  REQUIRE(executor.submit(
-      [&]
-      {
-        done.set_value();
-      }));  // Submit a normal task after the throwing one.
+  REQUIRE(executor.submit([&] {
+    done.set_value();
+  }));  // Submit a normal task after the throwing one.
   CHECK(future.wait_for(5s) ==
         std::future_status::ready);  // It still ran: the worker survived.
 }
 
 TEST_CASE(
     "runOnDbExecutor answers 503 when the queue is full and never runs the "
+    // Load shedding through runOnDbExecutor.
     "body",
-    "[concurrency][executor]")  // Load shedding through runOnDbExecutor.
-{
+    "[concurrency][executor]") {
   std::promise<void>
        started_promise;  // Signalled when the blocking task starts.
   auto started = started_promise.get_future();  // Future for that signal.
@@ -236,31 +221,27 @@ TEST_CASE(
                      &executor};  // Guard that releases and shuts down.
 
   REQUIRE(executor.submit(  // Occupy the only worker.
-      [&]
-      {
+      [&] {
         started_promise.set_value();  // Signal that we are busy.
         release.wait();               // Block until released.
       }));
   REQUIRE(started.wait_for(5s) ==
           std::future_status::ready);  // Wait for the worker to be busy.
-  REQUIRE(executor.submit(
-      []
-      {
-      }));  // fills the queue
+  REQUIRE(executor.submit([] {
+  }));  // fills the queue
 
   int         code = 0;          // Will hold the response status code.
   std::string text;              // Will hold the response message.
   bool        body_ran = false;  // Tracks whether the work body was executed.
+  // Ask the helper to run our body.
+  // Callback that receives the status and text.
   runOnDbExecutor(
-      executor,  // Ask the helper to run our body.
-      [&](int                c,
-          const std::string& t)  // Callback that receives the status and text.
-      {
+      executor,
+      [&](int c, const std::string& t) {
         code = c;  // Save the status code.
         text = t;  // Save the message.
       },
-      [&](CALLBACK_&&)
-      {
+      [&](CALLBACK_&&) {
         body_ran = true;
       });  // Body: would run the real work; here it only records.
 
@@ -272,20 +253,18 @@ TEST_CASE(
   gate.now();                 // Release the blocked worker.
 }
 
+// Accepted work path.
 TEST_CASE("runOnDbExecutor hands the callback to the body when it is accepted",
-          "[concurrency][executor]")  // Accepted work path.
-{
+          "[concurrency][executor]") {
   DbExecutor executor(0, 4);  // inline
 
   int code = 0;  // Will hold the status code reported by the body.
   runOnDbExecutor(
       executor,  // Ask the helper to run our body.
-      [&](int c, const std::string&)
-      {
+      [&](int c, const std::string&) {
         code = c;
       },  // Save just the status code.
-      [](CALLBACK_&& cb)
-      {
+      [](CALLBACK_&& cb) {
         std::move(cb)(api::v2::Http::Status::OK, "ok");
       });  // Body immediately answers 200.
   CHECK(code ==
@@ -297,9 +276,9 @@ TEST_CASE("runOnDbExecutor hands the callback to the body when it is accepted",
 // another worker is idle. Pin one worker with the gate, then fan out tasks.
 TEST_CASE(
     "BoundedExecutor: a task does not wait behind a slow one while another "
+    // Work stealing.
     "worker is free",
-    "[concurrency][executor]")  // Work stealing.
-{
+    "[concurrency][executor]") {
   BoundedExecutor executor(2, 64, "test");  // Two workers, generous queue.
 
   std::atomic<int>   done{0};          // Counts tasks that finished.
@@ -313,8 +292,7 @@ TEST_CASE(
                      &executor};  // Guard that releases and shuts down.
 
   REQUIRE(executor.submit(  // Pin the first worker.
-      [&]
-      {
+      [&] {
         started_promise.set_value();  // Signal that we are busy.
         release.wait();               // Block until released.
       }));
@@ -323,17 +301,15 @@ TEST_CASE(
 
   // The first worker is stuck; every later task must still finish, whichever
   // worker round-robin picks first.
-  for (int i = 0; i < 20; ++i)  // Fan out twenty tasks.
-  {
-    REQUIRE(executor.submit(
-        [&]
-        {
-          ++done;
-        }));  // Each task increments the completion count.
+  // Fan out twenty tasks.
+  for (int i = 0; i < 20; ++i) {
+    REQUIRE(executor.submit([&] {
+      ++done;
+    }));  // Each task increments the completion count.
   }
   for (int waited = 0; waited < 500 && done < 20;
-       ++waited)  // Poll until all finish, with a bounded wait.
-  {
+       // Poll until all finish, with a bounded wait.
+       ++waited) {
     std::this_thread::sleep_for(
         10ms);  // Give the workers a little time between checks.
   }
@@ -345,9 +321,9 @@ TEST_CASE(
 // every accepted task exactly once with none left pending.
 TEST_CASE(
     "BoundedExecutor: the queue limit is shared by all workers and every task "
+    // Shared limit and shutdown drain.
     "runs once",
-    "[concurrency][executor]")  // Shared limit and shutdown drain.
-{
+    "[concurrency][executor]") {
   BoundedExecutor executor(4,
                            8,
                            "test");  // Four workers, shared queue of eight.
@@ -361,33 +337,30 @@ TEST_CASE(
                      false,
                      &executor};  // Guard that releases and shuts down.
 
-  for (int i = 0; i < 4; ++i)  // keep every worker busy
-  {
+  // keep every worker busy
+  for (int i = 0; i < 4; ++i) {
     REQUIRE(executor.submit(  // Submit a blocking task for each worker.
-        [&]
-        {
+        [&] {
           ++started;       // Mark that this task has begun.
           release.wait();  // Block until released.
           ++ran;           // Mark completion.
         }));
   }
   for (int waited = 0; waited < 500 && started < 4;
-       ++waited)  // Poll until all four workers are busy.
-  {
+       // Poll until all four workers are busy.
+       ++waited) {
     std::this_thread::sleep_for(10ms);  // Small pause between checks.
   }
   REQUIRE(started ==
           4);  // All workers are occupied before we test the queue limit.
 
-  int accepted = 0;             // Counts how many extra tasks are accepted.
-  for (int i = 0; i < 20; ++i)  // Try to submit twenty more tasks.
-  {
-    if (executor.submit(
-            [&]
-            {
-              ++ran;
-            }))  // If it was accepted...
-    {
+  int accepted = 0;  // Counts how many extra tasks are accepted.
+  // Try to submit twenty more tasks.
+  for (int i = 0; i < 20; ++i) {
+    if (executor.submit([&] {
+          // If it was accepted...
+          ++ran;
+        })) {
       ++accepted;  // ...count it.
     }
   }
@@ -401,9 +374,9 @@ TEST_CASE(
 
 TEST_CASE(
     "BoundedExecutor: many closed-loop clients never leave a task sitting in a "
+    // Missed-wake-up regression.
     "queue",
-    "[concurrency][executor]")  // Missed-wake-up regression.
-{
+    "[concurrency][executor]") {
   // Regression: a worker whose wake-up found its queue already emptied by a
   // thief went back to sleep without being marked idle, so later tasks queued
   // behind it and waited until something else woke it.
@@ -417,36 +390,32 @@ TEST_CASE(
   std::atomic<int> finished{0};    // Counts requests that completed.
 
   std::vector<std::thread> threads;  // Holds all client threads.
-  for (int c = 0; c < clients; ++c)  // Launch each client.
-  {
+  // Launch each client.
+  for (int c = 0; c < clients; ++c) {
     threads.emplace_back(  // Create a thread in place.
-        [&]
-        {
-          for (int r = 0; r < rounds; ++r)  // Each client sends many requests.
-          {
+        [&] {
+          // Each client sends many requests.
+          for (int r = 0; r < rounds; ++r) {
             std::promise<void>
                  done;  // Signalled when this request's task runs.
             auto future = done.get_future();  // Future the client waits on.
-            if (!executor.submit(
-                    [&done]
-                    {
-                      done.set_value();
-                    }))  // Submit the task; if refused...
-            {
+            if (!executor.submit([&done] {
+                  // Submit the task; if refused...
+                  done.set_value();
+                })) {
               continue;  // ...skip it and try the next round (queue
                          // momentarily full).
             }
-            if (future.wait_for(10s) !=
-                std::future_status::ready)  // Wait for the task to run.
-            {
+            // Wait for the task to run.
+            if (future.wait_for(10s) != std::future_status::ready) {
               return;  // stuck: the count below fails
             }
             ++finished;  // Count a completed request.
           }
         });
   }
-  for (auto& t : threads)  // Wait for every client to finish.
-  {
+  // Wait for every client to finish.
+  for (auto& t : threads) {
     t.join();  // Joining also keeps the vector alive until all threads end.
   }
   CHECK(finished.load() >

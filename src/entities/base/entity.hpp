@@ -101,8 +101,7 @@ using Search_t = api::v2::Types::Search_t;  // Short name for the parsed search
  * Splitting them this way keeps the public API small while letting each SQL
  * shape be written and read on its own.
  */
-class Entity : public Base
-{
+class Entity : public Base {
  public:
   /**
    * @brief Copy and move operations are disabled; entities are request-scoped
@@ -130,11 +129,10 @@ class Entity : public Base
    * construction fails.
    */
   Entity(const T& _data, const std::string& _tablename)
-      : tablename(_tablename),
-        data(EntityType(_data))  // Copy the table name, then wrap the payload
-                                 // in the variant so the active alternative
-                                 // records the operation.
-  {
+      // Copy the table name, then wrap the payload
+      // in the variant so the active alternative
+      // records the operation.
+      : tablename(_tablename), data(EntityType(_data)) {
   }
 
   /**
@@ -149,9 +147,9 @@ class Entity : public Base
    * @param[out] params Cleared and filled with the bound column values.
    * @return The INSERT text, or std::nullopt on failure.
    */
-  std::optional<std::string> getSqlCreateStatement(pqxx::params& params)
-      override  // Override of Base's pure virtual INSERT builder.
-  {
+  // Override of Base's pure virtual INSERT builder.
+  std::optional<std::string> getSqlCreateStatement(
+      pqxx::params& params) override {
     Binder binder(params);  // Fresh binder clears params and restarts
                             // numbering at $1.
     return buildCreateStatement(
@@ -163,9 +161,9 @@ class Entity : public Base
    * @param[out] params Cleared and filled with the bound id.
    * @return The SELECT text, or std::nullopt if no id was supplied.
    */
-  std::optional<std::string> getSqlReadStatement(pqxx::params& params)
-      override  // Override of Base's single-row SELECT builder.
-  {
+  // Override of Base's single-row SELECT builder.
+  std::optional<std::string> getSqlReadStatement(
+      pqxx::params& params) override {
     Binder binder(params);  // Fresh binder for this one statement.
     return buildReadStatement(
         binder);  // The helper binds the id and chooses the columns.
@@ -176,9 +174,9 @@ class Entity : public Base
    * @param[out] params Cleared and filled with the bound SET values and id.
    * @return The UPDATE text, or std::nullopt if no id was supplied.
    */
+  // Override of Base's UPDATE builder.
   std::optional<std::string> getSqlUpdateStatement(
-      pqxx::params& params) override  // Override of Base's UPDATE builder.
-  {
+      pqxx::params& params) override {
     Binder binder(params);  // Fresh binder so SET values start at $1.
     return buildUpdateStatement(binder);  // Helper turns each JSON field
                                           // into a "column = $n" clause.
@@ -189,9 +187,9 @@ class Entity : public Base
    * @param[out] params Cleared and filled with the bound id.
    * @return The DELETE text, or std::nullopt if no id was supplied.
    */
+  // Override of Base's DELETE builder.
   std::optional<std::string> getSqlDeleteStatement(
-      pqxx::params& params) override  // Override of Base's DELETE builder.
-  {
+      pqxx::params& params) override {
     Binder binder(params);  // Fresh binder for the id.
     return buildDeleteStatement(
         binder);  // Helper refuses to build if the id is missing.
@@ -203,9 +201,9 @@ class Entity : public Base
    * offset.
    * @return The SELECT text, or std::nullopt on failure.
    */
+  // Override of Base's search builder.
   std::optional<std::string> getSqlSearchStatement(
-      pqxx::params& params) override  // Override of Base's search builder.
-  {
+      pqxx::params& params) override {
     Binder binder(params);  // Fresh binder for keyword, limit and offset.
     return buildSearchStatement(binder);  // Helper assembles the ILIKE query
                                           // with validated identifiers.
@@ -219,8 +217,7 @@ class Entity : public Base
   [[nodiscard(
       "Warning: You should never discard the returned "
       "object")]] const EntityType&
-  getData() const
-  {
+  getData() const {
     return data;
   }  // "nodiscard" warns if the caller ignores the value; a const reference
      // avoids copying the variant.
@@ -232,9 +229,8 @@ class Entity : public Base
    */
   [[nodiscard(
       "Warning: You should never discard the returned object")]] std::string
-  getGroupName()
-      const  // ie. tablename; the old name survives as a trailing note.
-  {
+  // ie. tablename; the old name survives as a trailing note.
+  getGroupName() const {
     return tablename;  // Return by value; a small string copy is simpler
                        // than exposing internal storage.
   }
@@ -251,16 +247,16 @@ class Entity : public Base
    * @throws std::bad_variant_access if T is not the alternative currently
    * held by the variant.
    */
+  // Templated so each payload type can be asked for
+  // its id uniformly.
   template <typename T>
-  bool check_id_exists()  // Templated so each payload type can be asked for
-                          // its id uniformly.
-  {
+  bool check_id_exists() {
     std::optional<uint64_t> _id =
         std::get<T>(getData())
-            .get_id();     // Pull the id out of the chosen variant
-                           // alternative; it may be absent.
-    if (!_id.has_value())  // No id means we cannot check anything useful.
-    {
+            .get_id();  // Pull the id out of the chosen variant
+                        // alternative; it may be absent.
+    // No id means we cannot check anything useful.
+    if (!_id.has_value()) {
       Message::ErrorMessage(
           fmt::format("Failed to create Sql search statement for table {}.",
                       tablename));  // Log why the check is abandoned.
@@ -293,14 +289,13 @@ class Entity : public Base
    * @param[in,out] binder Appends values and returns their placeholders.
    * @return INSERT ... RETURNING *, or std::nullopt if an exception occurs.
    */
+  // The helper is a template so it works with Binder or
+  // a test double.
   template <typename Binder>
-  std::optional<std::string> buildCreateStatement(
-      Binder& binder)  // The helper is a template so it works with Binder or
-                       // a test double.
-  {
-    try  // Everything below can throw (JSON access, formatting); one catch
-         // keeps callers safe.
-    {
+  std::optional<std::string> buildCreateStatement(Binder& binder) {
+    // Everything below can throw (JSON access, formatting); one catch
+    // keeps callers safe.
+    try {
       std::vector<std::string>
           keys_arr;  // Column names collected from the JSON object.
       std::vector<std::string> values_arr;  // Matching placeholders ($1,
@@ -315,24 +310,22 @@ class Entity : public Base
       // so the database assigns it, and any "id" the client sent is
       // dropped.
       if (const auto create_id = std::get<Create_t>(data).get_id();
-          create_id.has_value())  // If the caller supplied an explicit
-                                  // primary key...
-      {
+          // If the caller supplied an explicit
+          // primary key...
+          create_id.has_value()) {
         data_json["id"] = create_id.value();  // Keep it so the INSERT
                                               // writes that exact id.
-      }
-      else
-      {
+      } else {
         data_json.erase("id");  // Otherwise remove any client-sent id
                                 // so the database generates one (a
                                 // client must not pick its own key).
       }
 
       for (auto& iterator :
-           data_json.object_range())  // Walk each JSON member; object_range
-                                      // may not preserve order, so keys and
-                                      // values are collected in lockstep.
-      {
+           // Walk each JSON member; object_range
+           // may not preserve order, so keys and
+           // values are collected in lockstep.
+           data_json.object_range()) {
         keys_arr.push_back(
             iterator.key());  // The JSON key becomes a column name.
         values_arr.push_back(binder.bind(
@@ -342,16 +335,14 @@ class Entity : public Base
                                                 // returned placeholder.
       }
 
+      // RETURNING * gives all new columns
+      // back to the caller.
+      // Catch any error from JSON access or formatting.
       return fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING *;",
                          tablename,
                          fmt::join(keys_arr, ","),
-                         fmt::join(values_arr,
-                                   ","));  // RETURNING * gives all new columns
-                                           // back to the caller.
-    }
-    catch (const std::exception&
-               e)  // Catch any error from JSON access or formatting.
-    {
+                         fmt::join(values_arr, ","));
+    } catch (const std::exception& e) {
       Message::ErrorMessage(
           fmt::format("Failed to create Sql create statement for table {}.",
                       tablename));  // Log which table failed.
@@ -372,12 +363,10 @@ class Entity : public Base
    * @return SELECT ... LIMIT 1, or std::nullopt when no id is available or an
    * exception occurs.
    */
+  // Builds the "read one row" SELECT.
   template <typename Binder>
-  std::optional<std::string> buildReadStatement(
-      Binder& binder)  // Builds the "read one row" SELECT.
-  {
-    try
-    {
+  std::optional<std::string> buildReadStatement(Binder& binder) {
+    try {
       auto user_id = std::get<Read_t>(data)
                          .get_id();  // The id to look up (may be absent).
       auto schema =
@@ -393,9 +382,9 @@ class Entity : public Base
                                                // "all columns"; otherwise
                                                // join the names with commas.
 
-      if (!user_id.has_value())  // Reading without an id would return the
-                                 // wrong row, so refuse.
-      {
+      // Reading without an id would return the
+      // wrong row, so refuse.
+      if (!user_id.has_value()) {
         Message::ErrorMessage(
             fmt::format("Failed to read data from table {}. No id provided.",
                         tablename));  // Log the caller mistake.
@@ -410,9 +399,7 @@ class Entity : public Base
                                                  // (a filtered view), bind the
                                                  // id, and LIMIT 1 because ids
                                                  // are unique.
-    }
-    catch (const std::exception& e)
-    {
+    } catch (const std::exception& e) {
       Message::ErrorMessage(
           fmt::format("Failed to create Sql read statement for table {}.",
                       tablename));         // Log the failing table.
@@ -433,12 +420,10 @@ class Entity : public Base
    * @return UPDATE ... RETURNING *, or std::nullopt when no id is available
    * or an exception occurs.
    */
+  // Builds the UPDATE ... SET ... WHERE id=... statement.
   template <typename Binder>
-  std::optional<std::string> buildUpdateStatement(
-      Binder& binder)  // Builds the UPDATE ... SET ... WHERE id=... statement.
-  {
-    try
-    {
+  std::optional<std::string> buildUpdateStatement(Binder& binder) {
+    try {
       jsoncons::json payload =
           std::get<Update_t>(data)
               .get_data();  // The fields to change, as JSON.
@@ -446,9 +431,9 @@ class Entity : public Base
       auto _id =
           std::get<Update_t>(data).get_id();  // The row id from the payload.
 
-      if (!_id.has_value())  // An UPDATE without an id would change every
-                             // row - a serious bug - so stop here.
-      {
+      // An UPDATE without an id would change every
+      // row - a serious bug - so stop here.
+      if (!_id.has_value()) {
         Message::ErrorMessage(
             fmt::format("Failed to update data from table {}. No id provided.",
                         tablename));  // Log the missing id.
@@ -461,8 +446,8 @@ class Entity : public Base
 
       for (auto it = payload.object_range().begin();
            it != payload.object_range().end();
-           ++it)  // Walk every JSON member to build its SET clause.
-      {
+           // Walk every JSON member to build its SET clause.
+           ++it) {
         set_clauses.push_back(
             fmt::format("{} = {}",
                         it->key(),
@@ -481,9 +466,7 @@ class Entity : public Base
                          binder.bind(_id.value()));  // Bind the id LAST so its
                                                      // placeholder number
                                                      // follows the SET values.
-    }
-    catch (const std::exception& e)
-    {
+    } catch (const std::exception& e) {
       Message::ErrorMessage(
           fmt::format("Failed to create Sql update statement for table {}.",
                       tablename));         // Log the failing table.
@@ -502,17 +485,15 @@ class Entity : public Base
    * @return DELETE ... RETURNING id, or std::nullopt when no id is available
    * or an exception occurs.
    */
+  // Builds the DELETE for one id.
   template <typename Binder>
-  std::optional<std::string> buildDeleteStatement(
-      Binder& binder)  // Builds the DELETE for one id.
-  {
-    try
-    {
+  std::optional<std::string> buildDeleteStatement(Binder& binder) {
+    try {
       std::optional<uint64_t> _id =
           std::get<Delete_t>(data).get_id();  // The id to delete.
-      if (!_id.has_value())  // Without an id, a DELETE could wipe the
-                             // table, so refuse.
-      {
+      // Without an id, a DELETE could wipe the
+      // table, so refuse.
+      if (!_id.has_value()) {
         Message::ErrorMessage(
             fmt::format("Failed to delete data from table {}. No id provided.",
                         tablename));  // Log the mistake.
@@ -522,9 +503,7 @@ class Entity : public Base
                          tablename,
                          binder.bind(_id.value()));  // RETURNING id confirms
                                                      // which row was removed.
-    }
-    catch (const std::exception& e)
-    {
+    } catch (const std::exception& e) {
       Message::ErrorMessage(
           fmt::format("Failed to create Sql delete statement for table {}.",
                       tablename));         // Log the failing table.
@@ -549,12 +528,10 @@ class Entity : public Base
    * evaluation order is unspecified; the placeholder numbering must follow a
    * fixed order.
    */
+  // Builds the paginated, case-insensitive search SELECT.
   template <typename Binder>
-  std::optional<std::string> buildSearchStatement(
-      Binder& binder)  // Builds the paginated, case-insensitive search SELECT.
-  {
-    try
-    {
+  std::optional<std::string> buildSearchStatement(Binder& binder) {
+    try {
       Search_t searchdata = std::get<Search_t>(
           getData());  // The parsed and validated search parameters.
       // Bound in a fixed order (argument evaluation order is
@@ -580,9 +557,7 @@ class Entity : public Base
           offset_ph);  // filter/order_by/direction are pre-validated
                        // identifiers written into the text; values use $n
                        // placeholders.
-    }
-    catch (const std::exception& e)
-    {
+    } catch (const std::exception& e) {
       Message::ErrorMessage(
           fmt::format("Failed to create Sql search statement for table {}.",
                       tablename));         // Log the failing table.
@@ -607,8 +582,7 @@ class Entity : public Base
    * @return Shared pointer to the cached controller; entities do not own a
    * per-instance handle.
    */
-  static std::shared_ptr<DatabaseController> databaseController()
-  {
+  static std::shared_ptr<DatabaseController> databaseController() {
     return Store::cachedObject<DatabaseController>();
   }  // Static = one shared accessor for all entities; the Store owns the
      // single controller instance.

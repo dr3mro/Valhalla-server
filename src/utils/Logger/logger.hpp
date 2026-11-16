@@ -67,8 +67,8 @@
  * MAX_LOG_FILES files.
  * @see Message, Server, Configurator
  */
-class Logger  // Owns the process-wide spdlog logger; create only one instance.
-{
+// Owns the process-wide spdlog logger; create only one instance.
+class Logger {
  public:
   /**
    * @brief Builds, configures and globally registers the asynchronous logger.
@@ -132,9 +132,9 @@ class Logger  // Owns the process-wide spdlog logger; create only one instance.
   /**
    * @brief ANSI colours used when formatting log patterns and messages.
    */
-  enum Color : std::uint8_t  // Named colours stored compactly as 8-bit
-                             // numbers; used to build ANSI escape sequences.
-  {
+  // Named colours stored compactly as 8-bit
+  // numbers; used to build ANSI escape sequences.
+  enum Color : std::uint8_t {
     Red,      // Bright red, used for errors.
     Green,    // Bright green, used for success.
     Yellow,   // Bright yellow, used for warnings.

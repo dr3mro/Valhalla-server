@@ -54,9 +54,9 @@
  * wakes up.
  * @see DatabaseHanndler, DatabaseConnectionPool::reconnect_all
  */
-class WatchDog  // Owns one long-lived thread that keeps checking and repairing
-                // database links.
-{
+// Owns one long-lived thread that keeps checking and repairing
+// database links.
+class WatchDog {
  public:
   /**
    * @brief Starts the monitoring thread.

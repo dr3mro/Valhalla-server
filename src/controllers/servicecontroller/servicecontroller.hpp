@@ -90,11 +90,11 @@
 template <Service_t T>  // "template" means T is chosen by the caller;
                         // "Service_t" only allows service entity types.
 class ServiceController
+    // Inherits the real CRUD+S work from
+    // EntityController<T> and the service
+    // interface from ServiceControllerBase.
     : public EntityController<T>,
-      public ServiceControllerBase  // Inherits the real CRUD+S work from
-                                    // EntityController<T> and the service
-                                    // interface from ServiceControllerBase.
-{
+      public ServiceControllerBase {
  public:
   /** @brief Default construction; dependencies are owned by @ref
    * EntityController. */

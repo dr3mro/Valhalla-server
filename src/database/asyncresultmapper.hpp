@@ -60,8 +60,7 @@
  * OIDs — see mapRow.
  * @see Database::executeQuery, mapRow
  */
-namespace asyncdb
-{
+namespace asyncdb {
   // Type OIDs mirrored from Database::executeQuery. mapRow infers types from
   // column names and value text, so these constants are unused in this
   // repository; no reason for retaining them is recorded. An OID is

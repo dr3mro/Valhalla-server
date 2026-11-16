@@ -78,8 +78,7 @@ using GateKeeper =
  * @see EntityControllerBase, Controller, GateKeeper
  */
 template <typename T>
-class EntityController : public Controller, public EntityControllerBase
-{
+class EntityController : public Controller, public EntityControllerBase {
  public:
   EntityController() = default;  // Uses the base GateKeeper initializer.
   EntityController(const EntityController&) =

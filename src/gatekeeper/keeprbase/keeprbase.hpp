@@ -62,8 +62,8 @@
 #include "gatekeeper/types.hpp"
 #include "store/store.hpp"  // Store::getObject / cachedObject.
 
-namespace api::v2  // API version 2 namespace.
-{
+// API version 2 namespace.
+namespace api::v2 {
   /**
    * @class KeeprBase
    * @brief Shared base for session/token managers offering session-table and
@@ -86,8 +86,7 @@ namespace api::v2  // API version 2 namespace.
    * construction is fine because it just carries the settings and the shared
    * config handle along.
    */
-  class KeeprBase
-  {
+  class KeeprBase {
    public:
     /**
      * @brief Caches the configurator and its token parameters from the
@@ -99,8 +98,7 @@ namespace api::v2  // API version 2 namespace.
     KeeprBase()
         : configurator_(Store::getObject<Configurator>()),
           tokenManagerParameters_(
-              configurator_->get<Configurator::TokenManagerParameters>())
-    {
+              configurator_->get<Configurator::TokenManagerParameters>()) {
     }  // Fetch the shared config, then copy the token settings out of it.
     KeeprBase(const KeeprBase& other) =
         default;  // Copy is fine: it copies the cached settings and shared
@@ -299,8 +297,7 @@ namespace api::v2  // API version 2 namespace.
      * expose them to clients.
      */
     [[nodiscard]] Configurator::TokenManagerParameters
-    getTokenManagerParameters() const
-    {
+    getTokenManagerParameters() const {
       return tokenManagerParameters_;
     }  // Returns by value so callers cannot mutate the cached copy.
 
@@ -308,8 +305,8 @@ namespace api::v2  // API version 2 namespace.
      * @brief Returns the shared DatabaseController from the Store cache.
      * @return Shared controller used by all helpers in this class.
      */
-    [[nodiscard]] std::shared_ptr<DatabaseController> databaseController() const
-    {
+    [[nodiscard]] std::shared_ptr<DatabaseController> databaseController()
+        const {
       return Store::cachedObject<DatabaseController>();
     }  // Thread-local cached lookup; cheap on the request path.
 

@@ -47,8 +47,8 @@
 // generated at configure time from docs/api.html (see
 // tools/cmake/embed_html.cmake)
 #include "api_html.hpp"
-namespace api::v2  // The v2 API controllers live here.
-{
+// The v2 API controllers live here.
+namespace api::v2 {
   /**
    * @class Doc
    * @brief Serves the Swagger UI page that documents the API.
@@ -60,10 +60,10 @@ namespace api::v2  // The v2 API controllers live here.
    */
   // GET /api/v2/doc  ->  the Swagger UI page describing the API. The page is
   // compiled into the binary.
-  class Doc : public drogon::HttpController<Doc>  // Inherit Drogon's controller
-                                                  // template so Drogon
-                                                  // registers its routes.
-  {
+  // Inherit Drogon's controller
+  // template so Drogon
+  // registers its routes.
+  class Doc : public drogon::HttpController<Doc> {
    public:
     /**
      * @brief Respond with the embedded Swagger UI HTML document.

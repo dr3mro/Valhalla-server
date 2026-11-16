@@ -54,9 +54,9 @@
  * printing utilities. Shared static data is confined to the local statics in
  * get_random_color() and the cached logo string.
  */
-class Banner  // A namespace-like class that groups the banner printing
-              // functions; no object is ever created.
-{
+// A namespace-like class that groups the banner printing
+// functions; no object is ever created.
+class Banner {
  public:  // All helpers are public so the Server class can call them.
   // Define an array of colors from fmt::color
 
@@ -73,9 +73,9 @@ class Banner  // A namespace-like class that groups the banner printing
    * called only once during startup, so there is no concurrent invocation in
    * this server.
    */
-  static fmt::color get_random_color()  // Choose one random colour from the
-                                        // palette for printing the logo.
-  {
+  // Choose one random colour from the
+  // palette for printing the logo.
+  static fmt::color get_random_color() {
     // The palette is built once on first call and then reused on every
     // call.
     static std::vector<fmt::color> colors =
@@ -251,14 +251,15 @@ class Banner  // A namespace-like class that groups the banner printing
    * @param[in] CLR1 Colour of the label.
    * @param[in] CLR2 Colour of the value.
    */
-  template <typename T>  // T is the type of the value; it only needs to be
-                         // printable by fmt.
+  // T is the type of the value; it only needs to be
+  // printable by fmt.
+  // Print a label/value pair
+  // with a colour for each part.
+  template <typename T>
   static void print(const std::string& LABEL,
                     const T&           VALUE,
                     fmt::color         CLR1,
-                    fmt::color         CLR2)  // Print a label/value pair
-                                              // with a colour for each part.
-  {
+                    fmt::color         CLR2) {
     fmt::print(fmt::emphasis::bold | fg(CLR1),
                "{:12} : ",
                LABEL);  // Print the bold, coloured label padded to a fixed
@@ -278,12 +279,13 @@ class Banner  // A namespace-like class that groups the banner printing
    * @param[in] args Arguments forwarded to fmt::print after the separator
    * format string.
    */
-  template <typename... Args>  // A parameter pack lets callers optionally
-                               // supply extra values for fmt.
-  static void print_line(Args&&... args)  // Print a bold red
-                                          // separator between
-                                          // banner sections.
-  {
+  // A parameter pack lets callers optionally
+  // supply extra values for fmt.
+  // Print a bold red
+  // separator between
+  // banner sections.
+  template <typename... Args>
+  static void print_line(Args&&... args) {
     fmt::print(fmt::emphasis::bold | fg(fmt::color::red),
                "{}\n\n",  // Print in bold red, followed by two newlines for
                           // spacing.
@@ -298,9 +300,8 @@ class Banner  // A namespace-like class that groups the banner printing
    *
    * @return A reference to a function-local static string; do not mutate it.
    */
-  static const std::string&
-  get_logo()  // Return a reference to the cached ASCII-art logo string.
-  {
+  // Return a reference to the cached ASCII-art logo string.
+  static const std::string& get_logo() {
     // A raw string literal keeps the artwork exactly as typed, with no
     // escaping needed.
     static const std::string LOGO = R"(
@@ -326,8 +327,7 @@ class Banner  // A namespace-like class that groups the banner printing
    * @param[in] COLOR Colour used for the logo text.
    * @see get_logo()
    */
-  static void print_logo(fmt::color COLOR)
-  {
+  static void print_logo(fmt::color COLOR) {
     fmt::print(fg(COLOR), "{}\n\n", get_logo());
   }  // Print logo in that colour, then a blank line.
 };

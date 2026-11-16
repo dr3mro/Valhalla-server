@@ -58,8 +58,7 @@
  * accepted for tests and the disabled state.
  */
 AsyncDbClient::AsyncDbClient(std::shared_ptr<drogon::orm::DbClient> client)
-    : client_(std::move(client))
-{
+    : client_(std::move(client)) {
 }  // Moving means the caller's pointer is emptied and the wrapper becomes an
    // owner without extra bookkeeping.
 
@@ -69,8 +68,7 @@ AsyncDbClient::AsyncDbClient(std::shared_ptr<drogon::orm::DbClient> client)
  * `DB_MAX_CONN`; the timeout is then set from `DB_ACQUIRE_TIMEOUT_MS`. Any
  * connection-establishment work is left to Drogon.
  */
-std::shared_ptr<drogon::orm::DbClient> AsyncDbClient::createClient()
-{
+std::shared_ptr<drogon::orm::DbClient> AsyncDbClient::createClient() {
   const auto& config =
       Store::getObject<Configurator>()
           ->get<Configurator::DatabaseConfig>();  // Fetch the shared
@@ -105,8 +103,7 @@ std::shared_ptr<drogon::orm::DbClient> AsyncDbClient::createClient()
  * still arrive through this one configuration object.
  */
 std::string AsyncDbClient::connectionString(
-    const Configurator::DatabaseConfig& config)
-{
+    const Configurator::DatabaseConfig& config) {
   // The container image overrides DB_HOST and DB_SSL; both flow through the
   // same DatabaseConfig. That is why nothing special is done here: whichever
   // source supplied the values, they are already in `config`.

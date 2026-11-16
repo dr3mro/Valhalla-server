@@ -47,9 +47,9 @@
  * entities/appointments/clinic.hpp.
  * @see Appointment
  */
-class ClinicAppointment : public Appointment  // Public inheritance keeps the
-                                              // base CRUD interface available.
-{
+// Public inheritance keeps the
+// base CRUD interface available.
+class ClinicAppointment : public Appointment {
  private:
   /**
    * @brief Database table holding clinic appointments.
@@ -66,10 +66,9 @@ class ClinicAppointment : public Appointment  // Public inheritance keeps the
    */
   template <typename T>
   explicit ClinicAppointment(const T& _data)
-      : Appointment(_data,
-                    TABLENAME)  // "explicit" requires a direct call; TABLENAME
-                                // fixes the target table.
-  {
+      // "explicit" requires a direct call; TABLENAME
+      // fixes the target table.
+      : Appointment(_data, TABLENAME) {
   }
 
   /**
@@ -86,8 +85,7 @@ class ClinicAppointment : public Appointment  // Public inheritance keeps the
   /**
    * @brief Returns the clinic appointment table name.
    */
-  static constexpr auto getTableName()
-  {
+  static constexpr auto getTableName() {
     return TABLENAME;
   }  // Static accessor for the table name.
   /**

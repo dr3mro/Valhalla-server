@@ -67,12 +67,13 @@
  * variable wakes waiting acquirers, and all methods may be called concurrently.
  * @tparam T Type of the pooled items (held via `std::shared_ptr`).
  */
-template <typename T>  // T is the resource type; items are owned through
-                       // std::shared_ptr<T>.
-class BlockingPool     // The mutex + condition variable
-                       // make it safe for many threads to
-                       // use at once.
-{
+// T is the resource type; items are owned through
+// std::shared_ptr<T>.
+// The mutex + condition variable
+// make it safe for many threads to
+// use at once.
+template <typename T>
+class BlockingPool {
  public:
   BlockingPool() = default;  // An empty deque needs no special setup.
   BlockingPool(const BlockingPool&) =
@@ -93,12 +94,11 @@ class BlockingPool     // The mutex + condition variable
    * @details The notification happens after the lock is released, so a woken
    * acquirer can take the lock immediately.
    */
-  void release(std::shared_ptr<T> item)  // Takes by value so a moved-in item
-                                         // can be stored directly.
-  {
-    if (item ==
-        nullptr)  // A null item is not a usable lease; ignore it silently.
-    {
+  // Takes by value so a moved-in item
+  // can be stored directly.
+  void release(std::shared_ptr<T> item) {
+    // A null item is not a usable lease; ignore it silently.
+    if (item == nullptr) {
       return;  // Nothing to add and no reason to wake anyone.
     }
     {
@@ -125,20 +125,17 @@ class BlockingPool     // The mutex + condition variable
    */
   [[nodiscard]] std::shared_ptr<T> acquire(
       std::chrono::milliseconds
-          timeout)  // [[nodiscard]] warns callers that dropping the returned
-                    // item would strand it.
-  {
+          // [[nodiscard]] warns callers that dropping the returned
+          // item would strand it.
+          timeout) {
     std::unique_lock<std::mutex> lock(
         mutex_);  // A unique_lock can be released while waiting and
                   // reacquired when woken.
-    if (!cv_.wait_for(lock,
-                      timeout,
-                      [this]
-                      {
-                        return !items_.empty();
-                      }))  // Sleep until an item exists or the timeout expires;
-                           // the predicate also defeats spurious wakeups.
-    {
+    if (!cv_.wait_for(lock, timeout, [this] {
+          // Sleep until an item exists or the timeout expires;
+          // the predicate also defeats spurious wakeups.
+          return !items_.empty();
+        })) {
       return nullptr;  // Timed out: the caller can report exhaustion
                        // (DatabaseBusy in the server).
     }
@@ -154,9 +151,8 @@ class BlockingPool     // The mutex + condition variable
    * @brief Returns the number of currently idle items.
    * @return Idle count, read under the pool lock.
    */
-  [[nodiscard]] std::size_t idle()
-      const  // A snapshot gauge used in logs and startup progress messages.
-  {
+  // A snapshot gauge used in logs and startup progress messages.
+  [[nodiscard]] std::size_t idle() const {
     std::lock_guard<std::mutex> lock(
         mutex_);           // Lock so the size cannot change while it is read.
     return items_.size();  // Number of items currently available to lease.
@@ -179,20 +175,18 @@ class BlockingPool     // The mutex + condition variable
    * @note Keeping `finish` inside the lock is intentional; a callback that
    * tries to acquire from the same pool would deadlock.
    */
-  template <
-      typename Func,
-      typename Finish>  // Generic callbacks let callers do any per-item work
-                        // without changing this class.
-  void forEachIdle(Func&&   func,
-                   Finish&& finish)  // Both callbacks run while the
-                                     // lock is held, on purpose.
-  {
+  // Generic callbacks let callers do any per-item work
+  // without changing this class.
+  // Both callbacks run while the
+  // lock is held, on purpose.
+  template <typename Func, typename Finish>
+  void forEachIdle(Func&& func, Finish&& finish) {
     std::lock_guard<std::mutex> lock(
         mutex_);  // Hold the lock for the whole visit so nothing idle is
                   // handed out mid-operation.
     for (auto& item :
-         items_)  // One iteration per idle item currently in the deque.
-    {
+         // One iteration per idle item currently in the deque.
+         items_) {
       func(item);  // Let the caller operate on (e.g. reconnect) this item.
     }
     finish();  // Run the final step (usually waiting for async work) before

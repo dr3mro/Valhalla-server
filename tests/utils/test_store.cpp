@@ -51,18 +51,15 @@
 // separate tests do not collide on the global Store::inventory.
 // Define one throwaway type per test scenario inside an anonymous namespace.
 
-namespace
-{
+namespace {
   /**
    * @brief Throwaway type used only by the first getObject test.
    * @details Store keys its singletons by C++ type, so every test needs its
    * own type to avoid shared state.
    */
-  struct StoreA
-  {
+  struct StoreA {
     int val = 0;  // A single integer payload, default-initialised to zero.
-    explicit StoreA(int v = 0) : val(v)
-    {
+    explicit StoreA(int v = 0) : val(v) {
     }  // Stores the supplied value; "explicit" prevents
        // accidental conversion.
   };
@@ -70,27 +67,23 @@ namespace
   /**
    * @brief Throwaway type used by the "same instance on repeated calls" test.
    */
-  struct StoreB
-  {
+  struct StoreB {
     std::string name;  // A text payload to show constructor arguments are kept.
-    explicit StoreB(std::string n = "") : name(std::move(n))
-    {
+    explicit StoreB(std::string n = "") : name(std::move(n)) {
     }  // Moves the argument into the member to avoid a copy.
   };
 
   /**
    * @brief Throwaway type used by the replaceObject test.
    */
-  struct StoreC
-  {
+  struct StoreC {
     double x = 0.0;  // A double payload with a safe default of zero.
   };
 
   /**
    * @brief Throwaway type used by the double-registration test.
    */
-  struct StoreD
-  {
+  struct StoreD {
     int v = 42;  // A payload with a non-zero default so it is easy to
                  // recognise.
   };
@@ -101,11 +94,9 @@ namespace
    * @details Records the value passed to its constructor so the test can
    * reason about which instance was built.
    */
-  struct StoreRace
-  {
+  struct StoreRace {
     int created = 0;  // Counts the constructor argument, defaulting to zero.
-    explicit StoreRace(int v = 1) : created(v)
-    {
+    explicit StoreRace(int v = 1) : created(v) {
     }  // Records the value it was given.
   };
 }  // namespace
@@ -113,8 +104,7 @@ namespace
 // First call for a type must construct the object with the given arguments and
 // return it.
 TEST_CASE("Store::getObject creates and returns an object on first call",
-          "[utils][store]")
-{
+          "[utils][store]") {
   auto obj = Store::getObject<StoreA>(
       7);  // Ask for a StoreA built with constructor argument 7.
   REQUIRE(
@@ -127,8 +117,7 @@ TEST_CASE("Store::getObject creates and returns an object on first call",
 // Once a type is registered, later calls must return the very same object and
 // ignore new arguments.
 TEST_CASE("Store::getObject returns the same instance on repeated calls",
-          "[utils][store]")
-{
+          "[utils][store]") {
   auto first = Store::getObject<StoreB>(
       "hello");  // First call constructs StoreB with "hello".
   auto second = Store::getObject<StoreB>();  // already registered; args ignored
@@ -145,8 +134,7 @@ TEST_CASE("Store::getObject returns the same instance on repeated calls",
 // replaceObject must swap in a new instance, and later lookups must see the
 // replacement.
 TEST_CASE("Store::replaceObject swaps the registered instance",
-          "[utils][store]")
-{
+          "[utils][store]") {
   auto original = Store::getObject<StoreC>();  // Get the current singleton.
   original->x   = 3.14;                        // Give it a recognisable value.
 
@@ -170,8 +158,7 @@ TEST_CASE("Store::replaceObject swaps the registered instance",
 // registerObject is explicit and must refuse a type that is already in the
 // inventory.
 TEST_CASE("Store::registerObject throws on double registration",
-          "[utils][store]")
-{
+          "[utils][store]") {
   // StoreD has never been registered; first call succeeds.
   auto obj = Store::getObject<StoreD>();  // This lazily registers StoreD.
   REQUIRE(
@@ -190,8 +177,7 @@ TEST_CASE("Store::registerObject throws on double registration",
 // re-checks under it, so this hidden test now passes. See tests/README.md
 // §Bug 11.
 TEST_CASE("Store concurrent first-access does not race",
-          "[.known-bug][utils][store][concurrency]")
-{
+          "[.known-bug][utils][store][concurrency]") {
   // All 8 threads race to call getObject<StoreRace>(); only one must win the
   // construction; they all must receive the same pointer.
   constexpr int kThreads = 8;  // Compile-time constant: how many threads race.
@@ -201,31 +187,29 @@ TEST_CASE("Store concurrent first-access does not race",
   std::vector<std::thread> workers;  // Will hold the racing threads.
   workers.reserve(kThreads);  // Reserve space so pushing threads does not
                               // reallocate the vector.
-  for (int i = 0; i < kThreads; ++i)  // Launch eight threads.
-  {
-    workers.emplace_back(
-        [&results, i]
-        {
-          results[i] = Store::getObject<StoreRace>();
-        });  // Each writes its result into its own slot; i is captured by
-             // value.
+  // Launch eight threads.
+  for (int i = 0; i < kThreads; ++i) {
+    workers.emplace_back([&results, i] {
+      results[i] = Store::getObject<StoreRace>();
+    });  // Each writes its result into its own slot; i is captured by
+         // value.
   }
-  for (auto& w : workers)  // Walk the workers.
-  {
+  // Walk the workers.
+  for (auto& w : workers) {
     w.join();  // Wait until all threads finish before inspecting results.
   }
 
   // All threads must have received a non-null pointer.
-  for (const auto& r : results)  // Check every slot.
-  {
+  // Check every slot.
+  for (const auto& r : results) {
     REQUIRE(r != nullptr);  // A null result would mean getObject failed.
   }
 
   // All pointers must be identical (same singleton).
   const void* expected =
       results[0].get();  // Pick the first pointer as the reference address.
-  for (const auto& r : results)  // Compare every other pointer against it.
-  {
+  // Compare every other pointer against it.
+  for (const auto& r : results) {
     CHECK(r.get() == expected);  // Identical addresses prove only one
                                  // object was created.
   }

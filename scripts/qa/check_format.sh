@@ -39,18 +39,13 @@ else
     exit 2  # Exit 2 means 'tool missing', which is different from exit 1 = 'formatting wrong'.
 fi
 
-# Locate clang-format-diff.py.
-# An empty diff_tool means "unavailable", which triggers the whole-file fallback below.
-diff_tool=""  # An empty value means clang-format-diff is unavailable, so use the whole-file fallback.
-if command -v clang-format-diff.py >/dev/null 2>&1; then
-    diff_tool="$(command -v clang-format-diff.py)"  # command -v returns the full path to the tool.
-elif [[ -x "$HOME/.local/bin/clang-format-diff.py" ]]; then
-    diff_tool="$HOME/.local/bin/clang-format-diff.py"
-elif [[ -x /Library/Developer/CommandLineTools/usr/bin/clang-format-diff.py ]]; then
-    diff_tool=/Library/Developer/CommandLineTools/usr/bin/clang-format-diff.py
-elif [[ -x /usr/bin/clang-format-diff.py ]]; then
-    diff_tool=/usr/bin/clang-format-diff.py
-fi
+# Always check whole files rather than only changed line ranges.
+# clang-format-diff.py formats isolated line ranges, so it disagrees with
+# whole-file decisions about alignment groups (AlignConsecutiveDeclarations,
+# AlignTrailingComments). It would demand unaligned declarations and
+# misaligned trailing comments even in correctly formatted files. Keeping
+# diff_tool empty selects the whole-file --dry-run --Werror check below.
+diff_tool=""
 
 # The repository's .clang-format is the single source of truth for style.
 # Fail early if it is missing, so QA never silently falls back to a built-in style.

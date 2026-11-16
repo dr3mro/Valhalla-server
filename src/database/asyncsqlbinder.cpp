@@ -50,8 +50,7 @@
 #include <utility>  // std::move, used to hand the binder to the awaiter.
 #include <vector>   // std::vector, the container for the converted parameters.
 
-namespace asyncdb
-{
+namespace asyncdb {
   /**
    * @brief Copies each parameter's bytes into a string, or records a null
    * when pqxx reports no value.
@@ -60,8 +59,7 @@ namespace asyncdb
    * survive the round trip.
    */
   std::vector<std::optional<std::string>> toTextParams(
-      const pqxx::params& params)
-  {
+      const pqxx::params& params) {
     std::vector<std::optional<std::string>>
         result;  // Start empty; `optional` lets us store "no value" for a
                  // SQL NULL.
@@ -75,18 +73,16 @@ namespace asyncdb
         c.values.size());  // Allocate space once up front, so adding
                            // entries cannot reallocate the vector midway.
     for (std::size_t i = 0; i < c.values.size();
-         ++i)  // Walk the values in append order; stop when every parameter
-               // has been copied.
-    {
-      if (c.values[i] == nullptr)  // A null pointer in the C view is pqxx's way
-                                   // of saying "this parameter is SQL NULL".
-      {
+         // Walk the values in append order; stop when every parameter
+         // has been copied.
+         ++i) {
+      // A null pointer in the C view is pqxx's way
+      // of saying "this parameter is SQL NULL".
+      if (c.values[i] == nullptr) {
         result.emplace_back(std::nullopt);  // Record an empty optional rather
                                             // than an empty string, so NULL
                                             // stays distinguishable from "".
-      }
-      else
-      {
+      } else {
         result.emplace_back(
             std::string(c.values[i],
                         static_cast<std::size_t>(
@@ -109,27 +105,25 @@ namespace asyncdb
    * a string.
    */
   void bindParams(drogon::orm::internal::SqlBinder& binder,
-                  const pqxx::params&               params)
-  {
+                  const pqxx::params&               params) {
     const auto c = params.make_c_params(
         std::source_location::current());  // Get the same low-level view as
                                            // toTextParams(), again with the
                                            // call site for diagnostics.
 
     for (std::size_t i = 0; i < c.values.size();
-         ++i)  // Bind parameters one by one, in the order the builder
-               // appended them.
-    {
-      if (c.values[i] ==
-          nullptr)  // NULL values need their own bind form; binding an
-                    // empty string would be a different value.
-      {
-        binder << nullptr;  // Drogon's operator<< recognises nullptr and
-                            // sends an SQL NULL for this placeholder.
-      }
-      else if (c.formats[i] == 1)  // In the PostgreSQL protocol, format 1
-                                   // means binary data rather than text.
-      {
+         // Bind parameters one by one, in the order the builder
+         // appended them.
+         ++i) {
+      // NULL values need their own bind form; binding an
+      // empty string would be a different value.
+      if (c.values[i] == nullptr) {
+        // Drogon's operator<< recognises nullptr and
+        // sends an SQL NULL for this placeholder.
+        // In the PostgreSQL protocol, format 1
+        // means binary data rather than text.
+        binder << nullptr;
+      } else if (c.formats[i] == 1) {
         auto buffer = std::make_shared<std::vector<
             char>>(c.values[i],
                    c.values[i] +
@@ -143,9 +137,7 @@ namespace asyncdb
                              1};  // Pass pointer, length and binary format; the
                                   // shared_ptr travels with the parameter, and
                                   // the cast suits Drogon's int-based API.
-      }
-      else
-      {
+      } else {
         binder << std::string(c.values[i],
                               static_cast<std::size_t>(
                                   c.lengths[i]));  // Ordinary text is copied
@@ -164,8 +156,7 @@ namespace asyncdb
    */
   drogon::orm::internal::SqlAwaiter execSqlCoro(drogon::orm::DbClient& client,
                                                 const std::string&     sql,
-                                                const pqxx::params&    params)
-  {
+                                                const pqxx::params&    params) {
     auto binder = client << sql;  // Drogon's operator<< on a client creates a
                                   // binder already holding the statement text.
     bindParams(binder,

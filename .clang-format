@@ -15,8 +15,8 @@ TabWidth: 2
 UseTab: Never
 ContinuationIndentWidth: 4
 
-# Keep braces on their own lines (Allman style).
-BreakBeforeBraces: Allman
+# Keep opening braces on the same line as the declaration (Attach style).
+BreakBeforeBraces: Attach
 
 # Prefer readable multi-line argument and parameter lists over dense packing.
 BinPackArguments: false

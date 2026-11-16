@@ -43,8 +43,8 @@
 #include "api/v2/basic/common.hpp"
 // JsonHelper::jsonify builds the JSON greeting.
 #include "utils/jsonhelper/jsonhelper.hpp"
-namespace api::v2  // The v2 API controllers live here.
-{
+// The v2 API controllers live here.
+namespace api::v2 {
   /**
    * @class Hello
    * @brief Minimal welcome endpoint used to confirm the API is reachable.
@@ -52,10 +52,10 @@ namespace api::v2  // The v2 API controllers live here.
    * JSON greeting.
    */
   class Hello
-      : public drogon::HttpController<Hello>  // Inherit Drogon's controller
-                                              // template so Drogon registers
-                                              // its routes.
-  {
+      // Inherit Drogon's controller
+      // template so Drogon registers
+      // its routes.
+      : public drogon::HttpController<Hello> {
    public:
     /**
      * @brief Respond with a fixed JSON welcome message.

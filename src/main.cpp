@@ -57,25 +57,22 @@
  * it would terminate the process.
  * @see Server::run()
  */
-int main([[maybe_unused]] int argc,
-         [[maybe_unused]] char**
-             argv)  // Program entry point; argc/argv are kept only because the
-                    // C++ standard requires this shape.
-{
-  try  // Guard the entire startup and shutdown so a thrown exception cannot
-       // crash the process silently.
-  {
+// Program entry point; argc/argv are kept only because the
+// C++ standard requires this shape.
+int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
+  // Guard the entire startup and shutdown so a thrown exception cannot
+  // crash the process silently.
+  try {
     std::unique_ptr<Server> server =
         std::make_unique<Server>();  // Own the Server on the heap; a
                                      // unique_ptr frees it automatically at
                                      // scope exit.
-    return server
-        ->run();  // Start the web server and pass its exit status back to
-                  // the OS; this call blocks until the event loops stop.
-  }
-  catch (const std::exception& exception)  // Reached only if an exception
-                                           // escaped the try block above.
-  {
+    // Start the web server and pass its exit status back to
+    // the OS; this call blocks until the event loops stop.
+    // Reached only if an exception
+    // escaped the try block above.
+    return server->run();
+  } catch (const std::exception& exception) {
     std::cerr << "Server Error: " << exception.what()
               << '\n';    // Print the reason to stderr, keeping errors
                           // separate from normal logs.

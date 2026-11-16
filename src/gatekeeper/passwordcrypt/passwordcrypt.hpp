@@ -58,8 +58,7 @@
  * hashPassword()/verifyPassword() on a PasswordWorker, never on a Drogon IO
  * thread. See runOnPasswordWorker().
  */
-class PasswordCrypt
-{
+class PasswordCrypt {
  public:
   /**
    * @brief Initializes libsodium, reporting a critical error

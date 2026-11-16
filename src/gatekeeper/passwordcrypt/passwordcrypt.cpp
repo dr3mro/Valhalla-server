@@ -41,8 +41,7 @@
 // Message::CriticalMessage() for reporting failures.
 #include "utils/message/message.hpp"
 
-namespace
-{
+namespace {
   // Argon2id at OWASP's minimum recommended cost (19 MiB of memory, 2 passes,
   // 1 lane; libsodium always uses one lane). "Cost" means how hard the recipe
   // makes a guessing attack: more memory and more passes make hashes slower
@@ -69,11 +68,9 @@ namespace
  * everyday words, libsodium needs a one-time "wake up" call before it can be
  * used; this constructor makes that call and shouts in the log if it fails.
  */
-PasswordCrypt::PasswordCrypt()
-{
-  if (sodium_init() <
-      0)  // The library returns a negative number when setup failed.
-  {
+PasswordCrypt::PasswordCrypt() {
+  // The library returns a negative number when setup failed.
+  if (sodium_init() < 0) {
     Message::CriticalMessage(
         "Failed to initialize libsodium.");  // Record a serious error in
                                              // the log; do not throw.
@@ -135,16 +132,15 @@ bool PasswordCrypt::verifyPassword(
 {
   // The stored string says which algorithm made it, so hashes written before
   // the switch to Argon2id keep working.
-  if (hash.starts_with(ARGON2_PREFIX))  // Label says this is an Argon2 hash.
-  {
+  // Label says this is an Argon2 hash.
+  if (hash.starts_with(ARGON2_PREFIX)) {
     return crypto_pwhash_str_verify(hash.c_str(),
                                     password.c_str(),
                                     password.length()) ==
            0;  // Zero from libsodium means a match.
   }
-  if (hash.starts_with(
-          SCRYPT_PREFIX))  // Label says this is an older scrypt hash.
-  {
+  // Label says this is an older scrypt hash.
+  if (hash.starts_with(SCRYPT_PREFIX)) {
     return crypto_pwhash_scryptsalsa208sha256_str_verify(hash.c_str(),
                                                          password.c_str(),
                                                          password.length()) ==

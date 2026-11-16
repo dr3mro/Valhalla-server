@@ -46,21 +46,19 @@
 #include <optional>
 #include <string>  // std::string stores each connection setting.
 
-namespace  // An anonymous namespace keeps these helpers private to this test
-           // file.
-{
+// An anonymous namespace keeps these helpers private to this test
+// file.
+namespace {
   /** @brief The five TEST_DB_* values required to opt into the DB integration
    * tests. */
-  struct DbEnv
-  {
+  struct DbEnv {
     std::string host;  // Database server hostname from TEST_DB_HOST.
     std::string port;  // Database server port from TEST_DB_PORT.
     std::string name;  // Database name from TEST_DB_NAME.
     std::string user;  // Login user from TEST_DB_USER.
     std::string pass;  // Login password from TEST_DB_PASS; never printed.
 
-    [[nodiscard]] bool valid() const
-    {
+    [[nodiscard]] bool valid() const {
       return !host.empty() && !port.empty() && !name.empty() && !user.empty() &&
              !pass.empty();
     }  // True only when every setting was supplied; [[nodiscard]] warns if
@@ -71,11 +69,10 @@ namespace  // An anonymous namespace keeps these helpers private to this test
    * .env. */
   DbEnv loadDbEnv()  // Gathers all five settings into one struct so tests can
                      // check them together.
+  // A small helper: read one variable, or return an
+  // empty string when it is unset.
   {
-    const auto getenv_str = [](const char* key)
-        -> std::string  // A small helper: read one variable, or return an
-                        // empty string when it is unset.
-    {
+    const auto getenv_str = [](const char* key) -> std::string {
       const char* v = std::getenv(key);  // Ask the operating system for the
                                          // variable; nullptr means "not set".
       return v != nullptr ? std::string(v)
@@ -99,12 +96,11 @@ namespace  // An anonymous namespace keeps these helpers private to this test
 
 // This case proves the opt-in inputs are actually present before any real DB
 // work is assumed.
-TEST_CASE("DB round-trip: connect to test database", "[.integration][db]")
-{
+TEST_CASE("DB round-trip: connect to test database", "[.integration][db]") {
   const auto env = loadDbEnv();  // Read all five settings once for this test.
-  if (!env.valid())  // If any setting is missing, the test cannot run
-                     // meaningfully.
-  {
+  // If any setting is missing, the test cannot run
+  // meaningfully.
+  if (!env.valid()) {
     SKIP(
         "TEST_DB_HOST / TEST_DB_PORT / TEST_DB_NAME / TEST_DB_USER / "
         "TEST_DB_PASS not set");  // Mark the test as skipped, not failed,
@@ -126,12 +122,11 @@ TEST_CASE("DB round-trip: connect to test database", "[.integration][db]")
 // A placeholder for a full login/logout round-trip against a provisioned
 // database.
 TEST_CASE("DB round-trip: login-logout cycle updates session timestamps",
-          "[.integration][db][auth]")
-{
+          "[.integration][db][auth]") {
   const auto env = loadDbEnv();  // Read the settings so this test obeys the
                                  // same opt-in rule.
-  if (!env.valid())              // Skip when the environment is not configured.
-  {
+  // Skip when the environment is not configured.
+  if (!env.valid()) {
     SKIP("TEST_DB_* env vars not set");  // Keep this hidden test out of the
                                          // default run.
   }
@@ -154,12 +149,11 @@ TEST_CASE("DB round-trip: login-logout cycle updates session timestamps",
 // A placeholder for checking that two queries can run at the same time against
 // the real pool.
 TEST_CASE("DB pool: two concurrent queries succeed",
-          "[.integration][db][concurrency]")
-{
+          "[.integration][db][concurrency]") {
   const auto env =
-      loadDbEnv();   // Read the settings so this test obeys the opt-in rule.
-  if (!env.valid())  // Skip unless a database was configured.
-  {
+      loadDbEnv();  // Read the settings so this test obeys the opt-in rule.
+  // Skip unless a database was configured.
+  if (!env.valid()) {
     SKIP("TEST_DB_* env vars not set");  // Remain hidden during ordinary
                                          // test runs.
   }
@@ -173,12 +167,11 @@ TEST_CASE("DB pool: two concurrent queries succeed",
 // A placeholder for validating a freshly issued token against the live session
 // table.
 TEST_CASE("validateToken succeeds for a just-issued token (live DB)",
-          "[.integration][db][auth]")
-{
+          "[.integration][db][auth]") {
   const auto env =
-      loadDbEnv();   // Read the settings so this test obeys the opt-in rule.
-  if (!env.valid())  // Skip unless a database was configured.
-  {
+      loadDbEnv();  // Read the settings so this test obeys the opt-in rule.
+  // Skip unless a database was configured.
+  if (!env.valid()) {
     SKIP("TEST_DB_* env vars not set");  // Remain hidden during ordinary
                                          // test runs.
   }

@@ -50,9 +50,9 @@
  * setup/test code before threads start, not for the request path.
  * @see EnvLoader
  */
-class EnvVars  // Provides only protected static helpers meant for configuration
-               // classes that inherit from it.
-{
+// Provides only protected static helpers meant for configuration
+// classes that inherit from it.
+class EnvVars {
  protected:  // Only this class and classes that inherit from it may use the
              // helpers below; outside code cannot.
   // Method to get an environment variable by name

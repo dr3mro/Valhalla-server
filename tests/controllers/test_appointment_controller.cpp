@@ -71,8 +71,7 @@ using Requester = api::v2::Requester;  // A short local name for the fully
  * This tiny two-field struct is a convenient "envelope" to fill from that
  * callback so a test can check the result with ordinary assertions.
  */
-struct Result
-{
+struct Result {
   int status = 0;  // The HTTP status code; starts at 0 so an un-called
                    // callback is obvious.
   std::string
@@ -89,20 +88,19 @@ struct Result
  * method.
  * @return The status and body the controller passed to the callback.
  */
-static Result capture(auto fn)  // Turns a callback-style controller call into a
-                                // convenient returned value.
-{
+// Turns a callback-style controller call into a
+// convenient returned value.
+static Result capture(auto fn) {
   Result r;  // A default result (status 0, empty body), ready to be filled by
              // the callback.
-  fn(  // Run the caller's lambda, giving it the capturing callback defined
-       // next.
-      [&](int                s,
-          const std::string& b)  // The callback: captures r by reference so
-                                 // it can fill it in place.
-      {
-        r.status = s;  // Save the HTTP status the controller decided on.
-        r.body   = b;  // Save the response text the controller produced.
-      });
+  // Run the caller's lambda, giving it the capturing callback defined
+  // next.
+  // The callback: captures r by reference so
+  // it can fill it in place.
+  fn([&](int s, const std::string& b) {
+    r.status = s;  // Save the HTTP status the controller decided on.
+    r.body   = b;  // Save the response text the controller produced.
+  });
   return r;  // Hand the captured status and body back to the test for its
              // assertions.
 }
@@ -118,17 +116,14 @@ static Result capture(auto fn)  // Turns a callback-style controller call into a
 // parse-and-validate step runs before any entity is built or any SQL is issued.
 TEST_CASE(
     "AppointmentController<ClinicAppointment>::Create rejects malformed JSON",
-    "[controllers][appointment]")
-{
+    "[controllers][appointment]") {
   AppointmentController<ClinicAppointment>
        ctrl;  // A fresh controller for clinic appointments; it holds no
               // per-request state.
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.Create(std::move(cb), Requester(1, "users"), "bad{");
-      });  // Call Create with invalid JSON and capture the reply; std::move
-           // hands the callback over without copying it.
+  auto r = capture([&](auto cb) {
+    ctrl.Create(std::move(cb), Requester(1, "users"), "bad{");
+  });  // Call Create with invalid JSON and capture the reply; std::move
+       // hands the callback over without copying it.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves malformed JSON yields
                                               // 400, not a crash or a
@@ -138,15 +133,12 @@ TEST_CASE(
 // Read with broken JSON must also be rejected before looking up any record.
 TEST_CASE(
     "AppointmentController<ClinicAppointment>::Read rejects malformed JSON",
-    "[controllers][appointment]")
-{
+    "[controllers][appointment]") {
   AppointmentController<ClinicAppointment>
        ctrl;  // A fresh clinic-appointment controller for this case.
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.Read(std::move(cb), Requester(1, "users"), "{{");
-      });  // Feed Read invalid JSON ("{{") and capture its reply.
+  auto r = capture([&](auto cb) {
+    ctrl.Read(std::move(cb), Requester(1, "users"), "{{");
+  });  // Feed Read invalid JSON ("{{") and capture its reply.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves an unparsable body is
                                               // refused with 400.
@@ -155,18 +147,13 @@ TEST_CASE(
 // A syntactically valid body is still invalid if the required "id" is missing.
 TEST_CASE(
     "AppointmentController<ClinicAppointment>::Read with missing id → 400",
-    "[controllers][appointment]")
-{
+    "[controllers][appointment]") {
   AppointmentController<ClinicAppointment>
        ctrl;  // A fresh clinic-appointment controller.
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.Read(std::move(cb),
-                  Requester(1, "users"),
-                  R"({"schema":["date"]})");
-      });  // Valid JSON with a schema but no id; R"(...)" is a raw string so
-           // the quotes need no escaping.
+  auto r = capture([&](auto cb) {
+    ctrl.Read(std::move(cb), Requester(1, "users"), R"({"schema":["date"]})");
+  });  // Valid JSON with a schema but no id; R"(...)" is a raw string so
+       // the quotes need no escaping.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves Read requires an id and
                                               // rejects its absence with 400.
@@ -175,19 +162,16 @@ TEST_CASE(
 // Update needs an id supplied as a separate argument; with none, it must fail
 // early.
 TEST_CASE("AppointmentController<ClinicAppointment>::Update with no id → 400",
-          "[controllers][appointment]")
-{
+          "[controllers][appointment]") {
   AppointmentController<ClinicAppointment>
        ctrl;  // A fresh clinic-appointment controller.
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.Update(std::move(cb),
-                    Requester(1, "users"),
-                    R"({"date":"2026-01-01"})",
-                    std::nullopt);
-      });  // std::nullopt means "no id"; the valid JSON body is irrelevant
-           // because the id check fails first.
+  auto r = capture([&](auto cb) {
+    ctrl.Update(std::move(cb),
+                Requester(1, "users"),
+                R"({"date":"2026-01-01"})",
+                std::nullopt);
+  });  // std::nullopt means "no id"; the valid JSON body is irrelevant
+       // because the id check fails first.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves a missing target id is
                                               // caught before any update SQL
@@ -197,15 +181,12 @@ TEST_CASE("AppointmentController<ClinicAppointment>::Update with no id → 400",
 // Delete is the one operation that signals a missing id with 406 (Not
 // Acceptable) rather than 400.
 TEST_CASE("AppointmentController<ClinicAppointment>::Delete with no id → 406",
-          "[controllers][appointment]")
-{
+          "[controllers][appointment]") {
   AppointmentController<ClinicAppointment>
        ctrl;  // A fresh clinic-appointment controller.
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.Delete(std::move(cb), Requester(1, "users"), std::nullopt);
-      });  // Call Delete with no target id (std::nullopt).
+  auto r = capture([&](auto cb) {
+    ctrl.Delete(std::move(cb), Requester(1, "users"), std::nullopt);
+  });  // Call Delete with no target id (std::nullopt).
   CHECK(r.status ==
         api::v2::Http::Status::NOT_ACCEPTABLE);  // Pins down Delete's
                                                  // distinct 406 response for
@@ -216,15 +197,12 @@ TEST_CASE("AppointmentController<ClinicAppointment>::Delete with no id → 406",
 TEST_CASE(
     "AppointmentController<ClinicAppointment>::Search with malformed JSON → "
     "400",
-    "[controllers][appointment]")
-{
+    "[controllers][appointment]") {
   AppointmentController<ClinicAppointment>
        ctrl;  // A fresh clinic-appointment controller.
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.Search(std::move(cb), Requester(1, "users"), "bad{");
-      });  // Call Search with invalid JSON and capture the reply.
+  auto r = capture([&](auto cb) {
+    ctrl.Search(std::move(cb), Requester(1, "users"), "bad{");
+  });  // Call Search with invalid JSON and capture the reply.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves Search validates the
                                               // JSON before building a query.
@@ -234,15 +212,12 @@ TEST_CASE(
 TEST_CASE(
     "AppointmentController<ClinicAppointment>::Search with incomplete data → "
     "406",
-    "[controllers][appointment]")
-{
+    "[controllers][appointment]") {
   AppointmentController<ClinicAppointment>
        ctrl;  // A fresh clinic-appointment controller.
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.Search(std::move(cb), Requester(1, "users"), R"({"foo":"bar"})");
-      });  // Valid JSON, but no recognised search fields.
+  auto r = capture([&](auto cb) {
+    ctrl.Search(std::move(cb), Requester(1, "users"), R"({"foo":"bar"})");
+  });  // Valid JSON, but no recognised search fields.
   CHECK(r.status ==
         api::v2::Http::Status::NOT_ACCEPTABLE);  // Proves incomplete search
                                                  // criteria are refused with
@@ -256,16 +231,13 @@ TEST_CASE(
 // seven-case matrix.
 TEST_CASE(
     "AppointmentController<PharmacyAppointment>::Create rejects malformed JSON",
-    "[controllers][appointment]")
-{
+    "[controllers][appointment]") {
   AppointmentController<PharmacyAppointment>
        ctrl;  // A controller instantiated for pharmacy appointments.
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.Create(std::move(cb), Requester(1, "users"), "bad{");
-      });  // Same bad-JSON Create call, now through the pharmacy
-           // specialization.
+  auto r = capture([&](auto cb) {
+    ctrl.Create(std::move(cb), Requester(1, "users"), "bad{");
+  });  // Same bad-JSON Create call, now through the pharmacy
+       // specialization.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves the pharmacy type
                                               // behaves identically to the
@@ -274,15 +246,12 @@ TEST_CASE(
 
 TEST_CASE(
     "AppointmentController<LaboratoryAppointment>::Delete with no id → 406",
-    "[controllers][appointment]")
-{
+    "[controllers][appointment]") {
   AppointmentController<LaboratoryAppointment>
        ctrl;  // A controller instantiated for laboratory appointments.
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.Delete(std::move(cb), Requester(1, "users"), std::nullopt);
-      });  // Delete with no id on the laboratory specialization.
+  auto r = capture([&](auto cb) {
+    ctrl.Delete(std::move(cb), Requester(1, "users"), std::nullopt);
+  });  // Delete with no id on the laboratory specialization.
   CHECK(r.status ==
         api::v2::Http::Status::NOT_ACCEPTABLE);  // Proves the Delete/id rule is
                                                  // shared by this type too.
@@ -291,15 +260,12 @@ TEST_CASE(
 TEST_CASE(
     "AppointmentController<RadiologyCenterAppointment>::Search with malformed "
     "JSON → 400",
-    "[controllers][appointment]")
-{
+    "[controllers][appointment]") {
   AppointmentController<RadiologyCenterAppointment>
        ctrl;  // A controller instantiated for radiology-center appointments.
-  auto r = capture(
-      [&](auto cb)
-      {
-        ctrl.Search(std::move(cb), Requester(1, "users"), "bad{");
-      });  // Search with bad JSON on the radiology specialization.
+  auto r = capture([&](auto cb) {
+    ctrl.Search(std::move(cb), Requester(1, "users"), "bad{");
+  });  // Search with bad JSON on the radiology specialization.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves this last appointment
                                               // type follows the same

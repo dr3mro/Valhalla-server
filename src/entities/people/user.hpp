@@ -62,9 +62,9 @@ using Client = api::v2::Client;  // Short global name so User can derive from
  * unchanged.
  * @see Client, Types::Data_t
  */
-class User : public Client  // Inherits validated account behaviour; adds the id
-                            // lookup.
-{
+// Inherits validated account behaviour; adds the id
+// lookup.
+class User : public Client {
  public:
   /**
    * @brief Non-copyable and non-movable; construct in place for the request
@@ -83,10 +83,9 @@ class User : public Client  // Inherits validated account behaviour; adds the id
    */
   template <typename ClientData_t>
   explicit User(const ClientData_t& data)
-      : Client(data,
-               TABLENAME)  // "explicit" prevents implicit conversions;
-                           // TABLENAME fixes the target table.
-  {
+      // "explicit" prevents implicit conversions;
+      // TABLENAME fixes the target table.
+      : Client(data, TABLENAME) {
   }
   // User() : Client(std::string(TABLENAME)) {}
   /**
@@ -97,8 +96,7 @@ class User : public Client  // Inherits validated account behaviour; adds the id
   /**
    * @brief Returns the users table name.
    */
-  static constexpr auto getTableName()
-  {
+  static constexpr auto getTableName() {
     return TABLENAME;
   }  // Static accessor for the table name.
 
@@ -110,24 +108,21 @@ class User : public Client  // Inherits validated account behaviour; adds the id
    * @param[out] params Cleared and filled with the bound user id.
    * @return SELECT id FROM users WHERE id = $1, or std::nullopt on failure.
    */
-  std::optional<std::string> getSqlGetServicesStatement(
-      pqxx::params& params)  // Builds a minimal id-lookup statement.
-  {
-    try
-    {
+  // Builds a minimal id-lookup statement.
+  std::optional<std::string> getSqlGetServicesStatement(pqxx::params& params) {
+    try {
       client_id = std::get<Data_t>(getData())
                       .get_id();  // Pull the user id from the id-only
                                   // payload into the cached member.
       params    = {};  // Empty the caller's container so the id becomes $1.
       params.append(client_id.value());  // value() throws if the id is absent;
                                          // the catch below handles that.
-      return std::string(
-          "SELECT id FROM users WHERE id = $1");  // A simple query whose
-                                                  // single parameter is
-                                                  // the bound id.
-    }
-    catch (const std::exception& e)  // Missing id or another error.
-    {
+      // A simple query whose
+      // single parameter is
+      // the bound id.
+      // Missing id or another error.
+      return std::string("SELECT id FROM users WHERE id = $1");
+    } catch (const std::exception& e) {
       Message::ErrorMessage(
           fmt::format("Failed to create query for GetServicesStatement {}.",
                       tablename));         // Log the table.

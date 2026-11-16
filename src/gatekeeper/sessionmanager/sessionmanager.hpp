@@ -45,8 +45,8 @@
 // MemCache, the in-memory session store.
 #include "utils/memcache/memcache.hpp"
 
-namespace api::v2  // All version-2 API code lives here.
-{
+// All version-2 API code lives here.
+namespace api::v2 {
 
   /**
    * @class SessionManager
@@ -64,9 +64,9 @@ namespace api::v2  // All version-2 API code lives here.
    * up your account and check it is active; then we check your password; only
    * then do we record that you logged in and hand you a session.
    */
-  class SessionManager : public KeeprBase  // Inherits token decode/validate
-                                           // helpers; see KeeprBase.
-  {
+  // Inherits token decode/validate
+  // helpers; see KeeprBase.
+  class SessionManager : public KeeprBase {
    public:
     SessionManager() = default;  // No extra setup needed; the base class
                                  // handles its own state.

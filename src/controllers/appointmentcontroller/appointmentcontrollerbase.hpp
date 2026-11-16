@@ -90,8 +90,7 @@ using Requester =
  * AppointmentController.
  * @see AppointmentController, EntityControllerBase, Controller
  */
-class AppointmentControllerBase
-{
+class AppointmentControllerBase {
  public:
   /** @brief Default construction; the interface holds no state of its own. */
   explicit AppointmentControllerBase() =

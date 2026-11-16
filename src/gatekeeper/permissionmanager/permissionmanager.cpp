@@ -55,26 +55,27 @@ using PermissionManager =
 using HttpError =
     api::v2::Http::Error;  // Short alias for the error type used in signatures.
 /** @brief Client creation is unrestricted; see PermissionManager::canCreate. */
-template <Client_t T>  // Restricts this overload to client entity types.
-bool PermissionManager::canCreate(  // Synchronous create check definition
-                                    // (parameters continue on the next line).
+// Restricts this overload to client entity types.
+// Synchronous create check definition
+// (parameters continue on the next line).
+// These arguments are unused here; the marker silences compiler
+// warnings.
+template <Client_t T>
+bool PermissionManager::canCreate(
     [[maybe_unused]] const Requester&                     requester,
     [[maybe_unused]] const std::optional<jsoncons::json>& data_j,
-    [[maybe_unused]] Http::Error&
-        error)  // These arguments are unused here; the marker silences compiler
-                // warnings.
-{
+    [[maybe_unused]] Http::Error&                         error) {
   return true;  // Allow the action; creating a client is open to everyone.
 }
 
 /** @brief Allows a client read only when group and id match the target client.
  */
-template <Client_t T>  // Restricts this overload to client entity types.
-bool PermissionManager::canRead(
-    const Requester& requester,
-    uint64_t         client_id,
-    HttpError&       error)  // Synchronous read check for a client record.
-{
+// Restricts this overload to client entity types.
+// Synchronous read check for a client record.
+template <Client_t T>
+bool PermissionManager::canRead(const Requester& requester,
+                                uint64_t         client_id,
+                                HttpError&       error) {
   return pm_priv::assert_group_id_match(requester,
                                         T::getTableName(),
                                         client_id,
@@ -84,12 +85,12 @@ bool PermissionManager::canRead(
 }
 /** @brief Allows a client update only when group and id match the target
  * client. */
-template <Client_t T>  // Restricts this overload to client entity types.
-bool PermissionManager::canUpdate(
-    const Requester& requester,
-    uint64_t         client_id,
-    HttpError&       error)  // Synchronous update check for a client record.
-{
+// Restricts this overload to client entity types.
+// Synchronous update check for a client record.
+template <Client_t T>
+bool PermissionManager::canUpdate(const Requester& requester,
+                                  uint64_t         client_id,
+                                  HttpError&       error) {
   return pm_priv::assert_group_id_match(requester,
                                         T::getTableName(),
                                         client_id,
@@ -99,12 +100,12 @@ bool PermissionManager::canUpdate(
 }
 /** @brief Allows a client deletion only when group and id match the target
  * client. */
-template <Client_t T>  // Restricts this overload to client entity types.
-bool PermissionManager::canDelete(
-    const Requester& requester,
-    const uint64_t   client_id,
-    HttpError&       error)  // Synchronous delete check for a client record.
-{
+// Restricts this overload to client entity types.
+// Synchronous delete check for a client record.
+template <Client_t T>
+bool PermissionManager::canDelete(const Requester& requester,
+                                  const uint64_t   client_id,
+                                  HttpError&       error) {
   return pm_priv::assert_group_id_match(requester,
                                         T::getTableName(),
                                         client_id,
@@ -115,13 +116,12 @@ bool PermissionManager::canDelete(
 
 /** @brief Allows toggling a client's active flag only on a matching group and
  * id. */
-template <Client_t T>  // Restricts this overload to client entity types.
-bool PermissionManager::canToggleActive(
-    const Requester& requester,
-    const uint64_t   client_id,
-    Http::Error&
-        error)  // Synchronous check for changing a client's active flag.
-{
+// Restricts this overload to client entity types.
+// Synchronous check for changing a client's active flag.
+template <Client_t T>
+bool PermissionManager::canToggleActive(const Requester& requester,
+                                        const uint64_t   client_id,
+                                        Http::Error&     error) {
   return pm_priv::assert_group_id_match(requester,
                                         T::getTableName(),
                                         client_id,
@@ -132,12 +132,12 @@ bool PermissionManager::canToggleActive(
 
 /** @brief Allows listing a client's services only on a matching group and id.
  */
-template <Client_t T>  // Restricts this overload to client entity types.
-bool PermissionManager::canGetServices(
-    const Requester& requester,
-    const uint64_t   client_id,
-    Http::Error& error)  // Synchronous check for listing a client's services.
-{
+// Restricts this overload to client entity types.
+// Synchronous check for listing a client's services.
+template <Client_t T>
+bool PermissionManager::canGetServices(const Requester& requester,
+                                       const uint64_t   client_id,
+                                       Http::Error&     error) {
   return pm_priv::assert_group_id_match(requester,
                                         T::getTableName(),
                                         client_id,
@@ -148,13 +148,14 @@ bool PermissionManager::canGetServices(
 
 /** @brief Delegates service creation to the owner/admin preconditions on the
  * payload. */
-template <Service_t T>  // Restricts this overload to service entity types.
+// Restricts this overload to service entity types.
+// Synchronous create check; payload identifies the
+// target service.
+template <Service_t T>
 bool PermissionManager::canCreate(
     const Requester&                     requester,
     const std::optional<jsoncons::json>& service_j,
-    Http::Error& error)  // Synchronous create check; payload identifies the
-                         // target service.
-{
+    Http::Error&                         error) {
   return pm_priv::preServiceCreateChecks(requester,
                                          service_j,
                                          error);  // Delegate to the
@@ -163,12 +164,12 @@ bool PermissionManager::canCreate(
 }
 
 /** @brief Allows service reads for owner, admin, or staff with CAN_READ. */
-template <Service_t T>  // Restricts this overload to service entity types.
-bool PermissionManager::canRead(
-    const Requester& requester,
-    uint64_t         service_id,
-    Http::Error& error)  // Synchronous read check for a service or appointment.
-{
+// Restricts this overload to service entity types.
+// Synchronous read check for a service or appointment.
+template <Service_t T>
+bool PermissionManager::canRead(const Requester& requester,
+                                uint64_t         service_id,
+                                Http::Error&     error) {
   const std::string service_name =
       T::getTableName();  // Table name, used in the query and in denial
                           // messages.
@@ -190,13 +191,12 @@ bool PermissionManager::canRead(
 }
 
 /** @brief Allows service updates for owner, admin, or staff with CAN_WRITE. */
-template <Service_t T>  // Restricts this overload to service entity types.
-bool PermissionManager::canUpdate(
-    const Requester& requester,
-    uint64_t         service_id,
-    Http::Error&
-        error)  // Synchronous update check for a service or appointment.
-{
+// Restricts this overload to service entity types.
+// Synchronous update check for a service or appointment.
+template <Service_t T>
+bool PermissionManager::canUpdate(const Requester& requester,
+                                  uint64_t         service_id,
+                                  Http::Error&     error) {
   const std::string service_name =
       T::getTableName();  // Table name, used in the query and in denial
                           // messages.
@@ -219,12 +219,12 @@ bool PermissionManager::canUpdate(
 
 /** @brief Restricts service deletion to the owner (admins/staff are not
  * enough). */
-template <Service_t T>  // Restricts this overload to service entity types.
-bool PermissionManager::canDelete(
-    const Requester& requester,
-    const uint64_t   service_id,
-    Http::Error&     error)  // Synchronous delete check for a service.
-{
+// Restricts this overload to service entity types.
+// Synchronous delete check for a service.
+template <Service_t T>
+bool PermissionManager::canDelete(const Requester& requester,
+                                  const uint64_t   service_id,
+                                  Http::Error&     error) {
   const std::string service_name =
       T::getTableName();  // Table name, used in the query and in denial
                           // messages.
@@ -243,14 +243,14 @@ bool PermissionManager::canDelete(
 }
 
 /** @brief Restricts staff management to the service owner or admin. */
-template <typename T>  // Generic overload; T must provide the table/query
-                       // helpers used inside.
-bool PermissionManager::canManageStaff(
-    const Requester& requester,
-    uint64_t         service_id,
-    Http::Error&     error)  // Synchronous check; only
-                             // owner/admin may manage staff.
-{
+// Generic overload; T must provide the table/query
+// helpers used inside.
+// Synchronous check; only
+// owner/admin may manage staff.
+template <typename T>
+bool PermissionManager::canManageStaff(const Requester& requester,
+                                       uint64_t         service_id,
+                                       Http::Error&     error) {
   std::string service_name =
       T::getTableName();  // Table name, used in the query and in denial
                           // messages.
@@ -270,13 +270,13 @@ bool PermissionManager::canManageStaff(
 
 /** @brief Allows case creation for owner/admin or staff with CAN_WRITE; query
  * derived from payload. */
-template <Case_t T>  // Restricts this overload to case entity types.
-bool PermissionManager::canCreate(
-    const Requester&                     requester,
-    const std::optional<jsoncons::json>& data_j,
-    Http::Error& error)  // Synchronous create check; payload identifies the
-                         // parent service.
-{
+// Restricts this overload to case entity types.
+// Synchronous create check; payload identifies the
+// parent service.
+template <Case_t T>
+bool PermissionManager::canCreate(const Requester& requester,
+                                  const std::optional<jsoncons::json>& data_j,
+                                  Http::Error&                         error) {
   std::string service_name =
       T::getTableName();  // Table name, used in the query and in denial
                           // messages.
@@ -298,12 +298,12 @@ bool PermissionManager::canCreate(
 }
 
 /** @brief Allows case reads for owner/admin or staff with CAN_READ. */
-template <Case_t T>  // Restricts this overload to case entity types.
-bool PermissionManager::canRead(
-    const Requester& requester,
-    const uint64_t   _id,
-    Http::Error& error)  // Synchronous read check; _id is the target entity id.
-{
+// Restricts this overload to case entity types.
+// Synchronous read check; _id is the target entity id.
+template <Case_t T>
+bool PermissionManager::canRead(const Requester& requester,
+                                const uint64_t   _id,
+                                Http::Error&     error) {
   std::string service_name =
       T::getTableName();  // Table name, used in the query and in denial
                           // messages.
@@ -324,13 +324,12 @@ bool PermissionManager::canRead(
 }
 
 /** @brief Allows case updates for owner/admin or staff with CAN_WRITE. */
-template <Case_t T>  // Restricts this overload to case entity types.
-bool PermissionManager::canUpdate(
-    const Requester& requester,
-    const uint64_t   _id,
-    Http::Error&
-        error)  // Synchronous update check; _id is the target entity id.
-{
+// Restricts this overload to case entity types.
+// Synchronous update check; _id is the target entity id.
+template <Case_t T>
+bool PermissionManager::canUpdate(const Requester& requester,
+                                  const uint64_t   _id,
+                                  Http::Error&     error) {
   std::string service_name =
       T::getTableName();  // Table name, used in the query and in denial
                           // messages.
@@ -352,13 +351,12 @@ bool PermissionManager::canUpdate(
 }
 
 /** @brief Allows case deletion for owner/admin or staff with CAN_DELETE. */
-template <Case_t T>  // Restricts this overload to case entity types.
-bool PermissionManager::canDelete(
-    const Requester& requester,
-    const uint64_t   _id,
-    Http::Error&
-        error)  // Synchronous delete check; _id is the target entity id.
-{
+// Restricts this overload to case entity types.
+// Synchronous delete check; _id is the target entity id.
+template <Case_t T>
+bool PermissionManager::canDelete(const Requester& requester,
+                                  const uint64_t   _id,
+                                  Http::Error&     error) {
   std::string service_name =
       T::getTableName();  // Table name, used in the query and in denial
                           // messages.
@@ -381,14 +379,14 @@ bool PermissionManager::canDelete(
 
 /** @brief Allows appointment creation for owner/admin or staff with CAN_WRITE;
  * needs a clinic id in the payload. */
-template <
-    Appointment_t T>  // Restricts this overload to appointment entity types.
+// Restricts this overload to appointment entity types.
+// Synchronous create check; payload identifies the
+// target service.
+template <Appointment_t T>
 bool PermissionManager::canCreate(
     const Requester&                     requester,
     const std::optional<jsoncons::json>& service_j,
-    Http::Error& error)  // Synchronous create check; payload identifies the
-                         // target service.
-{
+    Http::Error&                         error) {
   std::string service_name =
       T::getOrgName();  // Organisation name for appointment types, used in
                         // messages/queries.
@@ -400,9 +398,9 @@ bool PermissionManager::canCreate(
                 error);  // Pull the target clinic id out of the payload;
                          // failure fills in error.
 
-  if (!service_id.has_value())  // If the id could not be extracted, deny
-                                // without a permission lookup.
-  {
+  // If the id could not be extracted, deny
+  // without a permission lookup.
+  if (!service_id.has_value()) {
     return false;  // Deny the request.
   }
   std::optional<jsoncons::json> permissions_j =
@@ -424,13 +422,12 @@ bool PermissionManager::canCreate(
 }
 
 /** @brief Allows appointment reads for owner/admin or staff with CAN_READ. */
-template <
-    Appointment_t T>  // Restricts this overload to appointment entity types.
-bool PermissionManager::canRead(
-    const Requester& requester,
-    uint64_t         appointment_id,
-    Http::Error&     error)  // Synchronous read check for an appointment.
-{
+// Restricts this overload to appointment entity types.
+// Synchronous read check for an appointment.
+template <Appointment_t T>
+bool PermissionManager::canRead(const Requester& requester,
+                                uint64_t         appointment_id,
+                                Http::Error&     error) {
   std::string service_name =
       T::getOrgName();  // Organisation name for appointment types, used in
                         // messages/queries.
@@ -453,13 +450,12 @@ bool PermissionManager::canRead(
 
 /** @brief Allows appointment updates for owner/admin or staff with CAN_WRITE.
  */
-template <
-    Appointment_t T>  // Restricts this overload to appointment entity types.
-bool PermissionManager::canUpdate(
-    const Requester& requester,
-    const uint64_t   appointment_id,
-    Http::Error&     error)  // Synchronous update check for an appointment.
-{
+// Restricts this overload to appointment entity types.
+// Synchronous update check for an appointment.
+template <Appointment_t T>
+bool PermissionManager::canUpdate(const Requester& requester,
+                                  const uint64_t   appointment_id,
+                                  Http::Error&     error) {
   std::string service_name =
       T::getOrgName();  // Organisation name for appointment types, used in
                         // messages/queries.
@@ -482,13 +478,12 @@ bool PermissionManager::canUpdate(
 
 /** @brief Allows appointment deletion for owner/admin or staff with CAN_DELETE.
  */
-template <
-    Appointment_t T>  // Restricts this overload to appointment entity types.
-bool PermissionManager::canDelete(
-    const Requester& requester,
-    uint64_t         appointment_id,
-    Http::Error&     error)  // Synchronous delete check for an appointment.
-{
+// Restricts this overload to appointment entity types.
+// Synchronous delete check for an appointment.
+template <Appointment_t T>
+bool PermissionManager::canDelete(const Requester& requester,
+                                  uint64_t         appointment_id,
+                                  Http::Error&     error) {
   std::string service_name =
       T::getOrgName();  // Organisation name for appointment types, used in
                         // messages/queries.
@@ -511,25 +506,25 @@ bool PermissionManager::canDelete(
 }
 
 /** @brief Coroutine form of client canCreate(); always returns `true`. */
-template <Client_t T>  // Restricts this overload to client entity types.
-drogon::Task<bool>
-PermissionManager::canCreateAsync(  // Coroutine create check definition.
+// Restricts this overload to client entity types.
+// Coroutine create check definition.
+// These arguments are unused here; the marker silences compiler
+// warnings.
+template <Client_t T>
+drogon::Task<bool> PermissionManager::canCreateAsync(
     [[maybe_unused]] const Requester&                     requester,
     [[maybe_unused]] const std::optional<jsoncons::json>& data_j,
-    [[maybe_unused]] Http::Error&
-        error)  // These arguments are unused here; the marker silences compiler
-                // warnings.
-{
+    [[maybe_unused]] Http::Error&                         error) {
   co_return true;  // Coroutine return: allow the action.
 }
 
 /** @brief Coroutine form of client canRead(); group and id must match. */
-template <Client_t T>  // Restricts this overload to client entity types.
-drogon::Task<bool> PermissionManager::canReadAsync(
-    const Requester& requester,
-    uint64_t         client_id,
-    HttpError&       error)  // Coroutine read check for a client record.
-{
+// Restricts this overload to client entity types.
+// Coroutine read check for a client record.
+template <Client_t T>
+drogon::Task<bool> PermissionManager::canReadAsync(const Requester& requester,
+                                                   uint64_t         client_id,
+                                                   HttpError&       error) {
   co_return pm_priv::assert_group_id_match(requester,
                                            T::getTableName(),
                                            client_id,
@@ -537,12 +532,12 @@ drogon::Task<bool> PermissionManager::canReadAsync(
                                                     // group+id check result.
 }
 /** @brief Coroutine form of client canUpdate(); group and id must match. */
-template <Client_t T>  // Restricts this overload to client entity types.
-drogon::Task<bool> PermissionManager::canUpdateAsync(
-    const Requester& requester,
-    uint64_t         client_id,
-    HttpError&       error)  // Coroutine update check for a client record.
-{
+// Restricts this overload to client entity types.
+// Coroutine update check for a client record.
+template <Client_t T>
+drogon::Task<bool> PermissionManager::canUpdateAsync(const Requester& requester,
+                                                     uint64_t         client_id,
+                                                     HttpError&       error) {
   co_return pm_priv::assert_group_id_match(requester,
                                            T::getTableName(),
                                            client_id,
@@ -550,12 +545,12 @@ drogon::Task<bool> PermissionManager::canUpdateAsync(
                                                     // group+id check result.
 }
 /** @brief Coroutine form of client canDelete(); group and id must match. */
-template <Client_t T>  // Restricts this overload to client entity types.
-drogon::Task<bool> PermissionManager::canDeleteAsync(
-    const Requester& requester,
-    const uint64_t   client_id,
-    HttpError&       error)  // Coroutine delete check for a client record.
-{
+// Restricts this overload to client entity types.
+// Coroutine delete check for a client record.
+template <Client_t T>
+drogon::Task<bool> PermissionManager::canDeleteAsync(const Requester& requester,
+                                                     const uint64_t   client_id,
+                                                     HttpError&       error) {
   co_return pm_priv::assert_group_id_match(requester,
                                            T::getTableName(),
                                            client_id,
@@ -565,12 +560,11 @@ drogon::Task<bool> PermissionManager::canDeleteAsync(
 
 /** @brief Coroutine form of client canToggleActive(); group and id must match.
  */
-template <Client_t T>  // Restricts this overload to client entity types.
+// Restricts this overload to client entity types.
+// Coroutine check for changing a client's active flag.
+template <Client_t T>
 drogon::Task<bool> PermissionManager::canToggleActiveAsync(
-    const Requester& requester,
-    const uint64_t   client_id,
-    Http::Error& error)  // Coroutine check for changing a client's active flag.
-{
+    const Requester& requester, const uint64_t client_id, Http::Error& error) {
   co_return pm_priv::assert_group_id_match(requester,
                                            T::getTableName(),
                                            client_id,
@@ -580,12 +574,11 @@ drogon::Task<bool> PermissionManager::canToggleActiveAsync(
 
 /** @brief Coroutine form of client canGetServices(); group and id must match.
  */
-template <Client_t T>  // Restricts this overload to client entity types.
+// Restricts this overload to client entity types.
+// Coroutine check for listing a client's services.
+template <Client_t T>
 drogon::Task<bool> PermissionManager::canGetServicesAsync(
-    const Requester& requester,
-    const uint64_t   client_id,
-    Http::Error&     error)  // Coroutine check for listing a client's services.
-{
+    const Requester& requester, const uint64_t client_id, Http::Error& error) {
   co_return pm_priv::assert_group_id_match(requester,
                                            T::getTableName(),
                                            client_id,
@@ -595,12 +588,13 @@ drogon::Task<bool> PermissionManager::canGetServicesAsync(
 
 /** @brief Coroutine form of service canCreate(); checks the owner/admin
  * preconditions. */
-template <Service_t T>  // Restricts this overload to service entity types.
+// Restricts this overload to service entity types.
+// Coroutine create check using the service payload.
+template <Service_t T>
 drogon::Task<bool> PermissionManager::canCreateAsync(
     const Requester&                     requester,
     const std::optional<jsoncons::json>& service_j,
-    Http::Error& error)  // Coroutine create check using the service payload.
-{
+    Http::Error&                         error) {
   co_return pm_priv::preServiceCreateChecks(requester,
                                             service_j,
                                             error);  // Coroutine return of the
@@ -609,12 +603,12 @@ drogon::Task<bool> PermissionManager::canCreateAsync(
 
 /** @brief Coroutine form of service canRead(); owner/admin or CAN_READ staff.
  */
-template <Service_t T>  // Restricts this overload to service entity types.
-drogon::Task<bool> PermissionManager::canReadAsync(
-    const Requester& requester,
-    uint64_t         service_id,
-    Http::Error& error)  // Coroutine read check for a service or appointment.
-{
+// Restricts this overload to service entity types.
+// Coroutine read check for a service or appointment.
+template <Service_t T>
+drogon::Task<bool> PermissionManager::canReadAsync(const Requester& requester,
+                                                   uint64_t         service_id,
+                                                   Http::Error&     error) {
   const std::string service_name =
       T::getTableName();  // Table name, used in the query and in denial
                           // messages.
@@ -638,12 +632,12 @@ drogon::Task<bool> PermissionManager::canReadAsync(
 
 /** @brief Coroutine form of service canUpdate(); owner/admin or CAN_WRITE
  * staff. */
-template <Service_t T>  // Restricts this overload to service entity types.
-drogon::Task<bool> PermissionManager::canUpdateAsync(
-    const Requester& requester,
-    uint64_t         service_id,
-    Http::Error& error)  // Coroutine update check for a service or appointment.
-{
+// Restricts this overload to service entity types.
+// Coroutine update check for a service or appointment.
+template <Service_t T>
+drogon::Task<bool> PermissionManager::canUpdateAsync(const Requester& requester,
+                                                     uint64_t     service_id,
+                                                     Http::Error& error) {
   const std::string service_name =
       T::getTableName();  // Table name, used in the query and in denial
                           // messages.
@@ -666,12 +660,12 @@ drogon::Task<bool> PermissionManager::canUpdateAsync(
 }
 
 /** @brief Coroutine form of service canDelete(); owner only. */
-template <Service_t T>  // Restricts this overload to service entity types.
-drogon::Task<bool> PermissionManager::canDeleteAsync(
-    const Requester& requester,
-    const uint64_t   service_id,
-    Http::Error&     error)  // Coroutine delete check for a service.
-{
+// Restricts this overload to service entity types.
+// Coroutine delete check for a service.
+template <Service_t T>
+drogon::Task<bool> PermissionManager::canDeleteAsync(const Requester& requester,
+                                                     const uint64_t service_id,
+                                                     Http::Error&   error) {
   const std::string service_name =
       T::getTableName();  // Table name, used in the query and in denial
                           // messages.
@@ -690,14 +684,12 @@ drogon::Task<bool> PermissionManager::canDeleteAsync(
 }
 
 /** @brief Coroutine form of canManageStaff(); owner or admin only. */
-template <
-    typename T>  // Generic overload; T must provide the table/query helpers
-                 // used inside.
+// Generic overload; T must provide the table/query helpers
+// used inside.
+// Coroutine staff-management check.
+template <typename T>
 drogon::Task<bool> PermissionManager::canManageStaffAsync(
-    const Requester& requester,
-    uint64_t         service_id,
-    Http::Error&     error)  // Coroutine staff-management check.
-{
+    const Requester& requester, uint64_t service_id, Http::Error& error) {
   std::string service_name =
       T::getTableName();  // Table name, used in the query and in denial
                           // messages.
@@ -717,13 +709,13 @@ drogon::Task<bool> PermissionManager::canManageStaffAsync(
 
 /** @brief Coroutine form of case canCreate(); owner/admin or CAN_WRITE staff.
  */
-template <Case_t T>  // Restricts this overload to case entity types.
+// Restricts this overload to case entity types.
+// Coroutine create check using the client/case payload.
+template <Case_t T>
 drogon::Task<bool> PermissionManager::canCreateAsync(
     const Requester&                     requester,
     const std::optional<jsoncons::json>& data_j,
-    Http::Error&
-        error)  // Coroutine create check using the client/case payload.
-{
+    Http::Error&                         error) {
   std::string service_name =
       T::getTableName();  // Table name, used in the query and in denial
                           // messages.
@@ -744,12 +736,12 @@ drogon::Task<bool> PermissionManager::canCreateAsync(
 }
 
 /** @brief Coroutine form of case canRead(); owner/admin or CAN_READ staff. */
-template <Case_t T>  // Restricts this overload to case entity types.
-drogon::Task<bool> PermissionManager::canReadAsync(
-    const Requester& requester,
-    const uint64_t   _id,
-    Http::Error& error)  // Coroutine read check; _id is the target entity id.
-{
+// Restricts this overload to case entity types.
+// Coroutine read check; _id is the target entity id.
+template <Case_t T>
+drogon::Task<bool> PermissionManager::canReadAsync(const Requester& requester,
+                                                   const uint64_t   _id,
+                                                   Http::Error&     error) {
   std::string service_name =
       T::getTableName();  // Table name, used in the query and in denial
                           // messages.
@@ -771,12 +763,12 @@ drogon::Task<bool> PermissionManager::canReadAsync(
 
 /** @brief Coroutine form of case canUpdate(); owner/admin or CAN_WRITE staff.
  */
-template <Case_t T>  // Restricts this overload to case entity types.
-drogon::Task<bool> PermissionManager::canUpdateAsync(
-    const Requester& requester,
-    const uint64_t   _id,
-    Http::Error& error)  // Coroutine update check; _id is the target entity id.
-{
+// Restricts this overload to case entity types.
+// Coroutine update check; _id is the target entity id.
+template <Case_t T>
+drogon::Task<bool> PermissionManager::canUpdateAsync(const Requester& requester,
+                                                     const uint64_t   _id,
+                                                     Http::Error&     error) {
   std::string service_name =
       T::getTableName();  // Table name, used in the query and in denial
                           // messages.
@@ -798,12 +790,12 @@ drogon::Task<bool> PermissionManager::canUpdateAsync(
 
 /** @brief Coroutine form of case canDelete(); owner/admin or CAN_DELETE staff.
  */
-template <Case_t T>  // Restricts this overload to case entity types.
-drogon::Task<bool> PermissionManager::canDeleteAsync(
-    const Requester& requester,
-    const uint64_t   _id,
-    Http::Error& error)  // Coroutine delete check; _id is the target entity id.
-{
+// Restricts this overload to case entity types.
+// Coroutine delete check; _id is the target entity id.
+template <Case_t T>
+drogon::Task<bool> PermissionManager::canDeleteAsync(const Requester& requester,
+                                                     const uint64_t   _id,
+                                                     Http::Error&     error) {
   std::string service_name =
       T::getTableName();  // Table name, used in the query and in denial
                           // messages.
@@ -825,13 +817,13 @@ drogon::Task<bool> PermissionManager::canDeleteAsync(
 
 /** @brief Coroutine form of appointment canCreate(); needs a clinic id in the
  * payload. */
-template <
-    Appointment_t T>  // Restricts this overload to appointment entity types.
+// Restricts this overload to appointment entity types.
+// Coroutine create check using the service payload.
+template <Appointment_t T>
 drogon::Task<bool> PermissionManager::canCreateAsync(
     const Requester&                     requester,
     const std::optional<jsoncons::json>& service_j,
-    Http::Error& error)  // Coroutine create check using the service payload.
-{
+    Http::Error&                         error) {
   std::string service_name =
       T::getOrgName();  // Organisation name for appointment types, used in
                         // messages/queries.
@@ -843,9 +835,9 @@ drogon::Task<bool> PermissionManager::canCreateAsync(
                 error);  // Pull the target clinic id out of the payload;
                          // failure fills in error.
 
-  if (!service_id.has_value())  // If the id could not be extracted, deny
-                                // without a permission lookup.
-  {
+  // If the id could not be extracted, deny
+  // without a permission lookup.
+  if (!service_id.has_value()) {
     co_return false;  // Coroutine return: deny the request.
   }
   std::optional<jsoncons::json> permissions_j = co_await pm_priv::
@@ -868,13 +860,12 @@ drogon::Task<bool> PermissionManager::canCreateAsync(
 
 /** @brief Coroutine form of appointment canRead(); owner/admin or CAN_READ
  * staff. */
-template <
-    Appointment_t T>  // Restricts this overload to appointment entity types.
-drogon::Task<bool> PermissionManager::canReadAsync(
-    const Requester& requester,
-    uint64_t         appointment_id,
-    Http::Error&     error)  // Coroutine read check for an appointment.
-{
+// Restricts this overload to appointment entity types.
+// Coroutine read check for an appointment.
+template <Appointment_t T>
+drogon::Task<bool> PermissionManager::canReadAsync(const Requester& requester,
+                                                   uint64_t     appointment_id,
+                                                   Http::Error& error) {
   std::string service_name =
       T::getOrgName();  // Organisation name for appointment types, used in
                         // messages/queries.
@@ -897,13 +888,13 @@ drogon::Task<bool> PermissionManager::canReadAsync(
 
 /** @brief Coroutine form of appointment canUpdate(); owner/admin or CAN_WRITE
  * staff. */
-template <
-    Appointment_t T>  // Restricts this overload to appointment entity types.
+// Restricts this overload to appointment entity types.
+// Coroutine update check for an appointment.
+template <Appointment_t T>
 drogon::Task<bool> PermissionManager::canUpdateAsync(
     const Requester& requester,
     const uint64_t   appointment_id,
-    Http::Error&     error)  // Coroutine update check for an appointment.
-{
+    Http::Error&     error) {
   std::string service_name =
       T::getOrgName();  // Organisation name for appointment types, used in
                         // messages/queries.
@@ -926,13 +917,12 @@ drogon::Task<bool> PermissionManager::canUpdateAsync(
 
 /** @brief Coroutine form of appointment canDelete(); owner/admin or CAN_DELETE
  * staff. */
-template <
-    Appointment_t T>  // Restricts this overload to appointment entity types.
-drogon::Task<bool> PermissionManager::canDeleteAsync(
-    const Requester& requester,
-    uint64_t         appointment_id,
-    Http::Error&     error)  // Coroutine delete check for an appointment.
-{
+// Restricts this overload to appointment entity types.
+// Coroutine delete check for an appointment.
+template <Appointment_t T>
+drogon::Task<bool> PermissionManager::canDeleteAsync(const Requester& requester,
+                                                     uint64_t appointment_id,
+                                                     Http::Error& error) {
   std::string service_name =
       T::getOrgName();  // Organisation name for appointment types, used in
                         // messages/queries.

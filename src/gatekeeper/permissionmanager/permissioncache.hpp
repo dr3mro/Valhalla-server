@@ -66,14 +66,15 @@
  * std::chrono::steady_clock.
  */
 template <typename ClockT = std::chrono::
-              steady_clock>  // The clock is a template parameter mainly so
-                             // tests can substitute a fake clock.
-class BasicPermissionCache   // "Basic" because a
-                             // convenience alias
-                             // with the default
-                             // clock is provided at
-                             // the end.
-{
+              // The clock is a template parameter mainly so
+              // tests can substitute a fake clock.
+              // "Basic" because a
+              // convenience alias
+              // with the default
+              // clock is provided at
+              // the end.
+          steady_clock>
+class BasicPermissionCache {
  public:                // Everything below is callable by users of the cache.
   using Clock = ClockT; /**< Clock type used for expiry timestamps; a local
                            nickname for readability. */
@@ -90,14 +91,12 @@ class BasicPermissionCache   // "Basic" because a
    */
   explicit BasicPermissionCache(std::chrono::seconds ttl,
                                 size_t               max_entries = 10000)
-      : ttl_(ttl), max_entries_(max_entries)
-  {
+      : ttl_(ttl), max_entries_(max_entries) {
   }  // Stores the idle lifetime and capacity; "explicit" prevents accidental
      // implicit construction.
 
   /** @brief Whether caching is active (i.e. the TTL is positive). */
-  [[nodiscard]] bool enabled() const
-  {
+  [[nodiscard]] bool enabled() const {
     return ttl_.count() > 0;
   }  // Caching is on only when the TTL is a positive number of seconds.
 
@@ -105,8 +104,7 @@ class BasicPermissionCache   // "Basic" because a
    * Token to pass to put(); a put with a stale token is dropped, so a read
    * that raced with a write cannot store pre-write data.
    */
-  [[nodiscard]] uint64_t generation() const
-  {
+  [[nodiscard]] uint64_t generation() const {
     return generation_.load(std::memory_order_acquire);
   }  // Reads the current epoch without locking; acquire pairs with the
      // release in invalidateAll().
@@ -117,24 +115,22 @@ class BasicPermissionCache   // "Basic" because a
    * @return The cached JSON on a live hit; `std::nullopt` when disabled,
    * absent, or expired (expired entries are erased).
    */
-  std::optional<jsoncons::json> get(const std::string& key)
-  {
-    if (!enabled())  // If caching is disabled, never pretend to have a
-                     // cached answer.
-    {
+  std::optional<jsoncons::json> get(const std::string& key) {
+    // If caching is disabled, never pretend to have a
+    // cached answer.
+    if (!enabled()) {
       return std::nullopt;  // No value to give back.
     }
     std::lock_guard<std::mutex> lock(
         mutex_);  // Lock for the whole lookup so no other thread can change
                   // the map mid-read.
     auto it = map_.find(key);  // Look for an entry with this query string.
-    if (it == map_.end())      // Not found: a plain cache miss.
-    {
+    // Not found: a plain cache miss.
+    if (it == map_.end()) {
       return std::nullopt;  // Caller should read from the database.
     }
-    if (Clock::now() >=
-        it->second.expires)  // Found but too old (idle past its TTL).
-    {
+    // Found but too old (idle past its TTL).
+    if (Clock::now() >= it->second.expires) {
       map_.erase(it);  // Remove the stale entry so it cannot be used again.
       return std::nullopt;  // Treat a stale entry as a miss.
     }
@@ -157,25 +153,22 @@ class BasicPermissionCache   // "Basic" because a
    */
   void put(const std::string&    key,
            const jsoncons::json& value,
-           uint64_t              generation_at_read)
-  {
-    if (!enabled())  // Nothing to store when caching is off.
-    {
+           uint64_t              generation_at_read) {
+    // Nothing to store when caching is off.
+    if (!enabled()) {
       return;  // Do nothing.
     }
     std::lock_guard<std::mutex> lock(
         mutex_);  // Guard the map for the whole operation.
-    if (generation_at_read !=
-        generation_.load(
-            std::memory_order_acquire))  // A flush happened while the
-                                         // database read was in flight.
-    {
+    // A flush happened while the
+    // database read was in flight.
+    if (generation_at_read != generation_.load(std::memory_order_acquire)) {
       return;  // Drop this stale result instead of re-inserting old data.
     }
     sweepExpired();  // First try to make room by removing already-expired
                      // entries.
-    if (map_.size() >= max_entries_)  // Still full: hit the capacity limit.
-    {
+    // Still full: hit the capacity limit.
+    if (map_.size() >= max_entries_) {
       map_.clear();  // Simplest policy: throw everything away to bound
                      // memory use.
     }
@@ -191,8 +184,7 @@ class BasicPermissionCache   // "Basic" because a
    * permission write), since the cache otherwise has no write-triggered
    * invalidation.
    */
-  void invalidateAll()
-  {
+  void invalidateAll() {
     std::lock_guard<std::mutex> lock(
         mutex_);  // Serialize the flush with reads and writes.
     generation_
@@ -205,8 +197,7 @@ class BasicPermissionCache   // "Basic" because a
 
   /** @brief Number of entries currently held (including any not yet swept).
    */
-  [[nodiscard]] size_t size()
-  {
+  [[nodiscard]] size_t size() {
     std::lock_guard<std::mutex> lock(
         mutex_);         // Lock so the size is read consistently.
     return map_.size();  // Number of entries currently held (expired ones
@@ -219,8 +210,7 @@ class BasicPermissionCache   // "Basic" because a
    *          Configurator::PermissionCacheConfig; thread-safe initialization
    * is guaranteed by the function-local static.
    */
-  static BasicPermissionCache& instance()
-  {
+  static BasicPermissionCache& instance() {
     static BasicPermissionCache cache(
         Store::getObject<Configurator>()
             ->get<Configurator::PermissionCacheConfig>()
@@ -238,21 +228,20 @@ class BasicPermissionCache   // "Basic" because a
    * @pre Caller holds mutex_.
    */
   // Drop entries that have been idle past the TTL (at most once a minute).
-  void sweepExpired()
-  {
+  void sweepExpired() {
     const auto now = Clock::now();  // One timestamp for the whole sweep so
                                     // the cutoff is consistent.
-    if (now < next_sweep_)  // Rate limit: do not scan more than about once
-                            // a minute.
-    {
+    // Rate limit: do not scan more than about once
+    // a minute.
+    if (now < next_sweep_) {
       return;  // Not time yet; skip the work.
     }
     next_sweep_ =
         now + std::chrono::seconds{60};  // Schedule the next allowed sweep.
     for (auto it = map_.begin();
-         it != map_.end();)  // Walk every entry; note there is no ++it in
-                             // the header.
-    {
+         // Walk every entry; note there is no ++it in
+         // the header.
+         it != map_.end();) {
       it = (now >= it->second.expires)
                ? map_.erase(it)
                : std::next(it);  // Erase expired entries; erase() returns the
@@ -262,8 +251,7 @@ class BasicPermissionCache   // "Basic" because a
 
   /** @brief A cached permissions value together with its idle-expiry
    * deadline. */
-  struct Entry
-  {
+  struct Entry {
     jsoncons::json value; /**< Cached permissions JSON, the actual answer we
                              are storing. */
     TimePoint expires;    /**< Idle deadline; renewed on every hit so busy

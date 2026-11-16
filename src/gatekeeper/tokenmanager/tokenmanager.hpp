@@ -29,10 +29,10 @@
 #include "drogon/utils/coroutine.h"
 // Base class holding token parameters and validation helpers.
 #include "gatekeeper/keeprbase/keeprbase.hpp"
-namespace api  // Top-level API namespace.
-{
-  namespace v2  // Version 2 of the API.
-  {
+// Top-level API namespace.
+namespace api {
+  // Version 2 of the API.
+  namespace v2 {
     /**
      * @class TokenManager
      * @brief Issues and validates the HS256 JWTs that authenticate clients.
@@ -47,9 +47,9 @@ namespace api  // Top-level API namespace.
      * checker. It stamps a badge with the user's identity and an expiry,
      * and later checks that a presented badge is genuine and still current.
      */
-    class TokenManager : public KeeprBase  // Reuses the base class's token
-                                           // settings and validation code.
-    {
+    // Reuses the base class's token
+    // settings and validation code.
+    class TokenManager : public KeeprBase {
      public:  // The following methods are the public interface.
       /** @brief Constructs a manager using the Configurator-backed token
        * parameters. */

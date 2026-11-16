@@ -60,8 +60,7 @@
  */
 struct WouldBlock  // An empty tag type used only to unwind the stack back to
                    // the fast-path wrapper.
-{
-};
+{};
 
 /**
  * @class DbProbe
@@ -77,15 +76,14 @@ struct WouldBlock  // An empty tag type used only to unwind the stack back to
  * at a time.
  * @see WouldBlock
  */
-class DbProbe  // Sets a per-thread flag so database access points can detect
-               // the fast path.
-{
+// Sets a per-thread flag so database access points can detect
+// the fast path.
+class DbProbe {
  public:
   /**
    * Marks the current thread as probing for the lifetime of this object.
    */
-  DbProbe()
-  {
+  DbProbe() {
     active_ = true;
   }  // Turning the flag on is all the setup needed; the destructor turns it
      // off.
@@ -93,8 +91,7 @@ class DbProbe  // Sets a per-thread flag so database access points can detect
   /**
    * Clears the probe flag for the current thread.
    */
-  ~DbProbe()
-  {
+  ~DbProbe() {
     active_ = false;
   }  // Always clears it, including when WouldBlock unwinds the stack.
 
@@ -111,11 +108,11 @@ class DbProbe  // Sets a per-thread flag so database access points can detect
    * any connection is leased, allowing the request to be re-run from the
    * start on a DB worker where no probe is active.
    */
-  static void check()  // Static: callers do not need a DbProbe object, just
-                       // the flag it sets for the thread.
-  {
-    if (active_)  // True only while this thread is probing the fast path.
-    {
+  // Static: callers do not need a DbProbe object, just
+  // the flag it sets for the thread.
+  static void check() {
+    // True only while this thread is probing the fast path.
+    if (active_) {
       throw WouldBlock{};  // Abort the attempt before any database work
                            // or response side effect occurs.
     }

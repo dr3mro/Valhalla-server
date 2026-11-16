@@ -98,8 +98,7 @@
  * typically through the Store.
  * @see DbExecutor, PasswordWorker, runOnExecutor()
  */
-class BoundedExecutor
-{
+class BoundedExecutor {
  public:
   /**
    * @brief Creates the workers and starts their threads.
@@ -181,23 +180,20 @@ class BoundedExecutor
    * Number of tasks currently waiting across all queues; relaxed because it
    * is only a live gauge.
    */
-  [[nodiscard]] std::size_t pending() const
-  {
+  [[nodiscard]] std::size_t pending() const {
     return queued_.load(std::memory_order_relaxed);
   }  // "relaxed" = a rough, cheap count
   /**
    * True when no worker threads exist and tasks run on the submitting thread.
    */
   // No workers at all means every task runs inline on the submitting thread.
-  [[nodiscard]] bool inlineMode() const
-  {
+  [[nodiscard]] bool inlineMode() const {
     return workers_.empty();
   }
   /**
    * Number of worker threads; zero in inline mode.
    */
-  [[nodiscard]] std::size_t workerCount() const
-  {
+  [[nodiscard]] std::size_t workerCount() const {
     return workers_.size();
   }  // size of the worker vector
 
@@ -229,8 +225,7 @@ class BoundedExecutor
    *          guarantees, which is fine for a tuning gauge that nobody makes
    * decisions from in real time.
    */
-  struct Stats
-  {
+  struct Stats {
     std::uint64_t submitted;    // tasks accepted and put into a queue
     std::uint64_t rejected;     // tasks refused because the queue was full (or
                                 // the pool was stopping)
@@ -253,8 +248,7 @@ class BoundedExecutor
    * @brief A queued task together with the timestamp used for wait-time
    * accounting.
    */
-  struct Item
-  {
+  struct Item {
     std::function<void()> task;  // the job to run; std::function can hold
                                  // any callable with no arguments
     std::chrono::steady_clock::time_point
@@ -272,8 +266,7 @@ class BoundedExecutor
    *          having to wait for the same lock; giving each worker its own
    * reduces that waiting.)
    */
-  struct Worker
-  {
+  struct Worker {
     std::mutex mutex;  // protects this worker's queue and condition variable
     std::condition_variable
         cv;  // lets the worker sleep until submit() wakes it with new work
@@ -404,16 +397,14 @@ template <typename Body>
 void runOnExecutor(BoundedExecutor& executor,
                    CALLBACK_&&      callback,
                    const char*      busy_message,
-                   Body&&           body)
-{
+                   Body&&           body) {
   auto shared_callback = std::make_shared<CALLBACK_>(
       std::move(callback));  // store it once so both paths can use it
   if (!executor.submit(
-          [shared_callback, task = std::forward<Body>(body)]() mutable
-          {
+          [shared_callback, task = std::forward<Body>(body)]() mutable {
+            // false means the pool is full
             task(std::move(*shared_callback));
-          }))  // false means the pool is full
-  {
+          })) {
     (*shared_callback)(api::v2::Http::Status::SERVICE_UNAVAILABLE,
                        busy_message);  // rejected: answer 503 here and never
                                        // run body

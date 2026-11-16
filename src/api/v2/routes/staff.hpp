@@ -70,8 +70,8 @@
 #include "entities/services/radiologycenters.hpp"
 #include "store/store.hpp"  // Store/service locator supplies shared objects.
 
-namespace api::v2  // The v2 API controllers live here.
-{
+// The v2 API controllers live here.
+namespace api::v2 {
   /**
    * @class Staff
    * @brief REST controller for managing staff membership of service entities.
@@ -87,10 +87,10 @@ namespace api::v2  // The v2 API controllers live here.
    * segment (e.g. /api/v2/staff/.../staff/invite).
    */
   class Staff
-      : public drogon::HttpController<Staff>  // Inherit Drogon's controller
-                                              // template so Drogon registers
-                                              // these routes.
-  {
+      // Inherit Drogon's controller
+      // template so Drogon registers
+      // these routes.
+      : public drogon::HttpController<Staff> {
    public:
     /**
      * @brief Invite a staff member to the service entity described by the
@@ -104,87 +104,82 @@ namespace api::v2  // The v2 API controllers live here.
      * @param[in,out] callback Response callback, consumed exactly once.
      * @param[in] serviceType Registry key taken from the path.
      */
+    // HTTP handler that invites a staff member.
     void Invite(const drogon::HttpRequestPtr&                         req,
                 std::function<void(const drogon::HttpResponsePtr&)>&& callback,
-                const std::string&
-                    serviceType)  // HTTP handler that invites a staff member.
-    {
+                const std::string& serviceType) {
       const bool async =
           asyncDb_;  // Copy cached flag selecting the database mode.
-      if (async)     // Async mode: run the controller coroutine.
-      {
+      // Async mode: run the controller coroutine.
+      if (async) {
         auto cb = std::move(callback);  // Move callback into the coroutine.
-        drogon::async_run(
-            [this, req, cb, serviceType]() mutable
-                -> drogon::Task<void>  // Start coroutine capturing its
-                                       // state by value.
-            {
-              CALLBACK_ mcb = [cb](int code,
-                                   const std::string&
-                                       content)  // Adapter: controller status
-                                                 // -> HTTP response.
-              {
-                using Reply = std::function<void(
-                    // Response callback alias.
-                    const drogon::HttpResponsePtr&)>;
-                switch (code)  // Map the numeric status to a reply.
-                {
-                  // Success.
-                  case api::v2::Http::Status::OK:
-                    Helper::successResponse(content,
-                                            Reply(cb));  // Send 200 with the
-                                                         // body.
-                    break;                               // Leave the switch.
-                  case api::v2::Http::Status::
-                      INTERNAL_SERVER_ERROR:  // Failure.
-                    Helper::failureResponse(content,
-                                            Reply(cb));  // Send tagged 500.
-                    break;                               // Leave the switch.
-                  default:                               // Other error.
-                    Helper::errorResponse(static_cast<drogon::HttpStatusCode>(
-                                              code),
-                                          content,
-                                          Reply(cb));  // Reuse the numeric
-                                                       // status.
-                    break;                             // Leave the switch.
-                }
-              };
+        // Start coroutine capturing its
+        // state by value.
+        drogon::async_run([this, req, cb, serviceType]() mutable
+                              -> drogon::Task<void> {
+          // Adapter: controller status
+          // -> HTTP response.
+          CALLBACK_ mcb = [cb](int code, const std::string& content) {
+            using Reply = std::function<void(
+                // Response callback alias.
+                const drogon::HttpResponsePtr&)>;
+            // Map the numeric status to a reply.
+            switch (code) {
+              // Success.
+              case api::v2::Http::Status::OK:
+                Helper::successResponse(content,
+                                        Reply(cb));  // Send 200 with the
+                                                     // body.
+                break;                               // Leave the switch.
+              case api::v2::Http::Status::INTERNAL_SERVER_ERROR:  // Failure.
+                Helper::failureResponse(content,
+                                        Reply(cb));  // Send tagged 500.
+                break;                               // Leave the switch.
+              default:                               // Other error.
+                Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code),
+                                      content,
+                                      Reply(cb));  // Reuse the numeric
+                                                   // status.
+                break;                             // Leave the switch.
+            }
+          };
 
-              Requester
-                  requester(req->getAttributes()->get<uint64_t>("clientID"),
-                            req->getAttributes()->get<std::string>(
-                                "clientGroup"));  // Build caller identity for
-                                                  // permission checks.
+          Requester requester(req->getAttributes()->get<uint64_t>("clientID"),
+                              req->getAttributes()->get<std::string>(
+                                  "clientGroup"));  // Build caller identity for
+                                                    // permission checks.
 
-              auto ctlIt = staffRegistry.find(
-                  serviceType);  // Find controller for this URL type.
-              if (ctlIt == staffRegistry.end())  // Unknown type.
-              {
-                std::move(mcb)(api::v2::Http::Status::BAD_REQUEST,
-                               fmt::format("Type mapping not found for: {}",
-                                           serviceType));  // Reply 400.
-                co_return;                                 // End coroutine.
-              }
+          auto ctlIt = staffRegistry.find(
+              serviceType);  // Find controller for this URL type.
+          // Unknown type.
+          if (ctlIt == staffRegistry.end()) {
+            std::move(mcb)(api::v2::Http::Status::BAD_REQUEST,
+                           fmt::format("Type mapping not found for: {}",
+                                       serviceType));  // Reply 400.
+            co_return;                                 // End coroutine.
+          }
 
-              try  // Guard the controller call.
-              {
-                co_await std::visit(
-                    [&](auto& controller) -> drogon::Task<void>
-                    {  // Dispatch to correct controller type.
-                      co_await controller->InviteStaffToEntityAsync(
-                          std::move(mcb),
-                          std::move(requester),
-                          req->body());  // Invite staff
-                                         // asynchronously
-                                         // with body.
-                    },
-                    ctlIt->second);  // The selected variant.
-              }
-              catch (const std::exception& e)  // Unexpected error.
-              {
-                Helper::failureResponse(e.what(), std::move(cb));  // Reply 500.
-              }
-            });
+          // Guard the controller call.
+          try {
+            co_await std::visit(
+                [&](auto& controller)
+                    -> drogon::Task<void> {  // Dispatch to correct
+                                             // controller type.
+                  // Invite staff
+                  // asynchronously
+                  // with body.
+                  // The selected variant.
+                  // Unexpected error.
+                  co_await controller->InviteStaffToEntityAsync(std::move(mcb),
+                                                                std::move(
+                                                                    requester),
+                                                                req->body());
+                },
+                ctlIt->second);
+          } catch (const std::exception& e) {
+            Helper::failureResponse(e.what(), std::move(cb));  // Reply 500.
+          }
+        });
 
         return;  // Coroutine owns the rest.
       }
@@ -211,85 +206,80 @@ namespace api::v2  // The v2 API controllers live here.
      * @param[in,out] callback Response callback, consumed exactly once.
      * @param[in] serviceType Registry key taken from the path.
      */
+    // HTTP handler that adds a staff member.
     void Add(const drogon::HttpRequestPtr&                         req,
              std::function<void(const drogon::HttpResponsePtr&)>&& callback,
-             const std::string&
-                 serviceType)  // HTTP handler that adds a staff member.
-    {
+             const std::string& serviceType) {
       const bool async = asyncDb_;  // Which database mode is configured.
-      if (async)                    // Async coroutine path.
-      {
+      // Async coroutine path.
+      if (async) {
         auto cb = std::move(callback);  // Move callback into coroutine.
-        drogon::async_run(
-            [this, req, cb, serviceType]() mutable
-                -> drogon::Task<void>  // Launch coroutine with captured
-                                       // state.
-            {
-              CALLBACK_ mcb =
-                  [cb](int                code,
-                       const std::string& content)  // Adapt status to HTTP.
-              {
-                using Reply = std::function<void(
-                    // Response callback alias.
-                    const drogon::HttpResponsePtr&)>;
-                switch (code)  // Map status to reply.
-                {
-                  // Success.
-                  case api::v2::Http::Status::OK:
-                    Helper::successResponse(
-                        // Send 200.
-                        content,
-                        Reply(cb));
-                    break;  // Leave the switch.
-                  case api::v2::Http::Status::
-                      INTERNAL_SERVER_ERROR:  // Failure.
-                    Helper::failureResponse(content,
-                                            Reply(cb));  // Send tagged 500.
-                    break;                               // Leave the switch.
-                  default:                               // Other error.
-                    Helper::errorResponse(static_cast<drogon::HttpStatusCode>(
-                                              code),
-                                          content,
-                                          Reply(cb));  // Reuse numeric status.
-                    break;                             // Leave the switch.
-                }
-              };
+        // Launch coroutine with captured
+        // state.
+        drogon::async_run([this, req, cb, serviceType]() mutable
+                              -> drogon::Task<void> {
+          // Adapt status to HTTP.
+          CALLBACK_ mcb = [cb](int code, const std::string& content) {
+            using Reply = std::function<void(
+                // Response callback alias.
+                const drogon::HttpResponsePtr&)>;
+            // Map status to reply.
+            switch (code) {
+              // Success.
+              case api::v2::Http::Status::OK:
+                Helper::successResponse(
+                    // Send 200.
+                    content,
+                    Reply(cb));
+                break;  // Leave the switch.
+              case api::v2::Http::Status::INTERNAL_SERVER_ERROR:  // Failure.
+                Helper::failureResponse(content,
+                                        Reply(cb));  // Send tagged 500.
+                break;                               // Leave the switch.
+              default:                               // Other error.
+                Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code),
+                                      content,
+                                      Reply(cb));  // Reuse numeric status.
+                break;                             // Leave the switch.
+            }
+          };
 
-              Requester requester(req->getAttributes()->get<uint64_t>(
-                                      "clientID"),
-                                  req->getAttributes()->get<std::string>(
-                                      "clientGroup"));  // Caller identity for
-                                                        // permissions.
+          Requester requester(req->getAttributes()->get<uint64_t>("clientID"),
+                              req->getAttributes()->get<std::string>(
+                                  "clientGroup"));  // Caller identity for
+                                                    // permissions.
 
-              auto ctlIt = staffRegistry.find(
-                  serviceType);                  // Look up controller for type.
-              if (ctlIt == staffRegistry.end())  // Unknown type.
-              {
-                std::move(mcb)(api::v2::Http::Status::BAD_REQUEST,
-                               fmt::format("Type mapping not found for: {}",
-                                           serviceType));  // Reply 400.
-                co_return;                                 // Stop.
-              }
+          auto ctlIt =
+              staffRegistry.find(serviceType);  // Look up controller for type.
+          // Unknown type.
+          if (ctlIt == staffRegistry.end()) {
+            std::move(mcb)(api::v2::Http::Status::BAD_REQUEST,
+                           fmt::format("Type mapping not found for: {}",
+                                       serviceType));  // Reply 400.
+            co_return;                                 // Stop.
+          }
 
-              try  // Guard the call.
-              {
-                co_await std::visit(
-                    [&](auto& controller) -> drogon::Task<void>
-                    {  // Dispatch to right controller.
-                      co_await controller->AddStaffToEntityAsync(
-                          std::move(mcb),
-                          std::move(requester),
-                          req->body());  // Add staff
-                                         // asynchronously
-                                         // with body.
-                    },
-                    ctlIt->second);  // Chosen variant.
-              }
-              catch (const std::exception& e)  // Unexpected error.
-              {
-                Helper::failureResponse(e.what(), std::move(cb));  // Reply 500.
-              }
-            });
+          // Guard the call.
+          try {
+            co_await std::visit(
+                [&](auto& controller)
+                    -> drogon::Task<void> {  // Dispatch to right
+                                             // controller.
+                  // Add staff
+                  // asynchronously
+                  // with body.
+                  // Chosen variant.
+                  // Unexpected error.
+                  co_await controller->AddStaffToEntityAsync(std::move(mcb),
+                                                             std::move(
+                                                                 requester),
+                                                             req->body());
+                },
+                ctlIt->second);
+          } catch (const std::exception& e) {
+            Helper::failureResponse(e.what(), std::move(cb));  // Reply 500.
+          }
+        });
 
         return;  // Coroutine handles rest.
       }
@@ -316,85 +306,80 @@ namespace api::v2  // The v2 API controllers live here.
      * @param[in,out] callback Response callback, consumed exactly once.
      * @param[in] serviceType Registry key taken from the path.
      */
+    // HTTP handler that removes a staff member.
     void Remove(const drogon::HttpRequestPtr&                         req,
                 std::function<void(const drogon::HttpResponsePtr&)>&& callback,
-                const std::string&
-                    serviceType)  // HTTP handler that removes a staff member.
-    {
+                const std::string& serviceType) {
       const bool async = asyncDb_;  // Which database mode is configured.
-      if (async)                    // Async coroutine path.
-      {
+      // Async coroutine path.
+      if (async) {
         auto cb = std::move(callback);  // Move callback into coroutine.
-        drogon::async_run(
-            [this, req, cb, serviceType]() mutable
-                -> drogon::Task<void>  // Launch coroutine with captured
-                                       // state.
-            {
-              CALLBACK_ mcb =
-                  [cb](int                code,
-                       const std::string& content)  // Adapt status to HTTP.
-              {
-                using Reply = std::function<void(
-                    // Response callback alias.
-                    const drogon::HttpResponsePtr&)>;
-                switch (code)  // Map status to reply.
-                {
-                  // Success.
-                  case api::v2::Http::Status::OK:
-                    Helper::successResponse(
-                        // Send 200.
-                        content,
-                        Reply(cb));
-                    break;  // Leave the switch.
-                  case api::v2::Http::Status::
-                      INTERNAL_SERVER_ERROR:  // Failure.
-                    Helper::failureResponse(content,
-                                            Reply(cb));  // Send tagged 500.
-                    break;                               // Leave the switch.
-                  default:                               // Other error.
-                    Helper::errorResponse(static_cast<drogon::HttpStatusCode>(
-                                              code),
-                                          content,
-                                          Reply(cb));  // Reuse numeric status.
-                    break;                             // Leave the switch.
-                }
-              };
+        // Launch coroutine with captured
+        // state.
+        drogon::async_run([this, req, cb, serviceType]() mutable
+                              -> drogon::Task<void> {
+          // Adapt status to HTTP.
+          CALLBACK_ mcb = [cb](int code, const std::string& content) {
+            using Reply = std::function<void(
+                // Response callback alias.
+                const drogon::HttpResponsePtr&)>;
+            // Map status to reply.
+            switch (code) {
+              // Success.
+              case api::v2::Http::Status::OK:
+                Helper::successResponse(
+                    // Send 200.
+                    content,
+                    Reply(cb));
+                break;  // Leave the switch.
+              case api::v2::Http::Status::INTERNAL_SERVER_ERROR:  // Failure.
+                Helper::failureResponse(content,
+                                        Reply(cb));  // Send tagged 500.
+                break;                               // Leave the switch.
+              default:                               // Other error.
+                Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code),
+                                      content,
+                                      Reply(cb));  // Reuse numeric status.
+                break;                             // Leave the switch.
+            }
+          };
 
-              Requester requester(req->getAttributes()->get<uint64_t>(
-                                      "clientID"),
-                                  req->getAttributes()->get<std::string>(
-                                      "clientGroup"));  // Caller identity for
-                                                        // permissions.
+          Requester requester(req->getAttributes()->get<uint64_t>("clientID"),
+                              req->getAttributes()->get<std::string>(
+                                  "clientGroup"));  // Caller identity for
+                                                    // permissions.
 
-              auto ctlIt = staffRegistry.find(
-                  serviceType);                  // Look up controller for type.
-              if (ctlIt == staffRegistry.end())  // Unknown type.
-              {
-                std::move(mcb)(api::v2::Http::Status::BAD_REQUEST,
-                               fmt::format("Type mapping not found for: {}",
-                                           serviceType));  // Reply 400.
-                co_return;                                 // Stop.
-              }
+          auto ctlIt =
+              staffRegistry.find(serviceType);  // Look up controller for type.
+          // Unknown type.
+          if (ctlIt == staffRegistry.end()) {
+            std::move(mcb)(api::v2::Http::Status::BAD_REQUEST,
+                           fmt::format("Type mapping not found for: {}",
+                                       serviceType));  // Reply 400.
+            co_return;                                 // Stop.
+          }
 
-              try  // Guard the call.
-              {
-                co_await std::visit(
-                    [&](auto& controller) -> drogon::Task<void>
-                    {  // Dispatch to right controller.
-                      co_await controller->RemoveStaffFromEntityAsync(
-                          std::move(mcb),
-                          std::move(requester),
-                          req->body());  // Remove staff
-                                         // asynchronously
-                                         // with body.
-                    },
-                    ctlIt->second);  // Chosen variant.
-              }
-              catch (const std::exception& e)  // Unexpected error.
-              {
-                Helper::failureResponse(e.what(), std::move(cb));  // Reply 500.
-              }
-            });
+          // Guard the call.
+          try {
+            co_await std::visit(
+                [&](auto& controller)
+                    -> drogon::Task<void> {  // Dispatch to right
+                                             // controller.
+                  // Remove staff
+                  // asynchronously
+                  // with body.
+                  // Chosen variant.
+                  // Unexpected error.
+                  co_await controller
+                      ->RemoveStaffFromEntityAsync(std::move(mcb),
+                                                   std::move(requester),
+                                                   req->body());
+                },
+                ctlIt->second);
+          } catch (const std::exception& e) {
+            Helper::failureResponse(e.what(), std::move(cb));  // Reply 500.
+          }
+        });
 
         return;  // Coroutine handles rest.
       }

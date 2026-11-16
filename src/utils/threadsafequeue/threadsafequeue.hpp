@@ -53,11 +53,12 @@
  * @note empty() and size() report a snapshot; another thread can modify the
  *       queue as soon as the call returns.
  */
-template <typename T>  // T is the type of element stored; the same code works
-                       // for any copyable/movable type.
-class ThreadSafeQueue  // A reusable wrapper that adds
-                       // thread safety to std::queue.
-{
+// T is the type of element stored; the same code works
+// for any copyable/movable type.
+// A reusable wrapper that adds
+// thread safety to std::queue.
+template <typename T>
+class ThreadSafeQueue {
  public:
   /**
    * @brief Default construction; the queue starts empty.
@@ -148,10 +149,10 @@ class ThreadSafeQueue  // A reusable wrapper that adds
                          // the elements.
 };
 
-template <typename T>  // Definition of the copy-push overload for the template.
-void ThreadSafeQueue<T>::push(
-    const T& value)  // Takes a const reference so the source is only read.
-{
+// Definition of the copy-push overload for the template.
+// Takes a const reference so the source is only read.
+template <typename T>
+void ThreadSafeQueue<T>::push(const T& value) {
   // Hold the lock only for the container mutation.
   std::lock_guard<std::mutex> lock(
       mutex_);         // Locks the mutex for this scope and releases it
@@ -159,25 +160,25 @@ void ThreadSafeQueue<T>::push(
   queue_.push(value);  // Appends a copy of value to the back.
 }
 
-template <typename T>  // Definition of the move-push overload.
-void ThreadSafeQueue<T>::push(
-    T&& value)  // Takes an rvalue reference so the element can be moved from.
-{
+// Definition of the move-push overload.
+// Takes an rvalue reference so the element can be moved from.
+template <typename T>
+void ThreadSafeQueue<T>::push(T&& value) {
   std::lock_guard<std::mutex> lock(
       mutex_);  // Lock before touching the shared container.
   queue_.push(std::move(
       value));  // Move the element into the queue instead of copying it.
 }
 
-template <typename T>  // Definition of pop.
-std::optional<T>
-ThreadSafeQueue<T>::pop()  // Returns a value that may be empty.
-{
+// Definition of pop.
+// Returns a value that may be empty.
+template <typename T>
+std::optional<T> ThreadSafeQueue<T>::pop() {
   // unique_lock is used because the mutex is released on every return path.
   std::unique_lock<std::mutex> lock(
       mutex_);  // A flexible lock that can be released on every return path.
-  if (queue_.empty())  // Check whether there is anything to take.
-  {
+  // Check whether there is anything to take.
+  if (queue_.empty()) {
     // Empty is not an error: report it without waiting for a producer.
     return std::nullopt;  // Signals "no item" immediately rather than
                           // blocking.
@@ -188,27 +189,28 @@ ThreadSafeQueue<T>::pop()  // Returns a value that may be empty.
   return value;  // Hands the element back to the caller.
 }
 
-template <typename T>  // Definition of empty.
-bool ThreadSafeQueue<T>::empty()
-    const  // const because inspecting does not change the queue.
-{
+// Definition of empty.
+// const because inspecting does not change the queue.
+template <typename T>
+bool ThreadSafeQueue<T>::empty() const {
   std::lock_guard<std::mutex> lock(
       mutex_);            // Lock so the check sees a consistent state.
   return queue_.empty();  // Returns true when there are no elements.
 }
 
-template <typename T>  // Definition of size.
-size_t ThreadSafeQueue<T>::size()
-    const  // const because counting does not change the queue.
-{
+// Definition of size.
+// const because counting does not change the queue.
+template <typename T>
+size_t ThreadSafeQueue<T>::size() const {
   std::lock_guard<std::mutex> lock(
       mutex_);           // Lock so the count is taken from a consistent state.
   return queue_.size();  // Returns how many elements are currently stored.
 }
 
-template <typename T>             // Definition of clear.
-void ThreadSafeQueue<T>::clear()  // Removes all stored elements.
-{
+// Definition of clear.
+// Removes all stored elements.
+template <typename T>
+void ThreadSafeQueue<T>::clear() {
   std::lock_guard<std::mutex> lock(
       mutex_);  // Lock for the whole clear operation.
   // Swapping with a fresh queue destroys all elements after the swap.
@@ -218,13 +220,14 @@ void ThreadSafeQueue<T>::clear()  // Removes all stored elements.
                      // destroys the old elements.
 }
 
-template <
-    typename T>  // Definition of emplace (outer template for the element type).
-template <typename... Args>  // Inner template for the forwarded constructor
-                             // arguments.
-void ThreadSafeQueue<T>::emplace(Args&&... args)  // Forwards arguments straight
-                                                  // to T's constructor.
-{
+// Definition of emplace (outer template for the element type).
+// Inner template for the forwarded constructor
+// arguments.
+// Forwards arguments straight
+// to T's constructor.
+template <typename T>
+template <typename... Args>
+void ThreadSafeQueue<T>::emplace(Args&&... args) {
   std::lock_guard<std::mutex> lock(
       mutex_);  // Lock before modifying the container.
   queue_.emplace(std::forward<Args>(
@@ -232,13 +235,14 @@ void ThreadSafeQueue<T>::emplace(Args&&... args)  // Forwards arguments straight
                   // categories via std::forward.
 }
 
-template <typename T>                         // Definition of front.
-std::optional<T> ThreadSafeQueue<T>::front()  // Peeks at the front element.
-{
+// Definition of front.
+// Peeks at the front element.
+template <typename T>
+std::optional<T> ThreadSafeQueue<T>::front() {
   std::lock_guard<std::mutex> lock(
-      mutex_);         // Lock so the peek is safe against concurrent changes.
-  if (queue_.empty())  // Check whether an element exists.
-  {
+      mutex_);  // Lock so the peek is safe against concurrent changes.
+  // Check whether an element exists.
+  if (queue_.empty()) {
     return std::nullopt;  // No element to return: report "nothing" instead
                           // of failing.
   }

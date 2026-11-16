@@ -58,9 +58,9 @@
  * from.
  * @see Service, Entity, Case, ServiceController, StaffController
  */
-class Clinics : public Service  // Inherits every CRUD/search/staff method; this
-                                // class only fixes the table name.
-{
+// Inherits every CRUD/search/staff method; this
+// class only fixes the table name.
+class Clinics : public Service {
  private:  // Implementation details kept hidden from outside callers.
   /** @brief Table bound to this entity; also the organisation table used by
    * Case permission queries. */
@@ -83,18 +83,16 @@ class Clinics : public Service  // Inherits every CRUD/search/staff method; this
   template <typename T>  // T is deduced from the wrapper the caller passes,
                          // so many wrapper types fit this one constructor.
   Clinics(const T& _data)
-      : Service(_data,
-                TABLENAME)  // Hand the data and table name to Service, which
-                            // copies them into Entity.
-  {
+      // Hand the data and table name to Service, which
+      // copies them into Entity.
+      : Service(_data, TABLENAME) {
   }
 
   /**
    * @brief Returns the table this entity is bound to.
    * @return The constant `clinics` string.
    */
-  static constexpr auto getTableName()
-  {
+  static constexpr auto getTableName() {
     return TABLENAME;
   }  // Returns the compile-time table name so callers can build SQL for the
      // right table.

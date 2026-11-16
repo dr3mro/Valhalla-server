@@ -67,10 +67,10 @@
   "username"  // A macro constant so the column name is spelled identically
               // everywhere it is used.
 
-namespace api  // Outer namespace for the whole API.
-{
-  namespace v2  // Version 2 of the API.
-  {
+// Outer namespace for the whole API.
+namespace api {
+  // Version 2 of the API.
+  namespace v2 {
     /**
      * @brief Constrains Client helpers to the payload types that carry
      * client data or a client id.
@@ -104,9 +104,9 @@ namespace api  // Outer namespace for the whole API.
      * updates/suspends is cached in client_id.
      * @see Entity, Types::CreateClient_t, Types::UpdateClient_t
      */
-    class Client : public Entity  // Inherits CRUD; overrides only the parts
-                                  // that need validation.
-    {
+    // Inherits CRUD; overrides only the parts
+    // that need validation.
+    class Client : public Entity {
      public:
       /**
        * @brief Non-copyable and non-movable; construct in place for the
@@ -129,10 +129,9 @@ namespace api  // Outer namespace for the whole API.
        */
       template <typename T>
       Client(const T& data, const std::string& tablename)
-          : Entity(data,
-                   tablename)  // Forward both to the base; the table will be
-                               // "users" or "providers".
-      {
+          // Forward both to the base; the table will be
+          // "users" or "providers".
+          : Entity(data, tablename) {
       }
 
       /**
@@ -143,8 +142,8 @@ namespace api  // Outer namespace for the whole API.
        * @return INSERT ... RETURNING id, or std::nullopt on failure.
        */
       std::optional<std::string> getSqlCreateStatement(pqxx::params& params)
-          final  // "final" locks this validated implementation in place.
-      {
+          // "final" locks this validated implementation in place.
+          final {
         Binder binder(params);  // Fresh binder clears params and
                                 // restarts numbering.
         return buildClientCreateStatement(
@@ -160,8 +159,8 @@ namespace api  // Outer namespace for the whole API.
        * present.
        */
       std::optional<std::string> getSqlUpdateStatement(pqxx::params& params)
-          final  // "final" again: updates must use validated data too.
-      {
+          // "final" again: updates must use validated data too.
+          final {
         Binder binder(params);  // Fresh binder.
         return buildClientUpdateStatement(
             binder);  // Delegate to the validated-pair UPDATE builder.
@@ -180,13 +179,11 @@ namespace api  // Outer namespace for the whole API.
        * @return UPDATE ... RETURNING id,active, or std::nullopt if the
        * payload is not SuspendData or another exception occurs.
        */
+      // One shared builder for both suspend
+      // and activate.
       std::optional<std::string> getSqlToggleSuspendStatement(
-          bool          state,
-          pqxx::params& params)  // One shared builder for both suspend
-                                 // and activate.
-      {
-        try
-        {
+          bool state, pqxx::params& params) {
+        try {
           Types::SuspendData suspenddata = std::get<Types::SuspendData>(
               getData());  // The payload must be SuspendData, or
                            // std::get throws.
@@ -201,14 +198,13 @@ namespace api  // Outer namespace for the whole API.
               binder.bind(client_id.value());  // Bind the id second -> $2.
           return fmt::format(
               "UPDATE {} SET active={} WHERE id={} RETURNING "
+              // RETURNING confirms the new state.
+              // Wrong payload type or a formatting problem.
               "id,active;",
               tablename,
               state_ph,
-              id_ph);  // RETURNING confirms the new state.
-        }
-        catch (const std::exception&
-                   e)  // Wrong payload type or a formatting problem.
-        {
+              id_ph);
+        } catch (const std::exception& e) {
           Message::ErrorMessage(
               fmt::
                   format("Failed to create Sql suspend statement for table {}.",
@@ -225,8 +221,7 @@ namespace api  // Outer namespace for the whole API.
        * id.
        * @return The suspend UPDATE, or std::nullopt on failure.
        */
-      std::optional<std::string> getSqlSuspendStatement(pqxx::params& params)
-      {
+      std::optional<std::string> getSqlSuspendStatement(pqxx::params& params) {
         return getSqlToggleSuspendStatement(false, params);
       }  // Thin wrapper: suspend means active = false.
 
@@ -237,8 +232,7 @@ namespace api  // Outer namespace for the whole API.
        * id.
        * @return The activate UPDATE, or std::nullopt on failure.
        */
-      std::optional<std::string> getSqlActivateStatement(pqxx::params& params)
-      {
+      std::optional<std::string> getSqlActivateStatement(pqxx::params& params) {
         return getSqlToggleSuspendStatement(true, params);
       }  // Thin wrapper: activate means active = true.
 
@@ -247,8 +241,7 @@ namespace api  // Outer namespace for the whole API.
        * builder call.
        * @return The cached id, or nullopt if no builder has set it yet.
        */
-      std::optional<uint64_t> getClientId() const
-      {
+      std::optional<uint64_t> getClientId() const {
         return client_id;
       }  // Lets callers know which id the built statement targets.
 
@@ -264,22 +257,21 @@ namespace api  // Outer namespace for the whole API.
        * collapse to false.
        * @throws std::bad_variant_access if T is not the held alternative.
        */
+      // Used to reject duplicate usernames before inserting.
       template <typename T>
-      bool exists()  // Used to reject duplicate usernames before inserting.
-      {
+      bool exists() {
         auto client_data = std::get<T>(getData())
                                .get_data_set();  // The validated column/value
                                                  // pairs from the payload.
-        auto iterator = std::ranges::find_if(client_data,
-                                             [&](const auto& item)
-                                             {
-                                               return item.first == USERNAME;
-                                             });  // Find the pair whose column
-                                                  // is "username".
+        auto iterator =
+            std::ranges::find_if(client_data, [&](const auto& item) {
+              return item.first == USERNAME;
+            });  // Find the pair whose column
+                 // is "username".
 
-        if (iterator != client_data.end())  // Only check when the payload
-                                            // actually contains a username.
-        {
+        // Only check when the payload
+        // actually contains a username.
+        if (iterator != client_data.end()) {
           std::string username =
               iterator->second;  // The value part of the pair.
           auto result =
@@ -313,13 +305,11 @@ namespace api  // Outer namespace for the whole API.
        * @return INSERT ... RETURNING id, or std::nullopt if the payload
        * is not CreateClient_t or another exception occurs.
        */
+      // Builds the INSERT for a validated account
+      // payload.
       template <typename Binder>
-      std::optional<std::string> buildClientCreateStatement(
-          Binder& binder)  // Builds the INSERT for a validated account
-                           // payload.
-      {
-        try
-        {
+      std::optional<std::string> buildClientCreateStatement(Binder& binder) {
+        try {
           auto clientdata = std::get<Types::CreateClient_t>(
               getData());  // Must be a create payload; std::get
                            // throws otherwise.
@@ -330,9 +320,9 @@ namespace api  // Outer namespace for the whole API.
               values_arr;  // Matching placeholders in the same order.
 
           for (const auto& item :
-               clientdata.get_data_set())  // Walk each validated
-                                           // (column, value) pair.
-          {
+               // Walk each validated
+               // (column, value) pair.
+               clientdata.get_data_set()) {
             keys_arr.push_back(item.first);  // The column name is trusted
                                              // because it came from validation.
             values_arr.push_back(
@@ -340,16 +330,14 @@ namespace api  // Outer namespace for the whole API.
                                             // parameter.
           }
 
+          // RETURNING id gives back the
+          // new account id.
+          // Wrong payload type or formatting error.
           return fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING id;",
                              tablename,
                              fmt::join(keys_arr, ","),
-                             fmt::join(values_arr,
-                                       ","));  // RETURNING id gives back the
-                                               // new account id.
-        }
-        catch (
-            const std::exception& e)  // Wrong payload type or formatting error.
-        {
+                             fmt::join(values_arr, ","));
+        } catch (const std::exception& e) {
           Message::ErrorMessage(
               fmt::format("Failed to create Sql create statement for table {}.",
                           tablename));         // Log the table.
@@ -371,21 +359,19 @@ namespace api  // Outer namespace for the whole API.
        * missing, the payload is not UpdateClient_t, or another exception
        * occurs.
        */
+      // Builds the UPDATE for a validated account
+      // payload.
       template <typename Binder>
-      std::optional<std::string> buildClientUpdateStatement(
-          Binder& binder)  // Builds the UPDATE for a validated account
-                           // payload.
-      {
-        try
-        {
+      std::optional<std::string> buildClientUpdateStatement(Binder& binder) {
+        try {
           auto clientdata = std::get<Types::UpdateClient_t>(getData())
                                 .get_data_set();  // Validated (column, value)
                                                   // pairs to set.
           client_id       = std::get<Types::UpdateClient_t>(getData())
                                 .get_id();  // Cache the target id for callers.
-          if (!client_id.has_value())  // Without an id the UPDATE would hit
-                                       // every row, so stop.
-          {
+          // Without an id the UPDATE would hit
+          // every row, so stop.
+          if (!client_id.has_value()) {
             Message::ErrorMessage(
                 fmt::format("Failed to update client data. No id "
                             "provided."));  // Log the missing id.
@@ -395,8 +381,8 @@ namespace api  // Outer namespace for the whole API.
           std::vector<std::string>
               set_clauses;  // One "column = $n" string per field.
           for (auto it = clientdata.begin(); it != clientdata.end();
-               ++it)  // Walk every validated pair.
-          {
+               // Walk every validated pair.
+               ++it) {
             set_clauses.push_back(
                 fmt::format("{} = {}",
                             it->first,
@@ -405,18 +391,15 @@ namespace api  // Outer namespace for the whole API.
                                                 // is bound.
           }
 
+          // Bind the id last so its
+          // placeholder follows the SET
+          // values.
+          // Wrong payload type or formatting error.
           return fmt::format("UPDATE {} SET {} WHERE id={} RETURNING id;",
                              tablename,
                              fmt::join(set_clauses, ", "),
-                             binder.bind(
-                                 client_id
-                                     .value()));  // Bind the id last so its
-                                                  // placeholder follows the SET
-                                                  // values.
-        }
-        catch (
-            const std::exception& e)  // Wrong payload type or formatting error.
-        {
+                             binder.bind(client_id.value()));
+        } catch (const std::exception& e) {
           Message::ErrorMessage(
               fmt::format("Failed to create Sql update statement for table {}.",
                           tablename));         // Log the table.

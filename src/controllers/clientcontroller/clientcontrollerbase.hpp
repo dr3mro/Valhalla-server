@@ -67,8 +67,7 @@ using Requester =
  * GateKeeper for login/logout bookkeeping.
  * @see ClientController, EntityControllerBase
  */
-class ClientControllerBase
-{
+class ClientControllerBase {
  public:
   ClientControllerBase() = default;  // No state to initialize in an interface.
 

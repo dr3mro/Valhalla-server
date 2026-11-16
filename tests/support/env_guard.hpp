@@ -43,21 +43,19 @@
  * exactly as it was, whether that means restoring an old value or removing it
  * again.
  */
-class EnvGuard
-{
+class EnvGuard {
  public:
   /**
    * Sets `key` to `value` for the lifetime of the guard.
    */
   EnvGuard(const std::string& key, const std::string& value)
-      : key_(key)  // Remember which variable to restore later.
-  {
+      // Remember which variable to restore later.
+      : key_(key) {
     const char* previous =
         std::getenv(key.c_str());  // Read the current value, if any, before
                                    // overwriting it.
-    if (previous !=
-        nullptr)  // Only meaningful if the variable was actually set.
-    {
+    // Only meaningful if the variable was actually set.
+    if (previous != nullptr) {
       hadPrevious_ = true;      // Record that we must restore a value later.
       previous_    = previous;  // Copy the value; the pointer from getenv
                                 // may go away.
@@ -72,13 +70,13 @@ class EnvGuard
    * Unsets `key` for the lifetime of the guard.
    */
   explicit EnvGuard(const std::string& key)
-      : key_(key)  // `explicit` stops accidental implicit conversions to
-                   // EnvGuard.
-  {
+      // `explicit` stops accidental implicit conversions to
+      // EnvGuard.
+      : key_(key) {
     const char* previous =
         std::getenv(key.c_str());  // Read the old value so we can put it back.
-    if (previous != nullptr)       // Skip recording if there was no old value.
-    {
+    // Skip recording if there was no old value.
+    if (previous != nullptr) {
       hadPrevious_ = true;      // There is something to restore on destruction.
       previous_    = previous;  // Copy it into owned storage.
     }
@@ -95,18 +93,16 @@ class EnvGuard
   EnvGuard& operator=(EnvGuard&&) =
       delete;  // No move assignment, to keep ownership unambiguous.
 
-  ~EnvGuard()  // Runs at scope exit, even when a test throws, so the
-               // environment is always restored.
-  {
-    if (hadPrevious_)  // The variable existed before, so restore its
-                       // original value.
-    {
-      setenv(key_.c_str(),
-             previous_.c_str(),
-             1);  // Put the saved value back (overwrite).
-    }
-    else  // The variable did not exist before.
-    {
+  // Runs at scope exit, even when a test throws, so the
+  // environment is always restored.
+  ~EnvGuard() {
+    // The variable existed before, so restore its
+    // original value.
+    if (hadPrevious_) {
+      // Put the saved value back (overwrite).
+      // The variable did not exist before.
+      setenv(key_.c_str(), previous_.c_str(), 1);
+    } else {
       unsetenv(key_.c_str());  // Remove it again to leave no trace.
     }
   }

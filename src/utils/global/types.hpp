@@ -29,11 +29,11 @@
 
 #pragma once  // Include this header at most once per translation unit.
 // std::string is used for the column name, data type and constraint text.
+// Outer namespace for all API code.
 #include <string>
-namespace api  // Outer namespace for all API code.
-{
-  namespace v2  // Nested namespace for version-2 API code.
-  {
+namespace api {
+  // Nested namespace for version-2 API code.
+  namespace v2 {
     /**
      * @struct ColumnInfo
      * @brief Describes one database column as reported by the schema query.
@@ -41,10 +41,9 @@ namespace api  // Outer namespace for all API code.
      * and hashing deliberately ignore Constraint so that the same column is
      * recognised regardless of its default/constraint expression.
      */
-    using ColumnInfo =
-        struct ColumnInfo  // A named struct exposed via a "using" alias so
-                           // both spellings work.
-    {
+    // A named struct exposed via a "using" alias so
+    // both spellings work.
+    using ColumnInfo = struct ColumnInfo {
       /**
        * @brief Column name.
        */
@@ -73,8 +72,7 @@ namespace api  // Outer namespace for all API code.
        * @return True when the three keyed fields match; Constraint is
        * ignored.
        */
-      bool operator==(const ColumnInfo& other) const
-      {
+      bool operator==(const ColumnInfo& other) const {
         return Name == other.Name && DataType == other.DataType &&
                isNullable == other.isNullable;
       }  // Only the three "key" fields decide equality; Constraint is
@@ -84,24 +82,24 @@ namespace api  // Outer namespace for all API code.
   }  // namespace v2
 }  // namespace api
 
-namespace std  // We are allowed to specialise std::hash for our own types by
-               // opening namespace std.
-{
+// We are allowed to specialise std::hash for our own types by
+// opening namespace std.
+namespace std {
   /**
    * @brief Hashes ColumnInfo consistently with its operator==.
    * @details Combines Name, DataType and isNullable; Constraint is excluded
    * so equal columns always receive equal hashes.
    */
-  template <>  // An explicit specialisation: replace the generic std::hash
-               // specifically for ColumnInfo.
-  struct hash<api::v2::ColumnInfo>  // The hash object type for
-                                    // ColumnInfo keys.
-  {
+  // An explicit specialisation: replace the generic std::hash
+  // specifically for ColumnInfo.
+  // The hash object type for
+  // ColumnInfo keys.
+  template <>
+  struct hash<api::v2::ColumnInfo> {
     /** @brief Hashes the three keyed fields, matching
      * ColumnInfo::operator==. */
-    size_t operator()(const api::v2::ColumnInfo& column)
-        const  // Called by unordered containers to get a hash for a column.
-    {
+    // Called by unordered containers to get a hash for a column.
+    size_t operator()(const api::v2::ColumnInfo& column) const {
       // Combine hashes of Name, DataType, and isNullable
       size_t h1 = hash<std::string>()(column.Name);  // Hash the name first.
       size_t h2 =
@@ -118,16 +116,15 @@ namespace std  // We are allowed to specialise std::hash for our own types by
   /**
    * @brief Hashes a pair of strings by combining the hashes of its members.
    */
-  template <>  // Another explicit specialisation, this time for a pair of
-               // strings.
-  struct hash<std::pair<std::string,
-                        std::string>>  // Lets a (string, string) pair be used
-                                       // as a key in unordered containers.
-  {
+  // Another explicit specialisation, this time for a pair of
+  // strings.
+  // Lets a (string, string) pair be used
+  // as a key in unordered containers.
+  template <>
+  struct hash<std::pair<std::string, std::string>> {
     /** @brief Hashes a string pair by combining its two members' hashes. */
-    size_t operator()(const std::pair<std::string, std::string>& pair)
-        const  // Receives the pair and produces one combined hash value.
-    {
+    // Receives the pair and produces one combined hash value.
+    size_t operator()(const std::pair<std::string, std::string>& pair) const {
       // Combine the hashes of the pair's two strings.
       size_t h1 = hash<std::string>()(
           pair.first);  // Hash the first string of the pair.

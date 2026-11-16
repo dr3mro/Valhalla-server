@@ -39,15 +39,14 @@
 // Store::getObject<> locates the shared Configurator.
 #include "store/store.hpp"
 
-namespace  // An anonymous namespace makes the helper below visible only inside
-           // this .cpp file.
-{
+// An anonymous namespace makes the helper below visible only inside
+// this .cpp file.
+namespace {
   /**
    * Returns the DB executor settings held by the application-wide
    * Configurator.
    */
-  const Configurator::DbExecutorConfig& config()
-  {
+  const Configurator::DbExecutorConfig& config() {
     return Store::getObject<Configurator>()
         ->get<Configurator::DbExecutorConfig>();
   }  // Fetching fresh each time means construction always sees the active
@@ -60,8 +59,7 @@ namespace  // An anonymous namespace makes the helper below visible only inside
  */
 DbExecutor::DbExecutor()
     : BoundedExecutor(config().workers, config().queue_max, "DB executor"),
-      io_fast_path_(config().io_fast_path)
-{
+      io_fast_path_(config().io_fast_path) {
 }  // The initializer list forwards sizes to the base and caches the fast-path
    // flag.
 
@@ -75,7 +73,6 @@ DbExecutor::DbExecutor(std::size_t workers,
                        std::size_t queue_max,
                        bool        io_fast_path)
     : BoundedExecutor(workers, queue_max, "DB executor"),
-      io_fast_path_(io_fast_path)
-{
+      io_fast_path_(io_fast_path) {
 }  // Used by tests that want deterministic sizes without touching global
    // configuration.

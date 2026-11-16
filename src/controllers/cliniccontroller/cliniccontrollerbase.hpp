@@ -59,8 +59,7 @@ using namespace api::v2;  // Bring project types (Requester, Http, ...) into
  * contract; Update and Search are synchronous only.
  * @see ClinicController, EntityControllerBase
  */
-class ClinicControllerBase
-{
+class ClinicControllerBase {
  public:
   explicit ClinicControllerBase() =
       default;  // No state to initialize in an interface.

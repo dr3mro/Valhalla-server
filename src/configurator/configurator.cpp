@@ -42,13 +42,14 @@
  * fingerprint lists.
  * @see Configurator::DOSDetectorConfig
  */
-template <>  // This is a full specialization: a hand-written version for
-             // exactly one template argument.
+// This is a full specialization: a hand-written version for
+// exactly one template argument.
+// Callers asking for
+// DOSDetectorConfig reach
+// the member below.
+template <>
 Configurator::DOSDetectorConfig&
-Configurator::get<Configurator::DOSDetectorConfig>()  // Callers asking for
-                                                      // DOSDetectorConfig reach
-                                                      // the member below.
-{
+Configurator::get<Configurator::DOSDetectorConfig>() {
   return dos_detector_config_;  // Hand back the stored DoS settings section
                                 // by reference (no copy).
 }
@@ -60,11 +61,12 @@ Configurator::get<Configurator::DOSDetectorConfig>()  // Callers asking for
  * PostgreSQL.
  * @see Configurator::DatabaseConfig
  */
-template <>  // Full specialization for the database connection settings type.
+// Full specialization for the database connection settings type.
+// Maps the DatabaseConfig
+// type to its stored member.
+template <>
 Configurator::DatabaseConfig&
-Configurator::get<Configurator::DatabaseConfig>()  // Maps the DatabaseConfig
-                                                   // type to its stored member.
-{
+Configurator::get<Configurator::DatabaseConfig>() {
   return database_config_;  // Hand back the stored database settings section
                             // by reference.
 }
@@ -76,11 +78,11 @@ Configurator::get<Configurator::DatabaseConfig>()  // Maps the DatabaseConfig
  * HTTP server.
  * @see Configurator::ServerConfig
  */
-template <>  // Full specialization for the Drogon server settings type.
-Configurator::ServerConfig&
-Configurator::get<Configurator::ServerConfig>()  // Maps the ServerConfig type
-                                                 // to its stored member.
-{
+// Full specialization for the Drogon server settings type.
+// Maps the ServerConfig type
+// to its stored member.
+template <>
+Configurator::ServerConfig& Configurator::get<Configurator::ServerConfig>() {
   return server_config_;  // Hand back the stored server settings section by
                           // reference.
 }
@@ -91,11 +93,12 @@ Configurator::get<Configurator::ServerConfig>()  // Maps the ServerConfig type
  * sign them.
  * @see Configurator::TokenManagerParameters
  */
-template <>  // Full specialization for the authentication token settings type.
-Configurator::TokenManagerParameters& Configurator::get<
-    Configurator::TokenManagerParameters>()  // Maps TokenManagerParameters to
-                                             // its stored member.
-{
+// Full specialization for the authentication token settings type.
+// Maps TokenManagerParameters to
+// its stored member.
+template <>
+Configurator::TokenManagerParameters&
+Configurator::get<Configurator::TokenManagerParameters>() {
   return token_manager_parameters_;  // Hand back the stored token settings
                                      // section by reference.
 }
@@ -106,11 +109,12 @@ Configurator::TokenManagerParameters& Configurator::get<
  * API (CORS = the browser rule that controls which websites can use the API).
  * @see Configurator::FrontEndConfig
  */
-template <>  // Full specialization for the frontend/CORS settings type.
+// Full specialization for the frontend/CORS settings type.
+// Maps FrontEndConfig to its
+// stored member.
+template <>
 Configurator::FrontEndConfig&
-Configurator::get<Configurator::FrontEndConfig>()  // Maps FrontEndConfig to its
-                                                   // stored member.
-{
+Configurator::get<Configurator::FrontEndConfig>() {
   return frontend_config_;  // Hand back the stored frontend settings section
                             // by reference.
 }
@@ -121,11 +125,12 @@ Configurator::get<Configurator::FrontEndConfig>()  // Maps FrontEndConfig to its
  * is discarded.
  * @see Configurator::PermissionCacheConfig
  */
-template <>  // Full specialization for the permission-cache settings type.
-Configurator::PermissionCacheConfig& Configurator::get<
-    Configurator::PermissionCacheConfig>()  // Maps PermissionCacheConfig to its
-                                            // stored member.
-{
+// Full specialization for the permission-cache settings type.
+// Maps PermissionCacheConfig to its
+// stored member.
+template <>
+Configurator::PermissionCacheConfig&
+Configurator::get<Configurator::PermissionCacheConfig>() {
   return permission_cache_config_;  // Hand back the stored permission-cache
                                     // settings section by reference.
 }
@@ -136,11 +141,12 @@ Configurator::PermissionCacheConfig& Configurator::get<
  * their queue can grow.
  * @see Configurator::PasswordWorkerConfig
  */
-template <>  // Full specialization for the password-worker settings type.
-Configurator::PasswordWorkerConfig& Configurator::get<
-    Configurator::PasswordWorkerConfig>()  // Maps PasswordWorkerConfig to its
-                                           // stored member.
-{
+// Full specialization for the password-worker settings type.
+// Maps PasswordWorkerConfig to its
+// stored member.
+template <>
+Configurator::PasswordWorkerConfig&
+Configurator::get<Configurator::PasswordWorkerConfig>() {
   return password_worker_config_;  // Hand back the stored password-worker
                                    // settings section by reference.
 }
@@ -151,11 +157,12 @@ Configurator::PasswordWorkerConfig& Configurator::get<
  * database work.
  * @see Configurator::DbExecutorConfig
  */
-template <>  // Full specialization for the database-executor settings type.
+// Full specialization for the database-executor settings type.
+// Maps DbExecutorConfig to
+// its stored member.
+template <>
 Configurator::DbExecutorConfig&
-Configurator::get<Configurator::DbExecutorConfig>()  // Maps DbExecutorConfig to
-                                                     // its stored member.
-{
+Configurator::get<Configurator::DbExecutorConfig>() {
   return db_executor_config_;  // Hand back the stored database-executor
                                // settings section by reference.
 }
@@ -166,11 +173,12 @@ Configurator::get<Configurator::DbExecutorConfig>()  // Maps DbExecutorConfig to
  * emails.
  * @see Configurator::EmailSenderConfig
  */
-template <>  // Full specialization for the email-sender settings type.
+// Full specialization for the email-sender settings type.
+// Maps EmailSenderConfig
+// to its stored member.
+template <>
 Configurator::EmailSenderConfig&
-Configurator::get<Configurator::EmailSenderConfig>()  // Maps EmailSenderConfig
-                                                      // to its stored member.
-{
+Configurator::get<Configurator::EmailSenderConfig>() {
   return email_sender_config_;  // Hand back the stored email-sender settings
                                 // section by reference.
 }
@@ -181,10 +189,10 @@ Configurator::get<Configurator::EmailSenderConfig>()  // Maps EmailSenderConfig
  * a real database.
  * @see Configurator::Testing
  */
-template <>  // Full specialization for the test-only settings type.
-Configurator::Testing& Configurator::get<
-    Configurator::Testing>()  // Maps the Testing type to its stored member.
-{
+// Full specialization for the test-only settings type.
+// Maps the Testing type to its stored member.
+template <>
+Configurator::Testing& Configurator::get<Configurator::Testing>() {
   return testing_;  // Hand back the stored test-only switch section by
                     // reference.
 }

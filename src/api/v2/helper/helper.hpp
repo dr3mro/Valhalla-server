@@ -43,8 +43,8 @@
 #include <jsoncons/json.hpp>
 #include <string>  // std::string for messages and the returned JSON text.
 
-namespace api::v2  // The v2 API helpers live here.
-{
+// The v2 API helpers live here.
+namespace api::v2 {
 
   /**
    * @class Helper
@@ -59,9 +59,9 @@ namespace api::v2  // The v2 API helpers live here.
    * @note Copyable but non-movable; construction is unrestricted but
    * meaningless since there is no instance state.
    */
-  class Helper  // Pure utility class: all functions are static and it holds
-                // no per-object data.
-  {
+  // Pure utility class: all functions are static and it holds
+  // no per-object data.
+  class Helper {
    public:
     /** @name Construction
      *  Trivial: the utility has no state. Copying is allowed; moving is

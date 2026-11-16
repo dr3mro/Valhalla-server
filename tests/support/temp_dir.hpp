@@ -46,11 +46,10 @@ namespace fs =
  * @details The name includes the process id and a counter, so two directories
  * created in the same run (or in concurrent test processes) never share a path.
  */
-class TempDir
-{
+class TempDir {
  public:
-  TempDir()  // Creates the directory immediately so it is ready to use.
-  {
+  // Creates the directory immediately so it is ready to use.
+  TempDir() {
     static unsigned long counter = 0;  // Shared counter makes each directory
                                        // name unique within the process.
     path_ = fs::temp_directory_path() /
@@ -70,8 +69,8 @@ class TempDir
   TempDir& operator=(TempDir&&) =
       delete;  // No move assignment, to keep cleanup unambiguous.
 
-  ~TempDir()  // Runs at scope exit to remove the directory and its contents.
-  {
+  // Runs at scope exit to remove the directory and its contents.
+  ~TempDir() {
     std::error_code
         ec;  // Error-code overload avoids throwing from a destructor.
     fs::remove_all(path_,
@@ -79,12 +78,10 @@ class TempDir
                          // stored in `ec` and ignored.
   }
 
-  [[nodiscard]] const fs::path& path() const
-  {
+  [[nodiscard]] const fs::path& path() const {
     return path_;
   }  // Give callers the path object (e.g. to append filenames).
-  [[nodiscard]] std::string string() const
-  {
+  [[nodiscard]] std::string string() const {
     return path_.string();
   }  // Give callers the path as a plain text string.
 

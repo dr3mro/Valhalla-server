@@ -50,9 +50,9 @@
 #include <chrono>   // std::chrono::steady_clock and duration_cast for timing.
 #include <utility>  // std::move for consuming the callbacks.
 
-namespace api::v2::MiddleWares  // Middleware for the v2 API lives here (note
-                                // the project's spelling).
-{
+// Middleware for the v2 API lives here (note
+// the project's spelling).
+namespace api::v2::MiddleWares {
   /**
    * @class ElapsedTime
    * @brief Timing middleware that logs how long a request took to produce its
@@ -65,10 +65,9 @@ namespace api::v2::MiddleWares  // Middleware for the v2 API lives here (note
    * for concurrent requests: all per-request state lives in the callback
    * capture.
    */
-  class ElapsedTime : public drogon::HttpMiddleware<
-                          ElapsedTime>  // Inherit Drogon's middleware template
-                                        // so it can be registered by name.
-  {
+  // Inherit Drogon's middleware template
+  // so it can be registered by name.
+  class ElapsedTime : public drogon::HttpMiddleware<ElapsedTime> {
    public:
     ElapsedTime() = default;  // do not omit constructor: Drogon needs a default
                               // constructor to create the middleware.
@@ -86,11 +85,10 @@ namespace api::v2::MiddleWares  // Middleware for the v2 API lives here (note
      * @param[in,out] mcb Middleware callback that receives the final
      * response.
      */
+    // Drogon calls invoke to run this middleware.
     void invoke(const drogon::HttpRequestPtr&    req,
                 drogon::MiddlewareNextCallback&& nextCb,
-                drogon::MiddlewareCallback&&     mcb)
-        override  // Drogon calls invoke to run this middleware.
-    {
+                drogon::MiddlewareCallback&&     mcb) override {
       // Store the start time for this request
       std::chrono::steady_clock::time_point start_time =
           std::chrono::steady_clock::now();  // Snapshot the monotonic
@@ -98,47 +96,42 @@ namespace api::v2::MiddleWares  // Middleware for the v2 API lives here (note
                                              // callback below.
 
       // will run while getting out from this middleware
-      std::move(nextCb)(  // Continue down the chain, giving it our
-                          // measuring callback to call on the way back.
-          [mcb = std::move(mcb), start_time, req](
-              const drogon::HttpResponsePtr&
-                  resp)  // Capture the final callback, the start time and
-                         // the request for later.
-          {
-            // Calculate the elapsed time for this request
-            auto end_time =
-                std::chrono::steady_clock::now();  // Take a second clock
-                                                   // reading when the response
-                                                   // returns.
-            auto elapsed_ms =
-                std::chrono::duration_cast<std::chrono::milliseconds>(
-                    end_time - start_time)
-                    .count();  // Difference converted to whole
-                               // milliseconds for the log.
-            // Log the elapsed time
-            LOG_INFO << fmt::format(
-                ": {}{}{}{}{}",
-                fmt::styled(fmt::format("[{} ms] ", elapsed_ms),
-                            fmt::fg(fmt::color::orange)),  // Build one line:
-                                                           // elapsed time in
-                                                           // orange.
-                fmt::styled(fmt::format("[{}]", req->getPeerAddr().toIp()),
-                            fmt::fg(
-                                fmt::color::yellow)),  // Client IP in yellow.
-                fmt::styled(fmt::format("[{}]", req->getMethodString()),
-                            fmt::fg(fmt::color::red)),  // HTTP method in red.
-                fmt::styled(fmt::format("[{}]",
-                                        static_cast<int>(
-                                            resp->getStatusCode())),
-                            fmt::fg(fmt::color::magenta)),  // Response status
-                                                            // in magenta.
-                fmt::styled(fmt::format("[{}]", req->path()),
-                            fmt::fg(
-                                fmt::color::cyan)));  // Request path in cyan,
+      // Continue down the chain, giving it our
+      // measuring callback to call on the way back.
+      // Capture the final callback, the start time and
+      // the request for later.
+      std::move(nextCb)([mcb = std::move(mcb), start_time, req](
+                            const drogon::HttpResponsePtr& resp) {
+        // Calculate the elapsed time for this request
+        auto end_time =
+            std::chrono::steady_clock::now();  // Take a second clock
+                                               // reading when the response
+                                               // returns.
+        auto elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+                              end_time - start_time)
+                              .count();  // Difference converted to whole
+                                         // milliseconds for the log.
+        // Log the elapsed time
+        LOG_INFO << fmt::format(
+            ": {}{}{}{}{}",
+            fmt::styled(fmt::format("[{} ms] ", elapsed_ms),
+                        fmt::fg(fmt::color::orange)),  // Build one line:
+                                                       // elapsed time in
+                                                       // orange.
+            fmt::styled(fmt::format("[{}]", req->getPeerAddr().toIp()),
+                        fmt::fg(fmt::color::yellow)),  // Client IP in yellow.
+            fmt::styled(fmt::format("[{}]", req->getMethodString()),
+                        fmt::fg(fmt::color::red)),  // HTTP method in red.
+            fmt::styled(fmt::format("[{}]",
+                                    static_cast<int>(resp->getStatusCode())),
+                        fmt::fg(fmt::color::magenta)),  // Response status
+                                                        // in magenta.
+            fmt::styled(fmt::format("[{}]", req->path()),
+                        fmt::fg(fmt::color::cyan)));  // Request path in cyan,
                                                       // then write to the log.
-            std::move(mcb)(resp);  // Forward the unchanged response to
-                                   // the previous middleware/route.
-          });
+        std::move(mcb)(resp);  // Forward the unchanged response to
+                               // the previous middleware/route.
+      });
     }
   };
 }  // namespace api::v2::MiddleWares

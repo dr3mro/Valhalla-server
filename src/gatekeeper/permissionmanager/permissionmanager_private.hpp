@@ -50,8 +50,8 @@
 // Requester, the caller whose identity is checked.
 #include "utils/global/requester.hpp"
 #include "utils/message/message.hpp"  // Logging helpers for errors.
-namespace api::v2                     // Same namespace as the public manager.
-{
+// Same namespace as the public manager.
+namespace api::v2 {
   /**
    * @class PermissionManagerPrivate
    * @brief Implementation helpers shared by the PermissionManager
@@ -67,9 +67,9 @@ namespace api::v2                     // Same namespace as the public manager.
    *       In everyday words: this is a toolbox, not a machine. You never make
    *       one; you call its named tools with the facts and get a yes/no back.
    */
-  class PermissionManagerPrivate  // A stateless collection of helper
-                                  // functions.
-  {
+  // A stateless collection of helper
+  // functions.
+  class PermissionManagerPrivate {
    public:
     PermissionManagerPrivate() = default;  // No state to initialize, so the
                                            // default constructor is enough.
@@ -246,12 +246,10 @@ namespace api::v2                     // Same namespace as the public manager.
         const std::optional<jsoncons::json>& service_j,
         const std::string&                   key,
         const std::string&                   service_name,
-        Http::Error&                         error)
-    {
-      if (!service_j.has_value() ||
-          service_j->empty())  // Reject a missing or empty payload before
-                               // trying to read it.
-      {
+        Http::Error&                         error) {
+      // Reject a missing or empty payload before
+      // trying to read it.
+      if (!service_j.has_value() || service_j->empty()) {
         error.code = Http::Status::BAD_REQUEST;  // The client sent a bad
                                                  // request; this status is
                                                  // returned to them.
@@ -264,14 +262,13 @@ namespace api::v2                     // Same namespace as the public manager.
 
       T value;  // Default-constructed result, filled in only if
                 // extraction succeeds.
-      try       // Conversion may throw, so it is attempted inside a try block.
-      {
-        value = service_j->at(key).as<T>();  // Look up the key and convert
-                                             // it to the requested type T.
-      }
-      catch (const std::exception&
-                 e)  // Runs when the key is missing or cannot be converted.
-      {
+      // Conversion may throw, so it is attempted inside a try block.
+      try {
+        // Look up the key and convert
+        // it to the requested type T.
+        // Runs when the key is missing or cannot be converted.
+        value = service_j->at(key).as<T>();
+      } catch (const std::exception& e) {
         error.message = "Failed to extract " +
                         key;  // Tell the client which key could not be read.
         error.code    = Http::Status::BAD_REQUEST;  // The client sent a bad
@@ -300,15 +297,14 @@ namespace api::v2                     // Same namespace as the public manager.
      * query/no data.
      * @see BasicPermissionCache::generation
      */
-    template <typename Func,
-              typename... Args>  // Generic helper; Func builds the query and
-                                 // Args are its inputs.
-    static std::optional<jsoncons::json> getPermissionsOfEntity(
-        Func&& func,
-        Args&... args)  // Fetches permissions
-                        // (cache first, database
-                        // on a miss).
-    {
+    // Generic helper; Func builds the query and
+    // Args are its inputs.
+    // Fetches permissions
+    // (cache first, database
+    // on a miss).
+    template <typename Func, typename... Args>
+    static std::optional<jsoncons::json> getPermissionsOfEntity(Func&& func,
+                                                                Args&... args) {
       std::optional<std::string> query =
           std::invoke(std::forward<Func>(func),
                       std::forward<Args>(
@@ -316,10 +312,9 @@ namespace api::v2                     // Same namespace as the public manager.
                                       // the supplied generator with its
                                       // arguments.
 
-      if (!query.has_value() ||
-          query->empty())  // No query means there is nothing to look up;
-                           // fail early.
-      {
+      // No query means there is nothing to look up;
+      // fail early.
+      if (!query.has_value() || query->empty()) {
         return std::nullopt;  // No usable value; caller must treat this
                               // as failure.
       }
@@ -327,9 +322,9 @@ namespace api::v2                     // Same namespace as the public manager.
       auto& cache = PermissionCache::instance();  // Get the shared cache object
                                                   // (a process-wide singleton).
       if (auto cached = cache.get(query.value());
-          cached.has_value())  // Cache hit: reuse the stored answer and
-                               // skip the database entirely.
-      {
+          // Cache hit: reuse the stored answer and
+          // skip the database entirely.
+          cached.has_value()) {
         return cached;  // Return the cached JSON to the caller.
       }
 
@@ -346,10 +341,9 @@ namespace api::v2                     // Same namespace as the public manager.
           query.value());  // Cache miss: read the permissions from
                            // PostgreSQL (blocking version).
 
-      if (!permissions_j.has_value() ||
-          permissions_j->empty())  // The database had no data; do not
-                                   // cache an empty result.
-      {
+      // The database had no data; do not
+      // cache an empty result.
+      if (!permissions_j.has_value() || permissions_j->empty()) {
         return std::nullopt;  // No usable value; caller must treat this
                               // as failure.
       }
@@ -378,16 +372,14 @@ namespace api::v2                     // Same namespace as the public manager.
      * @note The caller must drive the returned task; the query string must
      * outlive the awaited read.
      */
-    template <
-        typename Func,
-        typename... Args>  // Generic helper; Func builds the query and Args
-                           // are its inputs.
+    // Generic helper; Func builds the query and Args
+    // are its inputs.
+    // Coroutine version of the
+    // fetch; awaits the async
+    // database read.
+    template <typename Func, typename... Args>
     static drogon::Task<std::optional<jsoncons::json>>
-    getPermissionsOfEntityCoro(Func&& func,
-                               Args&... args)  // Coroutine version of the
-                                               // fetch; awaits the async
-                                               // database read.
-    {
+    getPermissionsOfEntityCoro(Func&& func, Args&... args) {
       std::optional<std::string> query =
           std::invoke(std::forward<Func>(func),
                       std::forward<Args>(
@@ -395,10 +387,9 @@ namespace api::v2                     // Same namespace as the public manager.
                                       // the supplied generator with its
                                       // arguments.
 
-      if (!query.has_value() ||
-          query->empty())  // No query means there is nothing to look up;
-                           // fail early.
-      {
+      // No query means there is nothing to look up;
+      // fail early.
+      if (!query.has_value() || query->empty()) {
         co_return std::nullopt;  // Coroutine return of 'no value' when
                                  // there is nothing usable.
       }
@@ -406,9 +397,9 @@ namespace api::v2                     // Same namespace as the public manager.
       auto& cache = PermissionCache::instance();  // Get the shared cache object
                                                   // (a process-wide singleton).
       if (auto cached = cache.get(query.value());
-          cached.has_value())  // Cache hit: reuse the stored answer and
-                               // skip the database entirely.
-      {
+          // Cache hit: reuse the stored answer and
+          // skip the database entirely.
+          cached.has_value()) {
         co_return cached;  // Coroutine return of the cached answer.
       }
 
@@ -423,10 +414,9 @@ namespace api::v2                     // Same namespace as the public manager.
               query.value());  // Cache miss: await the async read without
                                // blocking the IO thread.
 
-      if (!permissions_j.has_value() ||
-          permissions_j->empty())  // The database had no data; do not
-                                   // cache an empty result.
-      {
+      // The database had no data; do not
+      // cache an empty result.
+      if (!permissions_j.has_value() || permissions_j->empty()) {
         co_return std::nullopt;  // Coroutine return of 'no value' when
                                  // there is nothing usable.
       }

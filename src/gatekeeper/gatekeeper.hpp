@@ -81,8 +81,8 @@
 // Requester, the caller identity passed to permission checks.
 #include "utils/global/requester.hpp"
 
-namespace api::v2  // All public API v2 code lives in this namespace.
-{
+// All public API v2 code lives in this namespace.
+namespace api::v2 {
   /**
    * @class GateKeeper
    * @brief Facade over authentication, authorization and per-IP abuse
@@ -110,8 +110,7 @@ namespace api::v2  // All public API v2 code lives in this namespace.
    * caller must drive, allowing slow database work to pause instead of
    *          blocking a server IO thread.
    */
-  class GateKeeper
-  {
+  class GateKeeper {
    public:
     /**
      * @brief Constructs the facade, resolving collaborators from the Store

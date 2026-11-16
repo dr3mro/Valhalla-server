@@ -41,8 +41,8 @@
 #include "utils/global/http.hpp"
 // Requester, the authenticated caller whose rights are checked.
 #include "utils/global/requester.hpp"
-namespace api::v2  // All API version-2 code lives in this namespace.
-{
+// All API version-2 code lives in this namespace.
+namespace api::v2 {
   /**
    * @class PermissionManager
    * @brief Central authorization facade: answers "may this requester perform
@@ -62,9 +62,9 @@ namespace api::v2  // All API version-2 code lives in this namespace.
    *       ID before letting someone do something. It does not fetch data
    * itself; it asks PermissionManagerPrivate for the facts and then decides.
    */
-  class PermissionManager  // A facade: one simple entry point hiding the
-                           // detailed checks.
-  {
+  // A facade: one simple entry point hiding the
+  // detailed checks.
+  class PermissionManager {
    public:
     PermissionManager() = default;  // No state to set up, so the
                                     // compiler-generated constructor is fine.

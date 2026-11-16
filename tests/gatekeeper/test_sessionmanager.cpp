@@ -68,8 +68,7 @@ using valhalla_test::makeLoginData;   // Import the builder so tests can call it
 using valhalla_test::makeToken;       // Import the token builder for the same
                                       // reason.
 
-namespace
-{
+namespace {
   // Test token parameters - must match tests/support/global_env.cpp.
   constexpr const char* kSecret =
       "valhalla-unit-test-secret-key";  // Signing secret, matching the token
@@ -87,18 +86,16 @@ namespace
    * session cache (MemCache) is a process-wide singleton, so tests that
    * share a key would observe each other's sessions.
    */
-  struct SessionFixture
-  {
+  struct SessionFixture {
     SessionManager
         manager;  // The class under test, with its process-wide cache.
     std::optional<ClientLoginData>
         loginData;  // Consistent login data whose claims match its token.
 
-    SessionFixture(
-        const std::string& group = "users",
-        const std::string& ip = "127.0.0.1")  // Builds data for a given group
-                                              // and IP, with sensible defaults.
-    {
+    // Builds data for a given group
+    // and IP, with sensible defaults.
+    SessionFixture(const std::string& group = "users",
+                   const std::string& ip    = "127.0.0.1") {
       // Unique per fixture instance, stable for the lifetime of the run.
       static std::atomic<uint64_t> nextClientId{
           1000};  // Static counter shared by all fixtures; atomic so
@@ -131,10 +128,9 @@ namespace
   };
 }  // namespace
 
-TEST_CASE(
-    "SessionManager stores and finds a session",
-    "[gatekeeper][session]")  // Registers the basic store-then-lookup test.
-{
+// Registers the basic store-then-lookup test.
+TEST_CASE("SessionManager stores and finds a session",
+          "[gatekeeper][session]") {
   SessionFixture fixture;  // Fresh manager and unique login data.
 
   std::string message;  // Receives any status message.
@@ -148,10 +144,10 @@ TEST_CASE(
                                                // found and considered valid.
 }
 
+// Registers the test for a client with no
+// stored session.
 TEST_CASE("SessionManager reports an unknown session as invalid",
-          "[gatekeeper][session]")  // Registers the test for a client with no
-                                    // stored session.
-{
+          "[gatekeeper][session]") {
   SessionFixture fixture;  // never stored -- the fixture only builds data; it
                            // does not call storeSession.
 
@@ -164,10 +160,10 @@ TEST_CASE("SessionManager reports an unknown session as invalid",
                                              // session.
 }
 
+// Registers the test that removal
+// invalidates a session.
 TEST_CASE("SessionManager invalidates a session on logout (remove)",
-          "[gatekeeper][session]")  // Registers the test that removal
-                                    // invalidates a session.
-{
+          "[gatekeeper][session]") {
   SessionFixture fixture;  // Fresh manager and data.
 
   std::string message;  // Receives status messages.
@@ -187,10 +183,10 @@ TEST_CASE("SessionManager invalidates a session on logout (remove)",
                                              // valid after removal.
 }
 
+// Registers the test that removing a
+// missing session is still safe.
 TEST_CASE("SessionManager removeSession is idempotent",
-          "[gatekeeper][session]")  // Registers the test that removing a
-                                    // missing session is still safe.
-{
+          "[gatekeeper][session]") {
   SessionFixture fixture;  // No session was ever stored for this unique id.
 
   REQUIRE(fixture.manager.removeSession(
@@ -201,15 +197,13 @@ TEST_CASE("SessionManager removeSession is idempotent",
                             // operation is idempotent.
 }
 
-TEST_CASE("SessionManager rejects empty inputs",
-          "[gatekeeper][session]")  // Registers the defensive tests for
-                                    // malformed arguments.
-{
+// Registers the defensive tests for
+// malformed arguments.
+TEST_CASE("SessionManager rejects empty inputs", "[gatekeeper][session]") {
   SessionFixture fixture;  // Fresh manager and data.
   std::string    message;  // Receives status messages.
 
-  SECTION("storeSession with empty login data")
-  {
+  SECTION("storeSession with empty login data") {
     std::optional<ClientLoginData> empty;  // No login data supplied.
     REQUIRE_FALSE(
         fixture.manager
@@ -220,15 +214,13 @@ TEST_CASE("SessionManager rejects empty inputs",
                                         // useful error message.
   }
 
-  SECTION("removeSession with empty login data")
-  {
+  SECTION("removeSession with empty login data") {
     std::optional<ClientLoginData> empty;  // No login data supplied.
     REQUIRE_FALSE(fixture.manager.removeSession(
         empty));  // Prove removal without data is refused.
   }
 
-  SECTION("removeSession without a client id")
-  {
+  SECTION("removeSession without a client id") {
     std::optional<ClientLoginData> noId =
         makeLoginData();     // Data exists but lacks the key needed to find a
                              // session.
@@ -241,22 +233,20 @@ TEST_CASE("SessionManager rejects empty inputs",
   }
 }
 
+// Registers the tests for logout failures
+// that are detected before any DB access.
 TEST_CASE("SessionManager logout with a bad token answers without a database",
-          "[gatekeeper][session]")  // Registers the tests for logout failures
-                                    // that are detected before any DB access.
-{
+          "[gatekeeper][session]") {
   SessionFixture fixture;  // Fresh manager and data.
 
-  SECTION("unparseable token")
-  {
+  SECTION("unparseable token") {
     fixture.loginData->token = "not a jwt";  // Replace the valid token with
                                              // text that cannot be decoded.
     int statusCode = -1;  // Receives the HTTP status from the callback; -1
                           // means "not called".
     std::string body;     // Receives the response body.
     fixture.manager.logout(
-        [&statusCode, &body](const int code, const std::string& response)
-        {
+        [&statusCode, &body](const int code, const std::string& response) {
           statusCode = code;      // The callback records the status...
           body       = response;  // ...and the body.
         },
@@ -269,16 +259,14 @@ TEST_CASE("SessionManager logout with a bad token answers without a database",
     CHECK_FALSE(body.empty());  // Prove some explanatory message was returned.
   }
 
-  SECTION("well-formed token, wrong ip address")
-  {
+  SECTION("well-formed token, wrong ip address") {
     // The stored token was issued for 127.0.0.1; claim a different ip.
     fixture.loginData->ip_address =
         "8.8.8.8";                // Mismatch the IP bound into the token.
     int         statusCode = -1;  // Receives the status.
     std::string body;             // Receives the response body.
     fixture.manager.logout(
-        [&statusCode, &body](const int code, const std::string& response)
-        {
+        [&statusCode, &body](const int code, const std::string& response) {
           statusCode = code;      // Record the status...
           body       = response;  // ...and the body.
         },
@@ -292,9 +280,9 @@ TEST_CASE("SessionManager logout with a bad token answers without a database",
   }
 }
 
+// Registers the positive logout test.
 TEST_CASE("SessionManager logout with a valid token removes the session",
-          "[gatekeeper][session]")  // Registers the positive logout test.
-{
+          "[gatekeeper][session]") {
   SessionFixture fixture;  // Fresh manager and data.
   std::string    message;  // Receives status messages.
   REQUIRE(
@@ -305,8 +293,7 @@ TEST_CASE("SessionManager logout with a valid token removes the session",
   int         statusCode = -1;  // Receives the status from the callback.
   std::string body;             // Receives the response body.
   fixture.manager.logout(
-      [&statusCode, &body](const int code, const std::string& response)
-      {
+      [&statusCode, &body](const int code, const std::string& response) {
         statusCode = code;      // Record the status...
         body       = response;  // ...and the body.
       },
@@ -325,11 +312,10 @@ TEST_CASE("SessionManager logout with a valid token removes the session",
                                              // logged out.
 }
 
-TEST_CASE(
-    "SessionManager handles concurrent store and lookup",
-    "[gatekeeper][session][concurrency]")  // Registers the multithreaded test
-                                           // for the shared session cache.
-{
+// Registers the multithreaded test
+// for the shared session cache.
+TEST_CASE("SessionManager handles concurrent store and lookup",
+          "[gatekeeper][session][concurrency]") {
   SessionFixture fixture;  // Fresh manager; its own id is separate from the
                            // ones used below.
   std::string    message;  // Shared message string; only truth of operations is
@@ -342,14 +328,13 @@ TEST_CASE(
   std::atomic<int> lookupFailures{0};  // Counts failed lookups across threads.
   std::vector<std::thread> workers;    // Holds the workers for joining later.
 
-  for (int t = 0; t < kThreads; ++t)  // Start one worker per thread.
-  {
+  // Start one worker per thread.
+  for (int t = 0; t < kThreads; ++t) {
     workers.emplace_back(
-        [&fixture, &storedFailures, &lookupFailures, &message, t]()
-        {
+        [&fixture, &storedFailures, &lookupFailures, &message, t]() {
           for (int i = 0; i < kPerThread;
-               ++i)  // Each worker creates and checks its own sessions.
-          {
+               // Each worker creates and checks its own sessions.
+               ++i) {
             // A distinct high id range: the session cache is a
             // process-wide singleton, so these must not collide with
             // the fixture's key (1000+) or another test's sessions.
@@ -369,24 +354,21 @@ TEST_CASE(
                           "127.0.0.1",
                           "llodt");  // Sign a token with matching claims.
 
-            if (!fixture.manager.storeSession(data,
-                                              message))  // Try to store this
-                                                         // worker's session.
-            {
+            // Try to store this
+            // worker's session.
+            if (!fixture.manager.storeSession(data, message)) {
               ++storedFailures;  // Record a failure atomically.
             }
-            if (!fixture.manager
-                     .clientHasValidSession(data,
-                                            message))  // Immediately try to
-                                                       // find it again.
-            {
+            // Immediately try to
+            // find it again.
+            if (!fixture.manager.clientHasValidSession(data, message)) {
               ++lookupFailures;  // Record a failure atomically.
             }
           }
         });
   }
-  for (auto& worker : workers)  // Iterate over all workers.
-  {
+  // Iterate over all workers.
+  for (auto& worker : workers) {
     worker.join();  // Wait for each to finish before checking the counters.
   }
 
@@ -399,17 +381,15 @@ TEST_CASE(
 // The FakeDbGuard is constructed before the SessionManager in every case below
 // so the manager binds the fake controller from the Store at construction time.
 
-namespace
-{
+namespace {
   /**
    * JSON row that getPasswordHashForUserName() returns on success.
    */
-  jsoncons::json makePasswordRow(
-      uint64_t           id,
-      const std::string& hash,
-      bool active)  // Builds the fake DB row returned when looking up a
-                    // password.
-  {
+  // Builds the fake DB row returned when looking up a
+  // password.
+  jsoncons::json makePasswordRow(uint64_t           id,
+                                 const std::string& hash,
+                                 bool               active) {
     jsoncons::json row =
         jsoncons::json::object();  // Start with an empty JSON object.
     row["id"]       = id;      // Client id, used to populate the login data.
@@ -422,10 +402,9 @@ namespace
    * JSON row that setNowLoginTimeGetLastLogoutTime() reads from
    * executeQuery().
    */
-  jsoncons::json makeLoginTimeRow(
-      const std::string& lastLogout)  // Builds the row returned when
-                                      // writing/reading the login time.
-  {
+  // Builds the row returned when
+  // writing/reading the login time.
+  jsoncons::json makeLoginTimeRow(const std::string& lastLogout) {
     jsoncons::json row =
         jsoncons::json::object();  // Start with an empty JSON object.
     row["last_logout"] =
@@ -434,11 +413,11 @@ namespace
   }
 }  // namespace
 
+// Registers the test for an unknown
+// username.
 TEST_CASE(
     "SessionManager::login returns false when DB returns no password hash",
-    "[gatekeeper][session][login]")  // Registers the test for an unknown
-                                     // username.
-{
+    "[gatekeeper][session][login]") {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
   FakeDbGuard guard(fake);  // Inject it BEFORE the SessionManager is
@@ -467,11 +446,10 @@ TEST_CASE(
                              // does not exist.
 }
 
-TEST_CASE(
-    "SessionManager::login returns false for a wrong password",
-    "[gatekeeper][session][login]")  // Registers the test that a bad password
-                                     // is rejected without side effects.
-{
+// Registers the test that a bad password
+// is rejected without side effects.
+TEST_CASE("SessionManager::login returns false for a wrong password",
+          "[gatekeeper][session][login]") {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
   FakeDbGuard guard(fake);  // Inject it before the manager is built.
@@ -515,10 +493,10 @@ TEST_CASE(
              // verification happens before any write
 }
 
+// Registers the positive login test.
 TEST_CASE(
     "SessionManager::login succeeds with correct password and active account",
-    "[gatekeeper][session][login]")  // Registers the positive login test.
-{
+    "[gatekeeper][session][login]") {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
   FakeDbGuard guard(fake);  // Inject it before the manager is built.
@@ -552,10 +530,10 @@ TEST_CASE(
                  message));  // Prove a correct, active login succeeds.
 }
 
+// Registers the test that the
+// password-lookup step is read-only.
 TEST_CASE("SessionManager::fetchPasswordHash reads without writing",
-          "[gatekeeper][session][login]")  // Registers the test that the
-                                           // password-lookup step is read-only.
-{
+          "[gatekeeper][session][login]") {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
   FakeDbGuard guard(fake);  // Inject it before the manager is built.
@@ -586,11 +564,10 @@ TEST_CASE("SessionManager::fetchPasswordHash reads without writing",
         0);  // Prove no write-capable query ran during this read-only step.
 }
 
-TEST_CASE(
-    "SessionManager::fetchPasswordHash refuses a suspended account",
-    "[gatekeeper][session][login]")  // Registers the test that disabled
-                                     // accounts cannot even fetch their hash.
-{
+// Registers the test that disabled
+// accounts cannot even fetch their hash.
+TEST_CASE("SessionManager::fetchPasswordHash refuses a suspended account",
+          "[gatekeeper][session][login]") {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
   FakeDbGuard guard(fake);  // Inject it before the manager is built.
@@ -618,10 +595,10 @@ TEST_CASE(
 
 TEST_CASE(
     "SessionManager::completeLogin verifies first and writes the login time "
+    // Registers the test for the final login
+    // step and its write ordering.
     "once",
-    "[gatekeeper][session][login]")  // Registers the test for the final login
-                                     // step and its write ordering.
-{
+    "[gatekeeper][session][login]") {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
   FakeDbGuard guard(fake);  // Inject it before the manager is built.

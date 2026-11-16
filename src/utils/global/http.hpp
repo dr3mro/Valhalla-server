@@ -34,18 +34,18 @@
 // The status-to-description lookup table uses std::unordered_map.
 #include <unordered_map>
 
-namespace api::v2::Http  // Groups HTTP-related types with the version-2 API
-                         // code.
-{
+// Groups HTTP-related types with the version-2 API
+// code.
+namespace api::v2::Http {
   /**
    * @brief Validation/error payload: a numeric code and a human-readable
    * message.
    * @details Passed by reference through validator APIs that report failures
    *          without throwing; callers populate both members.
    */
-  using Error = struct Error  // A lightweight named struct (the "using" alias
-                              // keeps the old spelling working).
-  {
+  // A lightweight named struct (the "using" alias
+  // keeps the old spelling working).
+  using Error = struct Error {
     int code;  // Numeric problem code chosen by the validator; useful for
                // machines.
     std::string message;  // Human-readable explanation of the problem;
@@ -62,9 +62,9 @@ namespace api::v2::Http  // Groups HTTP-related types with the version-2 API
    * @note Only codes used by this server are listed; getDescription falls
    * back to a generic string for values outside this set.
    */
-  enum Status : uint16_t  // Stored as a 16-bit unsigned number; codes like
-                          // 503 fit easily and the type is compact.
-  {
+  // Stored as a 16-bit unsigned number; codes like
+  // 503 fit easily and the type is compact.
+  enum Status : uint16_t {
     // Informational responses
     CONTINUE = 100,  // Server got the request headers; client should go
                      // ahead and send the body.
@@ -141,10 +141,9 @@ namespace api::v2::Http  // Groups HTTP-related types with the version-2 API
    * @note The lookup table is a function-local static, initialised once and
    *       read-only thereafter.
    */
-  inline std::string getDescription(
-      Status code)  // Inline so the definition can live in the header; takes
-                    // the code by value.
-  {
+  // Inline so the definition can live in the header; takes
+  // the code by value.
+  inline std::string getDescription(Status code) {
     // Utility: Map status codes to their descriptions
     static const std::unordered_map<Status, std::string> StatusDescriptions =
         {{CONTINUE, "Continue"},
@@ -191,10 +190,8 @@ namespace api::v2::Http  // Groups HTTP-related types with the version-2 API
     auto description =
         StatusDescriptions.find(code);  // Look up the code; find returns an
                                         // iterator (or end() when missing).
-    if (description !=
-        StatusDescriptions
-            .end())  // Only use the result if the code was actually found.
-    {
+    // Only use the result if the code was actually found.
+    if (description != StatusDescriptions.end()) {
       return description->second;  // The iterator's second member is the
                                    // reason phrase string.
     }

@@ -52,9 +52,9 @@
  * DatabaseConnectionPool::get_connection
  */
 class DatabaseBusy
-    : public std::runtime_error  // Inherits the message-carrying behaviour and
-                                 // stays catchable as a std::exception.
-{
+    // Inherits the message-carrying behaviour and
+    // stays catchable as a std::exception.
+    : public std::runtime_error {
  public:
   /**
    * @brief Constructs the exception with a default or custom message.
@@ -62,8 +62,7 @@ class DatabaseBusy
    */
   explicit DatabaseBusy(
       const std::string& what = "Database is busy, no connection available")
-      : std::runtime_error(what)
-  {
+      : std::runtime_error(what) {
   }  // `explicit` prevents accidentally creating this exception from a bare
      // string; the default message explains the common case.
 };

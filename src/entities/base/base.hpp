@@ -65,8 +65,7 @@
  * 0" means this class gives no body and forces children to provide one; that is
  * what makes Base abstract (not instantiable).
  */
-class Base
-{
+class Base {
  public:
   /**
    * @brief Default construction; the interface itself carries no state.
@@ -155,13 +154,11 @@ class Base
    * so the first value becomes $1, the second $2, and so on, which is exactly
    * what PostgreSQL expects in the prepared query.
    */
-  struct Binder
-  {
+  struct Binder {
     /**
      * @brief Binds to p and clears it so the first bind() produces $1.
      */
-    explicit Binder(pqxx::params& p) : params(p)
-    {
+    explicit Binder(pqxx::params& p) : params(p) {
       params = {};
     }  // Keep a reference to the caller's container and empty it so
        // placeholders start fresh at $1.
@@ -175,10 +172,10 @@ class Base
      * @return A placeholder of the form "$n", with n increasing in call
      * order from 1.
      */
+    // A template so any value type pqxx
+    // understands can be bound the same way.
     template <typename T>
-    std::string bind(const T& value)  // A template so any value type pqxx
-                                      // understands can be bound the same way.
-    {
+    std::string bind(const T& value) {
       params.append(value);  // Store the real value separately from the
                              // SQL text (safe binding).
       return fmt::format("${}",

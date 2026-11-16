@@ -48,9 +48,9 @@
  * @see Appointment
  */
 class ClinicAppointment
-    : public Appointment  // "public" inheritance keeps all the base CRUD
-                          // builders available.
-{
+    // "public" inheritance keeps all the base CRUD
+    // builders available.
+    : public Appointment {
  private:
   /**
    * @brief Database table holding clinic appointments.
@@ -74,10 +74,9 @@ class ClinicAppointment
    */
   template <typename T>
   explicit ClinicAppointment(const T& _data)
-      : Appointment(_data,
-                    TABLENAME)  // "explicit" prevents accidental conversions;
-                                // TABLENAME fixes the table for this class.
-  {
+      // "explicit" prevents accidental conversions;
+      // TABLENAME fixes the table for this class.
+      : Appointment(_data, TABLENAME) {
   }
 
   /**
@@ -100,16 +99,14 @@ class ClinicAppointment
   /**
    * @brief Returns the clinic appointment table name.
    */
-  static constexpr auto getTableName()
-  {
+  static constexpr auto getTableName() {
     return TABLENAME;
   }  // Static accessor for code that needs the table name without an object.
 
   /**
    * @brief Returns the owning organisation name ("clinics").
    */
-  static constexpr auto getOrgName()
-  {
+  static constexpr auto getOrgName() {
     return ORGNAME;
   }  // Static accessor for the organisation name.
 
@@ -124,11 +121,10 @@ class ClinicAppointment
    * @param[in] service_id Organisation row id.
    * @return SELECT of the clinic's owner/admin/staff.
    */
+  // Public wrapper with the name
+  // PermissionManager expects.
   static std::optional<std::string> getServicePermissionsQuery(
-      const std::string& service_name,
-      std::uint64_t      service_id)  // Public wrapper with the name
-                                      // PermissionManager expects.
-  {
+      const std::string& service_name, std::uint64_t service_id) {
     return getServicePermissionsQueryImpl(service_name,
                                           service_id);  // Delegate all the work
                                                         // to the shared base
@@ -141,10 +137,10 @@ class ClinicAppointment
    * @param[in] appointment_id Appointment row id.
    * @return SELECT of the owning clinic's owner/admin/staff.
    */
+  // Public wrapper for the "find owner of
+  // this appointment" query.
   static std::optional<std::string> getPermissionsQueryForRead(
-      std::uint64_t appointment_id)  // Public wrapper for the "find owner of
-                                     // this appointment" query.
-  {
+      std::uint64_t appointment_id) {
     return getPermissionsQueryForReadImpl(ORGNAME,
                                           TABLENAME,
                                           appointment_id);  // Supply this

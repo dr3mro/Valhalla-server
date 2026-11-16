@@ -50,9 +50,9 @@
 // operation.
 #include "utils/global/callback.hpp"
 
-namespace api::v2  // Groups related classes under the "api::v2" namespace to
-                   // avoid name clashes.
-{
+// Groups related classes under the "api::v2" namespace to
+// avoid name clashes.
+namespace api::v2 {
   /** @brief Authorisation service used to decide whether a requester may
    * manage a service's staff. */
   class GateKeeper;  // Forward declaration: says this class exists without
@@ -96,12 +96,12 @@ class Configurator;  // Says the configuration class exists; only a pointer to
  * below are populated in the constructor and are not mutated by the operations.
  * @see StaffControllerBase, Controller, GateKeeper, Configurator
  */
-template <typename T>  // "template <typename T>" means T is a type chosen
-                       // later, e.g. Clinics or Pharmacies.
-class StaffController : public StaffControllerBase,
-                        public Controller  // Implements the staff interface and
-                                           // reuses Controller's SQL helpers.
-{
+// "template <typename T>" means T is a type chosen
+// later, e.g. Clinics or Pharmacies.
+// Implements the staff interface and
+// reuses Controller's SQL helpers.
+template <typename T>
+class StaffController : public StaffControllerBase, public Controller {
  public:
   /**
    * @brief Resolves shared dependencies from the global service locator and

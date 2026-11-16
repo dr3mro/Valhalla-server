@@ -38,13 +38,12 @@ using TokenManager = api::v2::TokenManager;  // Short alias so definitions can
  * message).
  * @see TokenManager::generateToken
  */
+// Signs a new token and stores it in clientLoginData;
+// true on success.
 bool TokenManager::generateToken(
-    std::optional<Types::ClientLoginData>&
-        clientLoginData)  // Signs a new token and stores it in clientLoginData;
-                          // true on success.
-{
-  try  // Signing or reading optional claims can throw, so guard it.
-  {
+    std::optional<Types::ClientLoginData>& clientLoginData) {
+  // Signing or reading optional claims can throw, so guard it.
+  try {
     auto tokenManagerParameters =
         getTokenManagerParameters();  // Fetch issuer, type, validity and
                                       // secret from the base class's
@@ -107,17 +106,16 @@ bool TokenManager::generateToken(
                 // cannot be forged.
                 std::string(tokenManagerParameters.secret)});
 
-    if (token.has_value())  // Only store a token that was actually produced.
-    {
+    // Only store a token that was actually produced.
+    if (token.has_value()) {
       clientLoginData->token =
           token.value();  // Write the signed token back for the caller to
                           // send to the client.
-      return true;        // Token generation succeeded.
+      // Token generation succeeded.
+      // Runs when a claim is missing or signing fails.
+      return true;
     }
-  }
-  catch (const std::exception&
-             e)  // Runs when a claim is missing or signing fails.
-  {
+  } catch (const std::exception& e) {
     Message::CriticalMessage(
         fmt::format("Error generating token:{}",
                     e.what()));  // Log a serious error with the exception text.
@@ -128,22 +126,20 @@ bool TokenManager::generateToken(
  * Decodes the token, then validates it with KeeprBase::validateToken.
  * message: Receives the failure reason on a bad or invalid token.
  */
+// Decodes and fully validates a token; true only
+// when current and genuine.
 bool TokenManager::isTokenValid(
     std::optional<Types::ClientLoginData>& clientLoginData,
-    std::string& message)  // Decodes and fully validates a token; true only
-                           // when current and genuine.
-{
-  try  // Signing or reading optional claims can throw, so guard it.
-  {
+    std::string&                           message) {
+  // Signing or reading optional claims can throw, so guard it.
+  try {
     jwt::decoded_jwt<jwt::traits::kazuho_picojson> decodedToken =
         jwt::decode<jwt::traits::kazuho_picojson>(
             clientLoginData->token.value());  // Parse the token string into
                                               // a structured object.
-    if (!decodeToken(clientLoginData,
-                     message,
-                     decodedToken))  // First check that the claims can be read
-                                     // and copied into clientLoginData.
-    {
+    // First check that the claims can be read
+    // and copied into clientLoginData.
+    if (!decodeToken(clientLoginData, message, decodedToken)) {
       message =
           fmt::format("Token is not valid: {}",
                       message);  // Add context to the decode failure reason.
@@ -151,15 +147,12 @@ bool TokenManager::isTokenValid(
     }
 
     // Token is valid
-    return validateToken(clientLoginData,
-                         message,
-                         decodedToken);  // Then verify the signature and
-                                         // account state (the real validity
-                                         // check).
-  }
-  catch (const std::exception&
-             e)  // Runs when a claim is missing or signing fails.
-  {
+    // Then verify the signature and
+    // account state (the real validity
+    // check).
+    // Runs when a claim is missing or signing fails.
+    return validateToken(clientLoginData, message, decodedToken);
+  } catch (const std::exception& e) {
     message =
         fmt::format("Error validating Token:{}",
                     e.what());  // Build an error message from the exception.
@@ -170,22 +163,19 @@ bool TokenManager::isTokenValid(
 
 /** @brief Coroutine form of isTokenValid(); see that function for the contract.
  */
+// Coroutine form of token validation for async routes.
 drogon::Task<bool> TokenManager::isTokenValidCoro(
     std::optional<Types::ClientLoginData>& clientLoginData,
-    std::string&
-        message)  // Coroutine form of token validation for async routes.
-{
-  try  // Signing or reading optional claims can throw, so guard it.
-  {
+    std::string&                           message) {
+  // Signing or reading optional claims can throw, so guard it.
+  try {
     jwt::decoded_jwt<jwt::traits::kazuho_picojson> decodedToken =
         jwt::decode<jwt::traits::kazuho_picojson>(
             clientLoginData->token.value());  // Parse the token string into
                                               // a structured object.
-    if (!decodeToken(clientLoginData,
-                     message,
-                     decodedToken))  // First check that the claims can be read
-                                     // and copied into clientLoginData.
-    {
+    // First check that the claims can be read
+    // and copied into clientLoginData.
+    if (!decodeToken(clientLoginData, message, decodedToken)) {
       message =
           fmt::format("Token is not valid: {}",
                       message);  // Add context to the decode failure reason.
@@ -193,21 +183,20 @@ drogon::Task<bool> TokenManager::isTokenValidCoro(
     }
 
     // Token is valid
+    // Await the async
+    // validation without
+    // blocking, then
+    // return its result.
+    // A busy database is re-thrown so the caller
+    // can retry.
     co_return co_await validateTokenCoro(clientLoginData,
                                          message,
-                                         decodedToken);  // Await the async
-                                                         // validation without
-                                                         // blocking, then
-                                                         // return its result.
-  }
-  catch (const DatabaseBusy&)  // A busy database is re-thrown so the caller
-                               // can retry.
-  {
-    throw;  // Re-throw the busy error so the caller can retry later.
-  }
-  catch (const std::exception&
-             e)  // Runs when a claim is missing or signing fails.
-  {
+                                         decodedToken);
+  } catch (const DatabaseBusy&) {
+    // Re-throw the busy error so the caller can retry later.
+    // Runs when a claim is missing or signing fails.
+    throw;
+  } catch (const std::exception& e) {
     message =
         fmt::format("Error validating Token:{}",
                     e.what());  // Build an error message from the exception.

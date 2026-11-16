@@ -61,8 +61,7 @@
 // FakeDatabaseController: the hermetic DB replacement under test.
 #include "support/fake_db.hpp"
 
-namespace
-{
+namespace {
   /**
    * @brief Runs one `drogon::Task<void>` body to completion on a private
    * event loop thread.
@@ -70,27 +69,25 @@ namespace
    * launcher is a fire-and-forget `AsyncTask`, and the helper joins once the
    * body signals done.
    */
+  // Runs the supplied coroutine body on a private
+  // loop and does not return until it finishes.
   template <typename F>
-  void runOnLoop(F&& body)  // Runs the supplied coroutine body on a private
-                            // loop and does not return until it finishes.
-  {
+  void runOnLoop(F&& body) {
     // trantor::EventLoop must be constructed on the thread that runs it.
     trantor::EventLoop* loop =
         nullptr;  // Pointer filled in by the worker thread so the caller
                   // can reach its loop.
     std::promise<void> running;  // Promise used to signal "the loop now
                                  // exists and is ready for work".
-    std::thread        thread(
-        [&loop, &running]
-        {
-          trantor::EventLoop loopThread;  // The loop is constructed on this
-                                          // very thread, as trantor requires.
-          loop = &loopThread;   // Publish its address so the main thread
-                                // can queue work onto it.
-          running.set_value();  // Tell the main thread the loop is ready.
-          loopThread.loop();    // Run the event loop; this blocks until
-                                // quit() is called.
-        });
+    std::thread        thread([&loop, &running] {
+      trantor::EventLoop loopThread;  // The loop is constructed on this
+                                      // very thread, as trantor requires.
+      loop = &loopThread;             // Publish its address so the main thread
+                                      // can queue work onto it.
+      running.set_value();            // Tell the main thread the loop is ready.
+      loopThread.loop();              // Run the event loop; this blocks until
+                                      // quit() is called.
+    });
     running.get_future().wait();  // Block until the worker signals
                                   // readiness, so using 'loop' is safe.
 
@@ -98,18 +95,16 @@ namespace
                                     // atomic because two threads touch it.
     // The launcher must be a drogon::AsyncTask (fire-and-forget); the
     // awaited bodies return drogon::Task, which is awaitable.
-    loop->queueInLoop(
-        [loop, &done, &body]() -> drogon::AsyncTask
-        {
-          co_await body();  // Suspend here until the test's coroutine
-                            // body completes.
-          done = true;      // Signal completion to the thread that called
-                            // runOnLoop.
-          loop->quit();     // Stop the event loop so the worker thread can
-                            // exit.
-        });
-    while (!done.load())  // Poll until the coroutine signals it has finished.
-    {
+    loop->queueInLoop([loop, &done, &body]() -> drogon::AsyncTask {
+      co_await body();  // Suspend here until the test's coroutine
+                        // body completes.
+      done = true;      // Signal completion to the thread that called
+                        // runOnLoop.
+      loop->quit();     // Stop the event loop so the worker thread can
+                        // exit.
+    });
+    // Poll until the coroutine signals it has finished.
+    while (!done.load()) {
       std::this_thread::sleep_for(
           std::chrono::milliseconds(1));  // Sleep briefly each pass instead of
                                           // burning CPU while waiting.
@@ -122,11 +117,11 @@ namespace
 // The coroutine override reads the same result field as its sync counterpart
 // and counts a coro_call but no write: this proves the async seam was actually
 // used.
+// Registers the test that the async read
+// method uses the shared fake result.
 TEST_CASE(
     "FakeDatabaseController coroutines answer from the sync result fields",
-    "[database][asyncdb][fake]")  // Registers the test that the async read
-                                  // method uses the shared fake result.
-{
+    "[database][asyncdb][fake]") {
   auto fake = std::make_shared<
       FakeDatabaseController>();  // Create the fake with shared ownership so
                                   // the coroutine can safely capture it.
@@ -135,17 +130,15 @@ TEST_CASE(
                                       // return; emplace constructs the
                                       // optional in place.
 
-  runOnLoop(
-      [&]() -> drogon::Task<void>
-      {
-        auto result = co_await fake->executeReadQueryCoro(
-            "SELECT 1");  // Await the async read; co_await suspends until
-                          // the Task produces its value.
-        REQUIRE(result.has_value());  // Prove the fake actually returned a
-                                      // row before we inspect it.
-        CHECK(result->at("id").as<uint64_t>() ==
-              7);  // Prove the returned JSON carries the exact id we seeded.
-      });
+  runOnLoop([&]() -> drogon::Task<void> {
+    auto result = co_await fake->executeReadQueryCoro(
+        "SELECT 1");  // Await the async read; co_await suspends until
+                      // the Task produces its value.
+    REQUIRE(result.has_value());  // Prove the fake actually returned a
+                                  // row before we inspect it.
+    CHECK(result->at("id").as<uint64_t>() ==
+          7);  // Prove the returned JSON carries the exact id we seeded.
+  });
   CHECK(fake->coro_calls == 1);   // Prove exactly one coroutine method ran,
                                   // i.e. the async seam was used.
   CHECK(fake->query_calls == 0);  // nothing was written -- a read path must
@@ -154,10 +147,10 @@ TEST_CASE(
 
 // A busy fake throws DatabaseBusy out of co_await, so callers on the async path
 // see the same retryable error as on the synchronous path.
+// Registers the test for async error
+// propagation.
 TEST_CASE("FakeDatabaseController coroutines propagate DatabaseBusy when busy",
-          "[database][asyncdb][fake]")  // Registers the test for async error
-                                        // propagation.
-{
+          "[database][asyncdb][fake]") {
   auto fake  = std::make_shared<FakeDatabaseController>();  // Create the fake
                                                             // controller with
                                                             // shared ownership.
@@ -166,21 +159,16 @@ TEST_CASE("FakeDatabaseController coroutines propagate DatabaseBusy when busy",
 
   bool threw = false;  // Flag set by the catch block to record that the
                        // exception arrived.
-  runOnLoop(
-      [&]() -> drogon::Task<void>
-      {
-        try
-        {
-          (void)(co_await fake->getPermissionsCoro(
-              "SELECT 1"));  // Await a method that should throw; the cast
-                             // silences "unused result".
-        }
-        catch (const DatabaseBusy&)
-        {
-          threw = true;  // Record that the async path surfaced the same
-                         // retryable error as the sync path.
-        }
-      });
+  runOnLoop([&]() -> drogon::Task<void> {
+    try {
+      (void)(co_await fake->getPermissionsCoro(
+          "SELECT 1"));  // Await a method that should throw; the cast
+                         // silences "unused result".
+    } catch (const DatabaseBusy&) {
+      threw = true;  // Record that the async path surfaced the same
+                     // retryable error as the sync path.
+    }
+  });
   CHECK(threw);  // Prove the exception really propagated out of co_await into
                  // our catch.
 }

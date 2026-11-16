@@ -59,9 +59,9 @@
  * values and the text doubles as a cache key.
  * @see Entity, PermissionManager
  */
-class Appointment : public Entity  // Inherits CRUD; adds permission helpers
-                                   // specific to appointments.
-{
+// Inherits CRUD; adds permission helpers
+// specific to appointments.
+class Appointment : public Entity {
  public:
   /**
    * @brief Stores the appointment payload and table name in the base Entity.
@@ -71,10 +71,9 @@ class Appointment : public Entity  // Inherits CRUD; adds permission helpers
    */
   template <typename T>
   explicit Appointment(const T& _data, const std::string& _tablename)
-      : Entity(_data,
-               _tablename)  // "explicit" requires an exact call, avoiding
-                            // accidental implicit conversions.
-  {
+      // "explicit" requires an exact call, avoiding
+      // accidental implicit conversions.
+      : Entity(_data, _tablename) {
   }
 
   /**
@@ -98,11 +97,10 @@ class Appointment : public Entity  // Inherits CRUD; adds permission helpers
    * @param[in] service_id Primary key of the service row.
    * @return SELECT of owner_id, admin_id and staff for the given service.
    */
+  // "Impl" suffix: shared implementation used
+  // by concrete subclasses.
   static std::optional<std::string> getServicePermissionsQueryImpl(
-      const std::string& service_name,
-      std::uint64_t service_id)  // "Impl" suffix: shared implementation used
-                                 // by concrete subclasses.
-  {
+      const std::string& service_name, std::uint64_t service_id) {
     // The SQL selects owner_id, admin_id and staff from the given
     // organisation table for one service id. PermissionManager runs this to
     // see who is allowed to act on appointments in that service. Names and
@@ -134,12 +132,12 @@ class Appointment : public Entity  // Inherits CRUD; adds permission helpers
    * @return SELECT statement identifying the owning service's permission
    * fields.
    */
+  // Finds which service owns an appointment,
+  // then its permission fields.
   static std::optional<std::string> getPermissionsQueryForReadImpl(
       const std::string& org_name,
       const std::string& appointments_table,
-      std::uint64_t appointment_id)  // Finds which service owns an appointment,
-                                     // then its permission fields.
-  {
+      std::uint64_t      appointment_id) {
     // org_name is plural (e.g. "clinics") but the FK column is singular
     // (e.g. "clinic_id")
     std::string fk_col =
