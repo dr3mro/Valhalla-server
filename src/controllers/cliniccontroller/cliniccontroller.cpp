@@ -89,6 +89,94 @@ void ClinicController<T>::CreateImpl(CALLBACK_&& callback, const Requester&& req
 
 template <typename T>
 template <typename U>
+drogon::Task<void> ClinicController<T>::CreateAsyncImpl(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+    requires(std::is_same<U, Patient>::value || std::is_same<U, Visits>::value)
+{
+    co_await EntityController<T>::CreateAsync(std::move(callback), std::move(requester), data);
+}
+
+template <typename T>
+template <typename U>
+drogon::Task<void> ClinicController<T>::CreateAsyncImpl(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+    requires(!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value)
+{
+    jsoncons::json request_json;
+    try
+    {
+        request_json = jsoncons::json::parse(data);
+    }
+    catch (const std::exception&)
+    {
+        callback(api::v2::Http::Status::BAD_REQUEST, "Invalid request body: malformed JSON.");
+        co_return;
+    }
+    bool success = false;
+
+    Validator::Rule rule((Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA | Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA), {"id"});
+
+    api::v2::Http::Error error;
+    try
+    {
+        success = Validator::validateDatabaseCreateSchema(T::getTableName(), request_json, error, rule);
+        if (!success)
+        {
+            callback(error.code, error.message);
+            co_return;
+        }
+
+        // A body that simply omits "id" (e.g. {"reports": [...], "clinic_id": ...}) is a client
+        // mistake, not a server failure - .at("id") below throws "Key not found" for exactly that
+        // case, and validateDatabaseCreateSchema() above was told to ignore a missing "id" (see
+        // `rule`), so it has to be checked explicitly here before the .at() call, or it falls
+        // through uncaught into the generic 500 handler below.
+        if (!request_json.contains("id"))
+        {
+            callback(api::v2::Http::Status::BAD_REQUEST, "id not provided.");
+            co_return;
+        }
+        // A fuzzer-sized "id" (e.g. 33689528311627667466646192128, far past UINT64_MAX) makes
+        // jsoncons' .as<uint64_t>() throw "Integer overflow" rather than just failing to convert -
+        // that's still a malformed-client-input case, not a server fault, so it needs its own catch
+        // here rather than falling through to the generic 500 handler below.
+        std::optional<uint64_t> id;
+        try
+        {
+            id = request_json.at("id").as<uint64_t>();
+        }
+        catch (const std::exception&)
+        {
+            callback(api::v2::Http::Status::BAD_REQUEST, "id must be a non-negative integer that fits in 64 bits.");
+            co_return;
+        }
+        if (!id.has_value())
+        {
+            callback(api::v2::Http::Status::BAD_REQUEST, "id not provided.");
+            co_return;
+        }
+
+        if (!gateKeeper->canCreate<T>(requester, request_json, error))
+        {
+            callback(error.code, error.message);
+            co_return;
+        }
+
+        Types::Create_t clinic_create_data = Types::Create_t(request_json, id.value());
+
+        T entity(clinic_create_data);
+
+        co_await Controller::CreateAsync(entity, std::move(callback));
+        co_return;
+    }
+    catch (const std::exception& e)
+    {
+        CRITICALMESSAGERESPONSE
+        co_return;
+    }
+}
+
+
+template <typename T>
+template <typename U>
 void ClinicController<T>::DeleteImpl(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> id)
     requires(std::is_same<U, Patient>::value || std::is_same<U, Visits>::value)
 {
@@ -183,6 +271,12 @@ void ClinicController<T>::Create(CALLBACK_&& callback, const Requester&& request
 }
 
 template <typename T>
+drogon::Task<void> ClinicController<T>::CreateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+{
+    co_await CreateAsyncImpl(std::move(callback), std::move(requester), data);
+}
+
+template <typename T>
 void ClinicController<T>::Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
 {
     EntityController<T>::Read(std::move(callback), std::move(requester), data);
@@ -232,11 +326,13 @@ void ClinicController<T>::GetVisits(CALLBACK_&& callback, const Requester&& requ
 
 #define INSTANTIATE_CLINIC_CONTROLLER(TYPE)                                                                                                             \
     template void ClinicController<TYPE>::CreateImpl(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                         \
+    template drogon::Task<void> ClinicController<TYPE>::CreateAsyncImpl(CALLBACK_&& callback, const Requester&& requester, std::string_view data); \
     template void ClinicController<TYPE>::DeleteImpl(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id);                    \
     template drogon::Task<void> ClinicController<TYPE>::DeleteAsyncImpl(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id); \
     template void ClinicController<TYPE>::SearchImpl(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                         \
     template void ClinicController<TYPE>::GetVisitsImpl(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> patient_id);         \
     template void ClinicController<TYPE>::Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                             \
+    template drogon::Task<void> ClinicController<TYPE>::CreateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data); \
     template void ClinicController<TYPE>::Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                               \
     template drogon::Task<void> ClinicController<TYPE>::ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data); \
     template void ClinicController<TYPE>::Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id); \
