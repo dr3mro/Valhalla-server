@@ -30,7 +30,6 @@
 #include "utils/jsonhelper/jsonhelper.hpp"
 #include "utils/message/message.hpp"
 #include "validator/databaseschema/databaseschema.hpp"
-extern const char* const VALHALLA_GIT_TAG;
 
 Server::Server()
     : logger_(Store::getObject<Logger>()),

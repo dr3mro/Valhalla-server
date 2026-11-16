@@ -1,8 +1,8 @@
-#include <catch2/catch_test_macros.hpp>
 #include <drogon/HttpRequest.h>
 #include <drogon/HttpResponse.h>
 #include <drogon/HttpTypes.h>
 
+#include <catch2/catch_test_macros.hpp>
 #include <string>
 
 #include "server/cors.hpp"
@@ -37,8 +37,8 @@ TEST_CASE("Cors::apply sets the full header set on a normal response", "[api][co
 
 TEST_CASE("Cors::apply is idempotent: applying it twice changes nothing", "[api][cors]")
 {
-    auto response = drogon::HttpResponse::newHttpResponse();
-    const auto request = makeRequest(drogon::Get);
+    auto       response = drogon::HttpResponse::newHttpResponse();
+    const auto request  = makeRequest(drogon::Get);
 
     Cors::apply(request, response);
     const auto once = response->getHeader("Access-Control-Allow-Origin");

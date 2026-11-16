@@ -136,7 +136,7 @@ namespace Cors
 
             std::string result;
             std::string token;
-            auto        flush = [&]()
+            auto flush = [&]
             {
                 const std::string::size_type first = token.find_first_not_of(" \t");
                 if (first == std::string::npos)
@@ -144,7 +144,7 @@ namespace Cors
                     token.clear();
                     return;
                 }
-                const std::string::size_type last = token.find_last_not_of(" \t");
+                const std::string::size_type last    = token.find_last_not_of(" \t");
                 const std::string            trimmed = token.substr(first, last - first + 1);
                 token.clear();
 
@@ -152,7 +152,7 @@ namespace Cors
                 {
                     return;
                 }
-                if (!std::all_of(trimmed.begin(), trimmed.end(), isTokenChar))
+                if (!std::ranges::all_of(trimmed, isTokenChar))
                 {
                     return;
                 }
@@ -191,7 +191,7 @@ namespace Cors
             // Preflight only: allow whatever the browser says it is about to send,
             // after validating the token list and bounding its size.
             const std::string requested = req->getHeader("Access-Control-Request-Headers");
-            const std::string echoed = detail::sanitizeRequestedHeaders(requested);
+            const std::string echoed    = detail::sanitizeRequestedHeaders(requested);
             if (!echoed.empty())
             {
                 allowedHeaders = echoed;

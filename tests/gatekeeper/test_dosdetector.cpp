@@ -70,7 +70,7 @@ namespace
 TEST_CASE("DoSDetector anchored whitelist patterns do not over-match", "[gatekeeper][dos]")
 {
     DetectorFixture fixture(makeConfig(/*maxRequests*/ 10, /*maxFingerprints*/ 100, std::chrono::seconds{60}, std::chrono::seconds{30},
-        std::chrono::seconds{3600}, /*whitelist*/ {"^172\\.17\\.0\\.1$"}));
+        std::chrono::seconds{3600}, /*whitelist*/ {R"(^172\.17\.0\.1$)"}));
 
     REQUIRE(fixture.send("172.17.0.1", "body") == DOSDetector::Status::WHITELISTED);
     // An anchored pattern must not also match 172.17.0.10 .. 172.17.0.199.
