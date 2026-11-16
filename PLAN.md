@@ -107,7 +107,7 @@ Source: per-route object count (about 16-24 objects per request, 1 locked `Store
 ### Step 9: Database round trips and statements
 
 - [ ] Count round trips per endpoint (`log_statement=all` for one `test_api.sh` run); targets: reads 1, writes 1-2. [P9.1]
-- [ ] Single-statement writes use `pqxx::nontransaction` (no `BEGIN`/`COMMIT`). **Partly done:** some `Database` paths already do; the `executeQuery<json, pqxx::work>` path used by `databasecontroller.cpp:67` does not. [P9.2]
+- [x] Single-statement writes use `pqxx::nontransaction` (no `BEGIN`/`COMMIT`). **Partly done:** some `Database` paths already do; the `executeQuery<json, pqxx::work>` path used by `databasecontroller.cpp:67` does not. [P9.2] (changed executeQuery to nontransaction)
 - [ ] Replace `checkItemExists` before insert with `INSERT ... ON CONFLICT DO NOTHING RETURNING id`. [P9.3]
 - [ ] Prepared statements for login, permission and by-id queries, re-prepared after `reconnect`. [P9.4]
 - [x] **Related bug to fix in the same pass** (same code): `ClientController::Delete` now removes the session only when delete succeeds (sync and async); `Suspend` unchanged. [R2.3]
