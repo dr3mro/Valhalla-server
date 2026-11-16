@@ -65,19 +65,19 @@ namespace Cors
         resp->addHeader("Access-Control-Expose-Headers", exposedHeaders());
 
         const std::string& requested = req->getHeader("Access-Control-Request-Headers");
-        std::string        echoed;
-        const std::string& allowedHeaders =
-            (req->method() == drogon::Options && !(echoed = detail::sanitizeRequestedHeaders(requested)).empty()) ? echoed : defaultAllowedHeaders();
 
+        const std::string* allowedHeaders = &defaultAllowedHeaders();
+        std::string echoed;
         if (req->method() == drogon::Options)
         {
-            resp->addHeader("Access-Control-Max-Age", preflightMaxAge());
-            const std::string merged = detail::mergeVary(resp->getHeader("vary"), "Access-Control-Request-Headers");
-            if (merged != resp->getHeader("vary"))
+            echoed = detail::sanitizeRequestedHeaders(requested);
+            if (!echoed.empty())
             {
-                resp->addHeader("Vary", merged);
+                allowedHeaders = &echoed;
             }
+            resp->addHeader("Access-Control-Max-Age", preflightMaxAge());
+            addToVary(resp, "Access-Control-Request-Headers");
         }
-        resp->addHeader("Access-Control-Allow-Headers", allowedHeaders);
+        resp->addHeader("Access-Control-Allow-Headers", *allowedHeaders);
     }
 }  // namespace Cors

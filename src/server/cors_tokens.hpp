@@ -36,7 +36,9 @@ namespace CorsTokens
                        {
                            return std::string_view{};
                        }
-                       return trim(std::string_view(&*range.begin(), std::ranges::distance(range)));
+                       // std::ranges::distance returns a signed ptrdiff_t; the range is non-empty here,
+                       // so converting it to string_view's unsigned length is safe.
+                       return trim(std::string_view(&*range.begin(), static_cast<std::size_t>(std::ranges::distance(range))));
                    }) |
                std::views::filter([](std::string_view token) { return !token.empty(); });
     }
@@ -72,36 +74,35 @@ namespace CorsTokens
 
     inline std::string mergeVary(std::string_view existing, std::string_view value)
     {
-        const bool hasWildcard = std::ranges::any_of(tokens(existing), [](std::string_view token) { return token == "*"; });
-        if (hasWildcard)
-        {
-            return std::string(existing);
-        }
-
-        const bool present = std::ranges::any_of(tokens(existing), [&](std::string_view token) { return iequals(token, value); });
-        if (present)
-        {
-            return std::string(existing);
-        }
-
         std::string combined;
+        bool hasWildcard = false;
+        bool present = false;
         for (std::string_view token : tokens(existing))
         {
+            if (token == "*")
+            {
+                hasWildcard = true;
+            }
+            if (iequals(token, value))
+            {
+                present = true;
+            }
             if (!combined.empty())
             {
                 combined += ", ";
             }
             combined.append(token);
         }
+
+        if (hasWildcard || present)
+        {
+            return std::string(existing);
+        }
         if (!combined.empty())
         {
             combined += ", ";
         }
         combined.append(value);
-        if (existing.empty())
-        {
-            return std::string(value);
-        }
         return combined;
     }
 }  // namespace CorsTokens

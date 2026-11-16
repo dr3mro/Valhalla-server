@@ -42,4 +42,6 @@ TEST_CASE("CorsTokens::mergeVary is case-insensitive", "[server][cors]")
     CHECK(mergeVary("*", "Access-Control-Request-Headers") == "*");
     CHECK(mergeVary("", "Access-Control-Request-Headers") == "Access-Control-Request-Headers");
     CHECK(mergeVary("Accept-Encoding", "Access-Control-Request-Headers") == "Accept-Encoding, Access-Control-Request-Headers");
+    CHECK(mergeVary("  Accept-Encoding , , ", "Access-Control-Request-Headers") == "Accept-Encoding, Access-Control-Request-Headers");
+    CHECK(mergeVary("", "Access-Control-Request-Headers") == "Access-Control-Request-Headers");
 }
