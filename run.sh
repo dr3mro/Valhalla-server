@@ -50,10 +50,10 @@ ${C_BOLD}${C_Y}${E_BUILD}Build & run:${C_N}
 
 ${C_BOLD}${C_Y}${E_SERVER}Server lifecycle:${C_N}
   ${C_C}server start release|debug [--background]${C_N}  ${C_DIM}Start server${C_N}
-  ${C_C}server stop${C_N}                               ${C_DIM}Stop server${C_N}
-  ${C_C}server status${C_N}                            ${C_DIM}Server status${C_N}
-  ${C_C}server restart release|debug${C_N}              ${C_DIM}Restart server${C_N}
-  ${C_C}server peek${C_N}                               ${C_DIM}Tail server log${C_N}
+  ${C_C}server stop${C_N}                              ${C_DIM}Stop server${C_N}
+  ${C_C}server status${C_N}                           ${C_DIM}Server status${C_N}
+  ${C_C}server restart release|debug${C_N}             ${C_DIM}Restart server${C_N}
+  ${C_C}server peek${C_N}                              ${C_DIM}Tail server log${C_N}
 
 ${C_BOLD}${C_Y}${E_TEST}Tests:${C_N}
   ${C_C}tests | unit${C_N}     ${C_DIM}Run Catch2 unit tests (Debug + Release)${C_N}
