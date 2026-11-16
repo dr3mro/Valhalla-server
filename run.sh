@@ -27,7 +27,7 @@ ${C_BOLD}Valhalla run tool${C_N}
 
 ${C_BOLD}Usage:${C_N} ./run.sh <command> [args...]
 
-${C_BOLD}${E_BUILD} Build & run:${C_N}
+${C_BOLD}${E_BUILD}  Build & run:${C_N}
   build            Build Debug + Release
   build release    Build Release only
   build debug      Build Debug only
@@ -35,14 +35,14 @@ ${C_BOLD}${E_BUILD} Build & run:${C_N}
   debug            Run Debug server (./scripts/run/run_debug.sh)
   openapi          Regenerate OpenAPI docs
 
-${C_BOLD}${E_SERVER} Server lifecycle:${C_N}
+${C_BOLD}${E_SERVER}  Server lifecycle:${C_N}
   server start release|debug [--background]
   server stop
   server status
   server restart release|debug
   server peek                 Tail the background server log (Ctrl+C to stop; server keeps running)
 
-${C_BOLD}${E_TEST} Tests:${C_N}
+${C_BOLD}${E_TEST}  Tests:${C_N}
   tests | unit     Run Catch2 unit tests (Debug + Release)
   api              Run API tests (scripts/test/test_api.sh)
   fuzz             Run fuzz_auth
@@ -54,7 +54,7 @@ ${C_BOLD}${E_TEST} Tests:${C_N}
   db-init          Initialize database
   all              Build, init DB, start server, run all tests, stop server
 
-${C_BOLD}${E_INFO} Other:${C_N}
+${C_BOLD}${E_INFO}  Other:${C_N}
   list             List commands
   help             Show this help
 
