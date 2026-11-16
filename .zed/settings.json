@@ -1,0 +1,15 @@
+{
+  // Shell scripts: inline shellcheck diagnostics (same linter as CI) through Zed's built-in bash-language-server.
+  // shellcheck must be on PATH (macOS: brew install shellcheck). If no squiggles appear, set an absolute
+  // "shellcheckPath" such as /opt/homebrew/bin/shellcheck, or start Zed from a terminal with `zed .`.
+  "lsp": {
+    "bash-language-server": {
+      "settings": {
+        "bashIde": {
+          "shellcheckPath": "shellcheck",
+          "enableSourceErrorDiagnostics": true,
+        },
+      },
+    },
+  },
+}

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Blocks a commit when a staged shell script would fail the CI shellcheck job.
+# Enable once per clone: git config core.hooksPath .githooks
+exec "$(git rev-parse --show-toplevel)/tools/lint_sh.sh" --staged
