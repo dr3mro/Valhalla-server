@@ -974,6 +974,10 @@ fuzz_auth.sh, sqlmap_test.sh, schemathesis_test.sh  # Security and fuzz testing 
 
 ## Development
 
+### Known limitation: malformed requests (HTTP 400)
+
+Drogon 1.9.14 writes the response for a malformed request line (for example `GET /bad http/1.1`) directly to the connection during parsing. That path bypasses both the custom error handler and the pre-sending advice, so these 400 responses contain no CORS headers. No supported hook adds headers there in this Drogon version, so front-end code that triggers such an error will still see a browser CORS failure.
+
 - **Code style:** enforced via `.clang-format`; static analysis configured through `.clang-tidy` and `cppcheck.supp`.
 - **Editor support:** `.clangd` provides LSP configuration; `.vscode/` and `.zed/` settings are included. `CMAKE_EXPORT_COMPILE_COMMANDS` is on, so `compile_commands.json` is generated for tooling.
 - **Warnings:** built with `-Wall -Wextra -pedantic`.
