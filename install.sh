@@ -162,6 +162,12 @@ fetch_tree() {
     die "couldn't resolve '$REF' on GitHub (bad ref, no network, or API rate limit; set GITHUB_TOKEN to raise it)"
   case "$SHA" in *[!0-9a-f]* | "") die "unexpected answer from GitHub for '$REF': $SHA" ;; esac
   say "📥  Downloading $REF ($(printf '%s' "$SHA" | cut -c1-12))"
+  # The version we record is the commit that last touched valhalla.sh, not $SHA:
+  # an update is offered only when the tool itself changes, not on every
+  # unrelated commit to the branch.
+  FILE_SHA="$(api "https://api.github.com/repos/$REPO/commits?path=valhalla.sh&sha=$SHA&per_page=1" |
+    sed -n 's/.*"sha": *"\([0-9a-f]\{40\}\)".*/\1/p' | head -n1)"
+  [ -n "$FILE_SHA" ] || FILE_SHA="$SHA"
 
   payloads="$(api "https://api.github.com/repos/$REPO/git/trees/$SHA?recursive=1" |
     grep -o '"path": *"api_tests/payloads/[^"]*\.json"' |
@@ -176,7 +182,7 @@ fetch_tree() {
     count=$((count + 1))
   done
   say "✅  Downloaded $count files"
-  VERSION_TEXT="$REF $SHA"
+  VERSION_TEXT="$REF $FILE_SHA"
 }
 
 # copy_tree STAGE: copies the same files from a local checkout ($SOURCE).

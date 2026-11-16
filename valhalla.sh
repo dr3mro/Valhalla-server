@@ -2055,25 +2055,23 @@ state_get() { [[ -f $UPDATE_STATE ]] && sed -n "s/^$1=//p" "$UPDATE_STATE" | hea
 # instead of showing what was just installed.
 forget_update_state() { rm -f "$UPDATE_STATE"; }
 
-# tool_installed_sha: content hash of the installed valhalla.sh; empty for a
-# checkout or a copy installed from a local checkout (nothing to compare).
-# Comparing file content (not the main commit SHA) means an update is offered
-# only when valhalla.sh itself changes, not on every unrelated commit to main.
+# tool_installed_sha: commit that last touched valhalla.sh for this installed
+# copy; empty for a checkout or a copy installed from a local checkout
+# (nothing to compare).
 tool_installed_sha() {
   [[ -f $ROOT/VERSION ]] || return 0
   local v
   v="$(cat "$ROOT/VERSION")"
   [[ $v == local* ]] && return 0
-  [[ -f $ROOT/valhalla.sh ]] || return 0
-  git hash-object "$ROOT/valhalla.sh" 2>/dev/null || true
+  echo "${v##* }"
 }
 
-# latest_tool_sha: content hash of valhalla.sh on GitHub's main; empty when
-# unreachable. Only valhalla.sh is compared, so unrelated commits do not
-# trigger an update.
+# latest_tool_sha: commit that last touched valhalla.sh on GitHub's main;
+# empty when unreachable. Only commits affecting valhalla.sh are considered,
+# so unrelated commits do not trigger an update.
 latest_tool_sha() {
-  curl -fsSL -m 8 "https://raw.githubusercontent.com/$REPO_SLUG/main/valhalla.sh" 2>/dev/null |
-    git hash-object --stdin 2>/dev/null || true
+  curl -fsSL -m 8 "https://api.github.com/repos/$REPO_SLUG/commits?path=valhalla.sh&per_page=1" 2>/dev/null |
+    sed -n 's/.*"sha": *"\([0-9a-f]\{40\}\)".*//p' | head -n1
 }
 
 # update_refresh: the background check. Writes UPDATE_STATE atomically.
