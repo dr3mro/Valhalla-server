@@ -21,6 +21,7 @@
 #include "api/v2/all_routes.hpp"  // IWYU pragma: keep
 #include "api/v2/middlewares/elapsedtime.hpp"
 #include "configurator/configurator.hpp"
+#include "database/asyncdbclient.hpp"
 #include "database/dbexecutor.hpp"
 #include "gatekeeper/passwordcrypt/passwordworker.hpp"
 #include "server/cors.hpp"
@@ -47,6 +48,10 @@ int Server::run()
     try
     {
         print_banner();
+        if (db_config_.async)
+        {
+            Store::registerObject<AsyncDbClient>(AsyncDbClient::createClient());
+        }
         drogon::app()
             .addListener(std::string(config_.host), config_.port)
             .setThreadNum(config_.threads)
