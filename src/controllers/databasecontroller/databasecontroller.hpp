@@ -19,6 +19,10 @@
 
 #include "configurator/configurator.hpp"
 #include "database/databasebusy.hpp"
+#include "database/asyncdbclient.hpp"
+#include "database/asyncresultmapper.hpp"
+#include "database/asyncsqlbinder.hpp"
+#include "drogon/utils/coroutine.h"
 #include "database/databasehandler.hpp"
 #include "store/store.hpp"
 #include "utils/global/types.hpp"
@@ -47,6 +51,18 @@ class DatabaseController
     virtual std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(const std::string& tableName);
     virtual std::optional<std::unordered_set<std::string>>         getAllTables();
     virtual std::optional<jsoncons::json>                          getPermissions(const std::string& query);
+
+    // Asynchronous (coroutine) entry points used when DB_ASYNC=true. They run on
+    // the Drogon IO loop without a worker hand-off.
+    virtual drogon::Task<std::optional<jsoncons::json>>        executeQueryCoro(const std::string& query, const pqxx::params& params = {});
+    virtual drogon::Task<std::optional<jsoncons::json>>        executeReadQueryCoro(const std::string& query, const pqxx::params& params = {});
+    virtual drogon::Task<std::optional<jsoncons::json::array>> executeSearchQueryCoro(const std::string& query, const pqxx::params& params = {});
+    virtual drogon::Task<std::optional<std::string>>           doReadQueryCoro(const std::string& query, const pqxx::params& params = {});
+    virtual drogon::Task<std::optional<bool>>                  checkItemExistsCoro(const std::string& table, const std::string& column, const std::string& value);
+    virtual drogon::Task<std::optional<jsoncons::json>>        getPasswordHashForUserNameCoro(const std::string& username, const std::string& tablename);
+    virtual drogon::Task<std::optional<std::unordered_set<api::v2::ColumnInfo>>> getTableSchemaCoro(const std::string& tableName);
+    virtual drogon::Task<std::optional<std::unordered_set<std::string>>>         getAllTablesCoro();
+    virtual drogon::Task<std::optional<jsoncons::json>>        getPermissionsCoro(const std::string& query);
 
    private:
     std::atomic<bool>                       backendsReady_{false};

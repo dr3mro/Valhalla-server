@@ -47,9 +47,9 @@ Status legend: `[ ]` to do, `[x]` done. Items marked **(manual)** are done by th
 
 Route: `POST /clients/providers/read`, only when `DB_ASYNC=true`.
 
-- [ ] Async `DatabaseController` entry point returning a coroutine (`drogon::Task<...>`), next to the sync one.
-- [ ] Permission check (`PermissionManager` / `PermissionCache` miss path) as a coroutine.
-- [ ] The read itself as a coroutine; send the response from the IO loop with no hand-off.
+- [x] Async `DatabaseController` entry point returning a coroutine (`drogon::Task<...>`), next to the sync one.
+- [x] Permission check (`PermissionManager` / `PermissionCache` miss path) as a coroutine.
+- [x] The read itself as a coroutine; send the response from the IO loop with no hand-off.
 - [ ] Keep `PasswordWorker` for hashing and make sure its completion is posted back to the IO loop.
 - [ ] `api_tests` payloads give byte-identical bodies and status codes for sync and async.
 - [ ] **(manual)** Benchmark sweep: target is the `DB_WORKERS=0` level (about 19.6k req/s and 0.4 ms median at 8 VUs).

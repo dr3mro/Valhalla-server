@@ -111,3 +111,230 @@ std::optional<jsoncons::json> DatabaseController::getPermissions(const std::stri
     return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query, pqxx::params{});
 }
 
+
+#include "database/asyncdbclient.hpp"
+#include "database/asyncdberror.hpp"
+#include "database/asyncresultmapper.hpp"
+#include "database/asyncsqlbinder.hpp"
+
+drogon::Task<std::optional<jsoncons::json>> DatabaseController::executeQueryCoro(const std::string& query, const pqxx::params& params)
+{
+    auto asyncClient = Store::getObject<AsyncDbClient>(nullptr);
+    if (asyncClient == nullptr || asyncClient->client() == nullptr)
+    {
+        co_return std::nullopt;
+    }
+    try
+    {
+        const auto result = co_await asyncdb::execSqlCoro(*asyncClient->client(), query, params);
+        co_return asyncdb::mapResultToObject(result);
+    }
+    catch (const std::exception& e)
+    {
+        Message::CriticalMessage(fmt::format("Exception occurred during async query execution: {}", e.what()));
+        if (asyncdb::isBusy(e))
+        {
+            throw DatabaseBusy();
+        }
+        co_return std::nullopt;
+    }
+}
+
+drogon::Task<std::optional<jsoncons::json>> DatabaseController::executeReadQueryCoro(const std::string& query, const pqxx::params& params)
+{
+    auto asyncClient = Store::getObject<AsyncDbClient>(nullptr);
+    if (asyncClient == nullptr || asyncClient->client() == nullptr)
+    {
+        co_return std::nullopt;
+    }
+    try
+    {
+        const auto result = co_await asyncdb::execSqlCoro(*asyncClient->client(), query, params);
+        co_return asyncdb::mapResultToObject(result);
+    }
+    catch (const std::exception& e)
+    {
+        Message::CriticalMessage(fmt::format("Exception occurred during async read query execution: {}", e.what()));
+        if (asyncdb::isBusy(e))
+        {
+            throw DatabaseBusy();
+        }
+        co_return std::nullopt;
+    }
+}
+
+drogon::Task<std::optional<jsoncons::json::array>> DatabaseController::executeSearchQueryCoro(const std::string& query, const pqxx::params& params)
+{
+    auto asyncClient = Store::getObject<AsyncDbClient>(nullptr);
+    if (asyncClient == nullptr || asyncClient->client() == nullptr)
+    {
+        co_return std::nullopt;
+    }
+    try
+    {
+        const auto result = co_await asyncdb::execSqlCoro(*asyncClient->client(), query, params);
+        co_return asyncdb::mapResultToArray(result);
+    }
+    catch (const std::exception& e)
+    {
+        Message::CriticalMessage(fmt::format("Exception occurred during async search query execution: {}", e.what()));
+        if (asyncdb::isBusy(e))
+        {
+            throw DatabaseBusy();
+        }
+        co_return std::nullopt;
+    }
+}
+
+drogon::Task<std::optional<std::string>> DatabaseController::doReadQueryCoro(const std::string& query, const pqxx::params& params)
+{
+    auto asyncClient = Store::getObject<AsyncDbClient>(nullptr);
+    if (asyncClient == nullptr || asyncClient->client() == nullptr)
+    {
+        co_return std::nullopt;
+    }
+    try
+    {
+        const auto result = co_await asyncdb::execSqlCoro(*asyncClient->client(), query, params);
+        if (result.empty())
+        {
+            co_return std::nullopt;
+        }
+        co_return std::string(result[0][0].c_str());
+    }
+    catch (const std::exception& e)
+    {
+        Message::CriticalMessage(fmt::format("Exception occurred during async simple query execution: {}", e.what()));
+        if (asyncdb::isBusy(e))
+        {
+            throw DatabaseBusy();
+        }
+        co_return std::nullopt;
+    }
+}
+
+drogon::Task<std::optional<bool>> DatabaseController::checkItemExistsCoro(const std::string& table, const std::string& column, const std::string& value)
+{
+    auto asyncClient = Store::getObject<AsyncDbClient>(nullptr);
+    if (asyncClient == nullptr || asyncClient->client() == nullptr)
+    {
+        co_return std::nullopt;
+    }
+    try
+    {
+        const std::string query = fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = $1);", table, column);
+        const auto        result = co_await asyncdb::execSqlCoro(*asyncClient->client(), query, pqxx::params{value});
+        if (result.empty())
+        {
+            co_return std::nullopt;
+        }
+        co_return result[0][0].as<bool>();
+    }
+    catch (const std::exception& e)
+    {
+        Message::CriticalMessage(fmt::format("Exception occurred during async exists check: {}", e.what()));
+        if (asyncdb::isBusy(e))
+        {
+            throw DatabaseBusy();
+        }
+        co_return std::nullopt;
+    }
+}
+
+drogon::Task<std::optional<jsoncons::json>> DatabaseController::getPasswordHashForUserNameCoro(const std::string& username, const std::string& tablename)
+{
+    if (tablename != "users" && tablename != "providers")
+    {
+        Message::ErrorMessage(fmt::format("Unknown client table: {}", tablename));
+        co_return std::nullopt;
+    }
+    const std::string query = fmt::format("SELECT id,password,active FROM {} WHERE username = $1 LIMIT 1;", tablename);
+    co_return co_await executeReadQueryCoro(query, pqxx::params{username});
+}
+
+drogon::Task<std::optional<std::unordered_set<api::v2::ColumnInfo>>> DatabaseController::getTableSchemaCoro(const std::string& tableName)
+{
+    auto asyncClient = Store::getObject<AsyncDbClient>(nullptr);
+    if (asyncClient == nullptr || asyncClient->client() == nullptr)
+    {
+        co_return std::nullopt;
+    }
+    try
+    {
+        const std::string query = "SELECT column_name, data_type, column_default, is_nullable FROM information_schema.columns WHERE table_name = $1 AND column_name != 'id';";
+        const auto        result = co_await asyncdb::execSqlCoro(*asyncClient->client(), query, pqxx::params{tableName});
+
+        std::unordered_set<api::v2::ColumnInfo> schema;
+        for (drogon::orm::Result::SizeType row = 0; row < result.size(); ++row)
+        {
+            api::v2::ColumnInfo column;
+            column.Name       = std::string(result[row][0].c_str());
+            column.DataType   = std::string(result[row][1].c_str());
+            column.Constraint = result[row][2].isNull() ? "None" : std::string(result[row][2].c_str());
+            column.isNullable = std::string(result[row][3].c_str()) == "YES";
+            schema.insert(column);
+        }
+        co_return schema;
+    }
+    catch (const std::exception& e)
+    {
+        Message::CriticalMessage(fmt::format("Exception occurred during async schema load: {}", e.what()));
+        if (asyncdb::isBusy(e))
+        {
+            throw DatabaseBusy();
+        }
+        co_return std::nullopt;
+    }
+}
+
+drogon::Task<std::optional<std::unordered_set<std::string>>> DatabaseController::getAllTablesCoro()
+{
+    auto asyncClient = Store::getObject<AsyncDbClient>(nullptr);
+    if (asyncClient == nullptr || asyncClient->client() == nullptr)
+    {
+        co_return std::nullopt;
+    }
+    try
+    {
+        const auto result = co_await asyncdb::execSqlCoro(*asyncClient->client(), "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';", pqxx::params{});
+
+        std::unordered_set<std::string> tables;
+        for (drogon::orm::Result::SizeType row = 0; row < result.size(); ++row)
+        {
+            tables.insert(std::string(result[row][0].c_str()));
+        }
+        co_return tables;
+    }
+    catch (const std::exception& e)
+    {
+        Message::CriticalMessage(fmt::format("Exception occurred during async table list: {}", e.what()));
+        if (asyncdb::isBusy(e))
+        {
+            throw DatabaseBusy();
+        }
+        co_return std::nullopt;
+    }
+}
+
+drogon::Task<std::optional<jsoncons::json>> DatabaseController::getPermissionsCoro(const std::string& query)
+{
+    auto asyncClient = Store::getObject<AsyncDbClient>(nullptr);
+    if (asyncClient == nullptr || asyncClient->client() == nullptr)
+    {
+        co_return std::nullopt;
+    }
+    try
+    {
+        const auto result = co_await asyncdb::execSqlCoro(*asyncClient->client(), query, pqxx::params{});
+        co_return asyncdb::mapResultToObject(result);
+    }
+    catch (const std::exception& e)
+    {
+        Message::CriticalMessage(fmt::format("Exception occurred during async permissions query: {}", e.what()));
+        if (asyncdb::isBusy(e))
+        {
+            throw DatabaseBusy();
+        }
+        co_return std::nullopt;
+    }
+}
