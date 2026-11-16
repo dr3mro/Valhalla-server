@@ -21,7 +21,7 @@ namespace Cors
 
     inline const std::string& allowedMethods()
     {
-        static const std::string value = "GET, POST, PUT, DELETE, HEAD, OPTIONS";
+        static const std::string value = "GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS";
         return value;
     }
 

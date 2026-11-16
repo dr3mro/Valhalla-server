@@ -156,7 +156,7 @@ TEST_CASE("Benchmark: Cors::apply", "[.benchmark]")
     {
         auto response = drogon::HttpResponse::newHttpResponse();
         response->addHeader("Access-Control-Allow-Origin", "*");
-        response->addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, HEAD, OPTIONS");
+        response->addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS");
         response->addHeader("Access-Control-Expose-Headers", "Retry-After, Content-Length");
         response->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Accept, X-Requested-With");
         response->addHeader("Access-Control-Max-Age", "7200");
@@ -194,7 +194,7 @@ TEST_CASE("Benchmark: Cors::apply", "[.benchmark]")
              {
                  auto response = drogon::HttpResponse::newHttpResponse();
                  response->addHeader("Access-Control-Allow-Origin", "*");
-                 response->addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, HEAD, OPTIONS");
+                 response->addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS");
                  response->addHeader("Access-Control-Expose-Headers", "Retry-After, Content-Length");
                  response->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Accept, X-Requested-With");
                  response->addHeader("Access-Control-Max-Age", "7200");

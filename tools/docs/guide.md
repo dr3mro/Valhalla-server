@@ -30,7 +30,7 @@ curl -X POST $BASE/services/clinics/read -H "Authorization: Bearer $TOKEN" \
 | **Delete** | Only accounts, services, appointments, **patients** and **visits** can be deleted. Health, drug, report, request, prescription and paid-service rows answer `400 Delete is NOT implemented` and go away with their parent through `ON DELETE CASCADE`. |
 | **Suspension** | A suspended account is locked out of every endpoint, including `activate` and `delete`. |
 | **Unknown routes** | JSON `404` `"Endpoint not found."` |
-| **CORS** | `OPTIONS` answers `204` with `Access-Control-Allow-Origin: *`, methods `GET, POST, PUT, DELETE, OPTIONS`, headers `Content-Type, Authorization`. |
+| **CORS** | `OPTIONS` answers `204` with `Access-Control-Allow-Origin: *`, methods `GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS`, and echoes valid requested headers. |
 | **Dates and times** | Date of birth of accounts is `dd-mm-yyyy` (validated). Patient `dob` and every other date use `yyyy-mm-dd`; times are `hh:mm` or `hh:mm:ss`. |
 | **JSON columns** | `staff`, `phone` (of services), `specialities`, `health`, `drugs`, `reports`, `requests`, `prescriptions`, `paidservices`, `examination` are free-form JSON stored as `JSONB`. |
 

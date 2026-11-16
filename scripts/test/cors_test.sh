@@ -8,6 +8,18 @@ set -uo pipefail
 STRICT="${STRICT:-0}"
 CASE="${CASE:-all}"
 BASE="http://localhost:8080"
+if [[ -t 1 && -z ${NO_COLOR:-} ]]; then
+    C_GREEN=$'\033[32m'
+    C_RED=$'\033[31m'
+    C_RESET=$'\033[0m'
+else
+    C_GREEN=""
+    C_RED=""
+    C_RESET=""
+fi
+
+ok_line() { printf '%sok%s   %s\n' "$C_GREEN" "$C_RESET" "${1#ok   }"; }
+fail_line() { printf '%sFAIL%s %s\n' "$C_RED" "$C_RESET" "${1#FAIL }"; }
 
 usage() {
     sed -n '2,14p' "$0"
@@ -72,11 +84,11 @@ if [[ $SELF_TEST -eq 1 ]]; then
         local ec="$1" es="$2" eb="$3"
         shift 3
         local actual
-        actual="$("$0" --print-parsed "$@" 2>/dev/null)" || { printf 'FAIL %s -> command error\n' "$*"; fail=1; return; }
+        actual="$("$0" --print-parsed "$@" 2>/dev/null)" || { fail_line "FAIL $* -> command error"; fail=1; return; }
         if [[ $actual == "CASE=$ec STRICT=$es BASE=$eb" ]]; then
-            printf 'ok   %s -> %s\n' "$*" "$actual"
+            ok_line "ok   $* -> $actual"
         else
-            printf 'FAIL %s -> %s (expected CASE=%s STRICT=%s BASE=%s)\n' "$*" "$actual" "$ec" "$es" "$eb"
+            fail_line "FAIL $* -> $actual (expected CASE=$ec STRICT=$es BASE=$eb)"
             fail=1
         fi
     }
@@ -87,8 +99,8 @@ if [[ $SELF_TEST -eq 1 ]]; then
     run_case all 1 http://x --strict http://x
     run_case all 0 http://localhost:8080
     # error cases
-    if "$0" --print-parsed --case >/dev/null 2>&1; then printf 'FAIL --case alone should fail\n'; fail=1; else printf 'ok   --case alone -> error\n'; fi
-    if "$0" --print-parsed --case bogus >/dev/null 2>&1; then printf 'FAIL --case bogus should fail\n'; fail=1; else printf 'ok   --case bogus -> error\n'; fi
+    if "$0" --print-parsed --case >/dev/null 2>&1; then fail_line "FAIL --case alone should fail"; fail=1; else ok_line "ok   --case alone -> error"; fi
+    if "$0" --print-parsed --case bogus >/dev/null 2>&1; then fail_line "FAIL --case bogus should fail"; fail=1; else ok_line "ok   --case bogus -> error"; fi
     printf '\nself-test: %d failure(s)\n' "$fail"
     exit "$fail"
 fi
@@ -100,8 +112,8 @@ total=0
 
 count() { printf '%s\n' "$1" | grep -ic "^$2:" || true; }
 
-record_pass() { total=$((total + 1)); passed=$((passed + 1)); printf 'ok   %s\n' "$1"; }
-record_fail() { total=$((total + 1)); fail=$((fail + 1)); printf 'FAIL %s\n' "$1"; }
+record_pass() { total=$((total + 1)); passed=$((passed + 1)); ok_line "ok   $1"; }
+record_fail() { total=$((total + 1)); fail=$((fail + 1)); fail_line "FAIL $1"; }
 record_skip() {
     total=$((total + 1))
     skipped=$((skipped + 1))
@@ -148,6 +160,7 @@ if [[ $CASE == "basic" || $CASE == "all" ]]; then
     check "GET unknown (404)"   404 "$BASE/api/v2/does-not-exist"
     check "POST no auth (401)"  401 -X POST -H 'Content-Type: application/json' -d '{}' "$BASE/api/v2/clients/users/read"
     check "preflight PUT"       204 -X OPTIONS -H 'Origin: http://localhost:3000' -H 'Access-Control-Request-Method: PUT' -H 'Access-Control-Request-Headers: content-type,authorization' "$BASE/api/v2/clients/users/update"
+    check "preflight PATCH"     204 -X OPTIONS -H 'Origin: http://localhost:3000' -H 'Access-Control-Request-Method: PATCH' -H 'Access-Control-Request-Headers: content-type,authorization' "$BASE/api/v2/clients/users/update"
     check "preflight DELETE"    204 -X OPTIONS -H 'Origin: http://localhost:3000' -H 'Access-Control-Request-Method: DELETE' "$BASE/api/v2/clients/users/delete"
     check "unsupported method"  405 -X PATCH "$BASE/"
     check "HEAD /"              200 -I "$BASE/api/v2/hello"
@@ -158,10 +171,10 @@ if [[ $CASE == "basic" || $CASE == "all" ]]; then
     status=""
     fetch headers status -X OPTIONS -H 'Access-Control-Request-Method: PUT' "$BASE/api/v2/clients/users/update" || true
     methods="$(printf '%s\n' "$headers" | grep -i '^access-control-allow-methods:' || true)"
-    if [[ $methods == *PUT* && $methods == *DELETE* ]]; then
-        record_pass "preflight Allow-Methods contains PUT and DELETE"
+    if [[ $methods == *PUT* && $methods == *PATCH* && $methods == *DELETE* ]]; then
+        record_pass "preflight Allow-Methods contains PUT, PATCH and DELETE"
     else
-        record_fail "preflight Allow-Methods missing PUT/DELETE"
+        record_fail "preflight Allow-Methods missing PUT/PATCH/DELETE"
     fi
 fi
 

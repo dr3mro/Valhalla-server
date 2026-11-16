@@ -28,6 +28,7 @@ TEST_CASE("Cors::apply sets the full header set on a normal response", "[api][co
 
     CHECK(response->getHeader("Access-Control-Allow-Origin") == "*");
     CHECK(response->getHeader("Access-Control-Allow-Methods").find("PUT") != std::string::npos);
+    CHECK(response->getHeader("Access-Control-Allow-Methods").find("PATCH") != std::string::npos);
     CHECK(response->getHeader("Access-Control-Allow-Methods").find("DELETE") != std::string::npos);
     CHECK(response->getHeader("Access-Control-Allow-Headers") == Cors::defaultAllowedHeaders());
     CHECK(response->getHeader("Access-Control-Expose-Headers").find("Retry-After") != std::string::npos);

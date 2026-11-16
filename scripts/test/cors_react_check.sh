@@ -15,6 +15,15 @@ set -uo pipefail
 BASE="http://localhost:8080"
 CREDENTIALS=0
 ORIGIN_LIST=()
+if [[ -t 1 && -z ${NO_COLOR:-} ]]; then
+    C_GREEN=$'\033[32m'
+    C_RED=$'\033[31m'
+    C_RESET=$'\033[0m'
+else
+    C_GREEN=""
+    C_RED=""
+    C_RESET=""
+fi
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --credentials) CREDENTIALS=1 ;;
@@ -32,10 +41,12 @@ PREFLIGHT_BURST="${PREFLIGHT_BURST:-60}"
 API="$BASE/api/v2"
 
 passed=0; failed=0
+ok_line() { printf '%sok%s   %s\n' "$C_GREEN" "$C_RESET" "${1#ok   }"; }
+fail_line() { printf '%sFAIL%s %s\n' "$C_RED" "$C_RESET" "${1#FAIL }"; }
 # Set indirectly by fetch() through printf -v; initialised here so the assignments are visible to shellcheck.
 ph=""; ps=""; rh=""; rs=""
-pass() { passed=$((passed + 1)); printf 'ok   %s\n' "$1"; }
-fail() { failed=$((failed + 1)); printf 'FAIL %s\n' "$1"; [[ -n ${2:-} ]] && printf '       %s\n' "$2"; }
+pass() { passed=$((passed + 1)); ok_line "ok   $1"; }
+fail() { failed=$((failed + 1)); fail_line "FAIL $1"; [[ -n ${2:-} ]] && printf '       %s\n' "$2"; }
 
 # fetch <headers var> <status var> <curl args...>; status comes from curl, headers from the dump.
 fetch() {
@@ -95,18 +106,23 @@ preflight_ok() { # preflight_ok <status> <headers> <origin> <method> <request he
     return 0
 }
 
-# Scenarios a React app produces. Each triggers a preflight because of JSON content-type and/or Authorization.
+# Scenarios a React app produces. Each triggers a preflight because of JSON content-type,
+# Authorization, or a non-safelisted client header.
 # label|METHOD|path|preflight Access-Control-Request-Headers (as browsers send: lowercase, sorted, comma separated)
 SCENARIOS=(
     "login (POST, JSON)|POST|/clients/users/login|content-type"
     "read (POST, JSON + bearer)|POST|/clients/users/read|authorization,content-type"
     "update (PUT, JSON + bearer)|PUT|/clients/users/update|authorization,content-type"
+    "partial update (PATCH, JSON + bearer)|PATCH|/clients/users/update|authorization,content-type"
     "delete (DELETE, JSON + bearer)|DELETE|/clients/users/delete|authorization,content-type"
     "services (GET + bearer)|GET|/clients/users/services|authorization"
+    "services (GET + bearer + Accept)|GET|/clients/users/services|authorization"
+    "login (POST, JSON + axios header)|POST|/clients/users/login|content-type,x-requested-with"
+    "read (POST, JSON + request id)|POST|/clients/users/read|authorization,content-type,x-request-id"
 )
 
 if ! fetch _probe_headers _probe_status "$BASE/api/v2/hello"; then
-    printf 'FAIL cannot reach %s (is the container running and mapped with -p 8080:8080? try: docker ps)\n' "$BASE"
+    fail_line "FAIL cannot reach $BASE (is the container running and mapped with -p 8080:8080? try: docker ps)"
     exit 1
 fi
 
@@ -124,6 +140,7 @@ for origin in "${ORIGIN_LIST[@]}"; do
         args=(-X "$method" -H "Origin: $origin")
         [[ $reqh == *content-type* ]] && args+=(-H "Content-Type: application/json" -d '{}')
         [[ $reqh == *authorization* ]] && args+=(-H "Authorization: Bearer cors.check.invalid")
+        [[ $label == *Accept* ]] && args+=(-H "Accept: application/json")
         fetch rh rs "${args[@]}" "$API$path" || { fail "$label: real request curl error"; continue; }
         n="$(header_count "$rh" access-control-allow-origin)"
         ao="$(header_values "$rh" access-control-allow-origin)"
@@ -141,9 +158,16 @@ origin="${ORIGIN_LIST[0]}"
 # Preflight for a path that does not exist: the browser preflights before the route is known.
 fetch ph ps -X OPTIONS -H "Origin: $origin" -H "Access-Control-Request-Method: PUT" -H "Access-Control-Request-Headers: content-type" "$API/clients/users/does-not-exist" || true
 if preflight_ok "$ps" "$ph" "$origin" PUT content-type; then pass "preflight to an unknown path accepted"; else fail "preflight to an unknown path" "$REASON"; fi
-# A custom request header (for example an axios interceptor adding X-Request-Id).
+# Custom request headers commonly added by axios interceptors.
 fetch ph ps -X OPTIONS -H "Origin: $origin" -H "Access-Control-Request-Method: POST" -H "Access-Control-Request-Headers: content-type,x-request-id" "$API/clients/users/login" || true
 if preflight_ok "$ps" "$ph" "$origin" POST content-type,x-request-id; then pass "custom request header x-request-id allowed"; else fail "custom request header x-request-id" "$REASON"; fi
+# The browser caches successful preflights using this response header.
+max_age="$(header_values "$ph" access-control-max-age)"
+if [[ $max_age == 7200 ]]; then
+    pass "preflight max-age is 7200"
+else
+    fail "preflight max-age" "expected 7200, got '$max_age'"
+fi
 # Preflight must not need authentication and must not be rate limited (React StrictMode and polling repeat calls).
 bad=0
 for i in $(seq 1 "$PREFLIGHT_BURST"); do
@@ -154,6 +178,7 @@ done
 # Headers the page needs to read.
 fetch rh rs -H "Origin: $origin" "$API/clients/users/services" || true
 if list_has "$(header_values "$rh" access-control-expose-headers)" "retry-after"; then pass "Retry-After is exposed to JavaScript"; else fail "Retry-After not in Access-Control-Expose-Headers"; fi
+if list_has "$(header_values "$rh" access-control-expose-headers)" "content-length"; then pass "Content-Length is exposed to JavaScript"; else fail "Content-Length not in Access-Control-Expose-Headers"; fi
 # Parse-level errors cannot carry CORS headers (known Drogon limitation, README): informational only.
 printf 'note  malformed requests (HTTP 400 from the parser) carry no CORS headers; browsers show those as CORS errors (known limitation)\n'
 if [[ $CREDENTIALS -eq 0 ]]; then
