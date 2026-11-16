@@ -104,7 +104,10 @@ echo
 # ---------------------------------------------------------------------------
 say "${B}== Running Schemathesis (max-examples=$MAX_EXAMPLES, max-time=${MAX_TIME}s, checks=$CHECKS) ==${N}"
 # shellcheck disable=SC2086
-st run "$SPEC" \
+# Run from OUT_DIR so Hypothesis/Schemathesis caches land there, not the repo root.
+(
+  cd "$OUT_DIR" || exit 1
+  st run "$SPEC" \
 	--url "$BASE_URL" \
 	-H "Authorization: Bearer $TOKEN" \
 	--checks="$CHECKS" \
@@ -115,6 +118,7 @@ st run "$SPEC" \
 	--report=junit \
 	--report-dir="$OUT_DIR" \
 	$EXTRA_ARGS
+)
 STATUS=$?
 
 echo
