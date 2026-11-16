@@ -175,6 +175,7 @@ run_all() {
     local profile="release"
     local keep=0
     local do_unit=1 do_api=1 do_fuzz=1 do_cors=1
+    local do_cors_react=0 do_sqlmap=0 do_schemathesis=0
     for arg in "$@"; do
         case "$arg" in
             --debug) profile="debug" ;;
@@ -185,6 +186,9 @@ run_all() {
             --no-api) do_api=0 ;;
             --no-fuzz) do_fuzz=0 ;;
             --no-cors) do_cors=0 ;;
+            --cors-react) do_cors_react=1 ;;
+            --sqlmap) do_sqlmap=1 ;;
+            --schemathesis) do_schemathesis=1 ;;
         esac
     done
     export NO_BUILD="${NO_BUILD:-0}"
@@ -232,6 +236,24 @@ run_all() {
         step "CORS tests"
         "$ROOT/scripts/test/cors_test.sh" "http://localhost:8080" 2>&1 | tee /tmp/run_cors.log
         if [[ ${PIPESTATUS[0]} -eq 0 ]]; then record "cors tests" 0; else record "cors tests" 1; fi
+    fi
+
+    if [[ $do_cors_react -eq 1 ]]; then
+        step "CORS react checks"
+        "$ROOT/scripts/test/cors_react_check.sh" "http://localhost:8080" 2>&1 | tee /tmp/run_cors_react.log
+        if [[ ${PIPESTATUS[0]} -eq 0 ]]; then record "cors react" 0; else record "cors react" 1; fi
+    fi
+
+    if [[ $do_sqlmap -eq 1 ]]; then
+        step "SQLMap tests"
+        "$ROOT/scripts/test/sqlmap_test.sh" 2>&1 | tee /tmp/run_sqlmap.log
+        if [[ ${PIPESTATUS[0]} -eq 0 ]]; then record "sqlmap" 0; else record "sqlmap" 1; fi
+    fi
+
+    if [[ $do_schemathesis -eq 1 ]]; then
+        step "Schemathesis tests"
+        "$ROOT/scripts/test/schemathesis_test.sh" 2>&1 | tee /tmp/run_schemathesis.log
+        if [[ ${PIPESTATUS[0]} -eq 0 ]]; then record "schemathesis" 0; else record "schemathesis" 1; fi
     fi
 
     if [[ $keep -eq 0 ]]; then
