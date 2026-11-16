@@ -306,7 +306,7 @@ fails "run_release.sh: no binary" "not found. Run scripts/build/build.sh" "$TOOL
 printf '#!/bin/sh\necho "args=$*"; env | grep -E "^(A|B|C|D|E|F)=" | sort\n' >"$RR/build/Release/server"
 chmod +x "$RR/build/Release/server"
 printf '# comment\nA=1\n  B = two words  \nexport C="quoted # not a comment"\nD='"'"'single'"'"'\r\n\nE=$(echo injected)\nbad line\n' >"$RR/.env"
-out="$("$TOOL_BASH" "$REPO/scripts/run/run_release.sh" --flag 2>&1)"
+out="$("$TOOL_BASH" "$RR/run_release.sh" --flag 2>&1)"
 expect="$(printf 'args=--flag\nA=1\nB=two words\nC=quoted # not a comment\nD=single\nE=$(echo injected)')"
 if [[ $out == "$expect" ]]; then ok "run_release.sh: parses .env without running it"; else bad "run_release.sh: parses .env without running it" "$out"; fi
 

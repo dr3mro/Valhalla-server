@@ -84,7 +84,7 @@ BIN_DIR="$(absolute "$BIN_DIR")"
 
 # Files managed by this installer (relative to DIR). The leftover .sh names
 # from earlier installs are removed on update.
-MANAGED="vdt test_api schemathesis_test installer tests/api_tests/payloads api_tests/payloads docs/openapi.json VERSION update-state update-state.lock test_api.sh schemathesis_test.sh"
+MANAGED="vdt test_api schemathesis_test installer tests/api_tests/payloads api_tests/payloads docs/openapi.json VERSION .config.default update-state update-state.lock test_api.sh schemathesis_test.sh"
 
 # ── rc files ───────────────────────────────────────────────────────────────
 # rc_files: the rc files to manage: each of ~/.zshrc / ~/.bashrc that exists,
@@ -348,6 +348,7 @@ place_files() {
   mv "$stage/scripts/test/test_api.sh" "$stage/test_api"
   mv "$stage/scripts/test/schemathesis_test.sh" "$stage/schemathesis_test"
   mv "$stage/install.sh" "$stage/installer"
+  [ "$config_preexisting" = 1 ] && rm -f "$stage/config"
   (cd "$stage" && tar -cf - .) | (cd "$DIR" && tar -xf -)
   # The staged config is a bundled default, not the user's config.
   [ "$config_preexisting" = 1 ] || rm -f "$DIR/config"
