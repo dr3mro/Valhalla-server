@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structBoundedExecutor_1_1Stats" kind="struct" language="C++" prot="public">
+    <compoundname>BoundedExecutor::Stats</compoundname>
+    <includes refid="boundedexecutor_8hpp" local="no">boundedexecutor.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structBoundedExecutor_1_1Stats_1ad0368dc91edec0dec6888b7b84ce56dc" prot="public" static="no" mutable="no">
+        <type>std::uint64_t</type>
+        <definition>std::uint64_t BoundedExecutor::Stats::submitted</definition>
+        <argsstring></argsstring>
+        <name>submitted</name>
+        <qualifiedname>BoundedExecutor::Stats::submitted</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="166" column="23" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="166" bodyend="-1"/>
+        <referencedby refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" compoundref="boundedexecutor_8cpp" startline="99" endline="126">BoundedExecutor::shutdown</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structBoundedExecutor_1_1Stats_1a2f37f73a813fb86da316726f626484f6" prot="public" static="no" mutable="no">
+        <type>std::uint64_t</type>
+        <definition>std::uint64_t BoundedExecutor::Stats::rejected</definition>
+        <argsstring></argsstring>
+        <name>rejected</name>
+        <qualifiedname>BoundedExecutor::Stats::rejected</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="167" column="23" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="167" bodyend="-1"/>
+        <referencedby refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" compoundref="boundedexecutor_8cpp" startline="99" endline="126">BoundedExecutor::shutdown</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structBoundedExecutor_1_1Stats_1a5f799a6d74c3df717d4fcae67d3abea3" prot="public" static="no" mutable="no">
+        <type>std::uint64_t</type>
+        <definition>std::uint64_t BoundedExecutor::Stats::max_queue</definition>
+        <argsstring></argsstring>
+        <name>max_queue</name>
+        <qualifiedname>BoundedExecutor::Stats::max_queue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="168" column="23" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="168" bodyend="-1"/>
+        <referencedby refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" compoundref="boundedexecutor_8cpp" startline="99" endline="126">BoundedExecutor::shutdown</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structBoundedExecutor_1_1Stats_1a931a680e89a8537c30d0608926235507" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double BoundedExecutor::Stats::avg_wait_us</definition>
+        <argsstring></argsstring>
+        <name>avg_wait_us</name>
+        <qualifiedname>BoundedExecutor::Stats::avg_wait_us</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="169" column="23" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="169" bodyend="-1"/>
+        <referencedby refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" compoundref="boundedexecutor_8cpp" startline="99" endline="126">BoundedExecutor::shutdown</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Snapshot of tuning counters for tasks that passed through the queue. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Inline-mode executions are not counted. The values are sampled with relaxed atomic loads, so they are approximate while the pool is running. &quot;Relaxed&quot; means the number is read cheaply without any ordering guarantees, which is fine for a tuning gauge that nobody makes decisions from in real time. </para>
+    </detaileddescription>
+    <location file="src/concurrency/boundedexecutor.hpp" line="164" column="5" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="165" bodyend="170"/>
+    <listofallmembers>
+      <member refid="structBoundedExecutor_1_1Stats_1a931a680e89a8537c30d0608926235507" prot="public" virt="non-virtual"><scope>BoundedExecutor::Stats</scope><name>avg_wait_us</name></member>
+      <member refid="structBoundedExecutor_1_1Stats_1a5f799a6d74c3df717d4fcae67d3abea3" prot="public" virt="non-virtual"><scope>BoundedExecutor::Stats</scope><name>max_queue</name></member>
+      <member refid="structBoundedExecutor_1_1Stats_1a2f37f73a813fb86da316726f626484f6" prot="public" virt="non-virtual"><scope>BoundedExecutor::Stats</scope><name>rejected</name></member>
+      <member refid="structBoundedExecutor_1_1Stats_1ad0368dc91edec0dec6888b7b84ce56dc" prot="public" virt="non-virtual"><scope>BoundedExecutor::Stats</scope><name>submitted</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_60fd5b3253fead4eef14df7856492a2f" kind="dir">
+    <compoundname>src/entities/appointments</compoundname>
+    <innerdir refid="dir_6d12c5e67afd28231fd4a82a58e2c602">src/entities/appointments/base</innerdir>
+    <innerfile refid="clinic_8hpp">clinic.hpp</innerfile>
+    <innerfile refid="laboratory_8hpp">laboratory.hpp</innerfile>
+    <innerfile refid="pharmacy_8hpp">pharmacy.hpp</innerfile>
+    <innerfile refid="radiologycenter_8hpp">radiologycenter.hpp</innerfile>
+    <innerfile refid="appointments_2user_8hpp">user.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/entities/appointments/"/>
+  </compounddef>
+</doxygen>

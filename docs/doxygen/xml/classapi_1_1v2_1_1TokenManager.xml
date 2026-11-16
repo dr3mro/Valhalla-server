@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classapi_1_1v2_1_1TokenManager" kind="class" language="C++" prot="public">
+    <compoundname>api::v2::TokenManager</compoundname>
+    <basecompoundref refid="classapi_1_1v2_1_1KeeprBase" prot="public" virt="non-virtual">api::v2::KeeprBase</basecompoundref>
+    <includes refid="tokenmanager_8hpp" local="no">tokenmanager.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1TokenManager_1a44a20c5df34f7fa410b1c3e4891650be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::TokenManager::TokenManager</definition>
+        <argsstring>()=default</argsstring>
+        <name>TokenManager</name>
+        <qualifiedname>api::v2::TokenManager::TokenManager</qualifiedname>
+        <briefdescription>
+<para>Constructs a manager using the Configurator-backed token parameters. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="50" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1TokenManager_1a1776a30879fdb359d4cdcd6451835e81" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual api::v2::TokenManager::~TokenManager</definition>
+        <argsstring>()=default</argsstring>
+        <name>~TokenManager</name>
+        <qualifiedname>api::v2::TokenManager::~TokenManager</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="51" column="21"/>
+        <references refid="classapi_1_1v2_1_1TokenManager_1ae35221cdefeaad8255a896481af08403" compoundref="tokenmanager_8cpp" startline="36" endline="66">generateToken</references>
+        <references refid="classapi_1_1v2_1_1TokenManager_1ad59c01322c709811a7f499f4e1d3fa95" compoundref="tokenmanager_8cpp" startline="71" endline="91">isTokenValid</references>
+        <references refid="classapi_1_1v2_1_1TokenManager_1ae2353b4f71d0b7f35474f8d7bba4e6b5" compoundref="tokenmanager_8cpp" startline="94" endline="118">isTokenValidCoro</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1TokenManager_1ae35221cdefeaad8255a896481af08403" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TokenManager::generateToken</definition>
+        <argsstring>(std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData)</argsstring>
+        <name>generateToken</name>
+        <qualifiedname>api::v2::TokenManager::generateToken</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <briefdescription>
+<para>Creates a signed JWT from the client&apos;s identity and stores it in the data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Signs a JWT from the client&apos;s identity and writes it back to <computeroutput>clientLoginData</computeroutput>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">clientLoginData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Supplies claims and receives the generated token. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when a token was produced; false on a signing/configuration error. </para>
+</simplesect>
+<simplesect kind="note"><para>The token embeds the issue/expiry times and last-logout time; signing failures are logged via <ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>. </para>
+</simplesect>
+<simplesect kind="note"><para>Failure paths (missing claims, signing exception) are covered by tests/gatekeeper/test_tokenmanager.cpp.</para>
+</simplesect>
+<simplesect kind="return"><para>True on success; false when signing throws (reported as a critical message). </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classapi_1_1v2_1_1TokenManager_1ae35221cdefeaad8255a896481af08403" kindref="member">TokenManager::generateToken</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="62" column="18" bodyfile="src/gatekeeper/tokenmanager/tokenmanager.cpp" bodystart="36" bodyend="66"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a769b4981f124c8bc48570a2ec0aaa01d" compoundref="keeprbase_8hpp" startline="198" endline="198">api::v2::KeeprBase::getTokenManagerParameters</references>
+        <referencedby refid="classapi_1_1v2_1_1TokenManager_1a1776a30879fdb359d4cdcd6451835e81">~TokenManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1TokenManager_1ad59c01322c709811a7f499f4e1d3fa95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TokenManager::isTokenValid</definition>
+        <argsstring>(std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData, std::string &amp;message)</argsstring>
+        <name>isTokenValid</name>
+        <qualifiedname>api::v2::TokenManager::isTokenValid</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Decodes and validates the client&apos;s JWT against current account state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">clientLoginData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Supplies the token; updated with decoded claims. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives a human-readable failure reason. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True only for a decodable, cryptographically valid, current token.</para>
+</simplesect>
+Decodes the token, then validates it with <ref refid="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" kindref="member">KeeprBase::validateToken</ref>. message: Receives the failure reason on a bad or invalid token. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="70" column="18" bodyfile="src/gatekeeper/tokenmanager/tokenmanager.cpp" bodystart="71" bodyend="91"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" compoundref="keeprbase_8cpp" startline="299" endline="337">api::v2::KeeprBase::decodeToken</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" compoundref="keeprbase_8cpp" startline="349" endline="393">api::v2::KeeprBase::validateToken</references>
+        <referencedby refid="classapi_1_1v2_1_1TokenManager_1a1776a30879fdb359d4cdcd6451835e81">~TokenManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1TokenManager_1ae2353b4f71d0b7f35474f8d7bba4e6b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; TokenManager::isTokenValidCoro</definition>
+        <argsstring>(std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData, std::string &amp;message)</argsstring>
+        <name>isTokenValidCoro</name>
+        <qualifiedname>api::v2::TokenManager::isTokenValidCoro</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1TokenManager_1ad59c01322c709811a7f499f4e1d3fa95" kindref="member">isTokenValid()</ref>; awaits the async token checks. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1TokenManager_1ad59c01322c709811a7f499f4e1d3fa95" kindref="member">isTokenValid()</ref>; see that function for the contract.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">clientLoginData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Supplies the token; updated with decoded claims. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives a human-readable failure reason. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True only for a valid token. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Propagated from the async validation path. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="79" column="26" bodyfile="src/gatekeeper/tokenmanager/tokenmanager.cpp" bodystart="94" bodyend="118"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" compoundref="keeprbase_8cpp" startline="299" endline="337">api::v2::KeeprBase::decodeToken</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1adc936836bc32e25fd2348e738289c83a" compoundref="keeprbase_8cpp" startline="455" endline="499">api::v2::KeeprBase::validateTokenCoro</references>
+        <referencedby refid="classapi_1_1v2_1_1TokenManager_1a1776a30879fdb359d4cdcd6451835e81">~TokenManager</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Issues and validates the HS256 JWTs that authenticate clients. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Token parameters (issuer, type, validity and secret) come from the <ref refid="classConfigurator" kindref="compound">Configurator</ref> via <ref refid="classapi_1_1v2_1_1KeeprBase" kindref="compound">KeeprBase</ref>. Generated tokens carry identity claims and last-logout time so a later logout can be detected. Validation first decodes the token into the <ref refid="structClientLoginData" kindref="compound">ClientLoginData</ref>, then verifies it with <ref refid="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" kindref="member">KeeprBase::validateToken</ref>; the coroutine form awaits the async variant. <simplesect kind="see"><para><ref refid="classapi_1_1v2_1_1KeeprBase" kindref="compound">KeeprBase</ref> In everyday words: this class is like a badge printer and badge checker. It stamps a badge with the user&apos;s identity and an expiry, and later checks that a presented badge is genuine and still current. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>api::v2::KeeprBase</label>
+        <link refid="classapi_1_1v2_1_1KeeprBase"/>
+      </node>
+      <node id="1">
+        <label>api::v2::TokenManager</label>
+        <link refid="classapi_1_1v2_1_1TokenManager"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>TokenManagerParameters</label>
+        <link refid="structTokenManagerParameters"/>
+      </node>
+      <node id="2">
+        <label>api::v2::KeeprBase</label>
+        <link refid="classapi_1_1v2_1_1KeeprBase"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>tokenManagerParameters_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>api::v2::TokenManager</label>
+        <link refid="classapi_1_1v2_1_1TokenManager"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="46" column="9" bodyfile="src/gatekeeper/tokenmanager/tokenmanager.hpp" bodystart="47" bodyend="80"/>
+    <listofallmembers>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a3b36fc37ac1fa5d0b98ca85a33513d43" prot="private" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>configurator_</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1aaf8aa6b3f37ca047d975238a41fe8285" prot="protected" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>createTokenVerifier</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1ac972310cb5c257ad144e4b2c2276ce0d" prot="protected" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>current_time_to_utc_string</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a913563947fb79295de1f2278e6cb5e62" prot="protected" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>databaseController</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" prot="protected" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>decodeToken</name></member>
+      <member refid="classapi_1_1v2_1_1TokenManager_1ae35221cdefeaad8255a896481af08403" prot="public" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>generateToken</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a7ac9299b75cd06a7004701cb2d7c3a34" prot="protected" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>getLastLoginTime</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a96a366e05f18b668479c2da9000d6289" prot="protected" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>getLastLogoutTimeIfActive</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a25af0d69c7a5d1f0fa209b6002ec8c28" prot="protected" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>getLastLogoutTimeIfActiveCoro</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a8ced4af95be98298b0a63084deece769" prot="protected" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>getPasswordHashForUserName</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1acdd434fec377861a4be32a7fbbd6549f" prot="protected" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>getPasswordHashForUserNameCoro</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a769b4981f124c8bc48570a2ec0aaa01d" prot="protected" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>getTokenManagerParameters</name></member>
+      <member refid="classapi_1_1v2_1_1TokenManager_1ad59c01322c709811a7f499f4e1d3fa95" prot="public" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>isTokenValid</name></member>
+      <member refid="classapi_1_1v2_1_1TokenManager_1ae2353b4f71d0b7f35474f8d7bba4e6b5" prot="public" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>isTokenValidCoro</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1ab09740b221922b51de0a8c45c54daa85" prot="public" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>KeeprBase</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1add3bdbaa73fd820198bd4e19122e02dd" prot="public" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>KeeprBase</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1af1965f91dfd57bbf65a4f286551a5627" prot="public" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>KeeprBase</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a4db23b35be5f480c9189bada5b1a7d19" prot="public" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1aeceb10fc2e385d4f823f656d8d97c425" prot="public" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a827a3339a5b2ecfddc1ba78ef85e7711" prot="protected" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>setNowLoginTimeGetLastLogoutTime</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1aec14dfc5acf772c02faa5ebe3c383eba" prot="protected" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>setNowLogoutTime</name></member>
+      <member refid="classapi_1_1v2_1_1TokenManager_1a44a20c5df34f7fa410b1c3e4891650be" prot="public" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>TokenManager</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a1d23b660f409ad68088514c4de125a4b" prot="private" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>tokenManagerParameters_</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" prot="protected" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>validateToken</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1adc936836bc32e25fd2348e738289c83a" prot="protected" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>validateTokenCoro</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a5eb7980e75486333cee87142faa5f9eb" prot="public" virt="virtual"><scope>api::v2::TokenManager</scope><name>~KeeprBase</name></member>
+      <member refid="classapi_1_1v2_1_1TokenManager_1a1776a30879fdb359d4cdcd6451835e81" prot="public" virt="virtual"><scope>api::v2::TokenManager</scope><name>~TokenManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_16260ec1036a9bf930731f02e9c23fb6" kind="dir">
+    <compoundname>src/gatekeeper/permissionmanager</compoundname>
+    <innerfile refid="permissioncache_8hpp">permissioncache.hpp</innerfile>
+    <innerfile refid="permissionmanager_8cpp">permissionmanager.cpp</innerfile>
+    <innerfile refid="permissionmanager_8hpp">permissionmanager.hpp</innerfile>
+    <innerfile refid="permissionmanager__private_8cpp">permissionmanager_private.cpp</innerfile>
+    <innerfile refid="permissionmanager__private_8hpp">permissionmanager_private.hpp</innerfile>
+    <innerfile refid="permissions_8hpp">permissions.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/gatekeeper/permissionmanager/"/>
+  </compounddef>
+</doxygen>

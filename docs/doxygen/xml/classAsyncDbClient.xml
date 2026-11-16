@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classAsyncDbClient" kind="class" language="C++" prot="public">
+    <compoundname>AsyncDbClient</compoundname>
+    <includes refid="asyncdbclient_8hpp" local="no">asyncdbclient.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classAsyncDbClient_1aced87db92a4d5da428c025008912efd0" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; drogon::orm::DbClient &gt;</type>
+        <definition>std::shared_ptr&lt;drogon::orm::DbClient&gt; AsyncDbClient::client_</definition>
+        <argsstring></argsstring>
+        <name>client_</name>
+        <qualifiedname>AsyncDbClient::client_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shared ownership of the Drogon client; null in test fakes and the disabled state. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncdbclient.hpp" line="105" column="21" bodyfile="src/database/asyncdbclient.hpp" bodystart="105" bodyend="-1"/>
+        <referencedby refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" compoundref="asyncdbclient_8cpp" startline="43" endline="43">AsyncDbClient</referencedby>
+        <referencedby refid="classAsyncDbClient_1a6df3848ed2c5239948f7274454e6f937" compoundref="asyncdbclient_8hpp" startline="99" endline="99">client</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AsyncDbClient::AsyncDbClient</definition>
+        <argsstring>(std::shared_ptr&lt; drogon::orm::DbClient &gt; client)</argsstring>
+        <name>AsyncDbClient</name>
+        <qualifiedname>AsyncDbClient::AsyncDbClient</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; drogon::orm::DbClient &gt;</type>
+          <declname>client</declname>
+        </param>
+        <briefdescription>
+<para>Constructs the wrapper around an already-created Drogon client. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Stores the supplied client, sharing ownership with the caller.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">client</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="controller_8hpp_1af928d8b9ced02f7387b9b56ed3877b11" kindref="member">Client</ref> to share ownership of; may be null (used by tests and the unavailable state). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="post"><para><computeroutput><ref refid="classAsyncDbClient_1a6df3848ed2c5239948f7274454e6f937" kindref="member">client()</ref></computeroutput> returns the same pointer that was passed in.</para>
+</simplesect>
+No validation or configuration happens here; a null client is accepted for tests and the disabled state. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncdbclient.hpp" line="59" column="14" bodyfile="src/database/asyncdbclient.cpp" bodystart="43" bodyend="43"/>
+        <references refid="classAsyncDbClient_1a6df3848ed2c5239948f7274454e6f937" compoundref="asyncdbclient_8hpp" startline="99" endline="99">client</references>
+        <references refid="classAsyncDbClient_1aced87db92a4d5da428c025008912efd0" compoundref="asyncdbclient_8hpp" startline="105">client_</references>
+        <referencedby refid="classAsyncDbClient_1a00eaa6a9016ba3d36f6598345b3b64de">AsyncDbClient</referencedby>
+        <referencedby refid="classAsyncDbClient_1a4c8f093334062996bd575498bfcb40c2">AsyncDbClient</referencedby>
+        <referencedby refid="classAsyncDbClient_1a73fa2d950fcdf6a7b3468b6da94a0b19">operator=</referencedby>
+        <referencedby refid="classAsyncDbClient_1a6a9c60e4054389f20640fb633d38dd42">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classAsyncDbClient_1a4c8f093334062996bd575498bfcb40c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AsyncDbClient::AsyncDbClient</definition>
+        <argsstring>(const AsyncDbClient &amp;)=delete</argsstring>
+        <name>AsyncDbClient</name>
+        <qualifiedname>AsyncDbClient::AsyncDbClient</qualifiedname>
+        <param>
+          <type>const <ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy and move operations are disabled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The wrapper is a single Store-owned object; tests swap the whole <computeroutput>shared_ptr</computeroutput> via <computeroutput><ref refid="classStore_1a2a4bfc0b18f2999216eda3067988cf57" kindref="member">Store::replaceObject</ref></computeroutput> rather than copying or moving the wrapper. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncdbclient.hpp" line="66" column="5"/>
+        <references refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" compoundref="asyncdbclient_8cpp" startline="43" endline="43">AsyncDbClient</references>
+      </memberdef>
+      <memberdef kind="function" id="classAsyncDbClient_1a00eaa6a9016ba3d36f6598345b3b64de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AsyncDbClient::AsyncDbClient</definition>
+        <argsstring>(AsyncDbClient &amp;&amp;)=delete</argsstring>
+        <name>AsyncDbClient</name>
+        <qualifiedname>AsyncDbClient::AsyncDbClient</qualifiedname>
+        <param>
+          <type><ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncdbclient.hpp" line="67" column="5"/>
+        <references refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" compoundref="asyncdbclient_8cpp" startline="43" endline="43">AsyncDbClient</references>
+      </memberdef>
+      <memberdef kind="function" id="classAsyncDbClient_1a6a9c60e4054389f20640fb633d38dd42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref> &amp;</type>
+        <definition>AsyncDbClient &amp; AsyncDbClient::operator=</definition>
+        <argsstring>(const AsyncDbClient &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>AsyncDbClient::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncdbclient.hpp" line="68" column="19"/>
+        <references refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" compoundref="asyncdbclient_8cpp" startline="43" endline="43">AsyncDbClient</references>
+      </memberdef>
+      <memberdef kind="function" id="classAsyncDbClient_1a73fa2d950fcdf6a7b3468b6da94a0b19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref> &amp;</type>
+        <definition>AsyncDbClient &amp; AsyncDbClient::operator=</definition>
+        <argsstring>(AsyncDbClient &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>AsyncDbClient::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncdbclient.hpp" line="69" column="19"/>
+        <references refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" compoundref="asyncdbclient_8cpp" startline="43" endline="43">AsyncDbClient</references>
+      </memberdef>
+      <memberdef kind="function" id="classAsyncDbClient_1a9695856e6d84ef0220f89c0b2d614ead" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual AsyncDbClient::~AsyncDbClient</definition>
+        <argsstring>()=default</argsstring>
+        <name>~AsyncDbClient</name>
+        <qualifiedname>AsyncDbClient::~AsyncDbClient</qualifiedname>
+        <briefdescription>
+<para>Defaulted virtual destructor; connection cleanup is delegated to the owned Drogon client. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Virtual per the project-wide convention (commit 217a477); no class derives from this type. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncdbclient.hpp" line="74" column="13"/>
+        <references refid="classAsyncDbClient_1a060a2df97483204c119b2d3322de7455" compoundref="asyncdbclient_8cpp" startline="67" endline="73">connectionString</references>
+        <references refid="classAsyncDbClient_1ac0396c3d59602cf860e6fef52c98a736" compoundref="asyncdbclient_8cpp" startline="50" endline="60">createClient</references>
+      </memberdef>
+      <memberdef kind="function" id="classAsyncDbClient_1a6df3848ed2c5239948f7274454e6f937" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::shared_ptr&lt; drogon::orm::DbClient &gt; &amp;</type>
+        <definition>const std::shared_ptr&lt; drogon::orm::DbClient &gt; &amp; AsyncDbClient::client</definition>
+        <argsstring>() const</argsstring>
+        <name>client</name>
+        <qualifiedname>AsyncDbClient::client</qualifiedname>
+        <briefdescription>
+<para>Returns the owned client, which may be null. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Const reference to the stored <computeroutput>shared_ptr</computeroutput>; it remains valid for the lifetime of this wrapper. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncdbclient.hpp" line="99" column="28" bodyfile="src/database/asyncdbclient.hpp" bodystart="99" bodyend="99"/>
+        <references refid="classAsyncDbClient_1aced87db92a4d5da428c025008912efd0" compoundref="asyncdbclient_8hpp" startline="105">client_</references>
+        <referencedby refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" compoundref="asyncdbclient_8cpp" startline="43" endline="43">AsyncDbClient</referencedby>
+        <referencedby refid="classAsyncDbClient_1ac0396c3d59602cf860e6fef52c98a736" compoundref="asyncdbclient_8cpp" startline="50" endline="60">createClient</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classAsyncDbClient_1ac0396c3d59602cf860e6fef52c98a736" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; drogon::orm::DbClient &gt;</type>
+        <definition>std::shared_ptr&lt; drogon::orm::DbClient &gt; AsyncDbClient::createClient</definition>
+        <argsstring>()</argsstring>
+        <name>createClient</name>
+        <qualifiedname>AsyncDbClient::createClient</qualifiedname>
+        <briefdescription>
+<para>Builds a Drogon PostgreSQL client from the configuration held in the <ref refid="classStore" kindref="compound">Store</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates the Drogon Pg client from the <ref refid="classStore" kindref="compound">Store</ref>&apos;s database configuration.</para>
+<para>Reads <computeroutput><ref refid="classConfigurator_1afdc97f6e9bd19c0197759b8860ed9a49" kindref="member">Configurator::DatabaseConfig</ref></computeroutput> from the <ref refid="classStore" kindref="compound">Store</ref>, builds the connection string with <computeroutput><ref refid="classAsyncDbClient_1a060a2df97483204c119b2d3322de7455" kindref="member">connectionString</ref></computeroutput>, requests <computeroutput>DB_MAX_CONN</computeroutput> connections and applies the acquire timeout, converting milliseconds to the seconds Drogon expects. <simplesect kind="return"><para>A newly created client, ready to be wrapped and registered with <computeroutput><ref refid="classStore_1a1e12f060c02095975351db8f5d63cb76" kindref="member">Store::registerObject</ref>&lt;<ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref>&gt;</computeroutput>. </para>
+</simplesect>
+<simplesect kind="pre"><para>A <computeroutput><ref refid="classConfigurator" kindref="compound">Configurator</ref></computeroutput> object is registered in the <ref refid="classStore" kindref="compound">Store</ref>.</para>
+</simplesect>
+<computeroutput>newPgClient</computeroutput> receives the generated connection string and <computeroutput>DB_MAX_CONN</computeroutput>; the timeout is then set from <computeroutput>DB_ACQUIRE_TIMEOUT_MS</computeroutput>. Any connection-establishment work is left to Drogon. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncdbclient.hpp" line="84" column="28" bodyfile="src/database/asyncdbclient.cpp" bodystart="50" bodyend="60"/>
+        <references refid="classAsyncDbClient_1a6df3848ed2c5239948f7274454e6f937" compoundref="asyncdbclient_8hpp" startline="99" endline="99">client</references>
+        <references refid="classAsyncDbClient_1a060a2df97483204c119b2d3322de7455" compoundref="asyncdbclient_8cpp" startline="67" endline="73">connectionString</references>
+        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="139" endline="165">Store::getObject</references>
+        <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="92" endline="148">Server::run</referencedby>
+        <referencedby refid="classAsyncDbClient_1a9695856e6d84ef0220f89c0b2d614ead">~AsyncDbClient</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classAsyncDbClient_1a060a2df97483204c119b2d3322de7455" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string AsyncDbClient::connectionString</definition>
+        <argsstring>(const Configurator::DatabaseConfig &amp;config)</argsstring>
+        <name>connectionString</name>
+        <qualifiedname>AsyncDbClient::connectionString</qualifiedname>
+        <param>
+          <type>const <ref refid="classConfigurator_1afdc97f6e9bd19c0197759b8860ed9a49" kindref="member">Configurator::DatabaseConfig</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Renders a libpq keyword/value connection string from a database configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Formats the libpq connection string, mapping <computeroutput>config.ssl</computeroutput> to <computeroutput>sslmode</computeroutput>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Source of host, port, database name, user, password and SSL settings. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>host=... port=... dbname=... user=... password=... connect_timeout=2 sslmode=require|disable</computeroutput>. </para>
+</simplesect>
+<simplesect kind="warning"><para>The returned string contains the database password in clear text; it must not be logged. <computeroutput>printValues()</computeroutput> on the configuration deliberately redacts the same field.</para>
+</simplesect>
+<computeroutput>connect_timeout</computeroutput> is a fixed two seconds, independent of DB_* tuning; host and SSL settings may be overridden by the container image but still arrive through this one configuration object. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncdbclient.hpp" line="93" column="51" bodyfile="src/database/asyncdbclient.cpp" bodystart="67" bodyend="73"/>
+        <referencedby refid="classAsyncDbClient_1ac0396c3d59602cf860e6fef52c98a736" compoundref="asyncdbclient_8cpp" startline="50" endline="60">createClient</referencedby>
+        <referencedby refid="classAsyncDbClient_1a9695856e6d84ef0220f89c0b2d614ead">~AsyncDbClient</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Store-registered holder for the Drogon PostgreSQL client used when DB_ASYNC=true. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The wrapper holds a <computeroutput>shared_ptr&lt;drogon::orm::DbClient&gt;</computeroutput>; production instances are created from the DB_* settings. <computeroutput><ref refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" kindref="member">Server::run()</ref></computeroutput> registers it in the <ref refid="classStore" kindref="compound">Store</ref> only while <computeroutput>DatabaseConfig::async</computeroutput> is enabled; the synchronous pool stays in use while the flag is off. Callers fetch it with <computeroutput><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref>&gt;(nullptr)</computeroutput> and hand the underlying client to <computeroutput><ref refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" kindref="member">asyncdb::execSqlCoro</ref></computeroutput>. Tests replace the registered instance through <computeroutput><ref refid="classStore_1a2a4bfc0b18f2999216eda3067988cf57" kindref="member">Store::replaceObject</ref></computeroutput>; a null client is a valid state meaning &quot;async path unavailable&quot;, which the controller treats as <computeroutput>std::nullopt</computeroutput>. The wrapper itself is non-copyable and non-movable so there is a single long-lived Store-owned instance. It adds no locking of its own; any thread-safety comes from the underlying Drogon DbClient. <simplesect kind="see"><para><ref refid="classAsyncDbClient_1ac0396c3d59602cf860e6fef52c98a736" kindref="member">createClient</ref>, <ref refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" kindref="member">asyncdb::execSqlCoro</ref>, <ref refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" kindref="member">DatabaseController::executeQueryCoro</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/database/asyncdbclient.hpp" line="51" column="1" bodyfile="src/database/asyncdbclient.hpp" bodystart="52" bodyend="106"/>
+    <listofallmembers>
+      <member refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" prot="public" virt="non-virtual"><scope>AsyncDbClient</scope><name>AsyncDbClient</name></member>
+      <member refid="classAsyncDbClient_1a4c8f093334062996bd575498bfcb40c2" prot="public" virt="non-virtual"><scope>AsyncDbClient</scope><name>AsyncDbClient</name></member>
+      <member refid="classAsyncDbClient_1a00eaa6a9016ba3d36f6598345b3b64de" prot="public" virt="non-virtual"><scope>AsyncDbClient</scope><name>AsyncDbClient</name></member>
+      <member refid="classAsyncDbClient_1a6df3848ed2c5239948f7274454e6f937" prot="public" virt="non-virtual"><scope>AsyncDbClient</scope><name>client</name></member>
+      <member refid="classAsyncDbClient_1aced87db92a4d5da428c025008912efd0" prot="private" virt="non-virtual"><scope>AsyncDbClient</scope><name>client_</name></member>
+      <member refid="classAsyncDbClient_1a060a2df97483204c119b2d3322de7455" prot="public" virt="non-virtual"><scope>AsyncDbClient</scope><name>connectionString</name></member>
+      <member refid="classAsyncDbClient_1ac0396c3d59602cf860e6fef52c98a736" prot="public" virt="non-virtual"><scope>AsyncDbClient</scope><name>createClient</name></member>
+      <member refid="classAsyncDbClient_1a6a9c60e4054389f20640fb633d38dd42" prot="public" virt="non-virtual"><scope>AsyncDbClient</scope><name>operator=</name></member>
+      <member refid="classAsyncDbClient_1a73fa2d950fcdf6a7b3468b6da94a0b19" prot="public" virt="non-virtual"><scope>AsyncDbClient</scope><name>operator=</name></member>
+      <member refid="classAsyncDbClient_1a9695856e6d84ef0220f89c0b2d614ead" prot="public" virt="virtual"><scope>AsyncDbClient</scope><name>~AsyncDbClient</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

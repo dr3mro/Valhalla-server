@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_91b2e3fcc73fbd2120a08d79e3a1558f" kind="dir">
+    <compoundname>src/utils/global</compoundname>
+    <innerfile refid="callback_8hpp">callback.hpp</innerfile>
+    <innerfile refid="concepts_8hpp">concepts.hpp</innerfile>
+    <innerfile refid="errorstatus_8hpp">errorstatus.hpp</innerfile>
+    <innerfile refid="global_8hpp">global.hpp</innerfile>
+    <innerfile refid="http_8hpp">http.hpp</innerfile>
+    <innerfile refid="requester_8hpp">requester.hpp</innerfile>
+    <innerfile refid="utils_2global_2types_8hpp">types.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/utils/global/"/>
+  </compounddef>
+</doxygen>

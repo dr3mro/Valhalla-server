@@ -1,0 +1,328 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classUser" kind="class" language="C++" prot="public">
+    <compoundname>User</compoundname>
+    <basecompoundref refid="classapi_1_1v2_1_1Client" prot="public" virt="non-virtual">api::v2::Client</basecompoundref>
+    <includes refid="people_2user_8hpp" local="no">user.hpp</includes>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classUser_1a4d6aa5dcd6ce0ca6110cfa3d90828d3a" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>auto</type>
+        <definition>auto User::TABLENAME</definition>
+        <argsstring></argsstring>
+        <name>TABLENAME</name>
+        <qualifiedname>User::TABLENAME</qualifiedname>
+        <initializer>= &quot;users&quot;</initializer>
+        <briefdescription>
+<para><ref refid="classDatabase" kindref="compound">Database</ref> table holding users. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/people/user.hpp" line="113" column="27" bodyfile="src/entities/people/user.hpp" bodystart="113" bodyend="-1"/>
+        <referencedby refid="classUser_1a4929e8a6bf5fceec26860af7dfb0cd37" compoundref="people_2user_8hpp" startline="83" endline="83">getTableName</referencedby>
+        <referencedby refid="classUser_1a166538549bcb7bf1f3d4aea0b777f7cb" compoundref="people_2user_8hpp" startline="71" endline="73">User</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classUser_1a9fcbb3edfb188d1f085bca80d45d9408" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::User</definition>
+        <argsstring>(const User &amp;)=delete</argsstring>
+        <name>User</name>
+        <qualifiedname>User::User</qualifiedname>
+        <param>
+          <type>const <ref refid="classUser" kindref="compound">User</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Non-copyable and non-movable; construct in place for the request that uses it. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/people/user.hpp" line="60" column="5"/>
+        <references refid="classUser_1a9fcbb3edfb188d1f085bca80d45d9408">User</references>
+        <referencedby refid="classUser_1a4d6f43343b26f2df413865c4bbc52305">operator=</referencedby>
+        <referencedby refid="classUser_1a155fb9743b4bd38c652b27e23509deb1">operator=</referencedby>
+        <referencedby refid="classUser_1a9fcbb3edfb188d1f085bca80d45d9408">User</referencedby>
+        <referencedby refid="classUser_1add08c3a857f0a2765c5a73f3554b830f">User</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1add08c3a857f0a2765c5a73f3554b830f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::User</definition>
+        <argsstring>(User &amp;&amp;)=delete</argsstring>
+        <name>User</name>
+        <qualifiedname>User::User</qualifiedname>
+        <param>
+          <type><ref refid="classUser" kindref="compound">User</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/people/user.hpp" line="61" column="5"/>
+        <references refid="classUser_1a9fcbb3edfb188d1f085bca80d45d9408">User</references>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1a4d6f43343b26f2df413865c4bbc52305" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classUser" kindref="compound">User</ref> &amp;</type>
+        <definition>User &amp; User::operator=</definition>
+        <argsstring>(const User &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>User::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classUser" kindref="compound">User</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/people/user.hpp" line="62" column="10"/>
+        <references refid="classUser_1a9fcbb3edfb188d1f085bca80d45d9408">User</references>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1a155fb9743b4bd38c652b27e23509deb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classUser" kindref="compound">User</ref> &amp;</type>
+        <definition>User &amp; User::operator=</definition>
+        <argsstring>(User &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>User::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classUser" kindref="compound">User</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/people/user.hpp" line="63" column="10"/>
+        <references refid="classUser_1a9fcbb3edfb188d1f085bca80d45d9408">User</references>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1a166538549bcb7bf1f3d4aea0b777f7cb" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename ClientData_t</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>User::User</definition>
+        <argsstring>(const ClientData_t &amp;data)</argsstring>
+        <name>User</name>
+        <qualifiedname>User::User</qualifiedname>
+        <param>
+          <type>const ClientData_t &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Stores an id-only payload, binding it to the users table. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>ClientData_t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A ClientData_t payload (typically <ref refid="classData__t" kindref="compound">Data_t</ref> for get-services). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Operation payload carrying the user id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/people/user.hpp" line="71" column="14" bodyfile="src/entities/people/user.hpp" bodystart="71" bodyend="73"/>
+        <references refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4">api::v2::Client::Client</references>
+        <references refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" compoundref="entity_8hpp" startline="393">Entity::data</references>
+        <references refid="classUser_1a4d6aa5dcd6ce0ca6110cfa3d90828d3a" compoundref="people_2user_8hpp" startline="113">TABLENAME</references>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1a2aca5ee0046f477a5acb084653dcc801" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>User::~User</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~User</name>
+        <qualifiedname>User::~User</qualifiedname>
+        <briefdescription>
+<para>Default destructor; no state beyond the base <ref refid="controller_8hpp_1af928d8b9ced02f7387b9b56ed3877b11" kindref="member">Client</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/people/user.hpp" line="78" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classUser_1ae5d3ed1b19bf6392730008203374e5b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; User::getSqlGetServicesStatement</definition>
+        <argsstring>(pqxx::params &amp;params)</argsstring>
+        <name>getSqlGetServicesStatement</name>
+        <qualifiedname>User::getSqlGetServicesStatement</qualifiedname>
+        <param>
+          <type>pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Builds a query that selects the user id from the users table. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Reads the id from the <ref refid="classData__t" kindref="compound">Data_t</ref> payload into client_id and binds it as $1. If the payload has no id, calling value() throws and is caught, yielding std::nullopt. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cleared and filled with the bound user id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>SELECT id FROM users WHERE id = $1, or std::nullopt on failure. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/people/user.hpp" line="92" column="19" bodyfile="src/entities/people/user.hpp" bodystart="92" bodyend="107"/>
+        <references refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" compoundref="client_8hpp" startline="280">api::v2::Client::client_id</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="163" endline="163">Entity::getData</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">Entity::tablename</references>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classUser_1a4929e8a6bf5fceec26860af7dfb0cd37" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>static constexpr auto User::getTableName</definition>
+        <argsstring>()</argsstring>
+        <name>getTableName</name>
+        <qualifiedname>User::getTableName</qualifiedname>
+        <briefdescription>
+<para>Returns the users table name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/people/user.hpp" line="83" column="32" bodyfile="src/entities/people/user.hpp" bodystart="83" bodyend="83"/>
+        <references refid="classUser_1a4d6aa5dcd6ce0ca6110cfa3d90828d3a" compoundref="people_2user_8hpp" startline="113">TABLENAME</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para><ref refid="controller_8hpp_1af928d8b9ced02f7387b9b56ed3877b11" kindref="member">Client</ref> entity for the users table with an id lookup query. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Extends <ref refid="controller_8hpp_1af928d8b9ced02f7387b9b56ed3877b11" kindref="member">Client</ref> and adds a minimal get-services statement that selects the user&apos;s id. CRUD and suspend/activate behaviour is inherited unchanged. <simplesect kind="see"><para><ref refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4" kindref="member">Client</ref>, Types::Data_t </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>Base</label>
+        <link refid="classBase"/>
+      </node>
+      <node id="2">
+        <label>Client</label>
+        <link refid="classapi_1_1v2_1_1Client"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Entity</label>
+        <link refid="classEntity"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>User</label>
+        <link refid="classUser"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>Base</label>
+        <link refid="classBase"/>
+      </node>
+      <node id="2">
+        <label>Client</label>
+        <link refid="classapi_1_1v2_1_1Client"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Entity</label>
+        <link refid="classEntity"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>User</label>
+        <link refid="classUser"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/entities/people/user.hpp" line="54" column="1" bodyfile="src/entities/people/user.hpp" bodystart="55" bodyend="114"/>
+    <listofallmembers>
+      <member refid="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" virt="non-virtual"><scope>User</scope><name>Base</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a9d8ec7236a309400e90639c194bb7017" prot="protected" virt="non-virtual"><scope>User</scope><name>buildClientCreateStatement</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1af26bfc187b1d8c93e829d05032c7bdb3" prot="protected" virt="non-virtual"><scope>User</scope><name>buildClientUpdateStatement</name></member>
+      <member refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" prot="protected" virt="non-virtual"><scope>User</scope><name>buildCreateStatement</name></member>
+      <member refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" prot="protected" virt="non-virtual"><scope>User</scope><name>buildDeleteStatement</name></member>
+      <member refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" prot="protected" virt="non-virtual"><scope>User</scope><name>buildReadStatement</name></member>
+      <member refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" prot="protected" virt="non-virtual"><scope>User</scope><name>buildSearchStatement</name></member>
+      <member refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" prot="protected" virt="non-virtual"><scope>User</scope><name>buildUpdateStatement</name></member>
+      <member refid="classEntity_1ac1d661555222fabdf77fc5750da50b19" prot="public" virt="non-virtual"><scope>User</scope><name>check_id_exists</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4" prot="public" virt="non-virtual"><scope>User</scope><name>Client</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a4a696821cfa017364381a2d8c1c29092" prot="public" virt="non-virtual"><scope>User</scope><name>Client</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1ae448bdbb176f2a53a579df93148663ea" prot="public" virt="non-virtual"><scope>User</scope><name>Client</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" prot="protected" virt="non-virtual"><scope>User</scope><name>client_id</name></member>
+      <member refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" prot="private" virt="non-virtual"><scope>User</scope><name>data</name></member>
+      <member refid="classEntity_1a154ae0093211626370549e2924f9c954" prot="protected" virt="non-virtual"><scope>User</scope><name>databaseController</name></member>
+      <member refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93" prot="public" virt="non-virtual"><scope>User</scope><name>Entity</name></member>
+      <member refid="classEntity_1ad3455dba49aa870a3f298f490771600c" prot="public" virt="non-virtual"><scope>User</scope><name>Entity</name></member>
+      <member refid="classEntity_1abe34f0c0ca4b976ba455b97b2039d771" prot="public" virt="non-virtual"><scope>User</scope><name>Entity</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a0b259ee6bdb5bee7b4bda6a49828d8af" prot="public" virt="non-virtual"><scope>User</scope><name>exists</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1aa66c4aa7962da3bc66a7956c84a27a5e" prot="public" virt="non-virtual"><scope>User</scope><name>getClientId</name></member>
+      <member refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" prot="public" virt="non-virtual"><scope>User</scope><name>getData</name></member>
+      <member refid="classEntity_1a78dd1f37555f08fe0b389029c2d5b775" prot="public" virt="non-virtual"><scope>User</scope><name>getGroupName</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1ab03dd8f46bcaed9b5899d016715b5181" prot="public" virt="non-virtual"><scope>User</scope><name>getSqlActivateStatement</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a994474b95fd751b3672b0abf6dd01269" prot="public" virt="virtual"><scope>User</scope><name>getSqlCreateStatement</name></member>
+      <member refid="classEntity_1aa66bbebb8b50f7d91153231b1f6ab997" prot="public" virt="virtual"><scope>User</scope><name>getSqlDeleteStatement</name></member>
+      <member refid="classUser_1ae5d3ed1b19bf6392730008203374e5b2" prot="public" virt="non-virtual"><scope>User</scope><name>getSqlGetServicesStatement</name></member>
+      <member refid="classEntity_1a90ab6d6ae7c3431c3ede1201654b209a" prot="public" virt="virtual"><scope>User</scope><name>getSqlReadStatement</name></member>
+      <member refid="classEntity_1a362c3e70e483e2378ab08414c1eacdd7" prot="public" virt="virtual"><scope>User</scope><name>getSqlSearchStatement</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a95efdec9aa97f621d80540a6c7f92236" prot="public" virt="non-virtual"><scope>User</scope><name>getSqlSuspendStatement</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1aca2d94a63d7099b47ce5b1fce6ff49b1" prot="public" virt="non-virtual"><scope>User</scope><name>getSqlToggleSuspendStatement</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a8f03cab52fd829c80e7eb46751f7f1e4" prot="public" virt="virtual"><scope>User</scope><name>getSqlUpdateStatement</name></member>
+      <member refid="classUser_1a4929e8a6bf5fceec26860af7dfb0cd37" prot="public" virt="non-virtual"><scope>User</scope><name>getTableName</name></member>
+      <member refid="classUser_1a4d6f43343b26f2df413865c4bbc52305" prot="public" virt="non-virtual"><scope>User</scope><name>operator=</name></member>
+      <member refid="classUser_1a155fb9743b4bd38c652b27e23509deb1" prot="public" virt="non-virtual"><scope>User</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1aa78be4dbfee70e80930f5bbdb8c357b6" prot="public" virt="non-virtual" ambiguityscope="api::v2::Client::"><scope>User</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a61a23014a196e90f69294973b8832fe4" prot="public" virt="non-virtual" ambiguityscope="api::v2::Client::"><scope>User</scope><name>operator=</name></member>
+      <member refid="classEntity_1a1f6d7e8353984497c45053a421a35b53" prot="public" virt="non-virtual" ambiguityscope="Entity::"><scope>User</scope><name>operator=</name></member>
+      <member refid="classEntity_1adb86b6ab4d1b39b00c2472af16840fe5" prot="public" virt="non-virtual" ambiguityscope="Entity::"><scope>User</scope><name>operator=</name></member>
+      <member refid="classUser_1a4d6aa5dcd6ce0ca6110cfa3d90828d3a" prot="private" virt="non-virtual"><scope>User</scope><name>TABLENAME</name></member>
+      <member refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" prot="protected" virt="non-virtual"><scope>User</scope><name>tablename</name></member>
+      <member refid="classUser_1a9fcbb3edfb188d1f085bca80d45d9408" prot="public" virt="non-virtual"><scope>User</scope><name>User</name></member>
+      <member refid="classUser_1add08c3a857f0a2765c5a73f3554b830f" prot="public" virt="non-virtual"><scope>User</scope><name>User</name></member>
+      <member refid="classUser_1a166538549bcb7bf1f3d4aea0b777f7cb" prot="public" virt="non-virtual"><scope>User</scope><name>User</name></member>
+      <member refid="classBase_1a306fb25541331080645a716286357ef9" prot="public" virt="virtual"><scope>User</scope><name>~Base</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1ad63b0cf23eaac920765c0cfce4268156" prot="public" virt="non-virtual"><scope>User</scope><name>~Client</name></member>
+      <member refid="classEntity_1a605d474ccbd30c3d4350016ec173546a" prot="public" virt="non-virtual"><scope>User</scope><name>~Entity</name></member>
+      <member refid="classUser_1a2aca5ee0046f477a5acb084653dcc801" prot="public" virt="non-virtual"><scope>User</scope><name>~User</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

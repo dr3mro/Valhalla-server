@@ -2,7 +2,7 @@
 
 A high-performance, multi-tenant healthcare backend written in modern C++20. Valhalla exposes a versioned REST API for managing medical service providers (clinics, laboratories, pharmacies, radiology centers), their staff, patients, visits, and appointments — with authentication, role-based permissions, and built-in abuse protection baked into the request pipeline.
 
-> **Status:** Active development. The API surface and data model are still evolving (see [`Todo.txt`](Todo.txt)).
+> **Status:** Active development. The API surface and data model are still evolving.
 
 ---
 
@@ -40,36 +40,40 @@ vdt stop      # stop it; vdt run starts it again
 vdt help      # everything else
 ```
 
-Settings: the installer creates `~/.local/share/vdt/config` (`.env` format) with defaults for a small local container (2 server threads, 2 database connections, and raised rate limits so the API docs' Benchmark and Test console panels don't get you blocked). Every variable in it is passed to the server (see [Configuration](#configuration)); edit it and run `vdt update` to apply. A `.env` in the directory you run `vdt` from is used instead (e.g. in your checkout of this repository).
+Settings: the installer creates `~/.local/share/vdt/config` (`.env` format) with defaults for a small local container (2 server threads, 2 database connections, and raised rate limits so the API docs' Benchmark and Test console panels don't get you blocked). Every variable in it is passed to the server (see Configuration); edit it and run `vdt update` to apply. A `.env` in the directory you run `vdt` from is used instead (e.g. in your checkout of this repository).
 
 Update the tool with `vdt install` (or `vdt install v1.2.3` for a specific tag): it downloads the new version first, and only then removes the current copy and installs, so a failed download changes nothing. `vdt version` shows what's installed. Remove it with `vdt uninstall`, which works offline. Both keep your `.env` and `dumps/`.
 
-From a checkout of this repository, `./scripts/vdt/valhalla.sh` is the same tool (the installed `vdt` command is this file under another name). Details: [Manage it with `valhalla.sh`](#manage-it-with-valhallash). Without the tool: [Run with Docker](#run-with-docker). To build and run natively: [Getting Started](#getting-started).
+From a checkout of this repository, `./scripts/vdt/valhalla.sh` is the same tool (the installed `vdt` command is this file under another name). Details: Manage it with `valhalla.sh`. Without the tool: Run with Docker. To build and run natively: Getting Started.
 
 ---
 
 ## Table of Contents
 
-- [Quick Start](#quick-start)
-- [Features](#features)
-- [Architecture](#architecture)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Build from Source](#build-from-source)
-    - [Debian / Ubuntu](#debian--ubuntu)
-    - [Fedora](#fedora)
-  - [Database setup](#database-setup)
-  - [Run the server](#run-the-server)
-  - [Run with Docker](#run-with-docker)
-    - [Manage it with `valhalla.sh`](#manage-it-with-valhallash)
-- [Configuration](#configuration)
-- [API Overview](#api-overview)
-  - [Interactive API docs](#interactive-api-docs)
-- [Project Layout](#project-layout)
-- [Development](#development)
-- [Contributing](#contributing)
-- [License](#license)
+> Rendered documentation (GitHub or the Doxygen HTML output) provides its own
+> clickable table of contents; the entries below are plain text so that the
+> anchors resolve consistently in both renderers.
+
+- Quick Start
+- Features
+- Architecture
+- Tech Stack
+- Getting Started
+  - Prerequisites
+  - Build from Source
+    - Debian / Ubuntu
+    - Fedora
+  - Database setup
+  - Run the server
+  - Run with Docker
+    - Manage it with `valhalla.sh`
+- Configuration
+- API Overview
+  - Interactive API docs
+- Project Layout
+- Development
+- Contributing
+- License
 
 ---
 
@@ -158,7 +162,7 @@ Password worker (PASSWORD_WORKERS threads, queue PASSWORD_QUEUE_MAX)  ──► 
 - [Conan](https://conan.io/) 2.x (package manager)
 - A reachable [PostgreSQL](https://www.postgresql.org/) instance
 - _(optional)_ `ccache` — used automatically if found, to speed up rebuilds
-- _(optional)_ Docker or Apple `container`, to run the all-in-one image (see [Run with Docker](#run-with-docker))
+- _(optional)_ Docker or Apple `container`, to run the all-in-one image (see Run with Docker)
 
 Supported distributions: **Debian 13 (trixie)+ / Ubuntu 24.04+** and **Fedora 40+**. Older releases ship GCC < 13, and most distributions still package CMake 3.x, so you will likely need to install CMake 4 separately; see the notes below.
 
@@ -230,7 +234,7 @@ Or run the convenience script `./scripts/build/build.sh`, which goes further tha
 2. Runs the unit tests for both (`ctest --preset conan-release` and `ctest --preset conan-debug`).
 3. **Starts the Release server in the background** (`./scripts/run/run_release.sh &`) and runs the API test suite (`./scripts/test/test_api.sh`) against it.
 
-Step 3 needs a running, initialised PostgreSQL (see [Database setup](#database-setup)), and it leaves the server running afterwards. Stop it with `pkill -f build/Release/server`.
+Step 3 needs a running, initialised PostgreSQL (see Database setup), and it leaves the server running afterwards. Stop it with `pkill -f build/Release/server`.
 
 ```bash
 ./scripts/build/build.sh
@@ -240,7 +244,7 @@ The resulting binary is named `server` and is placed in the corresponding build 
 
 ### Database setup
 
-The server needs a PostgreSQL database initialised with `init.sql`. Skip this section if you already have a database, or if you use the all-in-one Docker image (see [Run with Docker](#run-with-docker)).
+The server needs a PostgreSQL database initialised with `init.sql`. Skip this section if you already have a database, or if you use the all-in-one Docker image (see Run with Docker).
 
 **Debian / Ubuntu** — the service is created and started by the package:
 
@@ -269,7 +273,7 @@ PGPASSWORD=postgres ./scripts/run/db_init.sh                                    
 
 ### Run the server
 
-Create a `config` file in the project root. It is read by `run_release.sh` and ignored by Git, so local secrets stay out of commits. See [Configuration](#configuration) for every variable:
+`run_release.sh` loads its settings from `config` in the project root (a tracked file of defaults); if that file is absent it falls back to `.env`. To keep local values separate from the tracked file, point it at your own file with `ENV_FILE=/path/to/file`. See Configuration for every variable:
 
 ```bash
 cat > config <<'EOF'
@@ -287,7 +291,7 @@ EOF
 Then start it:
 
 ```bash
-./scripts/run/run_release.sh            # run build/Release/server with the .env loaded
+./scripts/run/run_release.sh            # run build/Release/server with the settings file loaded
 ./scripts/run/run_release.sh --build    # rebuild Release first, then run
 ```
 
@@ -305,9 +309,9 @@ Then open the interactive API docs at <http://127.0.0.1:8080/api/v2/doc>. If the
 
 Every release tag publishes an all-in-one image to Docker Hub: the server **plus** its own PostgreSQL, so no external database is needed. It is a single multi-arch image (`linux/amd64` and `linux/arm64`); Docker and Apple Container pull the right one automatically. It's meant for demos, testing, and CI.
 
-> **Which should I use?** The Docker image works on any OS. The Alpine tarballs attached to each GitHub Release run only on Alpine Linux. Anywhere else, without Docker, [build from source](#build-from-source).
+> **Which should I use?** The Docker image works on any OS. The Alpine tarballs attached to each GitHub Release run only on Alpine Linux. Anywhere else, without Docker, build from source.
 
-> **The database is ephemeral.** Every container start, _including a restart_, begins with a fresh, empty database initialised from `init.sql`. Nothing is kept. For persistent data, run the server against your own PostgreSQL instead (see [Run the server](#run-the-server)).
+> **The database is ephemeral.** Every container start, _including a restart_, begins with a fresh, empty database initialised from `init.sql`. Nothing is kept. For persistent data, run the server against your own PostgreSQL instead (see Run the server).
 
 **Docker** (Linux, macOS, Windows):
 
@@ -377,7 +381,7 @@ container rm valhalla
 
 - The name keeps everything you gave `create` (port, variables, image). To change any of it, `rm` the container and `create` it again.
 - The database is still wiped on every `start`, so a named container doesn't keep data between launches.
-- `start` reuses the image the container was created from; see [Update to the latest version](#update-to-the-latest-version) below.
+- `start` reuses the image the container was created from; see Update to the latest version below.
 - If you'd rather type a single word, add a shell alias to `~/.zshrc` or `~/.bashrc`, then just run `valhalla` (Ctrl+C to stop):
 
   ```bash
@@ -421,11 +425,11 @@ container start valhalla
 container image prune         # optional: remove unused images
 ```
 
-Or let [`valhalla.sh`](#manage-it-with-valhallash) do all of it: `./scripts/vdt/valhalla.sh update`.
+Or let `valhalla.sh` do all of it: `./scripts/vdt/valhalla.sh update`.
 
 If you run with `--rm` or the shell alias, the pull is all you need: the next `run` uses the new image. To see which version is running, check the `Version` line in the startup banner (`docker logs valhalla` or `container logs valhalla`).
 
-**Settings.** Every variable in [Configuration](#configuration) can be passed with `-e`. Inside this image:
+**Settings.** Every variable in Configuration can be passed with `-e`. Inside this image:
 
 | Variable                              | Default                              | Notes                                                                                       |
 | ------------------------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------- |
@@ -450,11 +454,11 @@ container build -f docker/Dockerfile -t valhalla-server-run:local .
 
 The build compiles every C++ dependency from source on Alpine and runs the unit tests; the build fails if a test fails. The first build takes a long time; later builds reuse the cached dependency layer until `conanfile.txt` or `conan.lock` changes.
 
-**Release downloads.** Each GitHub Release also attaches `server-alpine-amd64.tar.gz` and `server-alpine-arm64.tar.gz`. These are built on Alpine (musl libc) and only run on Alpine-based systems; everywhere else use the Docker image, or [build from source](#build-from-source).
+**Release downloads.** Each GitHub Release also attaches `server-alpine-amd64.tar.gz` and `server-alpine-arm64.tar.gz`. These are built on Alpine (musl libc) and only run on Alpine-based systems; everywhere else use the Docker image, or build from source.
 
 #### Manage it with `valhalla.sh`
 
-`valhalla.sh` in the repository root wraps the commands above for both Docker and Apple Container. It picks Apple Container when it's installed and Docker otherwise (force one with `--runtime docker` or `--runtime container`).
+`scripts/vdt/valhalla.sh` wraps the commands above for both Docker and Apple Container. It picks Apple Container when it's installed and Docker otherwise (force one with `--runtime docker` or `--runtime container`).
 
 **Install it as the `vdt` command** (no checkout needed). This downloads the latest `valhalla.sh`, the API test scripts and their payloads from this repository. The command goes in `~/.local/bin/vdt` (a link); the files go in `~/.local/share/vdt`, without the `.sh` extension (`vdt`, `test_api`, `schemathesis_test`) and executable, plus a copy of the installer. It adds `~/.local/bin` to `PATH` (if it isn't already) and tab completion in `~/.zshrc` and/or `~/.bashrc`:
 
@@ -959,29 +963,35 @@ src/
 ├── store/              # Shared object store
 ├── server/             # Server bootstrap (entry point)
 └── utils/              # Logging, caching, messaging, JSON helpers, thread-safe queue
+scripts/
+├── build/              # build.sh, get_tag.sh, run_all_tests.sh
+├── db/init.sql         # Database schema
+├── lib/ui.sh           # Shared shell UI helpers
+├── qa/                 # Format, hygiene and project-rule checks
+├── run/                # db_init.sh, run_debug.sh, run_release.sh, run4bench.sh
+├── test/               # test_api.sh, cors_test.sh, cors_react_check.sh, fuzz_auth.sh, sqlmap_test.sh, schemathesis_test.sh
+└── vdt/valhalla.sh     # Docker/Apple Container deployment tool (the `vdt` command)
 tests/                  # Catch2 unit tests (+ vendored Catch CMake helpers)
-docs/                   # Generated API docs: api.html (embedded), openapi.json, Postman collection
+tests/api_tests/        # Request payloads and samples used by test_api.sh
+docs/                   # API docs (api.html, openapi.json, Postman collection) + ARCHITECTURE.md, CONTRIBUTING.md
+│   └── doxygen/        # Published Doxygen reference (HTML + XML), excluded from Doxygen input
 tools/
-├── cmake/              # CMake helpers (HTML embedding, docs generation)
+├── cmake/              # CMake helpers (HTML embedding, docs generation, versioning)
 ├── conan/              # Conan helper variables, lockfile update script
 └── docs/               # API docs generator (build.sh, build_docs.py, Swagger UI assets)
-tests/api_tests/         # Request payloads and samples used by test_api.sh
 docker/                 # All-in-one Alpine image (Dockerfile + entrypoint)
-.github/                # Release workflow and Dependabot config
+.github/                # Release and CI workflows, Dependabot config
+config                  # Default server settings (tracked)
+Doxyfile                # Doxygen configuration
 conan.lock              # Pinned dependency versions (all platforms)
-init.sql                # Database schema
-build.sh                # Full build + unit tests + API tests
-run_release.sh          # Run build/Release/server with .env loaded
-db_init.sh              # Load init.sql into a local PostgreSQL
-test_api.sh             # End-to-end API test suite against a running server
-fuzz_auth.sh, sqlmap_test.sh, schemathesis_test.sh  # Security and fuzz testing helpers
+conanfile.txt           # Conan dependency list
 ```
 
 ## Front-end development (CORS and Docker)
 
 The API listens on `http://localhost:8080`. CORS is open: `Access-Control-Allow-Origin: *`, no credentials, methods `GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS`, request headers `Content-Type, Authorization, Accept, X-Requested-With` (a preflight echoes `Access-Control-Request-Headers`), and exposed response headers `Retry-After, Content-Length`. Preflight responses are cached for 7200 seconds.
 
-In Docker bridge mode every request arrives from one gateway IP, so the rate limiter treats all front-end traffic as a single client. On native Linux Docker that address is often `172.17.0.1`, but on Docker Desktop for macOS or Windows it is usually different. There is no existing log line that prints the peer IP. Without code changes, use one of these instead: on native Linux, `docker network inspect bridge` and its `Gateway`; run `docker exec <container> sh -c 'ss -tn'` or read `/proc/net/tcp` inside the container while a host `curl` is in flight to see the peer address; or use `docker logs <container>` after a request. On Docker Desktop for macOS or Windows the address is usually not the bridge gateway. (Docker is not installed on the development machine used for this change, so these steps are unverified here.) Keep the proposal for a `Message::DebugMessage` in the `RateLimit` filter as a PLAN.md item; do not add a debug endpoint or new logging in this change.
+In Docker bridge mode every request arrives from one gateway IP, so the rate limiter treats all front-end traffic as a single client. On native Linux Docker that address is often `172.17.0.1`, but on Docker Desktop for macOS or Windows it is usually different. There is no existing log line that prints the peer IP. Without code changes, use one of these instead: on native Linux, `docker network inspect bridge` and its `Gateway`; run `docker exec <container> sh -c 'ss -tn'` or read `/proc/net/tcp` inside the container while a host `curl` is in flight to see the peer address; or use `docker logs <container>` after a request. On Docker Desktop for macOS or Windows the address is usually not the bridge gateway.
 
 Whitelist entries are unanchored regular expressions, so `172.17.0.1` also matches `172.17.0.10` through `172.17.0.199`. To whitelist only the gateway, anchor the pattern. In a shell or `--env-file` value the backslashes stay literal:
 
@@ -1059,7 +1069,7 @@ Drogon 1.9.14 writes the response for a malformed request line (for example `GET
 - **Warnings:** built with `-Wall -Wextra -pedantic`.
 - **Versioning:** the current Git tag is embedded into the binary at build time via `get_tag.sh`.
 - **Dependencies:** `conan.lock` pins the exact version and recipe revision of every Conan package, for the Alpine Docker builds (amd64 and arm64) and for local macOS/Linux builds. Conan uses it automatically. To change or update dependencies, edit `conanfile.txt` if needed, run `tools/conan/update_lock.sh`, and commit both files. Don't use a plain `conan lock create .`: it locks only your own platform, and the Docker build would then fail.
-- **Build options:** `-DENABLE_TESTS=OFF` skips the unit tests (default `ON`); `-DVALHALLA_BUILD_DOCS=OFF` skips regenerating the API docs (default `ON`). Debug builds on Linux enable AddressSanitizer, UndefinedBehaviorSanitizer and LeakSanitizer.
+- **Build options:** `-DENABLE_TESTS=OFF` skips the unit tests (default `ON`); `-DVALHALLA_BUILD_DOCS=OFF` skips regenerating the API docs (default `ON`); `-DVALHALLA_BUILD_DOXYGEN=OFF` skips generating the Doxygen reference (default `ON`, ignored if Doxygen is not installed). Debug builds on Linux enable AddressSanitizer, UndefinedBehaviorSanitizer and LeakSanitizer.
 - **Tests:** a Catch2 suite lives in `tests/`. It runs without a database, so it works on any machine. `build.sh` runs it through the `conan-debug`/`conan-release` CTest presets, and building the Docker image runs it too, on Alpine.
 
 ```bash
@@ -1067,9 +1077,36 @@ Drogon 1.9.14 writes the response for a malformed request line (for example `GET
 ctest --test-dir build/Debug --output-on-failure
 ```
 
+### Source documentation
+
+The C++ source is documented with Doxygen: every class, function and
+non-obvious implementation detail has a Doxygen-compatible comment.
+See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the component map and
+[`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) for the documentation conventions.
+The HTML/XML reference is generated by the `valhalla_doxygen` CMake target, which
+runs on every `cmake --build` when Doxygen is available. The result is published
+under `docs/doxygen/` (HTML and XML, tracked alongside the API docs). Doxygen
+excludes that directory from its own input, so it never documents its output:
+
+```bash
+cmake --build build/Debug --target valhalla_doxygen
+# open docs/doxygen/html/index.html
+```
+
+`docs/index.html` redirects to that page, so serving the `docs/` directory as
+static files gives a single entry point for the published documentation.
+
+Pass `-DVALHALLA_BUILD_DOXYGEN=OFF` to skip the target. To generate by hand,
+create the output directory first (Doxygen writes its warning log there):
+
+```bash
+mkdir -p docs/doxygen
+doxygen Doxyfile
+```
+
 ## Contributing
 
-Contributions are welcome. Please open an issue to discuss substantial changes first, keep commits focused, and run `clang-format` before submitting a pull request. See [`Todo.txt`](Todo.txt) for current work in progress.
+Contributions are welcome. Please open an issue to discuss substantial changes first, keep commits focused, and run `clang-format` before submitting a pull request.
 
 ## License
 

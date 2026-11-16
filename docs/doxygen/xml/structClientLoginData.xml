@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structClientLoginData" kind="struct" language="C++" prot="public">
+    <compoundname>ClientLoginData</compoundname>
+    <includes refid="gatekeeper_2types_8hpp" local="no">types.hpp</includes>
+    <briefdescription>
+<para>Mutable accumulator that carries a client&apos;s identity through login and authentication. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The same object is passed from <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> into <ref refid="sessionmanager_8cpp_1a8256b008f0e6c1884c2b7aca9d53fec2" kindref="member">SessionManager</ref>, <ref refid="tokenmanager_8cpp_1a29cda383d518dafdbd3cf3438adea93f" kindref="member">TokenManager</ref> and <ref refid="keeprbase_8cpp_1a40ca499cbee8072a0cf80889f3510f85" kindref="member">KeeprBase</ref> helpers. Fields are optional because they are populated at different stages: some arrive from the request (group, ip_address), some are read from the database (is_active, lastLogoutTime), and some are produced by token generation (token, expireTime). Call sites value-initialize this struct (for example <computeroutput><ref refid="structClientLoginData" kindref="compound">ClientLoginData</ref>{}</computeroutput>), so the non-optional scalar members start zero-initialized and are only meaningful once the corresponding helper sets them. <simplesect kind="note"><para><computeroutput>passwordHash</computeroutput> and <computeroutput>passwordMatch</computeroutput> are declared here but are never assigned in src/; the login flow carries the hash as a separate local value. </para>
+</simplesect>
+<simplesect kind="note"><para>Identity claims (username, clientId, group, ip_address, lastLogoutTime) are bound into the JWT and re-checked on validation, so changing one invalidates the token.</para>
+</simplesect>
+In everyday terms, think of this struct as a &quot;passport application form&quot; that gets stamped at each desk. It begins nearly empty, the HTTP request fills in the group and IP, the database fills in the active flag and last logout time, and the token generator fills in the token and its expiry. <computeroutput>std::optional</computeroutput> is used for each field because &quot;not filled in yet&quot; is a normal state, not an error, and it lets helpers check <computeroutput>has_value()</computeroutput> before using a field. The two plain <computeroutput>bool</computeroutput> fields are not optional, so they start as <computeroutput>false</computeroutput> after <computeroutput><ref refid="structClientLoginData" kindref="compound">ClientLoginData</ref>{}</computeroutput> and must be explicitly set from the database before they mean anything. </para>
+    </detaileddescription>
+    <location file="src/gatekeeper/types.hpp" line="41" column="1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

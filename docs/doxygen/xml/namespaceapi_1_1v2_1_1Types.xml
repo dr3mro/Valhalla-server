@@ -1,0 +1,303 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="namespaceapi_1_1v2_1_1Types" kind="namespace" language="C++">
+    <compoundname>api::v2::Types</compoundname>
+    <innerclass refid="structapi_1_1v2_1_1Types_1_1Entity__t" prot="public">api::v2::Types::Entity_t</innerclass>
+    <innerclass refid="structapi_1_1v2_1_1Types_1_1ClientData__t" prot="public">api::v2::Types::ClientData_t</innerclass>
+    <innerclass refid="structapi_1_1v2_1_1Types_1_1CreateClient__t" prot="public">api::v2::Types::CreateClient_t</innerclass>
+    <innerclass refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t" prot="public">api::v2::Types::UpdateClient_t</innerclass>
+    <innerclass refid="structapi_1_1v2_1_1Types_1_1SuspendData" prot="public">api::v2::Types::SuspendData</innerclass>
+    <innerclass refid="structapi_1_1v2_1_1Types_1_1StaffData" prot="public">api::v2::Types::StaffData</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceapi_1_1v2_1_1Types_1ac9a246b12a16bc018eec47370d2d6a20" prot="public" static="no">
+        <type>struct <ref refid="namespaceapi_1_1v2_1_1Types_1ac9a246b12a16bc018eec47370d2d6a20" kindref="member">Create_t</ref> :public <ref refid="structapi_1_1v2_1_1Types_1_1Entity__t" kindref="compound">Entity_t</ref>&lt; jsoncons::json &gt; { <ref refid="namespaceapi_1_1v2_1_1Types_1ac9a246b12a16bc018eec47370d2d6a20" kindref="member">Create_t</ref>(const jsoncons::json &amp;_data, const uint64_t id) :<ref refid="structapi_1_1v2_1_1Types_1_1Entity__t" kindref="compound">Entity_t</ref>(_data, id) {} explicit <ref refid="namespaceapi_1_1v2_1_1Types_1ac9a246b12a16bc018eec47370d2d6a20" kindref="member">Create_t</ref>(const jsoncons::json &amp;_data) :<ref refid="structapi_1_1v2_1_1Types_1_1Entity__t" kindref="compound">Entity_t</ref>(_data, std::nullopt) {} ~<ref refid="namespaceapi_1_1v2_1_1Types_1ac9a246b12a16bc018eec47370d2d6a20" kindref="member">Create_t</ref>() override=default; }</type>
+        <definition>using api::v2::Types::Create_t = struct Create_t : public Entity_t&lt;jsoncons::json&gt;  
+   {
+       
+       
+       
+       
+
+       
+       Create_t(const jsoncons::json&amp; _data, const uint64_t id) : Entity_t(_data, id) {}  
+
+       
+       
+       explicit Create_t(const jsoncons::json&amp; _data) : Entity_t(_data, std::nullopt) {}  
+
+       
+       ~Create_t() override = default;  
+   }</definition>
+        <argsstring></argsstring>
+        <name>Create_t</name>
+        <qualifiedname>api::v2::Types::Create_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/types.hpp" line="119" column="5" bodyfile="src/entities/base/types.hpp" bodystart="119" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceapi_1_1v2_1_1Types_1aa1dfc44a5afdc88f1bdc09c5ff2be63d" prot="public" static="no">
+        <type>struct <ref refid="namespaceapi_1_1v2_1_1Types_1aa1dfc44a5afdc88f1bdc09c5ff2be63d" kindref="member">Read_t</ref> :public <ref refid="structapi_1_1v2_1_1Types_1_1Entity__t" kindref="compound">Entity_t</ref>&lt; const std::unordered_set&lt; std::string &gt; &gt; { <ref refid="namespaceapi_1_1v2_1_1Types_1aa1dfc44a5afdc88f1bdc09c5ff2be63d" kindref="member">Read_t</ref>(const std::unordered_set&lt; std::string &gt; &amp;_data, const uint64_t _id) :<ref refid="structapi_1_1v2_1_1Types_1_1Entity__t" kindref="compound">Entity_t</ref>(_data, _id) {} ~<ref refid="namespaceapi_1_1v2_1_1Types_1aa1dfc44a5afdc88f1bdc09c5ff2be63d" kindref="member">Read_t</ref>() override=default; }</type>
+        <definition>using api::v2::Types::Read_t = struct Read_t : public Entity_t&lt;const std::unordered_set&lt;std::string&gt;&gt;
+   {
+       
+       
+       
+       
+
+       
+       Read_t(const std::unordered_set&lt;std::string&gt;&amp; _data, const uint64_t _id) : Entity_t(_data, _id) {}  
+
+       
+       ~Read_t() override = default;  
+   }</definition>
+        <argsstring></argsstring>
+        <name>Read_t</name>
+        <qualifiedname>api::v2::Types::Read_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/types.hpp" line="151" column="5" bodyfile="src/entities/base/types.hpp" bodystart="151" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceapi_1_1v2_1_1Types_1a20045c81ace97166027763e5c4c5f9b2" prot="public" static="no">
+        <type>struct <ref refid="namespaceapi_1_1v2_1_1Types_1a20045c81ace97166027763e5c4c5f9b2" kindref="member">Update_t</ref> :public <ref refid="structapi_1_1v2_1_1Types_1_1Entity__t" kindref="compound">Entity_t</ref>&lt; jsoncons::json &gt; { <ref refid="namespaceapi_1_1v2_1_1Types_1a20045c81ace97166027763e5c4c5f9b2" kindref="member">Update_t</ref>(const jsoncons::json &amp;_data, const uint64_t _id) :<ref refid="structapi_1_1v2_1_1Types_1_1Entity__t" kindref="compound">Entity_t</ref>(_data, _id) {} ~<ref refid="namespaceapi_1_1v2_1_1Types_1a20045c81ace97166027763e5c4c5f9b2" kindref="member">Update_t</ref>() override=default; }</type>
+        <definition>using api::v2::Types::Update_t = struct Update_t : public Entity_t&lt;jsoncons::json&gt;
+   {
+       
+       
+       
+       
+
+       
+       Update_t(const jsoncons::json&amp; _data, const uint64_t _id) : Entity_t(_data, _id) {}  
+
+       
+       ~Update_t() override = default;  
+   }</definition>
+        <argsstring></argsstring>
+        <name>Update_t</name>
+        <qualifiedname>api::v2::Types::Update_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/types.hpp" line="175" column="5" bodyfile="src/entities/base/types.hpp" bodystart="175" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceapi_1_1v2_1_1Types_1a825fd8d986399970a67bf9bd619450ad" prot="public" static="no">
+        <type>struct <ref refid="namespaceapi_1_1v2_1_1Types_1a825fd8d986399970a67bf9bd619450ad" kindref="member">Delete_t</ref> :public <ref refid="structapi_1_1v2_1_1Types_1_1Entity__t" kindref="compound">Entity_t</ref>&lt; char &gt; { explicit <ref refid="namespaceapi_1_1v2_1_1Types_1a825fd8d986399970a67bf9bd619450ad" kindref="member">Delete_t</ref>(const uint64_t _id) :<ref refid="structapi_1_1v2_1_1Types_1_1Entity__t" kindref="compound">Entity_t</ref>(&apos;\0&apos;, _id) {} ~<ref refid="namespaceapi_1_1v2_1_1Types_1a825fd8d986399970a67bf9bd619450ad" kindref="member">Delete_t</ref>() override=default; }</type>
+        <definition>using api::v2::Types::Delete_t = struct Delete_t : public Entity_t&lt;char&gt;
+   {
+       
+       
+       
+       
+
+       
+       explicit Delete_t(const uint64_t _id) : Entity_t(&apos;\0&apos;, _id) {}  
+
+       
+       ~Delete_t() override = default;  
+   }</definition>
+        <argsstring></argsstring>
+        <name>Delete_t</name>
+        <qualifiedname>api::v2::Types::Delete_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/types.hpp" line="200" column="5" bodyfile="src/entities/base/types.hpp" bodystart="200" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceapi_1_1v2_1_1Types_1adde80020c20219af8fb84408bfc566ce" prot="public" static="no">
+        <type>struct <ref refid="namespaceapi_1_1v2_1_1Types_1adde80020c20219af8fb84408bfc566ce" kindref="member">Data_t</ref> :public <ref refid="structapi_1_1v2_1_1Types_1_1Entity__t" kindref="compound">Entity_t</ref>&lt; char &gt; { explicit <ref refid="namespaceapi_1_1v2_1_1Types_1adde80020c20219af8fb84408bfc566ce" kindref="member">Data_t</ref>(const uint64_t _id) :<ref refid="structapi_1_1v2_1_1Types_1_1Entity__t" kindref="compound">Entity_t</ref>(&apos;\0&apos;, _id) {} ~<ref refid="namespaceapi_1_1v2_1_1Types_1adde80020c20219af8fb84408bfc566ce" kindref="member">Data_t</ref>() override=default; }</type>
+        <definition>using api::v2::Types::Data_t = struct Data_t : public Entity_t&lt;char&gt;
+   {
+       
+       
+       
+       
+
+       
+       explicit Data_t(const uint64_t _id) : Entity_t(&apos;\0&apos;, _id) {}  
+
+       
+       ~Data_t() override = default;  
+   }</definition>
+        <argsstring></argsstring>
+        <name>Data_t</name>
+        <qualifiedname>api::v2::Types::Data_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/types.hpp" line="224" column="5" bodyfile="src/entities/base/types.hpp" bodystart="224" bodyend="241"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceapi_1_1v2_1_1Types_1ab4aef0c396603bde559a861ee7aeda3d" prot="public" static="no">
+        <type>struct <ref refid="namespaceapi_1_1v2_1_1Types_1ab4aef0c396603bde559a861ee7aeda3d" kindref="member">Search_t</ref> { std::string keyword; std::string filter; std::string order_by; std::string direction; size_t limit; size_t offset; <ref refid="namespaceapi_1_1v2_1_1Types_1ab4aef0c396603bde559a861ee7aeda3d" kindref="member">Search_t</ref>(const jsoncons::json &amp;search_j, bool &amp;success) { try { const jsoncons::json &amp;kw=search_j.at(&quot;keyword&quot;), &amp;fl=search_j.at(&quot;filter&quot;), &amp;ob=search_j.at(&quot;order_by&quot;), &amp;dr=search_j.at(&quot;direction&quot;), &amp;lm=search_j.at(&quot;limit&quot;), &amp;of=search_j.at(&quot;offset&quot;); if(!kw.is_string()||!fl.is_string()||!ob.is_string()||!dr.is_int64()||!lm.is_int64()||!of.is_int64()) { success=false; return; } keyword=kw.as&lt; std::string &gt;(); filter=fl.as&lt; std::string &gt;(); order_by=ob.as&lt; std::string &gt;(); direction=dr.as&lt; short &gt;()==0 ? &quot;ASC&quot; :&quot;DESC&quot;; limit=lm.as&lt; size_t &gt;(); offset=of.as&lt; size_t &gt;(); success=validate(search_j); } catch(const std::exception &amp;) { success=false; } } static bool isPlainIdentifier(const std::string &amp;name) { constexpr size_t MAX_IDENTIFIER_LENGTH=63; if(name.empty()||name.size() &gt; MAX_IDENTIFIER_LENGTH||std::isdigit(static_cast&lt; unsigned char &gt;(name.front())) !=0) { return false; } return std::ranges::all_of(name,[](char c) { return std::isalnum(static_cast&lt; unsigned char &gt;(c)) !=0||c==&apos;_&apos;;}); } bool validate(const jsoncons::json &amp;search_j) { static const std::unordered_set&lt; std::string &gt; keys={&quot;keyword&quot;, &quot;filter&quot;, &quot;order_by&quot;, &quot;direction&quot;, &quot;limit&quot;, &quot;offset&quot;}; return search_j.size()==keys.size() &amp;&amp;std::ranges::all_of(keys,[&amp;search_j](const std::string &amp;key) { return search_j.find(key).has_value();}) &amp;&amp;isPlainIdentifier(filter) &amp;&amp; isPlainIdentifier(order_by); } }</type>
+        <definition>using api::v2::Types::Search_t = struct Search_t
+   {
+       
+       std::string keyword;  
+
+       
+       std::string filter;  
+
+       
+       std::string order_by;  
+
+       
+       std::string direction;  
+
+       
+       size_t      limit;  
+
+       
+       size_t      offset;  
+
+       
+       Search_t(const jsoncons::json&amp; search_j, bool&amp; success)  
+       {
+           
+           
+           
+           
+           
+           try
+           {
+               const jsoncons::json &amp;kw = search_j.at(&quot;keyword&quot;), &amp;fl = search_j.at(&quot;filter&quot;), &amp;ob = search_j.at(&quot;order_by&quot;), &amp;dr = search_j.at(&quot;direction&quot;),
+                                    &amp;lm = search_j.at(&quot;limit&quot;), &amp;of = search_j.at(&quot;offset&quot;);  
+               
+               
+               
+               
+               
+               if (!kw.is_string() || !fl.is_string() || !ob.is_string() || !dr.is_int64() || !lm.is_int64() || !of.is_int64())  
+               {
+                   success = false;  
+                   return;           
+               }
+               keyword   = kw.as&lt;std::string&gt;();             
+               filter    = fl.as&lt;std::string&gt;();             
+               order_by  = ob.as&lt;std::string&gt;();             
+               direction = dr.as&lt;short&gt;() == 0 ? &quot;ASC&quot; : &quot;DESC&quot;;  
+               limit     = lm.as&lt;size_t&gt;();                  
+               offset    = of.as&lt;size_t&gt;();                  
+               success   = validate(search_j);               
+           }
+           catch (const std::exception&amp;)  
+           {
+               success = false;  
+           }
+       }
+       
+       
+       
+       static bool isPlainIdentifier(const std::string&amp; name)  
+       {
+           constexpr size_t MAX_IDENTIFIER_LENGTH = 63;  
+           if (name.empty() || name.size() &gt; MAX_IDENTIFIER_LENGTH || std::isdigit(static_cast&lt;unsigned char&gt;(name.front())) != 0)  
+           {
+               return false;  
+           }
+           return std::ranges::all_of(name, [](char c) { return std::isalnum(static_cast&lt;unsigned char&gt;(c)) != 0 || c == &apos;_&apos;; });  
+       }
+
+       
+       bool validate(const jsoncons::json&amp; search_j)  
+       {
+           static const std::unordered_set&lt;std::string&gt; keys = {&quot;keyword&quot;, &quot;filter&quot;, &quot;order_by&quot;, &quot;direction&quot;, &quot;limit&quot;, &quot;offset&quot;};  
+           return search_j.size() == keys.size() &amp;&amp; std::ranges::all_of(keys, [&amp;search_j](const std::string&amp; key) { return search_j.find(key).has_value(); }) &amp;&amp; isPlainIdentifier(filter) &amp;&amp;
+                  isPlainIdentifier(order_by);  
+       }
+   }</definition>
+        <argsstring></argsstring>
+        <name>Search_t</name>
+        <qualifiedname>api::v2::Types::Search_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/types.hpp" line="252" column="5" bodyfile="src/entities/base/types.hpp" bodystart="252" bodyend="356"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceapi_1_1v2_1_1Types_1a660879cfcb0c87bea3713b41e8120c21" prot="public" static="no">
+        <type>std::variant&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1ac9a246b12a16bc018eec47370d2d6a20" kindref="member">Create_t</ref>, <ref refid="namespaceapi_1_1v2_1_1Types_1aa1dfc44a5afdc88f1bdc09c5ff2be63d" kindref="member">Read_t</ref>, <ref refid="namespaceapi_1_1v2_1_1Types_1a20045c81ace97166027763e5c4c5f9b2" kindref="member">Update_t</ref>, <ref refid="namespaceapi_1_1v2_1_1Types_1a825fd8d986399970a67bf9bd619450ad" kindref="member">Delete_t</ref>, <ref refid="namespaceapi_1_1v2_1_1Types_1adde80020c20219af8fb84408bfc566ce" kindref="member">Data_t</ref>, <ref refid="namespaceapi_1_1v2_1_1Types_1ab4aef0c396603bde559a861ee7aeda3d" kindref="member">Search_t</ref>, <ref refid="structapi_1_1v2_1_1Types_1_1CreateClient__t" kindref="compound">CreateClient_t</ref>, <ref refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t" kindref="compound">UpdateClient_t</ref>, <ref refid="structapi_1_1v2_1_1Types_1_1SuspendData" kindref="compound">SuspendData</ref>, <ref refid="structapi_1_1v2_1_1Types_1_1StaffData" kindref="compound">StaffData</ref> &gt;</type>
+        <definition>using api::v2::Types::EntityType = std::variant&lt;Create_t, Read_t, Update_t, Delete_t, Data_t, Search_t, CreateClient_t, UpdateClient_t, SuspendData, StaffData&gt;</definition>
+        <argsstring></argsstring>
+        <name>EntityType</name>
+        <qualifiedname>api::v2::Types::EntityType</qualifiedname>
+        <briefdescription>
+<para>The set of operation payloads an <ref refid="classEntity" kindref="compound">Entity</ref> may hold; the active alternative selects the builder. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Besides the CRUD types it includes client/staff/suspend payloads consumed by the specialised <ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> and <ref refid="classService" kindref="compound">Service</ref> builders. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/types.hpp" line="716" column="5" bodyfile="src/entities/base/types.hpp" bodystart="716" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" prot="public" static="no">
+        <type>struct <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">ClientLoginData</ref> { std::optional&lt; std::string &gt; token; std::optional&lt; std::string &gt; username; std::optional&lt; std::string &gt; group; std::optional&lt; uint64_t &gt; clientId; std::optional&lt; std::string &gt; lastLogoutTime; std::optional&lt; std::string &gt; nowLoginTime; bool is_active; bool passwordMatch; std::optional&lt; std::string &gt; passwordHash; std::chrono::system_clock::duration expireTime; std::optional&lt; std::string &gt; ip_address; }</type>
+        <definition>using api::v2::Types::ClientLoginData = struct ClientLoginData
+   {
+       std::optional&lt;std::string&gt;          token;            
+       std::optional&lt;std::string&gt;          username;         
+       std::optional&lt;std::string&gt;          group;            
+       std::optional&lt;uint64_t&gt;             clientId;         
+       std::optional&lt;std::string&gt;          lastLogoutTime;   
+       std::optional&lt;std::string&gt;          nowLoginTime;     
+       bool                                is_active;        
+       bool                                passwordMatch;    
+       std::optional&lt;std::string&gt;          passwordHash;     
+       std::chrono::system_clock::duration expireTime;       
+       std::optional&lt;std::string&gt;          ip_address;       
+   }</definition>
+        <argsstring></argsstring>
+        <name>ClientLoginData</name>
+        <qualifiedname>api::v2::Types::ClientLoginData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/types.hpp" line="63" column="5" bodyfile="src/gatekeeper/types.hpp" bodystart="63" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceapi_1_1v2_1_1Types_1ada88a3e212586efbdfd1f931b0f4a8a9" prot="public" static="no">
+        <type>struct <ref refid="namespaceapi_1_1v2_1_1Types_1ada88a3e212586efbdfd1f931b0f4a8a9" kindref="member">Credentials</ref> { std::string username; std::string password; }</type>
+        <definition>using api::v2::Types::Credentials = struct Credentials
+   {
+       std::string username;  
+       std::string password;  
+   }</definition>
+        <argsstring></argsstring>
+        <name>Credentials</name>
+        <qualifiedname>api::v2::Types::Credentials</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/types.hpp" line="89" column="5" bodyfile="src/gatekeeper/types.hpp" bodystart="89" bodyend="93"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/entities/base/types.hpp" line="57" column="1"/>
+  </compounddef>
+</doxygen>

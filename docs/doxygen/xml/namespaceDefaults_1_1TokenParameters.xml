@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="namespaceDefaults_1_1TokenParameters" kind="namespace" language="C++">
+    <compoundname>Defaults::TokenParameters</compoundname>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceDefaults_1_1TokenParameters_1ada29f7e4f7ebcc44ed863b1f845ca546" prot="public" static="no" mutable="no">
+        <type>const uint64_t</type>
+        <definition>const uint64_t Defaults::TokenParameters::TOKEN_VALIDITY_</definition>
+        <argsstring></argsstring>
+        <name>TOKEN_VALIDITY_</name>
+        <qualifiedname>Defaults::TokenParameters::TOKEN_VALIDITY_</qualifiedname>
+        <initializer>= 43200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/configurator/defaults.hpp" line="144" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceDefaults_1_1TokenParameters_1a149299356bd51590ac0178d7efb271c0" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string Defaults::TokenParameters::TOKEN_ISSUER_</definition>
+        <argsstring></argsstring>
+        <name>TOKEN_ISSUER_</name>
+        <qualifiedname>Defaults::TokenParameters::TOKEN_ISSUER_</qualifiedname>
+        <initializer>= &quot;ProjectValhalla&quot;</initializer>
+        <briefdescription>
+<para>Default issuer claim. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/configurator/defaults.hpp" line="146" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceDefaults_1_1TokenParameters_1a6c11dc93d055319b522a61cf797cc937" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string Defaults::TokenParameters::TOKEN_TYPE_</definition>
+        <argsstring></argsstring>
+        <name>TOKEN_TYPE_</name>
+        <qualifiedname>Defaults::TokenParameters::TOKEN_TYPE_</qualifiedname>
+        <initializer>= &quot;JWS&quot;</initializer>
+        <briefdescription>
+<para>Default token type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/configurator/defaults.hpp" line="148" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceDefaults_1_1TokenParameters_1af82d2e7594dd9a9e542d7a9584b73e30" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string Defaults::TokenParameters::TOKEN_SECRET_</definition>
+        <argsstring></argsstring>
+        <name>TOKEN_SECRET_</name>
+        <qualifiedname>Defaults::TokenParameters::TOKEN_SECRET_</qualifiedname>
+        <initializer>= &quot;01234567890123456789012345678901&quot;</initializer>
+        <briefdescription>
+<para>Insecure development signing secret; override TOKEN_SECRET in production. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/configurator/defaults.hpp" line="150" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="150" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Default auth-token parameters. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="warning"><para>TOKEN_SECRET_ is a public development placeholder and must be overridden. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/configurator/defaults.hpp" line="138" column="1"/>
+  </compounddef>
+</doxygen>

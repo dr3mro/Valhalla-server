@@ -1,0 +1,723 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="permissionmanager__private_8hpp" kind="file" language="C++">
+    <compoundname>permissionmanager_private.hpp</compoundname>
+    <includes local="no">cstdint</includes>
+    <includes local="no">exception</includes>
+    <includes local="no">jsoncons/basic_json.hpp</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">optional</includes>
+    <includes local="no">string</includes>
+    <includes refid="databasecontroller_8hpp" local="yes">controllers/databasecontroller/databasecontroller.hpp</includes>
+    <includes refid="permissioncache_8hpp" local="yes">gatekeeper/permissionmanager/permissioncache.hpp</includes>
+    <includes refid="permissions_8hpp" local="yes">gatekeeper/permissionmanager/permissions.hpp</includes>
+    <includes refid="store_8hpp" local="yes">store/store.hpp</includes>
+    <includes local="yes">drogon/utils/coroutine.h</includes>
+    <includes refid="asyncdbclient_8hpp" local="yes">database/asyncdbclient.hpp</includes>
+    <includes refid="http_8hpp" local="yes">utils/global/http.hpp</includes>
+    <includes refid="requester_8hpp" local="yes">utils/global/requester.hpp</includes>
+    <includes refid="message_8hpp" local="yes">utils/message/message.hpp</includes>
+    <includedby refid="permissionmanager_8cpp" local="yes">src/gatekeeper/permissionmanager/permissionmanager.cpp</includedby>
+    <includedby refid="permissionmanager__private_8cpp" local="yes">src/gatekeeper/permissionmanager/permissionmanager_private.cpp</includedby>
+    <incdepgraph>
+      <node id="18">
+        <label>configurator/configurator.hpp</label>
+        <link refid="configurator_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>defaults.hpp</label>
+        <link refid="defaults_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>configurator/envloader/envloader.hpp</label>
+        <link refid="envloader_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>envvars/envvars.hpp</label>
+        <link refid="envvars_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>controllers/databasecontroller/databasecontroller.hpp</label>
+        <link refid="databasecontroller_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>database/asyncdbclient.hpp</label>
+        <link refid="asyncdbclient_8hpp"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>database/asyncresultmapper.hpp</label>
+        <link refid="asyncresultmapper_8hpp"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>database/asyncsqlbinder.hpp</label>
+        <link refid="asyncsqlbinder_8hpp"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>database/databasebusy.hpp</label>
+        <link refid="databasebusy_8hpp"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>database/databasehandler.hpp</label>
+        <link refid="databasehandler_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>database/dbprobe.hpp</label>
+        <link refid="dbprobe_8hpp"/>
+      </node>
+      <node id="42">
+        <label>gatekeeper/permissionmanager/permissioncache.hpp</label>
+        <link refid="permissioncache_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/gatekeeper/permissionmanager/permissionmanager_private.hpp</label>
+        <link refid="permissionmanager__private_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>gatekeeper/permissionmanager/permissions.hpp</label>
+        <link refid="permissions_8hpp"/>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>store/store.hpp</label>
+        <link refid="store_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>utils/global/http.hpp</label>
+        <link refid="http_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>utils/global/requester.hpp</label>
+        <link refid="requester_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>utils/global/types.hpp</label>
+        <link refid="utils_2global_2types_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>utils/message/message.hpp</label>
+        <link refid="message_8hpp"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>atomic</label>
+      </node>
+      <node id="20">
+        <label>chrono</label>
+      </node>
+      <node id="45">
+        <label>cstddef</label>
+      </node>
+      <node id="2">
+        <label>cstdint</label>
+      </node>
+      <node id="30">
+        <label>drogon/orm/DbClient.h</label>
+      </node>
+      <node id="32">
+        <label>drogon/orm/Result.h</label>
+      </node>
+      <node id="34">
+        <label>drogon/orm/SqlBinder.h</label>
+      </node>
+      <node id="35">
+        <label>drogon/utils/coroutine.h</label>
+      </node>
+      <node id="3">
+        <label>exception</label>
+      </node>
+      <node id="10">
+        <label>fmt/core.h</label>
+      </node>
+      <node id="11">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="19">
+        <label>fmt/ranges.h</label>
+      </node>
+      <node id="43">
+        <label>iterator</label>
+      </node>
+      <node id="4">
+        <label>jsoncons/basic_json.hpp</label>
+      </node>
+      <node id="13">
+        <label>jsoncons/json.hpp</label>
+      </node>
+      <node id="5">
+        <label>memory</label>
+      </node>
+      <node id="14">
+        <label>mutex</label>
+      </node>
+      <node id="6">
+        <label>optional</label>
+      </node>
+      <node id="15">
+        <label>pqxx/pqxx</label>
+      </node>
+      <node id="28">
+        <label>stdexcept</label>
+      </node>
+      <node id="7">
+        <label>string</label>
+      </node>
+      <node id="25">
+        <label>trantor/utils/Logger.h</label>
+      </node>
+      <node id="21">
+        <label>type_traits</label>
+      </node>
+      <node id="39">
+        <label>typeindex</label>
+      </node>
+      <node id="40">
+        <label>unordered_map</label>
+      </node>
+      <node id="16">
+        <label>unordered_set</label>
+      </node>
+      <node id="17">
+        <label>utility</label>
+      </node>
+      <node id="36">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>src/gatekeeper/permissionmanager/permissionmanager.cpp</label>
+        <link refid="permissionmanager_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/gatekeeper/permissionmanager/permissionmanager_private.cpp</label>
+        <link refid="permissionmanager__private_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/gatekeeper/permissionmanager/permissionmanager_private.hpp</label>
+        <link refid="permissionmanager__private_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classapi_1_1v2_1_1PermissionManagerPrivate" prot="public">api::v2::PermissionManagerPrivate</innerclass>
+    <innernamespace refid="namespaceapi">api</innernamespace>
+    <innernamespace refid="namespaceapi_1_1v2">api::v2</innernamespace>
+    <briefdescription>
+<para>The behind-the-scenes helper functions used by <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref>. (Originally: &quot;Implementation helpers shared by the PermissionManager authorization overloads.&quot;). </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header declares static utilities that interpret the permission JSON (owner id, admin id and staff entries), compare the requester&apos;s identity, validate creation payloads, and fetch/cache permissions. The class is just a namespace-like container; it holds no data.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> delegates the real work here, so the same rules are applied consistently to services, cases and appointments. Without these helpers the public manager would have to repeat database lookups and JSON parsing in every overload.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>JSON (JavaScript Object Notation): <ulink url="https://www.json.org/json-en.html">https://www.json.org/json-en.html</ulink></para>
+</listitem><listitem><para>Static class members: <ulink url="https://en.cppreference.com/w/cpp/language/static">https://en.cppreference.com/w/cpp/language/static</ulink></para>
+</listitem><listitem><para>Service/caching layer: <ulink url="https://en.wikipedia.org/wiki/Cache_(computing)">https://en.wikipedia.org/wiki/Cache_(computing)</ulink></para>
+</listitem><listitem><para>std::invoke (call any callable): <ulink url="https://en.cppreference.com/w/cpp/utility/functional/invoke">https://en.cppreference.com/w/cpp/utility/functional/invoke</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>permissionmanager_private.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>The<sp/>behind-the-scenes<sp/>helper<sp/>functions<sp/>used<sp/>by<sp/>PermissionManager.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(Originally:<sp/>&quot;Implementation<sp/>helpers<sp/>shared<sp/>by<sp/>the<sp/>PermissionManager<sp/>authorization<sp/>overloads.&quot;)</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>declares<sp/>static<sp/>utilities<sp/>that<sp/>interpret<sp/>the<sp/>permission</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>JSON<sp/>(owner<sp/>id,<sp/>admin<sp/>id<sp/>and<sp/>staff<sp/>entries),<sp/>compare<sp/>the<sp/>requester&apos;s</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>identity,<sp/>validate<sp/>creation<sp/>payloads,<sp/>and<sp/>fetch/cache<sp/>permissions.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>class<sp/>is<sp/>just<sp/>a<sp/>namespace-like<sp/>container;<sp/>it<sp/>holds<sp/>no<sp/>data.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>PermissionManager<sp/>delegates<sp/>the<sp/>real<sp/>work<sp/>here,<sp/>so<sp/>the<sp/>same<sp/>rules<sp/>are<sp/>applied</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>consistently<sp/>to<sp/>services,<sp/>cases<sp/>and<sp/>appointments.<sp/>Without<sp/>these<sp/>helpers<sp/>the</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>public<sp/>manager<sp/>would<sp/>have<sp/>to<sp/>repeat<sp/>database<sp/>lookups<sp/>and<sp/>JSON<sp/>parsing<sp/>in<sp/>every</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>overload.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>-<sp/>JSON<sp/>(JavaScript<sp/>Object<sp/>Notation):<sp/>https://www.json.org/json-en.html</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>Static<sp/>class<sp/>members:<sp/>https://en.cppreference.com/w/cpp/language/static</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>Service/caching<sp/>layer:<sp/>https://en.wikipedia.org/wiki/Cache_(computing)</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>std::invoke<sp/>(call<sp/>any<sp/>callable):<sp/>https://en.cppreference.com/w/cpp/utility/functional/invoke</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>uint64_t<sp/>for<sp/>database<sp/>ids.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;exception&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::exception,<sp/>caught<sp/>when<sp/>JSON<sp/>conversion<sp/>fails.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/basic_json.hpp&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>jsoncons::json,<sp/>the<sp/>permission<sp/>documents<sp/>we<sp/>interpret.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::shared_ptr<sp/>for<sp/>the<sp/>shared<sp/>DatabaseController.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::optional<sp/>for<sp/>values<sp/>that<sp/>may<sp/>be<sp/>absent.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>for<sp/>names,<sp/>keys<sp/>and<sp/>messages.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="databasecontroller_8hpp" kindref="compound">controllers/databasecontroller/databasecontroller.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>getPermissions()/getPermissionsCoro()<sp/>read<sp/>from<sp/>PostgreSQL.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="permissioncache_8hpp" kindref="compound">gatekeeper/permissionmanager/permissioncache.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PermissionCache,<sp/>the<sp/>cache<sp/>used<sp/>on<sp/>lookups.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="permissions_8hpp" kindref="compound">gatekeeper/permissionmanager/permissions.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PowerLevel<sp/>and<sp/>StaffPermission<sp/>bit<sp/>masks.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="store_8hpp" kindref="compound">store/store.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Store,<sp/>used<sp/>to<sp/>fetch<sp/>the<sp/>shared<sp/>database<sp/>controller.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;drogon/utils/coroutine.h&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>drogon::Task<sp/>for<sp/>the<sp/>coroutine<sp/>variants.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="asyncdbclient_8hpp" kindref="compound">database/asyncdbclient.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>async<sp/>database<sp/>client<sp/>used<sp/>by<sp/>the<sp/>coroutine<sp/>path.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="http_8hpp" kindref="compound">utils/global/http.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Http::Error<sp/>and<sp/>status<sp/>codes<sp/>for<sp/>denials.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="requester_8hpp" kindref="compound">utils/global/requester.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Requester,<sp/>the<sp/>caller<sp/>whose<sp/>identity<sp/>is<sp/>checked.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">utils/message/message.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Logging<sp/>helpers<sp/>for<sp/>errors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceapi_1_1v2" kindref="compound">api::v2</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Same<sp/>namespace<sp/>as<sp/>the<sp/>public<sp/>manager.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@class<sp/>PermissionManagerPrivate</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Implementation<sp/>helpers<sp/>shared<sp/>by<sp/>the<sp/>PermissionManager<sp/>authorization<sp/>overloads.</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Pure<sp/>static<sp/>utilities:<sp/>they<sp/>interpret<sp/>the<sp/>permission<sp/>JSON<sp/>returned<sp/>by<sp/>the</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>database<sp/>(owner/admin<sp/>ids,<sp/>staff<sp/>capability<sp/>strings),<sp/>enforce<sp/>group/id<sp/>checks</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>and<sp/>create<sp/>preconditions,<sp/>and<sp/>fetch/cache<sp/>entity<sp/>permissions<sp/>through</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PermissionCache.<sp/>Sync<sp/>helpers<sp/>use<sp/>DatabaseController::getPermissions;<sp/>the</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`*Coro`<sp/>variant<sp/>awaits<sp/>getPermissionsCoro.<sp/>All<sp/>denial/error<sp/>details<sp/>are</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>written<sp/>to<sp/>the<sp/>caller-provided<sp/>Http::Error.</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>The<sp/>class<sp/>holds<sp/>no<sp/>state;<sp/>all<sp/>members<sp/>are<sp/>static.</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>In<sp/>everyday<sp/>words:<sp/>this<sp/>is<sp/>a<sp/>toolbox,<sp/>not<sp/>a<sp/>machine.<sp/>You<sp/>never<sp/>make</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>one;<sp/>you<sp/>call<sp/>its<sp/>named<sp/>tools<sp/>with<sp/>the<sp/>facts<sp/>and<sp/>get<sp/>a<sp/>yes/no<sp/>back.</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classapi_1_1v2_1_1PermissionManagerPrivate" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5" kindref="member">PermissionManagerPrivate</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>stateless<sp/>collection<sp/>of<sp/>helper<sp/>functions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="62" refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5" kindref="member">PermissionManagerPrivate</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>state<sp/>to<sp/>initialize,<sp/>so<sp/>the<sp/>default<sp/>constructor<sp/>is<sp/>enough.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3caddef9d89e865e1a4e44805f61c959" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3caddef9d89e865e1a4e44805f61c959" kindref="member">~PermissionManagerPrivate</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Virtual<sp/>destructor<sp/>for<sp/>safe<sp/>cleanup<sp/>if<sp/>used<sp/>as<sp/>a<sp/>base.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3067393d17904c3c949b387bf23b1b0b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3067393d17904c3c949b387bf23b1b0b" kindref="member">PermissionManagerPrivate</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5" kindref="member">PermissionManagerPrivate</ref>&amp;<sp/>other)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copying<sp/>a<sp/>stateless<sp/>helper<sp/>is<sp/>harmless.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2f2b1ad9fadb824a62df52bfe07f80fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5" kindref="member">PermissionManagerPrivate</ref>&amp;<sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2f2b1ad9fadb824a62df52bfe07f80fd" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5" kindref="member">PermissionManagerPrivate</ref>&amp;<sp/>other)<sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>assignment<sp/>is<sp/>harmless<sp/>for<sp/>the<sp/>same<sp/>reason.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classapi_1_1v2_1_1PermissionManagerPrivate_1ab4f0b85347800fd1d04031ad37b3f631" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1ab4f0b85347800fd1d04031ad37b3f631" kindref="member">PermissionManagerPrivate</ref>(<ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5" kindref="member">PermissionManagerPrivate</ref>&amp;&amp;<sp/>other)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Moving<sp/>is<sp/>harmless<sp/>and<sp/>marked<sp/>noexcept<sp/>(cannot<sp/>throw).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5" kindref="member">PermissionManagerPrivate</ref>&amp;<sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2" kindref="member">operator=</ref>(<ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5" kindref="member">PermissionManagerPrivate</ref>&amp;&amp;<sp/>other)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>assignment<sp/>is<sp/>harmless<sp/>and<sp/>cannot<sp/>throw.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Checks<sp/>that<sp/>the<sp/>requester<sp/>is<sp/>a<sp/>staff<sp/>member<sp/>of<sp/>the<sp/>service<sp/>holding<sp/>@p<sp/>powerlevel.</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller.</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>permissions_j<sp/>Service<sp/>permission<sp/>JSON<sp/>(may<sp/>be<sp/>empty).</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>powerlevel<sp/>Capability<sp/>bit<sp/>required.</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_name<sp/>Service<sp/>name<sp/>used<sp/>in<sp/>messages.</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>FORBIDDEN<sp/>when<sp/>the<sp/>requester<sp/>is<sp/>not<sp/>staff.</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>the<sp/>staff<sp/>entry&apos;s<sp/>mask<sp/>contains<sp/>@p<sp/>powerlevel.</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a6a68b225b7b685e9ed7293606870fafc" kindref="member">hasPermission</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>permissions_j,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPermissions_1a1dc2e37dd1ca56eb9dc57829a512e092" kindref="member">Permissions::PowerLevel</ref>&amp;<sp/>powerlevel,<sp/><sp/></highlight><highlight class="comment">//<sp/>Requires<sp/>staff<sp/>membership<sp/>plus<sp/>this<sp/>capability<sp/>bit;<sp/>returns<sp/>false<sp/>otherwise.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_name,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Checks<sp/>that<sp/>the<sp/>requester<sp/>is<sp/>the<sp/>service<sp/>owner,<sp/>comparing<sp/>against<sp/>`owner_id`.</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Caller<sp/>whose<sp/>id<sp/>is<sp/>compared<sp/>with<sp/>`owner_id`.</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>permissions_j<sp/>Service<sp/>permissions<sp/>document.</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_name<sp/>Service/table<sp/>name<sp/>used<sp/>in<sp/>messages.</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>BAD_REQUEST<sp/>on<sp/>missing<sp/>permissions<sp/>or<sp/>FORBIDDEN<sp/>on<sp/>mismatch.</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>only<sp/>when<sp/>the<sp/>ids<sp/>match.</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a261f7f649b795efc1d1dd8955510f9ea" kindref="member">isOwnerOfService</ref>(<sp/><sp/></highlight><highlight class="comment">//<sp/>Compares<sp/>the<sp/>requester<sp/>id<sp/>with<sp/>the<sp/>stored<sp/>owner_id.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>permissions_j,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_name,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Checks<sp/>that<sp/>the<sp/>requester<sp/>is<sp/>the<sp/>service<sp/>admin,<sp/>comparing<sp/>against<sp/>`admin_id`.</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Caller<sp/>whose<sp/>id<sp/>is<sp/>compared<sp/>with<sp/>`admin_id`.</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>permissions_j<sp/>Service<sp/>permissions<sp/>document.</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_name<sp/>Service/table<sp/>name<sp/>used<sp/>in<sp/>messages.</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>BAD_REQUEST<sp/>on<sp/>missing<sp/>permissions<sp/>or<sp/>FORBIDDEN<sp/>on<sp/>mismatch.</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>only<sp/>when<sp/>the<sp/>ids<sp/>match.</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a9242aea2edde8ca7163099b20049595f" kindref="member">isAdminOfService</ref>(<sp/><sp/></highlight><highlight class="comment">//<sp/>Compares<sp/>the<sp/>requester<sp/>id<sp/>with<sp/>the<sp/>stored<sp/>admin_id.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>permissions_j,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_name,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Finds<sp/>the<sp/>requester<sp/>in<sp/>the<sp/>service&apos;s<sp/>`staff`<sp/>map<sp/>and<sp/>decodes<sp/>its<sp/>`&quot;&lt;id&gt;:&lt;mask&gt;&quot;`<sp/>entry.</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Caller<sp/>to<sp/>look<sp/>up<sp/>in<sp/>the<sp/>staff<sp/>map.</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>permissions_j<sp/>Service<sp/>permissions<sp/>document.</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_name<sp/>Service/table<sp/>name<sp/>used<sp/>in<sp/>messages.</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Iterates<sp/>every<sp/>role&apos;s<sp/>member<sp/>list;<sp/>malformed<sp/>entries<sp/>raise<sp/>FORBIDDEN.<sp/>The</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>returned<sp/>isMember<sp/>flag<sp/>marks<sp/>a<sp/>successful<sp/>match.</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>BAD_REQUEST/FORBIDDEN<sp/>with<sp/>a<sp/>reason<sp/>on<sp/>failure.</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>decoded<sp/>StaffPermission<sp/>on<sp/>a<sp/>match,<sp/>`std::nullopt`<sp/>otherwise.</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;Permissions::StaffPermission&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a95781764a2c4cf1be79c2b58fa742348" kindref="member">isStaffOfService</ref>(<sp/><sp/></highlight><highlight class="comment">//<sp/>Finds<sp/>and<sp/>decodes<sp/>the<sp/>requester&apos;s<sp/>staff<sp/>entry<sp/>from<sp/>the<sp/>JSON.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>permissions_j,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_name,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Requires<sp/>both<sp/>the<sp/>requester&apos;s<sp/>group<sp/>and<sp/>id<sp/>to<sp/>match<sp/>the<sp/>target<sp/>client.</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Caller<sp/>whose<sp/>group<sp/>and<sp/>id<sp/>are<sp/>checked.</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>groupname<sp/>Expected<sp/>client<sp/>group<sp/>(typically<sp/>the<sp/>entity<sp/>table<sp/>name).</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>client_id<sp/>Target<sp/>client<sp/>id.</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>FORBIDDEN<sp/>on<sp/>mismatch.</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>both<sp/>match.</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" kindref="member">assert_group_id_match</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>groupname,<sp/>uint64_t<sp/>client_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Requires<sp/>both<sp/>the<sp/>group<sp/>and<sp/>the<sp/>id<sp/>to<sp/>match<sp/>the<sp/>target<sp/>client.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Validates<sp/>a<sp/>service-creation<sp/>payload:<sp/>present,<sp/>valid<sp/>owner/admin<sp/>ids,<sp/>and<sp/>provider<sp/>caller.</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Provider<sp/>caller<sp/>creating<sp/>the<sp/>service.</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_j<sp/>Creation<sp/>payload<sp/>to<sp/>validate.</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>BAD_REQUEST<sp/>with<sp/>a<sp/>reason<sp/>on<sp/>failure.</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>all<sp/>preconditions<sp/>hold.</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a7e6031ab93f769c852bb999b4f2bdc7b" kindref="member">preServiceCreateChecks</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>service_j,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Validates<sp/>the<sp/>payload<sp/>and<sp/>caller<sp/>before<sp/>a<sp/>service<sp/>is<sp/>created.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allows<sp/>owner/admin<sp/>unconditionally,<sp/>or<sp/>staff<sp/>carrying<sp/>the<sp/>@p<sp/>required<sp/>capability<sp/>bit.</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Think<sp/>of<sp/>it<sp/>as<sp/>two<sp/>doors<sp/>in<sp/>series:<sp/>first<sp/>check<sp/>if<sp/>the<sp/>caller</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>owns<sp/>or<sp/>administers<sp/>the<sp/>service;<sp/>only<sp/>if<sp/>not,<sp/>check<sp/>whether</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>they<sp/>are<sp/>staff<sp/>with<sp/>the<sp/>specific<sp/>capability<sp/>bit<sp/>we<sp/>need.</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Owner<sp/>and<sp/>admin<sp/>always<sp/>pass;<sp/>other<sp/>staff<sp/>need<sp/>the<sp/>`required`<sp/>bit<sp/>(CAN_READ<sp/>for<sp/>reads,<sp/>CAN_WRITE<sp/>for<sp/>create/update,<sp/>CAN_DELETE<sp/>for<sp/>deletes).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2ca7a0ee58dc0ceb4dfc2ef1374471dc" kindref="member">isOwnerOrAdminOrHasPermission</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>permissions_j,<sp/><sp/></highlight><highlight class="comment">//<sp/>Allows<sp/>owner/admin,<sp/>or<sp/>staff<sp/>with<sp/>the<sp/>required<sp/>capability<sp/>bit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_name,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error,<sp/><ref refid="structPermissions_1a1dc2e37dd1ca56eb9dc57829a512e092" kindref="member">Permissions::PowerLevel</ref><sp/>required<sp/>=<sp/>Permissions::PowerLevel::CAN_DELETE);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allows<sp/>only<sp/>the<sp/>service<sp/>owner<sp/>or<sp/>admin.</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Caller<sp/>whose<sp/>identity<sp/>is<sp/>checked.</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>permissions_j<sp/>Service<sp/>permissions<sp/>document.</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_name<sp/>Service/table<sp/>name<sp/>used<sp/>in<sp/>messages.</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>a<sp/>denial<sp/>reason<sp/>from<sp/>the<sp/>failing<sp/>owner/admin<sp/>check.</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>either<sp/>identity<sp/>check<sp/>succeeds.</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" kindref="member">isOwnerOrAdmin</ref>(<sp/><sp/></highlight><highlight class="comment">//<sp/>Allows<sp/>only<sp/>the<sp/>owner<sp/>or<sp/>the<sp/>admin.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>permissions_j,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_name,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Extracts<sp/>and<sp/>converts<sp/>@p<sp/>key<sp/>from<sp/>a<sp/>JSON<sp/>payload,<sp/>reporting<sp/>BAD_REQUEST<sp/>on<sp/>failure.</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Returns<sp/>nullopt<sp/>(with<sp/>@p<sp/>error<sp/>populated)<sp/>if<sp/>the<sp/>payload<sp/>is<sp/>missing/empty<sp/>or</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>key<sp/>is<sp/>absent<sp/>or<sp/>not<sp/>convertible<sp/>to<sp/>T;<sp/>conversion<sp/>exceptions<sp/>are<sp/>swallowed.</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Target<sp/>value<sp/>type<sp/>(jsoncons<sp/>`as&lt;T&gt;()`).</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_j<sp/>Payload<sp/>to<sp/>read.</highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>key<sp/>Key<sp/>to<sp/>extract.</highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_name<sp/>Included<sp/>in<sp/>the<sp/>&quot;not<sp/>provided&quot;<sp/>message.</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>BAD_REQUEST<sp/>and<sp/>a<sp/>reason<sp/>on<sp/>failure.</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>extracted<sp/>value,<sp/>or<sp/>`std::nullopt`<sp/>on<sp/>failure.</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Generic<sp/>helper;<sp/>T<sp/>is<sp/>the<sp/>value<sp/>type<sp/>to<sp/>extract<sp/>from<sp/>the<sp/>JSON.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a8243a8ac1bf2b9855448e67fa959c6fc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;T&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a8243a8ac1bf2b9855448e67fa959c6fc" kindref="member">extract_json_value_safely</ref>(<sp/><sp/></highlight><highlight class="comment">//<sp/>Reads<sp/>a<sp/>key<sp/>from<sp/>JSON<sp/>as<sp/>T,<sp/>reporting<sp/>BAD_REQUEST<sp/>instead<sp/>of<sp/>throwing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>service_j,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_name,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error)</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!service_j.has_value()<sp/>||<sp/>service_j-&gt;empty())<sp/><sp/></highlight><highlight class="comment">//<sp/>Reject<sp/>a<sp/>missing<sp/>or<sp/>empty<sp/>payload<sp/>before<sp/>trying<sp/>to<sp/>read<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.code<sp/><sp/><sp/><sp/>=<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" kindref="member">Http::Status::BAD_REQUEST</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>client<sp/>sent<sp/>a<sp/>bad<sp/>request;<sp/>this<sp/>status<sp/>is<sp/>returned<sp/>to<sp/>them.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.message<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Service<sp/>data<sp/>is<sp/>not<sp/>provided<sp/>for<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>service_name;<sp/><sp/></highlight><highlight class="comment">//<sp/>Explain<sp/>which<sp/>service<sp/>payload<sp/>was<sp/>missing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>usable<sp/>value;<sp/>caller<sp/>must<sp/>treat<sp/>this<sp/>as<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/>value;<sp/><sp/></highlight><highlight class="comment">//<sp/>Default-constructed<sp/>result,<sp/>filled<sp/>in<sp/>only<sp/>if<sp/>extraction<sp/>succeeds.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Conversion<sp/>may<sp/>throw,<sp/>so<sp/>it<sp/>is<sp/>attempted<sp/>inside<sp/>a<sp/>try<sp/>block.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value<sp/>=<sp/>service_j-&gt;at(key).as&lt;T&gt;();<sp/><sp/></highlight><highlight class="comment">//<sp/>Look<sp/>up<sp/>the<sp/>key<sp/>and<sp/>convert<sp/>it<sp/>to<sp/>the<sp/>requested<sp/>type<sp/>T.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/><sp/></highlight><highlight class="comment">//<sp/>Runs<sp/>when<sp/>the<sp/>key<sp/>is<sp/>missing<sp/>or<sp/>cannot<sp/>be<sp/>converted.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.message<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>extract<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>key;<sp/><sp/></highlight><highlight class="comment">//<sp/>Tell<sp/>the<sp/>client<sp/>which<sp/>key<sp/>could<sp/>not<sp/>be<sp/>read.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.code<sp/><sp/><sp/><sp/>=<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" kindref="member">Http::Status::BAD_REQUEST</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>client<sp/>sent<sp/>a<sp/>bad<sp/>request;<sp/>this<sp/>status<sp/>is<sp/>returned<sp/>to<sp/>them.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>usable<sp/>value;<sp/>caller<sp/>must<sp/>treat<sp/>this<sp/>as<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value;<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>back<sp/>the<sp/>successfully<sp/>extracted<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="192"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="193"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Fetches<sp/>an<sp/>entity&apos;s<sp/>permission<sp/>JSON,<sp/>serving<sp/>the<sp/>idle-expiry<sp/>cache<sp/>when<sp/>possible.</highlight></codeline>
+<codeline lineno="194"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>@p<sp/>func<sp/>is<sp/>invoked<sp/>with<sp/>@p<sp/>args<sp/>to<sp/>generate<sp/>the<sp/>cache<sp/>key/query<sp/>(which<sp/>embeds</highlight></codeline>
+<codeline lineno="195"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>entity<sp/>table<sp/>and<sp/>id).<sp/>On<sp/>a<sp/>cache<sp/>hit<sp/>no<sp/>database<sp/>access<sp/>occurs.<sp/>On<sp/>a<sp/>miss</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>generation<sp/>token<sp/>is<sp/>captured<sp/>before<sp/>the<sp/>read<sp/>so<sp/>a<sp/>concurrent<sp/>invalidateAll()</highlight></codeline>
+<codeline lineno="197"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>makes<sp/>the<sp/>subsequent<sp/>put()<sp/>a<sp/>no-op.<sp/>Empty<sp/>results<sp/>are<sp/>not<sp/>cached.</highlight></codeline>
+<codeline lineno="198"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>Func<sp/>Callable<sp/>returning<sp/>`std::optional&lt;std::string&gt;`<sp/>(the<sp/>query/key).</highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>Args<sp/>Argument<sp/>types<sp/>forwarded<sp/>to<sp/>@p<sp/>func.</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>func<sp/>Query<sp/>generator.</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>args<sp/>Arguments<sp/>for<sp/>@p<sp/>func.</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>Cached<sp/>or<sp/>freshly<sp/>read<sp/>permissions,<sp/>or<sp/>`std::nullopt`<sp/>on<sp/>no<sp/>query/no<sp/>data.</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@see<sp/>BasicPermissionCache::generation</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Func,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Generic<sp/>helper;<sp/>Func<sp/>builds<sp/>the<sp/>query<sp/>and<sp/>Args<sp/>are<sp/>its<sp/>inputs.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206" refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3e7c77aa55023f9d5ccc345e7b68f2ab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3e7c77aa55023f9d5ccc345e7b68f2ab" kindref="member">getPermissionsOfEntity</ref>(Func&amp;&amp;<sp/>func,<sp/>Args&amp;...<sp/>args)<sp/><sp/></highlight><highlight class="comment">//<sp/>Fetches<sp/>permissions<sp/>(cache<sp/>first,<sp/>database<sp/>on<sp/>a<sp/>miss).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;std::string&gt;<sp/>query<sp/>=<sp/>std::invoke(std::forward&lt;Func&gt;(func),<sp/>std::forward&lt;Args&gt;(args)...);<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>query/key<sp/>string<sp/>by<sp/>calling<sp/>the<sp/>supplied<sp/>generator<sp/>with<sp/>its<sp/>arguments.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!query.has_value()<sp/>||<sp/>query-&gt;empty())<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>query<sp/>means<sp/>there<sp/>is<sp/>nothing<sp/>to<sp/>look<sp/>up;<sp/>fail<sp/>early.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>usable<sp/>value;<sp/>caller<sp/>must<sp/>treat<sp/>this<sp/>as<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>cache<sp/>=<sp/><ref refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f" kindref="member">PermissionCache::instance</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>shared<sp/>cache<sp/>object<sp/>(a<sp/>process-wide<sp/>singleton).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>cached<sp/>=<sp/>cache.get(query.value());<sp/>cached.has_value())<sp/><sp/></highlight><highlight class="comment">//<sp/>Cache<sp/>hit:<sp/>reuse<sp/>the<sp/>stored<sp/>answer<sp/>and<sp/>skip<sp/>the<sp/>database<sp/>entirely.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>cached;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>cached<sp/>JSON<sp/>to<sp/>the<sp/>caller.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;DatabaseController&gt;<sp/>db_ctl<sp/>=<sp/><ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject&lt;DatabaseController&gt;</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>needed<sp/>on<sp/>a<sp/>cache<sp/>miss;<sp/>cachedObject<sp/>returns<sp/>a<sp/>shared<sp/>pointer<sp/>kept<sp/>for<sp/>reuse.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>generation<sp/><sp/><sp/><sp/>=<sp/>cache.generation();<sp/><sp/></highlight><highlight class="comment">//<sp/>Remember<sp/>the<sp/>current<sp/>epoch<sp/>before<sp/>reading,<sp/>so<sp/>a<sp/>concurrent<sp/>flush<sp/>can<sp/>invalidate<sp/>our<sp/>result.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;jsoncons::json&gt;<sp/>permissions_j<sp/>=<sp/>db_ctl-&gt;getPermissions(query.value());<sp/><sp/></highlight><highlight class="comment">//<sp/>Cache<sp/>miss:<sp/>read<sp/>the<sp/>permissions<sp/>from<sp/>PostgreSQL<sp/>(blocking<sp/>version).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!permissions_j.has_value()<sp/>||<sp/>permissions_j-&gt;empty())<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>database<sp/>had<sp/>no<sp/>data;<sp/>do<sp/>not<sp/>cache<sp/>an<sp/>empty<sp/>result.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>usable<sp/>value;<sp/>caller<sp/>must<sp/>treat<sp/>this<sp/>as<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cache.put(query.value(),<sp/>permissions_j.value(),<sp/>generation);<sp/><sp/></highlight><highlight class="comment">//<sp/>Store<sp/>the<sp/>fresh<sp/>result,<sp/>but<sp/>only<sp/>if<sp/>no<sp/>flush<sp/>happened<sp/>in<sp/>the<sp/>meantime.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>permissions_j;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>freshly<sp/>read<sp/>permissions<sp/>to<sp/>the<sp/>caller.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="234"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="235"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>getPermissionsOfEntity();<sp/>awaits<sp/>the<sp/>async<sp/>database<sp/>read.</highlight></codeline>
+<codeline lineno="236"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Same<sp/>cache-key<sp/>generation,<sp/>hit<sp/>short-circuit<sp/>and<sp/>generation-token<sp/>protection</highlight></codeline>
+<codeline lineno="237"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>as<sp/>the<sp/>synchronous<sp/>version,<sp/>but<sp/>does<sp/>not<sp/>block<sp/>a<sp/>Drogon<sp/>IO<sp/>thread.</highlight></codeline>
+<codeline lineno="238"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>Func<sp/>Callable<sp/>returning<sp/>`std::optional&lt;std::string&gt;`<sp/>(the<sp/>query/key).</highlight></codeline>
+<codeline lineno="239"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>Args<sp/>Argument<sp/>types<sp/>forwarded<sp/>to<sp/>@p<sp/>func.</highlight></codeline>
+<codeline lineno="240"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>func<sp/>Query<sp/>generator.</highlight></codeline>
+<codeline lineno="241"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>args<sp/>Arguments<sp/>for<sp/>@p<sp/>func.</highlight></codeline>
+<codeline lineno="242"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>Cached<sp/>or<sp/>freshly<sp/>read<sp/>permissions,<sp/>or<sp/>`std::nullopt`<sp/>on<sp/>no<sp/>query/no<sp/>data.</highlight></codeline>
+<codeline lineno="243"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>The<sp/>caller<sp/>must<sp/>drive<sp/>the<sp/>returned<sp/>task;<sp/>the<sp/>query<sp/>string<sp/>must<sp/>outlive<sp/>the<sp/>awaited<sp/>read.</highlight></codeline>
+<codeline lineno="244"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Func,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Generic<sp/>helper;<sp/>Func<sp/>builds<sp/>the<sp/>query<sp/>and<sp/>Args<sp/>are<sp/>its<sp/>inputs.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246" refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a070d79b55b8f3262de2b815a636defd7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>drogon::Task&lt;std::optional&lt;jsoncons::json&gt;&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a070d79b55b8f3262de2b815a636defd7" kindref="member">getPermissionsOfEntityCoro</ref>(Func&amp;&amp;<sp/>func,<sp/>Args&amp;...<sp/>args)<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>version<sp/>of<sp/>the<sp/>fetch;<sp/>awaits<sp/>the<sp/>async<sp/>database<sp/>read.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;std::string&gt;<sp/>query<sp/>=<sp/>std::invoke(std::forward&lt;Func&gt;(func),<sp/>std::forward&lt;Args&gt;(args)...);<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>query/key<sp/>string<sp/>by<sp/>calling<sp/>the<sp/>supplied<sp/>generator<sp/>with<sp/>its<sp/>arguments.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!query.has_value()<sp/>||<sp/>query-&gt;empty())<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>query<sp/>means<sp/>there<sp/>is<sp/>nothing<sp/>to<sp/>look<sp/>up;<sp/>fail<sp/>early.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">co_return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>return<sp/>of<sp/>&apos;no<sp/>value&apos;<sp/>when<sp/>there<sp/>is<sp/>nothing<sp/>usable.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>cache<sp/>=<sp/><ref refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f" kindref="member">PermissionCache::instance</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>shared<sp/>cache<sp/>object<sp/>(a<sp/>process-wide<sp/>singleton).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>cached<sp/>=<sp/>cache.get(query.value());<sp/>cached.has_value())<sp/><sp/></highlight><highlight class="comment">//<sp/>Cache<sp/>hit:<sp/>reuse<sp/>the<sp/>stored<sp/>answer<sp/>and<sp/>skip<sp/>the<sp/>database<sp/>entirely.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">co_return</highlight><highlight class="normal"><sp/>cached;<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>return<sp/>of<sp/>the<sp/>cached<sp/>answer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;DatabaseController&gt;<sp/>db_ctl<sp/>=<sp/><ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject&lt;DatabaseController&gt;</ref>();</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>generation<sp/>=<sp/>cache.generation();<sp/><sp/></highlight><highlight class="comment">//<sp/>Remember<sp/>the<sp/>current<sp/>epoch<sp/>before<sp/>the<sp/>async<sp/>read<sp/>for<sp/>the<sp/>same<sp/>stale-write<sp/>protection.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;jsoncons::json&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>permissions_j<sp/>=<sp/></highlight><highlight class="keyword">co_await</highlight><highlight class="normal"><sp/>db_ctl-&gt;getPermissionsCoro(query.value());<sp/><sp/></highlight><highlight class="comment">//<sp/>Cache<sp/>miss:<sp/>await<sp/>the<sp/>async<sp/>read<sp/>without<sp/>blocking<sp/>the<sp/>IO<sp/>thread.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!permissions_j.has_value()<sp/>||<sp/>permissions_j-&gt;empty())<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>database<sp/>had<sp/>no<sp/>data;<sp/>do<sp/>not<sp/>cache<sp/>an<sp/>empty<sp/>result.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">co_return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>return<sp/>of<sp/>&apos;no<sp/>value&apos;<sp/>when<sp/>there<sp/>is<sp/>nothing<sp/>usable.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cache.put(query.value(),<sp/>permissions_j.value(),<sp/>generation);<sp/><sp/></highlight><highlight class="comment">//<sp/>Store<sp/>the<sp/>fresh<sp/>result,<sp/>but<sp/>only<sp/>if<sp/>no<sp/>flush<sp/>happened<sp/>in<sp/>the<sp/>meantime.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">co_return</highlight><highlight class="normal"><sp/>permissions_j;<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>return<sp/>of<sp/>the<sp/>freshly<sp/>read<sp/>answer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>api::v2</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp"/>
+  </compounddef>
+</doxygen>

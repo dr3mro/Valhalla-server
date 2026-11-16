@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="asyncsqlbinder_8cpp" kind="file" language="C++">
+    <compoundname>asyncsqlbinder.cpp</compoundname>
+    <includes refid="asyncsqlbinder_8hpp" local="yes">database/asyncsqlbinder.hpp</includes>
+    <includes local="no">drogon/orm/DbClient.h</includes>
+    <includes local="no">drogon/orm/SqlBinder.h</includes>
+    <includes local="no">drogon/utils/coroutine.h</includes>
+    <includes local="no">cstddef</includes>
+    <includes local="no">source_location</includes>
+    <includes local="no">string</includes>
+    <includes local="no">utility</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">pqxx/pqxx</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>src/database/asyncsqlbinder.cpp</label>
+        <link refid="asyncsqlbinder_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>database/asyncsqlbinder.hpp</label>
+        <link refid="asyncsqlbinder_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>cstddef</label>
+      </node>
+      <node id="3">
+        <label>drogon/orm/DbClient.h</label>
+      </node>
+      <node id="4">
+        <label>drogon/orm/SqlBinder.h</label>
+      </node>
+      <node id="5">
+        <label>drogon/utils/coroutine.h</label>
+      </node>
+      <node id="6">
+        <label>optional</label>
+      </node>
+      <node id="7">
+        <label>pqxx/pqxx</label>
+      </node>
+      <node id="11">
+        <label>source_location</label>
+      </node>
+      <node id="8">
+        <label>string</label>
+      </node>
+      <node id="12">
+        <label>utility</label>
+      </node>
+      <node id="9">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceasyncdb">asyncdb</innernamespace>
+    <briefdescription>
+<para>Implementation for asyncsqlbinder: Copies each parameter&apos;s bytes into a string, or records a null when pqxx reports no value. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file implements the three bridge functions declared in <ref refid="asyncsqlbinder_8hpp" kindref="compound">asyncsqlbinder.hpp</ref>. toTextParams() copies parameters into optional strings, bindParams() feeds them into a Drogon SQL binder one at a time, and execSqlCoro() creates that binder and returns an awaiter. All three work from the C-style parameter view that pqxx exposes, which reports each value&apos;s bytes, length and format.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: This is the actual data-copy layer of every asynchronous database query. The entity builders still hand over pqxx::params, and this file is where those values are transformed into Drogon bind calls. Copying by the reported length keeps embedded NUL bytes intact, and putting binary data in a shared buffer keeps it alive until the query finishes rather than only until this function returns. Without these details, async queries would corrupt binary values, mishandle nulls, or read memory that has already gone away.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>Drogon SQL binding: <ulink url="https://drogon.docsforge.com/master/database/">https://drogon.docsforge.com/master/database/</ulink></para>
+</listitem><listitem><para>C++20 coroutines and co_await: <ulink url="https://en.cppreference.com/w/cpp/language/co_await">https://en.cppreference.com/w/cpp/language/co_await</ulink></para>
+</listitem><listitem><para>std::shared_ptr (shared ownership of a buffer): <ulink url="https://en.cppreference.com/w/cpp/memory/shared_ptr">https://en.cppreference.com/w/cpp/memory/shared_ptr</ulink></para>
+</listitem><listitem><para>std::source_location (where a call came from): <ulink url="https://en.cppreference.com/w/cpp/utility/source_location">https://en.cppreference.com/w/cpp/utility/source_location</ulink></para>
+</listitem><listitem><para>libpqxx parameters (pqxx::params): <ulink url="https://pqxx.org/">https://pqxx.org/</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>asyncsqlbinder.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Implementation<sp/>for<sp/>asyncsqlbinder:<sp/>Copies<sp/>each<sp/>parameter&apos;s<sp/>bytes<sp/>into<sp/>a<sp/>string,<sp/>or<sp/>records<sp/>a<sp/>null<sp/>when<sp/>pqxx<sp/>reports<sp/>no<sp/>value.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>file<sp/>implements<sp/>the<sp/>three<sp/>bridge<sp/>functions<sp/>declared<sp/>in<sp/>asyncsqlbinder.hpp.<sp/>toTextParams()<sp/>copies</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>parameters<sp/>into<sp/>optional<sp/>strings,<sp/>bindParams()<sp/>feeds<sp/>them<sp/>into<sp/>a<sp/>Drogon<sp/>SQL<sp/>binder<sp/>one<sp/>at<sp/>a<sp/>time,<sp/>and</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>execSqlCoro()<sp/>creates<sp/>that<sp/>binder<sp/>and<sp/>returns<sp/>an<sp/>awaiter.<sp/>All<sp/>three<sp/>work<sp/>from<sp/>the<sp/>C-style<sp/>parameter<sp/>view</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>that<sp/>pqxx<sp/>exposes,<sp/>which<sp/>reports<sp/>each<sp/>value&apos;s<sp/>bytes,<sp/>length<sp/>and<sp/>format.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>the<sp/>actual<sp/>data-copy<sp/>layer<sp/>of<sp/>every<sp/>asynchronous<sp/>database<sp/>query.<sp/>The<sp/>entity<sp/>builders<sp/>still<sp/>hand<sp/>over</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>pqxx::params,<sp/>and<sp/>this<sp/>file<sp/>is<sp/>where<sp/>those<sp/>values<sp/>are<sp/>transformed<sp/>into<sp/>Drogon<sp/>bind<sp/>calls.<sp/>Copying<sp/>by<sp/>the<sp/>reported</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>length<sp/>keeps<sp/>embedded<sp/>NUL<sp/>bytes<sp/>intact,<sp/>and<sp/>putting<sp/>binary<sp/>data<sp/>in<sp/>a<sp/>shared<sp/>buffer<sp/>keeps<sp/>it<sp/>alive<sp/>until<sp/>the<sp/>query</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>finishes<sp/>rather<sp/>than<sp/>only<sp/>until<sp/>this<sp/>function<sp/>returns.<sp/>Without<sp/>these<sp/>details,<sp/>async<sp/>queries<sp/>would<sp/>corrupt<sp/>binary</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>values,<sp/>mishandle<sp/>nulls,<sp/>or<sp/>read<sp/>memory<sp/>that<sp/>has<sp/>already<sp/>gone<sp/>away.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>-<sp/>Drogon<sp/>SQL<sp/>binding:<sp/>https://drogon.docsforge.com/master/database/</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>C++20<sp/>coroutines<sp/>and<sp/>co_await:<sp/>https://en.cppreference.com/w/cpp/language/co_await</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>std::shared_ptr<sp/>(shared<sp/>ownership<sp/>of<sp/>a<sp/>buffer):<sp/>https://en.cppreference.com/w/cpp/memory/shared_ptr</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>std::source_location<sp/>(where<sp/>a<sp/>call<sp/>came<sp/>from):<sp/>https://en.cppreference.com/w/cpp/utility/source_location</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>libpqxx<sp/>parameters<sp/>(pqxx::params):<sp/>https://pqxx.org/</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="asyncsqlbinder_8hpp" kindref="compound">database/asyncsqlbinder.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Our<sp/>own<sp/>declarations,<sp/>checked<sp/>against<sp/>these<sp/>definitions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/orm/DbClient.h&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>operator&lt;&lt;<sp/>on<sp/>the<sp/>client,<sp/>which<sp/>starts<sp/>building<sp/>the<sp/>statement.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/orm/SqlBinder.h&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>SqlBinder<sp/>and<sp/>RawParameter,<sp/>used<sp/>when<sp/>binding<sp/>binary<sp/>values.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/utils/coroutine.h&gt;</highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>SqlAwaiter,<sp/>the<sp/>object<sp/>the<sp/>caller<sp/>co_awaits.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::size_t,<sp/>the<sp/>type<sp/>used<sp/>for<sp/>indexes<sp/>and<sp/>lengths.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;source_location&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::source_location,<sp/>passed<sp/>to<sp/>pqxx<sp/>for<sp/>better<sp/>conversion<sp/>diagnostics.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string,<sp/>the<sp/>owned<sp/>copy<sp/>of<sp/>each<sp/>value&apos;s<sp/>text/bytes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::move,<sp/>used<sp/>to<sp/>hand<sp/>the<sp/>binder<sp/>to<sp/>the<sp/>awaiter.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::vector,<sp/>the<sp/>container<sp/>for<sp/>the<sp/>converted<sp/>parameters.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;pqxx/pqxx&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>pqxx::params<sp/>and<sp/>its<sp/>make_c_params()<sp/>C-style<sp/>view.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceasyncdb" kindref="compound">asyncdb</ref></highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Copies<sp/>each<sp/>parameter&apos;s<sp/>bytes<sp/>into<sp/>a<sp/>string,<sp/>or<sp/>records<sp/>a<sp/>null<sp/>when<sp/>pqxx<sp/>reports<sp/>no<sp/>value.</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>The<sp/>source<sp/>location<sp/>is<sp/>passed<sp/>to<sp/>pqxx<sp/>for<sp/>conversion<sp/>diagnostics.<sp/>Copying<sp/>uses<sp/>the<sp/>reported<sp/>length,<sp/>so</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>embedded<sp/>NUL<sp/>bytes<sp/>survive<sp/>the<sp/>round<sp/>trip.</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="namespaceasyncdb_1ab211333eccb1603a4e5176a4da380a1d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::optional&lt;std::string&gt;&gt;<sp/><ref refid="namespaceasyncdb_1ab211333eccb1603a4e5176a4da380a1d" kindref="member">toTextParams</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;<sp/>params)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::optional&lt;std::string&gt;&gt;<sp/>result;<sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>empty;<sp/>`optional`<sp/>lets<sp/>us<sp/>store<sp/>&quot;no<sp/>value&quot;<sp/>for<sp/>a<sp/>SQL<sp/>NULL.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c<sp/>=<sp/>params.make_c_params(std::source_location::current());<sp/><sp/></highlight><highlight class="comment">//<sp/>Ask<sp/>pqxx<sp/>for<sp/>its<sp/>low-level<sp/>view<sp/>of<sp/>the<sp/>values;<sp/>the<sp/>source<sp/>location<sp/>helps<sp/>pqxx<sp/>report<sp/>where<sp/>a<sp/>conversion<sp/>failed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.reserve(c.values.size());<sp/><sp/></highlight><highlight class="comment">//<sp/>Allocate<sp/>space<sp/>once<sp/>up<sp/>front,<sp/>so<sp/>adding<sp/>entries<sp/>cannot<sp/>reallocate<sp/>the<sp/>vector<sp/>midway.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(std::size_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>c.values.size();<sp/>++i)<sp/><sp/></highlight><highlight class="comment">//<sp/>Walk<sp/>the<sp/>values<sp/>in<sp/>append<sp/>order;<sp/>stop<sp/>when<sp/>every<sp/>parameter<sp/>has<sp/>been<sp/>copied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(c.values[i]<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>null<sp/>pointer<sp/>in<sp/>the<sp/>C<sp/>view<sp/>is<sp/>pqxx&apos;s<sp/>way<sp/>of<sp/>saying<sp/>&quot;this<sp/>parameter<sp/>is<sp/>SQL<sp/>NULL&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.emplace_back(std::nullopt);<sp/><sp/></highlight><highlight class="comment">//<sp/>Record<sp/>an<sp/>empty<sp/>optional<sp/>rather<sp/>than<sp/>an<sp/>empty<sp/>string,<sp/>so<sp/>NULL<sp/>stays<sp/>distinguishable<sp/>from<sp/>&quot;&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.emplace_back(std::string(c.values[i],<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(c.lengths[i])));<sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>exactly<sp/>the<sp/>reported<sp/>number<sp/>of<sp/>bytes;<sp/>the<sp/>cast<sp/>makes<sp/>the<sp/>length<sp/>unsigned,<sp/>so<sp/>embedded<sp/>zero<sp/>bytes<sp/>are<sp/>preserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>caller<sp/>gets<sp/>one<sp/>entry<sp/>per<sp/>parameter,<sp/>in<sp/>the<sp/>original<sp/>order.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Emits<sp/>one<sp/>bind<sp/>operation<sp/>per<sp/>parameter:<sp/>NULL,<sp/>binary<sp/>(`format<sp/>==<sp/>1`)<sp/>or<sp/>text.</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Binary<sp/>values<sp/>are<sp/>copied<sp/>into<sp/>a<sp/>shared,<sp/>heap-owned<sp/>buffer<sp/>and<sp/>passed<sp/>as<sp/>a<sp/>RawParameter,<sp/>so<sp/>the<sp/>bytes<sp/>remain</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>valid<sp/>for<sp/>the<sp/>lifetime<sp/>of<sp/>the<sp/>binder<sp/>rather<sp/>than<sp/>for<sp/>this<sp/>stack<sp/>frame.<sp/>Text<sp/>values<sp/>are<sp/>copied<sp/>into<sp/>a<sp/>string.</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="namespaceasyncdb_1abe62892990453a6ed96ff720960a71e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceasyncdb_1abe62892990453a6ed96ff720960a71e4" kindref="member">bindParams</ref>(drogon::orm::internal::SqlBinder&amp;<sp/>binder,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;<sp/>params)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>c<sp/>=<sp/>params.make_c_params(std::source_location::current());<sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>same<sp/>low-level<sp/>view<sp/>as<sp/>toTextParams(),<sp/>again<sp/>with<sp/>the<sp/>call<sp/>site<sp/>for<sp/>diagnostics.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(std::size_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>c.values.size();<sp/>++i)<sp/><sp/></highlight><highlight class="comment">//<sp/>Bind<sp/>parameters<sp/>one<sp/>by<sp/>one,<sp/>in<sp/>the<sp/>order<sp/>the<sp/>builder<sp/>appended<sp/>them.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(c.values[i]<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/><sp/></highlight><highlight class="comment">//<sp/>NULL<sp/>values<sp/>need<sp/>their<sp/>own<sp/>bind<sp/>form;<sp/>binding<sp/>an<sp/>empty<sp/>string<sp/>would<sp/>be<sp/>a<sp/>different<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>binder<sp/>&lt;&lt;<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Drogon&apos;s<sp/>operator&lt;&lt;<sp/>recognises<sp/>nullptr<sp/>and<sp/>sends<sp/>an<sp/>SQL<sp/>NULL<sp/>for<sp/>this<sp/>placeholder.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(c.formats[i]<sp/>==<sp/>1)<sp/><sp/></highlight><highlight class="comment">//<sp/>In<sp/>the<sp/>PostgreSQL<sp/>protocol,<sp/>format<sp/>1<sp/>means<sp/>binary<sp/>data<sp/>rather<sp/>than<sp/>text.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>buffer<sp/>=<sp/>std::make_shared&lt;std::vector&lt;char&gt;&gt;(c.values[i],<sp/>c.values[i]<sp/>+<sp/>c.lengths[i]);<sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>the<sp/>raw<sp/>bytes<sp/>into<sp/>a<sp/>heap<sp/>buffer<sp/>shared<sp/>through<sp/>a<sp/>shared_ptr,<sp/>so<sp/>they<sp/>outlive<sp/>this<sp/>function&apos;s<sp/>stack<sp/>frame.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>binder<sp/>&lt;&lt;<sp/>drogon::orm::RawParameter{buffer,<sp/>buffer-&gt;data(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(buffer-&gt;size()),<sp/>1};<sp/><sp/></highlight><highlight class="comment">//<sp/>Pass<sp/>pointer,<sp/>length<sp/>and<sp/>binary<sp/>format;<sp/>the<sp/>shared_ptr<sp/>travels<sp/>with<sp/>the<sp/>parameter,<sp/>and<sp/>the<sp/>cast<sp/>suits<sp/>Drogon&apos;s<sp/>int-based<sp/>API.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>binder<sp/>&lt;&lt;<sp/>std::string(c.values[i],<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(c.lengths[i]));<sp/><sp/></highlight><highlight class="comment">//<sp/>Ordinary<sp/>text<sp/>is<sp/>copied<sp/>into<sp/>a<sp/>string<sp/>and<sp/>bound<sp/>by<sp/>value;<sp/>Drogon<sp/>keeps<sp/>that<sp/>copy<sp/>until<sp/>the<sp/>query<sp/>runs.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>and<sp/>binds<sp/>the<sp/>statement,<sp/>then<sp/>transfers<sp/>the<sp/>binder<sp/>into<sp/>an<sp/>awaiter.</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>The<sp/>binder<sp/>is<sp/>moved,<sp/>not<sp/>copied;<sp/>no<sp/>query<sp/>is<sp/>sent<sp/>until<sp/>the<sp/>caller<sp/>co_awaits<sp/>the<sp/>returned<sp/>object.</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>drogon::orm::internal::SqlAwaiter<sp/><ref refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" kindref="member">execSqlCoro</ref>(drogon::orm::DbClient&amp;<sp/>client,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>sql,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;<sp/>params)</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>binder<sp/>=<sp/>client<sp/>&lt;&lt;<sp/>sql;<sp/><sp/></highlight><highlight class="comment">//<sp/>Drogon&apos;s<sp/>operator&lt;&lt;<sp/>on<sp/>a<sp/>client<sp/>creates<sp/>a<sp/>binder<sp/>already<sp/>holding<sp/>the<sp/>statement<sp/>text.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceasyncdb_1abe62892990453a6ed96ff720960a71e4" kindref="member">bindParams</ref>(binder,<sp/>params);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Attach<sp/>the<sp/>values<sp/>to<sp/>that<sp/>binder<sp/>in<sp/>placeholder<sp/>order;<sp/>this<sp/>performs<sp/>no<sp/>network<sp/>I/O.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>drogon::orm::internal::SqlAwaiter(std::move(binder));<sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>ownership<sp/>into<sp/>an<sp/>awaiter:<sp/>nothing<sp/>executes<sp/>until<sp/>the<sp/>caller<sp/>co_awaits<sp/>it,<sp/>and<sp/>the<sp/>bound<sp/>data<sp/>stays<sp/>alive<sp/>until<sp/>then.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>asyncdb</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/database/asyncsqlbinder.cpp"/>
+  </compounddef>
+</doxygen>

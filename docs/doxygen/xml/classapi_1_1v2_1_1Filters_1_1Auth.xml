@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classapi_1_1v2_1_1Filters_1_1Auth" kind="class" language="C++" prot="public">
+    <compoundname>api::v2::Filters::Auth</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">drogon::HttpFilter&lt; Auth &gt;</basecompoundref>
+    <includes refid="auth_8hpp" local="no">auth.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classapi_1_1v2_1_1Filters_1_1Auth_1a0d799325b0251f98cf0535db411dc3b7" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;GateKeeper&gt; api::v2::Filters::Auth::gateKeeper</definition>
+        <argsstring></argsstring>
+        <name>gateKeeper</name>
+        <qualifiedname>api::v2::Filters::Auth::gateKeeper</qualifiedname>
+        <initializer>= <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref>&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/filters/auth.hpp" line="192" column="25" bodyfile="src/api/v2/filters/auth.hpp" bodystart="192" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1Filters_1_1Auth_1a3b6912ca8535567fb2c00dc07e0cc1ce" compoundref="auth_8hpp" startline="81" endline="189">doFilter</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1Filters_1_1Auth_1a84b0818922fc0aecd9f446419b3eb5fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::Filters::Auth::Auth</definition>
+        <argsstring>()=default</argsstring>
+        <name>Auth</name>
+        <qualifiedname>api::v2::Filters::Auth::Auth</qualifiedname>
+        <briefdescription>
+<para>Default-constructs the filter; the <ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref> is obtained from the service locator. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/filters/auth.hpp" line="69" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Filters_1_1Auth_1a3b6912ca8535567fb2c00dc07e0cc1ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void api::v2::Filters::Auth::doFilter</definition>
+        <argsstring>(const drogon::HttpRequestPtr &amp;req, drogon::FilterCallback &amp;&amp;fcb, drogon::FilterChainCallback &amp;&amp;fccb) override</argsstring>
+        <name>doFilter</name>
+        <qualifiedname>api::v2::Filters::Auth::doFilter</qualifiedname>
+        <param>
+          <type>const drogon::HttpRequestPtr &amp;</type>
+          <declname>req</declname>
+        </param>
+        <param>
+          <type>drogon::FilterCallback &amp;&amp;</type>
+          <declname>fcb</declname>
+        </param>
+        <param>
+          <type>drogon::FilterChainCallback &amp;&amp;</type>
+          <declname>fccb</declname>
+        </param>
+        <briefdescription>
+<para>Validate the request&apos;s Bearer token, then continue or short-circuit the chain. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Extracts the token and peer IP, checks the &quot;Bearer &quot; prefix, and calls <ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref> either synchronously or as a coroutine depending on DatabaseConfig::async. Success stores &quot;clientID&quot;/&quot;clientGroup&quot; on the request and invokes <computeroutput>fccb</computeroutput>; any failure invokes <computeroutput>fcb</computeroutput> with a JSON error response. This override is invoked by Drogon on its IO thread; in async mode the remainder runs on the coroutine frame. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">req</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Request carrying the Authorization header and peer address. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">fcb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Filter callback used to send a rejection response (consumed on reject). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">fccb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Chain callback invoked on success to run the next filter/handler. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/filters/auth.hpp" line="81" column="14" bodyfile="src/api/v2/filters/auth.hpp" bodystart="81" bodyend="189"/>
+        <references refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="189" endline="200">Store::cachedObject</references>
+        <references refid="classapi_1_1v2_1_1Filters_1_1Auth_1a0d799325b0251f98cf0535db411dc3b7" compoundref="auth_8hpp" startline="192">gateKeeper</references>
+        <references refid="classapi_1_1v2_1_1JsonHelper_1a641560db2243ef5bca5bb763e98b3b43" compoundref="jsonhelper_8cpp" startline="27" endline="33">api::v2::JsonHelper::jsonify</references>
+        <references refid="classapi_1_1v2_1_1JsonHelper_1a1b5317049b9d7659fea55b9f6c96c379" compoundref="jsonhelper_8cpp" startline="41" endline="41">api::v2::JsonHelper::stringify</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Drogon filter that validates the Bearer token and identifies the requester. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Runs last in the SECURE filter chain, after rate limiting and timing (see INSECURE/SECURE in <ref refid="common_8hpp" kindref="compound">basic/common.hpp</ref>). It rejects malformed/missing Authorization headers and invalid tokens with a JSON 401; a <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref> from the validator becomes a retryable JSON 503 with Retry-After: 1. On success it inserts &quot;clientID&quot; and &quot;clientGroup&quot; request attributes that downstream controllers read to build a <ref refid="structRequester" kindref="compound">Requester</ref> for permission checks, then continues the chain. When DatabaseConfig::async is set, validation runs in a drogon::Task coroutine and the callbacks are moved into the coroutine frame so they outlive every suspension. <simplesect kind="note"><para>All routes that consume the identity attributes must include this filter (SECURE). </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>api::v2::Filters::Auth</label>
+        <link refid="classapi_1_1v2_1_1Filters_1_1Auth"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>drogon::HttpFilter&lt; Auth &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>api::v2::Filters::Auth</label>
+        <link refid="classapi_1_1v2_1_1Filters_1_1Auth"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>drogon::HttpFilter&lt; Auth &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/api/v2/filters/auth.hpp" line="65" column="5" bodyfile="src/api/v2/filters/auth.hpp" bodystart="66" bodyend="193"/>
+    <listofallmembers>
+      <member refid="classapi_1_1v2_1_1Filters_1_1Auth_1a84b0818922fc0aecd9f446419b3eb5fe" prot="public" virt="non-virtual"><scope>api::v2::Filters::Auth</scope><name>Auth</name></member>
+      <member refid="classapi_1_1v2_1_1Filters_1_1Auth_1a3b6912ca8535567fb2c00dc07e0cc1ce" prot="public" virt="non-virtual"><scope>api::v2::Filters::Auth</scope><name>doFilter</name></member>
+      <member refid="classapi_1_1v2_1_1Filters_1_1Auth_1a0d799325b0251f98cf0535db411dc3b7" prot="private" virt="non-virtual"><scope>api::v2::Filters::Auth</scope><name>gateKeeper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

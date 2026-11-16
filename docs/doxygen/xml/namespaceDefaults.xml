@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="namespaceDefaults" kind="namespace" language="C++">
+    <compoundname>Defaults</compoundname>
+    <innernamespace refid="namespaceDefaults_1_1DosDetector">Defaults::DosDetector</innernamespace>
+    <innernamespace refid="namespaceDefaults_1_1Database">Defaults::Database</innernamespace>
+    <innernamespace refid="namespaceDefaults_1_1Server">Defaults::Server</innernamespace>
+    <innernamespace refid="namespaceDefaults_1_1TokenParameters">Defaults::TokenParameters</innernamespace>
+    <innernamespace refid="namespaceDefaults_1_1FrontEnd">Defaults::FrontEnd</innernamespace>
+    <innernamespace refid="namespaceDefaults_1_1EmailSenderDaemon">Defaults::EmailSenderDaemon</innernamespace>
+    <innernamespace refid="namespaceDefaults_1_1PermissionCache">Defaults::PermissionCache</innernamespace>
+    <innernamespace refid="namespaceDefaults_1_1PasswordWorker">Defaults::PasswordWorker</innernamespace>
+    <innernamespace refid="namespaceDefaults_1_1DbExecutor">Defaults::DbExecutor</innernamespace>
+    <innernamespace refid="namespaceDefaults_1_1Testing">Defaults::Testing</innernamespace>
+    <briefdescription>
+<para>Compile-time fallback values used when a configuration environment variable is absent or cannot be parsed. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Every nested namespace groups the defaults for one <ref refid="classConfigurator" kindref="compound">Configurator</ref> section. These constants are baked into the binary, not read from a file; deployment overrides come from the environment via <ref refid="classEnvLoader" kindref="compound">EnvLoader</ref>. Several entries are deliberately insecure development placeholders (database password, token secret, wildcard CORS) and must be overridden in production. <simplesect kind="see"><para><ref refid="classConfigurator" kindref="compound">Configurator</ref>, <ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/configurator/defaults.hpp" line="34" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['caching_0',['Caching',['../index.html#autotoc_md19',1,'']]],
+  ['clients_20—_20clients_20clienttype_20clienttype_20∈_20users_20providers_1',['Clients — &lt;span class=&quot;tt&quot;&gt;/clients/{clientType}/...&lt;/span&gt; (&lt;span class=&quot;tt&quot;&gt;clientType&lt;/span&gt; ∈ &lt;span class=&quot;tt&quot;&gt;users&lt;/span&gt;, &lt;span class=&quot;tt&quot;&gt;providers&lt;/span&gt;)',['../index.html#autotoc_md27',1,'']]],
+  ['clients_20clienttype_20clienttype_20∈_20users_20providers_2',['Clients — &lt;span class=&quot;tt&quot;&gt;/clients/{clientType}/...&lt;/span&gt; (&lt;span class=&quot;tt&quot;&gt;clientType&lt;/span&gt; ∈ &lt;span class=&quot;tt&quot;&gt;users&lt;/span&gt;, &lt;span class=&quot;tt&quot;&gt;providers&lt;/span&gt;)',['../index.html#autotoc_md27',1,'']]],
+  ['clienttype_20∈_20users_20providers_3',['Clients — &lt;span class=&quot;tt&quot;&gt;/clients/{clientType}/...&lt;/span&gt; (&lt;span class=&quot;tt&quot;&gt;clientType&lt;/span&gt; ∈ &lt;span class=&quot;tt&quot;&gt;users&lt;/span&gt;, &lt;span class=&quot;tt&quot;&gt;providers&lt;/span&gt;)',['../index.html#autotoc_md27',1,'']]],
+  ['clienttype_20clienttype_20∈_20users_20providers_4',['Clients — &lt;span class=&quot;tt&quot;&gt;/clients/{clientType}/...&lt;/span&gt; (&lt;span class=&quot;tt&quot;&gt;clientType&lt;/span&gt; ∈ &lt;span class=&quot;tt&quot;&gt;users&lt;/span&gt;, &lt;span class=&quot;tt&quot;&gt;providers&lt;/span&gt;)',['../index.html#autotoc_md27',1,'']]],
+  ['clinic_20records_20—_20clinic_20resource_5',['Clinic records — &lt;span class=&quot;tt&quot;&gt;/clinic/{resource}/...&lt;/span&gt;',['../index.html#autotoc_md30',1,'']]],
+  ['clinic_20resource_6',['Clinic records — &lt;span class=&quot;tt&quot;&gt;/clinic/{resource}/...&lt;/span&gt;',['../index.html#autotoc_md30',1,'']]],
+  ['clinics_20pharmacies_20laboratories_20radiologycenters_7',['clinics pharmacies laboratories radiologycenters',['../index.html#autotoc_md31',1,'Appointments — &lt;span class=&quot;tt&quot;&gt;/appointments/{serviceType}/...&lt;/span&gt; (&lt;span class=&quot;tt&quot;&gt;serviceType&lt;/span&gt; ∈ &lt;span class=&quot;tt&quot;&gt;clinics&lt;/span&gt;, &lt;span class=&quot;tt&quot;&gt;pharmacies&lt;/span&gt;, &lt;span class=&quot;tt&quot;&gt;laboratories&lt;/span&gt;, &lt;span class=&quot;tt&quot;&gt;radiologycenters&lt;/span&gt;)'],['../index.html#autotoc_md28',1,'Services — &lt;span class=&quot;tt&quot;&gt;/services/{serviceType}/...&lt;/span&gt; (&lt;span class=&quot;tt&quot;&gt;serviceType&lt;/span&gt; ∈ &lt;span class=&quot;tt&quot;&gt;clinics&lt;/span&gt;, &lt;span class=&quot;tt&quot;&gt;pharmacies&lt;/span&gt;, &lt;span class=&quot;tt&quot;&gt;laboratories&lt;/span&gt;, &lt;span class=&quot;tt&quot;&gt;radiologycenters&lt;/span&gt;)']]],
+  ['code_20organisation_8',['Code organisation',['../md_docs_2CONTRIBUTING.html#autotoc_md58',1,'']]],
+  ['coding_20conventions_9',['Coding conventions',['../md_docs_2CONTRIBUTING.html#autotoc_md59',1,'']]],
+  ['component_20map_10',['3. Component map',['../md_docs_2ARCHITECTURE.html#autotoc_md44',1,'']]],
+  ['concurrency_11',['3.8 Utilities — &lt;span class=&quot;tt&quot;&gt;src/utils/&lt;/span&gt;, &lt;span class=&quot;tt&quot;&gt;src/concurrency/&lt;/span&gt;',['../md_docs_2ARCHITECTURE.html#autotoc_md52',1,'']]],
+  ['concurrency_20model_12',['5. Concurrency model',['../md_docs_2ARCHITECTURE.html#autotoc_md54',1,'']]],
+  ['configuration_13',['Configuration',['../index.html#autotoc_md15',1,'']]],
+  ['configuration_20—_20src_20configurator_14',['3.2 Configuration — &lt;span class=&quot;tt&quot;&gt;src/configurator/&lt;/span&gt;',['../md_docs_2ARCHITECTURE.html#autotoc_md46',1,'']]],
+  ['configurator_15',['3.2 Configuration — &lt;span class=&quot;tt&quot;&gt;src/configurator/&lt;/span&gt;',['../md_docs_2ARCHITECTURE.html#autotoc_md46',1,'']]],
+  ['contents_16',['Table of Contents',['../index.html#autotoc_md4',1,'']]],
+  ['contributing_17',['Contributing',['../md_docs_2CONTRIBUTING.html',1,'Contributing'],['../index.html#autotoc_md39',1,'Contributing']]],
+  ['contribution_20workflow_18',['Contribution workflow',['../md_docs_2CONTRIBUTING.html#autotoc_md63',1,'']]],
+  ['controllers_19',['3.5 Controllers — &lt;span class=&quot;tt&quot;&gt;src/controllers/&lt;/span&gt;',['../md_docs_2ARCHITECTURE.html#autotoc_md49',1,'']]],
+  ['controllers_20—_20src_20controllers_20',['3.5 Controllers — &lt;span class=&quot;tt&quot;&gt;src/controllers/&lt;/span&gt;',['../md_docs_2ARCHITECTURE.html#autotoc_md49',1,'']]],
+  ['conventions_21',['conventions',['../md_docs_2CONTRIBUTING.html#autotoc_md59',1,'Coding conventions'],['../md_docs_2CONTRIBUTING.html#autotoc_md60',1,'Documentation conventions']]],
+  ['cors_20and_20docker_22',['Front-end development (CORS and Docker)',['../index.html#autotoc_md34',1,'']]],
+  ['cpp_20src_20server_23',['3.1 Bootstrap and lifecycle — &lt;span class=&quot;tt&quot;&gt;src/main.cpp&lt;/span&gt;, &lt;span class=&quot;tt&quot;&gt;src/server/&lt;/span&gt;',['../md_docs_2ARCHITECTURE.html#autotoc_md45',1,'']]]
+];

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_d634bd0821513b80b4fd8476be950877" kind="dir">
+    <compoundname>src/api/v2</compoundname>
+    <innerdir refid="dir_a9b232e6071a9275e4eb5006f74c22b6">src/api/v2/basic</innerdir>
+    <innerdir refid="dir_830c168f2763a4fbe21a24ffe69786fc">src/api/v2/filters</innerdir>
+    <innerdir refid="dir_273030da423ef80d867a74b5b2414df8">src/api/v2/helper</innerdir>
+    <innerdir refid="dir_13ca3731eacf1297efe44978d8a16c00">src/api/v2/middlewares</innerdir>
+    <innerdir refid="dir_dff1a4c277da82bc5ae92a9cdb2cc105">src/api/v2/routes</innerdir>
+    <innerfile refid="all__routes_8hpp">all_routes.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/api/v2/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_803ee67260c130b45d29089798491ab2" kind="dir">
+    <compoundname>src/database</compoundname>
+    <innerfile refid="asyncdbclient_8cpp">asyncdbclient.cpp</innerfile>
+    <innerfile refid="asyncdbclient_8hpp">asyncdbclient.hpp</innerfile>
+    <innerfile refid="asyncdberror_8cpp">asyncdberror.cpp</innerfile>
+    <innerfile refid="asyncdberror_8hpp">asyncdberror.hpp</innerfile>
+    <innerfile refid="asyncresultmapper_8cpp">asyncresultmapper.cpp</innerfile>
+    <innerfile refid="asyncresultmapper_8hpp">asyncresultmapper.hpp</innerfile>
+    <innerfile refid="asyncsqlbinder_8cpp">asyncsqlbinder.cpp</innerfile>
+    <innerfile refid="asyncsqlbinder_8hpp">asyncsqlbinder.hpp</innerfile>
+    <innerfile refid="blockingpool_8hpp">blockingpool.hpp</innerfile>
+    <innerfile refid="database_8cpp">database.cpp</innerfile>
+    <innerfile refid="database_8hpp">database.hpp</innerfile>
+    <innerfile refid="databasebusy_8hpp">databasebusy.hpp</innerfile>
+    <innerfile refid="databaseconnectionpool_8cpp">databaseconnectionpool.cpp</innerfile>
+    <innerfile refid="databaseconnectionpool_8hpp">databaseconnectionpool.hpp</innerfile>
+    <innerfile refid="databasehandler_8cpp">databasehandler.cpp</innerfile>
+    <innerfile refid="databasehandler_8hpp">databasehandler.hpp</innerfile>
+    <innerfile refid="dbexecutor_8cpp">dbexecutor.cpp</innerfile>
+    <innerfile refid="dbexecutor_8hpp">dbexecutor.hpp</innerfile>
+    <innerfile refid="dbprobe_8hpp">dbprobe.hpp</innerfile>
+    <innerfile refid="watchdog_8cpp">watchdog.cpp</innerfile>
+    <innerfile refid="watchdog_8hpp">watchdog.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/database/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="namespaceDefaults_1_1DbExecutor" kind="namespace" language="C++">
+    <compoundname>Defaults::DbExecutor</compoundname>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceDefaults_1_1DbExecutor_1a345f84e7eeea992a99e3cbae2dca7290" prot="public" static="no" mutable="no">
+        <type>const uint32_t</type>
+        <definition>const uint32_t Defaults::DbExecutor::QUEUE_MAX_</definition>
+        <argsstring></argsstring>
+        <name>QUEUE_MAX_</name>
+        <qualifiedname>Defaults::DbExecutor::QUEUE_MAX_</qualifiedname>
+        <initializer>= 256</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/configurator/defaults.hpp" line="207" column="24" bodyfile="src/configurator/defaults.hpp" bodystart="207" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceDefaults_1_1DbExecutor_1ab524f389c372937b494a2a6d4c390f15" prot="public" static="no" mutable="no">
+        <type>const bool</type>
+        <definition>const bool Defaults::DbExecutor::IO_FAST_PATH_</definition>
+        <argsstring></argsstring>
+        <name>IO_FAST_PATH_</name>
+        <qualifiedname>Defaults::DbExecutor::IO_FAST_PATH_</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/configurator/defaults.hpp" line="208" column="24" bodyfile="src/configurator/defaults.hpp" bodystart="208" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Default sizing/back-pressure for the database request executor. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/configurator/defaults.hpp" line="202" column="1"/>
+  </compounddef>
+</doxygen>

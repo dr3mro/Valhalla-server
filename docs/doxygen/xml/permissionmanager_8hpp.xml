@@ -1,0 +1,682 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="permissionmanager_8hpp" kind="file" language="C++">
+    <compoundname>permissionmanager.hpp</compoundname>
+    <includes local="no">cstdint</includes>
+    <includes local="no">jsoncons/basic_json.hpp</includes>
+    <includes local="no">optional</includes>
+    <includes refid="concepts_8hpp" local="yes">utils/global/concepts.hpp</includes>
+    <includes local="yes">drogon/utils/coroutine.h</includes>
+    <includes refid="http_8hpp" local="yes">utils/global/http.hpp</includes>
+    <includes refid="requester_8hpp" local="yes">utils/global/requester.hpp</includes>
+    <includedby refid="gatekeeper_8cpp" local="yes">src/gatekeeper/gatekeeper.cpp</includedby>
+    <includedby refid="gatekeeper_8hpp" local="yes">src/gatekeeper/gatekeeper.hpp</includedby>
+    <includedby refid="permissionmanager_8cpp" local="yes">src/gatekeeper/permissionmanager/permissionmanager.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/gatekeeper/permissionmanager/permissionmanager.hpp</label>
+        <link refid="permissionmanager_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>utils/global/concepts.hpp</label>
+        <link refid="concepts_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>utils/global/http.hpp</label>
+        <link refid="http_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>utils/global/requester.hpp</label>
+        <link refid="requester_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cstdint</label>
+      </node>
+      <node id="7">
+        <label>drogon/utils/coroutine.h</label>
+      </node>
+      <node id="3">
+        <label>jsoncons/basic_json.hpp</label>
+      </node>
+      <node id="4">
+        <label>optional</label>
+      </node>
+      <node id="9">
+        <label>string</label>
+      </node>
+      <node id="6">
+        <label>type_traits</label>
+      </node>
+      <node id="10">
+        <label>unordered_map</label>
+      </node>
+      <node id="12">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="10">
+        <label>src/api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/api/v2/filters/auth.hpp</label>
+        <link refid="auth_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>src/api/v2/filters/ratelimit.hpp</label>
+        <link refid="ratelimit_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>src/api/v2/routes/appointments.hpp</label>
+        <link refid="appointments_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/api/v2/routes/clients.hpp</label>
+        <link refid="clients_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>src/api/v2/routes/clinics.hpp</label>
+        <link refid="api_2v2_2routes_2clinics_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>src/api/v2/routes/services.hpp</label>
+        <link refid="services_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>src/api/v2/routes/staff.hpp</label>
+        <link refid="staff_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
+        <link refid="appointmentcontroller_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
+        <link refid="appointmentcontroller_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>src/controllers/base/controller/controller.hpp</label>
+        <link refid="controller_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>src/controllers/clientcontroller/clientcontroller.cpp</label>
+        <link refid="clientcontroller_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
+        <link refid="clientcontroller_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
+        <link refid="cliniccontroller_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/controllers/cliniccontroller/cliniccontroller.hpp</label>
+        <link refid="cliniccontroller_8hpp"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
+        <link refid="entitycontroller_8cpp"/>
+      </node>
+      <node id="14">
+        <label>src/controllers/entitycontroller/entitycontroller.hpp</label>
+        <link refid="entitycontroller_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
+        <link refid="servicecontroller_8cpp"/>
+      </node>
+      <node id="23">
+        <label>src/controllers/servicecontroller/servicecontroller.hpp</label>
+        <link refid="servicecontroller_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
+        <link refid="staffcontroller_8cpp"/>
+      </node>
+      <node id="26">
+        <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
+        <link refid="staffcontroller_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>src/database/database.cpp</label>
+        <link refid="database_8cpp"/>
+      </node>
+      <node id="2">
+        <label>src/gatekeeper/gatekeeper.cpp</label>
+        <link refid="gatekeeper_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/gatekeeper/gatekeeper.hpp</label>
+        <link refid="gatekeeper_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>src/gatekeeper/permissionmanager/permissionmanager.cpp</label>
+        <link refid="permissionmanager_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/gatekeeper/permissionmanager/permissionmanager.hpp</label>
+        <link refid="permissionmanager_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/server/server.hpp</label>
+        <link refid="server_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classapi_1_1v2_1_1PermissionManager" prot="public">api::v2::PermissionManager</innerclass>
+    <innernamespace refid="namespaceapi">api</innernamespace>
+    <innernamespace refid="namespaceapi_1_1v2">api::v2</innernamespace>
+    <briefdescription>
+<para>The single place that answers &quot;may this person do this thing to this record?&quot;. (Originally: &quot;Central authorization facade: answers &quot;may this requester perform this operation on this entity?&quot;.&quot;). </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header declares <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref>, a class full of <computeroutput>canCreate</computeroutput>, <computeroutput>canRead</computeroutput>, <computeroutput>canUpdate</computeroutput> and <computeroutput>canDelete</computeroutput> checks. Each check is written once as a template and works for several entity types. Every check also has an <computeroutput>Async</computeroutput> coroutine twin used by the non-blocking routes.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: Controllers call these checks before changing or returning data, so this is the gate that stops one client reading another client&apos;s records. It decides who may manage staff, view services, and edit cases or appointments. Without it, authorization rules would be scattered and easy to get wrong.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>Authorization vs authentication: <ulink url="https://en.wikipedia.org/wiki/Authorization">https://en.wikipedia.org/wiki/Authorization</ulink></para>
+</listitem><listitem><para>C++ templates: <ulink url="https://en.cppreference.com/w/cpp/language/templates">https://en.cppreference.com/w/cpp/language/templates</ulink></para>
+</listitem><listitem><para>Concepts (constraints on template arguments): <ulink url="https://en.cppreference.com/w/cpp/language/constraints">https://en.cppreference.com/w/cpp/language/constraints</ulink></para>
+</listitem><listitem><para>Coroutines in C++: <ulink url="https://en.cppreference.com/w/cpp/language/coroutines">https://en.cppreference.com/w/cpp/language/coroutines</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>permissionmanager.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>The<sp/>single<sp/>place<sp/>that<sp/>answers<sp/>&quot;may<sp/>this<sp/>person<sp/>do<sp/>this<sp/>thing<sp/>to<sp/>this<sp/>record?&quot;.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(Originally:<sp/>&quot;Central<sp/>authorization<sp/>facade:<sp/>answers<sp/>&quot;may<sp/>this<sp/>requester<sp/>perform<sp/>this<sp/>operation<sp/>on<sp/>this<sp/>entity?&quot;.&quot;)</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>declares<sp/>PermissionManager,<sp/>a<sp/>class<sp/>full<sp/>of<sp/>`canCreate`,</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`canRead`,<sp/>`canUpdate`<sp/>and<sp/>`canDelete`<sp/>checks.<sp/>Each<sp/>check<sp/>is<sp/>written</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>once<sp/>as<sp/>a<sp/>template<sp/>and<sp/>works<sp/>for<sp/>several<sp/>entity<sp/>types.<sp/>Every<sp/>check</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>also<sp/>has<sp/>an<sp/>`Async`<sp/>coroutine<sp/>twin<sp/>used<sp/>by<sp/>the<sp/>non-blocking<sp/>routes.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>Controllers<sp/>call<sp/>these<sp/>checks<sp/>before<sp/>changing<sp/>or<sp/>returning<sp/>data,<sp/>so<sp/>this<sp/>is</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>the<sp/>gate<sp/>that<sp/>stops<sp/>one<sp/>client<sp/>reading<sp/>another<sp/>client&apos;s<sp/>records.<sp/>It<sp/>decides</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>who<sp/>may<sp/>manage<sp/>staff,<sp/>view<sp/>services,<sp/>and<sp/>edit<sp/>cases<sp/>or<sp/>appointments.<sp/>Without</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>it,<sp/>authorization<sp/>rules<sp/>would<sp/>be<sp/>scattered<sp/>and<sp/>easy<sp/>to<sp/>get<sp/>wrong.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>-<sp/>Authorization<sp/>vs<sp/>authentication:<sp/>https://en.wikipedia.org/wiki/Authorization</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>C++<sp/>templates:<sp/>https://en.cppreference.com/w/cpp/language/templates</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>Concepts<sp/>(constraints<sp/>on<sp/>template<sp/>arguments):<sp/>https://en.cppreference.com/w/cpp/language/constraints</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>Coroutines<sp/>in<sp/>C++:<sp/>https://en.cppreference.com/w/cpp/language/coroutines</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>uint64_t,<sp/>the<sp/>type<sp/>of<sp/>all<sp/>entity<sp/>ids.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/basic_json.hpp&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>jsoncons::json<sp/>for<sp/>optional<sp/>request<sp/>payloads.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::optional<sp/>for<sp/>a<sp/>payload<sp/>that<sp/>may<sp/>be<sp/>absent.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="concepts_8hpp" kindref="compound">utils/global/concepts.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Client_t/Service_t/Case_t/Appointment_t,<sp/>the<sp/>template<sp/>constraints.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;drogon/utils/coroutine.h&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>drogon::Task,<sp/>the<sp/>coroutine<sp/>return<sp/>type<sp/>of<sp/>the<sp/>Async<sp/>checks.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="http_8hpp" kindref="compound">utils/global/http.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Http::Error,<sp/>used<sp/>to<sp/>report<sp/>why<sp/>a<sp/>request<sp/>was<sp/>denied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="requester_8hpp" kindref="compound">utils/global/requester.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Requester,<sp/>the<sp/>authenticated<sp/>caller<sp/>whose<sp/>rights<sp/>are<sp/>checked.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceapi_1_1v2" kindref="compound">api::v2</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>All<sp/>API<sp/>version-2<sp/>code<sp/>lives<sp/>in<sp/>this<sp/>namespace.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@class<sp/>PermissionManager</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Central<sp/>authorization<sp/>facade:<sp/>answers<sp/>&quot;may<sp/>this<sp/>requester<sp/>perform<sp/>this<sp/>operation<sp/>on<sp/>this<sp/>entity?&quot;.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Overloads<sp/>are<sp/>grouped<sp/>by<sp/>the<sp/>concept<sp/>constraining<sp/>the<sp/>entity<sp/>type<sp/>(Client_t,</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Service_t,<sp/>Case_t,<sp/>Appointment_t).<sp/>Most<sp/>checks<sp/>load<sp/>the<sp/>entity&apos;s<sp/>permission<sp/>JSON</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(through<sp/>PermissionManagerPrivate::getPermissionsOfEntity)<sp/>and<sp/>apply<sp/>the<sp/>service</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>owner/admin/staff<sp/>rules;<sp/>the<sp/>plain<sp/>client<sp/>checks<sp/>only<sp/>assert<sp/>that<sp/>the<sp/>requester&apos;s</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>group<sp/>and<sp/>id<sp/>match<sp/>the<sp/>target<sp/>client.<sp/>Every<sp/>`*Async`<sp/>overload<sp/>is<sp/>the<sp/>coroutine</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counterpart<sp/>of<sp/>a<sp/>synchronous<sp/>check;<sp/>those<sp/>needing<sp/>permission<sp/>data<sp/>use<sp/>the<sp/>async</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(database/cached)<sp/>lookup.<sp/>On<sp/>denial,<sp/>@p<sp/>error<sp/>receives<sp/>a<sp/>status<sp/>and<sp/>reason.</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Each<sp/>overload<sp/>is<sp/>explicitly<sp/>instantiated<sp/>for<sp/>the<sp/>supported<sp/>entity<sp/>types<sp/>at<sp/>the</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>bottom<sp/>of<sp/>permissionmanager.cpp;<sp/>this<sp/>header<sp/>only<sp/>declares<sp/>them.</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>In<sp/>everyday<sp/>words:<sp/>think<sp/>of<sp/>this<sp/>class<sp/>as<sp/>a<sp/>receptionist<sp/>who<sp/>checks</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>ID<sp/>before<sp/>letting<sp/>someone<sp/>do<sp/>something.<sp/>It<sp/>does<sp/>not<sp/>fetch<sp/>data<sp/>itself;</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>asks<sp/>PermissionManagerPrivate<sp/>for<sp/>the<sp/>facts<sp/>and<sp/>then<sp/>decides.</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classapi_1_1v2_1_1PermissionManager" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea" kindref="member">PermissionManager</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>facade:<sp/>one<sp/>simple<sp/>entry<sp/>point<sp/>hiding<sp/>the<sp/>detailed<sp/>checks.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="58" refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea" kindref="member">PermissionManager</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>state<sp/>to<sp/>set<sp/>up,<sp/>so<sp/>the<sp/>compiler-generated<sp/>constructor<sp/>is<sp/>fine.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classapi_1_1v2_1_1PermissionManager_1abb670098c751db8d9eb061535e4c0d0c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1abb670098c751db8d9eb061535e4c0d0c" kindref="member">PermissionManager</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea" kindref="member">PermissionManager</ref>&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copying<sp/>is<sp/>harmless;<sp/>the<sp/>class<sp/>holds<sp/>no<sp/>resources.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classapi_1_1v2_1_1PermissionManager_1ae276f363c2d49a6818eced74bebf4ca6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea" kindref="member">PermissionManager</ref>&amp;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1ae276f363c2d49a6818eced74bebf4ca6" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea" kindref="member">PermissionManager</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>assignment<sp/>is<sp/>harmless<sp/>for<sp/>the<sp/>same<sp/>reason.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classapi_1_1v2_1_1PermissionManager_1a2e6ebe0e6b8c79b266e1bf2b232a1d6f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a2e6ebe0e6b8c79b266e1bf2b232a1d6f" kindref="member">PermissionManager</ref>(<ref refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea" kindref="member">PermissionManager</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Moving<sp/>is<sp/>harmless;<sp/>there<sp/>is<sp/>nothing<sp/>to<sp/>transfer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="classapi_1_1v2_1_1PermissionManager_1a6ee8b35704a2706f3a1ee3d1eb1b0d4d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea" kindref="member">PermissionManager</ref>&amp;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a6ee8b35704a2706f3a1ee3d1eb1b0d4d" kindref="member">operator=</ref>(<ref refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea" kindref="member">PermissionManager</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>assignment<sp/>is<sp/>harmless<sp/>for<sp/>the<sp/>same<sp/>reason.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919" kindref="member">~PermissionManager</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Virtual<sp/>destructor<sp/>so<sp/>cleanup<sp/>is<sp/>correct<sp/>if<sp/>used<sp/>through<sp/>a<sp/>base<sp/>pointer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Client<sp/>creation<sp/>is<sp/>unrestricted<sp/>(always<sp/>allowed).</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Client<sp/>type,<sp/>constrained<sp/>by<sp/>Client_t.</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>(unused).</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data_j<sp/>Optional<sp/>JSON<sp/>payload<sp/>(unused).</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Denial<sp/>details<sp/>(unused).</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>Always<sp/>`true`.</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>client<sp/>is<sp/>either<sp/>user<sp/>or<sp/>provider:<sp/>for<sp/>these,<sp/>a<sp/>person<sp/>may<sp/>only<sp/>touch<sp/>their<sp/>own<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Client_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>client<sp/>types<sp/>(User/Provider).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" kindref="member">canCreate</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>data_j,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>create<sp/>check;<sp/>true<sp/>when<sp/>the<sp/>action<sp/>is<sp/>allowed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>canCreate()<sp/>for<sp/>clients;<sp/>always<sp/>returns<sp/>`true`.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Client_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>client<sp/>types<sp/>(User/Provider).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1ab38a9fb015cfa0c0a21684b1b7e5c75d" kindref="member">canCreateAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>data_j,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>create<sp/>check;<sp/>co_await<sp/>it<sp/>from<sp/>an<sp/>async<sp/>route.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allows<sp/>reading<sp/>a<sp/>client<sp/>only<sp/>if<sp/>requester<sp/>group<sp/>and<sp/>id<sp/>match<sp/>the<sp/>target.</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Client<sp/>type,<sp/>constrained<sp/>by<sp/>Client_t.</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller.</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>client_id<sp/>Id<sp/>of<sp/>the<sp/>client<sp/>being<sp/>accessed.</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>denial<sp/>details.</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>both<sp/>group<sp/>and<sp/>id<sp/>match.</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Client_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>client<sp/>types<sp/>(User/Provider).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1aff6b99de61b84feb36a534319778195b" kindref="member">canRead</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>client_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>read<sp/>check<sp/>for<sp/>a<sp/>client<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>canRead()<sp/>for<sp/>clients.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Client_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>client<sp/>types<sp/>(User/Provider).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1aed948cb4da3d53102be81025ef98bda2" kindref="member">canReadAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>client_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>read<sp/>check<sp/>for<sp/>a<sp/>client<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allows<sp/>updating<sp/>a<sp/>client<sp/>only<sp/>if<sp/>requester<sp/>group<sp/>and<sp/>id<sp/>match<sp/>the<sp/>target.</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Client<sp/>type,<sp/>constrained<sp/>by<sp/>Client_t.</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller.</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>client_id<sp/>Id<sp/>of<sp/>the<sp/>client<sp/>being<sp/>accessed.</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>denial<sp/>details.</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>both<sp/>group<sp/>and<sp/>id<sp/>match.</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Client_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>client<sp/>types<sp/>(User/Provider).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a96e35dad77cb2e1dbd0ffffa7c648fdc" kindref="member">canUpdate</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>client_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>update<sp/>check<sp/>for<sp/>a<sp/>client<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>canUpdate()<sp/>for<sp/>clients.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Client_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>client<sp/>types<sp/>(User/Provider).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1afded6faae3268475fa32898c00b5476e" kindref="member">canUpdateAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>client_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>update<sp/>check<sp/>for<sp/>a<sp/>client<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allows<sp/>deleting<sp/>a<sp/>client<sp/>only<sp/>if<sp/>requester<sp/>group<sp/>and<sp/>id<sp/>match<sp/>the<sp/>target.</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Client<sp/>type,<sp/>constrained<sp/>by<sp/>Client_t.</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller.</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>client_id<sp/>Id<sp/>of<sp/>the<sp/>client<sp/>being<sp/>accessed.</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>denial<sp/>details.</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>both<sp/>group<sp/>and<sp/>id<sp/>match.</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Client_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>client<sp/>types<sp/>(User/Provider).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a71258d4ae15f18d8a002c192c0fb6e2a" kindref="member">canDelete</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>client_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>delete<sp/>check<sp/>for<sp/>a<sp/>client<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>canDelete()<sp/>for<sp/>clients.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Client_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>client<sp/>types<sp/>(User/Provider).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a0adc8dfb1a38a0e3953a4032f3673980" kindref="member">canDeleteAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>client_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>delete<sp/>check<sp/>for<sp/>a<sp/>client<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allows<sp/>toggling<sp/>a<sp/>client&apos;s<sp/>active<sp/>flag<sp/>only<sp/>on<sp/>a<sp/>matching<sp/>group<sp/>and<sp/>id.</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Client<sp/>type,<sp/>constrained<sp/>by<sp/>Client_t.</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller.</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>client_id<sp/>Id<sp/>of<sp/>the<sp/>client<sp/>whose<sp/>status<sp/>is<sp/>targeted.</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>denial<sp/>details.</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>both<sp/>group<sp/>and<sp/>id<sp/>match.</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Client_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>client<sp/>types<sp/>(User/Provider).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a30eb01bee43eade86f66faa01e47fc91" kindref="member">canToggleActive</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>client_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>check<sp/>for<sp/>changing<sp/>a<sp/>client&apos;s<sp/>active<sp/>flag.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>canToggleActive()<sp/>for<sp/>clients.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Client_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>client<sp/>types<sp/>(User/Provider).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1afa8aa5d58764cb40be9d226283f5197a" kindref="member">canToggleActiveAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>client_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>check<sp/>for<sp/>changing<sp/>a<sp/>client&apos;s<sp/>active<sp/>flag.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allows<sp/>listing<sp/>a<sp/>client&apos;s<sp/>services<sp/>only<sp/>on<sp/>a<sp/>matching<sp/>group<sp/>and<sp/>id.</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Client<sp/>type,<sp/>constrained<sp/>by<sp/>Client_t.</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller.</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>client_id<sp/>Id<sp/>of<sp/>the<sp/>client<sp/>whose<sp/>services<sp/>are<sp/>requested.</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>denial<sp/>details.</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>both<sp/>group<sp/>and<sp/>id<sp/>match.</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Client_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>client<sp/>types<sp/>(User/Provider).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a3fdd025d52c5c4b4140c3ff6790921fd" kindref="member">canGetServices</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>client_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>check<sp/>for<sp/>listing<sp/>a<sp/>client&apos;s<sp/>services.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>canGetServices()<sp/>for<sp/>clients.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Client_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>client<sp/>types<sp/>(User/Provider).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a30126a03fc03c2870325aa6df4543518" kindref="member">canGetServicesAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>client_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>check<sp/>for<sp/>listing<sp/>a<sp/>client&apos;s<sp/>services.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Service<sp/>is<sp/>either<sp/>a<sp/>clinic,<sp/>pharmacy,<sp/>lab<sp/>or<sp/>rad<sp/>center:<sp/>these<sp/>checks<sp/>use<sp/>the<sp/>service&apos;s<sp/>permission<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Checks<sp/>preconditions<sp/>for<sp/>creating<sp/>a<sp/>service<sp/>(payload<sp/>present,<sp/>provider<sp/>is<sp/>owner/admin).</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Service<sp/>type,<sp/>constrained<sp/>by<sp/>Service_t.</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller.</highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_j<sp/>Payload<sp/>containing<sp/>the<sp/>initial<sp/>owner_id/admin_id.</highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>denial<sp/>details.</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>the<sp/>creation<sp/>preconditions<sp/>hold.</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Service_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>service<sp/>types<sp/>(clinic/pharmacy/lab/radiology).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167" refid="classapi_1_1v2_1_1PermissionManager_1a3ea07c998d2818c6ef1585a83d58de31" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a3ea07c998d2818c6ef1585a83d58de31" kindref="member">canCreate</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>service_j,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>create<sp/>check;<sp/>the<sp/>payload<sp/>identifies<sp/>the<sp/>target<sp/>service.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="169"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>canCreate()<sp/>for<sp/>services.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Service_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>service<sp/>types<sp/>(clinic/pharmacy/lab/radiology).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="classapi_1_1v2_1_1PermissionManager_1a4fde2b6b7c617ef97f0a3aa6a5135425" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a4fde2b6b7c617ef97f0a3aa6a5135425" kindref="member">canCreateAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>service_j,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>create<sp/>check<sp/>using<sp/>the<sp/>service<sp/>payload.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allows<sp/>service<sp/>reads<sp/>for<sp/>the<sp/>owner,<sp/>admin,<sp/>or<sp/>staff<sp/>with<sp/>the<sp/>CAN_READ<sp/>bit.</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Service<sp/>type,<sp/>constrained<sp/>by<sp/>Service_t.</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller.</highlight></codeline>
+<codeline lineno="177"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_id<sp/>Id<sp/>of<sp/>the<sp/>service<sp/>whose<sp/>permissions<sp/>are<sp/>loaded.</highlight></codeline>
+<codeline lineno="178"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>denial<sp/>details.</highlight></codeline>
+<codeline lineno="179"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>the<sp/>requester<sp/>holds<sp/>sufficient<sp/>permission.</highlight></codeline>
+<codeline lineno="180"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Service_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>service<sp/>types<sp/>(clinic/pharmacy/lab/radiology).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182" refid="classapi_1_1v2_1_1PermissionManager_1a52a131813fb846d82e3b7b4b3363a6b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a52a131813fb846d82e3b7b4b3363a6b2" kindref="member">canRead</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>service_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>read<sp/>check<sp/>for<sp/>a<sp/>service<sp/>or<sp/>appointment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="184"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>canRead()<sp/>for<sp/>services.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Service_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>service<sp/>types<sp/>(clinic/pharmacy/lab/radiology).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186" refid="classapi_1_1v2_1_1PermissionManager_1abd8a7e3b5ffcb254c3954daa0cb44ceb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1abd8a7e3b5ffcb254c3954daa0cb44ceb" kindref="member">canReadAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>service_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>read<sp/>check<sp/>for<sp/>a<sp/>service<sp/>or<sp/>appointment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="188"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="189"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allows<sp/>service<sp/>updates<sp/>for<sp/>the<sp/>owner,<sp/>admin,<sp/>or<sp/>staff<sp/>with<sp/>the<sp/>CAN_WRITE<sp/>bit.</highlight></codeline>
+<codeline lineno="190"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Service<sp/>type,<sp/>constrained<sp/>by<sp/>Service_t.</highlight></codeline>
+<codeline lineno="191"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller.</highlight></codeline>
+<codeline lineno="192"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_id<sp/>Id<sp/>of<sp/>the<sp/>service<sp/>whose<sp/>permissions<sp/>are<sp/>loaded.</highlight></codeline>
+<codeline lineno="193"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>denial<sp/>details.</highlight></codeline>
+<codeline lineno="194"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>the<sp/>requester<sp/>holds<sp/>sufficient<sp/>permission.</highlight></codeline>
+<codeline lineno="195"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Service_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>service<sp/>types<sp/>(clinic/pharmacy/lab/radiology).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197" refid="classapi_1_1v2_1_1PermissionManager_1a99d92a72b1a2a99f6392b3a4f9b08374" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a99d92a72b1a2a99f6392b3a4f9b08374" kindref="member">canUpdate</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>service_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>update<sp/>check<sp/>for<sp/>a<sp/>service<sp/>or<sp/>appointment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>canUpdate()<sp/>for<sp/>services.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Service_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>service<sp/>types<sp/>(clinic/pharmacy/lab/radiology).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201" refid="classapi_1_1v2_1_1PermissionManager_1a49df60ee2868117406972f850747ee34" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a49df60ee2868117406972f850747ee34" kindref="member">canUpdateAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>service_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>update<sp/>check<sp/>for<sp/>a<sp/>service<sp/>or<sp/>appointment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allows<sp/>service<sp/>deletion<sp/>for<sp/>the<sp/>owner<sp/>only.</highlight></codeline>
+<codeline lineno="205"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Service<sp/>type,<sp/>constrained<sp/>by<sp/>Service_t.</highlight></codeline>
+<codeline lineno="206"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller.</highlight></codeline>
+<codeline lineno="207"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_id<sp/>Id<sp/>of<sp/>the<sp/>service<sp/>whose<sp/>permissions<sp/>are<sp/>loaded.</highlight></codeline>
+<codeline lineno="208"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>denial<sp/>details.</highlight></codeline>
+<codeline lineno="209"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>the<sp/>requester<sp/>is<sp/>the<sp/>owner.</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Service_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>service<sp/>types<sp/>(clinic/pharmacy/lab/radiology).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212" refid="classapi_1_1v2_1_1PermissionManager_1a5ce6653354254b4b6b1788b68bce6fff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a5ce6653354254b4b6b1788b68bce6fff" kindref="member">canDelete</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>service_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>delete<sp/>check<sp/>for<sp/>a<sp/>service.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="214"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>canDelete()<sp/>for<sp/>services.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Service_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>service<sp/>types<sp/>(clinic/pharmacy/lab/radiology).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216" refid="classapi_1_1v2_1_1PermissionManager_1a984d7b5d477fa1a100f742adda535fb3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a984d7b5d477fa1a100f742adda535fb3" kindref="member">canDeleteAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>service_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>delete<sp/>check<sp/>for<sp/>a<sp/>service.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="218"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="219"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allows<sp/>staff<sp/>management<sp/>for<sp/>the<sp/>service<sp/>owner<sp/>or<sp/>admin<sp/>only.</highlight></codeline>
+<codeline lineno="220"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Entity<sp/>type<sp/>exposing<sp/>getTableName()/getServicePermissionsQuery().</highlight></codeline>
+<codeline lineno="221"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller.</highlight></codeline>
+<codeline lineno="222"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_id<sp/>Id<sp/>of<sp/>the<sp/>service<sp/>whose<sp/>permissions<sp/>are<sp/>loaded.</highlight></codeline>
+<codeline lineno="223"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>denial<sp/>details.</highlight></codeline>
+<codeline lineno="224"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>the<sp/>requester<sp/>is<sp/>owner<sp/>or<sp/>admin.</highlight></codeline>
+<codeline lineno="225"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Generic<sp/>overload;<sp/>T<sp/>must<sp/>provide<sp/>the<sp/>table/query<sp/>helpers<sp/>used<sp/>inside.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a850868371bb029e826761eff3b329c5c" kindref="member">canManageStaff</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>service_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>check;<sp/>only<sp/>owner/admin<sp/>may<sp/>manage<sp/>staff.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="229"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>canManageStaff().<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Generic<sp/>overload;<sp/>T<sp/>must<sp/>provide<sp/>the<sp/>table/query<sp/>helpers<sp/>used<sp/>inside.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1af314003136240877cbf15fe24c288a05" kindref="member">canManageStaffAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>service_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>form<sp/>of<sp/>the<sp/>staff-management<sp/>check.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>case<sp/>is<sp/>a<sp/>data<sp/>set<sp/>inside<sp/>clinic<sp/>workflow:<sp/>permission<sp/>comes<sp/>from<sp/>the<sp/>parent<sp/>service.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="235"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="236"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allows<sp/>creating<sp/>a<sp/>case<sp/>for<sp/>owner/admin<sp/>or<sp/>staff<sp/>with<sp/>the<sp/>CAN_WRITE<sp/>bit.</highlight></codeline>
+<codeline lineno="237"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>The<sp/>permission<sp/>query<sp/>is<sp/>derived<sp/>from<sp/>@p<sp/>data_j<sp/>(which<sp/>identifies<sp/>the<sp/>parent</highlight></codeline>
+<codeline lineno="238"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>service)<sp/>via<sp/>T::getPermissionsQueryForCreate.</highlight></codeline>
+<codeline lineno="239"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Case<sp/>type,<sp/>constrained<sp/>by<sp/>Case_t.</highlight></codeline>
+<codeline lineno="240"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller.</highlight></codeline>
+<codeline lineno="241"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data_j<sp/>Payload<sp/>used<sp/>to<sp/>build<sp/>the<sp/>permission<sp/>query.</highlight></codeline>
+<codeline lineno="242"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>denial<sp/>details.</highlight></codeline>
+<codeline lineno="243"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>the<sp/>requester<sp/>holds<sp/>sufficient<sp/>permission.</highlight></codeline>
+<codeline lineno="244"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Case_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>case<sp/>data<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246" refid="classapi_1_1v2_1_1PermissionManager_1a516ef7c5e4679c36c93b26bdd434509b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a516ef7c5e4679c36c93b26bdd434509b" kindref="member">canCreate</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>data_j,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>create<sp/>check;<sp/>true<sp/>when<sp/>the<sp/>action<sp/>is<sp/>allowed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="248"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>canCreate()<sp/>for<sp/>cases.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Case_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>case<sp/>data<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250" refid="classapi_1_1v2_1_1PermissionManager_1af13c583f1a64ce0d38551683c50ec070" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1af13c583f1a64ce0d38551683c50ec070" kindref="member">canCreateAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>data_j,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>create<sp/>check;<sp/>co_await<sp/>it<sp/>from<sp/>an<sp/>async<sp/>route.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="252"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="253"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allows<sp/>reading<sp/>a<sp/>case<sp/>for<sp/>owner/admin<sp/>or<sp/>staff<sp/>with<sp/>the<sp/>CAN_READ<sp/>bit.</highlight></codeline>
+<codeline lineno="254"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Case<sp/>type,<sp/>constrained<sp/>by<sp/>Case_t.</highlight></codeline>
+<codeline lineno="255"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller.</highlight></codeline>
+<codeline lineno="256"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>case_id<sp/>Id<sp/>used<sp/>to<sp/>build<sp/>the<sp/>permission<sp/>query.</highlight></codeline>
+<codeline lineno="257"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>denial<sp/>details.</highlight></codeline>
+<codeline lineno="258"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>the<sp/>requester<sp/>holds<sp/>sufficient<sp/>permission.</highlight></codeline>
+<codeline lineno="259"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Case_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>case<sp/>data<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261" refid="classapi_1_1v2_1_1PermissionManager_1a589a8a5cdfa8dbacb4f8a6dc70718a13" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a589a8a5cdfa8dbacb4f8a6dc70718a13" kindref="member">canRead</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>case_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>read<sp/>check<sp/>for<sp/>a<sp/>case.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="263"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>canRead()<sp/>for<sp/>cases.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Case_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>case<sp/>data<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265" refid="classapi_1_1v2_1_1PermissionManager_1a69637b8a9b6d0d73f1f8ae12a91c5fd2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a69637b8a9b6d0d73f1f8ae12a91c5fd2" kindref="member">canReadAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>case_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>read<sp/>check<sp/>for<sp/>a<sp/>case.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="267"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="268"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allows<sp/>updating<sp/>a<sp/>case<sp/>for<sp/>owner/admin<sp/>or<sp/>staff<sp/>with<sp/>the<sp/>CAN_WRITE<sp/>bit.</highlight></codeline>
+<codeline lineno="269"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Case<sp/>type,<sp/>constrained<sp/>by<sp/>Case_t.</highlight></codeline>
+<codeline lineno="270"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller.</highlight></codeline>
+<codeline lineno="271"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>case_id<sp/>Id<sp/>used<sp/>to<sp/>build<sp/>the<sp/>permission<sp/>query.</highlight></codeline>
+<codeline lineno="272"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>denial<sp/>details.</highlight></codeline>
+<codeline lineno="273"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>the<sp/>requester<sp/>holds<sp/>sufficient<sp/>permission.</highlight></codeline>
+<codeline lineno="274"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Case_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>case<sp/>data<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="276" refid="classapi_1_1v2_1_1PermissionManager_1a27ca0858f19c5a91561fc6baac4c921b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a27ca0858f19c5a91561fc6baac4c921b" kindref="member">canUpdate</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>case_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>update<sp/>check<sp/>for<sp/>a<sp/>case.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="278"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>canUpdate()<sp/>for<sp/>cases.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Case_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>case<sp/>data<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280" refid="classapi_1_1v2_1_1PermissionManager_1a3f8bed5ca5e8f25c1f7ddd7b414c3cc6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a3f8bed5ca5e8f25c1f7ddd7b414c3cc6" kindref="member">canUpdateAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>case_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>update<sp/>check<sp/>for<sp/>a<sp/>case.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="282"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="283"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allows<sp/>deleting<sp/>a<sp/>case<sp/>for<sp/>owner/admin<sp/>or<sp/>staff<sp/>with<sp/>the<sp/>CAN_DELETE<sp/>bit.</highlight></codeline>
+<codeline lineno="284"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Case<sp/>type,<sp/>constrained<sp/>by<sp/>Case_t.</highlight></codeline>
+<codeline lineno="285"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller.</highlight></codeline>
+<codeline lineno="286"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>Id<sp/>used<sp/>to<sp/>build<sp/>the<sp/>permission<sp/>query.</highlight></codeline>
+<codeline lineno="287"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>denial<sp/>details.</highlight></codeline>
+<codeline lineno="288"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>the<sp/>requester<sp/>holds<sp/>sufficient<sp/>permission.</highlight></codeline>
+<codeline lineno="289"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Case_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>case<sp/>data<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291" refid="classapi_1_1v2_1_1PermissionManager_1a9ba39dbfd12564c994c208afe10d9d41" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a9ba39dbfd12564c994c208afe10d9d41" kindref="member">canDelete</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>delete<sp/>check;<sp/>_id<sp/>is<sp/>the<sp/>target<sp/>entity<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="293"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>canDelete()<sp/>for<sp/>cases.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Case_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>case<sp/>data<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295" refid="classapi_1_1v2_1_1PermissionManager_1a16329f4f9bbd3a5e6044bded5958d259" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a16329f4f9bbd3a5e6044bded5958d259" kindref="member">canDeleteAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>delete<sp/>check;<sp/>_id<sp/>is<sp/>the<sp/>target<sp/>entity<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>appointment<sp/>is<sp/>either<sp/>for<sp/>any<sp/>service:<sp/>the<sp/>target<sp/>clinic<sp/>id<sp/>comes<sp/>from<sp/>the<sp/>request<sp/>payload.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="299"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="300"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allows<sp/>creating<sp/>an<sp/>appointment<sp/>for<sp/>owner/admin<sp/>or<sp/>staff<sp/>with<sp/>the<sp/>CAN_WRITE<sp/>bit.</highlight></codeline>
+<codeline lineno="301"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>The<sp/>target<sp/>service<sp/>id<sp/>is<sp/>extracted<sp/>from<sp/>@p<sp/>service_j<sp/>(&quot;clinic_id&quot;);<sp/>a<sp/>missing</highlight></codeline>
+<codeline lineno="302"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>or<sp/>invalid<sp/>value<sp/>fails<sp/>the<sp/>check<sp/>before<sp/>any<sp/>permission<sp/>lookup.</highlight></codeline>
+<codeline lineno="303"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Appointment<sp/>type,<sp/>constrained<sp/>by<sp/>Appointment_t.</highlight></codeline>
+<codeline lineno="304"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller.</highlight></codeline>
+<codeline lineno="305"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_j<sp/>Payload<sp/>containing<sp/>the<sp/>clinic/service<sp/>id.</highlight></codeline>
+<codeline lineno="306"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>denial<sp/>details.</highlight></codeline>
+<codeline lineno="307"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>the<sp/>requester<sp/>holds<sp/>sufficient<sp/>permission.</highlight></codeline>
+<codeline lineno="308"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>appointment<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="310" refid="classapi_1_1v2_1_1PermissionManager_1a3ea07c998d2818c6ef1585a83d58de31" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a3ea07c998d2818c6ef1585a83d58de31" kindref="member">canCreate</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>service_j,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>create<sp/>check;<sp/>the<sp/>payload<sp/>identifies<sp/>the<sp/>target<sp/>service.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="312"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>canCreate()<sp/>for<sp/>appointments.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>appointment<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="314" refid="classapi_1_1v2_1_1PermissionManager_1a4fde2b6b7c617ef97f0a3aa6a5135425" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a4fde2b6b7c617ef97f0a3aa6a5135425" kindref="member">canCreateAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>service_j,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>create<sp/>check<sp/>using<sp/>the<sp/>service<sp/>payload.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="316"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="317"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allows<sp/>reading<sp/>an<sp/>appointment<sp/>for<sp/>owner/admin<sp/>or<sp/>staff<sp/>with<sp/>the<sp/>CAN_READ<sp/>bit.</highlight></codeline>
+<codeline lineno="318"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Appointment<sp/>type,<sp/>constrained<sp/>by<sp/>Appointment_t.</highlight></codeline>
+<codeline lineno="319"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller.</highlight></codeline>
+<codeline lineno="320"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_id<sp/>Id<sp/>used<sp/>to<sp/>build<sp/>the<sp/>permission<sp/>query.</highlight></codeline>
+<codeline lineno="321"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>denial<sp/>details.</highlight></codeline>
+<codeline lineno="322"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>the<sp/>requester<sp/>holds<sp/>sufficient<sp/>permission.</highlight></codeline>
+<codeline lineno="323"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>appointment<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="325" refid="classapi_1_1v2_1_1PermissionManager_1a52a131813fb846d82e3b7b4b3363a6b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a52a131813fb846d82e3b7b4b3363a6b2" kindref="member">canRead</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>service_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>read<sp/>check<sp/>for<sp/>a<sp/>service<sp/>or<sp/>appointment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="327"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>canRead()<sp/>for<sp/>appointments.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>appointment<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="329" refid="classapi_1_1v2_1_1PermissionManager_1abd8a7e3b5ffcb254c3954daa0cb44ceb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1abd8a7e3b5ffcb254c3954daa0cb44ceb" kindref="member">canReadAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>service_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>read<sp/>check<sp/>for<sp/>a<sp/>service<sp/>or<sp/>appointment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="331"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="332"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allows<sp/>updating<sp/>an<sp/>appointment<sp/>for<sp/>owner/admin<sp/>or<sp/>staff<sp/>with<sp/>the<sp/>CAN_WRITE<sp/>bit.</highlight></codeline>
+<codeline lineno="333"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Appointment<sp/>type,<sp/>constrained<sp/>by<sp/>Appointment_t.</highlight></codeline>
+<codeline lineno="334"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller.</highlight></codeline>
+<codeline lineno="335"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_id<sp/>Id<sp/>used<sp/>to<sp/>build<sp/>the<sp/>permission<sp/>query.</highlight></codeline>
+<codeline lineno="336"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>denial<sp/>details.</highlight></codeline>
+<codeline lineno="337"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>the<sp/>requester<sp/>holds<sp/>sufficient<sp/>permission.</highlight></codeline>
+<codeline lineno="338"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>appointment<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="340" refid="classapi_1_1v2_1_1PermissionManager_1a99d92a72b1a2a99f6392b3a4f9b08374" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a99d92a72b1a2a99f6392b3a4f9b08374" kindref="member">canUpdate</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>service_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>update<sp/>check<sp/>for<sp/>a<sp/>service<sp/>or<sp/>appointment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="342"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>canUpdate()<sp/>for<sp/>appointments.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>appointment<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="344" refid="classapi_1_1v2_1_1PermissionManager_1a49df60ee2868117406972f850747ee34" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a49df60ee2868117406972f850747ee34" kindref="member">canUpdateAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>service_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>update<sp/>check<sp/>for<sp/>a<sp/>service<sp/>or<sp/>appointment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="346"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="347"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Allows<sp/>deleting<sp/>an<sp/>appointment<sp/>for<sp/>owner/admin<sp/>or<sp/>staff<sp/>with<sp/>the<sp/>CAN_DELETE<sp/>bit.</highlight></codeline>
+<codeline lineno="348"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Appointment<sp/>type,<sp/>constrained<sp/>by<sp/>Appointment_t.</highlight></codeline>
+<codeline lineno="349"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller.</highlight></codeline>
+<codeline lineno="350"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>Id<sp/>used<sp/>to<sp/>build<sp/>the<sp/>permission<sp/>query.</highlight></codeline>
+<codeline lineno="351"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Receives<sp/>denial<sp/>details.</highlight></codeline>
+<codeline lineno="352"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>the<sp/>requester<sp/>holds<sp/>sufficient<sp/>permission.</highlight></codeline>
+<codeline lineno="353"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>appointment<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="355" refid="classapi_1_1v2_1_1PermissionManager_1a9ba39dbfd12564c994c208afe10d9d41" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a9ba39dbfd12564c994c208afe10d9d41" kindref="member">canDelete</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>delete<sp/>check;<sp/>_id<sp/>is<sp/>the<sp/>target<sp/>entity<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="357"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>canDelete()<sp/>for<sp/>appointments.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Restricts<sp/>this<sp/>overload<sp/>to<sp/>appointment<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="359" refid="classapi_1_1v2_1_1PermissionManager_1a16329f4f9bbd3a5e6044bded5958d259" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManager_1a16329f4f9bbd3a5e6044bded5958d259" kindref="member">canDeleteAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/>uint64_t<sp/>_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>delete<sp/>check;<sp/>_id<sp/>is<sp/>the<sp/>target<sp/>entity<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>private<sp/>state;<sp/>keeping<sp/>the<sp/>section<sp/>empty<sp/>documents<sp/>that<sp/>the<sp/>class<sp/>is<sp/>stateless.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="363"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>api::v2</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,995 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="message_8hpp" kind="file" language="C++">
+    <compoundname>message.hpp</compoundname>
+    <includes local="no">trantor/utils/Logger.h</includes>
+    <includes local="no">string</includes>
+    <includedby refid="boundedexecutor_8cpp" local="yes">src/concurrency/boundedexecutor.cpp</includedby>
+    <includedby refid="configurator_8hpp" local="yes">src/configurator/configurator.hpp</includedby>
+    <includedby refid="envloader_8hpp" local="yes">src/configurator/envloader/envloader.hpp</includedby>
+    <includedby refid="envvars_8cpp" local="yes">src/configurator/envloader/envvars/envvars.cpp</includedby>
+    <includedby refid="controller_8hpp" local="yes">src/controllers/base/controller/controller.hpp</includedby>
+    <includedby refid="databasecontroller_8hpp" local="yes">src/controllers/databasecontroller/databasecontroller.hpp</includedby>
+    <includedby refid="asyncresultmapper_8cpp" local="yes">src/database/asyncresultmapper.cpp</includedby>
+    <includedby refid="database_8cpp" local="yes">src/database/database.cpp</includedby>
+    <includedby refid="databaseconnectionpool_8cpp" local="yes">src/database/databaseconnectionpool.cpp</includedby>
+    <includedby refid="watchdog_8cpp" local="yes">src/database/watchdog.cpp</includedby>
+    <includedby refid="client_8hpp" local="yes">src/entities/base/client.hpp</includedby>
+    <includedby refid="entity_8hpp" local="yes">src/entities/base/entity.hpp</includedby>
+    <includedby refid="service_8hpp" local="yes">src/entities/base/service.hpp</includedby>
+    <includedby refid="entities_2base_2types_8hpp" local="yes">src/entities/base/types.hpp</includedby>
+    <includedby refid="provider_8hpp" local="yes">src/entities/people/provider.hpp</includedby>
+    <includedby refid="people_2user_8hpp" local="yes">src/entities/people/user.hpp</includedby>
+    <includedby refid="dosdetector_8cpp" local="yes">src/gatekeeper/dosdetector/dosdetector.cpp</includedby>
+    <includedby refid="keeprbase_8cpp" local="yes">src/gatekeeper/keeprbase/keeprbase.cpp</includedby>
+    <includedby refid="passwordcrypt_8cpp" local="yes">src/gatekeeper/passwordcrypt/passwordcrypt.cpp</includedby>
+    <includedby refid="permissionmanager__private_8hpp" local="yes">src/gatekeeper/permissionmanager/permissionmanager_private.hpp</includedby>
+    <includedby refid="sessionmanager_8cpp" local="yes">src/gatekeeper/sessionmanager/sessionmanager.cpp</includedby>
+    <includedby refid="server_8cpp" local="yes">src/server/server.cpp</includedby>
+    <includedby refid="communicate_8cpp" local="yes">src/utils/communicate/communicate.cpp</includedby>
+    <includedby refid="message_8cpp" local="yes">src/utils/message/message.cpp</includedby>
+    <includedby refid="databaseschema_8cpp" local="yes">src/validator/databaseschema/databaseschema.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/utils/message/message.hpp</label>
+        <link refid="message_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="2">
+        <label>trantor/utils/Logger.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="9">
+        <label>src/api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/api/v2/filters/auth.hpp</label>
+        <link refid="auth_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>src/api/v2/filters/ratelimit.hpp</label>
+        <link refid="ratelimit_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>src/api/v2/routes/appointments.hpp</label>
+        <link refid="appointments_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>src/api/v2/routes/clients.hpp</label>
+        <link refid="clients_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>src/api/v2/routes/clinics.hpp</label>
+        <link refid="api_2v2_2routes_2clinics_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>src/api/v2/routes/services.hpp</label>
+        <link refid="services_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/api/v2/routes/staff.hpp</label>
+        <link refid="staff_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/concurrency/boundedexecutor.cpp</label>
+        <link refid="boundedexecutor_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/configurator/configurator.cpp</label>
+        <link refid="configurator_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/configurator/configurator.hpp</label>
+        <link refid="configurator_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+      </node>
+      <node id="82">
+        <label>src/configurator/envloader/envloader.cpp</label>
+        <link refid="envloader_8cpp"/>
+      </node>
+      <node id="81">
+        <label>src/configurator/envloader/envloader.hpp</label>
+        <link refid="envloader_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+      </node>
+      <node id="83">
+        <label>src/configurator/envloader/envvars/envvars.cpp</label>
+        <link refid="envvars_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
+        <link refid="appointmentcontroller_8cpp"/>
+      </node>
+      <node id="19">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
+        <link refid="appointmentcontroller_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>src/controllers/base/controller/controller.hpp</label>
+        <link refid="controller_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>src/controllers/clientcontroller/clientcontroller.cpp</label>
+        <link refid="clientcontroller_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
+        <link refid="clientcontroller_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
+        <link refid="cliniccontroller_8cpp"/>
+      </node>
+      <node id="23">
+        <label>src/controllers/cliniccontroller/cliniccontroller.hpp</label>
+        <link refid="cliniccontroller_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>src/controllers/databasecontroller/databasecontroller.cpp</label>
+        <link refid="databasecontroller_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/controllers/databasecontroller/databasecontroller.hpp</label>
+        <link refid="databasecontroller_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
+        <link refid="entitycontroller_8cpp"/>
+      </node>
+      <node id="17">
+        <label>src/controllers/entitycontroller/entitycontroller.hpp</label>
+        <link refid="entitycontroller_8hpp"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
+        <link refid="servicecontroller_8cpp"/>
+      </node>
+      <node id="26">
+        <label>src/controllers/servicecontroller/servicecontroller.hpp</label>
+        <link refid="servicecontroller_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
+        <link refid="staffcontroller_8cpp"/>
+      </node>
+      <node id="29">
+        <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
+        <link refid="staffcontroller_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="70">
+        <label>src/database/asyncdbclient.cpp</label>
+        <link refid="asyncdbclient_8cpp"/>
+      </node>
+      <node id="71">
+        <label>src/database/asyncdbclient.hpp</label>
+        <link refid="asyncdbclient_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="84">
+        <label>src/database/asyncresultmapper.cpp</label>
+        <link refid="asyncresultmapper_8cpp"/>
+      </node>
+      <node id="30">
+        <label>src/database/database.cpp</label>
+        <link refid="database_8cpp"/>
+      </node>
+      <node id="72">
+        <label>src/database/databaseconnectionpool.cpp</label>
+        <link refid="databaseconnectionpool_8cpp"/>
+      </node>
+      <node id="73">
+        <label>src/database/dbexecutor.cpp</label>
+        <link refid="dbexecutor_8cpp"/>
+      </node>
+      <node id="85">
+        <label>src/database/watchdog.cpp</label>
+        <link refid="watchdog_8cpp"/>
+      </node>
+      <node id="32">
+        <label>src/entities/appointments/base/appointment.hpp</label>
+        <link refid="appointment_8hpp"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>src/entities/appointments/clinic.hpp</label>
+        <link refid="clinic_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>src/entities/appointments/laboratory.hpp</label>
+        <link refid="laboratory_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>src/entities/appointments/pharmacy.hpp</label>
+        <link refid="pharmacy_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>src/entities/appointments/radiologycenter.hpp</label>
+        <link refid="radiologycenter_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>src/entities/appointments/user.hpp</label>
+        <link refid="appointments_2user_8hpp"/>
+      </node>
+      <node id="41">
+        <label>src/entities/base/case.hpp</label>
+        <link refid="case_8hpp"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>src/entities/base/client.hpp</label>
+        <link refid="client_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>src/entities/base/entity.hpp</label>
+        <link refid="entity_8hpp"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>src/entities/base/service.hpp</label>
+        <link refid="service_8hpp"/>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>src/entities/base/types.hpp</label>
+        <link refid="entities_2base_2types_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>src/entities/people/provider.hpp</label>
+        <link refid="provider_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>src/entities/people/user.hpp</label>
+        <link refid="people_2user_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>src/entities/services/clinics/clinics.hpp</label>
+        <link refid="entities_2services_2clinics_2clinics_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>src/entities/services/clinics/patient/health.hpp</label>
+        <link refid="health_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>src/entities/services/clinics/patient/patient.hpp</label>
+        <link refid="patient_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>src/entities/services/clinics/patient/patientdrugs.hpp</label>
+        <link refid="patientdrugs_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>src/entities/services/clinics/patient/reports.hpp</label>
+        <link refid="reports_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>src/entities/services/clinics/visits/paidservices.hpp</label>
+        <link refid="paidservices_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>src/entities/services/clinics/visits/prescriptions.hpp</label>
+        <link refid="prescriptions_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>src/entities/services/clinics/visits/requests.hpp</label>
+        <link refid="requests_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>src/entities/services/clinics/visits/visitdrugs.hpp</label>
+        <link refid="visitdrugs_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>src/entities/services/clinics/visits/visits.hpp</label>
+        <link refid="visits_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>src/entities/services/laboratories.hpp</label>
+        <link refid="laboratories_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>src/entities/services/pharmacies.hpp</label>
+        <link refid="pharmacies_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>src/entities/services/radiologycenters.hpp</label>
+        <link refid="radiologycenters_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="76">
+        <label>src/gatekeeper/dosdetector/dosdetector.cpp</label>
+        <link refid="dosdetector_8cpp"/>
+      </node>
+      <node id="75">
+        <label>src/gatekeeper/dosdetector/dosdetector.hpp</label>
+        <link refid="dosdetector_8hpp"/>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>src/gatekeeper/gatekeeper.cpp</label>
+        <link refid="gatekeeper_8cpp"/>
+      </node>
+      <node id="62">
+        <label>src/gatekeeper/gatekeeper.hpp</label>
+        <link refid="gatekeeper_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>src/gatekeeper/includes.hpp</label>
+        <link refid="includes_8hpp"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>src/gatekeeper/keeprbase/keeprbase.cpp</label>
+        <link refid="keeprbase_8cpp"/>
+      </node>
+      <node id="59">
+        <label>src/gatekeeper/keeprbase/keeprbase.hpp</label>
+        <link refid="keeprbase_8hpp"/>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+      </node>
+      <node id="86">
+        <label>src/gatekeeper/passwordcrypt/passwordcrypt.cpp</label>
+        <link refid="passwordcrypt_8cpp"/>
+      </node>
+      <node id="77">
+        <label>src/gatekeeper/passwordcrypt/passwordworker.cpp</label>
+        <link refid="passwordworker_8cpp"/>
+      </node>
+      <node id="78">
+        <label>src/gatekeeper/permissionmanager/permissioncache.hpp</label>
+        <link refid="permissioncache_8hpp"/>
+        <childnode refid="67" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>src/gatekeeper/permissionmanager/permissionmanager.cpp</label>
+        <link refid="permissionmanager_8cpp"/>
+      </node>
+      <node id="68">
+        <label>src/gatekeeper/permissionmanager/permissionmanager_private.cpp</label>
+        <link refid="permissionmanager__private_8cpp"/>
+      </node>
+      <node id="67">
+        <label>src/gatekeeper/permissionmanager/permissionmanager_private.hpp</label>
+        <link refid="permissionmanager__private_8hpp"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>src/gatekeeper/sessionmanager/sessionmanager.cpp</label>
+        <link refid="sessionmanager_8cpp"/>
+      </node>
+      <node id="61">
+        <label>src/gatekeeper/sessionmanager/sessionmanager.hpp</label>
+        <link refid="sessionmanager_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+      </node>
+      <node id="66">
+        <label>src/gatekeeper/tokenmanager/tokenmanager.cpp</label>
+        <link refid="tokenmanager_8cpp"/>
+      </node>
+      <node id="65">
+        <label>src/gatekeeper/tokenmanager/tokenmanager.hpp</label>
+        <link refid="tokenmanager_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="79">
+        <label>src/server/cors.hpp</label>
+        <link refid="cors_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/server/server.hpp</label>
+        <link refid="server_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="80">
+        <label>src/utils/Logger/logger.cpp</label>
+        <link refid="logger_8cpp"/>
+      </node>
+      <node id="87">
+        <label>src/utils/communicate/communicate.cpp</label>
+        <link refid="communicate_8cpp"/>
+      </node>
+      <node id="88">
+        <label>src/utils/message/message.cpp</label>
+        <link refid="message_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/utils/message/message.hpp</label>
+        <link refid="message_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+      </node>
+      <node id="69">
+        <label>src/validator/databaseschema/databaseschema.cpp</label>
+        <link refid="databaseschema_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classMessage" prot="public">Message</innerclass>
+    <briefdescription>
+<para>Static helpers for coloured console/status logging. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Declares the <ref refid="classMessage" kindref="compound">Message</ref> class: a stateless facade with functions to log at debug, info, warning, error or fatal severity, plus ConfMessage and InitMessage for startup notices. Severity messages go through trantor::Logger and therefore reach the configured Logger/spdlog sinks; the two startup notices print straight to the terminal with a &quot;[Project Valhalla]&quot; prefix. A small colour map and a newline-flattening helper support the formatting.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: This is the everyday logging interface used all over the code. Instead of every component calling trantor or spdlog directly, they call <ref refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" kindref="member">Message::InfoMessage</ref>, <ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref> and so on. That centralises colour choices and message formatting, and makes sure records flow into the one logger configured at startup. ConfMessage/InitMessage give friendly, clearly labelled startup output.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>Static member functions: <ulink url="https://en.cppreference.com/w/cpp/language/static#Static_member_functions">https://en.cppreference.com/w/cpp/language/static#Static_member_functions</ulink></para>
+</listitem><listitem><para>Function overloading (two MessageImpl versions): <ulink url="https://en.cppreference.com/w/cpp/language/overload_resolution">https://en.cppreference.com/w/cpp/language/overload_resolution</ulink></para>
+</listitem><listitem><para>ANSI escape codes for colour: <ulink url="https://en.wikipedia.org/wiki/ANSI_escape_code">https://en.wikipedia.org/wiki/ANSI_escape_code</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>message.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Static<sp/>helpers<sp/>for<sp/>coloured<sp/>console/status<sp/>logging.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>Declares<sp/>the<sp/>Message<sp/>class:<sp/>a<sp/>stateless<sp/>facade<sp/>with<sp/>functions<sp/>to<sp/>log</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>debug,<sp/>info,<sp/>warning,<sp/>error<sp/>or<sp/>fatal<sp/>severity,<sp/>plus<sp/>ConfMessage<sp/>and</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>InitMessage<sp/>for<sp/>startup<sp/>notices.<sp/>Severity<sp/>messages<sp/>go<sp/>through</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trantor::Logger<sp/>and<sp/>therefore<sp/>reach<sp/>the<sp/>configured<sp/>Logger/spdlog</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sinks;<sp/>the<sp/>two<sp/>startup<sp/>notices<sp/>print<sp/>straight<sp/>to<sp/>the<sp/>terminal<sp/>with<sp/>a</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;[Project<sp/>Valhalla]&quot;<sp/>prefix.<sp/>A<sp/>small<sp/>colour<sp/>map<sp/>and<sp/>a<sp/>newline-flattening</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>helper<sp/>support<sp/>the<sp/>formatting.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>the<sp/>everyday<sp/>logging<sp/>interface<sp/>used<sp/>all<sp/>over<sp/>the<sp/>code.<sp/>Instead<sp/>of</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>every<sp/>component<sp/>calling<sp/>trantor<sp/>or<sp/>spdlog<sp/>directly,<sp/>they<sp/>call<sp/>Message::InfoMessage,</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>Message::ErrorMessage<sp/>and<sp/>so<sp/>on.<sp/>That<sp/>centralises<sp/>colour<sp/>choices<sp/>and<sp/>message</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>formatting,<sp/>and<sp/>makes<sp/>sure<sp/>records<sp/>flow<sp/>into<sp/>the<sp/>one<sp/>logger<sp/>configured<sp/>at</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>startup.<sp/>ConfMessage/InitMessage<sp/>give<sp/>friendly,<sp/>clearly<sp/>labelled<sp/>startup<sp/>output.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>Static<sp/>member<sp/>functions:<sp/>https://en.cppreference.com/w/cpp/language/static#Static_member_functions</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>Function<sp/>overloading<sp/>(two<sp/>MessageImpl<sp/>versions):<sp/>https://en.cppreference.com/w/cpp/language/overload_resolution</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>ANSI<sp/>escape<sp/>codes<sp/>for<sp/>colour:<sp/>https://en.wikipedia.org/wiki/ANSI_escape_code</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;trantor/utils/Logger.h&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>trantor::Logger<sp/>is<sp/>the<sp/>logging<sp/>backend<sp/>used<sp/>by<sp/>the<sp/>severity<sp/>helpers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>is<sp/>the<sp/>message<sp/>type<sp/>passed<sp/>to<sp/>every<sp/>helper.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="32"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>@class<sp/>Message</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Stateless<sp/>facade<sp/>for<sp/>emitting<sp/>coloured<sp/>status<sp/>messages.</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>@details<sp/>Severity<sp/>helpers<sp/>(Debug<sp/>through<sp/>Critical)<sp/>write<sp/>through</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trantor::Logger,<sp/>so<sp/>they<sp/>flow<sp/>into<sp/>the<sp/>configured<sp/>Logger/spdlog</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sinks.<sp/>ConfMessage<sp/>and<sp/>InitMessage<sp/>are<sp/>startup/status<sp/>notices<sp/>that</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>instead<sp/>print<sp/>directly<sp/>to<sp/>stdout<sp/>with<sp/>a<sp/>`[Project<sp/>Valhalla]`<sp/>prefix.</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>All<sp/>methods<sp/>are<sp/>static;<sp/>instances<sp/>carry<sp/>no<sp/>state.</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>@see<sp/>Logger</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classMessage" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMessage_1a4e0c3e0a2be25186519ba075d7851b71" kindref="member">Message</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>class<sp/>used<sp/>only<sp/>through<sp/>static<sp/>functions;<sp/>instances<sp/>hold<sp/>no<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>construction;<sp/>Message<sp/>is<sp/>stateless.</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classMessage_1a4e0c3e0a2be25186519ba075d7851b71" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a4e0c3e0a2be25186519ba075d7851b71" kindref="member">Message</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>constructor<sp/>exists<sp/>but<sp/>is<sp/>rarely<sp/>used<sp/>since<sp/>all<sp/>methods<sp/>are<sp/>static.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Virtual<sp/>destructor;<sp/>there<sp/>are<sp/>no<sp/>owned<sp/>resources<sp/>to<sp/>release.</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="classMessage_1a5a489bb5624b522457e07724510523ac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classMessage_1a5a489bb5624b522457e07724510523ac" kindref="member">~Message</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Virtual<sp/>so<sp/>derived<sp/>classes<sp/>could<sp/>be<sp/>destroyed<sp/>safely;<sp/>nothing<sp/>to<sp/>clean<sp/>up<sp/>here.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Copy<sp/>construction;<sp/>the<sp/>type<sp/>is<sp/>stateless.</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classMessage_1a86c3737ea3a70780ed5ea7c5403b9507" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a86c3737ea3a70780ed5ea7c5403b9507" kindref="member">Message</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMessage_1a4e0c3e0a2be25186519ba075d7851b71" kindref="member">Message</ref>&amp;<sp/>other)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copying<sp/>an<sp/>object<sp/>with<sp/>no<sp/>data<sp/>is<sp/>harmless.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Move<sp/>construction;<sp/>the<sp/>type<sp/>is<sp/>stateless.</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classMessage_1a2a8c28d1a44fbc15a2bd8b974bbfa242" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a2a8c28d1a44fbc15a2bd8b974bbfa242" kindref="member">Message</ref>(<ref refid="classMessage_1a4e0c3e0a2be25186519ba075d7851b71" kindref="member">Message</ref>&amp;&amp;<sp/>other)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Moving<sp/>an<sp/>object<sp/>with<sp/>no<sp/>data<sp/>is<sp/>harmless.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Copy<sp/>assignment;<sp/>the<sp/>type<sp/>is<sp/>stateless.</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classMessage_1a7da4c19efcee0fbbe592e3fe67a95021" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a4e0c3e0a2be25186519ba075d7851b71" kindref="member">Message</ref>&amp;<sp/><ref refid="classMessage_1a7da4c19efcee0fbbe592e3fe67a95021" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMessage_1a4e0c3e0a2be25186519ba075d7851b71" kindref="member">Message</ref>&amp;<sp/>other)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Assignment<sp/>copies<sp/>nothing.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Move<sp/>assignment;<sp/>the<sp/>type<sp/>is<sp/>stateless.</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classMessage_1a7307e42c5da334c23ad52a2e7eaf755c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a4e0c3e0a2be25186519ba075d7851b71" kindref="member">Message</ref>&amp;<sp/><ref refid="classMessage_1a7307e42c5da334c23ad52a2e7eaf755c" kindref="member">operator=</ref>(<ref refid="classMessage_1a4e0c3e0a2be25186519ba075d7851b71" kindref="member">Message</ref>&amp;&amp;<sp/>other)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>assignment<sp/>moves<sp/>nothing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Logs<sp/>a<sp/>message<sp/>at<sp/>debug<sp/>severity.</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>status_message<sp/>Text<sp/>to<sp/>log.</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1a35ba4529b26ccea626d1b885815369cb" kindref="member">DebugMessage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>status_message);<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Verbose<sp/>detail<sp/>for<sp/>developers.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Logs<sp/>a<sp/>message<sp/>at<sp/>info<sp/>severity.</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>status_message<sp/>Text<sp/>to<sp/>log.</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" kindref="member">InfoMessage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>status_message);<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Normal,<sp/>everyday<sp/>information.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Logs<sp/>a<sp/>message<sp/>at<sp/>warning<sp/>severity.</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>status_message<sp/>Text<sp/>to<sp/>log.</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1a3d5db738594c8af1428053227959259e" kindref="member">WarningMessage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>status_message);<sp/><sp/></highlight><highlight class="comment">//<sp/>Something<sp/>unexpected<sp/>but<sp/>not<sp/>fatal.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Logs<sp/>a<sp/>message<sp/>at<sp/>error<sp/>severity.</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>status_message<sp/>Text<sp/>to<sp/>log.</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">ErrorMessage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>status_message);<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>failure<sp/>that<sp/>was<sp/>handled.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Logs<sp/>a<sp/>message<sp/>at<sp/>fatal<sp/>severity<sp/>(used<sp/>for<sp/>critical<sp/>errors).</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>status_message<sp/>Text<sp/>to<sp/>log.</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">CriticalMessage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>status_message);<sp/></highlight><highlight class="comment">//<sp/>The<sp/>most<sp/>severe<sp/>level,<sp/>for<sp/>critical<sp/>failures.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Prints<sp/>a<sp/>configuration<sp/>notice<sp/>directly<sp/>to<sp/>stdout.</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>status_message<sp/>Text<sp/>to<sp/>print.</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">ConfMessage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>status_message);<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>startup<sp/>notice<sp/>tagged<sp/>&quot;config&quot;.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Prints<sp/>an<sp/>initialisation<sp/>notice<sp/>directly<sp/>to<sp/>stdout.</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>status_message<sp/>Text<sp/>to<sp/>print.</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1aaa3d510c50f46a224c9021dfd5d33ecb" kindref="member">InitMessage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>status_message);<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>startup<sp/>notice<sp/>tagged<sp/>&quot;init&quot;.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>ANSI<sp/>colour<sp/>associated<sp/>with<sp/>a<sp/>Trantor<sp/>log<sp/>level.</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>level<sp/>Severity<sp/>to<sp/>colourise.</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>ANSI<sp/>escape<sp/>sequence<sp/>for<sp/>`level`.</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>std::out_of_range<sp/>For<sp/>a<sp/>level<sp/>absent<sp/>from<sp/>the<sp/>internal<sp/>map.</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classMessage_1ab1578286398f61ef66338441d1ea99e3" kindref="member">get_color</ref>(trantor::Logger::LogLevel<sp/>level);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Looks<sp/>up<sp/>the<sp/>escape<sp/>code<sp/>that<sp/>gives<sp/>each<sp/>severity<sp/>its<sp/>colour.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Formats<sp/>and<sp/>emits<sp/>a<sp/>coloured<sp/>message<sp/>through<sp/>trantor::Logger.</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_status_message<sp/>Text<sp/>to<sp/>log,<sp/>with<sp/>newlines<sp/>flattened.</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_level<sp/>Severity<sp/>of<sp/>the<sp/>record.</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1a2491b74248227f3621af9b740c352ab9" kindref="member">MessageImpl</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>_status_message,<sp/>trantor::Logger::LogLevel<sp/>_level);<sp/><sp/></highlight><highlight class="comment">//<sp/>Shared<sp/>implementation<sp/>for<sp/>the<sp/>five<sp/>severity<sp/>helpers.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Prints<sp/>a<sp/>tagged<sp/>notice<sp/>to<sp/>stdout<sp/>via<sp/>fmt::print.</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_status_message<sp/>Text<sp/>to<sp/>print,<sp/>with<sp/>newlines<sp/>flattened.</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_type<sp/>Tag<sp/>shown<sp/>in<sp/>brackets<sp/>(e.g.<sp/>&quot;config&quot;,<sp/>&quot;init&quot;).</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1a2491b74248227f3621af9b740c352ab9" kindref="member">MessageImpl</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>_status_message,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>_type);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Shared<sp/>implementation<sp/>for<sp/>the<sp/>two<sp/>startup<sp/>notices.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Replaces<sp/>newline<sp/>characters<sp/>with<sp/>spaces<sp/>for<sp/>single-line<sp/>output.</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_str<sp/>Original<sp/>text.</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>Text<sp/>with<sp/>all<sp/>newline<sp/>characters<sp/>replaced<sp/>by<sp/>spaces.</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classMessage_1a866730d10417555fd9cf17fe1b94b0f4" kindref="member">removeNewLine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>_str);<sp/><sp/></highlight><highlight class="comment">//<sp/>Keeps<sp/>every<sp/>record<sp/>on<sp/>one<sp/>line<sp/>so<sp/>log<sp/>prefixes<sp/>stay<sp/>meaningful.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="src/utils/message/message.hpp"/>
+  </compounddef>
+</doxygen>

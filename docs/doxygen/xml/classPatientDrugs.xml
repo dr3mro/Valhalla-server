@@ -1,0 +1,413 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classPatientDrugs" kind="class" language="C++" prot="public">
+    <compoundname>PatientDrugs</compoundname>
+    <basecompoundref refid="classCase" prot="public" virt="non-virtual">Case</basecompoundref>
+    <includes refid="patientdrugs_8hpp" local="no">patientdrugs.hpp</includes>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classPatientDrugs_1a3dcf0340cadf6bea2ddff558c693f78c" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>auto</type>
+        <definition>auto PatientDrugs::TABLENAME</definition>
+        <argsstring></argsstring>
+        <name>TABLENAME</name>
+        <qualifiedname>PatientDrugs::TABLENAME</qualifiedname>
+        <initializer>= &quot;patients_drugs&quot;</initializer>
+        <briefdescription>
+<para>Table bound to this entity; used by CRUD builders and the read/update/delete permission joins. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patientdrugs.hpp" line="54" column="27" bodyfile="src/entities/services/clinics/patient/patientdrugs.hpp" bodystart="54" bodyend="-1"/>
+        <referencedby refid="classPatientDrugs_1afd534a42f237d038d793e91293d188fb" compoundref="patientdrugs_8hpp" startline="137" endline="137">getPermissionsQueryForDelete</referencedby>
+        <referencedby refid="classPatientDrugs_1ac31b08ce384c3752980683b134ffa47d" compoundref="patientdrugs_8hpp" startline="125" endline="125">getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classPatientDrugs_1a48388f38b4a60efb58c0456bb91fc6f6" compoundref="patientdrugs_8hpp" startline="131" endline="131">getPermissionsQueryForUpdate</referencedby>
+        <referencedby refid="classPatientDrugs_1abb8dd85aeea93c92054ba17fd7c71e08" compoundref="patientdrugs_8hpp" startline="79" endline="79">getTableName</referencedby>
+        <referencedby refid="classPatientDrugs_1aec0c7883f73ef258f4dcff0befdf524e" compoundref="patientdrugs_8hpp" startline="71" endline="73">PatientDrugs</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classPatientDrugs_1a3a9e5f68092fa332695e112d32261c1e" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>auto</type>
+        <definition>auto PatientDrugs::KEYREFTABLENAME</definition>
+        <argsstring></argsstring>
+        <name>KEYREFTABLENAME</name>
+        <qualifiedname>PatientDrugs::KEYREFTABLENAME</qualifiedname>
+        <initializer>= &quot;patients&quot;</initializer>
+        <briefdescription>
+<para>Table whose <computeroutput>id</computeroutput> is the create-payload key and whose <computeroutput>clinic_id</computeroutput> identifies the owning clinic. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patientdrugs.hpp" line="56" column="27" bodyfile="src/entities/services/clinics/patient/patientdrugs.hpp" bodystart="56" bodyend="-1"/>
+        <referencedby refid="classPatientDrugs_1ac6fc5c6fb8c16220d1bf0fa5f456c27c" compoundref="patientdrugs_8hpp" startline="103" endline="117">getPermissionsQueryForCreate</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classPatientDrugs_1a6633f09d1eec3aa7c58d66a7ee0db31e" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>auto</type>
+        <definition>auto PatientDrugs::CREATE_KEY</definition>
+        <argsstring></argsstring>
+        <name>CREATE_KEY</name>
+        <qualifiedname>PatientDrugs::CREATE_KEY</qualifiedname>
+        <initializer>= &quot;id&quot;</initializer>
+        <briefdescription>
+<para>Create-payload key holding the patient id used to resolve clinic ownership. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patientdrugs.hpp" line="58" column="27" bodyfile="src/entities/services/clinics/patient/patientdrugs.hpp" bodystart="58" bodyend="-1"/>
+        <referencedby refid="classPatientDrugs_1a2f09f513a752d8fb951140c352ccf969" compoundref="patientdrugs_8hpp" startline="84" endline="84">getCreateKey</referencedby>
+        <referencedby refid="classPatientDrugs_1ac6fc5c6fb8c16220d1bf0fa5f456c27c" compoundref="patientdrugs_8hpp" startline="103" endline="117">getPermissionsQueryForCreate</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPatientDrugs_1aec0c7883f73ef258f4dcff0befdf524e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>PatientDrugs::PatientDrugs</definition>
+        <argsstring>(const T &amp;_data)</argsstring>
+        <name>PatientDrugs</name>
+        <qualifiedname>PatientDrugs::PatientDrugs</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>_data</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a patient-drugs entity bound to <computeroutput>patients_drugs</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Forwards the wrapper and table name to <ref refid="classCase" kindref="compound">Case</ref>, which stores the wrapper in <ref refid="classEntity" kindref="compound">Entity</ref>. The wrapper&apos;s alternative decides which inherited SQL builder is applicable. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A type accepted by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref>, e.g. <ref refid="namespaceapi_1_1v2_1_1Types_1ac9a246b12a16bc018eec47370d2d6a20" kindref="member">api::v2::Types::Create_t</ref> or <ref refid="classRead__t" kindref="compound">Read_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Operation data to copy into the entity. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patientdrugs.hpp" line="71" column="5" bodyfile="src/entities/services/clinics/patient/patientdrugs.hpp" bodystart="71" bodyend="73"/>
+        <references refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911">Case::Case</references>
+        <references refid="classPatientDrugs_1a3dcf0340cadf6bea2ddff558c693f78c" compoundref="patientdrugs_8hpp" startline="54">TABLENAME</references>
+      </memberdef>
+      <memberdef kind="function" id="classPatientDrugs_1a2adcfe677e32a8742fc5ccf209f11e86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PatientDrugs::~PatientDrugs</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~PatientDrugs</name>
+        <qualifiedname>PatientDrugs::~PatientDrugs</qualifiedname>
+        <briefdescription>
+<para>Default destructor; the entity owns nothing beyond the data wrapper held by <ref refid="classEntity" kindref="compound">Entity</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patientdrugs.hpp" line="89" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classPatientDrugs_1abb8dd85aeea93c92054ba17fd7c71e08" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>static constexpr auto PatientDrugs::getTableName</definition>
+        <argsstring>()</argsstring>
+        <name>getTableName</name>
+        <qualifiedname>PatientDrugs::getTableName</qualifiedname>
+        <briefdescription>
+<para>Returns the table this entity is bound to. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The constant <computeroutput>patients_drugs</computeroutput> string. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patientdrugs.hpp" line="79" column="27" bodyfile="src/entities/services/clinics/patient/patientdrugs.hpp" bodystart="79" bodyend="79"/>
+        <references refid="classPatientDrugs_1a3dcf0340cadf6bea2ddff558c693f78c" compoundref="patientdrugs_8hpp" startline="54">TABLENAME</references>
+      </memberdef>
+      <memberdef kind="function" id="classPatientDrugs_1a2f09f513a752d8fb951140c352ccf969" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>static constexpr auto PatientDrugs::getCreateKey</definition>
+        <argsstring>()</argsstring>
+        <name>getCreateKey</name>
+        <qualifiedname>PatientDrugs::getCreateKey</qualifiedname>
+        <briefdescription>
+<para>Returns the create-payload key used to resolve the owning clinic. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The constant <computeroutput>id</computeroutput> string (the patient id). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patientdrugs.hpp" line="84" column="27" bodyfile="src/entities/services/clinics/patient/patientdrugs.hpp" bodystart="84" bodyend="84"/>
+        <references refid="classPatientDrugs_1a6633f09d1eec3aa7c58d66a7ee0db31e" compoundref="patientdrugs_8hpp" startline="58">CREATE_KEY</references>
+      </memberdef>
+      <memberdef kind="function" id="classPatientDrugs_1ac6fc5c6fb8c16220d1bf0fa5f456c27c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>static std::optional&lt; std::string &gt; PatientDrugs::getPermissionsQueryForCreate</definition>
+        <argsstring>(const std::optional&lt; jsoncons::json &gt; &amp;data_j)</argsstring>
+        <name>getPermissionsQueryForCreate</name>
+        <qualifiedname>PatientDrugs::getPermissionsQueryForCreate</qualifiedname>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>data_j</declname>
+        </param>
+        <briefdescription>
+<para>Builds the SQL that resolves the owning clinic for a create request. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Reads the patient id from <computeroutput>data_j</computeroutput> using CREATE_KEY and delegates to the <ref refid="classCase" kindref="compound">Case</ref> base, which joins <computeroutput>clinics</computeroutput> with <computeroutput>patients</computeroutput> on clinic_id. <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> runs the returned SELECT before the insert to check owner/admin/staff rights; no insert is performed here. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">data_j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Create payload; must be engaged and contain an unsigned-integer CREATE_KEY (the optional is dereferenced without a has_value() check). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The SELECT statement, or std::nullopt if reading or converting the key throws; the exception is logged via CRITICALMESSAGE. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classCase_1a5617a4962ddeaabd3094fae406c860f6" kindref="member">Case::getPermissionsQueryForCreateImpl</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patientdrugs.hpp" line="103" column="26" bodyfile="src/entities/services/clinics/patient/patientdrugs.hpp" bodystart="103" bodyend="117"/>
+        <references refid="classPatientDrugs_1a6633f09d1eec3aa7c58d66a7ee0db31e" compoundref="patientdrugs_8hpp" startline="58">CREATE_KEY</references>
+        <references refid="global_8hpp_1a68447123f2c27bb7bcdbbaec4091dab7" compoundref="global_8hpp" startline="46" endline="48">CRITICALMESSAGE</references>
+        <references refid="classCase_1a5617a4962ddeaabd3094fae406c860f6" compoundref="case_8hpp" startline="119" endline="130">Case::getPermissionsQueryForCreateImpl</references>
+        <references refid="classPatientDrugs_1a3a9e5f68092fa332695e112d32261c1e" compoundref="patientdrugs_8hpp" startline="56">KEYREFTABLENAME</references>
+      </memberdef>
+      <memberdef kind="function" id="classPatientDrugs_1ac31b08ce384c3752980683b134ffa47d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>static std::optional&lt; std::string &gt; PatientDrugs::getPermissionsQueryForRead</definition>
+        <argsstring>(const uint64_t id)</argsstring>
+        <name>getPermissionsQueryForRead</name>
+        <qualifiedname>PatientDrugs::getPermissionsQueryForRead</qualifiedname>
+        <param>
+          <type>const uint64_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Builds the SQL that fetches the owning clinic&apos;s permission columns for a row id. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Delegates to the <ref refid="classCase" kindref="compound">Case</ref> base, joining <computeroutput>clinics</computeroutput> with <computeroutput>patients_drugs</computeroutput> on clinic_id. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Row id to authorise. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The SELECT statement; the base helper has no failure path despite the optional return. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patientdrugs.hpp" line="125" column="26" bodyfile="src/entities/services/clinics/patient/patientdrugs.hpp" bodystart="125" bodyend="125"/>
+        <references refid="classCase_1a549bb017161d692a03db738d940b9b2f" compoundref="case_8hpp" startline="138" endline="147">Case::getPermissionsQueryForReadImp</references>
+        <references refid="classPatientDrugs_1a3dcf0340cadf6bea2ddff558c693f78c" compoundref="patientdrugs_8hpp" startline="54">TABLENAME</references>
+      </memberdef>
+      <memberdef kind="function" id="classPatientDrugs_1a48388f38b4a60efb58c0456bb91fc6f6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>static std::optional&lt; std::string &gt; PatientDrugs::getPermissionsQueryForUpdate</definition>
+        <argsstring>(const uint64_t id)</argsstring>
+        <name>getPermissionsQueryForUpdate</name>
+        <qualifiedname>PatientDrugs::getPermissionsQueryForUpdate</qualifiedname>
+        <param>
+          <type>const uint64_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Builds the SQL that fetches the owning clinic&apos;s permission columns for an update. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Row id to authorise. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The SELECT statement; the base helper has no failure path despite the optional return. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patientdrugs.hpp" line="131" column="26" bodyfile="src/entities/services/clinics/patient/patientdrugs.hpp" bodystart="131" bodyend="131"/>
+        <references refid="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf" compoundref="case_8hpp" startline="155" endline="164">Case::getPermissionsQueryForUpdateImpl</references>
+        <references refid="classPatientDrugs_1a3dcf0340cadf6bea2ddff558c693f78c" compoundref="patientdrugs_8hpp" startline="54">TABLENAME</references>
+      </memberdef>
+      <memberdef kind="function" id="classPatientDrugs_1afd534a42f237d038d793e91293d188fb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>static std::optional&lt; std::string &gt; PatientDrugs::getPermissionsQueryForDelete</definition>
+        <argsstring>(const uint64_t id)</argsstring>
+        <name>getPermissionsQueryForDelete</name>
+        <qualifiedname>PatientDrugs::getPermissionsQueryForDelete</qualifiedname>
+        <param>
+          <type>const uint64_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Builds the SQL that fetches the owning clinic&apos;s permission columns for a delete. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Row id to authorise. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The SELECT statement; the base helper has no failure path despite the optional return. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patientdrugs.hpp" line="137" column="26" bodyfile="src/entities/services/clinics/patient/patientdrugs.hpp" bodystart="137" bodyend="137"/>
+        <references refid="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff" compoundref="case_8hpp" startline="172" endline="181">Case::getPermissionsQueryForDeleteImp</references>
+        <references refid="classPatientDrugs_1a3dcf0340cadf6bea2ddff558c693f78c" compoundref="patientdrugs_8hpp" startline="54">TABLENAME</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para><ref refid="classCase" kindref="compound">Case</ref> entity for the <computeroutput>patients_drugs</computeroutput> table (a patient&apos;s drug record). </para>
+    </briefdescription>
+    <detaileddescription>
+<para>A thin value type that binds the generic Case/Entity CRUD machinery to one table. The table&apos;s primary key is the patient id (a foreign key to <computeroutput>patients</computeroutput> with ON DELETE CASCADE), so there is at most one drug record per patient. SQL generation itself is inherited; this class fixes the table name and the patient table used to resolve the owning clinic during create-authorisation. The static getPermissionsQueryFor* helpers are taken as function pointers by <ref refid="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" kindref="member">PermissionManager::canCreate</ref>/canRead/canUpdate/ canDelete for api::v2::Case_t T. The type is registered in the clinic route registry as <ref refid="classClinicController" kindref="compound">ClinicController&lt;PatientDrugs&gt;</ref> under the <computeroutput>patientdrugs</computeroutput> serviceType. Ownership: the data wrapper is copied into <ref refid="classEntity" kindref="compound">Entity</ref> and is const thereafter; no mutable state and no locking of its own. Copy and move are deleted by <ref refid="classCase" kindref="compound">Case</ref>. <simplesect kind="note"><para>No default constructor: <ref refid="classEntity" kindref="compound">Entity</ref> needs a data wrapper to build statements from. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classCase" kindref="compound">Case</ref>, <ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref>, <ref refid="classClinicController" kindref="compound">ClinicController</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>Base</label>
+        <link refid="classBase"/>
+      </node>
+      <node id="2">
+        <label>Case</label>
+        <link refid="classCase"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Entity</label>
+        <link refid="classEntity"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>PatientDrugs</label>
+        <link refid="classPatientDrugs"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>Base</label>
+        <link refid="classBase"/>
+      </node>
+      <node id="2">
+        <label>Case</label>
+        <link refid="classCase"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Entity</label>
+        <link refid="classEntity"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>PatientDrugs</label>
+        <link refid="classPatientDrugs"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/entities/services/clinics/patient/patientdrugs.hpp" line="50" column="1" bodyfile="src/entities/services/clinics/patient/patientdrugs.hpp" bodystart="51" bodyend="138"/>
+    <listofallmembers>
+      <member refid="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>Base</name></member>
+      <member refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" prot="protected" virt="non-virtual"><scope>PatientDrugs</scope><name>buildCreateStatement</name></member>
+      <member refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" prot="protected" virt="non-virtual"><scope>PatientDrugs</scope><name>buildDeleteStatement</name></member>
+      <member refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" prot="protected" virt="non-virtual"><scope>PatientDrugs</scope><name>buildReadStatement</name></member>
+      <member refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" prot="protected" virt="non-virtual"><scope>PatientDrugs</scope><name>buildSearchStatement</name></member>
+      <member refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" prot="protected" virt="non-virtual"><scope>PatientDrugs</scope><name>buildUpdateStatement</name></member>
+      <member refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>Case</name></member>
+      <member refid="classCase_1a7b23df81d29fee57dd61a99a86b8261c" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>Case</name></member>
+      <member refid="classCase_1a0d15370d666834e72bbcc00b419238de" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>Case</name></member>
+      <member refid="classEntity_1ac1d661555222fabdf77fc5750da50b19" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>check_id_exists</name></member>
+      <member refid="classPatientDrugs_1a6633f09d1eec3aa7c58d66a7ee0db31e" prot="private" virt="non-virtual"><scope>PatientDrugs</scope><name>CREATE_KEY</name></member>
+      <member refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" prot="private" virt="non-virtual"><scope>PatientDrugs</scope><name>data</name></member>
+      <member refid="classEntity_1a154ae0093211626370549e2924f9c954" prot="protected" virt="non-virtual"><scope>PatientDrugs</scope><name>databaseController</name></member>
+      <member refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>Entity</name></member>
+      <member refid="classEntity_1ad3455dba49aa870a3f298f490771600c" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>Entity</name></member>
+      <member refid="classEntity_1abe34f0c0ca4b976ba455b97b2039d771" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>Entity</name></member>
+      <member refid="classPatientDrugs_1a2f09f513a752d8fb951140c352ccf969" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>getCreateKey</name></member>
+      <member refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>getData</name></member>
+      <member refid="classEntity_1a78dd1f37555f08fe0b389029c2d5b775" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>getGroupName</name></member>
+      <member refid="classCase_1a21c9d085ff35036397c09fbf1882343b" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>getOrgName</name></member>
+      <member refid="classPatientDrugs_1ac6fc5c6fb8c16220d1bf0fa5f456c27c" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>getPermissionsQueryForCreate</name></member>
+      <member refid="classCase_1a5617a4962ddeaabd3094fae406c860f6" prot="protected" virt="non-virtual"><scope>PatientDrugs</scope><name>getPermissionsQueryForCreateImpl</name></member>
+      <member refid="classCase_1a885de6b0ca89e3462529a9b9c388b9d2" prot="protected" virt="non-virtual"><scope>PatientDrugs</scope><name>getPermissionsQueryForCreatePatientImpl</name></member>
+      <member refid="classPatientDrugs_1afd534a42f237d038d793e91293d188fb" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>getPermissionsQueryForDelete</name></member>
+      <member refid="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff" prot="protected" virt="non-virtual"><scope>PatientDrugs</scope><name>getPermissionsQueryForDeleteImp</name></member>
+      <member refid="classPatientDrugs_1ac31b08ce384c3752980683b134ffa47d" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>getPermissionsQueryForRead</name></member>
+      <member refid="classCase_1a549bb017161d692a03db738d940b9b2f" prot="protected" virt="non-virtual"><scope>PatientDrugs</scope><name>getPermissionsQueryForReadImp</name></member>
+      <member refid="classPatientDrugs_1a48388f38b4a60efb58c0456bb91fc6f6" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>getPermissionsQueryForUpdate</name></member>
+      <member refid="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf" prot="protected" virt="non-virtual"><scope>PatientDrugs</scope><name>getPermissionsQueryForUpdateImpl</name></member>
+      <member refid="classEntity_1a32f18508b15bf1f4c6494768bda527be" prot="public" virt="virtual"><scope>PatientDrugs</scope><name>getSqlCreateStatement</name></member>
+      <member refid="classEntity_1aa66bbebb8b50f7d91153231b1f6ab997" prot="public" virt="virtual"><scope>PatientDrugs</scope><name>getSqlDeleteStatement</name></member>
+      <member refid="classEntity_1a90ab6d6ae7c3431c3ede1201654b209a" prot="public" virt="virtual"><scope>PatientDrugs</scope><name>getSqlReadStatement</name></member>
+      <member refid="classEntity_1a362c3e70e483e2378ab08414c1eacdd7" prot="public" virt="virtual"><scope>PatientDrugs</scope><name>getSqlSearchStatement</name></member>
+      <member refid="classEntity_1af1c8231f215f8941d8424d2b165ba818" prot="public" virt="virtual"><scope>PatientDrugs</scope><name>getSqlUpdateStatement</name></member>
+      <member refid="classPatientDrugs_1abb8dd85aeea93c92054ba17fd7c71e08" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>getTableName</name></member>
+      <member refid="classPatientDrugs_1a3a9e5f68092fa332695e112d32261c1e" prot="private" virt="non-virtual"><scope>PatientDrugs</scope><name>KEYREFTABLENAME</name></member>
+      <member refid="classCase_1aa0c0269d0a4f48681b880b9621004bcf" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>operator=</name></member>
+      <member refid="classCase_1aa384eaca0046ba0bba80dfdcfe199711" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>operator=</name></member>
+      <member refid="classEntity_1a1f6d7e8353984497c45053a421a35b53" prot="public" virt="non-virtual" ambiguityscope="Entity::"><scope>PatientDrugs</scope><name>operator=</name></member>
+      <member refid="classEntity_1adb86b6ab4d1b39b00c2472af16840fe5" prot="public" virt="non-virtual" ambiguityscope="Entity::"><scope>PatientDrugs</scope><name>operator=</name></member>
+      <member refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>ORGNAME</name></member>
+      <member refid="classPatientDrugs_1aec0c7883f73ef258f4dcff0befdf524e" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>PatientDrugs</name></member>
+      <member refid="classPatientDrugs_1a3dcf0340cadf6bea2ddff558c693f78c" prot="private" virt="non-virtual"><scope>PatientDrugs</scope><name>TABLENAME</name></member>
+      <member refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" prot="protected" virt="non-virtual"><scope>PatientDrugs</scope><name>tablename</name></member>
+      <member refid="classBase_1a306fb25541331080645a716286357ef9" prot="public" virt="virtual"><scope>PatientDrugs</scope><name>~Base</name></member>
+      <member refid="classCase_1afc12c279a9ecdde1f571dee7ddd185a8" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>~Case</name></member>
+      <member refid="classEntity_1a605d474ccbd30c3d4350016ec173546a" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>~Entity</name></member>
+      <member refid="classPatientDrugs_1a2adcfe677e32a8742fc5ccf209f11e86" prot="public" virt="non-virtual"><scope>PatientDrugs</scope><name>~PatientDrugs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

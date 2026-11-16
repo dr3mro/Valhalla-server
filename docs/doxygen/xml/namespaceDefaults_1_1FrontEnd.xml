@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="namespaceDefaults_1_1FrontEnd" kind="namespace" language="C++">
+    <compoundname>Defaults::FrontEnd</compoundname>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceDefaults_1_1FrontEnd_1ae72d244ab81b3948dfe1e81b79973476" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string Defaults::FrontEnd::HOST_</definition>
+        <argsstring></argsstring>
+        <name>HOST_</name>
+        <qualifiedname>Defaults::FrontEnd::HOST_</qualifiedname>
+        <initializer>= &quot;http://172.20.0.5&quot;</initializer>
+        <briefdescription>
+<para>Default frontend base URL. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/configurator/defaults.hpp" line="160" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceDefaults_1_1FrontEnd_1abccafb81dfba89c194e3e4b2a1da39cf" prot="public" static="no" mutable="no">
+        <type>const uint16_t</type>
+        <definition>const uint16_t Defaults::FrontEnd::PORT_</definition>
+        <argsstring></argsstring>
+        <name>PORT_</name>
+        <qualifiedname>Defaults::FrontEnd::PORT_</qualifiedname>
+        <initializer>= 3000</initializer>
+        <briefdescription>
+<para>Default frontend port. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/configurator/defaults.hpp" line="162" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceDefaults_1_1FrontEnd_1a2f75870d28630538f7e42843bf4cbf9c" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string Defaults::FrontEnd::INVITE_PATH_</definition>
+        <argsstring></argsstring>
+        <name>INVITE_PATH_</name>
+        <qualifiedname>Defaults::FrontEnd::INVITE_PATH_</qualifiedname>
+        <initializer>= &quot;invite&quot;</initializer>
+        <briefdescription>
+<para>Default path component for invitation links. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/configurator/defaults.hpp" line="164" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="164" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Default frontend host, port and invitation path. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/configurator/defaults.hpp" line="154" column="1"/>
+  </compounddef>
+</doxygen>

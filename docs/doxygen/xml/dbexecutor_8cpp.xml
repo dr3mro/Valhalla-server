@@ -1,0 +1,318 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dbexecutor_8cpp" kind="file" language="C++">
+    <compoundname>dbexecutor.cpp</compoundname>
+    <includes refid="dbexecutor_8hpp" local="yes">database/dbexecutor.hpp</includes>
+    <includes local="no">cstddef</includes>
+    <includes refid="configurator_8hpp" local="yes">configurator/configurator.hpp</includes>
+    <includes refid="store_8hpp" local="yes">store/store.hpp</includes>
+    <incdepgraph>
+      <node id="5">
+        <label>concurrency/boundedexecutor.hpp</label>
+        <link refid="boundedexecutor_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>configurator/configurator.hpp</label>
+        <link refid="configurator_8hpp"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>defaults.hpp</label>
+        <link refid="defaults_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>configurator/envloader/envloader.hpp</label>
+        <link refid="envloader_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>envvars/envvars.hpp</label>
+        <link refid="envvars_8hpp"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/database/dbexecutor.cpp</label>
+        <link refid="dbexecutor_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>database/dbexecutor.hpp</label>
+        <link refid="dbexecutor_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>store/store.hpp</label>
+        <link refid="store_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>utils/global/callback.hpp</label>
+        <link refid="callback_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>utils/global/http.hpp</label>
+        <link refid="http_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>utils/message/message.hpp</label>
+        <link refid="message_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>atomic</label>
+      </node>
+      <node id="7">
+        <label>chrono</label>
+      </node>
+      <node id="8">
+        <label>condition_variable</label>
+      </node>
+      <node id="3">
+        <label>cstddef</label>
+      </node>
+      <node id="9">
+        <label>cstdint</label>
+      </node>
+      <node id="10">
+        <label>deque</label>
+      </node>
+      <node id="27">
+        <label>exception</label>
+      </node>
+      <node id="21">
+        <label>fmt/core.h</label>
+      </node>
+      <node id="22">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="23">
+        <label>fmt/ranges.h</label>
+      </node>
+      <node id="11">
+        <label>functional</label>
+      </node>
+      <node id="12">
+        <label>memory</label>
+      </node>
+      <node id="13">
+        <label>mutex</label>
+      </node>
+      <node id="29">
+        <label>optional</label>
+      </node>
+      <node id="34">
+        <label>stdexcept</label>
+      </node>
+      <node id="14">
+        <label>string</label>
+      </node>
+      <node id="15">
+        <label>thread</label>
+      </node>
+      <node id="31">
+        <label>trantor/utils/Logger.h</label>
+      </node>
+      <node id="24">
+        <label>type_traits</label>
+      </node>
+      <node id="35">
+        <label>typeindex</label>
+      </node>
+      <node id="19">
+        <label>unordered_map</label>
+      </node>
+      <node id="25">
+        <label>unordered_set</label>
+      </node>
+      <node id="4">
+        <label>utility</label>
+      </node>
+      <node id="16">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceanonymous__namespace_02dbexecutor_8cpp_03">anonymous_namespace{dbexecutor.cpp}</innernamespace>
+    <briefdescription>
+<para>Implementation for dbexecutor: Builds the executor from configuration, naming it &quot;DB executor&quot; for diagnostics. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file implements the two <ref refid="classDbExecutor" kindref="compound">DbExecutor</ref> constructors. Both forward the worker, queue and name settings to the <ref refid="classBoundedExecutor" kindref="compound">BoundedExecutor</ref> base and store the IO fast-path flag. The default constructor reads every setting from the application-wide <ref refid="classConfigurator" kindref="compound">Configurator</ref>; the other takes explicit values, which keeps unit tests independent of configuration.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: It is the small piece that turns configured numbers into the actual worker pool used for all blocking database work. The &quot;DB executor&quot; label passed to the base class shows up in logs and statistics, so operators can tune worker counts and queue sizes. Without these constructors the <ref refid="classDbExecutor" kindref="compound">DbExecutor</ref> declared in the header could not be created, and routes would have nowhere to send blocking queries.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>Base-class initialisation in a constructor initializer list: <ulink url="https://en.cppreference.com/w/cpp/language/initializer_list">https://en.cppreference.com/w/cpp/language/initializer_list</ulink></para>
+</listitem><listitem><para>Anonymous namespaces (keep helpers private to one .cpp file): <ulink url="https://en.cppreference.com/w/cpp/language/namespace">https://en.cppreference.com/w/cpp/language/namespace</ulink></para>
+</listitem><listitem><para>Configuration via a service locator / <ref refid="classStore" kindref="compound">Store</ref> pattern</para>
+</listitem><listitem><para>std::size_t: <ulink url="https://en.cppreference.com/w/cpp/types/size_t">https://en.cppreference.com/w/cpp/types/size_t</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>dbexecutor.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Implementation<sp/>for<sp/>dbexecutor:<sp/>Builds<sp/>the<sp/>executor<sp/>from<sp/>configuration,<sp/>naming<sp/>it<sp/>&quot;DB<sp/>executor&quot;<sp/>for<sp/>diagnostics.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>file<sp/>implements<sp/>the<sp/>two<sp/>DbExecutor<sp/>constructors.<sp/>Both<sp/>forward<sp/>the<sp/>worker,</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>queue<sp/>and<sp/>name<sp/>settings<sp/>to<sp/>the<sp/>BoundedExecutor<sp/>base<sp/>and<sp/>store<sp/>the<sp/>IO<sp/>fast-path</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>flag.<sp/>The<sp/>default<sp/>constructor<sp/>reads<sp/>every<sp/>setting<sp/>from<sp/>the<sp/>application-wide</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Configurator;<sp/>the<sp/>other<sp/>takes<sp/>explicit<sp/>values,<sp/>which<sp/>keeps<sp/>unit<sp/>tests<sp/>independent</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>of<sp/>configuration.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>It<sp/>is<sp/>the<sp/>small<sp/>piece<sp/>that<sp/>turns<sp/>configured<sp/>numbers<sp/>into<sp/>the<sp/>actual<sp/>worker<sp/>pool<sp/>used<sp/>for<sp/>all</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>blocking<sp/>database<sp/>work.<sp/>The<sp/>&quot;DB<sp/>executor&quot;<sp/>label<sp/>passed<sp/>to<sp/>the<sp/>base<sp/>class<sp/>shows<sp/>up<sp/>in<sp/>logs</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>and<sp/>statistics,<sp/>so<sp/>operators<sp/>can<sp/>tune<sp/>worker<sp/>counts<sp/>and<sp/>queue<sp/>sizes.<sp/>Without<sp/>these</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>constructors<sp/>the<sp/>DbExecutor<sp/>declared<sp/>in<sp/>the<sp/>header<sp/>could<sp/>not<sp/>be<sp/>created,<sp/>and<sp/>routes<sp/>would</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>have<sp/>nowhere<sp/>to<sp/>send<sp/>blocking<sp/>queries.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>Base-class<sp/>initialisation<sp/>in<sp/>a<sp/>constructor<sp/>initializer<sp/>list:<sp/>https://en.cppreference.com/w/cpp/language/initializer_list</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>Anonymous<sp/>namespaces<sp/>(keep<sp/>helpers<sp/>private<sp/>to<sp/>one<sp/>.cpp<sp/>file):<sp/>https://en.cppreference.com/w/cpp/language/namespace</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>Configuration<sp/>via<sp/>a<sp/>service<sp/>locator<sp/>/<sp/>Store<sp/>pattern</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>std::size_t:<sp/>https://en.cppreference.com/w/cpp/types/size_t</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dbexecutor_8hpp" kindref="compound">database/dbexecutor.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>DbExecutor<sp/>declaration<sp/>implemented<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::size_t<sp/>parameters<sp/>used<sp/>by<sp/>the<sp/>explicit-size<sp/>constructor.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="configurator_8hpp" kindref="compound">configurator/configurator.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Configurator::DbExecutorConfig<sp/>holds<sp/>workers,<sp/>queue_max<sp/>and<sp/>io_fast_path.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="store_8hpp" kindref="compound">store/store.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Store::getObject&lt;&gt;<sp/>locates<sp/>the<sp/>shared<sp/>Configurator.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="namespaceanonymous__namespace_02dbexecutor_8cpp_03" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>anonymous<sp/>namespace<sp/>makes<sp/>the<sp/>helper<sp/>below<sp/>visible<sp/>only<sp/>inside<sp/>this<sp/>.cpp<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Returns<sp/>the<sp/>DB<sp/>executor<sp/>settings<sp/>held<sp/>by<sp/>the<sp/>application-wide<sp/>Configurator.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="namespaceanonymous__namespace_02dbexecutor_8cpp_03_1a620e60141d4e4ce74d6607d537dc171b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classConfigurator_1a0701d654a981f0c89644ff3b1144a553" kindref="member">Configurator::DbExecutorConfig</ref>&amp;<sp/><ref refid="namespaceanonymous__namespace_02dbexecutor_8cpp_03_1a620e60141d4e4ce74d6607d537dc171b" kindref="member">config</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject&lt;Configurator&gt;</ref>()-&gt;get&lt;<ref refid="classConfigurator_1a0701d654a981f0c89644ff3b1144a553" kindref="member">Configurator::DbExecutorConfig</ref>&gt;();<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Fetching<sp/>fresh<sp/>each<sp/>time<sp/>means<sp/>construction<sp/>always<sp/>sees<sp/>the<sp/>active<sp/>settings.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="42"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>executor<sp/>from<sp/>configuration,<sp/>naming<sp/>it<sp/>&quot;DB<sp/>executor&quot;<sp/>for<sp/>diagnostics.</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classDbExecutor_1a8dadc723449f985ba60361ce11896244" refkind="member"><highlight class="normal"><ref refid="classDbExecutor_1a8dadc723449f985ba60361ce11896244" kindref="member">DbExecutor::DbExecutor</ref>()<sp/>:<sp/><ref refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" kindref="member">BoundedExecutor</ref>(<ref refid="namespaceanonymous__namespace_02dbexecutor_8cpp_03_1a620e60141d4e4ce74d6607d537dc171b" kindref="member">config</ref>().workers,<sp/><ref refid="namespaceanonymous__namespace_02dbexecutor_8cpp_03_1a620e60141d4e4ce74d6607d537dc171b" kindref="member">config</ref>().queue_max,<sp/></highlight><highlight class="stringliteral">&quot;DB<sp/>executor&quot;</highlight><highlight class="normal">),<sp/><ref refid="classDbExecutor_1afc7b383dd9357cbeda1c8f7d8fc7484d" kindref="member">io_fast_path_</ref>(<ref refid="namespaceanonymous__namespace_02dbexecutor_8cpp_03_1a620e60141d4e4ce74d6607d537dc171b" kindref="member">config</ref>().io_fast_path)<sp/>{}<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>initializer<sp/>list<sp/>forwards<sp/>sizes<sp/>to<sp/>the<sp/>base<sp/>and<sp/>caches<sp/>the<sp/>fast-path<sp/>flag.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="47"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>Builds<sp/>the<sp/>executor<sp/>with<sp/>explicit<sp/>sizes,<sp/>naming<sp/>it<sp/>&quot;DB<sp/>executor&quot;<sp/>for<sp/>diagnostics.</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>workers:<sp/>Number<sp/>of<sp/>worker<sp/>threads<sp/>(zero<sp/>selects<sp/>inline<sp/>mode).</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>queue_max:<sp/>Maximum<sp/>queued<sp/>tasks<sp/>across<sp/>all<sp/>workers.</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>io_fast_path:<sp/>Whether<sp/>the<sp/>IO-thread<sp/>probe<sp/>path<sp/>is<sp/>enabled.</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="classDbExecutor_1a2aa554b6f63dcd750b482fc6c3dcff61" refkind="member"><highlight class="normal"><ref refid="classDbExecutor_1a8dadc723449f985ba60361ce11896244" kindref="member">DbExecutor::DbExecutor</ref>(std::size_t<sp/>workers,<sp/>std::size_t<sp/>queue_max,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>io_fast_path)<sp/>:<sp/><ref refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" kindref="member">BoundedExecutor</ref>(workers,<sp/>queue_max,<sp/></highlight><highlight class="stringliteral">&quot;DB<sp/>executor&quot;</highlight><highlight class="normal">),<sp/><ref refid="classDbExecutor_1afc7b383dd9357cbeda1c8f7d8fc7484d" kindref="member">io_fast_path_</ref>(io_fast_path)<sp/>{}<sp/><sp/></highlight><highlight class="comment">//<sp/>Used<sp/>by<sp/>tests<sp/>that<sp/>want<sp/>deterministic<sp/>sizes<sp/>without<sp/>touching<sp/>global<sp/>configuration.</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/database/dbexecutor.cpp"/>
+  </compounddef>
+</doxygen>

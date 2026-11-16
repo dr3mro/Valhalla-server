@@ -1,0 +1,25 @@
+var classapi_1_1v2_1_1KeeprBase =
+[
+    [ "KeeprBase", "classapi_1_1v2_1_1KeeprBase.html#ab09740b221922b51de0a8c45c54daa85", null ],
+    [ "KeeprBase", "classapi_1_1v2_1_1KeeprBase.html#add3bdbaa73fd820198bd4e19122e02dd", null ],
+    [ "KeeprBase", "classapi_1_1v2_1_1KeeprBase.html#af1965f91dfd57bbf65a4f286551a5627", null ],
+    [ "~KeeprBase", "classapi_1_1v2_1_1KeeprBase.html#a5eb7980e75486333cee87142faa5f9eb", null ],
+    [ "createTokenVerifier", "classapi_1_1v2_1_1KeeprBase.html#aaf8aa6b3f37ca047d975238a41fe8285", null ],
+    [ "current_time_to_utc_string", "classapi_1_1v2_1_1KeeprBase.html#ac972310cb5c257ad144e4b2c2276ce0d", null ],
+    [ "databaseController", "classapi_1_1v2_1_1KeeprBase.html#a913563947fb79295de1f2278e6cb5e62", null ],
+    [ "decodeToken", "classapi_1_1v2_1_1KeeprBase.html#aa5bb3aa3442744a56f97c06d8c43a37d", null ],
+    [ "getLastLoginTime", "classapi_1_1v2_1_1KeeprBase.html#a7ac9299b75cd06a7004701cb2d7c3a34", null ],
+    [ "getLastLogoutTimeIfActive", "classapi_1_1v2_1_1KeeprBase.html#a96a366e05f18b668479c2da9000d6289", null ],
+    [ "getLastLogoutTimeIfActiveCoro", "classapi_1_1v2_1_1KeeprBase.html#a25af0d69c7a5d1f0fa209b6002ec8c28", null ],
+    [ "getPasswordHashForUserName", "classapi_1_1v2_1_1KeeprBase.html#a8ced4af95be98298b0a63084deece769", null ],
+    [ "getPasswordHashForUserNameCoro", "classapi_1_1v2_1_1KeeprBase.html#acdd434fec377861a4be32a7fbbd6549f", null ],
+    [ "getTokenManagerParameters", "classapi_1_1v2_1_1KeeprBase.html#a769b4981f124c8bc48570a2ec0aaa01d", null ],
+    [ "operator=", "classapi_1_1v2_1_1KeeprBase.html#a4db23b35be5f480c9189bada5b1a7d19", null ],
+    [ "operator=", "classapi_1_1v2_1_1KeeprBase.html#aeceb10fc2e385d4f823f656d8d97c425", null ],
+    [ "setNowLoginTimeGetLastLogoutTime", "classapi_1_1v2_1_1KeeprBase.html#a827a3339a5b2ecfddc1ba78ef85e7711", null ],
+    [ "setNowLogoutTime", "classapi_1_1v2_1_1KeeprBase.html#aec14dfc5acf772c02faa5ebe3c383eba", null ],
+    [ "validateToken", "classapi_1_1v2_1_1KeeprBase.html#a42038514e4e95779bf05a6f5d1ecad44", null ],
+    [ "validateTokenCoro", "classapi_1_1v2_1_1KeeprBase.html#adc936836bc32e25fd2348e738289c83a", null ],
+    [ "configurator_", "classapi_1_1v2_1_1KeeprBase.html#a3b36fc37ac1fa5d0b98ca85a33513d43", null ],
+    [ "tokenManagerParameters_", "classapi_1_1v2_1_1KeeprBase.html#a1d23b660f409ad68088514c4de125a4b", null ]
+];

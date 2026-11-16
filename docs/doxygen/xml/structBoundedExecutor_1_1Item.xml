@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structBoundedExecutor_1_1Item" kind="struct" language="C++" prot="private">
+    <compoundname>BoundedExecutor::Item</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structBoundedExecutor_1_1Item_1aa125e56076f6e422bd8cae6f15a45a4d" prot="public" static="no" mutable="no">
+        <type>std::function&lt; void()&gt;</type>
+        <definition>std::function&lt;void()&gt; BoundedExecutor::Item::task</definition>
+        <argsstring></argsstring>
+        <name>task</name>
+        <qualifiedname>BoundedExecutor::Item::task</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="185" column="39" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="185" bodyend="-1"/>
+        <referencedby refid="classBoundedExecutor_1a14e1a972664d0af29d59d074675c5ffe" compoundref="boundedexecutor_8cpp" startline="301" endline="345">BoundedExecutor::run</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structBoundedExecutor_1_1Item_1adc96783d42c064529d14066b52728e4f" prot="public" static="no" mutable="no">
+        <type>std::chrono::steady_clock::time_point</type>
+        <definition>std::chrono::steady_clock::time_point BoundedExecutor::Item::queued_at</definition>
+        <argsstring></argsstring>
+        <name>queued_at</name>
+        <qualifiedname>BoundedExecutor::Item::queued_at</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="186" column="47" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="186" bodyend="-1"/>
+        <referencedby refid="classBoundedExecutor_1ada1436c03655174b30be553eacacba3d" compoundref="boundedexecutor_8cpp" startline="281" endline="288">BoundedExecutor::account</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A queued task together with the timestamp used for wait-time accounting. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/concurrency/boundedexecutor.hpp" line="183" column="5" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="184" bodyend="187"/>
+    <listofallmembers>
+      <member refid="structBoundedExecutor_1_1Item_1adc96783d42c064529d14066b52728e4f" prot="public" virt="non-virtual"><scope>BoundedExecutor::Item</scope><name>queued_at</name></member>
+      <member refid="structBoundedExecutor_1_1Item_1aa125e56076f6e422bd8cae6f15a45a4d" prot="public" virt="non-virtual"><scope>BoundedExecutor::Item</scope><name>task</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

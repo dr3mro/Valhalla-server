@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="conceptAppointment__t" kind="concept">
+    <compoundname>Appointment_t</compoundname>
+    <includes refid="concepts_8hpp" local="no">concepts.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <initializer>template&lt;typename T&gt;
+concept <ref refid="conceptAppointment__t" kindref="compound">Appointment_t</ref> =  std::is_base_of_v&lt;<ref refid="classAppointment" kindref="compound">Appointment</ref>, T&gt;</initializer>
+    <conceptparts>
+      <codepart line="75">    <programlisting>
+<codeline><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">concept<sp/></highlight><highlight class="normal">Appointment_t<sp/>=<sp/>std::is_base_of_v&lt;Appointment,<sp/>T&gt;</highlight></codeline>
+    </programlisting>
+</codepart>
+    </conceptparts>
+    <briefdescription>
+<para>Constrains <computeroutput>T</computeroutput> to <ref refid="classAppointment" kindref="compound">Appointment</ref> or a type derived from it. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type to test. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classAppointment" kindref="compound">Appointment</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/utils/global/concepts.hpp" line="75" column="1"/>
+  </compounddef>
+</doxygen>

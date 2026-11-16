@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classapi_1_1v2_1_1Filters_1_1RateLimit" kind="class" language="C++" prot="public">
+    <compoundname>api::v2::Filters::RateLimit</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">drogon::HttpFilter&lt; RateLimit &gt;</basecompoundref>
+    <includes refid="ratelimit_8hpp" local="no">ratelimit.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classapi_1_1v2_1_1Filters_1_1RateLimit_1a04c0409dcf0f5115e54ca1b8d55988d4" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;GateKeeper&gt; api::v2::Filters::RateLimit::gateKeeper</definition>
+        <argsstring></argsstring>
+        <name>gateKeeper</name>
+        <qualifiedname>api::v2::Filters::RateLimit::gateKeeper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Used by doFilter via isDosAttack(). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/filters/ratelimit.hpp" line="109" column="27" bodyfile="src/api/v2/filters/ratelimit.hpp" bodystart="109" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1af6d0c420c949e4381f61b346af205917" compoundref="ratelimit_8hpp" startline="72" endline="106">doFilter</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a31471fae98a1bb47ec6a99255a95ff4f" compoundref="ratelimit_8hpp" startline="59" endline="62">RateLimit</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classapi_1_1v2_1_1Filters_1_1RateLimit_1a027e71944b33da19f85d3653eb64a27d" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classDOSDetector" kindref="compound">DOSDetector</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;DOSDetector&gt; api::v2::Filters::RateLimit::dos_detector</definition>
+        <argsstring></argsstring>
+        <name>dos_detector</name>
+        <qualifiedname>api::v2::Filters::RateLimit::dos_detector</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Held for its lifetime only; doFilter never dereferences it. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/filters/ratelimit.hpp" line="110" column="26" bodyfile="src/api/v2/filters/ratelimit.hpp" bodystart="110" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a31471fae98a1bb47ec6a99255a95ff4f" compoundref="ratelimit_8hpp" startline="59" endline="62">RateLimit</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1Filters_1_1RateLimit_1a31471fae98a1bb47ec6a99255a95ff4f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::Filters::RateLimit::RateLimit</definition>
+        <argsstring>()</argsstring>
+        <name>RateLimit</name>
+        <qualifiedname>api::v2::Filters::RateLimit::RateLimit</qualifiedname>
+        <briefdescription>
+<para>Obtain the shared <ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref> and <ref refid="classDOSDetector" kindref="compound">DOSDetector</ref> from the service locator. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/filters/ratelimit.hpp" line="59" column="9" bodyfile="src/api/v2/filters/ratelimit.hpp" bodystart="59" bodyend="62"/>
+        <references refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a027e71944b33da19f85d3653eb64a27d" compoundref="ratelimit_8hpp" startline="110">dos_detector</references>
+        <references refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a04c0409dcf0f5115e54ca1b8d55988d4" compoundref="ratelimit_8hpp" startline="109">gateKeeper</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Filters_1_1RateLimit_1af6d0c420c949e4381f61b346af205917" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void api::v2::Filters::RateLimit::doFilter</definition>
+        <argsstring>(const drogon::HttpRequestPtr &amp;req, drogon::FilterCallback &amp;&amp;fcb, drogon::FilterChainCallback &amp;&amp;fccb) override</argsstring>
+        <name>doFilter</name>
+        <qualifiedname>api::v2::Filters::RateLimit::doFilter</qualifiedname>
+        <param>
+          <type>const drogon::HttpRequestPtr &amp;</type>
+          <declname>req</declname>
+        </param>
+        <param>
+          <type>drogon::FilterCallback &amp;&amp;</type>
+          <declname>fcb</declname>
+        </param>
+        <param>
+          <type>drogon::FilterChainCallback &amp;&amp;</type>
+          <declname>fccb</declname>
+        </param>
+        <briefdescription>
+<para>Classify the request and continue the chain or send a rejection response. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Invoked by Drogon on its IO thread; verdicts map as: BLACKLISTED -&gt; 403, RATELIMITED -&gt; 429, BANNED -&gt; 503, ERROR -&gt; 500. ALLOWED/WHITELISTED and any unrecognised status invoke <computeroutput>fccb</computeroutput>; rejected requests invoke <computeroutput>fcb</computeroutput> only. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">req</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Request supplying peer IP, method, path, headers and body for classification. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">fcb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Filter callback used to send the rejection response. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">fccb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Chain callback invoked when the request is permitted. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/filters/ratelimit.hpp" line="72" column="14" bodyfile="src/api/v2/filters/ratelimit.hpp" bodystart="72" bodyend="106"/>
+        <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56ae4f0885433f4027329da7e965b38a756" compoundref="dosdetector_8hpp" startline="83">DOSDetector::ALLOWED</references>
+        <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56a33b4862a96740947705cdde04e1f8eed" compoundref="dosdetector_8hpp" startline="87">DOSDetector::BANNED</references>
+        <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56a003cd69fd87a565b2a745493daba101a" compoundref="dosdetector_8hpp" startline="85">DOSDetector::BLACKLISTED</references>
+        <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56abb230e74fde1ec798a86be9890e48949" compoundref="dosdetector_8hpp" startline="88">DOSDetector::ERROR</references>
+        <references refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a04c0409dcf0f5115e54ca1b8d55988d4" compoundref="ratelimit_8hpp" startline="109">gateKeeper</references>
+        <references refid="classDOSDetector_1ad551f3ddefb9c8f6a4cfc23cfd7fbefc" compoundref="dosdetector_8hpp" startline="113" endline="121">DOSDetector::hashHeaders</references>
+        <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56a82c037da5fe6323a8669bb68fbadb7bf" compoundref="dosdetector_8hpp" startline="86">DOSDetector::RATELIMITED</references>
+        <references refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a5ae1c5a86a71fa273fc6d5082c343a06" compoundref="ratelimit_8hpp" startline="117" endline="123">reply</references>
+        <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56a7cd7955250b12853bd245c9ed76a5ba7" compoundref="dosdetector_8hpp" startline="84">DOSDetector::WHITELISTED</references>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1Filters_1_1RateLimit_1a5ae1c5a86a71fa273fc6d5082c343a06" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void api::v2::Filters::RateLimit::reply</definition>
+        <argsstring>(const std::string &amp;&amp;msg, drogon::HttpStatusCode code, const drogon::FilterCallback &amp;&amp;cb)</argsstring>
+        <name>reply</name>
+        <qualifiedname>api::v2::Filters::RateLimit::reply</qualifiedname>
+        <param>
+          <type>const std::string &amp;&amp;</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>drogon::HttpStatusCode</type>
+          <declname>code</declname>
+        </param>
+        <param>
+          <type>const drogon::FilterCallback &amp;&amp;</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>Send a small plain-text rejection response with the given status. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">msg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Response body text. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">code</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>HTTP status code to set. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Filter callback invoked with the response. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/filters/ratelimit.hpp" line="117" column="38" bodyfile="src/api/v2/filters/ratelimit.hpp" bodystart="117" bodyend="123"/>
+        <referencedby refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1af6d0c420c949e4381f61b346af205917" compoundref="ratelimit_8hpp" startline="72" endline="106">doFilter</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Drogon filter that screens requests for DoS/rate-limit violations before authentication. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>First element of both the INSECURE and SECURE chains. It builds a <ref refid="classDOSDetector_1a362a948824acc3cf457cb47e8d095cb5" kindref="member">DOSDetector::Request</ref> from the peer IP, method, path, hashed headers and body, and asks <ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref> for a verdict. ALLOWED/WHITELISTED continue the chain; blacklist, rate limit, ban and internal error short-circuit with a corresponding HTTP status. The <ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref> and <ref refid="classDOSDetector" kindref="compound">DOSDetector</ref> are shared service-locator objects held for the filter&apos;s lifetime. <simplesect kind="note"><para>Unknown verdicts fall through to continuing the chain (default branch). </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>api::v2::Filters::RateLimit</label>
+        <link refid="classapi_1_1v2_1_1Filters_1_1RateLimit"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>drogon::HttpFilter&lt; RateLimit &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>api::v2::Filters::RateLimit</label>
+        <link refid="classapi_1_1v2_1_1Filters_1_1RateLimit"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>drogon::HttpFilter&lt; RateLimit &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/api/v2/filters/ratelimit.hpp" line="55" column="5" bodyfile="src/api/v2/filters/ratelimit.hpp" bodystart="56" bodyend="124"/>
+    <listofallmembers>
+      <member refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1af6d0c420c949e4381f61b346af205917" prot="public" virt="non-virtual"><scope>api::v2::Filters::RateLimit</scope><name>doFilter</name></member>
+      <member refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a027e71944b33da19f85d3653eb64a27d" prot="private" virt="non-virtual"><scope>api::v2::Filters::RateLimit</scope><name>dos_detector</name></member>
+      <member refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a04c0409dcf0f5115e54ca1b8d55988d4" prot="private" virt="non-virtual"><scope>api::v2::Filters::RateLimit</scope><name>gateKeeper</name></member>
+      <member refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a31471fae98a1bb47ec6a99255a95ff4f" prot="public" virt="non-virtual"><scope>api::v2::Filters::RateLimit</scope><name>RateLimit</name></member>
+      <member refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a5ae1c5a86a71fa273fc6d5082c343a06" prot="private" virt="non-virtual"><scope>api::v2::Filters::RateLimit</scope><name>reply</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

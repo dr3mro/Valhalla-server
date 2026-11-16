@@ -1,0 +1,875 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="validator_8hpp" kind="file" language="C++">
+    <compoundname>validator.hpp</compoundname>
+    <includes local="no">algorithm</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">jsoncons/basic_json.hpp</includes>
+    <includes local="no">string</includes>
+    <includes local="no">unordered_map</includes>
+    <includes local="no">unordered_set</includes>
+    <includes local="no">utility</includes>
+    <includes refid="http_8hpp" local="yes">utils/global/http.hpp</includes>
+    <includes refid="utils_2global_2types_8hpp" local="yes">utils/global/types.hpp</includes>
+    <includedby refid="clients_8hpp" local="yes">src/api/v2/routes/clients.hpp</includedby>
+    <includedby refid="clientcontroller_8cpp" local="yes">src/controllers/clientcontroller/clientcontroller.cpp</includedby>
+    <includedby refid="entitycontroller_8cpp" local="yes">src/controllers/entitycontroller/entitycontroller.cpp</includedby>
+    <includedby refid="entities_2base_2types_8hpp" local="yes">src/entities/base/types.hpp</includedby>
+    <includedby refid="validator_8cpp" local="yes">src/validator/validator.cpp</includedby>
+    <incdepgraph>
+      <node id="9">
+        <label>utils/global/http.hpp</label>
+        <link refid="http_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>utils/global/types.hpp</label>
+        <link refid="utils_2global_2types_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/validator/validator.hpp</label>
+        <link refid="validator_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>algorithm</label>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="4">
+        <label>jsoncons/basic_json.hpp</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+      <node id="6">
+        <label>unordered_map</label>
+      </node>
+      <node id="7">
+        <label>unordered_set</label>
+      </node>
+      <node id="8">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>src/api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>src/api/v2/routes/appointments.hpp</label>
+        <link refid="appointments_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/api/v2/routes/clients.hpp</label>
+        <link refid="clients_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>src/api/v2/routes/clinics.hpp</label>
+        <link refid="api_2v2_2routes_2clinics_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>src/api/v2/routes/services.hpp</label>
+        <link refid="services_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>src/api/v2/routes/staff.hpp</label>
+        <link refid="staff_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
+        <link refid="appointmentcontroller_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
+        <link refid="appointmentcontroller_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>src/controllers/base/controller/controller.hpp</label>
+        <link refid="controller_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/controllers/clientcontroller/clientcontroller.cpp</label>
+        <link refid="clientcontroller_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
+        <link refid="clientcontroller_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
+        <link refid="cliniccontroller_8cpp"/>
+      </node>
+      <node id="15">
+        <label>src/controllers/cliniccontroller/cliniccontroller.hpp</label>
+        <link refid="cliniccontroller_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
+        <link refid="entitycontroller_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/controllers/entitycontroller/entitycontroller.hpp</label>
+        <link refid="entitycontroller_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
+        <link refid="servicecontroller_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/controllers/servicecontroller/servicecontroller.hpp</label>
+        <link refid="servicecontroller_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
+        <link refid="staffcontroller_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
+        <link refid="staffcontroller_8hpp"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>src/database/database.cpp</label>
+        <link refid="database_8cpp"/>
+      </node>
+      <node id="31">
+        <label>src/entities/appointments/base/appointment.hpp</label>
+        <link refid="appointment_8hpp"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>src/entities/appointments/clinic.hpp</label>
+        <link refid="clinic_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>src/entities/appointments/laboratory.hpp</label>
+        <link refid="laboratory_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>src/entities/appointments/pharmacy.hpp</label>
+        <link refid="pharmacy_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>src/entities/appointments/radiologycenter.hpp</label>
+        <link refid="radiologycenter_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>src/entities/appointments/user.hpp</label>
+        <link refid="appointments_2user_8hpp"/>
+      </node>
+      <node id="37">
+        <label>src/entities/base/case.hpp</label>
+        <link refid="case_8hpp"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>src/entities/base/client.hpp</label>
+        <link refid="client_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>src/entities/base/entity.hpp</label>
+        <link refid="entity_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>src/entities/base/service.hpp</label>
+        <link refid="service_8hpp"/>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/entities/base/types.hpp</label>
+        <link refid="entities_2base_2types_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>src/entities/people/provider.hpp</label>
+        <link refid="provider_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>src/entities/people/user.hpp</label>
+        <link refid="people_2user_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>src/entities/services/clinics/clinics.hpp</label>
+        <link refid="entities_2services_2clinics_2clinics_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>src/entities/services/clinics/patient/health.hpp</label>
+        <link refid="health_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>src/entities/services/clinics/patient/patient.hpp</label>
+        <link refid="patient_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>src/entities/services/clinics/patient/patientdrugs.hpp</label>
+        <link refid="patientdrugs_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>src/entities/services/clinics/patient/reports.hpp</label>
+        <link refid="reports_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>src/entities/services/clinics/visits/paidservices.hpp</label>
+        <link refid="paidservices_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>src/entities/services/clinics/visits/prescriptions.hpp</label>
+        <link refid="prescriptions_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>src/entities/services/clinics/visits/requests.hpp</label>
+        <link refid="requests_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>src/entities/services/clinics/visits/visitdrugs.hpp</label>
+        <link refid="visitdrugs_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>src/entities/services/clinics/visits/visits.hpp</label>
+        <link refid="visits_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>src/entities/services/laboratories.hpp</label>
+        <link refid="laboratories_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>src/entities/services/pharmacies.hpp</label>
+        <link refid="pharmacies_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>src/entities/services/radiologycenters.hpp</label>
+        <link refid="radiologycenters_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>src/gatekeeper/gatekeeper.cpp</label>
+        <link refid="gatekeeper_8cpp"/>
+      </node>
+      <node id="26">
+        <label>src/gatekeeper/includes.hpp</label>
+        <link refid="includes_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>src/gatekeeper/permissionmanager/permissionmanager.cpp</label>
+        <link refid="permissionmanager_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+      <node id="52">
+        <label>src/validator/validator.cpp</label>
+        <link refid="validator_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/validator/validator.hpp</label>
+        <link refid="validator_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classValidator" prot="public">Validator</innerclass>
+    <innerclass refid="structValidator_1_1Rule" prot="public">Validator::Rule</innerclass>
+    <briefdescription>
+<para>Stateless collection of checks applied to client JSON before it reaches the database. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header declares the <ref refid="classValidator" kindref="compound">Validator</ref> class: a toolbox of static functions that check JSON sent by a client against the shape of a database table. It also declares the nested Rule type, which lets a caller describe exceptions to the usual checks. None of these functions talks to the database directly; the checks run on an in-memory copy of the schema, so they are cheap enough to run on every incoming request.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: This is the gatekeeper between the HTTP layer and the database. <ref refid="classEntity" kindref="compound">Entity</ref> controllers (for clients, staff, appointments and so on) call these helpers with the parsed request body before they build any SQL. The helpers read the cached schema owned by <ref refid="classDatabaseSchema" kindref="compound">DatabaseSchema</ref>. Without this file, badly shaped or mistyped client data would flow straight into SQL queries and cause errors or security problems, so every create, update and read endpoint depends on it.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>Bit flags / bitmasks: <ulink url="https://www.learncpp.com/cpp-tutorial/bitwise-operators/">https://www.learncpp.com/cpp-tutorial/bitwise-operators/</ulink></para>
+</listitem><listitem><para>Regular expressions (regex): <ulink url="https://en.cppreference.com/w/cpp/regex">https://en.cppreference.com/w/cpp/regex</ulink></para>
+</listitem><listitem><para>JSON schema validation: <ulink url="https://json-schema.org/">https://json-schema.org/</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>validator.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Stateless<sp/>collection<sp/>of<sp/>checks<sp/>applied<sp/>to<sp/>client<sp/>JSON<sp/>before<sp/>it<sp/>reaches<sp/>the<sp/>database.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>declares<sp/>the<sp/>Validator<sp/>class:<sp/>a<sp/>toolbox<sp/>of<sp/>static<sp/>functions<sp/>that<sp/>check</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>JSON<sp/>sent<sp/>by<sp/>a<sp/>client<sp/>against<sp/>the<sp/>shape<sp/>of<sp/>a<sp/>database<sp/>table.<sp/>It<sp/>also<sp/>declares<sp/>the<sp/>nested</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>Rule<sp/>type,<sp/>which<sp/>lets<sp/>a<sp/>caller<sp/>describe<sp/>exceptions<sp/>to<sp/>the<sp/>usual<sp/>checks.<sp/>None<sp/>of<sp/>these</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>functions<sp/>talks<sp/>to<sp/>the<sp/>database<sp/>directly;<sp/>the<sp/>checks<sp/>run<sp/>on<sp/>an<sp/>in-memory<sp/>copy<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>schema,<sp/>so<sp/>they<sp/>are<sp/>cheap<sp/>enough<sp/>to<sp/>run<sp/>on<sp/>every<sp/>incoming<sp/>request.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>the<sp/>gatekeeper<sp/>between<sp/>the<sp/>HTTP<sp/>layer<sp/>and<sp/>the<sp/>database.<sp/>Entity<sp/>controllers<sp/>(for</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>clients,<sp/>staff,<sp/>appointments<sp/>and<sp/>so<sp/>on)<sp/>call<sp/>these<sp/>helpers<sp/>with<sp/>the<sp/>parsed<sp/>request<sp/>body</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>before<sp/>they<sp/>build<sp/>any<sp/>SQL.<sp/>The<sp/>helpers<sp/>read<sp/>the<sp/>cached<sp/>schema<sp/>owned<sp/>by<sp/>DatabaseSchema.</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>Without<sp/>this<sp/>file,<sp/>badly<sp/>shaped<sp/>or<sp/>mistyped<sp/>client<sp/>data<sp/>would<sp/>flow<sp/>straight<sp/>into<sp/>SQL</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>queries<sp/>and<sp/>cause<sp/>errors<sp/>or<sp/>security<sp/>problems,<sp/>so<sp/>every<sp/>create,<sp/>update<sp/>and<sp/>read<sp/>endpoint</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>depends<sp/>on<sp/>it.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>Bit<sp/>flags<sp/>/<sp/>bitmasks:<sp/>https://www.learncpp.com/cpp-tutorial/bitwise-operators/</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>Regular<sp/>expressions<sp/>(regex):<sp/>https://en.cppreference.com/w/cpp/regex</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>JSON<sp/>schema<sp/>validation:<sp/>https://json-schema.org/</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Compile<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file,<sp/>no<sp/>matter<sp/>how<sp/>often<sp/>it<sp/>is<sp/>included.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>std::ranges::find_if,<sp/>used<sp/>to<sp/>search<sp/>containers<sp/>for<sp/>a<sp/>matching<sp/>item.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>std::uint8_t,<sp/>the<sp/>small<sp/>integer<sp/>type<sp/>behind<sp/>the<sp/>Action<sp/>flags.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/basic_json.hpp&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>jsoncons::json,<sp/>the<sp/>JSON<sp/>value<sp/>type<sp/>that<sp/>we<sp/>validate.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>std::string,<sp/>used<sp/>for<sp/>column/key<sp/>names<sp/>and<sp/>type<sp/>names.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>std::unordered_map,<sp/>mapping<sp/>action<sp/>flags<sp/>to<sp/>sets<sp/>of<sp/>keys.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_set&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>std::unordered_set,<sp/>holding<sp/>unique<sp/>keys<sp/>and<sp/>columns.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>std::pair,<sp/>the<sp/>(key,<sp/>value)<sp/>item<sp/>type<sp/>stored<sp/>in<sp/>db_data.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="http_8hpp" kindref="compound">utils/global/http.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>api::v2::Http::Error<sp/>and<sp/>Status,<sp/>used<sp/>to<sp/>report<sp/>failures.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utils_2global_2types_8hpp" kindref="compound">utils/global/types.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>api::v2::ColumnInfo,<sp/>the<sp/>column-description<sp/>type.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="39"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>@class<sp/>Validator</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Stateless<sp/>collection<sp/>of<sp/>checks<sp/>applied<sp/>to<sp/>client<sp/>JSON<sp/>before<sp/>it<sp/>reaches<sp/>the<sp/>database.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>@details<sp/>Entity<sp/>controllers<sp/>call<sp/>these<sp/>helpers<sp/>with<sp/>the<sp/>parsed<sp/>request<sp/>body,<sp/>the<sp/>target</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>table<sp/>name<sp/>and<sp/>a<sp/>Rule<sp/>describing<sp/>per-key<sp/>exceptions.<sp/>Validation<sp/>is<sp/>performed<sp/>against<sp/>a</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>cached<sp/>snapshot<sp/>of<sp/>the<sp/>database<sp/>schema<sp/>(DatabaseSchema),<sp/>not<sp/>against<sp/>a<sp/>live<sp/>query,<sp/>so<sp/>the</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>helpers<sp/>are<sp/>cheap<sp/>enough<sp/>for<sp/>the<sp/>request<sp/>path.<sp/>Every<sp/>entry<sp/>point<sp/>is<sp/>static<sp/>and<sp/>reports</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>failures<sp/>by<sp/>filling<sp/>an<sp/>api::v2::Http::Error<sp/>(code<sp/>+<sp/>message)<sp/>and<sp/>returning<sp/>false<sp/>rather</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>than<sp/>throwing;<sp/>exceptions<sp/>from<sp/>the<sp/>JSON<sp/>layer<sp/>are<sp/>caught<sp/>and<sp/>converted<sp/>to<sp/>400<sp/>responses.</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>@note<sp/>All<sp/>members<sp/>are<sp/>static;<sp/>Validator<sp/>carries<sp/>no<sp/>state<sp/>and<sp/>needs<sp/>no<sp/>lifetime<sp/>management.</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>@warning<sp/>The<sp/>cached<sp/>schema<sp/>must<sp/>have<sp/>been<sp/>populated<sp/>before<sp/>these<sp/>helpers<sp/>are<sp/>used,</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>otherwise<sp/>table<sp/>lookups<sp/>fail<sp/>and<sp/>the<sp/>validators<sp/>return<sp/>false.</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>@see<sp/>Rule,<sp/>DatabaseSchema,<sp/>api::v2::Http::Error</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classValidator" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classValidator_1a97c32b0357798462ff87ae6f3859ba23" kindref="member">Validator</ref></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>constructor;<sp/>the<sp/>class<sp/>is<sp/>stateless.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classValidator_1a97c32b0357798462ff87ae6f3859ba23" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classValidator_1a97c32b0357798462ff87ae6f3859ba23" kindref="member">Validator</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Virtual<sp/>destructor.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classValidator_1a94c2f05a90c0fa6705d6eed3be4c4fd4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classValidator_1a94c2f05a90c0fa6705d6eed3be4c4fd4" kindref="member">~Validator</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Copy<sp/>constructor;<sp/>no<sp/>state<sp/>to<sp/>copy.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classValidator_1a578956cdf9a226f5b0673477c3a0907d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classValidator_1a578956cdf9a226f5b0673477c3a0907d" kindref="member">Validator</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classValidator_1a97c32b0357798462ff87ae6f3859ba23" kindref="member">Validator</ref>&amp;<sp/>other)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Copy<sp/>assignment;<sp/>no<sp/>state<sp/>to<sp/>assign.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classValidator_1a3d6ec6318595db77bb443c201b6b1bd5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classValidator_1a97c32b0357798462ff87ae6f3859ba23" kindref="member">Validator</ref>&amp;<sp/><ref refid="classValidator_1a3d6ec6318595db77bb443c201b6b1bd5" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classValidator_1a97c32b0357798462ff87ae6f3859ba23" kindref="member">Validator</ref>&amp;<sp/>other)<sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Move<sp/>constructor;<sp/>no<sp/>state<sp/>to<sp/>move.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classValidator_1a75fb844520b281adae51b55c54d3ea77" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classValidator_1a75fb844520b281adae51b55c54d3ea77" kindref="member">Validator</ref>(<ref refid="classValidator_1a97c32b0357798462ff87ae6f3859ba23" kindref="member">Validator</ref>&amp;&amp;<sp/>other)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Move<sp/>assignment;<sp/>no<sp/>state<sp/>to<sp/>move.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classValidator_1a6c340aaaaf8745fadced39d7adf93fa2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classValidator_1a97c32b0357798462ff87ae6f3859ba23" kindref="member">Validator</ref>&amp;<sp/><ref refid="classValidator_1a6c340aaaaf8745fadced39d7adf93fa2" kindref="member">operator=</ref>(<ref refid="classValidator_1a97c32b0357798462ff87ae6f3859ba23" kindref="member">Validator</ref>&amp;&amp;<sp/>other)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@struct<sp/>Rule</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>A<sp/>set<sp/>of<sp/>validation<sp/>exceptions<sp/>keyed<sp/>by<sp/>the<sp/>actions<sp/>they<sp/>relax<sp/>or<sp/>assert.</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Holds<sp/>one<sp/>or<sp/>more<sp/>bitmask<sp/>Action<sp/>flags<sp/>and,<sp/>for<sp/>each<sp/>flag<sp/>group,<sp/>the<sp/>set<sp/>of</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>column<sp/>names<sp/>it<sp/>applies<sp/>to.<sp/>A<sp/>check<sp/>passes<sp/>only<sp/>when<sp/>the<sp/>relevant<sp/>flag<sp/>is<sp/>present<sp/>in</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@ref<sp/>action<sp/>and<sp/>a<sp/>matching<sp/>flag<sp/>group<sp/>contains<sp/>the<sp/>key<sp/>being<sp/>checked.<sp/>Rules<sp/>are</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>typically<sp/>static<sp/>const<sp/>objects<sp/>in<sp/>controller<sp/>code,<sp/>composed<sp/>with<sp/>the<sp/>bitwise<sp/>operators.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Copying/moving<sp/>is<sp/>implicit;<sp/>the<sp/>key<sp/>sets<sp/>own<sp/>their<sp/>strings.</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="structValidator_1_1Rule" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structValidator_1_1Rule_1a0b659fda5a4ea8eadb780baeb147eaff" kindref="member">Rule</ref></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Bitmask<sp/>of<sp/>validation<sp/>relaxations/assertions<sp/>that<sp/>make<sp/>up<sp/>a<sp/>rule.</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Values<sp/>are<sp/>powers<sp/>of<sp/>two<sp/>and<sp/>may<sp/>be<sp/>combined<sp/>with<sp/>operator|.</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref><sp/>:<sp/>std::uint8_t</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="89" refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a0753c9c32b6bf47d97d8b16158906388" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a0753c9c32b6bf47d97d8b16158906388" kindref="member">NONE</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0,<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>flags<sp/>set:<sp/>the<sp/>&quot;do<sp/>nothing&quot;<sp/>value<sp/>used<sp/>when<sp/>testing<sp/>flags.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7acf64a80b49ebda9168c3d7a2b6f95f15" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7acf64a80b49ebda9168c3d7a2b6f95f15" kindref="member">IGNORE_IF_MISSING_FROM_SCHEMA</ref><sp/><sp/><sp/><sp/>=<sp/>1U<sp/>&lt;&lt;<sp/>0U,<sp/><sp/></highlight><highlight class="comment">//<sp/>Ignore<sp/>if<sp/>key<sp/>is<sp/>missing<sp/>from<sp/>database<sp/>schema</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a61500db96634a6ab0be12a77a8460481" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a61500db96634a6ab0be12a77a8460481" kindref="member">IGNORE_IF_NOT_NULLABLE_IN_SCHEMA</ref><sp/>=<sp/>1U<sp/>&lt;&lt;<sp/>1U,<sp/><sp/></highlight><highlight class="comment">//<sp/>Ignore<sp/>if<sp/>key<sp/>is<sp/>not<sp/>nullable<sp/>in<sp/>database<sp/>schema</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ad45728414bb4b722bdff45f0f70692c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ad45728414bb4b722bdff45f0f70692c7" kindref="member">ASSERT_IMMUTABLE</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1U<sp/>&lt;&lt;<sp/>2U,<sp/><sp/></highlight><highlight class="comment">//<sp/>Assert<sp/>that<sp/>key<sp/>is<sp/>immutable</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" kindref="member">ASSERT_NOT_PRESENT</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1U<sp/>&lt;&lt;<sp/>3U,<sp/><sp/></highlight><highlight class="comment">//<sp/>Assert<sp/>that<sp/>key<sp/>is<sp/>not<sp/>present<sp/>in<sp/>json</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Combined<sp/>action<sp/>flags<sp/>that<sp/>this<sp/>rule<sp/>activates.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="structValidator_1_1Rule_1ae4e62d78091b24b8d55c84d62a8988d4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structValidator_1_1Rule_1ae4e62d78091b24b8d55c84d62a8988d4" kindref="member">action</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>NOLINT<sp/>-<sp/>the<sp/>on/off<sp/>flags,<sp/>kept<sp/>public<sp/>so<sp/>callers<sp/>can<sp/>compose<sp/>rules.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Maps<sp/>an<sp/>action<sp/>flag<sp/>(or<sp/>group<sp/>of<sp/>flags)<sp/>to<sp/>the<sp/>keys<sp/>it<sp/>applies<sp/>to.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="structValidator_1_1Rule_1aa033a4043c5bba70b2baf132b33525cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::unordered_map&lt;Action,<sp/>std::unordered_set&lt;std::string&gt;&gt;<sp/><ref refid="structValidator_1_1Rule_1aa033a4043c5bba70b2baf132b33525cf" kindref="member">keys</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>NOLINT<sp/>-<sp/>each<sp/>flag<sp/>group<sp/>owns<sp/>the<sp/>keys<sp/>it<sp/>relaxes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Tests<sp/>whether<sp/>a<sp/>given<sp/>action<sp/>applies<sp/>to<sp/>a<sp/>given<sp/>key.</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>check<sp/>Action<sp/>flag<sp/>being<sp/>tested.</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>key<sp/>Column/key<sp/>name<sp/>being<sp/>validated.</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>only<sp/>when<sp/>@p<sp/>check<sp/>is<sp/>set<sp/>in<sp/>this<sp/>rule<sp/>and<sp/>@p<sp/>key<sp/>belongs<sp/>to<sp/>a<sp/>flag</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>group<sp/>that<sp/>intersects<sp/>@p<sp/>check.</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" kindref="member">check</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref>&amp;<sp/><ref refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" kindref="member">check</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isMatch<sp/>=<sp/><ref refid="structValidator_1_1Rule_1abb98001b4c39f55d78d27243042972c1" kindref="member">hasMatch</ref>(<ref refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" kindref="member">check</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>True<sp/>when<sp/>this<sp/>rule&apos;s<sp/>flags<sp/>include<sp/>the<sp/>flag<sp/>we<sp/>are<sp/>testing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isKey<sp/><sp/><sp/>=<sp/><ref refid="structValidator_1_1Rule_1aed3b6d1fbcece769c7a8fe3e735117aa" kindref="member">hasKey</ref>(<ref refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" kindref="member">check</ref>,<sp/>key);<sp/><sp/></highlight><highlight class="comment">//<sp/>True<sp/>when<sp/>the<sp/>key<sp/>sits<sp/>in<sp/>a<sp/>matching<sp/>flag<sp/>group.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>isMatch<sp/>&amp;&amp;<sp/>isKey;<sp/><sp/></highlight><highlight class="comment">//<sp/>Both<sp/>must<sp/>hold,<sp/>so<sp/>return<sp/>their<sp/>logical<sp/>AND<sp/>to<sp/>the<sp/>caller.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>constructor<sp/>for<sp/>rule</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Constructs<sp/>a<sp/>rule<sp/>combining<sp/>@p<sp/>_action<sp/>with<sp/>the<sp/>given<sp/>key<sp/>set.</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_action<sp/>Action<sp/>flags<sp/>(usually<sp/>a<sp/>bitwise<sp/>OR<sp/>of<sp/>several).</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_keys<sp/>Keys<sp/>the<sp/>flags<sp/>apply<sp/>to;<sp/>taken<sp/>by<sp/>value<sp/>into<sp/>@ref<sp/>keys.</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@pre<sp/>At<sp/>least<sp/>one<sp/>Action<sp/>flag<sp/>should<sp/>be<sp/>set,<sp/>otherwise<sp/>the<sp/>rule<sp/>can<sp/>never<sp/>match.</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="structValidator_1_1Rule_1a0b659fda5a4ea8eadb780baeb147eaff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="structValidator_1_1Rule_1a0b659fda5a4ea8eadb780baeb147eaff" kindref="member">Rule</ref>(<ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref><sp/>_action,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::unordered_set&lt;std::string&gt;&amp;&amp;<sp/>_keys)<sp/>:<sp/><ref refid="structValidator_1_1Rule_1ae4e62d78091b24b8d55c84d62a8988d4" kindref="member">action</ref>(_action)<sp/>{<sp/>this-&gt;keys[<ref refid="structValidator_1_1Rule_1ae4e62d78091b24b8d55c84d62a8988d4" kindref="member">action</ref>]<sp/>=<sp/>_keys;<sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Rules<sp/>require<sp/>an<sp/>explicit<sp/>action<sp/>and<sp/>key<sp/>set.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="structValidator_1_1Rule_1a1dcb78b216655d3195ff18d50f6fc245" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structValidator_1_1Rule_1a1dcb78b216655d3195ff18d50f6fc245" kindref="member">Rule</ref>()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Overload<sp/>|<sp/>operator</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Combines<sp/>two<sp/>action<sp/>flags<sp/>into<sp/>one<sp/>bitmask.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="structValidator_1_1Rule_1a0f9331dd42357f3337f3907dc7aa6b52" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref><sp/><ref refid="structValidator_1_1Rule_1a0f9331dd42357f3337f3907dc7aa6b52" kindref="member">operator|</ref>(<ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref><sp/>first,<sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref><sp/>second)</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::uint8_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(first)<sp/>|<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::uint8_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(second));<sp/><sp/></highlight><highlight class="comment">//<sp/>OR<sp/>the<sp/>raw<sp/>bytes,<sp/>then<sp/>treat<sp/>the<sp/>result<sp/>as<sp/>an<sp/>Action<sp/>again.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Overload<sp/>&amp;<sp/>operator</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Returns<sp/>the<sp/>intersection<sp/>of<sp/>two<sp/>action<sp/>bitmasks.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="structValidator_1_1Rule_1a8861cacb5e743238ed064d91c103af07" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref><sp/><ref refid="structValidator_1_1Rule_1a8861cacb5e743238ed064d91c103af07" kindref="member">operator&amp;</ref>(<ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref><sp/>first,<sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref><sp/>second)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::uint8_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(first)<sp/>&amp;<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::uint8_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(second));<sp/><sp/></highlight><highlight class="comment">//<sp/>AND<sp/>the<sp/>raw<sp/>bytes<sp/>to<sp/>keep<sp/>only<sp/>shared<sp/>flags.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Overload<sp/>|=<sp/>operator</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Adds<sp/>@p<sp/>second&apos;s<sp/>flags<sp/>to<sp/>@p<sp/>first<sp/>in<sp/>place.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="structValidator_1_1Rule_1a421109c96cbcc011372312e788137d89" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref>&amp;<sp/><ref refid="structValidator_1_1Rule_1a421109c96cbcc011372312e788137d89" kindref="member">operator|=</ref>(<ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref>&amp;<sp/>first,<sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref><sp/>second)</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>first<sp/>=<sp/>first<sp/>|<sp/>second;<sp/><sp/></highlight><highlight class="comment">//<sp/>Reuse<sp/>operator|<sp/>and<sp/>store<sp/>the<sp/>combined<sp/>flags<sp/>back<sp/>into<sp/>first.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>first;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>updated<sp/>object<sp/>so<sp/>calls<sp/>can<sp/>be<sp/>chained.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Overload<sp/>&amp;=<sp/>operator</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Keeps<sp/>only<sp/>the<sp/>flags<sp/>common<sp/>to<sp/>@p<sp/>first<sp/>and<sp/>@p<sp/>second.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="structValidator_1_1Rule_1a95db5cb0d45ec71786cbc79606332669" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref>&amp;<sp/><ref refid="structValidator_1_1Rule_1a95db5cb0d45ec71786cbc79606332669" kindref="member">operator&amp;=</ref>(<ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref>&amp;<sp/>first,<sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref><sp/>second)</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>first<sp/>=<sp/>first<sp/>&amp;<sp/>second;<sp/><sp/></highlight><highlight class="comment">//<sp/>Reuse<sp/>operator&amp;<sp/>and<sp/>store<sp/>the<sp/>narrowed<sp/>flags<sp/>back<sp/>into<sp/>first.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>first;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>updated<sp/>object<sp/>so<sp/>calls<sp/>can<sp/>be<sp/>chained.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Invert<sp/>operator</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Inverts<sp/>all<sp/>eight<sp/>bits;<sp/>include<sp/>NONE<sp/>filtering<sp/>at<sp/>the<sp/>call<sp/>site.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="structValidator_1_1Rule_1a519d13c51d7028498f52c879e6f9ee0b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref><sp/><ref refid="structValidator_1_1Rule_1a519d13c51d7028498f52c879e6f9ee0b" kindref="member">operator~</ref>(<ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref><sp/>first)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(~static_cast&lt;std::uint8_t&gt;(first));<sp/>}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>any<sp/>flag<sp/>is<sp/>set</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Convenience<sp/>conversion:<sp/>true<sp/>when<sp/>at<sp/>least<sp/>one<sp/>action<sp/>flag<sp/>is<sp/>set.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163" refid="structValidator_1_1Rule_1ad0e918d645764b151477dd4f5519fd60" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/>bool()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="structValidator_1_1Rule_1ae4e62d78091b24b8d55c84d62a8988d4" kindref="member">action</ref>)<sp/>!=<sp/>0;<sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>if<sp/>rule<sp/>is<sp/>set</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>True<sp/>when<sp/>the<sp/>rule&apos;s<sp/>combined<sp/>action<sp/>intersects<sp/>@p<sp/>check.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="structValidator_1_1Rule_1abb98001b4c39f55d78d27243042972c1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structValidator_1_1Rule_1abb98001b4c39f55d78d27243042972c1" kindref="member">hasMatch</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref>&amp;<sp/><ref refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" kindref="member">check</ref>)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="structValidator_1_1Rule_1ae4e62d78091b24b8d55c84d62a8988d4" kindref="member">action</ref><sp/>&amp;<sp/><ref refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" kindref="member">check</ref>)<sp/>!=<sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a0753c9c32b6bf47d97d8b16158906388" kindref="member">NONE</ref>;<sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="169"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>True<sp/>when<sp/>a<sp/>stored<sp/>flag<sp/>group<sp/>intersects<sp/>@p<sp/>check.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170" refid="structValidator_1_1Rule_1abc50cce20918ad158ec32e1b4ab6af7a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structValidator_1_1Rule_1abc50cce20918ad158ec32e1b4ab6af7a" kindref="member">hasMatch</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref>&amp;<sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref>&amp;<sp/><ref refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" kindref="member">check</ref>)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(key<sp/>&amp;<sp/><ref refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" kindref="member">check</ref>)<sp/>!=<sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a0753c9c32b6bf47d97d8b16158906388" kindref="member">NONE</ref>;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>if<sp/>key<sp/>exists<sp/>in<sp/>rule<sp/>for<sp/>and<sp/>action</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>True<sp/>when<sp/>@p<sp/>element<sp/>appears<sp/>in<sp/>a<sp/>key<sp/>set<sp/>whose<sp/>flags<sp/>intersect<sp/>@p<sp/>check.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="structValidator_1_1Rule_1aed3b6d1fbcece769c7a8fe3e735117aa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structValidator_1_1Rule_1aed3b6d1fbcece769c7a8fe3e735117aa" kindref="member">hasKey</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref>&amp;<sp/><ref refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" kindref="member">check</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>element)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::ranges::find_if(this-&gt;keys,<sp/>[&amp;](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>key)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="structValidator_1_1Rule_1abb98001b4c39f55d78d27243042972c1" kindref="member">hasMatch</ref>(key.first,<sp/><ref refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" kindref="member">check</ref>))<sp/>&amp;&amp;<sp/>(key.second.contains(element));<sp/>})<sp/>!=</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;keys.end();<sp/><sp/></highlight><highlight class="comment">//<sp/>Found<sp/>a<sp/>matching<sp/>group<sp/>means<sp/>the<sp/>key<sp/>is<sp/>allowed;<sp/>reaching<sp/>end()<sp/>means<sp/>it<sp/>is<sp/>not.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="181"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="182"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Validates<sp/>a<sp/>create<sp/>(INSERT)<sp/>request<sp/>body<sp/>against<sp/>a<sp/>table&apos;s<sp/>schema.</highlight></codeline>
+<codeline lineno="183"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tablename<sp/>Target<sp/>table<sp/>used<sp/>for<sp/>the<sp/>schema<sp/>lookup.</highlight></codeline>
+<codeline lineno="184"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Parsed<sp/>JSON<sp/>body;<sp/>must<sp/>be<sp/>a<sp/>non-empty<sp/>object.</highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Filled<sp/>with<sp/>code/message<sp/>on<sp/>failure;<sp/>HTTP<sp/>400<sp/>for<sp/>malformed<sp/>input<sp/>or</highlight></codeline>
+<codeline lineno="186"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>missing/non-nullable<sp/>columns,<sp/>HTTP<sp/>400<sp/>for<sp/>an<sp/>unknown<sp/>table.</highlight></codeline>
+<codeline lineno="187"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>rule<sp/>Per-key<sp/>exceptions<sp/>(e.g.<sp/>ignore<sp/>a<sp/>server-generated<sp/>&quot;id&quot;).</highlight></codeline>
+<codeline lineno="188"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>the<sp/>body<sp/>satisfies<sp/>all<sp/>schema<sp/>constraints.</highlight></codeline>
+<codeline lineno="189"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Runs<sp/>null/empty<sp/>check,<sp/>schema<sp/>lookup,<sp/>per-column<sp/>type<sp/>and<sp/>nullability<sp/>checks</highlight></codeline>
+<codeline lineno="190"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>(checkColumns),<sp/>and<sp/>key-presence/prohibition<sp/>checks<sp/>(ensureAllKeysExist).<sp/>Exceptions</highlight></codeline>
+<codeline lineno="191"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>from<sp/>jsoncons<sp/>(such<sp/>as<sp/>a<sp/>non-object<sp/>body)<sp/>are<sp/>caught<sp/>and<sp/>reported<sp/>as<sp/>BAD_REQUEST,</highlight></codeline>
+<codeline lineno="192"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>since<sp/>these<sp/>inputs<sp/>are<sp/>client<sp/>errors<sp/>rather<sp/>than<sp/>server<sp/>faults.</highlight></codeline>
+<codeline lineno="193"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@see<sp/>validateDatabaseUpdateSchema,<sp/>checkColumns,<sp/>ensureAllKeysExist</highlight></codeline>
+<codeline lineno="194"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" kindref="member">validateDatabaseCreateSchema</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>tablename,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>jsoncons::json&amp;<sp/>data,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref>&amp;<sp/>error,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Rule&amp;<sp/>rule);</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="197"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Validates<sp/>an<sp/>update<sp/>(PATCH/PUT)<sp/>request<sp/>body<sp/>against<sp/>a<sp/>table&apos;s<sp/>schema.</highlight></codeline>
+<codeline lineno="198"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tablename<sp/>Target<sp/>table<sp/>used<sp/>for<sp/>the<sp/>schema<sp/>lookup.</highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Parsed<sp/>JSON<sp/>body;<sp/>only<sp/>a<sp/>subset<sp/>of<sp/>columns<sp/>needs<sp/>to<sp/>be<sp/>present.</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Filled<sp/>with<sp/>code/message<sp/>on<sp/>failure<sp/>(HTTP<sp/>400).</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>rule<sp/>Per-key<sp/>exceptions,<sp/>notably<sp/>ASSERT_IMMUTABLE<sp/>for<sp/>read-only<sp/>columns.</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>the<sp/>(partial)<sp/>body<sp/>is<sp/>valid<sp/>for<sp/>an<sp/>update.</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Checks<sp/>null/empty<sp/>input<sp/>and<sp/>key-level<sp/>constraints;<sp/>unlike<sp/>the<sp/>create<sp/>path<sp/>it</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>does<sp/>not<sp/>require<sp/>every<sp/>schema<sp/>column<sp/>to<sp/>be<sp/>present.<sp/>Exceptions<sp/>are<sp/>translated<sp/>to<sp/>400</highlight></codeline>
+<codeline lineno="205"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>for<sp/>the<sp/>same<sp/>reasons<sp/>as<sp/>in<sp/>validateDatabaseCreateSchema.</highlight></codeline>
+<codeline lineno="206"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" kindref="member">validateDatabaseUpdateSchema</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>tablename,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>jsoncons::json&amp;<sp/>data,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref>&amp;<sp/>error,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Rule&amp;<sp/>rule);</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="208"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="209"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Validates<sp/>the<sp/>projected<sp/>columns<sp/>of<sp/>a<sp/>read<sp/>(SELECT)<sp/>request.</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>keys<sp/>Column<sp/>names<sp/>requested<sp/>by<sp/>the<sp/>client.</highlight></codeline>
+<codeline lineno="211"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>table_name<sp/>Table<sp/>the<sp/>columns<sp/>are<sp/>requested<sp/>from.</highlight></codeline>
+<codeline lineno="212"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Filled<sp/>with<sp/>code/message<sp/>on<sp/>failure:<sp/>404<sp/>if<sp/>the<sp/>table<sp/>has<sp/>no<sp/>schema,</highlight></codeline>
+<codeline lineno="213"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>400<sp/>if<sp/>a<sp/>key<sp/>is<sp/>prohibited<sp/>by<sp/>the<sp/>rule<sp/>or<sp/>absent<sp/>from<sp/>the<sp/>schema.</highlight></codeline>
+<codeline lineno="214"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>rule<sp/>Per-key<sp/>exceptions,<sp/>notably<sp/>ASSERT_NOT_PRESENT<sp/>for<sp/>forbidden<sp/>columns.</highlight></codeline>
+<codeline lineno="215"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>every<sp/>requested<sp/>key<sp/>exists<sp/>in<sp/>the<sp/>schema<sp/>and<sp/>none<sp/>is<sp/>prohibited.</highlight></codeline>
+<codeline lineno="216"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classValidator_1a950c1350bd04c695d0add09b31db3974" kindref="member">validateDatabaseReadSchema</ref>(</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::unordered_set&lt;std::string&gt;&amp;<sp/>keys,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>table_name,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref>&amp;<sp/>error,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Rule&amp;<sp/>rule);</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="219"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="220"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Applies<sp/>field-specific<sp/>regex<sp/>rules<sp/>to<sp/>client-supplied<sp/>entity<sp/>data.</highlight></codeline>
+<codeline lineno="221"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>object<sp/>whose<sp/>fields<sp/>are<sp/>validated<sp/>by<sp/>name<sp/>(username,<sp/>password,</highlight></codeline>
+<codeline lineno="222"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>phone,<sp/>email,<sp/>dob,<sp/>gender).<sp/>Fields<sp/>without<sp/>a<sp/>rule<sp/>are<sp/>passed<sp/>through<sp/>if<sp/>they<sp/>are</highlight></codeline>
+<codeline lineno="223"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>non-empty<sp/>strings.</highlight></codeline>
+<codeline lineno="224"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Filled<sp/>with<sp/>400<sp/>and<sp/>a<sp/>descriptive<sp/>message<sp/>on<sp/>the<sp/>first<sp/>bad<sp/>field.</highlight></codeline>
+<codeline lineno="225"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>db_data<sp/>Receives<sp/>the<sp/>validated<sp/>(key,<sp/>value)<sp/>pairs<sp/>ready<sp/>for<sp/>a<sp/>database<sp/>call.</highlight></codeline>
+<codeline lineno="226"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>all<sp/>fields<sp/>pass;<sp/>false<sp/>on<sp/>the<sp/>first<sp/>invalid<sp/>or<sp/>empty<sp/>value.</highlight></codeline>
+<codeline lineno="227"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Regexes<sp/>are<sp/>compiled<sp/>once<sp/>into<sp/>a<sp/>function-local<sp/>static<sp/>map<sp/>because<sp/>compiling</highlight></codeline>
+<codeline lineno="228"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>std::regex<sp/>per<sp/>request<sp/>is<sp/>expensive.<sp/>A<sp/>field<sp/>with<sp/>a<sp/>validator<sp/>must<sp/>be<sp/>a<sp/>string,</highlight></codeline>
+<codeline lineno="229"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>non-empty<sp/>and<sp/>match<sp/>its<sp/>pattern;<sp/>an<sp/>unvalidated<sp/>field<sp/>is<sp/>copied<sp/>only<sp/>when<sp/>it<sp/>is<sp/>a</highlight></codeline>
+<codeline lineno="230"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>non-empty<sp/>string.</highlight></codeline>
+<codeline lineno="231"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Entries<sp/>already<sp/>present<sp/>in<sp/>@p<sp/>db_data<sp/>are<sp/>preserved;<sp/>results<sp/>are<sp/>inserted,<sp/>not</highlight></codeline>
+<codeline lineno="232"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>assigned.</highlight></codeline>
+<codeline lineno="233"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classValidator_1adf618a4a20efe4f1bd832993affd8b7a" kindref="member">clientRegexValidation</ref>(</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>jsoncons::json&amp;<sp/>data,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref>&amp;<sp/>error,<sp/>std::unordered_set&lt;std::pair&lt;std::string,<sp/>std::string&gt;&gt;&amp;<sp/>db_data);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="238"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="239"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Rejects<sp/>a<sp/>null<sp/>or<sp/>empty<sp/>JSON<sp/>body<sp/>as<sp/>a<sp/>client<sp/>error.</highlight></codeline>
+<codeline lineno="240"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Body<sp/>to<sp/>inspect.</highlight></codeline>
+<codeline lineno="241"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Set<sp/>to<sp/>400<sp/>/<sp/>&quot;Data<sp/>is<sp/>empty&quot;<sp/>when<sp/>the<sp/>check<sp/>fails.</highlight></codeline>
+<codeline lineno="242"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>@p<sp/>data<sp/>is<sp/>null<sp/>or<sp/>empty<sp/>(i.e.<sp/>validation<sp/>should<sp/>stop).</highlight></codeline>
+<codeline lineno="243"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classValidator_1ac4c157ed48ccadad45abcf3176d96075" kindref="member">nullCheck</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>jsoncons::json&amp;<sp/>data,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref>&amp;<sp/>error);</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="245"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="246"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Looks<sp/>up<sp/>a<sp/>table&apos;s<sp/>cached<sp/>column<sp/>set.</highlight></codeline>
+<codeline lineno="247"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tablename<sp/>Table<sp/>to<sp/>look<sp/>up.</highlight></codeline>
+<codeline lineno="248"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Set<sp/>to<sp/>400<sp/>/<sp/>&quot;Table<sp/>not<sp/>found&quot;<sp/>when<sp/>the<sp/>schema<sp/>is<sp/>missing<sp/>or<sp/>empty.</highlight></codeline>
+<codeline lineno="249"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>found<sp/>Set<sp/>true<sp/>on<sp/>success,<sp/>false<sp/>on<sp/>failure.</highlight></codeline>
+<codeline lineno="250"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>copy<sp/>of<sp/>the<sp/>table&apos;s<sp/>ColumnInfo<sp/>set,<sp/>or<sp/>an<sp/>empty<sp/>set<sp/>when<sp/>not<sp/>found.</highlight></codeline>
+<codeline lineno="251"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>The<sp/>caller<sp/>must<sp/>consult<sp/>@p<sp/>found;<sp/>an<sp/>empty<sp/>successful<sp/>schema<sp/>is<sp/>treated<sp/>as<sp/>failure.</highlight></codeline>
+<codeline lineno="252"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::unordered_set&lt;api::v2::ColumnInfo&gt;<sp/><ref refid="classValidator_1a3827a99ba8a6d471ad08ae9b6455108f" kindref="member">getDatabaseSchemaForTable</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>tablename,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref>&amp;<sp/>error,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">&amp;<sp/>found);</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="254"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="255"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Maps<sp/>a<sp/>PostgreSQL<sp/>type<sp/>name<sp/>to<sp/>a<sp/>jsoncons<sp/>type<sp/>predicate.</highlight></codeline>
+<codeline lineno="256"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>value<sp/>JSON<sp/>value<sp/>to<sp/>test.</highlight></codeline>
+<codeline lineno="257"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>expectedType<sp/>Schema<sp/>type<sp/>string<sp/>(integer,<sp/>float/double/real,<sp/>character</highlight></codeline>
+<codeline lineno="258"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>varying,<sp/>boolean,<sp/>jsonb,<sp/>or<sp/>date/time<sp/>variants).</highlight></codeline>
+<codeline lineno="259"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>the<sp/>JSON<sp/>value&apos;s<sp/>kind<sp/>matches<sp/>the<sp/>schema<sp/>type;<sp/>false<sp/>otherwise<sp/>or<sp/>for</highlight></codeline>
+<codeline lineno="260"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>unrecognised<sp/>type<sp/>strings.</highlight></codeline>
+<codeline lineno="261"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classValidator_1ac00e885c42aee13d9c7f62d591718638" kindref="member">validateType</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>jsoncons::json&amp;<sp/>value,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>expectedType);</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="263"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="264"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Checks<sp/>each<sp/>schema<sp/>column<sp/>against<sp/>the<sp/>body<sp/>(create<sp/>path).</highlight></codeline>
+<codeline lineno="265"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>object<sp/>under<sp/>validation.</highlight></codeline>
+<codeline lineno="266"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>table_schema<sp/>Cached<sp/>column<sp/>definitions<sp/>for<sp/>the<sp/>table.</highlight></codeline>
+<codeline lineno="267"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Set<sp/>to<sp/>400<sp/>on<sp/>a<sp/>missing<sp/>non-nullable<sp/>column<sp/>or<sp/>a<sp/>type<sp/>mismatch.</highlight></codeline>
+<codeline lineno="268"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>rule<sp/>Relaxations,<sp/>notably<sp/>IGNORE_IF_NOT_NULLABLE_IN_SCHEMA.</highlight></codeline>
+<codeline lineno="269"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>every<sp/>column<sp/>constraint<sp/>is<sp/>satisfied.</highlight></codeline>
+<codeline lineno="270"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classValidator_1a639d1408b7c8bf36a3b6ac6b0f780c5a" kindref="member">checkColumns</ref>(</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>jsoncons::json&amp;<sp/>data,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::unordered_set&lt;api::v2::ColumnInfo&gt;&amp;<sp/>table_schema,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref>&amp;<sp/>error,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Rule&amp;<sp/>rule);</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="273"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="274"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Checks<sp/>that<sp/>every<sp/>key<sp/>in<sp/>the<sp/>body<sp/>is<sp/>permitted<sp/>and<sp/>known<sp/>to<sp/>the<sp/>schema.</highlight></codeline>
+<codeline lineno="275"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>object<sp/>whose<sp/>keys<sp/>are<sp/>checked.</highlight></codeline>
+<codeline lineno="276"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>table_schema<sp/>Cached<sp/>column<sp/>definitions<sp/>used<sp/>for<sp/>the<sp/>membership<sp/>test.</highlight></codeline>
+<codeline lineno="277"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Set<sp/>to<sp/>400<sp/>on<sp/>a<sp/>prohibited,<sp/>immutable<sp/>or<sp/>unknown<sp/>key.</highlight></codeline>
+<codeline lineno="278"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>rule<sp/>Assertions<sp/>and<sp/>relaxations<sp/>(ASSERT_NOT_PRESENT,<sp/>ASSERT_IMMUTABLE,</highlight></codeline>
+<codeline lineno="279"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>IGNORE_IF_MISSING_FROM_SCHEMA).</highlight></codeline>
+<codeline lineno="280"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>all<sp/>keys<sp/>are<sp/>acceptable.</highlight></codeline>
+<codeline lineno="281"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>This<sp/>checks<sp/>keys<sp/>in<sp/>the<sp/>data,<sp/>not<sp/>that<sp/>all<sp/>schema<sp/>columns<sp/>are<sp/>present;<sp/>the<sp/>latter</highlight></codeline>
+<codeline lineno="282"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>is<sp/>enforced<sp/>by<sp/>checkColumns<sp/>on<sp/>the<sp/>create<sp/>path.</highlight></codeline>
+<codeline lineno="283"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classValidator_1ab88bc5524278ed0edfb0827572ea02e3" kindref="member">ensureAllKeysExist</ref>(</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>jsoncons::json&amp;<sp/>data,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::unordered_set&lt;api::v2::ColumnInfo&gt;&amp;<sp/>table_schema,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref>&amp;<sp/>error,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Rule&amp;<sp/>rule);</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="286"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="287"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Detects<sp/>duplicate<sp/>keys<sp/>in<sp/>a<sp/>JSON<sp/>object.</highlight></codeline>
+<codeline lineno="288"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Object<sp/>to<sp/>scan.</highlight></codeline>
+<codeline lineno="289"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>error<sp/>Set<sp/>to<sp/>400<sp/>with<sp/>the<sp/>duplicate<sp/>key<sp/>name<sp/>when<sp/>one<sp/>is<sp/>found.</highlight></codeline>
+<codeline lineno="290"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>a<sp/>duplicate<sp/>key<sp/>is<sp/>present.</highlight></codeline>
+<codeline lineno="291"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Currently<sp/>unused<sp/>by<sp/>the<sp/>create/update<sp/>validators:<sp/>the<sp/>jsoncons<sp/>parser<sp/>already</highlight></codeline>
+<codeline lineno="292"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>rejects<sp/>duplicate<sp/>keys<sp/>before<sp/>these<sp/>helpers<sp/>run.</highlight></codeline>
+<codeline lineno="293"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classValidator_1a54290b0ebd088be63c3ac68b3b85a3e0" kindref="member">hasDuplicateKeys</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>jsoncons::json&amp;<sp/>data,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref>&amp;<sp/>error);</highlight></codeline>
+<codeline lineno="295"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="src/validator/validator.hpp"/>
+  </compounddef>
+</doxygen>

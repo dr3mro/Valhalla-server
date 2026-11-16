@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_108e78e2e059a0753235d44222a7ac25" kind="dir">
+    <compoundname>src/configurator/envloader/envvars</compoundname>
+    <innerfile refid="envvars_8cpp">envvars.cpp</innerfile>
+    <innerfile refid="envvars_8hpp">envvars.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/configurator/envloader/envvars/"/>
+  </compounddef>
+</doxygen>

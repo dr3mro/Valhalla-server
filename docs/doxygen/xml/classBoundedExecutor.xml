@@ -1,0 +1,758 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classBoundedExecutor" kind="class" language="C++" prot="public">
+    <compoundname>BoundedExecutor</compoundname>
+    <derivedcompoundref refid="classDbExecutor" prot="public" virt="non-virtual">DbExecutor</derivedcompoundref>
+    <derivedcompoundref refid="classPasswordWorker" prot="public" virt="non-virtual">PasswordWorker</derivedcompoundref>
+    <includes refid="boundedexecutor_8hpp" local="no">boundedexecutor.hpp</includes>
+    <innerclass refid="structBoundedExecutor_1_1Stats" prot="public">BoundedExecutor::Stats</innerclass>
+    <innerclass refid="structBoundedExecutor_1_1Item" prot="private">BoundedExecutor::Item</innerclass>
+    <innerclass refid="structBoundedExecutor_1_1Worker" prot="private">BoundedExecutor::Worker</innerclass>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classBoundedExecutor_1a99feeabf885fe43e0196051f6a80803e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::unique_ptr&lt; <ref refid="structBoundedExecutor_1_1Worker" kindref="compound">Worker</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::unique_ptr&lt;Worker&gt; &gt; BoundedExecutor::workers_</definition>
+        <argsstring></argsstring>
+        <name>workers_</name>
+        <qualifiedname>BoundedExecutor::workers_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="structBoundedExecutor_1_1Worker" kindref="compound">Worker</ref> objects, created before and started after all of them exist; empty in inline mode. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="233" column="17" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="233" bodyend="-1"/>
+        <referencedby refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" compoundref="boundedexecutor_8cpp" startline="61" endline="83">BoundedExecutor</referencedby>
+        <referencedby refid="classBoundedExecutor_1a49df17e54d15d8a492f13e876c74f4cf" compoundref="boundedexecutor_8hpp" startline="138" endline="138">inlineMode</referencedby>
+        <referencedby refid="classBoundedExecutor_1a14e1a972664d0af29d59d074675c5ffe" compoundref="boundedexecutor_8cpp" startline="301" endline="345">run</referencedby>
+        <referencedby refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" compoundref="boundedexecutor_8cpp" startline="99" endline="126">shutdown</referencedby>
+        <referencedby refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" compoundref="boundedexecutor_8cpp" startline="154" endline="223">submit</referencedby>
+        <referencedby refid="classBoundedExecutor_1a161a33a863940e718dc25a66dd4c3aa9" compoundref="boundedexecutor_8cpp" startline="241" endline="271">take</referencedby>
+        <referencedby refid="classBoundedExecutor_1ab0246f1fb4aff4e008f03c2542976df2" compoundref="boundedexecutor_8hpp" startline="142" endline="142">workerCount</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classBoundedExecutor_1a4b55370d142b9901015c7106e19a98ec" prot="private" static="no" mutable="no">
+        <type>std::size_t</type>
+        <definition>std::size_t BoundedExecutor::queue_max_</definition>
+        <argsstring></argsstring>
+        <name>queue_max_</name>
+        <qualifiedname>BoundedExecutor::queue_max_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shared queue limit, at least 1. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="237" column="17" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="237" bodyend="-1"/>
+        <referencedby refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" compoundref="boundedexecutor_8cpp" startline="61" endline="83">BoundedExecutor</referencedby>
+        <referencedby refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" compoundref="boundedexecutor_8cpp" startline="154" endline="223">submit</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classBoundedExecutor_1a8df5c3b6d47a7bb92e508c4df34581fe" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string BoundedExecutor::name_</definition>
+        <argsstring></argsstring>
+        <name>name_</name>
+        <qualifiedname>BoundedExecutor::name_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Log/statistics label for this pool. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="241" column="17" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="241" bodyend="-1"/>
+        <referencedby refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" compoundref="boundedexecutor_8cpp" startline="61" endline="83">BoundedExecutor</referencedby>
+        <referencedby refid="classBoundedExecutor_1a14e1a972664d0af29d59d074675c5ffe" compoundref="boundedexecutor_8cpp" startline="301" endline="345">run</referencedby>
+        <referencedby refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" compoundref="boundedexecutor_8cpp" startline="99" endline="126">shutdown</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classBoundedExecutor_1a2fe4e0d777523f51d59935f89030ac1c" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; BoundedExecutor::stopping_</definition>
+        <argsstring></argsstring>
+        <name>stopping_</name>
+        <qualifiedname>BoundedExecutor::stopping_</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set by <ref refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" kindref="member">shutdown()</ref>; checked by <ref refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" kindref="member">submit()</ref> both outside and inside the target worker&apos;s lock. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="245" column="24" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="245" bodyend="245"/>
+        <referencedby refid="classBoundedExecutor_1a14e1a972664d0af29d59d074675c5ffe" compoundref="boundedexecutor_8cpp" startline="301" endline="345">run</referencedby>
+        <referencedby refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" compoundref="boundedexecutor_8cpp" startline="99" endline="126">shutdown</referencedby>
+        <referencedby refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" compoundref="boundedexecutor_8cpp" startline="154" endline="223">submit</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classBoundedExecutor_1a567da16c5009c3a32c8b6d052ed11e39" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; std::size_t &gt;</type>
+        <definition>std::atomic&lt;std::size_t&gt; BoundedExecutor::next_</definition>
+        <argsstring></argsstring>
+        <name>next_</name>
+        <qualifiedname>BoundedExecutor::next_</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="246" column="17" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="246" bodyend="246"/>
+        <referencedby refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" compoundref="boundedexecutor_8cpp" startline="154" endline="223">submit</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classBoundedExecutor_1afbb5f9247d4cf5e3e52a9c25c036d0a6" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; std::size_t &gt;</type>
+        <definition>std::atomic&lt;std::size_t&gt; BoundedExecutor::queued_</definition>
+        <argsstring></argsstring>
+        <name>queued_</name>
+        <qualifiedname>BoundedExecutor::queued_</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="247" column="17" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="247" bodyend="247"/>
+        <referencedby refid="classBoundedExecutor_1aa3c7def6899c02451c22a5ec458939d2" compoundref="boundedexecutor_8hpp" startline="133" endline="133">pending</referencedby>
+        <referencedby refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" compoundref="boundedexecutor_8cpp" startline="154" endline="223">submit</referencedby>
+        <referencedby refid="classBoundedExecutor_1a161a33a863940e718dc25a66dd4c3aa9" compoundref="boundedexecutor_8cpp" startline="241" endline="271">take</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classBoundedExecutor_1a586729a32716a35da700a96fbc590333" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; std::uint64_t &gt;</type>
+        <definition>std::atomic&lt;std::uint64_t&gt; BoundedExecutor::submitted_</definition>
+        <argsstring></argsstring>
+        <name>submitted_</name>
+        <qualifiedname>BoundedExecutor::submitted_</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Accepted tasks that went through the queue. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="252" column="17" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="252" bodyend="252"/>
+        <referencedby refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" compoundref="boundedexecutor_8cpp" startline="99" endline="126">shutdown</referencedby>
+        <referencedby refid="classBoundedExecutor_1a37f079e009f3b711023b031941cb7e2e" compoundref="boundedexecutor_8cpp" startline="135" endline="141">stats</referencedby>
+        <referencedby refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" compoundref="boundedexecutor_8cpp" startline="154" endline="223">submit</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classBoundedExecutor_1a1ba84f816094cdfc44f7cbf5faf1704c" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; std::uint64_t &gt;</type>
+        <definition>std::atomic&lt;std::uint64_t&gt; BoundedExecutor::rejected_</definition>
+        <argsstring></argsstring>
+        <name>rejected_</name>
+        <qualifiedname>BoundedExecutor::rejected_</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tasks refused because the queue was full or the pool was stopping. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="256" column="17" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="256" bodyend="256"/>
+        <referencedby refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" compoundref="boundedexecutor_8cpp" startline="99" endline="126">shutdown</referencedby>
+        <referencedby refid="classBoundedExecutor_1a37f079e009f3b711023b031941cb7e2e" compoundref="boundedexecutor_8cpp" startline="135" endline="141">stats</referencedby>
+        <referencedby refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" compoundref="boundedexecutor_8cpp" startline="154" endline="223">submit</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classBoundedExecutor_1a2279dc6bf7730b6dd74cfa7c5a3ecc0c" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; std::uint64_t &gt;</type>
+        <definition>std::atomic&lt;std::uint64_t&gt; BoundedExecutor::max_queue_</definition>
+        <argsstring></argsstring>
+        <name>max_queue_</name>
+        <qualifiedname>BoundedExecutor::max_queue_</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Largest value queued_ has reached. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="260" column="17" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="260" bodyend="260"/>
+        <referencedby refid="classBoundedExecutor_1a37f079e009f3b711023b031941cb7e2e" compoundref="boundedexecutor_8cpp" startline="135" endline="141">stats</referencedby>
+        <referencedby refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" compoundref="boundedexecutor_8cpp" startline="154" endline="223">submit</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classBoundedExecutor_1a70d24f4375b291df10a0145de6de32d6" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; std::uint64_t &gt;</type>
+        <definition>std::atomic&lt;std::uint64_t&gt; BoundedExecutor::wait_ns_</definition>
+        <argsstring></argsstring>
+        <name>wait_ns_</name>
+        <qualifiedname>BoundedExecutor::wait_ns_</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Total wait time in nanoseconds, used to compute avg_wait_us. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="264" column="17" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="264" bodyend="264"/>
+        <referencedby refid="classBoundedExecutor_1ada1436c03655174b30be553eacacba3d" compoundref="boundedexecutor_8cpp" startline="281" endline="288">account</referencedby>
+        <referencedby refid="classBoundedExecutor_1a37f079e009f3b711023b031941cb7e2e" compoundref="boundedexecutor_8cpp" startline="135" endline="141">stats</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classBoundedExecutor_1a651cb39909b6c74ca951ff00808901f0" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; std::uint64_t &gt;</type>
+        <definition>std::atomic&lt;std::uint64_t&gt; BoundedExecutor::waited_tasks_</definition>
+        <argsstring></argsstring>
+        <name>waited_tasks_</name>
+        <qualifiedname>BoundedExecutor::waited_tasks_</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Number of tasks included in wait_ns_. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="268" column="17" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="268" bodyend="268"/>
+        <referencedby refid="classBoundedExecutor_1ada1436c03655174b30be553eacacba3d" compoundref="boundedexecutor_8cpp" startline="281" endline="288">account</referencedby>
+        <referencedby refid="classBoundedExecutor_1a37f079e009f3b711023b031941cb7e2e" compoundref="boundedexecutor_8cpp" startline="135" endline="141">stats</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BoundedExecutor::BoundedExecutor</definition>
+        <argsstring>(std::size_t workers, std::size_t queue_max, std::string name)</argsstring>
+        <name>BoundedExecutor</name>
+        <qualifiedname>BoundedExecutor::BoundedExecutor</qualifiedname>
+        <param>
+          <type>std::size_t</type>
+          <declname>workers</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>queue_max</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Creates the workers and starts their threads. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>queue_max is clamped to at least 1. With workers == 0 the pool is in inline mode: no threads are started and <ref refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" kindref="member">submit()</ref> runs each task immediately on the calling thread. The constructor does not return until every worker has reported itself idle, so an immediate <ref refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" kindref="member">submit()</ref> cannot race with thread startup. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">workers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of worker threads; 0 selects inline mode. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">queue_max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum number of queued tasks across all workers; values below 1 become 1. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Label used in log messages and statistics output.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Allocates the workers, starts their threads and waits until each reports itself idle.</para>
+<para>queue_max is clamped to at least 1. All <ref refid="structBoundedExecutor_1_1Worker" kindref="compound">Worker</ref> objects are created before any thread starts, because a worker may steal from every other queue. Starting threads only after that avoids a race where a worker sees a not-yet-constructed peer. The final spin (with yield) removes the startup race with an immediate <ref refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" kindref="member">submit()</ref>. workers: Number of worker threads; 0 gives inline mode. queue_max: Shared queue capacity, clamped to at least 1. name: Log label for this pool. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="81" column="5" bodyfile="src/concurrency/boundedexecutor.cpp" bodystart="61" bodyend="83"/>
+        <references refid="classBoundedExecutor_1a8df5c3b6d47a7bb92e508c4df34581fe" compoundref="boundedexecutor_8hpp" startline="241">name_</references>
+        <references refid="classBoundedExecutor_1a4b55370d142b9901015c7106e19a98ec" compoundref="boundedexecutor_8hpp" startline="237">queue_max_</references>
+        <references refid="classBoundedExecutor_1a14e1a972664d0af29d59d074675c5ffe" compoundref="boundedexecutor_8cpp" startline="301" endline="345">run</references>
+        <references refid="classBoundedExecutor_1a99feeabf885fe43e0196051f6a80803e" compoundref="boundedexecutor_8hpp" startline="233">workers_</references>
+        <referencedby refid="classBoundedExecutor_1ac3bc3b2e136a2da3b6c0eb080b69daf5">BoundedExecutor</referencedby>
+        <referencedby refid="classBoundedExecutor_1a9a159a4e6c10282bbd73960ec8527039">BoundedExecutor</referencedby>
+        <referencedby refid="classDbExecutor_1a8dadc723449f985ba60361ce11896244" compoundref="dbexecutor_8cpp" startline="45" endline="45">DbExecutor::DbExecutor</referencedby>
+        <referencedby refid="classDbExecutor_1a2aa554b6f63dcd750b482fc6c3dcff61" compoundref="dbexecutor_8cpp" startline="53" endline="53">DbExecutor::DbExecutor</referencedby>
+        <referencedby refid="classBoundedExecutor_1aacbf4b69d06b66824a929caa6e0585df">operator=</referencedby>
+        <referencedby refid="classBoundedExecutor_1a8907e36d0d8e8f509ad165e11d56e1fd">operator=</referencedby>
+        <referencedby refid="classPasswordWorker_1a050aae21a943a6c8ba3c784adff171d9" compoundref="passwordworker_8cpp" startline="37" endline="37">PasswordWorker::PasswordWorker</referencedby>
+        <referencedby refid="classPasswordWorker_1a7cca8bf870ca568aec6afe48fe57dd68" compoundref="passwordworker_8cpp" startline="40" endline="40">PasswordWorker::PasswordWorker</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classBoundedExecutor_1a9a159a4e6c10282bbd73960ec8527039" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BoundedExecutor::BoundedExecutor</definition>
+        <argsstring>(const BoundedExecutor &amp;)=delete</argsstring>
+        <name>BoundedExecutor</name>
+        <qualifiedname>BoundedExecutor::BoundedExecutor</qualifiedname>
+        <param>
+          <type>const <ref refid="classBoundedExecutor" kindref="compound">BoundedExecutor</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy construction is disabled; an executor owns live threads that cannot be duplicated. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="85" column="5"/>
+        <references refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" compoundref="boundedexecutor_8cpp" startline="61" endline="83">BoundedExecutor</references>
+      </memberdef>
+      <memberdef kind="function" id="classBoundedExecutor_1ac3bc3b2e136a2da3b6c0eb080b69daf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BoundedExecutor::BoundedExecutor</definition>
+        <argsstring>(BoundedExecutor &amp;&amp;)=delete</argsstring>
+        <name>BoundedExecutor</name>
+        <qualifiedname>BoundedExecutor::BoundedExecutor</qualifiedname>
+        <param>
+          <type><ref refid="classBoundedExecutor" kindref="compound">BoundedExecutor</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Move construction is disabled; workers capture the address of the executor, which a move would invalidate. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="89" column="5"/>
+        <references refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" compoundref="boundedexecutor_8cpp" startline="61" endline="83">BoundedExecutor</references>
+      </memberdef>
+      <memberdef kind="function" id="classBoundedExecutor_1a8907e36d0d8e8f509ad165e11d56e1fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBoundedExecutor" kindref="compound">BoundedExecutor</ref> &amp;</type>
+        <definition>BoundedExecutor &amp; BoundedExecutor::operator=</definition>
+        <argsstring>(const BoundedExecutor &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BoundedExecutor::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classBoundedExecutor" kindref="compound">BoundedExecutor</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy assignment is disabled; see the copy constructor. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="93" column="21"/>
+        <references refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" compoundref="boundedexecutor_8cpp" startline="61" endline="83">BoundedExecutor</references>
+      </memberdef>
+      <memberdef kind="function" id="classBoundedExecutor_1aacbf4b69d06b66824a929caa6e0585df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBoundedExecutor" kindref="compound">BoundedExecutor</ref> &amp;</type>
+        <definition>BoundedExecutor &amp; BoundedExecutor::operator=</definition>
+        <argsstring>(BoundedExecutor &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BoundedExecutor::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classBoundedExecutor" kindref="compound">BoundedExecutor</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Move assignment is disabled; see the move constructor. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="97" column="21"/>
+        <references refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" compoundref="boundedexecutor_8cpp" startline="61" endline="83">BoundedExecutor</references>
+        <references refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" compoundref="boundedexecutor_8cpp" startline="99" endline="126">shutdown</references>
+        <references refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" compoundref="boundedexecutor_8cpp" startline="154" endline="223">submit</references>
+      </memberdef>
+      <memberdef kind="function" id="classBoundedExecutor_1a8f39a779cb5d5a79e3442b21635be122" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>BoundedExecutor::~BoundedExecutor</definition>
+        <argsstring>()</argsstring>
+        <name>~BoundedExecutor</name>
+        <qualifiedname>BoundedExecutor::~BoundedExecutor</qualifiedname>
+        <briefdescription>
+<para>Destructor; calls <ref refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" kindref="member">shutdown()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Calls <ref refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" kindref="member">shutdown()</ref> so queued work is drained and threads joined before members are destroyed.</para>
+<para>Any still-queued tasks are drained and the worker threads joined before resources are released. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="102" column="13" bodyfile="src/concurrency/boundedexecutor.cpp" bodystart="88" bodyend="88"/>
+        <references refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" compoundref="boundedexecutor_8cpp" startline="99" endline="126">shutdown</references>
+      </memberdef>
+      <memberdef kind="function" id="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BoundedExecutor::shutdown</definition>
+        <argsstring>()</argsstring>
+        <name>shutdown</name>
+        <qualifiedname>BoundedExecutor::shutdown</qualifiedname>
+        <briefdescription>
+<para>Drains queued tasks, joins the workers and reports accumulated statistics once. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Stops accepting work, drains queued tasks and joins the workers.</para>
+<para>Sets the stopping flag and wakes every worker, then joins those that are not the calling thread (so a task may call <ref refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" kindref="member">shutdown()</ref> on its own executor without deadlocking). A later <ref refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" kindref="member">submit()</ref> is rejected. Repeated calls are safe: the second pass finds no joinable threads and no un-reported counters. <simplesect kind="note"><para>Must run before dependencies of the tasks (connection pool, Drogon) are destroyed. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classBoundedExecutor_1a8f39a779cb5d5a79e3442b21635be122" kindref="member">~BoundedExecutor()</ref></para>
+</simplesect>
+The stopping flag is published with release semantics; the empty-lock/notify pair then wakes a worker that is either waiting or about to wait, and each worker checks the flag under its own mutex before sleeping. Join is skipped for the calling thread so a task may shut down its own pool. Statistics are logged only when there is something to report, and the counters are cleared so a second call does not log them again. (&quot;Joining&quot; a thread means waiting here until that thread&apos;s code has finished.) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="115" column="10" bodyfile="src/concurrency/boundedexecutor.cpp" bodystart="99" bodyend="126"/>
+        <references refid="structBoundedExecutor_1_1Stats_1a931a680e89a8537c30d0608926235507" compoundref="boundedexecutor_8hpp" startline="169">BoundedExecutor::Stats::avg_wait_us</references>
+        <references refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" compoundref="message_8cpp" startline="39" endline="39">Message::InfoMessage</references>
+        <references refid="structBoundedExecutor_1_1Stats_1a5f799a6d74c3df717d4fcae67d3abea3" compoundref="boundedexecutor_8hpp" startline="168">BoundedExecutor::Stats::max_queue</references>
+        <references refid="classBoundedExecutor_1a8df5c3b6d47a7bb92e508c4df34581fe" compoundref="boundedexecutor_8hpp" startline="241">name_</references>
+        <references refid="structBoundedExecutor_1_1Stats_1a2f37f73a813fb86da316726f626484f6" compoundref="boundedexecutor_8hpp" startline="167">BoundedExecutor::Stats::rejected</references>
+        <references refid="classBoundedExecutor_1a1ba84f816094cdfc44f7cbf5faf1704c" compoundref="boundedexecutor_8hpp" startline="256" endline="256">rejected_</references>
+        <references refid="classBoundedExecutor_1a37f079e009f3b711023b031941cb7e2e" compoundref="boundedexecutor_8cpp" startline="135" endline="141">stats</references>
+        <references refid="classBoundedExecutor_1a2fe4e0d777523f51d59935f89030ac1c" compoundref="boundedexecutor_8hpp" startline="245" endline="245">stopping_</references>
+        <references refid="structBoundedExecutor_1_1Stats_1ad0368dc91edec0dec6888b7b84ce56dc" compoundref="boundedexecutor_8hpp" startline="166">BoundedExecutor::Stats::submitted</references>
+        <references refid="classBoundedExecutor_1a586729a32716a35da700a96fbc590333" compoundref="boundedexecutor_8hpp" startline="252" endline="252">submitted_</references>
+        <references refid="classBoundedExecutor_1a99feeabf885fe43e0196051f6a80803e" compoundref="boundedexecutor_8hpp" startline="233">workers_</references>
+        <referencedby refid="classBoundedExecutor_1aacbf4b69d06b66824a929caa6e0585df">operator=</referencedby>
+        <referencedby refid="classBoundedExecutor_1a8f39a779cb5d5a79e3442b21635be122" compoundref="boundedexecutor_8cpp" startline="88" endline="88">~BoundedExecutor</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BoundedExecutor::submit</definition>
+        <argsstring>(std::function&lt; void()&gt; task)</argsstring>
+        <name>submit</name>
+        <qualifiedname>BoundedExecutor::submit</qualifiedname>
+        <param>
+          <type>std::function&lt; void()&gt;</type>
+          <declname>task</declname>
+        </param>
+        <briefdescription>
+<para>Offers a task to the pool without waiting for capacity. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>In inline mode task() runs synchronously here. Otherwise a slot in the shared queue limit is reserved first; if that limit is reached, or the pool is stopping, the task is discarded and false is returned. An idle worker is preferred, else the shortest queue is chosen, and only an idle worker is notified. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Nullary callable to execute on a worker (or inline). &quot;Nullary&quot; means it takes no arguments. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the task ran inline or was queued; false if it was rejected. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="boundedexecutor_8hpp_1af76f5db524067c26a058b1fee7e90e82" kindref="member">runOnExecutor()</ref></para>
+</simplesect>
+Enqueues a task without blocking, preferring an idle worker and enforcing a shared queue limit.</para>
+<para>Inline mode runs the task immediately on the caller. Otherwise the shared queued_ counter is reserved with acq_rel semantics and released if the pool turns out to be full or stopping. The target worker is chosen from a round-robin start: the first idle one, else the shortest queue. The stopping flag is checked again while holding that worker&apos;s mutex, matching the worker&apos;s own exit check. Only a worker that was idle is notified; a busy worker rechecks its queue when it finishes a task. task: Nullary callable to execute (takes no arguments). Returns true if the task ran inline or was queued; false if it was rejected. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="128" column="11" bodyfile="src/concurrency/boundedexecutor.cpp" bodystart="154" bodyend="223"/>
+        <references refid="structBoundedExecutor_1_1Worker_1a67b3712ac7683ac32a183909d82c4407" compoundref="boundedexecutor_8hpp" startline="200">BoundedExecutor::Worker::cv</references>
+        <references refid="structBoundedExecutor_1_1Worker_1a30bd7b8412c2f314a3a2b9e07e21cb5f" compoundref="boundedexecutor_8hpp" startline="202" endline="202">BoundedExecutor::Worker::depth</references>
+        <references refid="structBoundedExecutor_1_1Worker_1ad2c5a6f211775e44ced8f1bc7f3787ea" compoundref="boundedexecutor_8hpp" startline="203" endline="203">BoundedExecutor::Worker::idle</references>
+        <references refid="classBoundedExecutor_1a49df17e54d15d8a492f13e876c74f4cf" compoundref="boundedexecutor_8hpp" startline="138" endline="138">inlineMode</references>
+        <references refid="classBoundedExecutor_1a2279dc6bf7730b6dd74cfa7c5a3ecc0c" compoundref="boundedexecutor_8hpp" startline="260" endline="260">max_queue_</references>
+        <references refid="structBoundedExecutor_1_1Worker_1a93f2577dc374b3da707f8ac94b17b73c" compoundref="boundedexecutor_8hpp" startline="199">BoundedExecutor::Worker::mutex</references>
+        <references refid="classBoundedExecutor_1a567da16c5009c3a32c8b6d052ed11e39" compoundref="boundedexecutor_8hpp" startline="246" endline="246">next_</references>
+        <references refid="structBoundedExecutor_1_1Worker_1ae377b765251b61e956eefe01e2eee129" compoundref="boundedexecutor_8hpp" startline="201">BoundedExecutor::Worker::queue</references>
+        <references refid="classBoundedExecutor_1a4b55370d142b9901015c7106e19a98ec" compoundref="boundedexecutor_8hpp" startline="237">queue_max_</references>
+        <references refid="classBoundedExecutor_1afbb5f9247d4cf5e3e52a9c25c036d0a6" compoundref="boundedexecutor_8hpp" startline="247" endline="247">queued_</references>
+        <references refid="classBoundedExecutor_1a1ba84f816094cdfc44f7cbf5faf1704c" compoundref="boundedexecutor_8hpp" startline="256" endline="256">rejected_</references>
+        <references refid="classBoundedExecutor_1a2fe4e0d777523f51d59935f89030ac1c" compoundref="boundedexecutor_8hpp" startline="245" endline="245">stopping_</references>
+        <references refid="classBoundedExecutor_1a586729a32716a35da700a96fbc590333" compoundref="boundedexecutor_8hpp" startline="252" endline="252">submitted_</references>
+        <references refid="classBoundedExecutor_1a99feeabf885fe43e0196051f6a80803e" compoundref="boundedexecutor_8hpp" startline="233">workers_</references>
+        <referencedby refid="classBoundedExecutor_1aacbf4b69d06b66824a929caa6e0585df">operator=</referencedby>
+        <referencedby refid="boundedexecutor_8hpp_1af76f5db524067c26a058b1fee7e90e82" compoundref="boundedexecutor_8hpp" startline="295" endline="302">runOnExecutor</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classBoundedExecutor_1aa3c7def6899c02451c22a5ec458939d2" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::size_t</type>
+        <definition>std::size_t BoundedExecutor::pending</definition>
+        <argsstring>() const</argsstring>
+        <name>pending</name>
+        <qualifiedname>BoundedExecutor::pending</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Number of tasks currently waiting across all queues; relaxed because it is only a live gauge. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="133" column="18" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="133" bodyend="133"/>
+        <references refid="classBoundedExecutor_1afbb5f9247d4cf5e3e52a9c25c036d0a6" compoundref="boundedexecutor_8hpp" startline="247" endline="247">queued_</references>
+      </memberdef>
+      <memberdef kind="function" id="classBoundedExecutor_1a49df17e54d15d8a492f13e876c74f4cf" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BoundedExecutor::inlineMode</definition>
+        <argsstring>() const</argsstring>
+        <name>inlineMode</name>
+        <qualifiedname>BoundedExecutor::inlineMode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True when no worker threads exist and tasks run on the submitting thread. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="138" column="11" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="138" bodyend="138"/>
+        <references refid="classBoundedExecutor_1a99feeabf885fe43e0196051f6a80803e" compoundref="boundedexecutor_8hpp" startline="233">workers_</references>
+        <referencedby refid="classDbExecutor_1a5d6abf2368cd71250974124d570b7f2b" compoundref="dbexecutor_8hpp" startline="71" endline="71">DbExecutor::ioFastPath</referencedby>
+        <referencedby refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" compoundref="boundedexecutor_8cpp" startline="154" endline="223">submit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classBoundedExecutor_1ab0246f1fb4aff4e008f03c2542976df2" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::size_t</type>
+        <definition>std::size_t BoundedExecutor::workerCount</definition>
+        <argsstring>() const</argsstring>
+        <name>workerCount</name>
+        <qualifiedname>BoundedExecutor::workerCount</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Number of worker threads; zero in inline mode. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="142" column="18" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="142" bodyend="142"/>
+        <references refid="classBoundedExecutor_1a99feeabf885fe43e0196051f6a80803e" compoundref="boundedexecutor_8hpp" startline="233">workers_</references>
+      </memberdef>
+      <memberdef kind="function" id="classBoundedExecutor_1a4d2a977a3f48f26956a39f5f5cd4ddb3" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BoundedExecutor::onWorkerThread</definition>
+        <argsstring>() const</argsstring>
+        <name>onWorkerThread</name>
+        <qualifiedname>BoundedExecutor::onWorkerThread</qualifiedname>
+        <briefdescription>
+<para><ref refid="classReports" kindref="compound">Reports</ref> whether the caller is executing on one of this executor&apos;s worker threads. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classReports" kindref="compound">Reports</ref> whether the calling thread is currently running tasks for this executor.</para>
+<para>Uses a thread_local pointer rather than a lookup table. Code already running on a worker should call blocking operations directly: re-submitting could prevent a full queue from ever draining. <simplesect kind="return"><para>true for this executor&apos;s workers, false otherwise (including inline mode on the submitting thread).</para>
+</simplesect>
+<simplesect kind="return"><para>true when the thread_local marker equals this executor. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="153" column="11" bodyfile="src/concurrency/boundedexecutor.cpp" bodystart="229" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="classBoundedExecutor_1a37f079e009f3b711023b031941cb7e2e" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structBoundedExecutor_1_1Stats" kindref="compound">Stats</ref></type>
+        <definition>BoundedExecutor::Stats BoundedExecutor::stats</definition>
+        <argsstring>() const</argsstring>
+        <name>stats</name>
+        <qualifiedname>BoundedExecutor::stats</qualifiedname>
+        <briefdescription>
+<para>Samples the tuning counters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Samples the tuning counters with relaxed atomic loads.</para>
+<para><simplesect kind="return"><para>A <ref refid="structBoundedExecutor_1_1Stats" kindref="compound">Stats</ref> snapshot; avg_wait_us is derived from total wait time divided by the number of waited tasks, or zero if no task has been taken by a worker.</para>
+</simplesect>
+<simplesect kind="return"><para><ref refid="structBoundedExecutor_1_1Stats" kindref="compound">Stats</ref> snapshot; avg_wait_us is total wait time divided by waited tasks, in microseconds, or 0.0 before any task has been taken by a worker. </para>
+</simplesect>
+<simplesect kind="note"><para>Values are approximate while the pool is running; they are exact after <ref refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" kindref="member">shutdown()</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="176" column="12" bodyfile="src/concurrency/boundedexecutor.cpp" bodystart="135" bodyend="141"/>
+        <references refid="classBoundedExecutor_1a2279dc6bf7730b6dd74cfa7c5a3ecc0c" compoundref="boundedexecutor_8hpp" startline="260" endline="260">max_queue_</references>
+        <references refid="classBoundedExecutor_1a1ba84f816094cdfc44f7cbf5faf1704c" compoundref="boundedexecutor_8hpp" startline="256" endline="256">rejected_</references>
+        <references refid="classBoundedExecutor_1a586729a32716a35da700a96fbc590333" compoundref="boundedexecutor_8hpp" startline="252" endline="252">submitted_</references>
+        <references refid="classBoundedExecutor_1a70d24f4375b291df10a0145de6de32d6" compoundref="boundedexecutor_8hpp" startline="264" endline="264">wait_ns_</references>
+        <references refid="classBoundedExecutor_1a651cb39909b6c74ca951ff00808901f0" compoundref="boundedexecutor_8hpp" startline="268" endline="268">waited_tasks_</references>
+        <referencedby refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" compoundref="boundedexecutor_8cpp" startline="99" endline="126">shutdown</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classBoundedExecutor_1a14e1a972664d0af29d59d074675c5ffe" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BoundedExecutor::run</definition>
+        <argsstring>(std::size_t self)</argsstring>
+        <name>run</name>
+        <qualifiedname>BoundedExecutor::run</qualifiedname>
+        <param>
+          <type>std::size_t</type>
+          <declname>self</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="structBoundedExecutor_1_1Worker" kindref="compound">Worker</ref> entry point: repeatedly take and run tasks until stopping and no work remains. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the thread_local executor marker, catches exceptions thrown by tasks so they cannot kill the thread, and goes idle with a condition-variable wait when its queue and all stealable queues are empty. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">self</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of this worker.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<ref refid="structBoundedExecutor_1_1Worker" kindref="compound">Worker</ref> loop: take tasks, run them, and sleep only when every queue is empty.</para>
+<para>Marks the thread with the thread_local executor pointer, then loops taking and running tasks. A task that throws is logged and swallowed so one misbehaving task cannot end the worker thread. When no work is available the worker re-arms its idle flag on every pass before waiting, because a <ref refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" kindref="member">submit()</ref> may have claimed it while a thief took the task, leaving a wake-up with an empty queue; sleeping with idle cleared would hide the worker from every later <ref refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" kindref="member">submit()</ref>. The loop exits only when stopping is set and the worker&apos;s own queue is empty, at which point no new task can arrive. self: Index of this worker. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="214" column="10" bodyfile="src/concurrency/boundedexecutor.cpp" bodystart="301" bodyend="345"/>
+        <references refid="classBoundedExecutor_1ada1436c03655174b30be553eacacba3d" compoundref="boundedexecutor_8cpp" startline="281" endline="288">account</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="structBoundedExecutor_1_1Worker_1a67b3712ac7683ac32a183909d82c4407" compoundref="boundedexecutor_8hpp" startline="200">BoundedExecutor::Worker::cv</references>
+        <references refid="structBoundedExecutor_1_1Worker_1ad2c5a6f211775e44ced8f1bc7f3787ea" compoundref="boundedexecutor_8hpp" startline="203" endline="203">BoundedExecutor::Worker::idle</references>
+        <references refid="structBoundedExecutor_1_1Worker_1a93f2577dc374b3da707f8ac94b17b73c" compoundref="boundedexecutor_8hpp" startline="199">BoundedExecutor::Worker::mutex</references>
+        <references refid="classBoundedExecutor_1a8df5c3b6d47a7bb92e508c4df34581fe" compoundref="boundedexecutor_8hpp" startline="241">name_</references>
+        <references refid="structBoundedExecutor_1_1Worker_1ae377b765251b61e956eefe01e2eee129" compoundref="boundedexecutor_8hpp" startline="201">BoundedExecutor::Worker::queue</references>
+        <references refid="classBoundedExecutor_1a2fe4e0d777523f51d59935f89030ac1c" compoundref="boundedexecutor_8hpp" startline="245" endline="245">stopping_</references>
+        <references refid="classBoundedExecutor_1a161a33a863940e718dc25a66dd4c3aa9" compoundref="boundedexecutor_8cpp" startline="241" endline="271">take</references>
+        <references refid="structBoundedExecutor_1_1Item_1aa125e56076f6e422bd8cae6f15a45a4d" compoundref="boundedexecutor_8hpp" startline="185">BoundedExecutor::Item::task</references>
+        <references refid="classBoundedExecutor_1a99feeabf885fe43e0196051f6a80803e" compoundref="boundedexecutor_8hpp" startline="233">workers_</references>
+        <referencedby refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" compoundref="boundedexecutor_8cpp" startline="61" endline="83">BoundedExecutor</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classBoundedExecutor_1a161a33a863940e718dc25a66dd4c3aa9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BoundedExecutor::take</definition>
+        <argsstring>(std::size_t self, Item &amp;item)</argsstring>
+        <name>take</name>
+        <qualifiedname>BoundedExecutor::take</qualifiedname>
+        <param>
+          <type>std::size_t</type>
+          <declname>self</declname>
+        </param>
+        <param>
+          <type><ref refid="structBoundedExecutor_1_1Item" kindref="compound">Item</ref> &amp;</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+<para>Removes the next task from this worker&apos;s queue, stealing from peers if it is empty. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Stealing uses try_lock so a worker never blocks waiting for a peer that is busy with a slow task. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">self</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of the calling worker. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">item</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives the taken task and its queueing timestamp. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if a task was taken, false if no queue had work.</para>
+</simplesect>
+Takes a task from this worker&apos;s queue, or steals one from a peer if necessary.</para>
+<para>Tries the worker&apos;s own queue under its mutex first. On a miss it scans peers using try_lock, so it never waits for a peer that may be busy with a slow task. Each successful take decrements the shared queued_ counter with acq_rel semantics. self: Index of the calling worker. item: Receives the task and its queueing timestamp. Returns true if a task was taken; false if all queues were empty or locked. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="223" column="10" bodyfile="src/concurrency/boundedexecutor.cpp" bodystart="241" bodyend="271"/>
+        <references refid="structBoundedExecutor_1_1Worker_1a30bd7b8412c2f314a3a2b9e07e21cb5f" compoundref="boundedexecutor_8hpp" startline="202" endline="202">BoundedExecutor::Worker::depth</references>
+        <references refid="structBoundedExecutor_1_1Worker_1a93f2577dc374b3da707f8ac94b17b73c" compoundref="boundedexecutor_8hpp" startline="199">BoundedExecutor::Worker::mutex</references>
+        <references refid="structBoundedExecutor_1_1Worker_1ae377b765251b61e956eefe01e2eee129" compoundref="boundedexecutor_8hpp" startline="201">BoundedExecutor::Worker::queue</references>
+        <references refid="classBoundedExecutor_1afbb5f9247d4cf5e3e52a9c25c036d0a6" compoundref="boundedexecutor_8hpp" startline="247" endline="247">queued_</references>
+        <references refid="classBoundedExecutor_1a99feeabf885fe43e0196051f6a80803e" compoundref="boundedexecutor_8hpp" startline="233">workers_</references>
+        <referencedby refid="classBoundedExecutor_1a14e1a972664d0af29d59d074675c5ffe" compoundref="boundedexecutor_8cpp" startline="301" endline="345">run</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classBoundedExecutor_1ada1436c03655174b30be553eacacba3d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BoundedExecutor::account</definition>
+        <argsstring>(const Item &amp;item)</argsstring>
+        <name>account</name>
+        <qualifiedname>BoundedExecutor::account</qualifiedname>
+        <param>
+          <type>const <ref refid="structBoundedExecutor_1_1Item" kindref="compound">Item</ref> &amp;</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+<para>Accumulates how long a task waited between queueing and being taken. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">item</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Task whose queued_at timestamp is used.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Accumulates a task&apos;s queue wait time and the number of sampled tasks.</para>
+<para>Uses a monotonic steady_clock timestamp and relaxed atomics: these counters are tuning gauges, not synchronization points. &quot;Monotonic&quot; means the clock never jumps backwards, so subtracting two timestamps always gives a sensible elapsed time. item: Task whose queued_at timestamp is subtracted from now. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="228" column="10" bodyfile="src/concurrency/boundedexecutor.cpp" bodystart="281" bodyend="288"/>
+        <references refid="structBoundedExecutor_1_1Item_1adc96783d42c064529d14066b52728e4f" compoundref="boundedexecutor_8hpp" startline="186">BoundedExecutor::Item::queued_at</references>
+        <references refid="classBoundedExecutor_1a70d24f4375b291df10a0145de6de32d6" compoundref="boundedexecutor_8hpp" startline="264" endline="264">wait_ns_</references>
+        <references refid="classBoundedExecutor_1a651cb39909b6c74ca951ff00808901f0" compoundref="boundedexecutor_8hpp" startline="268" endline="268">waited_tasks_</references>
+        <referencedby refid="classBoundedExecutor_1a14e1a972664d0af29d59d074675c5ffe" compoundref="boundedexecutor_8cpp" startline="301" endline="345">run</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Fixed-size worker pool with a shared bounded queue for slow, blocking work. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>A fixed pool of threads with a bounded queue. It exists so that slow, blocking work (database calls, password hashing) never runs on a Drogon IO thread. <ref refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" kindref="member">submit()</ref> never blocks: it returns false when the queue is full, and the caller answers 503.</para>
+<para>Every worker has its own queue and its own lock, so submitters and workers do not all contend on one mutex. <ref refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" kindref="member">submit()</ref> picks an idle worker if there is one (so a task never waits behind a slow one while another worker sleeps), otherwise the worker with the shortest queue, so the queues stay the same length and waiting time stays fair (plain round-robin left some queues long and some short, and the tasks in the long ones waited 20 times longer). Only an idle worker is woken (a busy one needs no wake-up, it looks at its queue when it finishes). A worker that has run out of work takes tasks from the other workers&apos; queues before it sleeps. The queue limit is shared: at most queue_max tasks wait across all workers. <verbatim>     With zero workers every task runs inline, on the submitting thread. Unit tests use that so they stay synchronous.
+
+     In plain words: imagine a fixed number of chefs (worker threads) each with their own order ticket rack
+     (queue). New orders go to a free chef, or to the shortest rack if nobody is free. A chef with no tickets
+     peek at other racks and helps out before going to sleep (&quot;work stealing&quot;). There is one overall limit on
+     how many tickets may wait; past that, submit() says &quot;no&quot; immediately so the caller can send HTTP 503 rather
+     than let the backlog grow without bound.
+</verbatim> <simplesect kind="note"><para>Not copyable or movable; instances are kept alive by shared_ptr, typically through the <ref refid="classStore" kindref="compound">Store</ref>. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classDbExecutor" kindref="compound">DbExecutor</ref>, <ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref>, <ref refid="boundedexecutor_8hpp_1af76f5db524067c26a058b1fee7e90e82" kindref="member">runOnExecutor()</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>BoundedExecutor</label>
+        <link refid="classBoundedExecutor"/>
+      </node>
+      <node id="2">
+        <label>DbExecutor</label>
+        <link refid="classDbExecutor"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>PasswordWorker</label>
+        <link refid="classPasswordWorker"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/concurrency/boundedexecutor.hpp" line="68" column="1" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="69" bodyend="269"/>
+    <listofallmembers>
+      <member refid="classBoundedExecutor_1ada1436c03655174b30be553eacacba3d" prot="private" virt="non-virtual"><scope>BoundedExecutor</scope><name>account</name></member>
+      <member refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" prot="public" virt="non-virtual"><scope>BoundedExecutor</scope><name>BoundedExecutor</name></member>
+      <member refid="classBoundedExecutor_1a9a159a4e6c10282bbd73960ec8527039" prot="public" virt="non-virtual"><scope>BoundedExecutor</scope><name>BoundedExecutor</name></member>
+      <member refid="classBoundedExecutor_1ac3bc3b2e136a2da3b6c0eb080b69daf5" prot="public" virt="non-virtual"><scope>BoundedExecutor</scope><name>BoundedExecutor</name></member>
+      <member refid="classBoundedExecutor_1a49df17e54d15d8a492f13e876c74f4cf" prot="public" virt="non-virtual"><scope>BoundedExecutor</scope><name>inlineMode</name></member>
+      <member refid="classBoundedExecutor_1a2279dc6bf7730b6dd74cfa7c5a3ecc0c" prot="private" virt="non-virtual"><scope>BoundedExecutor</scope><name>max_queue_</name></member>
+      <member refid="classBoundedExecutor_1a8df5c3b6d47a7bb92e508c4df34581fe" prot="private" virt="non-virtual"><scope>BoundedExecutor</scope><name>name_</name></member>
+      <member refid="classBoundedExecutor_1a567da16c5009c3a32c8b6d052ed11e39" prot="private" virt="non-virtual"><scope>BoundedExecutor</scope><name>next_</name></member>
+      <member refid="classBoundedExecutor_1a4d2a977a3f48f26956a39f5f5cd4ddb3" prot="public" virt="non-virtual"><scope>BoundedExecutor</scope><name>onWorkerThread</name></member>
+      <member refid="classBoundedExecutor_1a8907e36d0d8e8f509ad165e11d56e1fd" prot="public" virt="non-virtual"><scope>BoundedExecutor</scope><name>operator=</name></member>
+      <member refid="classBoundedExecutor_1aacbf4b69d06b66824a929caa6e0585df" prot="public" virt="non-virtual"><scope>BoundedExecutor</scope><name>operator=</name></member>
+      <member refid="classBoundedExecutor_1aa3c7def6899c02451c22a5ec458939d2" prot="public" virt="non-virtual"><scope>BoundedExecutor</scope><name>pending</name></member>
+      <member refid="classBoundedExecutor_1a4b55370d142b9901015c7106e19a98ec" prot="private" virt="non-virtual"><scope>BoundedExecutor</scope><name>queue_max_</name></member>
+      <member refid="classBoundedExecutor_1afbb5f9247d4cf5e3e52a9c25c036d0a6" prot="private" virt="non-virtual"><scope>BoundedExecutor</scope><name>queued_</name></member>
+      <member refid="classBoundedExecutor_1a1ba84f816094cdfc44f7cbf5faf1704c" prot="private" virt="non-virtual"><scope>BoundedExecutor</scope><name>rejected_</name></member>
+      <member refid="classBoundedExecutor_1a14e1a972664d0af29d59d074675c5ffe" prot="private" virt="non-virtual"><scope>BoundedExecutor</scope><name>run</name></member>
+      <member refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" prot="public" virt="non-virtual"><scope>BoundedExecutor</scope><name>shutdown</name></member>
+      <member refid="classBoundedExecutor_1a37f079e009f3b711023b031941cb7e2e" prot="public" virt="non-virtual"><scope>BoundedExecutor</scope><name>stats</name></member>
+      <member refid="classBoundedExecutor_1a2fe4e0d777523f51d59935f89030ac1c" prot="private" virt="non-virtual"><scope>BoundedExecutor</scope><name>stopping_</name></member>
+      <member refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" prot="public" virt="non-virtual"><scope>BoundedExecutor</scope><name>submit</name></member>
+      <member refid="classBoundedExecutor_1a586729a32716a35da700a96fbc590333" prot="private" virt="non-virtual"><scope>BoundedExecutor</scope><name>submitted_</name></member>
+      <member refid="classBoundedExecutor_1a161a33a863940e718dc25a66dd4c3aa9" prot="private" virt="non-virtual"><scope>BoundedExecutor</scope><name>take</name></member>
+      <member refid="classBoundedExecutor_1a70d24f4375b291df10a0145de6de32d6" prot="private" virt="non-virtual"><scope>BoundedExecutor</scope><name>wait_ns_</name></member>
+      <member refid="classBoundedExecutor_1a651cb39909b6c74ca951ff00808901f0" prot="private" virt="non-virtual"><scope>BoundedExecutor</scope><name>waited_tasks_</name></member>
+      <member refid="classBoundedExecutor_1ab0246f1fb4aff4e008f03c2542976df2" prot="public" virt="non-virtual"><scope>BoundedExecutor</scope><name>workerCount</name></member>
+      <member refid="classBoundedExecutor_1a99feeabf885fe43e0196051f6a80803e" prot="private" virt="non-virtual"><scope>BoundedExecutor</scope><name>workers_</name></member>
+      <member refid="classBoundedExecutor_1a8f39a779cb5d5a79e3442b21635be122" prot="public" virt="virtual"><scope>BoundedExecutor</scope><name>~BoundedExecutor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

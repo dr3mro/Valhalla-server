@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="namespacestd" kind="namespace" language="C++">
+    <compoundname>std</compoundname>
+    <innerclass refid="structstd_1_1hash_3_01api_1_1v2_1_1ColumnInfo_01_4" prot="public">std::hash&lt; api::v2::ColumnInfo &gt;</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01std_1_1pair_3_01std_1_1string_00_01std_1_1string_01_4_01_4" prot="public">std::hash&lt; std::pair&lt; std::string, std::string &gt; &gt;</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/utils/global/types.hpp" line="69" column="1"/>
+  </compounddef>
+</doxygen>

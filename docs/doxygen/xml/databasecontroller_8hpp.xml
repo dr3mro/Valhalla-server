@@ -1,0 +1,1241 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="databasecontroller_8hpp" kind="file" language="C++">
+    <compoundname>databasecontroller.hpp</compoundname>
+    <includes refid="dbprobe_8hpp" local="yes">database/dbprobe.hpp</includes>
+    <includes local="no">fmt/core.h</includes>
+    <includes local="no">fmt/format.h</includes>
+    <includes local="no">atomic</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">exception</includes>
+    <includes local="no">jsoncons/basic_json.hpp</includes>
+    <includes local="no">jsoncons/json.hpp</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">mutex</includes>
+    <includes local="no">optional</includes>
+    <includes local="no">pqxx/pqxx</includes>
+    <includes local="no">string</includes>
+    <includes local="no">unordered_set</includes>
+    <includes local="no">utility</includes>
+    <includes refid="configurator_8hpp" local="yes">configurator/configurator.hpp</includes>
+    <includes refid="databasebusy_8hpp" local="yes">database/databasebusy.hpp</includes>
+    <includes refid="asyncdbclient_8hpp" local="yes">database/asyncdbclient.hpp</includes>
+    <includes refid="asyncresultmapper_8hpp" local="yes">database/asyncresultmapper.hpp</includes>
+    <includes refid="asyncsqlbinder_8hpp" local="yes">database/asyncsqlbinder.hpp</includes>
+    <includes local="yes">drogon/utils/coroutine.h</includes>
+    <includes refid="databasehandler_8hpp" local="yes">database/databasehandler.hpp</includes>
+    <includes refid="store_8hpp" local="yes">store/store.hpp</includes>
+    <includes refid="utils_2global_2types_8hpp" local="yes">utils/global/types.hpp</includes>
+    <includes refid="message_8hpp" local="yes">utils/message/message.hpp</includes>
+    <includedby refid="clients_8hpp" local="yes">src/api/v2/routes/clients.hpp</includedby>
+    <includedby refid="controller_8hpp" local="yes">src/controllers/base/controller/controller.hpp</includedby>
+    <includedby refid="databasecontroller_8cpp" local="yes">src/controllers/databasecontroller/databasecontroller.cpp</includedby>
+    <includedby refid="entity_8hpp" local="yes">src/entities/base/entity.hpp</includedby>
+    <includedby refid="keeprbase_8hpp" local="yes">src/gatekeeper/keeprbase/keeprbase.hpp</includedby>
+    <includedby refid="permissionmanager__private_8hpp" local="yes">src/gatekeeper/permissionmanager/permissionmanager_private.hpp</includedby>
+    <includedby refid="databaseschema_8cpp" local="yes">src/validator/databaseschema/databaseschema.cpp</includedby>
+    <incdepgraph>
+      <node id="17">
+        <label>configurator/configurator.hpp</label>
+        <link refid="configurator_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>defaults.hpp</label>
+        <link refid="defaults_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>configurator/envloader/envloader.hpp</label>
+        <link refid="envloader_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>envvars/envvars.hpp</label>
+        <link refid="envvars_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/controllers/databasecontroller/databasecontroller.hpp</label>
+        <link refid="databasecontroller_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>database/asyncdbclient.hpp</label>
+        <link refid="asyncdbclient_8hpp"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>database/asyncresultmapper.hpp</label>
+        <link refid="asyncresultmapper_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>database/asyncsqlbinder.hpp</label>
+        <link refid="asyncsqlbinder_8hpp"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>database/databasebusy.hpp</label>
+        <link refid="databasebusy_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>database/databasehandler.hpp</label>
+        <link refid="databasehandler_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>database/dbprobe.hpp</label>
+        <link refid="dbprobe_8hpp"/>
+      </node>
+      <node id="37">
+        <label>store/store.hpp</label>
+        <link refid="store_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>utils/global/types.hpp</label>
+        <link refid="utils_2global_2types_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>utils/message/message.hpp</label>
+        <link refid="message_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>atomic</label>
+      </node>
+      <node id="19">
+        <label>chrono</label>
+      </node>
+      <node id="6">
+        <label>cstdint</label>
+      </node>
+      <node id="29">
+        <label>drogon/orm/DbClient.h</label>
+      </node>
+      <node id="31">
+        <label>drogon/orm/Result.h</label>
+      </node>
+      <node id="33">
+        <label>drogon/orm/SqlBinder.h</label>
+      </node>
+      <node id="34">
+        <label>drogon/utils/coroutine.h</label>
+      </node>
+      <node id="7">
+        <label>exception</label>
+      </node>
+      <node id="3">
+        <label>fmt/core.h</label>
+      </node>
+      <node id="4">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="18">
+        <label>fmt/ranges.h</label>
+      </node>
+      <node id="8">
+        <label>jsoncons/basic_json.hpp</label>
+      </node>
+      <node id="9">
+        <label>jsoncons/json.hpp</label>
+      </node>
+      <node id="10">
+        <label>memory</label>
+      </node>
+      <node id="11">
+        <label>mutex</label>
+      </node>
+      <node id="12">
+        <label>optional</label>
+      </node>
+      <node id="13">
+        <label>pqxx/pqxx</label>
+      </node>
+      <node id="27">
+        <label>stdexcept</label>
+      </node>
+      <node id="14">
+        <label>string</label>
+      </node>
+      <node id="24">
+        <label>trantor/utils/Logger.h</label>
+      </node>
+      <node id="20">
+        <label>type_traits</label>
+      </node>
+      <node id="38">
+        <label>typeindex</label>
+      </node>
+      <node id="39">
+        <label>unordered_map</label>
+      </node>
+      <node id="15">
+        <label>unordered_set</label>
+      </node>
+      <node id="16">
+        <label>utility</label>
+      </node>
+      <node id="35">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>src/api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>src/api/v2/filters/auth.hpp</label>
+        <link refid="auth_8hpp"/>
+        <childnode refid="57" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>src/api/v2/filters/ratelimit.hpp</label>
+        <link refid="ratelimit_8hpp"/>
+        <childnode refid="57" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>src/api/v2/routes/appointments.hpp</label>
+        <link refid="appointments_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/api/v2/routes/clients.hpp</label>
+        <link refid="clients_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>src/api/v2/routes/clinics.hpp</label>
+        <link refid="api_2v2_2routes_2clinics_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>src/api/v2/routes/services.hpp</label>
+        <link refid="services_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>src/api/v2/routes/staff.hpp</label>
+        <link refid="staff_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
+        <link refid="appointmentcontroller_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
+        <link refid="appointmentcontroller_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/controllers/base/controller/controller.hpp</label>
+        <link refid="controller_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/controllers/clientcontroller/clientcontroller.cpp</label>
+        <link refid="clientcontroller_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
+        <link refid="clientcontroller_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
+        <link refid="cliniccontroller_8cpp"/>
+      </node>
+      <node id="14">
+        <label>src/controllers/cliniccontroller/cliniccontroller.hpp</label>
+        <link refid="cliniccontroller_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>src/controllers/databasecontroller/databasecontroller.cpp</label>
+        <link refid="databasecontroller_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/controllers/databasecontroller/databasecontroller.hpp</label>
+        <link refid="databasecontroller_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
+        <link refid="entitycontroller_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/controllers/entitycontroller/entitycontroller.hpp</label>
+        <link refid="entitycontroller_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
+        <link refid="servicecontroller_8cpp"/>
+      </node>
+      <node id="17">
+        <label>src/controllers/servicecontroller/servicecontroller.hpp</label>
+        <link refid="servicecontroller_8hpp"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
+        <link refid="staffcontroller_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
+        <link refid="staffcontroller_8hpp"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>src/database/database.cpp</label>
+        <link refid="database_8cpp"/>
+      </node>
+      <node id="25">
+        <label>src/entities/appointments/base/appointment.hpp</label>
+        <link refid="appointment_8hpp"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>src/entities/appointments/clinic.hpp</label>
+        <link refid="clinic_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>src/entities/appointments/laboratory.hpp</label>
+        <link refid="laboratory_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>src/entities/appointments/pharmacy.hpp</label>
+        <link refid="pharmacy_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>src/entities/appointments/radiologycenter.hpp</label>
+        <link refid="radiologycenter_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>src/entities/appointments/user.hpp</label>
+        <link refid="appointments_2user_8hpp"/>
+      </node>
+      <node id="34">
+        <label>src/entities/base/case.hpp</label>
+        <link refid="case_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>src/entities/base/client.hpp</label>
+        <link refid="client_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>src/entities/base/entity.hpp</label>
+        <link refid="entity_8hpp"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>src/entities/base/service.hpp</label>
+        <link refid="service_8hpp"/>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>src/entities/people/provider.hpp</label>
+        <link refid="provider_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>src/entities/people/user.hpp</label>
+        <link refid="people_2user_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>src/entities/services/clinics/clinics.hpp</label>
+        <link refid="entities_2services_2clinics_2clinics_8hpp"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>src/entities/services/clinics/patient/health.hpp</label>
+        <link refid="health_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>src/entities/services/clinics/patient/patient.hpp</label>
+        <link refid="patient_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>src/entities/services/clinics/patient/patientdrugs.hpp</label>
+        <link refid="patientdrugs_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>src/entities/services/clinics/patient/reports.hpp</label>
+        <link refid="reports_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>src/entities/services/clinics/visits/paidservices.hpp</label>
+        <link refid="paidservices_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>src/entities/services/clinics/visits/prescriptions.hpp</label>
+        <link refid="prescriptions_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>src/entities/services/clinics/visits/requests.hpp</label>
+        <link refid="requests_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>src/entities/services/clinics/visits/visitdrugs.hpp</label>
+        <link refid="visitdrugs_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>src/entities/services/clinics/visits/visits.hpp</label>
+        <link refid="visits_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>src/entities/services/laboratories.hpp</label>
+        <link refid="laboratories_8hpp"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>src/entities/services/pharmacies.hpp</label>
+        <link refid="pharmacies_8hpp"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>src/entities/services/radiologycenters.hpp</label>
+        <link refid="radiologycenters_8hpp"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>src/gatekeeper/gatekeeper.cpp</label>
+        <link refid="gatekeeper_8cpp"/>
+      </node>
+      <node id="55">
+        <label>src/gatekeeper/gatekeeper.hpp</label>
+        <link refid="gatekeeper_8hpp"/>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>src/gatekeeper/includes.hpp</label>
+        <link refid="includes_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>src/gatekeeper/keeprbase/keeprbase.cpp</label>
+        <link refid="keeprbase_8cpp"/>
+      </node>
+      <node id="52">
+        <label>src/gatekeeper/keeprbase/keeprbase.hpp</label>
+        <link refid="keeprbase_8hpp"/>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>src/gatekeeper/permissionmanager/permissionmanager.cpp</label>
+        <link refid="permissionmanager_8cpp"/>
+      </node>
+      <node id="64">
+        <label>src/gatekeeper/permissionmanager/permissionmanager_private.cpp</label>
+        <link refid="permissionmanager__private_8cpp"/>
+      </node>
+      <node id="63">
+        <label>src/gatekeeper/permissionmanager/permissionmanager_private.hpp</label>
+        <link refid="permissionmanager__private_8hpp"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>src/gatekeeper/sessionmanager/sessionmanager.cpp</label>
+        <link refid="sessionmanager_8cpp"/>
+      </node>
+      <node id="54">
+        <label>src/gatekeeper/sessionmanager/sessionmanager.hpp</label>
+        <link refid="sessionmanager_8hpp"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>src/gatekeeper/tokenmanager/tokenmanager.cpp</label>
+        <link refid="tokenmanager_8cpp"/>
+      </node>
+      <node id="61">
+        <label>src/gatekeeper/tokenmanager/tokenmanager.hpp</label>
+        <link refid="tokenmanager_8hpp"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+      <node id="57">
+        <label>src/server/server.hpp</label>
+        <link refid="server_8hpp"/>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>src/validator/databaseschema/databaseschema.cpp</label>
+        <link refid="databaseschema_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classDatabaseController" prot="public">DatabaseController</innerclass>
+    <briefdescription>
+<para>Single gateway through which controllers execute SQL, in both blocking and coroutine form. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Declares <computeroutput><ref refid="classDatabaseController" kindref="compound">DatabaseController</ref></computeroutput>, the one class that knows how to run a SQL statement and map the result to JSON. It offers a blocking family (executeQuery, executeReadQuery, executeSearchQuery, ...) backed by a connection pool, and an async family (executeQueryCoro, ...) backed by Drogon&apos;s <ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref>. Every method is virtual so tests can swap in a fake, and every one returns an <computeroutput>std::optional</computeroutput> that is empty when the database is unavailable or the query fails.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: It is the single choke point between the application and PostgreSQL. The <ref refid="classController" kindref="compound">Controller</ref> class calls these methods, so connection handling, transaction rules and error mapping (including the special <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref> signal) live in one place. Without it, every caller would have to manage connections itself, and &quot;database down&quot; could not be handled consistently as a 503 instead of a crash.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>Virtual functions / polymorphism (all methods are virtual for test injection): <ulink url="https://en.cppreference.com/w/cpp/language/virtual">https://en.cppreference.com/w/cpp/language/virtual</ulink></para>
+</listitem><listitem><para>Connection pooling and lazy initialization: <ulink url="https://en.cppreference.com/w/cpp/language/raii">https://en.cppreference.com/w/cpp/language/raii</ulink></para>
+</listitem><listitem><para>std::optional (empty means &quot;no result&quot;): <ulink url="https://en.cppreference.com/w/cpp/utility/optional">https://en.cppreference.com/w/cpp/utility/optional</ulink></para>
+</listitem><listitem><para>std::atomic (thread-safe flag): <ulink url="https://en.cppreference.com/w/cpp/atomic/atomic">https://en.cppreference.com/w/cpp/atomic/atomic</ulink></para>
+</listitem><listitem><para>std::shared_ptr / std::unique_ptr (ownership of backends and connections): <ulink url="https://en.cppreference.com/w/cpp/memory/shared_ptr">https://en.cppreference.com/w/cpp/memory/shared_ptr</ulink></para>
+</listitem><listitem><para>Coroutines (co_await / drogon::Task): <ulink url="https://en.cppreference.com/w/cpp/language/coroutines">https://en.cppreference.com/w/cpp/language/coroutines</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>databasecontroller.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Single<sp/>gateway<sp/>through<sp/>which<sp/>controllers<sp/>execute<sp/>SQL,<sp/>in<sp/>both<sp/>blocking<sp/>and<sp/>coroutine<sp/>form.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>Declares<sp/>`DatabaseController`,<sp/>the<sp/>one<sp/>class<sp/>that<sp/>knows<sp/>how<sp/>to<sp/>run<sp/>a<sp/>SQL<sp/>statement<sp/>and<sp/>map<sp/>the<sp/>result<sp/>to</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>JSON.<sp/>It<sp/>offers<sp/>a<sp/>blocking<sp/>family<sp/>(executeQuery,<sp/>executeReadQuery,<sp/>executeSearchQuery,<sp/>...)<sp/>backed<sp/>by<sp/>a</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>connection<sp/>pool,<sp/>and<sp/>an<sp/>async<sp/>family<sp/>(executeQueryCoro,<sp/>...)<sp/>backed<sp/>by<sp/>Drogon&apos;s<sp/>AsyncDbClient.<sp/>Every</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>method<sp/>is<sp/>virtual<sp/>so<sp/>tests<sp/>can<sp/>swap<sp/>in<sp/>a<sp/>fake,<sp/>and<sp/>every<sp/>one<sp/>returns<sp/>an<sp/>`std::optional`<sp/>that<sp/>is<sp/>empty<sp/>when</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>database<sp/>is<sp/>unavailable<sp/>or<sp/>the<sp/>query<sp/>fails.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>It<sp/>is<sp/>the<sp/>single<sp/>choke<sp/>point<sp/>between<sp/>the<sp/>application<sp/>and<sp/>PostgreSQL.<sp/>The<sp/>Controller<sp/>class<sp/>calls<sp/>these<sp/>methods,<sp/>so</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>connection<sp/>handling,<sp/>transaction<sp/>rules<sp/>and<sp/>error<sp/>mapping<sp/>(including<sp/>the<sp/>special<sp/>DatabaseBusy<sp/>signal)<sp/>live<sp/>in<sp/>one</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>place.<sp/>Without<sp/>it,<sp/>every<sp/>caller<sp/>would<sp/>have<sp/>to<sp/>manage<sp/>connections<sp/>itself,<sp/>and<sp/>&quot;database<sp/>down&quot;<sp/>could<sp/>not<sp/>be<sp/>handled</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>consistently<sp/>as<sp/>a<sp/>503<sp/>instead<sp/>of<sp/>a<sp/>crash.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>-<sp/>Virtual<sp/>functions<sp/>/<sp/>polymorphism<sp/>(all<sp/>methods<sp/>are<sp/>virtual<sp/>for<sp/>test<sp/>injection):<sp/>https://en.cppreference.com/w/cpp/language/virtual</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>Connection<sp/>pooling<sp/>and<sp/>lazy<sp/>initialization:<sp/>https://en.cppreference.com/w/cpp/language/raii</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>std::optional<sp/>(empty<sp/>means<sp/>&quot;no<sp/>result&quot;):<sp/>https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>std::atomic<sp/>(thread-safe<sp/>flag):<sp/>https://en.cppreference.com/w/cpp/atomic/atomic</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>std::shared_ptr<sp/>/<sp/>std::unique_ptr<sp/>(ownership<sp/>of<sp/>backends<sp/>and<sp/>connections):<sp/>https://en.cppreference.com/w/cpp/memory/shared_ptr</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>Coroutines<sp/>(co_await<sp/>/<sp/>drogon::Task):<sp/>https://en.cppreference.com/w/cpp/language/coroutines</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dbprobe_8hpp" kindref="compound">database/dbprobe.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Decides<sp/>whether<sp/>a<sp/>query<sp/>may<sp/>run<sp/>on<sp/>the<sp/>current<sp/>thread.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/core.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Formatting<sp/>library<sp/>for<sp/>error<sp/>messages.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/format.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Formatting<sp/>with<sp/>placeholders.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;atomic&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::atomic&lt;bool&gt;<sp/>for<sp/>the<sp/>thread-safe<sp/>&apos;backends<sp/>ready&apos;<sp/>flag.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Fixed-width<sp/>integer<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;exception&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::exception<sp/>used<sp/>in<sp/>the<sp/>catch<sp/>blocks.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/basic_json.hpp&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>JSON<sp/>value<sp/>type<sp/>used<sp/>for<sp/>results.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/json.hpp&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>JSON<sp/>helpers<sp/>and<sp/>array<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::shared_ptr<sp/>/<sp/>std::unique_ptr<sp/>for<sp/>backends.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::mutex<sp/>/<sp/>scoped_lock<sp/>guard<sp/>one-time<sp/>initialization.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>optional<sp/>result<sp/>of<sp/>every<sp/>query.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;pqxx/pqxx&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>libpqxx:<sp/>the<sp/>synchronous<sp/>PostgreSQL<sp/>client.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>SQL<sp/>text<sp/>and<sp/>identifiers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_set&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Schema/table<sp/>results<sp/>are<sp/>returned<sp/>as<sp/>sets.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::forward<sp/>for<sp/>the<sp/>helper<sp/>template.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="configurator_8hpp" kindref="compound">configurator/configurator.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>configuration<sp/>(e.g.<sp/>no-db<sp/>mode).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="databasebusy_8hpp" kindref="compound">database/databasebusy.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>exception<sp/>meaning<sp/>&quot;pool<sp/>exhausted&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="asyncdbclient_8hpp" kindref="compound">database/asyncdbclient.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Async<sp/>DB<sp/>client<sp/>declaration.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="asyncresultmapper_8hpp" kindref="compound">database/asyncresultmapper.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Maps<sp/>async<sp/>rows<sp/>to<sp/>JSON.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="asyncsqlbinder_8hpp" kindref="compound">database/asyncsqlbinder.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Binds<sp/>parameters<sp/>to<sp/>async<sp/>SQL.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;drogon/utils/coroutine.h&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Drogon<sp/>Task<sp/>return<sp/>type<sp/>of<sp/>the<sp/>async<sp/>methods.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="databasehandler_8hpp" kindref="compound">database/databasehandler.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Hands<sp/>out<sp/>blocking<sp/>connections.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="store_8hpp" kindref="compound">store/store.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Service<sp/>locator<sp/>for<sp/>backends<sp/>and<sp/>fake<sp/>injection.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utils_2global_2types_8hpp" kindref="compound">utils/global/types.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ColumnInfo<sp/>and<sp/>other<sp/>shared<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">utils/message/message.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Logging<sp/>helpers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classCase" kindref="compound">Case</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>declaration:<sp/>only<sp/>a<sp/>pointer/name<sp/>is<sp/>needed<sp/>in<sp/>this<sp/>header.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classService" kindref="compound">Service</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>declaration<sp/>to<sp/>avoid<sp/>a<sp/>heavy<sp/>include.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classAppointment" kindref="compound">Appointment</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>declaration<sp/>to<sp/>avoid<sp/>a<sp/>heavy<sp/>include.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classDatabase" kindref="compound">Database</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>declaration<sp/>of<sp/>the<sp/>blocking<sp/>DB<sp/>helper.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classWatchDog" kindref="compound">WatchDog</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>declaration<sp/>of<sp/>the<sp/>pool<sp/>watchdog.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="62"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>@class<sp/>DatabaseController</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Single<sp/>gateway<sp/>through<sp/>which<sp/>controllers<sp/>execute<sp/>SQL,<sp/>in<sp/>both<sp/>blocking<sp/>and<sp/>coroutine<sp/>form.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>@details<sp/>Owns<sp/>no<sp/>query<sp/>logic<sp/>of<sp/>its<sp/>own:<sp/>it<sp/>acquires<sp/>a<sp/>connection<sp/>(synchronously<sp/>through<sp/>a<sp/>`DatabaseConnectionPool`</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>and<sp/>`DatabaseHanndler`,<sp/>or<sp/>asynchronously<sp/>through<sp/>`AsyncDbClient`),<sp/>invokes<sp/>the<sp/>matching<sp/>`Database`/</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`asyncdb`<sp/>helper,<sp/>and<sp/>returns<sp/>an<sp/>`std::optional`<sp/>result<sp/>that<sp/>is<sp/>empty<sp/>when<sp/>the<sp/>database<sp/>is<sp/>unavailable,</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>a<sp/>connection<sp/>cannot<sp/>be<sp/>acquired,<sp/>or<sp/>the<sp/>query<sp/>fails.<sp/>Every<sp/>public<sp/>method<sp/>is<sp/>virtual<sp/>so<sp/>tests<sp/>can<sp/>inject</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fakes<sp/>through<sp/>`Store::replaceObject`.</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Backend<sp/>construction<sp/>is<sp/>lazy<sp/>(see<sp/>ensureBackends):<sp/>the<sp/>pool<sp/>constructor<sp/>terminates<sp/>the<sp/>process<sp/>when</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PostgreSQL<sp/>is<sp/>unreachable,<sp/>which<sp/>would<sp/>otherwise<sp/>make<sp/>the<sp/>class<sp/>unconstructible<sp/>in<sp/>hermetic<sp/>tests.<sp/>The</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>double-checked<sp/>`backendsReady_`<sp/>flag<sp/>makes<sp/>that<sp/>init<sp/>a<sp/>single<sp/>atomic<sp/>load<sp/>on<sp/>the<sp/>hot<sp/>path.<sp/>In<sp/>hermetic</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>test<sp/>mode<sp/>the<sp/>pool<sp/>is<sp/>never<sp/>created<sp/>and<sp/>all<sp/>query<sp/>paths<sp/>deterministically<sp/>return<sp/>`std::nullopt`.</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Query<sp/>results<sp/>are<sp/>returned<sp/>as<sp/>JSON<sp/>objects/arrays<sp/>or<sp/>plain<sp/>scalars.<sp/>Identifiers<sp/>(table/column<sp/>names)</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cannot<sp/>be<sp/>bound<sp/>as<sp/>parameters,<sp/>so<sp/>the<sp/>few<sp/>methods<sp/>that<sp/>interpolate<sp/>them<sp/>accept<sp/>only<sp/>fixed,<sp/>trusted<sp/>names.</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/>*<sp/>@note<sp/>Non-copyable<sp/>and<sp/>non-movable:<sp/>the<sp/>singleton<sp/>is<sp/>shared<sp/>through<sp/>`Store`,<sp/>never<sp/>duplicated.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*<sp/>@warning<sp/>Pool<sp/>exhaustion<sp/>is<sp/>not<sp/>a<sp/>query<sp/>failure:<sp/>`DatabaseBusy`<sp/>is<sp/>propagated<sp/>so<sp/>callers<sp/>can<sp/>answer<sp/>503<sp/>with</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Retry-After<sp/>instead<sp/>of<sp/>500.</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*<sp/>@see<sp/>Controller,<sp/>Store,<sp/>DatabaseBusy</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="classDatabaseController" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classDatabaseController_1a0368a631e0488b14c619a0672620c84e" kindref="member">DatabaseController</ref></highlight></codeline>
+<codeline lineno="84"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Constructs<sp/>the<sp/>controller<sp/>without<sp/>creating<sp/>database<sp/>backends.</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Backends<sp/>are<sp/>created<sp/>on<sp/>the<sp/>first<sp/>query<sp/>by<sp/>ensureBackends()<sp/>so<sp/>construction<sp/>stays<sp/>safe<sp/>in<sp/>tests.</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1a0368a631e0488b14c619a0672620c84e" kindref="member">DatabaseController</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Does<sp/>not<sp/>create<sp/>backends;<sp/>that<sp/>is<sp/>deferred<sp/>to<sp/>the<sp/>first<sp/>query.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="classDatabaseController_1a8131cc7d895234c6f371640063c75419" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1a8131cc7d895234c6f371640063c75419" kindref="member">DatabaseController</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDatabaseController_1a0368a631e0488b14c619a0672620c84e" kindref="member">DatabaseController</ref>&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Singleton:<sp/>copying<sp/>would<sp/>duplicate<sp/>backends.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="classDatabaseController_1a928d42a1baf81f3d1030dce3ad99df37" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1a928d42a1baf81f3d1030dce3ad99df37" kindref="member">DatabaseController</ref>(<ref refid="classDatabaseController_1a0368a631e0488b14c619a0672620c84e" kindref="member">DatabaseController</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Moving<sp/>is<sp/>disabled<sp/>for<sp/>the<sp/>same<sp/>reason.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="classDatabaseController_1af159676154ecf5aa9dec2379f85df322" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1a0368a631e0488b14c619a0672620c84e" kindref="member">DatabaseController</ref>&amp;<sp/><ref refid="classDatabaseController_1af159676154ecf5aa9dec2379f85df322" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDatabaseController_1a0368a631e0488b14c619a0672620c84e" kindref="member">DatabaseController</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy<sp/>assignment<sp/>on<sp/>a<sp/>singleton.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="classDatabaseController_1ae38b97b5b0177fe7ac97d15e0ebb20cd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1a0368a631e0488b14c619a0672620c84e" kindref="member">DatabaseController</ref>&amp;<sp/><ref refid="classDatabaseController_1ae38b97b5b0177fe7ac97d15e0ebb20cd" kindref="member">operator=</ref>(<ref refid="classDatabaseController_1a0368a631e0488b14c619a0672620c84e" kindref="member">DatabaseController</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move<sp/>assignment<sp/>on<sp/>a<sp/>singleton.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="classDatabaseController_1a6a80262c961a35e637be98299041fdaf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classDatabaseController_1a6a80262c961a35e637be98299041fdaf" kindref="member">~DatabaseController</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Virtual<sp/>for<sp/>fake<sp/>injection;<sp/>default<sp/>cleanup.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Executes<sp/>a<sp/>write/statement<sp/>query<sp/>and<sp/>maps<sp/>one<sp/>JSON<sp/>object<sp/>result.</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>query<sp/>Parameterized<sp/>SQL<sp/>statement.</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>params<sp/>Bound<sp/>parameters<sp/>for<sp/>the<sp/>statement&apos;s<sp/>placeholders.</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>JSON<sp/>object,<sp/>or<sp/>`std::nullopt`<sp/>if<sp/>the<sp/>DB<sp/>is<sp/>unavailable<sp/>or<sp/>the<sp/>query<sp/>fails.</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>if<sp/>no<sp/>connection<sp/>became<sp/>available<sp/>within<sp/>the<sp/>configured<sp/>timeout.</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1a107e601b43f856547bc04d97e8975b8d" kindref="member">executeQuery</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>query,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;<sp/>params<sp/>=<sp/>{});<sp/><sp/></highlight><highlight class="comment">//<sp/>Blocking<sp/>write/statement<sp/>returning<sp/>one<sp/>JSON<sp/>object.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Executes<sp/>a<sp/>read<sp/>query<sp/>and<sp/>maps<sp/>one<sp/>JSON<sp/>object<sp/>result.</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Currently<sp/>delegates<sp/>to<sp/>the<sp/>same<sp/>`Database::executeQuery`<sp/>instantiation<sp/>as<sp/>executeQuery();<sp/>the<sp/>separate</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entry<sp/>point<sp/>keeps<sp/>the<sp/>read/write<sp/>intent<sp/>explicit<sp/>at<sp/>call<sp/>sites<sp/>and<sp/>as<sp/>a<sp/>separate<sp/>override<sp/>hook.</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>query<sp/>Parameterized<sp/>SQL<sp/>SELECT.</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>params<sp/>Bound<sp/>parameters.</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>JSON<sp/>object,<sp/>or<sp/>`std::nullopt`<sp/>on<sp/>unavailable<sp/>DB/query<sp/>failure.</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>if<sp/>the<sp/>pool<sp/>is<sp/>exhausted.</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1ae2d9c2dcf54cdec81331949a9aaea597" kindref="member">executeReadQuery</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>query,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;<sp/>params<sp/>=<sp/>{});<sp/><sp/></highlight><highlight class="comment">//<sp/>Blocking<sp/>SELECT<sp/>returning<sp/>one<sp/>JSON<sp/>object.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Executes<sp/>a<sp/>search<sp/>query<sp/>and<sp/>maps<sp/>the<sp/>result<sp/>rows<sp/>to<sp/>a<sp/>JSON<sp/>array.</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>query<sp/>Parameterized<sp/>SQL<sp/>SELECT<sp/>(typically<sp/>the<sp/>search<sp/>builder&apos;s<sp/>`limit<sp/>+<sp/>1`<sp/>probe<sp/>query).</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>params<sp/>Bound<sp/>parameters.</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>JSON<sp/>array,<sp/>or<sp/>`std::nullopt`<sp/>on<sp/>unavailable<sp/>DB/query<sp/>failure.</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>if<sp/>the<sp/>pool<sp/>is<sp/>exhausted.</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json::array&gt;<sp/><ref refid="classDatabaseController_1ab854d593bad9adf157993f38f465fc18" kindref="member">executeSearchQuery</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>query,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;<sp/>params<sp/>=<sp/>{});<sp/><sp/></highlight><highlight class="comment">//<sp/>Blocking<sp/>SELECT<sp/>returning<sp/>a<sp/>JSON<sp/>array<sp/>of<sp/>rows.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Executes<sp/>a<sp/>simple<sp/>query<sp/>and<sp/>returns<sp/>its<sp/>first<sp/>value<sp/>as<sp/>a<sp/>raw<sp/>string.</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>query<sp/>Parameterized<sp/>SQL<sp/>statement.</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>params<sp/>Bound<sp/>parameters.</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>string<sp/>result,<sp/>or<sp/>`std::nullopt`<sp/>on<sp/>unavailable<sp/>DB/query<sp/>failure.</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>if<sp/>the<sp/>pool<sp/>is<sp/>exhausted.</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1a5ac3b3112fc438ac6133b008d46b62ca" kindref="member">doReadQuery</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>query,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;<sp/>params<sp/>=<sp/>{});<sp/><sp/></highlight><highlight class="comment">//<sp/>Blocking<sp/>query<sp/>returning<sp/>a<sp/>single<sp/>raw<sp/>string.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Checks<sp/>existence<sp/>with<sp/>`Database::checkExists`.</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>table<sp/>Trusted<sp/>table<sp/>identifier<sp/>(interpolated,<sp/>not<sp/>bound).</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>column<sp/>Trusted<sp/>column<sp/>identifier<sp/>(interpolated,<sp/>not<sp/>bound).</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>value<sp/>Value<sp/>bound<sp/>as<sp/>a<sp/>`$1`<sp/>parameter.</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>Whether<sp/>a<sp/>matching<sp/>row<sp/>exists,<sp/>or<sp/>`std::nullopt`<sp/>on<sp/>unavailable<sp/>DB/query<sp/>failure.</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>if<sp/>the<sp/>pool<sp/>is<sp/>exhausted.</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;bool&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1a870dc0277e6ac74c5ddb410e1f7112a2" kindref="member">checkItemExists</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>table,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>column,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>value);<sp/><sp/></highlight><highlight class="comment">//<sp/>Blocking<sp/>EXISTS<sp/>check;<sp/>value<sp/>is<sp/>bound,<sp/>names<sp/>trusted.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Fetches<sp/>the<sp/>id,<sp/>password<sp/>hash<sp/>and<sp/>active<sp/>flag<sp/>for<sp/>a<sp/>username<sp/>in<sp/>a<sp/>client<sp/>table.</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Only<sp/>`users`<sp/>and<sp/>`providers`<sp/>are<sp/>accepted<sp/>because<sp/>identifiers<sp/>cannot<sp/>be<sp/>bound;<sp/>any<sp/>other<sp/>table<sp/>name</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>logged<sp/>as<sp/>an<sp/>error<sp/>and<sp/>yields<sp/>`std::nullopt`<sp/>without<sp/>issuing<sp/>a<sp/>query.</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>username<sp/>Username<sp/>to<sp/>look<sp/>up<sp/>(bound<sp/>as<sp/>`$1`).</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tablename<sp/>Either<sp/>&quot;users&quot;<sp/>or<sp/>&quot;providers&quot;.</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>JSON<sp/>object<sp/>containing<sp/>id/password/active,<sp/>or<sp/>`std::nullopt`<sp/>on<sp/>error/unknown<sp/>table.</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>if<sp/>the<sp/>pool<sp/>is<sp/>exhausted.</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1aa758566f79643d7f383a135ef80fa9e9" kindref="member">getPasswordHashForUserName</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>username,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>tablename);<sp/><sp/></highlight><highlight class="comment">//<sp/>Fetches<sp/>id/password/active<sp/>for<sp/>login.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Loads<sp/>the<sp/>column<sp/>metadata<sp/>of<sp/>a<sp/>table<sp/>(excluding<sp/>the<sp/>`id`<sp/>column<sp/>in<sp/>the<sp/>underlying<sp/>query).</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tableName<sp/>Table<sp/>to<sp/>describe<sp/>(bound<sp/>as<sp/>a<sp/>parameter).</highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>Set<sp/>of<sp/>ColumnInfo<sp/>records,<sp/>or<sp/>`std::nullopt`<sp/>on<sp/>unavailable<sp/>DB/query<sp/>failure.</highlight></codeline>
+<codeline lineno="154"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>if<sp/>the<sp/>pool<sp/>is<sp/>exhausted.</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;std::unordered_set&lt;api::v2::ColumnInfo&gt;&gt;<sp/><ref refid="classDatabaseController_1a7d83a6ade653663a62d68922f0928419" kindref="member">getTableSchema</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>tableName);<sp/><sp/></highlight><highlight class="comment">//<sp/>Loads<sp/>a<sp/>table&apos;s<sp/>column<sp/>metadata<sp/>for<sp/>validation.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Lists<sp/>all<sp/>tables<sp/>in<sp/>the<sp/>`public`<sp/>schema.</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>Set<sp/>of<sp/>table<sp/>names,<sp/>or<sp/>`std::nullopt`<sp/>on<sp/>unavailable<sp/>DB/query<sp/>failure.</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>if<sp/>the<sp/>pool<sp/>is<sp/>exhausted.</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;std::unordered_set&lt;std::string&gt;&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1acece421c53c0fef3b2965878f2422d5e" kindref="member">getAllTables</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Lists<sp/>all<sp/>public<sp/>tables<sp/>(used<sp/>at<sp/>startup).</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Runs<sp/>a<sp/>caller-supplied<sp/>permissions<sp/>query<sp/>and<sp/>maps<sp/>the<sp/>result<sp/>to<sp/>a<sp/>JSON<sp/>object.</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>query<sp/>Parameterized<sp/>SQL<sp/>supplied<sp/>by<sp/>the<sp/>authorization<sp/>layer.</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>JSON<sp/>object,<sp/>or<sp/>`std::nullopt`<sp/>on<sp/>unavailable<sp/>DB/query<sp/>failure.</highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>if<sp/>the<sp/>pool<sp/>is<sp/>exhausted.</highlight></codeline>
+<codeline lineno="168"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1ae11a73cc6347582351411b8c5ef7341d" kindref="member">getPermissions</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>query);<sp/><sp/></highlight><highlight class="comment">//<sp/>Runs<sp/>an<sp/>authorization<sp/>query<sp/>from<sp/>GateKeeper.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Asynchronous<sp/>(coroutine)<sp/>entry<sp/>points<sp/>used<sp/>when<sp/>DB_ASYNC=true.<sp/>They<sp/>run<sp/>on</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>Drogon<sp/>IO<sp/>loop<sp/>without<sp/>a<sp/>worker<sp/>hand-off.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Async<sp/>counterpart<sp/>of<sp/>executeQuery();<sp/>begins<sp/>a<sp/>transaction,<sp/>executes<sp/>and<sp/>commits<sp/>on<sp/>success.</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>A<sp/>null/missing<sp/>`AsyncDbClient`<sp/>yields<sp/>`std::nullopt`.<sp/>On<sp/>a<sp/>busy<sp/>error<sp/>the<sp/>coroutine<sp/>throws</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`DatabaseBusy`<sp/>after<sp/>logging;<sp/>other<sp/>exceptions<sp/>are<sp/>logged<sp/>and<sp/>become<sp/>`std::nullopt`.</highlight></codeline>
+<codeline lineno="177"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>query<sp/>Parameterized<sp/>SQL<sp/>statement.</highlight></codeline>
+<codeline lineno="178"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>params<sp/>Bound<sp/>parameters.</highlight></codeline>
+<codeline lineno="179"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>task<sp/>resolving<sp/>to<sp/>the<sp/>JSON<sp/>object,<sp/>or<sp/>`std::nullopt`.</highlight></codeline>
+<codeline lineno="180"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>when<sp/>the<sp/>database<sp/>reports<sp/>busy.</highlight></codeline>
+<codeline lineno="181"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>drogon::Task&lt;std::optional&lt;jsoncons::json&gt;&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" kindref="member">executeQueryCoro</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>query,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;<sp/>params<sp/>=<sp/>{});<sp/><sp/></highlight><highlight class="comment">//<sp/>Async<sp/>write<sp/>with<sp/>a<sp/>transaction;<sp/>co_await<sp/>it.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="183"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="184"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Async<sp/>counterpart<sp/>of<sp/>executeReadQuery();<sp/>executes<sp/>without<sp/>an<sp/>explicit<sp/>transaction.</highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>query<sp/>Parameterized<sp/>SQL<sp/>SELECT.</highlight></codeline>
+<codeline lineno="186"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>params<sp/>Bound<sp/>parameters.</highlight></codeline>
+<codeline lineno="187"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>task<sp/>resolving<sp/>to<sp/>the<sp/>JSON<sp/>object,<sp/>or<sp/>`std::nullopt`<sp/>if<sp/>unavailable/busy/failed.</highlight></codeline>
+<codeline lineno="188"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>when<sp/>the<sp/>database<sp/>reports<sp/>busy.</highlight></codeline>
+<codeline lineno="189"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>drogon::Task&lt;std::optional&lt;jsoncons::json&gt;&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1aa3de6b2217aa0ba75ec4eb5286d36799" kindref="member">executeReadQueryCoro</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>query,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;<sp/>params<sp/>=<sp/>{});<sp/><sp/></highlight><highlight class="comment">//<sp/>Async<sp/>read<sp/>without<sp/>an<sp/>explicit<sp/>transaction.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="191"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="192"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Async<sp/>counterpart<sp/>of<sp/>executeSearchQuery();<sp/>maps<sp/>rows<sp/>to<sp/>a<sp/>JSON<sp/>array.</highlight></codeline>
+<codeline lineno="193"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>query<sp/>Parameterized<sp/>SQL<sp/>SELECT.</highlight></codeline>
+<codeline lineno="194"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>params<sp/>Bound<sp/>parameters.</highlight></codeline>
+<codeline lineno="195"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>task<sp/>resolving<sp/>to<sp/>the<sp/>JSON<sp/>array,<sp/>or<sp/>`std::nullopt`.</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>when<sp/>the<sp/>database<sp/>reports<sp/>busy.</highlight></codeline>
+<codeline lineno="197"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>drogon::Task&lt;std::optional&lt;jsoncons::json::array&gt;&gt;<sp/><ref refid="classDatabaseController_1a7b2bb5792bc55ec851dcd7ae997c58a4" kindref="member">executeSearchQueryCoro</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>query,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;<sp/>params<sp/>=<sp/>{});<sp/><sp/></highlight><highlight class="comment">//<sp/>Async<sp/>search<sp/>returning<sp/>a<sp/>JSON<sp/>array.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Async<sp/>counterpart<sp/>of<sp/>doReadQuery();<sp/>returns<sp/>the<sp/>first<sp/>cell<sp/>as<sp/>a<sp/>string.</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>query<sp/>Parameterized<sp/>SQL<sp/>statement.</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>params<sp/>Bound<sp/>parameters.</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>task<sp/>resolving<sp/>to<sp/>the<sp/>string,<sp/>or<sp/>`std::nullopt`<sp/>when<sp/>no<sp/>rows/unavailable/busy/failed.</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>when<sp/>the<sp/>database<sp/>reports<sp/>busy.</highlight></codeline>
+<codeline lineno="205"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>drogon::Task&lt;std::optional&lt;std::string&gt;&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1ac586f1fc3a54b3bbf1ff5369e403ed20" kindref="member">doReadQueryCoro</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>query,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;<sp/>params<sp/>=<sp/>{});<sp/><sp/></highlight><highlight class="comment">//<sp/>Async<sp/>query<sp/>returning<sp/>the<sp/>first<sp/>cell<sp/>as<sp/>a<sp/>string.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="207"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="208"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Async<sp/>counterpart<sp/>of<sp/>checkItemExists().</highlight></codeline>
+<codeline lineno="209"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Builds<sp/>`SELECT<sp/>EXISTS<sp/>(SELECT<sp/>1<sp/>FROM<sp/>&lt;table&gt;<sp/>WHERE<sp/>&lt;column&gt;<sp/>=<sp/>$1)`;<sp/>table<sp/>and<sp/>column<sp/>are<sp/>interpolated</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>identifiers<sp/>and<sp/>must<sp/>be<sp/>trusted,<sp/>while<sp/>@p<sp/>value<sp/>is<sp/>bound.</highlight></codeline>
+<codeline lineno="211"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>table<sp/>Trusted<sp/>table<sp/>identifier.</highlight></codeline>
+<codeline lineno="212"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>column<sp/>Trusted<sp/>column<sp/>identifier.</highlight></codeline>
+<codeline lineno="213"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>value<sp/>Value<sp/>bound<sp/>as<sp/>`$1`.</highlight></codeline>
+<codeline lineno="214"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>task<sp/>resolving<sp/>to<sp/>the<sp/>boolean<sp/>result,<sp/>or<sp/>`std::nullopt`.</highlight></codeline>
+<codeline lineno="215"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>when<sp/>the<sp/>database<sp/>reports<sp/>busy.</highlight></codeline>
+<codeline lineno="216"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>drogon::Task&lt;std::optional&lt;bool&gt;&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1a757e16ca56537bd8eed3d9abe9768954" kindref="member">checkItemExistsCoro</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>table,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>column,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>value);<sp/><sp/></highlight><highlight class="comment">//<sp/>Async<sp/>EXISTS<sp/>check.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="218"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="219"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Async<sp/>counterpart<sp/>of<sp/>getPasswordHashForUserName();<sp/>same<sp/>fixed-table<sp/>restriction<sp/>applies.</highlight></codeline>
+<codeline lineno="220"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>username<sp/>Username<sp/>to<sp/>look<sp/>up<sp/>(bound<sp/>as<sp/>`$1`).</highlight></codeline>
+<codeline lineno="221"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tablename<sp/>Either<sp/>&quot;users&quot;<sp/>or<sp/>&quot;providers&quot;.</highlight></codeline>
+<codeline lineno="222"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>task<sp/>resolving<sp/>to<sp/>id/password/active<sp/>JSON,<sp/>or<sp/>`std::nullopt`.</highlight></codeline>
+<codeline lineno="223"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>when<sp/>the<sp/>database<sp/>reports<sp/>busy.</highlight></codeline>
+<codeline lineno="224"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>drogon::Task&lt;std::optional&lt;jsoncons::json&gt;&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1a0389040d66c5126fd7750a189aefaa14" kindref="member">getPasswordHashForUserNameCoro</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>username,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>tablename);<sp/><sp/></highlight><highlight class="comment">//<sp/>Async<sp/>login<sp/>credential<sp/>lookup.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="226"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="227"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Async<sp/>counterpart<sp/>of<sp/>getTableSchema();<sp/>maps<sp/>information_schema<sp/>rows<sp/>to<sp/>ColumnInfo<sp/>records.</highlight></codeline>
+<codeline lineno="228"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tableName<sp/>Table<sp/>to<sp/>describe<sp/>(bound<sp/>as<sp/>a<sp/>parameter).</highlight></codeline>
+<codeline lineno="229"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>task<sp/>resolving<sp/>to<sp/>the<sp/>column<sp/>set,<sp/>or<sp/>`std::nullopt`.</highlight></codeline>
+<codeline lineno="230"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>when<sp/>the<sp/>database<sp/>reports<sp/>busy.</highlight></codeline>
+<codeline lineno="231"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>drogon::Task&lt;std::optional&lt;std::unordered_set&lt;api::v2::ColumnInfo&gt;&gt;&gt;<sp/><ref refid="classDatabaseController_1ab6502e9c51e8657b16ffe4795949ebe7" kindref="member">getTableSchemaCoro</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>tableName);<sp/><sp/></highlight><highlight class="comment">//<sp/>Async<sp/>column<sp/>metadata<sp/>load.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="233"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="234"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Async<sp/>counterpart<sp/>of<sp/>getAllTables();<sp/>lists<sp/>tables<sp/>in<sp/>the<sp/>`public`<sp/>schema.</highlight></codeline>
+<codeline lineno="235"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>task<sp/>resolving<sp/>to<sp/>the<sp/>table-name<sp/>set,<sp/>or<sp/>`std::nullopt`.</highlight></codeline>
+<codeline lineno="236"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>when<sp/>the<sp/>database<sp/>reports<sp/>busy.</highlight></codeline>
+<codeline lineno="237"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>drogon::Task&lt;std::optional&lt;std::unordered_set&lt;std::string&gt;&gt;&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1abb1622b85d3e413bcb1dee3521a9d24f" kindref="member">getAllTablesCoro</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Async<sp/>public<sp/>table<sp/>list.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="239"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="240"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Async<sp/>counterpart<sp/>of<sp/>getPermissions();<sp/>maps<sp/>a<sp/>permissions<sp/>query<sp/>to<sp/>a<sp/>JSON<sp/>object.</highlight></codeline>
+<codeline lineno="241"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>query<sp/>Parameterized<sp/>SQL<sp/>supplied<sp/>by<sp/>the<sp/>authorization<sp/>layer.</highlight></codeline>
+<codeline lineno="242"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>task<sp/>resolving<sp/>to<sp/>the<sp/>JSON<sp/>object,<sp/>or<sp/>`std::nullopt`.</highlight></codeline>
+<codeline lineno="243"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>when<sp/>the<sp/>database<sp/>reports<sp/>busy.</highlight></codeline>
+<codeline lineno="244"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>drogon::Task&lt;std::optional&lt;jsoncons::json&gt;&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1a2a0585031d4e0a5e8dfdeb7d77041563" kindref="member">getPermissionsCoro</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>query);<sp/><sp/></highlight><highlight class="comment">//<sp/>Async<sp/>permissions<sp/>query.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="248"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="249"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Set<sp/>once<sp/>the<sp/>pool/watchdog<sp/>have<sp/>been<sp/>created<sp/>(or<sp/>deliberately<sp/>skipped<sp/>in<sp/>test<sp/>mode);<sp/>published<sp/>with<sp/>release/acquire.</highlight></codeline>
+<codeline lineno="250"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251" refid="classDatabaseController_1a743181f5f295cdc6b9113defd29f7162" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::atomic&lt;bool&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1a743181f5f295cdc6b9113defd29f7162" kindref="member">backendsReady_</ref>{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};<sp/><sp/></highlight><highlight class="comment">//<sp/>Starts<sp/>false;<sp/>flips<sp/>true<sp/>after<sp/>one-time<sp/>backend<sp/>setup.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="252"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="253"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Lazily<sp/>created<sp/>blocking<sp/>connection<sp/>pool;<sp/>null<sp/>in<sp/>hermetic<sp/>test<sp/>mode.</highlight></codeline>
+<codeline lineno="254"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255" refid="classDatabaseController_1a31ddc963543c94188989eab4aa24e2ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;DatabaseConnectionPool&gt;<sp/><ref refid="classDatabaseController_1a31ddc963543c94188989eab4aa24e2ec" kindref="member">databaseConnectionPool_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Lazily<sp/>created<sp/>blocking<sp/>pool;<sp/>null<sp/>in<sp/>test<sp/>mode.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="256"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="257"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Lazily<sp/>created<sp/>watchdog<sp/>for<sp/>the<sp/>blocking<sp/>pool;<sp/>unused<sp/>in<sp/>hermetic<sp/>test<sp/>mode.</highlight></codeline>
+<codeline lineno="258"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259" refid="classDatabaseController_1abbc84ebe21df91c2d77041778e86d199" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;WatchDog&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1abbc84ebe21df91c2d77041778e86d199" kindref="member">watchDog_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Lazily<sp/>created<sp/>watchdog<sp/>for<sp/>the<sp/>blocking<sp/>pool.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="260"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="261"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Test<sp/>configuration<sp/>read<sp/>at<sp/>first<sp/>use<sp/>to<sp/>decide<sp/>whether<sp/>backends<sp/>should<sp/>be<sp/>skipped.</highlight></codeline>
+<codeline lineno="262"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263" refid="classDatabaseController_1ac8c9c76391d1ebcaa3fd2abdd93754b3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;Configurator::Testing&gt;<sp/><sp/><ref refid="classDatabaseController_1ac8c9c76391d1ebcaa3fd2abdd93754b3" kindref="member">testing_config_</ref><sp/>=<sp/>std::make_shared&lt;Configurator::Testing&gt;();<sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>at<sp/>first<sp/>use<sp/>to<sp/>decide<sp/>whether<sp/>to<sp/>skip<sp/>backends.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="264"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="265"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Lazily<sp/>creates<sp/>the<sp/>connection<sp/>pool<sp/>and<sp/>watchdog</highlight></codeline>
+<codeline lineno="266"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1a2685c684b979ee32be0f286df38c1449" kindref="member">ensureBackends</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Creates<sp/>the<sp/>pool/watchdog<sp/>once,<sp/>safely<sp/>across<sp/>threads.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="269"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="270"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Common<sp/>implementation<sp/>for<sp/>every<sp/>synchronous<sp/>query<sp/>method.</highlight></codeline>
+<codeline lineno="271"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>`DbProbe::check()`<sp/>may<sp/>throw<sp/>`WouldBlock`<sp/>to<sp/>move<sp/>a<sp/>request<sp/>off<sp/>the<sp/>IO<sp/>thread<sp/>before<sp/>this<sp/>runs.</highlight></codeline>
+<codeline lineno="272"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>After<sp/>ensuring<sp/>backends<sp/>exist,<sp/>a<sp/>missing<sp/>pool<sp/>(test<sp/>mode)<sp/>or<sp/>missing<sp/>connection<sp/>yields<sp/>`nullopt`.</highlight></codeline>
+<codeline lineno="273"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>supplied<sp/>function<sp/>is<sp/>invoked<sp/>with<sp/>the<sp/>acquired<sp/>`Database*`<sp/>and<sp/>forwarded<sp/>arguments.</highlight></codeline>
+<codeline lineno="274"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>Result<sp/>Type<sp/>wrapped<sp/>in<sp/>the<sp/>returned<sp/>optional<sp/>(JSON<sp/>object/array,<sp/>string,<sp/>bool,<sp/>or<sp/>a<sp/>set).</highlight></codeline>
+<codeline lineno="275"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>Func<sp/>Callable<sp/>taking<sp/>a<sp/>`Database*`<sp/>followed<sp/>by<sp/>@p<sp/>args.</highlight></codeline>
+<codeline lineno="276"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>Args<sp/>Forwarded<sp/>argument<sp/>types.</highlight></codeline>
+<codeline lineno="277"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>func<sp/>Database<sp/>helper<sp/>to<sp/>invoke.</highlight></codeline>
+<codeline lineno="278"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>args<sp/>Arguments<sp/>forwarded<sp/>to<sp/>@p<sp/>func<sp/>(query<sp/>text<sp/>and<sp/>parameters).</highlight></codeline>
+<codeline lineno="279"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>helper&apos;s<sp/>result,<sp/>or<sp/>`std::nullopt`<sp/>on<sp/>unavailable<sp/>DB/no<sp/>connection/query<sp/>failure.</highlight></codeline>
+<codeline lineno="280"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>rethrown<sp/>so<sp/>callers<sp/>can<sp/>answer<sp/>503;<sp/>other<sp/>exceptions<sp/>are<sp/>logged<sp/>and<sp/>swallowed.</highlight></codeline>
+<codeline lineno="281"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Result,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Func,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args&gt;</highlight></codeline>
+<codeline lineno="283" refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;Result&gt;<sp/><ref refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" kindref="member">executer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Func&amp;<sp/>func,<sp/>Args&amp;&amp;...<sp/>args)</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDbProbe_1af3b9ebe61addb4dd1885a3d117221a1f" kindref="member">DbProbe::check</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>on<sp/>the<sp/>IO-thread<sp/>fast<sp/>path<sp/>this<sp/>throws<sp/>WouldBlock:<sp/>the<sp/>request<sp/>moves<sp/>to<sp/>the<sp/>DB<sp/>executor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseController_1a2685c684b979ee32be0f286df38c1449" kindref="member">ensureBackends</ref>();</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Hermetic<sp/>test<sp/>mode:<sp/>no<sp/>backends<sp/>were<sp/>created,<sp/>so<sp/>report<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>database<sp/>as<sp/>unavailable<sp/>without<sp/>constructing<sp/>a<sp/>handler<sp/>(which</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>would<sp/>create<sp/>a<sp/>pool<sp/>via<sp/>Store<sp/>and<sp/>exit()<sp/>on<sp/>init<sp/>failure).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classDatabaseController_1a31ddc963543c94188989eab4aa24e2ec" kindref="member">databaseConnectionPool_</ref>)</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::unique_ptr&lt;DatabaseHanndler&gt;<sp/>dbHandler<sp/>=<sp/>std::make_unique&lt;DatabaseHanndler&gt;(<ref refid="classDatabaseController_1a31ddc963543c94188989eab4aa24e2ec" kindref="member">databaseConnectionPool_</ref>);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;Database&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>db_ptr<sp/><sp/><sp/><sp/>=<sp/>dbHandler-&gt;get_connection();</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(db_ptr<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;Result&gt;<sp/>results<sp/>=<sp/>std::invoke(func,<sp/>db_ptr.get(),<sp/>std::forward&lt;Args&gt;(args)...);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(results.has_value())</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>results;</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref>&amp;)</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>pool<sp/>is<sp/>exhausted:<sp/>callers<sp/>answer<sp/>503<sp/>instead<sp/>of<sp/>treating<sp/>it<sp/>as<sp/>a<sp/>failed<sp/>query</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(fmt::format(</highlight><highlight class="stringliteral">&quot;Exception<sp/>occurred<sp/>during<sp/>query<sp/>execution:<sp/>{}&quot;</highlight><highlight class="normal">,<sp/>e.what()));</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(</highlight><highlight class="stringliteral">&quot;Unknown<sp/>exception<sp/>occurred<sp/>during<sp/>query<sp/>execution.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="330"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="src/controllers/databasecontroller/databasecontroller.hpp"/>
+  </compounddef>
+</doxygen>

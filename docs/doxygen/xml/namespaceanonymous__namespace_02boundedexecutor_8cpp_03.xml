@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="namespaceanonymous__namespace_02boundedexecutor_8cpp_03" kind="namespace" language="C++">
+    <compoundname>anonymous_namespace{boundedexecutor.cpp}</compoundname>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02boundedexecutor_8cpp_03_1ab84b8609fe5c97780788c6d292a2c64c" prot="public" static="no" mutable="no" thread_local="yes">
+        <type>const <ref refid="classBoundedExecutor" kindref="compound">BoundedExecutor</ref> *</type>
+        <definition>const BoundedExecutor* anonymous_namespace{boundedexecutor.cpp}::currentExecutor</definition>
+        <argsstring></argsstring>
+        <name>currentExecutor</name>
+        <qualifiedname>anonymous_namespace{boundedexecutor.cpp}::currentExecutor</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.cpp" line="48" column="40" bodyfile="src/concurrency/boundedexecutor.cpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/concurrency/boundedexecutor.cpp" line="44" column="1"/>
+  </compounddef>
+</doxygen>

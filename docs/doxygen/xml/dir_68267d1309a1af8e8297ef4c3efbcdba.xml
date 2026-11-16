@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir">
+    <compoundname>src</compoundname>
+    <innerdir refid="dir_da61e3e9a357748887e3ca8d7c5a0c16">src/api</innerdir>
+    <innerdir refid="dir_2c0c1a91490a41565d9fe0ee1c4cba07">src/concurrency</innerdir>
+    <innerdir refid="dir_f855cd1749e901f58634957bc935d1ef">src/configurator</innerdir>
+    <innerdir refid="dir_bbd6674d859f4cefaacb708974cac240">src/controllers</innerdir>
+    <innerdir refid="dir_803ee67260c130b45d29089798491ab2">src/database</innerdir>
+    <innerdir refid="dir_d691984d1d74be3b164cee16192654be">src/entities</innerdir>
+    <innerdir refid="dir_895520e6c86a9d19ec2fb9fe774d9cf1">src/gatekeeper</innerdir>
+    <innerdir refid="dir_075bb3ff235063c77951cd176d15a741">src/server</innerdir>
+    <innerdir refid="dir_ce523e85215a280d7642dc7a1cfeecaa">src/store</innerdir>
+    <innerdir refid="dir_313caf1132e152dd9b58bea13a4052ca">src/utils</innerdir>
+    <innerdir refid="dir_75e2072bfb093df989700fdab406cd15">src/validator</innerdir>
+    <innerfile refid="main_8cpp">main.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/"/>
+  </compounddef>
+</doxygen>

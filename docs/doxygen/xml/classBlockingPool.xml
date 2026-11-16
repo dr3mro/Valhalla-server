@@ -1,0 +1,367 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classBlockingPool" kind="class" language="C++" prot="public">
+    <compoundname>BlockingPool</compoundname>
+    <includes refid="blockingpool_8hpp" local="no">blockingpool.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classBlockingPool_1aa536a2de2ab04cb3a2b54dd350b1190a" prot="private" static="no" mutable="yes">
+        <type>std::mutex</type>
+        <definition>std::mutex BlockingPool&lt; T &gt;::mutex_</definition>
+        <argsstring></argsstring>
+        <name>mutex_</name>
+        <qualifiedname>BlockingPool::mutex_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/blockingpool.hpp" line="141" column="29" bodyfile="src/database/blockingpool.hpp" bodystart="141" bodyend="-1"/>
+        <referencedby refid="classBlockingPool_1aa577bb9f7274c91f2ba9912cac021769" compoundref="blockingpool_8hpp" startline="93" endline="103">BlockingPool&lt; T &gt;::acquire</referencedby>
+        <referencedby refid="classBlockingPool_1a5f53d641019a9e2d276f21f7bee1723a" compoundref="blockingpool_8hpp" startline="130" endline="138">BlockingPool&lt; T &gt;::forEachIdle</referencedby>
+        <referencedby refid="classBlockingPool_1a2cdad342573ef45e2ba4e0325e753004" compoundref="blockingpool_8hpp" startline="109" endline="113">BlockingPool&lt; T &gt;::idle</referencedby>
+        <referencedby refid="classBlockingPool_1ab15e0709ecb1d8979957d54b2e666f78" compoundref="blockingpool_8hpp" startline="72" endline="83">BlockingPool&lt; T &gt;::release</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classBlockingPool_1a7521eacf45e5a5cfc473a714ecc06ce8" prot="private" static="no" mutable="no">
+        <type>std::condition_variable</type>
+        <definition>std::condition_variable BlockingPool&lt; T &gt;::cv_</definition>
+        <argsstring></argsstring>
+        <name>cv_</name>
+        <qualifiedname>BlockingPool::cv_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/blockingpool.hpp" line="142" column="29" bodyfile="src/database/blockingpool.hpp" bodystart="142" bodyend="-1"/>
+        <referencedby refid="classBlockingPool_1aa577bb9f7274c91f2ba9912cac021769" compoundref="blockingpool_8hpp" startline="93" endline="103">BlockingPool&lt; T &gt;::acquire</referencedby>
+        <referencedby refid="classBlockingPool_1ab15e0709ecb1d8979957d54b2e666f78" compoundref="blockingpool_8hpp" startline="72" endline="83">BlockingPool&lt; T &gt;::release</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classBlockingPool_1af40111aed5471b587a01f2b3b30c93cd" prot="private" static="no" mutable="no">
+        <type>std::deque&lt; std::shared_ptr&lt; T &gt; &gt;</type>
+        <definition>std::deque&lt;std::shared_ptr&lt;T&gt; &gt; BlockingPool&lt; T &gt;::items_</definition>
+        <argsstring></argsstring>
+        <name>items_</name>
+        <qualifiedname>BlockingPool::items_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/blockingpool.hpp" line="143" column="16" bodyfile="src/database/blockingpool.hpp" bodystart="143" bodyend="-1"/>
+        <referencedby refid="classBlockingPool_1aa577bb9f7274c91f2ba9912cac021769" compoundref="blockingpool_8hpp" startline="93" endline="103">BlockingPool&lt; T &gt;::acquire</referencedby>
+        <referencedby refid="classBlockingPool_1a5f53d641019a9e2d276f21f7bee1723a" compoundref="blockingpool_8hpp" startline="130" endline="138">BlockingPool&lt; T &gt;::forEachIdle</referencedby>
+        <referencedby refid="classBlockingPool_1a2cdad342573ef45e2ba4e0325e753004" compoundref="blockingpool_8hpp" startline="109" endline="113">BlockingPool&lt; T &gt;::idle</referencedby>
+        <referencedby refid="classBlockingPool_1ab15e0709ecb1d8979957d54b2e666f78" compoundref="blockingpool_8hpp" startline="72" endline="83">BlockingPool&lt; T &gt;::release</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBlockingPool_1a45ec60fb489f6c19064cd670d9f60129" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BlockingPool&lt; T &gt;::BlockingPool</definition>
+        <argsstring>()=default</argsstring>
+        <name>BlockingPool</name>
+        <qualifiedname>BlockingPool::BlockingPool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/blockingpool.hpp" line="58" column="5"/>
+        <referencedby refid="classBlockingPool_1a280e6877b974fceca0a0b9ba3e7b2333">BlockingPool&lt; T &gt;::BlockingPool</referencedby>
+        <referencedby refid="classBlockingPool_1aa35a5a5aeee6548e3e9bf77a99482fb7">BlockingPool&lt; T &gt;::BlockingPool</referencedby>
+        <referencedby refid="classBlockingPool_1a53b82147398c8da523d80d6b688d5213">BlockingPool&lt; T &gt;::operator=</referencedby>
+        <referencedby refid="classBlockingPool_1a6fbebe622382f7b3bd7333b2f6b0bbcf">BlockingPool&lt; T &gt;::operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classBlockingPool_1aa35a5a5aeee6548e3e9bf77a99482fb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BlockingPool&lt; T &gt;::BlockingPool</definition>
+        <argsstring>(const BlockingPool &amp;)=delete</argsstring>
+        <name>BlockingPool</name>
+        <qualifiedname>BlockingPool::BlockingPool</qualifiedname>
+        <param>
+          <type>const <ref refid="classBlockingPool" kindref="compound">BlockingPool</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/blockingpool.hpp" line="59" column="5"/>
+        <references refid="classBlockingPool_1a45ec60fb489f6c19064cd670d9f60129">BlockingPool&lt; T &gt;::BlockingPool</references>
+      </memberdef>
+      <memberdef kind="function" id="classBlockingPool_1a280e6877b974fceca0a0b9ba3e7b2333" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BlockingPool&lt; T &gt;::BlockingPool</definition>
+        <argsstring>(BlockingPool &amp;&amp;)=delete</argsstring>
+        <name>BlockingPool</name>
+        <qualifiedname>BlockingPool::BlockingPool</qualifiedname>
+        <param>
+          <type><ref refid="classBlockingPool" kindref="compound">BlockingPool</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/blockingpool.hpp" line="60" column="5"/>
+        <references refid="classBlockingPool_1a45ec60fb489f6c19064cd670d9f60129">BlockingPool&lt; T &gt;::BlockingPool</references>
+      </memberdef>
+      <memberdef kind="function" id="classBlockingPool_1a6fbebe622382f7b3bd7333b2f6b0bbcf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBlockingPool" kindref="compound">BlockingPool</ref> &amp;</type>
+        <definition>BlockingPool &amp; BlockingPool&lt; T &gt;::operator=</definition>
+        <argsstring>(const BlockingPool &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BlockingPool::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classBlockingPool" kindref="compound">BlockingPool</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/blockingpool.hpp" line="61" column="18"/>
+        <references refid="classBlockingPool_1a45ec60fb489f6c19064cd670d9f60129">BlockingPool&lt; T &gt;::BlockingPool</references>
+      </memberdef>
+      <memberdef kind="function" id="classBlockingPool_1a53b82147398c8da523d80d6b688d5213" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBlockingPool" kindref="compound">BlockingPool</ref> &amp;</type>
+        <definition>BlockingPool &amp; BlockingPool&lt; T &gt;::operator=</definition>
+        <argsstring>(BlockingPool &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BlockingPool::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classBlockingPool" kindref="compound">BlockingPool</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/blockingpool.hpp" line="62" column="18"/>
+        <references refid="classBlockingPool_1a45ec60fb489f6c19064cd670d9f60129">BlockingPool&lt; T &gt;::BlockingPool</references>
+      </memberdef>
+      <memberdef kind="function" id="classBlockingPool_1a943e49162a8068d722c6318f7fc1dd51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BlockingPool&lt; T &gt;::~BlockingPool</definition>
+        <argsstring>()=default</argsstring>
+        <name>~BlockingPool</name>
+        <qualifiedname>BlockingPool::~BlockingPool</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/blockingpool.hpp" line="63" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classBlockingPool_1ab15e0709ecb1d8979957d54b2e666f78" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void BlockingPool&lt; T &gt;::release</definition>
+        <argsstring>(std::shared_ptr&lt; T &gt; item)</argsstring>
+        <name>release</name>
+        <qualifiedname>BlockingPool::release</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; T &gt;</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+<para>Adds an item to the idle set and wakes one waiting acquirer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">item</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Item to add; null pointers are ignored.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+The notification happens after the lock is released, so a woken acquirer can take the lock immediately. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/blockingpool.hpp" line="72" column="10" bodyfile="src/database/blockingpool.hpp" bodystart="72" bodyend="83"/>
+        <references refid="classBlockingPool_1a7521eacf45e5a5cfc473a714ecc06ce8" compoundref="blockingpool_8hpp" startline="142">BlockingPool&lt; T &gt;::cv_</references>
+        <references refid="classBlockingPool_1af40111aed5471b587a01f2b3b30c93cd" compoundref="blockingpool_8hpp" startline="143">BlockingPool&lt; T &gt;::items_</references>
+        <references refid="classBlockingPool_1aa536a2de2ab04cb3a2b54dd350b1190a" compoundref="blockingpool_8hpp" startline="141">BlockingPool&lt; T &gt;::mutex_</references>
+        <referencedby refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="91" endline="153">DatabaseConnectionPool::DatabaseConnectionPool</referencedby>
+        <referencedby refid="classDatabaseConnectionPool_1ace8c17b9fea41e732a18f9700af847bb" compoundref="databaseconnectionpool_8cpp" startline="195" endline="195">DatabaseConnectionPool::return_connection</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classBlockingPool_1aa577bb9f7274c91f2ba9912cac021769" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::shared_ptr&lt; T &gt;</type>
+        <definition>std::shared_ptr&lt; T &gt; BlockingPool&lt; T &gt;::acquire</definition>
+        <argsstring>(std::chrono::milliseconds timeout)</argsstring>
+        <name>acquire</name>
+        <qualifiedname>BlockingPool::acquire</qualifiedname>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+        </param>
+        <briefdescription>
+<para>Leases an idle item, waiting at most <computeroutput>timeout</computeroutput> for one to be released. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The leased item, or <computeroutput>nullptr</computeroutput> if the timeout elapsed (the predicate form of <computeroutput>wait_for</computeroutput> also handles spurious wakeups). </para>
+</simplesect>
+<simplesect kind="post"><para>On success the returned item is no longer in the idle set; the caller must eventually release it (see <ref refid="classDatabaseHanndler" kindref="compound">DatabaseHanndler</ref>). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/blockingpool.hpp" line="93" column="22" bodyfile="src/database/blockingpool.hpp" bodystart="93" bodyend="103"/>
+        <references refid="classBlockingPool_1a7521eacf45e5a5cfc473a714ecc06ce8" compoundref="blockingpool_8hpp" startline="142">BlockingPool&lt; T &gt;::cv_</references>
+        <references refid="classBlockingPool_1af40111aed5471b587a01f2b3b30c93cd" compoundref="blockingpool_8hpp" startline="143">BlockingPool&lt; T &gt;::items_</references>
+        <references refid="classBlockingPool_1aa536a2de2ab04cb3a2b54dd350b1190a" compoundref="blockingpool_8hpp" startline="141">BlockingPool&lt; T &gt;::mutex_</references>
+        <referencedby refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" compoundref="databaseconnectionpool_8cpp" startline="162" endline="189">DatabaseConnectionPool::get_connection</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classBlockingPool_1a2cdad342573ef45e2ba4e0325e753004" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::size_t</type>
+        <definition>std::size_t BlockingPool&lt; T &gt;::idle</definition>
+        <argsstring>() const</argsstring>
+        <name>idle</name>
+        <qualifiedname>BlockingPool::idle</qualifiedname>
+        <briefdescription>
+<para>Returns the number of currently idle items. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Idle count, read under the pool lock. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/blockingpool.hpp" line="109" column="18" bodyfile="src/database/blockingpool.hpp" bodystart="109" bodyend="113"/>
+        <references refid="classBlockingPool_1af40111aed5471b587a01f2b3b30c93cd" compoundref="blockingpool_8hpp" startline="143">BlockingPool&lt; T &gt;::items_</references>
+        <references refid="classBlockingPool_1aa536a2de2ab04cb3a2b54dd350b1190a" compoundref="blockingpool_8hpp" startline="141">BlockingPool&lt; T &gt;::mutex_</references>
+        <referencedby refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="91" endline="153">DatabaseConnectionPool::DatabaseConnectionPool</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classBlockingPool_1a5f53d641019a9e2d276f21f7bee1723a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Func</type>
+          </param>
+          <param>
+            <type>typename Finish</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void BlockingPool&lt; T &gt;::forEachIdle</definition>
+        <argsstring>(Func &amp;&amp;func, Finish &amp;&amp;finish)</argsstring>
+        <name>forEachIdle</name>
+        <qualifiedname>BlockingPool::forEachIdle</qualifiedname>
+        <param>
+          <type>Func &amp;&amp;</type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type>Finish &amp;&amp;</type>
+          <declname>finish</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="classVisits" kindref="compound">Visits</ref> every idle item with <computeroutput>func</computeroutput>, then calls <computeroutput>finish</computeroutput>, under the pool lock. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Holding the lock across both callbacks prevents <ref refid="classBlockingPool_1aa577bb9f7274c91f2ba9912cac021769" kindref="member">acquire()</ref> from handing out an item while it is being operated on (e.g. reconnected) or before the follow-up work in <computeroutput>finish</computeroutput> has completed. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callable taking <computeroutput>std::shared_ptr&lt;T&gt;&amp;</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Finish</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callable invoked once after all items were visited. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Per-item operation. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">finish</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Final operation, typically waiting for async work started by func. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Keeping <computeroutput>finish</computeroutput> inside the lock is intentional; a callback that tries to acquire from the same pool would deadlock. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/blockingpool.hpp" line="130" column="10" bodyfile="src/database/blockingpool.hpp" bodystart="130" bodyend="138"/>
+        <references refid="classBlockingPool_1af40111aed5471b587a01f2b3b30c93cd" compoundref="blockingpool_8hpp" startline="143">BlockingPool&lt; T &gt;::items_</references>
+        <references refid="classBlockingPool_1aa536a2de2ab04cb3a2b54dd350b1190a" compoundref="blockingpool_8hpp" startline="141">BlockingPool&lt; T &gt;::mutex_</references>
+        <referencedby refid="classDatabaseConnectionPool_1a51134b38454f5146921c081fbf2ad5f3" compoundref="databaseconnectionpool_8cpp" startline="205" endline="244">DatabaseConnectionPool::reconnect_all</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Thread-safe fixed set of reusable items leased one caller at a time. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Items are added with <ref refid="classBlockingPool_1ab15e0709ecb1d8979957d54b2e666f78" kindref="member">release()</ref> and leased with <ref refid="classBlockingPool_1aa577bb9f7274c91f2ba9912cac021769" kindref="member">acquire()</ref>, which waits up to a timeout and returns <computeroutput>nullptr</computeroutput> if nothing becomes free. The pool is independent of the database so it can be unit tested with plain objects. Used by <ref refid="classDatabaseConnectionPool" kindref="compound">DatabaseConnectionPool</ref> to hand out <ref refid="classDatabase" kindref="compound">Database</ref> connections; <ref refid="classDatabaseHanndler" kindref="compound">DatabaseHanndler</ref> models the matching RAII lease.</para>
+<para>Thread-safety: a single mutex protects the deque, a condition variable wakes waiting acquirers, and all methods may be called concurrently. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the pooled items (held via <computeroutput>std::shared_ptr</computeroutput>). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <location file="src/database/blockingpool.hpp" line="55" column="1" bodyfile="src/database/blockingpool.hpp" bodystart="56" bodyend="144"/>
+    <listofallmembers>
+      <member refid="classBlockingPool_1aa577bb9f7274c91f2ba9912cac021769" prot="public" virt="non-virtual"><scope>BlockingPool</scope><name>acquire</name></member>
+      <member refid="classBlockingPool_1a45ec60fb489f6c19064cd670d9f60129" prot="public" virt="non-virtual"><scope>BlockingPool</scope><name>BlockingPool</name></member>
+      <member refid="classBlockingPool_1aa35a5a5aeee6548e3e9bf77a99482fb7" prot="public" virt="non-virtual"><scope>BlockingPool</scope><name>BlockingPool</name></member>
+      <member refid="classBlockingPool_1a280e6877b974fceca0a0b9ba3e7b2333" prot="public" virt="non-virtual"><scope>BlockingPool</scope><name>BlockingPool</name></member>
+      <member refid="classBlockingPool_1a7521eacf45e5a5cfc473a714ecc06ce8" prot="private" virt="non-virtual"><scope>BlockingPool</scope><name>cv_</name></member>
+      <member refid="classBlockingPool_1a5f53d641019a9e2d276f21f7bee1723a" prot="public" virt="non-virtual"><scope>BlockingPool</scope><name>forEachIdle</name></member>
+      <member refid="classBlockingPool_1a2cdad342573ef45e2ba4e0325e753004" prot="public" virt="non-virtual"><scope>BlockingPool</scope><name>idle</name></member>
+      <member refid="classBlockingPool_1af40111aed5471b587a01f2b3b30c93cd" prot="private" virt="non-virtual"><scope>BlockingPool</scope><name>items_</name></member>
+      <member refid="classBlockingPool_1aa536a2de2ab04cb3a2b54dd350b1190a" prot="private" virt="non-virtual"><scope>BlockingPool</scope><name>mutex_</name></member>
+      <member refid="classBlockingPool_1a6fbebe622382f7b3bd7333b2f6b0bbcf" prot="public" virt="non-virtual"><scope>BlockingPool</scope><name>operator=</name></member>
+      <member refid="classBlockingPool_1a53b82147398c8da523d80d6b688d5213" prot="public" virt="non-virtual"><scope>BlockingPool</scope><name>operator=</name></member>
+      <member refid="classBlockingPool_1ab15e0709ecb1d8979957d54b2e666f78" prot="public" virt="non-virtual"><scope>BlockingPool</scope><name>release</name></member>
+      <member refid="classBlockingPool_1a943e49162a8068d722c6318f7fc1dd51" prot="public" virt="non-virtual"><scope>BlockingPool</scope><name>~BlockingPool</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,511 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="namespaceasyncdb" kind="namespace" language="C++">
+    <compoundname>asyncdb</compoundname>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceasyncdb_1ade92f0b4ffac85bcef1da0cbef295459" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int asyncdb::PG_TEXT_OID</definition>
+        <argsstring></argsstring>
+        <name>PG_TEXT_OID</name>
+        <qualifiedname>asyncdb::PG_TEXT_OID</qualifiedname>
+        <initializer>= 1043</initializer>
+        <briefdescription>
+<para>varchar type OID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncresultmapper.hpp" line="52" column="35" bodyfile="src/database/asyncresultmapper.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceasyncdb_1a81dc3e1182d098b17eb6423d5d277ef3" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int asyncdb::PG_INTEGER_OID</definition>
+        <argsstring></argsstring>
+        <name>PG_INTEGER_OID</name>
+        <qualifiedname>asyncdb::PG_INTEGER_OID</qualifiedname>
+        <initializer>= 23</initializer>
+        <briefdescription>
+<para>int4 (INTEGER) OID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncresultmapper.hpp" line="54" column="35" bodyfile="src/database/asyncresultmapper.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceasyncdb_1a9aa0704ab8fafbc58c39b2375759f07e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int asyncdb::PG_BOOLEAN_OID</definition>
+        <argsstring></argsstring>
+        <name>PG_BOOLEAN_OID</name>
+        <qualifiedname>asyncdb::PG_BOOLEAN_OID</qualifiedname>
+        <initializer>= 16</initializer>
+        <briefdescription>
+<para>bool (BOOLEAN) OID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncresultmapper.hpp" line="56" column="35" bodyfile="src/database/asyncresultmapper.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceasyncdb_1a986292ed36794c911af5fc2750e7c17b" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int asyncdb::PG_JSON_OID</definition>
+        <argsstring></argsstring>
+        <name>PG_JSON_OID</name>
+        <qualifiedname>asyncdb::PG_JSON_OID</qualifiedname>
+        <initializer>= 114</initializer>
+        <briefdescription>
+<para>json OID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncresultmapper.hpp" line="58" column="35" bodyfile="src/database/asyncresultmapper.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceasyncdb_1acf96d60fdc724a317fdcb2642c7a41b1" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int asyncdb::PG_JSONB_OID</definition>
+        <argsstring></argsstring>
+        <name>PG_JSONB_OID</name>
+        <qualifiedname>asyncdb::PG_JSONB_OID</qualifiedname>
+        <initializer>= 3802</initializer>
+        <briefdescription>
+<para>jsonb OID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncresultmapper.hpp" line="60" column="35" bodyfile="src/database/asyncresultmapper.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool asyncdb::isBusy</definition>
+        <argsstring>(const std::exception &amp;error)</argsstring>
+        <name>isBusy</name>
+        <qualifiedname>asyncdb::isBusy</qualifiedname>
+        <param>
+          <type>const std::exception &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Tests whether an exception represents a busy database (pool exhaustion or timeout). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>First checks for a <computeroutput><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></computeroutput> by dynamic type; otherwise performs a case-sensitive substring search of <computeroutput>what()</computeroutput> for &quot;timeout&quot;, &quot;pool&quot;, &quot;too many clients&quot; and &quot;connection&quot;. The message check is a heuristic used because callers catch exceptions as <computeroutput>std::exception</computeroutput>, where the specific Drogon type may not be available. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Exception to classify; need not outlive the call. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the exception looks like a busy/timeout condition. </para>
+</simplesect>
+<simplesect kind="warning"><para>&quot;connection&quot; is a broad match: an unrelated error whose message mentions a connection is classified as busy. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncdberror.cpp" line="35" column="10" bodyfile="src/database/asyncdberror.cpp" bodystart="35" bodyend="49" declfile="src/database/asyncdberror.hpp" declline="54" declcolumn="11"/>
+        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="35" endline="49">isBusy</references>
+        <referencedby refid="classDatabaseController_1a757e16ca56537bd8eed3d9abe9768954" compoundref="databasecontroller_8cpp" startline="247" endline="274">DatabaseController::checkItemExistsCoro</referencedby>
+        <referencedby refid="classDatabaseController_1ac586f1fc3a54b3bbf1ff5369e403ed20" compoundref="databasecontroller_8cpp" startline="219" endline="245">DatabaseController::doReadQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="144" endline="171">DatabaseController::executeQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1aa3de6b2217aa0ba75ec4eb5286d36799" compoundref="databasecontroller_8cpp" startline="173" endline="194">DatabaseController::executeReadQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a7b2bb5792bc55ec851dcd7ae997c58a4" compoundref="databasecontroller_8cpp" startline="196" endline="217">DatabaseController::executeSearchQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1abb1622b85d3e413bcb1dee3521a9d24f" compoundref="databasecontroller_8cpp" startline="323" endline="350">DatabaseController::getAllTablesCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a2a0585031d4e0a5e8dfdeb7d77041563" compoundref="databasecontroller_8cpp" startline="352" endline="373">DatabaseController::getPermissionsCoro</referencedby>
+        <referencedby refid="classDatabaseController_1ab6502e9c51e8657b16ffe4795949ebe7" compoundref="databasecontroller_8cpp" startline="287" endline="321">DatabaseController::getTableSchemaCoro</referencedby>
+        <referencedby refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="35" endline="49">isBusy</referencedby>
+        <referencedby refid="namespaceasyncdb_1a7c8890804d39f7a13dac84b992a8c77b" compoundref="asyncdberror_8cpp" startline="61" endline="68">throwIfBusy</referencedby>
+        <referencedby refid="namespaceasyncdb_1aa8c2770011cc45a2089c9b8d1c9ef6ba" compoundref="asyncdberror_8cpp" startline="51" endline="59">toHttpStatus</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceasyncdb_1aa8c2770011cc45a2089c9b8d1c9ef6ba" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>drogon::HttpStatusCode</type>
+        <definition>drogon::HttpStatusCode asyncdb::toHttpStatus</definition>
+        <argsstring>(const std::exception &amp;error)</argsstring>
+        <name>toHttpStatus</name>
+        <qualifiedname>asyncdb::toHttpStatus</qualifiedname>
+        <param>
+          <type>const std::exception &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Converts an exception to the HTTP status the synchronous database path would produce. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Exception to classify. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>k503ServiceUnavailable</computeroutput> when <computeroutput>isBusy(error)</computeroutput> is true, otherwise <computeroutput>k500InternalServerError</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncdberror.cpp" line="51" column="28" bodyfile="src/database/asyncdberror.cpp" bodystart="51" bodyend="59" declfile="src/database/asyncdberror.hpp" declline="61" declcolumn="29"/>
+        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="35" endline="49">isBusy</references>
+        <references refid="namespaceasyncdb_1aa8c2770011cc45a2089c9b8d1c9ef6ba" compoundref="asyncdberror_8cpp" startline="51" endline="59">toHttpStatus</references>
+        <referencedby refid="namespaceasyncdb_1aa8c2770011cc45a2089c9b8d1c9ef6ba" compoundref="asyncdberror_8cpp" startline="51" endline="59">toHttpStatus</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceasyncdb_1a7c8890804d39f7a13dac84b992a8c77b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void asyncdb::throwIfBusy</definition>
+        <argsstring>(const std::exception &amp;error)</argsstring>
+        <name>throwIfBusy</name>
+        <qualifiedname>asyncdb::throwIfBusy</qualifiedname>
+        <param>
+          <type>const std::exception &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Raises <computeroutput><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></computeroutput> when the exception represents an exhausted pool or timeout. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Exception to classify. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if <computeroutput>isBusy(error)</computeroutput> is true; otherwise the function does nothing. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The original exception is not chained; callers rely on the resulting <computeroutput><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></computeroutput> producing a 503 with Retry-After in the HTTP layer. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncdberror.cpp" line="61" column="10" bodyfile="src/database/asyncdberror.cpp" bodystart="61" bodyend="68" declfile="src/database/asyncdberror.hpp" declline="70" declcolumn="10"/>
+        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="50" endline="50">DatabaseBusy::DatabaseBusy</references>
+        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="35" endline="49">isBusy</references>
+        <references refid="namespaceasyncdb_1a7c8890804d39f7a13dac84b992a8c77b" compoundref="asyncdberror_8cpp" startline="61" endline="68">throwIfBusy</references>
+        <referencedby refid="namespaceasyncdb_1a7c8890804d39f7a13dac84b992a8c77b" compoundref="asyncdberror_8cpp" startline="61" endline="68">throwIfBusy</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>jsoncons::json</type>
+        <definition>jsoncons::json asyncdb::mapRow</definition>
+        <argsstring>(const drogon::orm::Result &amp;result, drogon::orm::Result::SizeType row)</argsstring>
+        <name>mapRow</name>
+        <qualifiedname>asyncdb::mapRow</qualifiedname>
+        <param>
+          <type>const drogon::orm::Result &amp;</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>drogon::orm::Result::SizeType</type>
+          <declname>row</declname>
+        </param>
+        <briefdescription>
+<para>Converts one row into a JSON object using name- and value-based type inference. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Maps one result row to a JSON object keyed by column name.</para>
+<para>Each row gets its own object. Parse failures are swallowed and the raw text is kept, so this function never throws for a malformed integer or JSON value. Field values are read through their C-string text form.</para>
+<para>Conversion order: SQL NULL to JSON null; a column named <computeroutput>active</computeroutput> to a boolean (<computeroutput>t</computeroutput>, <computeroutput>true</computeroutput> or <computeroutput>1</computeroutput> mean true); <computeroutput>id</computeroutput>, names ending in <computeroutput>_id</computeroutput>, <computeroutput>appointment_duration</computeroutput> and <computeroutput>appointment_payment_amount</computeroutput> to an integer when <computeroutput>std::stoi</computeroutput> succeeds; a non-empty value starting with <computeroutput>{</computeroutput> or <computeroutput>[</computeroutput> to parsed JSON; otherwise a string. Both integer and JSON parsing failures fall back to the raw string, so a malformed value cannot abort mapping. A fresh object is built for each call, so no field can leak between rows. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Result set returned by the query. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">row</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Zero-based row index into <computeroutput>result</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>JSON object with one entry per column, in column order. </para>
+</simplesect>
+<simplesect kind="pre"><para><computeroutput>row</computeroutput> is a valid index into <computeroutput>result</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncresultmapper.cpp" line="48" column="20" bodyfile="src/database/asyncresultmapper.cpp" bodystart="48" bodyend="103" declfile="src/database/asyncresultmapper.hpp" declline="74" declcolumn="21"/>
+        <references refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" compoundref="asyncresultmapper_8cpp" startline="48" endline="103">mapRow</references>
+        <referencedby refid="namespaceasyncdb_1a0c9b2304653f373d0ec4ac262d7cf2bf" compoundref="asyncresultmapper_8cpp" startline="121" endline="130">mapResultToArray</referencedby>
+        <referencedby refid="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8" compoundref="asyncresultmapper_8cpp" startline="109" endline="116">mapResultToObject</referencedby>
+        <referencedby refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" compoundref="asyncresultmapper_8cpp" startline="48" endline="103">mapRow</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>jsoncons::json</type>
+        <definition>jsoncons::json asyncdb::mapResultToObject</definition>
+        <argsstring>(const drogon::orm::Result &amp;result)</argsstring>
+        <name>mapResultToObject</name>
+        <qualifiedname>asyncdb::mapResultToObject</qualifiedname>
+        <param>
+          <type>const drogon::orm::Result &amp;</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+<para>Maps the first row, using a null JSON value to represent an empty result. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Maps the first row of a result to a JSON object.</para>
+<para>The emptiness check also avoids indexing into a result with no rows.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Result set returned by the query. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>mapRow(result, 0)</computeroutput> when non-empty; a default-constructed (null) JSON value when empty. </para>
+</simplesect>
+<simplesect kind="note"><para>This mirrors the single-object outcome of <computeroutput><ref refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" kindref="member">Database::executeQuery</ref></computeroutput> for a query with no rows. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncresultmapper.cpp" line="109" column="20" bodyfile="src/database/asyncresultmapper.cpp" bodystart="109" bodyend="116" declfile="src/database/asyncresultmapper.hpp" declline="82" declcolumn="21"/>
+        <references refid="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8" compoundref="asyncresultmapper_8cpp" startline="109" endline="116">mapResultToObject</references>
+        <references refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" compoundref="asyncresultmapper_8cpp" startline="48" endline="103">mapRow</references>
+        <referencedby refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="144" endline="171">DatabaseController::executeQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1aa3de6b2217aa0ba75ec4eb5286d36799" compoundref="databasecontroller_8cpp" startline="173" endline="194">DatabaseController::executeReadQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a2a0585031d4e0a5e8dfdeb7d77041563" compoundref="databasecontroller_8cpp" startline="352" endline="373">DatabaseController::getPermissionsCoro</referencedby>
+        <referencedby refid="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8" compoundref="asyncresultmapper_8cpp" startline="109" endline="116">mapResultToObject</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceasyncdb_1a0c9b2304653f373d0ec4ac262d7cf2bf" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>jsoncons::json::array</type>
+        <definition>jsoncons::json::array asyncdb::mapResultToArray</definition>
+        <argsstring>(const drogon::orm::Result &amp;result)</argsstring>
+        <name>mapResultToArray</name>
+        <qualifiedname>asyncdb::mapResultToArray</qualifiedname>
+        <param>
+          <type>const drogon::orm::Result &amp;</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+<para>Maps rows sequentially into an array, preserving the query&apos;s row order. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Maps every row of a result to a JSON array, preserving row order.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Result set returned by the query. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Array with one JSON object per row; empty when the result set is empty. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncresultmapper.cpp" line="121" column="27" bodyfile="src/database/asyncresultmapper.cpp" bodystart="121" bodyend="130" declfile="src/database/asyncresultmapper.hpp" declline="89" declcolumn="28"/>
+        <references refid="namespaceasyncdb_1a0c9b2304653f373d0ec4ac262d7cf2bf" compoundref="asyncresultmapper_8cpp" startline="121" endline="130">mapResultToArray</references>
+        <references refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" compoundref="asyncresultmapper_8cpp" startline="48" endline="103">mapRow</references>
+        <referencedby refid="classDatabaseController_1a7b2bb5792bc55ec851dcd7ae997c58a4" compoundref="databasecontroller_8cpp" startline="196" endline="217">DatabaseController::executeSearchQueryCoro</referencedby>
+        <referencedby refid="namespaceasyncdb_1a0c9b2304653f373d0ec4ac262d7cf2bf" compoundref="asyncresultmapper_8cpp" startline="121" endline="130">mapResultToArray</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceasyncdb_1ab211333eccb1603a4e5176a4da380a1d" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::optional&lt; std::string &gt; &gt;</type>
+        <definition>std::vector&lt; std::optional&lt; std::string &gt; &gt; asyncdb::toTextParams</definition>
+        <argsstring>(const pqxx::params &amp;params)</argsstring>
+        <name>toTextParams</name>
+        <qualifiedname>asyncdb::toTextParams</qualifiedname>
+        <param>
+          <type>const pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Copies each parameter&apos;s bytes into a string, or records a null when pqxx reports no value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Converts pqxx parameters into an ordered list of optional plain-text values.</para>
+<para>The source location is passed to pqxx for conversion diagnostics. Copying uses the reported length, so embedded NUL bytes survive the round trip.</para>
+<para>Reads the C parameter view so each value is copied using its reported length (binary-safe). Null parameters become <computeroutput>std::nullopt</computeroutput>. Useful for the vector overload of <computeroutput>DbClient::execSqlCoro</computeroutput> and for unit tests that cannot construct a client. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameters to convert; not modified. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>One entry per parameter, in append order; empty for an empty parameter list. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncsqlbinder.cpp" line="47" column="17" bodyfile="src/database/asyncsqlbinder.cpp" bodystart="47" bodyend="65" declfile="src/database/asyncsqlbinder.hpp" declline="56" declcolumn="18"/>
+        <references refid="namespaceasyncdb_1ab211333eccb1603a4e5176a4da380a1d" compoundref="asyncsqlbinder_8cpp" startline="47" endline="65">toTextParams</references>
+        <referencedby refid="namespaceasyncdb_1ab211333eccb1603a4e5176a4da380a1d" compoundref="asyncsqlbinder_8cpp" startline="47" endline="65">toTextParams</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceasyncdb_1abe62892990453a6ed96ff720960a71e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void asyncdb::bindParams</definition>
+        <argsstring>(drogon::orm::internal::SqlBinder &amp;binder, const pqxx::params &amp;params)</argsstring>
+        <name>bindParams</name>
+        <qualifiedname>asyncdb::bindParams</qualifiedname>
+        <param>
+          <type>drogon::orm::internal::SqlBinder &amp;</type>
+          <declname>binder</declname>
+        </param>
+        <param>
+          <type>const pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Emits one bind operation per parameter: NULL, binary (<computeroutput>format == 1</computeroutput>) or text. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Binds a pqxx parameter list into an already-created Drogon SQL binder.</para>
+<para>Binary values are copied into a shared, heap-owned buffer and passed as a RawParameter, so the bytes remain valid for the lifetime of the binder rather than for this stack frame. Text values are copied into a string.</para>
+<para>Nulls are bound as SQL NULL; binary-format parameters are bound as a <computeroutput>RawParameter</computeroutput> whose bytes are held in a <computeroutput>shared_ptr</computeroutput>-owned buffer so they stay valid after this call; everything else is bound as a text string. Values are bound in append order. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">binder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Binder that already holds the statement text. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameters to bind; not modified. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="pre"><para>The number and order of parameters match the placeholders in <computeroutput>binder</computeroutput>&apos;s statement; this function does not check. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncsqlbinder.cpp" line="72" column="10" bodyfile="src/database/asyncsqlbinder.cpp" bodystart="72" bodyend="92" declfile="src/database/asyncsqlbinder.hpp" declline="67" declcolumn="10"/>
+        <references refid="namespaceasyncdb_1abe62892990453a6ed96ff720960a71e4" compoundref="asyncsqlbinder_8cpp" startline="72" endline="92">bindParams</references>
+        <referencedby refid="namespaceasyncdb_1abe62892990453a6ed96ff720960a71e4" compoundref="asyncsqlbinder_8cpp" startline="72" endline="92">bindParams</referencedby>
+        <referencedby refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="98" endline="103">execSqlCoro</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>drogon::orm::internal::SqlAwaiter</type>
+        <definition>drogon::orm::internal::SqlAwaiter asyncdb::execSqlCoro</definition>
+        <argsstring>(drogon::orm::DbClient &amp;client, const std::string &amp;sql, const pqxx::params &amp;params)</argsstring>
+        <name>execSqlCoro</name>
+        <qualifiedname>asyncdb::execSqlCoro</qualifiedname>
+        <param>
+          <type>drogon::orm::DbClient &amp;</type>
+          <declname>client</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>sql</declname>
+        </param>
+        <param>
+          <type>const pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Builds and binds the statement, then transfers the binder into an awaiter. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Prepares a parameterised statement on a Drogon client and returns its awaiter.</para>
+<para>The binder is moved, not copied; no query is sent until the caller co_awaits the returned object.</para>
+<para>Creates a binder with <computeroutput>client &lt;&lt; sql</computeroutput>, binds <computeroutput>params</computeroutput> in append order via <computeroutput><ref refid="namespaceasyncdb_1abe62892990453a6ed96ff720960a71e4" kindref="member">bindParams</ref></computeroutput>, then moves the binder into an <computeroutput>SqlAwaiter</computeroutput>. The statement executes when the caller co_awaits the returned awaiter, which owns the binder and its bound parameters until then. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">client</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Drogon client to execute on; must outlive the awaited operation. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">sql</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Statement using <computeroutput>$1</computeroutput>, <computeroutput>$2</computeroutput>, ... placeholders. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Values for those placeholders. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Awaiter that performs the statement when awaited. </para>
+</simplesect>
+<simplesect kind="note"><para>Calling this function alone does not execute SQL; the return value must be co_awaited. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/asyncsqlbinder.cpp" line="98" column="39" bodyfile="src/database/asyncsqlbinder.cpp" bodystart="98" bodyend="103" declfile="src/database/asyncsqlbinder.hpp" declline="80" declcolumn="40"/>
+        <references refid="namespaceasyncdb_1abe62892990453a6ed96ff720960a71e4" compoundref="asyncsqlbinder_8cpp" startline="72" endline="92">bindParams</references>
+        <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="98" endline="103">execSqlCoro</references>
+        <referencedby refid="classDatabaseController_1a757e16ca56537bd8eed3d9abe9768954" compoundref="databasecontroller_8cpp" startline="247" endline="274">DatabaseController::checkItemExistsCoro</referencedby>
+        <referencedby refid="classDatabaseController_1ac586f1fc3a54b3bbf1ff5369e403ed20" compoundref="databasecontroller_8cpp" startline="219" endline="245">DatabaseController::doReadQueryCoro</referencedby>
+        <referencedby refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="98" endline="103">execSqlCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="144" endline="171">DatabaseController::executeQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1aa3de6b2217aa0ba75ec4eb5286d36799" compoundref="databasecontroller_8cpp" startline="173" endline="194">DatabaseController::executeReadQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a7b2bb5792bc55ec851dcd7ae997c58a4" compoundref="databasecontroller_8cpp" startline="196" endline="217">DatabaseController::executeSearchQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1abb1622b85d3e413bcb1dee3521a9d24f" compoundref="databasecontroller_8cpp" startline="323" endline="350">DatabaseController::getAllTablesCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a2a0585031d4e0a5e8dfdeb7d77041563" compoundref="databasecontroller_8cpp" startline="352" endline="373">DatabaseController::getPermissionsCoro</referencedby>
+        <referencedby refid="classDatabaseController_1ab6502e9c51e8657b16ffe4795949ebe7" compoundref="databasecontroller_8cpp" startline="287" endline="321">DatabaseController::getTableSchemaCoro</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Maps exceptions from the Drogon async database path to the HTTP statuses of the synchronous path. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Adapter between the pqxx::params produced by entity SQL builders and Drogon&apos;s incremental SQL binder.</para>
+<para>Maps Drogon PostgreSQL result sets to jsoncons values with the outcomes of the synchronous path in mind.</para>
+<para>An exhausted pool or timeout is &quot;busy&quot; and maps to 503, matching <computeroutput><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></computeroutput>; every other failure maps to<orderedlist>
+<listitem><para>The helpers take <computeroutput>std::exception</computeroutput> because coroutine awaits surface their failures through that base type.</para>
+</listitem></orderedlist>
+</para>
+<para>SQL nulls become JSON null; the <computeroutput>active</computeroutput> flag becomes a boolean; identifier-like columns become numbers when their text parses as an integer; JSON-looking values are parsed; anything else stays a string. The mapping is based on column names and value text rather than on PostgreSQL type OIDs — see mapRow. <simplesect kind="see"><para><ref refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" kindref="member">Database::executeQuery</ref>, <ref refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" kindref="member">mapRow</ref></para>
+</simplesect>
+<ref refid="classEntity" kindref="compound">Entity</ref> builders keep constructing <computeroutput>pqxx::params</computeroutput>; this module turns that list into the bind calls Drogon needs, so no entity code changes for the async path. Parameter order is always the order in which the builder appended values, and parameters are transported as text unless pqxx reports a binary format. <simplesect kind="see"><para><ref refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" kindref="member">execSqlCoro</ref>, <ref refid="namespaceasyncdb_1abe62892990453a6ed96ff720960a71e4" kindref="member">bindParams</ref>, <ref refid="namespaceasyncdb_1ab211333eccb1603a4e5176a4da380a1d" kindref="member">toTextParams</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/database/asyncdberror.cpp" line="33" column="1"/>
+  </compounddef>
+</doxygen>

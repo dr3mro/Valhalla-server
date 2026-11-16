@@ -1,0 +1,907 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="main_8cpp" kind="file" language="C++">
+    <compoundname>main.cpp</compoundname>
+    <includes local="no">cstdlib</includes>
+    <includes local="no">exception</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">memory</includes>
+    <includes refid="server_8hpp" local="yes">server/server.hpp</includes>
+    <incdepgraph>
+      <node id="9">
+        <label>api/v2/filters/auth.hpp</label>
+        <link refid="auth_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>api/v2/filters/ratelimit.hpp</label>
+        <link refid="ratelimit_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+      </node>
+      <node id="82">
+        <label>api/v2/middlewares/elapsedtime.hpp</label>
+        <link refid="elapsedtime_8hpp"/>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>concurrency/boundedexecutor.hpp</label>
+        <link refid="boundedexecutor_8hpp"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>configurator/configurator.hpp</label>
+        <link refid="configurator_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>defaults.hpp</label>
+        <link refid="defaults_8hpp"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>configurator/envloader/envloader.hpp</label>
+        <link refid="envloader_8hpp"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>envvars/envvars.hpp</label>
+        <link refid="envvars_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>controllers/databasecontroller/databasecontroller.hpp</label>
+        <link refid="databasecontroller_8hpp"/>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="66">
+        <label>database/asyncdbclient.hpp</label>
+        <link refid="asyncdbclient_8hpp"/>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="68">
+        <label>database/asyncresultmapper.hpp</label>
+        <link refid="asyncresultmapper_8hpp"/>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="70">
+        <label>database/asyncsqlbinder.hpp</label>
+        <link refid="asyncsqlbinder_8hpp"/>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>database/databasebusy.hpp</label>
+        <link refid="databasebusy_8hpp"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="72">
+        <label>database/databasehandler.hpp</label>
+        <link refid="databasehandler_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>database/dbprobe.hpp</label>
+        <link refid="dbprobe_8hpp"/>
+      </node>
+      <node id="39">
+        <label>gatekeeper/dosdetector/dosdetector.hpp</label>
+        <link refid="dosdetector_8hpp"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>gatekeeper/gatekeeper.hpp</label>
+        <link refid="gatekeeper_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>gatekeeper/keeprbase/keeprbase.hpp</label>
+        <link refid="keeprbase_8hpp"/>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+      </node>
+      <node id="75">
+        <label>gatekeeper/passwordcrypt/passwordcrypt.hpp</label>
+        <link refid="passwordcrypt_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>gatekeeper/passwordcrypt/passwordworker.hpp</label>
+        <link refid="passwordworker_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>gatekeeper/permissionmanager/permissionmanager.hpp</label>
+        <link refid="permissionmanager_8hpp"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>gatekeeper/sessionmanager/sessionmanager.hpp</label>
+        <link refid="sessionmanager_8hpp"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>gatekeeper/tokenmanager/tokenmanager.hpp</label>
+        <link refid="tokenmanager_8hpp"/>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>gatekeeper/types.hpp</label>
+        <link refid="gatekeeper_2types_8hpp"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>server/server.hpp</label>
+        <link refid="server_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>store/store.hpp</label>
+        <link refid="store_8hpp"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>utils/global/callback.hpp</label>
+        <link refid="callback_8hpp"/>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>utils/global/concepts.hpp</label>
+        <link refid="concepts_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>utils/global/http.hpp</label>
+        <link refid="http_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>utils/global/requester.hpp</label>
+        <link refid="requester_8hpp"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="73">
+        <label>utils/global/types.hpp</label>
+        <link refid="utils_2global_2types_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>utils/jsonhelper/jsonhelper.hpp</label>
+        <link refid="jsonhelper_8hpp"/>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="76">
+        <label>utils/memcache/memcache.hpp</label>
+        <link refid="memcache_8hpp"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>utils/message/message.hpp</label>
+        <link refid="message_8hpp"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>atomic</label>
+      </node>
+      <node id="22">
+        <label>chrono</label>
+      </node>
+      <node id="41">
+        <label>condition_variable</label>
+      </node>
+      <node id="14">
+        <label>cstddef</label>
+      </node>
+      <node id="23">
+        <label>cstdint</label>
+      </node>
+      <node id="2">
+        <label>cstdlib</label>
+      </node>
+      <node id="42">
+        <label>deque</label>
+      </node>
+      <node id="35">
+        <label>drogon/DrTemplateBase.h</label>
+      </node>
+      <node id="10">
+        <label>drogon/HttpFilter.h</label>
+      </node>
+      <node id="83">
+        <label>drogon/HttpMiddleware.h</label>
+      </node>
+      <node id="11">
+        <label>drogon/HttpRequest.h</label>
+      </node>
+      <node id="7">
+        <label>drogon/HttpResponse.h</label>
+      </node>
+      <node id="8">
+        <label>drogon/HttpTypes.h</label>
+      </node>
+      <node id="12">
+        <label>drogon/drogon.h</label>
+      </node>
+      <node id="13">
+        <label>drogon/drogon_callbacks.h</label>
+      </node>
+      <node id="67">
+        <label>drogon/orm/DbClient.h</label>
+      </node>
+      <node id="69">
+        <label>drogon/orm/Result.h</label>
+      </node>
+      <node id="71">
+        <label>drogon/orm/SqlBinder.h</label>
+      </node>
+      <node id="33">
+        <label>drogon/utils/coroutine.h</label>
+      </node>
+      <node id="3">
+        <label>exception</label>
+      </node>
+      <node id="84">
+        <label>fmt/color.h</label>
+      </node>
+      <node id="19">
+        <label>fmt/core.h</label>
+      </node>
+      <node id="20">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="21">
+        <label>fmt/ranges.h</label>
+      </node>
+      <node id="43">
+        <label>functional</label>
+      </node>
+      <node id="44">
+        <label>future</label>
+      </node>
+      <node id="4">
+        <label>iostream</label>
+      </node>
+      <node id="80">
+        <label>json/value.h</label>
+      </node>
+      <node id="36">
+        <label>jsoncons/basic_json.hpp</label>
+      </node>
+      <node id="37">
+        <label>jsoncons/json.hpp</label>
+      </node>
+      <node id="61">
+        <label>jwt-cpp/jwt.h</label>
+      </node>
+      <node id="62">
+        <label>jwt-cpp/traits/kazuho-picojson/traits.h</label>
+      </node>
+      <node id="77">
+        <label>list</label>
+      </node>
+      <node id="5">
+        <label>memory</label>
+      </node>
+      <node id="45">
+        <label>mutex</label>
+      </node>
+      <node id="15">
+        <label>optional</label>
+      </node>
+      <node id="65">
+        <label>pqxx/pqxx</label>
+      </node>
+      <node id="32">
+        <label>stdexcept</label>
+      </node>
+      <node id="16">
+        <label>string</label>
+      </node>
+      <node id="38">
+        <label>string_view</label>
+      </node>
+      <node id="52">
+        <label>thread</label>
+      </node>
+      <node id="29">
+        <label>trantor/utils/Logger.h</label>
+      </node>
+      <node id="24">
+        <label>type_traits</label>
+      </node>
+      <node id="49">
+        <label>typeindex</label>
+      </node>
+      <node id="47">
+        <label>unordered_map</label>
+      </node>
+      <node id="25">
+        <label>unordered_set</label>
+      </node>
+      <node id="17">
+        <label>utility</label>
+      </node>
+      <node id="53">
+        <label>vector</label>
+      </node>
+      <node id="46">
+        <label>xxhash.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="main_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>(int argc, char **argv)</argsstring>
+        <name>main</name>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>char **</type>
+          <declname>argv</declname>
+        </param>
+        <briefdescription>
+<para>Constructs the <ref refid="classServer" kindref="compound">Server</ref> and transfers control to it. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>There is no command-line parsing: every setting is read from the environment by <ref refid="classConfigurator" kindref="compound">Configurator</ref> while the <ref refid="classServer" kindref="compound">Server</ref> is constructed. The unique_ptr owns the <ref refid="classServer" kindref="compound">Server</ref> for the whole process; because <ref refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" kindref="member">Server::run()</ref> blocks until the event loops stop, the object survives long enough to finish its post-run shutdown sequence. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">argc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Unused; retained only for the standard signature. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">argv</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Unused; retained only for the standard signature. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The status returned by <ref refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" kindref="member">Server::run()</ref>, or EXIT_FAILURE if a std::exception escapes it. </para>
+</simplesect>
+<simplesect kind="note"><para>Only std::exception is caught; an exception that does not derive from it would terminate the process. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" kindref="member">Server::run()</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/main.cpp" line="43" column="5" bodyfile="src/main.cpp" bodystart="43" bodyend="55"/>
+        <references refid="main_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" compoundref="main_8cpp" startline="43" endline="55">main</references>
+        <referencedby refid="main_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" compoundref="main_8cpp" startline="43" endline="55">main</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Process entry point: build the <ref refid="classServer" kindref="compound">Server</ref> and translate uncaught exceptions into a failure exit status. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file contains nothing but the program&apos;s <ref refid="main_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" kindref="member">main()</ref> function. It creates a single <ref refid="classServer" kindref="compound">Server</ref> object on the heap using a smart pointer, then hands control to <ref refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" kindref="member">Server::run()</ref>. If anything throws a C++ exception during setup or shutdown, it prints a short reason to standard error and exits with a failure status.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: This is where the whole process begins. The operating system calls <ref refid="main_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" kindref="member">main()</ref> first; <ref refid="main_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" kindref="member">main()</ref> creates the <ref refid="classServer" kindref="compound">Server</ref>, and the <ref refid="classServer" kindref="compound">Server</ref> in turn configures and runs Drogon (the web framework) together with all the routes, filters and database helpers. Without this file there would be no starting point, so nothing would ever listen for HTTP requests. <ref refid="main_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" kindref="member">main()</ref> is also the last line of defence: it turns an uncaught exception into a readable error message and a non-zero exit code, which is what process supervisors and Docker expect when a program fails.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>RAII / smart pointers (std::unique_ptr): <ulink url="https://en.cppreference.com/w/cpp/memory/unique_ptr">https://en.cppreference.com/w/cpp/memory/unique_ptr</ulink></para>
+</listitem><listitem><para>Exceptions and try/catch: <ulink url="https://en.cppreference.com/w/cpp/language/exceptions">https://en.cppreference.com/w/cpp/language/exceptions</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>main.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Process<sp/>entry<sp/>point:<sp/>build<sp/>the<sp/>Server<sp/>and<sp/>translate<sp/>uncaught<sp/>exceptions<sp/>into<sp/>a<sp/>failure<sp/>exit<sp/>status.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>file<sp/>contains<sp/>nothing<sp/>but<sp/>the<sp/>program&apos;s<sp/>main()<sp/>function.<sp/>It<sp/>creates<sp/>a<sp/>single<sp/>Server<sp/>object<sp/>on<sp/>the<sp/>heap</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>using<sp/>a<sp/>smart<sp/>pointer,<sp/>then<sp/>hands<sp/>control<sp/>to<sp/>Server::run().<sp/>If<sp/>anything<sp/>throws<sp/>a<sp/>C++<sp/>exception<sp/>during<sp/>setup</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>or<sp/>shutdown,<sp/>it<sp/>prints<sp/>a<sp/>short<sp/>reason<sp/>to<sp/>standard<sp/>error<sp/>and<sp/>exits<sp/>with<sp/>a<sp/>failure<sp/>status.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>where<sp/>the<sp/>whole<sp/>process<sp/>begins.<sp/>The<sp/>operating<sp/>system<sp/>calls<sp/>main()<sp/>first;<sp/>main()<sp/>creates<sp/>the<sp/>Server,<sp/>and<sp/>the</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>Server<sp/>in<sp/>turn<sp/>configures<sp/>and<sp/>runs<sp/>Drogon<sp/>(the<sp/>web<sp/>framework)<sp/>together<sp/>with<sp/>all<sp/>the<sp/>routes,<sp/>filters<sp/>and<sp/>database</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>helpers.<sp/>Without<sp/>this<sp/>file<sp/>there<sp/>would<sp/>be<sp/>no<sp/>starting<sp/>point,<sp/>so<sp/>nothing<sp/>would<sp/>ever<sp/>listen<sp/>for<sp/>HTTP<sp/>requests.<sp/>main()</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>is<sp/>also<sp/>the<sp/>last<sp/>line<sp/>of<sp/>defence:<sp/>it<sp/>turns<sp/>an<sp/>uncaught<sp/>exception<sp/>into<sp/>a<sp/>readable<sp/>error<sp/>message<sp/>and<sp/>a<sp/>non-zero<sp/>exit</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>code,<sp/>which<sp/>is<sp/>what<sp/>process<sp/>supervisors<sp/>and<sp/>Docker<sp/>expect<sp/>when<sp/>a<sp/>program<sp/>fails.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>-<sp/>RAII<sp/>/<sp/>smart<sp/>pointers<sp/>(std::unique_ptr):<sp/>https://en.cppreference.com/w/cpp/memory/unique_ptr</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>Exceptions<sp/>and<sp/>try/catch:<sp/>https://en.cppreference.com/w/cpp/language/exceptions</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>EXIT_FAILURE:<sp/>the<sp/>conventional<sp/>&quot;something<sp/>went<sp/>wrong&quot;<sp/>exit<sp/>code</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;exception&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>std::exception,<sp/>the<sp/>base<sp/>type<sp/>of<sp/>the<sp/>standard<sp/>exceptions<sp/>we<sp/>catch<sp/>here</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>std::cerr,<sp/>the<sp/>error-output<sp/>stream<sp/>used<sp/>to<sp/>report<sp/>failures</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>std::unique_ptr<sp/>and<sp/>std::make_unique<sp/>used<sp/>to<sp/>own<sp/>the<sp/>Server</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="server_8hpp" kindref="compound">server/server.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>Server<sp/>class<sp/>whose<sp/>run()<sp/>method<sp/>starts<sp/>the<sp/>whole<sp/>application</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="31"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Constructs<sp/>the<sp/>Server<sp/>and<sp/>transfers<sp/>control<sp/>to<sp/>it.</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>@details<sp/>There<sp/>is<sp/>no<sp/>command-line<sp/>parsing:<sp/>every<sp/>setting<sp/>is<sp/>read<sp/>from<sp/>the<sp/>environment<sp/>by<sp/>Configurator<sp/>while<sp/>the</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Server<sp/>is<sp/>constructed.<sp/>The<sp/>unique_ptr<sp/>owns<sp/>the<sp/>Server<sp/>for<sp/>the<sp/>whole<sp/>process;<sp/>because<sp/>Server::run()<sp/>blocks</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>until<sp/>the<sp/>event<sp/>loops<sp/>stop,<sp/>the<sp/>object<sp/>survives<sp/>long<sp/>enough<sp/>to<sp/>finish<sp/>its<sp/>post-run<sp/>shutdown<sp/>sequence.</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>argc<sp/>Unused;<sp/>retained<sp/>only<sp/>for<sp/>the<sp/>standard<sp/>signature.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>argv<sp/>Unused;<sp/>retained<sp/>only<sp/>for<sp/>the<sp/>standard<sp/>signature.</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>@return<sp/>The<sp/>status<sp/>returned<sp/>by<sp/>Server::run(),<sp/>or<sp/>EXIT_FAILURE<sp/>if<sp/>a<sp/>std::exception<sp/>escapes<sp/>it.</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>@note<sp/>Only<sp/>std::exception<sp/>is<sp/>caught;<sp/>an<sp/>exception<sp/>that<sp/>does<sp/>not<sp/>derive<sp/>from<sp/>it<sp/>would<sp/>terminate<sp/>the<sp/>process.</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>@see<sp/>Server::run()</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="main_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" kindref="member">main</ref>([[maybe_unused]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/>[[maybe_unused]]<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">**<sp/>argv)<sp/><sp/></highlight><highlight class="comment">//<sp/>Program<sp/>entry<sp/>point;<sp/>argc/argv<sp/>are<sp/>kept<sp/>only<sp/>because<sp/>the<sp/>C++<sp/>standard<sp/>requires<sp/>this<sp/>shape.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Guard<sp/>the<sp/>entire<sp/>startup<sp/>and<sp/>shutdown<sp/>so<sp/>a<sp/>thrown<sp/>exception<sp/>cannot<sp/>crash<sp/>the<sp/>process<sp/>silently.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::unique_ptr&lt;Server&gt;<sp/>server<sp/>=<sp/>std::make_unique&lt;Server&gt;();<sp/><sp/></highlight><highlight class="comment">//<sp/>Own<sp/>the<sp/>Server<sp/>on<sp/>the<sp/>heap;<sp/>a<sp/>unique_ptr<sp/>frees<sp/>it<sp/>automatically<sp/>at<sp/>scope<sp/>exit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>server-&gt;run();<sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>the<sp/>web<sp/>server<sp/>and<sp/>pass<sp/>its<sp/>exit<sp/>status<sp/>back<sp/>to<sp/>the<sp/>OS;<sp/>this<sp/>call<sp/>blocks<sp/>until<sp/>the<sp/>event<sp/>loops<sp/>stop.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>exception)<sp/><sp/></highlight><highlight class="comment">//<sp/>Reached<sp/>only<sp/>if<sp/>an<sp/>exception<sp/>escaped<sp/>the<sp/>try<sp/>block<sp/>above.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Server<sp/>Error:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>exception.what()<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>the<sp/>reason<sp/>to<sp/>stderr,<sp/>keeping<sp/>errors<sp/>separate<sp/>from<sp/>normal<sp/>logs.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;<sp/><sp/></highlight><highlight class="comment">//<sp/>Tell<sp/>the<sp/>OS<sp/>or<sp/>supervisor<sp/>the<sp/>process<sp/>failed,<sp/>instead<sp/>of<sp/>accidentally<sp/>reporting<sp/>success.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/main.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,997 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="defaults_8hpp" kind="file" language="C++">
+    <compoundname>defaults.hpp</compoundname>
+    <includes local="no">cstdint</includes>
+    <includes local="no">string</includes>
+    <includedby refid="configurator_8hpp" local="yes">src/configurator/configurator.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/configurator/defaults.hpp</label>
+        <link refid="defaults_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cstdint</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="8">
+        <label>src/api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/api/v2/filters/auth.hpp</label>
+        <link refid="auth_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>src/api/v2/filters/ratelimit.hpp</label>
+        <link refid="ratelimit_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>src/api/v2/routes/appointments.hpp</label>
+        <link refid="appointments_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/api/v2/routes/clients.hpp</label>
+        <link refid="clients_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>src/api/v2/routes/clinics.hpp</label>
+        <link refid="api_2v2_2routes_2clinics_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>src/api/v2/routes/services.hpp</label>
+        <link refid="services_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/api/v2/routes/staff.hpp</label>
+        <link refid="staff_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/configurator/configurator.cpp</label>
+        <link refid="configurator_8cpp"/>
+      </node>
+      <node id="2">
+        <label>src/configurator/configurator.hpp</label>
+        <link refid="configurator_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/configurator/defaults.hpp</label>
+        <link refid="defaults_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
+        <link refid="appointmentcontroller_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
+        <link refid="appointmentcontroller_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>src/controllers/base/controller/controller.hpp</label>
+        <link refid="controller_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>src/controllers/clientcontroller/clientcontroller.cpp</label>
+        <link refid="clientcontroller_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
+        <link refid="clientcontroller_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
+        <link refid="cliniccontroller_8cpp"/>
+      </node>
+      <node id="22">
+        <label>src/controllers/cliniccontroller/cliniccontroller.hpp</label>
+        <link refid="cliniccontroller_8hpp"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>src/controllers/databasecontroller/databasecontroller.cpp</label>
+        <link refid="databasecontroller_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/controllers/databasecontroller/databasecontroller.hpp</label>
+        <link refid="databasecontroller_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
+        <link refid="entitycontroller_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/controllers/entitycontroller/entitycontroller.hpp</label>
+        <link refid="entitycontroller_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
+        <link refid="servicecontroller_8cpp"/>
+      </node>
+      <node id="25">
+        <label>src/controllers/servicecontroller/servicecontroller.hpp</label>
+        <link refid="servicecontroller_8hpp"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
+        <link refid="staffcontroller_8cpp"/>
+      </node>
+      <node id="28">
+        <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
+        <link refid="staffcontroller_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="69">
+        <label>src/database/asyncdbclient.cpp</label>
+        <link refid="asyncdbclient_8cpp"/>
+      </node>
+      <node id="70">
+        <label>src/database/asyncdbclient.hpp</label>
+        <link refid="asyncdbclient_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>src/database/database.cpp</label>
+        <link refid="database_8cpp"/>
+      </node>
+      <node id="71">
+        <label>src/database/databaseconnectionpool.cpp</label>
+        <link refid="databaseconnectionpool_8cpp"/>
+      </node>
+      <node id="72">
+        <label>src/database/dbexecutor.cpp</label>
+        <link refid="dbexecutor_8cpp"/>
+      </node>
+      <node id="31">
+        <label>src/entities/appointments/base/appointment.hpp</label>
+        <link refid="appointment_8hpp"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>src/entities/appointments/clinic.hpp</label>
+        <link refid="clinic_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>src/entities/appointments/laboratory.hpp</label>
+        <link refid="laboratory_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>src/entities/appointments/pharmacy.hpp</label>
+        <link refid="pharmacy_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>src/entities/appointments/radiologycenter.hpp</label>
+        <link refid="radiologycenter_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>src/entities/appointments/user.hpp</label>
+        <link refid="appointments_2user_8hpp"/>
+      </node>
+      <node id="40">
+        <label>src/entities/base/case.hpp</label>
+        <link refid="case_8hpp"/>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>src/entities/base/client.hpp</label>
+        <link refid="client_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>src/entities/base/entity.hpp</label>
+        <link refid="entity_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>src/entities/base/service.hpp</label>
+        <link refid="service_8hpp"/>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+      </node>
+      <node id="73">
+        <label>src/entities/base/types.hpp</label>
+        <link refid="entities_2base_2types_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>src/entities/people/provider.hpp</label>
+        <link refid="provider_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>src/entities/people/user.hpp</label>
+        <link refid="people_2user_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>src/entities/services/clinics/clinics.hpp</label>
+        <link refid="entities_2services_2clinics_2clinics_8hpp"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>src/entities/services/clinics/patient/health.hpp</label>
+        <link refid="health_8hpp"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>src/entities/services/clinics/patient/patient.hpp</label>
+        <link refid="patient_8hpp"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>src/entities/services/clinics/patient/patientdrugs.hpp</label>
+        <link refid="patientdrugs_8hpp"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>src/entities/services/clinics/patient/reports.hpp</label>
+        <link refid="reports_8hpp"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>src/entities/services/clinics/visits/paidservices.hpp</label>
+        <link refid="paidservices_8hpp"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>src/entities/services/clinics/visits/prescriptions.hpp</label>
+        <link refid="prescriptions_8hpp"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>src/entities/services/clinics/visits/requests.hpp</label>
+        <link refid="requests_8hpp"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>src/entities/services/clinics/visits/visitdrugs.hpp</label>
+        <link refid="visitdrugs_8hpp"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>src/entities/services/clinics/visits/visits.hpp</label>
+        <link refid="visits_8hpp"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>src/entities/services/laboratories.hpp</label>
+        <link refid="laboratories_8hpp"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>src/entities/services/pharmacies.hpp</label>
+        <link refid="pharmacies_8hpp"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>src/entities/services/radiologycenters.hpp</label>
+        <link refid="radiologycenters_8hpp"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="75">
+        <label>src/gatekeeper/dosdetector/dosdetector.cpp</label>
+        <link refid="dosdetector_8cpp"/>
+      </node>
+      <node id="74">
+        <label>src/gatekeeper/dosdetector/dosdetector.hpp</label>
+        <link refid="dosdetector_8hpp"/>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>src/gatekeeper/gatekeeper.cpp</label>
+        <link refid="gatekeeper_8cpp"/>
+      </node>
+      <node id="61">
+        <label>src/gatekeeper/gatekeeper.hpp</label>
+        <link refid="gatekeeper_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>src/gatekeeper/includes.hpp</label>
+        <link refid="includes_8hpp"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>src/gatekeeper/keeprbase/keeprbase.cpp</label>
+        <link refid="keeprbase_8cpp"/>
+      </node>
+      <node id="58">
+        <label>src/gatekeeper/keeprbase/keeprbase.hpp</label>
+        <link refid="keeprbase_8hpp"/>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+      </node>
+      <node id="76">
+        <label>src/gatekeeper/passwordcrypt/passwordworker.cpp</label>
+        <link refid="passwordworker_8cpp"/>
+      </node>
+      <node id="77">
+        <label>src/gatekeeper/permissionmanager/permissioncache.hpp</label>
+        <link refid="permissioncache_8hpp"/>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>src/gatekeeper/permissionmanager/permissionmanager.cpp</label>
+        <link refid="permissionmanager_8cpp"/>
+      </node>
+      <node id="67">
+        <label>src/gatekeeper/permissionmanager/permissionmanager_private.cpp</label>
+        <link refid="permissionmanager__private_8cpp"/>
+      </node>
+      <node id="66">
+        <label>src/gatekeeper/permissionmanager/permissionmanager_private.hpp</label>
+        <link refid="permissionmanager__private_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>src/gatekeeper/sessionmanager/sessionmanager.cpp</label>
+        <link refid="sessionmanager_8cpp"/>
+      </node>
+      <node id="60">
+        <label>src/gatekeeper/sessionmanager/sessionmanager.hpp</label>
+        <link refid="sessionmanager_8hpp"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>src/gatekeeper/tokenmanager/tokenmanager.cpp</label>
+        <link refid="tokenmanager_8cpp"/>
+      </node>
+      <node id="64">
+        <label>src/gatekeeper/tokenmanager/tokenmanager.hpp</label>
+        <link refid="tokenmanager_8hpp"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="78">
+        <label>src/server/cors.hpp</label>
+        <link refid="cors_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/server/server.hpp</label>
+        <link refid="server_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>src/utils/Logger/logger.cpp</label>
+        <link refid="logger_8cpp"/>
+      </node>
+      <node id="68">
+        <label>src/validator/databaseschema/databaseschema.cpp</label>
+        <link refid="databaseschema_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceDefaults">Defaults</innernamespace>
+    <innernamespace refid="namespaceDefaults_1_1DosDetector">Defaults::DosDetector</innernamespace>
+    <innernamespace refid="namespaceDefaults_1_1Database">Defaults::Database</innernamespace>
+    <innernamespace refid="namespaceDefaults_1_1Server">Defaults::Server</innernamespace>
+    <innernamespace refid="namespaceDefaults_1_1TokenParameters">Defaults::TokenParameters</innernamespace>
+    <innernamespace refid="namespaceDefaults_1_1FrontEnd">Defaults::FrontEnd</innernamespace>
+    <innernamespace refid="namespaceDefaults_1_1EmailSenderDaemon">Defaults::EmailSenderDaemon</innernamespace>
+    <innernamespace refid="namespaceDefaults_1_1PermissionCache">Defaults::PermissionCache</innernamespace>
+    <innernamespace refid="namespaceDefaults_1_1PasswordWorker">Defaults::PasswordWorker</innernamespace>
+    <innernamespace refid="namespaceDefaults_1_1DbExecutor">Defaults::DbExecutor</innernamespace>
+    <innernamespace refid="namespaceDefaults_1_1Testing">Defaults::Testing</innernamespace>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="defaults_8hpp_1a98546a0a9b863b8f8ace5b4a566fae7c" prot="public" static="no" extern="yes" mutable="no">
+        <type>const char *const</type>
+        <definition>const char* const dev</definition>
+        <argsstring></argsstring>
+        <name>dev</name>
+        <briefdescription>
+<para>Build-time git tag of the project; used as the default server version. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/configurator/defaults.hpp" line="32" column="25" declfile="src/configurator/defaults.hpp" declline="32" declcolumn="25"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Default values for every environment-driven configuration option. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header declares a set of compile-time constants, grouped by purpose into small namespaces. They are the &quot;fallback&quot; values the configuration system uses whenever an environment variable is not set or cannot be understood. Because they are baked into the binary, they guarantee the server still has sensible, complete settings even on a fresh machine with no configuration at all. A few values are deliberately insecure development placeholders and are meant to be replaced in a real deployment.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: This is the single source of truth for &quot;what the server does when nobody tells it what to
+do&quot;. Every <ref refid="classConfigurator" kindref="compound">Configurator</ref> section constructor passes one of these constants to <ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> as the default, so changing a number here changes the out-of-the-box behaviour everywhere. It also documents, in one place, the expected units and ranges for each setting (seconds, milliseconds, ports). Without it, a missing environment variable would leave settings undefined and startup would fail.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>Environment variables: <ulink url="https://man7.org/linux/man-pages/man7/environ.7.html">https://man7.org/linux/man-pages/man7/environ.7.html</ulink></para>
+</listitem><listitem><para>Fixed-width integer types such as uint32_t: <ulink url="https://en.cppreference.com/w/cpp/types/integer">https://en.cppreference.com/w/cpp/types/integer</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>defaults.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Default<sp/>values<sp/>for<sp/>every<sp/>environment-driven<sp/>configuration<sp/>option.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>declares<sp/>a<sp/>set<sp/>of<sp/>compile-time<sp/>constants,<sp/>grouped<sp/>by<sp/>purpose<sp/>into<sp/>small</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>namespaces.<sp/>They<sp/>are<sp/>the<sp/>&quot;fallback&quot;<sp/>values<sp/>the<sp/>configuration<sp/>system<sp/>uses<sp/>whenever<sp/>an</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>environment<sp/>variable<sp/>is<sp/>not<sp/>set<sp/>or<sp/>cannot<sp/>be<sp/>understood.<sp/>Because<sp/>they<sp/>are<sp/>baked<sp/>into<sp/>the</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>binary,<sp/>they<sp/>guarantee<sp/>the<sp/>server<sp/>still<sp/>has<sp/>sensible,<sp/>complete<sp/>settings<sp/>even<sp/>on<sp/>a<sp/>fresh</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>machine<sp/>with<sp/>no<sp/>configuration<sp/>at<sp/>all.<sp/>A<sp/>few<sp/>values<sp/>are<sp/>deliberately<sp/>insecure<sp/>development</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>placeholders<sp/>and<sp/>are<sp/>meant<sp/>to<sp/>be<sp/>replaced<sp/>in<sp/>a<sp/>real<sp/>deployment.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>the<sp/>single<sp/>source<sp/>of<sp/>truth<sp/>for<sp/>&quot;what<sp/>the<sp/>server<sp/>does<sp/>when<sp/>nobody<sp/>tells<sp/>it<sp/>what<sp/>to</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>do&quot;.<sp/>Every<sp/>Configurator<sp/>section<sp/>constructor<sp/>passes<sp/>one<sp/>of<sp/>these<sp/>constants<sp/>to<sp/>EnvLoader<sp/>as</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>the<sp/>default,<sp/>so<sp/>changing<sp/>a<sp/>number<sp/>here<sp/>changes<sp/>the<sp/>out-of-the-box<sp/>behaviour<sp/>everywhere.<sp/>It</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>also<sp/>documents,<sp/>in<sp/>one<sp/>place,<sp/>the<sp/>expected<sp/>units<sp/>and<sp/>ranges<sp/>for<sp/>each<sp/>setting<sp/>(seconds,</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>milliseconds,<sp/>ports).<sp/>Without<sp/>it,<sp/>a<sp/>missing<sp/>environment<sp/>variable<sp/>would<sp/>leave<sp/>settings</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>undefined<sp/>and<sp/>startup<sp/>would<sp/>fail.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>Environment<sp/>variables:<sp/>https://man7.org/linux/man-pages/man7/environ.7.html</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>Fixed-width<sp/>integer<sp/>types<sp/>such<sp/>as<sp/>uint32_t:<sp/>https://en.cppreference.com/w/cpp/types/integer</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>file<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit,<sp/>no<sp/>matter<sp/>how<sp/>many<sp/>times<sp/>it<sp/>is<sp/>included.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Provides<sp/>fixed-width<sp/>integer<sp/>types<sp/>(uint16_t,<sp/>uint32_t,<sp/>uint64_t)<sp/>with<sp/>predictable<sp/>sizes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>holds<sp/>textual<sp/>defaults<sp/>such<sp/>as<sp/>host<sp/>names<sp/>and<sp/>credentials.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="31"><highlight class="comment">/**<sp/>@brief<sp/>Build-time<sp/>git<sp/>tag<sp/>of<sp/>the<sp/>project;<sp/>used<sp/>as<sp/>the<sp/>default<sp/>server<sp/>version.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>VALHALLA_GIT_TAG;<sp/><sp/></highlight><highlight class="comment">//<sp/>Defined<sp/>in<sp/>the<sp/>build<sp/>system;<sp/>lets<sp/>the<sp/>reported<sp/>version<sp/>track<sp/>the<sp/>exact<sp/>commit<sp/>that<sp/>was<sp/>built.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="33"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="34" refid="namespaceDefaults" refkind="compound"><highlight class="comment"><sp/>*<sp/>@namespace<sp/>Defaults</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Compile-time<sp/>fallback<sp/>values<sp/>used<sp/>when<sp/>a<sp/>configuration<sp/>environment<sp/>variable<sp/>is</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>absent<sp/>or<sp/>cannot<sp/>be<sp/>parsed.</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@details<sp/>Every<sp/>nested<sp/>namespace<sp/>groups<sp/>the<sp/>defaults<sp/>for<sp/>one<sp/>Configurator<sp/>section.<sp/>These</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>constants<sp/>are<sp/>baked<sp/>into<sp/>the<sp/>binary,<sp/>not<sp/>read<sp/>from<sp/>a<sp/>file;<sp/>deployment<sp/>overrides<sp/>come<sp/>from</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>the<sp/>environment<sp/>via<sp/>EnvLoader.<sp/>Several<sp/>entries<sp/>are<sp/>deliberately<sp/>insecure<sp/>development</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>placeholders<sp/>(database<sp/>password,<sp/>token<sp/>secret,<sp/>wildcard<sp/>CORS)<sp/>and<sp/>must<sp/>be<sp/>overridden<sp/>in</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>production.</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>@see<sp/>Configurator,<sp/>EnvLoader</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDefaults" kindref="compound">Defaults</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Groups<sp/>all<sp/>fallback<sp/>constants<sp/>so<sp/>callers<sp/>write<sp/>Defaults::Server::SERVER_PORT_,<sp/>etc.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="48" refid="namespaceDefaults_1_1DosDetector" refkind="compound"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@namespace<sp/>Defaults::DosDetector</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>thresholds<sp/>and<sp/>durations<sp/>for<sp/>the<sp/>DoS<sp/>detector.</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDefaults_1_1DosDetector" kindref="compound">DosDetector</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>DoS<sp/>=<sp/>denial<sp/>of<sp/>service;<sp/>these<sp/>values<sp/>decide<sp/>when<sp/>a<sp/>client<sp/>is<sp/>sending<sp/>too<sp/>many<sp/>requests.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>Default<sp/>values<sp/>for<sp/>DOSDetector<sp/>configuration.</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Maximum<sp/>requests<sp/>per<sp/>@ref<sp/>PERIOD_<sp/>window.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="namespaceDefaults_1_1DosDetector_1a8527abee682bdccd83f9213bae5d1a35" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="namespaceDefaults_1_1DosDetector_1a8527abee682bdccd83f9213bae5d1a35" kindref="member">MAX_REQUESTS_</ref><sp/>=<sp/>10000;<sp/><sp/></highlight><highlight class="comment">//<sp/>32-bit<sp/>unsigned<sp/>count<sp/>is<sp/>ample<sp/>and<sp/>cannot<sp/>be<sp/>negative;<sp/>raised<sp/>if<sp/>the<sp/>env<sp/>var<sp/>MAX_REQUESTS<sp/>is<sp/>set.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Length<sp/>(seconds)<sp/>of<sp/>the<sp/>request<sp/>counting<sp/>window.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="namespaceDefaults_1_1DosDetector_1a6170311a433902f56c1ca536e94fdaac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="namespaceDefaults_1_1DosDetector_1a6170311a433902f56c1ca536e94fdaac" kindref="member">PERIOD_</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>30;<sp/><sp/></highlight><highlight class="comment">//<sp/>How<sp/>many<sp/>seconds<sp/>of<sp/>history<sp/>are<sp/>counted<sp/>toward<sp/>MAX_REQUESTS_.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Maximum<sp/>distinct<sp/>client<sp/>fingerprints<sp/>retained.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="namespaceDefaults_1_1DosDetector_1ac32f0f7494c6b02b3e8541f42ce22a62" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="namespaceDefaults_1_1DosDetector_1ac32f0f7494c6b02b3e8541f42ce22a62" kindref="member">MAX_FPS_</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>100;<sp/><sp/></highlight><highlight class="comment">//<sp/>FPS<sp/>=<sp/>fingerprints;<sp/>caps<sp/>memory<sp/>used<sp/>to<sp/>track<sp/>unique<sp/>clients.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Seconds<sp/>a<sp/>client<sp/>stays<sp/>rate-limited.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="namespaceDefaults_1_1DosDetector_1a8b50cd2a12eef40213278a2e73b89b85" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="namespaceDefaults_1_1DosDetector_1a8b50cd2a12eef40213278a2e73b89b85" kindref="member">RL_DURATION_</ref><sp/><sp/>=<sp/>30;<sp/><sp/></highlight><highlight class="comment">//<sp/>How<sp/>long<sp/>a<sp/>client<sp/>must<sp/>wait<sp/>after<sp/>exceeding<sp/>the<sp/>rate<sp/>limit.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Seconds<sp/>a<sp/>banned<sp/>client<sp/>stays<sp/>blocked.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="namespaceDefaults_1_1DosDetector_1a952d9f6e74ca67618063ea922bd63e9e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="namespaceDefaults_1_1DosDetector_1a952d9f6e74ca67618063ea922bd63e9e" kindref="member">BAN_DURATION_</ref><sp/>=<sp/>3600;<sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>hour,<sp/>in<sp/>seconds;<sp/>used<sp/>for<sp/>more<sp/>serious<sp/>abusers<sp/>than<sp/>rate<sp/>limiting.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Seconds<sp/>between<sp/>sweeps<sp/>of<sp/>expired<sp/>limit/ban<sp/>entries.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="namespaceDefaults_1_1DosDetector_1aa72b7148cbba28dbfc3d579918e2868f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="namespaceDefaults_1_1DosDetector_1aa72b7148cbba28dbfc3d579918e2868f" kindref="member">CLN_FRQ_</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>30;<sp/><sp/></highlight><highlight class="comment">//<sp/>CLN_FRQ<sp/>=<sp/>cleanup<sp/>frequency;<sp/>how<sp/>often<sp/>old<sp/>entries<sp/>are<sp/>removed<sp/>to<sp/>free<sp/>memory.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>};<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>DosDetector</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="72" refid="namespaceDefaults_1_1Database" refkind="compound"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@namespace<sp/>Defaults::Database</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>PostgreSQL<sp/>connection<sp/>settings.</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDefaults_1_1Database" kindref="compound">Database</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Settings<sp/>used<sp/>when<sp/>opening<sp/>connections<sp/>to<sp/>the<sp/>PostgreSQL<sp/>database.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>Default<sp/>values<sp/>for<sp/>Database<sp/>configuration.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>SSL<sp/>is<sp/>off<sp/>by<sp/>default<sp/>for<sp/>local<sp/>development.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="namespaceDefaults_1_1Database_1a9c16e4f27c3f3b9e80f897a1df1b52d8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceDefaults_1_1Database_1a9c16e4f27c3f3b9e80f897a1df1b52d8" kindref="member">DB_SSL_</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>bool<sp/>because<sp/>SSL<sp/>is<sp/>simply<sp/>on/off;<sp/>enable<sp/>it<sp/>for<sp/>production<sp/>traffic.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Asynchronous<sp/>database<sp/>access<sp/>on<sp/>the<sp/>IO<sp/>loops<sp/>(Drogon<sp/>DbClient);<sp/>false<sp/>keeps<sp/>the<sp/>synchronous<sp/>pool<sp/>path.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="namespaceDefaults_1_1Database_1a18363b0d02fa671504bd6b17cee4fe6e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceDefaults_1_1Database_1a18363b0d02fa671504bd6b17cee4fe6e" kindref="member">DB_ASYNC_</ref><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>true<sp/>means<sp/>queries<sp/>run<sp/>without<sp/>blocking<sp/>the<sp/>server&apos;s<sp/>IO<sp/>threads.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Pool<sp/>size;<sp/>zero<sp/>(when<sp/>set<sp/>by<sp/>an<sp/>env<sp/>var)<sp/>triggers<sp/>CPU-based<sp/>auto-sizing.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="namespaceDefaults_1_1Database_1a7cb6887a36fd11f1b999b11806ea28bb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><sp/><sp/><sp/><sp/><ref refid="namespaceDefaults_1_1Database_1a7cb6887a36fd11f1b999b11806ea28bb" kindref="member">DB_MAX_CONN_</ref><sp/>=<sp/>10;<sp/><sp/></highlight><highlight class="comment">//<sp/>Small<sp/>uint8_t<sp/>is<sp/>enough<sp/>for<sp/>a<sp/>connection<sp/>count;<sp/>10<sp/>connections<sp/>by<sp/>default.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>How<sp/>long<sp/>a<sp/>request<sp/>waits<sp/>for<sp/>a<sp/>free<sp/>connection<sp/>before<sp/>getting<sp/>503<sp/>(milliseconds).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="namespaceDefaults_1_1Database_1a4beafb87f90b2ca03b55ac18ad0fdc8a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/><sp/><sp/><sp/><ref refid="namespaceDefaults_1_1Database_1a4beafb87f90b2ca03b55ac18ad0fdc8a" kindref="member">DB_ACQUIRE_TIMEOUT_MS_</ref><sp/>=<sp/>3000;<sp/><sp/></highlight><highlight class="comment">//<sp/>3<sp/>seconds<sp/>expressed<sp/>in<sp/>milliseconds;<sp/>prevents<sp/>requests<sp/>hanging<sp/>forever<sp/>when<sp/>the<sp/>pool<sp/>is<sp/>busy.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>PostgreSQL<sp/>port.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="namespaceDefaults_1_1Database_1a0cb8a029c93f4a2f6bcd49e66024c4e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t<sp/><sp/><sp/><sp/><ref refid="namespaceDefaults_1_1Database_1a0cb8a029c93f4a2f6bcd49e66024c4e2" kindref="member">DB_PORT_</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>5432;<sp/><sp/></highlight><highlight class="comment">//<sp/>PostgreSQL&apos;s<sp/>standard<sp/>port;<sp/>16-bit<sp/>unsigned<sp/>is<sp/>the<sp/>natural<sp/>type<sp/>for<sp/>a<sp/>port<sp/>number.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>listen<sp/>address<sp/>(all<sp/>interfaces).<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="namespaceDefaults_1_1Database_1a7e4ef467bcf44500097539bd2a0b3e5d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceDefaults_1_1Database_1a7e4ef467bcf44500097539bd2a0b3e5d" kindref="member">DB_HOST_</ref><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;0.0.0.0&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Text<sp/>host<sp/>address;<sp/>0.0.0.0<sp/>means<sp/>&quot;accept<sp/>connections<sp/>on<sp/>every<sp/>network<sp/>interface&quot;.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>database<sp/>name.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="namespaceDefaults_1_1Database_1a54161f583a9af3c55158a6aeea9db362" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceDefaults_1_1Database_1a54161f583a9af3c55158a6aeea9db362" kindref="member">DB_NAME_</ref><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;postgres&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>default<sp/>database<sp/>that<sp/>ships<sp/>with<sp/>PostgreSQL;<sp/>overridden<sp/>via<sp/>DB_NAME.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>database<sp/>user.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="namespaceDefaults_1_1Database_1adc651e7d941513e9a7597124eed52ad8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceDefaults_1_1Database_1adc651e7d941513e9a7597124eed52ad8" kindref="member">DB_USER_</ref><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;postgres&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>default<sp/>superuser<sp/>name;<sp/>overridden<sp/>via<sp/>DB_USER.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Insecure<sp/>development<sp/>credential;<sp/>override<sp/>DB_PASS<sp/>in<sp/>real<sp/>deployments.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="namespaceDefaults_1_1Database_1a01a6ae2031f44305b102d31f618af968" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceDefaults_1_1Database_1a01a6ae2031f44305b102d31f618af968" kindref="member">DB_PASS_</ref><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;postgres&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Placeholder<sp/>password<sp/>only<sp/>for<sp/>local<sp/>development;<sp/>never<sp/>use<sp/>this<sp/>in<sp/>production.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>};<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Database</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="102" refid="namespaceDefaults_1_1Server" refkind="compound"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@namespace<sp/>Defaults::Server</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>Drogon<sp/>server<sp/>identity,<sp/>networking,<sp/>logging<sp/>and<sp/>upload<sp/>settings.</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDefaults_1_1Server" kindref="compound">Server</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Identity<sp/>and<sp/>behaviour<sp/>of<sp/>the<sp/>HTTP<sp/>server<sp/>itself.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>Default<sp/>values<sp/>for<sp/>Server<sp/>configuration.</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>number<sp/>of<sp/>IO<sp/>threads.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="namespaceDefaults_1_1Server_1afe08909b6c29309b2efb7f468f73f57b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t<sp/><sp/><sp/><sp/><ref refid="namespaceDefaults_1_1Server_1afe08909b6c29309b2efb7f468f73f57b" kindref="member">SERVER_THREADS_</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>4;<sp/><sp/></highlight><highlight class="comment">//<sp/>Threads<sp/>that<sp/>handle<sp/>network<sp/>events;<sp/>a<sp/>small<sp/>unsigned<sp/>count<sp/>suits<sp/>a<sp/>thread<sp/>count.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>HTTP<sp/>port.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="namespaceDefaults_1_1Server_1ae720bc6d0fb01a3144a54f3a6d5e24c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t<sp/><sp/><sp/><sp/><ref refid="namespaceDefaults_1_1Server_1ae720bc6d0fb01a3144a54f3a6d5e24c8" kindref="member">SERVER_PORT_</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>8080;<sp/><sp/></highlight><highlight class="comment">//<sp/>Common<sp/>alternative<sp/>HTTP<sp/>port,<sp/>chosen<sp/>to<sp/>avoid<sp/>needing<sp/>root<sp/>privileges<sp/>like<sp/>port<sp/>80.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>advertised<sp/>server<sp/>name.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="namespaceDefaults_1_1Server_1a3afe392d625a7c873fb12484b77c9cde" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceDefaults_1_1Server_1a3afe392d625a7c873fb12484b77c9cde" kindref="member">SERVER_NAME_</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ProjectValhalla&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Name<sp/>reported<sp/>about<sp/>the<sp/>server;<sp/>text<sp/>because<sp/>it<sp/>is<sp/>a<sp/>label,<sp/>not<sp/>a<sp/>number.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>version,<sp/>taken<sp/>from<sp/>the<sp/>build-time<sp/>git<sp/>tag.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="namespaceDefaults_1_1Server_1ac147eb21c925844b32d2f34b7e481368" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceDefaults_1_1Server_1ac147eb21c925844b32d2f34b7e481368" kindref="member">SERVER_VER_</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>std::string(VALHALLA_GIT_TAG);<sp/><sp/></highlight><highlight class="comment">//<sp/>Converts<sp/>the<sp/>C-string<sp/>build<sp/>tag<sp/>to<sp/>a<sp/>C++<sp/>string<sp/>so<sp/>it<sp/>can<sp/>be<sp/>logged/formatted.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>server<sp/>description.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="namespaceDefaults_1_1Server_1aa7b551a3340ddcdba720445bea35c784" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceDefaults_1_1Server_1aa7b551a3340ddcdba720445bea35c784" kindref="member">SERVER_DESC_</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ProjectValhalla<sp/>API&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Short<sp/>human-readable<sp/>description<sp/>of<sp/>what<sp/>the<sp/>server<sp/>provides.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>listen<sp/>address<sp/>(all<sp/>interfaces).<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="namespaceDefaults_1_1Server_1a32b80f9853a725d120d97a88f00d5c28" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceDefaults_1_1Server_1a32b80f9853a725d120d97a88f00d5c28" kindref="member">SERVER_HOST_</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;0.0.0.0&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Bind<sp/>to<sp/>every<sp/>interface<sp/>so<sp/>the<sp/>server<sp/>is<sp/>reachable<sp/>from<sp/>outside<sp/>the<sp/>container.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>log<sp/>verbosity<sp/>(1<sp/>==<sp/>info).<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="namespaceDefaults_1_1Server_1a487839278f4fe06b8c5bd3c8fbcdea9e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><sp/><sp/><sp/><sp/><ref refid="namespaceDefaults_1_1Server_1a487839278f4fe06b8c5bd3c8fbcdea9e" kindref="member">SERVER_DEBUG_LEVEL_</ref><sp/><sp/><sp/><sp/>=<sp/>1;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>small<sp/>integer<sp/>level:<sp/>0<sp/>debug,<sp/>1<sp/>info,<sp/>2<sp/>warning,<sp/>3<sp/>error,<sp/>4<sp/>critical.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Log<sp/>to<sp/>console<sp/>by<sp/>default.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="namespaceDefaults_1_1Server_1adc26c17a02a2ccbd2b1b146107c4c1e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceDefaults_1_1Server_1adc26c17a02a2ccbd2b1b146107c4c1e3" kindref="member">SERVER_LOG_TO_CONSOLE_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>true<sp/>so<sp/>developers<sp/>see<sp/>messages<sp/>in<sp/>the<sp/>terminal<sp/>while<sp/>developing.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Log<sp/>to<sp/>file<sp/>by<sp/>default.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="namespaceDefaults_1_1Server_1a1d7d0d640e76ca7a0a32f83aa553d986" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceDefaults_1_1Server_1a1d7d0d640e76ca7a0a32f83aa553d986" kindref="member">SERVER_LOG_TO_FILE_</ref><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>true<sp/>so<sp/>messages<sp/>are<sp/>also<sp/>kept<sp/>on<sp/>disk<sp/>for<sp/>later<sp/>inspection.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>log<sp/>directory.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="namespaceDefaults_1_1Server_1aad9f4b542f006079d47922c2dc5517bb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceDefaults_1_1Server_1aad9f4b542f006079d47922c2dc5517bb" kindref="member">SERVER_LOG_DIR_</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;./logs/&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Relative<sp/>path<sp/>to<sp/>a<sp/>folder<sp/>inside<sp/>the<sp/>working<sp/>directory<sp/>for<sp/>log<sp/>files.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>log<sp/>file<sp/>name.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="namespaceDefaults_1_1Server_1a08f05b0dbdbbd1ccea7f66ceb6f8e582" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceDefaults_1_1Server_1a08f05b0dbdbbd1ccea7f66ceb6f8e582" kindref="member">SERVER_LOG_FILE_</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;server.log&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Name<sp/>of<sp/>the<sp/>file<sp/>written<sp/>inside<sp/>SERVER_LOG_DIR_.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>upload<sp/>directory.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="namespaceDefaults_1_1Server_1a95f015a8a849c6d8a5cfaf9adfb5fc9d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceDefaults_1_1Server_1a95f015a8a849c6d8a5cfaf9adfb5fc9d" kindref="member">SERVER_UPLOAD_DIR_</ref><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;./uploads/&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Folder<sp/>where<sp/>files<sp/>sent<sp/>by<sp/>clients<sp/>are<sp/>stored.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Server</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="138" refid="namespaceDefaults_1_1TokenParameters" refkind="compound"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@namespace<sp/>Defaults::TokenParameters</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>auth-token<sp/>parameters.</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@warning<sp/>TOKEN_SECRET_<sp/>is<sp/>a<sp/>public<sp/>development<sp/>placeholder<sp/>and<sp/>must<sp/>be<sp/>overridden.</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDefaults_1_1TokenParameters" kindref="compound">TokenParameters</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Settings<sp/>for<sp/>issuing<sp/>and<sp/>verifying<sp/>authentication<sp/>tokens.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="144" refid="namespaceDefaults_1_1TokenParameters_1ada29f7e4f7ebcc44ed863b1f845ca546" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/><sp/><sp/><sp/><ref refid="namespaceDefaults_1_1TokenParameters_1ada29f7e4f7ebcc44ed863b1f845ca546" kindref="member">TOKEN_VALIDITY_</ref><sp/>=<sp/>43200;<sp/><sp/></highlight><highlight class="comment">//<sp/>minutes:<sp/>43200<sp/>=<sp/>30<sp/>days.<sp/>64-bit<sp/>because<sp/>the<sp/>value<sp/>is<sp/>large;<sp/>overridden<sp/>with<sp/>TOKEN_VALIDITY.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>issuer<sp/>claim.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="namespaceDefaults_1_1TokenParameters_1a149299356bd51590ac0178d7efb271c0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceDefaults_1_1TokenParameters_1a149299356bd51590ac0178d7efb271c0" kindref="member">TOKEN_ISSUER_</ref><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;ProjectValhalla&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>&quot;who<sp/>issued<sp/>this<sp/>token&quot;<sp/>label<sp/>embedded<sp/>in<sp/>tokens.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>token<sp/>type.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148" refid="namespaceDefaults_1_1TokenParameters_1a6c11dc93d055319b522a61cf797cc937" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceDefaults_1_1TokenParameters_1a6c11dc93d055319b522a61cf797cc937" kindref="member">TOKEN_TYPE_</ref><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;JWS&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>JWS<sp/>=<sp/>JSON<sp/>Web<sp/>Signature,<sp/>the<sp/>signed-token<sp/>format<sp/>used<sp/>here.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Insecure<sp/>development<sp/>signing<sp/>secret;<sp/>override<sp/>TOKEN_SECRET<sp/>in<sp/>production.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="namespaceDefaults_1_1TokenParameters_1af82d2e7594dd9a9e542d7a9584b73e30" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceDefaults_1_1TokenParameters_1af82d2e7594dd9a9e542d7a9584b73e30" kindref="member">TOKEN_SECRET_</ref><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;01234567890123456789012345678901&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Public<sp/>placeholder<sp/>key;<sp/>anyone<sp/>knowing<sp/>it<sp/>could<sp/>forge<sp/>tokens,<sp/>so<sp/>replace<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>TokenParameters</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="154" refid="namespaceDefaults_1_1FrontEnd" refkind="compound"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@namespace<sp/>Defaults::FrontEnd</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>frontend<sp/>host,<sp/>port<sp/>and<sp/>invitation<sp/>path.</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDefaults_1_1FrontEnd" kindref="compound">FrontEnd</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Where<sp/>the<sp/>browser-based<sp/>frontend<sp/>can<sp/>be<sp/>reached.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>frontend<sp/>base<sp/>URL.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160" refid="namespaceDefaults_1_1FrontEnd_1ae72d244ab81b3948dfe1e81b79973476" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceDefaults_1_1FrontEnd_1ae72d244ab81b3948dfe1e81b79973476" kindref="member">HOST_</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;http://172.20.0.5&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Hard-coded<sp/>address<sp/>of<sp/>the<sp/>frontend<sp/>service<sp/>on<sp/>the<sp/>development<sp/>Docker<sp/>network.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>frontend<sp/>port.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162" refid="namespaceDefaults_1_1FrontEnd_1abccafb81dfba89c194e3e4b2a1da39cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t<sp/><sp/><sp/><sp/><ref refid="namespaceDefaults_1_1FrontEnd_1abccafb81dfba89c194e3e4b2a1da39cf" kindref="member">PORT_</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>3000;<sp/><sp/></highlight><highlight class="comment">//<sp/>Typical<sp/>port<sp/>for<sp/>a<sp/>JavaScript<sp/>frontend<sp/>development<sp/>server.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>path<sp/>component<sp/>for<sp/>invitation<sp/>links.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164" refid="namespaceDefaults_1_1FrontEnd_1a2f75870d28630538f7e42843bf4cbf9c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceDefaults_1_1FrontEnd_1a2f75870d28630538f7e42843bf4cbf9c" kindref="member">INVITE_PATH_</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;invite&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Appended<sp/>to<sp/>the<sp/>host<sp/>to<sp/>build<sp/>invitation<sp/>URLs<sp/>sent<sp/>to<sp/>users.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>FrontEnd</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="168"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="169" refid="namespaceDefaults_1_1EmailSenderDaemon" refkind="compound"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@namespace<sp/>Defaults::EmailSenderDaemon</highlight></codeline>
+<codeline lineno="170"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>endpoint<sp/>of<sp/>the<sp/>external<sp/>email-sender<sp/>daemon.</highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDefaults_1_1EmailSenderDaemon" kindref="compound">EmailSenderDaemon</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Location<sp/>of<sp/>the<sp/>separate<sp/>service<sp/>that<sp/>delivers<sp/>emails.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>daemon<sp/>base<sp/>URL.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175" refid="namespaceDefaults_1_1EmailSenderDaemon_1a3fc77c83bff77d646cdd2704390875fa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceDefaults_1_1EmailSenderDaemon_1a3fc77c83bff77d646cdd2704390875fa" kindref="member">HOST_</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;http://172.20.0.6&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Address<sp/>of<sp/>the<sp/>email-sender<sp/>service<sp/>on<sp/>the<sp/>development<sp/>Docker<sp/>network.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>daemon<sp/>port.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177" refid="namespaceDefaults_1_1EmailSenderDaemon_1a6d7e3bdbf9e255b7f8fb4c4fcea32066" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t<sp/><sp/><sp/><sp/><ref refid="namespaceDefaults_1_1EmailSenderDaemon_1a6d7e3bdbf9e255b7f8fb4c4fcea32066" kindref="member">PORT_</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>5000;<sp/><sp/></highlight><highlight class="comment">//<sp/>Port<sp/>the<sp/>email-sender<sp/>service<sp/>listens<sp/>on.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="178"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>HTTP<sp/>path<sp/>used<sp/>to<sp/>enqueue<sp/>messages.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179" refid="namespaceDefaults_1_1EmailSenderDaemon_1aa7e2fa2cb5d49696f5642a85d5f01f89" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceDefaults_1_1EmailSenderDaemon_1aa7e2fa2cb5d49696f5642a85d5f01f89" kindref="member">QUEUE_PATH_</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/enqueue&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Path<sp/>the<sp/>server<sp/>calls<sp/>to<sp/>hand<sp/>an<sp/>outgoing<sp/>message<sp/>to<sp/>the<sp/>daemon.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>EmailSenderDaemon</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="182"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="183" refid="namespaceDefaults_1_1PermissionCache" refkind="compound"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@namespace<sp/>Defaults::PermissionCache</highlight></codeline>
+<codeline lineno="184"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>idle<sp/>lifetime<sp/>for<sp/>cached<sp/>permission<sp/>decisions.</highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDefaults_1_1PermissionCache" kindref="compound">PermissionCache</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>How<sp/>long<sp/>permission-check<sp/>results<sp/>are<sp/>remembered.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="188" refid="namespaceDefaults_1_1PermissionCache_1abb0e056ea4186b11f107c5572f390830" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="namespaceDefaults_1_1PermissionCache_1abb0e056ea4186b11f107c5572f390830" kindref="member">TTL_</ref><sp/>=<sp/>300;<sp/><sp/></highlight><highlight class="comment">//<sp/>seconds<sp/>a<sp/>cached<sp/>permission<sp/>may<sp/>stay<sp/>idle:<sp/>300<sp/>=<sp/>5<sp/>minutes;<sp/>0<sp/>would<sp/>disable<sp/>caching.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PermissionCache</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="191"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="192" refid="namespaceDefaults_1_1PasswordWorker" refkind="compound"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@namespace<sp/>Defaults::PasswordWorker</highlight></codeline>
+<codeline lineno="193"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>sizing<sp/>of<sp/>the<sp/>password<sp/>hashing/verification<sp/>worker<sp/>pool.</highlight></codeline>
+<codeline lineno="194"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDefaults_1_1PasswordWorker" kindref="compound">PasswordWorker</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Background<sp/>threads<sp/>that<sp/>do<sp/>slow<sp/>password<sp/>hashing<sp/>off<sp/>the<sp/>request<sp/>path.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="197" refid="namespaceDefaults_1_1PasswordWorker_1aef760679652d4d0d25022ada37ee585a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t<sp/><ref refid="namespaceDefaults_1_1PasswordWorker_1aef760679652d4d0d25022ada37ee585a" kindref="member">WORKERS_</ref><sp/><sp/><sp/>=<sp/>2;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>threads<sp/>that<sp/>hash<sp/>and<sp/>verify<sp/>passwords;<sp/>0<sp/>=<sp/>run<sp/>on<sp/>the<sp/>request<sp/>thread<sp/>(tests).<sp/>Small<sp/>unsigned<sp/>count<sp/>fits.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="namespaceDefaults_1_1PasswordWorker_1aa4bfeb05249d7adeb81bfe90df069bf0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="namespaceDefaults_1_1PasswordWorker_1aa4bfeb05249d7adeb81bfe90df069bf0" kindref="member">QUEUE_MAX_</ref><sp/>=<sp/>64;<sp/><sp/></highlight><highlight class="comment">//<sp/>waiting<sp/>password<sp/>operations<sp/>before<sp/>new<sp/>ones<sp/>get<sp/>503;<sp/>bounds<sp/>memory<sp/>and<sp/>keeps<sp/>delays<sp/>predictable.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PasswordWorker</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="202" refid="namespaceDefaults_1_1DbExecutor" refkind="compound"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@namespace<sp/>Defaults::DbExecutor</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>sizing/back-pressure<sp/>for<sp/>the<sp/>database<sp/>request<sp/>executor.</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDefaults_1_1DbExecutor" kindref="compound">DbExecutor</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Worker/queue<sp/>settings<sp/>for<sp/>the<sp/>component<sp/>that<sp/>schedules<sp/>database<sp/>work.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="207" refid="namespaceDefaults_1_1DbExecutor_1a345f84e7eeea992a99e3cbae2dca7290" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="namespaceDefaults_1_1DbExecutor_1a345f84e7eeea992a99e3cbae2dca7290" kindref="member">QUEUE_MAX_</ref><sp/>=<sp/>256;<sp/><sp/></highlight><highlight class="comment">//<sp/>waiting<sp/>database<sp/>requests<sp/>before<sp/>new<sp/>ones<sp/>get<sp/>503<sp/>(workers<sp/>default<sp/>to<sp/>DB_MAX_CONN);<sp/>caps<sp/>queued<sp/>work.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208" refid="namespaceDefaults_1_1DbExecutor_1ab524f389c372937b494a2a6d4c390f15" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceDefaults_1_1DbExecutor_1ab524f389c372937b494a2a6d4c390f15" kindref="member">IO_FAST_PATH_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>try<sp/>each<sp/>request<sp/>on<sp/>the<sp/>IO<sp/>thread<sp/>first;<sp/>only<sp/>worth<sp/>it<sp/>when<sp/>many<sp/>requests<sp/>are<sp/>refused<sp/>without<sp/>a<sp/>query.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>DbExecutor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="211"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="212" refid="namespaceDefaults_1_1Testing" refkind="compound"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@namespace<sp/>Defaults::Testing</highlight></codeline>
+<codeline lineno="213"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Defaults<sp/>for<sp/>test-only<sp/>switches.</highlight></codeline>
+<codeline lineno="214"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceDefaults_1_1Testing" kindref="compound">Testing</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Switches<sp/>used<sp/>only<sp/>by<sp/>the<sp/>test<sp/>harness,<sp/>never<sp/>needed<sp/>in<sp/>normal<sp/>production<sp/>requests.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="217"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Real<sp/>database<sp/>is<sp/>used<sp/>unless<sp/>a<sp/>test<sp/>explicitly<sp/>opts<sp/>out.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="namespaceDefaults_1_1Testing_1a797b761e7035e9593588e27408f1b55b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceDefaults_1_1Testing_1a797b761e7035e9593588e27408f1b55b" kindref="member">VALHALLA_TEST_NO_DB_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>false<sp/>means<sp/>tests<sp/>use<sp/>a<sp/>real<sp/>database;<sp/>true<sp/>lets<sp/>a<sp/>test<sp/>skip<sp/>database<sp/>setup<sp/>entirely.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Testing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal">};<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Defaults</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/configurator/defaults.hpp"/>
+  </compounddef>
+</doxygen>

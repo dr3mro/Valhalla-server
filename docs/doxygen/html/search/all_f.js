@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['handleresponse_0',['handleResponse',['../classCommunicate.html#a0a4ddbbf7176276436c6c9f8bd3fa9f1',1,'Communicate']]],
+  ['hasduplicatekeys_1',['hasDuplicateKeys',['../classValidator.html#a54290b0ebd088be63c3ac68b3b85a3e0',1,'Validator']]],
+  ['hash_3c_20api_3a_3av2_3a_3acolumninfo_20_3e_2',['hash&lt; api::v2::ColumnInfo &gt;',['../structstd_1_1hash_3_01api_1_1v2_1_1ColumnInfo_01_4.html',1,'std']]],
+  ['hash_3c_20std_3a_3apair_3c_20std_3a_3astring_2c_20std_3a_3astring_20_3e_20_3e_3',['hash&lt; std::pair&lt; std::string, std::string &gt; &gt;',['../structstd_1_1hash_3_01std_1_1pair_3_01std_1_1string_00_01std_1_1string_01_4_01_4.html',1,'std']]],
+  ['hashheaders_4',['hashHeaders',['../classDOSDetector.html#ad551f3ddefb9c8f6a4cfc23cfd7fbefc',1,'DOSDetector']]],
+  ['hashpassword_5',['hashPassword',['../structapi_1_1v2_1_1Types_1_1ClientData__t.html#a7f7e2dd8e7b65786c7d988cee10628fa',1,'api::v2::Types::ClientData_t::hashPassword()'],['../classPasswordCrypt.html#aaa1e7f7eec2be8279ba7330313001546',1,'PasswordCrypt::hashPassword()']]],
+  ['haskey_6',['hasKey',['../structValidator_1_1Rule.html#aed3b6d1fbcece769c7a8fe3e735117aa',1,'Validator::Rule']]],
+  ['hasmatch_7',['hasMatch',['../structPermissions.html#afd7453a69128f00dcd4e27c3522e31ef',1,'Permissions::hasMatch()'],['../structValidator_1_1Rule.html#abb98001b4c39f55d78d27243042972c1',1,'Validator::Rule::hasMatch(const Action &amp;check) const'],['../structValidator_1_1Rule.html#abc50cce20918ad158ec32e1b4ab6af7a',1,'Validator::Rule::hasMatch(const Action &amp;key, const Action &amp;check) const']]],
+  ['haspermission_8',['hasPermission',['../classapi_1_1v2_1_1PermissionManagerPrivate.html#a6a68b225b7b685e9ed7293606870fafc',1,'api::v2::PermissionManagerPrivate']]],
+  ['haspower_9',['hasPower',['../structPermissions.html#ac96d5536a15d787a3baf4854926a996c',1,'Permissions']]],
+  ['health_10',['Health',['../classHealth.html',1,'Health'],['../classHealth.html#aa04f9bbda3e6db2eeaa3adee512cdc62',1,'Health::Health()']]],
+  ['health_2ehpp_11',['health.hpp',['../health_8hpp.html',1,'']]],
+  ['hello_12',['Hello',['../classapi_1_1v2_1_1Hello.html',1,'api::v2']]],
+  ['hello_13',['hello',['../classapi_1_1v2_1_1Hello.html#a6f92ff78f4fcb20b3a26ac4cf12e3e79',1,'api::v2::Hello']]],
+  ['hello_2ehpp_14',['hello.hpp',['../hello_8hpp.html',1,'']]],
+  ['helper_15',['Helper',['../classapi_1_1v2_1_1Helper.html',1,'api::v2::Helper'],['../classapi_1_1v2_1_1Helper.html#a8628cae20d07c86b011fd649b77d7de6',1,'api::v2::Helper::Helper()=default'],['../classapi_1_1v2_1_1Helper.html#a5c59bc23cc7580cf706220dae65687f1',1,'api::v2::Helper::Helper(const Helper &amp;)=default'],['../classapi_1_1v2_1_1Helper.html#a709e62e62bbedcf44abc53a03e9ccaf5',1,'api::v2::Helper::Helper(Helper &amp;&amp;)=delete'],['../helper_8cpp.html#a5993cee5fba70417c6e9bb08de6b2016',1,'Helper:&#160;helper.cpp']]],
+  ['helper_2ecpp_16',['helper.cpp',['../helper_8cpp.html',1,'']]],
+  ['helper_2ehpp_17',['helper.hpp',['../helper_8hpp.html',1,'']]],
+  ['host_5f_18',['HOST_',['../namespaceDefaults_1_1FrontEnd.html#ae72d244ab81b3948dfe1e81b79973476',1,'Defaults::FrontEnd::HOST_'],['../namespaceDefaults_1_1EmailSenderDaemon.html#a3fc77c83bff77d646cdd2704390875fa',1,'Defaults::EmailSenderDaemon::HOST_']]],
+  ['http_20400_19',['Known limitation: malformed requests (HTTP 400)',['../index.html#autotoc_md37',1,'']]],
+  ['http_2ehpp_20',['http.hpp',['../http_8hpp.html',1,'']]],
+  ['http_5fversion_5fnot_5fsupported_21',['HTTP_VERSION_NOT_SUPPORTED',['../namespaceapi_1_1v2_1_1Http.html#a6199aeb84d745378b1befef28d78892fac7da099c2cbe9f3b620829632dcfc89f',1,'api::v2::Http']]],
+  ['httperror_22',['HttpError',['../clientcontroller_8cpp.html#aade4e0beb5a1397789e7ccb602ef175f',1,'clientcontroller.cpp']]],
+  ['httpstatus_23',['HttpStatus',['../gatekeeper_8cpp.html#ac167080aefdd46391115a8c42fb66636',1,'gatekeeper.cpp']]]
+];

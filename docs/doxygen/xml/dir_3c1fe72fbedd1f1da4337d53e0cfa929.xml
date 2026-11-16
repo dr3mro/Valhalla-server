@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_3c1fe72fbedd1f1da4337d53e0cfa929" kind="dir">
+    <compoundname>src/controllers/entitycontroller</compoundname>
+    <innerfile refid="entitycontroller_8cpp">entitycontroller.cpp</innerfile>
+    <innerfile refid="entitycontroller_8hpp">entitycontroller.hpp</innerfile>
+    <innerfile refid="entitycontrollerbase_8hpp">entitycontrollerbase.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/controllers/entitycontroller/"/>
+  </compounddef>
+</doxygen>

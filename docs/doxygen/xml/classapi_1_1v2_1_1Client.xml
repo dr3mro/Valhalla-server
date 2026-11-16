@@ -1,0 +1,638 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classapi_1_1v2_1_1Client" kind="class" language="C++" prot="public">
+    <compoundname>api::v2::Client</compoundname>
+    <basecompoundref refid="classEntity" prot="public" virt="non-virtual">Entity</basecompoundref>
+    <derivedcompoundref refid="classProvider" prot="public" virt="non-virtual">Provider</derivedcompoundref>
+    <derivedcompoundref refid="classUser" prot="public" virt="non-virtual">User</derivedcompoundref>
+    <includes refid="client_8hpp" local="no">client.hpp</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" prot="protected" static="no" mutable="no">
+        <type>std::optional&lt; uint64_t &gt;</type>
+        <definition>std::optional&lt;uint64_t&gt; api::v2::Client::client_id</definition>
+        <argsstring></argsstring>
+        <name>client_id</name>
+        <qualifiedname>api::v2::Client::client_id</qualifiedname>
+        <briefdescription>
+<para>Id extracted by the most recent update or suspend builder call. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/client.hpp" line="280" column="27" bodyfile="src/entities/base/client.hpp" bodystart="280" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1Client_1af26bfc187b1d8c93e829d05032c7bdb3" compoundref="client_8hpp" startline="249" endline="275">buildClientUpdateStatement</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1aa66c4aa7962da3bc66a7956c84a27a5e" compoundref="client_8hpp" startline="173" endline="173">getClientId</referencedby>
+        <referencedby refid="classProvider_1ac2c776b47dc13f0277c0fe628f9e138d" compoundref="provider_8hpp" startline="99" endline="125">Provider::getSqlGetServicesStatement</referencedby>
+        <referencedby refid="classUser_1ae5d3ed1b19bf6392730008203374e5b2" compoundref="people_2user_8hpp" startline="92" endline="107">User::getSqlGetServicesStatement</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1aca2d94a63d7099b47ce5b1fce6ff49b1" compoundref="client_8hpp" startline="135" endline="153">getSqlToggleSuspendStatement</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::Client::Client</definition>
+        <argsstring>(const Client &amp;)=delete</argsstring>
+        <name>Client</name>
+        <qualifiedname>api::v2::Client::Client</qualifiedname>
+        <param>
+          <type>const Client &amp;</type>
+        </param>
+        <briefdescription>
+<para>Non-copyable and non-movable; construct in place for the request that uses it. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/client.hpp" line="87" column="13"/>
+        <references refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4">Client</references>
+        <referencedby refid="classapi_1_1v2_1_1Client_1a4a696821cfa017364381a2d8c1c29092">Client</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4">Client</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1a61a23014a196e90f69294973b8832fe4">operator=</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1aa78be4dbfee70e80930f5bbdb8c357b6">operator=</referencedby>
+        <referencedby refid="classProvider_1a8cee1947342e8204d0be826e21ea9c8a" compoundref="provider_8hpp" startline="75" endline="77">Provider::Provider</referencedby>
+        <referencedby refid="classUser_1a166538549bcb7bf1f3d4aea0b777f7cb" compoundref="people_2user_8hpp" startline="71" endline="73">User::User</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Client_1a4a696821cfa017364381a2d8c1c29092" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::Client::Client</definition>
+        <argsstring>(Client &amp;&amp;)=delete</argsstring>
+        <name>Client</name>
+        <qualifiedname>api::v2::Client::Client</qualifiedname>
+        <param>
+          <type>Client &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/client.hpp" line="88" column="13"/>
+        <references refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4">Client</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Client_1aa78be4dbfee70e80930f5bbdb8c357b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4" kindref="member">Client</ref> &amp;</type>
+        <definition>Client &amp; api::v2::Client::operator=</definition>
+        <argsstring>(const Client &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>api::v2::Client::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4" kindref="member">Client</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/client.hpp" line="89" column="20"/>
+        <references refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4">Client</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Client_1a61a23014a196e90f69294973b8832fe4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4" kindref="member">Client</ref> &amp;</type>
+        <definition>Client &amp; api::v2::Client::operator=</definition>
+        <argsstring>(Client &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>api::v2::Client::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4" kindref="member">Client</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/client.hpp" line="90" column="20"/>
+        <references refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4">Client</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Client_1ae448bdbb176f2a53a579df93148663ea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>api::v2::Client::Client</definition>
+        <argsstring>(const T &amp;data, const std::string &amp;tablename)</argsstring>
+        <name>Client</name>
+        <qualifiedname>api::v2::Client::Client</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tablename</declname>
+        </param>
+        <briefdescription>
+<para>Stores the client payload and table name in the base <ref refid="classEntity" kindref="compound">Entity</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="conceptapi_1_1v2_1_1ClientData__t" kindref="compound">ClientData_t</ref> payload (<ref refid="clientcontroller_8cpp_1a664c209b78ddc22b11631338f3759859" kindref="member">CreateClient_t</ref>, <ref refid="clientcontroller_8cpp_1a51d1a4a57120d8a5220851ce8416f926" kindref="member">UpdateClient_t</ref>, <ref refid="clientcontroller_8cpp_1aafc15234bd165371dccecc0545e68ddf" kindref="member">SuspendData</ref> or <ref refid="classData__t" kindref="compound">Data_t</ref>). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Operation payload. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tablename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> table name (for example &quot;users&quot; or &quot;providers&quot;). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/client.hpp" line="100" column="13" bodyfile="src/entities/base/client.hpp" bodystart="100" bodyend="102"/>
+        <references refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" compoundref="entity_8hpp" startline="393">Entity::data</references>
+        <references refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93">Entity::Entity</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">Entity::tablename</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Client_1a994474b95fd751b3672b0abf6dd01269" prot="public" static="no" const="no" explicit="no" inline="yes" final="yes" virt="virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; api::v2::Client::getSqlCreateStatement</definition>
+        <argsstring>(pqxx::params &amp;params) final</argsstring>
+        <name>getSqlCreateStatement</name>
+        <qualifiedname>api::v2::Client::getSqlCreateStatement</qualifiedname>
+        <reimplements refid="classBase_1a370479ee58fedd41365acea55b47de9b">getSqlCreateStatement</reimplements>
+        <param>
+          <type>pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Client-specific INSERT builder; final so subclasses cannot bypass validation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cleared and filled with the bound column values. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>INSERT ... RETURNING id, or std::nullopt on failure. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/client.hpp" line="109" column="27" bodyfile="src/entities/base/client.hpp" bodystart="109" bodyend="113"/>
+        <references refid="classapi_1_1v2_1_1Client_1a9d8ec7236a309400e90639c194bb7017" compoundref="client_8hpp" startline="214" endline="237">buildClientCreateStatement</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Client_1a8f03cab52fd829c80e7eb46751f7f1e4" prot="public" static="no" const="no" explicit="no" inline="yes" final="yes" virt="virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; api::v2::Client::getSqlUpdateStatement</definition>
+        <argsstring>(pqxx::params &amp;params) final</argsstring>
+        <name>getSqlUpdateStatement</name>
+        <qualifiedname>api::v2::Client::getSqlUpdateStatement</qualifiedname>
+        <reimplements refid="classBase_1a48122a0f0bd77d2aadcbe10b3e0863fd">getSqlUpdateStatement</reimplements>
+        <param>
+          <type>pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Client-specific UPDATE builder; final so subclasses cannot bypass validation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cleared and filled with the bound SET values and id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UPDATE ... RETURNING id, or std::nullopt if no id is present. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/client.hpp" line="120" column="27" bodyfile="src/entities/base/client.hpp" bodystart="120" bodyend="124"/>
+        <references refid="classapi_1_1v2_1_1Client_1af26bfc187b1d8c93e829d05032c7bdb3" compoundref="client_8hpp" startline="249" endline="275">buildClientUpdateStatement</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Client_1aca2d94a63d7099b47ce5b1fce6ff49b1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; api::v2::Client::getSqlToggleSuspendStatement</definition>
+        <argsstring>(bool state, pqxx::params &amp;params)</argsstring>
+        <name>getSqlToggleSuspendStatement</name>
+        <qualifiedname>api::v2::Client::getSqlToggleSuspendStatement</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type>pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Builds the statement that sets the client&apos;s active flag to state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Reads the client id from the <ref refid="clientcontroller_8cpp_1aafc15234bd165371dccecc0545e68ddf" kindref="member">SuspendData</ref> payload into client_id, then binds the state and id in a fixed order before formatting the UPDATE. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Desired active value: false suspends, true activates. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cleared and filled with the bound state and id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UPDATE ... RETURNING id,active, or std::nullopt if the payload is not <ref refid="clientcontroller_8cpp_1aafc15234bd165371dccecc0545e68ddf" kindref="member">SuspendData</ref> or another exception occurs. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/client.hpp" line="135" column="27" bodyfile="src/entities/base/client.hpp" bodystart="135" bodyend="153"/>
+        <references refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="136" endline="140">Base::Binder::bind</references>
+        <references refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" compoundref="client_8hpp" startline="280">client_id</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1SuspendData_1ad5b052303873a9083234af598934e180" compoundref="entities_2base_2types_8hpp" startline="577">api::v2::Types::SuspendData::client_id</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="163" endline="163">Entity::getData</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">Entity::tablename</references>
+        <referencedby refid="classapi_1_1v2_1_1Client_1ab03dd8f46bcaed9b5899d016715b5181" compoundref="client_8hpp" startline="167" endline="167">getSqlActivateStatement</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1a95efdec9aa97f621d80540a6c7f92236" compoundref="client_8hpp" startline="160" endline="160">getSqlSuspendStatement</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Client_1a95efdec9aa97f621d80540a6c7f92236" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; api::v2::Client::getSqlSuspendStatement</definition>
+        <argsstring>(pqxx::params &amp;params)</argsstring>
+        <name>getSqlSuspendStatement</name>
+        <qualifiedname>api::v2::Client::getSqlSuspendStatement</qualifiedname>
+        <param>
+          <type>pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Builds the statement that deactivates the client (active = false). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cleared and filled with the bound state and id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The suspend UPDATE, or std::nullopt on failure. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/client.hpp" line="160" column="27" bodyfile="src/entities/base/client.hpp" bodystart="160" bodyend="160"/>
+        <references refid="classapi_1_1v2_1_1Client_1aca2d94a63d7099b47ce5b1fce6ff49b1" compoundref="client_8hpp" startline="135" endline="153">getSqlToggleSuspendStatement</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Client_1ab03dd8f46bcaed9b5899d016715b5181" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; api::v2::Client::getSqlActivateStatement</definition>
+        <argsstring>(pqxx::params &amp;params)</argsstring>
+        <name>getSqlActivateStatement</name>
+        <qualifiedname>api::v2::Client::getSqlActivateStatement</qualifiedname>
+        <param>
+          <type>pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Builds the statement that reactivates the client (active = true). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cleared and filled with the bound state and id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The activate UPDATE, or std::nullopt on failure. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/client.hpp" line="167" column="27" bodyfile="src/entities/base/client.hpp" bodystart="167" bodyend="167"/>
+        <references refid="classapi_1_1v2_1_1Client_1aca2d94a63d7099b47ce5b1fce6ff49b1" compoundref="client_8hpp" startline="135" endline="153">getSqlToggleSuspendStatement</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Client_1aa66c4aa7962da3bc66a7956c84a27a5e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; uint64_t &gt;</type>
+        <definition>std::optional&lt; uint64_t &gt; api::v2::Client::getClientId</definition>
+        <argsstring>() const</argsstring>
+        <name>getClientId</name>
+        <qualifiedname>api::v2::Client::getClientId</qualifiedname>
+        <briefdescription>
+<para>Returns the client id cached by the last update or suspend builder call. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The cached id, or nullopt if no builder has set it yet. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/client.hpp" line="173" column="27" bodyfile="src/entities/base/client.hpp" bodystart="173" bodyend="173"/>
+        <references refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" compoundref="client_8hpp" startline="280">client_id</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Client_1a0b259ee6bdb5bee7b4bda6a49828d8af" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool api::v2::Client::exists</definition>
+        <argsstring>()</argsstring>
+        <name>exists</name>
+        <qualifiedname>api::v2::Client::exists</qualifiedname>
+        <briefdescription>
+<para>Checks the database for a client with the username in the validated payload. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A payload type exposing get_data_set() (<ref refid="clientcontroller_8cpp_1a664c209b78ddc22b11631338f3759859" kindref="member">CreateClient_t</ref> or <ref refid="clientcontroller_8cpp_1a51d1a4a57120d8a5220851ce8416f926" kindref="member">UpdateClient_t</ref>). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true only when a username entry exists and the database reports a match; false when there is no username entry or the lookup finds nothing. </para>
+</simplesect>
+<simplesect kind="note"><para>Logs nothing on a negative result; database failures collapse to false. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::bad_variant_access</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if T is not the held alternative. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/client.hpp" line="184" column="18" bodyfile="src/entities/base/client.hpp" bodystart="184" bodyend="196"/>
+        <references refid="classEntity_1a154ae0093211626370549e2924f9c954" compoundref="entity_8hpp" startline="387" endline="387">Entity::databaseController</references>
+        <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="163" endline="163">Entity::getData</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">Entity::tablename</references>
+        <references refid="client_8hpp_1a3a747cf18fa28f0de7920de0f89f5144" compoundref="client_8hpp" startline="54">USERNAME</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Client_1ad63b0cf23eaac920765c0cfce4268156" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::Client::~Client</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~Client</name>
+        <qualifiedname>api::v2::Client::~Client</qualifiedname>
+        <briefdescription>
+<para>Default destructor; the cached id needs no cleanup. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/client.hpp" line="200" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1Client_1a9d8ec7236a309400e90639c194bb7017" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename <ref refid="structBase_1_1Binder" kindref="compound">Binder</ref></type>
+          </param>
+        </templateparamlist>
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; api::v2::Client::buildClientCreateStatement</definition>
+        <argsstring>(Binder &amp;binder)</argsstring>
+        <name>buildClientCreateStatement</name>
+        <qualifiedname>api::v2::Client::buildClientCreateStatement</qualifiedname>
+        <param>
+          <type><ref refid="structBase_1_1Binder" kindref="compound">Binder</ref> &amp;</type>
+          <declname>binder</declname>
+        </param>
+        <briefdescription>
+<para>Builds the client INSERT from validated column/value pairs. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Keys come from the validated data_set; values are bound. Returns only the generated id so callers can look the new row up separately. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="structBase_1_1Binder" kindref="compound">Binder</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Binder-like type providing bind(). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">binder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Appends values and returns their placeholders. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>INSERT ... RETURNING id, or std::nullopt if the payload is not <ref refid="clientcontroller_8cpp_1a664c209b78ddc22b11631338f3759859" kindref="member">CreateClient_t</ref> or another exception occurs. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/client.hpp" line="214" column="27" bodyfile="src/entities/base/client.hpp" bodystart="214" bodyend="237"/>
+        <references refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="136" endline="140">Base::Binder::bind</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="163" endline="163">Entity::getData</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">Entity::tablename</references>
+        <referencedby refid="classapi_1_1v2_1_1Client_1a994474b95fd751b3672b0abf6dd01269" compoundref="client_8hpp" startline="109" endline="113">getSqlCreateStatement</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Client_1af26bfc187b1d8c93e829d05032c7bdb3" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename <ref refid="structBase_1_1Binder" kindref="compound">Binder</ref></type>
+          </param>
+        </templateparamlist>
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; api::v2::Client::buildClientUpdateStatement</definition>
+        <argsstring>(Binder &amp;binder)</argsstring>
+        <name>buildClientUpdateStatement</name>
+        <qualifiedname>api::v2::Client::buildClientUpdateStatement</qualifiedname>
+        <param>
+          <type><ref refid="structBase_1_1Binder" kindref="compound">Binder</ref> &amp;</type>
+          <declname>binder</declname>
+        </param>
+        <briefdescription>
+<para>Builds the client UPDATE from validated column/value pairs and the payload id. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Caches the id in client_id and aborts when it is missing, so no unscoped UPDATE is emitted. Each value is bound; column names come from the validated data_set. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="structBase_1_1Binder" kindref="compound">Binder</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Binder-like type providing bind(). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">binder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Appends SET values and the id, returning their placeholders. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UPDATE ... RETURNING id, or std::nullopt if the id is missing, the payload is not <ref refid="clientcontroller_8cpp_1a51d1a4a57120d8a5220851ce8416f926" kindref="member">UpdateClient_t</ref>, or another exception occurs. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/client.hpp" line="249" column="27" bodyfile="src/entities/base/client.hpp" bodystart="249" bodyend="275"/>
+        <references refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="136" endline="140">Base::Binder::bind</references>
+        <references refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" compoundref="client_8hpp" startline="280">client_id</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="163" endline="163">Entity::getData</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">Entity::tablename</references>
+        <referencedby refid="classapi_1_1v2_1_1Client_1a8f03cab52fd829c80e7eb46751f7f1e4" compoundref="client_8hpp" startline="120" endline="124">getSqlUpdateStatement</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para><ref refid="classEntity" kindref="compound">Entity</ref> for client-style tables (users, providers) with dedicated create/update builders. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Replaces <ref refid="classEntity" kindref="compound">Entity</ref>&apos;s generic JSON-based create/update builders with versions that consume the validated (column, value) pairs held by CreateClient_t/UpdateClient_t. Read, delete and search remain inherited from <ref refid="classEntity" kindref="compound">Entity</ref>. It also builds the active-flag toggle used to suspend/activate a client and can test whether a username is already taken. Concrete tables (<ref refid="classUser" kindref="compound">User</ref>, <ref refid="classProvider" kindref="compound">Provider</ref>) derive from this class and supply the table name. <simplesect kind="note"><para>All values in generated statements are bound through <ref refid="structBase_1_1Binder" kindref="compound">Binder</ref>; column names come from the validated data_set. The id used by updates/suspends is cached in client_id. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="structapi_1_1v2_1_1Types_1_1CreateClient__t" kindref="compound">Types::CreateClient_t</ref>, <ref refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t" kindref="compound">Types::UpdateClient_t</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>Base</label>
+        <link refid="classBase"/>
+      </node>
+      <node id="2">
+        <label>Entity</label>
+        <link refid="classEntity"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Provider</label>
+        <link refid="classProvider"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>User</label>
+        <link refid="classUser"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>api::v2::Client</label>
+        <link refid="classapi_1_1v2_1_1Client"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>Base</label>
+        <link refid="classBase"/>
+      </node>
+      <node id="2">
+        <label>Entity</label>
+        <link refid="classEntity"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>api::v2::Client</label>
+        <link refid="classapi_1_1v2_1_1Client"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/entities/base/client.hpp" line="81" column="9" bodyfile="src/entities/base/client.hpp" bodystart="82" bodyend="281"/>
+    <listofallmembers>
+      <member refid="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" virt="non-virtual"><scope>api::v2::Client</scope><name>Base</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a9d8ec7236a309400e90639c194bb7017" prot="protected" virt="non-virtual"><scope>api::v2::Client</scope><name>buildClientCreateStatement</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1af26bfc187b1d8c93e829d05032c7bdb3" prot="protected" virt="non-virtual"><scope>api::v2::Client</scope><name>buildClientUpdateStatement</name></member>
+      <member refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" prot="protected" virt="non-virtual"><scope>api::v2::Client</scope><name>buildCreateStatement</name></member>
+      <member refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" prot="protected" virt="non-virtual"><scope>api::v2::Client</scope><name>buildDeleteStatement</name></member>
+      <member refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" prot="protected" virt="non-virtual"><scope>api::v2::Client</scope><name>buildReadStatement</name></member>
+      <member refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" prot="protected" virt="non-virtual"><scope>api::v2::Client</scope><name>buildSearchStatement</name></member>
+      <member refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" prot="protected" virt="non-virtual"><scope>api::v2::Client</scope><name>buildUpdateStatement</name></member>
+      <member refid="classEntity_1ac1d661555222fabdf77fc5750da50b19" prot="public" virt="non-virtual"><scope>api::v2::Client</scope><name>check_id_exists</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4" prot="public" virt="non-virtual"><scope>api::v2::Client</scope><name>Client</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a4a696821cfa017364381a2d8c1c29092" prot="public" virt="non-virtual"><scope>api::v2::Client</scope><name>Client</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1ae448bdbb176f2a53a579df93148663ea" prot="public" virt="non-virtual"><scope>api::v2::Client</scope><name>Client</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" prot="protected" virt="non-virtual"><scope>api::v2::Client</scope><name>client_id</name></member>
+      <member refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" prot="private" virt="non-virtual"><scope>api::v2::Client</scope><name>data</name></member>
+      <member refid="classEntity_1a154ae0093211626370549e2924f9c954" prot="protected" virt="non-virtual"><scope>api::v2::Client</scope><name>databaseController</name></member>
+      <member refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93" prot="public" virt="non-virtual"><scope>api::v2::Client</scope><name>Entity</name></member>
+      <member refid="classEntity_1ad3455dba49aa870a3f298f490771600c" prot="public" virt="non-virtual"><scope>api::v2::Client</scope><name>Entity</name></member>
+      <member refid="classEntity_1abe34f0c0ca4b976ba455b97b2039d771" prot="public" virt="non-virtual"><scope>api::v2::Client</scope><name>Entity</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a0b259ee6bdb5bee7b4bda6a49828d8af" prot="public" virt="non-virtual"><scope>api::v2::Client</scope><name>exists</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1aa66c4aa7962da3bc66a7956c84a27a5e" prot="public" virt="non-virtual"><scope>api::v2::Client</scope><name>getClientId</name></member>
+      <member refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" prot="public" virt="non-virtual"><scope>api::v2::Client</scope><name>getData</name></member>
+      <member refid="classEntity_1a78dd1f37555f08fe0b389029c2d5b775" prot="public" virt="non-virtual"><scope>api::v2::Client</scope><name>getGroupName</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1ab03dd8f46bcaed9b5899d016715b5181" prot="public" virt="non-virtual"><scope>api::v2::Client</scope><name>getSqlActivateStatement</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a994474b95fd751b3672b0abf6dd01269" prot="public" virt="virtual"><scope>api::v2::Client</scope><name>getSqlCreateStatement</name></member>
+      <member refid="classEntity_1aa66bbebb8b50f7d91153231b1f6ab997" prot="public" virt="virtual"><scope>api::v2::Client</scope><name>getSqlDeleteStatement</name></member>
+      <member refid="classEntity_1a90ab6d6ae7c3431c3ede1201654b209a" prot="public" virt="virtual"><scope>api::v2::Client</scope><name>getSqlReadStatement</name></member>
+      <member refid="classEntity_1a362c3e70e483e2378ab08414c1eacdd7" prot="public" virt="virtual"><scope>api::v2::Client</scope><name>getSqlSearchStatement</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a95efdec9aa97f621d80540a6c7f92236" prot="public" virt="non-virtual"><scope>api::v2::Client</scope><name>getSqlSuspendStatement</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1aca2d94a63d7099b47ce5b1fce6ff49b1" prot="public" virt="non-virtual"><scope>api::v2::Client</scope><name>getSqlToggleSuspendStatement</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a8f03cab52fd829c80e7eb46751f7f1e4" prot="public" virt="virtual"><scope>api::v2::Client</scope><name>getSqlUpdateStatement</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1aa78be4dbfee70e80930f5bbdb8c357b6" prot="public" virt="non-virtual"><scope>api::v2::Client</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a61a23014a196e90f69294973b8832fe4" prot="public" virt="non-virtual"><scope>api::v2::Client</scope><name>operator=</name></member>
+      <member refid="classEntity_1a1f6d7e8353984497c45053a421a35b53" prot="public" virt="non-virtual" ambiguityscope="Entity::"><scope>api::v2::Client</scope><name>operator=</name></member>
+      <member refid="classEntity_1adb86b6ab4d1b39b00c2472af16840fe5" prot="public" virt="non-virtual" ambiguityscope="Entity::"><scope>api::v2::Client</scope><name>operator=</name></member>
+      <member refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" prot="protected" virt="non-virtual"><scope>api::v2::Client</scope><name>tablename</name></member>
+      <member refid="classBase_1a306fb25541331080645a716286357ef9" prot="public" virt="virtual"><scope>api::v2::Client</scope><name>~Base</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1ad63b0cf23eaac920765c0cfce4268156" prot="public" virt="non-virtual"><scope>api::v2::Client</scope><name>~Client</name></member>
+      <member refid="classEntity_1a605d474ccbd30c3d4350016ec173546a" prot="public" virt="non-virtual"><scope>api::v2::Client</scope><name>~Entity</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

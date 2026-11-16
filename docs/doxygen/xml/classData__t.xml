@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classData__t" kind="class" language="C++" prot="public">
+    <compoundname>Data_t</compoundname>
+    <includes refid="entities_2base_2types_8hpp" local="no">types.hpp</includes>
+    <briefdescription>
+<para>Entity_t carrying only a client id, used for id-only lookups (for example get-services). </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Like <ref refid="classDelete__t" kindref="compound">Delete_t</ref>, the char payload is an unused sentinel and the id is the state. </para>
+    </detaileddescription>
+    <location file="src/entities/base/types.hpp" line="220" column="1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

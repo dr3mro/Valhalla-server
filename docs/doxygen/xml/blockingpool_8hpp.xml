@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="blockingpool_8hpp" kind="file" language="C++">
+    <compoundname>blockingpool.hpp</compoundname>
+    <includes local="no">chrono</includes>
+    <includes local="no">condition_variable</includes>
+    <includes local="no">cstddef</includes>
+    <includes local="no">deque</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">mutex</includes>
+    <includes local="no">utility</includes>
+    <includedby refid="databaseconnectionpool_8hpp" local="yes">src/database/databaseconnectionpool.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/database/blockingpool.hpp</label>
+        <link refid="blockingpool_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>chrono</label>
+      </node>
+      <node id="3">
+        <label>condition_variable</label>
+      </node>
+      <node id="4">
+        <label>cstddef</label>
+      </node>
+      <node id="5">
+        <label>deque</label>
+      </node>
+      <node id="6">
+        <label>memory</label>
+      </node>
+      <node id="7">
+        <label>mutex</label>
+      </node>
+      <node id="8">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>src/controllers/databasecontroller/databasecontroller.cpp</label>
+        <link refid="databasecontroller_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/database/blockingpool.hpp</label>
+        <link refid="blockingpool_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/database/databaseconnectionpool.cpp</label>
+        <link refid="databaseconnectionpool_8cpp"/>
+      </node>
+      <node id="2">
+        <label>src/database/databaseconnectionpool.hpp</label>
+        <link refid="databaseconnectionpool_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/database/databasehandler.cpp</label>
+        <link refid="databasehandler_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classBlockingPool" prot="public">BlockingPool</innerclass>
+    <briefdescription>
+<para>Thread-safe bounded pool of reusable resources with idle iteration. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header defines <ref refid="classBlockingPool" kindref="compound">BlockingPool&lt;T&gt;</ref>, a header-only container that holds a fixed set of reusable items as shared_ptrs. release() adds an item and wakes a waiting acquirer; acquire() waits up to a timeout for an item and returns nullptr if none appears; idle() reports the idle count; forEachIdle() visits every idle item under the lock. A mutex protects the deque and a condition variable handles the waiting.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: This is the generic engine underneath <ref refid="classDatabaseConnectionPool" kindref="compound">DatabaseConnectionPool</ref>. It knows nothing about databases, which makes it reusable and easy to unit test with plain objects. It provides the three properties the server needs: connections are leased one caller at a time, callers wait rather than fail immediately when all are busy, and a bounded wait can be reported as a timeout. Without it the pool would have to reimplement tricky condition-variable logic.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>Condition variable (wait until a resource is available): <ulink url="https://en.cppreference.com/w/cpp/thread/condition_variable">https://en.cppreference.com/w/cpp/thread/condition_variable</ulink></para>
+</listitem><listitem><para>std::mutex and std::lock_guard (mutual exclusion / automatic locking): <ulink url="https://en.cppreference.com/w/cpp/thread/lock_guard">https://en.cppreference.com/w/cpp/thread/lock_guard</ulink></para>
+</listitem><listitem><para>std::unique_lock (a lock that can be waited on): <ulink url="https://en.cppreference.com/w/cpp/thread/unique_lock">https://en.cppreference.com/w/cpp/thread/unique_lock</ulink></para>
+</listitem><listitem><para>std::deque (a double-ended queue): <ulink url="https://en.cppreference.com/w/cpp/container/deque">https://en.cppreference.com/w/cpp/container/deque</ulink></para>
+</listitem><listitem><para>Predicate form of wait_for (also guards against spurious wakeups): <ulink url="https://en.cppreference.com/w/cpp/thread/condition_variable/wait_for">https://en.cppreference.com/w/cpp/thread/condition_variable/wait_for</ulink></para>
+</listitem><listitem><para>RAII (the lock guard releases the mutex at scope exit): <ulink url="https://en.cppreference.com/w/cpp/language/raii">https://en.cppreference.com/w/cpp/language/raii</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>blockingpool.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Thread-safe<sp/>bounded<sp/>pool<sp/>of<sp/>reusable<sp/>resources<sp/>with<sp/>idle<sp/>iteration.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>defines<sp/>BlockingPool&lt;T&gt;,<sp/>a<sp/>header-only<sp/>container<sp/>that<sp/>holds<sp/>a<sp/>fixed<sp/>set</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>of<sp/>reusable<sp/>items<sp/>as<sp/>shared_ptrs.<sp/>release()<sp/>adds<sp/>an<sp/>item<sp/>and<sp/>wakes<sp/>a<sp/>waiting</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>acquirer;<sp/>acquire()<sp/>waits<sp/>up<sp/>to<sp/>a<sp/>timeout<sp/>for<sp/>an<sp/>item<sp/>and<sp/>returns<sp/>nullptr<sp/>if<sp/>none</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>appears;<sp/>idle()<sp/>reports<sp/>the<sp/>idle<sp/>count;<sp/>forEachIdle()<sp/>visits<sp/>every<sp/>idle<sp/>item<sp/>under</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>lock.<sp/>A<sp/>mutex<sp/>protects<sp/>the<sp/>deque<sp/>and<sp/>a<sp/>condition<sp/>variable<sp/>handles<sp/>the<sp/>waiting.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>the<sp/>generic<sp/>engine<sp/>underneath<sp/>DatabaseConnectionPool.<sp/>It<sp/>knows<sp/>nothing<sp/>about</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>databases,<sp/>which<sp/>makes<sp/>it<sp/>reusable<sp/>and<sp/>easy<sp/>to<sp/>unit<sp/>test<sp/>with<sp/>plain<sp/>objects.<sp/>It<sp/>provides</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>the<sp/>three<sp/>properties<sp/>the<sp/>server<sp/>needs:<sp/>connections<sp/>are<sp/>leased<sp/>one<sp/>caller<sp/>at<sp/>a<sp/>time,<sp/>callers</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>wait<sp/>rather<sp/>than<sp/>fail<sp/>immediately<sp/>when<sp/>all<sp/>are<sp/>busy,<sp/>and<sp/>a<sp/>bounded<sp/>wait<sp/>can<sp/>be<sp/>reported<sp/>as</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>a<sp/>timeout.<sp/>Without<sp/>it<sp/>the<sp/>pool<sp/>would<sp/>have<sp/>to<sp/>reimplement<sp/>tricky<sp/>condition-variable<sp/>logic.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>Condition<sp/>variable<sp/>(wait<sp/>until<sp/>a<sp/>resource<sp/>is<sp/>available):<sp/>https://en.cppreference.com/w/cpp/thread/condition_variable</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>std::mutex<sp/>and<sp/>std::lock_guard<sp/>(mutual<sp/>exclusion<sp/>/<sp/>automatic<sp/>locking):<sp/>https://en.cppreference.com/w/cpp/thread/lock_guard</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>std::unique_lock<sp/>(a<sp/>lock<sp/>that<sp/>can<sp/>be<sp/>waited<sp/>on):<sp/>https://en.cppreference.com/w/cpp/thread/unique_lock</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>std::deque<sp/>(a<sp/>double-ended<sp/>queue):<sp/>https://en.cppreference.com/w/cpp/container/deque</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>Predicate<sp/>form<sp/>of<sp/>wait_for<sp/>(also<sp/>guards<sp/>against<sp/>spurious<sp/>wakeups):<sp/>https://en.cppreference.com/w/cpp/thread/condition_variable/wait_for</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>-<sp/>RAII<sp/>(the<sp/>lock<sp/>guard<sp/>releases<sp/>the<sp/>mutex<sp/>at<sp/>scope<sp/>exit):<sp/>https://en.cppreference.com/w/cpp/language/raii</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>guard:<sp/>define<sp/>this<sp/>template<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;chrono&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::chrono::milliseconds<sp/>is<sp/>the<sp/>acquire<sp/>timeout<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;condition_variable&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::condition_variable<sp/>lets<sp/>acquirers<sp/>sleep<sp/>until<sp/>an<sp/>item<sp/>is<sp/>released.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::size_t<sp/>is<sp/>the<sp/>idle-count<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;deque&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::deque<sp/>stores<sp/>the<sp/>idle<sp/>items;<sp/>pop_front/push_back<sp/>are<sp/>cheap.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::shared_ptr<sp/>is<sp/>the<sp/>stored<sp/>item<sp/>type;<sp/>std::move<sp/>transfers<sp/>it<sp/>without<sp/>copying.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::mutex<sp/>and<sp/>the<sp/>lock<sp/>guards<sp/>provide<sp/>thread<sp/>safety.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::move<sp/>and<sp/>std::forward<sp/>move<sp/>items<sp/>and<sp/>callbacks<sp/>efficiently.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>A<sp/>fixed<sp/>set<sp/>of<sp/>reusable<sp/>items<sp/>handed<sp/>out<sp/>one<sp/>caller<sp/>at<sp/>a<sp/>time.<sp/>acquire()<sp/>waits<sp/>up<sp/>to<sp/>a<sp/>timeout<sp/>and<sp/>returns<sp/>nullptr<sp/>when</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>nothing<sp/>became<sp/>free.<sp/>Header-only<sp/>and<sp/>independent<sp/>of<sp/>the<sp/>database<sp/>so<sp/>it<sp/>can<sp/>be<sp/>unit<sp/>tested<sp/>with<sp/>plain<sp/>objects.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="41"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>@class<sp/>BlockingPool</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Thread-safe<sp/>fixed<sp/>set<sp/>of<sp/>reusable<sp/>items<sp/>leased<sp/>one<sp/>caller<sp/>at<sp/>a<sp/>time.</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>@details<sp/>Items<sp/>are<sp/>added<sp/>with<sp/>release()<sp/>and<sp/>leased<sp/>with<sp/>acquire(),<sp/>which<sp/>waits<sp/>up<sp/>to<sp/>a</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>timeout<sp/>and<sp/>returns<sp/>`nullptr`<sp/>if<sp/>nothing<sp/>becomes<sp/>free.<sp/>The<sp/>pool<sp/>is<sp/>independent</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>of<sp/>the<sp/>database<sp/>so<sp/>it<sp/>can<sp/>be<sp/>unit<sp/>tested<sp/>with<sp/>plain<sp/>objects.<sp/>Used<sp/>by</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DatabaseConnectionPool<sp/>to<sp/>hand<sp/>out<sp/>Database<sp/>connections;<sp/>DatabaseHanndler</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>models<sp/>the<sp/>matching<sp/>RAII<sp/>lease.</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Thread-safety:<sp/>a<sp/>single<sp/>mutex<sp/>protects<sp/>the<sp/>deque,<sp/>a<sp/>condition<sp/>variable<sp/>wakes</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>waiting<sp/>acquirers,<sp/>and<sp/>all<sp/>methods<sp/>may<sp/>be<sp/>called<sp/>concurrently.</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>@tparam<sp/>T<sp/>Type<sp/>of<sp/>the<sp/>pooled<sp/>items<sp/>(held<sp/>via<sp/>`std::shared_ptr`).</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>T<sp/>is<sp/>the<sp/>resource<sp/>type;<sp/>items<sp/>are<sp/>owned<sp/>through<sp/>std::shared_ptr&lt;T&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classBlockingPool" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBlockingPool_1a45ec60fb489f6c19064cd670d9f60129" kindref="member">BlockingPool</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>mutex<sp/>+<sp/>condition<sp/>variable<sp/>make<sp/>it<sp/>safe<sp/>for<sp/>many<sp/>threads<sp/>to<sp/>use<sp/>at<sp/>once.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="58" refid="classBlockingPool_1a45ec60fb489f6c19064cd670d9f60129" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBlockingPool_1a45ec60fb489f6c19064cd670d9f60129" kindref="member">BlockingPool</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>empty<sp/>deque<sp/>needs<sp/>no<sp/>special<sp/>setup.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classBlockingPool_1aa35a5a5aeee6548e3e9bf77a99482fb7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBlockingPool_1aa35a5a5aeee6548e3e9bf77a99482fb7" kindref="member">BlockingPool</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBlockingPool_1a45ec60fb489f6c19064cd670d9f60129" kindref="member">BlockingPool</ref>&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copying<sp/>a<sp/>live<sp/>pool<sp/>of<sp/>shared<sp/>items<sp/>would<sp/>duplicate<sp/>leases.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classBlockingPool_1a280e6877b974fceca0a0b9ba3e7b2333" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBlockingPool_1a280e6877b974fceca0a0b9ba3e7b2333" kindref="member">BlockingPool</ref>(<ref refid="classBlockingPool_1a45ec60fb489f6c19064cd670d9f60129" kindref="member">BlockingPool</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Moving<sp/>would<sp/>leave<sp/>waiters<sp/>holding<sp/>a<sp/>stale<sp/>mutex/condition<sp/>variable.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classBlockingPool_1a6fbebe622382f7b3bd7333b2f6b0bbcf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBlockingPool_1a45ec60fb489f6c19064cd670d9f60129" kindref="member">BlockingPool</ref>&amp;<sp/><ref refid="classBlockingPool_1a6fbebe622382f7b3bd7333b2f6b0bbcf" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBlockingPool_1a45ec60fb489f6c19064cd670d9f60129" kindref="member">BlockingPool</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copy-assignment<sp/>would<sp/>violate<sp/>single<sp/>ownership<sp/>of<sp/>the<sp/>queue.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="classBlockingPool_1a53b82147398c8da523d80d6b688d5213" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBlockingPool_1a45ec60fb489f6c19064cd670d9f60129" kindref="member">BlockingPool</ref>&amp;<sp/><ref refid="classBlockingPool_1a53b82147398c8da523d80d6b688d5213" kindref="member">operator=</ref>(<ref refid="classBlockingPool_1a45ec60fb489f6c19064cd670d9f60129" kindref="member">BlockingPool</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Move-assignment<sp/>would<sp/>violate<sp/>single<sp/>ownership<sp/>of<sp/>the<sp/>queue.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classBlockingPool_1a943e49162a8068d722c6318f7fc1dd51" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBlockingPool_1a943e49162a8068d722c6318f7fc1dd51" kindref="member">~BlockingPool</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>deque&apos;s<sp/>shared_ptrs<sp/>release<sp/>any<sp/>remaining<sp/>items<sp/>automatically.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Adds<sp/>a<sp/>new<sp/>item,<sp/>or<sp/>gives<sp/>one<sp/>back<sp/>after<sp/>use.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Adds<sp/>an<sp/>item<sp/>to<sp/>the<sp/>idle<sp/>set<sp/>and<sp/>wakes<sp/>one<sp/>waiting<sp/>acquirer.</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>item<sp/>Item<sp/>to<sp/>add;<sp/>null<sp/>pointers<sp/>are<sp/>ignored.</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>The<sp/>notification<sp/>happens<sp/>after<sp/>the<sp/>lock<sp/>is<sp/>released,<sp/>so<sp/>a<sp/>woken<sp/>acquirer</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>can<sp/>take<sp/>the<sp/>lock<sp/>immediately.</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classBlockingPool_1ab15e0709ecb1d8979957d54b2e666f78" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBlockingPool_1ab15e0709ecb1d8979957d54b2e666f78" kindref="member">release</ref>(std::shared_ptr&lt;T&gt;<sp/>item)<sp/><sp/></highlight><highlight class="comment">//<sp/>Takes<sp/>by<sp/>value<sp/>so<sp/>a<sp/>moved-in<sp/>item<sp/>can<sp/>be<sp/>stored<sp/>directly.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(item<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>null<sp/>item<sp/>is<sp/>not<sp/>a<sp/>usable<sp/>lease;<sp/>ignore<sp/>it<sp/>silently.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Nothing<sp/>to<sp/>add<sp/>and<sp/>no<sp/>reason<sp/>to<sp/>wake<sp/>anyone.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(<ref refid="classBlockingPool_1aa536a2de2ab04cb3a2b54dd350b1190a" kindref="member">mutex_</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Lock<sp/>the<sp/>deque<sp/>briefly;<sp/>the<sp/>guard<sp/>unlocks<sp/>at<sp/>the<sp/>end<sp/>of<sp/>this<sp/>block.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBlockingPool_1af40111aed5471b587a01f2b3b30c93cd" kindref="member">items_</ref>.push_back(std::move(item));<sp/><sp/></highlight><highlight class="comment">//<sp/>Put<sp/>the<sp/>item<sp/>at<sp/>the<sp/>back<sp/>of<sp/>the<sp/>idle<sp/>queue<sp/>without<sp/>copying<sp/>the<sp/>shared_ptr.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBlockingPool_1a7521eacf45e5a5cfc473a714ecc06ce8" kindref="member">cv_</ref>.notify_one();<sp/><sp/></highlight><highlight class="comment">//<sp/>Wake<sp/>exactly<sp/>one<sp/>waiter<sp/>now<sp/>that<sp/>an<sp/>item<sp/>is<sp/>available<sp/>(outside<sp/>the<sp/>lock<sp/>to<sp/>avoid<sp/>a<sp/>wake-then-block).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Leases<sp/>an<sp/>idle<sp/>item,<sp/>waiting<sp/>at<sp/>most<sp/>`timeout`<sp/>for<sp/>one<sp/>to<sp/>be<sp/>released.</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>timeout<sp/>Maximum<sp/>time<sp/>to<sp/>wait.</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>leased<sp/>item,<sp/>or<sp/>`nullptr`<sp/>if<sp/>the<sp/>timeout<sp/>elapsed<sp/>(the<sp/>predicate<sp/>form<sp/>of</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`wait_for`<sp/>also<sp/>handles<sp/>spurious<sp/>wakeups).</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@post<sp/>On<sp/>success<sp/>the<sp/>returned<sp/>item<sp/>is<sp/>no<sp/>longer<sp/>in<sp/>the<sp/>idle<sp/>set;<sp/>the<sp/>caller<sp/>must</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>eventually<sp/>release<sp/>it<sp/>(see<sp/>DatabaseHanndler).</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="classBlockingPool_1aa577bb9f7274c91f2ba9912cac021769" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::shared_ptr&lt;T&gt;<sp/><ref refid="classBlockingPool_1aa577bb9f7274c91f2ba9912cac021769" kindref="member">acquire</ref>(std::chrono::milliseconds<sp/>timeout)<sp/><sp/></highlight><highlight class="comment">//<sp/>[[nodiscard]]<sp/>warns<sp/>callers<sp/>that<sp/>dropping<sp/>the<sp/>returned<sp/>item<sp/>would<sp/>strand<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::unique_lock&lt;std::mutex&gt;<sp/>lock(<ref refid="classBlockingPool_1aa536a2de2ab04cb3a2b54dd350b1190a" kindref="member">mutex_</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>unique_lock<sp/>can<sp/>be<sp/>released<sp/>while<sp/>waiting<sp/>and<sp/>reacquired<sp/>when<sp/>woken.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBlockingPool_1a7521eacf45e5a5cfc473a714ecc06ce8" kindref="member">cv_</ref>.wait_for(lock,<sp/>timeout,<sp/>[</highlight><highlight class="keyword">this</highlight><highlight class="normal">]<sp/>{<sp/>return<sp/>!items_.empty();<sp/>}))<sp/><sp/></highlight><highlight class="comment">//<sp/>Sleep<sp/>until<sp/>an<sp/>item<sp/>exists<sp/>or<sp/>the<sp/>timeout<sp/>expires;<sp/>the<sp/>predicate<sp/>also<sp/>defeats<sp/>spurious<sp/>wakeups.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Timed<sp/>out:<sp/>the<sp/>caller<sp/>can<sp/>report<sp/>exhaustion<sp/>(DatabaseBusy<sp/>in<sp/>the<sp/>server).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;T&gt;<sp/>item<sp/>=<sp/>std::move(<ref refid="classBlockingPool_1af40111aed5471b587a01f2b3b30c93cd" kindref="member">items_</ref>.front());<sp/><sp/></highlight><highlight class="comment">//<sp/>Take<sp/>the<sp/>oldest<sp/>idle<sp/>item<sp/>(FIFO)<sp/>by<sp/>moving<sp/>it<sp/>out.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBlockingPool_1af40111aed5471b587a01f2b3b30c93cd" kindref="member">items_</ref>.pop_front();<sp/><sp/></highlight><highlight class="comment">//<sp/>Remove<sp/>it<sp/>from<sp/>the<sp/>idle<sp/>queue<sp/>so<sp/>no<sp/>other<sp/>caller<sp/>can<sp/>lease<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>item;<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>the<sp/>exclusive<sp/>lease<sp/>to<sp/>the<sp/>caller.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>number<sp/>of<sp/>currently<sp/>idle<sp/>items.</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>Idle<sp/>count,<sp/>read<sp/>under<sp/>the<sp/>pool<sp/>lock.</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="classBlockingPool_1a2cdad342573ef45e2ba4e0325e753004" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::size_t<sp/><ref refid="classBlockingPool_1a2cdad342573ef45e2ba4e0325e753004" kindref="member">idle</ref>()<sp/>const<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>snapshot<sp/>gauge<sp/>used<sp/>in<sp/>logs<sp/>and<sp/>startup<sp/>progress<sp/>messages.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(<ref refid="classBlockingPool_1aa536a2de2ab04cb3a2b54dd350b1190a" kindref="member">mutex_</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Lock<sp/>so<sp/>the<sp/>size<sp/>cannot<sp/>change<sp/>while<sp/>it<sp/>is<sp/>read.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBlockingPool_1af40111aed5471b587a01f2b3b30c93cd" kindref="member">items_</ref>.size();<sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>items<sp/>currently<sp/>available<sp/>to<sp/>lease.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Runs<sp/>func<sp/>on<sp/>every<sp/>idle<sp/>item,<sp/>then<sp/>finish(),<sp/>all<sp/>while<sp/>holding<sp/>the<sp/>pool<sp/>lock<sp/>(used<sp/>to<sp/>reconnect<sp/>idle<sp/>connections<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>wait<sp/>for<sp/>them,<sp/>so<sp/>none<sp/>is<sp/>handed<sp/>out<sp/>half<sp/>way).</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Visits<sp/>every<sp/>idle<sp/>item<sp/>with<sp/>`func`,<sp/>then<sp/>calls<sp/>`finish`,<sp/>under<sp/>the<sp/>pool<sp/>lock.</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Holding<sp/>the<sp/>lock<sp/>across<sp/>both<sp/>callbacks<sp/>prevents<sp/>acquire()<sp/>from<sp/>handing<sp/>out</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>an<sp/>item<sp/>while<sp/>it<sp/>is<sp/>being<sp/>operated<sp/>on<sp/>(e.g.<sp/>reconnected)<sp/>or<sp/>before<sp/>the</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>follow-up<sp/>work<sp/>in<sp/>`finish`<sp/>has<sp/>completed.</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>Func<sp/>Callable<sp/>taking<sp/>`std::shared_ptr&lt;T&gt;&amp;`.</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>Finish<sp/>Callable<sp/>invoked<sp/>once<sp/>after<sp/>all<sp/>items<sp/>were<sp/>visited.</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>func<sp/>Per-item<sp/>operation.</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>finish<sp/>Final<sp/>operation,<sp/>typically<sp/>waiting<sp/>for<sp/>async<sp/>work<sp/>started<sp/>by<sp/>func.</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Keeping<sp/>`finish`<sp/>inside<sp/>the<sp/>lock<sp/>is<sp/>intentional;<sp/>a<sp/>callback<sp/>that<sp/>tries<sp/>to</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>acquire<sp/>from<sp/>the<sp/>same<sp/>pool<sp/>would<sp/>deadlock.</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Func,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Finish&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Generic<sp/>callbacks<sp/>let<sp/>callers<sp/>do<sp/>any<sp/>per-item<sp/>work<sp/>without<sp/>changing<sp/>this<sp/>class.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="classBlockingPool_1a5f53d641019a9e2d276f21f7bee1723a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBlockingPool_1a5f53d641019a9e2d276f21f7bee1723a" kindref="member">forEachIdle</ref>(Func&amp;&amp;<sp/>func,<sp/>Finish&amp;&amp;<sp/>finish)<sp/><sp/></highlight><highlight class="comment">//<sp/>Both<sp/>callbacks<sp/>run<sp/>while<sp/>the<sp/>lock<sp/>is<sp/>held,<sp/>on<sp/>purpose.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(<ref refid="classBlockingPool_1aa536a2de2ab04cb3a2b54dd350b1190a" kindref="member">mutex_</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Hold<sp/>the<sp/>lock<sp/>for<sp/>the<sp/>whole<sp/>visit<sp/>so<sp/>nothing<sp/>idle<sp/>is<sp/>handed<sp/>out<sp/>mid-operation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>item<sp/>:<sp/><ref refid="classBlockingPool_1af40111aed5471b587a01f2b3b30c93cd" kindref="member">items_</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>One<sp/>iteration<sp/>per<sp/>idle<sp/>item<sp/>currently<sp/>in<sp/>the<sp/>deque.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>func(item);<sp/><sp/></highlight><highlight class="comment">//<sp/>Let<sp/>the<sp/>caller<sp/>operate<sp/>on<sp/>(e.g.<sp/>reconnect)<sp/>this<sp/>item.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>finish();<sp/><sp/></highlight><highlight class="comment">//<sp/>Run<sp/>the<sp/>final<sp/>step<sp/>(usually<sp/>waiting<sp/>for<sp/>async<sp/>work)<sp/>before<sp/>releasing<sp/>the<sp/>lock.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="141" refid="classBlockingPool_1aa536a2de2ab04cb3a2b54dd350b1190a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/>std::mutex<sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBlockingPool_1aa536a2de2ab04cb3a2b54dd350b1190a" kindref="member">mutex_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Protects<sp/>items_.<sp/>`mutable`<sp/>lets<sp/>const<sp/>methods<sp/>like<sp/>idle()<sp/>lock<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="classBlockingPool_1a7521eacf45e5a5cfc473a714ecc06ce8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::condition_variable<sp/><ref refid="classBlockingPool_1a7521eacf45e5a5cfc473a714ecc06ce8" kindref="member">cv_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Blocks<sp/>acquirers<sp/>until<sp/>an<sp/>item<sp/>is<sp/>released.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="classBlockingPool_1af40111aed5471b587a01f2b3b30c93cd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::deque&lt;std::shared_ptr&lt;T&gt;&gt;<sp/><ref refid="classBlockingPool_1af40111aed5471b587a01f2b3b30c93cd" kindref="member">items_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>idle<sp/>items<sp/>themselves,<sp/>in<sp/>FIFO<sp/>order.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="src/database/blockingpool.hpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structDOSDetectorConfig" kind="struct" language="C++" prot="public">
+    <compoundname>DOSDetectorConfig</compoundname>
+    <includes refid="configurator_8hpp" local="no">configurator.hpp</includes>
+    <briefdescription>
+<para>Thresholds and durations used by the DoS detector / rate limiter. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>All fields are read from the environment in the constructor; <ref refid="namespaceDefaults_1_1DosDetector" kindref="compound">Defaults::DosDetector</ref> supplies the fallbacks. Durations are whole seconds and the whitelist/blacklist are comma-separated sets of client fingerprints. </para>
+    </detaileddescription>
+    <location file="src/configurator/configurator.hpp" line="105" column="1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

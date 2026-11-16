@@ -1,0 +1,1431 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="indexpage" kind="page">
+    <compoundname>index</compoundname>
+    <title>Project Valhalla</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="index_1md_README"/></para>
+<para>A high-performance, multi-tenant healthcare backend written in modern C++20. Valhalla exposes a versioned REST API for managing medical service providers (clinics, laboratories, pharmacies, radiology centers), their staff, patients, visits, and appointments — with authentication, role-based permissions, and built-in abuse protection baked into the request pipeline.</para>
+<para><blockquote><para><bold>Status:</bold> Active development. The API surface and data model are still evolving. </para>
+</blockquote></para>
+<para><hruler/>
+</para>
+<sect1 id="index_1autotoc_md2">
+<title>Quick Start</title><para>Run the server with its own bundled PostgreSQL in a container, using Docker or Apple Container (Apple Silicon Macs). You need one of them installed, plus <computeroutput>curl</computeroutput> (and <computeroutput>python3</computeroutput> with Apple Container). The tool checks and tells you what&apos;s missing.</para>
+<para><bold>1. Install the <computeroutput>vdt</computeroutput> command</bold> — the Valhalla Deployment Tool (no checkout needed):</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">curl<sp/>-fsSL<sp/>https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh<sp/>|<sp/>sh</highlight></codeline>
+</programlisting></para>
+<para>This downloads the latest tool from this repository: the <computeroutput>vdt</computeroutput> command goes in <computeroutput>~/.local/bin</computeroutput> and its files in <computeroutput>~/.local/share/vdt</computeroutput>. It adds <computeroutput>~/.local/bin</computeroutput> to <computeroutput>PATH</computeroutput> (if it isn&apos;t already) and tab completion in <computeroutput>~/.zshrc</computeroutput> and/or <computeroutput>~/.bashrc</computeroutput>. Open a new terminal afterwards.</para>
+<para><bold>2. Run it:</bold></para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">vdt<sp/>run<sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>pull<sp/>the<sp/>image<sp/>and<sp/>start<sp/>the<sp/>server<sp/>on<sp/>http://127.0.0.1:8080</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>status<sp/><sp/><sp/><sp/>#<sp/>is<sp/>it<sp/>up,<sp/>which<sp/>version,<sp/>and<sp/>are<sp/>there<sp/>updates?</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>doc<sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>open<sp/>the<sp/>interactive<sp/>API<sp/>docs<sp/>in<sp/>your<sp/>browser</highlight></codeline>
+</programlisting></para>
+<para><bold>3. Day to day:</bold></para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">vdt<sp/>update<sp/><sp/><sp/><sp/>#<sp/>newest<sp/>image,<sp/>same<sp/>settings,<sp/>and<sp/>the<sp/>newest<sp/>vdt<sp/>tool;<sp/>frees<sp/>the<sp/>old<sp/>image&apos;s<sp/>disk<sp/>space</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>show<sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>follow<sp/>the<sp/>log</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>psql<sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>SQL<sp/>shell<sp/>on<sp/>the<sp/>bundled<sp/>database</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>dump<sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>save<sp/>the<sp/>database<sp/>to<sp/>~/.local/share/vdt/dumps</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>update<sp/>--persist<sp/><sp/><sp/>#<sp/>keep<sp/>the<sp/>database<sp/>across<sp/>stop/restart/update<sp/>from<sp/>now<sp/>on</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>test<sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>run<sp/>the<sp/>end-to-end<sp/>API<sp/>tests<sp/>against<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>payload<sp/><sp/><sp/>#<sp/>browse<sp/>the<sp/>JSON<sp/>request<sp/>payloads<sp/>the<sp/>tests<sp/>send<sp/>(fzf);<sp/>--filled<sp/>shows<sp/>one<sp/>with<sp/>sample<sp/>values,<sp/>--raw<sp/>prints<sp/>the<sp/>template<sp/>for<sp/>curl</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>stop<sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>stop<sp/>it;<sp/>vdt<sp/>run<sp/>starts<sp/>it<sp/>again</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>help<sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>everything<sp/>else</highlight></codeline>
+</programlisting></para>
+<para>Settings: the installer creates <computeroutput>~/.local/share/vdt/config</computeroutput> (<computeroutput>.env</computeroutput> format) with defaults for a small local container (2 server threads, 2 database connections, and raised rate limits so the API docs&apos; Benchmark and Test console panels don&apos;t get you blocked). Every variable in it is passed to the server (see Configuration); edit it and run <computeroutput>vdt update</computeroutput> to apply. A <computeroutput>.env</computeroutput> in the directory you run <computeroutput>vdt</computeroutput> from is used instead (e.g. in your checkout of this repository).</para>
+<para>Update the tool with <computeroutput>vdt install</computeroutput> (or <computeroutput>vdt install v1.2.3</computeroutput> for a specific tag): it downloads the new version first, and only then removes the current copy and installs, so a failed download changes nothing. <computeroutput>vdt version</computeroutput> shows what&apos;s installed. Remove it with <computeroutput>vdt uninstall</computeroutput>, which works offline. Both keep your <computeroutput>.env</computeroutput> and <computeroutput>dumps/</computeroutput>.</para>
+<para>From a checkout of this repository, <computeroutput>./scripts/vdt/valhalla.sh</computeroutput> is the same tool (the installed <computeroutput>vdt</computeroutput> command is this file under another name). Details: Manage it with <computeroutput>valhalla.sh</computeroutput>. Without the tool: Run with Docker. To build and run natively: Getting Started.</para>
+<para><hruler/>
+</para>
+</sect1>
+<sect1 id="index_1autotoc_md4">
+<title>Table of Contents</title><para><blockquote><para>Rendered documentation (GitHub or the Doxygen HTML output) provides its own clickable table of contents; the entries below are plain text so that the anchors resolve consistently in both renderers. </para>
+</blockquote></para>
+<para><itemizedlist>
+<listitem><para>Quick Start</para>
+</listitem><listitem><para>Features</para>
+</listitem><listitem><para>Architecture</para>
+</listitem><listitem><para>Tech Stack</para>
+</listitem><listitem><para>Getting Started<itemizedlist>
+<listitem><para>Prerequisites</para>
+</listitem><listitem><para>Build from Source<itemizedlist>
+<listitem><para>Debian / Ubuntu</para>
+</listitem><listitem><para>Fedora</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><ref refid="classDatabase" kindref="compound">Database</ref> setup</para>
+</listitem><listitem><para>Run the server</para>
+</listitem><listitem><para>Run with Docker<itemizedlist>
+<listitem><para>Manage it with <computeroutput>valhalla.sh</computeroutput></para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>Configuration</para>
+</listitem><listitem><para>API Overview<itemizedlist>
+<listitem><para>Interactive API docs</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>Project Layout</para>
+</listitem><listitem><para>Development</para>
+</listitem><listitem><para>Contributing</para>
+</listitem><listitem><para>License</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+</sect1>
+<sect1 id="index_1autotoc_md6">
+<title>Features</title><para><itemizedlist>
+<listitem><para><bold>REST API (v2)</bold> built on the <ulink url="https://github.com/drogonframework/drogon">Drogon</ulink> asynchronous web framework.</para>
+</listitem><listitem><para><bold>Multi-tenant service model</bold> — a single deployment serves multiple service types (clinics, laboratories, pharmacies, radiology centers) through generic, type-parameterized controllers.</para>
+</listitem><listitem><para><bold>People &amp; clients</bold> — separate <computeroutput><ref refid="classUser" kindref="compound">User</ref></computeroutput> and <computeroutput><ref refid="classProvider" kindref="compound">Provider</ref></computeroutput> client types, each with full create / login / logout / read / update / delete / search lifecycles.</para>
+</listitem><listitem><para><bold>Patients, visits &amp; appointments</bold> — patient records, health data, prescriptions, drugs, paid services, and visit/appointment scheduling per service.</para>
+</listitem><listitem><para><bold>Staff management</bold> — invite, add, and remove staff members on a per-service basis.</para>
+</listitem><listitem><para><bold>JWT authentication</bold> — stateless session tokens issued and validated via <computeroutput>jwt-cpp</computeroutput>.</para>
+</listitem><listitem><para><bold>Role-based access control</bold> — bitmask permission levels (<computeroutput>CAN_READ</computeroutput>, <computeroutput>CAN_WRITE</computeroutput>, <computeroutput>CAN_DELETE</computeroutput>, <computeroutput>IS_ADMIN</computeroutput>, <computeroutput>IS_OWNER</computeroutput>, <computeroutput>IS_SUPER</computeroutput>) enforced by a permission manager.</para>
+</listitem><listitem><para><bold>Security gatekeeper</bold> layered into the request flow:<itemizedlist>
+<listitem><para>DoS / rate-limiting detector with configurable rate limits, ban durations, and IP whitelist/blacklist.</para>
+</listitem><listitem><para>Every SQL value is a bound parameter (<computeroutput>pqxx::params</computeroutput>); identifiers come from schema-validated keys or allowlists.</para>
+</listitem><listitem><para>Password hashing with <computeroutput>libsodium</computeroutput> (Argon2id), off the request threads.</para>
+</listitem><listitem><para>Session and token managers.</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>PostgreSQL persistence</bold> via Drogon&apos;s asynchronous <computeroutput>orm::DbClient</computeroutput> by default (<computeroutput>DB_ASYNC=true</computeroutput>; writes wrapped in transactions), with the legacy <computeroutput>libpqxx</computeroutput> connection pool, watchdog and schema validator kept behind <computeroutput>DB_ASYNC=false</computeroutput> for one release.</para>
+</listitem><listitem><para><bold>CORS support</bold> with pre-routing OPTIONS handling and standard CORS headers on every response.</para>
+</listitem><listitem><para><bold>Structured logging</bold> through <computeroutput>spdlog</computeroutput>, to console and/or file.</para>
+</listitem><listitem><para><bold>12-factor configuration</bold> — every setting is read from environment variables with sensible defaults.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="index_1autotoc_md7">
+<title>Architecture</title><para><ref refid="classRequests" kindref="compound">Requests</ref> flow through a layered pipeline. Drogon&apos;s IO threads only parse, route and answer.</para>
+<para>By default (<computeroutput>DB_ASYNC=true</computeroutput>) database work runs as coroutines on the IO threads over Drogon&apos;s asynchronous <computeroutput>orm::DbClient</computeroutput> — no DB worker pool, and a slow query never holds a request thread. Password hashing and login checks still run on the dedicated password worker pool. The legacy synchronous path (DB executor + connection pool, <computeroutput>DB_ASYNC=false</computeroutput>) is kept for one release as a fallback.</para>
+<para><programlisting><codeline><highlight class="normal">HTTP<sp/>request</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>│</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>▼</highlight></codeline>
+<codeline><highlight class="normal">Drogon<sp/>IO<sp/>threads<sp/>(SERVER_THREADS)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>├─<sp/>CORS<sp/>pre-routing<sp/>advice<sp/>(handles<sp/>OPTIONS)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>├─<sp/>Rate-limit<sp/>/<sp/>DoS<sp/>filter<sp/><sp/><sp/><sp/><sp/><sp/><sp/>(in<sp/>memory)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>├─<sp/>Token<sp/>+<sp/>session<sp/>filter<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(SECURE<sp/>routes<sp/>only;<sp/>the<sp/>DB<sp/>read<sp/>on<sp/>a<sp/>token<sp/>re-check<sp/>is<sp/>a<sp/>coroutine)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>└─<sp/>Route<sp/>(api/v2/routes):<sp/>picks<sp/>the<sp/>controller,<sp/>copies<sp/>what<sp/>it<sp/>needs<sp/>from<sp/>the<sp/>request</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>│</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>▼<sp/><sp/>DB_ASYNC=true:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>Controller<sp/>(controllers/*)<sp/><sp/>──►<sp/><sp/>permission<sp/>check<sp/>(RBAC,<sp/>cached,<sp/>coroutine<sp/>on<sp/>miss)<sp/><sp/>──►<sp/><sp/>Entity<sp/>(entities/*)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>│</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>▼</highlight></codeline>
+<codeline><highlight class="normal">Async<sp/>DbClient<sp/>(Drogon,<sp/>DB_MAX_CONN<sp/>connections)<sp/><sp/>──►<sp/><sp/>PostgreSQL<sp/><sp/><sp/>(writes<sp/>run<sp/>in<sp/>a<sp/>transaction;<sp/>pool<sp/>exhaustion<sp/>──►<sp/>503)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">DB_ASYNC=false<sp/>(legacy):<sp/>the<sp/>route<sp/>hands<sp/>the<sp/>whole<sp/>controller<sp/>call<sp/>to<sp/>the<sp/>DB<sp/>executor</highlight></codeline>
+<codeline><highlight class="normal">(DB_WORKERS<sp/>threads,<sp/>queue<sp/>DB_QUEUE_MAX;<sp/>queue<sp/>full<sp/>──►<sp/>503<sp/>+<sp/>Retry-After),<sp/>which<sp/>runs<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">against<sp/>the<sp/>synchronous<sp/>libpqxx<sp/>connection<sp/>pool<sp/>(DB_MAX_CONN,<sp/>DB_ACQUIRE_TIMEOUT_MS).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Login,<sp/>client<sp/>create<sp/>and<sp/>client<sp/>update<sp/>hand<sp/>their<sp/>password<sp/>work<sp/>on<sp/>to:</highlight></codeline>
+<codeline><highlight class="normal">Password<sp/>worker<sp/>(PASSWORD_WORKERS<sp/>threads,<sp/>queue<sp/>PASSWORD_QUEUE_MAX)<sp/><sp/>──►<sp/><sp/>Argon2id<sp/>hash<sp/>/<sp/>verify</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>(a<sp/>full<sp/>queue<sp/>answers<sp/>503)</highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para><bold>Routes</bold> (<computeroutput>src/api/v2/routes</computeroutput>) declare endpoints and mark each as <computeroutput><ref refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" kindref="member">SECURE</ref></computeroutput> or <computeroutput><ref refid="common_8hpp_1ad21df8408a63deff2676218cfd5ebb1f" kindref="member">INSECURE</ref></computeroutput>. A small registry maps a path parameter (e.g. <computeroutput>clientType</computeroutput>, <computeroutput>serviceType</computeroutput>) to the concrete controller, so one route class serves many entity types. <computeroutput>executeControllerMethod</computeroutput> submits the whole controller call to the DB executor, with the request data, arguments and response callback captured by value, because the answer is sent from a worker thread.</para>
+</listitem><listitem><para><bold>Controllers</bold> (<computeroutput>src/controllers</computeroutput>) implement CRUD/search logic against a generic base.</para>
+</listitem><listitem><para><bold>Entities</bold> (<computeroutput>src/entities</computeroutput>) model the domain: people (users, providers), services (clinics, laboratories, pharmacies, radiology centers), patients, visits, and appointments.</para>
+</listitem><listitem><para><bold>Gatekeeper</bold> (<computeroutput>src/gatekeeper</computeroutput>) holds the cross-cutting security concerns: DoS detector, token and session managers, the permission manager with its idle-expiry cache, and password hashing (Argon2id, with legacy scrypt hashes still accepted at login).</para>
+</listitem><listitem><para><bold>Concurrency</bold> (<computeroutput>src/concurrency</computeroutput>) has <computeroutput><ref refid="classBoundedExecutor" kindref="compound">BoundedExecutor</ref></computeroutput>, the fixed-size thread pool with a bounded queue that <computeroutput>submit()</computeroutput> never blocks on. The DB executor (<computeroutput>src/database/dbexecutor</computeroutput>, legacy <computeroutput>DB_ASYNC=false</computeroutput> path) and the password worker are two instances. With zero workers a task runs inline, which the unit tests use.</para>
+</listitem><listitem><para><bold><ref refid="classDatabase" kindref="compound">Database</ref></bold> (<computeroutput>src/database</computeroutput>) has the asynchronous client wrapper (<computeroutput><ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref></computeroutput>, the default <computeroutput>DB_ASYNC=true</computeroutput> path), the legacy connection pool (<computeroutput><ref refid="classBlockingPool" kindref="compound">BlockingPool</ref></computeroutput>, waits with a timeout and throws <computeroutput><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></computeroutput>, which becomes 503), the watchdog that reconnects dropped connections, and the handler that borrows a connection for one query.</para>
+</listitem><listitem><para><bold><ref refid="classConfigurator" kindref="compound">Configurator</ref></bold> (<computeroutput>src/configurator</computeroutput>) loads and validates configuration from the environment at startup.</para>
+</listitem><listitem><para><bold><ref refid="classStore" kindref="compound">Store</ref></bold> (<computeroutput>src/store</computeroutput>) provides shared singleton object access. Objects built for every request use <computeroutput><ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;T&gt;()</computeroutput>, which keeps a per-thread pointer and only goes back to the <ref refid="classStore" kindref="compound">Store</ref> when an object has been replaced (tests replace the database controller with a fake).</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="index_1autotoc_md8">
+<title>Tech Stack</title><para><table rows="13" cols="2"><row>
+<entry thead="yes"><para>Area  </para>
+</entry><entry thead="yes"><para>Technology  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Language  </para>
+</entry><entry thead="no"><para>C++20 (C17 for C sources)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Web framework  </para>
+</entry><entry thead="no"><para>Drogon + Trantor  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><ref refid="classDatabase" kindref="compound">Database</ref>  </para>
+</entry><entry thead="no"><para>PostgreSQL via libpqxx  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Auth  </para>
+</entry><entry thead="no"><para>jwt-cpp  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Crypto / hashing  </para>
+</entry><entry thead="no"><para>libsodium  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>JSON  </para>
+</entry><entry thead="no"><para>jsoncons, picojson (jsoncpp via Drogon)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><ref refid="conceptConfig" kindref="compound">Config</ref>  </para>
+</entry><entry thead="no"><para>Environment variables  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Logging  </para>
+</entry><entry thead="no"><para>spdlog / fmt  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>HTTP client  </para>
+</entry><entry thead="no"><para>libcurl, c-ares  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Hashing / utils  </para>
+</entry><entry thead="no"><para>xxhash, cppcodec, zlib  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><ref refid="structTesting" kindref="compound">Testing</ref>  </para>
+</entry><entry thead="no"><para>Catch2  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Build  </para>
+</entry><entry thead="no"><para>CMake (≥ 4.0) + Conan 2  </para>
+</entry></row>
+</table>
+</para>
+</sect1>
+<sect1 id="index_1autotoc_md9">
+<title>Getting Started</title><sect2 id="index_1autotoc_md10">
+<title>Prerequisites</title><para><itemizedlist>
+<listitem><para>A C++20-capable compiler (GCC 13+ / Clang 17+)</para>
+</listitem><listitem><para><ulink url="https://cmake.org/">CMake</ulink> ≥ 4.0 and <ulink url="https://ninja-build.org/">Ninja</ulink> (used by <computeroutput>build.sh</computeroutput>)</para>
+</listitem><listitem><para><ulink url="https://conan.io/">Conan</ulink> 2.x (package manager)</para>
+</listitem><listitem><para>A reachable <ulink url="https://www.postgresql.org/">PostgreSQL</ulink> instance</para>
+</listitem><listitem><para><emphasis>(optional)</emphasis> <computeroutput>ccache</computeroutput> — used automatically if found, to speed up rebuilds</para>
+</listitem><listitem><para><emphasis>(optional)</emphasis> Docker or Apple <computeroutput>container</computeroutput>, to run the all-in-one image (see Run with Docker)</para>
+</listitem></itemizedlist>
+</para>
+<para>Supported distributions: <bold>Debian 13 (trixie)+ / Ubuntu 24.04+</bold> and <bold>Fedora 40+</bold>. Older releases ship GCC &lt; 13, and most distributions still package CMake 3.x, so you will likely need to install CMake 4 separately; see the notes below.</para>
+</sect2>
+<sect2 id="index_1autotoc_md11">
+<title>Build from Source</title><para><heading level="3">Debian / Ubuntu</heading>
+</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>1.<sp/>Toolchain<sp/>and<sp/>build<sp/>helpers<sp/>(Conan<sp/>compiles<sp/>most<sp/>dependencies<sp/>from<sp/>source)</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt<sp/>update</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt<sp/>install<sp/>-y<sp/>build-essential<sp/>git<sp/>curl<sp/>zip<sp/>unzip<sp/>tar<sp/>pkg-config<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cmake<sp/>ninja-build<sp/>ccache<sp/>make<sp/>autoconf<sp/>automake<sp/>libtool<sp/>bison<sp/>flex<sp/>perl<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uuid-dev<sp/>libssl-dev<sp/>python3<sp/>python3-pip<sp/>pipx<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>postgresql<sp/>postgresql-client</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>2.<sp/>Check<sp/>versions:<sp/>you<sp/>need<sp/>GCC<sp/>&gt;=<sp/>13<sp/>and<sp/>CMake<sp/>&gt;=<sp/>4.0</highlight></codeline>
+<codeline><highlight class="normal">g++<sp/>--version<sp/>|<sp/>head<sp/>-1</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--version<sp/>|<sp/>head<sp/>-1</highlight></codeline>
+</programlisting></para>
+<para><blockquote><para>The packaged <computeroutput>cmake</computeroutput> is 3.x on Ubuntu 24.04 (3.28) and Debian 13 (3.31). Install CMake 4 with <computeroutput>pipx install cmake</computeroutput> (then <computeroutput>pipx ensurepath</computeroutput> and open a new shell), or from the <ulink url="https://apt.kitware.com/">Kitware APT repository</ulink>. If <computeroutput>g++</computeroutput> is older than 13, install <computeroutput>g++-13</computeroutput> (<computeroutput>sudo apt install g++-13</computeroutput>) and export <computeroutput>CC=gcc-13 CXX=g++-13</computeroutput> before the steps below. </para>
+</blockquote></para>
+<para><heading level="3">Fedora</heading>
+</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>1.<sp/>Toolchain<sp/>and<sp/>build<sp/>helpers</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>dnf<sp/>install<sp/>-y<sp/>gcc<sp/>gcc-c++<sp/>make<sp/>git<sp/>curl<sp/>zip<sp/>unzip<sp/>tar<sp/>pkgconf-pkg-config<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cmake<sp/>ninja-build<sp/>ccache<sp/>autoconf<sp/>automake<sp/>libtool<sp/>bison<sp/>flex<sp/>perl-core<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>libuuid-devel<sp/>openssl-devel<sp/>python3<sp/>python3-pip<sp/>pipx<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>postgresql-server<sp/>postgresql</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>2.<sp/>Check<sp/>versions:<sp/>you<sp/>need<sp/>GCC<sp/>&gt;=<sp/>13<sp/>and<sp/>CMake<sp/>&gt;=<sp/>4.0</highlight></codeline>
+<codeline><highlight class="normal">g++<sp/>--version<sp/>|<sp/>head<sp/>-1</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--version<sp/>|<sp/>head<sp/>-1</highlight></codeline>
+</programlisting></para>
+<para><blockquote><para>If <computeroutput>cmake --version</computeroutput> is below 4.0, install CMake 4 with <computeroutput>pipx install cmake</computeroutput> (then <computeroutput>pipx ensurepath</computeroutput> and open a new shell). </para>
+</blockquote></para>
+<para><heading level="3">Install Conan and build (both distributions)</heading>
+</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">pipx<sp/>install<sp/>conan</highlight></codeline>
+<codeline><highlight class="normal">pipx<sp/>ensurepath<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>then<sp/>open<sp/>a<sp/>new<sp/>shell<sp/>so<sp/>~/.local/bin<sp/>is<sp/>on<sp/>PATH</highlight></codeline>
+<codeline><highlight class="normal">conan<sp/>profile<sp/>detect<sp/>--force</highlight></codeline>
+</programlisting></para>
+<para><computeroutput>conan profile detect</computeroutput> produces a profile with <computeroutput>compiler.libcxx=libstdc++11</computeroutput>, which is what you want on Linux. The project builds as GNU C++20, so the commands below pass <computeroutput>-s compiler.cppstd=gnu20</computeroutput>.</para>
+<para>Install dependencies and configure both build types:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>Resolve<sp/>and<sp/>build<sp/>third-party<sp/>dependencies<sp/>(the<sp/>first<sp/>run<sp/>takes<sp/>a<sp/>while)</highlight></codeline>
+<codeline><highlight class="normal">TRANTOR_FLAGS=&apos;trantor/*:tools.build:cxxflags=[&quot;-Wno-error=unused-result&quot;]&apos;</highlight></codeline>
+<codeline><highlight class="normal">conan<sp/>install<sp/>.<sp/>--build=missing<sp/>-s<sp/>build_type=Debug<sp/><sp/><sp/>-s<sp/>compiler.cppstd=gnu20<sp/>-c<sp/>&quot;$TRANTOR_FLAGS&quot;</highlight></codeline>
+<codeline><highlight class="normal">conan<sp/>install<sp/>.<sp/>--build=missing<sp/>-s<sp/>build_type=Release<sp/>-s<sp/>compiler.cppstd=gnu20<sp/>-c<sp/>&quot;$TRANTOR_FLAGS&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Configure<sp/>CMake</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>-S<sp/>.<sp/>-B<sp/>build/Debug<sp/><sp/><sp/>-DCMAKE_BUILD_TYPE=Debug<sp/><sp/><sp/>-G<sp/>Ninja</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>-S<sp/>.<sp/>-B<sp/>build/Release<sp/>-DCMAKE_BUILD_TYPE=Release<sp/>-G<sp/>Ninja</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Compile</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/Debug<sp/><sp/><sp/>-j&quot;$(nproc)&quot;</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/Release<sp/>-j&quot;$(nproc)&quot;</highlight></codeline>
+</programlisting></para>
+<para>Or run the convenience script <computeroutput>./scripts/build/build.sh</computeroutput>, which goes further than the steps above:</para>
+<para><orderedlist>
+<listitem><para>Runs the same Conan, CMake and build steps for Debug and Release.</para>
+</listitem><listitem><para>Runs the unit tests for both (<computeroutput>ctest --preset conan-release</computeroutput> and <computeroutput>ctest --preset conan-debug</computeroutput>).</para>
+</listitem><listitem><para><bold>Starts the Release server in the background</bold> (<computeroutput>./scripts/run/run_release.sh &amp;</computeroutput>) and runs the API test suite (<computeroutput>./scripts/test/test_api.sh</computeroutput>) against it.</para>
+</listitem></orderedlist>
+</para>
+<para>Step 3 needs a running, initialised PostgreSQL (see <ref refid="classDatabase" kindref="compound">Database</ref> setup), and it leaves the server running afterwards. Stop it with <computeroutput>pkill -f build/Release/server</computeroutput>.</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">./scripts/build/build.sh</highlight></codeline>
+</programlisting></para>
+<para>The resulting binary is named <computeroutput>server</computeroutput> and is placed in the corresponding build directory (<computeroutput>build/Release/server</computeroutput>).</para>
+</sect2>
+<sect2 id="index_1autotoc_md12">
+<title>Database setup</title><para>The server needs a PostgreSQL database initialised with <computeroutput>init.sql</computeroutput>. Skip this section if you already have a database, or if you use the all-in-one Docker image (see Run with Docker).</para>
+<para><bold>Debian / Ubuntu</bold> — the service is created and started by the package:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">sudo<sp/>systemctl<sp/>enable<sp/>--now<sp/>postgresql</highlight></codeline>
+</programlisting></para>
+<para><bold>Fedora</bold> — initialise the cluster first, then allow password logins over TCP:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">sudo<sp/>postgresql-setup<sp/>--initdb</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>systemctl<sp/>enable<sp/>--now<sp/>postgresql</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Fedora&apos;s<sp/>default<sp/>pg_hba.conf<sp/>uses<sp/>&quot;ident&quot;<sp/>for<sp/>127.0.0.1;<sp/>switch<sp/>it<sp/>to<sp/>a<sp/>password<sp/>method:</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>sed<sp/>-i<sp/>&apos;s/\(127.0.0.1\/32\s\+\)ident/\1scram-sha-256/;<sp/>s/\(::1\/128\s\+\)ident/\1scram-sha-256/&apos;<sp/>/var/lib/pgsql/data/pg_hba.conf</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>systemctl<sp/>restart<sp/>postgresql</highlight></codeline>
+</programlisting></para>
+<para><bold>Both</bold> — set a password for the <computeroutput>postgres</computeroutput> role and load the schema:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">sudo<sp/>-u<sp/>postgres<sp/>psql<sp/>-c<sp/>&quot;ALTER<sp/>USER<sp/>postgres<sp/>PASSWORD<sp/>&apos;postgres&apos;;&quot;<sp/><sp/><sp/>#<sp/>choose<sp/>a<sp/>real<sp/>password<sp/>outside<sp/>local<sp/>dev</highlight></codeline>
+<codeline><highlight class="normal">PGPASSWORD=postgres<sp/>./scripts/run/db_init.sh<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>runs<sp/>init.sql<sp/>against<sp/>127.0.0.1</highlight></codeline>
+</programlisting></para>
+<para><computeroutput>db_init.sh</computeroutput> connects as <computeroutput>postgres</computeroutput> to the <computeroutput>postgres</computeroutput> database on <computeroutput>127.0.0.1</computeroutput>. To use another database or user, run <computeroutput>psql -h &lt;host&gt; -U &lt;user&gt; -d &lt;db&gt; -f scripts/db/init.sql</computeroutput> yourself.</para>
+</sect2>
+<sect2 id="index_1autotoc_md13">
+<title>Run the server</title><para><computeroutput>run_release.sh</computeroutput> loads its settings from <computeroutput>config</computeroutput> in the project root (a tracked file of defaults); if that file is absent it falls back to <computeroutput>.env</computeroutput>. To keep local values separate from the tracked file, point it at your own file with <computeroutput>ENV_FILE=/path/to/file</computeroutput>. See Configuration for every variable:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">cat<sp/>&gt;<sp/>config<sp/>&lt;&lt;&apos;EOF&apos;</highlight></codeline>
+<codeline><highlight class="normal">SERVER_HOST=0.0.0.0</highlight></codeline>
+<codeline><highlight class="normal">SERVER_PORT=8080</highlight></codeline>
+<codeline><highlight class="normal">DB_HOST=127.0.0.1</highlight></codeline>
+<codeline><highlight class="normal">DB_PORT=5432</highlight></codeline>
+<codeline><highlight class="normal">DB_NAME=postgres</highlight></codeline>
+<codeline><highlight class="normal">DB_USER=postgres</highlight></codeline>
+<codeline><highlight class="normal">DB_PASS=postgres</highlight></codeline>
+<codeline><highlight class="normal">TOKEN_SECRET=change-me-to-a-long-random-string</highlight></codeline>
+<codeline><highlight class="normal">EOF</highlight></codeline>
+</programlisting></para>
+<para>Then start it:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">./scripts/run/run_release.sh<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>run<sp/>build/Release/server<sp/>with<sp/>the<sp/>settings<sp/>file<sp/>loaded</highlight></codeline>
+<codeline><highlight class="normal">./scripts/run/run_release.sh<sp/>--build<sp/><sp/><sp/><sp/>#<sp/>rebuild<sp/>Release<sp/>first,<sp/>then<sp/>run</highlight></codeline>
+</programlisting></para>
+<para>To use a different file, run <computeroutput>ENV_FILE=/path/to/file ./scripts/run/run_release.sh</computeroutput>. Or run the binary directly with the variables exported in your shell: <computeroutput>./build/Release/server</computeroutput>.</para>
+<para>Verify it is up:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">curl<sp/>http://127.0.0.1:8080/api/v2/hello</highlight></codeline>
+</programlisting></para>
+<para>Then open the interactive API docs at <ulink url="http://127.0.0.1:8080/api/v2/doc">http://127.0.0.1:8080/api/v2/doc</ulink>. If the port is not reachable from another machine, open it in the firewall (<computeroutput>sudo ufw allow 8080/tcp</computeroutput> on Debian/Ubuntu, <computeroutput>sudo firewall-cmd --add-port=8080/tcp --permanent &amp;&amp; sudo firewall-cmd --reload</computeroutput> on Fedora).</para>
+</sect2>
+<sect2 id="index_1autotoc_md14">
+<title>Run with Docker</title><para>Every release tag publishes an all-in-one image to Docker Hub: the server <bold>plus</bold> its own PostgreSQL, so no external database is needed. It is a single multi-arch image (<computeroutput>linux/amd64</computeroutput> and <computeroutput>linux/arm64</computeroutput>); Docker and Apple Container pull the right one automatically. It&apos;s meant for demos, testing, and CI.</para>
+<para><blockquote><para><bold>Which should I use?</bold> The Docker image works on any OS. The Alpine tarballs attached to each GitHub Release run only on Alpine Linux. Anywhere else, without Docker, build from source. </para>
+</blockquote></para>
+<para><blockquote><para><bold>The database is ephemeral.</bold> Every container start, <emphasis>including a restart</emphasis>, begins with a fresh, empty database initialised from <computeroutput>init.sql</computeroutput>. Nothing is kept. For persistent data, run the server against your own PostgreSQL instead (see Run the server). </para>
+</blockquote></para>
+<para><bold>Docker</bold> (Linux, macOS, Windows):</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">docker<sp/>run<sp/>--rm<sp/>-p<sp/>8080:8080<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>TOKEN_SECRET=change-me-to-a-long-random-string<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>MAX_REQUESTS=1000000<sp/>-e<sp/>MAX_FPS=3000000<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>dr3mro/valhalla-server-run:latest</highlight></codeline>
+</programlisting></para>
+<para><bold>Apple Container</bold> (Apple Silicon Macs):</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">container<sp/>run<sp/>--rm<sp/>-p<sp/>8080:8080<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>TOKEN_SECRET=change-me-to-a-long-random-string<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>MAX_REQUESTS=1000000<sp/>-e<sp/>MAX_FPS=3000000<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>dr3mro/valhalla-server-run:latest</highlight></codeline>
+</programlisting></para>
+<para><computeroutput>MAX_REQUESTS</computeroutput> and <computeroutput>MAX_FPS</computeroutput> raise the DoS protection limits (defaults <computeroutput>10000</computeroutput> and <computeroutput>100</computeroutput>) so the <bold>Benchmark</bold> and <bold>Test console</bold> panels in the API docs don&apos;t get your IP rate-limited or banned. Leave them out for normal use.</para>
+<para>Then check it is up:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">curl<sp/>http://127.0.0.1:8080/api/v2/hello</highlight></codeline>
+</programlisting></para>
+<para>The interactive API docs are at <ulink url="http://127.0.0.1:8080/api/v2/doc">http://127.0.0.1:8080/api/v2/doc</ulink>.</para>
+<para><bold>Pin a version</bold> instead of <computeroutput>latest</computeroutput>. Every release tag, including pre-releases such as <computeroutput>1.2.3-beta</computeroutput>, is published under its own name and also moves <computeroutput>latest</computeroutput>:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">docker<sp/>pull<sp/>dr3mro/valhalla-server-run:v1.2.3</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>image<sp/>pull<sp/>dr3mro/valhalla-server-run:v1.2.3</highlight></codeline>
+</programlisting></para>
+<para><bold>Give it a name to launch later.</bold> Create the container once, with your settings, then start and stop it by name. Leave out <computeroutput>--rm</computeroutput>, or the container is deleted when it stops.</para>
+<para>Docker:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>one<sp/>time:<sp/>create<sp/>it<sp/>with<sp/>your<sp/>settings,<sp/>without<sp/>starting<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>create<sp/>--name<sp/>valhalla<sp/>-p<sp/>8080:8080<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>TOKEN_SECRET=change-me-to-a-long-random-string<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>MAX_REQUESTS=1000000<sp/>-e<sp/>MAX_FPS=3000000<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>dr3mro/valhalla-server-run:latest</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">docker<sp/>start<sp/>valhalla<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>launch<sp/>(add<sp/>-a<sp/>to<sp/>attach<sp/>to<sp/>its<sp/>output)</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>logs<sp/>-f<sp/>valhalla<sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>follow<sp/>logs</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>stop<sp/>valhalla<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>stop</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>rm<sp/>valhalla<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>delete<sp/>it,<sp/>e.g.<sp/>to<sp/>change<sp/>settings</highlight></codeline>
+</programlisting></para>
+<para>Apple Container (same commands):</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">container<sp/>create<sp/>--name<sp/>valhalla<sp/>-p<sp/>8080:8080<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>TOKEN_SECRET=change-me-to-a-long-random-string<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>MAX_REQUESTS=1000000<sp/>-e<sp/>MAX_FPS=3000000<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>dr3mro/valhalla-server-run:latest</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">container<sp/>start<sp/>valhalla</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>logs<sp/>-f<sp/>valhalla</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>stop<sp/>valhalla</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>rm<sp/>valhalla</highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para>The name keeps everything you gave <computeroutput>create</computeroutput> (port, variables, image). To change any of it, <computeroutput>rm</computeroutput> the container and <computeroutput>create</computeroutput> it again.</para>
+</listitem><listitem><para>The database is still wiped on every <computeroutput>start</computeroutput>, so a named container doesn&apos;t keep data between launches.</para>
+</listitem><listitem><para><computeroutput>start</computeroutput> reuses the image the container was created from; see Update to the latest version below.</para>
+</listitem><listitem><para>If you&apos;d rather type a single word, add a shell alias to <computeroutput>~/.zshrc</computeroutput> or <computeroutput>~/.bashrc</computeroutput>, then just run <computeroutput>valhalla</computeroutput> (Ctrl+C to stop):</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">alias<sp/>valhalla=&apos;docker<sp/>run<sp/>--rm<sp/>-p<sp/>8080:8080<sp/>-e<sp/>TOKEN_SECRET=change-me-to-a-long-random-string<sp/>-e<sp/>MAX_REQUESTS=1000000<sp/>-e<sp/>MAX_FPS=3000000<sp/>dr3mro/valhalla-server-run:latest&apos;</highlight></codeline>
+</programlisting></para>
+</listitem></itemizedlist>
+</para>
+<para><heading level="3">Update to the latest version</heading>
+</para>
+<para>Docker and Apple Container don&apos;t update images on their own; <computeroutput>latest</computeroutput> on your machine is whatever you last pulled. Pull the new image, then recreate the container from it. Nothing is lost, because the database is wiped on every start anyway.</para>
+<para>Docker:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">docker<sp/>pull<sp/>dr3mro/valhalla-server-run:latest</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>if<sp/>you<sp/>use<sp/>a<sp/>named<sp/>container<sp/>(see<sp/>above),<sp/>recreate<sp/>it<sp/>from<sp/>the<sp/>new<sp/>image</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>stop<sp/>valhalla</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>rm<sp/>valhalla</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>create<sp/>--name<sp/>valhalla<sp/>-p<sp/>8080:8080<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>TOKEN_SECRET=change-me-to-a-long-random-string<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>MAX_REQUESTS=1000000<sp/>-e<sp/>MAX_FPS=3000000<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>dr3mro/valhalla-server-run:latest</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>start<sp/>valhalla</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">docker<sp/>image<sp/>prune<sp/>-f<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>optional:<sp/>remove<sp/>the<sp/>old,<sp/>now-untagged<sp/>image</highlight></codeline>
+</programlisting></para>
+<para>Apple Container:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">container<sp/>image<sp/>pull<sp/>dr3mro/valhalla-server-run:latest</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">container<sp/>stop<sp/>valhalla</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>rm<sp/>valhalla</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>create<sp/>--name<sp/>valhalla<sp/>-p<sp/>8080:8080<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>TOKEN_SECRET=change-me-to-a-long-random-string<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>MAX_REQUESTS=1000000<sp/>-e<sp/>MAX_FPS=3000000<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>dr3mro/valhalla-server-run:latest</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>start<sp/>valhalla</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">container<sp/>image<sp/>prune<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>optional:<sp/>remove<sp/>unused<sp/>images</highlight></codeline>
+</programlisting></para>
+<para>Or let <computeroutput>valhalla.sh</computeroutput> do all of it: <computeroutput>./scripts/vdt/valhalla.sh update</computeroutput>.</para>
+<para>If you run with <computeroutput>--rm</computeroutput> or the shell alias, the pull is all you need: the next <computeroutput>run</computeroutput> uses the new image. To see which version is running, check the <computeroutput>Version</computeroutput> line in the startup banner (<computeroutput>docker logs valhalla</computeroutput> or <computeroutput>container logs valhalla</computeroutput>).</para>
+<para><bold>Settings.</bold> Every variable in Configuration can be passed with <computeroutput>-e</computeroutput>. Inside this image:</para>
+<para><table rows="6" cols="3"><row>
+<entry thead="yes"><para>Variable  </para>
+</entry><entry thead="yes"><para>Default  </para>
+</entry><entry thead="yes"><para>Notes  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>TOKEN_SECRET</computeroutput>  </para>
+</entry><entry thead="no"><para><emphasis>(random per start)</emphasis>  </para>
+</entry><entry thead="no"><para>Set it if tokens must survive a restart or be shared with other services  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>DB_NAME</computeroutput> / <computeroutput>DB_USER</computeroutput> / <computeroutput>DB_PASS</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>postgres</computeroutput> / <computeroutput>postgres</computeroutput> / <computeroutput>postgres</computeroutput>  </para>
+</entry><entry thead="no"><para>Created inside the container on start; any value works, quotes included  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>DB_HOST</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>127.0.0.1</computeroutput>  </para>
+</entry><entry thead="no"><para>Fixed: the image always uses its bundled database  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>SERVER_PORT</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>8080</computeroutput>  </para>
+</entry><entry thead="no"><para>If you change it, change the <computeroutput>-p</computeroutput> mapping to match, e.g. <computeroutput>-p 9000:9000 -e SERVER_PORT=9000</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>FRONTEND_HOST</computeroutput> / <computeroutput>EMAIL_SENDER_HOST</computeroutput>  </para>
+</entry><entry thead="no"><para>Docker-network IPs  </para>
+</entry><entry thead="no"><para>Set these if you use invite links or email  </para>
+</entry></row>
+</table>
+</para>
+<para>Details:</para>
+<para><itemizedlist>
+<listitem><para>The server runs as the non-root user <computeroutput>valhalla</computeroutput>; PostgreSQL only listens inside the container (<computeroutput>127.0.0.1</computeroutput>).</para>
+</listitem><listitem><para>The image has a health check (<computeroutput>GET /api/v2/hello</computeroutput>), so <computeroutput>docker ps</computeroutput> shows <computeroutput>healthy</computeroutput> once it is ready, typically a few seconds after start.</para>
+</listitem><listitem><para>If <computeroutput>TOKEN_SECRET</computeroutput> is not set, the container generates a random one on each start (and says so in the log) rather than using the insecure built-in default.</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Build the image yourself</bold> from the repository root:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">docker<sp/>build<sp/>-f<sp/>docker/Dockerfile<sp/>-t<sp/>valhalla-server-run:local<sp/>.</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>build<sp/>-f<sp/>docker/Dockerfile<sp/>-t<sp/>valhalla-server-run:local<sp/>.</highlight></codeline>
+</programlisting></para>
+<para>The build compiles every C++ dependency from source on Alpine and runs the unit tests; the build fails if a test fails. The first build takes a long time; later builds reuse the cached dependency layer until <computeroutput>conanfile.txt</computeroutput> or <computeroutput>conan.lock</computeroutput> changes.</para>
+<para><bold>Release downloads.</bold> Each GitHub Release also attaches <computeroutput>server-alpine-amd64.tar.gz</computeroutput> and <computeroutput>server-alpine-arm64.tar.gz</computeroutput>. These are built on Alpine (musl libc) and only run on Alpine-based systems; everywhere else use the Docker image, or build from source.</para>
+<para><heading level="3">Manage it with <computeroutput>valhalla.sh</computeroutput></heading>
+</para>
+<para><computeroutput>scripts/vdt/valhalla.sh</computeroutput> wraps the commands above for both Docker and Apple Container. It picks Apple Container when it&apos;s installed and Docker otherwise (force one with <computeroutput>--runtime docker</computeroutput> or <computeroutput>--runtime container</computeroutput>).</para>
+<para><bold>Install it as the <computeroutput>vdt</computeroutput> command</bold> (no checkout needed). This downloads the latest <computeroutput>valhalla.sh</computeroutput>, the API test scripts and their payloads from this repository. The command goes in <computeroutput>~/.local/bin/vdt</computeroutput> (a link); the files go in <computeroutput>~/.local/share/vdt</computeroutput>, without the <computeroutput>.sh</computeroutput> extension (<computeroutput>vdt</computeroutput>, <computeroutput>test_api</computeroutput>, <computeroutput>schemathesis_test</computeroutput>) and executable, plus a copy of the installer. It adds <computeroutput>~/.local/bin</computeroutput> to <computeroutput>PATH</computeroutput> (if it isn&apos;t already) and tab completion in <computeroutput>~/.zshrc</computeroutput> and/or <computeroutput>~/.bashrc</computeroutput>:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">curl<sp/>-fsSL<sp/>https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh<sp/>|<sp/>sh</highlight></codeline>
+</programlisting></para>
+<para>Then open a new terminal and use <computeroutput>vdt</computeroutput> instead of <computeroutput>./scripts/vdt/valhalla.sh</computeroutput> (e.g. <computeroutput>vdt run</computeroutput>, <computeroutput>vdt status</computeroutput>). Afterwards the tool manages itself with the same installer. The installer keeps a copy of itself next to the tool, so <computeroutput>uninstall</computeroutput> works offline; <computeroutput>install</computeroutput> downloads the latest installer first, then uninstalls the current copy and installs the new one (if the download fails, nothing is removed):</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">vdt<sp/>install<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>update<sp/>to<sp/>the<sp/>latest<sp/>version<sp/>(your<sp/>config<sp/>and<sp/>dumps/<sp/>are<sp/>kept)</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>install<sp/>v1.2.3<sp/><sp/><sp/><sp/><sp/>#<sp/>a<sp/>specific<sp/>tag,<sp/>branch<sp/>or<sp/>commit</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>uninstall<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>remove<sp/>it<sp/>and<sp/>its<sp/>lines<sp/>in<sp/>~/.zshrc<sp/>/<sp/>~/.bashrc<sp/>(asks<sp/>first)</highlight></codeline>
+</programlisting></para>
+<para>The installed copy has everything except <computeroutput>build</computeroutput>, which needs a full checkout of the repository. From a checkout, every command works the same as <computeroutput>./scripts/vdt/valhalla.sh &lt;command&gt;</computeroutput>:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>run<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>create<sp/>(pulling<sp/>the<sp/>image<sp/>if<sp/>needed)<sp/>or<sp/>start<sp/>the<sp/>container</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>update<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>pull<sp/>:latest,<sp/>recreate<sp/>the<sp/>container<sp/>with<sp/>the<sp/>same<sp/>settings,<sp/>free<sp/>old<sp/>images</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>update<sp/>v1.2.3<sp/><sp/><sp/>#<sp/>same,<sp/>for<sp/>a<sp/>specific<sp/>tag</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>build<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>build<sp/>the<sp/>image<sp/>from<sp/>this<sp/>checkout<sp/>and<sp/>run<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>stop<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>stop<sp/>it<sp/>without<sp/>removing<sp/>it<sp/>(run<sp/>starts<sp/>it<sp/>again)</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>restart<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>restart<sp/>it<sp/>(the<sp/>database<sp/>is<sp/>wiped,<sp/>as<sp/>on<sp/>every<sp/>start)</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>status<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>state,<sp/>image,<sp/>port,<sp/>health<sp/>and<sp/>version</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>outdated<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>is<sp/>there<sp/>a<sp/>newer<sp/>image<sp/>on<sp/>Docker<sp/>Hub?</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>show<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>follow<sp/>the<sp/>log<sp/>(Ctrl+C<sp/>stops<sp/>following,<sp/>not<sp/>the<sp/>server)</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>logs<sp/>50<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>last<sp/>50<sp/>log<sp/>lines</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>stats<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>live<sp/>CPU<sp/>and<sp/>memory<sp/>use</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>env<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>what<sp/>a<sp/>new<sp/>container<sp/>would<sp/>get<sp/>from<sp/>.env,<sp/>secrets<sp/>hidden</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>doc<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>open<sp/>the<sp/>API<sp/>docs<sp/>in<sp/>the<sp/>browser</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>psql<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>psql<sp/>on<sp/>the<sp/>bundled<sp/>database</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>dump<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>save<sp/>the<sp/>database<sp/>to<sp/>~/.local/share/vdt/dumps</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>restore<sp/>FILE<sp/><sp/><sp/><sp/>#<sp/>load<sp/>a<sp/>dump<sp/>back<sp/>(e.g.<sp/>after<sp/>restart<sp/>or<sp/>update)</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>shell<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>a<sp/>shell<sp/>inside<sp/>the<sp/>container</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>test<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>run<sp/>test_api.sh<sp/>against<sp/>it<sp/>(test<sp/>fuzz<sp/>/<sp/>test<sp/>all<sp/>for<sp/>Schemathesis)</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>secret<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>write<sp/>a<sp/>random<sp/>TOKEN_SECRET<sp/>to<sp/>.env</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>install<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>install<sp/>or<sp/>update<sp/>the<sp/>`vdt`<sp/>command<sp/>from<sp/>GitHub</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>uninstall<sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>remove<sp/>the<sp/>installed<sp/>`vdt`<sp/>command</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>delete<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>remove<sp/>the<sp/>container<sp/>(asks<sp/>first)</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>clean<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>remove<sp/>the<sp/>container<sp/>and<sp/>all<sp/>local<sp/>images<sp/>of<sp/>it<sp/>(asks<sp/>first)</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>version<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>the<sp/>tool&apos;s<sp/>version</highlight></codeline>
+</programlisting></para>
+<para>Options go before or after the command: <computeroutput>--name</computeroutput>, <computeroutput>--port</computeroutput>, <computeroutput>--runtime</computeroutput>, <computeroutput>--env-file</computeroutput>, <computeroutput>-n</computeroutput>/<computeroutput>--dry-run</computeroutput> (see what any command would change, without changing anything), <computeroutput>-y</computeroutput>/<computeroutput>--yes</computeroutput> and <computeroutput>-p</computeroutput>/<computeroutput>--persist</computeroutput> / <computeroutput>--no-persist</computeroutput> (see Persistence below). The first time you run it, it adds tab completion to <computeroutput>~/.zshrc</computeroutput> and/or <computeroutput>~/.bashrc</computeroutput>; open a new terminal to use it (set <computeroutput>VALHALLA_NO_COMPLETION=1</computeroutput> to skip).</para>
+<para>Each command first checks the tools it needs (<computeroutput>curl</computeroutput>, <computeroutput>python3</computeroutput> for Apple Container, <computeroutput>jq</computeroutput> for <computeroutput>test</computeroutput>, <computeroutput>fzf</computeroutput> for <computeroutput>payload</computeroutput>, …) and lists any that are missing, with how to install them.</para>
+<para>Every <computeroutput>run</computeroutput>, <computeroutput>update</computeroutput> and <computeroutput>restart</computeroutput> waits until <computeroutput>/api/v2/hello</computeroutput> answers and prints the version line from the log.</para>
+<para>It passes every variable in a settings file to the container, using the first it finds: <computeroutput>.env</computeroutput> in the directory you run it from, <computeroutput>.env</computeroutput> next to the script (your checkout), or <computeroutput>~/.local/share/vdt/config</computeroutput> (same format). The installer creates that last one with defaults for a small local container: <computeroutput>SERVER_THREADS = 2</computeroutput>, <computeroutput>DB_MAX_CONN = 2</computeroutput>, and raised <computeroutput>MAX_REQUESTS</computeroutput>/<computeroutput>MAX_FPS</computeroutput>. It&apos;s yours from then on: kept on update, and on uninstall unless it&apos;s still the unedited default. The script itself hard-codes no server settings; anything no <computeroutput>.env</computeroutput> sets falls back to the server&apos;s defaults (4 threads, 10 connections, <computeroutput>MAX_REQUESTS</computeroutput> 10000, <computeroutput>MAX_FPS</computeroutput> 100). Only one file is used; they aren&apos;t merged. Variables set in the shell win over <computeroutput>.env</computeroutput> for a single run (<computeroutput>SERVER_THREADS=4 ./scripts/vdt/valhalla.sh update</computeroutput>). Quoted values, spaces around <computeroutput>=</computeroutput> and <computeroutput> # comments</computeroutput> are fine. After editing <computeroutput>.env</computeroutput>, run <computeroutput>./scripts/vdt/valhalla.sh update</computeroutput> to apply it. Use another file with <computeroutput>--env-file path</computeroutput> (or <computeroutput>VALHALLA_ENV_FILE</computeroutput>), or skip it with <computeroutput>--env-file none</computeroutput>.</para>
+<para><bold>Disk space.</bold> After <computeroutput>update</computeroutput> and <computeroutput>build</computeroutput>, the tool removes its own older images that no container uses: never the image the new container runs, and never the <computeroutput>-deps</computeroutput> build image. It then frees leftover layers. On Docker that&apos;s only the dangling images that came from this repository; Apple Container can&apos;t tell where an image came from, so there it runs <computeroutput>container image prune</computeroutput>, which removes only dangling (untagged, unused) images. It reports the image disk usage before and after. <computeroutput>-n</computeroutput> shows what it would remove, and <computeroutput>--no-prune</computeroutput> (or <computeroutput>VALHALLA_NO_PRUNE=1</computeroutput>) keeps everything.</para>
+<para><bold>Update notices.</bold> Every few hours (<computeroutput>VALHALLA_UPDATE_INTERVAL</computeroutput>, default 6 hours) a background job checks, when you&apos;re online, whether Docker Hub has a newer image than your container runs and whether GitHub has a newer version of the tool than your installed copy. The next commands then show a small table with the installed and latest versions and the command that updates them: <computeroutput>vdt update</computeroutput> covers both — the image and the <computeroutput>vdt</computeroutput> tool itself (it runs the installer after the container is recreated). <computeroutput>vdt install</computeroutput> only updates the tool, and <computeroutput>vdt update --image-only</computeroutput> / <computeroutput>--tool-only</computeroutput> pick one side. The check never delays a command. The exception is <computeroutput>vdt status</computeroutput>, which checks right away when there&apos;s an internet connection (a second or two) and ends with an <computeroutput>Updates:</computeroutput> line: up to date, available (with the table), or not checked when offline. The table only appears in an interactive terminal, styled as far as it supports: colors, Unicode box drawing, emoji, or Nerd Font icons at level 2 (<computeroutput>VALHALLA_NERD=1</computeroutput> forces them). Turn it off with <computeroutput>VALHALLA_NO_UPDATE_CHECK=1</computeroutput>. A checkout, or a copy installed from one, isn&apos;t checked for tool updates.</para>
+<para><bold>Login token secret.</bold> <computeroutput>TOKEN_SECRET</computeroutput> signs the JWT login tokens, and the tool never lets it change by itself between starts (which would log everyone out). The installer generates one into <computeroutput>~/.local/share/vdt/config</computeroutput>. A container gets the first of: <computeroutput>--token-secret</computeroutput>, <computeroutput>TOKEN_SECRET</computeroutput> in the shell, the <computeroutput>.env</computeroutput> in use, <computeroutput>~/.local/share/vdt/config</computeroutput> (checked even when a <computeroutput>.env</computeroutput> is in use), or the replaced container&apos;s secret. If there&apos;s none, one is generated once and saved to <computeroutput>config</computeroutput>. <computeroutput>vdt env</computeroutput> shows which one is used, and <computeroutput>vdt secret</computeroutput> replaces it (asking first).</para>
+<para><bold>Persistence.</bold> Without it, the bundled database starts from <computeroutput>init.sql</computeroutput> on every container start. Add <computeroutput>--persist</computeroutput> once (<computeroutput>vdt run --persist</computeroutput>, <computeroutput>vdt update --persist</computeroutput>, or <computeroutput>VALHALLA_PERSIST=1</computeroutput> in <computeroutput>.env</computeroutput>) and the database is kept in <computeroutput>~/.local/share/vdt/dumps/&lt;name&gt;-persist.sql</computeroutput>, which is mounted into the container. The image&apos;s entrypoint loads it at start instead of <computeroutput>init.sql</computeroutput> and saves it whenever the container stops, including restarts outside the tool (Docker Desktop, a reboot). The tool also saves it before <computeroutput>stop</computeroutput>, <computeroutput>restart</computeroutput>, <computeroutput>update</computeroutput>, <computeroutput>build</computeroutput> and <computeroutput>delete</computeroutput> (the previous dump is kept as <computeroutput>.prev</computeroutput>), and if that save fails, nothing is stopped. The setting is stored in the container, so later commands remember it; <computeroutput>--no-persist</computeroutput> turns it off. <computeroutput>vdt status</computeroutput> shows whether it&apos;s on and when the database was last saved. Restoring a dump made by a different image prints a warning, because if that image changed the schema the old schema comes back. Images released before this feature still work: the tool restores the dump itself after the container starts.</para>
+<para>In a terminal, <computeroutput>vdt</computeroutput> messages and <computeroutput>help</computeroutput> (or <computeroutput>--help</computeroutput>) use colors, Unicode box drawing, BMP symbols and emoji as far as the terminal supports them, and help is paged with <computeroutput>less</computeroutput> when it&apos;s longer than the screen; piped or with <computeroutput>NO_COLOR=1</computeroutput> output is plain text. Force a style with <computeroutput>VALHALLA_FANCY=0</computeroutput> (plain) to <computeroutput>3</computeroutput> (everything).</para>
+<para>Full help (<computeroutput>./scripts/vdt/valhalla.sh help</computeroutput>):</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">Valhalla<sp/>Deployment<sp/>Tool<sp/>(vdt):<sp/>run<sp/>and<sp/>manage<sp/>the<sp/>Valhalla<sp/>server<sp/>locally.</highlight></codeline>
+<codeline><highlight class="normal">Quick<sp/>start:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>run<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Start<sp/>the<sp/>server<sp/>(pulls<sp/>the<sp/>image<sp/>on<sp/>first<sp/>use).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>doc<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Open<sp/>the<sp/>API<sp/>docs<sp/>in<sp/>the<sp/>browser.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>status<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Check<sp/>state,<sp/>health<sp/>and<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>logs<sp/>[N]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Print<sp/>the<sp/>last<sp/>N<sp/>log<sp/>lines<sp/>(default<sp/>100).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>stop<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Stop<sp/>the<sp/>container<sp/>(run<sp/>starts<sp/>it<sp/>again).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>update<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Pull<sp/>the<sp/>newest<sp/>image<sp/>and<sp/>update<sp/>the<sp/>tool.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vdt<sp/>[options]<sp/>&lt;command&gt;<sp/>[args]<sp/><sp/><sp/><sp/><sp/><sp/>(installed)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Container:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>run<sp/>[tag]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Start<sp/>the<sp/>container.<sp/>Creates<sp/>it<sp/>(pulling<sp/>the<sp/>image<sp/>if<sp/>it&apos;s</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>missing)<sp/>if<sp/>it<sp/>doesn&apos;t<sp/>exist;<sp/>starts<sp/>it<sp/>if<sp/>it&apos;s<sp/>stopped.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>update<sp/>[tag]<sp/><sp/><sp/><sp/><sp/>Pull<sp/>the<sp/>image<sp/>and<sp/>recreate<sp/>the<sp/>container<sp/>with<sp/>the<sp/>same</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>settings<sp/>(re-reading<sp/>.env),<sp/>then<sp/>remove<sp/>the<sp/>old<sp/>image</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>to<sp/>free<sp/>disk<sp/>space<sp/>(--no-prune<sp/>keeps<sp/>it);<sp/>also<sp/>updates</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>vdt<sp/>tool<sp/>itself<sp/>when<sp/>GitHub<sp/>has<sp/>a<sp/>newer<sp/>one</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(--image-only<sp/>/<sp/>--tool-only<sp/>update<sp/>just<sp/>one).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>build<sp/>[tag]<sp/><sp/><sp/><sp/><sp/><sp/>Build<sp/>the<sp/>image<sp/>from<sp/>this<sp/>checkout<sp/>(version<sp/>from</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`git<sp/>describe`)<sp/>as<sp/>valhalla-server-run:&lt;tag&gt;<sp/>(default</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>local),<sp/>then<sp/>recreate<sp/>the<sp/>container<sp/>from<sp/>it<sp/>and<sp/>remove</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>old<sp/>image<sp/>(--no-prune<sp/>keeps<sp/>it).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>stop<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Stop<sp/>the<sp/>container<sp/>without<sp/>removing<sp/>it<sp/>(run<sp/>starts<sp/>it).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>restart<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Restart<sp/>the<sp/>container.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delete<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Remove<sp/>the<sp/>container<sp/>(the<sp/>image<sp/>stays;<sp/>asks<sp/>first).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>clean<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Remove<sp/>the<sp/>container<sp/>and<sp/>every<sp/>local<sp/>image<sp/>of<sp/>the<sp/>repo</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(asks<sp/>first).</highlight></codeline>
+<codeline><highlight class="normal">Inspect:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>status<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Show<sp/>state,<sp/>image,<sp/>port,<sp/>health<sp/>and<sp/>version,<sp/>and<sp/>check</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>updates<sp/>now<sp/>(when<sp/>there&apos;s<sp/>an<sp/>internet<sp/>connection).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>outdated<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Compare<sp/>the<sp/>container&apos;s<sp/>image<sp/>with<sp/>Docker<sp/>Hub.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>show<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Follow<sp/>the<sp/>container&apos;s<sp/>log<sp/>(Ctrl+C<sp/>stops<sp/>following;<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>container<sp/>keeps<sp/>running).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>logs<sp/>[N]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Print<sp/>the<sp/>last<sp/>N<sp/>log<sp/>lines<sp/>(default<sp/>100).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>stats<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Live<sp/>CPU<sp/>and<sp/>memory<sp/>use.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>env<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Print<sp/>the<sp/>variables<sp/>a<sp/>new<sp/>container<sp/>would<sp/>get<sp/>(secrets</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hidden),<sp/>without<sp/>changing<sp/>anything.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>doc<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Open<sp/>the<sp/>API<sp/>docs<sp/>in<sp/>the<sp/>browser<sp/>(fails<sp/>if<sp/>not<sp/>running).</highlight></codeline>
+<codeline><highlight class="normal">Database<sp/>(reset<sp/>on<sp/>every<sp/>start<sp/>unless<sp/>persistence<sp/>is<sp/>on,<sp/>see<sp/>--persist):</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>psql<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Open<sp/>psql<sp/>on<sp/>the<sp/>database<sp/>inside<sp/>the<sp/>container.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>dump<sp/>[file]<sp/><sp/><sp/><sp/><sp/><sp/>Save<sp/>the<sp/>database<sp/>(default</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>~/.local/share/vdt/dumps/&lt;name&gt;-&lt;time&gt;.sql).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>restore<sp/>&lt;file&gt;<sp/><sp/><sp/>Load<sp/>a<sp/>dump<sp/>into<sp/>the<sp/>running<sp/>container,<sp/>then<sp/>restart<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>server<sp/>process<sp/>so<sp/>it<sp/>starts<sp/>from<sp/>the<sp/>restored<sp/>data.</highlight></codeline>
+<codeline><highlight class="normal">Other:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>shell<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Open<sp/>a<sp/>shell<sp/>inside<sp/>the<sp/>container.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>test<sp/>[api|fuzz|all]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Run<sp/>test_api.sh<sp/>(api,<sp/>default)<sp/>and/or</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>schemathesis_test.sh<sp/>(fuzz)<sp/>against<sp/>the<sp/>container.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>payload<sp/>[group]<sp/>[name]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Browse<sp/>the<sp/>JSON<sp/>request<sp/>payloads<sp/>test_api.sh<sp/>sends</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(interactive<sp/>with<sp/>fzf);<sp/>with<sp/>group<sp/>and<sp/>name,<sp/>print<sp/>one</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>directly<sp/>(--raw<sp/>prints<sp/>the<sp/>file<sp/>as-is,<sp/>--filled</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>substitutes<sp/>sample<sp/>values<sp/>for<sp/>the<sp/>placeholders).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>secret<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Generate<sp/>a<sp/>new<sp/>random<sp/>TOKEN_SECRET<sp/>and<sp/>save<sp/>it<sp/>where<sp/>it&apos;s</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>read<sp/>from<sp/>(normally<sp/>~/.local/share/vdt/config;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>asks<sp/>before<sp/>replacing<sp/>one,<sp/>which<sp/>logs<sp/>everyone<sp/>out).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>version<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Show<sp/>the<sp/>tool&apos;s<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>completion<sp/>[zsh|bash]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Print<sp/>the<sp/>shell<sp/>completion<sp/>script.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>help<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Show<sp/>this<sp/>help.</highlight></codeline>
+<codeline><highlight class="normal">Tool<sp/>(both<sp/>run<sp/>install.sh):</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>install<sp/>[ref]<sp/><sp/><sp/><sp/>Install<sp/>or<sp/>update<sp/>the<sp/>`vdt`<sp/>command<sp/>(~/.local/bin,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>files<sp/>in<sp/>~/.local/share/vdt;<sp/>an<sp/>installed<sp/>copy</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>updates<sp/>itself<sp/>in<sp/>place<sp/>—<sp/>`update`<sp/>does<sp/>this<sp/>too).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Downloads<sp/>first;<sp/>only<sp/>then</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>removes<sp/>the<sp/>current<sp/>copy<sp/>and<sp/>installs,<sp/>so<sp/>a<sp/>failed</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>download<sp/>changes<sp/>nothing.<sp/>ref:<sp/>branch,<sp/>tag<sp/>or<sp/>commit</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(default<sp/>main).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uninstall<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Remove<sp/>the<sp/>installed<sp/>`vdt`<sp/>command<sp/>and<sp/>its<sp/>lines<sp/>in</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>~/.zshrc<sp/>/<sp/>~/.bashrc<sp/>(asks<sp/>first;<sp/>keeps<sp/>config,<sp/>dumps/).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Uses<sp/>the<sp/>installer<sp/>copy<sp/>kept<sp/>in<sp/>the<sp/>install<sp/>directory,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>so<sp/>it<sp/>works<sp/>offline;<sp/>downloads<sp/>it<sp/>only<sp/>if<sp/>missing.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">tag<sp/>defaults<sp/>to<sp/>&quot;latest&quot;<sp/>(build:<sp/>&quot;local&quot;).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Options<sp/>(before<sp/>or<sp/>after<sp/>the<sp/>command):</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>--name<sp/>NAME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>container<sp/>name<sp/><sp/><sp/><sp/><sp/>(env<sp/>VALHALLA_NAME,<sp/>default<sp/>valhalla)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>--port<sp/>PORT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>host<sp/>port<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(env<sp/>CONTAINER_PORT<sp/>or<sp/>CONTAINER_PORT,<sp/>default<sp/>8080;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>an<sp/>existing<sp/>container,<sp/>the<sp/>port<sp/>it<sp/>was<sp/>created<sp/>with)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>--runtime<sp/>RT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>docker<sp/>|<sp/>container<sp/>(env<sp/>VALHALLA_RUNTIME)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>--env-file<sp/>FILE<sp/><sp/><sp/><sp/><sp/><sp/>settings<sp/>file,<sp/>or<sp/>&quot;none&quot;<sp/>(env<sp/>VALHALLA_ENV_FILE)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-n,<sp/>--dry-run<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>show<sp/>what<sp/>a<sp/>command<sp/>would<sp/>change,<sp/>without<sp/>changing</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>anything<sp/>(read-only<sp/>commands<sp/>just<sp/>run)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-y,<sp/>--yes<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>don&apos;t<sp/>ask<sp/>for<sp/>confirmation</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-p,<sp/>--persist<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>keep<sp/>the<sp/>database<sp/>across<sp/>stop/restart/update/build/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>delete<sp/>(see<sp/>Persistence<sp/>below);<sp/>stored<sp/>in<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>container,<sp/>so<sp/>later<sp/>commands<sp/>remember<sp/>it</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>--no-persist<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>turn<sp/>persistence<sp/>off<sp/>(with<sp/>update/build:<sp/>recreate</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>without<sp/>it)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>--no-prune<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>update/build:<sp/>keep<sp/>the<sp/>replaced<sp/>images<sp/>(env</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VALHALLA_NO_PRUNE=1).<sp/>Otherwise<sp/>unused<sp/>older<sp/>images</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>of<sp/>this<sp/>tool<sp/>are<sp/>removed,<sp/>plus<sp/>dangling<sp/>layers<sp/>(on</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Docker<sp/>only<sp/>those<sp/>from<sp/>this<sp/>repo;<sp/>Apple<sp/>container&apos;s</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prune<sp/>removes<sp/>all<sp/>dangling<sp/>images).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>--image-only<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>update:<sp/>only<sp/>the<sp/>image<sp/>and<sp/>container,<sp/>skip<sp/>the<sp/>tool</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>--tool-only<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>update:<sp/>only<sp/>the<sp/>vdt<sp/>tool,<sp/>leave<sp/>the<sp/>container</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>alone<sp/>(needs<sp/>no<sp/>runtime<sp/>or<sp/>container)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>--token-secret<sp/>S<sp/><sp/><sp/><sp/><sp/>JWT<sp/>signing<sp/>secret<sp/>for<sp/>a<sp/>new<sp/>container<sp/>(wins<sp/>over</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>env<sp/>file<sp/>and<sp/>config;<sp/>visible<sp/>in<sp/>your<sp/>shell</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>history,<sp/>so<sp/>prefer<sp/>the<sp/>config<sp/>file)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-h,<sp/>--help<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>show<sp/>this<sp/>help</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Other<sp/>settings<sp/>(environment<sp/>variables):</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_IMAGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/>image<sp/>repo<sp/>(default<sp/>docker.io/dr3mro/valhalla-server-run)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_CPUS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPUs<sp/>(default<sp/>4)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_MEMORY<sp/><sp/><sp/><sp/><sp/><sp/>memory,<sp/>GB<sp/>(default<sp/>1)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_DEPS_IMAGE<sp/><sp/>build:<sp/>deps<sp/>image,<sp/>or<sp/>&quot;local&quot;<sp/>to<sp/>build<sp/>the<sp/>deps<sp/>from</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>source<sp/>(default:<sp/>&lt;repo&gt;-deps:&lt;arch&gt;<sp/>from<sp/>Docker<sp/>Hub)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_BUILD_MEMORY<sp/><sp/>build:<sp/>Apple<sp/>builder<sp/>memory,<sp/>GB<sp/>(default<sp/>8)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_NO_COMPLETION=1<sp/><sp/>don&apos;t<sp/>add<sp/>shell<sp/>completion<sp/>to<sp/>~/.zshrc/~/.bashrc</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_PERSIST=1<sp/><sp/><sp/>same<sp/>as<sp/>--persist<sp/>when<sp/>a<sp/>container<sp/>is<sp/>created<sp/>(also</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>works<sp/>in<sp/>the<sp/>env<sp/>file)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_DATA_DIR<sp/><sp/><sp/><sp/>where<sp/>dumps<sp/>go<sp/>(default<sp/>~/.local/share/vdt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dumps<sp/>in<sp/>its<sp/>dumps/<sp/>folder)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_WAIT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seconds<sp/>to<sp/>wait<sp/>for<sp/>the<sp/>server<sp/>to<sp/>answer<sp/>(default<sp/>60)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_NO_UPDATE_CHECK=1<sp/><sp/>don&apos;t<sp/>check<sp/>for<sp/>or<sp/>show<sp/>updates</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_UPDATE_INTERVAL<sp/><sp/>seconds<sp/>between<sp/>update<sp/>checks<sp/>(default<sp/>21600)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_NERD=0|1<sp/><sp/><sp/><sp/>use<sp/>Nerd<sp/>Font<sp/>icons<sp/>(default<sp/>at<sp/>level<sp/>2;<sp/>1<sp/>forces)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_FANCY<sp/><sp/><sp/><sp/><sp/><sp/><sp/>output<sp/>style:<sp/>0<sp/>plain,<sp/>1<sp/>colors,<sp/>2<sp/>+<sp/>unicode</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(BMP<sp/>symbols),<sp/>3<sp/>+<sp/>emoji<sp/>(default:<sp/>what<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>terminal<sp/>supports;<sp/>NO_COLOR=1<sp/>also<sp/>gives<sp/>plain).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Applies<sp/>to<sp/>every<sp/>message,<sp/>report<sp/>and<sp/>help<sp/>screen.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Persistence:<sp/>the<sp/>bundled<sp/>database<sp/>starts<sp/>from<sp/>init.sql<sp/>on<sp/>every<sp/>container</highlight></codeline>
+<codeline><highlight class="normal">start.<sp/>With<sp/>persistence<sp/>on,<sp/>it&apos;s<sp/>kept<sp/>in</highlight></codeline>
+<codeline><highlight class="normal">~/.local/share/vdt/dumps/&lt;name&gt;-persist.sql<sp/>(mounted<sp/>at<sp/>/persist):</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>image&apos;s<sp/>entrypoint<sp/>loads<sp/>it<sp/>at<sp/>start<sp/>instead<sp/>of<sp/>init.sql<sp/>and<sp/>saves<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">when<sp/>the<sp/>container<sp/>stops,<sp/>also<sp/>when<sp/>that<sp/>happens<sp/>outside<sp/>this<sp/>tool<sp/>(Docker</highlight></codeline>
+<codeline><highlight class="normal">Desktop<sp/>restart,<sp/>reboot).<sp/>This<sp/>tool<sp/>also<sp/>saves<sp/>it<sp/>before<sp/>stop,<sp/>restart,</highlight></codeline>
+<codeline><highlight class="normal">update,<sp/>build<sp/>and<sp/>delete<sp/>(the<sp/>previous<sp/>dump<sp/>is<sp/>kept<sp/>as<sp/>.prev);<sp/>if<sp/>that</highlight></codeline>
+<codeline><highlight class="normal">fails,<sp/>nothing<sp/>is<sp/>stopped.<sp/>Images<sp/>from<sp/>before<sp/>this<sp/>feature<sp/>fall<sp/>back<sp/>to<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">tool<sp/>restoring<sp/>the<sp/>dump<sp/>after<sp/>start.<sp/>Turning<sp/>it<sp/>on<sp/>(run/update<sp/>--persist)</highlight></codeline>
+<codeline><highlight class="normal">restores<sp/>an<sp/>existing<sp/>saved<sp/>file,<sp/>or<sp/>saves<sp/>the<sp/>current<sp/>data<sp/>if<sp/>there&apos;s<sp/>none</highlight></codeline>
+<codeline><highlight class="normal">yet.<sp/>A<sp/>dump<sp/>made<sp/>by<sp/>a<sp/>different<sp/>image<sp/>prints<sp/>a<sp/>warning:<sp/>if<sp/>that<sp/>image</highlight></codeline>
+<codeline><highlight class="normal">changed<sp/>the<sp/>schema,<sp/>the<sp/>old<sp/>schema<sp/>comes<sp/>back.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Updates:<sp/>every<sp/>few<sp/>hours<sp/>a<sp/>background<sp/>job<sp/>checks<sp/>(when<sp/>online)<sp/>whether<sp/>a</highlight></codeline>
+<codeline><highlight class="normal">newer<sp/>Docker<sp/>image<sp/>or<sp/>tool<sp/>version<sp/>exists;<sp/>the<sp/>next<sp/>commands<sp/>then<sp/>show<sp/>a</highlight></codeline>
+<codeline><highlight class="normal">table<sp/>with<sp/>the<sp/>installed<sp/>and<sp/>latest<sp/>versions<sp/>(in<sp/>a<sp/>terminal<sp/>only,<sp/>styled</highlight></codeline>
+<codeline><highlight class="normal">as<sp/>far<sp/>as<sp/>it<sp/>supports).<sp/>The<sp/>check<sp/>never<sp/>delays<sp/>a<sp/>command.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Runtime:<sp/>Apple<sp/>`container`<sp/>if<sp/>installed,<sp/>otherwise<sp/>docker.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Dependencies:<sp/>before<sp/>running,<sp/>each<sp/>command<sp/>checks<sp/>the<sp/>tools<sp/>and<sp/>files<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">needs<sp/>(e.g.<sp/>curl,<sp/>python3<sp/>for<sp/>Apple<sp/>container,<sp/>jq<sp/>for<sp/>test,<sp/>fzf<sp/>for</highlight></codeline>
+<codeline><highlight class="normal">payload,<sp/>docker/Dockerfile<sp/>for<sp/>build)<sp/>and<sp/>lists<sp/>every<sp/>missing<sp/>one<sp/>with<sp/>how</highlight></codeline>
+<codeline><highlight class="normal">to<sp/>install<sp/>it.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Shell<sp/>completion:<sp/>on<sp/>first<sp/>use<sp/>the<sp/>script<sp/>adds<sp/>one<sp/>line<sp/>to<sp/>~/.zshrc<sp/>and/or</highlight></codeline>
+<codeline><highlight class="normal">~/.bashrc<sp/>(whichever<sp/>exist)<sp/>to<sp/>enable<sp/>tab<sp/>completion;<sp/>open<sp/>a<sp/>new<sp/>terminal<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">use<sp/>it.<sp/>Remove<sp/>the<sp/>line<sp/>marked<sp/>&quot;vdt<sp/>completion&quot;<sp/>to<sp/>undo.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Server<sp/>variables:<sp/>every<sp/>KEY=VALUE<sp/>in<sp/>the<sp/>env<sp/>file<sp/>is<sp/>passed<sp/>to<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>through<sp/>a<sp/>private<sp/>env<sp/>file,<sp/>so<sp/>values<sp/>don&apos;t<sp/>show<sp/>up<sp/>in<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">process<sp/>list<sp/>(comments,<sp/>including<sp/>&quot;<sp/>#<sp/>...&quot;<sp/>after<sp/>a<sp/>value,<sp/>and<sp/>blank<sp/>lines</highlight></codeline>
+<codeline><highlight class="normal">skipped;<sp/>spaces<sp/>around<sp/>&quot;=&quot;<sp/>and<sp/>surrounding<sp/>quotes<sp/>removed).<sp/>The<sp/>env<sp/>file<sp/>is</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>first<sp/>of:<sp/>.env<sp/>in<sp/>the<sp/>current<sp/>directory,<sp/>.env<sp/>next<sp/>to<sp/>this<sp/>script,</highlight></codeline>
+<codeline><highlight class="normal">~/.local/share/vdt/config.<sp/>The<sp/>installer<sp/>creates<sp/>that<sp/>file<sp/>with<sp/>defaults</highlight></codeline>
+<codeline><highlight class="normal">for<sp/>a<sp/>small<sp/>local<sp/>container:<sp/>SERVER_THREADS=2,<sp/>DB_MAX_CONN=2,<sp/>and<sp/>raised</highlight></codeline>
+<codeline><highlight class="normal">MAX_REQUESTS/MAX_FPS<sp/>so<sp/>the<sp/>API<sp/>docs&apos;<sp/>Benchmark<sp/>and<sp/>Test<sp/>console<sp/>panels</highlight></codeline>
+<codeline><highlight class="normal">don&apos;t<sp/>get<sp/>your<sp/>IP<sp/>rate-limited.<sp/>Edit<sp/>it<sp/>freely;<sp/>it&apos;s<sp/>kept<sp/>on<sp/>update.</highlight></codeline>
+<codeline><highlight class="normal">MAX_REQUESTS,<sp/>MAX_FPS,<sp/>PERMISSION_CACHE_TTL,<sp/>DB_ACQUIRE_TIMEOUT_MS,<sp/>PASSWORD_WORKERS,<sp/>PASSWORD_QUEUE_MAX,<sp/>DB_WORKERS,<sp/>DB_QUEUE_MAX,<sp/>DB_IO_FASTPATH,<sp/>TOKEN_SECRET,<sp/>SERVER_THREADS<sp/>and<sp/>DB_MAX_CONN<sp/>set<sp/>in</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>shell<sp/>win<sp/>over<sp/>the<sp/>env<sp/>file<sp/>for<sp/>one<sp/>run<sp/>(e.g.<sp/>SERVER_THREADS=4</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>update).<sp/>Variables<sp/>set<sp/>nowhere<sp/>aren&apos;t<sp/>passed,<sp/>so<sp/>the<sp/>server</highlight></codeline>
+<codeline><highlight class="normal">uses<sp/>its<sp/>own<sp/>defaults<sp/>(in<sp/>brackets<sp/>below).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TOKEN_SECRET<sp/>(signs<sp/>the<sp/>login<sp/>tokens)<sp/>is<sp/>never<sp/>generated<sp/>per<sp/>start.<sp/>The</highlight></codeline>
+<codeline><highlight class="normal">installer<sp/>generates<sp/>one<sp/>into<sp/>~/.local/share/vdt/config.<sp/>A<sp/>container</highlight></codeline>
+<codeline><highlight class="normal">gets<sp/>the<sp/>first<sp/>of:<sp/>--token-secret,<sp/>TOKEN_SECRET<sp/>in<sp/>the<sp/>shell,<sp/>the<sp/>env<sp/>file</highlight></codeline>
+<codeline><highlight class="normal">in<sp/>use,<sp/>~/.local/share/vdt/config<sp/>(also<sp/>when<sp/>a<sp/>.env<sp/>is<sp/>in<sp/>use),<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">replaced<sp/>container&apos;s<sp/>secret;<sp/>otherwise<sp/>one<sp/>is<sp/>generated<sp/>once<sp/>and<sp/>saved<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">config.<sp/>`vdt<sp/>env`<sp/>shows<sp/>which<sp/>one<sp/>is<sp/>used.</highlight></codeline>
+<codeline><highlight class="normal">SERVER_PORT<sp/>from<sp/>the<sp/>env<sp/>file<sp/>is<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">port<sp/>published<sp/>inside<sp/>the<sp/>container<sp/>(default<sp/>8080).<sp/>DB_HOST<sp/>and<sp/>DB_SSL<sp/>are</highlight></codeline>
+<codeline><highlight class="normal">always<sp/>overridden<sp/>by<sp/>the<sp/>image,<sp/>which<sp/>runs<sp/>its<sp/>own<sp/>Postgres.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Server<sp/>variables<sp/>the<sp/>image<sp/>understands<sp/>(server<sp/>default<sp/>in<sp/>brackets):</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Rate<sp/>limiting<sp/>/<sp/>DoS</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MAX_REQUESTS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>max<sp/>requests<sp/>per<sp/>IP<sp/>per<sp/>PERIOD<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[10000]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PERIOD<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rate-limit<sp/>window,<sp/>seconds<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[30]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MAX_FPS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>max<sp/>fingerprints<sp/>per<sp/>IP<sp/>per<sp/>PERIOD<sp/><sp/><sp/><sp/>[100]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>RL_DURATION<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rate-limit<sp/>duration,<sp/>seconds<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[30]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BAN_DURATION<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ban<sp/>duration,<sp/>seconds<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[3600]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CLN_FRQ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cleanup<sp/>interval,<sp/>seconds<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[30]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>WHITELIST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>comma-separated<sp/>IP<sp/>patterns<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BLACKLIST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>comma-separated<sp/>IP<sp/>patterns<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Database<sp/>(the<sp/>image<sp/>runs<sp/>its<sp/>own<sp/>Postgres;<sp/>DB_HOST/DB_SSL<sp/>are<sp/>ignored)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DB_PORT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[5432]<sp/><sp/><sp/><sp/><sp/><sp/>DB_NAME<sp/><sp/><sp/>[postgres]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DB_USER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[postgres]<sp/><sp/>DB_PASS<sp/><sp/><sp/>[postgres]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DB_MAX_CONN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>connection<sp/>pool<sp/>size,<sp/>keep<sp/>&gt;=<sp/>SERVER_THREADS+1<sp/>[10]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DB_ACQUIRE_TIMEOUT_MS<sp/>ms<sp/>to<sp/>wait<sp/>for<sp/>a<sp/>free<sp/>connection,<sp/>then<sp/>503<sp/><sp/><sp/>[3000]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Caching</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PERMISSION_CACHE_TTL<sp/><sp/>idle<sp/>seconds<sp/>a<sp/>cached<sp/>permission<sp/>is<sp/>kept,<sp/>0<sp/>=<sp/>off<sp/>[300]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Passwords<sp/>(hashing<sp/>runs<sp/>on<sp/>its<sp/>own<sp/>threads,<sp/>never<sp/>on<sp/>request<sp/>threads)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PASSWORD_WORKERS<sp/><sp/><sp/><sp/><sp/><sp/>threads<sp/>for<sp/>hashing/login<sp/>checks,<sp/>keep<sp/>&lt;<sp/>DB_MAX_CONN<sp/>[2]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PASSWORD_QUEUE_MAX<sp/><sp/><sp/><sp/>waiting<sp/>operations<sp/>before<sp/>new<sp/>ones<sp/>get<sp/>503<sp/><sp/><sp/><sp/><sp/><sp/>[64]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Database<sp/>executor<sp/>(legacy<sp/>DB_ASYNC=false<sp/>path;<sp/>blocking<sp/>database<sp/>work<sp/>runs<sp/>here)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DB_WORKERS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>threads<sp/>for<sp/>database<sp/>work<sp/>[DB_MAX_CONN]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DB_QUEUE_MAX<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>waiting<sp/>requests<sp/>before<sp/>new<sp/>ones<sp/>get<sp/>503<sp/>[256]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DB_IO_FASTPATH<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>try<sp/>each<sp/>request<sp/>on<sp/>the<sp/>IO<sp/>thread<sp/>first,<sp/>queue<sp/>it<sp/>only<sp/>if<sp/>it<sp/>needs<sp/>the<sp/>database<sp/>[false]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Server</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SERVER_HOST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>listen<sp/>address<sp/>(keep<sp/>0.0.0.0)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[0.0.0.0]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SERVER_PORT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>listen<sp/>port<sp/>inside<sp/>the<sp/>container<sp/><sp/><sp/><sp/><sp/><sp/>[8080]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SERVER_THREADS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>worker<sp/>threads<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[4]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SERVER_NAME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[ProjectValhalla]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SERVER_DESCRIPTION<sp/><sp/><sp/><sp/>[ProjectValhalla<sp/>API]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SERVER_DEBUG_LEVEL<sp/><sp/><sp/><sp/>[1]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SERVER_LOG_TO_CONSOLE<sp/>[true]<sp/><sp/><sp/><sp/><sp/><sp/>SERVER_LOG_TO_FILE<sp/><sp/>[true]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SERVER_LOG_DIR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[./logs/]<sp/><sp/><sp/>SERVER_LOG_FILE<sp/><sp/><sp/><sp/><sp/>[server.log]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SERVER_UPLOAD_DIR<sp/><sp/><sp/><sp/><sp/>[./uploads/]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Tokens</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TOKEN_SECRET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>JWT<sp/>signing<sp/>secret<sp/>(image<sp/>generates<sp/>one<sp/>if<sp/>unset)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TOKEN_VALIDITY<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>minutes<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[43200]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TOKEN_ISSUER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[ProjectValhalla]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TOKEN_TYPE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[JWS]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Frontend<sp/>(invite<sp/>links)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>FRONTEND_HOST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[http://172.20.0.5]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>FRONTEND_PORT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[3000]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>FRONTEND_INVITE_PATH<sp/><sp/>[invite]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Email<sp/>sender</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>EMAIL_SENDER_HOST<sp/><sp/><sp/><sp/><sp/>[http://172.20.0.6]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>EMAIL_SENDER_PORT<sp/><sp/><sp/><sp/><sp/>[5000]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>EMAIL_SENDER_QUEUE_PATH<sp/>[/enqueue]</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Note:<sp/>without<sp/>persistence<sp/>the<sp/>database<sp/>lives<sp/>only<sp/>inside<sp/>the<sp/>container<sp/>and</highlight></codeline>
+<codeline><highlight class="normal">is<sp/>reset<sp/>on<sp/>every<sp/>start.</highlight></codeline>
+</programlisting></para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md15">
+<title>Configuration</title><para>All configuration is supplied through environment variables; defaults live in <computeroutput><ref refid="defaults_8hpp" kindref="compound">src/configurator/defaults.hpp</ref></computeroutput>. The frontend and email-sender defaults point at fixed Docker-network IPs (<computeroutput>172.20.0.5</computeroutput>/<computeroutput>.6</computeroutput>), and the token secret and database credentials are development values, so override them for any real deployment.</para>
+<sect2 id="index_1autotoc_md16">
+<title>Server</title><para><table rows="8" cols="3"><row>
+<entry thead="yes"><para>Variable  </para>
+</entry><entry thead="yes"><para>Default  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>SERVER_HOST</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>0.0.0.0</computeroutput>  </para>
+</entry><entry thead="no"><para>Bind address  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>SERVER_PORT</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>8080</computeroutput>  </para>
+</entry><entry thead="no"><para>Listen port  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>SERVER_THREADS</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>4</computeroutput>  </para>
+</entry><entry thead="no"><para>Worker thread count  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>SERVER_UPLOAD_DIR</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>./uploads/</computeroutput>  </para>
+</entry><entry thead="no"><para>File upload directory  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>SERVER_NAME</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>ProjectValhalla</computeroutput>  </para>
+</entry><entry thead="no"><para>Name shown in the startup banner  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>SERVER_VERSION</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>1.0.0</computeroutput>  </para>
+</entry><entry thead="no"><para>Version string shown in the startup banner  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>SERVER_DESCRIPTION</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>ProjectValhalla API</computeroutput>  </para>
+</entry><entry thead="no"><para>Description shown in the startup banner  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md17">
+<title>Logging</title><para><table rows="6" cols="3"><row>
+<entry thead="yes"><para>Variable  </para>
+</entry><entry thead="yes"><para>Default  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>SERVER_DEBUG_LEVEL</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>1</computeroutput>  </para>
+</entry><entry thead="no"><para>Minimum level: <computeroutput>0</computeroutput> debug, <computeroutput>1</computeroutput> info, <computeroutput>2</computeroutput> warning, <computeroutput>3</computeroutput> error, <computeroutput>4</computeroutput> critical  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>SERVER_LOG_TO_CONSOLE</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>true</computeroutput>  </para>
+</entry><entry thead="no"><para>Log to stdout  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>SERVER_LOG_TO_FILE</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>true</computeroutput>  </para>
+</entry><entry thead="no"><para>Log to a file  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>SERVER_LOG_DIR</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>./logs/</computeroutput>  </para>
+</entry><entry thead="no"><para>Log directory  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>SERVER_LOG_FILE</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>server.log</computeroutput>  </para>
+</entry><entry thead="no"><para>Log file name  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md18">
+<title>Database (PostgreSQL)</title><para><table rows="10" cols="3"><row>
+<entry thead="yes"><para>Variable  </para>
+</entry><entry thead="yes"><para>Default  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>DB_HOST</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>0.0.0.0</computeroutput>  </para>
+</entry><entry thead="no"><para><ref refid="classDatabase" kindref="compound">Database</ref> host. The default only works when PostgreSQL runs on the same machine; set it explicitly (e.g. <computeroutput>127.0.0.1</computeroutput>)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>DB_PORT</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>5432</computeroutput>  </para>
+</entry><entry thead="no"><para><ref refid="classDatabase" kindref="compound">Database</ref> port  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>DB_NAME</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>postgres</computeroutput>  </para>
+</entry><entry thead="no"><para><ref refid="classDatabase" kindref="compound">Database</ref> name  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>DB_USER</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>postgres</computeroutput>  </para>
+</entry><entry thead="no"><para><ref refid="classDatabase" kindref="compound">Database</ref> user  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>DB_PASS</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>postgres</computeroutput>  </para>
+</entry><entry thead="no"><para><ref refid="classDatabase" kindref="compound">Database</ref> password  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>DB_SSL</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>false</computeroutput>  </para>
+</entry><entry thead="no"><para>Enable SSL  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>DB_MAX_CONN</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>10</computeroutput>  </para>
+</entry><entry thead="no"><para>Max pooled connections; keep it at least <computeroutput>SERVER_THREADS + 1</computeroutput> (the watchdog holds one)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>DB_ACQUIRE_TIMEOUT_MS</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>3000</computeroutput>  </para>
+</entry><entry thead="no"><para>Milliseconds a request waits for a free connection before it gets <computeroutput>503</computeroutput> with <computeroutput>Retry-After</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>DB_ASYNC</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>true</computeroutput>  </para>
+</entry><entry thead="no"><para>Asynchronous database access (Drogon <computeroutput>orm::DbClient</computeroutput> coroutines on the IO threads). <computeroutput>false</computeroutput> runs the legacy synchronous libpqxx pool behind the DB executor; kept for one release  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md19">
+<title>Caching</title><para><table rows="2" cols="3"><row>
+<entry thead="yes"><para>Variable  </para>
+</entry><entry thead="yes"><para>Default  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>PERMISSION_CACHE_TTL</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>300</computeroutput>  </para>
+</entry><entry thead="no"><para>Seconds an unused cached permission is kept; each use renews it; <computeroutput>0</computeroutput> disables  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md20">
+<title>Passwords</title><para><table rows="6" cols="3"><row>
+<entry thead="yes"><para>Variable  </para>
+</entry><entry thead="yes"><para>Default  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>PASSWORD_WORKERS</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>2</computeroutput>  </para>
+</entry><entry thead="no"><para>Threads that hash and verify passwords (Argon2id), so request threads are never blocked; keep it below <computeroutput>DB_MAX_CONN</computeroutput>; <computeroutput>0</computeroutput> runs on the request thread  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>PASSWORD_QUEUE_MAX</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>64</computeroutput>  </para>
+</entry><entry thead="no"><para>Password operations that may wait for a worker; further ones get <computeroutput>503</computeroutput> with <computeroutput>Retry-After</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>DB_WORKERS</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>DB_MAX_CONN</computeroutput>  </para>
+</entry><entry thead="no"><para>Legacy (<computeroutput>DB_ASYNC=false</computeroutput>) only: threads that run the blocking database work (permission check, query), so request threads are never blocked by a slow query; <computeroutput>0</computeroutput> runs on the request thread  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>DB_QUEUE_MAX</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>256</computeroutput>  </para>
+</entry><entry thead="no"><para>Legacy (<computeroutput>DB_ASYNC=false</computeroutput>) only: requests that may wait for a database worker; further ones get <computeroutput>503</computeroutput> with <computeroutput>Retry-After</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>DB_IO_FASTPATH</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>false</computeroutput>  </para>
+</entry><entry thead="no"><para>Legacy (<computeroutput>DB_ASYNC=false</computeroutput>) only: run each request on the IO thread first; requests refused without a query (bad body, permission cache) answer there, the rest move to a database worker  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md21">
+<title>Authentication (JWT)</title><para><table rows="5" cols="3"><row>
+<entry thead="yes"><para>Variable  </para>
+</entry><entry thead="yes"><para>Default  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>TOKEN_SECRET</computeroutput>  </para>
+</entry><entry thead="no"><para><emphasis>(insecure dev default)</emphasis>  </para>
+</entry><entry thead="no"><para><bold>Must</bold> be overridden in production  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>TOKEN_VALIDITY</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>43200</computeroutput>  </para>
+</entry><entry thead="no"><para>Token lifetime in minutes (30 days)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>TOKEN_ISSUER</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>ProjectValhalla</computeroutput>  </para>
+</entry><entry thead="no"><para>JWT issuer claim  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>TOKEN_TYPE</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>JWS</computeroutput>  </para>
+</entry><entry thead="no"><para>JWT type  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md22">
+<title>DoS detector / rate limiting</title><para><table rows="9" cols="3"><row>
+<entry thead="yes"><para>Variable  </para>
+</entry><entry thead="yes"><para>Default  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>MAX_REQUESTS</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>10000</computeroutput>  </para>
+</entry><entry thead="no"><para>Max repeat-count for one fingerprint before the IP is <bold>banned</bold>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>PERIOD</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>30</computeroutput>  </para>
+</entry><entry thead="no"><para>Window length (seconds)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>MAX_FPS</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>100</computeroutput>  </para>
+</entry><entry thead="no"><para>Max distinct fingerprints per IP before the IP is <bold>rate-limited</bold>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>RL_DURATION</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>30</computeroutput>  </para>
+</entry><entry thead="no"><para>Rate-limit duration (seconds)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>BAN_DURATION</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>3600</computeroutput>  </para>
+</entry><entry thead="no"><para>Ban duration (seconds)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>CLN_FRQ</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>30</computeroutput>  </para>
+</entry><entry thead="no"><para>Cleanup frequency (seconds)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>WHITELIST</computeroutput>  </para>
+</entry><entry thead="no"><para><emphasis>(empty)</emphasis>  </para>
+</entry><entry thead="no"><para>IPs exempt from rate limiting and bans (comma-separated patterns, see below)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>BLACKLIST</computeroutput>  </para>
+</entry><entry thead="no"><para><emphasis>(empty)</emphasis>  </para>
+</entry><entry thead="no"><para>IPs always rejected (comma-separated patterns, see below)  </para>
+</entry></row>
+</table>
+</para>
+<para><computeroutput>WHITELIST</computeroutput> and <computeroutput>BLACKLIST</computeroutput> entries are <bold>regular expressions</bold>, matched anywhere in the client IP. A <computeroutput>.</computeroutput> matches any character, and an unanchored entry matches as a substring: <computeroutput>10.0.0.1</computeroutput> also matches <computeroutput>10.0.0.123</computeroutput>. For exact matches, escape the dots and anchor the entry, e.g. <computeroutput>WHITELIST=&apos;^127\.0\.0\.1$,^192\.168\.1\.[0-9]+$&apos;</computeroutput>.</para>
+</sect2>
+<sect2 id="index_1autotoc_md23">
+<title>Frontend &amp; email sender</title><para><table rows="7" cols="3"><row>
+<entry thead="yes"><para>Variable  </para>
+</entry><entry thead="yes"><para>Default  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>FRONTEND_HOST</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput><ulink url="http://172.20.0.5">http://172.20.0.5</ulink></computeroutput>  </para>
+</entry><entry thead="no"><para>Frontend base URL (used for invite links)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>FRONTEND_PORT</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>3000</computeroutput>  </para>
+</entry><entry thead="no"><para>Frontend port  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>FRONTEND_INVITE_PATH</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>invite</computeroutput>  </para>
+</entry><entry thead="no"><para>Frontend path used in staff invite links  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>EMAIL_SENDER_HOST</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput><ulink url="http://172.20.0.6">http://172.20.0.6</ulink></computeroutput>  </para>
+</entry><entry thead="no"><para>Email sender daemon host  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>EMAIL_SENDER_PORT</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>5000</computeroutput>  </para>
+</entry><entry thead="no"><para>Email sender daemon port  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>EMAIL_SENDER_QUEUE_PATH</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>/enqueue</computeroutput>  </para>
+</entry><entry thead="no"><para>Email enqueue endpoint  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md24">
+<title>Testing</title><para><table rows="2" cols="3"><row>
+<entry thead="yes"><para>Variable  </para>
+</entry><entry thead="yes"><para>Default  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>VALHALLA_TEST_NO_DB</computeroutput>  </para>
+</entry><entry thead="no"><para><computeroutput>false</computeroutput>  </para>
+</entry><entry thead="no"><para>Start without connecting to a database (used by the unit tests)  </para>
+</entry></row>
+</table>
+</para>
+<para><blockquote><para>⚠️ The default <computeroutput>TOKEN_SECRET</computeroutput> and database credentials are for local development only. Always set strong values before deploying. </para>
+</blockquote></para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md25">
+<title>API Overview</title><para>All endpoints live under the <computeroutput>/api/v2</computeroutput> prefix (for example <computeroutput><ulink url="http://127.0.0.1:8080/api/v2/hello">http://127.0.0.1:8080/api/v2/hello</ulink></computeroutput>). Routes marked 🔒 require a valid <computeroutput>Authorization: Bearer &lt;token&gt;</computeroutput> header (obtained from <computeroutput>/clients/{type}/login</computeroutput>); 🔓 routes are public. Request and response bodies are JSON.</para>
+<sect2 id="index_1autotoc_md26">
+<title>Interactive API docs</title><para>The server ships its own API documentation, compiled into the binary:</para>
+<para><table rows="2" cols="2"><row>
+<entry thead="yes"><para>URL  </para>
+</entry><entry thead="yes"><para>What it is  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput><ulink url="http://">http://</ulink>&lt;host&gt;:&lt;port&gt;/api/v2/doc</computeroutput>  </para>
+</entry><entry thead="no"><para>Swagger UI for every endpoint, plus an <bold>API Guide</bold> panel (permissions, data model, validation, errors, rate limiting, recipes, troubleshooting) and a <bold>Test console</bold> that runs all endpoints in order against the live server with dummy data, and a <bold>Benchmark</bold> panel (latency percentiles and requests/s per endpoint; writes are created with unique data and deleted afterwards)  </para>
+</entry></row>
+</table>
+</para>
+<para>With the defaults that is <ulink url="http://127.0.0.1:8080/api/v2/doc">http://127.0.0.1:8080/api/v2/doc</ulink>; the startup banner prints the exact URL. From the page you can also download the <bold>OpenAPI 3</bold> spec and a <bold>Postman collection</bold> (also kept in <computeroutput>docs/openapi.json</computeroutput> and <computeroutput>docs/valhalla.postman_collection.json</computeroutput>).</para>
+<para>The page is embedded into the binary, and every <computeroutput>cmake --build</computeroutput> regenerates it from <computeroutput>tools/docs/</computeroutput> first (the <computeroutput>valhalla_docs</computeroutput> target) (this needs <computeroutput>bash</computeroutput>, <computeroutput>python3</computeroutput> and Node.js/<computeroutput>npm</computeroutput>; if one is missing, the committed <computeroutput>docs/api.html</computeroutput> is embedded as is). Pass <computeroutput>-DVALHALLA_BUILD_DOCS=OFF</computeroutput> to skip regeneration. To regenerate by hand:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">tools/docs/build.sh<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>regenerates<sp/>docs/api.html,<sp/>openapi.json<sp/>and<sp/>the<sp/>Postman<sp/>collection</highlight></codeline>
+<codeline><highlight class="normal">./scripts/run/run_release.sh<sp/>--build<sp/><sp/><sp/>#<sp/>re-embed<sp/>the<sp/>page<sp/>and<sp/>restart</highlight></codeline>
+</programlisting></para>
+<para>To include real response samples in the docs, run <computeroutput>SAMPLES_OUT=tests/api_tests/samples.jsonl ./scripts/test/test_api.sh</computeroutput> against a running server before <computeroutput>tools/docs/build.sh</computeroutput>.</para>
+</sect2>
+<sect2 id="index_1autotoc_md27">
+<title>Clients — <computeroutput>/clients/{clientType}/...</computeroutput> (<computeroutput>clientType</computeroutput> ∈ <computeroutput>users</computeroutput>, <computeroutput>providers</computeroutput>)</title><para><table rows="11" cols="4"><row>
+<entry thead="yes"><para>Method  </para>
+</entry><entry thead="yes"><para>Path  </para>
+</entry><entry thead="yes"><para>Auth  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>POST  </para>
+</entry><entry thead="no"><para><computeroutput>/clients/{clientType}/create</computeroutput>  </para>
+</entry><entry thead="no"><para>🔓  </para>
+</entry><entry thead="no"><para>Register an account  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>POST  </para>
+</entry><entry thead="no"><para><computeroutput>/clients/{clientType}/login</computeroutput>  </para>
+</entry><entry thead="no"><para>🔓  </para>
+</entry><entry thead="no"><para>Authenticate, receive a token  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>POST  </para>
+</entry><entry thead="no"><para><computeroutput>/clients/{clientType}/logout</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>Invalidate the session  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>POST  </para>
+</entry><entry thead="no"><para><computeroutput>/clients/{clientType}/suspend</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>Suspend an account  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>POST  </para>
+</entry><entry thead="no"><para><computeroutput>/clients/{clientType}/activate</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>Re-activate an account  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>POST  </para>
+</entry><entry thead="no"><para><computeroutput>/clients/{clientType}/read</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>Read account data  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>PUT  </para>
+</entry><entry thead="no"><para><computeroutput>/clients/{clientType}/update</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>Update an account  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>DELETE  </para>
+</entry><entry thead="no"><para><computeroutput>/clients/{clientType}/delete</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>Delete an account  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>POST  </para>
+</entry><entry thead="no"><para><computeroutput>/clients/{clientType}/search</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>Search accounts  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>GET  </para>
+</entry><entry thead="no"><para><computeroutput>/clients/{clientType}/services</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>List the account&apos;s services  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md28">
+<title>Services — <computeroutput>/services/{serviceType}/...</computeroutput> (<computeroutput>serviceType</computeroutput> ∈ <computeroutput>clinics</computeroutput>, <computeroutput>pharmacies</computeroutput>, <computeroutput>laboratories</computeroutput>, <computeroutput>radiologycenters</computeroutput>)</title><para><table rows="6" cols="4"><row>
+<entry thead="yes"><para>Method  </para>
+</entry><entry thead="yes"><para>Path  </para>
+</entry><entry thead="yes"><para>Auth  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>POST  </para>
+</entry><entry thead="no"><para><computeroutput>/services/{serviceType}/create</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>Create a service  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>POST  </para>
+</entry><entry thead="no"><para><computeroutput>/services/{serviceType}/read</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>Read a service  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>PUT  </para>
+</entry><entry thead="no"><para><computeroutput>/services/{serviceType}/update</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>Update a service  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>DELETE  </para>
+</entry><entry thead="no"><para><computeroutput>/services/{serviceType}/delete</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>Delete a service (owner only)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>POST  </para>
+</entry><entry thead="no"><para><computeroutput>/services/{serviceType}/search</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>Search services  </para>
+</entry></row>
+</table>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md29">
+<title>Staff — <computeroutput>/staff/services/{serviceType}/staff/...</computeroutput></title><para><table rows="4" cols="4"><row>
+<entry thead="yes"><para>Method  </para>
+</entry><entry thead="yes"><para>Path  </para>
+</entry><entry thead="yes"><para>Auth  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>POST  </para>
+</entry><entry thead="no"><para><computeroutput>/staff/services/{serviceType}/staff/invite</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>Invite someone to the staff  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>POST  </para>
+</entry><entry thead="no"><para><computeroutput>/staff/services/{serviceType}/staff/add</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>Add a staff member  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>POST  </para>
+</entry><entry thead="no"><para><computeroutput>/staff/services/{serviceType}/staff/remove</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>Remove a staff member  </para>
+</entry></row>
+</table>
+</para>
+<para>These routes are registered with Drogon&apos;s <computeroutput>METHOD_ADD</computeroutput> (<computeroutput><ref refid="staff_8hpp" kindref="compound">src/api/v2/routes/staff.hpp</ref></computeroutput>), which puts the controller path (<computeroutput>/api/v2/staff</computeroutput>) in front, hence the doubled <computeroutput>staff</computeroutput> segment. The interactive docs still show the shorter <computeroutput>/services/{serviceType}/staff/...</computeroutput> form, which does not match the server.</para>
+</sect2>
+<sect2 id="index_1autotoc_md30">
+<title>Clinic records — <computeroutput>/clinic/{resource}/...</computeroutput></title><para>Each resource supports <computeroutput>create</computeroutput> (POST), <computeroutput>read</computeroutput> (POST), <computeroutput>update</computeroutput> (PUT) and <computeroutput>delete</computeroutput> (DELETE) under <computeroutput>/clinic/{resource}/</computeroutput>, all 🔒. Resources:</para>
+<para><table rows="9" cols="2"><row>
+<entry thead="yes"><para>Resource  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>patients</computeroutput>  </para>
+</entry><entry thead="no"><para><ref refid="classPatient" kindref="compound">Patient</ref> records (also <computeroutput>POST /clinic/patients/search</computeroutput> and <computeroutput>GET /clinic/patients/getvisits</computeroutput>)  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>health</computeroutput>  </para>
+</entry><entry thead="no"><para>A patient&apos;s health history  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>patientdrugs</computeroutput>  </para>
+</entry><entry thead="no"><para>A patient&apos;s drug list  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>reports</computeroutput>  </para>
+</entry><entry thead="no"><para>A patient&apos;s reports  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>visits</computeroutput>  </para>
+</entry><entry thead="no"><para><ref refid="classVisits" kindref="compound">Visits</ref>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>requests</computeroutput>  </para>
+</entry><entry thead="no"><para>Investigation requests for a visit  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>prescriptions</computeroutput>  </para>
+</entry><entry thead="no"><para><ref refid="classPrescriptions" kindref="compound">Prescriptions</ref> for a visit  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>paidservices</computeroutput>  </para>
+</entry><entry thead="no"><para>Paid services for a visit  </para>
+</entry></row>
+</table>
+</para>
+<para><computeroutput>delete</computeroutput> is not supported for <computeroutput>health</computeroutput>, <computeroutput>patientdrugs</computeroutput>, <computeroutput>reports</computeroutput>, <computeroutput>requests</computeroutput>, <computeroutput>prescriptions</computeroutput> and <computeroutput>paidservices</computeroutput>; they are removed with their parent record.</para>
+</sect2>
+<sect2 id="index_1autotoc_md31">
+<title>Appointments — <computeroutput>/appointments/{serviceType}/...</computeroutput> (<computeroutput>serviceType</computeroutput> ∈ <computeroutput>clinics</computeroutput>, <computeroutput>pharmacies</computeroutput>, <computeroutput>laboratories</computeroutput>, <computeroutput>radiologycenters</computeroutput>)</title><para><table rows="5" cols="4"><row>
+<entry thead="yes"><para>Method  </para>
+</entry><entry thead="yes"><para>Path  </para>
+</entry><entry thead="yes"><para>Auth  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>POST  </para>
+</entry><entry thead="no"><para><computeroutput>/appointments/{serviceType}/create</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>Create an appointment  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>POST  </para>
+</entry><entry thead="no"><para><computeroutput>/appointments/{serviceType}/read</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>Read an appointment  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>PUT  </para>
+</entry><entry thead="no"><para><computeroutput>/appointments/{serviceType}/update</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>Update an appointment  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>DELETE  </para>
+</entry><entry thead="no"><para><computeroutput>/appointments/{serviceType}/delete</computeroutput>  </para>
+</entry><entry thead="no"><para>🔒  </para>
+</entry><entry thead="no"><para>Delete an appointment  </para>
+</entry></row>
+</table>
+</para>
+<para>The interactive docs currently only show the <computeroutput>clinics</computeroutput> variant.</para>
+</sect2>
+<sect2 id="index_1autotoc_md32">
+<title>Misc</title><para><table rows="3" cols="4"><row>
+<entry thead="yes"><para>Method  </para>
+</entry><entry thead="yes"><para>Path  </para>
+</entry><entry thead="yes"><para>Auth  </para>
+</entry><entry thead="yes"><para>Description  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>GET  </para>
+</entry><entry thead="no"><para><computeroutput>/hello</computeroutput>  </para>
+</entry><entry thead="no"><para>🔓  </para>
+</entry><entry thead="no"><para><ref refid="classHealth" kindref="compound">Health</ref> check  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>GET  </para>
+</entry><entry thead="no"><para><computeroutput>/doc</computeroutput>  </para>
+</entry><entry thead="no"><para>🔓  </para>
+</entry><entry thead="no"><para>Interactive API documentation (Swagger UI)  </para>
+</entry></row>
+</table>
+</para>
+<para><blockquote><para>Unknown routes return a JSON <computeroutput>404</computeroutput> (<computeroutput>"Endpoint not found."</computeroutput>). Rate-limit, ban and blacklist replies from the DoS filter are plain text. </para>
+</blockquote></para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md33">
+<title>Project Layout</title><para><programlisting><codeline><highlight class="normal">src/</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>api/v2/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>REST<sp/>API:<sp/>routes,<sp/>filters,<sp/>middlewares,<sp/>helpers</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>controllers/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Business<sp/>logic<sp/>per<sp/>resource<sp/>(clients,<sp/>clinics,<sp/>services,<sp/>…)</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>entities/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Domain<sp/>models<sp/>(people,<sp/>services,<sp/>patients,<sp/>visits,<sp/>appointments)</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>gatekeeper/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Security:<sp/>DoS<sp/>detector,<sp/>tokens,<sp/>sessions,<sp/>RBAC,<sp/>password<sp/>hashing<sp/>and<sp/>its<sp/>worker<sp/>pool</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>concurrency/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>BoundedExecutor:<sp/>thread<sp/>pool<sp/>with<sp/>a<sp/>bounded<sp/>queue</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>configurator/<sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Environment-driven<sp/>configuration<sp/>+<sp/>defaults</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>database/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Connection<sp/>pool,<sp/>watchdog,<sp/>handlers,<sp/>DB<sp/>executor</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>validator/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Request<sp/>+<sp/>database-schema<sp/>validation</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>store/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Shared<sp/>object<sp/>store</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>server/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Server<sp/>bootstrap<sp/>(entry<sp/>point)</highlight></codeline>
+<codeline><highlight class="normal">└──<sp/>utils/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Logging,<sp/>caching,<sp/>messaging,<sp/>JSON<sp/>helpers,<sp/>thread-safe<sp/>queue</highlight></codeline>
+<codeline><highlight class="normal">scripts/</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>build/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>build.sh,<sp/>get_tag.sh,<sp/>run_all_tests.sh</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>db/init.sql<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Database<sp/>schema</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>lib/ui.sh<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Shared<sp/>shell<sp/>UI<sp/>helpers</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>qa/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Format,<sp/>hygiene<sp/>and<sp/>project-rule<sp/>checks</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>run/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>db_init.sh,<sp/>run_debug.sh,<sp/>run_release.sh,<sp/>run4bench.sh</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>test/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>test_api.sh,<sp/>cors_test.sh,<sp/>cors_react_check.sh,<sp/>fuzz_auth.sh,<sp/>sqlmap_test.sh,<sp/>schemathesis_test.sh</highlight></codeline>
+<codeline><highlight class="normal">└──<sp/>vdt/valhalla.sh<sp/><sp/><sp/><sp/><sp/>#<sp/>Docker/Apple<sp/>Container<sp/>deployment<sp/>tool<sp/>(the<sp/>`vdt`<sp/>command)</highlight></codeline>
+<codeline><highlight class="normal">tests/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Catch2<sp/>unit<sp/>tests<sp/>(+<sp/>vendored<sp/>Catch<sp/>CMake<sp/>helpers)</highlight></codeline>
+<codeline><highlight class="normal">tests/api_tests/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Request<sp/>payloads<sp/>and<sp/>samples<sp/>used<sp/>by<sp/>test_api.sh</highlight></codeline>
+<codeline><highlight class="normal">docs/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>API<sp/>docs<sp/>(api.html,<sp/>openapi.json,<sp/>Postman<sp/>collection)<sp/>+<sp/>ARCHITECTURE.md,<sp/>CONTRIBUTING.md</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>└──<sp/>doxygen/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Published<sp/>Doxygen<sp/>reference<sp/>(HTML<sp/>+<sp/>XML),<sp/>excluded<sp/>from<sp/>Doxygen<sp/>input</highlight></codeline>
+<codeline><highlight class="normal">tools/</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>cmake/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>CMake<sp/>helpers<sp/>(HTML<sp/>embedding,<sp/>docs<sp/>generation,<sp/>versioning)</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>conan/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Conan<sp/>helper<sp/>variables,<sp/>lockfile<sp/>update<sp/>script</highlight></codeline>
+<codeline><highlight class="normal">└──<sp/>docs/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>API<sp/>docs<sp/>generator<sp/>(build.sh,<sp/>build_docs.py,<sp/>Swagger<sp/>UI<sp/>assets)</highlight></codeline>
+<codeline><highlight class="normal">docker/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>All-in-one<sp/>Alpine<sp/>image<sp/>(Dockerfile<sp/>+<sp/>entrypoint)</highlight></codeline>
+<codeline><highlight class="normal">.github/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Release<sp/>and<sp/>CI<sp/>workflows,<sp/>Dependabot<sp/>config</highlight></codeline>
+<codeline><highlight class="normal">config<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Default<sp/>server<sp/>settings<sp/>(tracked)</highlight></codeline>
+<codeline><highlight class="normal">Doxyfile<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Doxygen<sp/>configuration</highlight></codeline>
+<codeline><highlight class="normal">conan.lock<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Pinned<sp/>dependency<sp/>versions<sp/>(all<sp/>platforms)</highlight></codeline>
+<codeline><highlight class="normal">conanfile.txt<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Conan<sp/>dependency<sp/>list</highlight></codeline>
+</programlisting></para>
+</sect1>
+<sect1 id="index_1autotoc_md34">
+<title>Front-end development (CORS and Docker)</title><para>The API listens on <computeroutput><ulink url="http://localhost:8080">http://localhost:8080</ulink></computeroutput>. CORS is open: <computeroutput>Access-Control-Allow-Origin: *</computeroutput>, no credentials, methods <computeroutput>GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS</computeroutput>, request headers <computeroutput>Content-Type, Authorization, Accept, X-Requested-With</computeroutput> (a preflight echoes <computeroutput>Access-Control-Request-Headers</computeroutput>), and exposed response headers <computeroutput>Retry-After, Content-Length</computeroutput>. Preflight responses are cached for 7200 seconds.</para>
+<para>In Docker bridge mode every request arrives from one gateway IP, so the rate limiter treats all front-end traffic as a single client. On native Linux Docker that address is often <computeroutput>172.17.0.1</computeroutput>, but on Docker Desktop for macOS or Windows it is usually different. There is no existing log line that prints the peer IP. Without code changes, use one of these instead: on native Linux, <computeroutput>docker network inspect bridge</computeroutput> and its <computeroutput>Gateway</computeroutput>; run <computeroutput>docker exec &lt;container&gt; sh -c &apos;ss -tn&apos;</computeroutput> or read <computeroutput>/proc/net/tcp</computeroutput> inside the container while a host <computeroutput>curl</computeroutput> is in flight to see the peer address; or use <computeroutput>docker logs &lt;container&gt;</computeroutput> after a request. On Docker Desktop for macOS or Windows the address is usually not the bridge gateway.</para>
+<para>Whitelist entries are unanchored regular expressions, so <computeroutput>172.17.0.1</computeroutput> also matches <computeroutput>172.17.0.10</computeroutput> through <computeroutput>172.17.0.199</computeroutput>. To whitelist only the gateway, anchor the pattern. In a shell or <computeroutput>--env-file</computeroutput> value the backslashes stay literal:</para>
+<para><programlisting><codeline><highlight class="normal">WHITELIST=&apos;^172\.17\.0\.1$&apos;</highlight></codeline>
+</programlisting></para>
+<para>In a dotenv or compose file the same value is written without extra escaping:</para>
+<para><programlisting><codeline><highlight class="normal">WHITELIST=^172\.17\.0\.1$</highlight></codeline>
+</programlisting></para>
+<para>Raise the dev rate limits as well (<computeroutput>MAX_REQUESTS</computeroutput>, <computeroutput>MAX_FPS</computeroutput>) if React StrictMode double requests trip the limiter. A commented example for a dev <computeroutput>.env</computeroutput> (no secrets):</para>
+<para><programlisting><codeline><highlight class="normal">#<sp/>WHITELIST=^172\.17\.0\.1$</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>MAX_REQUESTS=1000000</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>MAX_FPS=1000000</highlight></codeline>
+</programlisting></para>
+<para>Put these settings where the container or server actually reads them: a project <computeroutput>.env</computeroutput> for the native binary, <computeroutput>--env-file FILE</computeroutput> / <computeroutput>VALHALLA_ENV_FILE</computeroutput> for <computeroutput>valhalla.sh</computeroutput>, or <computeroutput>-e</computeroutput> / <computeroutput>--env-file</computeroutput> for <computeroutput>docker run</computeroutput>. <computeroutput>docker/entrypoint.sh</computeroutput> reads them from the process environment.</para>
+<para><computeroutput>WHITELIST</computeroutput> disables DoS checks for matching IPs, so it is for development only. Never whitelist a broad pattern in production.</para>
+<sect2 id="index_1autotoc_md35">
+<title>Browser simulation</title><para><computeroutput>./scripts/test/cors_react_check.sh</computeroutput> simulates what a browser does before and after cross-origin calls from a React dev server. It runs on macOS&apos;s default bash 3.2 (arrays and <computeroutput>read -a</computeroutput> are supported there) and uses only POSIX-ish <computeroutput>sed</computeroutput>, <computeroutput>awk</computeroutput>, <computeroutput>tr</computeroutput> and <computeroutput>grep</computeroutput> calls.</para>
+<para><programlisting><codeline><highlight class="normal">./scripts/test/cors_react_check.sh<sp/>http://localhost:8080</highlight></codeline>
+<codeline><highlight class="normal">./scripts/test/cors_react_check.sh<sp/>--credentials<sp/>http://localhost:8080<sp/><sp/><sp/>#<sp/>expected<sp/>to<sp/>fail:<sp/>wildcard<sp/>Allow-Origin<sp/>is<sp/>rejected<sp/>with<sp/>credentials</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>tools/cors<sp/>&amp;&amp;<sp/>python3<sp/>-m<sp/>http.server<sp/>3000</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>then<sp/>open<sp/>http://localhost:3000/browser_check.html<sp/>(or<sp/>use<sp/>port<sp/>5173)</highlight></codeline>
+</programlisting></para>
+<para>Headless Chromium against the page reported all 7 calls as PASS (HTTP 400/401/200, nothing blocked by the browser). The <computeroutput>--credentials</computeroutput> variant is expected to fail with the wildcard-origin message; that is the documented limitation, not a regression.</para>
+<para>To run <computeroutput>./scripts/test/cors_test.sh --strict</computeroutput> against cases that need low DoS thresholds, start separate server instances on different ports (a banned IP stays banned, so 429 and 503 cannot both be provoked on the same instance):</para>
+<para><programlisting><codeline><highlight class="normal">#<sp/>403<sp/>case</highlight></codeline>
+<codeline><highlight class="normal">ENV_FILE=none<sp/>MAX_REQUESTS=1000000<sp/>MAX_FPS=1000000<sp/>RL_DURATION=1<sp/>BAN_DURATION=1<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BLACKLIST=&apos;^127\.0\.0\.1$&apos;<sp/>WHITELIST=&apos;&apos;<sp/>SERVER_PORT=8099<sp/>./scripts/run/run_release.sh</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>429<sp/>case</highlight></codeline>
+<codeline><highlight class="normal">ENV_FILE=none<sp/>MAX_REQUESTS=1000000<sp/>MAX_FPS=5<sp/>RL_DURATION=5<sp/>BAN_DURATION=5<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>WHITELIST=&apos;&apos;<sp/>BLACKLIST=&apos;&apos;<sp/>SERVER_PORT=8100<sp/>./scripts/run/run_release.sh</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>503<sp/>case</highlight></codeline>
+<codeline><highlight class="normal">ENV_FILE=none<sp/>MAX_REQUESTS=5<sp/>MAX_FPS=1000000<sp/>RL_DURATION=5<sp/>BAN_DURATION=5<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>WHITELIST=&apos;&apos;<sp/>BLACKLIST=&apos;&apos;<sp/>SERVER_PORT=8101<sp/>./scripts/run/run_release.sh</highlight></codeline>
+</programlisting></para>
+<para><computeroutput>run_release.sh</computeroutput> loads <computeroutput>ENV_FILE</computeroutput> and exports every value from it, so settings in the file override the shell environment. Set <computeroutput>ENV_FILE=none</computeroutput> to use the command-line variables, or create one file per instance with a heredoc in a temporary directory (<computeroutput>tmpdir=$(mktemp -d)</computeroutput>).</para>
+<para>Then run the matching case against each instance:</para>
+<para><programlisting><codeline><highlight class="normal">./scripts/test/cors_test.sh<sp/>--case<sp/>403<sp/>--strict<sp/>http://localhost:8099</highlight></codeline>
+<codeline><highlight class="normal">./scripts/test/cors_test.sh<sp/>--case<sp/>429<sp/>--strict<sp/>http://localhost:8100</highlight></codeline>
+<codeline><highlight class="normal">./scripts/test/cors_test.sh<sp/>--case<sp/>503<sp/>--strict<sp/>http://localhost:8101</highlight></codeline>
+<codeline><highlight class="normal">./scripts/test/cors_test.sh<sp/>--case<sp/>basic<sp/>--strict<sp/>http://localhost:8080</highlight></codeline>
+</programlisting></para>
+<para>Each instance proves its targeted case. The other cases are skipped there by design.</para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md36">
+<title>Development</title><sect2 id="index_1autotoc_md37">
+<title>Known limitation: malformed requests (HTTP 400)</title><para>Drogon 1.9.14 writes the response for a malformed request line (for example <computeroutput>GET /bad http/1.1</computeroutput>) directly to the connection during parsing. That path bypasses both the custom error handler and the pre-sending advice, so these 400 responses contain no CORS headers. No supported hook adds headers there in this Drogon version, so front-end code that triggers such an error will still see a browser CORS failure.</para>
+<para><itemizedlist>
+<listitem><para><bold>Code style:</bold> enforced via <computeroutput>.clang-format</computeroutput>; static analysis configured through <computeroutput>.clang-tidy</computeroutput> and <computeroutput>cppcheck.supp</computeroutput>.</para>
+</listitem><listitem><para><bold>Editor support:</bold> <computeroutput>.clangd</computeroutput> provides LSP configuration; <computeroutput>.vscode/</computeroutput> and <computeroutput>.zed/</computeroutput> settings are included. <computeroutput>CMAKE_EXPORT_COMPILE_COMMANDS</computeroutput> is on, so <computeroutput>compile_commands.json</computeroutput> is generated for tooling.</para>
+</listitem><listitem><para><bold>Warnings:</bold> built with <computeroutput>-Wall -Wextra -pedantic</computeroutput>.</para>
+</listitem><listitem><para><bold>Versioning:</bold> the current Git tag is embedded into the binary at build time via <computeroutput>get_tag.sh</computeroutput>.</para>
+</listitem><listitem><para><bold>Dependencies:</bold> <computeroutput>conan.lock</computeroutput> pins the exact version and recipe revision of every Conan package, for the Alpine Docker builds (amd64 and arm64) and for local macOS/Linux builds. Conan uses it automatically. To change or update dependencies, edit <computeroutput>conanfile.txt</computeroutput> if needed, run <computeroutput>tools/conan/update_lock.sh</computeroutput>, and commit both files. Don&apos;t use a plain <computeroutput>conan lock create .</computeroutput>: it locks only your own platform, and the Docker build would then fail.</para>
+</listitem><listitem><para><bold>Build options:</bold> <computeroutput>-DENABLE_TESTS=OFF</computeroutput> skips the unit tests (default <computeroutput>ON</computeroutput>); <computeroutput>-DVALHALLA_BUILD_DOCS=OFF</computeroutput> skips regenerating the API docs (default <computeroutput>ON</computeroutput>); <computeroutput>-DVALHALLA_BUILD_DOXYGEN=OFF</computeroutput> skips generating the Doxygen reference (default <computeroutput>ON</computeroutput>, ignored if Doxygen is not installed). Debug builds on Linux enable AddressSanitizer, UndefinedBehaviorSanitizer and LeakSanitizer.</para>
+</listitem><listitem><para><bold>Tests:</bold> a Catch2 suite lives in <computeroutput>tests/</computeroutput>. It runs without a database, so it works on any machine. <computeroutput>build.sh</computeroutput> runs it through the <computeroutput>conan-debug</computeroutput>/<computeroutput>conan-release</computeroutput> CTest presets, and building the Docker image runs it too, on Alpine.</para>
+</listitem></itemizedlist>
+</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">#<sp/>Run<sp/>tests<sp/>(after<sp/>building)</highlight></codeline>
+<codeline><highlight class="normal">ctest<sp/>--test-dir<sp/>build/Debug<sp/>--output-on-failure</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="index_1autotoc_md38">
+<title>Source documentation</title><para>The C++ source is documented with Doxygen: every class, function and non-obvious implementation detail has a Doxygen-compatible comment. See <ref refid="md_docs_2ARCHITECTURE" kindref="compound"><computeroutput>docs/ARCHITECTURE.md</computeroutput></ref> for the component map and <ref refid="md_docs_2CONTRIBUTING" kindref="compound"><computeroutput>docs/CONTRIBUTING.md</computeroutput></ref> for the documentation conventions. The HTML/XML reference is generated by the <computeroutput>valhalla_doxygen</computeroutput> CMake target, which runs on every <computeroutput>cmake --build</computeroutput> when Doxygen is available. The result is published under <computeroutput>docs/doxygen/</computeroutput> (HTML and XML, tracked alongside the API docs). Doxygen excludes that directory from its own input, so it never documents its output:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">cmake<sp/>--build<sp/>build/Debug<sp/>--target<sp/>valhalla_doxygen</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>open<sp/>docs/doxygen/html/index.html</highlight></codeline>
+</programlisting></para>
+<para><computeroutput>docs/index.html</computeroutput> redirects to that page, so serving the <computeroutput>docs/</computeroutput> directory as static files gives a single entry point for the published documentation.</para>
+<para>Pass <computeroutput>-DVALHALLA_BUILD_DOXYGEN=OFF</computeroutput> to skip the target. To generate by hand, create the output directory first (Doxygen writes its warning log there):</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">mkdir<sp/>-p<sp/>docs/doxygen</highlight></codeline>
+<codeline><highlight class="normal">doxygen<sp/>Doxyfile</highlight></codeline>
+</programlisting></para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md39">
+<title>Contributing</title><para>Contributions are welcome. Please open an issue to discuss substantial changes first, keep commits focused, and run <computeroutput>clang-format</computeroutput> before submitting a pull request.</para>
+</sect1>
+<sect1 id="index_1autotoc_md40">
+<title>License</title><para>Released under the [MIT License](LICENSE). </para>
+</sect1>
+    </detaileddescription>
+    <location file="README.md"/>
+  </compounddef>
+</doxygen>

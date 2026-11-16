@@ -1,0 +1,771 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="databasebusy_8hpp" kind="file" language="C++">
+    <compoundname>databasebusy.hpp</compoundname>
+    <includes local="no">stdexcept</includes>
+    <includes local="no">string</includes>
+    <includedby refid="common_8hpp" local="yes">src/api/v2/basic/common.hpp</includedby>
+    <includedby refid="auth_8hpp" local="yes">src/api/v2/filters/auth.hpp</includedby>
+    <includedby refid="clients_8hpp" local="yes">src/api/v2/routes/clients.hpp</includedby>
+    <includedby refid="databasecontroller_8hpp" local="yes">src/controllers/databasecontroller/databasecontroller.hpp</includedby>
+    <includedby refid="asyncdberror_8hpp" local="yes">src/database/asyncdberror.hpp</includedby>
+    <includedby refid="databaseconnectionpool_8cpp" local="yes">src/database/databaseconnectionpool.cpp</includedby>
+    <includedby refid="watchdog_8cpp" local="yes">src/database/watchdog.cpp</includedby>
+    <includedby refid="keeprbase_8cpp" local="yes">src/gatekeeper/keeprbase/keeprbase.cpp</includedby>
+    <includedby refid="sessionmanager_8cpp" local="yes">src/gatekeeper/sessionmanager/sessionmanager.cpp</includedby>
+    <includedby refid="errorstatus_8hpp" local="yes">src/utils/global/errorstatus.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/database/databasebusy.hpp</label>
+        <link refid="databasebusy_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>stdexcept</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4">
+        <label>src/api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/api/v2/basic/common.hpp</label>
+        <link refid="common_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>src/api/v2/filters/auth.hpp</label>
+        <link refid="auth_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>src/api/v2/filters/ratelimit.hpp</label>
+        <link refid="ratelimit_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/api/v2/routes/appointments.hpp</label>
+        <link refid="appointments_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/api/v2/routes/clients.hpp</label>
+        <link refid="clients_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/api/v2/routes/clinics.hpp</label>
+        <link refid="api_2v2_2routes_2clinics_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>src/api/v2/routes/doc.hpp</label>
+        <link refid="doc_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/api/v2/routes/hello.hpp</label>
+        <link refid="hello_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/api/v2/routes/services.hpp</label>
+        <link refid="services_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>src/api/v2/routes/staff.hpp</label>
+        <link refid="staff_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
+        <link refid="appointmentcontroller_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
+        <link refid="appointmentcontroller_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>src/controllers/base/controller/controller.hpp</label>
+        <link refid="controller_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>src/controllers/clientcontroller/clientcontroller.cpp</label>
+        <link refid="clientcontroller_8cpp"/>
+      </node>
+      <node id="22">
+        <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
+        <link refid="clientcontroller_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
+        <link refid="cliniccontroller_8cpp"/>
+      </node>
+      <node id="24">
+        <label>src/controllers/cliniccontroller/cliniccontroller.hpp</label>
+        <link refid="cliniccontroller_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>src/controllers/databasecontroller/databasecontroller.cpp</label>
+        <link refid="databasecontroller_8cpp"/>
+      </node>
+      <node id="15">
+        <label>src/controllers/databasecontroller/databasecontroller.hpp</label>
+        <link refid="databasecontroller_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
+        <link refid="entitycontroller_8cpp"/>
+      </node>
+      <node id="19">
+        <label>src/controllers/entitycontroller/entitycontroller.hpp</label>
+        <link refid="entitycontroller_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
+        <link refid="servicecontroller_8cpp"/>
+      </node>
+      <node id="26">
+        <label>src/controllers/servicecontroller/servicecontroller.hpp</label>
+        <link refid="servicecontroller_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
+        <link refid="staffcontroller_8cpp"/>
+      </node>
+      <node id="28">
+        <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
+        <link refid="staffcontroller_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="71">
+        <label>src/database/asyncdberror.cpp</label>
+        <link refid="asyncdberror_8cpp"/>
+      </node>
+      <node id="70">
+        <label>src/database/asyncdberror.hpp</label>
+        <link refid="asyncdberror_8hpp"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>src/database/database.cpp</label>
+        <link refid="database_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/database/databasebusy.hpp</label>
+        <link refid="databasebusy_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+      </node>
+      <node id="72">
+        <label>src/database/databaseconnectionpool.cpp</label>
+        <link refid="databaseconnectionpool_8cpp"/>
+      </node>
+      <node id="73">
+        <label>src/database/watchdog.cpp</label>
+        <link refid="watchdog_8cpp"/>
+      </node>
+      <node id="32">
+        <label>src/entities/appointments/base/appointment.hpp</label>
+        <link refid="appointment_8hpp"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>src/entities/appointments/clinic.hpp</label>
+        <link refid="clinic_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>src/entities/appointments/laboratory.hpp</label>
+        <link refid="laboratory_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>src/entities/appointments/pharmacy.hpp</label>
+        <link refid="pharmacy_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>src/entities/appointments/radiologycenter.hpp</label>
+        <link refid="radiologycenter_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>src/entities/appointments/user.hpp</label>
+        <link refid="appointments_2user_8hpp"/>
+      </node>
+      <node id="41">
+        <label>src/entities/base/case.hpp</label>
+        <link refid="case_8hpp"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>src/entities/base/client.hpp</label>
+        <link refid="client_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>src/entities/base/entity.hpp</label>
+        <link refid="entity_8hpp"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>src/entities/base/service.hpp</label>
+        <link refid="service_8hpp"/>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>src/entities/people/provider.hpp</label>
+        <link refid="provider_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>src/entities/people/user.hpp</label>
+        <link refid="people_2user_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>src/entities/services/clinics/clinics.hpp</label>
+        <link refid="entities_2services_2clinics_2clinics_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>src/entities/services/clinics/patient/health.hpp</label>
+        <link refid="health_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>src/entities/services/clinics/patient/patient.hpp</label>
+        <link refid="patient_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>src/entities/services/clinics/patient/patientdrugs.hpp</label>
+        <link refid="patientdrugs_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>src/entities/services/clinics/patient/reports.hpp</label>
+        <link refid="reports_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>src/entities/services/clinics/visits/paidservices.hpp</label>
+        <link refid="paidservices_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>src/entities/services/clinics/visits/prescriptions.hpp</label>
+        <link refid="prescriptions_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>src/entities/services/clinics/visits/requests.hpp</label>
+        <link refid="requests_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>src/entities/services/clinics/visits/visitdrugs.hpp</label>
+        <link refid="visitdrugs_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>src/entities/services/clinics/visits/visits.hpp</label>
+        <link refid="visits_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>src/entities/services/laboratories.hpp</label>
+        <link refid="laboratories_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>src/entities/services/pharmacies.hpp</label>
+        <link refid="pharmacies_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>src/entities/services/radiologycenters.hpp</label>
+        <link refid="radiologycenters_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>src/gatekeeper/gatekeeper.cpp</label>
+        <link refid="gatekeeper_8cpp"/>
+      </node>
+      <node id="62">
+        <label>src/gatekeeper/gatekeeper.hpp</label>
+        <link refid="gatekeeper_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>src/gatekeeper/includes.hpp</label>
+        <link refid="includes_8hpp"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>src/gatekeeper/keeprbase/keeprbase.cpp</label>
+        <link refid="keeprbase_8cpp"/>
+      </node>
+      <node id="59">
+        <label>src/gatekeeper/keeprbase/keeprbase.hpp</label>
+        <link refid="keeprbase_8hpp"/>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>src/gatekeeper/permissionmanager/permissionmanager.cpp</label>
+        <link refid="permissionmanager_8cpp"/>
+      </node>
+      <node id="68">
+        <label>src/gatekeeper/permissionmanager/permissionmanager_private.cpp</label>
+        <link refid="permissionmanager__private_8cpp"/>
+      </node>
+      <node id="67">
+        <label>src/gatekeeper/permissionmanager/permissionmanager_private.hpp</label>
+        <link refid="permissionmanager__private_8hpp"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>src/gatekeeper/sessionmanager/sessionmanager.cpp</label>
+        <link refid="sessionmanager_8cpp"/>
+      </node>
+      <node id="61">
+        <label>src/gatekeeper/sessionmanager/sessionmanager.hpp</label>
+        <link refid="sessionmanager_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+      </node>
+      <node id="66">
+        <label>src/gatekeeper/tokenmanager/tokenmanager.cpp</label>
+        <link refid="tokenmanager_8cpp"/>
+      </node>
+      <node id="65">
+        <label>src/gatekeeper/tokenmanager/tokenmanager.hpp</label>
+        <link refid="tokenmanager_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/server/server.hpp</label>
+        <link refid="server_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>src/utils/global/errorstatus.hpp</label>
+        <link refid="errorstatus_8hpp"/>
+        <childnode refid="75" relation="include">
+        </childnode>
+      </node>
+      <node id="75">
+        <label>src/utils/global/global.hpp</label>
+        <link refid="global_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+      </node>
+      <node id="69">
+        <label>src/validator/databaseschema/databaseschema.cpp</label>
+        <link refid="databaseschema_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classDatabaseBusy" prot="public">DatabaseBusy</innerclass>
+    <briefdescription>
+<para>Exception signalling that the connection pool could not lease a connection in time. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header defines <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref>, a tiny exception class used as a signal. It adds no data of its own; it simply derives from std::runtime_error with a default message so it can be caught either specifically or by generic error handlers. Its whole purpose is to give &quot;the pool is exhausted&quot; a distinct type.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: The HTTP layer needs to tell two very different failures apart: a broken query (probably a server bug, answer 500) and a temporary shortage of connections (the client should retry, answer 503 with Retry-After). <ref refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" kindref="member">DatabaseConnectionPool::get_connection()</ref> throws this type when its wait expires, and filters, controllers and the watchdog all catch it separately. Without a dedicated type, every timeout would look like a generic error and clients would not know to retry.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>Exceptions and catch blocks: <ulink url="https://en.cppreference.com/w/cpp/language/try_catch">https://en.cppreference.com/w/cpp/language/try_catch</ulink></para>
+</listitem><listitem><para>std::runtime_error (a standard exception carrying a message): <ulink url="https://en.cppreference.com/w/cpp/error/runtime_error">https://en.cppreference.com/w/cpp/error/runtime_error</ulink></para>
+</listitem><listitem><para>Inheritance: <ulink url="https://en.cppreference.com/w/cpp/language/derived_class">https://en.cppreference.com/w/cpp/language/derived_class</ulink></para>
+</listitem><listitem><para>HTTP 503 <ref refid="classService" kindref="compound">Service</ref> Unavailable and Retry-After</para>
+</listitem><listitem><para>explicit constructors (prevent accidental implicit conversion): <ulink url="https://en.cppreference.com/w/cpp/language/explicit">https://en.cppreference.com/w/cpp/language/explicit</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>databasebusy.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Exception<sp/>signalling<sp/>that<sp/>the<sp/>connection<sp/>pool<sp/>could<sp/>not<sp/>lease<sp/>a<sp/>connection<sp/>in<sp/>time.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>defines<sp/>DatabaseBusy,<sp/>a<sp/>tiny<sp/>exception<sp/>class<sp/>used<sp/>as<sp/>a<sp/>signal.<sp/>It<sp/>adds</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>no<sp/>data<sp/>of<sp/>its<sp/>own;<sp/>it<sp/>simply<sp/>derives<sp/>from<sp/>std::runtime_error<sp/>with<sp/>a<sp/>default<sp/>message</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>so<sp/>it<sp/>can<sp/>be<sp/>caught<sp/>either<sp/>specifically<sp/>or<sp/>by<sp/>generic<sp/>error<sp/>handlers.<sp/>Its<sp/>whole</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>purpose<sp/>is<sp/>to<sp/>give<sp/>&quot;the<sp/>pool<sp/>is<sp/>exhausted&quot;<sp/>a<sp/>distinct<sp/>type.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>The<sp/>HTTP<sp/>layer<sp/>needs<sp/>to<sp/>tell<sp/>two<sp/>very<sp/>different<sp/>failures<sp/>apart:<sp/>a<sp/>broken<sp/>query<sp/>(probably<sp/>a</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>server<sp/>bug,<sp/>answer<sp/>500)<sp/>and<sp/>a<sp/>temporary<sp/>shortage<sp/>of<sp/>connections<sp/>(the<sp/>client<sp/>should<sp/>retry,</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>answer<sp/>503<sp/>with<sp/>Retry-After).<sp/>DatabaseConnectionPool::get_connection()<sp/>throws<sp/>this<sp/>type<sp/>when</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>its<sp/>wait<sp/>expires,<sp/>and<sp/>filters,<sp/>controllers<sp/>and<sp/>the<sp/>watchdog<sp/>all<sp/>catch<sp/>it<sp/>separately.<sp/>Without</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>a<sp/>dedicated<sp/>type,<sp/>every<sp/>timeout<sp/>would<sp/>look<sp/>like<sp/>a<sp/>generic<sp/>error<sp/>and<sp/>clients<sp/>would<sp/>not<sp/>know</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>to<sp/>retry.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>Exceptions<sp/>and<sp/>catch<sp/>blocks:<sp/>https://en.cppreference.com/w/cpp/language/try_catch</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>std::runtime_error<sp/>(a<sp/>standard<sp/>exception<sp/>carrying<sp/>a<sp/>message):<sp/>https://en.cppreference.com/w/cpp/error/runtime_error</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>Inheritance:<sp/>https://en.cppreference.com/w/cpp/language/derived_class</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>HTTP<sp/>503<sp/>Service<sp/>Unavailable<sp/>and<sp/>Retry-After</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>explicit<sp/>constructors<sp/>(prevent<sp/>accidental<sp/>implicit<sp/>conversion):<sp/>https://en.cppreference.com/w/cpp/language/explicit</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>guard:<sp/>define<sp/>this<sp/>exception<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::runtime_error,<sp/>the<sp/>base<sp/>class,<sp/>is<sp/>declared<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>is<sp/>used<sp/>for<sp/>the<sp/>exception<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Thrown<sp/>when<sp/>no<sp/>database<sp/>connection<sp/>became<sp/>free<sp/>within<sp/>DB_ACQUIRE_TIMEOUT_MS.<sp/>It<sp/>is<sp/>not<sp/>a<sp/>query<sp/>failure:<sp/>callers<sp/>answer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>503<sp/>with<sp/>Retry-After<sp/>instead<sp/>of<sp/>a<sp/>generic<sp/>error.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="35"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>@class<sp/>DatabaseBusy</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Exception<sp/>signalling<sp/>that<sp/>the<sp/>connection<sp/>pool<sp/>could<sp/>not<sp/>lease<sp/>a<sp/>connection<sp/>in<sp/>time.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@details<sp/>Distinguishes<sp/>pool<sp/>exhaustion<sp/>from<sp/>a<sp/>genuine<sp/>query<sp/>failure<sp/>so<sp/>the<sp/>HTTP<sp/>layer<sp/>can</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map<sp/>it<sp/>to<sp/>503<sp/>(Service<sp/>Unavailable)<sp/>with<sp/>Retry-After<sp/>rather<sp/>than<sp/>500.<sp/>Derives</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>from<sp/>`std::runtime_error`<sp/>so<sp/>generic<sp/>handlers<sp/>still<sp/>catch<sp/>it.</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>@see<sp/>api::v2::Http::statusForException,<sp/>DatabaseConnectionPool::get_connection</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classDatabaseBusy" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" kindref="member">DatabaseBusy</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::runtime_error<sp/><sp/></highlight><highlight class="comment">//<sp/>Inherits<sp/>the<sp/>message-carrying<sp/>behaviour<sp/>and<sp/>stays<sp/>catchable<sp/>as<sp/>a<sp/>std::exception.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Constructs<sp/>the<sp/>exception<sp/>with<sp/>a<sp/>default<sp/>or<sp/>custom<sp/>message.</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>what<sp/>Message<sp/>describing<sp/>the<sp/>busy<sp/>condition.</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" kindref="member">DatabaseBusy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>what<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Database<sp/>is<sp/>busy,<sp/>no<sp/>connection<sp/>available&quot;</highlight><highlight class="normal">)<sp/>:<sp/><ref refid="namespacestd" kindref="compound">std</ref>::runtime_error(what)<sp/>{}<sp/><sp/></highlight><highlight class="comment">//<sp/>`explicit`<sp/>prevents<sp/>accidentally<sp/>creating<sp/>this<sp/>exception<sp/>from<sp/>a<sp/>bare<sp/>string;<sp/>the<sp/>default<sp/>message<sp/>explains<sp/>the<sp/>common<sp/>case.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="src/database/databasebusy.hpp"/>
+  </compounddef>
+</doxygen>

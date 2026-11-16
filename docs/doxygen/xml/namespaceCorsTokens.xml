@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="namespaceCorsTokens" kind="namespace" language="C++">
+    <compoundname>CorsTokens</compoundname>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceCorsTokens_1a6d06cb55654db9c60bbbbbd0ee486ae3" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>std::string_view</type>
+        <definition>std::string_view CorsTokens::tokenPunctuation</definition>
+        <argsstring></argsstring>
+        <name>tokenPunctuation</name>
+        <qualifiedname>CorsTokens::tokenPunctuation</qualifiedname>
+        <initializer>= &quot;!#$%&amp;&apos;*+-.^_`|~&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Punctuation permitted in an HTTP token, per the token grammar used by the header parsers below. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/cors_tokens.hpp" line="44" column="32" bodyfile="src/server/cors_tokens.hpp" bodystart="44" bodyend="-1"/>
+        <referencedby refid="namespaceCorsTokens_1a0435f635d81611e18d7999358f7f71f3" compoundref="cors__tokens_8hpp" startline="54" endline="57">isTokenChar</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceCorsTokens_1a0435f635d81611e18d7999358f7f71f3" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CorsTokens::isTokenChar</definition>
+        <argsstring>(char c)</argsstring>
+        <name>isTokenChar</name>
+        <qualifiedname>CorsTokens::isTokenChar</qualifiedname>
+        <param>
+          <type>char</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="classReports" kindref="compound">Reports</ref> whether a character is valid inside an HTTP token. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Alphabetic, digit and the RFC token punctuation characters are accepted; whitespace, comma, quote, colon and control characters are not. This rejects values that could inject extra headers. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">c</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Character to classify. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true when c may appear in a token. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/cors_tokens.hpp" line="54" column="20" bodyfile="src/server/cors_tokens.hpp" bodystart="54" bodyend="57"/>
+        <references refid="namespaceCorsTokens_1a0435f635d81611e18d7999358f7f71f3" compoundref="cors__tokens_8hpp" startline="54" endline="57">isTokenChar</references>
+        <references refid="namespaceCorsTokens_1a6d06cb55654db9c60bbbbbd0ee486ae3" compoundref="cors__tokens_8hpp" startline="44">tokenPunctuation</references>
+        <referencedby refid="namespaceCorsTokens_1a0435f635d81611e18d7999358f7f71f3" compoundref="cors__tokens_8hpp" startline="54" endline="57">isTokenChar</referencedby>
+        <referencedby refid="namespaceCorsTokens_1ab923849059179cf6c8fb446aa5cb5e5d" compoundref="cors__tokens_8hpp" startline="127" endline="148">sanitizeRequestedHeaders</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceCorsTokens_1a7a178dc1be0dd0b0753320d19435ff96" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string_view</type>
+        <definition>std::string_view CorsTokens::trim</definition>
+        <argsstring>(std::string_view value)</argsstring>
+        <name>trim</name>
+        <qualifiedname>CorsTokens::trim</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Removes optional whitespace (spaces and tabs) from both ends of a header token. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>View to trim; not modified. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A subview of value with leading/trailing whitespace removed, or an empty view if value is all whitespace. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/cors_tokens.hpp" line="65" column="29" bodyfile="src/server/cors_tokens.hpp" bodystart="65" bodyend="74"/>
+        <references refid="namespaceCorsTokens_1a7a178dc1be0dd0b0753320d19435ff96" compoundref="cors__tokens_8hpp" startline="65" endline="74">trim</references>
+        <referencedby refid="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" compoundref="cors__tokens_8hpp" startline="85" endline="100">tokens</referencedby>
+        <referencedby refid="namespaceCorsTokens_1a7a178dc1be0dd0b0753320d19435ff96" compoundref="cors__tokens_8hpp" startline="65" endline="74">trim</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>auto CorsTokens::tokens</definition>
+        <argsstring>(std::string_view value)</argsstring>
+        <name>tokens</name>
+        <qualifiedname>CorsTokens::tokens</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Lazily splits a comma-separated header value into trimmed, non-empty tokens. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The returned range is a view: it allocates nothing and borrows from value, so the caller must keep the underlying string alive while iterating. Empty list elements (including ones made only of whitespace) are filtered out. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Header value to split. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A lazy range of std::string_view tokens. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/cors_tokens.hpp" line="85" column="17" bodyfile="src/server/cors_tokens.hpp" bodystart="85" bodyend="100"/>
+        <references refid="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" compoundref="cors__tokens_8hpp" startline="85" endline="100">tokens</references>
+        <references refid="namespaceCorsTokens_1a7a178dc1be0dd0b0753320d19435ff96" compoundref="cors__tokens_8hpp" startline="65" endline="74">trim</references>
+        <referencedby refid="namespaceCorsTokens_1a0868524c04d18e34760e18676a1ff72f" compoundref="cors__tokens_8hpp" startline="161" endline="193">mergeVary</referencedby>
+        <referencedby refid="namespaceCorsTokens_1ab923849059179cf6c8fb446aa5cb5e5d" compoundref="cors__tokens_8hpp" startline="127" endline="148">sanitizeRequestedHeaders</referencedby>
+        <referencedby refid="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" compoundref="cors__tokens_8hpp" startline="85" endline="100">tokens</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceCorsTokens_1af7fe702e663ce37f7012a3bf8af3a8c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CorsTokens::iequals</definition>
+        <argsstring>(std::string_view a, std::string_view b)</argsstring>
+        <name>iequals</name>
+        <qualifiedname>CorsTokens::iequals</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>ASCII case-insensitive string comparison. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Only A-Z are folded to a-z, which is sufficient for HTTP header field names; non-ASCII bytes are compared verbatim. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>First string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Second string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true when the strings have equal length and match after ASCII lowercasing. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/cors_tokens.hpp" line="111" column="17" bodyfile="src/server/cors_tokens.hpp" bodystart="111" bodyend="115"/>
+        <references refid="namespaceCorsTokens_1af7fe702e663ce37f7012a3bf8af3a8c8" compoundref="cors__tokens_8hpp" startline="111" endline="115">iequals</references>
+        <referencedby refid="namespaceCorsTokens_1af7fe702e663ce37f7012a3bf8af3a8c8" compoundref="cors__tokens_8hpp" startline="111" endline="115">iequals</referencedby>
+        <referencedby refid="namespaceCorsTokens_1a0868524c04d18e34760e18676a1ff72f" compoundref="cors__tokens_8hpp" startline="161" endline="193">mergeVary</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceCorsTokens_1ab923849059179cf6c8fb446aa5cb5e5d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string CorsTokens::sanitizeRequestedHeaders</definition>
+        <argsstring>(std::string_view requested)</argsstring>
+        <name>sanitizeRequestedHeaders</name>
+        <qualifiedname>CorsTokens::sanitizeRequestedHeaders</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>requested</declname>
+        </param>
+        <briefdescription>
+<para>Filters a client-supplied Access-Control-Request-Headers value down to syntactically valid tokens. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Rejects the whole value when it is empty or longer than 1024 characters, then keeps only comma-separated tokens made entirely of token characters and rejoins them with &quot;, &quot;. This prevents a preflight request from echoing CRLF, quotes or arbitrary separators into Access-Control-Allow-Headers. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requested</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw header value from the request. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A comma-and-space separated list of safe tokens, or an empty string when nothing is acceptable. An empty result tells <ref refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" kindref="member">Cors::apply()</ref> to fall back to the default header list. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/cors_tokens.hpp" line="127" column="24" bodyfile="src/server/cors_tokens.hpp" bodystart="127" bodyend="148"/>
+        <references refid="namespaceCorsTokens_1a0435f635d81611e18d7999358f7f71f3" compoundref="cors__tokens_8hpp" startline="54" endline="57">isTokenChar</references>
+        <references refid="namespaceCorsTokens_1ab923849059179cf6c8fb446aa5cb5e5d" compoundref="cors__tokens_8hpp" startline="127" endline="148">sanitizeRequestedHeaders</references>
+        <references refid="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" compoundref="cors__tokens_8hpp" startline="85" endline="100">tokens</references>
+        <referencedby refid="namespaceCorsTokens_1ab923849059179cf6c8fb446aa5cb5e5d" compoundref="cors__tokens_8hpp" startline="127" endline="148">sanitizeRequestedHeaders</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceCorsTokens_1a0868524c04d18e34760e18676a1ff72f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string CorsTokens::mergeVary</definition>
+        <argsstring>(std::string_view existing, std::string_view value)</argsstring>
+        <name>mergeVary</name>
+        <qualifiedname>CorsTokens::mergeVary</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>existing</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Merges a token into an existing Vary header value, avoiding duplicates. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Tokens are compared case-insensitively. A &quot;*&quot; wildcard in the existing value means every response is already variable, so the value is returned unchanged; likewise when the token is already present. Otherwise the token is appended. The original string is returned unchanged when no edit is needed, which lets the caller skip the header write. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">existing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current Vary header value. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Token to add. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The merged Vary value. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/cors_tokens.hpp" line="161" column="24" bodyfile="src/server/cors_tokens.hpp" bodystart="161" bodyend="193"/>
+        <references refid="namespaceCorsTokens_1af7fe702e663ce37f7012a3bf8af3a8c8" compoundref="cors__tokens_8hpp" startline="111" endline="115">iequals</references>
+        <references refid="namespaceCorsTokens_1a0868524c04d18e34760e18676a1ff72f" compoundref="cors__tokens_8hpp" startline="161" endline="193">mergeVary</references>
+        <references refid="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" compoundref="cors__tokens_8hpp" startline="85" endline="100">tokens</references>
+        <referencedby refid="namespaceCorsTokens_1a0868524c04d18e34760e18676a1ff72f" compoundref="cors__tokens_8hpp" startline="161" endline="193">mergeVary</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Drogon-free helpers for parsing and merging CORS header token lists. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Kept independent of the HTTP framework so token parsing can be reasoned about, and tested, on its own. </para>
+    </detaileddescription>
+    <location file="src/server/cors_tokens.hpp" line="34" column="1"/>
+  </compounddef>
+</doxygen>

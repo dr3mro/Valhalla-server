@@ -1,0 +1,698 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classServiceControllerBase" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>ServiceControllerBase</compoundname>
+    <derivedcompoundref refid="classServiceController" prot="public" virt="non-virtual">ServiceController&lt; T &gt;</derivedcompoundref>
+    <includes refid="servicecontrollerbase_8hpp" local="no">servicecontrollerbase.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classServiceControllerBase_1a0ccc53492a5a91f8d3fc0803ab917adc" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ServiceControllerBase::ServiceControllerBase</definition>
+        <argsstring>()=default</argsstring>
+        <name>ServiceControllerBase</name>
+        <qualifiedname>ServiceControllerBase::ServiceControllerBase</qualifiedname>
+        <briefdescription>
+<para>Default construction; the interface holds no state of its own. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="79" column="14"/>
+        <referencedby refid="classServiceControllerBase_1a7578846e1ea453c43df59c463058af33">operator=</referencedby>
+        <referencedby refid="classServiceControllerBase_1a924485ac89d89d72c74102afefbdd77a">operator=</referencedby>
+        <referencedby refid="classServiceControllerBase_1a30c74409caf6f9833e22decdf93c8a54">ServiceControllerBase</referencedby>
+        <referencedby refid="classServiceControllerBase_1af5dbb1a6f31e3a7e9583eb724e6feb11">ServiceControllerBase</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classServiceControllerBase_1a30c74409caf6f9833e22decdf93c8a54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ServiceControllerBase::ServiceControllerBase</definition>
+        <argsstring>(const ServiceControllerBase &amp;)=default</argsstring>
+        <name>ServiceControllerBase</name>
+        <qualifiedname>ServiceControllerBase::ServiceControllerBase</qualifiedname>
+        <param>
+          <type>const <ref refid="classServiceControllerBase" kindref="compound">ServiceControllerBase</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy construction is allowed; copies share no operation state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="82" column="5"/>
+        <references refid="classServiceControllerBase_1a0ccc53492a5a91f8d3fc0803ab917adc">ServiceControllerBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classServiceControllerBase_1af5dbb1a6f31e3a7e9583eb724e6feb11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ServiceControllerBase::ServiceControllerBase</definition>
+        <argsstring>(ServiceControllerBase &amp;&amp;)=delete</argsstring>
+        <name>ServiceControllerBase</name>
+        <qualifiedname>ServiceControllerBase::ServiceControllerBase</qualifiedname>
+        <param>
+          <type><ref refid="classServiceControllerBase" kindref="compound">ServiceControllerBase</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>Move construction is disabled; the interface is used through pointers/references. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="84" column="5"/>
+        <references refid="classServiceControllerBase_1a0ccc53492a5a91f8d3fc0803ab917adc">ServiceControllerBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classServiceControllerBase_1a7578846e1ea453c43df59c463058af33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classServiceControllerBase" kindref="compound">ServiceControllerBase</ref> &amp;</type>
+        <definition>ServiceControllerBase &amp; ServiceControllerBase::operator=</definition>
+        <argsstring>(const ServiceControllerBase &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>ServiceControllerBase::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classServiceControllerBase" kindref="compound">ServiceControllerBase</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy assignment is allowed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="86" column="27"/>
+        <references refid="classServiceControllerBase_1a0ccc53492a5a91f8d3fc0803ab917adc">ServiceControllerBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classServiceControllerBase_1a924485ac89d89d72c74102afefbdd77a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classServiceControllerBase" kindref="compound">ServiceControllerBase</ref> &amp;</type>
+        <definition>ServiceControllerBase &amp; ServiceControllerBase::operator=</definition>
+        <argsstring>(ServiceControllerBase &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>ServiceControllerBase::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classServiceControllerBase" kindref="compound">ServiceControllerBase</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>Move assignment is disabled, mirroring the deleted move constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="88" column="27"/>
+        <references refid="classServiceControllerBase_1a0ccc53492a5a91f8d3fc0803ab917adc">ServiceControllerBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classServiceControllerBase_1aab241845ae34572a2ed5d482a478ef87" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual ServiceControllerBase::~ServiceControllerBase</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ServiceControllerBase</name>
+        <qualifiedname>ServiceControllerBase::~ServiceControllerBase</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor so derived controllers can be destroyed through this interface. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Route registries actually store <computeroutput>shared_ptr</computeroutput> to the concrete controller type. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="93" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classServiceControllerBase_1aef2ec41694023c184286b38ab52e7727" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ServiceControllerBase::Create</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>Create</name>
+        <qualifiedname>ServiceControllerBase::Create</qualifiedname>
+        <reimplementedby refid="classServiceController_1a138db9b26dcc863d6895ccb1f01a7123">Create</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Creates a service entity from a JSON request body. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the create-permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON request body. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" kindref="member">EntityController::Create</ref> for the shipped validation/permission/error mapping. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="103" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a7a1d4a2a443909b8a43856e72288c36a" compoundref="services_8hpp" startline="79" endline="129">api::v2::Services::Create</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classServiceControllerBase_1a02a5f680d56ad264edb004229d80c996" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; ServiceControllerBase::CreateAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>CreateAsync</name>
+        <qualifiedname>ServiceControllerBase::CreateAsync</qualifiedname>
+        <reimplementedby refid="classServiceController_1a5cdd73e0b08ae45f2d808070e5680025">CreateAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classServiceControllerBase_1aef2ec41694023c184286b38ab52e7727" kindref="member">Create</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Must be co_awaited; the callback fires when the awaited work completes. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the create-permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON request body; must remain valid until the task completes. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="111" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classServiceControllerBase_1a5bfaadfc6a791e0035dabc436e32ebcd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ServiceControllerBase::Read</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>Read</name>
+        <qualifiedname>ServiceControllerBase::Read</qualifiedname>
+        <reimplementedby refid="classServiceController_1a92157307a0c39b6623d7a5cb75a0e7bf">Read</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Reads one service entity identified by an <computeroutput>id</computeroutput>/<computeroutput>schema</computeroutput> JSON request. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the read-permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON request body containing <computeroutput>id</computeroutput> and requested <computeroutput>schema</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="118" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Services_1add4126a239d7f9a96356da45f888ff67" compoundref="services_8hpp" startline="139" endline="189">api::v2::Services::Read</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classServiceControllerBase_1aa418b013aa53894745ca9595e40b62ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; ServiceControllerBase::ReadAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>ReadAsync</name>
+        <qualifiedname>ServiceControllerBase::ReadAsync</qualifiedname>
+        <reimplementedby refid="classServiceController_1ab279214d55b6c2fa43ad6ee069413c97">ReadAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classServiceControllerBase_1a5bfaadfc6a791e0035dabc436e32ebcd" kindref="member">Read</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the read-permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON request body; must remain valid until the task completes. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="125" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classServiceControllerBase_1aefe0e5804f4eed5e0ac73a32317950d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ServiceControllerBase::Update</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data, std::optional&lt; uint64_t &gt; _id)=0</argsstring>
+        <name>Update</name>
+        <qualifiedname>ServiceControllerBase::Update</qualifiedname>
+        <reimplementedby refid="classServiceController_1a0bdcfc6e76c7864d0c84acd7be675ce4">Update</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>_id</declname>
+        </param>
+        <briefdescription>
+<para>Updates the service entity identified by <computeroutput>_id</computeroutput> from a JSON request body. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the update-permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON request body with the fields to change. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target entity id; a disengaged optional is rejected by the implementation. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="133" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" compoundref="services_8hpp" startline="199" endline="254">api::v2::Services::Update</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classServiceControllerBase_1a737ec8801a6bb9ce6ceb53c2fb8ccc7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; ServiceControllerBase::UpdateAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data, std::optional&lt; uint64_t &gt; _id)=0</argsstring>
+        <name>UpdateAsync</name>
+        <qualifiedname>ServiceControllerBase::UpdateAsync</qualifiedname>
+        <reimplementedby refid="classServiceController_1abbe959a26ec829cc66e5e1cfd8175577">UpdateAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>_id</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classServiceControllerBase_1aefe0e5804f4eed5e0ac73a32317950d3" kindref="member">Update</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the update-permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON request body; must remain valid until the task completes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target entity id; a disengaged optional is rejected by the implementation. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="141" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classServiceControllerBase_1aed2131f8be6e44fdca0ac4bb17cb6dfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ServiceControllerBase::Delete</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; _id)=0</argsstring>
+        <name>Delete</name>
+        <qualifiedname>ServiceControllerBase::Delete</qualifiedname>
+        <reimplementedby refid="classServiceController_1adc89e37530112d08d7ee85aae48d8d3c">Delete</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>_id</declname>
+        </param>
+        <briefdescription>
+<para>Deletes the service entity identified by <computeroutput>_id</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the delete-permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target entity id; a disengaged optional is rejected by the implementation. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="148" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" compoundref="services_8hpp" startline="263" endline="318">api::v2::Services::Delete</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classServiceControllerBase_1a2ed4587b95b68015369aa23e31bb5962" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; ServiceControllerBase::DeleteAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; _id)=0</argsstring>
+        <name>DeleteAsync</name>
+        <qualifiedname>ServiceControllerBase::DeleteAsync</qualifiedname>
+        <reimplementedby refid="classServiceController_1a69e19ca4bc442fd85af8df06ed98b5dc">DeleteAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>_id</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classServiceControllerBase_1aed2131f8be6e44fdca0ac4bb17cb6dfb" kindref="member">Delete</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the delete-permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target entity id; a disengaged optional is rejected by the implementation. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="155" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classServiceControllerBase_1af9b5bf091f00982abb00edfca5f3a110" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ServiceControllerBase::Search</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>Search</name>
+        <qualifiedname>ServiceControllerBase::Search</qualifiedname>
+        <reimplementedby refid="classServiceController_1af655c40238892ccf0103ebf85ac4d438">Search</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Runs a paginated search over service entities. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Implementations return a JSON object with <computeroutput>results</computeroutput>, <computeroutput>more</computeroutput> and <computeroutput>offset</computeroutput>; the requester is accepted for interface symmetry but need not be consulted. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller (unused by the shipped search implementation). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON search criteria. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="164" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a9aaef4e8359c44c2f0d8f79e96497868" compoundref="services_8hpp" startline="327" endline="377">api::v2::Services::Search</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Type-erased interface for service-entity (clinic, pharmacy, laboratory, radiology center) CRUD+S operations. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Declares both a synchronous, callback-driven form of every operation and a coroutine (<computeroutput>drogon::Task&lt;void&gt;</computeroutput>) form. The HTTP layer reaches concrete controllers through this base via a <computeroutput>std::variant</computeroutput> in the services route registry, so virtual dispatch here is what makes one route handler serve all service entity types.</para>
+<para>In plain words: &quot;synchronous&quot; means the caller gets the answer through a callback function; &quot;coroutine&quot; (<computeroutput>drogon::Task&lt;void&gt;</computeroutput>) means the caller can pause the operation with co_await and let the server do other work meanwhile. &quot;Virtual dispatch&quot; means that when the route code calls <computeroutput><ref refid="classServiceControllerBase_1aef2ec41694023c184286b38ab52e7727" kindref="member">Create</ref></computeroutput> through this base type, C++ automatically runs the version belonging to the real object (for example the clinic controller). A <computeroutput>std::variant</computeroutput> is a variable that can hold one of several different types — here it holds whichever concrete service controller was selected.</para>
+<para>Invocation contract shared by every method:<itemizedlist>
+<listitem><para><computeroutput>callback</computeroutput> is <computeroutput>std::function&lt;void(int, const std::string&amp;)&gt;</computeroutput>, moved by the caller and forwarded down the call chain. By contract it is invoked once on each completion path, including failures; the first argument is an <ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892f" kindref="member">api::v2::Http::Status</ref> code, the second a response body (serialized row(s) on success, diagnostic text on failure).</para>
+</listitem><listitem><para><computeroutput>requester</computeroutput> is the authenticated caller identity, used by implementations for the permission decision before any database work is done.</para>
+</listitem><listitem><para><computeroutput>data</computeroutput> is a non-owning view of the raw JSON request body; it must outlive the call.</para>
+</listitem><listitem><para><computeroutput>_id</computeroutput>, where present, is the optional target entity id; a missing value is rejected by the concrete implementation rather than by this interface.</para>
+</listitem></itemizedlist>
+</para>
+<para>The <computeroutput>*Async</computeroutput> methods perform the same operation but must be co_awaited; the route layer wraps them in <computeroutput>drogon::async_run</computeroutput> and converts the callback result into an HTTP reply. <simplesect kind="note"><para>Implementations here are supplied by <ref refid="classServiceController" kindref="compound">ServiceController</ref>; the interface itself adds no state. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classServiceController" kindref="compound">ServiceController</ref>, <ref refid="classEntityControllerBase" kindref="compound">EntityControllerBase</ref>, <ref refid="classController" kindref="compound">Controller</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ServiceController&lt; T &gt;</label>
+        <link refid="classServiceController"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ServiceControllerBase</label>
+        <link refid="classServiceControllerBase"/>
+      </node>
+    </inheritancegraph>
+    <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="75" column="1" bodyfile="src/controllers/servicecontroller/servicecontrollerbase.hpp" bodystart="76" bodyend="165"/>
+    <listofallmembers>
+      <member refid="classServiceControllerBase_1aef2ec41694023c184286b38ab52e7727" prot="public" virt="pure-virtual"><scope>ServiceControllerBase</scope><name>Create</name></member>
+      <member refid="classServiceControllerBase_1a02a5f680d56ad264edb004229d80c996" prot="public" virt="pure-virtual"><scope>ServiceControllerBase</scope><name>CreateAsync</name></member>
+      <member refid="classServiceControllerBase_1aed2131f8be6e44fdca0ac4bb17cb6dfb" prot="public" virt="pure-virtual"><scope>ServiceControllerBase</scope><name>Delete</name></member>
+      <member refid="classServiceControllerBase_1a2ed4587b95b68015369aa23e31bb5962" prot="public" virt="pure-virtual"><scope>ServiceControllerBase</scope><name>DeleteAsync</name></member>
+      <member refid="classServiceControllerBase_1a7578846e1ea453c43df59c463058af33" prot="public" virt="non-virtual"><scope>ServiceControllerBase</scope><name>operator=</name></member>
+      <member refid="classServiceControllerBase_1a924485ac89d89d72c74102afefbdd77a" prot="public" virt="non-virtual"><scope>ServiceControllerBase</scope><name>operator=</name></member>
+      <member refid="classServiceControllerBase_1a5bfaadfc6a791e0035dabc436e32ebcd" prot="public" virt="pure-virtual"><scope>ServiceControllerBase</scope><name>Read</name></member>
+      <member refid="classServiceControllerBase_1aa418b013aa53894745ca9595e40b62ca" prot="public" virt="pure-virtual"><scope>ServiceControllerBase</scope><name>ReadAsync</name></member>
+      <member refid="classServiceControllerBase_1af9b5bf091f00982abb00edfca5f3a110" prot="public" virt="pure-virtual"><scope>ServiceControllerBase</scope><name>Search</name></member>
+      <member refid="classServiceControllerBase_1a0ccc53492a5a91f8d3fc0803ab917adc" prot="public" virt="non-virtual"><scope>ServiceControllerBase</scope><name>ServiceControllerBase</name></member>
+      <member refid="classServiceControllerBase_1a30c74409caf6f9833e22decdf93c8a54" prot="public" virt="non-virtual"><scope>ServiceControllerBase</scope><name>ServiceControllerBase</name></member>
+      <member refid="classServiceControllerBase_1af5dbb1a6f31e3a7e9583eb724e6feb11" prot="public" virt="non-virtual"><scope>ServiceControllerBase</scope><name>ServiceControllerBase</name></member>
+      <member refid="classServiceControllerBase_1aefe0e5804f4eed5e0ac73a32317950d3" prot="public" virt="pure-virtual"><scope>ServiceControllerBase</scope><name>Update</name></member>
+      <member refid="classServiceControllerBase_1a737ec8801a6bb9ce6ceb53c2fb8ccc7f" prot="public" virt="pure-virtual"><scope>ServiceControllerBase</scope><name>UpdateAsync</name></member>
+      <member refid="classServiceControllerBase_1aab241845ae34572a2ed5d482a478ef87" prot="public" virt="virtual"><scope>ServiceControllerBase</scope><name>~ServiceControllerBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

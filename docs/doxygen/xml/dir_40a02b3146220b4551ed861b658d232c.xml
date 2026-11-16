@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_40a02b3146220b4551ed861b658d232c" kind="dir">
+    <compoundname>src/entities/services/clinics/patient</compoundname>
+    <innerfile refid="health_8hpp">health.hpp</innerfile>
+    <innerfile refid="patient_8hpp">patient.hpp</innerfile>
+    <innerfile refid="patientdrugs_8hpp">patientdrugs.hpp</innerfile>
+    <innerfile refid="reports_8hpp">reports.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/entities/services/clinics/patient/"/>
+  </compounddef>
+</doxygen>

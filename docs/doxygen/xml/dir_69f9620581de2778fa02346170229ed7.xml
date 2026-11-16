@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_69f9620581de2778fa02346170229ed7" kind="dir">
+    <compoundname>src/gatekeeper/sessionmanager</compoundname>
+    <innerfile refid="sessionmanager_8cpp">sessionmanager.cpp</innerfile>
+    <innerfile refid="sessionmanager_8hpp">sessionmanager.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/gatekeeper/sessionmanager/"/>
+  </compounddef>
+</doxygen>

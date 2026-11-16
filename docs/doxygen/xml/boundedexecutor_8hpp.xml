@@ -1,0 +1,819 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="boundedexecutor_8hpp" kind="file" language="C++">
+    <compoundname>boundedexecutor.hpp</compoundname>
+    <includes local="no">atomic</includes>
+    <includes local="no">chrono</includes>
+    <includes local="no">condition_variable</includes>
+    <includes local="no">cstddef</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">deque</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">mutex</includes>
+    <includes local="no">string</includes>
+    <includes local="no">thread</includes>
+    <includes local="no">utility</includes>
+    <includes local="no">vector</includes>
+    <includes refid="callback_8hpp" local="yes">utils/global/callback.hpp</includes>
+    <includes refid="http_8hpp" local="yes">utils/global/http.hpp</includes>
+    <includedby refid="boundedexecutor_8cpp" local="yes">src/concurrency/boundedexecutor.cpp</includedby>
+    <includedby refid="dbexecutor_8hpp" local="yes">src/database/dbexecutor.hpp</includedby>
+    <includedby refid="passwordworker_8hpp" local="yes">src/gatekeeper/passwordcrypt/passwordworker.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/concurrency/boundedexecutor.hpp</label>
+        <link refid="boundedexecutor_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>utils/global/callback.hpp</label>
+        <link refid="callback_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>utils/global/http.hpp</label>
+        <link refid="http_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>atomic</label>
+      </node>
+      <node id="3">
+        <label>chrono</label>
+      </node>
+      <node id="4">
+        <label>condition_variable</label>
+      </node>
+      <node id="5">
+        <label>cstddef</label>
+      </node>
+      <node id="6">
+        <label>cstdint</label>
+      </node>
+      <node id="7">
+        <label>deque</label>
+      </node>
+      <node id="8">
+        <label>functional</label>
+      </node>
+      <node id="9">
+        <label>memory</label>
+      </node>
+      <node id="10">
+        <label>mutex</label>
+      </node>
+      <node id="11">
+        <label>string</label>
+      </node>
+      <node id="12">
+        <label>thread</label>
+      </node>
+      <node id="17">
+        <label>unordered_map</label>
+      </node>
+      <node id="13">
+        <label>utility</label>
+      </node>
+      <node id="14">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="6">
+        <label>src/api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/api/v2/basic/common.hpp</label>
+        <link refid="common_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>src/api/v2/filters/auth.hpp</label>
+        <link refid="auth_8hpp"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>src/api/v2/filters/ratelimit.hpp</label>
+        <link refid="ratelimit_8hpp"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/api/v2/routes/appointments.hpp</label>
+        <link refid="appointments_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>src/api/v2/routes/clients.hpp</label>
+        <link refid="clients_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/api/v2/routes/clinics.hpp</label>
+        <link refid="api_2v2_2routes_2clinics_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/api/v2/routes/doc.hpp</label>
+        <link refid="doc_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>src/api/v2/routes/hello.hpp</label>
+        <link refid="hello_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>src/api/v2/routes/services.hpp</label>
+        <link refid="services_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>src/api/v2/routes/staff.hpp</label>
+        <link refid="staff_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/concurrency/boundedexecutor.cpp</label>
+        <link refid="boundedexecutor_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/concurrency/boundedexecutor.hpp</label>
+        <link refid="boundedexecutor_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
+        <link refid="appointmentcontroller_8cpp"/>
+      </node>
+      <node id="28">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
+        <link refid="appointmentcontroller_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>src/controllers/base/controller/controller.hpp</label>
+        <link refid="controller_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>src/controllers/clientcontroller/clientcontroller.cpp</label>
+        <link refid="clientcontroller_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
+        <link refid="clientcontroller_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
+        <link refid="cliniccontroller_8cpp"/>
+      </node>
+      <node id="30">
+        <label>src/controllers/cliniccontroller/cliniccontroller.hpp</label>
+        <link refid="cliniccontroller_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
+        <link refid="entitycontroller_8cpp"/>
+      </node>
+      <node id="26">
+        <label>src/controllers/entitycontroller/entitycontroller.hpp</label>
+        <link refid="entitycontroller_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
+        <link refid="servicecontroller_8cpp"/>
+      </node>
+      <node id="32">
+        <label>src/controllers/servicecontroller/servicecontroller.hpp</label>
+        <link refid="servicecontroller_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
+        <link refid="staffcontroller_8cpp"/>
+      </node>
+      <node id="34">
+        <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
+        <link refid="staffcontroller_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>src/database/database.cpp</label>
+        <link refid="database_8cpp"/>
+      </node>
+      <node id="14">
+        <label>src/database/dbexecutor.cpp</label>
+        <link refid="dbexecutor_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/database/dbexecutor.hpp</label>
+        <link refid="dbexecutor_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>src/gatekeeper/gatekeeper.cpp</label>
+        <link refid="gatekeeper_8cpp"/>
+      </node>
+      <node id="19">
+        <label>src/gatekeeper/gatekeeper.hpp</label>
+        <link refid="gatekeeper_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>src/gatekeeper/passwordcrypt/passwordworker.cpp</label>
+        <link refid="passwordworker_8cpp"/>
+      </node>
+      <node id="15">
+        <label>src/gatekeeper/passwordcrypt/passwordworker.hpp</label>
+        <link refid="passwordworker_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/server/server.hpp</label>
+        <link refid="server_8hpp"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classBoundedExecutor" prot="public">BoundedExecutor</innerclass>
+    <innerclass refid="structBoundedExecutor_1_1Stats" prot="public">BoundedExecutor::Stats</innerclass>
+    <innerclass refid="structBoundedExecutor_1_1Item" prot="private">BoundedExecutor::Item</innerclass>
+    <innerclass refid="structBoundedExecutor_1_1Worker" prot="private">BoundedExecutor::Worker</innerclass>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="boundedexecutor_8hpp_1af76f5db524067c26a058b1fee7e90e82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Body</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void runOnExecutor</definition>
+        <argsstring>(BoundedExecutor &amp;executor, CALLBACK_ &amp;&amp;callback, const char *busy_message, Body &amp;&amp;body)</argsstring>
+        <name>runOnExecutor</name>
+        <param>
+          <type><ref refid="classBoundedExecutor" kindref="compound">BoundedExecutor</ref> &amp;</type>
+          <declname>executor</declname>
+        </param>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>busy_message</declname>
+        </param>
+        <param>
+          <type>Body &amp;&amp;</type>
+          <declname>body</declname>
+        </param>
+        <briefdescription>
+<para>Runs body(callback) on an executor, answering 503 immediately when the queue is full. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Runs body(callback) on the executor. When the queue is full the callback is answered right away with 503 and body never runs. The callback is shared with the task so that it is still available for that reply.</para>
+<para>The callback is moved into a shared_ptr that both the queued task and this function hold. On acceptance the task runs on a worker thread (or inline when the executor has no workers) and body receives the callback as an rvalue. On rejection the callback is invoked here, on the submitting thread, with SERVICE_UNAVAILABLE and busy_message; body is destroyed without being called.</para>
+<para>In plain words: hand the slow job (body) and the HTTP reply function (callback) to the pool. If the pool takes the job, a worker runs body later and body sends the reply. If the pool is full, we send a 503 right now using the same callback. Either way the client always gets an answer, and the callback is never lost. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Body</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callable invocable with a CALLBACK_ (std::function&lt;void(int, const std::string&amp;)&gt;); it is captured by the task, so it must be move-constructible. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">executor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pool that will execute body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion callback; ownership is moved into this helper. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">busy_message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classMessage" kindref="compound">Message</ref> paired with the 503 status on rejection. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">body</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The blocking work to run on the pool. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Because the callback is moved into the task, callers must not use it after passing it here. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" kindref="member">BoundedExecutor::submit()</ref>, <ref refid="dbexecutor_8hpp_1a936968e57939fceaf59b5600a46630aa" kindref="member">runOnDbExecutor()</ref>, <ref refid="passwordworker_8hpp_1a11301e300507b2f5ba81930e709a5de6" kindref="member">runOnPasswordWorker()</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/concurrency/boundedexecutor.hpp" line="295" column="6" bodyfile="src/concurrency/boundedexecutor.hpp" bodystart="295" bodyend="302"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="boundedexecutor_8hpp_1af76f5db524067c26a058b1fee7e90e82" compoundref="boundedexecutor_8hpp" startline="295" endline="302">runOnExecutor</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa8f68ec2a12ee4e1b4766e3fe760220" compoundref="http_8hpp" startline="100">api::v2::Http::SERVICE_UNAVAILABLE</references>
+        <references refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" compoundref="boundedexecutor_8cpp" startline="154" endline="223">BoundedExecutor::submit</references>
+        <referencedby refid="dbexecutor_8hpp_1a936968e57939fceaf59b5600a46630aa" compoundref="dbexecutor_8hpp" startline="93" endline="96">runOnDbExecutor</referencedby>
+        <referencedby refid="boundedexecutor_8hpp_1af76f5db524067c26a058b1fee7e90e82" compoundref="boundedexecutor_8hpp" startline="295" endline="302">runOnExecutor</referencedby>
+        <referencedby refid="passwordworker_8hpp_1a11301e300507b2f5ba81930e709a5de6" compoundref="passwordworker_8hpp" startline="71" endline="75">runOnPasswordWorker</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A fixed-size worker pool with a bounded queue, plus the callback-adapting helper built on it. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file declares <ref refid="classBoundedExecutor" kindref="compound">BoundedExecutor</ref>: a group of worker threads that run slow, blocking jobs such as database calls and password hashing away from Drogon&apos;s IO threads. Each worker has a short queue. If every queue is full, a new job is refused instead of being allowed to wait forever, so the server can quickly answer 503. The helper <ref refid="boundedexecutor_8hpp_1af76f5db524067c26a058b1fee7e90e82" kindref="member">runOnExecutor()</ref> makes sure the HTTP reply is sent whether the job was accepted or refused.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: Drogon&apos;s IO threads must stay free to accept new requests. <ref refid="classDatabase" kindref="compound">Database</ref> and password work would block them, so callers use <ref refid="boundedexecutor_8hpp_1af76f5db524067c26a058b1fee7e90e82" kindref="member">runOnExecutor()</ref> to hand that work to this pool. The pool reports false when full, which lets the caller answer HTTP 503 (&quot;server busy&quot;) rather than piling up unlimited work. With zero workers, jobs run inline on the caller, which is how unit tests stay synchronous. Without this file, every slow call would stall the whole web server.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>Condition variables: a way for a thread to sleep until another thread wakes it with new work. <ulink url="https://en.cppreference.com/w/cpp/thread/condition_variable">https://en.cppreference.com/w/cpp/thread/condition_variable</ulink></para>
+</listitem><listitem><para>Atomic memory order: rules for when one thread&apos;s writes become visible to another. <ulink url="https://en.cppreference.com/w/cpp/atomic/memory_order">https://en.cppreference.com/w/cpp/atomic/memory_order</ulink></para>
+</listitem><listitem><para>Work stealing: an idle worker takes jobs from a busier worker&apos;s queue. <ulink url="https://en.wikipedia.org/wiki/Work_stealing">https://en.wikipedia.org/wiki/Work_stealing</ulink></para>
+</listitem><listitem><para>RAII: a local lock object that unlocks a mutex automatically when the scope ends. <ulink url="https://en.cppreference.com/w/cpp/language/raii">https://en.cppreference.com/w/cpp/language/raii</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>boundedexecutor.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>A<sp/>fixed-size<sp/>worker<sp/>pool<sp/>with<sp/>a<sp/>bounded<sp/>queue,<sp/>plus<sp/>the<sp/>callback-adapting<sp/>helper<sp/>built<sp/>on<sp/>it.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>file<sp/>declares<sp/>BoundedExecutor:<sp/>a<sp/>group<sp/>of<sp/>worker<sp/>threads<sp/>that<sp/>run<sp/>slow,<sp/>blocking<sp/>jobs<sp/>such<sp/>as<sp/>database</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>calls<sp/>and<sp/>password<sp/>hashing<sp/>away<sp/>from<sp/>Drogon&apos;s<sp/>IO<sp/>threads.<sp/>Each<sp/>worker<sp/>has<sp/>a<sp/>short<sp/>queue.<sp/>If<sp/>every<sp/>queue<sp/>is</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>full,<sp/>a<sp/>new<sp/>job<sp/>is<sp/>refused<sp/>instead<sp/>of<sp/>being<sp/>allowed<sp/>to<sp/>wait<sp/>forever,<sp/>so<sp/>the<sp/>server<sp/>can<sp/>quickly<sp/>answer<sp/>503.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>helper<sp/>runOnExecutor()<sp/>makes<sp/>sure<sp/>the<sp/>HTTP<sp/>reply<sp/>is<sp/>sent<sp/>whether<sp/>the<sp/>job<sp/>was<sp/>accepted<sp/>or<sp/>refused.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Drogon&apos;s<sp/>IO<sp/>threads<sp/>must<sp/>stay<sp/>free<sp/>to<sp/>accept<sp/>new<sp/>requests.<sp/>Database<sp/>and<sp/>password<sp/>work<sp/>would<sp/>block<sp/>them,<sp/>so<sp/>callers</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>use<sp/>runOnExecutor()<sp/>to<sp/>hand<sp/>that<sp/>work<sp/>to<sp/>this<sp/>pool.<sp/>The<sp/>pool<sp/>reports<sp/>false<sp/>when<sp/>full,<sp/>which<sp/>lets<sp/>the<sp/>caller<sp/>answer</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>HTTP<sp/>503<sp/>(&quot;server<sp/>busy&quot;)<sp/>rather<sp/>than<sp/>piling<sp/>up<sp/>unlimited<sp/>work.<sp/>With<sp/>zero<sp/>workers,<sp/>jobs<sp/>run<sp/>inline<sp/>on<sp/>the<sp/>caller,</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>which<sp/>is<sp/>how<sp/>unit<sp/>tests<sp/>stay<sp/>synchronous.<sp/>Without<sp/>this<sp/>file,<sp/>every<sp/>slow<sp/>call<sp/>would<sp/>stall<sp/>the<sp/>whole<sp/>web<sp/>server.</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>-<sp/>Condition<sp/>variables:<sp/>a<sp/>way<sp/>for<sp/>a<sp/>thread<sp/>to<sp/>sleep<sp/>until<sp/>another<sp/>thread<sp/>wakes<sp/>it<sp/>with<sp/>new<sp/>work.<sp/>https://en.cppreference.com/w/cpp/thread/condition_variable</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>-<sp/>Atomic<sp/>memory<sp/>order:<sp/>rules<sp/>for<sp/>when<sp/>one<sp/>thread&apos;s<sp/>writes<sp/>become<sp/>visible<sp/>to<sp/>another.<sp/>https://en.cppreference.com/w/cpp/atomic/memory_order</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>Work<sp/>stealing:<sp/>an<sp/>idle<sp/>worker<sp/>takes<sp/>jobs<sp/>from<sp/>a<sp/>busier<sp/>worker&apos;s<sp/>queue.<sp/>https://en.wikipedia.org/wiki/Work_stealing</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>RAII:<sp/>a<sp/>local<sp/>lock<sp/>object<sp/>that<sp/>unlocks<sp/>a<sp/>mutex<sp/>automatically<sp/>when<sp/>the<sp/>scope<sp/>ends.<sp/>https://en.cppreference.com/w/cpp/language/raii</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Compiler-enforced<sp/>header<sp/>guard:<sp/>include<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;atomic&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::atomic:<sp/>counters<sp/>that<sp/>several<sp/>threads<sp/>can<sp/>safely<sp/>update.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;chrono&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>steady_clock<sp/>/<sp/>time_point:<sp/>timestamps<sp/>used<sp/>to<sp/>measure<sp/>how<sp/>long<sp/>a<sp/>task<sp/>waited.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;condition_variable&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::condition_variable:<sp/>lets<sp/>a<sp/>worker<sp/>sleep<sp/>until<sp/>work<sp/>arrives.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::size_t:<sp/>unsigned<sp/>counts<sp/>and<sp/>sizes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::uint64_t:<sp/>fixed-width<sp/>integers<sp/>for<sp/>the<sp/>statistics<sp/>counters.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;deque&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::deque:<sp/>the<sp/>double-ended<sp/>queue<sp/>that<sp/>holds<sp/>waiting<sp/>tasks.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::function&lt;void()&gt;:<sp/>a<sp/>general-purpose<sp/>callable<sp/>used<sp/>as<sp/>a<sp/>task.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::make_shared<sp/>/<sp/>std::unique_ptr:<sp/>owning<sp/>pointers<sp/>for<sp/>callbacks<sp/>and<sp/>workers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::mutex<sp/>and<sp/>lock<sp/>guards:<sp/>protect<sp/>each<sp/>worker&apos;s<sp/>queue.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string:<sp/>the<sp/>pool&apos;s<sp/>name<sp/>used<sp/>in<sp/>log<sp/>messages.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;thread&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::thread:<sp/>the<sp/>real<sp/>worker<sp/>threads.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::move<sp/>/<sp/>std::forward:<sp/>pass<sp/>values<sp/>along<sp/>without<sp/>copying.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::vector:<sp/>owns<sp/>the<sp/>list<sp/>of<sp/>workers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="callback_8hpp" kindref="compound">utils/global/callback.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CALLBACK_:<sp/>the<sp/>HTTP<sp/>completion<sp/>callback<sp/>type<sp/>handed<sp/>to<sp/>tasks.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="http_8hpp" kindref="compound">utils/global/http.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>api::v2::Http::Status::SERVICE_UNAVAILABLE:<sp/>the<sp/>503<sp/>status<sp/>used<sp/>on<sp/>rejection.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="44"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>@class<sp/>BoundedExecutor</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Fixed-size<sp/>worker<sp/>pool<sp/>with<sp/>a<sp/>shared<sp/>bounded<sp/>queue<sp/>for<sp/>slow,<sp/>blocking<sp/>work.</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>@details<sp/>A<sp/>fixed<sp/>pool<sp/>of<sp/>threads<sp/>with<sp/>a<sp/>bounded<sp/>queue.<sp/>It<sp/>exists<sp/>so<sp/>that<sp/>slow,<sp/>blocking<sp/>work<sp/>(database<sp/>calls,<sp/>password<sp/>hashing)</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>never<sp/>runs<sp/>on<sp/>a<sp/>Drogon<sp/>IO<sp/>thread.<sp/>submit()<sp/>never<sp/>blocks:<sp/>it<sp/>returns<sp/>false<sp/>when<sp/>the<sp/>queue<sp/>is<sp/>full,<sp/>and<sp/>the<sp/>caller<sp/>answers<sp/>503.</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Every<sp/>worker<sp/>has<sp/>its<sp/>own<sp/>queue<sp/>and<sp/>its<sp/>own<sp/>lock,<sp/>so<sp/>submitters<sp/>and<sp/>workers<sp/>do<sp/>not<sp/>all<sp/>contend<sp/>on<sp/>one<sp/>mutex.<sp/>submit()<sp/>picks</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>an<sp/>idle<sp/>worker<sp/>if<sp/>there<sp/>is<sp/>one<sp/>(so<sp/>a<sp/>task<sp/>never<sp/>waits<sp/>behind<sp/>a<sp/>slow<sp/>one<sp/>while<sp/>another<sp/>worker<sp/>sleeps),<sp/>otherwise<sp/>the<sp/>worker</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>the<sp/>shortest<sp/>queue,<sp/>so<sp/>the<sp/>queues<sp/>stay<sp/>the<sp/>same<sp/>length<sp/>and<sp/>waiting<sp/>time<sp/>stays<sp/>fair<sp/>(plain<sp/>round-robin<sp/>left<sp/>some<sp/>queues</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>long<sp/>and<sp/>some<sp/>short,<sp/>and<sp/>the<sp/>tasks<sp/>in<sp/>the<sp/>long<sp/>ones<sp/>waited<sp/>20<sp/>times<sp/>longer).<sp/>Only<sp/>an<sp/>idle<sp/>worker<sp/>is<sp/>woken<sp/>(a<sp/>busy<sp/>one<sp/>needs<sp/>no<sp/>wake-up,<sp/>it<sp/>looks<sp/>at</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>its<sp/>queue<sp/>when<sp/>it<sp/>finishes).<sp/>A<sp/>worker<sp/>that<sp/>has<sp/>run<sp/>out<sp/>of<sp/>work<sp/>takes<sp/>tasks<sp/>from<sp/>the<sp/>other<sp/>workers&apos;<sp/>queues<sp/>before<sp/>it<sp/>sleeps.<sp/>The<sp/>queue<sp/>limit<sp/>is<sp/>shared:<sp/>at</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/>most<sp/>queue_max<sp/>tasks<sp/>wait<sp/>across<sp/>all<sp/>workers.</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>With<sp/>zero<sp/>workers<sp/>every<sp/>task<sp/>runs<sp/>inline,<sp/>on<sp/>the<sp/>submitting<sp/>thread.<sp/>Unit<sp/>tests<sp/>use<sp/>that<sp/>so<sp/>they<sp/>stay<sp/>synchronous.</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>In<sp/>plain<sp/>words:<sp/>imagine<sp/>a<sp/>fixed<sp/>number<sp/>of<sp/>chefs<sp/>(worker<sp/>threads)<sp/>each<sp/>with<sp/>their<sp/>own<sp/>order<sp/>ticket<sp/>rack</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(queue).<sp/>New<sp/>orders<sp/>go<sp/>to<sp/>a<sp/>free<sp/>chef,<sp/>or<sp/>to<sp/>the<sp/>shortest<sp/>rack<sp/>if<sp/>nobody<sp/>is<sp/>free.<sp/>A<sp/>chef<sp/>with<sp/>no<sp/>tickets</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>peek<sp/>at<sp/>other<sp/>racks<sp/>and<sp/>helps<sp/>out<sp/>before<sp/>going<sp/>to<sp/>sleep<sp/>(&quot;work<sp/>stealing&quot;).<sp/>There<sp/>is<sp/>one<sp/>overall<sp/>limit<sp/>on</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>how<sp/>many<sp/>tickets<sp/>may<sp/>wait;<sp/>past<sp/>that,<sp/>submit()<sp/>says<sp/>&quot;no&quot;<sp/>immediately<sp/>so<sp/>the<sp/>caller<sp/>can<sp/>send<sp/>HTTP<sp/>503<sp/>rather</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>than<sp/>let<sp/>the<sp/>backlog<sp/>grow<sp/>without<sp/>bound.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>@note<sp/>Not<sp/>copyable<sp/>or<sp/>movable;<sp/>instances<sp/>are<sp/>kept<sp/>alive<sp/>by<sp/>shared_ptr,<sp/>typically<sp/>through<sp/>the<sp/>Store.</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>@see<sp/>DbExecutor,<sp/>PasswordWorker,<sp/>runOnExecutor()</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classBoundedExecutor" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" kindref="member">BoundedExecutor</ref></highlight></codeline>
+<codeline lineno="69"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Creates<sp/>the<sp/>workers<sp/>and<sp/>starts<sp/>their<sp/>threads.</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>queue_max<sp/>is<sp/>clamped<sp/>to<sp/>at<sp/>least<sp/>1.<sp/>With<sp/>workers<sp/>==<sp/>0<sp/>the<sp/>pool<sp/>is<sp/>in<sp/>inline<sp/>mode:<sp/>no<sp/>threads<sp/>are<sp/>started</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>and<sp/>submit()<sp/>runs<sp/>each<sp/>task<sp/>immediately<sp/>on<sp/>the<sp/>calling<sp/>thread.<sp/>The<sp/>constructor<sp/>does<sp/>not<sp/>return<sp/>until<sp/>every</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>worker<sp/>has<sp/>reported<sp/>itself<sp/>idle,<sp/>so<sp/>an<sp/>immediate<sp/>submit()<sp/>cannot<sp/>race<sp/>with<sp/>thread<sp/>startup.</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>workers<sp/>Number<sp/>of<sp/>worker<sp/>threads;<sp/>0<sp/>selects<sp/>inline<sp/>mode.</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>queue_max<sp/>Maximum<sp/>number<sp/>of<sp/>queued<sp/>tasks<sp/>across<sp/>all<sp/>workers;<sp/>values<sp/>below<sp/>1<sp/>become<sp/>1.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>name<sp/>Label<sp/>used<sp/>in<sp/>log<sp/>messages<sp/>and<sp/>statistics<sp/>output.</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" kindref="member">BoundedExecutor</ref>(std::size_t<sp/>workers,<sp/>std::size_t<sp/>queue_max,<sp/>std::string<sp/>name);</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Copy<sp/>construction<sp/>is<sp/>disabled;<sp/>an<sp/>executor<sp/>owns<sp/>live<sp/>threads<sp/>that<sp/>cannot<sp/>be<sp/>duplicated.</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classBoundedExecutor_1a9a159a4e6c10282bbd73960ec8527039" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBoundedExecutor_1a9a159a4e6c10282bbd73960ec8527039" kindref="member">BoundedExecutor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" kindref="member">BoundedExecutor</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Move<sp/>construction<sp/>is<sp/>disabled;<sp/>workers<sp/>capture<sp/>the<sp/>address<sp/>of<sp/>the<sp/>executor,<sp/>which<sp/>a<sp/>move<sp/>would<sp/>invalidate.</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="classBoundedExecutor_1ac3bc3b2e136a2da3b6c0eb080b69daf5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBoundedExecutor_1ac3bc3b2e136a2da3b6c0eb080b69daf5" kindref="member">BoundedExecutor</ref>(<ref refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" kindref="member">BoundedExecutor</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Copy<sp/>assignment<sp/>is<sp/>disabled;<sp/>see<sp/>the<sp/>copy<sp/>constructor.</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="classBoundedExecutor_1a8907e36d0d8e8f509ad165e11d56e1fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" kindref="member">BoundedExecutor</ref>&amp;<sp/><ref refid="classBoundedExecutor_1a8907e36d0d8e8f509ad165e11d56e1fd" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" kindref="member">BoundedExecutor</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Move<sp/>assignment<sp/>is<sp/>disabled;<sp/>see<sp/>the<sp/>move<sp/>constructor.</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="classBoundedExecutor_1aacbf4b69d06b66824a929caa6e0585df" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" kindref="member">BoundedExecutor</ref>&amp;<sp/><ref refid="classBoundedExecutor_1aacbf4b69d06b66824a929caa6e0585df" kindref="member">operator=</ref>(<ref refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" kindref="member">BoundedExecutor</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Destructor;<sp/>calls<sp/>shutdown().</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Any<sp/>still-queued<sp/>tasks<sp/>are<sp/>drained<sp/>and<sp/>the<sp/>worker<sp/>threads<sp/>joined<sp/>before<sp/>resources<sp/>are<sp/>released.</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" kindref="member">~BoundedExecutor</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>same<sp/>as<sp/>shutdown():<sp/>drain<sp/>tasks,<sp/>join<sp/>threads,<sp/>then<sp/>destroy<sp/>members</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Finishes<sp/>the<sp/>queued<sp/>tasks,<sp/>then<sp/>joins<sp/>the<sp/>threads.<sp/>Later<sp/>submit()<sp/>calls<sp/>return<sp/>false.<sp/>Safe<sp/>to<sp/>call<sp/>more<sp/>than<sp/>once.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Call<sp/>it<sp/>before<sp/>the<sp/>things<sp/>the<sp/>tasks<sp/>use<sp/>(connection<sp/>pool,<sp/>Drogon)<sp/>are<sp/>torn<sp/>down.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Drains<sp/>queued<sp/>tasks,<sp/>joins<sp/>the<sp/>workers<sp/>and<sp/>reports<sp/>accumulated<sp/>statistics<sp/>once.</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Sets<sp/>the<sp/>stopping<sp/>flag<sp/>and<sp/>wakes<sp/>every<sp/>worker,<sp/>then<sp/>joins<sp/>those<sp/>that<sp/>are<sp/>not<sp/>the<sp/>calling<sp/>thread<sp/>(so<sp/>a<sp/>task</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>may<sp/>call<sp/>shutdown()<sp/>on<sp/>its<sp/>own<sp/>executor<sp/>without<sp/>deadlocking).<sp/>A<sp/>later<sp/>submit()<sp/>is<sp/>rejected.<sp/>Repeated<sp/>calls</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>are<sp/>safe:<sp/>the<sp/>second<sp/>pass<sp/>finds<sp/>no<sp/>joinable<sp/>threads<sp/>and<sp/>no<sp/>un-reported<sp/>counters.</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Must<sp/>run<sp/>before<sp/>dependencies<sp/>of<sp/>the<sp/>tasks<sp/>(connection<sp/>pool,<sp/>Drogon)<sp/>are<sp/>destroyed.</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@see<sp/>~BoundedExecutor()</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" kindref="member">shutdown</ref>();</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>True<sp/>when<sp/>the<sp/>task<sp/>was<sp/>accepted<sp/>(or<sp/>ran<sp/>inline).<sp/>False<sp/>when<sp/>the<sp/>queue<sp/>is<sp/>full<sp/>or<sp/>the<sp/>pool<sp/>is<sp/>stopping.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Offers<sp/>a<sp/>task<sp/>to<sp/>the<sp/>pool<sp/>without<sp/>waiting<sp/>for<sp/>capacity.</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>In<sp/>inline<sp/>mode<sp/>task()<sp/>runs<sp/>synchronously<sp/>here.<sp/>Otherwise<sp/>a<sp/>slot<sp/>in<sp/>the<sp/>shared<sp/>queue<sp/>limit<sp/>is<sp/>reserved</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>first;<sp/>if<sp/>that<sp/>limit<sp/>is<sp/>reached,<sp/>or<sp/>the<sp/>pool<sp/>is<sp/>stopping,<sp/>the<sp/>task<sp/>is<sp/>discarded<sp/>and<sp/>false<sp/>is<sp/>returned.</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>An<sp/>idle<sp/>worker<sp/>is<sp/>preferred,<sp/>else<sp/>the<sp/>shortest<sp/>queue<sp/>is<sp/>chosen,<sp/>and<sp/>only<sp/>an<sp/>idle<sp/>worker<sp/>is<sp/>notified.</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>task<sp/>Nullary<sp/>callable<sp/>to<sp/>execute<sp/>on<sp/>a<sp/>worker<sp/>(or<sp/>inline).<sp/>&quot;Nullary&quot;<sp/>means<sp/>it<sp/>takes<sp/>no<sp/>arguments.</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>true<sp/>if<sp/>the<sp/>task<sp/>ran<sp/>inline<sp/>or<sp/>was<sp/>queued;<sp/>false<sp/>if<sp/>it<sp/>was<sp/>rejected.</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@see<sp/>runOnExecutor()</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" kindref="member">submit</ref>(std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">()&gt;<sp/>task);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Number<sp/>of<sp/>tasks<sp/>currently<sp/>waiting<sp/>across<sp/>all<sp/>queues;<sp/>relaxed<sp/>because<sp/>it<sp/>is<sp/>only<sp/>a<sp/>live<sp/>gauge.</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="classBoundedExecutor_1aa3c7def6899c02451c22a5ec458939d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::size_t<sp/><ref refid="classBoundedExecutor_1aa3c7def6899c02451c22a5ec458939d2" kindref="member">pending</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBoundedExecutor_1afbb5f9247d4cf5e3e52a9c25c036d0a6" kindref="member">queued_</ref>.load(std::memory_order_relaxed);<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;relaxed&quot;<sp/>=<sp/>a<sp/>rough,<sp/>cheap<sp/>count</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>True<sp/>when<sp/>no<sp/>worker<sp/>threads<sp/>exist<sp/>and<sp/>tasks<sp/>run<sp/>on<sp/>the<sp/>submitting<sp/>thread.</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>workers<sp/>at<sp/>all<sp/>means<sp/>every<sp/>task<sp/>runs<sp/>inline<sp/>on<sp/>the<sp/>submitting<sp/>thread.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138" refid="classBoundedExecutor_1a49df17e54d15d8a492f13e876c74f4cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBoundedExecutor_1a49df17e54d15d8a492f13e876c74f4cf" kindref="member">inlineMode</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBoundedExecutor_1a99feeabf885fe43e0196051f6a80803e" kindref="member">workers_</ref>.empty();<sp/>}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Number<sp/>of<sp/>worker<sp/>threads;<sp/>zero<sp/>in<sp/>inline<sp/>mode.</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="classBoundedExecutor_1ab0246f1fb4aff4e008f03c2542976df2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::size_t<sp/><ref refid="classBoundedExecutor_1ab0246f1fb4aff4e008f03c2542976df2" kindref="member">workerCount</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBoundedExecutor_1a99feeabf885fe43e0196051f6a80803e" kindref="member">workers_</ref>.size();<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>size<sp/>of<sp/>the<sp/>worker<sp/>vector</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>True<sp/>when<sp/>the<sp/>calling<sp/>thread<sp/>is<sp/>one<sp/>of<sp/>this<sp/>executor&apos;s<sp/>workers.<sp/>Work<sp/>that<sp/>is<sp/>already<sp/>on<sp/>a<sp/>worker<sp/>must<sp/>call</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>blocking<sp/>code<sp/>directly<sp/>and<sp/>not<sp/>submit<sp/>again<sp/>(a<sp/>full<sp/>queue<sp/>could<sp/>then<sp/>never<sp/>drain).</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Reports<sp/>whether<sp/>the<sp/>caller<sp/>is<sp/>executing<sp/>on<sp/>one<sp/>of<sp/>this<sp/>executor&apos;s<sp/>worker<sp/>threads.</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Uses<sp/>a<sp/>thread_local<sp/>pointer<sp/>rather<sp/>than<sp/>a<sp/>lookup<sp/>table.<sp/>Code<sp/>already<sp/>running<sp/>on<sp/>a<sp/>worker<sp/>should<sp/>call</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>blocking<sp/>operations<sp/>directly:<sp/>re-submitting<sp/>could<sp/>prevent<sp/>a<sp/>full<sp/>queue<sp/>from<sp/>ever<sp/>draining.</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>true<sp/>for<sp/>this<sp/>executor&apos;s<sp/>workers,<sp/>false<sp/>otherwise<sp/>(including<sp/>inline<sp/>mode<sp/>on<sp/>the<sp/>submitting<sp/>thread).</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBoundedExecutor_1a4d2a977a3f48f26956a39f5f5cd4ddb3" kindref="member">onWorkerThread</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Counters<sp/>for<sp/>tuning<sp/>the<sp/>pool<sp/>size;<sp/>they<sp/>only<sp/>count<sp/>tasks<sp/>that<sp/>went<sp/>through<sp/>the<sp/>queue<sp/>(not<sp/>inline<sp/>mode).</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@struct<sp/>Stats</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Snapshot<sp/>of<sp/>tuning<sp/>counters<sp/>for<sp/>tasks<sp/>that<sp/>passed<sp/>through<sp/>the<sp/>queue.</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Inline-mode<sp/>executions<sp/>are<sp/>not<sp/>counted.<sp/>The<sp/>values<sp/>are<sp/>sampled<sp/>with<sp/>relaxed<sp/>atomic<sp/>loads,<sp/>so<sp/>they<sp/>are</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>approximate<sp/>while<sp/>the<sp/>pool<sp/>is<sp/>running.<sp/>&quot;Relaxed&quot;<sp/>means<sp/>the<sp/>number<sp/>is<sp/>read<sp/>cheaply<sp/>without<sp/>any<sp/>ordering</highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>guarantees,<sp/>which<sp/>is<sp/>fine<sp/>for<sp/>a<sp/>tuning<sp/>gauge<sp/>that<sp/>nobody<sp/>makes<sp/>decisions<sp/>from<sp/>in<sp/>real<sp/>time.</highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164" refid="structBoundedExecutor_1_1Stats" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structBoundedExecutor_1_1Stats" kindref="compound">Stats</ref></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="166" refid="structBoundedExecutor_1_1Stats_1ad0368dc91edec0dec6888b7b84ce56dc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::uint64_t<sp/><ref refid="structBoundedExecutor_1_1Stats_1ad0368dc91edec0dec6888b7b84ce56dc" kindref="member">submitted</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>tasks<sp/>accepted<sp/>and<sp/>put<sp/>into<sp/>a<sp/>queue</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167" refid="structBoundedExecutor_1_1Stats_1a2f37f73a813fb86da316726f626484f6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::uint64_t<sp/><ref refid="structBoundedExecutor_1_1Stats_1a2f37f73a813fb86da316726f626484f6" kindref="member">rejected</ref>;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>tasks<sp/>refused<sp/>because<sp/>the<sp/>queue<sp/>was<sp/>full<sp/>(or<sp/>the<sp/>pool<sp/>was<sp/>stopping)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="structBoundedExecutor_1_1Stats_1a5f799a6d74c3df717d4fcae67d3abea3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::uint64_t<sp/><ref refid="structBoundedExecutor_1_1Stats_1a5f799a6d74c3df717d4fcae67d3abea3" kindref="member">max_queue</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>deepest<sp/>any<sp/>queue<sp/>got,<sp/>used<sp/>to<sp/>judge<sp/>whether<sp/>the<sp/>limit<sp/>is<sp/>right</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="structBoundedExecutor_1_1Stats_1a931a680e89a8537c30d0608926235507" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBoundedExecutor_1_1Stats_1a931a680e89a8537c30d0608926235507" kindref="member">avg_wait_us</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>average<sp/>time<sp/>in<sp/>microseconds<sp/>a<sp/>task<sp/>waited<sp/>before<sp/>a<sp/>worker<sp/>took<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Samples<sp/>the<sp/>tuning<sp/>counters.</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>Stats<sp/>snapshot;<sp/>avg_wait_us<sp/>is<sp/>derived<sp/>from<sp/>total<sp/>wait<sp/>time<sp/>divided<sp/>by<sp/>the<sp/>number<sp/>of<sp/>waited<sp/>tasks,<sp/>or</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>zero<sp/>if<sp/>no<sp/>task<sp/>has<sp/>been<sp/>taken<sp/>by<sp/>a<sp/>worker.</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/><ref refid="structBoundedExecutor_1_1Stats" kindref="compound">Stats</ref><sp/><ref refid="classBoundedExecutor_1a37f079e009f3b711023b031941cb7e2e" kindref="member">stats</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="179"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="180"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@struct<sp/>Item</highlight></codeline>
+<codeline lineno="181"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>A<sp/>queued<sp/>task<sp/>together<sp/>with<sp/>the<sp/>timestamp<sp/>used<sp/>for<sp/>wait-time<sp/>accounting.</highlight></codeline>
+<codeline lineno="182"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183" refid="structBoundedExecutor_1_1Item" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structBoundedExecutor_1_1Item" kindref="compound">Item</ref></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="185" refid="structBoundedExecutor_1_1Item_1aa125e56076f6e422bd8cae6f15a45a4d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::function&lt;void()&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBoundedExecutor_1_1Item_1aa125e56076f6e422bd8cae6f15a45a4d" kindref="member">task</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>job<sp/>to<sp/>run;<sp/>std::function<sp/>can<sp/>hold<sp/>any<sp/>callable<sp/>with<sp/>no<sp/>arguments</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186" refid="structBoundedExecutor_1_1Item_1adc96783d42c064529d14066b52728e4f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::chrono::steady_clock::time_point<sp/><ref refid="structBoundedExecutor_1_1Item_1adc96783d42c064529d14066b52728e4f" kindref="member">queued_at</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>when<sp/>it<sp/>was<sp/>queued,<sp/>so<sp/>we<sp/>can<sp/>measure<sp/>how<sp/>long<sp/>it<sp/>waited</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="189"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="190"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@struct<sp/>Worker</highlight></codeline>
+<codeline lineno="191"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>One<sp/>worker&apos;s<sp/>thread,<sp/>queue,<sp/>lock<sp/>and<sp/>condition<sp/>variable.</highlight></codeline>
+<codeline lineno="192"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="193"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Each<sp/>worker<sp/>has<sp/>its<sp/>own<sp/>mutex<sp/>so<sp/>submitters<sp/>and<sp/>workers<sp/>do<sp/>not<sp/>contend<sp/>on<sp/>a<sp/>single<sp/>lock.<sp/>depth<sp/>and<sp/>idle</highlight></codeline>
+<codeline lineno="194"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>are<sp/>atomics<sp/>so<sp/>submit()<sp/>can<sp/>make<sp/>scheduling<sp/>decisions<sp/>without<sp/>locking<sp/>every<sp/>worker.<sp/>(&quot;Contend&quot;<sp/>means</highlight></codeline>
+<codeline lineno="195"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>having<sp/>to<sp/>wait<sp/>for<sp/>the<sp/>same<sp/>lock;<sp/>giving<sp/>each<sp/>worker<sp/>its<sp/>own<sp/>reduces<sp/>that<sp/>waiting.)</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197" refid="structBoundedExecutor_1_1Worker" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structBoundedExecutor_1_1Worker" kindref="compound">Worker</ref></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="199" refid="structBoundedExecutor_1_1Worker_1a93f2577dc374b3da707f8ac94b17b73c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::mutex<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBoundedExecutor_1_1Worker_1a93f2577dc374b3da707f8ac94b17b73c" kindref="member">mutex</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>protects<sp/>this<sp/>worker&apos;s<sp/>queue<sp/>and<sp/>condition<sp/>variable</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200" refid="structBoundedExecutor_1_1Worker_1a67b3712ac7683ac32a183909d82c4407" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::condition_variable<sp/><sp/><ref refid="structBoundedExecutor_1_1Worker_1a67b3712ac7683ac32a183909d82c4407" kindref="member">cv</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>lets<sp/>the<sp/>worker<sp/>sleep<sp/>until<sp/>submit()<sp/>wakes<sp/>it<sp/>with<sp/>new<sp/>work</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201" refid="structBoundedExecutor_1_1Worker_1ae377b765251b61e956eefe01e2eee129" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::deque&lt;Item&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBoundedExecutor_1_1Worker_1ae377b765251b61e956eefe01e2eee129" kindref="member">queue</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>waiting<sp/>tasks;<sp/>oldest<sp/>sits<sp/>at<sp/>the<sp/>front</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202" refid="structBoundedExecutor_1_1Worker_1a30bd7b8412c2f314a3a2b9e07e21cb5f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::atomic&lt;std::size_t&gt;<sp/><ref refid="structBoundedExecutor_1_1Worker_1a30bd7b8412c2f314a3a2b9e07e21cb5f" kindref="member">depth</ref>{0};<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>queue.size(),<sp/>readable<sp/>without<sp/>the<sp/>lock<sp/>so<sp/>submit()<sp/>can<sp/>compare<sp/>queues<sp/>quickly</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203" refid="structBoundedExecutor_1_1Worker_1ad2c5a6f211775e44ced8f1bc7f3787ea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::atomic&lt;bool&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBoundedExecutor_1_1Worker_1ad2c5a6f211775e44ced8f1bc7f3787ea" kindref="member">idle</ref>{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};<sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>under<sp/>mutex<sp/>while<sp/>the<sp/>worker<sp/>waits<sp/>for<sp/>work;<sp/>read<sp/>without<sp/>it<sp/>by<sp/>submit()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204" refid="structBoundedExecutor_1_1Worker_1ae3cda487924221535ebcdebad35539f9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::thread<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBoundedExecutor_1_1Worker_1ae3cda487924221535ebcdebad35539f9" kindref="member">thread</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>actual<sp/>OS<sp/>thread<sp/>that<sp/>runs<sp/>this<sp/>worker&apos;s<sp/>loop</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="207"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="208"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Worker<sp/>entry<sp/>point:<sp/>repeatedly<sp/>take<sp/>and<sp/>run<sp/>tasks<sp/>until<sp/>stopping<sp/>and<sp/>no<sp/>work<sp/>remains.</highlight></codeline>
+<codeline lineno="209"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Sets<sp/>the<sp/>thread_local<sp/>executor<sp/>marker,<sp/>catches<sp/>exceptions<sp/>thrown<sp/>by<sp/>tasks<sp/>so<sp/>they<sp/>cannot<sp/>kill<sp/>the</highlight></codeline>
+<codeline lineno="211"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>thread,<sp/>and<sp/>goes<sp/>idle<sp/>with<sp/>a<sp/>condition-variable<sp/>wait<sp/>when<sp/>its<sp/>queue<sp/>and<sp/>all<sp/>stealable<sp/>queues<sp/>are<sp/>empty.</highlight></codeline>
+<codeline lineno="212"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>self<sp/>Index<sp/>of<sp/>this<sp/>worker.</highlight></codeline>
+<codeline lineno="213"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBoundedExecutor_1a14e1a972664d0af29d59d074675c5ffe" kindref="member">run</ref>(std::size_t<sp/>self);</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="215"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="216"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Removes<sp/>the<sp/>next<sp/>task<sp/>from<sp/>this<sp/>worker&apos;s<sp/>queue,<sp/>stealing<sp/>from<sp/>peers<sp/>if<sp/>it<sp/>is<sp/>empty.</highlight></codeline>
+<codeline lineno="217"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="218"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Stealing<sp/>uses<sp/>try_lock<sp/>so<sp/>a<sp/>worker<sp/>never<sp/>blocks<sp/>waiting<sp/>for<sp/>a<sp/>peer<sp/>that<sp/>is<sp/>busy<sp/>with<sp/>a<sp/>slow<sp/>task.</highlight></codeline>
+<codeline lineno="219"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>self<sp/>Index<sp/>of<sp/>the<sp/>calling<sp/>worker.</highlight></codeline>
+<codeline lineno="220"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>item<sp/>Receives<sp/>the<sp/>taken<sp/>task<sp/>and<sp/>its<sp/>queueing<sp/>timestamp.</highlight></codeline>
+<codeline lineno="221"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>true<sp/>if<sp/>a<sp/>task<sp/>was<sp/>taken,<sp/>false<sp/>if<sp/>no<sp/>queue<sp/>had<sp/>work.</highlight></codeline>
+<codeline lineno="222"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBoundedExecutor_1a161a33a863940e718dc25a66dd4c3aa9" kindref="member">take</ref>(std::size_t<sp/>self,<sp/><ref refid="structBoundedExecutor_1_1Item" kindref="compound">Item</ref>&amp;<sp/>item);<sp/><sp/></highlight><highlight class="comment">//<sp/>own<sp/>queue<sp/>first,<sp/>then<sp/>the<sp/>others&apos;<sp/>queues</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="224"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="225"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Accumulates<sp/>how<sp/>long<sp/>a<sp/>task<sp/>waited<sp/>between<sp/>queueing<sp/>and<sp/>being<sp/>taken.</highlight></codeline>
+<codeline lineno="226"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>item<sp/>Task<sp/>whose<sp/>queued_at<sp/>timestamp<sp/>is<sp/>used.</highlight></codeline>
+<codeline lineno="227"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBoundedExecutor_1ada1436c03655174b30be553eacacba3d" kindref="member">account</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structBoundedExecutor_1_1Item" kindref="compound">Item</ref>&amp;<sp/>item);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="230"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="231"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Worker<sp/>objects,<sp/>created<sp/>before<sp/>and<sp/>started<sp/>after<sp/>all<sp/>of<sp/>them<sp/>exist;<sp/>empty<sp/>in<sp/>inline<sp/>mode.</highlight></codeline>
+<codeline lineno="232"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233" refid="classBoundedExecutor_1a99feeabf885fe43e0196051f6a80803e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::unique_ptr&lt;Worker&gt;&gt;<sp/><ref refid="classBoundedExecutor_1a99feeabf885fe43e0196051f6a80803e" kindref="member">workers_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>unique_ptr<sp/>gives<sp/>each<sp/>worker<sp/>a<sp/>fixed<sp/>address<sp/>that<sp/>threads<sp/>can<sp/>safely<sp/>capture</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="234"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="235"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Shared<sp/>queue<sp/>limit,<sp/>at<sp/>least<sp/>1.</highlight></codeline>
+<codeline lineno="236"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237" refid="classBoundedExecutor_1a4b55370d142b9901015c7106e19a98ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::size_t<sp/><ref refid="classBoundedExecutor_1a4b55370d142b9901015c7106e19a98ec" kindref="member">queue_max_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>total<sp/>tasks<sp/>allowed<sp/>to<sp/>wait<sp/>across<sp/>every<sp/>queue</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="238"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="239"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Log/statistics<sp/>label<sp/>for<sp/>this<sp/>pool.</highlight></codeline>
+<codeline lineno="240"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241" refid="classBoundedExecutor_1a8df5c3b6d47a7bb92e508c4df34581fe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classBoundedExecutor_1a8df5c3b6d47a7bb92e508c4df34581fe" kindref="member">name_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>e.g.<sp/>&quot;DB&quot;<sp/>or<sp/>&quot;Password&quot;,<sp/>printed<sp/>in<sp/>log<sp/>lines</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="242"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="243"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Set<sp/>by<sp/>shutdown();<sp/>checked<sp/>by<sp/>submit()<sp/>both<sp/>outside<sp/>and<sp/>inside<sp/>the<sp/>target<sp/>worker&apos;s<sp/>lock.</highlight></codeline>
+<codeline lineno="244"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245" refid="classBoundedExecutor_1a2fe4e0d777523f51d59935f89030ac1c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::atomic&lt;bool&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBoundedExecutor_1a2fe4e0d777523f51d59935f89030ac1c" kindref="member">stopping_</ref>{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};<sp/><sp/></highlight><highlight class="comment">//<sp/>true<sp/>means<sp/>&quot;refuse<sp/>new<sp/>work<sp/>and<sp/>let<sp/>workers<sp/>finish&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246" refid="classBoundedExecutor_1a567da16c5009c3a32c8b6d052ed11e39" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::atomic&lt;std::size_t&gt;<sp/><ref refid="classBoundedExecutor_1a567da16c5009c3a32c8b6d052ed11e39" kindref="member">next_</ref>{0};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>round-robin<sp/>start<sp/>for<sp/>submit(),<sp/>so<sp/>submissions<sp/>spread<sp/>out</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247" refid="classBoundedExecutor_1afbb5f9247d4cf5e3e52a9c25c036d0a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::atomic&lt;std::size_t&gt;<sp/><ref refid="classBoundedExecutor_1afbb5f9247d4cf5e3e52a9c25c036d0a6" kindref="member">queued_</ref>{0};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>tasks<sp/>waiting<sp/>in<sp/>all<sp/>queues,<sp/>used<sp/>to<sp/>enforce<sp/>the<sp/>limit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="249"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="250"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Accepted<sp/>tasks<sp/>that<sp/>went<sp/>through<sp/>the<sp/>queue.</highlight></codeline>
+<codeline lineno="251"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252" refid="classBoundedExecutor_1a586729a32716a35da700a96fbc590333" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::atomic&lt;std::uint64_t&gt;<sp/><ref refid="classBoundedExecutor_1a586729a32716a35da700a96fbc590333" kindref="member">submitted_</ref>{0};<sp/><sp/></highlight><highlight class="comment">//<sp/>counts<sp/>tasks<sp/>that<sp/>were<sp/>actually<sp/>queued<sp/>(or<sp/>run<sp/>inline)</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="253"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="254"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Tasks<sp/>refused<sp/>because<sp/>the<sp/>queue<sp/>was<sp/>full<sp/>or<sp/>the<sp/>pool<sp/>was<sp/>stopping.</highlight></codeline>
+<codeline lineno="255"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256" refid="classBoundedExecutor_1a1ba84f816094cdfc44f7cbf5faf1704c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::atomic&lt;std::uint64_t&gt;<sp/><ref refid="classBoundedExecutor_1a1ba84f816094cdfc44f7cbf5faf1704c" kindref="member">rejected_</ref>{0};<sp/><sp/></highlight><highlight class="comment">//<sp/>counts<sp/>rejections,<sp/>so<sp/>the<sp/>caller<sp/>can<sp/>see<sp/>how<sp/>often<sp/>503<sp/>happened</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="257"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="258"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Largest<sp/>value<sp/>queued_<sp/>has<sp/>reached.</highlight></codeline>
+<codeline lineno="259"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260" refid="classBoundedExecutor_1a2279dc6bf7730b6dd74cfa7c5a3ecc0c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::atomic&lt;std::uint64_t&gt;<sp/><ref refid="classBoundedExecutor_1a2279dc6bf7730b6dd74cfa7c5a3ecc0c" kindref="member">max_queue_</ref>{0};<sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>high-water<sp/>mark,<sp/>useful<sp/>when<sp/>tuning<sp/>queue_max_</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="261"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="262"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Total<sp/>wait<sp/>time<sp/>in<sp/>nanoseconds,<sp/>used<sp/>to<sp/>compute<sp/>avg_wait_us.</highlight></codeline>
+<codeline lineno="263"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="264" refid="classBoundedExecutor_1a70d24f4375b291df10a0145de6de32d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::atomic&lt;std::uint64_t&gt;<sp/><ref refid="classBoundedExecutor_1a70d24f4375b291df10a0145de6de32d6" kindref="member">wait_ns_</ref>{0};<sp/><sp/></highlight><highlight class="comment">//<sp/>sum<sp/>of<sp/>all<sp/>time<sp/>tasks<sp/>spent<sp/>waiting<sp/>in<sp/>a<sp/>queue</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="265"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="266"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Number<sp/>of<sp/>tasks<sp/>included<sp/>in<sp/>wait_ns_.</highlight></codeline>
+<codeline lineno="267"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268" refid="classBoundedExecutor_1a651cb39909b6c74ca951ff00808901f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::atomic&lt;std::uint64_t&gt;<sp/><ref refid="classBoundedExecutor_1a651cb39909b6c74ca951ff00808901f0" kindref="member">waited_tasks_</ref>{0};<sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>divisor<sp/>for<sp/>the<sp/>average<sp/>wait<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="271"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="272"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Runs<sp/>body(callback)<sp/>on<sp/>an<sp/>executor,<sp/>answering<sp/>503<sp/>immediately<sp/>when<sp/>the<sp/>queue<sp/>is<sp/>full.</highlight></codeline>
+<codeline lineno="273"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="274"><highlight class="comment"><sp/>*<sp/>@details<sp/>Runs<sp/>body(callback)<sp/>on<sp/>the<sp/>executor.<sp/>When<sp/>the<sp/>queue<sp/>is<sp/>full<sp/>the<sp/>callback<sp/>is<sp/>answered<sp/>right<sp/>away<sp/>with<sp/>503<sp/>and</highlight></codeline>
+<codeline lineno="275"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>body<sp/>never<sp/>runs.<sp/>The<sp/>callback<sp/>is<sp/>shared<sp/>with<sp/>the<sp/>task<sp/>so<sp/>that<sp/>it<sp/>is<sp/>still<sp/>available<sp/>for<sp/>that<sp/>reply.</highlight></codeline>
+<codeline lineno="276"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="277"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>callback<sp/>is<sp/>moved<sp/>into<sp/>a<sp/>shared_ptr<sp/>that<sp/>both<sp/>the<sp/>queued<sp/>task<sp/>and<sp/>this<sp/>function<sp/>hold.<sp/>On<sp/>acceptance<sp/>the</highlight></codeline>
+<codeline lineno="278"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>task<sp/>runs<sp/>on<sp/>a<sp/>worker<sp/>thread<sp/>(or<sp/>inline<sp/>when<sp/>the<sp/>executor<sp/>has<sp/>no<sp/>workers)<sp/>and<sp/>body<sp/>receives<sp/>the<sp/>callback<sp/>as<sp/>an</highlight></codeline>
+<codeline lineno="279"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rvalue.<sp/>On<sp/>rejection<sp/>the<sp/>callback<sp/>is<sp/>invoked<sp/>here,<sp/>on<sp/>the<sp/>submitting<sp/>thread,<sp/>with<sp/>SERVICE_UNAVAILABLE<sp/>and</highlight></codeline>
+<codeline lineno="280"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>busy_message;<sp/>body<sp/>is<sp/>destroyed<sp/>without<sp/>being<sp/>called.</highlight></codeline>
+<codeline lineno="281"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="282"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>In<sp/>plain<sp/>words:<sp/>hand<sp/>the<sp/>slow<sp/>job<sp/>(body)<sp/>and<sp/>the<sp/>HTTP<sp/>reply<sp/>function<sp/>(callback)<sp/>to<sp/>the<sp/>pool.<sp/>If<sp/>the<sp/>pool</highlight></codeline>
+<codeline lineno="283"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>takes<sp/>the<sp/>job,<sp/>a<sp/>worker<sp/>runs<sp/>body<sp/>later<sp/>and<sp/>body<sp/>sends<sp/>the<sp/>reply.<sp/>If<sp/>the<sp/>pool<sp/>is<sp/>full,<sp/>we<sp/>send<sp/>a<sp/>503<sp/>right</highlight></codeline>
+<codeline lineno="284"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>now<sp/>using<sp/>the<sp/>same<sp/>callback.<sp/>Either<sp/>way<sp/>the<sp/>client<sp/>always<sp/>gets<sp/>an<sp/>answer,<sp/>and<sp/>the<sp/>callback<sp/>is<sp/>never<sp/>lost.</highlight></codeline>
+<codeline lineno="285"><highlight class="comment"><sp/>*<sp/>@tparam<sp/>Body<sp/>Callable<sp/>invocable<sp/>with<sp/>a<sp/>CALLBACK_<sp/>(std::function&lt;void(int,<sp/>const<sp/>std::string&amp;)&gt;);<sp/>it<sp/>is<sp/>captured<sp/>by<sp/>the</highlight></codeline>
+<codeline lineno="286"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>task,<sp/>so<sp/>it<sp/>must<sp/>be<sp/>move-constructible.</highlight></codeline>
+<codeline lineno="287"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>executor<sp/>Pool<sp/>that<sp/>will<sp/>execute<sp/>body.</highlight></codeline>
+<codeline lineno="288"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>callback<sp/>Completion<sp/>callback;<sp/>ownership<sp/>is<sp/>moved<sp/>into<sp/>this<sp/>helper.</highlight></codeline>
+<codeline lineno="289"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>busy_message<sp/>Message<sp/>paired<sp/>with<sp/>the<sp/>503<sp/>status<sp/>on<sp/>rejection.</highlight></codeline>
+<codeline lineno="290"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>body<sp/>The<sp/>blocking<sp/>work<sp/>to<sp/>run<sp/>on<sp/>the<sp/>pool.</highlight></codeline>
+<codeline lineno="291"><highlight class="comment"><sp/>*<sp/>@note<sp/>Because<sp/>the<sp/>callback<sp/>is<sp/>moved<sp/>into<sp/>the<sp/>task,<sp/>callers<sp/>must<sp/>not<sp/>use<sp/>it<sp/>after<sp/>passing<sp/>it<sp/>here.</highlight></codeline>
+<codeline lineno="292"><highlight class="comment"><sp/>*<sp/>@see<sp/>BoundedExecutor::submit(),<sp/>runOnDbExecutor(),<sp/>runOnPasswordWorker()</highlight></codeline>
+<codeline lineno="293"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Body&gt;</highlight></codeline>
+<codeline lineno="295" refid="boundedexecutor_8hpp_1af76f5db524067c26a058b1fee7e90e82" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="boundedexecutor_8hpp_1af76f5db524067c26a058b1fee7e90e82" kindref="member">runOnExecutor</ref>(<ref refid="classBoundedExecutor" kindref="compound">BoundedExecutor</ref>&amp;<sp/>executor,<sp/><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>busy_message,<sp/>Body&amp;&amp;<sp/>body)</highlight></codeline>
+<codeline lineno="296"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>shared_callback<sp/>=<sp/>std::make_shared&lt;CALLBACK_&gt;(std::move(callback));<sp/><sp/></highlight><highlight class="comment">//<sp/>store<sp/>it<sp/>once<sp/>so<sp/>both<sp/>paths<sp/>can<sp/>use<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!executor.<ref refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" kindref="member">submit</ref>([shared_callback,<sp/>task<sp/>=<sp/>std::forward&lt;Body&gt;(body)]()<sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/>{<sp/>task(std::move(*shared_callback));<sp/>}))<sp/><sp/></highlight><highlight class="comment">//<sp/>false<sp/>means<sp/>the<sp/>pool<sp/>is<sp/>full</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*shared_callback)(<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa8f68ec2a12ee4e1b4766e3fe760220" kindref="member">api::v2::Http::Status::SERVICE_UNAVAILABLE</ref>,<sp/>busy_message);<sp/><sp/></highlight><highlight class="comment">//<sp/>rejected:<sp/>answer<sp/>503<sp/>here<sp/>and<sp/>never<sp/>run<sp/>body</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="302"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/concurrency/boundedexecutor.hpp"/>
+  </compounddef>
+</doxygen>

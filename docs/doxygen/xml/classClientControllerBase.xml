@@ -1,0 +1,1335 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classClientControllerBase" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>ClientControllerBase</compoundname>
+    <derivedcompoundref refid="classClientController" prot="public" virt="non-virtual">ClientController&lt; T &gt;</derivedcompoundref>
+    <includes refid="clientcontrollerbase_8hpp" local="no">clientcontrollerbase.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classClientControllerBase_1a3cb01ab5f64999f02d79a5c0bbe87745" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ClientControllerBase::ClientControllerBase</definition>
+        <argsstring>()=default</argsstring>
+        <name>ClientControllerBase</name>
+        <qualifiedname>ClientControllerBase::ClientControllerBase</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="56" column="5"/>
+        <referencedby refid="classClientControllerBase_1aad141601388d1794e77c397200b79926">ClientControllerBase</referencedby>
+        <referencedby refid="classClientControllerBase_1a650798ccce4494aa0e2c46228f622ca7">ClientControllerBase</referencedby>
+        <referencedby refid="classClientControllerBase_1ab396e8114fcb3c3a6f621edf7f69d767">operator=</referencedby>
+        <referencedby refid="classClientControllerBase_1a95c1c5428f8348c333499a29122c1f33">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1a650798ccce4494aa0e2c46228f622ca7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ClientControllerBase::ClientControllerBase</definition>
+        <argsstring>(const ClientControllerBase &amp;)=default</argsstring>
+        <name>ClientControllerBase</name>
+        <qualifiedname>ClientControllerBase::ClientControllerBase</qualifiedname>
+        <param>
+          <type>const <ref refid="classClientControllerBase" kindref="compound">ClientControllerBase</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="58" column="5"/>
+        <references refid="classClientControllerBase_1a3cb01ab5f64999f02d79a5c0bbe87745">ClientControllerBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1aad141601388d1794e77c397200b79926" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ClientControllerBase::ClientControllerBase</definition>
+        <argsstring>(ClientControllerBase &amp;&amp;)=default</argsstring>
+        <name>ClientControllerBase</name>
+        <qualifiedname>ClientControllerBase::ClientControllerBase</qualifiedname>
+        <param>
+          <type><ref refid="classClientControllerBase" kindref="compound">ClientControllerBase</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="59" column="5"/>
+        <references refid="classClientControllerBase_1a3cb01ab5f64999f02d79a5c0bbe87745">ClientControllerBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1a95c1c5428f8348c333499a29122c1f33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classClientControllerBase" kindref="compound">ClientControllerBase</ref> &amp;</type>
+        <definition>ClientControllerBase &amp; ClientControllerBase::operator=</definition>
+        <argsstring>(const ClientControllerBase &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>ClientControllerBase::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classClientControllerBase" kindref="compound">ClientControllerBase</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="60" column="26"/>
+        <references refid="classClientControllerBase_1a3cb01ab5f64999f02d79a5c0bbe87745">ClientControllerBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1ab396e8114fcb3c3a6f621edf7f69d767" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classClientControllerBase" kindref="compound">ClientControllerBase</ref> &amp;</type>
+        <definition>ClientControllerBase &amp; ClientControllerBase::operator=</definition>
+        <argsstring>(ClientControllerBase &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>ClientControllerBase::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classClientControllerBase" kindref="compound">ClientControllerBase</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="61" column="26"/>
+        <references refid="classClientControllerBase_1a3cb01ab5f64999f02d79a5c0bbe87745">ClientControllerBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1a148ca604aa1d99615a61dec294086786" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual ClientControllerBase::~ClientControllerBase</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ClientControllerBase</name>
+        <qualifiedname>ClientControllerBase::~ClientControllerBase</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="62" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1ac42570557775dc71a68a685ed2114265" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ClientControllerBase::Create</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>Create</name>
+        <qualifiedname>ClientControllerBase::Create</qualifiedname>
+        <reimplementedby refid="classClientController_1a7b3e95c9052e2b4646f014ca9af39140">Create</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Creates a client account (hashes the password off the request thread in the implementation). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once with the resulting HTTP status and body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal used to authorize creation. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body describing the new client. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="71" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1f733add7f937880b9050bd889be6e51" compoundref="clients_8hpp" startline="87" endline="90">api::v2::Clients::create</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1a44832e389a940272db5c22f0d75cdce3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; ClientControllerBase::CreateAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>CreateAsync</name>
+        <qualifiedname>ClientControllerBase::CreateAsync</qualifiedname>
+        <reimplementedby refid="classClientController_1a52b4114b1e619b6526ee861696eff6da">CreateAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classClientControllerBase_1ac42570557775dc71a68a685ed2114265" kindref="member">Create()</ref>; must be awaited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once on completion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal used to authorize creation. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body; must outlive the coroutine. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="78" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1a335901d9fb13af79560b866138a48af9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ClientControllerBase::Read</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>Read</name>
+        <qualifiedname>ClientControllerBase::Read</qualifiedname>
+        <reimplementedby refid="classClientController_1a33f69fd2b79bc13817aa0574333266bf">Read</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Reads selected columns of a client identified in <computeroutput>data</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once with the resulting HTTP status and body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal used to authorize the read. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body containing <computeroutput>id</computeroutput> and <computeroutput>schema</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="85" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1e86620ea68cbcd781a959ca4dd5e226" compoundref="clients_8hpp" startline="304" endline="326">api::v2::Clients::read</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1ac2b421697b171b2c7800843eba059186" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; ClientControllerBase::ReadAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>ReadAsync</name>
+        <qualifiedname>ClientControllerBase::ReadAsync</qualifiedname>
+        <reimplementedby refid="classClientController_1a2a260581d3133c68635516102d87bbdb">ReadAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classClientControllerBase_1a335901d9fb13af79560b866138a48af9" kindref="member">Read()</ref>; must be awaited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once on completion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal used to authorize the read. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body containing <computeroutput>id</computeroutput> and <computeroutput>schema</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="92" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1a19ad4f57a4d721aa57723a6ca379abaf" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ClientControllerBase::Update</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data, std::optional&lt; uint64_t &gt; _id)=0</argsstring>
+        <name>Update</name>
+        <qualifiedname>ClientControllerBase::Update</qualifiedname>
+        <reimplementedby refid="classClientController_1a671dfda3ad96e247286fe44d22a1b478">Update</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>_id</declname>
+        </param>
+        <briefdescription>
+<para>Updates a client account (<computeroutput>_id</computeroutput>), re-hashing immutable-checked fields in the implementation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once with the resulting HTTP status and body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal used to authorize the update. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body holding the fields to change. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target client id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="100" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1ac501011b576591aa6f307819775ac804" compoundref="clients_8hpp" startline="336" endline="343">api::v2::Clients::update</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1a7500d9081800672565b50021165aaefc" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; ClientControllerBase::UpdateAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data, std::optional&lt; uint64_t &gt; _id)=0</argsstring>
+        <name>UpdateAsync</name>
+        <qualifiedname>ClientControllerBase::UpdateAsync</qualifiedname>
+        <reimplementedby refid="classClientController_1ad218f6587a3135d5b5466401aac514e9">UpdateAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>_id</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classClientControllerBase_1a19ad4f57a4d721aa57723a6ca379abaf" kindref="member">Update()</ref>; must be awaited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once on completion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal used to authorize the update. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body holding the fields to change. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target client id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="108" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1a6909aac7912d8a88f7845eaa0a074f80" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ClientControllerBase::Delete</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; client_id)=0</argsstring>
+        <name>Delete</name>
+        <qualifiedname>ClientControllerBase::Delete</qualifiedname>
+        <reimplementedby refid="classClientController_1a57d1a8ba8f83b70242fcc29b7f8f70cb">Delete</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>client_id</declname>
+        </param>
+        <briefdescription>
+<para>Deletes a client and invalidates its session in the implementation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once with the resulting HTTP status and body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal used to authorize the deletion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">client_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target client id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="115" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="352" endline="407">api::v2::Clients::delete_</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1a889f63f5215973988659ccd5f2d01e86" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; ClientControllerBase::DeleteAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; client_id)=0</argsstring>
+        <name>DeleteAsync</name>
+        <qualifiedname>ClientControllerBase::DeleteAsync</qualifiedname>
+        <reimplementedby refid="classClientController_1addb2c711f70f69b197b67da384b80c2d">DeleteAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>client_id</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classClientControllerBase_1a6909aac7912d8a88f7845eaa0a074f80" kindref="member">Delete()</ref>; must be awaited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once on completion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal used to authorize the deletion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">client_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target client id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="122" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1a560976768576af7af11239fde7e634f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ClientControllerBase::Search</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>Search</name>
+        <qualifiedname>ClientControllerBase::Search</qualifiedname>
+        <reimplementedby refid="classClientController_1a36c5c10efab0dcfdf020f6702a6ff9bb">Search</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Searches clients according to criteria in <computeroutput>data</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once with the resulting HTTP status and body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal supplied by the caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body containing criteria, limit and offset. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="129" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="416" endline="466">api::v2::Clients::search</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1a2f72684ebb458b74a3c9a8c8b2647ac4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; ClientControllerBase::SearchAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>SearchAsync</name>
+        <qualifiedname>ClientControllerBase::SearchAsync</qualifiedname>
+        <reimplementedby refid="classClientController_1ab7c4ffff79c0e56214abb463ae375925">SearchAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classClientControllerBase_1a560976768576af7af11239fde7e634f6" kindref="member">Search()</ref>; must be awaited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once on completion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal supplied by the caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body containing criteria, limit and offset. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="136" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1a5a5df5eb70313c7005af72f0a49f6cb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ClientControllerBase::Login</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data, const std::string &amp;ip_address)=0</argsstring>
+        <name>Login</name>
+        <qualifiedname>ClientControllerBase::Login</qualifiedname>
+        <reimplementedby refid="classClientController_1aa76ccf7c49744669ef28827b606216d9">Login</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>ip_address</declname>
+        </param>
+        <briefdescription>
+<para>Authenticates a client and establishes a session through <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once with the login result (token/status/body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal supplied by the caller; unused by the implementation. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body containing credentials. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ip_address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="controller_8hpp_1af928d8b9ced02f7387b9b56ed3877b11" kindref="member">Client</ref> IP used for session bookkeeping. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="144" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" compoundref="clients_8hpp" startline="101" endline="150">api::v2::Clients::login</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1a1f079a107f086ce7fd8d643aaf485de5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; ClientControllerBase::LoginAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data, const std::string &amp;ip_address)=0</argsstring>
+        <name>LoginAsync</name>
+        <qualifiedname>ClientControllerBase::LoginAsync</qualifiedname>
+        <reimplementedby refid="classClientController_1ab41c86cac7c0746d1b05f254e43b4591">LoginAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>ip_address</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classClientControllerBase_1a5a5df5eb70313c7005af72f0a49f6cb7" kindref="member">Login()</ref>; must be awaited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once on completion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal supplied by the caller; unused by the implementation. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body containing credentials. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ip_address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="controller_8hpp_1af928d8b9ced02f7387b9b56ed3877b11" kindref="member">Client</ref> IP used for session bookkeeping. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="152" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1aa9e86fbbf9bce91d15b371c18dababea" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ClientControllerBase::Logout</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, const std::optional&lt; std::string &gt; &amp;token, const std::string &amp;ip_address)=0</argsstring>
+        <name>Logout</name>
+        <qualifiedname>ClientControllerBase::Logout</qualifiedname>
+        <reimplementedby refid="classClientController_1aefe031b81d6d282292bafd65d191c8cd">Logout</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; std::string &gt; &amp;</type>
+          <declname>token</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>ip_address</declname>
+        </param>
+        <briefdescription>
+<para>Invalidates the session identified by <computeroutput>token</computeroutput> through <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once with the logout result. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal supplied by the caller; unused by the implementation. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">token</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Session token to invalidate; a missing value lets <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> decide how to respond. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ip_address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="controller_8hpp_1af928d8b9ced02f7387b9b56ed3877b11" kindref="member">Client</ref> IP used for session bookkeeping. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="160" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1abba6cc7cc5d089cf1c8e642fb8867b65" compoundref="clients_8hpp" startline="159" endline="163">api::v2::Clients::logout</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1a6a58bc8fd2e226e47f00d74de0e47f65" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ClientControllerBase::Suspend</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; client_id)=0</argsstring>
+        <name>Suspend</name>
+        <qualifiedname>ClientControllerBase::Suspend</qualifiedname>
+        <reimplementedby refid="classClientController_1ac9f28aab768cb85f02f2ca84b694f149">Suspend</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>client_id</declname>
+        </param>
+        <briefdescription>
+<para>Suspends a client account and removes its active sessions in the implementation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once with the resulting HTTP status and body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal whose toggle-active permission is checked. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">client_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target client id; a missing value is rejected. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="167" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="173" endline="228">api::v2::Clients::suspend</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1ab604c168d7eb829127b21b5d7f4de43d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; ClientControllerBase::SuspendAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; client_id)=0</argsstring>
+        <name>SuspendAsync</name>
+        <qualifiedname>ClientControllerBase::SuspendAsync</qualifiedname>
+        <reimplementedby refid="classClientController_1a77e043006883f4a959679df477d0ad39">SuspendAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>client_id</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classClientControllerBase_1a6a58bc8fd2e226e47f00d74de0e47f65" kindref="member">Suspend()</ref>; must be awaited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once on completion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal whose toggle-active permission is checked. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">client_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target client id; a missing value is rejected. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="174" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1ae6ddf114a8b76d43a70e8097a688aa37" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ClientControllerBase::Activate</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; client_id)=0</argsstring>
+        <name>Activate</name>
+        <qualifiedname>ClientControllerBase::Activate</qualifiedname>
+        <reimplementedby refid="classClientController_1a42c57adab458feeb209485ce13c48b0f">Activate</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>client_id</declname>
+        </param>
+        <briefdescription>
+<para>Reactivates a previously suspended client account. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once with the resulting HTTP status and body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal whose toggle-active permission is checked. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">client_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target client id; a missing value is rejected. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="181" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="238" endline="293">api::v2::Clients::activate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1a9d1d1653cfcd791bc46fceb6b6ff3983" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; ClientControllerBase::ActivateAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; client_id)=0</argsstring>
+        <name>ActivateAsync</name>
+        <qualifiedname>ClientControllerBase::ActivateAsync</qualifiedname>
+        <reimplementedby refid="classClientController_1af7b6b7c90918fc3068478538f2e1b37d">ActivateAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>client_id</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classClientControllerBase_1ae6ddf114a8b76d43a70e8097a688aa37" kindref="member">Activate()</ref>; must be awaited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once on completion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal whose toggle-active permission is checked. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">client_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target client id; a missing value is rejected. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="188" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1abf2e638366a36499d889c626eefcc82c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ClientControllerBase::ResetPassword</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>ResetPassword</name>
+        <qualifiedname>ClientControllerBase::ResetPassword</qualifiedname>
+        <reimplementedby refid="classClientController_1a98c472a091deb653605efb4049936c9e">ResetPassword</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Resets a client&apos;s password from <computeroutput>data</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once with the resulting HTTP status and body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal supplied by the caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body containing the credential material. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="195" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1af9f1272d9d14a2a2d1b4ba8117728cf8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ClientControllerBase::GetServices</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; client_id)=0</argsstring>
+        <name>GetServices</name>
+        <qualifiedname>ClientControllerBase::GetServices</qualifiedname>
+        <reimplementedby refid="classClientController_1abdee410951d9aa19b082955197f53162">GetServices</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>client_id</declname>
+        </param>
+        <briefdescription>
+<para>Lists the services associated with a client. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once with 200 and a JSON array (or an error status). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal whose services permission is checked. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">client_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target client id; a missing value is rejected. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="202" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="475" endline="530">api::v2::Clients::getservices</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classClientControllerBase_1aa2bc82cd6f33a4c24caa63536a0f5917" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; ClientControllerBase::GetServicesAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; client_id)=0</argsstring>
+        <name>GetServicesAsync</name>
+        <qualifiedname>ClientControllerBase::GetServicesAsync</qualifiedname>
+        <reimplementedby refid="classClientController_1aebd0c741055d14e284ea633eee9bd18d">GetServicesAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>client_id</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classClientControllerBase_1af9f1272d9d14a2a2d1b4ba8117728cf8" kindref="member">GetServices()</ref>; must be awaited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once on completion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal whose services permission is checked. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">client_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target client id; a missing value is rejected. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="209" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Abstract contract for client (User/Provider) handlers: CRUDS plus session and account-state operations. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Extends the entity-style CRUDS surface with authentication (Login/Logout), account suspension state (Suspend/Activate), password reset and service lookup. Implementations (<ref refid="classClientController" kindref="compound">ClientController</ref>) authorize via <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> and, for Create/Update, move the expensive password hashing to a dedicated worker pool. <computeroutput><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref></computeroutput> is <computeroutput>std::function&lt;void(int, const std::string&amp;)&gt;</computeroutput>; implementations answer exactly once with an HTTP status code and body on every path that completes. Coroutine variants borrow their arguments and must be awaited while those arguments and the controller are alive. <simplesect kind="note"><para>Not every operation has a coroutine variant: Logout and ResetPassword are synchronous only in this contract. The <computeroutput>ip_address</computeroutput> argument is used by <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> for login/logout bookkeeping. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classClientController" kindref="compound">ClientController</ref>, <ref refid="classEntityControllerBase" kindref="compound">EntityControllerBase</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ClientController&lt; T &gt;</label>
+        <link refid="classClientController"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ClientControllerBase</label>
+        <link refid="classClientControllerBase"/>
+      </node>
+    </inheritancegraph>
+    <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="53" column="1" bodyfile="src/controllers/clientcontroller/clientcontrollerbase.hpp" bodystart="54" bodyend="210"/>
+    <listofallmembers>
+      <member refid="classClientControllerBase_1ae6ddf114a8b76d43a70e8097a688aa37" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>Activate</name></member>
+      <member refid="classClientControllerBase_1a9d1d1653cfcd791bc46fceb6b6ff3983" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>ActivateAsync</name></member>
+      <member refid="classClientControllerBase_1a3cb01ab5f64999f02d79a5c0bbe87745" prot="public" virt="non-virtual"><scope>ClientControllerBase</scope><name>ClientControllerBase</name></member>
+      <member refid="classClientControllerBase_1a650798ccce4494aa0e2c46228f622ca7" prot="public" virt="non-virtual"><scope>ClientControllerBase</scope><name>ClientControllerBase</name></member>
+      <member refid="classClientControllerBase_1aad141601388d1794e77c397200b79926" prot="public" virt="non-virtual"><scope>ClientControllerBase</scope><name>ClientControllerBase</name></member>
+      <member refid="classClientControllerBase_1ac42570557775dc71a68a685ed2114265" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>Create</name></member>
+      <member refid="classClientControllerBase_1a44832e389a940272db5c22f0d75cdce3" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>CreateAsync</name></member>
+      <member refid="classClientControllerBase_1a6909aac7912d8a88f7845eaa0a074f80" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>Delete</name></member>
+      <member refid="classClientControllerBase_1a889f63f5215973988659ccd5f2d01e86" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>DeleteAsync</name></member>
+      <member refid="classClientControllerBase_1af9f1272d9d14a2a2d1b4ba8117728cf8" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>GetServices</name></member>
+      <member refid="classClientControllerBase_1aa2bc82cd6f33a4c24caa63536a0f5917" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>GetServicesAsync</name></member>
+      <member refid="classClientControllerBase_1a5a5df5eb70313c7005af72f0a49f6cb7" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>Login</name></member>
+      <member refid="classClientControllerBase_1a1f079a107f086ce7fd8d643aaf485de5" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>LoginAsync</name></member>
+      <member refid="classClientControllerBase_1aa9e86fbbf9bce91d15b371c18dababea" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>Logout</name></member>
+      <member refid="classClientControllerBase_1a95c1c5428f8348c333499a29122c1f33" prot="public" virt="non-virtual"><scope>ClientControllerBase</scope><name>operator=</name></member>
+      <member refid="classClientControllerBase_1ab396e8114fcb3c3a6f621edf7f69d767" prot="public" virt="non-virtual"><scope>ClientControllerBase</scope><name>operator=</name></member>
+      <member refid="classClientControllerBase_1a335901d9fb13af79560b866138a48af9" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>Read</name></member>
+      <member refid="classClientControllerBase_1ac2b421697b171b2c7800843eba059186" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>ReadAsync</name></member>
+      <member refid="classClientControllerBase_1abf2e638366a36499d889c626eefcc82c" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>ResetPassword</name></member>
+      <member refid="classClientControllerBase_1a560976768576af7af11239fde7e634f6" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>Search</name></member>
+      <member refid="classClientControllerBase_1a2f72684ebb458b74a3c9a8c8b2647ac4" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>SearchAsync</name></member>
+      <member refid="classClientControllerBase_1a6a58bc8fd2e226e47f00d74de0e47f65" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>Suspend</name></member>
+      <member refid="classClientControllerBase_1ab604c168d7eb829127b21b5d7f4de43d" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>SuspendAsync</name></member>
+      <member refid="classClientControllerBase_1a19ad4f57a4d721aa57723a6ca379abaf" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>Update</name></member>
+      <member refid="classClientControllerBase_1a7500d9081800672565b50021165aaefc" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>UpdateAsync</name></member>
+      <member refid="classClientControllerBase_1a148ca604aa1d99615a61dec294086786" prot="public" virt="virtual"><scope>ClientControllerBase</scope><name>~ClientControllerBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="databaseschema_8hpp" kind="file" language="C++">
+    <compoundname>databaseschema.hpp</compoundname>
+    <includes local="no">string</includes>
+    <includes local="no">unordered_map</includes>
+    <includes local="no">unordered_set</includes>
+    <includes refid="utils_2global_2types_8hpp" local="yes">utils/global/types.hpp</includes>
+    <includedby refid="server_8cpp" local="yes">src/server/server.cpp</includedby>
+    <includedby refid="databaseschema_8cpp" local="yes">src/validator/databaseschema/databaseschema.cpp</includedby>
+    <includedby refid="validator_8cpp" local="yes">src/validator/validator.cpp</includedby>
+    <incdepgraph>
+      <node id="5">
+        <label>utils/global/types.hpp</label>
+        <link refid="utils_2global_2types_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/validator/databaseschema/databaseschema.hpp</label>
+        <link refid="databaseschema_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>string</label>
+      </node>
+      <node id="3">
+        <label>unordered_map</label>
+      </node>
+      <node id="4">
+        <label>unordered_set</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/validator/databaseschema/databaseschema.cpp</label>
+        <link refid="databaseschema_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/validator/databaseschema/databaseschema.hpp</label>
+        <link refid="databaseschema_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/validator/validator.cpp</label>
+        <link refid="validator_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classDatabaseSchema" prot="public">DatabaseSchema</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="databaseschema_8hpp_1aea29cf503a423c2163e5b08142700952" prot="public" static="no">
+        <name>SCHEMA_t</name>
+        <initializer>std::unordered_map&lt;std::string, std::unordered_set&lt;<ref refid="namespaceapi_1_1v2_1a629023e05b2c9802c14aaca4634f4ab3" kindref="member">api::v2::ColumnInfo</ref>&gt;&gt;</initializer>
+        <briefdescription>
+<para>Schema snapshot type: maps a table name to the set of its column descriptions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/databaseschema/databaseschema.hpp" line="33" column="9" bodyfile="src/validator/databaseschema/databaseschema.hpp" bodystart="33" bodyend="-1"/>
+        <referencedby refid="classDatabaseSchema_1aa32c7db2e9b88c2cfec1f09a2de9d7dd" compoundref="databaseschema_8cpp" startline="88" endline="88">DatabaseSchema::getDatabaseSchema</referencedby>
+        <referencedby refid="classValidator_1a3827a99ba8a6d471ad08ae9b6455108f" compoundref="validator_8cpp" startline="316" endline="331">Validator::getDatabaseSchemaForTable</referencedby>
+        <referencedby refid="classDatabaseSchema_1acfaf80023a95a35c0b38bc3594e18cf7">DatabaseSchema::~DatabaseSchema</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Process-wide cache of the database schema used by the validators. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header declares the <ref refid="classDatabaseSchema" kindref="compound">DatabaseSchema</ref> class, which owns a single shared map describing every table and its columns. The map is filled once at server startup by asking <ref refid="classDatabaseController" kindref="compound">DatabaseController</ref> for the table list and each table&apos;s columns, and is read-only afterwards. It also defines SCHEMA_t, the convenient name for that map&apos;s type, used throughout the validator code.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: The validators need to know a table&apos;s columns and types to check client JSON, and querying the database on every request would be far too slow. This class provides that knowledge as a startup snapshot that <ref refid="classValidator" kindref="compound">Validator</ref> reads through getDatabaseSchema(). Without it, the validators would have no schema to compare against and would have to query the database on every create, update and read request.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>Static data members / storage duration: <ulink url="https://en.cppreference.com/w/cpp/language/storage_duration">https://en.cppreference.com/w/cpp/language/storage_duration</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>databaseschema.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Process-wide<sp/>cache<sp/>of<sp/>the<sp/>database<sp/>schema<sp/>used<sp/>by<sp/>the<sp/>validators.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>declares<sp/>the<sp/>DatabaseSchema<sp/>class,<sp/>which<sp/>owns<sp/>a<sp/>single<sp/>shared<sp/>map</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>describing<sp/>every<sp/>table<sp/>and<sp/>its<sp/>columns.<sp/>The<sp/>map<sp/>is<sp/>filled<sp/>once<sp/>at<sp/>server<sp/>startup<sp/>by<sp/>asking</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>DatabaseController<sp/>for<sp/>the<sp/>table<sp/>list<sp/>and<sp/>each<sp/>table&apos;s<sp/>columns,<sp/>and<sp/>is<sp/>read-only<sp/>afterwards.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>It<sp/>also<sp/>defines<sp/>SCHEMA_t,<sp/>the<sp/>convenient<sp/>name<sp/>for<sp/>that<sp/>map&apos;s<sp/>type,<sp/>used<sp/>throughout<sp/>the</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>validator<sp/>code.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>The<sp/>validators<sp/>need<sp/>to<sp/>know<sp/>a<sp/>table&apos;s<sp/>columns<sp/>and<sp/>types<sp/>to<sp/>check<sp/>client<sp/>JSON,<sp/>and<sp/>querying</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>the<sp/>database<sp/>on<sp/>every<sp/>request<sp/>would<sp/>be<sp/>far<sp/>too<sp/>slow.<sp/>This<sp/>class<sp/>provides<sp/>that<sp/>knowledge<sp/>as</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>a<sp/>startup<sp/>snapshot<sp/>that<sp/>Validator<sp/>reads<sp/>through<sp/>getDatabaseSchema().<sp/>Without<sp/>it,<sp/>the</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>validators<sp/>would<sp/>have<sp/>no<sp/>schema<sp/>to<sp/>compare<sp/>against<sp/>and<sp/>would<sp/>have<sp/>to<sp/>query<sp/>the<sp/>database<sp/>on</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>every<sp/>create,<sp/>update<sp/>and<sp/>read<sp/>request.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>Static<sp/>data<sp/>members<sp/>/<sp/>storage<sp/>duration:<sp/>https://en.cppreference.com/w/cpp/language/storage_duration</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>std::string,<sp/>the<sp/>table<sp/>and<sp/>column<sp/>name<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>std::unordered_map,<sp/>mapping<sp/>a<sp/>table<sp/>name<sp/>to<sp/>its<sp/>columns.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_set&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>std::unordered_set,<sp/>holding<sp/>each<sp/>table&apos;s<sp/>unique<sp/>columns.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utils_2global_2types_8hpp" kindref="compound">utils/global/types.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>api::v2::ColumnInfo,<sp/>the<sp/>description<sp/>of<sp/>one<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="32"><highlight class="comment">/**<sp/>@brief<sp/>Schema<sp/>snapshot<sp/>type:<sp/>maps<sp/>a<sp/>table<sp/>name<sp/>to<sp/>the<sp/>set<sp/>of<sp/>its<sp/>column<sp/>descriptions.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="databaseschema_8hpp_1aea29cf503a423c2163e5b08142700952" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SCHEMA_t<sp/>std::unordered_map&lt;std::string,<sp/>std::unordered_set&lt;api::v2::ColumnInfo&gt;&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>readable<sp/>alias<sp/>for<sp/>the<sp/>whole<sp/>cached<sp/>schema.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="34"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>@class<sp/>DatabaseSchema</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Process-wide<sp/>cache<sp/>of<sp/>the<sp/>database<sp/>schema<sp/>used<sp/>by<sp/>the<sp/>validators.</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@details<sp/>The<sp/>single<sp/>static<sp/>@ref<sp/>databaseSchema<sp/>map<sp/>is<sp/>populated<sp/>at<sp/>construction<sp/>by<sp/>querying</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>DatabaseController<sp/>for<sp/>every<sp/>table<sp/>and<sp/>its<sp/>columns,<sp/>and<sp/>is<sp/>thereafter<sp/>read-only.<sp/>The<sp/>object</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>is<sp/>created<sp/>eagerly<sp/>by<sp/>Server&apos;s<sp/>constructor<sp/>and<sp/>owned<sp/>by<sp/>Store,<sp/>so<sp/>the<sp/>schema<sp/>is<sp/>available</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>before<sp/>any<sp/>request<sp/>validation<sp/>runs.<sp/>Copy<sp/>construction/assignment<sp/>are<sp/>allowed<sp/>but<sp/>share<sp/>the</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>same<sp/>static<sp/>state;<sp/>move<sp/>operations<sp/>are<sp/>explicitly<sp/>disabled.</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>@note<sp/>Because<sp/>the<sp/>schema<sp/>is<sp/>a<sp/>startup<sp/>snapshot,<sp/>schema<sp/>changes<sp/>made<sp/>externally<sp/>while<sp/>the</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>server<sp/>is<sp/>running<sp/>are<sp/>not<sp/>reflected<sp/>until<sp/>restart.</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>@warning<sp/>Construction<sp/>terminates<sp/>the<sp/>process<sp/>(or<sp/>throws)<sp/>when<sp/>no<sp/>tables/columns<sp/>can<sp/>be</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>read,<sp/>so<sp/>a<sp/>reachable<sp/>database<sp/>is<sp/>a<sp/>startup<sp/>prerequisite.</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>@see<sp/>Validator,<sp/>DatabaseController,<sp/>Store,<sp/>SCHEMA_t</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classDatabaseSchema" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" kindref="member">DatabaseSchema</ref></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Eagerly<sp/>loads<sp/>the<sp/>schema<sp/>for<sp/>every<sp/>table<sp/>reported<sp/>by<sp/>DatabaseController.</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>std::runtime_error<sp/>if<sp/>no<sp/>tables<sp/>are<sp/>found.</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>There<sp/>is<sp/>no<sp/>lazy<sp/>fallback:<sp/>a<sp/>successful<sp/>construction<sp/>implies<sp/>a<sp/>populated<sp/>cache.</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" kindref="member">DatabaseSchema</ref>();</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Copy<sp/>constructor;<sp/>shares<sp/>the<sp/>static<sp/>schema<sp/>map<sp/>with<sp/>other<sp/>instances.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classDatabaseSchema_1adc76072bec45e25694e7c9cb032ec8c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDatabaseSchema_1adc76072bec45e25694e7c9cb032ec8c2" kindref="member">DatabaseSchema</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" kindref="member">DatabaseSchema</ref>&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Moving<sp/>is<sp/>disabled<sp/>because<sp/>the<sp/>meaningful<sp/>state<sp/>is<sp/>static.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="classDatabaseSchema_1ad79c4f44f0be999ac2b6b4105f7e8f1a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDatabaseSchema_1ad79c4f44f0be999ac2b6b4105f7e8f1a" kindref="member">DatabaseSchema</ref>(<ref refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" kindref="member">DatabaseSchema</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Copy<sp/>assignment;<sp/>shares<sp/>the<sp/>static<sp/>schema<sp/>map<sp/>with<sp/>other<sp/>instances.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classDatabaseSchema_1a7362b5c73b9b41c0a30d8f10c72c676d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" kindref="member">DatabaseSchema</ref>&amp;<sp/><ref refid="classDatabaseSchema_1a7362b5c73b9b41c0a30d8f10c72c676d" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" kindref="member">DatabaseSchema</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Move<sp/>assignment<sp/>is<sp/>disabled<sp/>because<sp/>the<sp/>meaningful<sp/>state<sp/>is<sp/>static.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classDatabaseSchema_1a8136008c88832535639afc43afb7474d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" kindref="member">DatabaseSchema</ref>&amp;<sp/><ref refid="classDatabaseSchema_1a8136008c88832535639afc43afb7474d" kindref="member">operator=</ref>(<ref refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" kindref="member">DatabaseSchema</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Virtual<sp/>destructor;<sp/>the<sp/>schema<sp/>snapshot<sp/>has<sp/>no<sp/>per-instance<sp/>resources.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classDatabaseSchema_1acfaf80023a95a35c0b38bc3594e18cf7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classDatabaseSchema_1acfaf80023a95a35c0b38bc3594e18cf7" kindref="member">~DatabaseSchema</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Loads<sp/>(or<sp/>refreshes)<sp/>the<sp/>column<sp/>set<sp/>for<sp/>one<sp/>table<sp/>into<sp/>the<sp/>cache.</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tableName<sp/>Table<sp/>whose<sp/>schema<sp/>is<sp/>fetched<sp/>from<sp/>DatabaseController.</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>On<sp/>a<sp/>missing/empty<sp/>schema<sp/>a<sp/>warning<sp/>and<sp/>error<sp/>are<sp/>logged<sp/>and<sp/>the<sp/>process<sp/>exits;</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>there<sp/>is<sp/>no<sp/>recoverable<sp/>error<sp/>return.</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseSchema_1a801e1391c1907e56401a867210b8c25d" kindref="member">populateSchema</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>tableName);</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>cached<sp/>schema<sp/>snapshot.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>Const<sp/>reference<sp/>to<sp/>the<sp/>static<sp/>map<sp/>of<sp/>table<sp/>names<sp/>to<sp/>column<sp/>sets.</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Valid<sp/>only<sp/>after<sp/>construction;<sp/>the<sp/>reference<sp/>remains<sp/>valid<sp/>for<sp/>the<sp/>process<sp/>lifetime.</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="databaseschema_8hpp_1aea29cf503a423c2163e5b08142700952" kindref="member">SCHEMA_t</ref>&amp;<sp/><ref refid="classDatabaseSchema_1aa32c7db2e9b88c2cfec1f09a2de9d7dd" kindref="member">getDatabaseSchema</ref>();</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Logs<sp/>every<sp/>cached<sp/>table/column<sp/>tuple<sp/>at<sp/>info<sp/>level<sp/>(diagnostic<sp/>helper).<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseSchema_1a6a5d958e7d5a760bcd929c88b1d93fa7" kindref="member">printSchema</ref>();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Shared<sp/>schema<sp/>snapshot;<sp/>defined<sp/>and<sp/>populated<sp/>once<sp/>in<sp/>databaseschema.cpp.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="classDatabaseSchema_1a607a79c489b46a2d8b1d72f40dcfd272" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="databaseschema_8hpp_1aea29cf503a423c2163e5b08142700952" kindref="member">SCHEMA_t</ref><sp/><ref refid="classDatabaseSchema_1a607a79c489b46a2d8b1d72f40dcfd272" kindref="member">databaseSchema</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>One<sp/>map<sp/>shared<sp/>by<sp/>the<sp/>whole<sp/>program;<sp/>defined<sp/>in<sp/>the<sp/>.cpp<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="src/validator/databaseschema/databaseschema.hpp"/>
+  </compounddef>
+</doxygen>

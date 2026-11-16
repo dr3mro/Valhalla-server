@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="namespaceCors" kind="namespace" language="C++">
+    <compoundname>Cors</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; Cors::allowedMethods</definition>
+        <argsstring>()</argsstring>
+        <name>allowedMethods</name>
+        <qualifiedname>Cors::allowedMethods</qualifiedname>
+        <briefdescription>
+<para>The method list advertised in Allow and Access-Control-Allow-Methods. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Short alias so call sites can use detail:: for the Drogon-free token helpers. <simplesect kind="note"><para>PATCH is advertised here but <ref refid="classServer_1a5bc93a8ab4205adcfc43ee9d8f4aaa83" kindref="member">Server::isConventionalMethod()</ref> rejects it with 405. </para>
+</simplesect>
+<simplesect kind="return"><para>A process-lifetime constant string, returned by reference to avoid a copy per response. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/cors.hpp" line="60" column="30" bodyfile="src/server/cors.hpp" bodystart="60" bodyend="64"/>
+        <references refid="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d" compoundref="cors_8hpp" startline="60" endline="64">allowedMethods</references>
+        <referencedby refid="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d" compoundref="cors_8hpp" startline="60" endline="64">allowedMethods</referencedby>
+        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="157" endline="217">apply</referencedby>
+        <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="92" endline="148">Server::run</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceCors_1af54c7b1b495f97a9cef25ac756aec7d5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; Cors::defaultAllowedHeaders</definition>
+        <argsstring>()</argsstring>
+        <name>defaultAllowedHeaders</name>
+        <qualifiedname>Cors::defaultAllowedHeaders</qualifiedname>
+        <briefdescription>
+<para>The fallback Access-Control-Allow-Headers list used on non-preflight responses. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A process-lifetime constant string, returned by reference to avoid a copy per response. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/cors.hpp" line="70" column="30" bodyfile="src/server/cors.hpp" bodystart="70" bodyend="74"/>
+        <references refid="namespaceCors_1af54c7b1b495f97a9cef25ac756aec7d5" compoundref="cors_8hpp" startline="70" endline="74">defaultAllowedHeaders</references>
+        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="157" endline="217">apply</referencedby>
+        <referencedby refid="namespaceCors_1af54c7b1b495f97a9cef25ac756aec7d5" compoundref="cors_8hpp" startline="70" endline="74">defaultAllowedHeaders</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceCors_1ab2139d17f81f7754423b94b0dfdc53bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; Cors::exposedHeaders</definition>
+        <argsstring>()</argsstring>
+        <name>exposedHeaders</name>
+        <qualifiedname>Cors::exposedHeaders</qualifiedname>
+        <briefdescription>
+<para>Headers browsers are allowed to expose to page scripts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A process-lifetime constant string, returned by reference to avoid a copy per response. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/cors.hpp" line="80" column="30" bodyfile="src/server/cors.hpp" bodystart="80" bodyend="84"/>
+        <references refid="namespaceCors_1ab2139d17f81f7754423b94b0dfdc53bc" compoundref="cors_8hpp" startline="80" endline="84">exposedHeaders</references>
+        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="157" endline="217">apply</referencedby>
+        <referencedby refid="namespaceCors_1ab2139d17f81f7754423b94b0dfdc53bc" compoundref="cors_8hpp" startline="80" endline="84">exposedHeaders</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceCors_1a67bce05e328fb07dd233d14e40bac82c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; Cors::preflightMaxAge</definition>
+        <argsstring>()</argsstring>
+        <name>preflightMaxAge</name>
+        <qualifiedname>Cors::preflightMaxAge</qualifiedname>
+        <briefdescription>
+<para>The Access-Control-Max-Age value (seconds) emitted on preflight responses. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A process-lifetime constant string; 7200 matches the browser cap. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/cors.hpp" line="90" column="30" bodyfile="src/server/cors.hpp" bodystart="90" bodyend="94"/>
+        <references refid="namespaceCors_1a67bce05e328fb07dd233d14e40bac82c" compoundref="cors_8hpp" startline="90" endline="94">preflightMaxAge</references>
+        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="157" endline="217">apply</referencedby>
+        <referencedby refid="namespaceCors_1a67bce05e328fb07dd233d14e40bac82c" compoundref="cors_8hpp" startline="90" endline="94">preflightMaxAge</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceCors_1a183f8c59d0e3f8136c11f88df8f40bfb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Cors::addToVary</definition>
+        <argsstring>(const drogon::HttpResponsePtr &amp;resp, std::string_view value)</argsstring>
+        <name>addToVary</name>
+        <qualifiedname>Cors::addToVary</qualifiedname>
+        <param>
+          <type>const drogon::HttpResponsePtr &amp;</type>
+          <declname>resp</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Adds a token to the response&apos;s Vary header only if it is not already present. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Deduplication is delegated to <ref refid="namespaceCorsTokens_1a0868524c04d18e34760e18676a1ff72f" kindref="member">CorsTokens::mergeVary</ref>; comparing before writing avoids touching the header map on responses that already carry the value. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">resp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Response whose Vary header may be updated. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Header name to add, for example &quot;Origin&quot;. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/cors.hpp" line="104" column="17" bodyfile="src/server/cors.hpp" bodystart="104" bodyend="112"/>
+        <references refid="namespaceCors_1a183f8c59d0e3f8136c11f88df8f40bfb" compoundref="cors_8hpp" startline="104" endline="112">addToVary</references>
+        <referencedby refid="namespaceCors_1a183f8c59d0e3f8136c11f88df8f40bfb" compoundref="cors_8hpp" startline="104" endline="112">addToVary</referencedby>
+        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="157" endline="217">apply</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceCors_1a91b925e2a3993e560726033702df8818" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; Cors::splitOrigins</definition>
+        <argsstring>(const std::string &amp;value)</argsstring>
+        <name>splitOrigins</name>
+        <qualifiedname>Cors::splitOrigins</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Splits the comma-separated cors_allowed_origins setting into individual origins. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Spaces are skipped and empty tokens discarded, so a trailing comma or whitespace after a comma does not create a bogus origin. Order is preserved because <ref refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" kindref="member">apply()</ref> falls back to the first entry. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw configuration value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Origins in configuration order. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/cors.hpp" line="122" column="24" bodyfile="src/server/cors.hpp" bodystart="122" bodyend="140"/>
+        <references refid="namespaceCors_1a91b925e2a3993e560726033702df8818" compoundref="cors_8hpp" startline="122" endline="140">splitOrigins</references>
+        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="157" endline="217">apply</referencedby>
+        <referencedby refid="namespaceCors_1a91b925e2a3993e560726033702df8818" compoundref="cors_8hpp" startline="122" endline="140">splitOrigins</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Cors::apply</definition>
+        <argsstring>(const drogon::HttpRequestPtr &amp;req, const drogon::HttpResponsePtr &amp;resp)</argsstring>
+        <name>apply</name>
+        <qualifiedname>Cors::apply</qualifiedname>
+        <param>
+          <type>const drogon::HttpRequestPtr &amp;</type>
+          <declname>req</declname>
+        </param>
+        <param>
+          <type>const drogon::HttpResponsePtr &amp;</type>
+          <declname>resp</declname>
+        </param>
+        <briefdescription>
+<para>Decorates a response with CORS headers; invoked once per response from the pre-sending advice. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If the response already carries Access-Control-Allow-Origin: &quot;*&quot;, it is left untouched. Otherwise the current cors_allowed_origins setting is read from the <ref refid="classConfigurator" kindref="compound">Configurator</ref>. An exact match to the request&apos;s Origin is reflected back with Allow-Credentials and Vary: Origin; if origins are configured but none match, the first configured origin is used without credentials; if the setting is &quot;*&quot;, the wildcard is used. For OPTIONS requests a sanitized echo of Access-Control-Request-Headers replaces the default header list, and Max-Age plus Vary are added. Every write uses HttpResponse::addHeader, which replaces an existing value rather than duplicating it. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">req</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Request being answered; supplies Origin and, for preflights, the requested headers. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">resp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Response to decorate. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>No shared mutable state is modified here; the configuration is read through <ref refid="classStore" kindref="compound">Store</ref>&apos;s thread-local cache. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="namespaceCorsTokens_1ab923849059179cf6c8fb446aa5cb5e5d" kindref="member">CorsTokens::sanitizeRequestedHeaders()</ref>, <ref refid="namespaceCorsTokens_1a0868524c04d18e34760e18676a1ff72f" kindref="member">CorsTokens::mergeVary()</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/cors.hpp" line="157" column="17" bodyfile="src/server/cors.hpp" bodystart="157" bodyend="217"/>
+        <references refid="namespaceCors_1a183f8c59d0e3f8136c11f88df8f40bfb" compoundref="cors_8hpp" startline="104" endline="112">addToVary</references>
+        <references refid="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d" compoundref="cors_8hpp" startline="60" endline="64">allowedMethods</references>
+        <references refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="157" endline="217">apply</references>
+        <references refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="189" endline="200">Store::cachedObject</references>
+        <references refid="namespaceCors_1af54c7b1b495f97a9cef25ac756aec7d5" compoundref="cors_8hpp" startline="70" endline="74">defaultAllowedHeaders</references>
+        <references refid="namespaceCors_1ab2139d17f81f7754423b94b0dfdc53bc" compoundref="cors_8hpp" startline="80" endline="84">exposedHeaders</references>
+        <references refid="namespaceCors_1a67bce05e328fb07dd233d14e40bac82c" compoundref="cors_8hpp" startline="90" endline="94">preflightMaxAge</references>
+        <references refid="namespaceCors_1a91b925e2a3993e560726033702df8818" compoundref="cors_8hpp" startline="122" endline="140">splitOrigins</references>
+        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="157" endline="217">apply</referencedby>
+        <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="92" endline="148">Server::run</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Writes the CORS response headers onto every outgoing response. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>CORS response headers, written in exactly one place (the pre-sending advice in <ref refid="server_8cpp" kindref="compound">server.cpp</ref>). Drogon stores headers in a map keyed by the lower-cased name, and addHeader replaces an existing value (HttpResponseImpl.h:194-210), so a header can never appear twice. </para>
+    </detaileddescription>
+    <location file="src/server/cors.hpp" line="41" column="1"/>
+  </compounddef>
+</doxygen>

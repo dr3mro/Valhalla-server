@@ -1,0 +1,704 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="memcache_8hpp" kind="file" language="C++">
+    <compoundname>memcache.hpp</compoundname>
+    <includes local="no">chrono</includes>
+    <includes local="no">condition_variable</includes>
+    <includes local="no">list</includes>
+    <includes local="no">mutex</includes>
+    <includes local="no">optional</includes>
+    <includes local="no">thread</includes>
+    <includes local="no">unordered_map</includes>
+    <includes local="no">utility</includes>
+    <includedby refid="sessionmanager_8hpp" local="yes">src/gatekeeper/sessionmanager/sessionmanager.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/utils/memcache/memcache.hpp</label>
+        <link refid="memcache_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>chrono</label>
+      </node>
+      <node id="3">
+        <label>condition_variable</label>
+      </node>
+      <node id="4">
+        <label>list</label>
+      </node>
+      <node id="5">
+        <label>mutex</label>
+      </node>
+      <node id="6">
+        <label>optional</label>
+      </node>
+      <node id="7">
+        <label>thread</label>
+      </node>
+      <node id="8">
+        <label>unordered_map</label>
+      </node>
+      <node id="9">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="11">
+        <label>src/api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/api/v2/filters/auth.hpp</label>
+        <link refid="auth_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/api/v2/filters/ratelimit.hpp</label>
+        <link refid="ratelimit_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>src/api/v2/routes/appointments.hpp</label>
+        <link refid="appointments_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/api/v2/routes/clients.hpp</label>
+        <link refid="clients_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>src/api/v2/routes/clinics.hpp</label>
+        <link refid="api_2v2_2routes_2clinics_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>src/api/v2/routes/services.hpp</label>
+        <link refid="services_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>src/api/v2/routes/staff.hpp</label>
+        <link refid="staff_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
+        <link refid="appointmentcontroller_8cpp"/>
+      </node>
+      <node id="17">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
+        <link refid="appointmentcontroller_8hpp"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>src/controllers/base/controller/controller.hpp</label>
+        <link refid="controller_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>src/controllers/clientcontroller/clientcontroller.cpp</label>
+        <link refid="clientcontroller_8cpp"/>
+      </node>
+      <node id="19">
+        <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
+        <link refid="clientcontroller_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
+        <link refid="cliniccontroller_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/controllers/cliniccontroller/cliniccontroller.hpp</label>
+        <link refid="cliniccontroller_8hpp"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
+        <link refid="entitycontroller_8cpp"/>
+      </node>
+      <node id="15">
+        <label>src/controllers/entitycontroller/entitycontroller.hpp</label>
+        <link refid="entitycontroller_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
+        <link refid="servicecontroller_8cpp"/>
+      </node>
+      <node id="24">
+        <label>src/controllers/servicecontroller/servicecontroller.hpp</label>
+        <link refid="servicecontroller_8hpp"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
+        <link refid="staffcontroller_8cpp"/>
+      </node>
+      <node id="27">
+        <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
+        <link refid="staffcontroller_8hpp"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>src/database/database.cpp</label>
+        <link refid="database_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/gatekeeper/gatekeeper.cpp</label>
+        <link refid="gatekeeper_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/gatekeeper/gatekeeper.hpp</label>
+        <link refid="gatekeeper_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>src/gatekeeper/sessionmanager/sessionmanager.cpp</label>
+        <link refid="sessionmanager_8cpp"/>
+      </node>
+      <node id="2">
+        <label>src/gatekeeper/sessionmanager/sessionmanager.hpp</label>
+        <link refid="sessionmanager_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/server/server.hpp</label>
+        <link refid="server_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/utils/memcache/memcache.hpp</label>
+        <link refid="memcache_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classMemCache" prot="public">MemCache</innerclass>
+    <innerclass refid="classMemCache_1_1CacheEntry" prot="private">MemCache::CacheEntry</innerclass>
+    <briefdescription>
+<para>Thread-safe in-memory LRU cache with TTL expiry and a cleaner thread. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Defines a template <ref refid="classMemCache" kindref="compound">MemCache&lt;T, ClockT&gt;</ref> that stores values by key in memory. A hash map maps keys to positions in a list, giving constant- time lookup and cheap reordering: the list is kept in &quot;most recently
+         used first&quot; order so the least recently used item can be evicted when capacity is reached. Each entry has a time-to-live (TTL); a background thread periodically removes expired entries, and get() treats expired entries as misses. A single mutex protects all state, so the cache is safe to share between threads. Move and destruction stop the cleaner thread before any state is touched.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: Some data is expensive to fetch (for example permissions or database results) but does not change often. This cache lets the server keep a bounded, temporary copy in memory so repeated requests are fast. The TTL ensures stale data does not live forever, and the LRU limit stops it from growing without bound. It is a self-contained header-only utility, used wherever a caller wants a safe, time-limited store; without it every caller would build its own cache and duplicate the expiry and thread-safety logic.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>std::unordered_map: <ulink url="https://en.cppreference.com/w/cpp/container/unordered_map">https://en.cppreference.com/w/cpp/container/unordered_map</ulink></para>
+</listitem><listitem><para>std::list: <ulink url="https://en.cppreference.com/w/cpp/container/list">https://en.cppreference.com/w/cpp/container/list</ulink></para>
+</listitem><listitem><para>std::condition_variable: <ulink url="https://en.cppreference.com/w/cpp/thread/condition_variable">https://en.cppreference.com/w/cpp/thread/condition_variable</ulink></para>
+</listitem><listitem><para>std::thread and join: <ulink url="https://en.cppreference.com/w/cpp/thread/thread/join">https://en.cppreference.com/w/cpp/thread/thread/join</ulink></para>
+</listitem><listitem><para>std::chrono time points: <ulink url="https://en.cppreference.com/w/cpp/chrono/time_point">https://en.cppreference.com/w/cpp/chrono/time_point</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>memcache.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Thread-safe<sp/>in-memory<sp/>LRU<sp/>cache<sp/>with<sp/>TTL<sp/>expiry<sp/>and<sp/>a<sp/>cleaner<sp/>thread.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>Defines<sp/>a<sp/>template<sp/>MemCache&lt;T,<sp/>ClockT&gt;<sp/>that<sp/>stores<sp/>values<sp/>by<sp/>key<sp/>in</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memory.<sp/>A<sp/>hash<sp/>map<sp/>maps<sp/>keys<sp/>to<sp/>positions<sp/>in<sp/>a<sp/>list,<sp/>giving<sp/>constant-</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>time<sp/>lookup<sp/>and<sp/>cheap<sp/>reordering:<sp/>the<sp/>list<sp/>is<sp/>kept<sp/>in<sp/>&quot;most<sp/>recently</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>used<sp/>first&quot;<sp/>order<sp/>so<sp/>the<sp/>least<sp/>recently<sp/>used<sp/>item<sp/>can<sp/>be<sp/>evicted<sp/>when</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>capacity<sp/>is<sp/>reached.<sp/>Each<sp/>entry<sp/>has<sp/>a<sp/>time-to-live<sp/>(TTL);<sp/>a<sp/>background</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>thread<sp/>periodically<sp/>removes<sp/>expired<sp/>entries,<sp/>and<sp/>get()<sp/>treats<sp/>expired</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entries<sp/>as<sp/>misses.<sp/>A<sp/>single<sp/>mutex<sp/>protects<sp/>all<sp/>state,<sp/>so<sp/>the<sp/>cache<sp/>is</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>safe<sp/>to<sp/>share<sp/>between<sp/>threads.<sp/>Move<sp/>and<sp/>destruction<sp/>stop<sp/>the<sp/>cleaner</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>thread<sp/>before<sp/>any<sp/>state<sp/>is<sp/>touched.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>Some<sp/>data<sp/>is<sp/>expensive<sp/>to<sp/>fetch<sp/>(for<sp/>example<sp/>permissions<sp/>or<sp/>database<sp/>results)</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>but<sp/>does<sp/>not<sp/>change<sp/>often.<sp/>This<sp/>cache<sp/>lets<sp/>the<sp/>server<sp/>keep<sp/>a<sp/>bounded,<sp/>temporary</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>copy<sp/>in<sp/>memory<sp/>so<sp/>repeated<sp/>requests<sp/>are<sp/>fast.<sp/>The<sp/>TTL<sp/>ensures<sp/>stale<sp/>data<sp/>does</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>not<sp/>live<sp/>forever,<sp/>and<sp/>the<sp/>LRU<sp/>limit<sp/>stops<sp/>it<sp/>from<sp/>growing<sp/>without<sp/>bound.<sp/>It<sp/>is</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>a<sp/>self-contained<sp/>header-only<sp/>utility,<sp/>used<sp/>wherever<sp/>a<sp/>caller<sp/>wants<sp/>a<sp/>safe,</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>time-limited<sp/>store;<sp/>without<sp/>it<sp/>every<sp/>caller<sp/>would<sp/>build<sp/>its<sp/>own<sp/>cache<sp/>and</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>duplicate<sp/>the<sp/>expiry<sp/>and<sp/>thread-safety<sp/>logic.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>-<sp/>std::unordered_map:<sp/>https://en.cppreference.com/w/cpp/container/unordered_map</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>-<sp/>std::list:<sp/>https://en.cppreference.com/w/cpp/container/list</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>-<sp/>std::condition_variable:<sp/>https://en.cppreference.com/w/cpp/thread/condition_variable</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>-<sp/>std::thread<sp/>and<sp/>join:<sp/>https://en.cppreference.com/w/cpp/thread/thread/join</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>-<sp/>std::chrono<sp/>time<sp/>points:<sp/>https://en.cppreference.com/w/cpp/chrono/time_point</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;chrono&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Provides<sp/>clocks,<sp/>time<sp/>points<sp/>and<sp/>seconds<sp/>used<sp/>for<sp/>TTL<sp/>calculations.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;condition_variable&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>cleaner<sp/>waits<sp/>on<sp/>a<sp/>condition<sp/>variable<sp/>so<sp/>it<sp/>can<sp/>be<sp/>woken<sp/>early<sp/>on<sp/>shutdown/move.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;list&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::list<sp/>holds<sp/>entries<sp/>in<sp/>recency<sp/>order;<sp/>its<sp/>iterators<sp/>stay<sp/>valid<sp/>across<sp/>splices.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::mutex<sp/>and<sp/>std::lock_guard<sp/>protect<sp/>all<sp/>shared<sp/>state.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::optional<sp/>is<sp/>the<sp/>return<sp/>type<sp/>of<sp/>get():<sp/>a<sp/>value<sp/>or<sp/>&quot;no<sp/>entry&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;thread&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::thread<sp/>runs<sp/>the<sp/>background<sp/>cleaner<sp/>loop.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Maps<sp/>keys<sp/>to<sp/>list<sp/>iterators<sp/>for<sp/>constant-time<sp/>lookup.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::move<sp/>is<sp/>used<sp/>throughout<sp/>to<sp/>transfer<sp/>state<sp/>efficiently.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="43"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>@class<sp/>MemCache</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Bounded<sp/>LRU<sp/>cache<sp/>whose<sp/>entries<sp/>expire<sp/>after<sp/>a<sp/>configurable<sp/>TTL.</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>@details<sp/>Keys<sp/>map<sp/>to<sp/>iterators<sp/>into<sp/>a<sp/>std::list,<sp/>giving<sp/>O(1)<sp/>lookup,</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>recency<sp/>promotion<sp/>and<sp/>eviction.<sp/>A<sp/>background<sp/>thread<sp/>periodically</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>erases<sp/>expired<sp/>entries;<sp/>insert()<sp/>independently<sp/>evicts<sp/>the<sp/>least</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>recently<sp/>used<sp/>entry<sp/>when<sp/>capacity<sp/>is<sp/>reached.<sp/>All<sp/>public<sp/>operations</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>and<sp/>the<sp/>cleaner<sp/>share<sp/>a<sp/>single<sp/>mutex,<sp/>so<sp/>they<sp/>are<sp/>safe<sp/>to<sp/>call</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>concurrently.</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>cleaner<sp/>thread<sp/>holds<sp/>a<sp/>raw<sp/>pointer<sp/>to<sp/>`this`.<sp/>Move<sp/>operations<sp/>stop</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>and<sp/>join<sp/>both<sp/>the<sp/>source&apos;s<sp/>and<sp/>destination&apos;s<sp/>cleaners<sp/>before<sp/>touching</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state;<sp/>the<sp/>destructor<sp/>does<sp/>the<sp/>same<sp/>before<sp/>members<sp/>are<sp/>destroyed.</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/>@tparam<sp/>T<sp/>Value<sp/>type;<sp/>stored<sp/>and<sp/>returned<sp/>by<sp/>value,<sp/>so<sp/>it<sp/>must<sp/>be<sp/>copyable.</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/>@tparam<sp/>ClockT<sp/>Clock<sp/>exposing<sp/>a<sp/>static<sp/>now();<sp/>injectable<sp/>so<sp/>tests<sp/>can<sp/>use<sp/>a</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>manually<sp/>advanced<sp/>clock<sp/>instead<sp/>of<sp/>waiting<sp/>in<sp/>real<sp/>time.</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>@note<sp/>get()<sp/>treats<sp/>an<sp/>expired<sp/>entry<sp/>as<sp/>a<sp/>miss<sp/>but<sp/>does<sp/>not<sp/>erase<sp/>it;<sp/>physical</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>removal<sp/>is<sp/>left<sp/>to<sp/>the<sp/>cleaner.<sp/>remove()<sp/>does<sp/>not<sp/>check<sp/>expiry.</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>ClockT<sp/>=<sp/>std::chrono::steady_clock&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>T<sp/>is<sp/>the<sp/>stored<sp/>value<sp/>type;<sp/>ClockT<sp/>can<sp/>be<sp/>swapped<sp/>in<sp/>tests<sp/>to<sp/>control<sp/>time.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classMemCache" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" kindref="member">MemCache</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>thread-safe,<sp/>expiring,<sp/>size-bounded<sp/>cache.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Clock<sp/>type<sp/>used<sp/>for<sp/>expiration<sp/>timestamps.</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classMemCache_1ab849b6bdf3b4922b00f173434e61d073" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classMemCache_1ab849b6bdf3b4922b00f173434e61d073" kindref="member">Clock</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>ClockT;<sp/><sp/></highlight><highlight class="comment">//<sp/>Alias<sp/>so<sp/>the<sp/>rest<sp/>of<sp/>the<sp/>class<sp/>refers<sp/>to<sp/>the<sp/>chosen<sp/>clock<sp/>by<sp/>one<sp/>short<sp/>name.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Time<sp/>point<sp/>type<sp/>used<sp/>for<sp/>expiration<sp/>timestamps.</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="classMemCache_1ab226fd602502da7daecc5b303eaf5910" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classMemCache_1ab226fd602502da7daecc5b303eaf5910" kindref="member">TimePoint</ref><sp/>=<sp/>std::chrono::time_point&lt;Clock&gt;;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>time<sp/>point<sp/>measured<sp/>on<sp/>Clock,<sp/>used<sp/>as<sp/>each<sp/>entry&apos;s<sp/>expiry<sp/>stamp.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Constructs<sp/>a<sp/>cache<sp/>and<sp/>immediately<sp/>starts<sp/>its<sp/>cleaner<sp/>thread.</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>maxSize<sp/>Maximum<sp/>number<sp/>of<sp/>entries<sp/>before<sp/>LRU<sp/>eviction.</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>defaultTTL<sp/>TTL<sp/>applied<sp/>by<sp/>insert()<sp/>when<sp/>no<sp/>explicit<sp/>TTL<sp/>is<sp/>given.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" kindref="member">MemCache</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>maxSize,<sp/>std::chrono::seconds<sp/>defaultTTL)<sp/>:<sp/><ref refid="classMemCache_1a896bf1581faae4fac93550178679afce" kindref="member">maxSize_</ref>(maxSize),<sp/><ref refid="classMemCache_1af9fa1cb7832fedf91234d4b454d06dbf" kindref="member">defaultTTL_</ref>(defaultTTL),<sp/><ref refid="classMemCache_1a35871df8b3ebcfa658e6fa4f8f5f1dbd" kindref="member">stopCleaner_</ref>(false)<sp/><sp/></highlight><highlight class="comment">//<sp/>Initialises<sp/>the<sp/>limits<sp/>and<sp/>the<sp/>&quot;keep<sp/>running&quot;<sp/>flag;<sp/>the<sp/>list/map<sp/>start<sp/>empty.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a0503776bfff4bd34b42ee76ceeeb40fc" kindref="member">cleanerThread_</ref><sp/>=<sp/>std::thread(&amp;<ref refid="classMemCache_1a6353c6d238fd6837b033a90a389218fe" kindref="member">MemCache::cleanExpiredEntries</ref>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>the<sp/>background<sp/>cleaner,<sp/>passing<sp/>this<sp/>object<sp/>so<sp/>it<sp/>can<sp/>reach<sp/>the<sp/>state.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84" refid="classMemCache_1acebd4e830e32cd5cbb7a2e4887a333e6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMemCache_1acebd4e830e32cd5cbb7a2e4887a333e6" kindref="member">MemCache</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>default<sp/>cache:<sp/>capacity<sp/>and<sp/>TTL<sp/>must<sp/>be<sp/>provided<sp/>explicitly.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classMemCache_1a6951420f901529b4d8be417c463c27b0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a6951420f901529b4d8be417c463c27b0" kindref="member">MemCache</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" kindref="member">MemCache</ref>&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copying<sp/>would<sp/>duplicate<sp/>a<sp/>thread<sp/>holding<sp/>a<sp/>raw<sp/>pointer<sp/>to<sp/>`this`,<sp/>so<sp/>copying<sp/>is<sp/>forbidden.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="classMemCache_1a9693d7be8a97cc4ade0d64a52af16591" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" kindref="member">MemCache</ref>&amp;<sp/><ref refid="classMemCache_1a9693d7be8a97cc4ade0d64a52af16591" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" kindref="member">MemCache</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>assignment<sp/>is<sp/>forbidden<sp/>for<sp/>the<sp/>same<sp/>reason.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Transfers<sp/>cache<sp/>state<sp/>from<sp/>`other`<sp/>and<sp/>starts<sp/>a<sp/>fresh<sp/>cleaner.</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>other<sp/>Source<sp/>cache;<sp/>its<sp/>cleaner<sp/>is<sp/>stopped<sp/>and<sp/>joined<sp/>before</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>its<sp/>state<sp/>is<sp/>moved.</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@post<sp/>`other`<sp/>has<sp/>no<sp/>running<sp/>cleaner<sp/>and<sp/>is<sp/>left<sp/>in<sp/>a<sp/>valid<sp/>but<sp/>unspecified</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>state;<sp/>`*this`<sp/>owns<sp/>the<sp/>transferred<sp/>entries<sp/>and<sp/>a<sp/>new<sp/>cleaner<sp/>thread.</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="classMemCache_1a69c4c0cdfedd6f0871a34e6957fd9d3e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a69c4c0cdfedd6f0871a34e6957fd9d3e" kindref="member">MemCache</ref>(<ref refid="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" kindref="member">MemCache</ref>&amp;&amp;<sp/>other)<sp/>noexcept<sp/>:<sp/><ref refid="classMemCache_1a896bf1581faae4fac93550178679afce" kindref="member">maxSize_</ref>(other.maxSize_),<sp/><ref refid="classMemCache_1af9fa1cb7832fedf91234d4b454d06dbf" kindref="member">defaultTTL_</ref>(other.defaultTTL_),<sp/><ref refid="classMemCache_1a35871df8b3ebcfa658e6fa4f8f5f1dbd" kindref="member">stopCleaner_</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">)<sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>constructor<sp/>copies<sp/>the<sp/>simple<sp/>settings;<sp/>a<sp/>new<sp/>cleaner<sp/>will<sp/>be<sp/>started<sp/>for<sp/>this<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Stop<sp/>the<sp/>source&apos;s<sp/>cleaner<sp/>before<sp/>moving<sp/>state<sp/>so<sp/>the<sp/>thread<sp/>never</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>runs<sp/>against<sp/>the<sp/>moved-from<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(other.mutex_);<sp/><sp/></highlight><highlight class="comment">//<sp/>Lock<sp/>the<sp/>source<sp/>while<sp/>flipping<sp/>its<sp/>stop<sp/>flag.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other.stopCleaner_<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Ask<sp/>the<sp/>source&apos;s<sp/>cleaner<sp/>to<sp/>exit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other.cleanerCv_.notify_one();<sp/><sp/></highlight><highlight class="comment">//<sp/>Wake<sp/>the<sp/>source&apos;s<sp/>cleaner<sp/>so<sp/>it<sp/>notices<sp/>the<sp/>stop<sp/>flag<sp/>without<sp/>waiting<sp/>a<sp/>full<sp/>second.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(other.cleanerThread_.joinable())<sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>join<sp/>a<sp/>thread<sp/>that<sp/>is<sp/>actually<sp/>running.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other.cleanerThread_.join();<sp/><sp/></highlight><highlight class="comment">//<sp/>Wait<sp/>for<sp/>the<sp/>source&apos;s<sp/>cleaner<sp/>to<sp/>finish<sp/>before<sp/>its<sp/>state<sp/>is<sp/>moved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(other.mutex_);<sp/><sp/></highlight><highlight class="comment">//<sp/>Lock<sp/>the<sp/>source<sp/>again<sp/>while<sp/>transferring<sp/>its<sp/>containers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" kindref="member">cacheMap_</ref><sp/><sp/>=<sp/>std::move(other.cacheMap_);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>the<sp/>key-to-iterator<sp/>index<sp/>into<sp/>this<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" kindref="member">cacheList_</ref><sp/>=<sp/>std::move(other.cacheList_);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>the<sp/>entry<sp/>list<sp/>into<sp/>this<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a0503776bfff4bd34b42ee76ceeeb40fc" kindref="member">cleanerThread_</ref><sp/>=<sp/>std::thread(&amp;<ref refid="classMemCache_1a6353c6d238fd6837b033a90a389218fe" kindref="member">MemCache::cleanExpiredEntries</ref>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>a<sp/>fresh<sp/>cleaner<sp/>bound<sp/>to<sp/>the<sp/>new<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Replaces<sp/>this<sp/>cache<sp/>with<sp/>the<sp/>state<sp/>of<sp/>`other`<sp/>via<sp/>move<sp/>assignment.</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>other<sp/>Source<sp/>cache;<sp/>its<sp/>cleaner<sp/>is<sp/>also<sp/>stopped<sp/>and<sp/>joined.</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>`*this`.</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Self-assignment<sp/>is<sp/>a<sp/>no-op.<sp/>Both<sp/>cleaners<sp/>are<sp/>stopped<sp/>before<sp/>any</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>state<sp/>is<sp/>moved,<sp/>and<sp/>a<sp/>fresh<sp/>cleaner<sp/>is<sp/>started<sp/>for<sp/>`*this`.</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="classMemCache_1a1cd50025ecd28a9529df6bad1f11da40" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" kindref="member">MemCache</ref>&amp;<sp/><ref refid="classMemCache_1a1cd50025ecd28a9529df6bad1f11da40" kindref="member">operator=</ref>(<ref refid="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" kindref="member">MemCache</ref>&amp;&amp;<sp/>other)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>assignment<sp/>transfers<sp/>another<sp/>cache&apos;s<sp/>state<sp/>into<sp/>this<sp/>one.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>!=<sp/>&amp;other)<sp/><sp/></highlight><highlight class="comment">//<sp/>Guard<sp/>against<sp/>assigning<sp/>an<sp/>object<sp/>to<sp/>itself,<sp/>which<sp/>would<sp/>destroy<sp/>its<sp/>own<sp/>state.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Stop<sp/>this<sp/>object&apos;s<sp/>cleaner<sp/>first.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(<ref refid="classMemCache_1a01a66891157c73b1dce90b74077227ec" kindref="member">mutex_</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Lock<sp/>this<sp/>object<sp/>while<sp/>setting<sp/>its<sp/>stop<sp/>flag.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a35871df8b3ebcfa658e6fa4f8f5f1dbd" kindref="member">stopCleaner_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Ask<sp/>this<sp/>object&apos;s<sp/>cleaner<sp/>to<sp/>exit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a0dcf2702ea5d7119e098e0c3be90a0a4" kindref="member">cleanerCv_</ref>.notify_one();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Wake<sp/>it<sp/>immediately.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMemCache_1a0503776bfff4bd34b42ee76ceeeb40fc" kindref="member">cleanerThread_</ref>.joinable())<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>that<sp/>there<sp/>is<sp/>a<sp/>thread<sp/>to<sp/>join.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a0503776bfff4bd34b42ee76ceeeb40fc" kindref="member">cleanerThread_</ref>.join();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Wait<sp/>for<sp/>this<sp/>object&apos;s<sp/>cleaner<sp/>to<sp/>stop.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Stop<sp/>the<sp/>source&apos;s<sp/>cleaner.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(other.mutex_);<sp/><sp/></highlight><highlight class="comment">//<sp/>Lock<sp/>the<sp/>source<sp/>while<sp/>setting<sp/>its<sp/>stop<sp/>flag.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other.stopCleaner_<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Ask<sp/>the<sp/>source&apos;s<sp/>cleaner<sp/>to<sp/>exit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other.cleanerCv_.notify_one();<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Wake<sp/>the<sp/>source&apos;s<sp/>cleaner<sp/>immediately.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(other.cleanerThread_.joinable())<sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>that<sp/>the<sp/>source<sp/>has<sp/>a<sp/>thread<sp/>to<sp/>join.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other.cleanerThread_.join();<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Wait<sp/>for<sp/>the<sp/>source&apos;s<sp/>cleaner<sp/>to<sp/>stop.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lockThis(<ref refid="classMemCache_1a01a66891157c73b1dce90b74077227ec" kindref="member">mutex_</ref>);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Lock<sp/>this<sp/>object...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lockOther(other.mutex_);<sp/></highlight><highlight class="comment">//<sp/>...and<sp/>the<sp/>source,<sp/>so<sp/>both<sp/>states<sp/>are<sp/>consistent<sp/>during<sp/>the<sp/>move.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a896bf1581faae4fac93550178679afce" kindref="member">maxSize_</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>other.maxSize_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>the<sp/>size<sp/>limit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1af9fa1cb7832fedf91234d4b454d06dbf" kindref="member">defaultTTL_</ref><sp/><sp/>=<sp/>other.defaultTTL_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>the<sp/>default<sp/>TTL.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" kindref="member">cacheMap_</ref><sp/><sp/><sp/><sp/>=<sp/>std::move(other.cacheMap_);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>the<sp/>lookup<sp/>index<sp/>across.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" kindref="member">cacheList_</ref><sp/><sp/><sp/>=<sp/>std::move(other.cacheList_);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>the<sp/>entry<sp/>list<sp/>across.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a35871df8b3ebcfa658e6fa4f8f5f1dbd" kindref="member">stopCleaner_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>the<sp/>flag<sp/>because<sp/>a<sp/>new<sp/>cleaner<sp/>will<sp/>run<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a0503776bfff4bd34b42ee76ceeeb40fc" kindref="member">cleanerThread_</ref><sp/>=<sp/>std::thread(&amp;<ref refid="classMemCache_1a6353c6d238fd6837b033a90a389218fe" kindref="member">MemCache::cleanExpiredEntries</ref>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>a<sp/>fresh<sp/>cleaner<sp/>for<sp/>this<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>this<sp/>object<sp/>so<sp/>assignments<sp/>can<sp/>be<sp/>chained.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Stops<sp/>the<sp/>cleaner<sp/>and<sp/>waits<sp/>for<sp/>it<sp/>before<sp/>members<sp/>are<sp/>destroyed.</highlight></codeline>
+<codeline lineno="168"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="classMemCache_1a2a2e6e8f6c091b096d5c280f8c55f810" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classMemCache_1a2a2e6e8f6c091b096d5c280f8c55f810" kindref="member">~MemCache</ref>()<sp/><sp/></highlight><highlight class="comment">//<sp/>Destructor<sp/>shuts<sp/>the<sp/>cleaner<sp/>down<sp/>before<sp/>the<sp/>cache<sp/>members<sp/>disappear.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(<ref refid="classMemCache_1a01a66891157c73b1dce90b74077227ec" kindref="member">mutex_</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Lock<sp/>while<sp/>flipping<sp/>the<sp/>stop<sp/>flag.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a35871df8b3ebcfa658e6fa4f8f5f1dbd" kindref="member">stopCleaner_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Request<sp/>cleaner<sp/>termination.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a0dcf2702ea5d7119e098e0c3be90a0a4" kindref="member">cleanerCv_</ref>.notify_one();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Wake<sp/>the<sp/>cleaner<sp/>so<sp/>it<sp/>exits<sp/>promptly.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMemCache_1a0503776bfff4bd34b42ee76ceeeb40fc" kindref="member">cleanerThread_</ref>.joinable())<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>that<sp/>the<sp/>cleaner<sp/>thread<sp/>is<sp/>still<sp/>running.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a0503776bfff4bd34b42ee76ceeeb40fc" kindref="member">cleanerThread_</ref>.join();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Wait<sp/>for<sp/>it<sp/>to<sp/>finish;<sp/>otherwise<sp/>it<sp/>would<sp/>touch<sp/>destroyed<sp/>members.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="182"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="183"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Inserts<sp/>a<sp/>value<sp/>or<sp/>refreshes<sp/>an<sp/>existing<sp/>key.</highlight></codeline>
+<codeline lineno="184"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>key<sp/>Key<sp/>to<sp/>insert<sp/>or<sp/>update.</highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>value<sp/>Value<sp/>to<sp/>store;<sp/>copied<sp/>into<sp/>the<sp/>cache.</highlight></codeline>
+<codeline lineno="186"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>ttl<sp/>Lifetime<sp/>in<sp/>seconds;<sp/>zero<sp/>selects<sp/>defaultTTL_.</highlight></codeline>
+<codeline lineno="187"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Existing<sp/>keys<sp/>receive<sp/>a<sp/>new<sp/>value,<sp/>a<sp/>fresh<sp/>expiration<sp/>and<sp/>move<sp/>to</highlight></codeline>
+<codeline lineno="188"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>front<sp/>of<sp/>the<sp/>LRU<sp/>list.<sp/>New<sp/>keys<sp/>are<sp/>added<sp/>at<sp/>the<sp/>front;<sp/>when</highlight></codeline>
+<codeline lineno="189"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>capacity<sp/>is<sp/>already<sp/>reached<sp/>the<sp/>least<sp/>recently<sp/>used<sp/>entry<sp/>is</highlight></codeline>
+<codeline lineno="190"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>evicted<sp/>first.<sp/>Safe<sp/>to<sp/>call<sp/>concurrently<sp/>with<sp/>other<sp/>operations.</highlight></codeline>
+<codeline lineno="191"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192" refid="classMemCache_1ac7e13d86c785d85dcf0424c07013433a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMemCache_1ac7e13d86c785d85dcf0424c07013433a" kindref="member">insert</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T&amp;<sp/>value,<sp/>std::chrono::seconds<sp/>ttl<sp/>=<sp/>std::chrono::seconds::zero())<sp/><sp/></highlight><highlight class="comment">//<sp/>Adds<sp/>or<sp/>refreshes<sp/>an<sp/>entry;<sp/>a<sp/>zero<sp/>ttl<sp/>means<sp/>&quot;use<sp/>the<sp/>default&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1ab226fd602502da7daecc5b303eaf5910" kindref="member">TimePoint</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>expiration<sp/>=<sp/>Clock::now()<sp/>+<sp/>(ttl<sp/>==<sp/>std::chrono::seconds::zero()<sp/>?<sp/><ref refid="classMemCache_1af9fa1cb7832fedf91234d4b454d06dbf" kindref="member">defaultTTL_</ref><sp/>:<sp/>ttl);<sp/><sp/></highlight><highlight class="comment">//<sp/>Compute<sp/>when<sp/>the<sp/>entry<sp/>dies:<sp/>now<sp/>plus<sp/>the<sp/>chosen<sp/>TTL.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(<ref refid="classMemCache_1a01a66891157c73b1dce90b74077227ec" kindref="member">mutex_</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Lock<sp/>for<sp/>the<sp/>whole<sp/>operation<sp/>so<sp/>state<sp/>stays<sp/>consistent.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" kindref="member">cacheMap_</ref>.find(key)<sp/>!=<sp/><ref refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" kindref="member">cacheMap_</ref>.end())<sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>whether<sp/>this<sp/>key<sp/>is<sp/>already<sp/>present.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>value<sp/>and<sp/>expiration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>item<sp/>=<sp/><ref refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" kindref="member">cacheMap_</ref>[key];<sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>list<sp/>iterator<sp/>stored<sp/>for<sp/>this<sp/>key<sp/>(cacheMap_<sp/>uses<sp/>[]<sp/>which<sp/>returns<sp/>the<sp/>existing<sp/>entry).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>item-&gt;setValue(value);<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Replace<sp/>the<sp/>stored<sp/>value<sp/>with<sp/>the<sp/>new<sp/>one.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>item-&gt;setExpiration(expiration);<sp/><sp/></highlight><highlight class="comment">//<sp/>Give<sp/>the<sp/>entry<sp/>a<sp/>fresh<sp/>expiry<sp/>time.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1adb42b6b587c94d97c22dbb8370dc57d2" kindref="member">moveToFront</ref>(item);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Mark<sp/>it<sp/>as<sp/>most<sp/>recently<sp/>used.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" kindref="member">cacheMap_</ref>.size()<sp/>&gt;=<sp/><ref refid="classMemCache_1a896bf1581faae4fac93550178679afce" kindref="member">maxSize_</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>the<sp/>cache<sp/>is<sp/>full,<sp/>make<sp/>room<sp/>first.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a11d03343bb5f441b140b075a2912eead" kindref="member">evictOldest</ref>();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Remove<sp/>the<sp/>least<sp/>recently<sp/>used<sp/>entry.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" kindref="member">cacheList_</ref>.emplace_front(key,<sp/>value,<sp/>expiration);<sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>the<sp/>new<sp/>entry<sp/>at<sp/>the<sp/>front<sp/>(most<sp/>recent)<sp/>of<sp/>the<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>begin_it<sp/><sp/>=<sp/><ref refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" kindref="member">cacheList_</ref>.begin();<sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>the<sp/>correct<sp/>iterator<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" kindref="member">cacheMap_</ref>[key]<sp/>=<sp/>begin_it;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Assign<sp/>the<sp/>iterator,<sp/>not<sp/>the<sp/>entry<sp/>itself</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="218"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="219"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Looks<sp/>up<sp/>a<sp/>key<sp/>and<sp/>marks<sp/>it<sp/>as<sp/>most<sp/>recently<sp/>used.</highlight></codeline>
+<codeline lineno="220"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>key<sp/>Key<sp/>to<sp/>look<sp/>up.</highlight></codeline>
+<codeline lineno="221"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>Copy<sp/>of<sp/>the<sp/>value,<sp/>or<sp/>nullopt<sp/>if<sp/>the<sp/>key<sp/>is<sp/>absent<sp/>or<sp/>expired.</highlight></codeline>
+<codeline lineno="222"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>An<sp/>expired<sp/>entry<sp/>is<sp/>reported<sp/>as<sp/>a<sp/>miss<sp/>but<sp/>is<sp/>left<sp/>for<sp/>the<sp/>cleaner<sp/>to</highlight></codeline>
+<codeline lineno="223"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>remove;<sp/>a<sp/>hit<sp/>refreshes<sp/>recency,<sp/>not<sp/>the<sp/>entry&apos;s<sp/>expiration.</highlight></codeline>
+<codeline lineno="224"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225" refid="classMemCache_1aa1473dd4fba512396e813d4c35ab39eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;T&gt;<sp/><ref refid="classMemCache_1aa1473dd4fba512396e813d4c35ab39eb" kindref="member">get</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key)<sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>the<sp/>value<sp/>for<sp/>a<sp/>key,<sp/>or<sp/>nothing<sp/>if<sp/>it<sp/>is<sp/>missing/expired.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(<ref refid="classMemCache_1a01a66891157c73b1dce90b74077227ec" kindref="member">mutex_</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Lock<sp/>while<sp/>looking<sp/>up<sp/>and<sp/>updating<sp/>recency.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>item<sp/>=<sp/><ref refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" kindref="member">cacheMap_</ref>.find(key);<sp/><sp/></highlight><highlight class="comment">//<sp/>Find<sp/>the<sp/>key<sp/>in<sp/>the<sp/>map;<sp/>end()<sp/>means<sp/>absent.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(item<sp/>==<sp/><ref refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" kindref="member">cacheMap_</ref>.end()<sp/>||<sp/>item-&gt;second-&gt;getExpiration()<sp/>&lt;=<sp/>Clock::now())<sp/><sp/></highlight><highlight class="comment">//<sp/>Miss<sp/>if<sp/>absent<sp/>or<sp/>if<sp/>the<sp/>expiry<sp/>time<sp/>has<sp/>passed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Report<sp/>a<sp/>miss;<sp/>physical<sp/>removal<sp/>is<sp/>the<sp/>cleaner&apos;s<sp/>job.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1adb42b6b587c94d97c22dbb8370dc57d2" kindref="member">moveToFront</ref>(item-&gt;second);<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>hit<sp/>makes<sp/>this<sp/>entry<sp/>the<sp/>most<sp/>recently<sp/>used.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>item-&gt;second-&gt;getValue();<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>stored<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="237"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="238"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Removes<sp/>a<sp/>key<sp/>from<sp/>the<sp/>cache.</highlight></codeline>
+<codeline lineno="239"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>key<sp/>Key<sp/>to<sp/>remove.</highlight></codeline>
+<codeline lineno="240"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>if<sp/>the<sp/>key<sp/>was<sp/>present<sp/>and<sp/>was<sp/>removed,<sp/>false<sp/>otherwise.</highlight></codeline>
+<codeline lineno="241"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Expiry<sp/>is<sp/>not<sp/>checked<sp/>here:<sp/>an<sp/>expired<sp/>entry<sp/>not<sp/>yet<sp/>cleaned<sp/>is<sp/>still</highlight></codeline>
+<codeline lineno="242"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>removed<sp/>and<sp/>reported<sp/>as<sp/>present.</highlight></codeline>
+<codeline lineno="243"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244" refid="classMemCache_1a92f1f33f412afe2554cad2454b443800" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMemCache_1a92f1f33f412afe2554cad2454b443800" kindref="member">remove</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key)<sp/><sp/></highlight><highlight class="comment">//<sp/>Deletes<sp/>an<sp/>entry<sp/>by<sp/>key,<sp/>reporting<sp/>whether<sp/>it<sp/>existed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(<ref refid="classMemCache_1a01a66891157c73b1dce90b74077227ec" kindref="member">mutex_</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Lock<sp/>for<sp/>the<sp/>lookup<sp/>and<sp/>both<sp/>erases.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>item<sp/>=<sp/><ref refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" kindref="member">cacheMap_</ref>.find(key);<sp/><sp/></highlight><highlight class="comment">//<sp/>Locate<sp/>the<sp/>key<sp/>in<sp/>the<sp/>map.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(item<sp/>==<sp/><ref refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" kindref="member">cacheMap_</ref>.end())<sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>the<sp/>key<sp/>is<sp/>absent,<sp/>there<sp/>is<sp/>nothing<sp/>to<sp/>do.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Report<sp/>that<sp/>no<sp/>entry<sp/>was<sp/>removed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" kindref="member">cacheList_</ref>.erase(item-&gt;second);<sp/><sp/></highlight><highlight class="comment">//<sp/>Erase<sp/>the<sp/>entry<sp/>from<sp/>the<sp/>list<sp/>using<sp/>the<sp/>stored<sp/>iterator.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" kindref="member">cacheMap_</ref>.erase(key);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Erase<sp/>the<sp/>key-to-iterator<sp/>entry<sp/>from<sp/>the<sp/>map.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Report<sp/>success.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="259"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="260"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>One<sp/>cache<sp/>record:<sp/>key,<sp/>value<sp/>and<sp/>expiration<sp/>time<sp/>point.</highlight></codeline>
+<codeline lineno="261"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="262" refid="classMemCache_1_1CacheEntry" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMemCache_1_1CacheEntry_1aeec9fa9d402130295a30b4e424841199" kindref="member">CacheEntry</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>data<sp/>stored<sp/>for<sp/>each<sp/>cache<sp/>item.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="265"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="266"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Lookup<sp/>key,<sp/>also<sp/>used<sp/>to<sp/>erase<sp/>the<sp/>map<sp/>entry<sp/>during<sp/>cleaning.</highlight></codeline>
+<codeline lineno="267"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268" refid="classMemCache_1_1CacheEntry_1ad20f7970764f778950f643497352428e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classMemCache_1_1CacheEntry_1ad20f7970764f778950f643497352428e" kindref="member">key</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>key<sp/>is<sp/>copied<sp/>here<sp/>so<sp/>the<sp/>cleaner<sp/>can<sp/>remove<sp/>the<sp/>matching<sp/>map<sp/>entry<sp/>later.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="269"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="270"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Cached<sp/>value.</highlight></codeline>
+<codeline lineno="271"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="272" refid="classMemCache_1_1CacheEntry_1ac1fa09aff91d5fecfbd559bcc7927727" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1_1CacheEntry_1ac1fa09aff91d5fecfbd559bcc7927727" kindref="member">value</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>actual<sp/>data<sp/>being<sp/>cached;<sp/>copied<sp/>on<sp/>insert<sp/>and<sp/>returned<sp/>on<sp/>get.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="273"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="274"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Time<sp/>after<sp/>which<sp/>the<sp/>entry<sp/>is<sp/>considered<sp/>expired.</highlight></codeline>
+<codeline lineno="275"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="276" refid="classMemCache_1_1CacheEntry_1ae3095555b91a01daa99bc76f82164aa2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1ab226fd602502da7daecc5b303eaf5910" kindref="member">TimePoint</ref><sp/><sp/><sp/><ref refid="classMemCache_1_1CacheEntry_1ae3095555b91a01daa99bc76f82164aa2" kindref="member">expiration</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>moment<sp/>this<sp/>entry<sp/>becomes<sp/>stale.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="279"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="280"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Constructs<sp/>an<sp/>entry<sp/>with<sp/>a<sp/>key,<sp/>value<sp/>and<sp/>expiration.</highlight></codeline>
+<codeline lineno="281"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_key<sp/>Lookup<sp/>key.</highlight></codeline>
+<codeline lineno="282"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_value<sp/>Value<sp/>to<sp/>copy.</highlight></codeline>
+<codeline lineno="283"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_exp<sp/>Expiration<sp/>time<sp/>point.</highlight></codeline>
+<codeline lineno="284"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="285" refid="classMemCache_1_1CacheEntry_1aeec9fa9d402130295a30b4e424841199" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1_1CacheEntry_1aeec9fa9d402130295a30b4e424841199" kindref="member">CacheEntry</ref>(std::string<sp/>_key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T&amp;<sp/>_value,<sp/><ref refid="classMemCache_1ab226fd602502da7daecc5b303eaf5910" kindref="member">TimePoint</ref><sp/>_exp)<sp/>:<sp/><ref refid="classMemCache_1_1CacheEntry_1ad20f7970764f778950f643497352428e" kindref="member">key</ref>(<ref refid="namespacestd" kindref="compound">std</ref>::move(_key)),<sp/><ref refid="classMemCache_1_1CacheEntry_1ac1fa09aff91d5fecfbd559bcc7927727" kindref="member">value</ref>(_value),<sp/><ref refid="classMemCache_1_1CacheEntry_1ae3095555b91a01daa99bc76f82164aa2" kindref="member">expiration</ref>(_exp)<sp/>{}<sp/><sp/></highlight><highlight class="comment">//<sp/>Stores<sp/>all<sp/>three<sp/>pieces;<sp/>the<sp/>key<sp/>is<sp/>moved<sp/>for<sp/>efficiency.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="286"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="287"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>key.</highlight></codeline>
+<codeline lineno="288"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289" refid="classMemCache_1_1CacheEntry_1a50d686608b75519ab04dce8eaa1bfde8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/><ref refid="classMemCache_1_1CacheEntry_1a50d686608b75519ab04dce8eaa1bfde8" kindref="member">getKey</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMemCache_1_1CacheEntry_1ad20f7970764f778950f643497352428e" kindref="member">key</ref>;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>copy<sp/>is<sp/>fine<sp/>because<sp/>keys<sp/>are<sp/>small<sp/>strings.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="290"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="291"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>cached<sp/>value.</highlight></codeline>
+<codeline lineno="292"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293" refid="classMemCache_1_1CacheEntry_1a6b6f225708d33cfae329577215a92b8c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1_1CacheEntry_1a6b6f225708d33cfae329577215a92b8c" kindref="member">getValue</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMemCache_1_1CacheEntry_1ac1fa09aff91d5fecfbd559bcc7927727" kindref="member">value</ref>;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>by<sp/>value<sp/>so<sp/>callers<sp/>get<sp/>their<sp/>own<sp/>copy.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="294"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="295"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>expiration<sp/>time<sp/>point.</highlight></codeline>
+<codeline lineno="296"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="297" refid="classMemCache_1_1CacheEntry_1a68c9e2d26b029931fab02a73280856e5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/><ref refid="classMemCache_1ab226fd602502da7daecc5b303eaf5910" kindref="member">TimePoint</ref><sp/><sp/><sp/><ref refid="classMemCache_1_1CacheEntry_1a68c9e2d26b029931fab02a73280856e5" kindref="member">getExpiration</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMemCache_1_1CacheEntry_1ae3095555b91a01daa99bc76f82164aa2" kindref="member">expiration</ref>;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Used<sp/>to<sp/>decide<sp/>whether<sp/>the<sp/>entry<sp/>is<sp/>stale.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="298"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="299"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Replaces<sp/>the<sp/>cached<sp/>value.</highlight></codeline>
+<codeline lineno="300"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_value<sp/>New<sp/>value.</highlight></codeline>
+<codeline lineno="301"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="302" refid="classMemCache_1_1CacheEntry_1a97e8a249bed83fa3250626bb0a4117cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1_1CacheEntry_1a97e8a249bed83fa3250626bb0a4117cc" kindref="member">setValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T&amp;<sp/>_value)<sp/>{<sp/>this-&gt;value<sp/>=<sp/>_value;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Overwrites<sp/>the<sp/>stored<sp/>data<sp/>on<sp/>a<sp/>refresh.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="303"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="304"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Replaces<sp/>the<sp/>expiration<sp/>time<sp/>point.</highlight></codeline>
+<codeline lineno="305"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_exp<sp/>New<sp/>expiration<sp/>time.</highlight></codeline>
+<codeline lineno="306"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="307" refid="classMemCache_1_1CacheEntry_1a40950e8fea591f3cd784cd43ad2bd5bb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1_1CacheEntry_1a40950e8fea591f3cd784cd43ad2bd5bb" kindref="member">setExpiration</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classMemCache_1ab226fd602502da7daecc5b303eaf5910" kindref="member">TimePoint</ref>&amp;<sp/>_exp)<sp/>{<sp/>this-&gt;expiration<sp/>=<sp/>_exp;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Extends<sp/>or<sp/>changes<sp/>the<sp/>entry&apos;s<sp/>lifetime.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="310"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="311"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Maximum<sp/>number<sp/>of<sp/>entries<sp/>retained<sp/>before<sp/>LRU<sp/>eviction.</highlight></codeline>
+<codeline lineno="312"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="313" refid="classMemCache_1a896bf1581faae4fac93550178679afce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a896bf1581faae4fac93550178679afce" kindref="member">maxSize_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>capacity<sp/>limit;<sp/>once<sp/>reached,<sp/>the<sp/>least<sp/>recently<sp/>used<sp/>entry<sp/>is<sp/>evicted.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="314"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="315"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>TTL<sp/>used<sp/>by<sp/>insert()<sp/>when<sp/>no<sp/>per-entry<sp/>TTL<sp/>is<sp/>supplied.</highlight></codeline>
+<codeline lineno="316"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="317" refid="classMemCache_1af9fa1cb7832fedf91234d4b454d06dbf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::chrono::seconds<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1af9fa1cb7832fedf91234d4b454d06dbf" kindref="member">defaultTTL_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>fallback<sp/>lifetime<sp/>for<sp/>entries<sp/>inserted<sp/>without<sp/>an<sp/>explicit<sp/>TTL.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="318"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="319"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Key-to-list-iterator<sp/>index;<sp/>iterators<sp/>remain<sp/>valid<sp/>across<sp/>splices.</highlight></codeline>
+<codeline lineno="320"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="321" refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;std::string,<sp/>typename<sp/>std::list&lt;CacheEntry&gt;::iterator&gt;<sp/><ref refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" kindref="member">cacheMap_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Gives<sp/>O(1)<sp/>lookup;<sp/>stores<sp/>list<sp/>iterators,<sp/>which<sp/>survive<sp/>reordering.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="322"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="323"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Entry<sp/>list<sp/>ordered<sp/>from<sp/>most<sp/>recently<sp/>used<sp/>(front)<sp/>to<sp/>least<sp/>(back).</highlight></codeline>
+<codeline lineno="324"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="325" refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::list&lt;CacheEntry&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" kindref="member">cacheList_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>recency<sp/>order;<sp/>the<sp/>back<sp/>is<sp/>the<sp/>next<sp/>victim<sp/>for<sp/>eviction.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="326"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="327"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Guards<sp/>all<sp/>cache<sp/>state<sp/>and<sp/>the<sp/>cleaner<sp/>control<sp/>flag.</highlight></codeline>
+<codeline lineno="328"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="329" refid="classMemCache_1a01a66891157c73b1dce90b74077227ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::mutex<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a01a66891157c73b1dce90b74077227ec" kindref="member">mutex_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>single<sp/>lock<sp/>protects<sp/>the<sp/>map,<sp/>list,<sp/>limits<sp/>and<sp/>stop<sp/>flag.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="330"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="331"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Wakes<sp/>the<sp/>cleaner<sp/>early<sp/>on<sp/>shutdown<sp/>or<sp/>move.</highlight></codeline>
+<codeline lineno="332"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="333" refid="classMemCache_1a0dcf2702ea5d7119e098e0c3be90a0a4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::condition_variable<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a0dcf2702ea5d7119e098e0c3be90a0a4" kindref="member">cleanerCv_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Lets<sp/>the<sp/>cleaner<sp/>sleep<sp/>until<sp/>woken<sp/>or<sp/>a<sp/>timeout<sp/>passes.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="334"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="335"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Set<sp/>under<sp/>mutex_<sp/>to<sp/>request<sp/>cleaner<sp/>termination.</highlight></codeline>
+<codeline lineno="336"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="337" refid="classMemCache_1a35871df8b3ebcfa658e6fa4f8f5f1dbd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a35871df8b3ebcfa658e6fa4f8f5f1dbd" kindref="member">stopCleaner_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>When<sp/>true,<sp/>the<sp/>cleaner<sp/>loop<sp/>exits.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="338"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="339"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Background<sp/>thread<sp/>running<sp/>cleanExpiredEntries().</highlight></codeline>
+<codeline lineno="340"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="341" refid="classMemCache_1a0503776bfff4bd34b42ee76ceeeb40fc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::thread<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a0503776bfff4bd34b42ee76ceeeb40fc" kindref="member">cleanerThread_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>thread<sp/>that<sp/>periodically<sp/>removes<sp/>expired<sp/>entries.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="343"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="344"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Moves<sp/>an<sp/>entry<sp/>to<sp/>the<sp/>most-recently-used<sp/>end<sp/>of<sp/>the<sp/>list.</highlight></codeline>
+<codeline lineno="345"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>item<sp/>Iterator<sp/>to<sp/>the<sp/>entry;<sp/>the<sp/>caller<sp/>must<sp/>hold<sp/>mutex_.</highlight></codeline>
+<codeline lineno="346"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="347" refid="classMemCache_1adb42b6b587c94d97c22dbb8370dc57d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMemCache_1adb42b6b587c94d97c22dbb8370dc57d2" kindref="member">moveToFront</ref>(</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::list&lt;CacheEntry&gt;::iterator&amp;<sp/>item)<sp/>{<sp/><ref refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" kindref="member">cacheList_</ref>.splice(<ref refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" kindref="member">cacheList_</ref>.begin(),<sp/><ref refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" kindref="member">cacheList_</ref>,<sp/>item);<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>splice<sp/>relinks<sp/>the<sp/>node<sp/>without<sp/>copying;<sp/>the<sp/>caller<sp/>holds<sp/>the<sp/>lock.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="349"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="350"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Evicts<sp/>the<sp/>least<sp/>recently<sp/>used<sp/>entry<sp/>(the<sp/>list&apos;s<sp/>back).</highlight></codeline>
+<codeline lineno="351"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@pre<sp/>cacheList_<sp/>is<sp/>non-empty<sp/>and<sp/>the<sp/>caller<sp/>holds<sp/>mutex_.</highlight></codeline>
+<codeline lineno="352"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="353" refid="classMemCache_1a11d03343bb5f441b140b075a2912eead" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMemCache_1a11d03343bb5f441b140b075a2912eead" kindref="member">evictOldest</ref>()<sp/><sp/></highlight><highlight class="comment">//<sp/>Removes<sp/>the<sp/>back<sp/>(oldest/least<sp/>recently<sp/>used)<sp/>entry.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>last<sp/>=<sp/><ref refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" kindref="member">cacheList_</ref>.end();<sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>from<sp/>the<sp/>one-past-end<sp/>iterator.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>--last;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Step<sp/>back<sp/>to<sp/>the<sp/>last<sp/>real<sp/>element<sp/>(the<sp/>LRU<sp/>entry).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" kindref="member">cacheMap_</ref>.erase(last-&gt;getKey());<sp/><sp/></highlight><highlight class="comment">//<sp/>Remove<sp/>its<sp/>key<sp/>from<sp/>the<sp/>lookup<sp/>map<sp/>first.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" kindref="member">cacheList_</ref>.pop_back();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Then<sp/>remove<sp/>the<sp/>entry<sp/>itself<sp/>from<sp/>the<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="361"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="362"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Cleaner<sp/>loop<sp/>that<sp/>periodically<sp/>erases<sp/>all<sp/>expired<sp/>entries.</highlight></codeline>
+<codeline lineno="363"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Waits<sp/>on<sp/>cleanerCv_<sp/>with<sp/>a<sp/>one-second<sp/>timeout;<sp/>a<sp/>notification<sp/>from</highlight></codeline>
+<codeline lineno="364"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>destruction<sp/>or<sp/>a<sp/>move<sp/>wakes<sp/>it<sp/>immediately<sp/>so<sp/>it<sp/>can<sp/>observe</highlight></codeline>
+<codeline lineno="365"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stopCleaner_<sp/>and<sp/>exit.<sp/>Otherwise<sp/>it<sp/>scans<sp/>the<sp/>entire<sp/>list<sp/>because</highlight></codeline>
+<codeline lineno="366"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>move-to-front<sp/>can<sp/>leave<sp/>expired<sp/>entries<sp/>away<sp/>from<sp/>the<sp/>back.</highlight></codeline>
+<codeline lineno="367"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="368" refid="classMemCache_1a6353c6d238fd6837b033a90a389218fe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMemCache_1a6353c6d238fd6837b033a90a389218fe" kindref="member">cleanExpiredEntries</ref>()<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>background<sp/>loop<sp/>run<sp/>by<sp/>cleanerThread_.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/><sp/></highlight><highlight class="comment">//<sp/>Repeat<sp/>until<sp/>the<sp/>stop<sp/>flag<sp/>tells<sp/>us<sp/>to<sp/>quit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::unique_lock&lt;std::mutex&gt;<sp/>lock(<ref refid="classMemCache_1a01a66891157c73b1dce90b74077227ec" kindref="member">mutex_</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Lock<sp/>with<sp/>a<sp/>unique_lock,<sp/>which<sp/>the<sp/>condition<sp/>variable<sp/>can<sp/>release<sp/>while<sp/>waiting.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1a0dcf2702ea5d7119e098e0c3be90a0a4" kindref="member">cleanerCv_</ref>.wait_for(lock,<sp/>std::chrono::seconds(1),<sp/>[</highlight><highlight class="keyword">this</highlight><highlight class="normal">]<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMemCache_1a35871df8b3ebcfa658e6fa4f8f5f1dbd" kindref="member">stopCleaner_</ref>;<sp/>});<sp/><sp/></highlight><highlight class="comment">//<sp/>Sleep<sp/>up<sp/>to<sp/>one<sp/>second,<sp/>waking<sp/>early<sp/>if<sp/>notified<sp/>and<sp/>the<sp/>predicate<sp/>is<sp/>true.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMemCache_1a35871df8b3ebcfa658e6fa4f8f5f1dbd" kindref="member">stopCleaner_</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>whether<sp/>shutdown<sp/>was<sp/>requested.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Leave<sp/>the<sp/>loop<sp/>so<sp/>the<sp/>thread<sp/>can<sp/>finish.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>now<sp/>=<sp/>Clock::now();<sp/><sp/></highlight><highlight class="comment">//<sp/>Take<sp/>one<sp/>timestamp<sp/>for<sp/>this<sp/>whole<sp/>scan.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Expired<sp/>entries<sp/>can<sp/>live<sp/>anywhere<sp/>after<sp/>move-to-front,<sp/>so<sp/>scan<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>whole<sp/>list<sp/>instead<sp/>of<sp/>only<sp/>evicting<sp/>from<sp/>the<sp/>back.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/><ref refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" kindref="member">cacheList_</ref>.begin();<sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>at<sp/>the<sp/>most<sp/>recently<sp/>used<sp/>entry.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/><ref refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" kindref="member">cacheList_</ref>.end())<sp/><sp/></highlight><highlight class="comment">//<sp/>Walk<sp/>every<sp/>entry<sp/>in<sp/>the<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it-&gt;getExpiration()<sp/>&lt;=<sp/>now)<sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>it<sp/>has<sp/>already<sp/>expired.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" kindref="member">cacheMap_</ref>.erase(it-&gt;getKey());<sp/><sp/></highlight><highlight class="comment">//<sp/>Remove<sp/>its<sp/>key<sp/>from<sp/>the<sp/>map.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>=<sp/><ref refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" kindref="member">cacheList_</ref>.erase(it);<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Erase<sp/>the<sp/>list<sp/>node<sp/>and<sp/>advance<sp/>to<sp/>the<sp/>next<sp/>one.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++it;<sp/><sp/></highlight><highlight class="comment">//<sp/>Otherwise<sp/>just<sp/>move<sp/>to<sp/>the<sp/>next<sp/>entry.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="401"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="src/utils/memcache/memcache.hpp"/>
+  </compounddef>
+</doxygen>

@@ -157,6 +157,7 @@ fixed.**
 
 ## Known production bugs / suspicious behaviour (updated 2026-11-13)
 
-Bugs 1–10 are unchanged. A new bug was found:
+Bugs 1–10 are historical; they have since been fixed in source (3, 5, 9 and 10 are verified
+fixed in the current implementation). A further issue was recorded:
 
-11. **`store.hpp` `Store::getObject` TOCTOU race** — Two threads can both pass `inventory.find(typeid(T)) == inventory.end()` before either inserts the object, so both call `registerObject` and create two distinct objects. The second silently overwrites the first. Fix: hold `inventoryMutex` across the check-and-insert in `getObject` (merge the two lock scopes into one). Documented in `tests/utils/test_store.cpp` `[.known-bug][!shouldfail]`.
+11. **`store.hpp` `Store::getObject` TOCTOU race** *(fixed in commit `bfb375e`, retained for history)* — Two threads could both pass `inventory.find(typeid(T)) == inventory.end()` before either inserts the object, so both call `registerObject` and create two distinct objects. The second silently overwrites the first. Fix: hold `inventoryMutex` across the check-and-insert in `getObject` (merge the two lock scopes into one). Documented in `tests/utils/test_store.cpp` `[.known-bug][!shouldfail]`.

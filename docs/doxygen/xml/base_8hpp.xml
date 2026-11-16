@@ -1,0 +1,661 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="base_8hpp" kind="file" language="C++">
+    <compoundname>base.hpp</compoundname>
+    <includes local="no">fmt/format.h</includes>
+    <includes local="no">cstddef</includes>
+    <includes local="no">optional</includes>
+    <includes local="no">pqxx/pqxx</includes>
+    <includes local="no">string</includes>
+    <includedby refid="entity_8hpp" local="yes">src/entities/base/entity.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/entities/base/base.hpp</label>
+        <link refid="base_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>cstddef</label>
+      </node>
+      <node id="2">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="4">
+        <label>optional</label>
+      </node>
+      <node id="5">
+        <label>pqxx/pqxx</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="6">
+        <label>src/api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/api/v2/routes/appointments.hpp</label>
+        <link refid="appointments_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>src/api/v2/routes/clients.hpp</label>
+        <link refid="clients_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>src/api/v2/routes/clinics.hpp</label>
+        <link refid="api_2v2_2routes_2clinics_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>src/api/v2/routes/services.hpp</label>
+        <link refid="services_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>src/api/v2/routes/staff.hpp</label>
+        <link refid="staff_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
+        <link refid="appointmentcontroller_8cpp"/>
+      </node>
+      <node id="25">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
+        <link refid="appointmentcontroller_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>src/controllers/base/controller/controller.hpp</label>
+        <link refid="controller_8hpp"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>src/controllers/clientcontroller/clientcontroller.cpp</label>
+        <link refid="clientcontroller_8cpp"/>
+      </node>
+      <node id="26">
+        <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
+        <link refid="clientcontroller_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
+        <link refid="cliniccontroller_8cpp"/>
+      </node>
+      <node id="28">
+        <label>src/controllers/cliniccontroller/cliniccontroller.hpp</label>
+        <link refid="cliniccontroller_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
+        <link refid="entitycontroller_8cpp"/>
+      </node>
+      <node id="24">
+        <label>src/controllers/entitycontroller/entitycontroller.hpp</label>
+        <link refid="entitycontroller_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
+        <link refid="servicecontroller_8cpp"/>
+      </node>
+      <node id="30">
+        <label>src/controllers/servicecontroller/servicecontroller.hpp</label>
+        <link refid="servicecontroller_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
+        <link refid="staffcontroller_8cpp"/>
+      </node>
+      <node id="33">
+        <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
+        <link refid="staffcontroller_8hpp"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>src/database/database.cpp</label>
+        <link refid="database_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/entities/appointments/base/appointment.hpp</label>
+        <link refid="appointment_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/entities/appointments/clinic.hpp</label>
+        <link refid="clinic_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>src/entities/appointments/laboratory.hpp</label>
+        <link refid="laboratory_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>src/entities/appointments/pharmacy.hpp</label>
+        <link refid="pharmacy_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>src/entities/appointments/radiologycenter.hpp</label>
+        <link refid="radiologycenter_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>src/entities/appointments/user.hpp</label>
+        <link refid="appointments_2user_8hpp"/>
+      </node>
+      <node id="1">
+        <label>src/entities/base/base.hpp</label>
+        <link refid="base_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>src/entities/base/case.hpp</label>
+        <link refid="case_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>src/entities/base/client.hpp</label>
+        <link refid="client_8hpp"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/entities/base/entity.hpp</label>
+        <link refid="entity_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>src/entities/base/service.hpp</label>
+        <link refid="service_8hpp"/>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>src/entities/people/provider.hpp</label>
+        <link refid="provider_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>src/entities/people/user.hpp</label>
+        <link refid="people_2user_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>src/entities/services/clinics/clinics.hpp</label>
+        <link refid="entities_2services_2clinics_2clinics_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>src/entities/services/clinics/patient/health.hpp</label>
+        <link refid="health_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>src/entities/services/clinics/patient/patient.hpp</label>
+        <link refid="patient_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>src/entities/services/clinics/patient/patientdrugs.hpp</label>
+        <link refid="patientdrugs_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>src/entities/services/clinics/patient/reports.hpp</label>
+        <link refid="reports_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>src/entities/services/clinics/visits/paidservices.hpp</label>
+        <link refid="paidservices_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>src/entities/services/clinics/visits/prescriptions.hpp</label>
+        <link refid="prescriptions_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>src/entities/services/clinics/visits/requests.hpp</label>
+        <link refid="requests_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>src/entities/services/clinics/visits/visitdrugs.hpp</label>
+        <link refid="visitdrugs_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>src/entities/services/clinics/visits/visits.hpp</label>
+        <link refid="visits_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>src/entities/services/laboratories.hpp</label>
+        <link refid="laboratories_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>src/entities/services/pharmacies.hpp</label>
+        <link refid="pharmacies_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>src/entities/services/radiologycenters.hpp</label>
+        <link refid="radiologycenters_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>src/gatekeeper/gatekeeper.cpp</label>
+        <link refid="gatekeeper_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/gatekeeper/includes.hpp</label>
+        <link refid="includes_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>src/gatekeeper/permissionmanager/permissionmanager.cpp</label>
+        <link refid="permissionmanager_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classBase" prot="public">Base</innerclass>
+    <innerclass refid="structBase_1_1Binder" prot="protected">Base::Binder</innerclass>
+    <briefdescription>
+<para>Default construction; the interface itself carries no state. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="classBase" kindref="compound">Base</ref> is the shared blueprint (an &quot;abstract base class&quot;) for every entity in the server. It declares the five SQL statement builders that each concrete entity must supply: create, read, update, delete and search. It also provides a small helper called Binder that safely turns values into numbered placeholders, so data is never pasted into SQL text. The class stores no data of its own; it only fixes the shape that all derived entity classes follow.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: This is the bottom contract of the whole entity layer. Controllers call the five getSql* functions through a <ref refid="classBase" kindref="compound">Base</ref> reference without caring which concrete table is involved, and every concrete entity (<ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="controller_8hpp_1af928d8b9ced02f7387b9b56ed3877b11" kindref="member">Client</ref>, <ref refid="classService" kindref="compound">Service</ref>, <ref refid="classAppointment" kindref="compound">Appointment</ref>, <ref refid="classCase" kindref="compound">Case</ref> and friends) inherits from <ref refid="classBase" kindref="compound">Base</ref>. Without it there would be no single way to ask &quot;give me the SQL for this operation&quot;, and the safe binding pattern would have to be copied into every table class by hand.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>std::optional: <ulink url="https://en.cppreference.com/w/cpp/utility/optional">https://en.cppreference.com/w/cpp/utility/optional</ulink></para>
+</listitem><listitem><para>Abstract base class / pure virtual function: a function ending in &quot;= 0&quot; forces every child class to implement it, so callers can use one common interface for all of them.</para>
+</listitem><listitem><para>SQL parameter binding: put $1, $2, ... markers in the SQL and pass the real values separately, so user data can never change the meaning of the query; see <ulink url="https://en.cppreference.com/w/cpp">https://en.cppreference.com/w/cpp</ulink> or the libpqxx documentation.</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>base.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Default<sp/>construction;<sp/>the<sp/>interface<sp/>itself<sp/>carries<sp/>no<sp/>state.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>Base<sp/>is<sp/>the<sp/>shared<sp/>blueprint<sp/>(an<sp/>&quot;abstract<sp/>base<sp/>class&quot;)<sp/>for<sp/>every<sp/>entity<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>server.<sp/>It<sp/>declares<sp/>the<sp/>five<sp/>SQL<sp/>statement<sp/>builders<sp/>that<sp/>each<sp/>concrete<sp/>entity<sp/>must<sp/>supply:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>create,<sp/>read,<sp/>update,<sp/>delete<sp/>and<sp/>search.<sp/>It<sp/>also<sp/>provides<sp/>a<sp/>small<sp/>helper<sp/>called<sp/>Binder<sp/>that</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>safely<sp/>turns<sp/>values<sp/>into<sp/>numbered<sp/>placeholders,<sp/>so<sp/>data<sp/>is<sp/>never<sp/>pasted<sp/>into<sp/>SQL<sp/>text.<sp/>The</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>class<sp/>stores<sp/>no<sp/>data<sp/>of<sp/>its<sp/>own;<sp/>it<sp/>only<sp/>fixes<sp/>the<sp/>shape<sp/>that<sp/>all<sp/>derived<sp/>entity<sp/>classes<sp/>follow.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>the<sp/>bottom<sp/>contract<sp/>of<sp/>the<sp/>whole<sp/>entity<sp/>layer.<sp/>Controllers<sp/>call<sp/>the<sp/>five<sp/>getSql*<sp/>functions</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>through<sp/>a<sp/>Base<sp/>reference<sp/>without<sp/>caring<sp/>which<sp/>concrete<sp/>table<sp/>is<sp/>involved,<sp/>and<sp/>every<sp/>concrete</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>entity<sp/>(Entity,<sp/>Client,<sp/>Service,<sp/>Appointment,<sp/>Case<sp/>and<sp/>friends)<sp/>inherits<sp/>from<sp/>Base.<sp/>Without<sp/>it</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>there<sp/>would<sp/>be<sp/>no<sp/>single<sp/>way<sp/>to<sp/>ask<sp/>&quot;give<sp/>me<sp/>the<sp/>SQL<sp/>for<sp/>this<sp/>operation&quot;,<sp/>and<sp/>the<sp/>safe<sp/>binding</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>pattern<sp/>would<sp/>have<sp/>to<sp/>be<sp/>copied<sp/>into<sp/>every<sp/>table<sp/>class<sp/>by<sp/>hand.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>std::optional:<sp/>https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>Abstract<sp/>base<sp/>class<sp/>/<sp/>pure<sp/>virtual<sp/>function:<sp/>a<sp/>function<sp/>ending<sp/>in<sp/>&quot;=<sp/>0&quot;<sp/>forces<sp/>every<sp/>child</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/><sp/><sp/>class<sp/>to<sp/>implement<sp/>it,<sp/>so<sp/>callers<sp/>can<sp/>use<sp/>one<sp/>common<sp/>interface<sp/>for<sp/>all<sp/>of<sp/>them.</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>SQL<sp/>parameter<sp/>binding:<sp/>put<sp/>$1,<sp/>$2,<sp/>...<sp/>markers<sp/>in<sp/>the<sp/>SQL<sp/>and<sp/>pass<sp/>the<sp/>real<sp/>values<sp/>separately,</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/><sp/><sp/>so<sp/>user<sp/>data<sp/>can<sp/>never<sp/>change<sp/>the<sp/>meaning<sp/>of<sp/>the<sp/>query;<sp/>see<sp/>https://en.cppreference.com/w/cpp</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/><sp/><sp/>or<sp/>the<sp/>libpqxx<sp/>documentation.</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file,<sp/>to<sp/>avoid<sp/>duplicate<sp/>definitions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/format.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Provides<sp/>fmt::format,<sp/>used<sp/>below<sp/>to<sp/>build<sp/>placeholder<sp/>strings<sp/>such<sp/>as<sp/>&quot;$1&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Brings<sp/>in<sp/>size_t,<sp/>the<sp/>type<sp/>used<sp/>for<sp/>the<sp/>placeholder<sp/>counter.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::optional<sp/>lets<sp/>a<sp/>builder<sp/>return<sp/>&quot;no<sp/>statement&quot;<sp/>instead<sp/>of<sp/>a<sp/>fake<sp/>empty<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;pqxx/pqxx&gt;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>The<sp/>PostgreSQL<sp/>C++<sp/>library;<sp/>pqxx::params<sp/>holds<sp/>the<sp/>values<sp/>bound<sp/>to<sp/>a<sp/>statement.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>is<sp/>the<sp/>return<sp/>type<sp/>of<sp/>every<sp/>SQL<sp/>builder.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="38"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>Base<sp/>class<sp/>for<sp/>all<sp/>entities<sp/>in<sp/>the<sp/>application.</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>Provides<sp/>common<sp/>functionality<sp/>for<sp/>creating,<sp/>reading,<sp/>updating,<sp/>deleting,<sp/>and</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>searching<sp/>entities.<sp/>Derived<sp/>classes<sp/>must<sp/>implement<sp/>the<sp/>virtual<sp/>functions<sp/>to</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>provide<sp/>the<sp/>SQL<sp/>statements<sp/>for<sp/>each<sp/>operation.</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>@details<sp/>The<sp/>interface<sp/>separates<sp/>deciding<sp/>what<sp/>SQL<sp/>to<sp/>run<sp/>from<sp/>executing<sp/>it:<sp/>a<sp/>caller<sp/>asks<sp/>an</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>entity<sp/>for<sp/>a<sp/>statement<sp/>plus<sp/>its<sp/>bound<sp/>parameters<sp/>and<sp/>hands<sp/>both<sp/>to<sp/>the<sp/>database<sp/>layer.<sp/>Every</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>builder<sp/>returns<sp/>SQL<sp/>containing<sp/>only<sp/>$1,<sp/>$2,<sp/>...<sp/>placeholders<sp/>and<sp/>appends<sp/>the<sp/>actual<sp/>values<sp/>to</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>the<sp/>caller-supplied<sp/>pqxx::params,<sp/>so<sp/>column<sp/>values<sp/>are<sp/>never<sp/>written<sp/>into<sp/>the<sp/>SQL<sp/>text.<sp/>A</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>builder<sp/>returns<sp/>std::nullopt<sp/>when<sp/>it<sp/>cannot<sp/>produce<sp/>a<sp/>usable<sp/>statement.</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>@note<sp/>The<sp/>destructor<sp/>is<sp/>virtual<sp/>because<sp/>entities<sp/>are<sp/>used<sp/>polymorphically<sp/>through<sp/>this<sp/>interface.</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>@see<sp/>Entity,<sp/>Binder</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>@note<sp/>For<sp/>a<sp/>beginner:<sp/>&quot;virtual&quot;<sp/>means<sp/>the<sp/>call<sp/>is<sp/>decided<sp/>at<sp/>runtime,<sp/>so<sp/>a<sp/>Base<sp/>pointer<sp/>can</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>reach<sp/>the<sp/>correct<sp/>derived-class<sp/>version<sp/>of<sp/>each<sp/>function.<sp/>&quot;=<sp/>0&quot;<sp/>means<sp/>this<sp/>class<sp/>gives<sp/>no<sp/>body</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>and<sp/>forces<sp/>children<sp/>to<sp/>provide<sp/>one;<sp/>that<sp/>is<sp/>what<sp/>makes<sp/>Base<sp/>abstract<sp/>(not<sp/>instantiable).</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classBase" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBase_1a58887755525abd3f340963e2bbdcc972" kindref="member">Base</ref></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>construction;<sp/>the<sp/>interface<sp/>itself<sp/>carries<sp/>no<sp/>state.</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classBase_1a58887755525abd3f340963e2bbdcc972" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classBase_1a58887755525abd3f340963e2bbdcc972" kindref="member">Base</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;explicit&quot;<sp/>with<sp/>no<sp/>arguments<sp/>simply<sp/>documents<sp/>that<sp/>this<sp/>is<sp/>a<sp/>deliberate<sp/>default<sp/>constructor.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Permits<sp/>safe<sp/>deletion<sp/>through<sp/>a<sp/>Base<sp/>pointer.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classBase_1a306fb25541331080645a716286357ef9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classBase_1a306fb25541331080645a716286357ef9" kindref="member">~Base</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Virtual<sp/>so<sp/>deleting<sp/>a<sp/>derived<sp/>object<sp/>through<sp/>a<sp/>Base*<sp/>calls<sp/>the<sp/>right<sp/>destructor.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Every<sp/>builder<sp/>returns<sp/>SQL<sp/>with<sp/>$1,<sp/>$2,<sp/>...<sp/>placeholders<sp/>and<sp/>stores<sp/>the<sp/>values<sp/>in<sp/>params;<sp/>values<sp/>are<sp/>never</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>written<sp/>into<sp/>the<sp/>SQL<sp/>text.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>INSERT<sp/>statement<sp/>for<sp/>the<sp/>entity&apos;s<sp/>payload.</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>params<sp/>Receives<sp/>the<sp/>values<sp/>for<sp/>the<sp/>returned<sp/>placeholders;<sp/>builders<sp/>clear<sp/>it<sp/>first.</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>SQL<sp/>with<sp/>$n<sp/>placeholders,<sp/>or<sp/>std::nullopt<sp/>if<sp/>the<sp/>statement<sp/>cannot<sp/>be<sp/>built.</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Values<sp/>are<sp/>bound<sp/>rather<sp/>than<sp/>embedded<sp/>in<sp/>the<sp/>returned<sp/>text.</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classBase_1a370479ee58fedd41365acea55b47de9b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classBase_1a370479ee58fedd41365acea55b47de9b" kindref="member">getSqlCreateStatement</ref>(pqxx::params&amp;<sp/>params)<sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Child<sp/>supplies<sp/>the<sp/>INSERT;<sp/>the<sp/>reference<sp/>lets<sp/>us<sp/>fill<sp/>the<sp/>caller&apos;s<sp/>container.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>SELECT<sp/>statement<sp/>for<sp/>reading<sp/>one<sp/>entity<sp/>by<sp/>id.</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>params<sp/>Receives<sp/>the<sp/>bound<sp/>id;<sp/>builders<sp/>clear<sp/>the<sp/>container<sp/>first.</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>SQL<sp/>with<sp/>$n<sp/>placeholders,<sp/>or<sp/>std::nullopt<sp/>if<sp/>no<sp/>usable<sp/>statement<sp/>can<sp/>be<sp/>built<sp/>(for</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>example,<sp/>when<sp/>no<sp/>id<sp/>is<sp/>available).</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classBase_1ad1d05549ca23bf4602c86fb3f6575d30" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classBase_1ad1d05549ca23bf4602c86fb3f6575d30" kindref="member">getSqlReadStatement</ref>(pqxx::params&amp;<sp/>params)<sp/><sp/><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Child<sp/>supplies<sp/>the<sp/>single-row<sp/>SELECT.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>UPDATE<sp/>statement<sp/>for<sp/>the<sp/>entity&apos;s<sp/>payload.</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>params<sp/>Receives<sp/>the<sp/>bound<sp/>values<sp/>and<sp/>id;<sp/>builders<sp/>clear<sp/>the<sp/>container<sp/>first.</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>SQL<sp/>with<sp/>$n<sp/>placeholders,<sp/>or<sp/>std::nullopt<sp/>if<sp/>no<sp/>usable<sp/>statement<sp/>can<sp/>be<sp/>built.</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="classBase_1a48122a0f0bd77d2aadcbe10b3e0863fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classBase_1a48122a0f0bd77d2aadcbe10b3e0863fd" kindref="member">getSqlUpdateStatement</ref>(pqxx::params&amp;<sp/>params)<sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Child<sp/>supplies<sp/>the<sp/>UPDATE.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>DELETE<sp/>statement<sp/>for<sp/>an<sp/>entity<sp/>identified<sp/>by<sp/>id.</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>params<sp/>Receives<sp/>the<sp/>bound<sp/>id;<sp/>builders<sp/>clear<sp/>the<sp/>container<sp/>first.</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>SQL<sp/>with<sp/>$n<sp/>placeholders,<sp/>or<sp/>std::nullopt<sp/>if<sp/>no<sp/>usable<sp/>statement<sp/>can<sp/>be<sp/>built.</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="classBase_1a35f7a42b849a9eaf439715a4b280a8f4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classBase_1a35f7a42b849a9eaf439715a4b280a8f4" kindref="member">getSqlDeleteStatement</ref>(pqxx::params&amp;<sp/>params)<sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Child<sp/>supplies<sp/>the<sp/>DELETE.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>paginated<sp/>search<sp/>statement<sp/>for<sp/>the<sp/>entity&apos;s<sp/>table.</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>params<sp/>Receives<sp/>the<sp/>bound<sp/>keyword,<sp/>limit<sp/>and<sp/>offset;<sp/>builders<sp/>clear<sp/>it<sp/>first.</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>SQL<sp/>with<sp/>$n<sp/>placeholders,<sp/>or<sp/>std::nullopt<sp/>if<sp/>no<sp/>usable<sp/>statement<sp/>can<sp/>be<sp/>built.</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Search<sp/>filters<sp/>and<sp/>ordering<sp/>identifiers<sp/>cannot<sp/>be<sp/>bound<sp/>and<sp/>are<sp/>instead<sp/>validated</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>before<sp/>being<sp/>written<sp/>into<sp/>the<sp/>statement<sp/>by<sp/>the<sp/>concrete<sp/>value<sp/>types.</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="classBase_1a3b86dc196e03d75434ff98e8e04fe303" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classBase_1a3b86dc196e03d75434ff98e8e04fe303" kindref="member">getSqlSearchStatement</ref>(pqxx::params&amp;<sp/>params)<sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Child<sp/>supplies<sp/>the<sp/>paginated<sp/>SELECT.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>builder<sp/>asks<sp/>the<sp/>binder<sp/>how<sp/>each<sp/>value<sp/>is<sp/>written<sp/>into<sp/>the<sp/>query:<sp/>bind(value)<sp/>stores<sp/>it<sp/>in<sp/>params<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>returns<sp/>its<sp/>placeholder<sp/>($1,<sp/>$2,<sp/>...).</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Appends<sp/>values<sp/>to<sp/>a<sp/>pqxx::params<sp/>and<sp/>hands<sp/>back<sp/>the<sp/>matching<sp/>SQL<sp/>placeholders.</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Construction<sp/>clears<sp/>the<sp/>supplied<sp/>container,<sp/>so<sp/>each<sp/>fresh<sp/>Binder<sp/>restarts<sp/>numbering</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>at<sp/>$1<sp/>for<sp/>one<sp/>statement.<sp/>Routing<sp/>every<sp/>value<sp/>through<sp/>bind()<sp/>is<sp/>what<sp/>keeps<sp/>callers<sp/>from</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>concatenating<sp/>untrusted<sp/>data<sp/>into<sp/>SQL<sp/>text.</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Holds<sp/>a<sp/>borrowed<sp/>reference<sp/>to<sp/>the<sp/>params<sp/>container<sp/>and<sp/>must<sp/>not<sp/>outlive<sp/>it.</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>For<sp/>a<sp/>beginner:<sp/>this<sp/>is<sp/>a<sp/>helper<sp/>struct<sp/>that<sp/>derived<sp/>builders<sp/>create<sp/>on<sp/>the<sp/>stack<sp/>for</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>one<sp/>SQL<sp/>statement.<sp/>It<sp/>remembers<sp/>a<sp/>running<sp/>counter<sp/>so<sp/>the<sp/>first<sp/>value<sp/>becomes<sp/>$1,<sp/>the<sp/>second</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>$2,<sp/>and<sp/>so<sp/>on,<sp/>which<sp/>is<sp/>exactly<sp/>what<sp/>PostgreSQL<sp/>expects<sp/>in<sp/>the<sp/>prepared<sp/>query.</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="structBase_1_1Binder" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structBase_1_1Binder_1a8aff08d8abb6b9a8abb7964019d5e057" kindref="member">Binder</ref></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Binds<sp/>to<sp/>p<sp/>and<sp/>clears<sp/>it<sp/>so<sp/>the<sp/>first<sp/>bind()<sp/>produces<sp/>$1.</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="structBase_1_1Binder_1a8aff08d8abb6b9a8abb7964019d5e057" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="structBase_1_1Binder_1a8aff08d8abb6b9a8abb7964019d5e057" kindref="member">Binder</ref>(pqxx::params&amp;<sp/>p)<sp/>:<sp/><ref refid="structBase_1_1Binder_1aa2f67f67cd827fa79329b85e1757145e" kindref="member">params</ref>(p)<sp/>{<sp/><ref refid="structBase_1_1Binder_1aa2f67f67cd827fa79329b85e1757145e" kindref="member">params</ref><sp/>=<sp/>{};<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Keep<sp/>a<sp/>reference<sp/>to<sp/>the<sp/>caller&apos;s<sp/>container<sp/>and<sp/>empty<sp/>it<sp/>so<sp/>placeholders<sp/>start<sp/>fresh<sp/>at<sp/>$1.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Appends<sp/>a<sp/>value<sp/>to<sp/>the<sp/>parameter<sp/>container<sp/>and<sp/>returns<sp/>its<sp/>placeholder.</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>A<sp/>type<sp/>accepted<sp/>by<sp/>pqxx::params::append.</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>value<sp/>The<sp/>value<sp/>to<sp/>bind;<sp/>copied<sp/>into<sp/>the<sp/>container<sp/>by<sp/>pqxx.</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>placeholder<sp/>of<sp/>the<sp/>form<sp/>&quot;$n&quot;,<sp/>with<sp/>n<sp/>increasing<sp/>in<sp/>call<sp/>order<sp/>from<sp/>1.</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="136" refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" kindref="member">bind</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T&amp;<sp/>value)<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>template<sp/>so<sp/>any<sp/>value<sp/>type<sp/>pqxx<sp/>understands<sp/>can<sp/>be<sp/>bound<sp/>the<sp/>same<sp/>way.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBase_1_1Binder_1aa2f67f67cd827fa79329b85e1757145e" kindref="member">params</ref>.append(value);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Store<sp/>the<sp/>real<sp/>value<sp/>separately<sp/>from<sp/>the<sp/>SQL<sp/>text<sp/>(safe<sp/>binding).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;${}&quot;</highlight><highlight class="normal">,<sp/>++<ref refid="structBase_1_1Binder_1aa2c6aab342d4d62357fb8c8c15ff61be" kindref="member">index</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Bump<sp/>the<sp/>counter<sp/>first,<sp/>then<sp/>return<sp/>$1,<sp/>$2,<sp/>...<sp/>in<sp/>that<sp/>order.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>The<sp/>borrowed<sp/>parameter<sp/>container<sp/>that<sp/>receives<sp/>appended<sp/>values.</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="structBase_1_1Binder_1aa2f67f67cd827fa79329b85e1757145e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pqxx::params&amp;<sp/><ref refid="structBase_1_1Binder_1aa2f67f67cd827fa79329b85e1757145e" kindref="member">params</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>reference,<sp/>not<sp/>a<sp/>copy:<sp/>we<sp/>fill<sp/>the<sp/>caller&apos;s<sp/>container<sp/>directly;<sp/>it<sp/>must<sp/>outlive<sp/>this<sp/>Binder.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Count<sp/>of<sp/>values<sp/>bound<sp/>so<sp/>far;<sp/>drives<sp/>the<sp/>$n<sp/>placeholder<sp/>numbering.</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="structBase_1_1Binder_1aa2c6aab342d4d62357fb8c8c15ff61be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBase_1_1Binder_1aa2c6aab342d4d62357fb8c8c15ff61be" kindref="member">index</ref><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Starts<sp/>at<sp/>zero<sp/>so<sp/>the<sp/>first<sp/>++index<sp/>yields<sp/>1;<sp/>this<sp/>is<sp/>the<sp/>$n<sp/>counter.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="src/entities/base/base.hpp"/>
+  </compounddef>
+</doxygen>

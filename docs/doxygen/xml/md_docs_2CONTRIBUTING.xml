@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="md_docs_2CONTRIBUTING" kind="page">
+    <compoundname>md_docs_2CONTRIBUTING</compoundname>
+    <title>Contributing</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="md_docs_2CONTRIBUTING_1autotoc_md57"/></para>
+<para>Thanks for helping improve Valhalla. This document covers how the code is organised and the conventions that keep the documentation and source consistent. For build and install instructions see <computeroutput><ref refid="README_8md" kindref="compound">README.md</ref></computeroutput>; for a map of the runtime components see <computeroutput><ref refid="ARCHITECTURE_8md" kindref="compound">ARCHITECTURE.md</ref></computeroutput>.</para>
+<sect1 id="md_docs_2CONTRIBUTING_1autotoc_md58">
+<title>Code organisation</title><para><programlisting><codeline><highlight class="normal">src/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>api/v2/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HTTP<sp/>routes,<sp/>request<sp/>filters,<sp/>middlewares,<sp/>response<sp/>helpers</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>concurrency/<sp/><sp/><sp/>bounded<sp/>worker<sp/>executor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>configurator/<sp/><sp/>environment-driven<sp/>configuration<sp/>groups<sp/>+<sp/>defaults</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>controllers/<sp/><sp/><sp/>CRUDS<sp/>controller<sp/>hierarchy<sp/>(sync<sp/>+<sp/>coroutine<sp/>variants)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>database/<sp/><sp/><sp/><sp/><sp/><sp/>sync<sp/>connection<sp/>pool<sp/>and<sp/>async<sp/>Drogon<sp/>client<sp/>paths</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>entities/<sp/><sp/><sp/><sp/><sp/><sp/>domain<sp/>value<sp/>types<sp/>and<sp/>SQL<sp/>statement<sp/>builders</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gatekeeper/<sp/><sp/><sp/><sp/>authentication,<sp/>authorisation,<sp/>sessions,<sp/>tokens,<sp/>DoS<sp/>checks</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>server/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>server<sp/>bootstrap,<sp/>CORS,<sp/>startup<sp/>banner</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>store/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>thread-safe<sp/>singleton<sp/>service<sp/>registry</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>utils/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logging,<sp/>JSON,<sp/>caching,<sp/>queues,<sp/>shared<sp/>type<sp/>definitions</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>validator/<sp/><sp/><sp/><sp/><sp/>request<sp/>validation<sp/>and<sp/>database-schema<sp/>metadata</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>main.cpp<sp/><sp/><sp/><sp/><sp/><sp/><sp/>process<sp/>entry<sp/>point</highlight></codeline>
+<codeline><highlight class="normal">tests/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Catch2<sp/>suite<sp/>and<sp/>support<sp/>helpers</highlight></codeline>
+<codeline><highlight class="normal">tools/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CMake<sp/>helpers,<sp/>API-doc<sp/>generation,<sp/>k6<sp/>load<sp/>scripts</highlight></codeline>
+<codeline><highlight class="normal">scripts/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>build/run/QA/test<sp/>shell<sp/>scripts</highlight></codeline>
+</programlisting></para>
+<para>New source files under <computeroutput>src/</computeroutput> are picked up automatically by CMake&apos;s recursive glob (<computeroutput>src/*.cpp</computeroutput>); there is no manual source list to edit.</para>
+</sect1>
+<sect1 id="md_docs_2CONTRIBUTING_1autotoc_md59">
+<title>Coding conventions</title><para><itemizedlist>
+<listitem><para>C++20. Build with <computeroutput>-Wall -Wextra -pedantic</computeroutput>; do not introduce new warnings.</para>
+</listitem><listitem><para>Formatting is defined by <computeroutput>.clang-format</computeroutput> (LLVM-derived, 4-space indent, brace-on-next-line for functions). Run <computeroutput>clang-format -i</computeroutput> on touched files.</para>
+</listitem><listitem><para><computeroutput>.clang-tidy</computeroutput> configures static analysis; address findings in code you touch.</para>
+</listitem><listitem><para><computeroutput>compile_commands.json</computeroutput> is generated for clangd; editor configs for VS Code and Zed are included under <computeroutput>.vscode/</computeroutput> and <computeroutput>.zed/</computeroutput>.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md_docs_2CONTRIBUTING_1autotoc_md60">
+<title>Documentation conventions</title><para>All public and private declarations are documented with Doxygen <computeroutput>/** ... */</computeroutput> blocks so <computeroutput>doxygen Doxyfile</computeroutput> produces a complete reference. Follow these rules:</para>
+<para><orderedlist>
+<listitem><para><bold>Document intent, not syntax.</bold> Explain <emphasis>why</emphasis> a lock, branch, or type is needed, not that the line increments a counter.</para>
+</listitem><listitem><para><bold>Complete contracts.</bold> Each function documents parameters (<computeroutput>@param[in]</computeroutput>, <computeroutput>@param[out]</computeroutput>, <computeroutput>@param[in,out]</computeroutput>), return value (<computeroutput>@return</computeroutput>), side effects, pre/postconditions, exceptions (<computeroutput>@throws</computeroutput>), and thread-safety or ownership requirements where they are known.</para>
+</listitem><listitem><para><bold>Evidence only.</bold> Never invent behaviour, guarantees, or exceptions. If a property cannot be established from the implementation, say so explicitly.</para>
+</listitem><listitem><para><bold>Preserve accurate existing comments.</bold> Correct them only when the code provides clear evidence.</para>
+</listitem><listitem><para><bold>Classes</bold> carry <computeroutput>@class</computeroutput> and <computeroutput>@brief</computeroutput> plus a <computeroutput>@details</computeroutput> paragraph covering responsibility, lifecycle, ownership and thread-safety.</para>
+</listitem><listitem><para><bold>Members and non-obvious locals</bold> get a short comment explaining what they represent and why they exist; do not add comments that merely restate code.</para>
+</listitem><listitem><para><bold>Ownership and concurrency matter.</bold> Call out <computeroutput>unique_ptr</computeroutput> vs <computeroutput>shared_ptr</computeroutput>, borrowed references, <computeroutput>std::move</computeroutput>, <computeroutput>const</computeroutput> correctness, atomic memory ordering, and lock ordering wherever they affect maintenance.</para>
+</listitem></orderedlist>
+</para>
+<sect2 id="md_docs_2CONTRIBUTING_1autotoc_md61">
+<title>Shell scripts</title><para>Shell scripts under <computeroutput>scripts/</computeroutput>, <computeroutput>tools/</computeroutput>, <computeroutput>docker/</computeroutput>, <computeroutput>.github/</computeroutput> and the repository root use the same header fields, written as <computeroutput>#</computeroutput>-prefixed lines immediately after the shebang (<computeroutput>@file</computeroutput>, <computeroutput>@brief</computeroutput>, <computeroutput>@author</computeroutput>, <computeroutput>@date</computeroutput>), plus <computeroutput># @brief</computeroutput> / <computeroutput># @param</computeroutput> blocks above each function and <computeroutput>#</computeroutput> WHY comments for non-obvious commands. Doxygen has no shell parser, so <computeroutput>.sh</computeroutput> files are not part of the Doxygen <computeroutput>INPUT</computeroutput>; they are documented in-source and read directly.</para>
+<para>Regenerate the API reference documentation with:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">doxygen<sp/>Doxyfile</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>open<sp/>build/docs/doxygen/html/index.html</highlight></codeline>
+</programlisting></para>
+</sect2>
+</sect1>
+<sect1 id="md_docs_2CONTRIBUTING_1autotoc_md62">
+<title>Build and test</title><para>Dependencies are managed with Conan and pinned in <computeroutput>conan.lock</computeroutput>. Typical local flow (see <computeroutput><ref refid="README_8md" kindref="compound">README.md</ref></computeroutput> for the full, platform-specific sequence):</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">conan<sp/>install<sp/>.<sp/>--build=missing<sp/>-s<sp/>build_type=Debug<sp/>-of<sp/>build/Debug</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--preset<sp/>conan-debug</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>--preset<sp/>conan-debug</highlight></codeline>
+<codeline><highlight class="normal">ctest<sp/>--test-dir<sp/>build/Debug<sp/>--output-on-failure</highlight></codeline>
+</programlisting></para>
+<para><computeroutput>build.sh</computeroutput> wraps these steps and runs the tests via CTest presets. Tests run without a database (<computeroutput>VALHALLA_TEST_NO_DB=true</computeroutput>), so they work on any machine. Useful build options: <computeroutput>-DENABLE_TESTS=OFF</computeroutput> and <computeroutput>-DVALHALLA_BUILD_DOCS=OFF</computeroutput>.</para>
+</sect1>
+<sect1 id="md_docs_2CONTRIBUTING_1autotoc_md63">
+<title>Contribution workflow</title><para><orderedlist>
+<listitem><para>Open an issue to discuss substantial changes before implementing them.</para>
+</listitem><listitem><para>Keep commits focused; one logical change per pull request.</para>
+</listitem><listitem><para>Add or update Doxygen comments alongside code changes, and update <computeroutput><ref refid="ARCHITECTURE_8md" kindref="compound">ARCHITECTURE.md</ref></computeroutput> when component relationships change.</para>
+</listitem><listitem><para>Run <computeroutput>clang-format</computeroutput>, build and run the test suite before submitting.</para>
+</listitem><listitem><para>Confirm documentation changes do not alter behaviour; the audit in <computeroutput>DOCUMENTATION_AUDIT.md</computeroutput> describes how this is verified.</para>
+</listitem></orderedlist>
+</para>
+</sect1>
+<sect1 id="md_docs_2CONTRIBUTING_1autotoc_md64">
+<title>Open questions</title><para>See the &quot;Open questions&quot; section at the end of <computeroutput>DOCUMENTATION_PROGRESS.md</computeroutput>. </para>
+</sect1>
+    </detaileddescription>
+    <location file="docs/CONTRIBUTING.md"/>
+  </compounddef>
+</doxygen>

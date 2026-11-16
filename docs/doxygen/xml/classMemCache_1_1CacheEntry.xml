@@ -1,0 +1,240 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classMemCache_1_1CacheEntry" kind="class" language="C++" prot="private">
+    <compoundname>MemCache::CacheEntry</compoundname>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classMemCache_1_1CacheEntry_1ad20f7970764f778950f643497352428e" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string MemCache&lt; T, ClockT &gt;::CacheEntry::key</definition>
+        <argsstring></argsstring>
+        <name>key</name>
+        <qualifiedname>MemCache::CacheEntry::key</qualifiedname>
+        <briefdescription>
+<para>Lookup key, also used to erase the map entry during cleaning. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="268" column="21" bodyfile="src/utils/memcache/memcache.hpp" bodystart="268" bodyend="-1"/>
+        <referencedby refid="classMemCache_1_1CacheEntry_1aeec9fa9d402130295a30b4e424841199" compoundref="memcache_8hpp" startline="285" endline="285">MemCache&lt; T, ClockT &gt;::CacheEntry::CacheEntry</referencedby>
+        <referencedby refid="classMemCache_1_1CacheEntry_1a50d686608b75519ab04dce8eaa1bfde8" compoundref="memcache_8hpp" startline="289" endline="289">MemCache&lt; T, ClockT &gt;::CacheEntry::getKey</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMemCache_1_1CacheEntry_1ac1fa09aff91d5fecfbd559bcc7927727" prot="private" static="no" mutable="no">
+        <type>T</type>
+        <definition>T MemCache&lt; T, ClockT &gt;::CacheEntry::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>MemCache::CacheEntry::value</qualifiedname>
+        <briefdescription>
+<para>Cached value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="272" column="21" bodyfile="src/utils/memcache/memcache.hpp" bodystart="272" bodyend="-1"/>
+        <referencedby refid="classMemCache_1_1CacheEntry_1aeec9fa9d402130295a30b4e424841199" compoundref="memcache_8hpp" startline="285" endline="285">MemCache&lt; T, ClockT &gt;::CacheEntry::CacheEntry</referencedby>
+        <referencedby refid="classMemCache_1_1CacheEntry_1a6b6f225708d33cfae329577215a92b8c" compoundref="memcache_8hpp" startline="293" endline="293">MemCache&lt; T, ClockT &gt;::CacheEntry::getValue</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMemCache_1_1CacheEntry_1ae3095555b91a01daa99bc76f82164aa2" prot="private" static="no" mutable="no">
+        <type><ref refid="classMemCache_1ab226fd602502da7daecc5b303eaf5910" kindref="member">TimePoint</ref></type>
+        <definition>TimePoint MemCache&lt; T, ClockT &gt;::CacheEntry::expiration</definition>
+        <argsstring></argsstring>
+        <name>expiration</name>
+        <qualifiedname>MemCache::CacheEntry::expiration</qualifiedname>
+        <briefdescription>
+<para>Time after which the entry is considered expired. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="276" column="21" bodyfile="src/utils/memcache/memcache.hpp" bodystart="276" bodyend="-1"/>
+        <referencedby refid="classMemCache_1_1CacheEntry_1aeec9fa9d402130295a30b4e424841199" compoundref="memcache_8hpp" startline="285" endline="285">MemCache&lt; T, ClockT &gt;::CacheEntry::CacheEntry</referencedby>
+        <referencedby refid="classMemCache_1_1CacheEntry_1a68c9e2d26b029931fab02a73280856e5" compoundref="memcache_8hpp" startline="297" endline="297">MemCache&lt; T, ClockT &gt;::CacheEntry::getExpiration</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMemCache_1_1CacheEntry_1aeec9fa9d402130295a30b4e424841199" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>MemCache&lt; T, ClockT &gt;::CacheEntry::CacheEntry</definition>
+        <argsstring>(std::string _key, const T &amp;_value, TimePoint _exp)</argsstring>
+        <name>CacheEntry</name>
+        <qualifiedname>MemCache::CacheEntry::CacheEntry</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>_key</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>_value</declname>
+        </param>
+        <param>
+          <type><ref refid="classMemCache_1ab226fd602502da7daecc5b303eaf5910" kindref="member">TimePoint</ref></type>
+          <declname>_exp</declname>
+        </param>
+        <briefdescription>
+<para>Constructs an entry with a key, value and expiration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">_key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Lookup key. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to copy. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_exp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Expiration time point. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="285" column="9" bodyfile="src/utils/memcache/memcache.hpp" bodystart="285" bodyend="285"/>
+        <references refid="classMemCache_1_1CacheEntry_1ae3095555b91a01daa99bc76f82164aa2" compoundref="memcache_8hpp" startline="276">MemCache&lt; T, ClockT &gt;::CacheEntry::expiration</references>
+        <references refid="classMemCache_1_1CacheEntry_1ad20f7970764f778950f643497352428e" compoundref="memcache_8hpp" startline="268">MemCache&lt; T, ClockT &gt;::CacheEntry::key</references>
+        <references refid="classMemCache_1_1CacheEntry_1ac1fa09aff91d5fecfbd559bcc7927727" compoundref="memcache_8hpp" startline="272">MemCache&lt; T, ClockT &gt;::CacheEntry::value</references>
+      </memberdef>
+      <memberdef kind="function" id="classMemCache_1_1CacheEntry_1a50d686608b75519ab04dce8eaa1bfde8" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string MemCache&lt; T, ClockT &gt;::CacheEntry::getKey</definition>
+        <argsstring>() const</argsstring>
+        <name>getKey</name>
+        <qualifiedname>MemCache::CacheEntry::getKey</qualifiedname>
+        <briefdescription>
+<para>Returns a copy of the key. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="289" column="22" bodyfile="src/utils/memcache/memcache.hpp" bodystart="289" bodyend="289"/>
+        <references refid="classMemCache_1_1CacheEntry_1ad20f7970764f778950f643497352428e" compoundref="memcache_8hpp" startline="268">MemCache&lt; T, ClockT &gt;::CacheEntry::key</references>
+      </memberdef>
+      <memberdef kind="function" id="classMemCache_1_1CacheEntry_1a6b6f225708d33cfae329577215a92b8c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>T</type>
+        <definition>T MemCache&lt; T, ClockT &gt;::CacheEntry::getValue</definition>
+        <argsstring>() const</argsstring>
+        <name>getValue</name>
+        <qualifiedname>MemCache::CacheEntry::getValue</qualifiedname>
+        <briefdescription>
+<para>Returns a copy of the cached value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="293" column="35" bodyfile="src/utils/memcache/memcache.hpp" bodystart="293" bodyend="293"/>
+        <references refid="classMemCache_1_1CacheEntry_1ac1fa09aff91d5fecfbd559bcc7927727" compoundref="memcache_8hpp" startline="272">MemCache&lt; T, ClockT &gt;::CacheEntry::value</references>
+      </memberdef>
+      <memberdef kind="function" id="classMemCache_1_1CacheEntry_1a68c9e2d26b029931fab02a73280856e5" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classMemCache_1ab226fd602502da7daecc5b303eaf5910" kindref="member">TimePoint</ref></type>
+        <definition>TimePoint MemCache&lt; T, ClockT &gt;::CacheEntry::getExpiration</definition>
+        <argsstring>() const</argsstring>
+        <name>getExpiration</name>
+        <qualifiedname>MemCache::CacheEntry::getExpiration</qualifiedname>
+        <briefdescription>
+<para>Returns the expiration time point. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="297" column="22" bodyfile="src/utils/memcache/memcache.hpp" bodystart="297" bodyend="297"/>
+        <references refid="classMemCache_1_1CacheEntry_1ae3095555b91a01daa99bc76f82164aa2" compoundref="memcache_8hpp" startline="276">MemCache&lt; T, ClockT &gt;::CacheEntry::expiration</references>
+      </memberdef>
+      <memberdef kind="function" id="classMemCache_1_1CacheEntry_1a97e8a249bed83fa3250626bb0a4117cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void MemCache&lt; T, ClockT &gt;::CacheEntry::setValue</definition>
+        <argsstring>(const T &amp;_value)</argsstring>
+        <name>setValue</name>
+        <qualifiedname>MemCache::CacheEntry::setValue</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>_value</declname>
+        </param>
+        <briefdescription>
+<para>Replaces the cached value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">_value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="302" column="35" bodyfile="src/utils/memcache/memcache.hpp" bodystart="302" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemCache_1_1CacheEntry_1a40950e8fea591f3cd784cd43ad2bd5bb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void MemCache&lt; T, ClockT &gt;::CacheEntry::setExpiration</definition>
+        <argsstring>(const TimePoint &amp;_exp)</argsstring>
+        <name>setExpiration</name>
+        <qualifiedname>MemCache::CacheEntry::setExpiration</qualifiedname>
+        <param>
+          <type>const <ref refid="classMemCache_1ab226fd602502da7daecc5b303eaf5910" kindref="member">TimePoint</ref> &amp;</type>
+          <declname>_exp</declname>
+        </param>
+        <briefdescription>
+<para>Replaces the expiration time point. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">_exp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New expiration time. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="307" column="35" bodyfile="src/utils/memcache/memcache.hpp" bodystart="307" bodyend="307"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>One cache record: key, value and expiration time point. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/utils/memcache/memcache.hpp" line="262" column="5" bodyfile="src/utils/memcache/memcache.hpp" bodystart="263" bodyend="308"/>
+    <listofallmembers>
+      <member refid="classMemCache_1_1CacheEntry_1aeec9fa9d402130295a30b4e424841199" prot="public" virt="non-virtual"><scope>MemCache::CacheEntry</scope><name>CacheEntry</name></member>
+      <member refid="classMemCache_1_1CacheEntry_1ae3095555b91a01daa99bc76f82164aa2" prot="private" virt="non-virtual"><scope>MemCache::CacheEntry</scope><name>expiration</name></member>
+      <member refid="classMemCache_1_1CacheEntry_1a68c9e2d26b029931fab02a73280856e5" prot="public" virt="non-virtual"><scope>MemCache::CacheEntry</scope><name>getExpiration</name></member>
+      <member refid="classMemCache_1_1CacheEntry_1a50d686608b75519ab04dce8eaa1bfde8" prot="public" virt="non-virtual"><scope>MemCache::CacheEntry</scope><name>getKey</name></member>
+      <member refid="classMemCache_1_1CacheEntry_1a6b6f225708d33cfae329577215a92b8c" prot="public" virt="non-virtual"><scope>MemCache::CacheEntry</scope><name>getValue</name></member>
+      <member refid="classMemCache_1_1CacheEntry_1ad20f7970764f778950f643497352428e" prot="private" virt="non-virtual"><scope>MemCache::CacheEntry</scope><name>key</name></member>
+      <member refid="classMemCache_1_1CacheEntry_1a40950e8fea591f3cd784cd43ad2bd5bb" prot="public" virt="non-virtual"><scope>MemCache::CacheEntry</scope><name>setExpiration</name></member>
+      <member refid="classMemCache_1_1CacheEntry_1a97e8a249bed83fa3250626bb0a4117cc" prot="public" virt="non-virtual"><scope>MemCache::CacheEntry</scope><name>setValue</name></member>
+      <member refid="classMemCache_1_1CacheEntry_1ac1fa09aff91d5fecfbd559bcc7927727" prot="private" virt="non-virtual"><scope>MemCache::CacheEntry</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

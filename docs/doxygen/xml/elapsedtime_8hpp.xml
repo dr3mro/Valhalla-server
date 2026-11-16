@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="elapsedtime_8hpp" kind="file" language="C++">
+    <compoundname>elapsedtime.hpp</compoundname>
+    <includes local="no">drogon/HttpMiddleware.h</includes>
+    <includes local="no">drogon/HttpRequest.h</includes>
+    <includes local="no">drogon/HttpResponse.h</includes>
+    <includes local="no">drogon/drogon.h</includes>
+    <includes local="no">drogon/drogon_callbacks.h</includes>
+    <includes local="no">fmt/color.h</includes>
+    <includes local="no">fmt/core.h</includes>
+    <includes local="no">fmt/format.h</includes>
+    <includes local="no">trantor/utils/Logger.h</includes>
+    <includes local="no">chrono</includes>
+    <includes local="no">utility</includes>
+    <includedby refid="server_8cpp" local="yes">src/server/server.cpp</includedby>
+    <includedby refid="server_8hpp" local="yes">src/server/server.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/api/v2/middlewares/elapsedtime.hpp</label>
+        <link refid="elapsedtime_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>chrono</label>
+      </node>
+      <node id="2">
+        <label>drogon/HttpMiddleware.h</label>
+      </node>
+      <node id="3">
+        <label>drogon/HttpRequest.h</label>
+      </node>
+      <node id="4">
+        <label>drogon/HttpResponse.h</label>
+      </node>
+      <node id="5">
+        <label>drogon/drogon.h</label>
+      </node>
+      <node id="6">
+        <label>drogon/drogon_callbacks.h</label>
+      </node>
+      <node id="7">
+        <label>fmt/color.h</label>
+      </node>
+      <node id="8">
+        <label>fmt/core.h</label>
+      </node>
+      <node id="9">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="10">
+        <label>trantor/utils/Logger.h</label>
+      </node>
+      <node id="12">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>src/api/v2/middlewares/elapsedtime.hpp</label>
+        <link refid="elapsedtime_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="2">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/server/server.hpp</label>
+        <link refid="server_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime" prot="public">api::v2::MiddleWares::ElapsedTime</innerclass>
+    <innernamespace refid="namespaceapi">api</innernamespace>
+    <innernamespace refid="namespaceapi_1_1v2">api::v2</innernamespace>
+    <innernamespace refid="namespaceapi_1_1v2_1_1MiddleWares">api::v2::MiddleWares</innernamespace>
+    <briefdescription>
+<para>Timing middleware that logs how long a request took to produce its response. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file defines the ElapsedTime middleware, used in both the INSECURE and SECURE chains. When a request arrives it records a start time using a steady clock. It then passes the request down the chain and installs a callback that runs on the way back out, when the downstream handler has produced its response. That callback measures the elapsed milliseconds and writes a coloured log line containing the time, client IP, HTTP method, status code and path, then forwards the response unchanged.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: This middleware is the server&apos;s stopwatch. It is the only place that reports how long each endpoint actually took, which is how developers spot slow routes or database bottlenecks. It sits around the rest of the chain, so it measures the full cost of rate limiting, authentication and the handler. It changes nothing about the response; without it the server would still work but you would be blind to performance problems.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>HTTP middleware: <ulink url="https://drogon.docsforge.com/master/filter/">https://drogon.docsforge.com/master/filter/</ulink></para>
+</listitem><listitem><para>std::chrono steady clock (a clock that never jumps backwards): <ulink url="https://en.cppreference.com/w/cpp/chrono/steady_clock">https://en.cppreference.com/w/cpp/chrono/steady_clock</ulink></para>
+</listitem><listitem><para>Lambdas and captures: <ulink url="https://en.cppreference.com/w/cpp/language/lambda">https://en.cppreference.com/w/cpp/language/lambda</ulink></para>
+</listitem><listitem><para>CORS (unrelated here, but part of the HTTP filter world): <ulink url="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>elapsedtime.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Timing<sp/>middleware<sp/>that<sp/>logs<sp/>how<sp/>long<sp/>a<sp/>request<sp/>took<sp/>to<sp/>produce<sp/>its<sp/>response.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>file<sp/>defines<sp/>the<sp/>ElapsedTime<sp/>middleware,<sp/>used<sp/>in<sp/>both<sp/>the<sp/>INSECURE<sp/>and<sp/>SECURE<sp/>chains.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>When<sp/>a<sp/>request<sp/>arrives<sp/>it<sp/>records<sp/>a<sp/>start<sp/>time<sp/>using<sp/>a<sp/>steady<sp/>clock.<sp/>It<sp/>then<sp/>passes<sp/>the</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>request<sp/>down<sp/>the<sp/>chain<sp/>and<sp/>installs<sp/>a<sp/>callback<sp/>that<sp/>runs<sp/>on<sp/>the<sp/>way<sp/>back<sp/>out,<sp/>when<sp/>the</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>downstream<sp/>handler<sp/>has<sp/>produced<sp/>its<sp/>response.<sp/>That<sp/>callback<sp/>measures<sp/>the<sp/>elapsed</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>milliseconds<sp/>and<sp/>writes<sp/>a<sp/>coloured<sp/>log<sp/>line<sp/>containing<sp/>the<sp/>time,<sp/>client<sp/>IP,<sp/>HTTP<sp/>method,</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>code<sp/>and<sp/>path,<sp/>then<sp/>forwards<sp/>the<sp/>response<sp/>unchanged.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>This<sp/>middleware<sp/>is<sp/>the<sp/>server&apos;s<sp/>stopwatch.<sp/>It<sp/>is<sp/>the<sp/>only<sp/>place<sp/>that<sp/>reports<sp/>how<sp/>long<sp/>each<sp/>endpoint</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>actually<sp/>took,<sp/>which<sp/>is<sp/>how<sp/>developers<sp/>spot<sp/>slow<sp/>routes<sp/>or<sp/>database<sp/>bottlenecks.<sp/>It<sp/>sits<sp/>around<sp/>the</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>rest<sp/>of<sp/>the<sp/>chain,<sp/>so<sp/>it<sp/>measures<sp/>the<sp/>full<sp/>cost<sp/>of<sp/>rate<sp/>limiting,<sp/>authentication<sp/>and<sp/>the<sp/>handler.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>It<sp/>changes<sp/>nothing<sp/>about<sp/>the<sp/>response;<sp/>without<sp/>it<sp/>the<sp/>server<sp/>would<sp/>still<sp/>work<sp/>but<sp/>you<sp/>would<sp/>be<sp/>blind</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>to<sp/>performance<sp/>problems.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>HTTP<sp/>middleware:<sp/>https://drogon.docsforge.com/master/filter/</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>std::chrono<sp/>steady<sp/>clock<sp/>(a<sp/>clock<sp/>that<sp/>never<sp/>jumps<sp/>backwards):<sp/>https://en.cppreference.com/w/cpp/chrono/steady_clock</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>Lambdas<sp/>and<sp/>captures:<sp/>https://en.cppreference.com/w/cpp/language/lambda</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>CORS<sp/>(unrelated<sp/>here,<sp/>but<sp/>part<sp/>of<sp/>the<sp/>HTTP<sp/>filter<sp/>world):<sp/>https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>process<sp/>this<sp/>header<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Drogon<sp/>middleware<sp/>base<sp/>and<sp/>request/response/callback<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpMiddleware.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Base<sp/>class<sp/>drogon::HttpMiddleware<sp/>used<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpRequest.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Request<sp/>type<sp/>(we<sp/>read<sp/>IP,<sp/>method<sp/>and<sp/>path<sp/>from<sp/>it).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpResponse.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Response<sp/>type<sp/>(we<sp/>read<sp/>the<sp/>status<sp/>code<sp/>from<sp/>it).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/drogon.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Core<sp/>Drogon<sp/>definitions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/drogon_callbacks.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>MiddlewareNextCallback<sp/>and<sp/>MiddlewareCallback<sp/>aliases.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Formatting<sp/>and<sp/>logging<sp/>helpers<sp/>for<sp/>the<sp/>coloured<sp/>log<sp/>line.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/color.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>fmt::fg<sp/>and<sp/>fmt::color<sp/>for<sp/>coloured<sp/>output.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/core.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Core<sp/>fmt<sp/>formatting<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/format.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>fmt::format<sp/>builds<sp/>the<sp/>log<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;trantor/utils/Logger.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>LOG_INFO<sp/>macro<sp/>writes<sp/>to<sp/>the<sp/>server<sp/>log.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;chrono&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::chrono::steady_clock<sp/>and<sp/>duration_cast<sp/>for<sp/>timing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::move<sp/>for<sp/>consuming<sp/>the<sp/>callbacks.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="namespaceapi_1_1v2_1_1MiddleWares" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceapi_1_1v2_1_1MiddleWares" kindref="compound">api::v2::MiddleWares</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Middleware<sp/>for<sp/>the<sp/>v2<sp/>API<sp/>lives<sp/>here<sp/>(note<sp/>the<sp/>project&apos;s<sp/>spelling).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@class<sp/>ElapsedTime</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Timing<sp/>middleware<sp/>that<sp/>logs<sp/>how<sp/>long<sp/>a<sp/>request<sp/>took<sp/>to<sp/>produce<sp/>its<sp/>response.</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Part<sp/>of<sp/>both<sp/>the<sp/>INSECURE<sp/>and<sp/>SECURE<sp/>chains.<sp/>It<sp/>records<sp/>a<sp/>steady_clock<sp/>start,<sp/>passes</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>request<sp/>onward,<sp/>and<sp/>measures<sp/>the<sp/>interval<sp/>in<sp/>the<sp/>return-path<sp/>callback<sp/>when<sp/>the</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>downstream<sp/>handler&apos;s<sp/>response<sp/>propagates<sp/>back<sp/>out.<sp/>The<sp/>result<sp/>is<sp/>logged<sp/>with<sp/>request</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IP,<sp/>method,<sp/>status<sp/>and<sp/>path;<sp/>the<sp/>response<sp/>is<sp/>then<sp/>forwarded<sp/>unchanged.<sp/>Stateless<sp/>and</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>safe<sp/>for<sp/>concurrent<sp/>requests:<sp/>all<sp/>per-request<sp/>state<sp/>lives<sp/>in<sp/>the<sp/>callback<sp/>capture.</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime_1a1e14e432f06cd74f76c257205eb92986" kindref="member">ElapsedTime</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>drogon::HttpMiddleware&lt;ElapsedTime&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Inherit<sp/>Drogon&apos;s<sp/>middleware<sp/>template<sp/>so<sp/>it<sp/>can<sp/>be<sp/>registered<sp/>by<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="58" refid="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime_1a1e14e432f06cd74f76c257205eb92986" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime_1a1e14e432f06cd74f76c257205eb92986" kindref="member">ElapsedTime</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>do<sp/>not<sp/>omit<sp/>constructor:<sp/>Drogon<sp/>needs<sp/>a<sp/>default<sp/>constructor<sp/>to<sp/>create<sp/>the<sp/>middleware.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Start<sp/>the<sp/>timer<sp/>and<sp/>install<sp/>a<sp/>return-path<sp/>callback<sp/>that<sp/>logs<sp/>elapsed<sp/>milliseconds.</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Invoked<sp/>by<sp/>Drogon<sp/>on<sp/>its<sp/>IO<sp/>thread.<sp/>The<sp/>callback<sp/>passed<sp/>to<sp/>@p<sp/>nextCb<sp/>runs<sp/>when<sp/>the</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>response<sp/>comes<sp/>back<sp/>from<sp/>later<sp/>middleware/handlers,<sp/>so<sp/>the<sp/>measurement<sp/>covers<sp/>the</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>whole<sp/>downstream<sp/>chain.<sp/>The<sp/>response<sp/>is<sp/>forwarded<sp/>untouched<sp/>to<sp/>@p<sp/>mcb.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>req<sp/>Request<sp/>whose<sp/>peer<sp/>address,<sp/>method<sp/>and<sp/>path<sp/>are<sp/>included<sp/>in<sp/>the<sp/>log<sp/>line.</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>nextCb<sp/>Chain<sp/>callback<sp/>given<sp/>the<sp/>measuring<sp/>wrapper.</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>mcb<sp/>Middleware<sp/>callback<sp/>that<sp/>receives<sp/>the<sp/>final<sp/>response.</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime_1ac1c141fd55634453fade2848128cb706" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime_1ac1c141fd55634453fade2848128cb706" kindref="member">invoke</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpRequestPtr&amp;<sp/>req,<sp/>drogon::MiddlewareNextCallback&amp;&amp;<sp/>nextCb,<sp/>drogon::MiddlewareCallback&amp;&amp;<sp/>mcb)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Drogon<sp/>calls<sp/>invoke<sp/>to<sp/>run<sp/>this<sp/>middleware.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Store<sp/>the<sp/>start<sp/>time<sp/>for<sp/>this<sp/>request</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::chrono::steady_clock::time_point<sp/>start_time<sp/>=<sp/>std::chrono::steady_clock::now();<sp/><sp/></highlight><highlight class="comment">//<sp/>Snapshot<sp/>the<sp/>monotonic<sp/>clock;<sp/>captured<sp/>by<sp/>the<sp/>callback<sp/>below.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>will<sp/>run<sp/>while<sp/>getting<sp/>out<sp/>from<sp/>this<sp/>middleware</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(nextCb)(<sp/><sp/></highlight><highlight class="comment">//<sp/>Continue<sp/>down<sp/>the<sp/>chain,<sp/>giving<sp/>it<sp/>our<sp/>measuring<sp/>callback<sp/>to<sp/>call<sp/>on<sp/>the<sp/>way<sp/>back.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[mcb<sp/>=<sp/>std::move(mcb),<sp/>start_time,<sp/>req](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpResponsePtr&amp;<sp/>resp)<sp/><sp/></highlight><highlight class="comment">//<sp/>Capture<sp/>the<sp/>final<sp/>callback,<sp/>the<sp/>start<sp/>time<sp/>and<sp/>the<sp/>request<sp/>for<sp/>later.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calculate<sp/>the<sp/>elapsed<sp/>time<sp/>for<sp/>this<sp/>request</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>end_time<sp/><sp/><sp/>=<sp/>std::chrono::steady_clock::now();<sp/><sp/></highlight><highlight class="comment">//<sp/>Take<sp/>a<sp/>second<sp/>clock<sp/>reading<sp/>when<sp/>the<sp/>response<sp/>returns.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>elapsed_ms<sp/>=<sp/>std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(end_time<sp/>-<sp/>start_time).count();<sp/><sp/></highlight><highlight class="comment">//<sp/>Difference<sp/>converted<sp/>to<sp/>whole<sp/>milliseconds<sp/>for<sp/>the<sp/>log.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>elapsed<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_INFO<sp/>&lt;&lt;<sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;:<sp/>{}{}{}{}{}&quot;</highlight><highlight class="normal">,<sp/>fmt::styled(fmt::format(</highlight><highlight class="stringliteral">&quot;[{}<sp/>ms]<sp/>&quot;</highlight><highlight class="normal">,<sp/>elapsed_ms),<sp/>fmt::fg(fmt::color::orange)),<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>one<sp/>line:<sp/>elapsed<sp/>time<sp/>in<sp/>orange.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::styled(fmt::format(</highlight><highlight class="stringliteral">&quot;[{}]&quot;</highlight><highlight class="normal">,<sp/>req-&gt;getPeerAddr().toIp()),<sp/>fmt::fg(fmt::color::yellow)),<sp/><sp/></highlight><highlight class="comment">//<sp/>Client<sp/>IP<sp/>in<sp/>yellow.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::styled(fmt::format(</highlight><highlight class="stringliteral">&quot;[{}]&quot;</highlight><highlight class="normal">,<sp/>req-&gt;getMethodString()),<sp/>fmt::fg(fmt::color::red)),<sp/><sp/></highlight><highlight class="comment">//<sp/>HTTP<sp/>method<sp/>in<sp/>red.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::styled(fmt::format(</highlight><highlight class="stringliteral">&quot;[{}]&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(resp-&gt;getStatusCode())),<sp/>fmt::fg(fmt::color::magenta)),<sp/><sp/></highlight><highlight class="comment">//<sp/>Response<sp/>status<sp/>in<sp/>magenta.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::styled(fmt::format(</highlight><highlight class="stringliteral">&quot;[{}]&quot;</highlight><highlight class="normal">,<sp/>req-&gt;path()),<sp/>fmt::fg(fmt::color::cyan)));<sp/><sp/></highlight><highlight class="comment">//<sp/>Request<sp/>path<sp/>in<sp/>cyan,<sp/>then<sp/>write<sp/>to<sp/>the<sp/>log.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(mcb)(resp);<sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>the<sp/>unchanged<sp/>response<sp/>to<sp/>the<sp/>previous<sp/>middleware/route.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>api::v2::MiddleWares</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/api/v2/middlewares/elapsedtime.hpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime" kind="class" language="C++" prot="public">
+    <compoundname>api::v2::MiddleWares::ElapsedTime</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">drogon::HttpMiddleware&lt; ElapsedTime &gt;</basecompoundref>
+    <includes refid="elapsedtime_8hpp" local="no">elapsedtime.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime_1a1e14e432f06cd74f76c257205eb92986" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::MiddleWares::ElapsedTime::ElapsedTime</definition>
+        <argsstring>()=default</argsstring>
+        <name>ElapsedTime</name>
+        <qualifiedname>api::v2::MiddleWares::ElapsedTime::ElapsedTime</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/middlewares/elapsedtime.hpp" line="58" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime_1ac1c141fd55634453fade2848128cb706" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void api::v2::MiddleWares::ElapsedTime::invoke</definition>
+        <argsstring>(const drogon::HttpRequestPtr &amp;req, drogon::MiddlewareNextCallback &amp;&amp;nextCb, drogon::MiddlewareCallback &amp;&amp;mcb) override</argsstring>
+        <name>invoke</name>
+        <qualifiedname>api::v2::MiddleWares::ElapsedTime::invoke</qualifiedname>
+        <param>
+          <type>const drogon::HttpRequestPtr &amp;</type>
+          <declname>req</declname>
+        </param>
+        <param>
+          <type>drogon::MiddlewareNextCallback &amp;&amp;</type>
+          <declname>nextCb</declname>
+        </param>
+        <param>
+          <type>drogon::MiddlewareCallback &amp;&amp;</type>
+          <declname>mcb</declname>
+        </param>
+        <briefdescription>
+<para>Start the timer and install a return-path callback that logs elapsed milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Invoked by Drogon on its IO thread. The callback passed to <computeroutput>nextCb</computeroutput> runs when the response comes back from later middleware/handlers, so the measurement covers the whole downstream chain. The response is forwarded untouched to <computeroutput>mcb</computeroutput>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">req</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Request whose peer address, method and path are included in the log line. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">nextCb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Chain callback given the measuring wrapper. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">mcb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Middleware callback that receives the final response. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/middlewares/elapsedtime.hpp" line="69" column="14" bodyfile="src/api/v2/middlewares/elapsedtime.hpp" bodystart="69" bodyend="89"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Timing middleware that logs how long a request took to produce its response. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Part of both the INSECURE and SECURE chains. It records a steady_clock start, passes the request onward, and measures the interval in the return-path callback when the downstream handler&apos;s response propagates back out. The result is logged with request IP, method, status and path; the response is then forwarded unchanged. Stateless and safe for concurrent requests: all per-request state lives in the callback capture. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>api::v2::MiddleWares::ElapsedTime</label>
+        <link refid="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>drogon::HttpMiddleware&lt; ElapsedTime &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>api::v2::MiddleWares::ElapsedTime</label>
+        <link refid="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>drogon::HttpMiddleware&lt; ElapsedTime &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/api/v2/middlewares/elapsedtime.hpp" line="55" column="5" bodyfile="src/api/v2/middlewares/elapsedtime.hpp" bodystart="56" bodyend="90"/>
+    <listofallmembers>
+      <member refid="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime_1a1e14e432f06cd74f76c257205eb92986" prot="public" virt="non-virtual"><scope>api::v2::MiddleWares::ElapsedTime</scope><name>ElapsedTime</name></member>
+      <member refid="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime_1ac1c141fd55634453fade2848128cb706" prot="public" virt="non-virtual"><scope>api::v2::MiddleWares::ElapsedTime</scope><name>invoke</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

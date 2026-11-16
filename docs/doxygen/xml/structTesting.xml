@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structTesting" kind="struct" language="C++" prot="public">
+    <compoundname>Testing</compoundname>
+    <includes refid="configurator_8hpp" local="no">configurator.hpp</includes>
+    <briefdescription>
+<para>Switches used only by the test harness. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><computeroutput>no_db</computeroutput> lets tests start the server without a real database connection. It defaults to false and is never relied upon by production request handling. </para>
+    </detaileddescription>
+    <location file="src/configurator/configurator.hpp" line="533" column="1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

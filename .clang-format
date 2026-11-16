@@ -1,21 +1,70 @@
 # .clang-format
 BasedOnStyle: Google
-ColumnLimit: 160
+ColumnLimit: 80 # QA style: Google's 80-column limit; comments are wrapped to stay below it.
 BinPackArguments: true
 PenaltyBreakBeforeFirstCallParameter: 2000
 AlignAfterOpenBracket: DontAlign
-IndentWidth: 4
+IndentWidth: 2
+TabWidth: 2
 
 UseTab: Never
-AllowShortIfStatementsOnASingleLine: false
 BreakBeforeBraces: Allman
-AlignConsecutiveAssignments: true
-AlignTrailingComments: true
-ReflowComments: true
-SortIncludes: true
-NamespaceIndentation: All  # Options: None, Inner, All
+AlignConsecutiveAssignments: AcrossEmptyLinesAndComments
+AlignConsecutiveDeclarations: AcrossEmptyLinesAndComments
+AlignConsecutiveBitFields: AcrossEmptyLinesAndComments
+AlignTrailingComments:
+  Kind: Always
+SpacesBeforeTrailingComments: 2
+ReflowComments: Always
+NamespaceIndentation: All # Options: None, Inner, All
 
 IndentPPDirectives: AfterHash
-AlignConsecutiveDeclarations: true
-AlignConsecutiveBitFields: true
 
+# --- Google style: spacing / pointer style ---
+PointerAlignment: Left
+ReferenceAlignment: Pointer
+DerivePointerAlignment: false
+SpaceBeforeParens: ControlStatements
+SpaceBeforeAssignmentOperators: true
+SpacesInAngles: Never
+SpacesInContainerLiterals: true
+SpaceAfterTemplateKeyword: true
+IndentCaseLabels: true
+AccessModifierOffset: -1
+ContinuationIndentWidth: 4
+ConstructorInitializerIndentWidth: 4
+BitFieldColonSpacing: Both
+
+# --- Google style: line breaking ---
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializers: BeforeColon
+BreakInheritanceList: BeforeColon
+BreakTemplateDeclarations: Yes
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: WithoutElse
+AllowShortLambdasOnASingleLine: All
+AllowShortLoopsOnASingleLine: true
+AlwaysBreakBeforeMultilineStrings: true
+BreakStringLiterals: true
+
+# --- Google style: includes ---
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex: '^<ext/.*\.h>'
+    Priority: 2
+  - Regex: '^<.*\.h>'
+    Priority: 1
+  - Regex: "^<.*"
+    Priority: 2
+  - Regex: ".*"
+    Priority: 3
+
+SortUsingDeclarations: LexicographicNumeric
+
+# --- Google style: comments / misc ---
+CommentPragmas: "^ IWYU pragma:"
+FixNamespaceComments: true
+MaxEmptyLinesToKeep: 1
+Standard: Auto
+InsertNewlineAtEOF: true
+LineEnding: DeriveLF

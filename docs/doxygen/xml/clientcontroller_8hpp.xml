@@ -1,0 +1,1334 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="clientcontroller_8hpp" kind="file" language="C++">
+    <compoundname>clientcontroller.hpp</compoundname>
+    <includes local="no">fmt/core.h</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">jsoncons/json.hpp</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">optional</includes>
+    <includes local="no">string</includes>
+    <includes local="no">string_view</includes>
+    <includes refid="clientcontrollerbase_8hpp" local="yes">controllers/clientcontroller/clientcontrollerbase.hpp</includes>
+    <includes refid="entitycontroller_8hpp" local="yes">controllers/entitycontroller/entitycontroller.hpp</includes>
+    <includes refid="entitycontrollerbase_8hpp" local="yes">controllers/entitycontroller/entitycontrollerbase.hpp</includes>
+    <includes refid="gatekeeper_8hpp" local="yes">gatekeeper/gatekeeper.hpp</includes>
+    <includes refid="passwordworker_8hpp" local="yes">gatekeeper/passwordcrypt/passwordworker.hpp</includes>
+    <includes refid="store_8hpp" local="yes">store/store.hpp</includes>
+    <includes refid="callback_8hpp" local="yes">utils/global/callback.hpp</includes>
+    <includes local="yes">drogon/utils/coroutine.h</includes>
+    <includes refid="concepts_8hpp" local="yes">utils/global/concepts.hpp</includes>
+    <includes refid="global_8hpp" local="yes">utils/global/global.hpp</includes>
+    <includedby refid="clients_8hpp" local="yes">src/api/v2/routes/clients.hpp</includedby>
+    <includedby refid="clientcontroller_8cpp" local="yes">src/controllers/clientcontroller/clientcontroller.cpp</includedby>
+    <incdepgraph>
+      <node id="76">
+        <label>concurrency/boundedexecutor.hpp</label>
+        <link refid="boundedexecutor_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>configurator/configurator.hpp</label>
+        <link refid="configurator_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>defaults.hpp</label>
+        <link refid="defaults_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>configurator/envloader/envloader.hpp</label>
+        <link refid="envloader_8hpp"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>envvars/envvars.hpp</label>
+        <link refid="envvars_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>controllers/base/controller/controller.hpp</label>
+        <link refid="controller_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
+        <link refid="clientcontroller_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>controllers/clientcontroller/clientcontrollerbase.hpp</label>
+        <link refid="clientcontrollerbase_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>controllers/databasecontroller/databasecontroller.hpp</label>
+        <link refid="databasecontroller_8hpp"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>controllers/entitycontroller/entitycontroller.hpp</label>
+        <link refid="entitycontroller_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="90">
+        <label>controllers/entitycontroller/entitycontrollerbase.hpp</label>
+        <link refid="entitycontrollerbase_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>database/asyncdbclient.hpp</label>
+        <link refid="asyncdbclient_8hpp"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>database/asyncresultmapper.hpp</label>
+        <link refid="asyncresultmapper_8hpp"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>database/asyncsqlbinder.hpp</label>
+        <link refid="asyncsqlbinder_8hpp"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>database/databasebusy.hpp</label>
+        <link refid="databasebusy_8hpp"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>database/databasehandler.hpp</label>
+        <link refid="databasehandler_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>database/dbprobe.hpp</label>
+        <link refid="dbprobe_8hpp"/>
+      </node>
+      <node id="56">
+        <label>entities/base/base.hpp</label>
+        <link refid="base_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="67">
+        <label>entities/base/case.hpp</label>
+        <link refid="case_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>entities/base/client.hpp</label>
+        <link refid="client_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>entities/base/entity.hpp</label>
+        <link refid="entity_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>entities/base/types.hpp</label>
+        <link refid="entities_2base_2types_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+      </node>
+      <node id="66">
+        <label>entities/services/clinics/patient/patient.hpp</label>
+        <link refid="patient_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+      </node>
+      <node id="70">
+        <label>gatekeeper/dosdetector/dosdetector.hpp</label>
+        <link refid="dosdetector_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="68">
+        <label>gatekeeper/gatekeeper.hpp</label>
+        <link refid="gatekeeper_8hpp"/>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>gatekeeper/keeprbase/keeprbase.hpp</label>
+        <link refid="keeprbase_8hpp"/>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>gatekeeper/passwordcrypt/passwordcrypt.hpp</label>
+        <link refid="passwordcrypt_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="75">
+        <label>gatekeeper/passwordcrypt/passwordworker.hpp</label>
+        <link refid="passwordworker_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>gatekeeper/permissionmanager/permissionmanager.hpp</label>
+        <link refid="permissionmanager_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="80">
+        <label>gatekeeper/sessionmanager/sessionmanager.hpp</label>
+        <link refid="sessionmanager_8hpp"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+      </node>
+      <node id="87">
+        <label>gatekeeper/tokenmanager/tokenmanager.hpp</label>
+        <link refid="tokenmanager_8hpp"/>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="84">
+        <label>gatekeeper/types.hpp</label>
+        <link refid="gatekeeper_2types_8hpp"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>store/store.hpp</label>
+        <link refid="store_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>utils/global/callback.hpp</label>
+        <link refid="callback_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>utils/global/concepts.hpp</label>
+        <link refid="concepts_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>utils/global/errorstatus.hpp</label>
+        <link refid="errorstatus_8hpp"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>utils/global/global.hpp</label>
+        <link refid="global_8hpp"/>
+        <childnode refid="65" relation="include">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>utils/global/http.hpp</label>
+        <link refid="http_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>utils/global/requester.hpp</label>
+        <link refid="requester_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>utils/global/types.hpp</label>
+        <link refid="utils_2global_2types_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="88">
+        <label>utils/jsonhelper/jsonhelper.hpp</label>
+        <link refid="jsonhelper_8hpp"/>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="85">
+        <label>utils/memcache/memcache.hpp</label>
+        <link refid="memcache_8hpp"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>utils/message/message.hpp</label>
+        <link refid="message_8hpp"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>validator/validator.hpp</label>
+        <link refid="validator_8hpp"/>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>algorithm</label>
+      </node>
+      <node id="27">
+        <label>atomic</label>
+      </node>
+      <node id="58">
+        <label>cctype</label>
+      </node>
+      <node id="32">
+        <label>chrono</label>
+      </node>
+      <node id="71">
+        <label>condition_variable</label>
+      </node>
+      <node id="59">
+        <label>cppcodec/base64_rfc4648.hpp</label>
+      </node>
+      <node id="20">
+        <label>cstddef</label>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="72">
+        <label>deque</label>
+      </node>
+      <node id="69">
+        <label>drogon/DrTemplateBase.h</label>
+      </node>
+      <node id="40">
+        <label>drogon/orm/DbClient.h</label>
+      </node>
+      <node id="42">
+        <label>drogon/orm/Result.h</label>
+      </node>
+      <node id="44">
+        <label>drogon/orm/SqlBinder.h</label>
+      </node>
+      <node id="13">
+        <label>drogon/utils/coroutine.h</label>
+      </node>
+      <node id="21">
+        <label>exception</label>
+      </node>
+      <node id="2">
+        <label>fmt/core.h</label>
+      </node>
+      <node id="17">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="19">
+        <label>fmt/ranges.h</label>
+      </node>
+      <node id="12">
+        <label>functional</label>
+      </node>
+      <node id="73">
+        <label>future</label>
+      </node>
+      <node id="54">
+        <label>iterator</label>
+      </node>
+      <node id="89">
+        <label>json/value.h</label>
+      </node>
+      <node id="22">
+        <label>jsoncons/basic_json.hpp</label>
+      </node>
+      <node id="4">
+        <label>jsoncons/json.hpp</label>
+      </node>
+      <node id="82">
+        <label>jwt-cpp/jwt.h</label>
+      </node>
+      <node id="83">
+        <label>jwt-cpp/traits/kazuho-picojson/traits.h</label>
+      </node>
+      <node id="86">
+        <label>list</label>
+      </node>
+      <node id="5">
+        <label>memory</label>
+      </node>
+      <node id="28">
+        <label>mutex</label>
+      </node>
+      <node id="6">
+        <label>optional</label>
+      </node>
+      <node id="29">
+        <label>pqxx/pqxx</label>
+      </node>
+      <node id="23">
+        <label>stdexcept</label>
+      </node>
+      <node id="10">
+        <label>stdint.h</label>
+      </node>
+      <node id="7">
+        <label>string</label>
+      </node>
+      <node id="8">
+        <label>string_view</label>
+      </node>
+      <node id="52">
+        <label>sys/types.h</label>
+      </node>
+      <node id="77">
+        <label>thread</label>
+      </node>
+      <node id="36">
+        <label>trantor/utils/Logger.h</label>
+      </node>
+      <node id="24">
+        <label>type_traits</label>
+      </node>
+      <node id="48">
+        <label>typeindex</label>
+      </node>
+      <node id="49">
+        <label>unordered_map</label>
+      </node>
+      <node id="30">
+        <label>unordered_set</label>
+      </node>
+      <node id="15">
+        <label>utility</label>
+      </node>
+      <node id="60">
+        <label>variant</label>
+      </node>
+      <node id="45">
+        <label>vector</label>
+      </node>
+      <node id="74">
+        <label>xxhash.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>src/api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/api/v2/routes/clients.hpp</label>
+        <link refid="clients_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/controllers/clientcontroller/clientcontroller.cpp</label>
+        <link refid="clientcontroller_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
+        <link refid="clientcontroller_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classClientController" prot="public">ClientController</innerclass>
+    <briefdescription>
+<para>Client-specific handler that layers password hashing, sessions and account state over the generic CRUDS flow. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Declares <computeroutput><ref refid="classClientController" kindref="compound">ClientController</ref>&lt;T&gt;</computeroutput>, which inherits storage from <ref refid="classEntityController" kindref="compound">EntityController&lt;T&gt;</ref> and the account contract from <ref refid="classClientControllerBase" kindref="compound">ClientControllerBase</ref>. Simple operations (Read/Search) just forward to the base. Create/Update are special: they run on a <ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref> because hashing is deliberately slow. Login/Logout and account state go through <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref>. The definitions and instantiations live in <ref refid="clientcontroller_8cpp" kindref="compound">clientcontroller.cpp</ref>.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: Accounts need protections that ordinary records do not: passwords must be hashed off the request thread, and sessions must be invalidated when an account is deleted or suspended. This class adds exactly those behaviours on top of the generic entity pipeline. Without it, clients would be treated like any other row and password hashing would block the server&apos;s IO threads.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>Multiple inheritance: <ulink url="https://en.cppreference.com/w/cpp/language/derived_class">https://en.cppreference.com/w/cpp/language/derived_class</ulink></para>
+</listitem><listitem><para><computeroutput>final</computeroutput> overrides (cannot be overridden further): <ulink url="https://en.cppreference.com/w/cpp/language/virtual">https://en.cppreference.com/w/cpp/language/virtual</ulink></para>
+</listitem><listitem><para>Lambdas captured by value for worker jobs: <ulink url="https://en.cppreference.com/w/cpp/language/lambda">https://en.cppreference.com/w/cpp/language/lambda</ulink></para>
+</listitem><listitem><para>Coroutines (co_await / drogon::Task): <ulink url="https://en.cppreference.com/w/cpp/language/coroutines">https://en.cppreference.com/w/cpp/language/coroutines</ulink></para>
+</listitem><listitem><para>Concepts / constrained templates (<computeroutput><ref refid="conceptClient__t" kindref="compound">Client_t</ref></computeroutput>): <ulink url="https://en.cppreference.com/w/cpp/language/constraints">https://en.cppreference.com/w/cpp/language/constraints</ulink></para>
+</listitem><listitem><para>std::shared_ptr (sharing services): <ulink url="https://en.cppreference.com/w/cpp/memory/shared_ptr">https://en.cppreference.com/w/cpp/memory/shared_ptr</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>clientcontroller.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Client-specific<sp/>handler<sp/>that<sp/>layers<sp/>password<sp/>hashing,<sp/>sessions<sp/>and<sp/>account<sp/>state<sp/>over<sp/>the<sp/>generic<sp/>CRUDS<sp/>flow.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>Declares<sp/>`ClientController&lt;T&gt;`,<sp/>which<sp/>inherits<sp/>storage<sp/>from<sp/>EntityController&lt;T&gt;<sp/>and<sp/>the<sp/>account<sp/>contract</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>from<sp/>ClientControllerBase.<sp/>Simple<sp/>operations<sp/>(Read/Search)<sp/>just<sp/>forward<sp/>to<sp/>the<sp/>base.<sp/>Create/Update<sp/>are</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>special:<sp/>they<sp/>run<sp/>on<sp/>a<sp/>PasswordWorker<sp/>because<sp/>hashing<sp/>is<sp/>deliberately<sp/>slow.<sp/>Login/Logout<sp/>and<sp/>account</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state<sp/>go<sp/>through<sp/>GateKeeper.<sp/>The<sp/>definitions<sp/>and<sp/>instantiations<sp/>live<sp/>in<sp/>clientcontroller.cpp.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Accounts<sp/>need<sp/>protections<sp/>that<sp/>ordinary<sp/>records<sp/>do<sp/>not:<sp/>passwords<sp/>must<sp/>be<sp/>hashed<sp/>off<sp/>the<sp/>request<sp/>thread,<sp/>and</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>sessions<sp/>must<sp/>be<sp/>invalidated<sp/>when<sp/>an<sp/>account<sp/>is<sp/>deleted<sp/>or<sp/>suspended.<sp/>This<sp/>class<sp/>adds<sp/>exactly<sp/>those<sp/>behaviours<sp/>on</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>top<sp/>of<sp/>the<sp/>generic<sp/>entity<sp/>pipeline.<sp/>Without<sp/>it,<sp/>clients<sp/>would<sp/>be<sp/>treated<sp/>like<sp/>any<sp/>other<sp/>row<sp/>and<sp/>password<sp/>hashing</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>would<sp/>block<sp/>the<sp/>server&apos;s<sp/>IO<sp/>threads.</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>-<sp/>Multiple<sp/>inheritance:<sp/>https://en.cppreference.com/w/cpp/language/derived_class</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>-<sp/>`final`<sp/>overrides<sp/>(cannot<sp/>be<sp/>overridden<sp/>further):<sp/>https://en.cppreference.com/w/cpp/language/virtual</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>Lambdas<sp/>captured<sp/>by<sp/>value<sp/>for<sp/>worker<sp/>jobs:<sp/>https://en.cppreference.com/w/cpp/language/lambda</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>Coroutines<sp/>(co_await<sp/>/<sp/>drogon::Task):<sp/>https://en.cppreference.com/w/cpp/language/coroutines</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>Concepts<sp/>/<sp/>constrained<sp/>templates<sp/>(`Client_t`):<sp/>https://en.cppreference.com/w/cpp/language/constraints</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>std::shared_ptr<sp/>(sharing<sp/>services):<sp/>https://en.cppreference.com/w/cpp/memory/shared_ptr</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/core.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Formatting<sp/>library<sp/>used<sp/>by<sp/>the<sp/>implementation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>uint64_t<sp/>client<sp/>ids.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/json.hpp&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>JSON<sp/>value<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::shared_ptr<sp/>for<sp/>shared<sp/>services.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Optional<sp/>client<sp/>ids<sp/>/<sp/>tokens.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>IP<sp/>address<sp/>and<sp/>token<sp/>strings.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Non-owning<sp/>view<sp/>of<sp/>request<sp/>bodies.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="clientcontrollerbase_8hpp" kindref="compound">controllers/clientcontroller/clientcontrollerbase.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>interface<sp/>implemented<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entitycontroller_8hpp" kindref="compound">controllers/entitycontroller/entitycontroller.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Base<sp/>that<sp/>supplies<sp/>generic<sp/>CRUDS.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entitycontrollerbase_8hpp" kindref="compound">controllers/entitycontroller/entitycontrollerbase.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Generic<sp/>CRUDS<sp/>interface<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gatekeeper_8hpp" kindref="compound">gatekeeper/gatekeeper.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Authorization<sp/>service.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="passwordworker_8hpp" kindref="compound">gatekeeper/passwordcrypt/passwordworker.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Worker<sp/>pool<sp/>for<sp/>slow<sp/>password<sp/>hashing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="store_8hpp" kindref="compound">store/store.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Service<sp/>locator<sp/>for<sp/>shared<sp/>services.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="callback_8hpp" kindref="compound">utils/global/callback.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Defines<sp/>CALLBACK_.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;drogon/utils/coroutine.h&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Drogon<sp/>Task<sp/>type<sp/>for<sp/>Async<sp/>methods.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="concepts_8hpp" kindref="compound">utils/global/concepts.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Defines<sp/>the<sp/>Client_t<sp/>concept<sp/>used<sp/>as<sp/>template<sp/>constraint.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="global_8hpp" kindref="compound">utils/global/global.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Project-wide<sp/>shared<sp/>helpers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="49"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>@class<sp/>ClientController</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Client-specific<sp/>handler<sp/>that<sp/>layers<sp/>password<sp/>hashing,<sp/>sessions<sp/>and<sp/>account<sp/>state<sp/>over<sp/>the<sp/>generic<sp/>CRUDS<sp/>flow.</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>@details<sp/>Inherits<sp/>persistence<sp/>from<sp/>EntityController&lt;T&gt;<sp/>and<sp/>the<sp/>full<sp/>client<sp/>contract<sp/>from<sp/>ClientControllerBase.</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Read/Search<sp/>and<sp/>their<sp/>coroutine<sp/>forms<sp/>simply<sp/>forward<sp/>to<sp/>EntityController;<sp/>Create/Update<sp/>dispatch<sp/>their</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bodies<sp/>to<sp/>a<sp/>PasswordWorker<sp/>so<sp/>password<sp/>hashing<sp/>never<sp/>occupies<sp/>a<sp/>Drogon<sp/>IO<sp/>thread.<sp/>Login/Logout<sp/>are</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>delegated<sp/>to<sp/>GateKeeper,<sp/>and<sp/>Suspend/Delete<sp/>additionally<sp/>invalidate<sp/>sessions<sp/>on<sp/>success.</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/>@tparam<sp/>T<sp/>Entity<sp/>type<sp/>satisfying<sp/>`Client_t`<sp/>(derives<sp/>from<sp/>`api::v2::Client`),<sp/>e.g.<sp/>User<sp/>or<sp/>Provider.</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/>@note<sp/>All<sp/>overrides<sp/>are<sp/>`final`.<sp/>Coroutine<sp/>variants<sp/>borrow<sp/>their<sp/>arguments<sp/>and<sp/>must<sp/>be<sp/>awaited<sp/>while<sp/>they<sp/>live.</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/>@see<sp/>ClientControllerBase,<sp/>EntityController,<sp/>PasswordWorker</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Client_t<sp/>T&gt;</highlight></codeline>
+<codeline lineno="61" refid="classClientController" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classClientController_1a766d8b32e21da18e3b392b339a7f64ed" kindref="member">ClientController</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" kindref="member">EntityController</ref>&lt;T&gt;,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classClientControllerBase_1a3cb01ab5f64999f02d79a5c0bbe87745" kindref="member">ClientControllerBase</ref></highlight></codeline>
+<codeline lineno="62"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="64" refid="classClientController_1a766d8b32e21da18e3b392b339a7f64ed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classClientController_1a766d8b32e21da18e3b392b339a7f64ed" kindref="member">ClientController</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Services<sp/>are<sp/>initialized<sp/>by<sp/>their<sp/>member<sp/>initializers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classClientController_1a92982bb7df39853f560dd44f7b4b38a4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classClientController_1a92982bb7df39853f560dd44f7b4b38a4" kindref="member">ClientController</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classClientController_1a766d8b32e21da18e3b392b339a7f64ed" kindref="member">ClientController</ref>&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copies<sp/>share<sp/>the<sp/>two<sp/>service<sp/>handles.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classClientController_1a545dbf8d8fe22c612b5332f8f37fa985" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classClientController_1a545dbf8d8fe22c612b5332f8f37fa985" kindref="member">ClientController</ref>(<ref refid="classClientController_1a766d8b32e21da18e3b392b339a7f64ed" kindref="member">ClientController</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>transfers<sp/>the<sp/>service<sp/>handles.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classClientController_1ae4d319799fb8a52537011661385be8b8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classClientController_1a766d8b32e21da18e3b392b339a7f64ed" kindref="member">ClientController</ref>&amp;<sp/><ref refid="classClientController_1ae4d319799fb8a52537011661385be8b8" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classClientController_1a766d8b32e21da18e3b392b339a7f64ed" kindref="member">ClientController</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>assignment<sp/>shares<sp/>the<sp/>handles.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classClientController_1a0391cde2423e25dda7d43b6ddc70ae9e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classClientController_1a766d8b32e21da18e3b392b339a7f64ed" kindref="member">ClientController</ref>&amp;<sp/><ref refid="classClientController_1a0391cde2423e25dda7d43b6ddc70ae9e" kindref="member">operator=</ref>(<ref refid="classClientController_1a766d8b32e21da18e3b392b339a7f64ed" kindref="member">ClientController</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>assignment<sp/>transfers<sp/>the<sp/>handles.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85" kindref="member">~ClientController</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Virtual<sp/>destructor;<sp/>no<sp/>explicit<sp/>cleanup<sp/>needed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Creates<sp/>a<sp/>client,<sp/>hashing<sp/>the<sp/>password<sp/>on<sp/>the<sp/>dedicated<sp/>PasswordWorker.</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Dispatches<sp/>createNow()<sp/>to<sp/>the<sp/>worker;<sp/>a<sp/>full<sp/>queue<sp/>yields<sp/>503<sp/>and<sp/>the<sp/>body<sp/>is<sp/>never<sp/>run.</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>with<sp/>the<sp/>resulting<sp/>HTTP<sp/>status<sp/>and<sp/>body.</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>used<sp/>to<sp/>authorize<sp/>creation.</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>describing<sp/>the<sp/>new<sp/>client<sp/>(copied<sp/>into<sp/>the<sp/>worker<sp/>job).</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classClientController_1a7b3e95c9052e2b4646f014ca9af39140" kindref="member">Create</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final:<sp/>no<sp/>further<sp/>override;<sp/>hashing<sp/>runs<sp/>on<sp/>the<sp/>worker.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>Create();<sp/>currently<sp/>delegates<sp/>straight<sp/>to<sp/>EntityController::CreateAsync.</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Unlike<sp/>the<sp/>synchronous<sp/>Create(),<sp/>this<sp/>path<sp/>does<sp/>not<sp/>go<sp/>through<sp/>the<sp/>PasswordWorker.</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>on<sp/>completion.</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>used<sp/>to<sp/>authorize<sp/>creation.</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body;<sp/>must<sp/>outlive<sp/>the<sp/>coroutine.</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classClientController_1a52b4114b1e619b6526ee861696eff6da" kindref="member">CreateAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final<sp/>coroutine<sp/>create;<sp/>delegates<sp/>to<sp/>EntityController.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Reads<sp/>selected<sp/>columns<sp/>of<sp/>a<sp/>client;<sp/>delegates<sp/>to<sp/>EntityController::Read().</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>with<sp/>the<sp/>resulting<sp/>HTTP<sp/>status<sp/>and<sp/>body.</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>used<sp/>to<sp/>authorize<sp/>the<sp/>read.</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>containing<sp/>`id`<sp/>and<sp/>`schema`.</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classClientController_1a33f69fd2b79bc13817aa0574333266bf" kindref="member">Read</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final:<sp/>forwards<sp/>straight<sp/>to<sp/>EntityController::Read.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>Read();<sp/>delegates<sp/>to<sp/>EntityController::ReadAsync().</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>on<sp/>completion.</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>used<sp/>to<sp/>authorize<sp/>the<sp/>read.</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>containing<sp/>`id`<sp/>and<sp/>`schema`;<sp/>must<sp/>outlive<sp/>the<sp/>coroutine.</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classClientController_1a2a260581d3133c68635516102d87bbdb" kindref="member">ReadAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final<sp/>coroutine<sp/>read;<sp/>forwards<sp/>to<sp/>the<sp/>base.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Updates<sp/>a<sp/>client,<sp/>hashing<sp/>the<sp/>password<sp/>on<sp/>the<sp/>dedicated<sp/>PasswordWorker.</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>The<sp/>`username`<sp/>and<sp/>`password`<sp/>fields<sp/>are<sp/>immutable<sp/>(validated<sp/>in<sp/>updateNow()).</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>with<sp/>the<sp/>resulting<sp/>HTTP<sp/>status<sp/>and<sp/>body.</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>used<sp/>to<sp/>authorize<sp/>the<sp/>update.</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>holding<sp/>the<sp/>fields<sp/>to<sp/>change.</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>client<sp/>id.</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classClientController_1a671dfda3ad96e247286fe44d22a1b478" kindref="member">Update</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data,<sp/>std::optional&lt;uint64_t&gt;<sp/>_id)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final:<sp/>hashing<sp/>on<sp/>worker;<sp/>immutable<sp/>fields<sp/>checked.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>Update();<sp/>delegates<sp/>straight<sp/>to<sp/>EntityController::UpdateAsync().</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Unlike<sp/>the<sp/>synchronous<sp/>Update(),<sp/>this<sp/>path<sp/>does<sp/>not<sp/>go<sp/>through<sp/>the<sp/>PasswordWorker.</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>on<sp/>completion.</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>used<sp/>to<sp/>authorize<sp/>the<sp/>update.</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>holding<sp/>the<sp/>fields<sp/>to<sp/>change;<sp/>must<sp/>outlive<sp/>the<sp/>coroutine.</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>client<sp/>id.</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classClientController_1ad218f6587a3135d5b5466401aac514e9" kindref="member">UpdateAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data,<sp/>std::optional&lt;uint64_t&gt;<sp/>_id)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final<sp/>coroutine<sp/>update;<sp/>delegates<sp/>to<sp/>base.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Deletes<sp/>a<sp/>client<sp/>and<sp/>removes<sp/>its<sp/>sessions<sp/>when<sp/>the<sp/>database<sp/>reports<sp/>success.</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>with<sp/>the<sp/>resulting<sp/>HTTP<sp/>status<sp/>and<sp/>body.</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>used<sp/>to<sp/>authorize<sp/>the<sp/>deletion.</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>client_id<sp/>Target<sp/>client<sp/>id.</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classClientController_1a57d1a8ba8f83b70242fcc29b7f8f70cb" kindref="member">Delete</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::optional&lt;uint64_t&gt;<sp/>client_id)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final:<sp/>wraps<sp/>callback<sp/>to<sp/>drop<sp/>sessions<sp/>on<sp/>success.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>Delete();<sp/>wraps<sp/>the<sp/>callback<sp/>as<sp/>in<sp/>Delete()<sp/>before<sp/>delegating.</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>on<sp/>completion.</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>used<sp/>to<sp/>authorize<sp/>the<sp/>deletion.</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>client_id<sp/>Target<sp/>client<sp/>id.</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classClientController_1addb2c711f70f69b197b67da384b80c2d" kindref="member">DeleteAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::optional&lt;uint64_t&gt;<sp/>client_id)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final<sp/>coroutine<sp/>delete<sp/>with<sp/>session<sp/>cleanup.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Searches<sp/>clients;<sp/>delegates<sp/>to<sp/>EntityController::Search().</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>with<sp/>the<sp/>resulting<sp/>HTTP<sp/>status<sp/>and<sp/>body.</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>supplied<sp/>by<sp/>the<sp/>caller.</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>containing<sp/>criteria,<sp/>limit<sp/>and<sp/>offset.</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classClientController_1a36c5c10efab0dcfdf020f6702a6ff9bb" kindref="member">Search</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final:<sp/>forwards<sp/>to<sp/>EntityController::Search.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>Search();<sp/>delegates<sp/>to<sp/>EntityController::SearchAsync().</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>on<sp/>completion.</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>supplied<sp/>by<sp/>the<sp/>caller.</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>containing<sp/>criteria,<sp/>limit<sp/>and<sp/>offset;<sp/>must<sp/>outlive<sp/>the<sp/>coroutine.</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classClientController_1ab7c4ffff79c0e56214abb463ae375925" kindref="member">SearchAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final<sp/>coroutine<sp/>search;<sp/>forwards<sp/>to<sp/>base.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Authenticates<sp/>a<sp/>client<sp/>via<sp/>GateKeeper;<sp/>the<sp/>requester<sp/>argument<sp/>is<sp/>ignored.</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>with<sp/>the<sp/>login<sp/>result.</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Unused<sp/>principal.</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>containing<sp/>credentials.</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>ip_address<sp/>Client<sp/>IP<sp/>used<sp/>for<sp/>session<sp/>bookkeeping.</highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classClientController_1aa76ccf7c49744669ef28827b606216d9" kindref="member">Login</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>ip_address)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final:<sp/>authentication<sp/>delegated<sp/>to<sp/>GateKeeper.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>Login();<sp/>awaits<sp/>GateKeeper::loginAsync().</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>on<sp/>completion.</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Unused<sp/>principal.</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>containing<sp/>credentials;<sp/>must<sp/>outlive<sp/>the<sp/>coroutine.</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>ip_address<sp/>Client<sp/>IP<sp/>used<sp/>for<sp/>session<sp/>bookkeeping.</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classClientController_1ab41c86cac7c0746d1b05f254e43b4591" kindref="member">LoginAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>ip_address)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final<sp/>coroutine<sp/>login<sp/>via<sp/>GateKeeper.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Invalidates<sp/>a<sp/>client<sp/>session<sp/>via<sp/>GateKeeper;<sp/>the<sp/>requester<sp/>argument<sp/>is<sp/>ignored.</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>with<sp/>the<sp/>logout<sp/>result.</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Unused<sp/>principal.</highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>token<sp/>Session<sp/>token<sp/>to<sp/>invalidate.</highlight></codeline>
+<codeline lineno="168"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>ip_address<sp/>Client<sp/>IP<sp/>used<sp/>for<sp/>session<sp/>bookkeeping.</highlight></codeline>
+<codeline lineno="169"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classClientController_1aefe031b81d6d282292bafd65d191c8cd" kindref="member">Logout</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;&amp;<sp/>token,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>ip_address)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final:<sp/>session<sp/>invalidation<sp/>delegated<sp/>to<sp/>GateKeeper.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Suspends<sp/>a<sp/>client<sp/>(if<sp/>authorized)<sp/>and<sp/>removes<sp/>its<sp/>sessions<sp/>after<sp/>the<sp/>DB<sp/>update.</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>with<sp/>the<sp/>resulting<sp/>HTTP<sp/>status<sp/>and<sp/>body.</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>toggle-active<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>client_id<sp/>Target<sp/>client<sp/>id;<sp/>a<sp/>missing<sp/>value<sp/>yields<sp/>406.</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classClientController_1ac9f28aab768cb85f02f2ca84b694f149" kindref="member">Suspend</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::optional&lt;uint64_t&gt;<sp/>client_id)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final:<sp/>deactivate<sp/>and<sp/>remove<sp/>sessions.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="178"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="179"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>Suspend();<sp/>must<sp/>be<sp/>awaited.</highlight></codeline>
+<codeline lineno="180"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>on<sp/>completion.</highlight></codeline>
+<codeline lineno="181"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>toggle-active<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
+<codeline lineno="182"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>client_id<sp/>Target<sp/>client<sp/>id;<sp/>a<sp/>missing<sp/>value<sp/>yields<sp/>406.</highlight></codeline>
+<codeline lineno="183"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classClientController_1a77e043006883f4a959679df477d0ad39" kindref="member">SuspendAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::optional&lt;uint64_t&gt;<sp/>client_id)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final<sp/>coroutine<sp/>suspend.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="186"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Reactivates<sp/>a<sp/>suspended<sp/>client<sp/>(if<sp/>authorized);<sp/>no<sp/>session<sp/>side<sp/>effect.</highlight></codeline>
+<codeline lineno="187"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>with<sp/>the<sp/>resulting<sp/>HTTP<sp/>status<sp/>and<sp/>body.</highlight></codeline>
+<codeline lineno="188"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>toggle-active<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
+<codeline lineno="189"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>client_id<sp/>Target<sp/>client<sp/>id;<sp/>a<sp/>missing<sp/>value<sp/>yields<sp/>406.</highlight></codeline>
+<codeline lineno="190"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classClientController_1a42c57adab458feeb209485ce13c48b0f" kindref="member">Activate</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::optional&lt;uint64_t&gt;<sp/>client_id)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final:<sp/>reactivate;<sp/>sessions<sp/>untouched.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="192"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="193"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>Activate();<sp/>must<sp/>be<sp/>awaited.</highlight></codeline>
+<codeline lineno="194"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>on<sp/>completion.</highlight></codeline>
+<codeline lineno="195"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>toggle-active<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>client_id<sp/>Target<sp/>client<sp/>id;<sp/>a<sp/>missing<sp/>value<sp/>yields<sp/>406.</highlight></codeline>
+<codeline lineno="197"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classClientController_1af7b6b7c90918fc3068478538f2e1b37d" kindref="member">ActivateAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::optional&lt;uint64_t&gt;<sp/>client_id)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final<sp/>coroutine<sp/>activate.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Password<sp/>reset<sp/>hook.</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@warning<sp/>The<sp/>current<sp/>implementation<sp/>is<sp/>a<sp/>no-op:<sp/>it<sp/>discards<sp/>@p<sp/>callback<sp/>and<sp/>@p<sp/>data<sp/>and<sp/>never<sp/>answers.</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Callers<sp/>waiting<sp/>on<sp/>the<sp/>callback<sp/>will<sp/>not<sp/>be<sp/>completed.</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Currently<sp/>ignored.</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>supplied<sp/>by<sp/>the<sp/>caller;<sp/>unused.</highlight></codeline>
+<codeline lineno="205"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Credential<sp/>material;<sp/>currently<sp/>ignored.</highlight></codeline>
+<codeline lineno="206"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classClientController_1a98c472a091deb653605efb4049936c9e" kindref="member">ResetPassword</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final:<sp/>currently<sp/>a<sp/>no-op<sp/>(see<sp/>@warning<sp/>above).</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="208"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="209"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Lists<sp/>services<sp/>available<sp/>to<sp/>a<sp/>client<sp/>(if<sp/>authorized).</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>with<sp/>200<sp/>and<sp/>a<sp/>JSON<sp/>array,<sp/>or<sp/>an<sp/>error<sp/>status.</highlight></codeline>
+<codeline lineno="211"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>services<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
+<codeline lineno="212"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>client_id<sp/>Target<sp/>client<sp/>id;<sp/>a<sp/>missing<sp/>value<sp/>yields<sp/>400.</highlight></codeline>
+<codeline lineno="213"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classClientController_1abdee410951d9aa19b082955197f53162" kindref="member">GetServices</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::optional&lt;uint64_t&gt;<sp/>client_id)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final:<sp/>authorized<sp/>service<sp/>lookup.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="215"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="216"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>GetServices();<sp/>must<sp/>be<sp/>awaited.</highlight></codeline>
+<codeline lineno="217"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>on<sp/>completion.</highlight></codeline>
+<codeline lineno="218"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>services<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
+<codeline lineno="219"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>client_id<sp/>Target<sp/>client<sp/>id;<sp/>a<sp/>missing<sp/>value<sp/>yields<sp/>400.</highlight></codeline>
+<codeline lineno="220"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classClientController_1aebd0c741055d14e284ea633eee9bd18d" kindref="member">GetServicesAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::optional&lt;uint64_t&gt;<sp/>client_id)<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>final<sp/>coroutine<sp/>service<sp/>lookup.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>real<sp/>work<sp/>of<sp/>Create<sp/>and<sp/>Update.<sp/>Both<sp/>hash<sp/>the<sp/>password,<sp/>so<sp/>the<sp/>public<sp/>methods<sp/>run<sp/>them<sp/>on<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>password<sp/>worker<sp/>instead<sp/>of<sp/>on<sp/>a<sp/>request<sp/>thread.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="226"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="227"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Body<sp/>executed<sp/>on<sp/>the<sp/>password<sp/>worker<sp/>by<sp/>Create():<sp/>parses,<sp/>checks<sp/>existence/authorization,<sp/>inserts.</highlight></codeline>
+<codeline lineno="228"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>with<sp/>the<sp/>resulting<sp/>HTTP<sp/>status<sp/>and<sp/>body.</highlight></codeline>
+<codeline lineno="229"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>used<sp/>to<sp/>authorize<sp/>creation<sp/>(copied<sp/>into<sp/>the<sp/>worker<sp/>job).</highlight></codeline>
+<codeline lineno="230"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body;<sp/>copied<sp/>into<sp/>the<sp/>worker<sp/>job<sp/>so<sp/>it<sp/>outlives<sp/>the<sp/>request<sp/>thread.</highlight></codeline>
+<codeline lineno="231"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classClientController_1a0373ac4a58de1a4105939a0db1c64699" kindref="member">createNow</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;<sp/>requester,<sp/>std::string_view<sp/>data);</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="233"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="234"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Body<sp/>executed<sp/>on<sp/>the<sp/>password<sp/>worker<sp/>by<sp/>Update():<sp/>validates<sp/>immutable<sp/>fields,<sp/>authorizes,<sp/>updates.</highlight></codeline>
+<codeline lineno="235"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>once<sp/>with<sp/>the<sp/>resulting<sp/>HTTP<sp/>status<sp/>and<sp/>body.</highlight></codeline>
+<codeline lineno="236"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>used<sp/>to<sp/>authorize<sp/>the<sp/>update.</highlight></codeline>
+<codeline lineno="237"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>holding<sp/>the<sp/>fields<sp/>to<sp/>change.</highlight></codeline>
+<codeline lineno="238"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>client<sp/>id.</highlight></codeline>
+<codeline lineno="239"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classClientController_1a8f17ab1fcb71e5c9d8e03f6cfe69559b" kindref="member">updateNow</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;<sp/>requester,<sp/>std::string_view<sp/>data,<sp/>std::optional&lt;uint64_t&gt;<sp/>_id);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="242"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="243"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Shared<sp/>authorization<sp/>service<sp/>used<sp/>by<sp/>all<sp/>operations.</highlight></codeline>
+<codeline lineno="244"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245" refid="classClientController_1a52124a8675b2204d7c202908798dc091" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;GateKeeper&gt;<sp/><sp/><sp/><sp/><sp/><ref refid="classClientController_1a52124a8675b2204d7c202908798dc091" kindref="member">gateKeeper</ref><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject&lt;GateKeeper&gt;</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Shared<sp/>authorization<sp/>service.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="246"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="247"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Dedicated<sp/>pool<sp/>for<sp/>the<sp/>deliberately<sp/>slow<sp/>password<sp/>hashing/verification<sp/>work.</highlight></codeline>
+<codeline lineno="248"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249" refid="classClientController_1a2be44d78c532e6b3f569ba1061f29d60" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;PasswordWorker&gt;<sp/><ref refid="classClientController_1a2be44d78c532e6b3f569ba1061f29d60" kindref="member">passwordWorker</ref><sp/>=<sp/><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject&lt;PasswordWorker&gt;</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Bounded<sp/>pool<sp/>for<sp/>slow<sp/>hashing<sp/>jobs.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="src/controllers/clientcontroller/clientcontroller.hpp"/>
+  </compounddef>
+</doxygen>

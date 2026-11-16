@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_830c168f2763a4fbe21a24ffe69786fc" kind="dir">
+    <compoundname>src/api/v2/filters</compoundname>
+    <innerfile refid="auth_8hpp">auth.hpp</innerfile>
+    <innerfile refid="ratelimit_8hpp">ratelimit.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/api/v2/filters/"/>
+  </compounddef>
+</doxygen>

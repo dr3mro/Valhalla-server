@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classapi_1_1v2_1_1Doc" kind="class" language="C++" prot="public">
+    <compoundname>api::v2::Doc</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">drogon::HttpController&lt; Doc &gt;</basecompoundref>
+    <includes refid="doc_8hpp" local="no">doc.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1Doc_1a5d3c3cb4d934ad3a6cb4fbeffb455e54" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void api::v2::Doc::doc</definition>
+        <argsstring>(const drogon::HttpRequestPtr &amp;, std::function&lt; void(const drogon::HttpResponsePtr &amp;)&gt; &amp;&amp;callback)</argsstring>
+        <name>doc</name>
+        <qualifiedname>api::v2::Doc::doc</qualifiedname>
+        <param>
+          <type>const drogon::HttpRequestPtr &amp;</type>
+        </param>
+        <param>
+          <type>std::function&lt; void(const drogon::HttpResponsePtr &amp;)&gt; &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+<para>Respond with the embedded Swagger UI HTML document. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Response callback, consumed exactly once. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/routes/doc.hpp" line="56" column="14" bodyfile="src/api/v2/routes/doc.hpp" bodystart="56" bodyend="64"/>
+        <referencedby refid="classapi_1_1v2_1_1Doc_1a13ad7f2d87dae64edb53abfd91914656">METHOD_ADD</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Doc_1a13ad7f2d87dae64edb53abfd91914656" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>METHOD_LIST_BEGIN</type>
+        <definition>METHOD_LIST_BEGIN api::v2::Doc::METHOD_ADD</definition>
+        <argsstring>(Doc::doc, &quot;&quot;, drogon::Get, INSECURE)</argsstring>
+        <name>METHOD_ADD</name>
+        <qualifiedname>api::v2::Doc::METHOD_ADD</qualifiedname>
+        <param>
+          <type><ref refid="classapi_1_1v2_1_1Doc_1a5d3c3cb4d934ad3a6cb4fbeffb455e54" kindref="member">Doc::doc</ref></type>
+        </param>
+        <param>
+          <type>&quot;&quot;</type>
+        </param>
+        <param>
+          <type>drogon::Get</type>
+        </param>
+        <param>
+          <type><ref refid="common_8hpp_1ad21df8408a63deff2676218cfd5ebb1f" kindref="member">INSECURE</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/routes/doc.hpp" line="68" column="9"/>
+        <references refid="classapi_1_1v2_1_1Doc_1a5d3c3cb4d934ad3a6cb4fbeffb455e54" compoundref="doc_8hpp" startline="56" endline="64">doc</references>
+        <references refid="common_8hpp_1ad21df8408a63deff2676218cfd5ebb1f" compoundref="common_8hpp" startline="67">INSECURE</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Serves the Swagger UI page that documents the API. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>GET /api/v2/doc (INSECURE). The HTML is compiled into the binary from docs/api.html at configure time, so no runtime file is required. The handler only constructs the response; there is no request-dependent state. <simplesect kind="see"><para>api_html.hpp (generated header containing docs::kApiHtml) </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>api::v2::Doc</label>
+        <link refid="classapi_1_1v2_1_1Doc"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>drogon::HttpController&lt; Doc &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>api::v2::Doc</label>
+        <link refid="classapi_1_1v2_1_1Doc"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>drogon::HttpController&lt; Doc &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/api/v2/routes/doc.hpp" line="49" column="5" bodyfile="src/api/v2/routes/doc.hpp" bodystart="50" bodyend="70"/>
+    <listofallmembers>
+      <member refid="classapi_1_1v2_1_1Doc_1a5d3c3cb4d934ad3a6cb4fbeffb455e54" prot="public" virt="non-virtual"><scope>api::v2::Doc</scope><name>doc</name></member>
+      <member refid="classapi_1_1v2_1_1Doc_1a13ad7f2d87dae64edb53abfd91914656" prot="public" virt="non-virtual"><scope>api::v2::Doc</scope><name>METHOD_ADD</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

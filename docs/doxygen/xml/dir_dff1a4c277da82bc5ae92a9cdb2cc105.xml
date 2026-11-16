@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_dff1a4c277da82bc5ae92a9cdb2cc105" kind="dir">
+    <compoundname>src/api/v2/routes</compoundname>
+    <innerfile refid="appointments_8hpp">appointments.hpp</innerfile>
+    <innerfile refid="clients_8hpp">clients.hpp</innerfile>
+    <innerfile refid="api_2v2_2routes_2clinics_8hpp">clinics.hpp</innerfile>
+    <innerfile refid="doc_8hpp">doc.hpp</innerfile>
+    <innerfile refid="hello_8hpp">hello.hpp</innerfile>
+    <innerfile refid="services_8hpp">services.hpp</innerfile>
+    <innerfile refid="staff_8hpp">staff.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/api/v2/routes/"/>
+  </compounddef>
+</doxygen>

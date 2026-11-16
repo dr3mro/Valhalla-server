@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="namespaceDefaults_1_1Testing" kind="namespace" language="C++">
+    <compoundname>Defaults::Testing</compoundname>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceDefaults_1_1Testing_1a797b761e7035e9593588e27408f1b55b" prot="public" static="no" mutable="no">
+        <type>const bool</type>
+        <definition>const bool Defaults::Testing::VALHALLA_TEST_NO_DB_</definition>
+        <argsstring></argsstring>
+        <name>VALHALLA_TEST_NO_DB_</name>
+        <qualifiedname>Defaults::Testing::VALHALLA_TEST_NO_DB_</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Real database is used unless a test explicitly opts out. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/configurator/defaults.hpp" line="218" column="20" bodyfile="src/configurator/defaults.hpp" bodystart="218" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para><ref refid="namespaceDefaults" kindref="compound">Defaults</ref> for test-only switches. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/configurator/defaults.hpp" line="212" column="1"/>
+  </compounddef>
+</doxygen>

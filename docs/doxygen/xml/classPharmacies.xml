@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classPharmacies" kind="class" language="C++" prot="public">
+    <compoundname>Pharmacies</compoundname>
+    <basecompoundref refid="classService" prot="public" virt="non-virtual">Service</basecompoundref>
+    <includes refid="pharmacies_8hpp" local="no">pharmacies.hpp</includes>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classPharmacies_1ad639f6d3918eebe4fa21e3ff44bac8c0" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>auto</type>
+        <definition>auto Pharmacies::TABLENAME</definition>
+        <argsstring></argsstring>
+        <name>TABLENAME</name>
+        <qualifiedname>Pharmacies::TABLENAME</qualifiedname>
+        <initializer>= &quot;pharmacies&quot;</initializer>
+        <briefdescription>
+<para>Table bound to this entity; also used as the service name in staff permission queries. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/pharmacies.hpp" line="54" column="27" bodyfile="src/entities/services/pharmacies.hpp" bodystart="54" bodyend="-1"/>
+        <referencedby refid="classPharmacies_1ac33e2e1e5b9acd10a5a62ff9772e20c7" compoundref="pharmacies_8hpp" startline="75" endline="75">getTableName</referencedby>
+        <referencedby refid="classPharmacies_1a27f27caa71c3d1a5cbd43b92b7105278" compoundref="pharmacies_8hpp" startline="68" endline="70">Pharmacies</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPharmacies_1a27f27caa71c3d1a5cbd43b92b7105278" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Pharmacies::Pharmacies</definition>
+        <argsstring>(const T &amp;_data)</argsstring>
+        <name>Pharmacies</name>
+        <qualifiedname>Pharmacies::Pharmacies</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>_data</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a pharmacy entity bound to <computeroutput>pharmacies</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Forwards the wrapper and table name to <ref refid="classService" kindref="compound">Service</ref>, which stores the wrapper in <ref refid="classEntity" kindref="compound">Entity</ref>. The wrapper&apos;s type decides which inherited SQL builder (create/read/update/delete/ search) can legitimately be used with the resulting instance. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A type accepted by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref>, e.g. <ref refid="namespaceapi_1_1v2_1_1Types_1ac9a246b12a16bc018eec47370d2d6a20" kindref="member">api::v2::Types::Create_t</ref> or <ref refid="classRead__t" kindref="compound">Read_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Operation data to copy into the entity. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/pharmacies.hpp" line="68" column="5" bodyfile="src/entities/services/pharmacies.hpp" bodystart="68" bodyend="70"/>
+        <references refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166">Service::Service</references>
+        <references refid="classPharmacies_1ad639f6d3918eebe4fa21e3ff44bac8c0" compoundref="pharmacies_8hpp" startline="54">TABLENAME</references>
+      </memberdef>
+      <memberdef kind="function" id="classPharmacies_1a38aefeea0809a061741cc9e92b10ef86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Pharmacies::~Pharmacies</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~Pharmacies</name>
+        <qualifiedname>Pharmacies::~Pharmacies</qualifiedname>
+        <briefdescription>
+<para>Destructor; the entity owns nothing beyond the data wrapper held by <ref refid="classEntity" kindref="compound">Entity</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/pharmacies.hpp" line="79" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classPharmacies_1ac33e2e1e5b9acd10a5a62ff9772e20c7" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>static constexpr auto Pharmacies::getTableName</definition>
+        <argsstring>()</argsstring>
+        <name>getTableName</name>
+        <qualifiedname>Pharmacies::getTableName</qualifiedname>
+        <briefdescription>
+<para>Returns the table this entity is bound to. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The constant <computeroutput>pharmacies</computeroutput> string. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/pharmacies.hpp" line="75" column="27" bodyfile="src/entities/services/pharmacies.hpp" bodystart="75" bodyend="75"/>
+        <references refid="classPharmacies_1ad639f6d3918eebe4fa21e3ff44bac8c0" compoundref="pharmacies_8hpp" startline="54">TABLENAME</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para><ref refid="classService" kindref="compound">Service</ref> entity bound to the <computeroutput>pharmacies</computeroutput> table (a pharmacy service provider). </para>
+    </briefdescription>
+    <detaileddescription>
+<para>A thin value type that binds the generic Service/Entity SQL machinery to one database table. CRUD/search statement generation and staff management are entirely inherited; this class only fixes the table name and exposes it to the permission layer. Instances are built from one of the <ref refid="namespaceapi_1_1v2_1_1Types" kindref="compound">api::v2::Types</ref> data wrappers (for example <ref refid="classCreate__t" kindref="compound">Create_t</ref> or <ref refid="classRead__t" kindref="compound">Read_t</ref>), which <ref refid="classEntity" kindref="compound">Entity</ref> stores as an <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref> variant. The type satisfies the api::v2::Service_t concept and is selected through the <computeroutput>pharmacies</computeroutput> entries of the services and staff route registries (<ref refid="classServiceController" kindref="compound">ServiceController&lt;Pharmacies&gt;</ref>, <ref refid="classStaffController" kindref="compound">StaffController&lt;Pharmacies&gt;</ref>). Ownership: the wrapper is copied into the base and is const thereafter; no other resources are owned. Instances have no mutable state and do no locking of their own; <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> uses the inherited <ref refid="classService_1ac5c73e3e8d87d1a87af5c12dcee32013" kindref="member">Service::getServicePermissionsQuery</ref> together with <ref refid="classPharmacies_1ac33e2e1e5b9acd10a5a62ff9772e20c7" kindref="member">getTableName()</ref> to authorise staff changes. Copy and move are deleted by <ref refid="classService" kindref="compound">Service</ref>: construct a fresh instance per operation. <simplesect kind="note"><para>No default constructor: <ref refid="classEntity" kindref="compound">Entity</ref> needs a data wrapper to build statements from. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classService" kindref="compound">Service</ref>, <ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="classServiceController" kindref="compound">ServiceController</ref>, <ref refid="classStaffController" kindref="compound">StaffController</ref>, <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>Base</label>
+        <link refid="classBase"/>
+      </node>
+      <node id="3">
+        <label>Entity</label>
+        <link refid="classEntity"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Pharmacies</label>
+        <link refid="classPharmacies"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Service</label>
+        <link refid="classService"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>Base</label>
+        <link refid="classBase"/>
+      </node>
+      <node id="3">
+        <label>Entity</label>
+        <link refid="classEntity"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Pharmacies</label>
+        <link refid="classPharmacies"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Service</label>
+        <link refid="classService"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/entities/services/pharmacies.hpp" line="50" column="1" bodyfile="src/entities/services/pharmacies.hpp" bodystart="51" bodyend="80"/>
+    <listofallmembers>
+      <member refid="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>Base</name></member>
+      <member refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" prot="protected" virt="non-virtual"><scope>Pharmacies</scope><name>buildCreateStatement</name></member>
+      <member refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" prot="protected" virt="non-virtual"><scope>Pharmacies</scope><name>buildDeleteStatement</name></member>
+      <member refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" prot="protected" virt="non-virtual"><scope>Pharmacies</scope><name>buildReadStatement</name></member>
+      <member refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" prot="protected" virt="non-virtual"><scope>Pharmacies</scope><name>buildSearchStatement</name></member>
+      <member refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" prot="protected" virt="non-virtual"><scope>Pharmacies</scope><name>buildUpdateStatement</name></member>
+      <member refid="classEntity_1ac1d661555222fabdf77fc5750da50b19" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>check_id_exists</name></member>
+      <member refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" prot="private" virt="non-virtual"><scope>Pharmacies</scope><name>data</name></member>
+      <member refid="classEntity_1a154ae0093211626370549e2924f9c954" prot="protected" virt="non-virtual"><scope>Pharmacies</scope><name>databaseController</name></member>
+      <member refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>Entity</name></member>
+      <member refid="classEntity_1ad3455dba49aa870a3f298f490771600c" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>Entity</name></member>
+      <member refid="classEntity_1abe34f0c0ca4b976ba455b97b2039d771" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>Entity</name></member>
+      <member refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>getData</name></member>
+      <member refid="classEntity_1a78dd1f37555f08fe0b389029c2d5b775" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>getGroupName</name></member>
+      <member refid="classService_1ac5c73e3e8d87d1a87af5c12dcee32013" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>getServicePermissionsQuery</name></member>
+      <member refid="classService_1a1a762691efab98926ce3c34988ccc51a" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>getSqlAddStaffStatement</name></member>
+      <member refid="classEntity_1a32f18508b15bf1f4c6494768bda527be" prot="public" virt="virtual"><scope>Pharmacies</scope><name>getSqlCreateStatement</name></member>
+      <member refid="classEntity_1aa66bbebb8b50f7d91153231b1f6ab997" prot="public" virt="virtual"><scope>Pharmacies</scope><name>getSqlDeleteStatement</name></member>
+      <member refid="classEntity_1a90ab6d6ae7c3431c3ede1201654b209a" prot="public" virt="virtual"><scope>Pharmacies</scope><name>getSqlReadStatement</name></member>
+      <member refid="classService_1a6b8a06b26521f411f8c21104031ab5fe" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>getSqlRemoveStaffStatement</name></member>
+      <member refid="classEntity_1a362c3e70e483e2378ab08414c1eacdd7" prot="public" virt="virtual"><scope>Pharmacies</scope><name>getSqlSearchStatement</name></member>
+      <member refid="classEntity_1af1c8231f215f8941d8424d2b165ba818" prot="public" virt="virtual"><scope>Pharmacies</scope><name>getSqlUpdateStatement</name></member>
+      <member refid="classPharmacies_1ac33e2e1e5b9acd10a5a62ff9772e20c7" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>getTableName</name></member>
+      <member refid="classService_1acd58b3d98fbebda840c84e7f4b6a95c4" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>operator=</name></member>
+      <member refid="classService_1a272111f072b71c01c2b2f3bc680f782d" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>operator=</name></member>
+      <member refid="classEntity_1a1f6d7e8353984497c45053a421a35b53" prot="public" virt="non-virtual" ambiguityscope="Entity::"><scope>Pharmacies</scope><name>operator=</name></member>
+      <member refid="classEntity_1adb86b6ab4d1b39b00c2472af16840fe5" prot="public" virt="non-virtual" ambiguityscope="Entity::"><scope>Pharmacies</scope><name>operator=</name></member>
+      <member refid="classPharmacies_1a27f27caa71c3d1a5cbd43b92b7105278" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>Pharmacies</name></member>
+      <member refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>Service</name></member>
+      <member refid="classService_1a0b54b15cd18155406cdd605c2fe6d46f" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>Service</name></member>
+      <member refid="classService_1a8349b8181f9d015c6d7577f7194e86dc" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>Service</name></member>
+      <member refid="classPharmacies_1ad639f6d3918eebe4fa21e3ff44bac8c0" prot="private" virt="non-virtual"><scope>Pharmacies</scope><name>TABLENAME</name></member>
+      <member refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" prot="protected" virt="non-virtual"><scope>Pharmacies</scope><name>tablename</name></member>
+      <member refid="classBase_1a306fb25541331080645a716286357ef9" prot="public" virt="virtual"><scope>Pharmacies</scope><name>~Base</name></member>
+      <member refid="classEntity_1a605d474ccbd30c3d4350016ec173546a" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>~Entity</name></member>
+      <member refid="classPharmacies_1a38aefeea0809a061741cc9e92b10ef86" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>~Pharmacies</name></member>
+      <member refid="classService_1aba3604115a58b69b2c46a84fd9833131" prot="public" virt="non-virtual"><scope>Pharmacies</scope><name>~Service</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,727 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dbprobe_8hpp" kind="file" language="C++">
+    <compoundname>dbprobe.hpp</compoundname>
+    <includedby refid="common_8hpp" local="yes">src/api/v2/basic/common.hpp</includedby>
+    <includedby refid="databasecontroller_8hpp" local="yes">src/controllers/databasecontroller/databasecontroller.hpp</includedby>
+    <invincdepgraph>
+      <node id="4">
+        <label>src/api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/api/v2/basic/common.hpp</label>
+        <link refid="common_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>src/api/v2/filters/auth.hpp</label>
+        <link refid="auth_8hpp"/>
+        <childnode refid="61" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>src/api/v2/filters/ratelimit.hpp</label>
+        <link refid="ratelimit_8hpp"/>
+        <childnode refid="61" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/api/v2/routes/appointments.hpp</label>
+        <link refid="appointments_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/api/v2/routes/clients.hpp</label>
+        <link refid="clients_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/api/v2/routes/clinics.hpp</label>
+        <link refid="api_2v2_2routes_2clinics_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>src/api/v2/routes/doc.hpp</label>
+        <link refid="doc_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/api/v2/routes/hello.hpp</label>
+        <link refid="hello_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/api/v2/routes/services.hpp</label>
+        <link refid="services_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>src/api/v2/routes/staff.hpp</label>
+        <link refid="staff_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
+        <link refid="appointmentcontroller_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
+        <link refid="appointmentcontroller_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>src/controllers/base/controller/controller.hpp</label>
+        <link refid="controller_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>src/controllers/clientcontroller/clientcontroller.cpp</label>
+        <link refid="clientcontroller_8cpp"/>
+      </node>
+      <node id="19">
+        <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
+        <link refid="clientcontroller_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
+        <link refid="cliniccontroller_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/controllers/cliniccontroller/cliniccontroller.hpp</label>
+        <link refid="cliniccontroller_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>src/controllers/databasecontroller/databasecontroller.cpp</label>
+        <link refid="databasecontroller_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/controllers/databasecontroller/databasecontroller.hpp</label>
+        <link refid="databasecontroller_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
+        <link refid="entitycontroller_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/controllers/entitycontroller/entitycontroller.hpp</label>
+        <link refid="entitycontroller_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
+        <link refid="servicecontroller_8cpp"/>
+      </node>
+      <node id="23">
+        <label>src/controllers/servicecontroller/servicecontroller.hpp</label>
+        <link refid="servicecontroller_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
+        <link refid="staffcontroller_8cpp"/>
+      </node>
+      <node id="25">
+        <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
+        <link refid="staffcontroller_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>src/database/database.cpp</label>
+        <link refid="database_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/database/dbprobe.hpp</label>
+        <link refid="dbprobe_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>src/entities/appointments/base/appointment.hpp</label>
+        <link refid="appointment_8hpp"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>src/entities/appointments/clinic.hpp</label>
+        <link refid="clinic_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>src/entities/appointments/laboratory.hpp</label>
+        <link refid="laboratory_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>src/entities/appointments/pharmacy.hpp</label>
+        <link refid="pharmacy_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>src/entities/appointments/radiologycenter.hpp</label>
+        <link refid="radiologycenter_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>src/entities/appointments/user.hpp</label>
+        <link refid="appointments_2user_8hpp"/>
+      </node>
+      <node id="38">
+        <label>src/entities/base/case.hpp</label>
+        <link refid="case_8hpp"/>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>src/entities/base/client.hpp</label>
+        <link refid="client_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>src/entities/base/entity.hpp</label>
+        <link refid="entity_8hpp"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>src/entities/base/service.hpp</label>
+        <link refid="service_8hpp"/>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>src/entities/people/provider.hpp</label>
+        <link refid="provider_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>src/entities/people/user.hpp</label>
+        <link refid="people_2user_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>src/entities/services/clinics/clinics.hpp</label>
+        <link refid="entities_2services_2clinics_2clinics_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>src/entities/services/clinics/patient/health.hpp</label>
+        <link refid="health_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>src/entities/services/clinics/patient/patient.hpp</label>
+        <link refid="patient_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>src/entities/services/clinics/patient/patientdrugs.hpp</label>
+        <link refid="patientdrugs_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>src/entities/services/clinics/patient/reports.hpp</label>
+        <link refid="reports_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>src/entities/services/clinics/visits/paidservices.hpp</label>
+        <link refid="paidservices_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>src/entities/services/clinics/visits/prescriptions.hpp</label>
+        <link refid="prescriptions_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>src/entities/services/clinics/visits/requests.hpp</label>
+        <link refid="requests_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>src/entities/services/clinics/visits/visitdrugs.hpp</label>
+        <link refid="visitdrugs_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>src/entities/services/clinics/visits/visits.hpp</label>
+        <link refid="visits_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>src/entities/services/laboratories.hpp</label>
+        <link refid="laboratories_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>src/entities/services/pharmacies.hpp</label>
+        <link refid="pharmacies_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>src/entities/services/radiologycenters.hpp</label>
+        <link refid="radiologycenters_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>src/gatekeeper/gatekeeper.cpp</label>
+        <link refid="gatekeeper_8cpp"/>
+      </node>
+      <node id="59">
+        <label>src/gatekeeper/gatekeeper.hpp</label>
+        <link refid="gatekeeper_8hpp"/>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>src/gatekeeper/includes.hpp</label>
+        <link refid="includes_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>src/gatekeeper/keeprbase/keeprbase.cpp</label>
+        <link refid="keeprbase_8cpp"/>
+      </node>
+      <node id="56">
+        <label>src/gatekeeper/keeprbase/keeprbase.hpp</label>
+        <link refid="keeprbase_8hpp"/>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>src/gatekeeper/permissionmanager/permissionmanager.cpp</label>
+        <link refid="permissionmanager_8cpp"/>
+      </node>
+      <node id="68">
+        <label>src/gatekeeper/permissionmanager/permissionmanager_private.cpp</label>
+        <link refid="permissionmanager__private_8cpp"/>
+      </node>
+      <node id="67">
+        <label>src/gatekeeper/permissionmanager/permissionmanager_private.hpp</label>
+        <link refid="permissionmanager__private_8hpp"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>src/gatekeeper/sessionmanager/sessionmanager.cpp</label>
+        <link refid="sessionmanager_8cpp"/>
+      </node>
+      <node id="58">
+        <label>src/gatekeeper/sessionmanager/sessionmanager.hpp</label>
+        <link refid="sessionmanager_8hpp"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+      </node>
+      <node id="66">
+        <label>src/gatekeeper/tokenmanager/tokenmanager.cpp</label>
+        <link refid="tokenmanager_8cpp"/>
+      </node>
+      <node id="65">
+        <label>src/gatekeeper/tokenmanager/tokenmanager.hpp</label>
+        <link refid="tokenmanager_8hpp"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+      <node id="61">
+        <label>src/server/server.hpp</label>
+        <link refid="server_8hpp"/>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="69">
+        <label>src/validator/databaseschema/databaseschema.cpp</label>
+        <link refid="databaseschema_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structWouldBlock" prot="public">WouldBlock</innerclass>
+    <innerclass refid="classDbProbe" prot="public">DbProbe</innerclass>
+    <briefdescription>
+<para>Control-flow signal that a request needs the database and must move off the IO thread. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header defines two pieces of the IO-thread fast path: <ref refid="structWouldBlock" kindref="compound">WouldBlock</ref>, a small exception-like signal that is deliberately not a std::exception, and <ref refid="classDbProbe" kindref="compound">DbProbe</ref>, an RAII marker that sets a thread-local &quot;probing&quot; flag for its lifetime. While the flag is set, <ref refid="classDbProbe_1af3b9ebe61addb4dd1885a3d117221a1f" kindref="member">DbProbe::check()</ref> throws <ref refid="structWouldBlock" kindref="compound">WouldBlock</ref> so that any code about to touch the database stops before it does any work or writes a response.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: It lets simple requests finish without the cost of queueing onto the DB executor. The HTTP wrapper creates a <ref refid="classDbProbe" kindref="compound">DbProbe</ref> on the IO thread and runs the controller once; requests answered from memory (bad JSON, cached permission denial) complete there. The first operation that needs a connection calls check(), throws <ref refid="structWouldBlock" kindref="compound">WouldBlock</ref>, and the wrapper re-runs the whole request on a DB worker where no probe is active. <ref refid="structWouldBlock" kindref="compound">WouldBlock</ref> is not a std::exception on purpose, so generic error handlers do not swallow this control-flow signal. Without it, every request would pay the queueing cost even when no database access was needed.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>RAII (a flag set in the constructor and cleared in the destructor): <ulink url="https://en.cppreference.com/w/cpp/language/raii">https://en.cppreference.com/w/cpp/language/raii</ulink></para>
+</listitem><listitem><para>thread_local storage (one variable instance per thread): <ulink url="https://en.cppreference.com/w/cpp/language/storage_duration">https://en.cppreference.com/w/cpp/language/storage_duration</ulink></para>
+</listitem><listitem><para>Control-flow exceptions (throwing to change execution path, not to report an error)</para>
+</listitem><listitem><para>Exceptions that do not derive from std::exception: <ulink url="https://en.cppreference.com/w/cpp/error/exception">https://en.cppreference.com/w/cpp/error/exception</ulink></para>
+</listitem><listitem><para>static inline members: <ulink url="https://en.cppreference.com/w/cpp/language/static">https://en.cppreference.com/w/cpp/language/static</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>dbprobe.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Control-flow<sp/>signal<sp/>that<sp/>a<sp/>request<sp/>needs<sp/>the<sp/>database<sp/>and<sp/>must<sp/>move<sp/>off<sp/>the<sp/>IO<sp/>thread.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>defines<sp/>two<sp/>pieces<sp/>of<sp/>the<sp/>IO-thread<sp/>fast<sp/>path:<sp/>WouldBlock,<sp/>a<sp/>small</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exception-like<sp/>signal<sp/>that<sp/>is<sp/>deliberately<sp/>not<sp/>a<sp/>std::exception,<sp/>and<sp/>DbProbe,<sp/>an</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RAII<sp/>marker<sp/>that<sp/>sets<sp/>a<sp/>thread-local<sp/>&quot;probing&quot;<sp/>flag<sp/>for<sp/>its<sp/>lifetime.<sp/>While<sp/>the<sp/>flag</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>set,<sp/>DbProbe::check()<sp/>throws<sp/>WouldBlock<sp/>so<sp/>that<sp/>any<sp/>code<sp/>about<sp/>to<sp/>touch<sp/>the</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>database<sp/>stops<sp/>before<sp/>it<sp/>does<sp/>any<sp/>work<sp/>or<sp/>writes<sp/>a<sp/>response.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>It<sp/>lets<sp/>simple<sp/>requests<sp/>finish<sp/>without<sp/>the<sp/>cost<sp/>of<sp/>queueing<sp/>onto<sp/>the<sp/>DB<sp/>executor.<sp/>The<sp/>HTTP</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>wrapper<sp/>creates<sp/>a<sp/>DbProbe<sp/>on<sp/>the<sp/>IO<sp/>thread<sp/>and<sp/>runs<sp/>the<sp/>controller<sp/>once;<sp/>requests<sp/>answered</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>from<sp/>memory<sp/>(bad<sp/>JSON,<sp/>cached<sp/>permission<sp/>denial)<sp/>complete<sp/>there.<sp/>The<sp/>first<sp/>operation<sp/>that</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>needs<sp/>a<sp/>connection<sp/>calls<sp/>check(),<sp/>throws<sp/>WouldBlock,<sp/>and<sp/>the<sp/>wrapper<sp/>re-runs<sp/>the<sp/>whole</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>request<sp/>on<sp/>a<sp/>DB<sp/>worker<sp/>where<sp/>no<sp/>probe<sp/>is<sp/>active.<sp/>WouldBlock<sp/>is<sp/>not<sp/>a<sp/>std::exception<sp/>on</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>purpose,<sp/>so<sp/>generic<sp/>error<sp/>handlers<sp/>do<sp/>not<sp/>swallow<sp/>this<sp/>control-flow<sp/>signal.<sp/>Without<sp/>it,</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>every<sp/>request<sp/>would<sp/>pay<sp/>the<sp/>queueing<sp/>cost<sp/>even<sp/>when<sp/>no<sp/>database<sp/>access<sp/>was<sp/>needed.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>RAII<sp/>(a<sp/>flag<sp/>set<sp/>in<sp/>the<sp/>constructor<sp/>and<sp/>cleared<sp/>in<sp/>the<sp/>destructor):<sp/>https://en.cppreference.com/w/cpp/language/raii</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>thread_local<sp/>storage<sp/>(one<sp/>variable<sp/>instance<sp/>per<sp/>thread):<sp/>https://en.cppreference.com/w/cpp/language/storage_duration</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>Control-flow<sp/>exceptions<sp/>(throwing<sp/>to<sp/>change<sp/>execution<sp/>path,<sp/>not<sp/>to<sp/>report<sp/>an<sp/>error)</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>-<sp/>Exceptions<sp/>that<sp/>do<sp/>not<sp/>derive<sp/>from<sp/>std::exception:<sp/>https://en.cppreference.com/w/cpp/error/exception</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>-<sp/>static<sp/>inline<sp/>members:<sp/>https://en.cppreference.com/w/cpp/language/static</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>guard:<sp/>define<sp/>these<sp/>types<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IO-thread<sp/>fast<sp/>path.<sp/>A<sp/>request<sp/>is<sp/>first<sp/>tried<sp/>on<sp/>the<sp/>Drogon<sp/>IO<sp/>thread<sp/>inside<sp/>a<sp/>DbProbe.<sp/>Everything<sp/>that<sp/>answers<sp/>from<sp/>memory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>(bad<sp/>JSON,<sp/>failed<sp/>validation,<sp/>a<sp/>permission<sp/>refused<sp/>from<sp/>the<sp/>permission<sp/>cache)<sp/>finishes<sp/>there.<sp/>The<sp/>first<sp/>call<sp/>that<sp/>would</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>need<sp/>a<sp/>database<sp/>connection<sp/>throws<sp/>WouldBlock<sp/>instead<sp/>of<sp/>waiting,<sp/>before<sp/>anything<sp/>was<sp/>written,<sp/>and<sp/>the<sp/>request<sp/>is<sp/>then</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>handed<sp/>to<sp/>the<sp/>DB<sp/>executor<sp/>and<sp/>run<sp/>again<sp/>from<sp/>the<sp/>start.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>WouldBlock<sp/>is<sp/>deliberately<sp/>not<sp/>a<sp/>std::exception,<sp/>so<sp/>the<sp/>controllers&apos;<sp/>catch<sp/>(const<sp/>std::exception&amp;)<sp/>blocks<sp/>let<sp/>it<sp/>through.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="38"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>@struct<sp/>WouldBlock</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Control-flow<sp/>signal<sp/>that<sp/>a<sp/>request<sp/>needs<sp/>the<sp/>database<sp/>and<sp/>must<sp/>move<sp/>off<sp/>the<sp/>IO<sp/>thread.</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>@details<sp/>Thrown<sp/>by<sp/>DbProbe::check()<sp/>before<sp/>any<sp/>database<sp/>access<sp/>or<sp/>response<sp/>is<sp/>written.<sp/>It</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>deliberately<sp/>does<sp/>not<sp/>derive<sp/>from<sp/>`std::exception`,<sp/>so<sp/>controllers&apos;<sp/>generic</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`catch<sp/>(const<sp/>std::exception&amp;)`<sp/>blocks<sp/>do<sp/>not<sp/>swallow<sp/>it;<sp/>only<sp/>the<sp/>dedicated</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`catch<sp/>(const<sp/>WouldBlock&amp;)`<sp/>in<sp/>the<sp/>fast-path<sp/>wrapper<sp/>handles<sp/>it.</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>@see<sp/>DbProbe,<sp/>DbExecutor::ioFastPath</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="structWouldBlock" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structWouldBlock" kindref="compound">WouldBlock</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>empty<sp/>tag<sp/>type<sp/>used<sp/>only<sp/>to<sp/>unwind<sp/>the<sp/>stack<sp/>back<sp/>to<sp/>the<sp/>fast-path<sp/>wrapper.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="51"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>@class<sp/>DbProbe</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>@brief<sp/>RAII<sp/>marker<sp/>that<sp/>puts<sp/>the<sp/>current<sp/>thread<sp/>in<sp/>&quot;probe&quot;<sp/>mode.</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>@details<sp/>While<sp/>an<sp/>instance<sp/>is<sp/>alive,<sp/>DbProbe::check()<sp/>throws<sp/>WouldBlock<sp/>on<sp/>that<sp/>thread,</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>preventing<sp/>any<sp/>database<sp/>access<sp/>from<sp/>running<sp/>on<sp/>a<sp/>Drogon<sp/>IO<sp/>thread.<sp/>The<sp/>active</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>flag<sp/>is<sp/>`thread_local`,<sp/>so<sp/>only<sp/>the<sp/>constructing<sp/>thread<sp/>is<sp/>affected.<sp/>Instances</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>are<sp/>stack-allocated<sp/>within<sp/>a<sp/>try<sp/>block<sp/>in<sp/>the<sp/>request<sp/>wrapper<sp/>and<sp/>must<sp/>not<sp/>be</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shared<sp/>across<sp/>threads.<sp/>Non-copyable<sp/>and<sp/>non-assignable.</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>@note<sp/>The<sp/>destructor<sp/>unconditionally<sp/>clears<sp/>the<sp/>flag;<sp/>nested<sp/>probes<sp/>on<sp/>the<sp/>same<sp/>thread</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>would<sp/>clear<sp/>it<sp/>early,<sp/>so<sp/>usage<sp/>assumes<sp/>a<sp/>single<sp/>probe<sp/>per<sp/>thread<sp/>at<sp/>a<sp/>time.</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>@see<sp/>WouldBlock</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classDbProbe" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classDbProbe_1a05c72d2e76a859f168c039bb0a13b802" kindref="member">DbProbe</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Sets<sp/>a<sp/>per-thread<sp/>flag<sp/>so<sp/>database<sp/>access<sp/>points<sp/>can<sp/>detect<sp/>the<sp/>fast<sp/>path.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Marks<sp/>the<sp/>current<sp/>thread<sp/>as<sp/>probing<sp/>for<sp/>the<sp/>lifetime<sp/>of<sp/>this<sp/>object.</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classDbProbe_1a05c72d2e76a859f168c039bb0a13b802" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDbProbe_1a05c72d2e76a859f168c039bb0a13b802" kindref="member">DbProbe</ref>()<sp/>{<sp/><ref refid="classDbProbe_1a86209915d051bd2999972e9e448d00c2" kindref="member">active_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Turning<sp/>the<sp/>flag<sp/>on<sp/>is<sp/>all<sp/>the<sp/>setup<sp/>needed;<sp/>the<sp/>destructor<sp/>turns<sp/>it<sp/>off.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Clears<sp/>the<sp/>probe<sp/>flag<sp/>for<sp/>the<sp/>current<sp/>thread.</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classDbProbe_1a257d22f4724c5efe3851368485a90b3b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDbProbe_1a257d22f4724c5efe3851368485a90b3b" kindref="member">~DbProbe</ref>()<sp/>{<sp/><ref refid="classDbProbe_1a86209915d051bd2999972e9e448d00c2" kindref="member">active_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Always<sp/>clears<sp/>it,<sp/>including<sp/>when<sp/>WouldBlock<sp/>unwinds<sp/>the<sp/>stack.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classDbProbe_1a383566e1d3d5ad2481f7e33a786af2a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDbProbe_1a383566e1d3d5ad2481f7e33a786af2a0" kindref="member">DbProbe</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDbProbe_1a05c72d2e76a859f168c039bb0a13b802" kindref="member">DbProbe</ref>&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copying<sp/>would<sp/>make<sp/>it<sp/>unclear<sp/>which<sp/>object<sp/>clears<sp/>the<sp/>flag.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="classDbProbe_1ae73173ba3c220d2c072d0246276f6534" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDbProbe_1a05c72d2e76a859f168c039bb0a13b802" kindref="member">DbProbe</ref>&amp;<sp/><ref refid="classDbProbe_1ae73173ba3c220d2c072d0246276f6534" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classDbProbe_1a05c72d2e76a859f168c039bb0a13b802" kindref="member">DbProbe</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Assignment<sp/>would<sp/>have<sp/>the<sp/>same<sp/>ambiguity<sp/>about<sp/>flag<sp/>ownership.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Guards<sp/>a<sp/>database-access<sp/>point<sp/>against<sp/>running<sp/>on<sp/>an<sp/>IO<sp/>thread.</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>WouldBlock<sp/>If<sp/>called<sp/>while<sp/>a<sp/>DbProbe<sp/>is<sp/>active<sp/>on<sp/>this<sp/>thread.</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Database<sp/>helpers<sp/>call<sp/>this<sp/>first;<sp/>in<sp/>probe<sp/>mode<sp/>it<sp/>throws<sp/>before<sp/>any</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>connection<sp/>is<sp/>leased,<sp/>allowing<sp/>the<sp/>request<sp/>to<sp/>be<sp/>re-run<sp/>from<sp/>the<sp/>start<sp/>on</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>a<sp/>DB<sp/>worker<sp/>where<sp/>no<sp/>probe<sp/>is<sp/>active.</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="classDbProbe_1af3b9ebe61addb4dd1885a3d117221a1f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDbProbe_1af3b9ebe61addb4dd1885a3d117221a1f" kindref="member">check</ref>()<sp/><sp/></highlight><highlight class="comment">//<sp/>Static:<sp/>callers<sp/>do<sp/>not<sp/>need<sp/>a<sp/>DbProbe<sp/>object,<sp/>just<sp/>the<sp/>flag<sp/>it<sp/>sets<sp/>for<sp/>the<sp/>thread.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classDbProbe_1a86209915d051bd2999972e9e448d00c2" kindref="member">active_</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>True<sp/>only<sp/>while<sp/>this<sp/>thread<sp/>is<sp/>probing<sp/>the<sp/>fast<sp/>path.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="structWouldBlock" kindref="compound">WouldBlock</ref>{};<sp/><sp/></highlight><highlight class="comment">//<sp/>Abort<sp/>the<sp/>attempt<sp/>before<sp/>any<sp/>database<sp/>work<sp/>or<sp/>response<sp/>side<sp/>effect<sp/>occurs.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="95" refid="classDbProbe_1a86209915d051bd2999972e9e448d00c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">thread_local</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classDbProbe_1a86209915d051bd2999972e9e448d00c2" kindref="member">active_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>NOLINT(cppcoreguidelines-avoid-non-const-global-variables):<sp/>one<sp/>flag<sp/>per<sp/>thread,<sp/>shared<sp/>by<sp/>all<sp/>DbProbe<sp/>instances<sp/>on<sp/>that<sp/>thread.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="src/database/dbprobe.hpp"/>
+  </compounddef>
+</doxygen>

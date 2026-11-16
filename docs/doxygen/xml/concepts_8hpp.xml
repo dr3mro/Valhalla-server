@@ -1,0 +1,364 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="concepts_8hpp" kind="file" language="C++">
+    <compoundname>concepts.hpp</compoundname>
+    <includes local="no">type_traits</includes>
+    <includedby refid="appointmentcontroller_8cpp" local="yes">src/controllers/appointmentcontroller/appointmentcontroller.cpp</includedby>
+    <includedby refid="appointmentcontroller_8hpp" local="yes">src/controllers/appointmentcontroller/appointmentcontroller.hpp</includedby>
+    <includedby refid="clientcontroller_8cpp" local="yes">src/controllers/clientcontroller/clientcontroller.cpp</includedby>
+    <includedby refid="clientcontroller_8hpp" local="yes">src/controllers/clientcontroller/clientcontroller.hpp</includedby>
+    <includedby refid="servicecontroller_8cpp" local="yes">src/controllers/servicecontroller/servicecontroller.cpp</includedby>
+    <includedby refid="servicecontroller_8hpp" local="yes">src/controllers/servicecontroller/servicecontroller.hpp</includedby>
+    <includedby refid="gatekeeper_8cpp" local="yes">src/gatekeeper/gatekeeper.cpp</includedby>
+    <includedby refid="gatekeeper_8hpp" local="yes">src/gatekeeper/gatekeeper.hpp</includedby>
+    <includedby refid="permissionmanager_8cpp" local="yes">src/gatekeeper/permissionmanager/permissionmanager.cpp</includedby>
+    <includedby refid="permissionmanager_8hpp" local="yes">src/gatekeeper/permissionmanager/permissionmanager.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/utils/global/concepts.hpp</label>
+        <link refid="concepts_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>type_traits</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5">
+        <label>src/api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>src/api/v2/filters/auth.hpp</label>
+        <link refid="auth_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>src/api/v2/filters/ratelimit.hpp</label>
+        <link refid="ratelimit_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/api/v2/routes/appointments.hpp</label>
+        <link refid="appointments_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/api/v2/routes/clients.hpp</label>
+        <link refid="clients_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>src/api/v2/routes/clinics.hpp</label>
+        <link refid="api_2v2_2routes_2clinics_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>src/api/v2/routes/services.hpp</label>
+        <link refid="services_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>src/api/v2/routes/staff.hpp</label>
+        <link refid="staff_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
+        <link refid="appointmentcontroller_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
+        <link refid="appointmentcontroller_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>src/controllers/base/controller/controller.hpp</label>
+        <link refid="controller_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/controllers/clientcontroller/clientcontroller.cpp</label>
+        <link refid="clientcontroller_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
+        <link refid="clientcontroller_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
+        <link refid="cliniccontroller_8cpp"/>
+      </node>
+      <node id="23">
+        <label>src/controllers/cliniccontroller/cliniccontroller.hpp</label>
+        <link refid="cliniccontroller_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
+        <link refid="entitycontroller_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/controllers/entitycontroller/entitycontroller.hpp</label>
+        <link refid="entitycontroller_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
+        <link refid="servicecontroller_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/controllers/servicecontroller/servicecontroller.hpp</label>
+        <link refid="servicecontroller_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
+        <link refid="staffcontroller_8cpp"/>
+      </node>
+      <node id="26">
+        <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
+        <link refid="staffcontroller_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>src/database/database.cpp</label>
+        <link refid="database_8cpp"/>
+      </node>
+      <node id="13">
+        <label>src/gatekeeper/gatekeeper.cpp</label>
+        <link refid="gatekeeper_8cpp"/>
+      </node>
+      <node id="14">
+        <label>src/gatekeeper/gatekeeper.hpp</label>
+        <link refid="gatekeeper_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>src/gatekeeper/permissionmanager/permissionmanager.cpp</label>
+        <link refid="permissionmanager_8cpp"/>
+      </node>
+      <node id="30">
+        <label>src/gatekeeper/permissionmanager/permissionmanager.hpp</label>
+        <link refid="permissionmanager_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/server/server.hpp</label>
+        <link refid="server_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/utils/global/concepts.hpp</label>
+        <link refid="concepts_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerconcept refid="conceptClient__t">Client_t</innerconcept>
+    <innerconcept refid="conceptService__t">Service_t</innerconcept>
+    <innerconcept refid="conceptCase__t">Case_t</innerconcept>
+    <innerconcept refid="conceptAppointment__t">Appointment_t</innerconcept>
+    <innernamespace refid="namespaceapi">api</innernamespace>
+    <innernamespace refid="namespaceapi_1_1v2">api::v2</innernamespace>
+    <briefdescription>
+<para>Compile-time constraints tying generic API code to domain types. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Declares four C++20 &quot;concepts&quot; — named conditions that a type must satisfy before a template will accept it. Each one checks that a type is a particular domain class (<ref refid="controller_8hpp_1af928d8b9ced02f7387b9b56ed3877b11" kindref="member">Client</ref>, <ref refid="classService" kindref="compound">Service</ref>, <ref refid="classCase" kindref="compound">Case</ref> or <ref refid="classAppointment" kindref="compound">Appointment</ref>) or something derived from it. The classes themselves are only forward-declared here, so this header stays light and does not pull in heavy definitions. The checks happen during compilation, so a wrong type produces a clear compile error instead of a crash at runtime.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: The controllers are templates that work with several related entity types. These concepts act as a safety gate: they stop someone instantiating a controller with an unrelated type (for example, a std::string) by rejecting it at compile time. This keeps the generic API code flexible but still tied to the real domain objects. It is a header-only helper included where those generic templates are declared.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>C++20 concepts / constraints: <ulink url="https://en.cppreference.com/w/cpp/language/constraints">https://en.cppreference.com/w/cpp/language/constraints</ulink></para>
+</listitem><listitem><para>std::is_base_of: <ulink url="https://en.cppreference.com/w/cpp/types/is_base_of">https://en.cppreference.com/w/cpp/types/is_base_of</ulink></para>
+</listitem><listitem><para>Forward declarations: <ulink url="https://en.cppreference.com/w/cpp/language/class#Forward_declaration">https://en.cppreference.com/w/cpp/language/class#Forward_declaration</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>concepts.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Compile-time<sp/>constraints<sp/>tying<sp/>generic<sp/>API<sp/>code<sp/>to<sp/>domain<sp/>types.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>Declares<sp/>four<sp/>C++20<sp/>&quot;concepts&quot;<sp/>—<sp/>named<sp/>conditions<sp/>that<sp/>a<sp/>type<sp/>must</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>satisfy<sp/>before<sp/>a<sp/>template<sp/>will<sp/>accept<sp/>it.<sp/>Each<sp/>one<sp/>checks<sp/>that<sp/>a<sp/>type</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>a<sp/>particular<sp/>domain<sp/>class<sp/>(Client,<sp/>Service,<sp/>Case<sp/>or<sp/>Appointment)</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>or<sp/>something<sp/>derived<sp/>from<sp/>it.<sp/>The<sp/>classes<sp/>themselves<sp/>are<sp/>only</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>forward-declared<sp/>here,<sp/>so<sp/>this<sp/>header<sp/>stays<sp/>light<sp/>and<sp/>does<sp/>not<sp/>pull<sp/>in</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>heavy<sp/>definitions.<sp/>The<sp/>checks<sp/>happen<sp/>during<sp/>compilation,<sp/>so<sp/>a<sp/>wrong</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>produces<sp/>a<sp/>clear<sp/>compile<sp/>error<sp/>instead<sp/>of<sp/>a<sp/>crash<sp/>at<sp/>runtime.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>The<sp/>controllers<sp/>are<sp/>templates<sp/>that<sp/>work<sp/>with<sp/>several<sp/>related<sp/>entity<sp/>types.</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>These<sp/>concepts<sp/>act<sp/>as<sp/>a<sp/>safety<sp/>gate:<sp/>they<sp/>stop<sp/>someone<sp/>instantiating<sp/>a</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>controller<sp/>with<sp/>an<sp/>unrelated<sp/>type<sp/>(for<sp/>example,<sp/>a<sp/>std::string)<sp/>by<sp/>rejecting<sp/>it</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>at<sp/>compile<sp/>time.<sp/>This<sp/>keeps<sp/>the<sp/>generic<sp/>API<sp/>code<sp/>flexible<sp/>but<sp/>still<sp/>tied<sp/>to</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>the<sp/>real<sp/>domain<sp/>objects.<sp/>It<sp/>is<sp/>a<sp/>header-only<sp/>helper<sp/>included<sp/>where<sp/>those</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>generic<sp/>templates<sp/>are<sp/>declared.</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>C++20<sp/>concepts<sp/>/<sp/>constraints:<sp/>https://en.cppreference.com/w/cpp/language/constraints</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>std::is_base_of:<sp/>https://en.cppreference.com/w/cpp/types/is_base_of</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>-<sp/>Forward<sp/>declarations:<sp/>https://en.cppreference.com/w/cpp/language/class#Forward_declaration</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>file<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;type_traits&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Provides<sp/>std::is_base_of_v<sp/>used<sp/>by<sp/>each<sp/>concept<sp/>below.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceapi_1_1v2" kindref="compound">api::v2</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>nested<sp/>namespace<sp/>api::v2<sp/>groups<sp/>the<sp/>version-2<sp/>API<sp/>code.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>declaration:<sp/>&quot;this<sp/>class<sp/>exists<sp/>elsewhere&quot;,<sp/>so<sp/>we<sp/>can<sp/>refer<sp/>to<sp/>it<sp/>without<sp/>including<sp/>its<sp/>full<sp/>definition.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>api::v2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classService" kindref="compound">Service</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>declaration<sp/>of<sp/>the<sp/>Service<sp/>domain<sp/>class<sp/>(a<sp/>bookable<sp/>service).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classCase" kindref="compound">Case</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>declaration<sp/>of<sp/>the<sp/>Case<sp/>domain<sp/>class<sp/>(a<sp/>patient<sp/>case).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classAppointment" kindref="compound">Appointment</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>declaration<sp/>of<sp/>the<sp/>Appointment<sp/>domain<sp/>class<sp/>(a<sp/>booked<sp/>slot).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="41"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>@concept<sp/>Client_t</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Constrains<sp/>`T`<sp/>to<sp/>api::v2::Client<sp/>or<sp/>a<sp/>type<sp/>derived<sp/>from<sp/>it.</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>@tparam<sp/>T<sp/>Type<sp/>to<sp/>test.</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>@see<sp/>Client</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>T<sp/>is<sp/>the<sp/>type<sp/>being<sp/>checked<sp/>when<sp/>a<sp/>template<sp/>is<sp/>used.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="conceptClient__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">concept<sp/></highlight><highlight class="normal"><ref refid="conceptClient__t" kindref="compound">Client_t</ref><sp/>=<sp/>std::is_base_of_v&lt;api::v2::Client,<sp/>T&gt;;<sp/><sp/></highlight><highlight class="comment">//<sp/>True<sp/>only<sp/>if<sp/>T<sp/>is<sp/>Client<sp/>or<sp/>inherits<sp/>from<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="50"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>@concept<sp/>Service_t</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Constrains<sp/>`T`<sp/>to<sp/>Service<sp/>or<sp/>a<sp/>type<sp/>derived<sp/>from<sp/>it.</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>@tparam<sp/>T<sp/>Type<sp/>to<sp/>test.</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>@see<sp/>Service</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>T<sp/>is<sp/>the<sp/>type<sp/>being<sp/>checked.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="conceptService__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">concept<sp/></highlight><highlight class="normal"><ref refid="conceptService__t" kindref="compound">Service_t</ref><sp/>=<sp/>std::is_base_of_v&lt;Service,<sp/>T&gt;;<sp/><sp/></highlight><highlight class="comment">//<sp/>True<sp/>only<sp/>if<sp/>T<sp/>is<sp/>Service<sp/>or<sp/>a<sp/>subclass<sp/>of<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="59"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/>@concept<sp/>Case_t</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Constrains<sp/>`T`<sp/>to<sp/>Case<sp/>or<sp/>a<sp/>type<sp/>derived<sp/>from<sp/>it.</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>@tparam<sp/>T<sp/>Type<sp/>to<sp/>test.</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>@see<sp/>Case</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>T<sp/>is<sp/>the<sp/>type<sp/>being<sp/>checked.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="conceptCase__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">concept<sp/></highlight><highlight class="normal"><ref refid="conceptCase__t" kindref="compound">Case_t</ref><sp/>=<sp/>std::is_base_of_v&lt;Case,<sp/>T&gt;;<sp/><sp/></highlight><highlight class="comment">//<sp/>True<sp/>only<sp/>if<sp/>T<sp/>is<sp/>Case<sp/>or<sp/>a<sp/>subclass<sp/>of<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="68"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*<sp/>@concept<sp/>Appointment_t</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Constrains<sp/>`T`<sp/>to<sp/>Appointment<sp/>or<sp/>a<sp/>type<sp/>derived<sp/>from<sp/>it.</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*<sp/>@tparam<sp/>T<sp/>Type<sp/>to<sp/>test.</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/>*<sp/>@see<sp/>Appointment</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>T<sp/>is<sp/>the<sp/>type<sp/>being<sp/>checked.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="conceptAppointment__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">concept<sp/></highlight><highlight class="normal"><ref refid="conceptAppointment__t" kindref="compound">Appointment_t</ref><sp/>=<sp/>std::is_base_of_v&lt;Appointment,<sp/>T&gt;;<sp/><sp/></highlight><highlight class="comment">//<sp/>True<sp/>only<sp/>if<sp/>T<sp/>is<sp/>Appointment<sp/>or<sp/>a<sp/>subclass<sp/>of<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/utils/global/concepts.hpp"/>
+  </compounddef>
+</doxygen>

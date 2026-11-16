@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_cb15ea40a38620ac3b50dbaf4d3ebcc8" kind="dir">
+    <compoundname>src/entities/base</compoundname>
+    <innerfile refid="base_8hpp">base.hpp</innerfile>
+    <innerfile refid="case_8hpp">case.hpp</innerfile>
+    <innerfile refid="client_8hpp">client.hpp</innerfile>
+    <innerfile refid="entity_8hpp">entity.hpp</innerfile>
+    <innerfile refid="service_8hpp">service.hpp</innerfile>
+    <innerfile refid="entities_2base_2types_8hpp">types.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/entities/base/"/>
+  </compounddef>
+</doxygen>

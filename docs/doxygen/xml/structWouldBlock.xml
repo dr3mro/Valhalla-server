@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structWouldBlock" kind="struct" language="C++" prot="public">
+    <compoundname>WouldBlock</compoundname>
+    <includes refid="dbprobe_8hpp" local="no">dbprobe.hpp</includes>
+    <briefdescription>
+<para>Control-flow signal that a request needs the database and must move off the IO thread. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Thrown by <ref refid="classDbProbe_1af3b9ebe61addb4dd1885a3d117221a1f" kindref="member">DbProbe::check()</ref> before any database access or response is written. It deliberately does not derive from <computeroutput>std::exception</computeroutput>, so controllers&apos; generic <computeroutput>catch (const std::exception&amp;)</computeroutput> blocks do not swallow it; only the dedicated <computeroutput>catch (const <ref refid="structWouldBlock" kindref="compound">WouldBlock</ref>&amp;)</computeroutput> in the fast-path wrapper handles it. <simplesect kind="see"><para><ref refid="classDbProbe" kindref="compound">DbProbe</ref>, <ref refid="classDbExecutor_1a5d6abf2368cd71250974124d570b7f2b" kindref="member">DbExecutor::ioFastPath</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/database/dbprobe.hpp" line="47" column="1" bodyfile="src/database/dbprobe.hpp" bodystart="48" bodyend="49"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

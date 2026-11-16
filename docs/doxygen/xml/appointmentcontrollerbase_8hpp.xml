@@ -1,0 +1,328 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="appointmentcontrollerbase_8hpp" kind="file" language="C++">
+    <compoundname>appointmentcontrollerbase.hpp</compoundname>
+    <includes local="no">optional</includes>
+    <includes local="no">string_view</includes>
+    <includes refid="callback_8hpp" local="yes">utils/global/callback.hpp</includes>
+    <includes local="yes">drogon/utils/coroutine.h</includes>
+    <includes refid="requester_8hpp" local="yes">utils/global/requester.hpp</includes>
+    <includedby refid="appointments_8hpp" local="yes">src/api/v2/routes/appointments.hpp</includedby>
+    <includedby refid="appointmentcontroller_8cpp" local="yes">src/controllers/appointmentcontroller/appointmentcontroller.cpp</includedby>
+    <includedby refid="appointmentcontroller_8hpp" local="yes">src/controllers/appointmentcontroller/appointmentcontroller.hpp</includedby>
+    <includedby refid="servicecontroller_8cpp" local="yes">src/controllers/servicecontroller/servicecontroller.cpp</includedby>
+    <includedby refid="servicecontrollerbase_8hpp" local="yes">src/controllers/servicecontroller/servicecontrollerbase.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp</label>
+        <link refid="appointmentcontrollerbase_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>utils/global/callback.hpp</label>
+        <link refid="callback_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>utils/global/requester.hpp</label>
+        <link refid="requester_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>cstdint</label>
+      </node>
+      <node id="6">
+        <label>drogon/utils/coroutine.h</label>
+      </node>
+      <node id="5">
+        <label>functional</label>
+      </node>
+      <node id="2">
+        <label>optional</label>
+      </node>
+      <node id="9">
+        <label>string</label>
+      </node>
+      <node id="3">
+        <label>string_view</label>
+      </node>
+      <node id="10">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>src/api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/api/v2/routes/appointments.hpp</label>
+        <link refid="appointments_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/api/v2/routes/services.hpp</label>
+        <link refid="services_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
+        <link refid="appointmentcontroller_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
+        <link refid="appointmentcontroller_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp</label>
+        <link refid="appointmentcontrollerbase_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
+        <link refid="servicecontroller_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/controllers/servicecontroller/servicecontroller.hpp</label>
+        <link refid="servicecontroller_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>src/controllers/servicecontroller/servicecontrollerbase.hpp</label>
+        <link refid="servicecontrollerbase_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classAppointmentControllerBase" prot="public">AppointmentControllerBase</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" prot="public" static="no">
+        <type><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">api::v2::Requester</ref></type>
+        <definition>using Requester = api::v2::Requester</definition>
+        <argsstring></argsstring>
+        <name>Requester</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="39" column="1" bodyfile="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Type-erased interface for appointment-entity CRUD+S operations. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>In plain words, this file lists the jobs every &quot;appointment entity&quot; must support. Those jobs are: Create a new appointment, Read one, Update one, Delete one, and Search through many — together called &quot;CRUD+S&quot;. &quot;Type-erased&quot; is a fancy word for hiding the exact type: the rest of the server can call these jobs without knowing which kind of appointment is actually behind them. Each job appears twice: an ordinary version that reports its result through a callback (a &quot;call me when you are done&quot; function), and an &quot;async&quot; version that uses a coroutine (a function that can pause and resume later). This file only declares the jobs; the real work lives in the class that inherits from it.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: This is the doorway the appointments HTTP routes use to reach every appointment controller. Because the functions here are &quot;virtual&quot;, one route handler can serve clinics, pharmacies, laboratories and radiology-center appointments alike — the call is forwarded to the right concrete object (chosen with a <computeroutput>std::variant</computeroutput>, a box that can hold one of several types). This file calls into nothing itself, but it is called by the appointments route registry and it is the contract <ref refid="classAppointmentController" kindref="compound">AppointmentController</ref> fulfils. Without it, each appointment route would need separate code for every entity type.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>Virtual functions (calling the right version through a base pointer): <ulink url="https://en.cppreference.com/w/cpp/language/virtual">https://en.cppreference.com/w/cpp/language/virtual</ulink></para>
+</listitem><listitem><para>C++20 coroutines (functions that pause and resume with co_await/co_return): <ulink url="https://en.cppreference.com/w/cpp/language/coroutines">https://en.cppreference.com/w/cpp/language/coroutines</ulink></para>
+</listitem><listitem><para>std::optional (a value that may be absent): <ulink url="https://en.cppreference.com/w/cpp/utility/optional">https://en.cppreference.com/w/cpp/utility/optional</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>appointmentcontrollerbase.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Type-erased<sp/>interface<sp/>for<sp/>appointment-entity<sp/>CRUD+S<sp/>operations.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>In<sp/>plain<sp/>words,<sp/>this<sp/>file<sp/>lists<sp/>the<sp/>jobs<sp/>every<sp/>&quot;appointment<sp/>entity&quot;<sp/>must<sp/>support.<sp/>Those</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jobs<sp/>are:<sp/>Create<sp/>a<sp/>new<sp/>appointment,<sp/>Read<sp/>one,<sp/>Update<sp/>one,<sp/>Delete<sp/>one,<sp/>and<sp/>Search<sp/>through</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>many<sp/>—<sp/>together<sp/>called<sp/>&quot;CRUD+S&quot;.<sp/>&quot;Type-erased&quot;<sp/>is<sp/>a<sp/>fancy<sp/>word<sp/>for<sp/>hiding<sp/>the<sp/>exact<sp/>type:</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>rest<sp/>of<sp/>the<sp/>server<sp/>can<sp/>call<sp/>these<sp/>jobs<sp/>without<sp/>knowing<sp/>which<sp/>kind<sp/>of<sp/>appointment<sp/>is</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>actually<sp/>behind<sp/>them.<sp/>Each<sp/>job<sp/>appears<sp/>twice:<sp/>an<sp/>ordinary<sp/>version<sp/>that<sp/>reports<sp/>its<sp/>result</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>through<sp/>a<sp/>callback<sp/>(a<sp/>&quot;call<sp/>me<sp/>when<sp/>you<sp/>are<sp/>done&quot;<sp/>function),<sp/>and<sp/>an<sp/>&quot;async&quot;<sp/>version<sp/>that</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uses<sp/>a<sp/>coroutine<sp/>(a<sp/>function<sp/>that<sp/>can<sp/>pause<sp/>and<sp/>resume<sp/>later).<sp/>This<sp/>file<sp/>only<sp/>declares<sp/>the</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jobs;<sp/>the<sp/>real<sp/>work<sp/>lives<sp/>in<sp/>the<sp/>class<sp/>that<sp/>inherits<sp/>from<sp/>it.</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>the<sp/>doorway<sp/>the<sp/>appointments<sp/>HTTP<sp/>routes<sp/>use<sp/>to<sp/>reach<sp/>every<sp/>appointment<sp/>controller.<sp/>Because</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>the<sp/>functions<sp/>here<sp/>are<sp/>&quot;virtual&quot;,<sp/>one<sp/>route<sp/>handler<sp/>can<sp/>serve<sp/>clinics,<sp/>pharmacies,<sp/>laboratories<sp/>and</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>radiology-center<sp/>appointments<sp/>alike<sp/>—<sp/>the<sp/>call<sp/>is<sp/>forwarded<sp/>to<sp/>the<sp/>right<sp/>concrete<sp/>object<sp/>(chosen</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>with<sp/>a<sp/>`std::variant`,<sp/>a<sp/>box<sp/>that<sp/>can<sp/>hold<sp/>one<sp/>of<sp/>several<sp/>types).<sp/>This<sp/>file<sp/>calls<sp/>into<sp/>nothing<sp/>itself,</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>but<sp/>it<sp/>is<sp/>called<sp/>by<sp/>the<sp/>appointments<sp/>route<sp/>registry<sp/>and<sp/>it<sp/>is<sp/>the<sp/>contract<sp/>@ref<sp/>AppointmentController</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>fulfils.<sp/>Without<sp/>it,<sp/>each<sp/>appointment<sp/>route<sp/>would<sp/>need<sp/>separate<sp/>code<sp/>for<sp/>every<sp/>entity<sp/>type.</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>Virtual<sp/>functions<sp/>(calling<sp/>the<sp/>right<sp/>version<sp/>through<sp/>a<sp/>base<sp/>pointer):<sp/>https://en.cppreference.com/w/cpp/language/virtual</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>-<sp/>C++20<sp/>coroutines<sp/>(functions<sp/>that<sp/>pause<sp/>and<sp/>resume<sp/>with<sp/>co_await/co_return):<sp/>https://en.cppreference.com/w/cpp/language/coroutines</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>-<sp/>std::optional<sp/>(a<sp/>value<sp/>that<sp/>may<sp/>be<sp/>absent):<sp/>https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>file<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file,<sp/>so<sp/>its<sp/>declarations<sp/>are<sp/>never<sp/>duplicated.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Gives<sp/>std::optional:<sp/>a<sp/>box<sp/>that<sp/>either<sp/>holds<sp/>a<sp/>value<sp/>or<sp/>says<sp/>&quot;there<sp/>is<sp/>no<sp/>value&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Gives<sp/>std::string_view:<sp/>a<sp/>cheap,<sp/>non-owning<sp/>view<sp/>over<sp/>a<sp/>stretch<sp/>of<sp/>text.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="callback_8hpp" kindref="compound">utils/global/callback.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Defines<sp/>CALLBACK_,<sp/>the<sp/>&quot;call<sp/>me<sp/>when<sp/>finished&quot;<sp/>function<sp/>type<sp/>passed<sp/>to<sp/>every<sp/>operation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;drogon/utils/coroutine.h&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Drogon&apos;s<sp/>coroutine<sp/>support;<sp/>defines<sp/>drogon::Task,<sp/>the<sp/>pausable<sp/>task<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="requester_8hpp" kindref="compound">utils/global/requester.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Defines<sp/>api::v2::Requester:<sp/>who<sp/>is<sp/>making<sp/>the<sp/>request<sp/>(used<sp/>for<sp/>permission<sp/>checks).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="structRequester" kindref="compound">Requester</ref><sp/>=<sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">api::v2::Requester</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>short<sp/>nickname<sp/>so<sp/>we<sp/>can<sp/>write<sp/>&quot;Requester&quot;<sp/>instead<sp/>of<sp/>the<sp/>longer<sp/>&quot;api::v2::Requester&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="41"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>@class<sp/>AppointmentControllerBase</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Type-erased<sp/>interface<sp/>for<sp/>appointment-entity<sp/>CRUD+S<sp/>operations.</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>@details<sp/>Declares<sp/>a<sp/>synchronous<sp/>callback<sp/>form<sp/>and<sp/>a<sp/>coroutine<sp/>(`drogon::Task&lt;void&gt;`)<sp/>form<sp/>of</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>every<sp/>operation.<sp/>The<sp/>appointments<sp/>route<sp/>registry<sp/>reaches<sp/>concrete<sp/>controllers<sp/>through</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this<sp/>base<sp/>via<sp/>a<sp/>`std::variant`,<sp/>so<sp/>its<sp/>virtual<sp/>functions<sp/>are<sp/>the<sp/>dispatch<sp/>point<sp/>used<sp/>by</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>a<sp/>single<sp/>route<sp/>handler<sp/>for<sp/>all<sp/>appointment<sp/>entity<sp/>types.</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>In<sp/>plain<sp/>words:<sp/>&quot;synchronous&quot;<sp/>means<sp/>the<sp/>answer<sp/>arrives<sp/>through<sp/>a<sp/>callback<sp/>function,<sp/>while</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>coroutine<sp/>(`drogon::Task&lt;void&gt;`)<sp/>versions<sp/>can<sp/>be<sp/>paused<sp/>with<sp/>co_await<sp/>so<sp/>the<sp/>server<sp/>can</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>do<sp/>other<sp/>work<sp/>meanwhile.<sp/>&quot;Virtual<sp/>functions&quot;<sp/>mean<sp/>a<sp/>call<sp/>made<sp/>through<sp/>this<sp/>base<sp/>runs<sp/>the<sp/>real</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>object&apos;s<sp/>version.<sp/>A<sp/>`std::variant`<sp/>is<sp/>a<sp/>box<sp/>that<sp/>can<sp/>hold<sp/>one<sp/>of<sp/>several<sp/>controller<sp/>types.</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Invocation<sp/>contract<sp/>shared<sp/>by<sp/>every<sp/>method:</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>`callback`<sp/>is<sp/>`std::function&lt;void(int,<sp/>const<sp/>std::string&amp;)&gt;`,<sp/>it<sp/>is<sp/>moved<sp/>through<sp/>the</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>call<sp/>chain<sp/>and,<sp/>by<sp/>contract,<sp/>invoked<sp/>once<sp/>on<sp/>each<sp/>completion<sp/>path,<sp/>including</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>failures.<sp/>Its<sp/>first<sp/>argument<sp/>is<sp/>an<sp/>@ref<sp/>api::v2::Http::Status<sp/>code,<sp/>its<sp/>second<sp/>a</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>response<sp/>body.</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>`requester`<sp/>is<sp/>the<sp/>authenticated<sp/>caller<sp/>identity<sp/>consulted<sp/>for<sp/>authorisation.</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>`data`<sp/>is<sp/>a<sp/>non-owning<sp/>view<sp/>of<sp/>the<sp/>raw<sp/>JSON<sp/>request<sp/>body,<sp/>valid<sp/>only<sp/>for<sp/>the<sp/>call.</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>`_id`<sp/>is<sp/>the<sp/>optional<sp/>target<sp/>id;<sp/>absence<sp/>is<sp/>handled<sp/>by<sp/>the<sp/>concrete<sp/>implementation.</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>`*Async`<sp/>methods<sp/>must<sp/>be<sp/>co_awaited;<sp/>the<sp/>HTTP<sp/>layer<sp/>wraps<sp/>them<sp/>in</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`drogon::async_run`<sp/>and<sp/>turns<sp/>the<sp/>callback<sp/>result<sp/>into<sp/>a<sp/>reply.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>@note<sp/>The<sp/>interface<sp/>itself<sp/>is<sp/>stateless;<sp/>behaviour<sp/>lives<sp/>in<sp/>@ref<sp/>AppointmentController.</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>@see<sp/>AppointmentController,<sp/>EntityControllerBase,<sp/>Controller</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classAppointmentControllerBase" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac" kindref="member">AppointmentControllerBase</ref></highlight></codeline>
+<codeline lineno="69"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>construction;<sp/>the<sp/>interface<sp/>holds<sp/>no<sp/>state<sp/>of<sp/>its<sp/>own.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac" kindref="member">AppointmentControllerBase</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;explicit&quot;<sp/>blocks<sp/>surprise<sp/>implicit<sp/>conversions;<sp/>&quot;=<sp/>default&quot;<sp/>uses<sp/>the<sp/>compiler-written<sp/>constructor.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Move<sp/>construction<sp/>is<sp/>allowed;<sp/>copies<sp/>share<sp/>no<sp/>operation<sp/>state.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classAppointmentControllerBase_1af75003bf9e6874f6c577c5c1c05d5cf7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classAppointmentControllerBase_1af75003bf9e6874f6c577c5c1c05d5cf7" kindref="member">AppointmentControllerBase</ref>(<ref refid="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac" kindref="member">AppointmentControllerBase</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Moving<sp/>is<sp/>fine<sp/>because<sp/>there<sp/>is<sp/>no<sp/>state<sp/>to<sp/>transfer.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Copy<sp/>construction<sp/>is<sp/>allowed.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classAppointmentControllerBase_1a6adc76394966241dc855c8dfe4818271" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classAppointmentControllerBase_1a6adc76394966241dc855c8dfe4818271" kindref="member">AppointmentControllerBase</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac" kindref="member">AppointmentControllerBase</ref>&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copying<sp/>is<sp/>also<sp/>fine<sp/>for<sp/>the<sp/>same<sp/>&quot;no<sp/>state&quot;<sp/>reason.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Move<sp/>assignment<sp/>is<sp/>allowed.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="classAppointmentControllerBase_1a69bb5308a8526f51cbe6ca2d3143d374" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac" kindref="member">AppointmentControllerBase</ref>&amp;<sp/><ref refid="classAppointmentControllerBase_1a69bb5308a8526f51cbe6ca2d3143d374" kindref="member">operator=</ref>(<ref refid="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac" kindref="member">AppointmentControllerBase</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Move-assignment<sp/>is<sp/>harmless<sp/>with<sp/>no<sp/>data<sp/>to<sp/>move.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Copy<sp/>assignment<sp/>is<sp/>allowed.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classAppointmentControllerBase_1a2810286950caafd54a805ee51b8174c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac" kindref="member">AppointmentControllerBase</ref>&amp;<sp/><ref refid="classAppointmentControllerBase_1a2810286950caafd54a805ee51b8174c7" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac" kindref="member">AppointmentControllerBase</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copy-assignment<sp/>is<sp/>harmless<sp/>too.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Virtual<sp/>destructor<sp/>so<sp/>derived<sp/>controllers<sp/>can<sp/>be<sp/>released<sp/>through<sp/>this<sp/>interface.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="classAppointmentControllerBase_1aac2dc02319f959dd2e7427de1db0ac63" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classAppointmentControllerBase_1aac2dc02319f959dd2e7427de1db0ac63" kindref="member">~AppointmentControllerBase</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;virtual&quot;<sp/>ensures<sp/>deleting<sp/>through<sp/>this<sp/>base<sp/>pointer<sp/>still<sp/>runs<sp/>the<sp/>derived<sp/>class&apos;s<sp/>cleanup.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>CRUDS<sp/>—<sp/>short<sp/>label<sp/>meaning<sp/>Create-Read-Update-Delete-Search,<sp/>the<sp/>five<sp/>jobs<sp/>grouped<sp/>below.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Creates<sp/>an<sp/>appointment<sp/>entity<sp/>from<sp/>a<sp/>JSON<sp/>request<sp/>body.</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>create-permission<sp/>check.</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>request<sp/>body.</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="classAppointmentControllerBase_1ab647aad281f3e7b378ce3a80f6f2d812" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAppointmentControllerBase_1ab647aad281f3e7b378ce3a80f6f2d812" kindref="member">Create</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;=<sp/>0&quot;<sp/>=<sp/>pure<sp/>virtual:<sp/>derived<sp/>classes<sp/>MUST<sp/>implement<sp/>this;<sp/>&quot;virtual&quot;<sp/>enables<sp/>base-pointer<sp/>dispatch.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>Create.</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>create-permission<sp/>check.</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>request<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>until<sp/>the<sp/>task<sp/>completes.</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="classAppointmentControllerBase_1aa38e2ee7e8e67fc65efa2ae579b8b292" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classAppointmentControllerBase_1aa38e2ee7e8e67fc65efa2ae579b8b292" kindref="member">CreateAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Same<sp/>job<sp/>as<sp/>Create,<sp/>but<sp/>returns<sp/>a<sp/>pausable<sp/>task.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Reads<sp/>one<sp/>appointment<sp/>entity<sp/>identified<sp/>by<sp/>an<sp/>`id`/`schema`<sp/>JSON<sp/>request.</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>read-permission<sp/>check.</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>request<sp/>body<sp/>containing<sp/>`id`<sp/>and<sp/>requested<sp/>`schema`.</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classAppointmentControllerBase_1ac74bf3e7c5e5ce53b463fc56ce84c1f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAppointmentControllerBase_1ac74bf3e7c5e5ce53b463fc56ce84c1f7" kindref="member">Read</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Pure<sp/>virtual<sp/>read<sp/>job;<sp/>the<sp/>real<sp/>code<sp/>lives<sp/>in<sp/>the<sp/>derived<sp/>controller.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>Read.</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>read-permission<sp/>check.</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>request<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>until<sp/>the<sp/>task<sp/>completes.</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="classAppointmentControllerBase_1acd60a9aa9a593fa82c7407008ba6cc3d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classAppointmentControllerBase_1acd60a9aa9a593fa82c7407008ba6cc3d" kindref="member">ReadAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Pausable<sp/>version<sp/>of<sp/>Read.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Updates<sp/>the<sp/>appointment<sp/>entity<sp/>identified<sp/>by<sp/>@p<sp/>_id<sp/>from<sp/>a<sp/>JSON<sp/>request<sp/>body.</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>update-permission<sp/>check.</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>request<sp/>body<sp/>with<sp/>the<sp/>fields<sp/>to<sp/>change.</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id;<sp/>a<sp/>disengaged<sp/>optional<sp/>is<sp/>rejected<sp/>by<sp/>the<sp/>implementation.</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120" refid="classAppointmentControllerBase_1a8a91b4e32b1afb820d5b1b7af83469a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAppointmentControllerBase_1a8a91b4e32b1afb820d5b1b7af83469a9" kindref="member">Update</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data,<sp/>std::optional&lt;uint64_t&gt;<sp/>_id)<sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;_id&quot;<sp/>may<sp/>hold<sp/>&quot;no<sp/>value&quot;;<sp/>the<sp/>derived<sp/>class<sp/>decides<sp/>if<sp/>that<sp/>is<sp/>an<sp/>error.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>Update.</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>update-permission<sp/>check.</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>request<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>until<sp/>the<sp/>task<sp/>completes.</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id;<sp/>a<sp/>disengaged<sp/>optional<sp/>is<sp/>rejected<sp/>by<sp/>the<sp/>implementation.</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="classAppointmentControllerBase_1a4b35caba8ea117928f1f0a13855d5e94" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classAppointmentControllerBase_1a4b35caba8ea117928f1f0a13855d5e94" kindref="member">UpdateAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data,<sp/>std::optional&lt;uint64_t&gt;<sp/>_id)<sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Pausable<sp/>form<sp/>of<sp/>Update.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Deletes<sp/>the<sp/>appointment<sp/>entity<sp/>identified<sp/>by<sp/>@p<sp/>_id.</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>delete-permission<sp/>check.</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id;<sp/>a<sp/>disengaged<sp/>optional<sp/>is<sp/>rejected<sp/>by<sp/>the<sp/>implementation.</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="classAppointmentControllerBase_1a1677d9a8337072581bc9e2e658b5c9ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAppointmentControllerBase_1a1677d9a8337072581bc9e2e658b5c9ec" kindref="member">Delete</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::optional&lt;uint64_t&gt;<sp/>_id)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Pure<sp/>virtual<sp/>delete<sp/>job;<sp/>needs<sp/>only<sp/>the<sp/>target<sp/>id,<sp/>not<sp/>a<sp/>JSON<sp/>body.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>Delete.</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>delete-permission<sp/>check.</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id;<sp/>a<sp/>disengaged<sp/>optional<sp/>is<sp/>rejected<sp/>by<sp/>the<sp/>implementation.</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="classAppointmentControllerBase_1a1d3056a1551d3ab67042f274db3c86a7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classAppointmentControllerBase_1a1d3056a1551d3ab67042f274db3c86a7" kindref="member">DeleteAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::optional&lt;uint64_t&gt;<sp/>_id)<sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Pausable<sp/>form<sp/>of<sp/>Delete.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Runs<sp/>a<sp/>paginated<sp/>search<sp/>over<sp/>appointment<sp/>entities.</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Implementations<sp/>return<sp/>a<sp/>JSON<sp/>object<sp/>with<sp/>`results`,<sp/>`more`<sp/>and<sp/>`offset`;<sp/>the</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>requester<sp/>is<sp/>accepted<sp/>for<sp/>interface<sp/>symmetry<sp/>but<sp/>need<sp/>not<sp/>be<sp/>consulted.</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>(unused<sp/>by<sp/>the<sp/>shipped<sp/>search<sp/>implementation).</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>search<sp/>criteria.</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="classAppointmentControllerBase_1aa79a4ad4a10da6c9d6b791df603fc907" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAppointmentControllerBase_1aa79a4ad4a10da6c9d6b791df603fc907" kindref="member">Search</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Pure<sp/>virtual<sp/>search<sp/>job;<sp/>&quot;paginated&quot;<sp/>means<sp/>results<sp/>come<sp/>back<sp/>in<sp/>pages<sp/>via<sp/>the<sp/>offset.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp"/>
+  </compounddef>
+</doxygen>

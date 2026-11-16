@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classapi_1_1v2_1_1JsonHelper" kind="class" language="C++" prot="public">
+    <compoundname>api::v2::JsonHelper</compoundname>
+    <includes refid="jsonhelper_8hpp" local="no">jsonhelper.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::JsonHelper::JsonHelper</definition>
+        <argsstring>()=delete</argsstring>
+        <name>JsonHelper</name>
+        <qualifiedname>api::v2::JsonHelper::JsonHelper</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>No instances: the class is a namespace for static helpers. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="48" column="9"/>
+        <referencedby refid="classapi_1_1v2_1_1JsonHelper_1a5052f5e2e89fd6a559696da47b1fd207">JsonHelper</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1JsonHelper_1a78798871d18d003644e4907fa4459db2">JsonHelper</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1JsonHelper_1a260ef7e1999f9d532d74694dbcfc515b">operator=</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1JsonHelper_1adc89873d3846af98352e52714f07ed48">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1JsonHelper_1ac95eb89cccec4cdb2d2fe73aaf59baba" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual api::v2::JsonHelper::~JsonHelper</definition>
+        <argsstring>()=delete</argsstring>
+        <name>~JsonHelper</name>
+        <qualifiedname>api::v2::JsonHelper::~JsonHelper</qualifiedname>
+        <briefdescription>
+<para>Destruction is disabled; instances cannot exist. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="52" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1JsonHelper_1a78798871d18d003644e4907fa4459db2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::JsonHelper::JsonHelper</definition>
+        <argsstring>(JsonHelper &amp;&amp;)=delete</argsstring>
+        <name>JsonHelper</name>
+        <qualifiedname>api::v2::JsonHelper::JsonHelper</qualifiedname>
+        <param>
+          <type>JsonHelper &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>Move construction is disabled; the class is never instantiated. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="57" column="9"/>
+        <references refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec">JsonHelper</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1JsonHelper_1a5052f5e2e89fd6a559696da47b1fd207" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::JsonHelper::JsonHelper</definition>
+        <argsstring>(const JsonHelper &amp;)=delete</argsstring>
+        <name>JsonHelper</name>
+        <qualifiedname>api::v2::JsonHelper::JsonHelper</qualifiedname>
+        <param>
+          <type>const JsonHelper &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy construction is disabled; the class is never instantiated. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="61" column="9"/>
+        <references refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec">JsonHelper</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1JsonHelper_1adc89873d3846af98352e52714f07ed48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec" kindref="member">JsonHelper</ref> &amp;</type>
+        <definition>JsonHelper &amp; api::v2::JsonHelper::operator=</definition>
+        <argsstring>(JsonHelper &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>api::v2::JsonHelper::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec" kindref="member">JsonHelper</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>Move assignment is disabled; the class is never instantiated. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="66" column="20"/>
+        <references refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec">JsonHelper</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1JsonHelper_1a260ef7e1999f9d532d74694dbcfc515b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec" kindref="member">JsonHelper</ref> &amp;</type>
+        <definition>JsonHelper &amp; api::v2::JsonHelper::operator=</definition>
+        <argsstring>(const JsonHelper &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>api::v2::JsonHelper::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec" kindref="member">JsonHelper</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy assignment is disabled; the class is never instantiated. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="70" column="20"/>
+        <references refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec">JsonHelper</references>
+        <references refid="classapi_1_1v2_1_1JsonHelper_1a641560db2243ef5bca5bb763e98b3b43" compoundref="jsonhelper_8cpp" startline="27" endline="33">jsonify</references>
+        <references refid="classapi_1_1v2_1_1JsonHelper_1a1b5317049b9d7659fea55b9f6c96c379" compoundref="jsonhelper_8cpp" startline="41" endline="41">stringify</references>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1JsonHelper_1a641560db2243ef5bca5bb763e98b3b43" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Json::Value</type>
+        <definition>Json::Value api::v2::JsonHelper::jsonify</definition>
+        <argsstring>(const std::string &amp;message)</argsstring>
+        <name>jsonify</name>
+        <qualifiedname>api::v2::JsonHelper::jsonify</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Wraps a message in a JSON object with a single &quot;Message&quot; key. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Text to place in the object, often an error or status string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A JsonCpp value suitable for a Drogon response body. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="77" column="28" bodyfile="src/utils/jsonhelper/jsonhelper.cpp" bodystart="27" bodyend="33"/>
+        <referencedby refid="classapi_1_1v2_1_1Filters_1_1Auth_1a3b6912ca8535567fb2c00dc07e0cc1ce" compoundref="auth_8hpp" startline="81" endline="189">api::v2::Filters::Auth::doFilter</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Hello_1a6f92ff78f4fcb20b3a26ac4cf12e3e79" compoundref="hello_8hpp" startline="52" endline="59">api::v2::Hello::hello</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="224" endline="289">api::v2::SessionManager::logout</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1JsonHelper_1a260ef7e1999f9d532d74694dbcfc515b">operator=</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Helper_1a0e93abbeb3346f2d972a1894c31cb245" compoundref="helper_8cpp" startline="88" endline="93">api::v2::Helper::prepare</referencedby>
+        <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="92" endline="148">Server::run</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1JsonHelper_1a1b5317049b9d7659fea55b9f6c96c379" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string api::v2::JsonHelper::stringify</definition>
+        <argsstring>(const Json::Value &amp;json)</argsstring>
+        <name>stringify</name>
+        <qualifiedname>api::v2::JsonHelper::stringify</qualifiedname>
+        <param>
+          <type>const Json::Value &amp;</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+<para>Serialises a JsonCpp value to a formatted string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">json</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to serialise. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pretty-printed JSON text (JsonCpp&apos;s <computeroutput>toStyledString</computeroutput>). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="84" column="28" bodyfile="src/utils/jsonhelper/jsonhelper.cpp" bodystart="41" bodyend="41"/>
+        <referencedby refid="classapi_1_1v2_1_1Filters_1_1Auth_1a3b6912ca8535567fb2c00dc07e0cc1ce" compoundref="auth_8hpp" startline="81" endline="189">api::v2::Filters::Auth::doFilter</referencedby>
+        <referencedby refid="classController_1ad8517f93d94b2584124d06d0904c8c28" compoundref="controller_8hpp" startline="443" endline="470">Controller::GetServices</referencedby>
+        <referencedby refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="483" endline="511">Controller::GetServicesAsync</referencedby>
+        <referencedby refid="classController_1acd1d7cb00688b69469719ff7789f3cd9" compoundref="controller_8hpp" startline="523" endline="545">Controller::GetVisits</referencedby>
+        <referencedby refid="classController_1a2af2297a7b4fcce1f987510786aaa5d7" compoundref="controller_8hpp" startline="557" endline="580">Controller::GetVisitsAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="224" endline="289">api::v2::SessionManager::logout</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1JsonHelper_1a260ef7e1999f9d532d74694dbcfc515b">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1JsonHelper_1ade4746bc7ad2022dcd1caae268066f20" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string api::v2::JsonHelper::stringify</definition>
+        <argsstring>(const jsoncons::json &amp;json)</argsstring>
+        <name>stringify</name>
+        <qualifiedname>api::v2::JsonHelper::stringify</qualifiedname>
+        <param>
+          <type>const jsoncons::json &amp;</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+<para>Serialises a jsoncons value to a formatted string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">json</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to serialise. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pretty-printed JSON text (jsoncons <computeroutput>dump_pretty</computeroutput>). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="91" column="28" bodyfile="src/utils/jsonhelper/jsonhelper.cpp" bodystart="34" bodyend="40"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Stateless bridge between the two JSON libraries and response bodies. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The codebase uses JsonCpp for HTTP responses (Drogon) and jsoncons for validation. This utility wraps simple message objects and serialises either representation to a pretty-printed string. All members are static and construction is deleted: there is no state and no thread-safety concern beyond the underlying libraries. <simplesect kind="see"><para><ref refid="classValidator" kindref="compound">Validator</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/utils/jsonhelper/jsonhelper.hpp" line="42" column="5" bodyfile="src/utils/jsonhelper/jsonhelper.hpp" bodystart="43" bodyend="92"/>
+    <listofallmembers>
+      <member refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec" prot="public" virt="non-virtual"><scope>api::v2::JsonHelper</scope><name>JsonHelper</name></member>
+      <member refid="classapi_1_1v2_1_1JsonHelper_1a78798871d18d003644e4907fa4459db2" prot="public" virt="non-virtual"><scope>api::v2::JsonHelper</scope><name>JsonHelper</name></member>
+      <member refid="classapi_1_1v2_1_1JsonHelper_1a5052f5e2e89fd6a559696da47b1fd207" prot="public" virt="non-virtual"><scope>api::v2::JsonHelper</scope><name>JsonHelper</name></member>
+      <member refid="classapi_1_1v2_1_1JsonHelper_1a641560db2243ef5bca5bb763e98b3b43" prot="public" virt="non-virtual"><scope>api::v2::JsonHelper</scope><name>jsonify</name></member>
+      <member refid="classapi_1_1v2_1_1JsonHelper_1adc89873d3846af98352e52714f07ed48" prot="public" virt="non-virtual"><scope>api::v2::JsonHelper</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1JsonHelper_1a260ef7e1999f9d532d74694dbcfc515b" prot="public" virt="non-virtual"><scope>api::v2::JsonHelper</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1JsonHelper_1a1b5317049b9d7659fea55b9f6c96c379" prot="public" virt="non-virtual"><scope>api::v2::JsonHelper</scope><name>stringify</name></member>
+      <member refid="classapi_1_1v2_1_1JsonHelper_1ade4746bc7ad2022dcd1caae268066f20" prot="public" virt="non-virtual"><scope>api::v2::JsonHelper</scope><name>stringify</name></member>
+      <member refid="classapi_1_1v2_1_1JsonHelper_1ac95eb89cccec4cdb2d2fe73aaf59baba" prot="public" virt="virtual"><scope>api::v2::JsonHelper</scope><name>~JsonHelper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

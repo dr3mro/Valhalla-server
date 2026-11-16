@@ -1,0 +1,577 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="requester_8hpp" kind="file" language="C++">
+    <compoundname>requester.hpp</compoundname>
+    <includes local="no">cstdint</includes>
+    <includes local="no">string</includes>
+    <includes local="no">utility</includes>
+    <includedby refid="common_8hpp" local="yes">src/api/v2/basic/common.hpp</includedby>
+    <includedby refid="appointmentcontrollerbase_8hpp" local="yes">src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp</includedby>
+    <includedby refid="clientcontrollerbase_8hpp" local="yes">src/controllers/clientcontroller/clientcontrollerbase.hpp</includedby>
+    <includedby refid="cliniccontrollerbase_8hpp" local="yes">src/controllers/cliniccontroller/cliniccontrollerbase.hpp</includedby>
+    <includedby refid="entitycontrollerbase_8hpp" local="yes">src/controllers/entitycontroller/entitycontrollerbase.hpp</includedby>
+    <includedby refid="servicecontrollerbase_8hpp" local="yes">src/controllers/servicecontroller/servicecontrollerbase.hpp</includedby>
+    <includedby refid="staffcontrollerBase_8hpp" local="yes">src/controllers/staffcontroller/staffcontrollerBase.hpp</includedby>
+    <includedby refid="gatekeeper_8cpp" local="yes">src/gatekeeper/gatekeeper.cpp</includedby>
+    <includedby refid="gatekeeper_8hpp" local="yes">src/gatekeeper/gatekeeper.hpp</includedby>
+    <includedby refid="permissionmanager_8cpp" local="yes">src/gatekeeper/permissionmanager/permissionmanager.cpp</includedby>
+    <includedby refid="permissionmanager_8hpp" local="yes">src/gatekeeper/permissionmanager/permissionmanager.hpp</includedby>
+    <includedby refid="permissionmanager__private_8cpp" local="yes">src/gatekeeper/permissionmanager/permissionmanager_private.cpp</includedby>
+    <includedby refid="permissionmanager__private_8hpp" local="yes">src/gatekeeper/permissionmanager/permissionmanager_private.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/utils/global/requester.hpp</label>
+        <link refid="requester_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cstdint</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4">
+        <label>src/api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/api/v2/basic/common.hpp</label>
+        <link refid="common_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>src/api/v2/filters/auth.hpp</label>
+        <link refid="auth_8hpp"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>src/api/v2/filters/ratelimit.hpp</label>
+        <link refid="ratelimit_8hpp"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/api/v2/routes/appointments.hpp</label>
+        <link refid="appointments_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/api/v2/routes/clients.hpp</label>
+        <link refid="clients_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/api/v2/routes/clinics.hpp</label>
+        <link refid="api_2v2_2routes_2clinics_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>src/api/v2/routes/doc.hpp</label>
+        <link refid="doc_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/api/v2/routes/hello.hpp</label>
+        <link refid="hello_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/api/v2/routes/services.hpp</label>
+        <link refid="services_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>src/api/v2/routes/staff.hpp</label>
+        <link refid="staff_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
+        <link refid="appointmentcontroller_8cpp"/>
+      </node>
+      <node id="14">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
+        <link refid="appointmentcontroller_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp</label>
+        <link refid="appointmentcontrollerbase_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>src/controllers/base/controller/controller.hpp</label>
+        <link refid="controller_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>src/controllers/clientcontroller/clientcontroller.cpp</label>
+        <link refid="clientcontroller_8cpp"/>
+      </node>
+      <node id="19">
+        <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
+        <link refid="clientcontroller_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>src/controllers/clientcontroller/clientcontrollerbase.hpp</label>
+        <link refid="clientcontrollerbase_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
+        <link refid="cliniccontroller_8cpp"/>
+      </node>
+      <node id="22">
+        <label>src/controllers/cliniccontroller/cliniccontroller.hpp</label>
+        <link refid="cliniccontroller_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>src/controllers/cliniccontroller/cliniccontrollerbase.hpp</label>
+        <link refid="cliniccontrollerbase_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
+        <link refid="entitycontroller_8cpp"/>
+      </node>
+      <node id="26">
+        <label>src/controllers/entitycontroller/entitycontroller.hpp</label>
+        <link refid="entitycontroller_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>src/controllers/entitycontroller/entitycontrollerbase.hpp</label>
+        <link refid="entitycontrollerbase_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
+        <link refid="servicecontroller_8cpp"/>
+      </node>
+      <node id="17">
+        <label>src/controllers/servicecontroller/servicecontroller.hpp</label>
+        <link refid="servicecontroller_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>src/controllers/servicecontroller/servicecontrollerbase.hpp</label>
+        <link refid="servicecontrollerbase_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
+        <link refid="staffcontroller_8cpp"/>
+      </node>
+      <node id="29">
+        <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
+        <link refid="staffcontroller_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>src/controllers/staffcontroller/staffcontrollerBase.hpp</label>
+        <link refid="staffcontrollerBase_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>src/database/database.cpp</label>
+        <link refid="database_8cpp"/>
+      </node>
+      <node id="30">
+        <label>src/gatekeeper/gatekeeper.cpp</label>
+        <link refid="gatekeeper_8cpp"/>
+      </node>
+      <node id="31">
+        <label>src/gatekeeper/gatekeeper.hpp</label>
+        <link refid="gatekeeper_8hpp"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>src/gatekeeper/permissionmanager/permissionmanager.cpp</label>
+        <link refid="permissionmanager_8cpp"/>
+      </node>
+      <node id="39">
+        <label>src/gatekeeper/permissionmanager/permissionmanager.hpp</label>
+        <link refid="permissionmanager_8hpp"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>src/gatekeeper/permissionmanager/permissionmanager_private.cpp</label>
+        <link refid="permissionmanager__private_8cpp"/>
+      </node>
+      <node id="41">
+        <label>src/gatekeeper/permissionmanager/permissionmanager_private.hpp</label>
+        <link refid="permissionmanager__private_8hpp"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+      <node id="33">
+        <label>src/server/server.hpp</label>
+        <link refid="server_8hpp"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/utils/global/requester.hpp</label>
+        <link refid="requester_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceapi">api</innernamespace>
+    <innernamespace refid="namespaceapi_1_1v2">api::v2</innernamespace>
+    <briefdescription>
+<para>Caller identity used by the permission layer. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Defines the <ref refid="structRequester" kindref="compound">Requester</ref> value object, which carries two pieces of information about who made an API request: an opaque numeric id and a group name. It offers simple getters, setters and matching helpers such as isAdmin() or idMatch(). A GroupId enum lists known groups, but the actual checks compare group names as plain strings.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: The gatekeeper and permission manager need to know who is calling before they allow an action. Controllers copy a <ref refid="structRequester" kindref="compound">Requester</ref> into the work they dispatch to other threads, so the checks still see the original caller&apos;s identity. The isX helpers (isAdmin, isProvider, ...) let permission rules read like plain English. Without this object there would be no consistent way to carry caller identity from the HTTP layer down to the permission checks.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>Classes and access specifiers (public/private): <ulink url="https://en.cppreference.com/w/cpp/language/access">https://en.cppreference.com/w/cpp/language/access</ulink></para>
+</listitem><listitem><para>special member functions (= default / = delete): <ulink url="https://en.cppreference.com/w/cpp/language/member_functions#Special_member_functions">https://en.cppreference.com/w/cpp/language/member_functions#Special_member_functions</ulink></para>
+</listitem><listitem><para>[[nodiscard]] attribute: <ulink url="https://en.cppreference.com/w/cpp/language/attributes/nodiscard">https://en.cppreference.com/w/cpp/language/attributes/nodiscard</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>requester.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Caller<sp/>identity<sp/>used<sp/>by<sp/>the<sp/>permission<sp/>layer.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>Defines<sp/>the<sp/>Requester<sp/>value<sp/>object,<sp/>which<sp/>carries<sp/>two<sp/>pieces<sp/>of</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>information<sp/>about<sp/>who<sp/>made<sp/>an<sp/>API<sp/>request:<sp/>an<sp/>opaque<sp/>numeric<sp/>id<sp/>and<sp/>a</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>group<sp/>name.<sp/>It<sp/>offers<sp/>simple<sp/>getters,<sp/>setters<sp/>and<sp/>matching<sp/>helpers<sp/>such</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>as<sp/>isAdmin()<sp/>or<sp/>idMatch().<sp/>A<sp/>GroupId<sp/>enum<sp/>lists<sp/>known<sp/>groups,<sp/>but<sp/>the</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>actual<sp/>checks<sp/>compare<sp/>group<sp/>names<sp/>as<sp/>plain<sp/>strings.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>The<sp/>gatekeeper<sp/>and<sp/>permission<sp/>manager<sp/>need<sp/>to<sp/>know<sp/>who<sp/>is<sp/>calling<sp/>before<sp/>they</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>allow<sp/>an<sp/>action.<sp/>Controllers<sp/>copy<sp/>a<sp/>Requester<sp/>into<sp/>the<sp/>work<sp/>they<sp/>dispatch<sp/>to</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>other<sp/>threads,<sp/>so<sp/>the<sp/>checks<sp/>still<sp/>see<sp/>the<sp/>original<sp/>caller&apos;s<sp/>identity.<sp/>The</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>isX<sp/>helpers<sp/>(isAdmin,<sp/>isProvider,<sp/>...)<sp/>let<sp/>permission<sp/>rules<sp/>read<sp/>like<sp/>plain</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>English.<sp/>Without<sp/>this<sp/>object<sp/>there<sp/>would<sp/>be<sp/>no<sp/>consistent<sp/>way<sp/>to<sp/>carry<sp/>caller</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>identity<sp/>from<sp/>the<sp/>HTTP<sp/>layer<sp/>down<sp/>to<sp/>the<sp/>permission<sp/>checks.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>Classes<sp/>and<sp/>access<sp/>specifiers<sp/>(public/private):<sp/>https://en.cppreference.com/w/cpp/language/access</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>special<sp/>member<sp/>functions<sp/>(=<sp/>default<sp/>/<sp/>=<sp/>delete):<sp/>https://en.cppreference.com/w/cpp/language/member_functions#Special_member_functions</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>[[nodiscard]]<sp/>attribute:<sp/>https://en.cppreference.com/w/cpp/language/attributes/nodiscard</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Provides<sp/>fixed-width<sp/>integer<sp/>types<sp/>such<sp/>as<sp/>uint64_t<sp/>and<sp/>uint8_t.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>holds<sp/>the<sp/>group<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::move<sp/>is<sp/>used<sp/>in<sp/>the<sp/>constructor<sp/>to<sp/>avoid<sp/>copying<sp/>the<sp/>group<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceapi_1_1v2" kindref="compound">api::v2</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Groups<sp/>this<sp/>type<sp/>with<sp/>the<sp/>version-2<sp/>API<sp/>code.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="34" refid="structRequester" refkind="compound"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@struct<sp/>Requester</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Value<sp/>object<sp/>describing<sp/>who<sp/>issued<sp/>a<sp/>request.</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Holds<sp/>an<sp/>opaque<sp/>numeric<sp/>id<sp/>and<sp/>a<sp/>group<sp/>name.<sp/>It<sp/>is<sp/>copied<sp/>into</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lambdas<sp/>dispatched<sp/>to<sp/>worker<sp/>threads<sp/>and<sp/>consulted<sp/>by<sp/>the</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>permission<sp/>manager,<sp/>so<sp/>instances<sp/>are<sp/>cheap<sp/>value<sp/>types<sp/>with</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>defaulted<sp/>copy/move<sp/>operations.</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Group<sp/>checks<sp/>are<sp/>literal<sp/>string<sp/>comparisons<sp/>against<sp/>hardcoded<sp/>names</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>such<sp/>as<sp/>&quot;admins&quot;,<sp/>&quot;users&quot;,<sp/>&quot;providers&quot;,<sp/>&quot;staff&quot;<sp/>and<sp/>&quot;owners&quot;</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>(isSuper<sp/>matches<sp/>&quot;Super&quot;<sp/>with<sp/>a<sp/>capital<sp/>S).<sp/>The<sp/>GroupId<sp/>enumeration</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>declared<sp/>but<sp/>is<sp/>not<sp/>used<sp/>to<sp/>validate<sp/>or<sp/>store<sp/>`group`.</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref><sp/>=<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>named<sp/>struct<sp/>exposed<sp/>through<sp/>a<sp/>&quot;using&quot;<sp/>alias<sp/>so<sp/>both<sp/>spellings<sp/>work.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Opaque<sp/>identity<sp/>of<sp/>the<sp/>requester,<sp/>compared<sp/>by<sp/>idMatch.</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><sp/>id;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>caller&apos;s<sp/>numeric<sp/>identity;<sp/>a<sp/>fixed<sp/>64-bit<sp/>unsigned<sp/>type<sp/>gives<sp/>a<sp/>wide,<sp/>portable<sp/>range.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Group<sp/>name,<sp/>compared<sp/>literally<sp/>by<sp/>groupMatch<sp/>and<sp/>the<sp/>isX<sp/>helpers.</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>group;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>caller&apos;s<sp/>group<sp/>as<sp/>text,<sp/>e.g.<sp/>&quot;admins&quot;;<sp/>compared<sp/>exactly,<sp/>so<sp/>spelling/case<sp/>matter.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@enum<sp/>GroupId</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Named<sp/>requester<sp/>groups.</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Values<sp/>are<sp/>Users,<sp/>Providers,<sp/>Owners,<sp/>Admin,<sp/>Super<sp/>and<sp/>Staff.</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>This<sp/>enumerator<sp/>is<sp/>informational:<sp/>group<sp/>membership<sp/>is<sp/>stored</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>and<sp/>checked<sp/>as<sp/>a<sp/>string,<sp/>not<sp/>as<sp/>a<sp/>GroupId.</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/>GroupId<sp/>:<sp/>uint8_t<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>scoped<sp/>enum<sp/>(accessed<sp/>as<sp/>GroupId::Users)<sp/>stored<sp/>compactly<sp/>as<sp/>8-bit<sp/>integers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Users,<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>normal<sp/>user<sp/>account.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Providers,<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>healthcare<sp/>provider<sp/>account.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Owners,<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>owner<sp/>account.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Admin,<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>administrator<sp/>account.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Super,<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>super-user<sp/>account<sp/>(note:<sp/>the<sp/>check<sp/>uses<sp/>the<sp/>string<sp/>&quot;Super&quot;,<sp/>capital<sp/>S).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1Staff" kindref="compound">Staff</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>staff<sp/>account.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Constructs<sp/>a<sp/>requester<sp/>with<sp/>a<sp/>known<sp/>id<sp/>and<sp/>group.</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>Opaque<sp/>numeric<sp/>identity<sp/>(moved<sp/>into<sp/>the<sp/>id<sp/>field).</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_group<sp/>Group<sp/>name,<sp/>copied/moved<sp/>into<sp/>the<sp/>group<sp/>field.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>(uint64_t<sp/>_id,<sp/>std::string<sp/>_group)<sp/>:<sp/>id(_id),<sp/>group(std::move(_group))<sp/>{}<sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;explicit&quot;<sp/>prevents<sp/>accidental<sp/>implicit<sp/>conversion<sp/>from<sp/>two<sp/>values;<sp/>std::move<sp/>avoids<sp/>copying<sp/>the<sp/>string.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>construction<sp/>is<sp/>disabled;<sp/>an<sp/>id<sp/>and<sp/>group<sp/>are<sp/>mandatory.</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>requester<sp/>without<sp/>an<sp/>identity<sp/>makes<sp/>no<sp/>sense,<sp/>so<sp/>this<sp/>constructor<sp/>is<sp/>removed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Copy<sp/>construction;<sp/>Requester<sp/>is<sp/>a<sp/>cheap<sp/>value<sp/>type.</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Let<sp/>the<sp/>compiler<sp/>copy<sp/>the<sp/>id<sp/>and<sp/>string<sp/>normally.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Move<sp/>construction;<sp/>Requester<sp/>is<sp/>a<sp/>cheap<sp/>value<sp/>type.</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>(<ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Let<sp/>the<sp/>compiler<sp/>move<sp/>the<sp/>string<sp/>for<sp/>efficiency.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Copy<sp/>assignment;<sp/>Requester<sp/>is<sp/>a<sp/>cheap<sp/>value<sp/>type.</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>copy<sp/>assignment<sp/>copies<sp/>both<sp/>fields.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Move<sp/>assignment;<sp/>Requester<sp/>is<sp/>a<sp/>cheap<sp/>value<sp/>type.</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>operator=(<ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>move<sp/>assignment<sp/>moves<sp/>the<sp/>string<sp/>instead<sp/>of<sp/>copying<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Virtual<sp/>destructor;<sp/>the<sp/>owned<sp/>group<sp/>string<sp/>is<sp/>freed<sp/>normally.</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">~Requester</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Virtual<sp/>so<sp/>derived<sp/>types<sp/>can<sp/>be<sp/>destroyed<sp/>safely<sp/>through<sp/>a<sp/>base<sp/>pointer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>requester&apos;s<sp/>opaque<sp/>id.</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>getId()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>id;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>[[nodiscard]]<sp/>warns<sp/>if<sp/>the<sp/>caller<sp/>ignores<sp/>the<sp/>returned<sp/>id;<sp/>const<sp/>means<sp/>no<sp/>change<sp/>to<sp/>the<sp/>object.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>requester&apos;s<sp/>group<sp/>name.</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>getGroup()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>group;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>by<sp/>const<sp/>reference<sp/>to<sp/>avoid<sp/>copying<sp/>the<sp/>string.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Tests<sp/>membership<sp/>of<sp/>the<sp/>&quot;admins&quot;<sp/>group.</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>isAdmin()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>groupMatch(</highlight><highlight class="stringliteral">&quot;admins&quot;</highlight><highlight class="normal">);<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Convenience<sp/>wrapper<sp/>around<sp/>the<sp/>literal<sp/>string<sp/>comparison.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Tests<sp/>membership<sp/>of<sp/>the<sp/>&quot;users&quot;<sp/>group.</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>isUser()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>groupMatch(</highlight><highlight class="stringliteral">&quot;users&quot;</highlight><highlight class="normal">);<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>True<sp/>when<sp/>the<sp/>stored<sp/>group<sp/>is<sp/>exactly<sp/>&quot;users&quot;.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Tests<sp/>membership<sp/>of<sp/>the<sp/>&quot;providers&quot;<sp/>group.</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>isProvider()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>groupMatch(</highlight><highlight class="stringliteral">&quot;providers&quot;</highlight><highlight class="normal">);<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>True<sp/>when<sp/>the<sp/>stored<sp/>group<sp/>is<sp/>exactly<sp/>&quot;providers&quot;.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Tests<sp/>membership<sp/>of<sp/>the<sp/>&quot;staff&quot;<sp/>group.</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>isStaff()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>groupMatch(</highlight><highlight class="stringliteral">&quot;staff&quot;</highlight><highlight class="normal">);<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>True<sp/>when<sp/>the<sp/>stored<sp/>group<sp/>is<sp/>exactly<sp/>&quot;staff&quot;.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Tests<sp/>membership<sp/>of<sp/>the<sp/>&quot;owners&quot;<sp/>group.</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>isOwner()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>groupMatch(</highlight><highlight class="stringliteral">&quot;owners&quot;</highlight><highlight class="normal">);<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>True<sp/>when<sp/>the<sp/>stored<sp/>group<sp/>is<sp/>exactly<sp/>&quot;owners&quot;.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Tests<sp/>membership<sp/>of<sp/>the<sp/>&quot;Super&quot;<sp/>group<sp/>(capital<sp/>S).</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>isSuper()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>groupMatch(</highlight><highlight class="stringliteral">&quot;Super&quot;</highlight><highlight class="normal">);<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Case<sp/>matters:<sp/>only<sp/>the<sp/>exact<sp/>string<sp/>&quot;Super&quot;<sp/>matches.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Compares<sp/>the<sp/>group<sp/>name<sp/>literally<sp/>with<sp/>`_group`.</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_group<sp/>Exact<sp/>group<sp/>name<sp/>to<sp/>match.</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>if<sp/>the<sp/>names<sp/>are<sp/>equal.</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>groupMatch(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>_group)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;group<sp/>==<sp/>_group;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Plain<sp/>string<sp/>equality;<sp/>every<sp/>isX<sp/>helper<sp/>funnels<sp/>through<sp/>here.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Compares<sp/>the<sp/>stored<sp/>id<sp/>with<sp/>`_id`.</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>Id<sp/>to<sp/>match.</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>if<sp/>the<sp/>ids<sp/>are<sp/>equal.</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>idMatch(uint64_t<sp/>_id)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>==<sp/>_id;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Used<sp/>to<sp/>check<sp/>e.g.<sp/>whether<sp/>a<sp/>requester<sp/>owns<sp/>a<sp/>particular<sp/>resource.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="154"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Replaces<sp/>the<sp/>stored<sp/>id.</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>New<sp/>id.</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>setId(uint64_t<sp/>_id)<sp/>{<sp/>this-&gt;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>=<sp/>_id;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Overwrites<sp/>the<sp/>identity<sp/>with<sp/>the<sp/>supplied<sp/>number.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Replaces<sp/>the<sp/>stored<sp/>group<sp/>name.</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>group<sp/>New<sp/>group<sp/>name;<sp/>must<sp/>match<sp/>the<sp/>literal<sp/>used<sp/>by<sp/>the</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>relevant<sp/>isX<sp/>helper<sp/>for<sp/>permission<sp/>checks<sp/>to<sp/>succeed.</highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>setGroup(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>group)<sp/>{<sp/>this-&gt;group<sp/>=<sp/>group;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Takes<sp/>a<sp/>const<sp/>reference<sp/>and<sp/>copies<sp/>it<sp/>into<sp/>the<sp/>stored<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>api::v2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight><highlight class="comment">//<sp/>[<sp/>]<sp/>Make<sp/>group<sp/>as<sp/>enum<sp/>and<sp/>create<sp/>a<sp/>static<sp/>get<sp/>description<sp/>function</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/utils/global/requester.hpp"/>
+  </compounddef>
+</doxygen>

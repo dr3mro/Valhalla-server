@@ -1,0 +1,678 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classMemCache" kind="class" language="C++" prot="public">
+    <compoundname>MemCache</compoundname>
+    <includes refid="memcache_8hpp" local="no">memcache.hpp</includes>
+    <innerclass refid="classMemCache_1_1CacheEntry" prot="private">MemCache::CacheEntry</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+      <param>
+        <type>typename ClockT</type>
+        <defval>std::chrono::steady_clock</defval>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classMemCache_1ab849b6bdf3b4922b00f173434e61d073" prot="public" static="no">
+        <type>ClockT</type>
+        <definition>using MemCache&lt; T, ClockT &gt;::Clock = ClockT</definition>
+        <argsstring></argsstring>
+        <name>Clock</name>
+        <qualifiedname>MemCache::Clock</qualifiedname>
+        <briefdescription>
+<para><ref refid="classMemCache_1ab849b6bdf3b4922b00f173434e61d073" kindref="member">Clock</ref> type used for expiration timestamps. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="69" column="5" bodyfile="src/utils/memcache/memcache.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classMemCache_1ab226fd602502da7daecc5b303eaf5910" prot="public" static="no">
+        <type>std::chrono::time_point&lt; <ref refid="classMemCache_1ab849b6bdf3b4922b00f173434e61d073" kindref="member">Clock</ref> &gt;</type>
+        <definition>using MemCache&lt; T, ClockT &gt;::TimePoint = std::chrono::time_point&lt;Clock&gt;</definition>
+        <argsstring></argsstring>
+        <name>TimePoint</name>
+        <qualifiedname>MemCache::TimePoint</qualifiedname>
+        <briefdescription>
+<para>Time point type used for expiration timestamps. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="73" column="5" bodyfile="src/utils/memcache/memcache.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classMemCache_1a896bf1581faae4fac93550178679afce" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t MemCache&lt; T, ClockT &gt;::maxSize_</definition>
+        <argsstring></argsstring>
+        <name>maxSize_</name>
+        <qualifiedname>MemCache::maxSize_</qualifiedname>
+        <briefdescription>
+<para>Maximum number of entries retained before LRU eviction. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="313" column="79" bodyfile="src/utils/memcache/memcache.hpp" bodystart="313" bodyend="-1"/>
+        <referencedby refid="classMemCache_1ac7e13d86c785d85dcf0424c07013433a" compoundref="memcache_8hpp" startline="192" endline="216">MemCache&lt; T, ClockT &gt;::insert</referencedby>
+        <referencedby refid="classMemCache_1a69c4c0cdfedd6f0871a34e6957fd9d3e" compoundref="memcache_8hpp" startline="95" endline="116">MemCache&lt; T, ClockT &gt;::MemCache</referencedby>
+        <referencedby refid="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" compoundref="memcache_8hpp" startline="80" endline="83">MemCache&lt; T, ClockT &gt;::MemCache</referencedby>
+        <referencedby refid="classMemCache_1a1cd50025ecd28a9529df6bad1f11da40" compoundref="memcache_8hpp" startline="125" endline="164">MemCache&lt; T, ClockT &gt;::operator=</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMemCache_1af9fa1cb7832fedf91234d4b454d06dbf" prot="private" static="no" mutable="no">
+        <type>std::chrono::seconds</type>
+        <definition>std::chrono::seconds MemCache&lt; T, ClockT &gt;::defaultTTL_</definition>
+        <argsstring></argsstring>
+        <name>defaultTTL_</name>
+        <qualifiedname>MemCache::defaultTTL_</qualifiedname>
+        <briefdescription>
+<para>TTL used by <ref refid="classMemCache_1ac7e13d86c785d85dcf0424c07013433a" kindref="member">insert()</ref> when no per-entry TTL is supplied. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="317" column="79" bodyfile="src/utils/memcache/memcache.hpp" bodystart="317" bodyend="-1"/>
+        <referencedby refid="classMemCache_1ac7e13d86c785d85dcf0424c07013433a" compoundref="memcache_8hpp" startline="192" endline="216">MemCache&lt; T, ClockT &gt;::insert</referencedby>
+        <referencedby refid="classMemCache_1a69c4c0cdfedd6f0871a34e6957fd9d3e" compoundref="memcache_8hpp" startline="95" endline="116">MemCache&lt; T, ClockT &gt;::MemCache</referencedby>
+        <referencedby refid="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" compoundref="memcache_8hpp" startline="80" endline="83">MemCache&lt; T, ClockT &gt;::MemCache</referencedby>
+        <referencedby refid="classMemCache_1a1cd50025ecd28a9529df6bad1f11da40" compoundref="memcache_8hpp" startline="125" endline="164">MemCache&lt; T, ClockT &gt;::operator=</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMemCache_1aa0a69d1f8414818e1eeae90238383250" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, typename std::list&lt; <ref refid="classMemCache_1_1CacheEntry" kindref="compound">CacheEntry</ref> &gt;::iterator &gt;</type>
+        <definition>std::unordered_map&lt;std::string, typename std::list&lt;CacheEntry&gt;::iterator&gt; MemCache&lt; T, ClockT &gt;::cacheMap_</definition>
+        <argsstring></argsstring>
+        <name>cacheMap_</name>
+        <qualifiedname>MemCache::cacheMap_</qualifiedname>
+        <briefdescription>
+<para>Key-to-list-iterator index; iterators remain valid across splices. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="321" column="25" bodyfile="src/utils/memcache/memcache.hpp" bodystart="321" bodyend="-1"/>
+        <referencedby refid="classMemCache_1a6353c6d238fd6837b033a90a389218fe" compoundref="memcache_8hpp" startline="368" endline="400">MemCache&lt; T, ClockT &gt;::cleanExpiredEntries</referencedby>
+        <referencedby refid="classMemCache_1a11d03343bb5f441b140b075a2912eead" compoundref="memcache_8hpp" startline="353" endline="359">MemCache&lt; T, ClockT &gt;::evictOldest</referencedby>
+        <referencedby refid="classMemCache_1aa1473dd4fba512396e813d4c35ab39eb" compoundref="memcache_8hpp" startline="225" endline="235">MemCache&lt; T, ClockT &gt;::get</referencedby>
+        <referencedby refid="classMemCache_1ac7e13d86c785d85dcf0424c07013433a" compoundref="memcache_8hpp" startline="192" endline="216">MemCache&lt; T, ClockT &gt;::insert</referencedby>
+        <referencedby refid="classMemCache_1a69c4c0cdfedd6f0871a34e6957fd9d3e" compoundref="memcache_8hpp" startline="95" endline="116">MemCache&lt; T, ClockT &gt;::MemCache</referencedby>
+        <referencedby refid="classMemCache_1a1cd50025ecd28a9529df6bad1f11da40" compoundref="memcache_8hpp" startline="125" endline="164">MemCache&lt; T, ClockT &gt;::operator=</referencedby>
+        <referencedby refid="classMemCache_1a92f1f33f412afe2554cad2454b443800" compoundref="memcache_8hpp" startline="244" endline="256">MemCache&lt; T, ClockT &gt;::remove</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMemCache_1aa51568e0095a1938b25649cd6d953245" prot="private" static="no" mutable="no">
+        <type>std::list&lt; <ref refid="classMemCache_1_1CacheEntry" kindref="compound">CacheEntry</ref> &gt;</type>
+        <definition>std::list&lt;CacheEntry&gt; MemCache&lt; T, ClockT &gt;::cacheList_</definition>
+        <argsstring></argsstring>
+        <name>cacheList_</name>
+        <qualifiedname>MemCache::cacheList_</qualifiedname>
+        <briefdescription>
+<para>Entry list ordered from most recently used (front) to least (back). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="325" column="67" bodyfile="src/utils/memcache/memcache.hpp" bodystart="325" bodyend="-1"/>
+        <referencedby refid="classMemCache_1a6353c6d238fd6837b033a90a389218fe" compoundref="memcache_8hpp" startline="368" endline="400">MemCache&lt; T, ClockT &gt;::cleanExpiredEntries</referencedby>
+        <referencedby refid="classMemCache_1a11d03343bb5f441b140b075a2912eead" compoundref="memcache_8hpp" startline="353" endline="359">MemCache&lt; T, ClockT &gt;::evictOldest</referencedby>
+        <referencedby refid="classMemCache_1ac7e13d86c785d85dcf0424c07013433a" compoundref="memcache_8hpp" startline="192" endline="216">MemCache&lt; T, ClockT &gt;::insert</referencedby>
+        <referencedby refid="classMemCache_1a69c4c0cdfedd6f0871a34e6957fd9d3e" compoundref="memcache_8hpp" startline="95" endline="116">MemCache&lt; T, ClockT &gt;::MemCache</referencedby>
+        <referencedby refid="classMemCache_1adb42b6b587c94d97c22dbb8370dc57d2" compoundref="memcache_8hpp" startline="347" endline="347">MemCache&lt; T, ClockT &gt;::moveToFront</referencedby>
+        <referencedby refid="classMemCache_1a1cd50025ecd28a9529df6bad1f11da40" compoundref="memcache_8hpp" startline="125" endline="164">MemCache&lt; T, ClockT &gt;::operator=</referencedby>
+        <referencedby refid="classMemCache_1a92f1f33f412afe2554cad2454b443800" compoundref="memcache_8hpp" startline="244" endline="256">MemCache&lt; T, ClockT &gt;::remove</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMemCache_1a01a66891157c73b1dce90b74077227ec" prot="private" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex MemCache&lt; T, ClockT &gt;::mutex_</definition>
+        <argsstring></argsstring>
+        <name>mutex_</name>
+        <qualifiedname>MemCache::mutex_</qualifiedname>
+        <briefdescription>
+<para>Guards all cache state and the cleaner control flag. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="329" column="79" bodyfile="src/utils/memcache/memcache.hpp" bodystart="329" bodyend="-1"/>
+        <referencedby refid="classMemCache_1a6353c6d238fd6837b033a90a389218fe" compoundref="memcache_8hpp" startline="368" endline="400">MemCache&lt; T, ClockT &gt;::cleanExpiredEntries</referencedby>
+        <referencedby refid="classMemCache_1aa1473dd4fba512396e813d4c35ab39eb" compoundref="memcache_8hpp" startline="225" endline="235">MemCache&lt; T, ClockT &gt;::get</referencedby>
+        <referencedby refid="classMemCache_1ac7e13d86c785d85dcf0424c07013433a" compoundref="memcache_8hpp" startline="192" endline="216">MemCache&lt; T, ClockT &gt;::insert</referencedby>
+        <referencedby refid="classMemCache_1a1cd50025ecd28a9529df6bad1f11da40" compoundref="memcache_8hpp" startline="125" endline="164">MemCache&lt; T, ClockT &gt;::operator=</referencedby>
+        <referencedby refid="classMemCache_1a92f1f33f412afe2554cad2454b443800" compoundref="memcache_8hpp" startline="244" endline="256">MemCache&lt; T, ClockT &gt;::remove</referencedby>
+        <referencedby refid="classMemCache_1a2a2e6e8f6c091b096d5c280f8c55f810" compoundref="memcache_8hpp" startline="169" endline="180">MemCache&lt; T, ClockT &gt;::~MemCache</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMemCache_1a0dcf2702ea5d7119e098e0c3be90a0a4" prot="private" static="no" mutable="no">
+        <type>std::condition_variable</type>
+        <definition>std::condition_variable MemCache&lt; T, ClockT &gt;::cleanerCv_</definition>
+        <argsstring></argsstring>
+        <name>cleanerCv_</name>
+        <qualifiedname>MemCache::cleanerCv_</qualifiedname>
+        <briefdescription>
+<para>Wakes the cleaner early on shutdown or move. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="333" column="79" bodyfile="src/utils/memcache/memcache.hpp" bodystart="333" bodyend="-1"/>
+        <referencedby refid="classMemCache_1a6353c6d238fd6837b033a90a389218fe" compoundref="memcache_8hpp" startline="368" endline="400">MemCache&lt; T, ClockT &gt;::cleanExpiredEntries</referencedby>
+        <referencedby refid="classMemCache_1a1cd50025ecd28a9529df6bad1f11da40" compoundref="memcache_8hpp" startline="125" endline="164">MemCache&lt; T, ClockT &gt;::operator=</referencedby>
+        <referencedby refid="classMemCache_1a2a2e6e8f6c091b096d5c280f8c55f810" compoundref="memcache_8hpp" startline="169" endline="180">MemCache&lt; T, ClockT &gt;::~MemCache</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMemCache_1a35871df8b3ebcfa658e6fa4f8f5f1dbd" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool MemCache&lt; T, ClockT &gt;::stopCleaner_</definition>
+        <argsstring></argsstring>
+        <name>stopCleaner_</name>
+        <qualifiedname>MemCache::stopCleaner_</qualifiedname>
+        <briefdescription>
+<para>Set under mutex_ to request cleaner termination. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="337" column="79" bodyfile="src/utils/memcache/memcache.hpp" bodystart="337" bodyend="-1"/>
+        <referencedby refid="classMemCache_1a6353c6d238fd6837b033a90a389218fe" compoundref="memcache_8hpp" startline="368" endline="400">MemCache&lt; T, ClockT &gt;::cleanExpiredEntries</referencedby>
+        <referencedby refid="classMemCache_1a69c4c0cdfedd6f0871a34e6957fd9d3e" compoundref="memcache_8hpp" startline="95" endline="116">MemCache&lt; T, ClockT &gt;::MemCache</referencedby>
+        <referencedby refid="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" compoundref="memcache_8hpp" startline="80" endline="83">MemCache&lt; T, ClockT &gt;::MemCache</referencedby>
+        <referencedby refid="classMemCache_1a1cd50025ecd28a9529df6bad1f11da40" compoundref="memcache_8hpp" startline="125" endline="164">MemCache&lt; T, ClockT &gt;::operator=</referencedby>
+        <referencedby refid="classMemCache_1a2a2e6e8f6c091b096d5c280f8c55f810" compoundref="memcache_8hpp" startline="169" endline="180">MemCache&lt; T, ClockT &gt;::~MemCache</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMemCache_1a0503776bfff4bd34b42ee76ceeeb40fc" prot="private" static="no" mutable="no">
+        <type>std::thread</type>
+        <definition>std::thread MemCache&lt; T, ClockT &gt;::cleanerThread_</definition>
+        <argsstring></argsstring>
+        <name>cleanerThread_</name>
+        <qualifiedname>MemCache::cleanerThread_</qualifiedname>
+        <briefdescription>
+<para>Background thread running <ref refid="classMemCache_1a6353c6d238fd6837b033a90a389218fe" kindref="member">cleanExpiredEntries()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="341" column="79" bodyfile="src/utils/memcache/memcache.hpp" bodystart="341" bodyend="-1"/>
+        <referencedby refid="classMemCache_1a69c4c0cdfedd6f0871a34e6957fd9d3e" compoundref="memcache_8hpp" startline="95" endline="116">MemCache&lt; T, ClockT &gt;::MemCache</referencedby>
+        <referencedby refid="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" compoundref="memcache_8hpp" startline="80" endline="83">MemCache&lt; T, ClockT &gt;::MemCache</referencedby>
+        <referencedby refid="classMemCache_1a1cd50025ecd28a9529df6bad1f11da40" compoundref="memcache_8hpp" startline="125" endline="164">MemCache&lt; T, ClockT &gt;::operator=</referencedby>
+        <referencedby refid="classMemCache_1a2a2e6e8f6c091b096d5c280f8c55f810" compoundref="memcache_8hpp" startline="169" endline="180">MemCache&lt; T, ClockT &gt;::~MemCache</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>MemCache&lt; T, ClockT &gt;::MemCache</definition>
+        <argsstring>(size_t maxSize, std::chrono::seconds defaultTTL)</argsstring>
+        <name>MemCache</name>
+        <qualifiedname>MemCache::MemCache</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>maxSize</declname>
+        </param>
+        <param>
+          <type>std::chrono::seconds</type>
+          <declname>defaultTTL</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a cache and immediately starts its cleaner thread. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">maxSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum number of entries before LRU eviction. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">defaultTTL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TTL applied by <ref refid="classMemCache_1ac7e13d86c785d85dcf0424c07013433a" kindref="member">insert()</ref> when no explicit TTL is given. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="80" column="5" bodyfile="src/utils/memcache/memcache.hpp" bodystart="80" bodyend="83"/>
+        <references refid="classMemCache_1a0503776bfff4bd34b42ee76ceeeb40fc" compoundref="memcache_8hpp" startline="341">MemCache&lt; T, ClockT &gt;::cleanerThread_</references>
+        <references refid="classMemCache_1a6353c6d238fd6837b033a90a389218fe" compoundref="memcache_8hpp" startline="368" endline="400">MemCache&lt; T, ClockT &gt;::cleanExpiredEntries</references>
+        <references refid="classMemCache_1af9fa1cb7832fedf91234d4b454d06dbf" compoundref="memcache_8hpp" startline="317">MemCache&lt; T, ClockT &gt;::defaultTTL_</references>
+        <references refid="classMemCache_1a896bf1581faae4fac93550178679afce" compoundref="memcache_8hpp" startline="313">MemCache&lt; T, ClockT &gt;::maxSize_</references>
+        <references refid="classMemCache_1a35871df8b3ebcfa658e6fa4f8f5f1dbd" compoundref="memcache_8hpp" startline="337">MemCache&lt; T, ClockT &gt;::stopCleaner_</references>
+        <referencedby refid="classMemCache_1a6951420f901529b4d8be417c463c27b0">MemCache&lt; T, ClockT &gt;::MemCache</referencedby>
+        <referencedby refid="classMemCache_1a69c4c0cdfedd6f0871a34e6957fd9d3e" compoundref="memcache_8hpp" startline="95" endline="116">MemCache&lt; T, ClockT &gt;::MemCache</referencedby>
+        <referencedby refid="classMemCache_1a9693d7be8a97cc4ade0d64a52af16591">MemCache&lt; T, ClockT &gt;::operator=</referencedby>
+        <referencedby refid="classMemCache_1a1cd50025ecd28a9529df6bad1f11da40" compoundref="memcache_8hpp" startline="125" endline="164">MemCache&lt; T, ClockT &gt;::operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classMemCache_1acebd4e830e32cd5cbb7a2e4887a333e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MemCache&lt; T, ClockT &gt;::MemCache</definition>
+        <argsstring>()=delete</argsstring>
+        <name>MemCache</name>
+        <qualifiedname>MemCache::MemCache</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="84" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classMemCache_1a6951420f901529b4d8be417c463c27b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MemCache&lt; T, ClockT &gt;::MemCache</definition>
+        <argsstring>(const MemCache &amp;)=delete</argsstring>
+        <name>MemCache</name>
+        <qualifiedname>MemCache::MemCache</qualifiedname>
+        <param>
+          <type>const <ref refid="classMemCache" kindref="compound">MemCache</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="85" column="5"/>
+        <references refid="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" compoundref="memcache_8hpp" startline="80" endline="83">MemCache&lt; T, ClockT &gt;::MemCache</references>
+      </memberdef>
+      <memberdef kind="function" id="classMemCache_1a9693d7be8a97cc4ade0d64a52af16591" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classMemCache" kindref="compound">MemCache</ref> &amp;</type>
+        <definition>MemCache &amp; MemCache&lt; T, ClockT &gt;::operator=</definition>
+        <argsstring>(const MemCache &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>MemCache::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classMemCache" kindref="compound">MemCache</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="86" column="14"/>
+        <references refid="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" compoundref="memcache_8hpp" startline="80" endline="83">MemCache&lt; T, ClockT &gt;::MemCache</references>
+      </memberdef>
+      <memberdef kind="function" id="classMemCache_1a69c4c0cdfedd6f0871a34e6957fd9d3e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>MemCache&lt; T, ClockT &gt;::MemCache</definition>
+        <argsstring>(MemCache &amp;&amp;other) noexcept</argsstring>
+        <name>MemCache</name>
+        <qualifiedname>MemCache::MemCache</qualifiedname>
+        <param>
+          <type><ref refid="classMemCache" kindref="compound">MemCache</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Transfers cache state from <computeroutput>other</computeroutput> and starts a fresh cleaner. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Source cache; its cleaner is stopped and joined before its state is moved. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="post"><para><computeroutput>other</computeroutput> has no running cleaner and is left in a valid but unspecified state; <computeroutput>*this</computeroutput> owns the transferred entries and a new cleaner thread. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="95" column="5" bodyfile="src/utils/memcache/memcache.hpp" bodystart="95" bodyend="116"/>
+        <references refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" compoundref="memcache_8hpp" startline="325">MemCache&lt; T, ClockT &gt;::cacheList_</references>
+        <references refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" compoundref="memcache_8hpp" startline="321">MemCache&lt; T, ClockT &gt;::cacheMap_</references>
+        <references refid="classMemCache_1a0503776bfff4bd34b42ee76ceeeb40fc" compoundref="memcache_8hpp" startline="341">MemCache&lt; T, ClockT &gt;::cleanerThread_</references>
+        <references refid="classMemCache_1a6353c6d238fd6837b033a90a389218fe" compoundref="memcache_8hpp" startline="368" endline="400">MemCache&lt; T, ClockT &gt;::cleanExpiredEntries</references>
+        <references refid="classMemCache_1af9fa1cb7832fedf91234d4b454d06dbf" compoundref="memcache_8hpp" startline="317">MemCache&lt; T, ClockT &gt;::defaultTTL_</references>
+        <references refid="classMemCache_1a896bf1581faae4fac93550178679afce" compoundref="memcache_8hpp" startline="313">MemCache&lt; T, ClockT &gt;::maxSize_</references>
+        <references refid="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" compoundref="memcache_8hpp" startline="80" endline="83">MemCache&lt; T, ClockT &gt;::MemCache</references>
+        <references refid="classMemCache_1a35871df8b3ebcfa658e6fa4f8f5f1dbd" compoundref="memcache_8hpp" startline="337">MemCache&lt; T, ClockT &gt;::stopCleaner_</references>
+      </memberdef>
+      <memberdef kind="function" id="classMemCache_1a1cd50025ecd28a9529df6bad1f11da40" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classMemCache" kindref="compound">MemCache</ref> &amp;</type>
+        <definition>MemCache &amp; MemCache&lt; T, ClockT &gt;::operator=</definition>
+        <argsstring>(MemCache &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>MemCache::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classMemCache" kindref="compound">MemCache</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Replaces this cache with the state of <computeroutput>other</computeroutput> via move assignment. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Source cache; its cleaner is also stopped and joined. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>*this</computeroutput>. </para>
+</simplesect>
+<simplesect kind="note"><para>Self-assignment is a no-op. Both cleaners are stopped before any state is moved, and a fresh cleaner is started for <computeroutput>*this</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="125" column="14" bodyfile="src/utils/memcache/memcache.hpp" bodystart="125" bodyend="164"/>
+        <references refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" compoundref="memcache_8hpp" startline="325">MemCache&lt; T, ClockT &gt;::cacheList_</references>
+        <references refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" compoundref="memcache_8hpp" startline="321">MemCache&lt; T, ClockT &gt;::cacheMap_</references>
+        <references refid="classMemCache_1a0dcf2702ea5d7119e098e0c3be90a0a4" compoundref="memcache_8hpp" startline="333">MemCache&lt; T, ClockT &gt;::cleanerCv_</references>
+        <references refid="classMemCache_1a0503776bfff4bd34b42ee76ceeeb40fc" compoundref="memcache_8hpp" startline="341">MemCache&lt; T, ClockT &gt;::cleanerThread_</references>
+        <references refid="classMemCache_1a6353c6d238fd6837b033a90a389218fe" compoundref="memcache_8hpp" startline="368" endline="400">MemCache&lt; T, ClockT &gt;::cleanExpiredEntries</references>
+        <references refid="classMemCache_1af9fa1cb7832fedf91234d4b454d06dbf" compoundref="memcache_8hpp" startline="317">MemCache&lt; T, ClockT &gt;::defaultTTL_</references>
+        <references refid="classMemCache_1a896bf1581faae4fac93550178679afce" compoundref="memcache_8hpp" startline="313">MemCache&lt; T, ClockT &gt;::maxSize_</references>
+        <references refid="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" compoundref="memcache_8hpp" startline="80" endline="83">MemCache&lt; T, ClockT &gt;::MemCache</references>
+        <references refid="classMemCache_1a01a66891157c73b1dce90b74077227ec" compoundref="memcache_8hpp" startline="329">MemCache&lt; T, ClockT &gt;::mutex_</references>
+        <references refid="classMemCache_1a35871df8b3ebcfa658e6fa4f8f5f1dbd" compoundref="memcache_8hpp" startline="337">MemCache&lt; T, ClockT &gt;::stopCleaner_</references>
+      </memberdef>
+      <memberdef kind="function" id="classMemCache_1a2a2e6e8f6c091b096d5c280f8c55f810" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual MemCache&lt; T, ClockT &gt;::~MemCache</definition>
+        <argsstring>()</argsstring>
+        <name>~MemCache</name>
+        <qualifiedname>MemCache::~MemCache</qualifiedname>
+        <briefdescription>
+<para>Stops the cleaner and waits for it before members are destroyed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="169" column="13" bodyfile="src/utils/memcache/memcache.hpp" bodystart="169" bodyend="180"/>
+        <references refid="classMemCache_1a0dcf2702ea5d7119e098e0c3be90a0a4" compoundref="memcache_8hpp" startline="333">MemCache&lt; T, ClockT &gt;::cleanerCv_</references>
+        <references refid="classMemCache_1a0503776bfff4bd34b42ee76ceeeb40fc" compoundref="memcache_8hpp" startline="341">MemCache&lt; T, ClockT &gt;::cleanerThread_</references>
+        <references refid="classMemCache_1a01a66891157c73b1dce90b74077227ec" compoundref="memcache_8hpp" startline="329">MemCache&lt; T, ClockT &gt;::mutex_</references>
+        <references refid="classMemCache_1a35871df8b3ebcfa658e6fa4f8f5f1dbd" compoundref="memcache_8hpp" startline="337">MemCache&lt; T, ClockT &gt;::stopCleaner_</references>
+      </memberdef>
+      <memberdef kind="function" id="classMemCache_1ac7e13d86c785d85dcf0424c07013433a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void MemCache&lt; T, ClockT &gt;::insert</definition>
+        <argsstring>(const std::string &amp;key, const T &amp;value, std::chrono::seconds ttl=std::chrono::seconds::zero())</argsstring>
+        <name>insert</name>
+        <qualifiedname>MemCache::insert</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>std::chrono::seconds</type>
+          <declname>ttl</declname>
+          <defval>std::chrono::seconds::zero()</defval>
+        </param>
+        <briefdescription>
+<para>Inserts a value or refreshes an existing key. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Key to insert or update. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to store; copied into the cache. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ttl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Lifetime in seconds; zero selects defaultTTL_.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Existing keys receive a new value, a fresh expiration and move to the front of the LRU list. New keys are added at the front; when capacity is already reached the least recently used entry is evicted first. Safe to call concurrently with other operations. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="192" column="10" bodyfile="src/utils/memcache/memcache.hpp" bodystart="192" bodyend="216"/>
+        <references refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" compoundref="memcache_8hpp" startline="325">MemCache&lt; T, ClockT &gt;::cacheList_</references>
+        <references refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" compoundref="memcache_8hpp" startline="321">MemCache&lt; T, ClockT &gt;::cacheMap_</references>
+        <references refid="classMemCache_1af9fa1cb7832fedf91234d4b454d06dbf" compoundref="memcache_8hpp" startline="317">MemCache&lt; T, ClockT &gt;::defaultTTL_</references>
+        <references refid="classMemCache_1a11d03343bb5f441b140b075a2912eead" compoundref="memcache_8hpp" startline="353" endline="359">MemCache&lt; T, ClockT &gt;::evictOldest</references>
+        <references refid="classMemCache_1a896bf1581faae4fac93550178679afce" compoundref="memcache_8hpp" startline="313">MemCache&lt; T, ClockT &gt;::maxSize_</references>
+        <references refid="classMemCache_1adb42b6b587c94d97c22dbb8370dc57d2" compoundref="memcache_8hpp" startline="347" endline="347">MemCache&lt; T, ClockT &gt;::moveToFront</references>
+        <references refid="classMemCache_1a01a66891157c73b1dce90b74077227ec" compoundref="memcache_8hpp" startline="329">MemCache&lt; T, ClockT &gt;::mutex_</references>
+      </memberdef>
+      <memberdef kind="function" id="classMemCache_1aa1473dd4fba512396e813d4c35ab39eb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; T &gt;</type>
+        <definition>std::optional&lt; T &gt; MemCache&lt; T, ClockT &gt;::get</definition>
+        <argsstring>(const std::string &amp;key)</argsstring>
+        <name>get</name>
+        <qualifiedname>MemCache::get</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Looks up a key and marks it as most recently used. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Key to look up. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Copy of the value, or nullopt if the key is absent or expired. </para>
+</simplesect>
+<simplesect kind="note"><para>An expired entry is reported as a miss but is left for the cleaner to remove; a hit refreshes recency, not the entry&apos;s expiration. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="225" column="19" bodyfile="src/utils/memcache/memcache.hpp" bodystart="225" bodyend="235"/>
+        <references refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" compoundref="memcache_8hpp" startline="321">MemCache&lt; T, ClockT &gt;::cacheMap_</references>
+        <references refid="classMemCache_1adb42b6b587c94d97c22dbb8370dc57d2" compoundref="memcache_8hpp" startline="347" endline="347">MemCache&lt; T, ClockT &gt;::moveToFront</references>
+        <references refid="classMemCache_1a01a66891157c73b1dce90b74077227ec" compoundref="memcache_8hpp" startline="329">MemCache&lt; T, ClockT &gt;::mutex_</references>
+      </memberdef>
+      <memberdef kind="function" id="classMemCache_1a92f1f33f412afe2554cad2454b443800" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool MemCache&lt; T, ClockT &gt;::remove</definition>
+        <argsstring>(const std::string &amp;key)</argsstring>
+        <name>remove</name>
+        <qualifiedname>MemCache::remove</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Removes a key from the cache. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Key to remove. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the key was present and was removed, false otherwise. </para>
+</simplesect>
+<simplesect kind="note"><para>Expiry is not checked here: an expired entry not yet cleaned is still removed and reported as present. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="244" column="10" bodyfile="src/utils/memcache/memcache.hpp" bodystart="244" bodyend="256"/>
+        <references refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" compoundref="memcache_8hpp" startline="325">MemCache&lt; T, ClockT &gt;::cacheList_</references>
+        <references refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" compoundref="memcache_8hpp" startline="321">MemCache&lt; T, ClockT &gt;::cacheMap_</references>
+        <references refid="classMemCache_1a01a66891157c73b1dce90b74077227ec" compoundref="memcache_8hpp" startline="329">MemCache&lt; T, ClockT &gt;::mutex_</references>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classMemCache_1adb42b6b587c94d97c22dbb8370dc57d2" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void MemCache&lt; T, ClockT &gt;::moveToFront</definition>
+        <argsstring>(typename std::list&lt; CacheEntry &gt;::iterator &amp;item)</argsstring>
+        <name>moveToFront</name>
+        <qualifiedname>MemCache::moveToFront</qualifiedname>
+        <param>
+          <type>typename std::list&lt; <ref refid="classMemCache_1_1CacheEntry" kindref="compound">CacheEntry</ref> &gt;::iterator &amp;</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+<para>Moves an entry to the most-recently-used end of the list. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">item</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Iterator to the entry; the caller must hold mutex_. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="347" column="10" bodyfile="src/utils/memcache/memcache.hpp" bodystart="347" bodyend="347"/>
+        <references refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" compoundref="memcache_8hpp" startline="325">MemCache&lt; T, ClockT &gt;::cacheList_</references>
+        <referencedby refid="classMemCache_1aa1473dd4fba512396e813d4c35ab39eb" compoundref="memcache_8hpp" startline="225" endline="235">MemCache&lt; T, ClockT &gt;::get</referencedby>
+        <referencedby refid="classMemCache_1ac7e13d86c785d85dcf0424c07013433a" compoundref="memcache_8hpp" startline="192" endline="216">MemCache&lt; T, ClockT &gt;::insert</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classMemCache_1a11d03343bb5f441b140b075a2912eead" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void MemCache&lt; T, ClockT &gt;::evictOldest</definition>
+        <argsstring>()</argsstring>
+        <name>evictOldest</name>
+        <qualifiedname>MemCache::evictOldest</qualifiedname>
+        <briefdescription>
+<para>Evicts the least recently used entry (the list&apos;s back). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="pre"><para>cacheList_ is non-empty and the caller holds mutex_. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="353" column="10" bodyfile="src/utils/memcache/memcache.hpp" bodystart="353" bodyend="359"/>
+        <references refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" compoundref="memcache_8hpp" startline="325">MemCache&lt; T, ClockT &gt;::cacheList_</references>
+        <references refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" compoundref="memcache_8hpp" startline="321">MemCache&lt; T, ClockT &gt;::cacheMap_</references>
+        <referencedby refid="classMemCache_1ac7e13d86c785d85dcf0424c07013433a" compoundref="memcache_8hpp" startline="192" endline="216">MemCache&lt; T, ClockT &gt;::insert</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classMemCache_1a6353c6d238fd6837b033a90a389218fe" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void MemCache&lt; T, ClockT &gt;::cleanExpiredEntries</definition>
+        <argsstring>()</argsstring>
+        <name>cleanExpiredEntries</name>
+        <qualifiedname>MemCache::cleanExpiredEntries</qualifiedname>
+        <briefdescription>
+<para>Cleaner loop that periodically erases all expired entries. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Waits on cleanerCv_ with a one-second timeout; a notification from destruction or a move wakes it immediately so it can observe stopCleaner_ and exit. Otherwise it scans the entire list because move-to-front can leave expired entries away from the back. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/memcache/memcache.hpp" line="368" column="10" bodyfile="src/utils/memcache/memcache.hpp" bodystart="368" bodyend="400"/>
+        <references refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" compoundref="memcache_8hpp" startline="325">MemCache&lt; T, ClockT &gt;::cacheList_</references>
+        <references refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" compoundref="memcache_8hpp" startline="321">MemCache&lt; T, ClockT &gt;::cacheMap_</references>
+        <references refid="classMemCache_1a0dcf2702ea5d7119e098e0c3be90a0a4" compoundref="memcache_8hpp" startline="333">MemCache&lt; T, ClockT &gt;::cleanerCv_</references>
+        <references refid="classMemCache_1a01a66891157c73b1dce90b74077227ec" compoundref="memcache_8hpp" startline="329">MemCache&lt; T, ClockT &gt;::mutex_</references>
+        <references refid="classMemCache_1a35871df8b3ebcfa658e6fa4f8f5f1dbd" compoundref="memcache_8hpp" startline="337">MemCache&lt; T, ClockT &gt;::stopCleaner_</references>
+        <referencedby refid="classMemCache_1a69c4c0cdfedd6f0871a34e6957fd9d3e" compoundref="memcache_8hpp" startline="95" endline="116">MemCache&lt; T, ClockT &gt;::MemCache</referencedby>
+        <referencedby refid="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" compoundref="memcache_8hpp" startline="80" endline="83">MemCache&lt; T, ClockT &gt;::MemCache</referencedby>
+        <referencedby refid="classMemCache_1a1cd50025ecd28a9529df6bad1f11da40" compoundref="memcache_8hpp" startline="125" endline="164">MemCache&lt; T, ClockT &gt;::operator=</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Bounded LRU cache whose entries expire after a configurable TTL. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Keys map to iterators into a std::list, giving O(1) lookup, recency promotion and eviction. A background thread periodically erases expired entries; <ref refid="classMemCache_1ac7e13d86c785d85dcf0424c07013433a" kindref="member">insert()</ref> independently evicts the least recently used entry when capacity is reached. All public operations and the cleaner share a single mutex, so they are safe to call concurrently.</para>
+<para>The cleaner thread holds a raw pointer to <computeroutput>this</computeroutput>. Move operations stop and join both the source&apos;s and destination&apos;s cleaners before touching state; the destructor does the same before members are destroyed. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value type; stored and returned by value, so it must be copyable. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ClockT</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classMemCache_1ab849b6bdf3b4922b00f173434e61d073" kindref="member">Clock</ref> exposing a static now(); injectable so tests can use a manually advanced clock instead of waiting in real time. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para><ref refid="classMemCache_1aa1473dd4fba512396e813d4c35ab39eb" kindref="member">get()</ref> treats an expired entry as a miss but does not erase it; physical removal is left to the cleaner. <ref refid="classMemCache_1a92f1f33f412afe2554cad2454b443800" kindref="member">remove()</ref> does not check expiry. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/utils/memcache/memcache.hpp" line="63" column="1" bodyfile="src/utils/memcache/memcache.hpp" bodystart="64" bodyend="401"/>
+    <listofallmembers>
+      <member refid="classMemCache_1aa51568e0095a1938b25649cd6d953245" prot="private" virt="non-virtual"><scope>MemCache</scope><name>cacheList_</name></member>
+      <member refid="classMemCache_1aa0a69d1f8414818e1eeae90238383250" prot="private" virt="non-virtual"><scope>MemCache</scope><name>cacheMap_</name></member>
+      <member refid="classMemCache_1a0dcf2702ea5d7119e098e0c3be90a0a4" prot="private" virt="non-virtual"><scope>MemCache</scope><name>cleanerCv_</name></member>
+      <member refid="classMemCache_1a0503776bfff4bd34b42ee76ceeeb40fc" prot="private" virt="non-virtual"><scope>MemCache</scope><name>cleanerThread_</name></member>
+      <member refid="classMemCache_1a6353c6d238fd6837b033a90a389218fe" prot="private" virt="non-virtual"><scope>MemCache</scope><name>cleanExpiredEntries</name></member>
+      <member refid="classMemCache_1ab849b6bdf3b4922b00f173434e61d073" prot="public" virt="non-virtual"><scope>MemCache</scope><name>Clock</name></member>
+      <member refid="classMemCache_1af9fa1cb7832fedf91234d4b454d06dbf" prot="private" virt="non-virtual"><scope>MemCache</scope><name>defaultTTL_</name></member>
+      <member refid="classMemCache_1a11d03343bb5f441b140b075a2912eead" prot="private" virt="non-virtual"><scope>MemCache</scope><name>evictOldest</name></member>
+      <member refid="classMemCache_1aa1473dd4fba512396e813d4c35ab39eb" prot="public" virt="non-virtual"><scope>MemCache</scope><name>get</name></member>
+      <member refid="classMemCache_1ac7e13d86c785d85dcf0424c07013433a" prot="public" virt="non-virtual"><scope>MemCache</scope><name>insert</name></member>
+      <member refid="classMemCache_1a896bf1581faae4fac93550178679afce" prot="private" virt="non-virtual"><scope>MemCache</scope><name>maxSize_</name></member>
+      <member refid="classMemCache_1a97885a04bd2f81eab35f495bd1df455f" prot="public" virt="non-virtual"><scope>MemCache</scope><name>MemCache</name></member>
+      <member refid="classMemCache_1acebd4e830e32cd5cbb7a2e4887a333e6" prot="public" virt="non-virtual"><scope>MemCache</scope><name>MemCache</name></member>
+      <member refid="classMemCache_1a6951420f901529b4d8be417c463c27b0" prot="public" virt="non-virtual"><scope>MemCache</scope><name>MemCache</name></member>
+      <member refid="classMemCache_1a69c4c0cdfedd6f0871a34e6957fd9d3e" prot="public" virt="non-virtual"><scope>MemCache</scope><name>MemCache</name></member>
+      <member refid="classMemCache_1adb42b6b587c94d97c22dbb8370dc57d2" prot="private" virt="non-virtual"><scope>MemCache</scope><name>moveToFront</name></member>
+      <member refid="classMemCache_1a01a66891157c73b1dce90b74077227ec" prot="private" virt="non-virtual"><scope>MemCache</scope><name>mutex_</name></member>
+      <member refid="classMemCache_1a9693d7be8a97cc4ade0d64a52af16591" prot="public" virt="non-virtual"><scope>MemCache</scope><name>operator=</name></member>
+      <member refid="classMemCache_1a1cd50025ecd28a9529df6bad1f11da40" prot="public" virt="non-virtual"><scope>MemCache</scope><name>operator=</name></member>
+      <member refid="classMemCache_1a92f1f33f412afe2554cad2454b443800" prot="public" virt="non-virtual"><scope>MemCache</scope><name>remove</name></member>
+      <member refid="classMemCache_1a35871df8b3ebcfa658e6fa4f8f5f1dbd" prot="private" virt="non-virtual"><scope>MemCache</scope><name>stopCleaner_</name></member>
+      <member refid="classMemCache_1ab226fd602502da7daecc5b303eaf5910" prot="public" virt="non-virtual"><scope>MemCache</scope><name>TimePoint</name></member>
+      <member refid="classMemCache_1a2a2e6e8f6c091b096d5c280f8c55f810" prot="public" virt="virtual"><scope>MemCache</scope><name>~MemCache</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

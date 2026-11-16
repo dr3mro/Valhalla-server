@@ -1,0 +1,940 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classapi_1_1v2_1_1PermissionManagerPrivate" kind="class" language="C++" prot="public">
+    <compoundname>api::v2::PermissionManagerPrivate</compoundname>
+    <includes refid="permissionmanager__private_8hpp" local="no">permissionmanager_private.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::PermissionManagerPrivate::PermissionManagerPrivate</definition>
+        <argsstring>()=default</argsstring>
+        <name>PermissionManagerPrivate</name>
+        <qualifiedname>api::v2::PermissionManagerPrivate::PermissionManagerPrivate</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="62" column="9"/>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2f2b1ad9fadb824a62df52bfe07f80fd">operator=</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2">operator=</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3067393d17904c3c949b387bf23b1b0b">PermissionManagerPrivate</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1ab4f0b85347800fd1d04031ad37b3f631">PermissionManagerPrivate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a3caddef9d89e865e1a4e44805f61c959" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual api::v2::PermissionManagerPrivate::~PermissionManagerPrivate</definition>
+        <argsstring>()=default</argsstring>
+        <name>~PermissionManagerPrivate</name>
+        <qualifiedname>api::v2::PermissionManagerPrivate::~PermissionManagerPrivate</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="63" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a3067393d17904c3c949b387bf23b1b0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::PermissionManagerPrivate::PermissionManagerPrivate</definition>
+        <argsstring>(const PermissionManagerPrivate &amp;other)=default</argsstring>
+        <name>PermissionManagerPrivate</name>
+        <qualifiedname>api::v2::PermissionManagerPrivate::PermissionManagerPrivate</qualifiedname>
+        <param>
+          <type>const PermissionManagerPrivate &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="64" column="9"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5">PermissionManagerPrivate</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a2f2b1ad9fadb824a62df52bfe07f80fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5" kindref="member">PermissionManagerPrivate</ref> &amp;</type>
+        <definition>PermissionManagerPrivate &amp; api::v2::PermissionManagerPrivate::operator=</definition>
+        <argsstring>(const PermissionManagerPrivate &amp;other)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>api::v2::PermissionManagerPrivate::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5" kindref="member">PermissionManagerPrivate</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="65" column="34"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5">PermissionManagerPrivate</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1ab4f0b85347800fd1d04031ad37b3f631" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::PermissionManagerPrivate::PermissionManagerPrivate</definition>
+        <argsstring>(PermissionManagerPrivate &amp;&amp;other) noexcept=default</argsstring>
+        <name>PermissionManagerPrivate</name>
+        <qualifiedname>api::v2::PermissionManagerPrivate::PermissionManagerPrivate</qualifiedname>
+        <param>
+          <type>PermissionManagerPrivate &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="66" column="9"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5">PermissionManagerPrivate</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5" kindref="member">PermissionManagerPrivate</ref> &amp;</type>
+        <definition>PermissionManagerPrivate &amp; api::v2::PermissionManagerPrivate::operator=</definition>
+        <argsstring>(PermissionManagerPrivate &amp;&amp;other) noexcept=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>api::v2::PermissionManagerPrivate::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5" kindref="member">PermissionManagerPrivate</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="67" column="34"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">assert_group_id_match</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a6a68b225b7b685e9ed7293606870fafc" compoundref="permissionmanager__private_8cpp" startline="50" endline="63">hasPermission</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a9242aea2edde8ca7163099b20049595f" compoundref="permissionmanager__private_8cpp" startline="85" endline="102">isAdminOfService</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a261f7f649b795efc1d1dd8955510f9ea" compoundref="permissionmanager__private_8cpp" startline="65" endline="82">isOwnerOfService</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" compoundref="permissionmanager__private_8cpp" startline="235" endline="239">isOwnerOrAdmin</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2ca7a0ee58dc0ceb4dfc2ef1374471dc" compoundref="permissionmanager__private_8cpp" startline="214" endline="229">isOwnerOrAdminOrHasPermission</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a95781764a2c4cf1be79c2b58fa742348" compoundref="permissionmanager__private_8cpp" startline="108" endline="150">isStaffOfService</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5">PermissionManagerPrivate</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a7e6031ab93f769c852bb999b4f2bdc7b" compoundref="permissionmanager__private_8cpp" startline="168" endline="207">preServiceCreateChecks</references>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a6a68b225b7b685e9ed7293606870fafc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PermissionManagerPrivate::hasPermission</definition>
+        <argsstring>(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const Permissions::PowerLevel &amp;powerlevel, const std::string &amp;service_name, Http::Error &amp;error)</argsstring>
+        <name>hasPermission</name>
+        <qualifiedname>api::v2::PermissionManagerPrivate::hasPermission</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>permissions_j</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structPermissions_1a1dc2e37dd1ca56eb9dc57829a512e092" kindref="member">Permissions::PowerLevel</ref> &amp;</type>
+          <declname>powerlevel</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>service_name</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Checks that the requester is a staff member of the service holding <computeroutput>powerlevel</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">permissions_j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classService" kindref="compound">Service</ref> permission JSON (may be empty). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">powerlevel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Capability bit required. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">service_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classService" kindref="compound">Service</ref> name used in messages. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives FORBIDDEN when the requester is not staff. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the staff entry&apos;s mask contains <computeroutput>powerlevel</computeroutput>.</para>
+</simplesect>
+Requires staff membership plus the <computeroutput>powerlevel</computeroutput> capability bit. error: FORBIDDEN with a reason when the requester is not staff. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="78" column="21" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="50" bodyend="63"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="85">api::v2::Http::FORBIDDEN</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a95781764a2c4cf1be79c2b58fa742348" compoundref="permissionmanager__private_8cpp" startline="108" endline="150">isStaffOfService</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2ca7a0ee58dc0ceb4dfc2ef1374471dc" compoundref="permissionmanager__private_8cpp" startline="214" endline="229">isOwnerOrAdminOrHasPermission</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a261f7f649b795efc1d1dd8955510f9ea" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PermissionManagerPrivate::isOwnerOfService</definition>
+        <argsstring>(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, Http::Error &amp;error)</argsstring>
+        <name>isOwnerOfService</name>
+        <qualifiedname>api::v2::PermissionManagerPrivate::isOwnerOfService</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>permissions_j</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>service_name</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Checks that the requester is the service owner, comparing against <computeroutput>owner_id</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Compares the requester id with <computeroutput>owner_id</computeroutput> in the permission JSON.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Caller whose id is compared with <computeroutput>owner_id</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">permissions_j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classService" kindref="compound">Service</ref> permissions document. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">service_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Service/table name used in messages. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives BAD_REQUEST on missing permissions or FORBIDDEN on mismatch. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True only when the ids match. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="89" column="21" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="65" bodyend="82"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="85">api::v2::Http::FORBIDDEN</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" compoundref="permissionmanager__private_8cpp" startline="235" endline="239">isOwnerOrAdmin</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a9242aea2edde8ca7163099b20049595f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PermissionManagerPrivate::isAdminOfService</definition>
+        <argsstring>(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, Http::Error &amp;error)</argsstring>
+        <name>isAdminOfService</name>
+        <qualifiedname>api::v2::PermissionManagerPrivate::isAdminOfService</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>permissions_j</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>service_name</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Checks that the requester is the service admin, comparing against <computeroutput>admin_id</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Compares the requester id with <computeroutput>admin_id</computeroutput> in the permission JSON.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Caller whose id is compared with <computeroutput>admin_id</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">permissions_j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classService" kindref="compound">Service</ref> permissions document. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">service_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Service/table name used in messages. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives BAD_REQUEST on missing permissions or FORBIDDEN on mismatch. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True only when the ids match. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="100" column="21" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="85" bodyend="102"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="85">api::v2::Http::FORBIDDEN</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" compoundref="permissionmanager__private_8cpp" startline="235" endline="239">isOwnerOrAdmin</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a95781764a2c4cf1be79c2b58fa742348" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="structPermissions_1a9617e1834ef40047fc77ac4898e51eb5" kindref="member">Permissions::StaffPermission</ref> &gt;</type>
+        <definition>std::optional&lt; Permissions::StaffPermission &gt; PermissionManagerPrivate::isStaffOfService</definition>
+        <argsstring>(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, Http::Error &amp;error)</argsstring>
+        <name>isStaffOfService</name>
+        <qualifiedname>api::v2::PermissionManagerPrivate::isStaffOfService</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>permissions_j</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>service_name</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Finds the requester in the service&apos;s <computeroutput>staff</computeroutput> map and decodes its <computeroutput>"&lt;id&gt;:&lt;mask&gt;"</computeroutput> entry. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Scans the <computeroutput>staff</computeroutput> map for a <computeroutput>"&lt;id&gt;:&lt;mask&gt;"</computeroutput> entry belonging to the requester.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Caller to look up in the staff map. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">permissions_j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classService" kindref="compound">Service</ref> permissions document. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">service_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Service/table name used in messages.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Iterates every role&apos;s member list; malformed entries raise FORBIDDEN. The returned isMember flag marks a successful match. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives BAD_REQUEST/FORBIDDEN with a reason on failure. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The decoded StaffPermission on a match, <computeroutput>std::nullopt</computeroutput> otherwise.</para>
+</simplesect>
+Malformed numeric entries throw and are reported as FORBIDDEN; a non-match also leaves FORBIDDEN in <computeroutput>error</computeroutput>. The mask is decoded into <ref refid="permissionmanager__private_8cpp_1a005141ff44605d200344a1f530cde902" kindref="member">PowerLevel</ref> bits. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="113" column="30" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="108" bodyend="150"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="85">api::v2::Http::FORBIDDEN</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a6a68b225b7b685e9ed7293606870fafc" compoundref="permissionmanager__private_8cpp" startline="50" endline="63">hasPermission</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PermissionManagerPrivate::assert_group_id_match</definition>
+        <argsstring>(const Requester &amp;requester, const std::string &amp;groupname, uint64_t client_id, Http::Error &amp;error)</argsstring>
+        <name>assert_group_id_match</name>
+        <qualifiedname>api::v2::PermissionManagerPrivate::assert_group_id_match</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>groupname</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>client_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Requires both the requester&apos;s group and id to match the target client. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Allows access only when both the requester&apos;s group and id match the target.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Caller whose group and id are checked. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">groupname</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Expected client group (typically the entity table name). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">client_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target client id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives FORBIDDEN on mismatch. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when both match. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="124" column="21" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="153" bodyend="163"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="85">api::v2::Http::FORBIDDEN</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a71258d4ae15f18d8a002c192c0fb6e2a" compoundref="permissionmanager_8cpp" startline="67" endline="70">api::v2::PermissionManager::canDelete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a0adc8dfb1a38a0e3953a4032f3673980" compoundref="permissionmanager_8cpp" startline="253" endline="256">api::v2::PermissionManager::canDeleteAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a3fdd025d52c5c4b4140c3ff6790921fd" compoundref="permissionmanager_8cpp" startline="81" endline="84">api::v2::PermissionManager::canGetServices</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a30126a03fc03c2870325aa6df4543518" compoundref="permissionmanager_8cpp" startline="267" endline="270">api::v2::PermissionManager::canGetServicesAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1aff6b99de61b84feb36a534319778195b" compoundref="permissionmanager_8cpp" startline="55" endline="58">api::v2::PermissionManager::canRead</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1aed948cb4da3d53102be81025ef98bda2" compoundref="permissionmanager_8cpp" startline="241" endline="244">api::v2::PermissionManager::canReadAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a30eb01bee43eade86f66faa01e47fc91" compoundref="permissionmanager_8cpp" startline="74" endline="77">api::v2::PermissionManager::canToggleActive</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afa8aa5d58764cb40be9d226283f5197a" compoundref="permissionmanager_8cpp" startline="260" endline="263">api::v2::PermissionManager::canToggleActiveAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a96e35dad77cb2e1dbd0ffffa7c648fdc" compoundref="permissionmanager_8cpp" startline="61" endline="64">api::v2::PermissionManager::canUpdate</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afded6faae3268475fa32898c00b5476e" compoundref="permissionmanager_8cpp" startline="247" endline="250">api::v2::PermissionManager::canUpdateAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a7e6031ab93f769c852bb999b4f2bdc7b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool api::v2::PermissionManagerPrivate::preServiceCreateChecks</definition>
+        <argsstring>(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;service_j, Http::Error &amp;error)</argsstring>
+        <name>preServiceCreateChecks</name>
+        <qualifiedname>api::v2::PermissionManagerPrivate::preServiceCreateChecks</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>service_j</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Validates a service-creation payload: present, valid owner/admin ids, and provider caller. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classProvider" kindref="compound">Provider</ref> caller creating the service. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">service_j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Creation payload to validate. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives BAD_REQUEST with a reason on failure. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when all preconditions hold.</para>
+</simplesect>
+Validates service creation: payload present, ids extractable, caller is the provider. error: BAD_REQUEST with a reason on failure. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="133" column="21" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="168" bodyend="207"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a2ca7a0ee58dc0ceb4dfc2ef1374471dc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool api::v2::PermissionManagerPrivate::isOwnerOrAdminOrHasPermission</definition>
+        <argsstring>(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, Http::Error &amp;error, Permissions::PowerLevel required=Permissions::PowerLevel::CAN_DELETE)</argsstring>
+        <name>isOwnerOrAdminOrHasPermission</name>
+        <qualifiedname>api::v2::PermissionManagerPrivate::isOwnerOrAdminOrHasPermission</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>permissions_j</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>service_name</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type><ref refid="structPermissions_1a1dc2e37dd1ca56eb9dc57829a512e092" kindref="member">Permissions::PowerLevel</ref></type>
+          <declname>required</declname>
+          <defval>Permissions::PowerLevel::CAN_DELETE</defval>
+        </param>
+        <briefdescription>
+<para>Allows owner/admin unconditionally, or staff carrying the <computeroutput>required</computeroutput> capability bit. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Allows owner/admin, or staff with the <computeroutput>required</computeroutput> capability bit.</para>
+<para>Think of it as two doors in series: first check if the caller owns or administers the service; only if not, check whether they are staff with the specific capability bit we need.</para>
+<para>On failure it augments <computeroutput>error.message</computeroutput> with the service name and the more specific message left by <ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a6a68b225b7b685e9ed7293606870fafc" kindref="member">hasPermission()</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="142" column="21" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="214" bodyend="229"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="85">api::v2::Http::FORBIDDEN</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a6a68b225b7b685e9ed7293606870fafc" compoundref="permissionmanager__private_8cpp" startline="50" endline="63">hasPermission</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" compoundref="permissionmanager__private_8cpp" startline="235" endline="239">isOwnerOrAdmin</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool api::v2::PermissionManagerPrivate::isOwnerOrAdmin</definition>
+        <argsstring>(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, Http::Error &amp;error)</argsstring>
+        <name>isOwnerOrAdmin</name>
+        <qualifiedname>api::v2::PermissionManagerPrivate::isOwnerOrAdmin</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>permissions_j</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>service_name</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Allows only the service owner or admin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Caller whose identity is checked. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">permissions_j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classService" kindref="compound">Service</ref> permissions document. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">service_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Service/table name used in messages. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives a denial reason from the failing owner/admin check. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when either identity check succeeds.</para>
+</simplesect>
+Allows either the owner or the admin (short-circuits on owner success). error: May still hold a message from a failed first check when the second succeeds. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="153" column="21" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="235" bodyend="239"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a9242aea2edde8ca7163099b20049595f" compoundref="permissionmanager__private_8cpp" startline="85" endline="102">isAdminOfService</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a261f7f649b795efc1d1dd8955510f9ea" compoundref="permissionmanager__private_8cpp" startline="65" endline="82">isOwnerOfService</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a850868371bb029e826761eff3b329c5c" compoundref="permissionmanager_8cpp" startline="128" endline="135">api::v2::PermissionManager::canManageStaff</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1af314003136240877cbf15fe24c288a05" compoundref="permissionmanager_8cpp" startline="311" endline="317">api::v2::PermissionManager::canManageStaffAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2ca7a0ee58dc0ceb4dfc2ef1374471dc" compoundref="permissionmanager__private_8cpp" startline="214" endline="229">isOwnerOrAdminOrHasPermission</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a8243a8ac1bf2b9855448e67fa959c6fc" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::optional&lt; T &gt;</type>
+        <definition>static std::optional&lt; T &gt; api::v2::PermissionManagerPrivate::extract_json_value_safely</definition>
+        <argsstring>(const std::optional&lt; jsoncons::json &gt; &amp;service_j, const std::string &amp;key, const std::string &amp;service_name, Http::Error &amp;error)</argsstring>
+        <name>extract_json_value_safely</name>
+        <qualifiedname>api::v2::PermissionManagerPrivate::extract_json_value_safely</qualifiedname>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>service_j</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>service_name</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Extracts and converts <computeroutput>key</computeroutput> from a JSON payload, reporting BAD_REQUEST on failure. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns nullopt (with <computeroutput>error</computeroutput> populated) if the payload is missing/empty or the key is absent or not convertible to T; conversion exceptions are swallowed. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target value type (jsoncons <computeroutput>as&lt;T&gt;()</computeroutput>). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">service_j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Payload to read. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Key to extract. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">service_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Included in the &quot;not provided&quot; message. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives BAD_REQUEST and a reason on failure. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The extracted value, or <computeroutput>std::nullopt</computeroutput> on failure. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="168" column="30" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" bodystart="168" bodyend="190"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a3e7c77aa55023f9d5ccc345e7b68f2ab" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Func</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>std::optional&lt; jsoncons::json &gt;</type>
+        <definition>static std::optional&lt; jsoncons::json &gt; api::v2::PermissionManagerPrivate::getPermissionsOfEntity</definition>
+        <argsstring>(Func &amp;&amp;func, Args &amp;... args)</argsstring>
+        <name>getPermissionsOfEntity</name>
+        <qualifiedname>api::v2::PermissionManagerPrivate::getPermissionsOfEntity</qualifiedname>
+        <param>
+          <type>Func &amp;&amp;</type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type>Args &amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Fetches an entity&apos;s permission JSON, serving the idle-expiry cache when possible. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>func</computeroutput> is invoked with <computeroutput>args</computeroutput> to generate the cache key/query (which embeds the entity table and id). On a cache hit no database access occurs. On a miss the generation token is captured before the read so a concurrent invalidateAll() makes the subsequent put() a no-op. Empty results are not cached. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callable returning <computeroutput>std::optional&lt;std::string&gt;</computeroutput> (the query/key). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Argument types forwarded to <computeroutput>func</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Query generator. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arguments for <computeroutput>func</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Cached or freshly read permissions, or <computeroutput>std::nullopt</computeroutput> on no query/no data. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classBasicPermissionCache_1a96ddf9f59ee4f1f686cab167c68effbb" kindref="member">BasicPermissionCache::generation</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="206" column="30" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" bodystart="206" bodyend="232"/>
+        <references refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="189" endline="200">Store::cachedObject</references>
+        <references refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f" compoundref="permissioncache_8hpp" startline="161" endline="165">BasicPermissionCache&lt; ClockT &gt;::instance</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a850868371bb029e826761eff3b329c5c" compoundref="permissionmanager_8cpp" startline="128" endline="135">api::v2::PermissionManager::canManageStaff</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a070d79b55b8f3262de2b815a636defd7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Func</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; std::optional&lt; jsoncons::json &gt; &gt;</type>
+        <definition>static drogon::Task&lt; std::optional&lt; jsoncons::json &gt; &gt; api::v2::PermissionManagerPrivate::getPermissionsOfEntityCoro</definition>
+        <argsstring>(Func &amp;&amp;func, Args &amp;... args)</argsstring>
+        <name>getPermissionsOfEntityCoro</name>
+        <qualifiedname>api::v2::PermissionManagerPrivate::getPermissionsOfEntityCoro</qualifiedname>
+        <param>
+          <type>Func &amp;&amp;</type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type>Args &amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3e7c77aa55023f9d5ccc345e7b68f2ab" kindref="member">getPermissionsOfEntity()</ref>; awaits the async database read. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Same cache-key generation, hit short-circuit and generation-token protection as the synchronous version, but does not block a Drogon IO thread. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callable returning <computeroutput>std::optional&lt;std::string&gt;</computeroutput> (the query/key). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Argument types forwarded to <computeroutput>func</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Query generator. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arguments for <computeroutput>func</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Cached or freshly read permissions, or <computeroutput>std::nullopt</computeroutput> on no query/no data. </para>
+</simplesect>
+<simplesect kind="note"><para>The caller must drive the returned task; the query string must outlive the awaited read. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="246" column="29" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" bodystart="246" bodyend="272"/>
+        <references refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="189" endline="200">Store::cachedObject</references>
+        <references refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f" compoundref="permissioncache_8hpp" startline="161" endline="165">BasicPermissionCache&lt; ClockT &gt;::instance</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1af314003136240877cbf15fe24c288a05" compoundref="permissionmanager_8cpp" startline="311" endline="317">api::v2::PermissionManager::canManageStaffAsync</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Implementation helpers shared by the <ref refid="classapi_1_1v2_1_1PermissionManager" kindref="compound">PermissionManager</ref> authorization overloads. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Pure static utilities: they interpret the permission JSON returned by the database (owner/admin ids, staff capability strings), enforce group/id checks and create preconditions, and fetch/cache entity permissions through <ref refid="permissioncache_8hpp_1a07017f9d2fac77a264ee3c9aad001918" kindref="member">PermissionCache</ref>. Sync helpers use <ref refid="classDatabaseController_1ae11a73cc6347582351411b8c5ef7341d" kindref="member">DatabaseController::getPermissions</ref>; the <computeroutput>*Coro</computeroutput> variant awaits getPermissionsCoro. All denial/error details are written to the caller-provided <ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>. <simplesect kind="note"><para>The class holds no state; all members are static. In everyday words: this is a toolbox, not a machine. You never make one; you call its named tools with the facts and get a yes/no back. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="59" column="5" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" bodystart="60" bodyend="275"/>
+    <listofallmembers>
+      <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>assert_group_id_match</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a8243a8ac1bf2b9855448e67fa959c6fc" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>extract_json_value_safely</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3e7c77aa55023f9d5ccc345e7b68f2ab" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>getPermissionsOfEntity</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a070d79b55b8f3262de2b815a636defd7" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>getPermissionsOfEntityCoro</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a6a68b225b7b685e9ed7293606870fafc" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>hasPermission</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a9242aea2edde8ca7163099b20049595f" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>isAdminOfService</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a261f7f649b795efc1d1dd8955510f9ea" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>isOwnerOfService</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>isOwnerOrAdmin</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2ca7a0ee58dc0ceb4dfc2ef1374471dc" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>isOwnerOrAdminOrHasPermission</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a95781764a2c4cf1be79c2b58fa742348" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>isStaffOfService</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2f2b1ad9fadb824a62df52bfe07f80fd" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>PermissionManagerPrivate</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3067393d17904c3c949b387bf23b1b0b" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>PermissionManagerPrivate</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1ab4f0b85347800fd1d04031ad37b3f631" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>PermissionManagerPrivate</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a7e6031ab93f769c852bb999b4f2bdc7b" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>preServiceCreateChecks</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3caddef9d89e865e1a4e44805f61c959" prot="public" virt="virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>~PermissionManagerPrivate</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

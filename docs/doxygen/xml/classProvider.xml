@@ -1,0 +1,328 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classProvider" kind="class" language="C++" prot="public">
+    <compoundname>Provider</compoundname>
+    <basecompoundref refid="classapi_1_1v2_1_1Client" prot="public" virt="non-virtual">api::v2::Client</basecompoundref>
+    <includes refid="provider_8hpp" local="no">provider.hpp</includes>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classProvider_1a999e58bf1dc6fcbf2cb09f37d10aa1c1" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>auto</type>
+        <definition>auto Provider::TABLENAME</definition>
+        <argsstring></argsstring>
+        <name>TABLENAME</name>
+        <qualifiedname>Provider::TABLENAME</qualifiedname>
+        <initializer>= &quot;providers&quot;</initializer>
+        <briefdescription>
+<para><ref refid="classDatabase" kindref="compound">Database</ref> table holding providers. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/people/provider.hpp" line="131" column="27" bodyfile="src/entities/people/provider.hpp" bodystart="131" bodyend="-1"/>
+        <referencedby refid="classProvider_1aaa88add3f2765173dc916334d4dc611e" compoundref="provider_8hpp" startline="87" endline="87">getTableName</referencedby>
+        <referencedby refid="classProvider_1a8cee1947342e8204d0be826e21ea9c8a" compoundref="provider_8hpp" startline="75" endline="77">Provider</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classProvider_1ae6cc92cf7356840d426d40520ae260a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Provider::Provider</definition>
+        <argsstring>(const Provider &amp;)=delete</argsstring>
+        <name>Provider</name>
+        <qualifiedname>Provider::Provider</qualifiedname>
+        <param>
+          <type>const <ref refid="classProvider" kindref="compound">Provider</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Non-copyable and non-movable; construct in place for the request that uses it. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/people/provider.hpp" line="64" column="5"/>
+        <references refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1">Provider</references>
+        <referencedby refid="classProvider_1a4c6419755f12de8b1122f3a21c1bc2d9">operator=</referencedby>
+        <referencedby refid="classProvider_1a1c64dbd493fa3b50b43676ce2b0198a6">operator=</referencedby>
+        <referencedby refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1">Provider</referencedby>
+        <referencedby refid="classProvider_1a23a000af0d12d42d56f4027a008ad906">Provider</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classProvider_1a23a000af0d12d42d56f4027a008ad906" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Provider::Provider</definition>
+        <argsstring>(Provider &amp;&amp;)=delete</argsstring>
+        <name>Provider</name>
+        <qualifiedname>Provider::Provider</qualifiedname>
+        <param>
+          <type><ref refid="classProvider" kindref="compound">Provider</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/people/provider.hpp" line="65" column="5"/>
+        <references refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1">Provider</references>
+      </memberdef>
+      <memberdef kind="function" id="classProvider_1a4c6419755f12de8b1122f3a21c1bc2d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classProvider" kindref="compound">Provider</ref> &amp;</type>
+        <definition>Provider &amp; Provider::operator=</definition>
+        <argsstring>(const Provider &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Provider::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classProvider" kindref="compound">Provider</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/people/provider.hpp" line="66" column="14"/>
+        <references refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1">Provider</references>
+      </memberdef>
+      <memberdef kind="function" id="classProvider_1a1c64dbd493fa3b50b43676ce2b0198a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classProvider" kindref="compound">Provider</ref> &amp;</type>
+        <definition>Provider &amp; Provider::operator=</definition>
+        <argsstring>(Provider &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Provider::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classProvider" kindref="compound">Provider</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/people/provider.hpp" line="67" column="14"/>
+        <references refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1">Provider</references>
+      </memberdef>
+      <memberdef kind="function" id="classProvider_1a8cee1947342e8204d0be826e21ea9c8a" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename ClientData_t</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Provider::Provider</definition>
+        <argsstring>(const ClientData_t &amp;data)</argsstring>
+        <name>Provider</name>
+        <qualifiedname>Provider::Provider</qualifiedname>
+        <param>
+          <type>const ClientData_t &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Stores an id-only payload, binding it to the providers table. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>ClientData_t</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A ClientData_t payload (typically <ref refid="classData__t" kindref="compound">Data_t</ref> for get-services). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Operation payload carrying the provider id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/people/provider.hpp" line="75" column="14" bodyfile="src/entities/people/provider.hpp" bodystart="75" bodyend="77"/>
+        <references refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4">api::v2::Client::Client</references>
+        <references refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" compoundref="entity_8hpp" startline="393">Entity::data</references>
+        <references refid="classProvider_1a999e58bf1dc6fcbf2cb09f37d10aa1c1" compoundref="provider_8hpp" startline="131">TABLENAME</references>
+      </memberdef>
+      <memberdef kind="function" id="classProvider_1ad527a9774dbfbc0a55b9c7eadf4bbb6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Provider::~Provider</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~Provider</name>
+        <qualifiedname>Provider::~Provider</qualifiedname>
+        <briefdescription>
+<para>Default destructor; no state beyond the base <ref refid="controller_8hpp_1af928d8b9ced02f7387b9b56ed3877b11" kindref="member">Client</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/people/provider.hpp" line="82" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classProvider_1ac2c776b47dc13f0277c0fe628f9e138d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; Provider::getSqlGetServicesStatement</definition>
+        <argsstring>(pqxx::params &amp;params)</argsstring>
+        <name>getSqlGetServicesStatement</name>
+        <qualifiedname>Provider::getSqlGetServicesStatement</qualifiedname>
+        <param>
+          <type>pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Builds a query listing the services the provider belongs to. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Reads the id from the <ref refid="classData__t" kindref="compound">Data_t</ref> payload into client_id, then binds it as a bigint ($1) and as text ($2). The text form is matched against the JSON staff arrays via jsonb_path_exists; owner_id and admin_id are compared against the numeric id. Results from the four service tables are combined with UNION ALL. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cleared and filled with the numeric id and its text form. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The SELECT statement, or std::nullopt if no id was supplied or an exception occurs. </para>
+</simplesect>
+<simplesect kind="note"><para>Bindings are made into explicit params entries because the two uses need different SQL types. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/people/provider.hpp" line="99" column="19" bodyfile="src/entities/people/provider.hpp" bodystart="99" bodyend="125"/>
+        <references refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" compoundref="client_8hpp" startline="280">api::v2::Client::client_id</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="163" endline="163">Entity::getData</references>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classProvider_1aaa88add3f2765173dc916334d4dc611e" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>static constexpr auto Provider::getTableName</definition>
+        <argsstring>()</argsstring>
+        <name>getTableName</name>
+        <qualifiedname>Provider::getTableName</qualifiedname>
+        <briefdescription>
+<para>Returns the providers table name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/people/provider.hpp" line="87" column="32" bodyfile="src/entities/people/provider.hpp" bodystart="87" bodyend="87"/>
+        <references refid="classProvider_1a999e58bf1dc6fcbf2cb09f37d10aa1c1" compoundref="provider_8hpp" startline="131">TABLENAME</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para><ref refid="controller_8hpp_1af928d8b9ced02f7387b9b56ed3877b11" kindref="member">Client</ref> entity for the providers table with a get-services query. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Extends <ref refid="controller_8hpp_1af928d8b9ced02f7387b9b56ed3877b11" kindref="member">Client</ref> with a query that returns every service (clinic, pharmacy, radiology centre or laboratory) where the provider is an owner, admin or listed in the JSON staff array. The provider id is bound twice because it is used both as a numeric key and as a JSON text value. <simplesect kind="see"><para><ref refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4" kindref="member">Client</ref>, Types::Data_t </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>Base</label>
+        <link refid="classBase"/>
+      </node>
+      <node id="2">
+        <label>Client</label>
+        <link refid="classapi_1_1v2_1_1Client"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Entity</label>
+        <link refid="classEntity"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Provider</label>
+        <link refid="classProvider"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>Base</label>
+        <link refid="classBase"/>
+      </node>
+      <node id="2">
+        <label>Client</label>
+        <link refid="classapi_1_1v2_1_1Client"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Entity</label>
+        <link refid="classEntity"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Provider</label>
+        <link refid="classProvider"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/entities/people/provider.hpp" line="58" column="1" bodyfile="src/entities/people/provider.hpp" bodystart="59" bodyend="153"/>
+    <listofallmembers>
+      <member refid="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" virt="non-virtual"><scope>Provider</scope><name>Base</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a9d8ec7236a309400e90639c194bb7017" prot="protected" virt="non-virtual"><scope>Provider</scope><name>buildClientCreateStatement</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1af26bfc187b1d8c93e829d05032c7bdb3" prot="protected" virt="non-virtual"><scope>Provider</scope><name>buildClientUpdateStatement</name></member>
+      <member refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" prot="protected" virt="non-virtual"><scope>Provider</scope><name>buildCreateStatement</name></member>
+      <member refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" prot="protected" virt="non-virtual"><scope>Provider</scope><name>buildDeleteStatement</name></member>
+      <member refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" prot="protected" virt="non-virtual"><scope>Provider</scope><name>buildReadStatement</name></member>
+      <member refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" prot="protected" virt="non-virtual"><scope>Provider</scope><name>buildSearchStatement</name></member>
+      <member refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" prot="protected" virt="non-virtual"><scope>Provider</scope><name>buildUpdateStatement</name></member>
+      <member refid="classEntity_1ac1d661555222fabdf77fc5750da50b19" prot="public" virt="non-virtual"><scope>Provider</scope><name>check_id_exists</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4" prot="public" virt="non-virtual"><scope>Provider</scope><name>Client</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a4a696821cfa017364381a2d8c1c29092" prot="public" virt="non-virtual"><scope>Provider</scope><name>Client</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1ae448bdbb176f2a53a579df93148663ea" prot="public" virt="non-virtual"><scope>Provider</scope><name>Client</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" prot="protected" virt="non-virtual"><scope>Provider</scope><name>client_id</name></member>
+      <member refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" prot="private" virt="non-virtual"><scope>Provider</scope><name>data</name></member>
+      <member refid="classEntity_1a154ae0093211626370549e2924f9c954" prot="protected" virt="non-virtual"><scope>Provider</scope><name>databaseController</name></member>
+      <member refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93" prot="public" virt="non-virtual"><scope>Provider</scope><name>Entity</name></member>
+      <member refid="classEntity_1ad3455dba49aa870a3f298f490771600c" prot="public" virt="non-virtual"><scope>Provider</scope><name>Entity</name></member>
+      <member refid="classEntity_1abe34f0c0ca4b976ba455b97b2039d771" prot="public" virt="non-virtual"><scope>Provider</scope><name>Entity</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a0b259ee6bdb5bee7b4bda6a49828d8af" prot="public" virt="non-virtual"><scope>Provider</scope><name>exists</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1aa66c4aa7962da3bc66a7956c84a27a5e" prot="public" virt="non-virtual"><scope>Provider</scope><name>getClientId</name></member>
+      <member refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" prot="public" virt="non-virtual"><scope>Provider</scope><name>getData</name></member>
+      <member refid="classEntity_1a78dd1f37555f08fe0b389029c2d5b775" prot="public" virt="non-virtual"><scope>Provider</scope><name>getGroupName</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1ab03dd8f46bcaed9b5899d016715b5181" prot="public" virt="non-virtual"><scope>Provider</scope><name>getSqlActivateStatement</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a994474b95fd751b3672b0abf6dd01269" prot="public" virt="virtual"><scope>Provider</scope><name>getSqlCreateStatement</name></member>
+      <member refid="classEntity_1aa66bbebb8b50f7d91153231b1f6ab997" prot="public" virt="virtual"><scope>Provider</scope><name>getSqlDeleteStatement</name></member>
+      <member refid="classProvider_1ac2c776b47dc13f0277c0fe628f9e138d" prot="public" virt="non-virtual"><scope>Provider</scope><name>getSqlGetServicesStatement</name></member>
+      <member refid="classEntity_1a90ab6d6ae7c3431c3ede1201654b209a" prot="public" virt="virtual"><scope>Provider</scope><name>getSqlReadStatement</name></member>
+      <member refid="classEntity_1a362c3e70e483e2378ab08414c1eacdd7" prot="public" virt="virtual"><scope>Provider</scope><name>getSqlSearchStatement</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a95efdec9aa97f621d80540a6c7f92236" prot="public" virt="non-virtual"><scope>Provider</scope><name>getSqlSuspendStatement</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1aca2d94a63d7099b47ce5b1fce6ff49b1" prot="public" virt="non-virtual"><scope>Provider</scope><name>getSqlToggleSuspendStatement</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a8f03cab52fd829c80e7eb46751f7f1e4" prot="public" virt="virtual"><scope>Provider</scope><name>getSqlUpdateStatement</name></member>
+      <member refid="classProvider_1aaa88add3f2765173dc916334d4dc611e" prot="public" virt="non-virtual"><scope>Provider</scope><name>getTableName</name></member>
+      <member refid="classProvider_1a4c6419755f12de8b1122f3a21c1bc2d9" prot="public" virt="non-virtual"><scope>Provider</scope><name>operator=</name></member>
+      <member refid="classProvider_1a1c64dbd493fa3b50b43676ce2b0198a6" prot="public" virt="non-virtual"><scope>Provider</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1aa78be4dbfee70e80930f5bbdb8c357b6" prot="public" virt="non-virtual" ambiguityscope="api::v2::Client::"><scope>Provider</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1a61a23014a196e90f69294973b8832fe4" prot="public" virt="non-virtual" ambiguityscope="api::v2::Client::"><scope>Provider</scope><name>operator=</name></member>
+      <member refid="classEntity_1a1f6d7e8353984497c45053a421a35b53" prot="public" virt="non-virtual" ambiguityscope="Entity::"><scope>Provider</scope><name>operator=</name></member>
+      <member refid="classEntity_1adb86b6ab4d1b39b00c2472af16840fe5" prot="public" virt="non-virtual" ambiguityscope="Entity::"><scope>Provider</scope><name>operator=</name></member>
+      <member refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1" prot="public" virt="non-virtual"><scope>Provider</scope><name>Provider</name></member>
+      <member refid="classProvider_1a23a000af0d12d42d56f4027a008ad906" prot="public" virt="non-virtual"><scope>Provider</scope><name>Provider</name></member>
+      <member refid="classProvider_1a8cee1947342e8204d0be826e21ea9c8a" prot="public" virt="non-virtual"><scope>Provider</scope><name>Provider</name></member>
+      <member refid="classProvider_1a999e58bf1dc6fcbf2cb09f37d10aa1c1" prot="private" virt="non-virtual"><scope>Provider</scope><name>TABLENAME</name></member>
+      <member refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" prot="protected" virt="non-virtual"><scope>Provider</scope><name>tablename</name></member>
+      <member refid="classBase_1a306fb25541331080645a716286357ef9" prot="public" virt="virtual"><scope>Provider</scope><name>~Base</name></member>
+      <member refid="classapi_1_1v2_1_1Client_1ad63b0cf23eaac920765c0cfce4268156" prot="public" virt="non-virtual"><scope>Provider</scope><name>~Client</name></member>
+      <member refid="classEntity_1a605d474ccbd30c3d4350016ec173546a" prot="public" virt="non-virtual"><scope>Provider</scope><name>~Entity</name></member>
+      <member refid="classProvider_1ad527a9774dbfbc0a55b9c7eadf4bbb6e" prot="public" virt="non-virtual"><scope>Provider</scope><name>~Provider</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

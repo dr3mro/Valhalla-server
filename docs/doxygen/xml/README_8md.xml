@@ -1,0 +1,1126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Project<sp/>Valhalla</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">A<sp/>high-performance,<sp/>multi-tenant<sp/>healthcare<sp/>backend<sp/>written<sp/>in<sp/>modern<sp/>C++20.<sp/>Valhalla<sp/>exposes<sp/>a<sp/>versioned<sp/>REST<sp/>API<sp/>for<sp/>managing<sp/>medical<sp/>service<sp/>providers<sp/>(clinics,<sp/>laboratories,<sp/>pharmacies,<sp/>radiology<sp/>centers),<sp/>their<sp/>staff,<sp/>patients,<sp/>visits,<sp/>and<sp/>appointments<sp/>—<sp/>with<sp/>authentication,<sp/>role-based<sp/>permissions,<sp/>and<sp/>built-in<sp/>abuse<sp/>protection<sp/>baked<sp/>into<sp/>the<sp/>request<sp/>pipeline.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&gt;<sp/>**Status:**<sp/>Active<sp/>development.<sp/>The<sp/>API<sp/>surface<sp/>and<sp/>data<sp/>model<sp/>are<sp/>still<sp/>evolving.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Quick<sp/>Start</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Run<sp/>the<sp/>server<sp/>with<sp/>its<sp/>own<sp/>bundled<sp/>PostgreSQL<sp/>in<sp/>a<sp/>container,<sp/>using<sp/>Docker<sp/>or<sp/>Apple<sp/>Container<sp/>(Apple<sp/>Silicon<sp/>Macs).<sp/>You<sp/>need<sp/>one<sp/>of<sp/>them<sp/>installed,<sp/>plus<sp/>`curl`<sp/>(and<sp/>`python3`<sp/>with<sp/>Apple<sp/>Container).<sp/>The<sp/>tool<sp/>checks<sp/>and<sp/>tells<sp/>you<sp/>what&apos;s<sp/>missing.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**1.<sp/>Install<sp/>the<sp/>`vdt`<sp/>command**<sp/>—<sp/>the<sp/>Valhalla<sp/>Deployment<sp/>Tool<sp/>(no<sp/>checkout<sp/>needed):</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">curl<sp/>-fsSL<sp/>https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh<sp/>|<sp/>sh</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>downloads<sp/>the<sp/>latest<sp/>tool<sp/>from<sp/>this<sp/>repository:<sp/>the<sp/>`vdt`<sp/>command<sp/>goes<sp/>in<sp/>`~/.local/bin`<sp/>and<sp/>its<sp/>files<sp/>in<sp/>`~/.local/share/vdt`.<sp/>It<sp/>adds<sp/>`~/.local/bin`<sp/>to<sp/>`PATH`<sp/>(if<sp/>it<sp/>isn&apos;t<sp/>already)<sp/>and<sp/>tab<sp/>completion<sp/>in<sp/>`~/.zshrc`<sp/>and/or<sp/>`~/.bashrc`.<sp/>Open<sp/>a<sp/>new<sp/>terminal<sp/>afterwards.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**2.<sp/>Run<sp/>it:**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>run<sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>pull<sp/>the<sp/>image<sp/>and<sp/>start<sp/>the<sp/>server<sp/>on<sp/>http://127.0.0.1:8080</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>status<sp/><sp/><sp/><sp/>#<sp/>is<sp/>it<sp/>up,<sp/>which<sp/>version,<sp/>and<sp/>are<sp/>there<sp/>updates?</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>doc<sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>open<sp/>the<sp/>interactive<sp/>API<sp/>docs<sp/>in<sp/>your<sp/>browser</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**3.<sp/>Day<sp/>to<sp/>day:**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>update<sp/><sp/><sp/><sp/>#<sp/>newest<sp/>image,<sp/>same<sp/>settings,<sp/>and<sp/>the<sp/>newest<sp/>vdt<sp/>tool;<sp/>frees<sp/>the<sp/>old<sp/>image&apos;s<sp/>disk<sp/>space</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>show<sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>follow<sp/>the<sp/>log</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>psql<sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>SQL<sp/>shell<sp/>on<sp/>the<sp/>bundled<sp/>database</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>dump<sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>save<sp/>the<sp/>database<sp/>to<sp/>~/.local/share/vdt/dumps</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>update<sp/>--persist<sp/><sp/><sp/>#<sp/>keep<sp/>the<sp/>database<sp/>across<sp/>stop/restart/update<sp/>from<sp/>now<sp/>on</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>test<sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>run<sp/>the<sp/>end-to-end<sp/>API<sp/>tests<sp/>against<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>payload<sp/><sp/><sp/>#<sp/>browse<sp/>the<sp/>JSON<sp/>request<sp/>payloads<sp/>the<sp/>tests<sp/>send<sp/>(fzf);<sp/>--filled<sp/>shows<sp/>one<sp/>with<sp/>sample<sp/>values,<sp/>--raw<sp/>prints<sp/>the<sp/>template<sp/>for<sp/>curl</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>stop<sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>stop<sp/>it;<sp/>vdt<sp/>run<sp/>starts<sp/>it<sp/>again</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>help<sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>everything<sp/>else</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Settings:<sp/>the<sp/>installer<sp/>creates<sp/>`~/.local/share/vdt/config`<sp/>(`.env`<sp/>format)<sp/>with<sp/>defaults<sp/>for<sp/>a<sp/>small<sp/>local<sp/>container<sp/>(2<sp/>server<sp/>threads,<sp/>2<sp/>database<sp/>connections,<sp/>and<sp/>raised<sp/>rate<sp/>limits<sp/>so<sp/>the<sp/>API<sp/>docs&apos;<sp/>Benchmark<sp/>and<sp/>Test<sp/>console<sp/>panels<sp/>don&apos;t<sp/>get<sp/>you<sp/>blocked).<sp/>Every<sp/>variable<sp/>in<sp/>it<sp/>is<sp/>passed<sp/>to<sp/>the<sp/>server<sp/>(see<sp/>Configuration);<sp/>edit<sp/>it<sp/>and<sp/>run<sp/>`vdt<sp/>update`<sp/>to<sp/>apply.<sp/>A<sp/>`.env`<sp/>in<sp/>the<sp/>directory<sp/>you<sp/>run<sp/>`vdt`<sp/>from<sp/>is<sp/>used<sp/>instead<sp/>(e.g.<sp/>in<sp/>your<sp/>checkout<sp/>of<sp/>this<sp/>repository).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Update<sp/>the<sp/>tool<sp/>with<sp/>`vdt<sp/>install`<sp/>(or<sp/>`vdt<sp/>install<sp/>v1.2.3`<sp/>for<sp/>a<sp/>specific<sp/>tag):<sp/>it<sp/>downloads<sp/>the<sp/>new<sp/>version<sp/>first,<sp/>and<sp/>only<sp/>then<sp/>removes<sp/>the<sp/>current<sp/>copy<sp/>and<sp/>installs,<sp/>so<sp/>a<sp/>failed<sp/>download<sp/>changes<sp/>nothing.<sp/>`vdt<sp/>version`<sp/>shows<sp/>what&apos;s<sp/>installed.<sp/>Remove<sp/>it<sp/>with<sp/>`vdt<sp/>uninstall`,<sp/>which<sp/>works<sp/>offline.<sp/>Both<sp/>keep<sp/>your<sp/>`.env`<sp/>and<sp/>`dumps/`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">From<sp/>a<sp/>checkout<sp/>of<sp/>this<sp/>repository,<sp/>`./scripts/vdt/valhalla.sh`<sp/>is<sp/>the<sp/>same<sp/>tool<sp/>(the<sp/>installed<sp/>`vdt`<sp/>command<sp/>is<sp/>this<sp/>file<sp/>under<sp/>another<sp/>name).<sp/>Details:<sp/>Manage<sp/>it<sp/>with<sp/>`valhalla.sh`.<sp/>Without<sp/>the<sp/>tool:<sp/>Run<sp/>with<sp/>Docker.<sp/>To<sp/>build<sp/>and<sp/>run<sp/>natively:<sp/>Getting<sp/>Started.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Table<sp/>of<sp/>Contents</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&gt;<sp/>Rendered<sp/>documentation<sp/>(GitHub<sp/>or<sp/>the<sp/>Doxygen<sp/>HTML<sp/>output)<sp/>provides<sp/>its<sp/>own</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>clickable<sp/>table<sp/>of<sp/>contents;<sp/>the<sp/>entries<sp/>below<sp/>are<sp/>plain<sp/>text<sp/>so<sp/>that<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>anchors<sp/>resolve<sp/>consistently<sp/>in<sp/>both<sp/>renderers.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Quick<sp/>Start</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Features</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Architecture</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Tech<sp/>Stack</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Getting<sp/>Started</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Prerequisites</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Build<sp/>from<sp/>Source</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>Debian<sp/>/<sp/>Ubuntu</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>Fedora</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Database<sp/>setup</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Run<sp/>the<sp/>server</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Run<sp/>with<sp/>Docker</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>Manage<sp/>it<sp/>with<sp/>`valhalla.sh`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Configuration</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>API<sp/>Overview</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Interactive<sp/>API<sp/>docs</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Project<sp/>Layout</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Development</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Contributing</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>License</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Features</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**REST<sp/>API<sp/>(v2)**<sp/>built<sp/>on<sp/>the<sp/>[Drogon](https://github.com/drogonframework/drogon)<sp/>asynchronous<sp/>web<sp/>framework.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Multi-tenant<sp/>service<sp/>model**<sp/>—<sp/>a<sp/>single<sp/>deployment<sp/>serves<sp/>multiple<sp/>service<sp/>types<sp/>(clinics,<sp/>laboratories,<sp/>pharmacies,<sp/>radiology<sp/>centers)<sp/>through<sp/>generic,<sp/>type-parameterized<sp/>controllers.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**People<sp/>&amp;<sp/>clients**<sp/>—<sp/>separate<sp/>`User`<sp/>and<sp/>`Provider`<sp/>client<sp/>types,<sp/>each<sp/>with<sp/>full<sp/>create<sp/>/<sp/>login<sp/>/<sp/>logout<sp/>/<sp/>read<sp/>/<sp/>update<sp/>/<sp/>delete<sp/>/<sp/>search<sp/>lifecycles.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Patients,<sp/>visits<sp/>&amp;<sp/>appointments**<sp/>—<sp/>patient<sp/>records,<sp/>health<sp/>data,<sp/>prescriptions,<sp/>drugs,<sp/>paid<sp/>services,<sp/>and<sp/>visit/appointment<sp/>scheduling<sp/>per<sp/>service.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Staff<sp/>management**<sp/>—<sp/>invite,<sp/>add,<sp/>and<sp/>remove<sp/>staff<sp/>members<sp/>on<sp/>a<sp/>per-service<sp/>basis.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**JWT<sp/>authentication**<sp/>—<sp/>stateless<sp/>session<sp/>tokens<sp/>issued<sp/>and<sp/>validated<sp/>via<sp/>`jwt-cpp`.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Role-based<sp/>access<sp/>control**<sp/>—<sp/>bitmask<sp/>permission<sp/>levels<sp/>(`CAN_READ`,<sp/>`CAN_WRITE`,<sp/>`CAN_DELETE`,<sp/>`IS_ADMIN`,<sp/>`IS_OWNER`,<sp/>`IS_SUPER`)<sp/>enforced<sp/>by<sp/>a<sp/>permission<sp/>manager.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Security<sp/>gatekeeper**<sp/>layered<sp/>into<sp/>the<sp/>request<sp/>flow:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>DoS<sp/>/<sp/>rate-limiting<sp/>detector<sp/>with<sp/>configurable<sp/>rate<sp/>limits,<sp/>ban<sp/>durations,<sp/>and<sp/>IP<sp/>whitelist/blacklist.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Every<sp/>SQL<sp/>value<sp/>is<sp/>a<sp/>bound<sp/>parameter<sp/>(`pqxx::params`);<sp/>identifiers<sp/>come<sp/>from<sp/>schema-validated<sp/>keys<sp/>or<sp/>allowlists.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Password<sp/>hashing<sp/>with<sp/>`libsodium`<sp/>(Argon2id),<sp/>off<sp/>the<sp/>request<sp/>threads.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Session<sp/>and<sp/>token<sp/>managers.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**PostgreSQL<sp/>persistence**<sp/>via<sp/>Drogon&apos;s<sp/>asynchronous<sp/>`orm::DbClient`<sp/>by<sp/>default<sp/>(`DB_ASYNC=true`;<sp/>writes<sp/>wrapped<sp/>in<sp/>transactions),<sp/>with<sp/>the<sp/>legacy<sp/>`libpqxx`<sp/>connection<sp/>pool,<sp/>watchdog<sp/>and<sp/>schema<sp/>validator<sp/>kept<sp/>behind<sp/>`DB_ASYNC=false`<sp/>for<sp/>one<sp/>release.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**CORS<sp/>support**<sp/>with<sp/>pre-routing<sp/>OPTIONS<sp/>handling<sp/>and<sp/>standard<sp/>CORS<sp/>headers<sp/>on<sp/>every<sp/>response.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Structured<sp/>logging**<sp/>through<sp/>`spdlog`,<sp/>to<sp/>console<sp/>and/or<sp/>file.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**12-factor<sp/>configuration**<sp/>—<sp/>every<sp/>setting<sp/>is<sp/>read<sp/>from<sp/>environment<sp/>variables<sp/>with<sp/>sensible<sp/>defaults.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Architecture</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Requests<sp/>flow<sp/>through<sp/>a<sp/>layered<sp/>pipeline.<sp/>Drogon&apos;s<sp/>IO<sp/>threads<sp/>only<sp/>parse,<sp/>route<sp/>and<sp/>answer.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">By<sp/>default<sp/>(`DB_ASYNC=true`)<sp/>database<sp/>work<sp/>runs<sp/>as<sp/>coroutines<sp/>on<sp/>the<sp/>IO<sp/>threads<sp/>over<sp/>Drogon&apos;s<sp/>asynchronous<sp/>`orm::DbClient`<sp/>—<sp/>no<sp/>DB<sp/>worker<sp/>pool,<sp/>and<sp/>a<sp/>slow<sp/>query<sp/>never<sp/>holds<sp/>a<sp/>request<sp/>thread.<sp/>Password<sp/>hashing<sp/>and<sp/>login<sp/>checks<sp/>still<sp/>run<sp/>on<sp/>the<sp/>dedicated<sp/>password<sp/>worker<sp/>pool.<sp/>The<sp/>legacy<sp/>synchronous<sp/>path<sp/>(DB<sp/>executor<sp/>+<sp/>connection<sp/>pool,<sp/>`DB_ASYNC=false`)<sp/>is<sp/>kept<sp/>for<sp/>one<sp/>release<sp/>as<sp/>a<sp/>fallback.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">HTTP<sp/>request</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>│</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>▼</highlight></codeline>
+<codeline><highlight class="normal">Drogon<sp/>IO<sp/>threads<sp/>(SERVER_THREADS)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>├─<sp/>CORS<sp/>pre-routing<sp/>advice<sp/>(handles<sp/>OPTIONS)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>├─<sp/>Rate-limit<sp/>/<sp/>DoS<sp/>filter<sp/><sp/><sp/><sp/><sp/><sp/><sp/>(in<sp/>memory)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>├─<sp/>Token<sp/>+<sp/>session<sp/>filter<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(SECURE<sp/>routes<sp/>only;<sp/>the<sp/>DB<sp/>read<sp/>on<sp/>a<sp/>token<sp/>re-check<sp/>is<sp/>a<sp/>coroutine)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>└─<sp/>Route<sp/>(api/v2/routes):<sp/>picks<sp/>the<sp/>controller,<sp/>copies<sp/>what<sp/>it<sp/>needs<sp/>from<sp/>the<sp/>request</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>│</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>▼<sp/><sp/>DB_ASYNC=true:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>Controller<sp/>(controllers/*)<sp/><sp/>──►<sp/><sp/>permission<sp/>check<sp/>(RBAC,<sp/>cached,<sp/>coroutine<sp/>on<sp/>miss)<sp/><sp/>──►<sp/><sp/>Entity<sp/>(entities/*)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>│</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>▼</highlight></codeline>
+<codeline><highlight class="normal">Async<sp/>DbClient<sp/>(Drogon,<sp/>DB_MAX_CONN<sp/>connections)<sp/><sp/>──►<sp/><sp/>PostgreSQL<sp/><sp/><sp/>(writes<sp/>run<sp/>in<sp/>a<sp/>transaction;<sp/>pool<sp/>exhaustion<sp/>──►<sp/>503)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">DB_ASYNC=false<sp/>(legacy):<sp/>the<sp/>route<sp/>hands<sp/>the<sp/>whole<sp/>controller<sp/>call<sp/>to<sp/>the<sp/>DB<sp/>executor</highlight></codeline>
+<codeline><highlight class="normal">(DB_WORKERS<sp/>threads,<sp/>queue<sp/>DB_QUEUE_MAX;<sp/>queue<sp/>full<sp/>──►<sp/>503<sp/>+<sp/>Retry-After),<sp/>which<sp/>runs<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">against<sp/>the<sp/>synchronous<sp/>libpqxx<sp/>connection<sp/>pool<sp/>(DB_MAX_CONN,<sp/>DB_ACQUIRE_TIMEOUT_MS).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Login,<sp/>client<sp/>create<sp/>and<sp/>client<sp/>update<sp/>hand<sp/>their<sp/>password<sp/>work<sp/>on<sp/>to:</highlight></codeline>
+<codeline><highlight class="normal">Password<sp/>worker<sp/>(PASSWORD_WORKERS<sp/>threads,<sp/>queue<sp/>PASSWORD_QUEUE_MAX)<sp/><sp/>──►<sp/><sp/>Argon2id<sp/>hash<sp/>/<sp/>verify</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>(a<sp/>full<sp/>queue<sp/>answers<sp/>503)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**Routes**<sp/>(`src/api/v2/routes`)<sp/>declare<sp/>endpoints<sp/>and<sp/>mark<sp/>each<sp/>as<sp/>`SECURE`<sp/>or<sp/>`INSECURE`.<sp/>A<sp/>small<sp/>registry<sp/>maps<sp/>a<sp/>path<sp/>parameter<sp/>(e.g.<sp/>`clientType`,<sp/>`serviceType`)<sp/>to<sp/>the<sp/>concrete<sp/>controller,<sp/>so<sp/>one<sp/>route<sp/>class<sp/>serves<sp/>many<sp/>entity<sp/>types.<sp/>`executeControllerMethod`<sp/>submits<sp/>the<sp/>whole<sp/>controller<sp/>call<sp/>to<sp/>the<sp/>DB<sp/>executor,<sp/>with<sp/>the<sp/>request<sp/>data,<sp/>arguments<sp/>and<sp/>response<sp/>callback<sp/>captured<sp/>by<sp/>value,<sp/>because<sp/>the<sp/>answer<sp/>is<sp/>sent<sp/>from<sp/>a<sp/>worker<sp/>thread.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Controllers**<sp/>(`src/controllers`)<sp/>implement<sp/>CRUD/search<sp/>logic<sp/>against<sp/>a<sp/>generic<sp/>base.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Entities**<sp/>(`src/entities`)<sp/>model<sp/>the<sp/>domain:<sp/>people<sp/>(users,<sp/>providers),<sp/>services<sp/>(clinics,<sp/>laboratories,<sp/>pharmacies,<sp/>radiology<sp/>centers),<sp/>patients,<sp/>visits,<sp/>and<sp/>appointments.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Gatekeeper**<sp/>(`src/gatekeeper`)<sp/>holds<sp/>the<sp/>cross-cutting<sp/>security<sp/>concerns:<sp/>DoS<sp/>detector,<sp/>token<sp/>and<sp/>session<sp/>managers,<sp/>the<sp/>permission<sp/>manager<sp/>with<sp/>its<sp/>idle-expiry<sp/>cache,<sp/>and<sp/>password<sp/>hashing<sp/>(Argon2id,<sp/>with<sp/>legacy<sp/>scrypt<sp/>hashes<sp/>still<sp/>accepted<sp/>at<sp/>login).</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Concurrency**<sp/>(`src/concurrency`)<sp/>has<sp/>`BoundedExecutor`,<sp/>the<sp/>fixed-size<sp/>thread<sp/>pool<sp/>with<sp/>a<sp/>bounded<sp/>queue<sp/>that<sp/>`submit()`<sp/>never<sp/>blocks<sp/>on.<sp/>The<sp/>DB<sp/>executor<sp/>(`src/database/dbexecutor`,<sp/>legacy<sp/>`DB_ASYNC=false`<sp/>path)<sp/>and<sp/>the<sp/>password<sp/>worker<sp/>are<sp/>two<sp/>instances.<sp/>With<sp/>zero<sp/>workers<sp/>a<sp/>task<sp/>runs<sp/>inline,<sp/>which<sp/>the<sp/>unit<sp/>tests<sp/>use.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Database**<sp/>(`src/database`)<sp/>has<sp/>the<sp/>asynchronous<sp/>client<sp/>wrapper<sp/>(`AsyncDbClient`,<sp/>the<sp/>default<sp/>`DB_ASYNC=true`<sp/>path),<sp/>the<sp/>legacy<sp/>connection<sp/>pool<sp/>(`BlockingPool`,<sp/>waits<sp/>with<sp/>a<sp/>timeout<sp/>and<sp/>throws<sp/>`DatabaseBusy`,<sp/>which<sp/>becomes<sp/>503),<sp/>the<sp/>watchdog<sp/>that<sp/>reconnects<sp/>dropped<sp/>connections,<sp/>and<sp/>the<sp/>handler<sp/>that<sp/>borrows<sp/>a<sp/>connection<sp/>for<sp/>one<sp/>query.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Configurator**<sp/>(`src/configurator`)<sp/>loads<sp/>and<sp/>validates<sp/>configuration<sp/>from<sp/>the<sp/>environment<sp/>at<sp/>startup.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Store**<sp/>(`src/store`)<sp/>provides<sp/>shared<sp/>singleton<sp/>object<sp/>access.<sp/>Objects<sp/>built<sp/>for<sp/>every<sp/>request<sp/>use<sp/>`Store::cachedObject&lt;T&gt;()`,<sp/>which<sp/>keeps<sp/>a<sp/>per-thread<sp/>pointer<sp/>and<sp/>only<sp/>goes<sp/>back<sp/>to<sp/>the<sp/>Store<sp/>when<sp/>an<sp/>object<sp/>has<sp/>been<sp/>replaced<sp/>(tests<sp/>replace<sp/>the<sp/>database<sp/>controller<sp/>with<sp/>a<sp/>fake).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Tech<sp/>Stack</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Area<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Technology<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>----------------<sp/>|<sp/>---------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Language<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>C++20<sp/>(C17<sp/>for<sp/>C<sp/>sources)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Web<sp/>framework<sp/><sp/><sp/><sp/>|<sp/>Drogon<sp/>+<sp/>Trantor<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Database<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>PostgreSQL<sp/>via<sp/>libpqxx<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Auth<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>jwt-cpp<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Crypto<sp/>/<sp/>hashing<sp/>|<sp/>libsodium<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>JSON<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>jsoncons,<sp/>picojson<sp/>(jsoncpp<sp/>via<sp/>Drogon)<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Config<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Environment<sp/>variables<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Logging<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>spdlog<sp/>/<sp/>fmt<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>HTTP<sp/>client<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>libcurl,<sp/>c-ares<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Hashing<sp/>/<sp/>utils<sp/><sp/>|<sp/>xxhash,<sp/>cppcodec,<sp/>zlib<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Testing<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Catch2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Build<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>CMake<sp/>(≥<sp/>4.0)<sp/>+<sp/>Conan<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Getting<sp/>Started</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Prerequisites</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>A<sp/>C++20-capable<sp/>compiler<sp/>(GCC<sp/>13+<sp/>/<sp/>Clang<sp/>17+)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[CMake](https://cmake.org/)<sp/>≥<sp/>4.0<sp/>and<sp/>[Ninja](https://ninja-build.org/)<sp/>(used<sp/>by<sp/>`build.sh`)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[Conan](https://conan.io/)<sp/>2.x<sp/>(package<sp/>manager)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>A<sp/>reachable<sp/>[PostgreSQL](https://www.postgresql.org/)<sp/>instance</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>_(optional)_<sp/>`ccache`<sp/>—<sp/>used<sp/>automatically<sp/>if<sp/>found,<sp/>to<sp/>speed<sp/>up<sp/>rebuilds</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>_(optional)_<sp/>Docker<sp/>or<sp/>Apple<sp/>`container`,<sp/>to<sp/>run<sp/>the<sp/>all-in-one<sp/>image<sp/>(see<sp/>Run<sp/>with<sp/>Docker)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Supported<sp/>distributions:<sp/>**Debian<sp/>13<sp/>(trixie)+<sp/>/<sp/>Ubuntu<sp/>24.04+**<sp/>and<sp/>**Fedora<sp/>40+**.<sp/>Older<sp/>releases<sp/>ship<sp/>GCC<sp/>&lt;<sp/>13,<sp/>and<sp/>most<sp/>distributions<sp/>still<sp/>package<sp/>CMake<sp/>3.x,<sp/>so<sp/>you<sp/>will<sp/>likely<sp/>need<sp/>to<sp/>install<sp/>CMake<sp/>4<sp/>separately;<sp/>see<sp/>the<sp/>notes<sp/>below.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Build<sp/>from<sp/>Source</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Debian<sp/>/<sp/>Ubuntu</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>1.<sp/>Toolchain<sp/>and<sp/>build<sp/>helpers<sp/>(Conan<sp/>compiles<sp/>most<sp/>dependencies<sp/>from<sp/>source)</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt<sp/>update</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt<sp/>install<sp/>-y<sp/>build-essential<sp/>git<sp/>curl<sp/>zip<sp/>unzip<sp/>tar<sp/>pkg-config<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cmake<sp/>ninja-build<sp/>ccache<sp/>make<sp/>autoconf<sp/>automake<sp/>libtool<sp/>bison<sp/>flex<sp/>perl<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uuid-dev<sp/>libssl-dev<sp/>python3<sp/>python3-pip<sp/>pipx<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>postgresql<sp/>postgresql-client</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>2.<sp/>Check<sp/>versions:<sp/>you<sp/>need<sp/>GCC<sp/>&gt;=<sp/>13<sp/>and<sp/>CMake<sp/>&gt;=<sp/>4.0</highlight></codeline>
+<codeline><highlight class="normal">g++<sp/>--version<sp/>|<sp/>head<sp/>-1</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--version<sp/>|<sp/>head<sp/>-1</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&gt;<sp/>The<sp/>packaged<sp/>`cmake`<sp/>is<sp/>3.x<sp/>on<sp/>Ubuntu<sp/>24.04<sp/>(3.28)<sp/>and<sp/>Debian<sp/>13<sp/>(3.31).<sp/>Install<sp/>CMake<sp/>4<sp/>with<sp/>`pipx<sp/>install<sp/>cmake`<sp/>(then<sp/>`pipx<sp/>ensurepath`<sp/>and<sp/>open<sp/>a<sp/>new<sp/>shell),<sp/>or<sp/>from<sp/>the<sp/>[Kitware<sp/>APT<sp/>repository](https://apt.kitware.com/).<sp/>If<sp/>`g++`<sp/>is<sp/>older<sp/>than<sp/>13,<sp/>install<sp/>`g++-13`<sp/>(`sudo<sp/>apt<sp/>install<sp/>g++-13`)<sp/>and<sp/>export<sp/>`CC=gcc-13<sp/>CXX=g++-13`<sp/>before<sp/>the<sp/>steps<sp/>below.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Fedora</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>1.<sp/>Toolchain<sp/>and<sp/>build<sp/>helpers</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>dnf<sp/>install<sp/>-y<sp/>gcc<sp/>gcc-c++<sp/>make<sp/>git<sp/>curl<sp/>zip<sp/>unzip<sp/>tar<sp/>pkgconf-pkg-config<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cmake<sp/>ninja-build<sp/>ccache<sp/>autoconf<sp/>automake<sp/>libtool<sp/>bison<sp/>flex<sp/>perl-core<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>libuuid-devel<sp/>openssl-devel<sp/>python3<sp/>python3-pip<sp/>pipx<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>postgresql-server<sp/>postgresql</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>2.<sp/>Check<sp/>versions:<sp/>you<sp/>need<sp/>GCC<sp/>&gt;=<sp/>13<sp/>and<sp/>CMake<sp/>&gt;=<sp/>4.0</highlight></codeline>
+<codeline><highlight class="normal">g++<sp/>--version<sp/>|<sp/>head<sp/>-1</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--version<sp/>|<sp/>head<sp/>-1</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&gt;<sp/>If<sp/>`cmake<sp/>--version`<sp/>is<sp/>below<sp/>4.0,<sp/>install<sp/>CMake<sp/>4<sp/>with<sp/>`pipx<sp/>install<sp/>cmake`<sp/>(then<sp/>`pipx<sp/>ensurepath`<sp/>and<sp/>open<sp/>a<sp/>new<sp/>shell).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Install<sp/>Conan<sp/>and<sp/>build<sp/>(both<sp/>distributions)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">pipx<sp/>install<sp/>conan</highlight></codeline>
+<codeline><highlight class="normal">pipx<sp/>ensurepath<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>then<sp/>open<sp/>a<sp/>new<sp/>shell<sp/>so<sp/>~/.local/bin<sp/>is<sp/>on<sp/>PATH</highlight></codeline>
+<codeline><highlight class="normal">conan<sp/>profile<sp/>detect<sp/>--force</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`conan<sp/>profile<sp/>detect`<sp/>produces<sp/>a<sp/>profile<sp/>with<sp/>`compiler.libcxx=libstdc++11`,<sp/>which<sp/>is<sp/>what<sp/>you<sp/>want<sp/>on<sp/>Linux.<sp/>The<sp/>project<sp/>builds<sp/>as<sp/>GNU<sp/>C++20,<sp/>so<sp/>the<sp/>commands<sp/>below<sp/>pass<sp/>`-s<sp/>compiler.cppstd=gnu20`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Install<sp/>dependencies<sp/>and<sp/>configure<sp/>both<sp/>build<sp/>types:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Resolve<sp/>and<sp/>build<sp/>third-party<sp/>dependencies<sp/>(the<sp/>first<sp/>run<sp/>takes<sp/>a<sp/>while)</highlight></codeline>
+<codeline><highlight class="normal">TRANTOR_FLAGS=&apos;trantor/*:tools.build:cxxflags=[&quot;-Wno-error=unused-result&quot;]&apos;</highlight></codeline>
+<codeline><highlight class="normal">conan<sp/>install<sp/>.<sp/>--build=missing<sp/>-s<sp/>build_type=Debug<sp/><sp/><sp/>-s<sp/>compiler.cppstd=gnu20<sp/>-c<sp/>&quot;$TRANTOR_FLAGS&quot;</highlight></codeline>
+<codeline><highlight class="normal">conan<sp/>install<sp/>.<sp/>--build=missing<sp/>-s<sp/>build_type=Release<sp/>-s<sp/>compiler.cppstd=gnu20<sp/>-c<sp/>&quot;$TRANTOR_FLAGS&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Configure<sp/>CMake</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>-S<sp/>.<sp/>-B<sp/>build/Debug<sp/><sp/><sp/>-DCMAKE_BUILD_TYPE=Debug<sp/><sp/><sp/>-G<sp/>Ninja</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>-S<sp/>.<sp/>-B<sp/>build/Release<sp/>-DCMAKE_BUILD_TYPE=Release<sp/>-G<sp/>Ninja</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Compile</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/Debug<sp/><sp/><sp/>-j&quot;$(nproc)&quot;</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/Release<sp/>-j&quot;$(nproc)&quot;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Or<sp/>run<sp/>the<sp/>convenience<sp/>script<sp/>`./scripts/build/build.sh`,<sp/>which<sp/>goes<sp/>further<sp/>than<sp/>the<sp/>steps<sp/>above:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Runs<sp/>the<sp/>same<sp/>Conan,<sp/>CMake<sp/>and<sp/>build<sp/>steps<sp/>for<sp/>Debug<sp/>and<sp/>Release.</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Runs<sp/>the<sp/>unit<sp/>tests<sp/>for<sp/>both<sp/>(`ctest<sp/>--preset<sp/>conan-release`<sp/>and<sp/>`ctest<sp/>--preset<sp/>conan-debug`).</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>**Starts<sp/>the<sp/>Release<sp/>server<sp/>in<sp/>the<sp/>background**<sp/>(`./scripts/run/run_release.sh<sp/>&amp;`)<sp/>and<sp/>runs<sp/>the<sp/>API<sp/>test<sp/>suite<sp/>(`./scripts/test/test_api.sh`)<sp/>against<sp/>it.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Step<sp/>3<sp/>needs<sp/>a<sp/>running,<sp/>initialised<sp/>PostgreSQL<sp/>(see<sp/>Database<sp/>setup),<sp/>and<sp/>it<sp/>leaves<sp/>the<sp/>server<sp/>running<sp/>afterwards.<sp/>Stop<sp/>it<sp/>with<sp/>`pkill<sp/>-f<sp/>build/Release/server`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">./scripts/build/build.sh</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>resulting<sp/>binary<sp/>is<sp/>named<sp/>`server`<sp/>and<sp/>is<sp/>placed<sp/>in<sp/>the<sp/>corresponding<sp/>build<sp/>directory<sp/>(`build/Release/server`).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Database<sp/>setup</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>server<sp/>needs<sp/>a<sp/>PostgreSQL<sp/>database<sp/>initialised<sp/>with<sp/>`init.sql`.<sp/>Skip<sp/>this<sp/>section<sp/>if<sp/>you<sp/>already<sp/>have<sp/>a<sp/>database,<sp/>or<sp/>if<sp/>you<sp/>use<sp/>the<sp/>all-in-one<sp/>Docker<sp/>image<sp/>(see<sp/>Run<sp/>with<sp/>Docker).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Debian<sp/>/<sp/>Ubuntu**<sp/>—<sp/>the<sp/>service<sp/>is<sp/>created<sp/>and<sp/>started<sp/>by<sp/>the<sp/>package:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>systemctl<sp/>enable<sp/>--now<sp/>postgresql</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Fedora**<sp/>—<sp/>initialise<sp/>the<sp/>cluster<sp/>first,<sp/>then<sp/>allow<sp/>password<sp/>logins<sp/>over<sp/>TCP:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>postgresql-setup<sp/>--initdb</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>systemctl<sp/>enable<sp/>--now<sp/>postgresql</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Fedora&apos;s<sp/>default<sp/>pg_hba.conf<sp/>uses<sp/>&quot;ident&quot;<sp/>for<sp/>127.0.0.1;<sp/>switch<sp/>it<sp/>to<sp/>a<sp/>password<sp/>method:</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>sed<sp/>-i<sp/>&apos;s/\(127.0.0.1\/32\s\+\)ident/\1scram-sha-256/;<sp/>s/\(::1\/128\s\+\)ident/\1scram-sha-256/&apos;<sp/>/var/lib/pgsql/data/pg_hba.conf</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>systemctl<sp/>restart<sp/>postgresql</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Both**<sp/>—<sp/>set<sp/>a<sp/>password<sp/>for<sp/>the<sp/>`postgres`<sp/>role<sp/>and<sp/>load<sp/>the<sp/>schema:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>-u<sp/>postgres<sp/>psql<sp/>-c<sp/>&quot;ALTER<sp/>USER<sp/>postgres<sp/>PASSWORD<sp/>&apos;postgres&apos;;&quot;<sp/><sp/><sp/>#<sp/>choose<sp/>a<sp/>real<sp/>password<sp/>outside<sp/>local<sp/>dev</highlight></codeline>
+<codeline><highlight class="normal">PGPASSWORD=postgres<sp/>./scripts/run/db_init.sh<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>runs<sp/>init.sql<sp/>against<sp/>127.0.0.1</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`db_init.sh`<sp/>connects<sp/>as<sp/>`postgres`<sp/>to<sp/>the<sp/>`postgres`<sp/>database<sp/>on<sp/>`127.0.0.1`.<sp/>To<sp/>use<sp/>another<sp/>database<sp/>or<sp/>user,<sp/>run<sp/>`psql<sp/>-h<sp/>&lt;host&gt;<sp/>-U<sp/>&lt;user&gt;<sp/>-d<sp/>&lt;db&gt;<sp/>-f<sp/>scripts/db/init.sql`<sp/>yourself.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Run<sp/>the<sp/>server</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`run_release.sh`<sp/>loads<sp/>its<sp/>settings<sp/>from<sp/>`config`<sp/>in<sp/>the<sp/>project<sp/>root<sp/>(a<sp/>tracked<sp/>file<sp/>of<sp/>defaults);<sp/>if<sp/>that<sp/>file<sp/>is<sp/>absent<sp/>it<sp/>falls<sp/>back<sp/>to<sp/>`.env`.<sp/>To<sp/>keep<sp/>local<sp/>values<sp/>separate<sp/>from<sp/>the<sp/>tracked<sp/>file,<sp/>point<sp/>it<sp/>at<sp/>your<sp/>own<sp/>file<sp/>with<sp/>`ENV_FILE=/path/to/file`.<sp/>See<sp/>Configuration<sp/>for<sp/>every<sp/>variable:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">cat<sp/>&gt;<sp/>config<sp/>&lt;&lt;&apos;EOF&apos;</highlight></codeline>
+<codeline><highlight class="normal">SERVER_HOST=0.0.0.0</highlight></codeline>
+<codeline><highlight class="normal">SERVER_PORT=8080</highlight></codeline>
+<codeline><highlight class="normal">DB_HOST=127.0.0.1</highlight></codeline>
+<codeline><highlight class="normal">DB_PORT=5432</highlight></codeline>
+<codeline><highlight class="normal">DB_NAME=postgres</highlight></codeline>
+<codeline><highlight class="normal">DB_USER=postgres</highlight></codeline>
+<codeline><highlight class="normal">DB_PASS=postgres</highlight></codeline>
+<codeline><highlight class="normal">TOKEN_SECRET=change-me-to-a-long-random-string</highlight></codeline>
+<codeline><highlight class="normal">EOF</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Then<sp/>start<sp/>it:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">./scripts/run/run_release.sh<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>run<sp/>build/Release/server<sp/>with<sp/>the<sp/>settings<sp/>file<sp/>loaded</highlight></codeline>
+<codeline><highlight class="normal">./scripts/run/run_release.sh<sp/>--build<sp/><sp/><sp/><sp/>#<sp/>rebuild<sp/>Release<sp/>first,<sp/>then<sp/>run</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">To<sp/>use<sp/>a<sp/>different<sp/>file,<sp/>run<sp/>`ENV_FILE=/path/to/file<sp/>./scripts/run/run_release.sh`.<sp/>Or<sp/>run<sp/>the<sp/>binary<sp/>directly<sp/>with<sp/>the<sp/>variables<sp/>exported<sp/>in<sp/>your<sp/>shell:<sp/>`./build/Release/server`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Verify<sp/>it<sp/>is<sp/>up:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">curl<sp/>http://127.0.0.1:8080/api/v2/hello</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Then<sp/>open<sp/>the<sp/>interactive<sp/>API<sp/>docs<sp/>at<sp/>&lt;http://127.0.0.1:8080/api/v2/doc&gt;.<sp/>If<sp/>the<sp/>port<sp/>is<sp/>not<sp/>reachable<sp/>from<sp/>another<sp/>machine,<sp/>open<sp/>it<sp/>in<sp/>the<sp/>firewall<sp/>(`sudo<sp/>ufw<sp/>allow<sp/>8080/tcp`<sp/>on<sp/>Debian/Ubuntu,<sp/>`sudo<sp/>firewall-cmd<sp/>--add-port=8080/tcp<sp/>--permanent<sp/>&amp;&amp;<sp/>sudo<sp/>firewall-cmd<sp/>--reload`<sp/>on<sp/>Fedora).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Run<sp/>with<sp/>Docker</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Every<sp/>release<sp/>tag<sp/>publishes<sp/>an<sp/>all-in-one<sp/>image<sp/>to<sp/>Docker<sp/>Hub:<sp/>the<sp/>server<sp/>**plus**<sp/>its<sp/>own<sp/>PostgreSQL,<sp/>so<sp/>no<sp/>external<sp/>database<sp/>is<sp/>needed.<sp/>It<sp/>is<sp/>a<sp/>single<sp/>multi-arch<sp/>image<sp/>(`linux/amd64`<sp/>and<sp/>`linux/arm64`);<sp/>Docker<sp/>and<sp/>Apple<sp/>Container<sp/>pull<sp/>the<sp/>right<sp/>one<sp/>automatically.<sp/>It&apos;s<sp/>meant<sp/>for<sp/>demos,<sp/>testing,<sp/>and<sp/>CI.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&gt;<sp/>**Which<sp/>should<sp/>I<sp/>use?**<sp/>The<sp/>Docker<sp/>image<sp/>works<sp/>on<sp/>any<sp/>OS.<sp/>The<sp/>Alpine<sp/>tarballs<sp/>attached<sp/>to<sp/>each<sp/>GitHub<sp/>Release<sp/>run<sp/>only<sp/>on<sp/>Alpine<sp/>Linux.<sp/>Anywhere<sp/>else,<sp/>without<sp/>Docker,<sp/>build<sp/>from<sp/>source.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&gt;<sp/>**The<sp/>database<sp/>is<sp/>ephemeral.**<sp/>Every<sp/>container<sp/>start,<sp/>_including<sp/>a<sp/>restart_,<sp/>begins<sp/>with<sp/>a<sp/>fresh,<sp/>empty<sp/>database<sp/>initialised<sp/>from<sp/>`init.sql`.<sp/>Nothing<sp/>is<sp/>kept.<sp/>For<sp/>persistent<sp/>data,<sp/>run<sp/>the<sp/>server<sp/>against<sp/>your<sp/>own<sp/>PostgreSQL<sp/>instead<sp/>(see<sp/>Run<sp/>the<sp/>server).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Docker**<sp/>(Linux,<sp/>macOS,<sp/>Windows):</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>run<sp/>--rm<sp/>-p<sp/>8080:8080<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>TOKEN_SECRET=change-me-to-a-long-random-string<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>MAX_REQUESTS=1000000<sp/>-e<sp/>MAX_FPS=3000000<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>dr3mro/valhalla-server-run:latest</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Apple<sp/>Container**<sp/>(Apple<sp/>Silicon<sp/>Macs):</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>run<sp/>--rm<sp/>-p<sp/>8080:8080<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>TOKEN_SECRET=change-me-to-a-long-random-string<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>MAX_REQUESTS=1000000<sp/>-e<sp/>MAX_FPS=3000000<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>dr3mro/valhalla-server-run:latest</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`MAX_REQUESTS`<sp/>and<sp/>`MAX_FPS`<sp/>raise<sp/>the<sp/>DoS<sp/>protection<sp/>limits<sp/>(defaults<sp/>`10000`<sp/>and<sp/>`100`)<sp/>so<sp/>the<sp/>**Benchmark**<sp/>and<sp/>**Test<sp/>console**<sp/>panels<sp/>in<sp/>the<sp/>API<sp/>docs<sp/>don&apos;t<sp/>get<sp/>your<sp/>IP<sp/>rate-limited<sp/>or<sp/>banned.<sp/>Leave<sp/>them<sp/>out<sp/>for<sp/>normal<sp/>use.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Then<sp/>check<sp/>it<sp/>is<sp/>up:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">curl<sp/>http://127.0.0.1:8080/api/v2/hello</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>interactive<sp/>API<sp/>docs<sp/>are<sp/>at<sp/>&lt;http://127.0.0.1:8080/api/v2/doc&gt;.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Pin<sp/>a<sp/>version**<sp/>instead<sp/>of<sp/>`latest`.<sp/>Every<sp/>release<sp/>tag,<sp/>including<sp/>pre-releases<sp/>such<sp/>as<sp/>`1.2.3-beta`,<sp/>is<sp/>published<sp/>under<sp/>its<sp/>own<sp/>name<sp/>and<sp/>also<sp/>moves<sp/>`latest`:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>pull<sp/>dr3mro/valhalla-server-run:v1.2.3</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>image<sp/>pull<sp/>dr3mro/valhalla-server-run:v1.2.3</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Give<sp/>it<sp/>a<sp/>name<sp/>to<sp/>launch<sp/>later.**<sp/>Create<sp/>the<sp/>container<sp/>once,<sp/>with<sp/>your<sp/>settings,<sp/>then<sp/>start<sp/>and<sp/>stop<sp/>it<sp/>by<sp/>name.<sp/>Leave<sp/>out<sp/>`--rm`,<sp/>or<sp/>the<sp/>container<sp/>is<sp/>deleted<sp/>when<sp/>it<sp/>stops.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Docker:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>one<sp/>time:<sp/>create<sp/>it<sp/>with<sp/>your<sp/>settings,<sp/>without<sp/>starting<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>create<sp/>--name<sp/>valhalla<sp/>-p<sp/>8080:8080<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>TOKEN_SECRET=change-me-to-a-long-random-string<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>MAX_REQUESTS=1000000<sp/>-e<sp/>MAX_FPS=3000000<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>dr3mro/valhalla-server-run:latest</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">docker<sp/>start<sp/>valhalla<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>launch<sp/>(add<sp/>-a<sp/>to<sp/>attach<sp/>to<sp/>its<sp/>output)</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>logs<sp/>-f<sp/>valhalla<sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>follow<sp/>logs</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>stop<sp/>valhalla<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>stop</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>rm<sp/>valhalla<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>delete<sp/>it,<sp/>e.g.<sp/>to<sp/>change<sp/>settings</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Apple<sp/>Container<sp/>(same<sp/>commands):</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>create<sp/>--name<sp/>valhalla<sp/>-p<sp/>8080:8080<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>TOKEN_SECRET=change-me-to-a-long-random-string<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>MAX_REQUESTS=1000000<sp/>-e<sp/>MAX_FPS=3000000<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>dr3mro/valhalla-server-run:latest</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">container<sp/>start<sp/>valhalla</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>logs<sp/>-f<sp/>valhalla</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>stop<sp/>valhalla</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>rm<sp/>valhalla</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>The<sp/>name<sp/>keeps<sp/>everything<sp/>you<sp/>gave<sp/>`create`<sp/>(port,<sp/>variables,<sp/>image).<sp/>To<sp/>change<sp/>any<sp/>of<sp/>it,<sp/>`rm`<sp/>the<sp/>container<sp/>and<sp/>`create`<sp/>it<sp/>again.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>The<sp/>database<sp/>is<sp/>still<sp/>wiped<sp/>on<sp/>every<sp/>`start`,<sp/>so<sp/>a<sp/>named<sp/>container<sp/>doesn&apos;t<sp/>keep<sp/>data<sp/>between<sp/>launches.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`start`<sp/>reuses<sp/>the<sp/>image<sp/>the<sp/>container<sp/>was<sp/>created<sp/>from;<sp/>see<sp/>Update<sp/>to<sp/>the<sp/>latest<sp/>version<sp/>below.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>If<sp/>you&apos;d<sp/>rather<sp/>type<sp/>a<sp/>single<sp/>word,<sp/>add<sp/>a<sp/>shell<sp/>alias<sp/>to<sp/>`~/.zshrc`<sp/>or<sp/>`~/.bashrc`,<sp/>then<sp/>just<sp/>run<sp/>`valhalla`<sp/>(Ctrl+C<sp/>to<sp/>stop):</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>```bash</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>alias<sp/>valhalla=&apos;docker<sp/>run<sp/>--rm<sp/>-p<sp/>8080:8080<sp/>-e<sp/>TOKEN_SECRET=change-me-to-a-long-random-string<sp/>-e<sp/>MAX_REQUESTS=1000000<sp/>-e<sp/>MAX_FPS=3000000<sp/>dr3mro/valhalla-server-run:latest&apos;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Update<sp/>to<sp/>the<sp/>latest<sp/>version</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Docker<sp/>and<sp/>Apple<sp/>Container<sp/>don&apos;t<sp/>update<sp/>images<sp/>on<sp/>their<sp/>own;<sp/>`latest`<sp/>on<sp/>your<sp/>machine<sp/>is<sp/>whatever<sp/>you<sp/>last<sp/>pulled.<sp/>Pull<sp/>the<sp/>new<sp/>image,<sp/>then<sp/>recreate<sp/>the<sp/>container<sp/>from<sp/>it.<sp/>Nothing<sp/>is<sp/>lost,<sp/>because<sp/>the<sp/>database<sp/>is<sp/>wiped<sp/>on<sp/>every<sp/>start<sp/>anyway.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Docker:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>pull<sp/>dr3mro/valhalla-server-run:latest</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>if<sp/>you<sp/>use<sp/>a<sp/>named<sp/>container<sp/>(see<sp/>above),<sp/>recreate<sp/>it<sp/>from<sp/>the<sp/>new<sp/>image</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>stop<sp/>valhalla</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>rm<sp/>valhalla</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>create<sp/>--name<sp/>valhalla<sp/>-p<sp/>8080:8080<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>TOKEN_SECRET=change-me-to-a-long-random-string<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>MAX_REQUESTS=1000000<sp/>-e<sp/>MAX_FPS=3000000<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>dr3mro/valhalla-server-run:latest</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>start<sp/>valhalla</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">docker<sp/>image<sp/>prune<sp/>-f<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>optional:<sp/>remove<sp/>the<sp/>old,<sp/>now-untagged<sp/>image</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Apple<sp/>Container:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>image<sp/>pull<sp/>dr3mro/valhalla-server-run:latest</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">container<sp/>stop<sp/>valhalla</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>rm<sp/>valhalla</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>create<sp/>--name<sp/>valhalla<sp/>-p<sp/>8080:8080<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>TOKEN_SECRET=change-me-to-a-long-random-string<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-e<sp/>MAX_REQUESTS=1000000<sp/>-e<sp/>MAX_FPS=3000000<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>dr3mro/valhalla-server-run:latest</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>start<sp/>valhalla</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">container<sp/>image<sp/>prune<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>optional:<sp/>remove<sp/>unused<sp/>images</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Or<sp/>let<sp/>`valhalla.sh`<sp/>do<sp/>all<sp/>of<sp/>it:<sp/>`./scripts/vdt/valhalla.sh<sp/>update`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>you<sp/>run<sp/>with<sp/>`--rm`<sp/>or<sp/>the<sp/>shell<sp/>alias,<sp/>the<sp/>pull<sp/>is<sp/>all<sp/>you<sp/>need:<sp/>the<sp/>next<sp/>`run`<sp/>uses<sp/>the<sp/>new<sp/>image.<sp/>To<sp/>see<sp/>which<sp/>version<sp/>is<sp/>running,<sp/>check<sp/>the<sp/>`Version`<sp/>line<sp/>in<sp/>the<sp/>startup<sp/>banner<sp/>(`docker<sp/>logs<sp/>valhalla`<sp/>or<sp/>`container<sp/>logs<sp/>valhalla`).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Settings.**<sp/>Every<sp/>variable<sp/>in<sp/>Configuration<sp/>can<sp/>be<sp/>passed<sp/>with<sp/>`-e`.<sp/>Inside<sp/>this<sp/>image:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Variable<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Default<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Notes<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>-------------------------------------<sp/>|<sp/>------------------------------------<sp/>|<sp/>-------------------------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`TOKEN_SECRET`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>_(random<sp/>per<sp/>start)_<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Set<sp/>it<sp/>if<sp/>tokens<sp/>must<sp/>survive<sp/>a<sp/>restart<sp/>or<sp/>be<sp/>shared<sp/>with<sp/>other<sp/>services<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`DB_NAME`<sp/>/<sp/>`DB_USER`<sp/>/<sp/>`DB_PASS`<sp/><sp/><sp/><sp/><sp/>|<sp/>`postgres`<sp/>/<sp/>`postgres`<sp/>/<sp/>`postgres`<sp/>|<sp/>Created<sp/>inside<sp/>the<sp/>container<sp/>on<sp/>start;<sp/>any<sp/>value<sp/>works,<sp/>quotes<sp/>included<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`DB_HOST`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`127.0.0.1`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Fixed:<sp/>the<sp/>image<sp/>always<sp/>uses<sp/>its<sp/>bundled<sp/>database<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`SERVER_PORT`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`8080`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>If<sp/>you<sp/>change<sp/>it,<sp/>change<sp/>the<sp/>`-p`<sp/>mapping<sp/>to<sp/>match,<sp/>e.g.<sp/>`-p<sp/>9000:9000<sp/>-e<sp/>SERVER_PORT=9000`<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`FRONTEND_HOST`<sp/>/<sp/>`EMAIL_SENDER_HOST`<sp/>|<sp/>Docker-network<sp/>IPs<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Set<sp/>these<sp/>if<sp/>you<sp/>use<sp/>invite<sp/>links<sp/>or<sp/>email<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Details:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>The<sp/>server<sp/>runs<sp/>as<sp/>the<sp/>non-root<sp/>user<sp/>`valhalla`;<sp/>PostgreSQL<sp/>only<sp/>listens<sp/>inside<sp/>the<sp/>container<sp/>(`127.0.0.1`).</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>The<sp/>image<sp/>has<sp/>a<sp/>health<sp/>check<sp/>(`GET<sp/>/api/v2/hello`),<sp/>so<sp/>`docker<sp/>ps`<sp/>shows<sp/>`healthy`<sp/>once<sp/>it<sp/>is<sp/>ready,<sp/>typically<sp/>a<sp/>few<sp/>seconds<sp/>after<sp/>start.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>If<sp/>`TOKEN_SECRET`<sp/>is<sp/>not<sp/>set,<sp/>the<sp/>container<sp/>generates<sp/>a<sp/>random<sp/>one<sp/>on<sp/>each<sp/>start<sp/>(and<sp/>says<sp/>so<sp/>in<sp/>the<sp/>log)<sp/>rather<sp/>than<sp/>using<sp/>the<sp/>insecure<sp/>built-in<sp/>default.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Build<sp/>the<sp/>image<sp/>yourself**<sp/>from<sp/>the<sp/>repository<sp/>root:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>build<sp/>-f<sp/>docker/Dockerfile<sp/>-t<sp/>valhalla-server-run:local<sp/>.</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>build<sp/>-f<sp/>docker/Dockerfile<sp/>-t<sp/>valhalla-server-run:local<sp/>.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>build<sp/>compiles<sp/>every<sp/>C++<sp/>dependency<sp/>from<sp/>source<sp/>on<sp/>Alpine<sp/>and<sp/>runs<sp/>the<sp/>unit<sp/>tests;<sp/>the<sp/>build<sp/>fails<sp/>if<sp/>a<sp/>test<sp/>fails.<sp/>The<sp/>first<sp/>build<sp/>takes<sp/>a<sp/>long<sp/>time;<sp/>later<sp/>builds<sp/>reuse<sp/>the<sp/>cached<sp/>dependency<sp/>layer<sp/>until<sp/>`conanfile.txt`<sp/>or<sp/>`conan.lock`<sp/>changes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Release<sp/>downloads.**<sp/>Each<sp/>GitHub<sp/>Release<sp/>also<sp/>attaches<sp/>`server-alpine-amd64.tar.gz`<sp/>and<sp/>`server-alpine-arm64.tar.gz`.<sp/>These<sp/>are<sp/>built<sp/>on<sp/>Alpine<sp/>(musl<sp/>libc)<sp/>and<sp/>only<sp/>run<sp/>on<sp/>Alpine-based<sp/>systems;<sp/>everywhere<sp/>else<sp/>use<sp/>the<sp/>Docker<sp/>image,<sp/>or<sp/>build<sp/>from<sp/>source.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Manage<sp/>it<sp/>with<sp/>`valhalla.sh`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`scripts/vdt/valhalla.sh`<sp/>wraps<sp/>the<sp/>commands<sp/>above<sp/>for<sp/>both<sp/>Docker<sp/>and<sp/>Apple<sp/>Container.<sp/>It<sp/>picks<sp/>Apple<sp/>Container<sp/>when<sp/>it&apos;s<sp/>installed<sp/>and<sp/>Docker<sp/>otherwise<sp/>(force<sp/>one<sp/>with<sp/>`--runtime<sp/>docker`<sp/>or<sp/>`--runtime<sp/>container`).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Install<sp/>it<sp/>as<sp/>the<sp/>`vdt`<sp/>command**<sp/>(no<sp/>checkout<sp/>needed).<sp/>This<sp/>downloads<sp/>the<sp/>latest<sp/>`valhalla.sh`,<sp/>the<sp/>API<sp/>test<sp/>scripts<sp/>and<sp/>their<sp/>payloads<sp/>from<sp/>this<sp/>repository.<sp/>The<sp/>command<sp/>goes<sp/>in<sp/>`~/.local/bin/vdt`<sp/>(a<sp/>link);<sp/>the<sp/>files<sp/>go<sp/>in<sp/>`~/.local/share/vdt`,<sp/>without<sp/>the<sp/>`.sh`<sp/>extension<sp/>(`vdt`,<sp/>`test_api`,<sp/>`schemathesis_test`)<sp/>and<sp/>executable,<sp/>plus<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>installer.<sp/>It<sp/>adds<sp/>`~/.local/bin`<sp/>to<sp/>`PATH`<sp/>(if<sp/>it<sp/>isn&apos;t<sp/>already)<sp/>and<sp/>tab<sp/>completion<sp/>in<sp/>`~/.zshrc`<sp/>and/or<sp/>`~/.bashrc`:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">curl<sp/>-fsSL<sp/>https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh<sp/>|<sp/>sh</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Then<sp/>open<sp/>a<sp/>new<sp/>terminal<sp/>and<sp/>use<sp/>`vdt`<sp/>instead<sp/>of<sp/>`./scripts/vdt/valhalla.sh`<sp/>(e.g.<sp/>`vdt<sp/>run`,<sp/>`vdt<sp/>status`).<sp/>Afterwards<sp/>the<sp/>tool<sp/>manages<sp/>itself<sp/>with<sp/>the<sp/>same<sp/>installer.<sp/>The<sp/>installer<sp/>keeps<sp/>a<sp/>copy<sp/>of<sp/>itself<sp/>next<sp/>to<sp/>the<sp/>tool,<sp/>so<sp/>`uninstall`<sp/>works<sp/>offline;<sp/>`install`<sp/>downloads<sp/>the<sp/>latest<sp/>installer<sp/>first,<sp/>then<sp/>uninstalls<sp/>the<sp/>current<sp/>copy<sp/>and<sp/>installs<sp/>the<sp/>new<sp/>one<sp/>(if<sp/>the<sp/>download<sp/>fails,<sp/>nothing<sp/>is<sp/>removed):</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>install<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>update<sp/>to<sp/>the<sp/>latest<sp/>version<sp/>(your<sp/>config<sp/>and<sp/>dumps/<sp/>are<sp/>kept)</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>install<sp/>v1.2.3<sp/><sp/><sp/><sp/><sp/>#<sp/>a<sp/>specific<sp/>tag,<sp/>branch<sp/>or<sp/>commit</highlight></codeline>
+<codeline><highlight class="normal">vdt<sp/>uninstall<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>remove<sp/>it<sp/>and<sp/>its<sp/>lines<sp/>in<sp/>~/.zshrc<sp/>/<sp/>~/.bashrc<sp/>(asks<sp/>first)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>installed<sp/>copy<sp/>has<sp/>everything<sp/>except<sp/>`build`,<sp/>which<sp/>needs<sp/>a<sp/>full<sp/>checkout<sp/>of<sp/>the<sp/>repository.<sp/>From<sp/>a<sp/>checkout,<sp/>every<sp/>command<sp/>works<sp/>the<sp/>same<sp/>as<sp/>`./scripts/vdt/valhalla.sh<sp/>&lt;command&gt;`:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>run<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>create<sp/>(pulling<sp/>the<sp/>image<sp/>if<sp/>needed)<sp/>or<sp/>start<sp/>the<sp/>container</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>update<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>pull<sp/>:latest,<sp/>recreate<sp/>the<sp/>container<sp/>with<sp/>the<sp/>same<sp/>settings,<sp/>free<sp/>old<sp/>images</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>update<sp/>v1.2.3<sp/><sp/><sp/>#<sp/>same,<sp/>for<sp/>a<sp/>specific<sp/>tag</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>build<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>build<sp/>the<sp/>image<sp/>from<sp/>this<sp/>checkout<sp/>and<sp/>run<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>stop<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>stop<sp/>it<sp/>without<sp/>removing<sp/>it<sp/>(run<sp/>starts<sp/>it<sp/>again)</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>restart<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>restart<sp/>it<sp/>(the<sp/>database<sp/>is<sp/>wiped,<sp/>as<sp/>on<sp/>every<sp/>start)</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>status<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>state,<sp/>image,<sp/>port,<sp/>health<sp/>and<sp/>version</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>outdated<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>is<sp/>there<sp/>a<sp/>newer<sp/>image<sp/>on<sp/>Docker<sp/>Hub?</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>show<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>follow<sp/>the<sp/>log<sp/>(Ctrl+C<sp/>stops<sp/>following,<sp/>not<sp/>the<sp/>server)</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>logs<sp/>50<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>last<sp/>50<sp/>log<sp/>lines</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>stats<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>live<sp/>CPU<sp/>and<sp/>memory<sp/>use</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>env<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>what<sp/>a<sp/>new<sp/>container<sp/>would<sp/>get<sp/>from<sp/>.env,<sp/>secrets<sp/>hidden</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>doc<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>open<sp/>the<sp/>API<sp/>docs<sp/>in<sp/>the<sp/>browser</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>psql<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>psql<sp/>on<sp/>the<sp/>bundled<sp/>database</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>dump<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>save<sp/>the<sp/>database<sp/>to<sp/>~/.local/share/vdt/dumps</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>restore<sp/>FILE<sp/><sp/><sp/><sp/>#<sp/>load<sp/>a<sp/>dump<sp/>back<sp/>(e.g.<sp/>after<sp/>restart<sp/>or<sp/>update)</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>shell<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>a<sp/>shell<sp/>inside<sp/>the<sp/>container</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>test<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>run<sp/>test_api.sh<sp/>against<sp/>it<sp/>(test<sp/>fuzz<sp/>/<sp/>test<sp/>all<sp/>for<sp/>Schemathesis)</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>secret<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>write<sp/>a<sp/>random<sp/>TOKEN_SECRET<sp/>to<sp/>.env</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>install<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>install<sp/>or<sp/>update<sp/>the<sp/>`vdt`<sp/>command<sp/>from<sp/>GitHub</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>uninstall<sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>remove<sp/>the<sp/>installed<sp/>`vdt`<sp/>command</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>delete<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>remove<sp/>the<sp/>container<sp/>(asks<sp/>first)</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>clean<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>remove<sp/>the<sp/>container<sp/>and<sp/>all<sp/>local<sp/>images<sp/>of<sp/>it<sp/>(asks<sp/>first)</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>version<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>the<sp/>tool&apos;s<sp/>version</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Options<sp/>go<sp/>before<sp/>or<sp/>after<sp/>the<sp/>command:<sp/>`--name`,<sp/>`--port`,<sp/>`--runtime`,<sp/>`--env-file`,<sp/>`-n`/`--dry-run`<sp/>(see<sp/>what<sp/>any<sp/>command<sp/>would<sp/>change,<sp/>without<sp/>changing<sp/>anything),<sp/>`-y`/`--yes`<sp/>and<sp/>`-p`/`--persist`<sp/>/<sp/>`--no-persist`<sp/>(see<sp/>Persistence<sp/>below).<sp/>The<sp/>first<sp/>time<sp/>you<sp/>run<sp/>it,<sp/>it<sp/>adds<sp/>tab<sp/>completion<sp/>to<sp/>`~/.zshrc`<sp/>and/or<sp/>`~/.bashrc`;<sp/>open<sp/>a<sp/>new<sp/>terminal<sp/>to<sp/>use<sp/>it<sp/>(set<sp/>`VALHALLA_NO_COMPLETION=1`<sp/>to<sp/>skip).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Each<sp/>command<sp/>first<sp/>checks<sp/>the<sp/>tools<sp/>it<sp/>needs<sp/>(`curl`,<sp/>`python3`<sp/>for<sp/>Apple<sp/>Container,<sp/>`jq`<sp/>for<sp/>`test`,<sp/>`fzf`<sp/>for<sp/>`payload`,<sp/>…)<sp/>and<sp/>lists<sp/>any<sp/>that<sp/>are<sp/>missing,<sp/>with<sp/>how<sp/>to<sp/>install<sp/>them.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Every<sp/>`run`,<sp/>`update`<sp/>and<sp/>`restart`<sp/>waits<sp/>until<sp/>`/api/v2/hello`<sp/>answers<sp/>and<sp/>prints<sp/>the<sp/>version<sp/>line<sp/>from<sp/>the<sp/>log.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">It<sp/>passes<sp/>every<sp/>variable<sp/>in<sp/>a<sp/>settings<sp/>file<sp/>to<sp/>the<sp/>container,<sp/>using<sp/>the<sp/>first<sp/>it<sp/>finds:<sp/>`.env`<sp/>in<sp/>the<sp/>directory<sp/>you<sp/>run<sp/>it<sp/>from,<sp/>`.env`<sp/>next<sp/>to<sp/>the<sp/>script<sp/>(your<sp/>checkout),<sp/>or<sp/>`~/.local/share/vdt/config`<sp/>(same<sp/>format).<sp/>The<sp/>installer<sp/>creates<sp/>that<sp/>last<sp/>one<sp/>with<sp/>defaults<sp/>for<sp/>a<sp/>small<sp/>local<sp/>container:<sp/>`SERVER_THREADS<sp/>=<sp/>2`,<sp/>`DB_MAX_CONN<sp/>=<sp/>2`,<sp/>and<sp/>raised<sp/>`MAX_REQUESTS`/`MAX_FPS`.<sp/>It&apos;s<sp/>yours<sp/>from<sp/>then<sp/>on:<sp/>kept<sp/>on<sp/>update,<sp/>and<sp/>on<sp/>uninstall<sp/>unless<sp/>it&apos;s<sp/>still<sp/>the<sp/>unedited<sp/>default.<sp/>The<sp/>script<sp/>itself<sp/>hard-codes<sp/>no<sp/>server<sp/>settings;<sp/>anything<sp/>no<sp/>`.env`<sp/>sets<sp/>falls<sp/>back<sp/>to<sp/>the<sp/>server&apos;s<sp/>defaults<sp/>(4<sp/>threads,<sp/>10<sp/>connections,<sp/>`MAX_REQUESTS`<sp/>10000,<sp/>`MAX_FPS`<sp/>100).<sp/>Only<sp/>one<sp/>file<sp/>is<sp/>used;<sp/>they<sp/>aren&apos;t<sp/>merged.<sp/>Variables<sp/>set<sp/>in<sp/>the<sp/>shell<sp/>win<sp/>over<sp/>`.env`<sp/>for<sp/>a<sp/>single<sp/>run<sp/>(`SERVER_THREADS=4<sp/>./scripts/vdt/valhalla.sh<sp/>update`).<sp/>Quoted<sp/>values,<sp/>spaces<sp/>around<sp/>`=`<sp/>and<sp/>`<sp/>#<sp/>comments`<sp/>are<sp/>fine.<sp/>After<sp/>editing<sp/>`.env`,<sp/>run<sp/>`./scripts/vdt/valhalla.sh<sp/>update`<sp/>to<sp/>apply<sp/>it.<sp/>Use<sp/>another<sp/>file<sp/>with<sp/>`--env-file<sp/>path`<sp/>(or<sp/>`VALHALLA_ENV_FILE`),<sp/>or<sp/>skip<sp/>it<sp/>with<sp/>`--env-file<sp/>none`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Disk<sp/>space.**<sp/>After<sp/>`update`<sp/>and<sp/>`build`,<sp/>the<sp/>tool<sp/>removes<sp/>its<sp/>own<sp/>older<sp/>images<sp/>that<sp/>no<sp/>container<sp/>uses:<sp/>never<sp/>the<sp/>image<sp/>the<sp/>new<sp/>container<sp/>runs,<sp/>and<sp/>never<sp/>the<sp/>`-deps`<sp/>build<sp/>image.<sp/>It<sp/>then<sp/>frees<sp/>leftover<sp/>layers.<sp/>On<sp/>Docker<sp/>that&apos;s<sp/>only<sp/>the<sp/>dangling<sp/>images<sp/>that<sp/>came<sp/>from<sp/>this<sp/>repository;<sp/>Apple<sp/>Container<sp/>can&apos;t<sp/>tell<sp/>where<sp/>an<sp/>image<sp/>came<sp/>from,<sp/>so<sp/>there<sp/>it<sp/>runs<sp/>`container<sp/>image<sp/>prune`,<sp/>which<sp/>removes<sp/>only<sp/>dangling<sp/>(untagged,<sp/>unused)<sp/>images.<sp/>It<sp/>reports<sp/>the<sp/>image<sp/>disk<sp/>usage<sp/>before<sp/>and<sp/>after.<sp/>`-n`<sp/>shows<sp/>what<sp/>it<sp/>would<sp/>remove,<sp/>and<sp/>`--no-prune`<sp/>(or<sp/>`VALHALLA_NO_PRUNE=1`)<sp/>keeps<sp/>everything.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Update<sp/>notices.**<sp/>Every<sp/>few<sp/>hours<sp/>(`VALHALLA_UPDATE_INTERVAL`,<sp/>default<sp/>6<sp/>hours)<sp/>a<sp/>background<sp/>job<sp/>checks,<sp/>when<sp/>you&apos;re<sp/>online,<sp/>whether<sp/>Docker<sp/>Hub<sp/>has<sp/>a<sp/>newer<sp/>image<sp/>than<sp/>your<sp/>container<sp/>runs<sp/>and<sp/>whether<sp/>GitHub<sp/>has<sp/>a<sp/>newer<sp/>version<sp/>of<sp/>the<sp/>tool<sp/>than<sp/>your<sp/>installed<sp/>copy.<sp/>The<sp/>next<sp/>commands<sp/>then<sp/>show<sp/>a<sp/>small<sp/>table<sp/>with<sp/>the<sp/>installed<sp/>and<sp/>latest<sp/>versions<sp/>and<sp/>the<sp/>command<sp/>that<sp/>updates<sp/>them:<sp/>`vdt<sp/>update`<sp/>covers<sp/>both<sp/>—<sp/>the<sp/>image<sp/>and<sp/>the<sp/>`vdt`<sp/>tool<sp/>itself<sp/>(it<sp/>runs<sp/>the<sp/>installer<sp/>after<sp/>the<sp/>container<sp/>is<sp/>recreated).<sp/>`vdt<sp/>install`<sp/>only<sp/>updates<sp/>the<sp/>tool,<sp/>and<sp/>`vdt<sp/>update<sp/>--image-only`<sp/>/<sp/>`--tool-only`<sp/>pick<sp/>one<sp/>side.<sp/>The<sp/>check<sp/>never<sp/>delays<sp/>a<sp/>command.<sp/>The<sp/>exception<sp/>is<sp/>`vdt<sp/>status`,<sp/>which<sp/>checks<sp/>right<sp/>away<sp/>when<sp/>there&apos;s<sp/>an<sp/>internet<sp/>connection<sp/>(a<sp/>second<sp/>or<sp/>two)<sp/>and<sp/>ends<sp/>with<sp/>an<sp/>`Updates:`<sp/>line:<sp/>up<sp/>to<sp/>date,<sp/>available<sp/>(with<sp/>the<sp/>table),<sp/>or<sp/>not<sp/>checked<sp/>when<sp/>offline.<sp/>The<sp/>table<sp/>only<sp/>appears<sp/>in<sp/>an<sp/>interactive<sp/>terminal,<sp/>styled<sp/>as<sp/>far<sp/>as<sp/>it<sp/>supports:<sp/>colors,<sp/>Unicode<sp/>box<sp/>drawing,<sp/>emoji,<sp/>or<sp/>Nerd<sp/>Font<sp/>icons<sp/>at<sp/>level<sp/>2<sp/>(`VALHALLA_NERD=1`<sp/>forces<sp/>them).<sp/>Turn<sp/>it<sp/>off<sp/>with<sp/>`VALHALLA_NO_UPDATE_CHECK=1`.<sp/>A<sp/>checkout,<sp/>or<sp/>a<sp/>copy<sp/>installed<sp/>from<sp/>one,<sp/>isn&apos;t<sp/>checked<sp/>for<sp/>tool<sp/>updates.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Login<sp/>token<sp/>secret.**<sp/>`TOKEN_SECRET`<sp/>signs<sp/>the<sp/>JWT<sp/>login<sp/>tokens,<sp/>and<sp/>the<sp/>tool<sp/>never<sp/>lets<sp/>it<sp/>change<sp/>by<sp/>itself<sp/>between<sp/>starts<sp/>(which<sp/>would<sp/>log<sp/>everyone<sp/>out).<sp/>The<sp/>installer<sp/>generates<sp/>one<sp/>into<sp/>`~/.local/share/vdt/config`.<sp/>A<sp/>container<sp/>gets<sp/>the<sp/>first<sp/>of:<sp/>`--token-secret`,<sp/>`TOKEN_SECRET`<sp/>in<sp/>the<sp/>shell,<sp/>the<sp/>`.env`<sp/>in<sp/>use,<sp/>`~/.local/share/vdt/config`<sp/>(checked<sp/>even<sp/>when<sp/>a<sp/>`.env`<sp/>is<sp/>in<sp/>use),<sp/>or<sp/>the<sp/>replaced<sp/>container&apos;s<sp/>secret.<sp/>If<sp/>there&apos;s<sp/>none,<sp/>one<sp/>is<sp/>generated<sp/>once<sp/>and<sp/>saved<sp/>to<sp/>`config`.<sp/>`vdt<sp/>env`<sp/>shows<sp/>which<sp/>one<sp/>is<sp/>used,<sp/>and<sp/>`vdt<sp/>secret`<sp/>replaces<sp/>it<sp/>(asking<sp/>first).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Persistence.**<sp/>Without<sp/>it,<sp/>the<sp/>bundled<sp/>database<sp/>starts<sp/>from<sp/>`init.sql`<sp/>on<sp/>every<sp/>container<sp/>start.<sp/>Add<sp/>`--persist`<sp/>once<sp/>(`vdt<sp/>run<sp/>--persist`,<sp/>`vdt<sp/>update<sp/>--persist`,<sp/>or<sp/>`VALHALLA_PERSIST=1`<sp/>in<sp/>`.env`)<sp/>and<sp/>the<sp/>database<sp/>is<sp/>kept<sp/>in<sp/>`~/.local/share/vdt/dumps/&lt;name&gt;-persist.sql`,<sp/>which<sp/>is<sp/>mounted<sp/>into<sp/>the<sp/>container.<sp/>The<sp/>image&apos;s<sp/>entrypoint<sp/>loads<sp/>it<sp/>at<sp/>start<sp/>instead<sp/>of<sp/>`init.sql`<sp/>and<sp/>saves<sp/>it<sp/>whenever<sp/>the<sp/>container<sp/>stops,<sp/>including<sp/>restarts<sp/>outside<sp/>the<sp/>tool<sp/>(Docker<sp/>Desktop,<sp/>a<sp/>reboot).<sp/>The<sp/>tool<sp/>also<sp/>saves<sp/>it<sp/>before<sp/>`stop`,<sp/>`restart`,<sp/>`update`,<sp/>`build`<sp/>and<sp/>`delete`<sp/>(the<sp/>previous<sp/>dump<sp/>is<sp/>kept<sp/>as<sp/>`.prev`),<sp/>and<sp/>if<sp/>that<sp/>save<sp/>fails,<sp/>nothing<sp/>is<sp/>stopped.<sp/>The<sp/>setting<sp/>is<sp/>stored<sp/>in<sp/>the<sp/>container,<sp/>so<sp/>later<sp/>commands<sp/>remember<sp/>it;<sp/>`--no-persist`<sp/>turns<sp/>it<sp/>off.<sp/>`vdt<sp/>status`<sp/>shows<sp/>whether<sp/>it&apos;s<sp/>on<sp/>and<sp/>when<sp/>the<sp/>database<sp/>was<sp/>last<sp/>saved.<sp/>Restoring<sp/>a<sp/>dump<sp/>made<sp/>by<sp/>a<sp/>different<sp/>image<sp/>prints<sp/>a<sp/>warning,<sp/>because<sp/>if<sp/>that<sp/>image<sp/>changed<sp/>the<sp/>schema<sp/>the<sp/>old<sp/>schema<sp/>comes<sp/>back.<sp/>Images<sp/>released<sp/>before<sp/>this<sp/>feature<sp/>still<sp/>work:<sp/>the<sp/>tool<sp/>restores<sp/>the<sp/>dump<sp/>itself<sp/>after<sp/>the<sp/>container<sp/>starts.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>a<sp/>terminal,<sp/>`vdt`<sp/>messages<sp/>and<sp/>`help`<sp/>(or<sp/>`--help`)<sp/>use<sp/>colors,<sp/>Unicode<sp/>box<sp/>drawing,<sp/>BMP<sp/>symbols<sp/>and<sp/>emoji<sp/>as<sp/>far<sp/>as<sp/>the<sp/>terminal<sp/>supports<sp/>them,<sp/>and<sp/>help<sp/>is<sp/>paged<sp/>with<sp/>`less`<sp/>when<sp/>it&apos;s<sp/>longer<sp/>than<sp/>the<sp/>screen;<sp/>piped<sp/>or<sp/>with<sp/>`NO_COLOR=1`<sp/>output<sp/>is<sp/>plain<sp/>text.<sp/>Force<sp/>a<sp/>style<sp/>with<sp/>`VALHALLA_FANCY=0`<sp/>(plain)<sp/>to<sp/>`3`<sp/>(everything).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Full<sp/>help<sp/>(`./scripts/vdt/valhalla.sh<sp/>help`):</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">Valhalla<sp/>Deployment<sp/>Tool<sp/>(vdt):<sp/>run<sp/>and<sp/>manage<sp/>the<sp/>Valhalla<sp/>server<sp/>locally.</highlight></codeline>
+<codeline><highlight class="normal">Quick<sp/>start:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>run<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Start<sp/>the<sp/>server<sp/>(pulls<sp/>the<sp/>image<sp/>on<sp/>first<sp/>use).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>doc<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Open<sp/>the<sp/>API<sp/>docs<sp/>in<sp/>the<sp/>browser.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>status<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Check<sp/>state,<sp/>health<sp/>and<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>logs<sp/>[N]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Print<sp/>the<sp/>last<sp/>N<sp/>log<sp/>lines<sp/>(default<sp/>100).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>stop<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Stop<sp/>the<sp/>container<sp/>(run<sp/>starts<sp/>it<sp/>again).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>update<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Pull<sp/>the<sp/>newest<sp/>image<sp/>and<sp/>update<sp/>the<sp/>tool.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vdt<sp/>[options]<sp/>&lt;command&gt;<sp/>[args]<sp/><sp/><sp/><sp/><sp/><sp/>(installed)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Container:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>run<sp/>[tag]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Start<sp/>the<sp/>container.<sp/>Creates<sp/>it<sp/>(pulling<sp/>the<sp/>image<sp/>if<sp/>it&apos;s</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>missing)<sp/>if<sp/>it<sp/>doesn&apos;t<sp/>exist;<sp/>starts<sp/>it<sp/>if<sp/>it&apos;s<sp/>stopped.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>update<sp/>[tag]<sp/><sp/><sp/><sp/><sp/>Pull<sp/>the<sp/>image<sp/>and<sp/>recreate<sp/>the<sp/>container<sp/>with<sp/>the<sp/>same</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>settings<sp/>(re-reading<sp/>.env),<sp/>then<sp/>remove<sp/>the<sp/>old<sp/>image</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>to<sp/>free<sp/>disk<sp/>space<sp/>(--no-prune<sp/>keeps<sp/>it);<sp/>also<sp/>updates</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>vdt<sp/>tool<sp/>itself<sp/>when<sp/>GitHub<sp/>has<sp/>a<sp/>newer<sp/>one</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(--image-only<sp/>/<sp/>--tool-only<sp/>update<sp/>just<sp/>one).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>build<sp/>[tag]<sp/><sp/><sp/><sp/><sp/><sp/>Build<sp/>the<sp/>image<sp/>from<sp/>this<sp/>checkout<sp/>(version<sp/>from</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`git<sp/>describe`)<sp/>as<sp/>valhalla-server-run:&lt;tag&gt;<sp/>(default</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>local),<sp/>then<sp/>recreate<sp/>the<sp/>container<sp/>from<sp/>it<sp/>and<sp/>remove</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>old<sp/>image<sp/>(--no-prune<sp/>keeps<sp/>it).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>stop<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Stop<sp/>the<sp/>container<sp/>without<sp/>removing<sp/>it<sp/>(run<sp/>starts<sp/>it).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>restart<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Restart<sp/>the<sp/>container.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delete<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Remove<sp/>the<sp/>container<sp/>(the<sp/>image<sp/>stays;<sp/>asks<sp/>first).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>clean<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Remove<sp/>the<sp/>container<sp/>and<sp/>every<sp/>local<sp/>image<sp/>of<sp/>the<sp/>repo</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(asks<sp/>first).</highlight></codeline>
+<codeline><highlight class="normal">Inspect:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>status<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Show<sp/>state,<sp/>image,<sp/>port,<sp/>health<sp/>and<sp/>version,<sp/>and<sp/>check</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>updates<sp/>now<sp/>(when<sp/>there&apos;s<sp/>an<sp/>internet<sp/>connection).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>outdated<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Compare<sp/>the<sp/>container&apos;s<sp/>image<sp/>with<sp/>Docker<sp/>Hub.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>show<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Follow<sp/>the<sp/>container&apos;s<sp/>log<sp/>(Ctrl+C<sp/>stops<sp/>following;<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>container<sp/>keeps<sp/>running).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>logs<sp/>[N]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Print<sp/>the<sp/>last<sp/>N<sp/>log<sp/>lines<sp/>(default<sp/>100).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>stats<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Live<sp/>CPU<sp/>and<sp/>memory<sp/>use.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>env<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Print<sp/>the<sp/>variables<sp/>a<sp/>new<sp/>container<sp/>would<sp/>get<sp/>(secrets</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hidden),<sp/>without<sp/>changing<sp/>anything.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>doc<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Open<sp/>the<sp/>API<sp/>docs<sp/>in<sp/>the<sp/>browser<sp/>(fails<sp/>if<sp/>not<sp/>running).</highlight></codeline>
+<codeline><highlight class="normal">Database<sp/>(reset<sp/>on<sp/>every<sp/>start<sp/>unless<sp/>persistence<sp/>is<sp/>on,<sp/>see<sp/>--persist):</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>psql<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Open<sp/>psql<sp/>on<sp/>the<sp/>database<sp/>inside<sp/>the<sp/>container.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>dump<sp/>[file]<sp/><sp/><sp/><sp/><sp/><sp/>Save<sp/>the<sp/>database<sp/>(default</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>~/.local/share/vdt/dumps/&lt;name&gt;-&lt;time&gt;.sql).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>restore<sp/>&lt;file&gt;<sp/><sp/><sp/>Load<sp/>a<sp/>dump<sp/>into<sp/>the<sp/>running<sp/>container,<sp/>then<sp/>restart<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>server<sp/>process<sp/>so<sp/>it<sp/>starts<sp/>from<sp/>the<sp/>restored<sp/>data.</highlight></codeline>
+<codeline><highlight class="normal">Other:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>shell<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Open<sp/>a<sp/>shell<sp/>inside<sp/>the<sp/>container.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>test<sp/>[api|fuzz|all]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Run<sp/>test_api.sh<sp/>(api,<sp/>default)<sp/>and/or</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>schemathesis_test.sh<sp/>(fuzz)<sp/>against<sp/>the<sp/>container.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>payload<sp/>[group]<sp/>[name]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Browse<sp/>the<sp/>JSON<sp/>request<sp/>payloads<sp/>test_api.sh<sp/>sends</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(interactive<sp/>with<sp/>fzf);<sp/>with<sp/>group<sp/>and<sp/>name,<sp/>print<sp/>one</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>directly<sp/>(--raw<sp/>prints<sp/>the<sp/>file<sp/>as-is,<sp/>--filled</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>substitutes<sp/>sample<sp/>values<sp/>for<sp/>the<sp/>placeholders).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>secret<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Generate<sp/>a<sp/>new<sp/>random<sp/>TOKEN_SECRET<sp/>and<sp/>save<sp/>it<sp/>where<sp/>it&apos;s</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>read<sp/>from<sp/>(normally<sp/>~/.local/share/vdt/config;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>asks<sp/>before<sp/>replacing<sp/>one,<sp/>which<sp/>logs<sp/>everyone<sp/>out).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>version<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Show<sp/>the<sp/>tool&apos;s<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>completion<sp/>[zsh|bash]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Print<sp/>the<sp/>shell<sp/>completion<sp/>script.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>help<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Show<sp/>this<sp/>help.</highlight></codeline>
+<codeline><highlight class="normal">Tool<sp/>(both<sp/>run<sp/>install.sh):</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>install<sp/>[ref]<sp/><sp/><sp/><sp/>Install<sp/>or<sp/>update<sp/>the<sp/>`vdt`<sp/>command<sp/>(~/.local/bin,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>files<sp/>in<sp/>~/.local/share/vdt;<sp/>an<sp/>installed<sp/>copy</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>updates<sp/>itself<sp/>in<sp/>place<sp/>—<sp/>`update`<sp/>does<sp/>this<sp/>too).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Downloads<sp/>first;<sp/>only<sp/>then</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>removes<sp/>the<sp/>current<sp/>copy<sp/>and<sp/>installs,<sp/>so<sp/>a<sp/>failed</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>download<sp/>changes<sp/>nothing.<sp/>ref:<sp/>branch,<sp/>tag<sp/>or<sp/>commit</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(default<sp/>main).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uninstall<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Remove<sp/>the<sp/>installed<sp/>`vdt`<sp/>command<sp/>and<sp/>its<sp/>lines<sp/>in</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>~/.zshrc<sp/>/<sp/>~/.bashrc<sp/>(asks<sp/>first;<sp/>keeps<sp/>config,<sp/>dumps/).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Uses<sp/>the<sp/>installer<sp/>copy<sp/>kept<sp/>in<sp/>the<sp/>install<sp/>directory,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>so<sp/>it<sp/>works<sp/>offline;<sp/>downloads<sp/>it<sp/>only<sp/>if<sp/>missing.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">tag<sp/>defaults<sp/>to<sp/>&quot;latest&quot;<sp/>(build:<sp/>&quot;local&quot;).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Options<sp/>(before<sp/>or<sp/>after<sp/>the<sp/>command):</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>--name<sp/>NAME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>container<sp/>name<sp/><sp/><sp/><sp/><sp/>(env<sp/>VALHALLA_NAME,<sp/>default<sp/>valhalla)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>--port<sp/>PORT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>host<sp/>port<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(env<sp/>CONTAINER_PORT<sp/>or<sp/>CONTAINER_PORT,<sp/>default<sp/>8080;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>an<sp/>existing<sp/>container,<sp/>the<sp/>port<sp/>it<sp/>was<sp/>created<sp/>with)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>--runtime<sp/>RT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>docker<sp/>|<sp/>container<sp/>(env<sp/>VALHALLA_RUNTIME)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>--env-file<sp/>FILE<sp/><sp/><sp/><sp/><sp/><sp/>settings<sp/>file,<sp/>or<sp/>&quot;none&quot;<sp/>(env<sp/>VALHALLA_ENV_FILE)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-n,<sp/>--dry-run<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>show<sp/>what<sp/>a<sp/>command<sp/>would<sp/>change,<sp/>without<sp/>changing</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>anything<sp/>(read-only<sp/>commands<sp/>just<sp/>run)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-y,<sp/>--yes<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>don&apos;t<sp/>ask<sp/>for<sp/>confirmation</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-p,<sp/>--persist<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>keep<sp/>the<sp/>database<sp/>across<sp/>stop/restart/update/build/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>delete<sp/>(see<sp/>Persistence<sp/>below);<sp/>stored<sp/>in<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>container,<sp/>so<sp/>later<sp/>commands<sp/>remember<sp/>it</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>--no-persist<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>turn<sp/>persistence<sp/>off<sp/>(with<sp/>update/build:<sp/>recreate</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>without<sp/>it)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>--no-prune<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>update/build:<sp/>keep<sp/>the<sp/>replaced<sp/>images<sp/>(env</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VALHALLA_NO_PRUNE=1).<sp/>Otherwise<sp/>unused<sp/>older<sp/>images</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>of<sp/>this<sp/>tool<sp/>are<sp/>removed,<sp/>plus<sp/>dangling<sp/>layers<sp/>(on</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Docker<sp/>only<sp/>those<sp/>from<sp/>this<sp/>repo;<sp/>Apple<sp/>container&apos;s</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prune<sp/>removes<sp/>all<sp/>dangling<sp/>images).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>--image-only<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>update:<sp/>only<sp/>the<sp/>image<sp/>and<sp/>container,<sp/>skip<sp/>the<sp/>tool</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>--tool-only<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>update:<sp/>only<sp/>the<sp/>vdt<sp/>tool,<sp/>leave<sp/>the<sp/>container</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>alone<sp/>(needs<sp/>no<sp/>runtime<sp/>or<sp/>container)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>--token-secret<sp/>S<sp/><sp/><sp/><sp/><sp/>JWT<sp/>signing<sp/>secret<sp/>for<sp/>a<sp/>new<sp/>container<sp/>(wins<sp/>over</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>env<sp/>file<sp/>and<sp/>config;<sp/>visible<sp/>in<sp/>your<sp/>shell</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>history,<sp/>so<sp/>prefer<sp/>the<sp/>config<sp/>file)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-h,<sp/>--help<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>show<sp/>this<sp/>help</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Other<sp/>settings<sp/>(environment<sp/>variables):</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_IMAGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/>image<sp/>repo<sp/>(default<sp/>docker.io/dr3mro/valhalla-server-run)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_CPUS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CPUs<sp/>(default<sp/>4)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_MEMORY<sp/><sp/><sp/><sp/><sp/><sp/>memory,<sp/>GB<sp/>(default<sp/>1)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_DEPS_IMAGE<sp/><sp/>build:<sp/>deps<sp/>image,<sp/>or<sp/>&quot;local&quot;<sp/>to<sp/>build<sp/>the<sp/>deps<sp/>from</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>source<sp/>(default:<sp/>&lt;repo&gt;-deps:&lt;arch&gt;<sp/>from<sp/>Docker<sp/>Hub)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_BUILD_MEMORY<sp/><sp/>build:<sp/>Apple<sp/>builder<sp/>memory,<sp/>GB<sp/>(default<sp/>8)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_NO_COMPLETION=1<sp/><sp/>don&apos;t<sp/>add<sp/>shell<sp/>completion<sp/>to<sp/>~/.zshrc/~/.bashrc</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_PERSIST=1<sp/><sp/><sp/>same<sp/>as<sp/>--persist<sp/>when<sp/>a<sp/>container<sp/>is<sp/>created<sp/>(also</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>works<sp/>in<sp/>the<sp/>env<sp/>file)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_DATA_DIR<sp/><sp/><sp/><sp/>where<sp/>dumps<sp/>go<sp/>(default<sp/>~/.local/share/vdt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dumps<sp/>in<sp/>its<sp/>dumps/<sp/>folder)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_WAIT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seconds<sp/>to<sp/>wait<sp/>for<sp/>the<sp/>server<sp/>to<sp/>answer<sp/>(default<sp/>60)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_NO_UPDATE_CHECK=1<sp/><sp/>don&apos;t<sp/>check<sp/>for<sp/>or<sp/>show<sp/>updates</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_UPDATE_INTERVAL<sp/><sp/>seconds<sp/>between<sp/>update<sp/>checks<sp/>(default<sp/>21600)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_NERD=0|1<sp/><sp/><sp/><sp/>use<sp/>Nerd<sp/>Font<sp/>icons<sp/>(default<sp/>at<sp/>level<sp/>2;<sp/>1<sp/>forces)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>VALHALLA_FANCY<sp/><sp/><sp/><sp/><sp/><sp/><sp/>output<sp/>style:<sp/>0<sp/>plain,<sp/>1<sp/>colors,<sp/>2<sp/>+<sp/>unicode</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(BMP<sp/>symbols),<sp/>3<sp/>+<sp/>emoji<sp/>(default:<sp/>what<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>terminal<sp/>supports;<sp/>NO_COLOR=1<sp/>also<sp/>gives<sp/>plain).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Applies<sp/>to<sp/>every<sp/>message,<sp/>report<sp/>and<sp/>help<sp/>screen.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Persistence:<sp/>the<sp/>bundled<sp/>database<sp/>starts<sp/>from<sp/>init.sql<sp/>on<sp/>every<sp/>container</highlight></codeline>
+<codeline><highlight class="normal">start.<sp/>With<sp/>persistence<sp/>on,<sp/>it&apos;s<sp/>kept<sp/>in</highlight></codeline>
+<codeline><highlight class="normal">~/.local/share/vdt/dumps/&lt;name&gt;-persist.sql<sp/>(mounted<sp/>at<sp/>/persist):</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>image&apos;s<sp/>entrypoint<sp/>loads<sp/>it<sp/>at<sp/>start<sp/>instead<sp/>of<sp/>init.sql<sp/>and<sp/>saves<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">when<sp/>the<sp/>container<sp/>stops,<sp/>also<sp/>when<sp/>that<sp/>happens<sp/>outside<sp/>this<sp/>tool<sp/>(Docker</highlight></codeline>
+<codeline><highlight class="normal">Desktop<sp/>restart,<sp/>reboot).<sp/>This<sp/>tool<sp/>also<sp/>saves<sp/>it<sp/>before<sp/>stop,<sp/>restart,</highlight></codeline>
+<codeline><highlight class="normal">update,<sp/>build<sp/>and<sp/>delete<sp/>(the<sp/>previous<sp/>dump<sp/>is<sp/>kept<sp/>as<sp/>.prev);<sp/>if<sp/>that</highlight></codeline>
+<codeline><highlight class="normal">fails,<sp/>nothing<sp/>is<sp/>stopped.<sp/>Images<sp/>from<sp/>before<sp/>this<sp/>feature<sp/>fall<sp/>back<sp/>to<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">tool<sp/>restoring<sp/>the<sp/>dump<sp/>after<sp/>start.<sp/>Turning<sp/>it<sp/>on<sp/>(run/update<sp/>--persist)</highlight></codeline>
+<codeline><highlight class="normal">restores<sp/>an<sp/>existing<sp/>saved<sp/>file,<sp/>or<sp/>saves<sp/>the<sp/>current<sp/>data<sp/>if<sp/>there&apos;s<sp/>none</highlight></codeline>
+<codeline><highlight class="normal">yet.<sp/>A<sp/>dump<sp/>made<sp/>by<sp/>a<sp/>different<sp/>image<sp/>prints<sp/>a<sp/>warning:<sp/>if<sp/>that<sp/>image</highlight></codeline>
+<codeline><highlight class="normal">changed<sp/>the<sp/>schema,<sp/>the<sp/>old<sp/>schema<sp/>comes<sp/>back.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Updates:<sp/>every<sp/>few<sp/>hours<sp/>a<sp/>background<sp/>job<sp/>checks<sp/>(when<sp/>online)<sp/>whether<sp/>a</highlight></codeline>
+<codeline><highlight class="normal">newer<sp/>Docker<sp/>image<sp/>or<sp/>tool<sp/>version<sp/>exists;<sp/>the<sp/>next<sp/>commands<sp/>then<sp/>show<sp/>a</highlight></codeline>
+<codeline><highlight class="normal">table<sp/>with<sp/>the<sp/>installed<sp/>and<sp/>latest<sp/>versions<sp/>(in<sp/>a<sp/>terminal<sp/>only,<sp/>styled</highlight></codeline>
+<codeline><highlight class="normal">as<sp/>far<sp/>as<sp/>it<sp/>supports).<sp/>The<sp/>check<sp/>never<sp/>delays<sp/>a<sp/>command.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Runtime:<sp/>Apple<sp/>`container`<sp/>if<sp/>installed,<sp/>otherwise<sp/>docker.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Dependencies:<sp/>before<sp/>running,<sp/>each<sp/>command<sp/>checks<sp/>the<sp/>tools<sp/>and<sp/>files<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">needs<sp/>(e.g.<sp/>curl,<sp/>python3<sp/>for<sp/>Apple<sp/>container,<sp/>jq<sp/>for<sp/>test,<sp/>fzf<sp/>for</highlight></codeline>
+<codeline><highlight class="normal">payload,<sp/>docker/Dockerfile<sp/>for<sp/>build)<sp/>and<sp/>lists<sp/>every<sp/>missing<sp/>one<sp/>with<sp/>how</highlight></codeline>
+<codeline><highlight class="normal">to<sp/>install<sp/>it.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Shell<sp/>completion:<sp/>on<sp/>first<sp/>use<sp/>the<sp/>script<sp/>adds<sp/>one<sp/>line<sp/>to<sp/>~/.zshrc<sp/>and/or</highlight></codeline>
+<codeline><highlight class="normal">~/.bashrc<sp/>(whichever<sp/>exist)<sp/>to<sp/>enable<sp/>tab<sp/>completion;<sp/>open<sp/>a<sp/>new<sp/>terminal<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">use<sp/>it.<sp/>Remove<sp/>the<sp/>line<sp/>marked<sp/>&quot;vdt<sp/>completion&quot;<sp/>to<sp/>undo.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Server<sp/>variables:<sp/>every<sp/>KEY=VALUE<sp/>in<sp/>the<sp/>env<sp/>file<sp/>is<sp/>passed<sp/>to<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">container<sp/>through<sp/>a<sp/>private<sp/>env<sp/>file,<sp/>so<sp/>values<sp/>don&apos;t<sp/>show<sp/>up<sp/>in<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">process<sp/>list<sp/>(comments,<sp/>including<sp/>&quot;<sp/>#<sp/>...&quot;<sp/>after<sp/>a<sp/>value,<sp/>and<sp/>blank<sp/>lines</highlight></codeline>
+<codeline><highlight class="normal">skipped;<sp/>spaces<sp/>around<sp/>&quot;=&quot;<sp/>and<sp/>surrounding<sp/>quotes<sp/>removed).<sp/>The<sp/>env<sp/>file<sp/>is</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>first<sp/>of:<sp/>.env<sp/>in<sp/>the<sp/>current<sp/>directory,<sp/>.env<sp/>next<sp/>to<sp/>this<sp/>script,</highlight></codeline>
+<codeline><highlight class="normal">~/.local/share/vdt/config.<sp/>The<sp/>installer<sp/>creates<sp/>that<sp/>file<sp/>with<sp/>defaults</highlight></codeline>
+<codeline><highlight class="normal">for<sp/>a<sp/>small<sp/>local<sp/>container:<sp/>SERVER_THREADS=2,<sp/>DB_MAX_CONN=2,<sp/>and<sp/>raised</highlight></codeline>
+<codeline><highlight class="normal">MAX_REQUESTS/MAX_FPS<sp/>so<sp/>the<sp/>API<sp/>docs&apos;<sp/>Benchmark<sp/>and<sp/>Test<sp/>console<sp/>panels</highlight></codeline>
+<codeline><highlight class="normal">don&apos;t<sp/>get<sp/>your<sp/>IP<sp/>rate-limited.<sp/>Edit<sp/>it<sp/>freely;<sp/>it&apos;s<sp/>kept<sp/>on<sp/>update.</highlight></codeline>
+<codeline><highlight class="normal">MAX_REQUESTS,<sp/>MAX_FPS,<sp/>PERMISSION_CACHE_TTL,<sp/>DB_ACQUIRE_TIMEOUT_MS,<sp/>PASSWORD_WORKERS,<sp/>PASSWORD_QUEUE_MAX,<sp/>DB_WORKERS,<sp/>DB_QUEUE_MAX,<sp/>DB_IO_FASTPATH,<sp/>TOKEN_SECRET,<sp/>SERVER_THREADS<sp/>and<sp/>DB_MAX_CONN<sp/>set<sp/>in</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>shell<sp/>win<sp/>over<sp/>the<sp/>env<sp/>file<sp/>for<sp/>one<sp/>run<sp/>(e.g.<sp/>SERVER_THREADS=4</highlight></codeline>
+<codeline><highlight class="normal">./scripts/vdt/valhalla.sh<sp/>update).<sp/>Variables<sp/>set<sp/>nowhere<sp/>aren&apos;t<sp/>passed,<sp/>so<sp/>the<sp/>server</highlight></codeline>
+<codeline><highlight class="normal">uses<sp/>its<sp/>own<sp/>defaults<sp/>(in<sp/>brackets<sp/>below).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TOKEN_SECRET<sp/>(signs<sp/>the<sp/>login<sp/>tokens)<sp/>is<sp/>never<sp/>generated<sp/>per<sp/>start.<sp/>The</highlight></codeline>
+<codeline><highlight class="normal">installer<sp/>generates<sp/>one<sp/>into<sp/>~/.local/share/vdt/config.<sp/>A<sp/>container</highlight></codeline>
+<codeline><highlight class="normal">gets<sp/>the<sp/>first<sp/>of:<sp/>--token-secret,<sp/>TOKEN_SECRET<sp/>in<sp/>the<sp/>shell,<sp/>the<sp/>env<sp/>file</highlight></codeline>
+<codeline><highlight class="normal">in<sp/>use,<sp/>~/.local/share/vdt/config<sp/>(also<sp/>when<sp/>a<sp/>.env<sp/>is<sp/>in<sp/>use),<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">replaced<sp/>container&apos;s<sp/>secret;<sp/>otherwise<sp/>one<sp/>is<sp/>generated<sp/>once<sp/>and<sp/>saved<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">config.<sp/>`vdt<sp/>env`<sp/>shows<sp/>which<sp/>one<sp/>is<sp/>used.</highlight></codeline>
+<codeline><highlight class="normal">SERVER_PORT<sp/>from<sp/>the<sp/>env<sp/>file<sp/>is<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">port<sp/>published<sp/>inside<sp/>the<sp/>container<sp/>(default<sp/>8080).<sp/>DB_HOST<sp/>and<sp/>DB_SSL<sp/>are</highlight></codeline>
+<codeline><highlight class="normal">always<sp/>overridden<sp/>by<sp/>the<sp/>image,<sp/>which<sp/>runs<sp/>its<sp/>own<sp/>Postgres.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Server<sp/>variables<sp/>the<sp/>image<sp/>understands<sp/>(server<sp/>default<sp/>in<sp/>brackets):</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Rate<sp/>limiting<sp/>/<sp/>DoS</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MAX_REQUESTS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>max<sp/>requests<sp/>per<sp/>IP<sp/>per<sp/>PERIOD<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[10000]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PERIOD<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rate-limit<sp/>window,<sp/>seconds<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[30]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>MAX_FPS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>max<sp/>fingerprints<sp/>per<sp/>IP<sp/>per<sp/>PERIOD<sp/><sp/><sp/><sp/>[100]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>RL_DURATION<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rate-limit<sp/>duration,<sp/>seconds<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[30]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BAN_DURATION<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ban<sp/>duration,<sp/>seconds<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[3600]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CLN_FRQ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cleanup<sp/>interval,<sp/>seconds<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[30]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>WHITELIST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>comma-separated<sp/>IP<sp/>patterns<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BLACKLIST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>comma-separated<sp/>IP<sp/>patterns<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Database<sp/>(the<sp/>image<sp/>runs<sp/>its<sp/>own<sp/>Postgres;<sp/>DB_HOST/DB_SSL<sp/>are<sp/>ignored)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DB_PORT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[5432]<sp/><sp/><sp/><sp/><sp/><sp/>DB_NAME<sp/><sp/><sp/>[postgres]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DB_USER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[postgres]<sp/><sp/>DB_PASS<sp/><sp/><sp/>[postgres]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DB_MAX_CONN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>connection<sp/>pool<sp/>size,<sp/>keep<sp/>&gt;=<sp/>SERVER_THREADS+1<sp/>[10]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DB_ACQUIRE_TIMEOUT_MS<sp/>ms<sp/>to<sp/>wait<sp/>for<sp/>a<sp/>free<sp/>connection,<sp/>then<sp/>503<sp/><sp/><sp/>[3000]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Caching</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PERMISSION_CACHE_TTL<sp/><sp/>idle<sp/>seconds<sp/>a<sp/>cached<sp/>permission<sp/>is<sp/>kept,<sp/>0<sp/>=<sp/>off<sp/>[300]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Passwords<sp/>(hashing<sp/>runs<sp/>on<sp/>its<sp/>own<sp/>threads,<sp/>never<sp/>on<sp/>request<sp/>threads)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PASSWORD_WORKERS<sp/><sp/><sp/><sp/><sp/><sp/>threads<sp/>for<sp/>hashing/login<sp/>checks,<sp/>keep<sp/>&lt;<sp/>DB_MAX_CONN<sp/>[2]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>PASSWORD_QUEUE_MAX<sp/><sp/><sp/><sp/>waiting<sp/>operations<sp/>before<sp/>new<sp/>ones<sp/>get<sp/>503<sp/><sp/><sp/><sp/><sp/><sp/>[64]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Database<sp/>executor<sp/>(legacy<sp/>DB_ASYNC=false<sp/>path;<sp/>blocking<sp/>database<sp/>work<sp/>runs<sp/>here)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DB_WORKERS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>threads<sp/>for<sp/>database<sp/>work<sp/>[DB_MAX_CONN]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DB_QUEUE_MAX<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>waiting<sp/>requests<sp/>before<sp/>new<sp/>ones<sp/>get<sp/>503<sp/>[256]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DB_IO_FASTPATH<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>try<sp/>each<sp/>request<sp/>on<sp/>the<sp/>IO<sp/>thread<sp/>first,<sp/>queue<sp/>it<sp/>only<sp/>if<sp/>it<sp/>needs<sp/>the<sp/>database<sp/>[false]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Server</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SERVER_HOST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>listen<sp/>address<sp/>(keep<sp/>0.0.0.0)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[0.0.0.0]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SERVER_PORT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>listen<sp/>port<sp/>inside<sp/>the<sp/>container<sp/><sp/><sp/><sp/><sp/><sp/>[8080]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SERVER_THREADS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>worker<sp/>threads<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[4]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SERVER_NAME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[ProjectValhalla]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SERVER_DESCRIPTION<sp/><sp/><sp/><sp/>[ProjectValhalla<sp/>API]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SERVER_DEBUG_LEVEL<sp/><sp/><sp/><sp/>[1]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SERVER_LOG_TO_CONSOLE<sp/>[true]<sp/><sp/><sp/><sp/><sp/><sp/>SERVER_LOG_TO_FILE<sp/><sp/>[true]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SERVER_LOG_DIR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[./logs/]<sp/><sp/><sp/>SERVER_LOG_FILE<sp/><sp/><sp/><sp/><sp/>[server.log]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SERVER_UPLOAD_DIR<sp/><sp/><sp/><sp/><sp/>[./uploads/]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Tokens</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TOKEN_SECRET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>JWT<sp/>signing<sp/>secret<sp/>(image<sp/>generates<sp/>one<sp/>if<sp/>unset)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TOKEN_VALIDITY<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>minutes<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[43200]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TOKEN_ISSUER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[ProjectValhalla]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TOKEN_TYPE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[JWS]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Frontend<sp/>(invite<sp/>links)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>FRONTEND_HOST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[http://172.20.0.5]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>FRONTEND_PORT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[3000]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>FRONTEND_INVITE_PATH<sp/><sp/>[invite]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Email<sp/>sender</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>EMAIL_SENDER_HOST<sp/><sp/><sp/><sp/><sp/>[http://172.20.0.6]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>EMAIL_SENDER_PORT<sp/><sp/><sp/><sp/><sp/>[5000]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>EMAIL_SENDER_QUEUE_PATH<sp/>[/enqueue]</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Note:<sp/>without<sp/>persistence<sp/>the<sp/>database<sp/>lives<sp/>only<sp/>inside<sp/>the<sp/>container<sp/>and</highlight></codeline>
+<codeline><highlight class="normal">is<sp/>reset<sp/>on<sp/>every<sp/>start.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Configuration</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">All<sp/>configuration<sp/>is<sp/>supplied<sp/>through<sp/>environment<sp/>variables;<sp/>defaults<sp/>live<sp/>in<sp/>`src/configurator/defaults.hpp`.<sp/>The<sp/>frontend<sp/>and<sp/>email-sender<sp/>defaults<sp/>point<sp/>at<sp/>fixed<sp/>Docker-network<sp/>IPs<sp/>(`172.20.0.5`/`.6`),<sp/>and<sp/>the<sp/>token<sp/>secret<sp/>and<sp/>database<sp/>credentials<sp/>are<sp/>development<sp/>values,<sp/>so<sp/>override<sp/>them<sp/>for<sp/>any<sp/>real<sp/>deployment.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Server</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Variable<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Default<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Description<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>--------------------<sp/>|<sp/>---------------------<sp/>|<sp/>------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`SERVER_HOST`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`0.0.0.0`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Bind<sp/>address<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`SERVER_PORT`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`8080`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Listen<sp/>port<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`SERVER_THREADS`<sp/><sp/><sp/><sp/><sp/>|<sp/>`4`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Worker<sp/>thread<sp/>count<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`SERVER_UPLOAD_DIR`<sp/><sp/>|<sp/>`./uploads/`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>File<sp/>upload<sp/>directory<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`SERVER_NAME`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`ProjectValhalla`<sp/><sp/><sp/><sp/><sp/>|<sp/>Name<sp/>shown<sp/>in<sp/>the<sp/>startup<sp/>banner<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`SERVER_VERSION`<sp/><sp/><sp/><sp/><sp/>|<sp/>`1.0.0`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Version<sp/>string<sp/>shown<sp/>in<sp/>the<sp/>startup<sp/>banner<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`SERVER_DESCRIPTION`<sp/>|<sp/>`ProjectValhalla<sp/>API`<sp/>|<sp/>Description<sp/>shown<sp/>in<sp/>the<sp/>startup<sp/>banner<sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Logging</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Variable<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Default<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Description<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>-----------------------<sp/>|<sp/>------------<sp/>|<sp/>------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`SERVER_DEBUG_LEVEL`<sp/><sp/><sp/><sp/>|<sp/>`1`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Minimum<sp/>level:<sp/>`0`<sp/>debug,<sp/>`1`<sp/>info,<sp/>`2`<sp/>warning,<sp/>`3`<sp/>error,<sp/>`4`<sp/>critical<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`SERVER_LOG_TO_CONSOLE`<sp/>|<sp/>`true`<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Log<sp/>to<sp/>stdout<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`SERVER_LOG_TO_FILE`<sp/><sp/><sp/><sp/>|<sp/>`true`<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Log<sp/>to<sp/>a<sp/>file<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`SERVER_LOG_DIR`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`./logs/`<sp/><sp/><sp/><sp/>|<sp/>Log<sp/>directory<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`SERVER_LOG_FILE`<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`server.log`<sp/>|<sp/>Log<sp/>file<sp/>name<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Database<sp/>(PostgreSQL)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Variable<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Default<sp/><sp/><sp/><sp/>|<sp/>Description<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>-------------<sp/>|<sp/>----------<sp/>|<sp/>--------------------------------------------------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`DB_HOST`<sp/><sp/><sp/><sp/><sp/>|<sp/>`0.0.0.0`<sp/><sp/>|<sp/>Database<sp/>host.<sp/>The<sp/>default<sp/>only<sp/>works<sp/>when<sp/>PostgreSQL<sp/>runs<sp/>on<sp/>the<sp/>same<sp/>machine;<sp/>set<sp/>it<sp/>explicitly<sp/>(e.g.<sp/>`127.0.0.1`)<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`DB_PORT`<sp/><sp/><sp/><sp/><sp/>|<sp/>`5432`<sp/><sp/><sp/><sp/><sp/>|<sp/>Database<sp/>port<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`DB_NAME`<sp/><sp/><sp/><sp/><sp/>|<sp/>`postgres`<sp/>|<sp/>Database<sp/>name<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`DB_USER`<sp/><sp/><sp/><sp/><sp/>|<sp/>`postgres`<sp/>|<sp/>Database<sp/>user<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`DB_PASS`<sp/><sp/><sp/><sp/><sp/>|<sp/>`postgres`<sp/>|<sp/>Database<sp/>password<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`DB_SSL`<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`false`<sp/><sp/><sp/><sp/>|<sp/>Enable<sp/>SSL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`DB_MAX_CONN`<sp/>|<sp/>`10`<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Max<sp/>pooled<sp/>connections;<sp/>keep<sp/>it<sp/>at<sp/>least<sp/>`SERVER_THREADS<sp/>+<sp/>1`<sp/>(the<sp/>watchdog<sp/>holds<sp/>one)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`DB_ACQUIRE_TIMEOUT_MS`<sp/>|<sp/>`3000`<sp/>|<sp/>Milliseconds<sp/>a<sp/>request<sp/>waits<sp/>for<sp/>a<sp/>free<sp/>connection<sp/>before<sp/>it<sp/>gets<sp/>`503`<sp/>with<sp/>`Retry-After`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`DB_ASYNC`<sp/><sp/><sp/><sp/>|<sp/>`true`<sp/><sp/><sp/><sp/><sp/>|<sp/>Asynchronous<sp/>database<sp/>access<sp/>(Drogon<sp/>`orm::DbClient`<sp/>coroutines<sp/>on<sp/>the<sp/>IO<sp/>threads).<sp/>`false`<sp/>runs<sp/>the<sp/>legacy<sp/>synchronous<sp/>libpqxx<sp/>pool<sp/>behind<sp/>the<sp/>DB<sp/>executor;<sp/>kept<sp/>for<sp/>one<sp/>release<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Caching</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Variable<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Default<sp/>|<sp/>Description<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>----------------------<sp/>|<sp/>-------<sp/>|<sp/>---------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`PERMISSION_CACHE_TTL`<sp/>|<sp/>`300`<sp/><sp/><sp/>|<sp/>Seconds<sp/>an<sp/>unused<sp/>cached<sp/>permission<sp/>is<sp/>kept;<sp/>each<sp/>use<sp/>renews<sp/>it;<sp/>`0`<sp/>disables<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Passwords</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Variable<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Default<sp/>|<sp/>Description<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>--------------------<sp/>|<sp/>-------<sp/>|<sp/>----------------------------------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`PASSWORD_WORKERS`<sp/><sp/><sp/>|<sp/>`2`<sp/><sp/><sp/><sp/><sp/>|<sp/>Threads<sp/>that<sp/>hash<sp/>and<sp/>verify<sp/>passwords<sp/>(Argon2id),<sp/>so<sp/>request<sp/>threads<sp/>are<sp/>never<sp/>blocked;<sp/>keep<sp/>it<sp/>below<sp/>`DB_MAX_CONN`;<sp/>`0`<sp/>runs<sp/>on<sp/>the<sp/>request<sp/>thread<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`PASSWORD_QUEUE_MAX`<sp/>|<sp/>`64`<sp/><sp/><sp/><sp/>|<sp/>Password<sp/>operations<sp/>that<sp/>may<sp/>wait<sp/>for<sp/>a<sp/>worker;<sp/>further<sp/>ones<sp/>get<sp/>`503`<sp/>with<sp/>`Retry-After`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`DB_WORKERS`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`DB_MAX_CONN`<sp/>|<sp/>Legacy<sp/>(`DB_ASYNC=false`)<sp/>only:<sp/>threads<sp/>that<sp/>run<sp/>the<sp/>blocking<sp/>database<sp/>work<sp/>(permission<sp/>check,<sp/>query),<sp/>so<sp/>request<sp/>threads<sp/>are<sp/>never<sp/>blocked<sp/>by<sp/>a<sp/>slow<sp/>query;<sp/>`0`<sp/>runs<sp/>on<sp/>the<sp/>request<sp/>thread<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`DB_QUEUE_MAX`<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`256`<sp/><sp/><sp/>|<sp/>Legacy<sp/>(`DB_ASYNC=false`)<sp/>only:<sp/>requests<sp/>that<sp/>may<sp/>wait<sp/>for<sp/>a<sp/>database<sp/>worker;<sp/>further<sp/>ones<sp/>get<sp/>`503`<sp/>with<sp/>`Retry-After`<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`DB_IO_FASTPATH`<sp/><sp/><sp/><sp/><sp/>|<sp/>`false`<sp/>|<sp/>Legacy<sp/>(`DB_ASYNC=false`)<sp/>only:<sp/>run<sp/>each<sp/>request<sp/>on<sp/>the<sp/>IO<sp/>thread<sp/>first;<sp/>requests<sp/>refused<sp/>without<sp/>a<sp/>query<sp/>(bad<sp/>body,<sp/>permission<sp/>cache)<sp/>answer<sp/>there,<sp/>the<sp/>rest<sp/>move<sp/>to<sp/>a<sp/>database<sp/>worker<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Authentication<sp/>(JWT)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Variable<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Default<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Description<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>----------------<sp/>|<sp/>------------------------<sp/>|<sp/>------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`TOKEN_SECRET`<sp/><sp/><sp/>|<sp/>_(insecure<sp/>dev<sp/>default)_<sp/>|<sp/>**Must**<sp/>be<sp/>overridden<sp/>in<sp/>production<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`TOKEN_VALIDITY`<sp/>|<sp/>`43200`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Token<sp/>lifetime<sp/>in<sp/>minutes<sp/>(30<sp/>days)<sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`TOKEN_ISSUER`<sp/><sp/><sp/>|<sp/>`ProjectValhalla`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>JWT<sp/>issuer<sp/>claim<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`TOKEN_TYPE`<sp/><sp/><sp/><sp/><sp/>|<sp/>`JWS`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>JWT<sp/>type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>DoS<sp/>detector<sp/>/<sp/>rate<sp/>limiting</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Variable<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Default<sp/><sp/><sp/>|<sp/>Description<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>--------------<sp/>|<sp/>---------<sp/>|<sp/>----------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`MAX_REQUESTS`<sp/>|<sp/>`10000`<sp/><sp/><sp/>|<sp/>Max<sp/>repeat-count<sp/>for<sp/>one<sp/>fingerprint<sp/>before<sp/>the<sp/>IP<sp/>is<sp/>**banned**<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`PERIOD`<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`30`<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Window<sp/>length<sp/>(seconds)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`MAX_FPS`<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`100`<sp/><sp/><sp/><sp/><sp/>|<sp/>Max<sp/>distinct<sp/>fingerprints<sp/>per<sp/>IP<sp/>before<sp/>the<sp/>IP<sp/>is<sp/>**rate-limited**<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`RL_DURATION`<sp/><sp/>|<sp/>`30`<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Rate-limit<sp/>duration<sp/>(seconds)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`BAN_DURATION`<sp/>|<sp/>`3600`<sp/><sp/><sp/><sp/>|<sp/>Ban<sp/>duration<sp/>(seconds)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`CLN_FRQ`<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`30`<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Cleanup<sp/>frequency<sp/>(seconds)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`WHITELIST`<sp/><sp/><sp/><sp/>|<sp/>_(empty)_<sp/>|<sp/>IPs<sp/>exempt<sp/>from<sp/>rate<sp/>limiting<sp/>and<sp/>bans<sp/>(comma-separated<sp/>patterns,<sp/>see<sp/>below)<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`BLACKLIST`<sp/><sp/><sp/><sp/>|<sp/>_(empty)_<sp/>|<sp/>IPs<sp/>always<sp/>rejected<sp/>(comma-separated<sp/>patterns,<sp/>see<sp/>below)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`WHITELIST`<sp/>and<sp/>`BLACKLIST`<sp/>entries<sp/>are<sp/>**regular<sp/>expressions**,<sp/>matched<sp/>anywhere<sp/>in<sp/>the<sp/>client<sp/>IP.<sp/>A<sp/>`.`<sp/>matches<sp/>any<sp/>character,<sp/>and<sp/>an<sp/>unanchored<sp/>entry<sp/>matches<sp/>as<sp/>a<sp/>substring:<sp/>`10.0.0.1`<sp/>also<sp/>matches<sp/>`10.0.0.123`.<sp/>For<sp/>exact<sp/>matches,<sp/>escape<sp/>the<sp/>dots<sp/>and<sp/>anchor<sp/>the<sp/>entry,<sp/>e.g.<sp/>`WHITELIST=&apos;^127\.0\.0\.1$,^192\.168\.1\.[0-9]+$&apos;`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Frontend<sp/>&amp;<sp/>email<sp/>sender</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Variable<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Default<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Description<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>-------------------------<sp/>|<sp/>-------------------<sp/>|<sp/>-----------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`FRONTEND_HOST`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`http://172.20.0.5`<sp/>|<sp/>Frontend<sp/>base<sp/>URL<sp/>(used<sp/>for<sp/>invite<sp/>links)<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`FRONTEND_PORT`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`3000`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Frontend<sp/>port<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`FRONTEND_INVITE_PATH`<sp/><sp/><sp/><sp/>|<sp/>`invite`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Frontend<sp/>path<sp/>used<sp/>in<sp/>staff<sp/>invite<sp/>links<sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`EMAIL_SENDER_HOST`<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`http://172.20.0.6`<sp/>|<sp/>Email<sp/>sender<sp/>daemon<sp/>host<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`EMAIL_SENDER_PORT`<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`5000`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Email<sp/>sender<sp/>daemon<sp/>port<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`EMAIL_SENDER_QUEUE_PATH`<sp/>|<sp/>`/enqueue`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Email<sp/>enqueue<sp/>endpoint<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Testing</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Variable<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Default<sp/>|<sp/>Description<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>---------------------<sp/>|<sp/>-------<sp/>|<sp/>---------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`VALHALLA_TEST_NO_DB`<sp/>|<sp/>`false`<sp/>|<sp/>Start<sp/>without<sp/>connecting<sp/>to<sp/>a<sp/>database<sp/>(used<sp/>by<sp/>the<sp/>unit<sp/>tests)<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&gt;<sp/>⚠️<sp/>The<sp/>default<sp/>`TOKEN_SECRET`<sp/>and<sp/>database<sp/>credentials<sp/>are<sp/>for<sp/>local<sp/>development<sp/>only.<sp/>Always<sp/>set<sp/>strong<sp/>values<sp/>before<sp/>deploying.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>API<sp/>Overview</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">All<sp/>endpoints<sp/>live<sp/>under<sp/>the<sp/>`/api/v2`<sp/>prefix<sp/>(for<sp/>example<sp/>`http://127.0.0.1:8080/api/v2/hello`).<sp/>Routes<sp/>marked<sp/>🔒<sp/>require<sp/>a<sp/>valid<sp/>`Authorization:<sp/>Bearer<sp/>&lt;token&gt;`<sp/>header<sp/>(obtained<sp/>from<sp/>`/clients/{type}/login`);<sp/>🔓<sp/>routes<sp/>are<sp/>public.<sp/>Request<sp/>and<sp/>response<sp/>bodies<sp/>are<sp/>JSON.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Interactive<sp/>API<sp/>docs</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>server<sp/>ships<sp/>its<sp/>own<sp/>API<sp/>documentation,<sp/>compiled<sp/>into<sp/>the<sp/>binary:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>URL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>What<sp/>it<sp/>is<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>---------------------------------<sp/>|<sp/>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`http://&lt;host&gt;:&lt;port&gt;/api/v2/doc`<sp/>|<sp/>Swagger<sp/>UI<sp/>for<sp/>every<sp/>endpoint,<sp/>plus<sp/>an<sp/>**API<sp/>Guide**<sp/>panel<sp/>(permissions,<sp/>data<sp/>model,<sp/>validation,<sp/>errors,<sp/>rate<sp/>limiting,<sp/>recipes,<sp/>troubleshooting)<sp/>and<sp/>a<sp/>**Test<sp/>console**<sp/>that<sp/>runs<sp/>all<sp/>endpoints<sp/>in<sp/>order<sp/>against<sp/>the<sp/>live<sp/>server<sp/>with<sp/>dummy<sp/>data,<sp/>and<sp/>a<sp/>**Benchmark**<sp/>panel<sp/>(latency<sp/>percentiles<sp/>and<sp/>requests/s<sp/>per<sp/>endpoint;<sp/>writes<sp/>are<sp/>created<sp/>with<sp/>unique<sp/>data<sp/>and<sp/>deleted<sp/>afterwards)<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">With<sp/>the<sp/>defaults<sp/>that<sp/>is<sp/>&lt;http://127.0.0.1:8080/api/v2/doc&gt;;<sp/>the<sp/>startup<sp/>banner<sp/>prints<sp/>the<sp/>exact<sp/>URL.<sp/>From<sp/>the<sp/>page<sp/>you<sp/>can<sp/>also<sp/>download<sp/>the<sp/>**OpenAPI<sp/>3**<sp/>spec<sp/>and<sp/>a<sp/>**Postman<sp/>collection**<sp/>(also<sp/>kept<sp/>in<sp/>`docs/openapi.json`<sp/>and<sp/>`docs/valhalla.postman_collection.json`).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>page<sp/>is<sp/>embedded<sp/>into<sp/>the<sp/>binary,<sp/>and<sp/>every<sp/>`cmake<sp/>--build`<sp/>regenerates<sp/>it<sp/>from<sp/>`tools/docs/`<sp/>first<sp/>(the<sp/>`valhalla_docs`<sp/>target)<sp/>(this<sp/>needs<sp/>`bash`,<sp/>`python3`<sp/>and<sp/>Node.js/`npm`;<sp/>if<sp/>one<sp/>is<sp/>missing,<sp/>the<sp/>committed<sp/>`docs/api.html`<sp/>is<sp/>embedded<sp/>as<sp/>is).<sp/>Pass<sp/>`-DVALHALLA_BUILD_DOCS=OFF`<sp/>to<sp/>skip<sp/>regeneration.<sp/>To<sp/>regenerate<sp/>by<sp/>hand:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">tools/docs/build.sh<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>regenerates<sp/>docs/api.html,<sp/>openapi.json<sp/>and<sp/>the<sp/>Postman<sp/>collection</highlight></codeline>
+<codeline><highlight class="normal">./scripts/run/run_release.sh<sp/>--build<sp/><sp/><sp/>#<sp/>re-embed<sp/>the<sp/>page<sp/>and<sp/>restart</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">To<sp/>include<sp/>real<sp/>response<sp/>samples<sp/>in<sp/>the<sp/>docs,<sp/>run<sp/>`SAMPLES_OUT=tests/api_tests/samples.jsonl<sp/>./scripts/test/test_api.sh`<sp/>against<sp/>a<sp/>running<sp/>server<sp/>before<sp/>`tools/docs/build.sh`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Clients<sp/>—<sp/>`/clients/{clientType}/...`<sp/>(`clientType`<sp/>∈<sp/>`users`,<sp/>`providers`)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Method<sp/>|<sp/>Path<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Auth<sp/>|<sp/>Description<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>------<sp/>|<sp/>--------------------------------<sp/>|<sp/>----<sp/>|<sp/>-----------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>POST<sp/><sp/><sp/>|<sp/>`/clients/{clientType}/create`<sp/><sp/><sp/>|<sp/>🔓<sp/><sp/><sp/>|<sp/>Register<sp/>an<sp/>account<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>POST<sp/><sp/><sp/>|<sp/>`/clients/{clientType}/login`<sp/><sp/><sp/><sp/>|<sp/>🔓<sp/><sp/><sp/>|<sp/>Authenticate,<sp/>receive<sp/>a<sp/>token<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>POST<sp/><sp/><sp/>|<sp/>`/clients/{clientType}/logout`<sp/><sp/><sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>Invalidate<sp/>the<sp/>session<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>POST<sp/><sp/><sp/>|<sp/>`/clients/{clientType}/suspend`<sp/><sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>Suspend<sp/>an<sp/>account<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>POST<sp/><sp/><sp/>|<sp/>`/clients/{clientType}/activate`<sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>Re-activate<sp/>an<sp/>account<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>POST<sp/><sp/><sp/>|<sp/>`/clients/{clientType}/read`<sp/><sp/><sp/><sp/><sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>Read<sp/>account<sp/>data<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>PUT<sp/><sp/><sp/><sp/>|<sp/>`/clients/{clientType}/update`<sp/><sp/><sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>Update<sp/>an<sp/>account<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>DELETE<sp/>|<sp/>`/clients/{clientType}/delete`<sp/><sp/><sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>Delete<sp/>an<sp/>account<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>POST<sp/><sp/><sp/>|<sp/>`/clients/{clientType}/search`<sp/><sp/><sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>Search<sp/>accounts<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>GET<sp/><sp/><sp/><sp/>|<sp/>`/clients/{clientType}/services`<sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>List<sp/>the<sp/>account&apos;s<sp/>services<sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Services<sp/>—<sp/>`/services/{serviceType}/...`<sp/>(`serviceType`<sp/>∈<sp/>`clinics`,<sp/>`pharmacies`,<sp/>`laboratories`,<sp/>`radiologycenters`)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Method<sp/>|<sp/>Path<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Auth<sp/>|<sp/>Description<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>------<sp/>|<sp/>--------------------------------<sp/>|<sp/>----<sp/>|<sp/>-----------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>POST<sp/><sp/><sp/>|<sp/>`/services/{serviceType}/create`<sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>Create<sp/>a<sp/>service<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>POST<sp/><sp/><sp/>|<sp/>`/services/{serviceType}/read`<sp/><sp/><sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>Read<sp/>a<sp/>service<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>PUT<sp/><sp/><sp/><sp/>|<sp/>`/services/{serviceType}/update`<sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>Update<sp/>a<sp/>service<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>DELETE<sp/>|<sp/>`/services/{serviceType}/delete`<sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>Delete<sp/>a<sp/>service<sp/>(owner<sp/>only)<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>POST<sp/><sp/><sp/>|<sp/>`/services/{serviceType}/search`<sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>Search<sp/>services<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Staff<sp/>—<sp/>`/staff/services/{serviceType}/staff/...`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Method<sp/>|<sp/>Path<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Auth<sp/>|<sp/>Description<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>------<sp/>|<sp/>--------------------------------------------<sp/>|<sp/>----<sp/>|<sp/>---------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>POST<sp/><sp/><sp/>|<sp/>`/staff/services/{serviceType}/staff/invite`<sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>Invite<sp/>someone<sp/>to<sp/>the<sp/>staff<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>POST<sp/><sp/><sp/>|<sp/>`/staff/services/{serviceType}/staff/add`<sp/><sp/><sp/><sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>Add<sp/>a<sp/>staff<sp/>member<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>POST<sp/><sp/><sp/>|<sp/>`/staff/services/{serviceType}/staff/remove`<sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>Remove<sp/>a<sp/>staff<sp/>member<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">These<sp/>routes<sp/>are<sp/>registered<sp/>with<sp/>Drogon&apos;s<sp/>`METHOD_ADD`<sp/>(`src/api/v2/routes/staff.hpp`),<sp/>which<sp/>puts<sp/>the<sp/>controller<sp/>path<sp/>(`/api/v2/staff`)<sp/>in<sp/>front,<sp/>hence<sp/>the<sp/>doubled<sp/>`staff`<sp/>segment.<sp/>The<sp/>interactive<sp/>docs<sp/>still<sp/>show<sp/>the<sp/>shorter<sp/>`/services/{serviceType}/staff/...`<sp/>form,<sp/>which<sp/>does<sp/>not<sp/>match<sp/>the<sp/>server.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Clinic<sp/>records<sp/>—<sp/>`/clinic/{resource}/...`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Each<sp/>resource<sp/>supports<sp/>`create`<sp/>(POST),<sp/>`read`<sp/>(POST),<sp/>`update`<sp/>(PUT)<sp/>and<sp/>`delete`<sp/>(DELETE)<sp/>under<sp/>`/clinic/{resource}/`,<sp/>all<sp/>🔒.<sp/>Resources:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Resource<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Description<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>---------------<sp/>|<sp/>------------------------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`patients`<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Patient<sp/>records<sp/>(also<sp/>`POST<sp/>/clinic/patients/search`<sp/>and<sp/>`GET<sp/>/clinic/patients/getvisits`)<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`health`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>A<sp/>patient&apos;s<sp/>health<sp/>history<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`patientdrugs`<sp/><sp/>|<sp/>A<sp/>patient&apos;s<sp/>drug<sp/>list<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`reports`<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>A<sp/>patient&apos;s<sp/>reports<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`visits`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Visits<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`requests`<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Investigation<sp/>requests<sp/>for<sp/>a<sp/>visit<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`prescriptions`<sp/>|<sp/>Prescriptions<sp/>for<sp/>a<sp/>visit<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`paidservices`<sp/><sp/>|<sp/>Paid<sp/>services<sp/>for<sp/>a<sp/>visit<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`delete`<sp/>is<sp/>not<sp/>supported<sp/>for<sp/>`health`,<sp/>`patientdrugs`,<sp/>`reports`,<sp/>`requests`,<sp/>`prescriptions`<sp/>and<sp/>`paidservices`;<sp/>they<sp/>are<sp/>removed<sp/>with<sp/>their<sp/>parent<sp/>record.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Appointments<sp/>—<sp/>`/appointments/{serviceType}/...`<sp/>(`serviceType`<sp/>∈<sp/>`clinics`,<sp/>`pharmacies`,<sp/>`laboratories`,<sp/>`radiologycenters`)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Method<sp/>|<sp/>Path<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Auth<sp/>|<sp/>Description<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>------<sp/>|<sp/>------------------------------------<sp/>|<sp/>----<sp/>|<sp/>---------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>POST<sp/><sp/><sp/>|<sp/>`/appointments/{serviceType}/create`<sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>Create<sp/>an<sp/>appointment<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>POST<sp/><sp/><sp/>|<sp/>`/appointments/{serviceType}/read`<sp/><sp/><sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>Read<sp/>an<sp/>appointment<sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>PUT<sp/><sp/><sp/><sp/>|<sp/>`/appointments/{serviceType}/update`<sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>Update<sp/>an<sp/>appointment<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>DELETE<sp/>|<sp/>`/appointments/{serviceType}/delete`<sp/>|<sp/>🔒<sp/><sp/><sp/>|<sp/>Delete<sp/>an<sp/>appointment<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>interactive<sp/>docs<sp/>currently<sp/>only<sp/>show<sp/>the<sp/>`clinics`<sp/>variant.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Misc</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Method<sp/>|<sp/>Path<sp/><sp/><sp/><sp/><sp/>|<sp/>Auth<sp/>|<sp/>Description<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>------<sp/>|<sp/>--------<sp/>|<sp/>----<sp/>|<sp/>------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>GET<sp/><sp/><sp/><sp/>|<sp/>`/hello`<sp/>|<sp/>🔓<sp/><sp/><sp/>|<sp/>Health<sp/>check<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>GET<sp/><sp/><sp/><sp/>|<sp/>`/doc`<sp/><sp/><sp/>|<sp/>🔓<sp/><sp/><sp/>|<sp/>Interactive<sp/>API<sp/>documentation<sp/>(Swagger<sp/>UI)<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&gt;<sp/>Unknown<sp/>routes<sp/>return<sp/>a<sp/>JSON<sp/>`404`<sp/>(`&quot;Endpoint<sp/>not<sp/>found.&quot;`).<sp/>Rate-limit,<sp/>ban<sp/>and<sp/>blacklist<sp/>replies<sp/>from<sp/>the<sp/>DoS<sp/>filter<sp/>are<sp/>plain<sp/>text.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Project<sp/>Layout</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">src/</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>api/v2/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>REST<sp/>API:<sp/>routes,<sp/>filters,<sp/>middlewares,<sp/>helpers</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>controllers/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Business<sp/>logic<sp/>per<sp/>resource<sp/>(clients,<sp/>clinics,<sp/>services,<sp/>…)</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>entities/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Domain<sp/>models<sp/>(people,<sp/>services,<sp/>patients,<sp/>visits,<sp/>appointments)</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>gatekeeper/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Security:<sp/>DoS<sp/>detector,<sp/>tokens,<sp/>sessions,<sp/>RBAC,<sp/>password<sp/>hashing<sp/>and<sp/>its<sp/>worker<sp/>pool</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>concurrency/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>BoundedExecutor:<sp/>thread<sp/>pool<sp/>with<sp/>a<sp/>bounded<sp/>queue</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>configurator/<sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Environment-driven<sp/>configuration<sp/>+<sp/>defaults</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>database/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Connection<sp/>pool,<sp/>watchdog,<sp/>handlers,<sp/>DB<sp/>executor</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>validator/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Request<sp/>+<sp/>database-schema<sp/>validation</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>store/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Shared<sp/>object<sp/>store</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>server/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Server<sp/>bootstrap<sp/>(entry<sp/>point)</highlight></codeline>
+<codeline><highlight class="normal">└──<sp/>utils/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Logging,<sp/>caching,<sp/>messaging,<sp/>JSON<sp/>helpers,<sp/>thread-safe<sp/>queue</highlight></codeline>
+<codeline><highlight class="normal">scripts/</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>build/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>build.sh,<sp/>get_tag.sh,<sp/>run_all_tests.sh</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>db/init.sql<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Database<sp/>schema</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>lib/ui.sh<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Shared<sp/>shell<sp/>UI<sp/>helpers</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>qa/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Format,<sp/>hygiene<sp/>and<sp/>project-rule<sp/>checks</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>run/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>db_init.sh,<sp/>run_debug.sh,<sp/>run_release.sh,<sp/>run4bench.sh</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>test/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>test_api.sh,<sp/>cors_test.sh,<sp/>cors_react_check.sh,<sp/>fuzz_auth.sh,<sp/>sqlmap_test.sh,<sp/>schemathesis_test.sh</highlight></codeline>
+<codeline><highlight class="normal">└──<sp/>vdt/valhalla.sh<sp/><sp/><sp/><sp/><sp/>#<sp/>Docker/Apple<sp/>Container<sp/>deployment<sp/>tool<sp/>(the<sp/>`vdt`<sp/>command)</highlight></codeline>
+<codeline><highlight class="normal">tests/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Catch2<sp/>unit<sp/>tests<sp/>(+<sp/>vendored<sp/>Catch<sp/>CMake<sp/>helpers)</highlight></codeline>
+<codeline><highlight class="normal">tests/api_tests/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Request<sp/>payloads<sp/>and<sp/>samples<sp/>used<sp/>by<sp/>test_api.sh</highlight></codeline>
+<codeline><highlight class="normal">docs/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>API<sp/>docs<sp/>(api.html,<sp/>openapi.json,<sp/>Postman<sp/>collection)<sp/>+<sp/>ARCHITECTURE.md,<sp/>CONTRIBUTING.md</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>└──<sp/>doxygen/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Published<sp/>Doxygen<sp/>reference<sp/>(HTML<sp/>+<sp/>XML),<sp/>excluded<sp/>from<sp/>Doxygen<sp/>input</highlight></codeline>
+<codeline><highlight class="normal">tools/</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>cmake/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>CMake<sp/>helpers<sp/>(HTML<sp/>embedding,<sp/>docs<sp/>generation,<sp/>versioning)</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>conan/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Conan<sp/>helper<sp/>variables,<sp/>lockfile<sp/>update<sp/>script</highlight></codeline>
+<codeline><highlight class="normal">└──<sp/>docs/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>API<sp/>docs<sp/>generator<sp/>(build.sh,<sp/>build_docs.py,<sp/>Swagger<sp/>UI<sp/>assets)</highlight></codeline>
+<codeline><highlight class="normal">docker/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>All-in-one<sp/>Alpine<sp/>image<sp/>(Dockerfile<sp/>+<sp/>entrypoint)</highlight></codeline>
+<codeline><highlight class="normal">.github/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Release<sp/>and<sp/>CI<sp/>workflows,<sp/>Dependabot<sp/>config</highlight></codeline>
+<codeline><highlight class="normal">config<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Default<sp/>server<sp/>settings<sp/>(tracked)</highlight></codeline>
+<codeline><highlight class="normal">Doxyfile<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Doxygen<sp/>configuration</highlight></codeline>
+<codeline><highlight class="normal">conan.lock<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Pinned<sp/>dependency<sp/>versions<sp/>(all<sp/>platforms)</highlight></codeline>
+<codeline><highlight class="normal">conanfile.txt<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Conan<sp/>dependency<sp/>list</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Front-end<sp/>development<sp/>(CORS<sp/>and<sp/>Docker)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>API<sp/>listens<sp/>on<sp/>`http://localhost:8080`.<sp/>CORS<sp/>is<sp/>open:<sp/>`Access-Control-Allow-Origin:<sp/>*`,<sp/>no<sp/>credentials,<sp/>methods<sp/>`GET,<sp/>POST,<sp/>PUT,<sp/>PATCH,<sp/>DELETE,<sp/>HEAD,<sp/>OPTIONS`,<sp/>request<sp/>headers<sp/>`Content-Type,<sp/>Authorization,<sp/>Accept,<sp/>X-Requested-With`<sp/>(a<sp/>preflight<sp/>echoes<sp/>`Access-Control-Request-Headers`),<sp/>and<sp/>exposed<sp/>response<sp/>headers<sp/>`Retry-After,<sp/>Content-Length`.<sp/>Preflight<sp/>responses<sp/>are<sp/>cached<sp/>for<sp/>7200<sp/>seconds.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>Docker<sp/>bridge<sp/>mode<sp/>every<sp/>request<sp/>arrives<sp/>from<sp/>one<sp/>gateway<sp/>IP,<sp/>so<sp/>the<sp/>rate<sp/>limiter<sp/>treats<sp/>all<sp/>front-end<sp/>traffic<sp/>as<sp/>a<sp/>single<sp/>client.<sp/>On<sp/>native<sp/>Linux<sp/>Docker<sp/>that<sp/>address<sp/>is<sp/>often<sp/>`172.17.0.1`,<sp/>but<sp/>on<sp/>Docker<sp/>Desktop<sp/>for<sp/>macOS<sp/>or<sp/>Windows<sp/>it<sp/>is<sp/>usually<sp/>different.<sp/>There<sp/>is<sp/>no<sp/>existing<sp/>log<sp/>line<sp/>that<sp/>prints<sp/>the<sp/>peer<sp/>IP.<sp/>Without<sp/>code<sp/>changes,<sp/>use<sp/>one<sp/>of<sp/>these<sp/>instead:<sp/>on<sp/>native<sp/>Linux,<sp/>`docker<sp/>network<sp/>inspect<sp/>bridge`<sp/>and<sp/>its<sp/>`Gateway`;<sp/>run<sp/>`docker<sp/>exec<sp/>&lt;container&gt;<sp/>sh<sp/>-c<sp/>&apos;ss<sp/>-tn&apos;`<sp/>or<sp/>read<sp/>`/proc/net/tcp`<sp/>inside<sp/>the<sp/>container<sp/>while<sp/>a<sp/>host<sp/>`curl`<sp/>is<sp/>in<sp/>flight<sp/>to<sp/>see<sp/>the<sp/>peer<sp/>address;<sp/>or<sp/>use<sp/>`docker<sp/>logs<sp/>&lt;container&gt;`<sp/>after<sp/>a<sp/>request.<sp/>On<sp/>Docker<sp/>Desktop<sp/>for<sp/>macOS<sp/>or<sp/>Windows<sp/>the<sp/>address<sp/>is<sp/>usually<sp/>not<sp/>the<sp/>bridge<sp/>gateway.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Whitelist<sp/>entries<sp/>are<sp/>unanchored<sp/>regular<sp/>expressions,<sp/>so<sp/>`172.17.0.1`<sp/>also<sp/>matches<sp/>`172.17.0.10`<sp/>through<sp/>`172.17.0.199`.<sp/>To<sp/>whitelist<sp/>only<sp/>the<sp/>gateway,<sp/>anchor<sp/>the<sp/>pattern.<sp/>In<sp/>a<sp/>shell<sp/>or<sp/>`--env-file`<sp/>value<sp/>the<sp/>backslashes<sp/>stay<sp/>literal:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">WHITELIST=&apos;^172\.17\.0\.1$&apos;</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>a<sp/>dotenv<sp/>or<sp/>compose<sp/>file<sp/>the<sp/>same<sp/>value<sp/>is<sp/>written<sp/>without<sp/>extra<sp/>escaping:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">WHITELIST=^172\.17\.0\.1$</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Raise<sp/>the<sp/>dev<sp/>rate<sp/>limits<sp/>as<sp/>well<sp/>(`MAX_REQUESTS`,<sp/>`MAX_FPS`)<sp/>if<sp/>React<sp/>StrictMode<sp/>double<sp/>requests<sp/>trip<sp/>the<sp/>limiter.<sp/>A<sp/>commented<sp/>example<sp/>for<sp/>a<sp/>dev<sp/>`.env`<sp/>(no<sp/>secrets):</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>WHITELIST=^172\.17\.0\.1$</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>MAX_REQUESTS=1000000</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>MAX_FPS=1000000</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Put<sp/>these<sp/>settings<sp/>where<sp/>the<sp/>container<sp/>or<sp/>server<sp/>actually<sp/>reads<sp/>them:<sp/>a<sp/>project<sp/>`.env`<sp/>for<sp/>the<sp/>native<sp/>binary,<sp/>`--env-file<sp/>FILE`<sp/>/<sp/>`VALHALLA_ENV_FILE`<sp/>for<sp/>`valhalla.sh`,<sp/>or<sp/>`-e`<sp/>/<sp/>`--env-file`<sp/>for<sp/>`docker<sp/>run`.<sp/>`docker/entrypoint.sh`<sp/>reads<sp/>them<sp/>from<sp/>the<sp/>process<sp/>environment.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`WHITELIST`<sp/>disables<sp/>DoS<sp/>checks<sp/>for<sp/>matching<sp/>IPs,<sp/>so<sp/>it<sp/>is<sp/>for<sp/>development<sp/>only.<sp/>Never<sp/>whitelist<sp/>a<sp/>broad<sp/>pattern<sp/>in<sp/>production.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Browser<sp/>simulation</highlight></codeline>
+<codeline><highlight class="normal">`./scripts/test/cors_react_check.sh`<sp/>simulates<sp/>what<sp/>a<sp/>browser<sp/>does<sp/>before<sp/>and<sp/>after<sp/>cross-origin<sp/>calls<sp/>from<sp/>a<sp/>React<sp/>dev<sp/>server.<sp/>It<sp/>runs<sp/>on<sp/>macOS&apos;s<sp/>default<sp/>bash<sp/>3.2<sp/>(arrays<sp/>and<sp/>`read<sp/>-a`<sp/>are<sp/>supported<sp/>there)<sp/>and<sp/>uses<sp/>only<sp/>POSIX-ish<sp/>`sed`,<sp/>`awk`,<sp/>`tr`<sp/>and<sp/>`grep`<sp/>calls.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">./scripts/test/cors_react_check.sh<sp/>http://localhost:8080</highlight></codeline>
+<codeline><highlight class="normal">./scripts/test/cors_react_check.sh<sp/>--credentials<sp/>http://localhost:8080<sp/><sp/><sp/>#<sp/>expected<sp/>to<sp/>fail:<sp/>wildcard<sp/>Allow-Origin<sp/>is<sp/>rejected<sp/>with<sp/>credentials</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>tools/cors<sp/>&amp;&amp;<sp/>python3<sp/>-m<sp/>http.server<sp/>3000</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>then<sp/>open<sp/>http://localhost:3000/browser_check.html<sp/>(or<sp/>use<sp/>port<sp/>5173)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Headless<sp/>Chromium<sp/>against<sp/>the<sp/>page<sp/>reported<sp/>all<sp/>7<sp/>calls<sp/>as<sp/>PASS<sp/>(HTTP<sp/>400/401/200,<sp/>nothing<sp/>blocked<sp/>by<sp/>the<sp/>browser).<sp/>The<sp/>`--credentials`<sp/>variant<sp/>is<sp/>expected<sp/>to<sp/>fail<sp/>with<sp/>the<sp/>wildcard-origin<sp/>message;<sp/>that<sp/>is<sp/>the<sp/>documented<sp/>limitation,<sp/>not<sp/>a<sp/>regression.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">To<sp/>run<sp/>`./scripts/test/cors_test.sh<sp/>--strict`<sp/>against<sp/>cases<sp/>that<sp/>need<sp/>low<sp/>DoS<sp/>thresholds,<sp/>start<sp/>separate<sp/>server<sp/>instances<sp/>on<sp/>different<sp/>ports<sp/>(a<sp/>banned<sp/>IP<sp/>stays<sp/>banned,<sp/>so<sp/>429<sp/>and<sp/>503<sp/>cannot<sp/>both<sp/>be<sp/>provoked<sp/>on<sp/>the<sp/>same<sp/>instance):</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>403<sp/>case</highlight></codeline>
+<codeline><highlight class="normal">ENV_FILE=none<sp/>MAX_REQUESTS=1000000<sp/>MAX_FPS=1000000<sp/>RL_DURATION=1<sp/>BAN_DURATION=1<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BLACKLIST=&apos;^127\.0\.0\.1$&apos;<sp/>WHITELIST=&apos;&apos;<sp/>SERVER_PORT=8099<sp/>./scripts/run/run_release.sh</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>429<sp/>case</highlight></codeline>
+<codeline><highlight class="normal">ENV_FILE=none<sp/>MAX_REQUESTS=1000000<sp/>MAX_FPS=5<sp/>RL_DURATION=5<sp/>BAN_DURATION=5<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>WHITELIST=&apos;&apos;<sp/>BLACKLIST=&apos;&apos;<sp/>SERVER_PORT=8100<sp/>./scripts/run/run_release.sh</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>503<sp/>case</highlight></codeline>
+<codeline><highlight class="normal">ENV_FILE=none<sp/>MAX_REQUESTS=5<sp/>MAX_FPS=1000000<sp/>RL_DURATION=5<sp/>BAN_DURATION=5<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>WHITELIST=&apos;&apos;<sp/>BLACKLIST=&apos;&apos;<sp/>SERVER_PORT=8101<sp/>./scripts/run/run_release.sh</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`run_release.sh`<sp/>loads<sp/>`ENV_FILE`<sp/>and<sp/>exports<sp/>every<sp/>value<sp/>from<sp/>it,<sp/>so<sp/>settings<sp/>in<sp/>the<sp/>file<sp/>override<sp/>the<sp/>shell<sp/>environment.<sp/>Set<sp/>`ENV_FILE=none`<sp/>to<sp/>use<sp/>the<sp/>command-line<sp/>variables,<sp/>or<sp/>create<sp/>one<sp/>file<sp/>per<sp/>instance<sp/>with<sp/>a<sp/>heredoc<sp/>in<sp/>a<sp/>temporary<sp/>directory<sp/>(`tmpdir=$(mktemp<sp/>-d)`).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Then<sp/>run<sp/>the<sp/>matching<sp/>case<sp/>against<sp/>each<sp/>instance:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">./scripts/test/cors_test.sh<sp/>--case<sp/>403<sp/>--strict<sp/>http://localhost:8099</highlight></codeline>
+<codeline><highlight class="normal">./scripts/test/cors_test.sh<sp/>--case<sp/>429<sp/>--strict<sp/>http://localhost:8100</highlight></codeline>
+<codeline><highlight class="normal">./scripts/test/cors_test.sh<sp/>--case<sp/>503<sp/>--strict<sp/>http://localhost:8101</highlight></codeline>
+<codeline><highlight class="normal">./scripts/test/cors_test.sh<sp/>--case<sp/>basic<sp/>--strict<sp/>http://localhost:8080</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Each<sp/>instance<sp/>proves<sp/>its<sp/>targeted<sp/>case.<sp/>The<sp/>other<sp/>cases<sp/>are<sp/>skipped<sp/>there<sp/>by<sp/>design.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Development</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Known<sp/>limitation:<sp/>malformed<sp/>requests<sp/>(HTTP<sp/>400)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Drogon<sp/>1.9.14<sp/>writes<sp/>the<sp/>response<sp/>for<sp/>a<sp/>malformed<sp/>request<sp/>line<sp/>(for<sp/>example<sp/>`GET<sp/>/bad<sp/>http/1.1`)<sp/>directly<sp/>to<sp/>the<sp/>connection<sp/>during<sp/>parsing.<sp/>That<sp/>path<sp/>bypasses<sp/>both<sp/>the<sp/>custom<sp/>error<sp/>handler<sp/>and<sp/>the<sp/>pre-sending<sp/>advice,<sp/>so<sp/>these<sp/>400<sp/>responses<sp/>contain<sp/>no<sp/>CORS<sp/>headers.<sp/>No<sp/>supported<sp/>hook<sp/>adds<sp/>headers<sp/>there<sp/>in<sp/>this<sp/>Drogon<sp/>version,<sp/>so<sp/>front-end<sp/>code<sp/>that<sp/>triggers<sp/>such<sp/>an<sp/>error<sp/>will<sp/>still<sp/>see<sp/>a<sp/>browser<sp/>CORS<sp/>failure.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**Code<sp/>style:**<sp/>enforced<sp/>via<sp/>`.clang-format`;<sp/>static<sp/>analysis<sp/>configured<sp/>through<sp/>`.clang-tidy`<sp/>and<sp/>`cppcheck.supp`.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Editor<sp/>support:**<sp/>`.clangd`<sp/>provides<sp/>LSP<sp/>configuration;<sp/>`.vscode/`<sp/>and<sp/>`.zed/`<sp/>settings<sp/>are<sp/>included.<sp/>`CMAKE_EXPORT_COMPILE_COMMANDS`<sp/>is<sp/>on,<sp/>so<sp/>`compile_commands.json`<sp/>is<sp/>generated<sp/>for<sp/>tooling.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Warnings:**<sp/>built<sp/>with<sp/>`-Wall<sp/>-Wextra<sp/>-pedantic`.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Versioning:**<sp/>the<sp/>current<sp/>Git<sp/>tag<sp/>is<sp/>embedded<sp/>into<sp/>the<sp/>binary<sp/>at<sp/>build<sp/>time<sp/>via<sp/>`get_tag.sh`.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Dependencies:**<sp/>`conan.lock`<sp/>pins<sp/>the<sp/>exact<sp/>version<sp/>and<sp/>recipe<sp/>revision<sp/>of<sp/>every<sp/>Conan<sp/>package,<sp/>for<sp/>the<sp/>Alpine<sp/>Docker<sp/>builds<sp/>(amd64<sp/>and<sp/>arm64)<sp/>and<sp/>for<sp/>local<sp/>macOS/Linux<sp/>builds.<sp/>Conan<sp/>uses<sp/>it<sp/>automatically.<sp/>To<sp/>change<sp/>or<sp/>update<sp/>dependencies,<sp/>edit<sp/>`conanfile.txt`<sp/>if<sp/>needed,<sp/>run<sp/>`tools/conan/update_lock.sh`,<sp/>and<sp/>commit<sp/>both<sp/>files.<sp/>Don&apos;t<sp/>use<sp/>a<sp/>plain<sp/>`conan<sp/>lock<sp/>create<sp/>.`:<sp/>it<sp/>locks<sp/>only<sp/>your<sp/>own<sp/>platform,<sp/>and<sp/>the<sp/>Docker<sp/>build<sp/>would<sp/>then<sp/>fail.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Build<sp/>options:**<sp/>`-DENABLE_TESTS=OFF`<sp/>skips<sp/>the<sp/>unit<sp/>tests<sp/>(default<sp/>`ON`);<sp/>`-DVALHALLA_BUILD_DOCS=OFF`<sp/>skips<sp/>regenerating<sp/>the<sp/>API<sp/>docs<sp/>(default<sp/>`ON`);<sp/>`-DVALHALLA_BUILD_DOXYGEN=OFF`<sp/>skips<sp/>generating<sp/>the<sp/>Doxygen<sp/>reference<sp/>(default<sp/>`ON`,<sp/>ignored<sp/>if<sp/>Doxygen<sp/>is<sp/>not<sp/>installed).<sp/>Debug<sp/>builds<sp/>on<sp/>Linux<sp/>enable<sp/>AddressSanitizer,<sp/>UndefinedBehaviorSanitizer<sp/>and<sp/>LeakSanitizer.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Tests:**<sp/>a<sp/>Catch2<sp/>suite<sp/>lives<sp/>in<sp/>`tests/`.<sp/>It<sp/>runs<sp/>without<sp/>a<sp/>database,<sp/>so<sp/>it<sp/>works<sp/>on<sp/>any<sp/>machine.<sp/>`build.sh`<sp/>runs<sp/>it<sp/>through<sp/>the<sp/>`conan-debug`/`conan-release`<sp/>CTest<sp/>presets,<sp/>and<sp/>building<sp/>the<sp/>Docker<sp/>image<sp/>runs<sp/>it<sp/>too,<sp/>on<sp/>Alpine.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Run<sp/>tests<sp/>(after<sp/>building)</highlight></codeline>
+<codeline><highlight class="normal">ctest<sp/>--test-dir<sp/>build/Debug<sp/>--output-on-failure</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Source<sp/>documentation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>C++<sp/>source<sp/>is<sp/>documented<sp/>with<sp/>Doxygen:<sp/>every<sp/>class,<sp/>function<sp/>and</highlight></codeline>
+<codeline><highlight class="normal">non-obvious<sp/>implementation<sp/>detail<sp/>has<sp/>a<sp/>Doxygen-compatible<sp/>comment.</highlight></codeline>
+<codeline><highlight class="normal">See<sp/>[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)<sp/>for<sp/>the<sp/>component<sp/>map<sp/>and</highlight></codeline>
+<codeline><highlight class="normal">[`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md)<sp/>for<sp/>the<sp/>documentation<sp/>conventions.</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>HTML/XML<sp/>reference<sp/>is<sp/>generated<sp/>by<sp/>the<sp/>`valhalla_doxygen`<sp/>CMake<sp/>target,<sp/>which</highlight></codeline>
+<codeline><highlight class="normal">runs<sp/>on<sp/>every<sp/>`cmake<sp/>--build`<sp/>when<sp/>Doxygen<sp/>is<sp/>available.<sp/>The<sp/>result<sp/>is<sp/>published</highlight></codeline>
+<codeline><highlight class="normal">under<sp/>`docs/doxygen/`<sp/>(HTML<sp/>and<sp/>XML,<sp/>tracked<sp/>alongside<sp/>the<sp/>API<sp/>docs).<sp/>Doxygen</highlight></codeline>
+<codeline><highlight class="normal">excludes<sp/>that<sp/>directory<sp/>from<sp/>its<sp/>own<sp/>input,<sp/>so<sp/>it<sp/>never<sp/>documents<sp/>its<sp/>output:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>build/Debug<sp/>--target<sp/>valhalla_doxygen</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>open<sp/>docs/doxygen/html/index.html</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`docs/index.html`<sp/>redirects<sp/>to<sp/>that<sp/>page,<sp/>so<sp/>serving<sp/>the<sp/>`docs/`<sp/>directory<sp/>as</highlight></codeline>
+<codeline><highlight class="normal">static<sp/>files<sp/>gives<sp/>a<sp/>single<sp/>entry<sp/>point<sp/>for<sp/>the<sp/>published<sp/>documentation.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Pass<sp/>`-DVALHALLA_BUILD_DOXYGEN=OFF`<sp/>to<sp/>skip<sp/>the<sp/>target.<sp/>To<sp/>generate<sp/>by<sp/>hand,</highlight></codeline>
+<codeline><highlight class="normal">create<sp/>the<sp/>output<sp/>directory<sp/>first<sp/>(Doxygen<sp/>writes<sp/>its<sp/>warning<sp/>log<sp/>there):</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">mkdir<sp/>-p<sp/>docs/doxygen</highlight></codeline>
+<codeline><highlight class="normal">doxygen<sp/>Doxyfile</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Contributing</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Contributions<sp/>are<sp/>welcome.<sp/>Please<sp/>open<sp/>an<sp/>issue<sp/>to<sp/>discuss<sp/>substantial<sp/>changes<sp/>first,<sp/>keep<sp/>commits<sp/>focused,<sp/>and<sp/>run<sp/>`clang-format`<sp/>before<sp/>submitting<sp/>a<sp/>pull<sp/>request.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>License</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Released<sp/>under<sp/>the<sp/>[MIT<sp/>License](LICENSE).</highlight></codeline>
+    </programlisting>
+    <location file="README.md"/>
+  </compounddef>
+</doxygen>

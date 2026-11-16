@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classBanner" kind="class" language="C++" prot="public">
+    <compoundname>Banner</compoundname>
+    <includes refid="banner_8hpp" local="no">banner.hpp</includes>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classBanner_1a0f4d8408fd489c69079a28a1b2b9648f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>fmt::color</type>
+        <definition>static fmt::color Banner::get_random_color</definition>
+        <argsstring>()</argsstring>
+        <name>get_random_color</name>
+        <qualifiedname>Banner::get_random_color</qualifiedname>
+        <briefdescription>
+<para>Picks a random colour for the ASCII logo. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The palette is initialised once as a function-local static. A hardware random_device seeds a fresh mt19937 on each call, and a static uniform distribution selects an index in [0, colors.size() - 1]. <simplesect kind="return"><para>One of the palette colours. </para>
+</simplesect>
+<simplesect kind="note"><para>The returned colour is decorative; no significance should be attached to it. </para>
+</simplesect>
+<simplesect kind="note"><para>The shared static distribution is not locked, but this function is called only once during startup, so there is no concurrent invocation in this server. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/extras/banner.hpp" line="59" column="23" bodyfile="src/server/extras/banner.hpp" bodystart="59" bodyend="98"/>
+        <referencedby refid="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" compoundref="server_8cpp" startline="155" endline="175">Server::print_banner</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classBanner_1a773dc3b0a54676530c4a659489a4bc09" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Banner::print</definition>
+        <argsstring>(const std::string &amp;LABEL, const T &amp;VALUE, fmt::color CLR1, fmt::color CLR2)</argsstring>
+        <name>print</name>
+        <qualifiedname>Banner::print</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>LABEL</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>VALUE</declname>
+        </param>
+        <param>
+          <type>fmt::color</type>
+          <declname>CLR1</declname>
+        </param>
+        <param>
+          <type>fmt::color</type>
+          <declname>CLR2</declname>
+        </param>
+        <briefdescription>
+<para>Prints one label/value line with the label and value coloured independently. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of VALUE; must be formattable by fmt. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">LABEL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Left-hand label, padded to a fixed width. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">VALUE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value rendered with fmt::format(&quot;{}&quot;, VALUE). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">CLR1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Colour of the label. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">CLR2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Colour of the value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/extras/banner.hpp" line="110" column="17" bodyfile="src/server/extras/banner.hpp" bodystart="110" bodyend="114"/>
+        <referencedby refid="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" compoundref="server_8cpp" startline="155" endline="175">Server::print_banner</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classBanner_1aee5bc794e7e7e6c1dbe3476d417a0f0a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Banner::print_line</definition>
+        <argsstring>(Args &amp;&amp;... args)</argsstring>
+        <name>print_line</name>
+        <qualifiedname>Banner::print_line</qualifiedname>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Prints a bold red separator line used to delimit banner sections. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Extra arguments forwarded to fmt::print; call sites normally pass none. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arguments forwarded to fmt::print after the separator format string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/extras/banner.hpp" line="123" column="17" bodyfile="src/server/extras/banner.hpp" bodystart="123" bodyend="127"/>
+        <referencedby refid="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" compoundref="server_8cpp" startline="155" endline="175">Server::print_banner</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classBanner_1a6118028a295c6f11e2a271005b4f35d3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>static const std::string &amp; Banner::get_logo</definition>
+        <argsstring>()</argsstring>
+        <name>get_logo</name>
+        <qualifiedname>Banner::get_logo</qualifiedname>
+        <briefdescription>
+<para>Returns the project&apos;s ASCII-art logo. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A reference to a function-local static string; do not mutate it. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/extras/banner.hpp" line="134" column="30" bodyfile="src/server/extras/banner.hpp" bodystart="134" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="classBanner_1accf954d53281ba0a993945630a19f66b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Banner::print_logo</definition>
+        <argsstring>(fmt::color COLOR)</argsstring>
+        <name>print_logo</name>
+        <qualifiedname>Banner::print_logo</qualifiedname>
+        <param>
+          <type>fmt::color</type>
+          <declname>COLOR</declname>
+        </param>
+        <briefdescription>
+<para>Prints the ASCII-art logo in the given colour. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">COLOR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Colour used for the logo text. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classBanner_1a6118028a295c6f11e2a271005b4f35d3" kindref="member">get_logo()</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/extras/banner.hpp" line="145" column="17" bodyfile="src/server/extras/banner.hpp" bodystart="145" bodyend="145"/>
+        <referencedby refid="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" compoundref="server_8cpp" startline="155" endline="175">Server::print_banner</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Stateless collection of static helpers for stdout startup output. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>All functions are static and use fmt for coloured output. There are no members and no instances are required; the class only groups related printing utilities. Shared static data is confined to the local statics in <ref refid="classBanner_1a0f4d8408fd489c69079a28a1b2b9648f" kindref="member">get_random_color()</ref> and the cached logo string. </para>
+    </detaileddescription>
+    <location file="src/server/extras/banner.hpp" line="44" column="1" bodyfile="src/server/extras/banner.hpp" bodystart="45" bodyend="160"/>
+    <listofallmembers>
+      <member refid="classBanner_1a6118028a295c6f11e2a271005b4f35d3" prot="public" virt="non-virtual"><scope>Banner</scope><name>get_logo</name></member>
+      <member refid="classBanner_1a0f4d8408fd489c69079a28a1b2b9648f" prot="public" virt="non-virtual"><scope>Banner</scope><name>get_random_color</name></member>
+      <member refid="classBanner_1a773dc3b0a54676530c4a659489a4bc09" prot="public" virt="non-virtual"><scope>Banner</scope><name>print</name></member>
+      <member refid="classBanner_1aee5bc794e7e7e6c1dbe3476d417a0f0a" prot="public" virt="non-virtual"><scope>Banner</scope><name>print_line</name></member>
+      <member refid="classBanner_1accf954d53281ba0a993945630a19f66b" prot="public" virt="non-virtual"><scope>Banner</scope><name>print_logo</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

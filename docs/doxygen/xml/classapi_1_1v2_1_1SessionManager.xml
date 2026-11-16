@@ -1,0 +1,738 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classapi_1_1v2_1_1SessionManager" kind="class" language="C++" prot="public">
+    <compoundname>api::v2::SessionManager</compoundname>
+    <basecompoundref refid="classapi_1_1v2_1_1KeeprBase" prot="public" virt="non-virtual">api::v2::KeeprBase</basecompoundref>
+    <includes refid="sessionmanager_8hpp" local="no">sessionmanager.hpp</includes>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classapi_1_1v2_1_1SessionManager_1a2526008976c4fb859de88f30dcd98811" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>std::chrono::seconds</type>
+        <definition>std::chrono::seconds api::v2::SessionManager::SESSION_TIMEOUT</definition>
+        <argsstring></argsstring>
+        <name>SESSION_TIMEOUT</name>
+        <qualifiedname>api::v2::SessionManager::SESSION_TIMEOUT</qualifiedname>
+        <initializer>= std::chrono::seconds(3600)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Default session lifetime: one hour, used if no other TTL is given. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="156" column="47" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.hpp" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classapi_1_1v2_1_1SessionManager_1a56d6eb7cb7a8a5c41c702df255cbd502" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>int</type>
+        <definition>int api::v2::SessionManager::SESSION_MAX</definition>
+        <argsstring></argsstring>
+        <name>SESSION_MAX</name>
+        <qualifiedname>api::v2::SessionManager::SESSION_MAX</qualifiedname>
+        <initializer>= 4096</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Cache capacity: at most this many sessions are held. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="157" column="47" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.hpp" bodystart="157" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classapi_1_1v2_1_1SessionManager_1a7b12ce1fb5e65eb8f9ad5f8ef9f5580c" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classPasswordCrypt" kindref="compound">PasswordCrypt</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;PasswordCrypt&gt; api::v2::SessionManager::passwordCrypt</definition>
+        <argsstring></argsstring>
+        <name>passwordCrypt</name>
+        <qualifiedname>api::v2::SessionManager::passwordCrypt</qualifiedname>
+        <initializer>= <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classPasswordCrypt" kindref="compound">PasswordCrypt</ref>&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shared hasher/verifier, reused rather than recreated per login. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="159" column="44" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.hpp" bodystart="159" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1abbdf2297a918188909ce176585214a89" compoundref="sessionmanager_8cpp" startline="176" endline="206">completeLogin</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classapi_1_1v2_1_1SessionManager_1a65a1a1dc52287f3db432cde8b6d95f8a" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classMemCache" kindref="compound">MemCache</ref>&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &gt;</type>
+        <definition>std::shared_ptr&lt;MemCache&lt;Types::ClientLoginData&gt; &gt; api::v2::SessionManager::clientsSessionsList</definition>
+        <argsstring></argsstring>
+        <name>clientsSessionsList</name>
+        <qualifiedname>api::v2::SessionManager::clientsSessionsList</qualifiedname>
+        <initializer>                                =
+<ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classMemCache" kindref="compound">MemCache</ref>&lt;<ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref>&gt;&gt;(<ref refid="classapi_1_1v2_1_1SessionManager_1a56d6eb7cb7a8a5c41c702df255cbd502" kindref="member">SESSION_MAX</ref>, <ref refid="classapi_1_1v2_1_1SessionManager_1a2526008976c4fb859de88f30dcd98811" kindref="member">SESSION_TIMEOUT</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shared session store, holding <ref refid="structClientLoginData" kindref="compound">ClientLoginData</ref> by &quot;&lt;group&gt;_&lt;id&gt;&quot; key. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="160" column="25" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.hpp" bodystart="160" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a2be4af6233804aa5b85985ecb3e14d00" compoundref="sessionmanager_8cpp" startline="297" endline="350">clientHasValidSession</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="224" endline="289">logout</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a64bf884c729b388729752c9163db479f" compoundref="sessionmanager_8cpp" startline="391" endline="426">removeSession</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a7ca49324d009c30cf57fa224bfaabe4e" compoundref="sessionmanager_8cpp" startline="361" endline="384">storeSession</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1a35bfaf5b65e09dc3a18f8ada3a305401" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::SessionManager::SessionManager</definition>
+        <argsstring>()=default</argsstring>
+        <name>SessionManager</name>
+        <qualifiedname>api::v2::SessionManager::SessionManager</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="62" column="9"/>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa7e0fae115ecf09ac1ce5a6fed83486f">operator=</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa3a4e1ef2013d3901e07eda1ea79d395">operator=</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1af57126e07156086b627616835fe6d15c">SessionManager</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a429453e19b3f336e6b55d10e290dde23">SessionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1af57126e07156086b627616835fe6d15c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::SessionManager::SessionManager</definition>
+        <argsstring>(const SessionManager &amp;)=default</argsstring>
+        <name>SessionManager</name>
+        <qualifiedname>api::v2::SessionManager::SessionManager</qualifiedname>
+        <param>
+          <type>const SessionManager &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="63" column="9"/>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a35bfaf5b65e09dc3a18f8ada3a305401">SessionManager</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1a429453e19b3f336e6b55d10e290dde23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::SessionManager::SessionManager</definition>
+        <argsstring>(SessionManager &amp;&amp;)=delete</argsstring>
+        <name>SessionManager</name>
+        <qualifiedname>api::v2::SessionManager::SessionManager</qualifiedname>
+        <param>
+          <type>SessionManager &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="64" column="9"/>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a35bfaf5b65e09dc3a18f8ada3a305401">SessionManager</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1aa7e0fae115ecf09ac1ce5a6fed83486f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classapi_1_1v2_1_1SessionManager_1a35bfaf5b65e09dc3a18f8ada3a305401" kindref="member">SessionManager</ref> &amp;</type>
+        <definition>SessionManager &amp; api::v2::SessionManager::operator=</definition>
+        <argsstring>(const SessionManager &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>api::v2::SessionManager::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classapi_1_1v2_1_1SessionManager_1a35bfaf5b65e09dc3a18f8ada3a305401" kindref="member">SessionManager</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="65" column="24"/>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a35bfaf5b65e09dc3a18f8ada3a305401">SessionManager</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1aa3a4e1ef2013d3901e07eda1ea79d395" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classapi_1_1v2_1_1SessionManager_1a35bfaf5b65e09dc3a18f8ada3a305401" kindref="member">SessionManager</ref> &amp;</type>
+        <definition>SessionManager &amp; api::v2::SessionManager::operator=</definition>
+        <argsstring>(SessionManager &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>api::v2::SessionManager::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classapi_1_1v2_1_1SessionManager_1a35bfaf5b65e09dc3a18f8ada3a305401" kindref="member">SessionManager</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="66" column="24"/>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a35bfaf5b65e09dc3a18f8ada3a305401">SessionManager</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::SessionManager::~SessionManager</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~SessionManager</name>
+        <qualifiedname>api::v2::SessionManager::~SessionManager</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="67" column="9"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a2be4af6233804aa5b85985ecb3e14d00" compoundref="sessionmanager_8cpp" startline="297" endline="350">clientHasValidSession</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1abbdf2297a918188909ce176585214a89" compoundref="sessionmanager_8cpp" startline="176" endline="206">completeLogin</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1abffc874efc27d46a421446767b1d3c6c" compoundref="sessionmanager_8cpp" startline="65" endline="115">fetchPasswordHash</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a9122497c5ad97796173492b1a4f3372f" compoundref="sessionmanager_8cpp" startline="118" endline="168">fetchPasswordHashCoro</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1add62dbdf029d62e261f527ef187ec4ff" compoundref="sessionmanager_8cpp" startline="209" endline="217">login</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="224" endline="289">logout</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a64bf884c729b388729752c9163db479f" compoundref="sessionmanager_8cpp" startline="391" endline="426">removeSession</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a7ca49324d009c30cf57fa224bfaabe4e" compoundref="sessionmanager_8cpp" startline="361" endline="384">storeSession</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1add62dbdf029d62e261f527ef187ec4ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SessionManager::login</definition>
+        <argsstring>(const std::optional&lt; Types::Credentials &gt; &amp;credentials, std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData, std::string &amp;message)</argsstring>
+        <name>login</name>
+        <qualifiedname>api::v2::SessionManager::login</qualifiedname>
+        <param>
+          <type>const std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1ada88a3e212586efbdfd1f931b0f4a8a9" kindref="member">Types::Credentials</ref> &gt; &amp;</type>
+          <declname>credentials</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Runs the full login synchronously on the calling thread: fetch then complete. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Runs <ref refid="classapi_1_1v2_1_1SessionManager_1abffc874efc27d46a421446767b1d3c6c" kindref="member">fetchPasswordHash()</ref> then <ref refid="classapi_1_1v2_1_1SessionManager_1abbdf2297a918188909ce176585214a89" kindref="member">completeLogin()</ref> on the calling thread.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">credentials</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> username/password. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">clientLoginData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Populated with client id, username and active state. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Human-readable failure reason. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True only when the password matches and the login time was recorded. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="80" column="14" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="209" bodyend="217"/>
+        <references refid="classapi_1_1v2_1_1SessionManager_1abbdf2297a918188909ce176585214a89" compoundref="sessionmanager_8cpp" startline="176" endline="206">completeLogin</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1abffc874efc27d46a421446767b1d3c6c" compoundref="sessionmanager_8cpp" startline="65" endline="115">fetchPasswordHash</references>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd">~SessionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1abffc874efc27d46a421446767b1d3c6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; SessionManager::fetchPasswordHash</definition>
+        <argsstring>(const std::optional&lt; Types::Credentials &gt; &amp;credentials, std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData, std::string &amp;message)</argsstring>
+        <name>fetchPasswordHash</name>
+        <qualifiedname>api::v2::SessionManager::fetchPasswordHash</qualifiedname>
+        <param>
+          <type>const std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1ada88a3e212586efbdfd1f931b0f4a8a9" kindref="member">Types::Credentials</ref> &gt; &amp;</type>
+          <declname>credentials</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Reads the stored password hash and checks that the account is active (no writes). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">credentials</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structCredentials" kindref="compound">Credentials</ref> whose username selects the account. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">clientLoginData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives id, username and active flag. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Human-readable failure reason. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The stored hash on success, <computeroutput>std::nullopt</computeroutput> otherwise. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Re-thrown so callers can retry/back off.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Reads the stored password hash after checking the account exists and is active. message: Receives the reason for a missing/suspended account or a read error. Returns Stored hash, or <computeroutput>std::nullopt</computeroutput> if the account is unusable. Throws <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref>: Propagated to the caller for retry/back-off. See also: <ref refid="classapi_1_1v2_1_1SessionManager_1abffc874efc27d46a421446767b1d3c6c" kindref="member">SessionManager::fetchPasswordHash</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="90" column="23" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="65" bodyend="115"/>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a8ced4af95be98298b0a63084deece769" compoundref="keeprbase_8cpp" startline="536" endline="539">api::v2::KeeprBase::getPasswordHashForUserName</references>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1add62dbdf029d62e261f527ef187ec4ff" compoundref="sessionmanager_8cpp" startline="209" endline="217">login</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd">~SessionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1a9122497c5ad97796173492b1a4f3372f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>drogon::Task&lt; std::optional&lt; std::string &gt; &gt;</type>
+        <definition>drogon::Task&lt; std::optional&lt; std::string &gt; &gt; SessionManager::fetchPasswordHashCoro</definition>
+        <argsstring>(const std::optional&lt; Types::Credentials &gt; &amp;credentials, std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData, std::string &amp;message)</argsstring>
+        <name>fetchPasswordHashCoro</name>
+        <qualifiedname>api::v2::SessionManager::fetchPasswordHashCoro</qualifiedname>
+        <param>
+          <type>const std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1ada88a3e212586efbdfd1f931b0f4a8a9" kindref="member">Types::Credentials</ref> &gt; &amp;</type>
+          <declname>credentials</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1SessionManager_1abffc874efc27d46a421446767b1d3c6c" kindref="member">fetchPasswordHash()</ref>; awaits the async database read. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">credentials</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Supplied username/password and group. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">clientLoginData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives id, username and active flag. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Human-readable failure reason. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The stored hash on success, <computeroutput>std::nullopt</computeroutput> otherwise. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Re-thrown from the coroutine when awaited. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="101" column="22" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="118" bodyend="168"/>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1acdd434fec377861a4be32a7fbbd6549f" compoundref="keeprbase_8cpp" startline="548" endline="551">api::v2::KeeprBase::getPasswordHashForUserNameCoro</references>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd">~SessionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1abbdf2297a918188909ce176585214a89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SessionManager::completeLogin</definition>
+        <argsstring>(const std::optional&lt; Types::Credentials &gt; &amp;credentials, const std::string &amp;password_hash, std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData, std::string &amp;message)</argsstring>
+        <name>completeLogin</name>
+        <qualifiedname>api::v2::SessionManager::completeLogin</qualifiedname>
+        <param>
+          <type>const std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1ada88a3e212586efbdfd1f931b0f4a8a9" kindref="member">Types::Credentials</ref> &gt; &amp;</type>
+          <declname>credentials</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>password_hash</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Verifies <computeroutput>password_hash</computeroutput> and, only on success, records the new login time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">credentials</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Supplied username/password and group. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">password_hash</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Hash previously returned by <ref refid="classapi_1_1v2_1_1SessionManager_1abffc874efc27d46a421446767b1d3c6c" kindref="member">fetchPasswordHash()</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">clientLoginData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Identity/state accumulator. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Human-readable failure reason. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the password matches and the login-time update succeeded. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Re-thrown so callers can retry/back off.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Verifies the password first; only a match updates the stored login time. message: Receives the verification/update failure reason. Returns True when verification and the login-time update both succeeded. Throws <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref>: Propagated to the caller for retry/back-off. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="113" column="14" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="176" bodyend="206"/>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a7b12ce1fb5e65eb8f9ad5f8ef9f5580c" compoundref="sessionmanager_8hpp" startline="159">passwordCrypt</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a827a3339a5b2ecfddc1ba78ef85e7711" compoundref="keeprbase_8cpp" startline="140" endline="190">api::v2::KeeprBase::setNowLoginTimeGetLastLogoutTime</references>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1add62dbdf029d62e261f527ef187ec4ff" compoundref="sessionmanager_8cpp" startline="209" endline="217">login</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd">~SessionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SessionManager::logout</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData)</argsstring>
+        <name>logout</name>
+        <qualifiedname>api::v2::SessionManager::logout</qualifiedname>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <briefdescription>
+<para>Invalidates the client&apos;s token/session and invokes <computeroutput>callback</computeroutput> with the result. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Logs out the client and reports the result through <computeroutput>callback</computeroutput>.</para>
+<para>Validates the JWT, then compares it to any stored session token in constant time before recording logout time and removing the session. All outcomes are delivered through <computeroutput>callback</computeroutput> (moved exactly once). <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback invoked with status and JSON body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">clientLoginData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> identity including the token.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Validates the token, checks it against the stored session in constant time, records the logout time and removes the session. Every path invokes the callback. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="124" column="14" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="224" bodyend="289"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a65a1a1dc52287f3db432cde8b6d95f8a" compoundref="sessionmanager_8hpp" startline="160">clientsSessionsList</references>
+        <references refid="global_8hpp_1a68447123f2c27bb7bcdbbaec4091dab7" compoundref="global_8hpp" startline="46" endline="48">CRITICALMESSAGE</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" compoundref="keeprbase_8cpp" startline="299" endline="337">api::v2::KeeprBase::decodeToken</references>
+        <references refid="classapi_1_1v2_1_1JsonHelper_1a641560db2243ef5bca5bb763e98b3b43" compoundref="jsonhelper_8cpp" startline="27" endline="33">api::v2::JsonHelper::jsonify</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a64bf884c729b388729752c9163db479f" compoundref="sessionmanager_8cpp" startline="391" endline="426">removeSession</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1aec14dfc5acf772c02faa5ebe3c383eba" compoundref="keeprbase_8cpp" startline="199" endline="235">api::v2::KeeprBase::setNowLogoutTime</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1aaddeb034a51d7050d6cc65cc2b46fdcf" compoundref="errorstatus_8hpp" startline="49" endline="53">api::v2::Http::statusForException</references>
+        <references refid="classapi_1_1v2_1_1JsonHelper_1a1b5317049b9d7659fea55b9f6c96c379" compoundref="jsonhelper_8cpp" startline="41" endline="41">api::v2::JsonHelper::stringify</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa521335676ea4815ed98bb811fb2d1fea" compoundref="http_8hpp" startline="83">api::v2::Http::UNAUTHORIZED</references>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd">~SessionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1a2be4af6233804aa5b85985ecb3e14d00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SessionManager::clientHasValidSession</definition>
+        <argsstring>(std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData, std::string &amp;message)</argsstring>
+        <name>clientHasValidSession</name>
+        <qualifiedname>api::v2::SessionManager::clientHasValidSession</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Checks a session against the cache and verifies the token&apos;s identity data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>A constant-time comparison with the stored token prevents a forged JWT with a valid (group, id) pair from hijacking a session; on success the stored entry replaces the supplied data so its identity/expiry are trusted. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">clientLoginData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Identity/state accumulator, replaced by the stored session on success. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Human-readable failure reason. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the cached session and token agree.</para>
+</simplesect>
+Validates a cached session against the supplied token and adopts the stored identity. message: Receives the validation error reason. Returns True when a matching session exists and the token is valid. Throws <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref>: Propagated to the caller for retry/back-off. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="135" column="14" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="297" bodyend="350"/>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a65a1a1dc52287f3db432cde8b6d95f8a" compoundref="sessionmanager_8hpp" startline="160">clientsSessionsList</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" compoundref="keeprbase_8cpp" startline="299" endline="337">api::v2::KeeprBase::decodeToken</references>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd">~SessionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1a7ca49324d009c30cf57fa224bfaabe4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SessionManager::storeSession</definition>
+        <argsstring>(std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData, std::string &amp;message)</argsstring>
+        <name>storeSession</name>
+        <qualifiedname>api::v2::SessionManager::storeSession</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Inserts the client&apos;s session into the cache with a TTL taken from <computeroutput>expireTime</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">clientLoginData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Session data; keyed by group and client id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Human-readable failure reason. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True on insertion. </para>
+</simplesect>
+<simplesect kind="note"><para>The TTL forwarded to <ref refid="classMemCache_1ac7e13d86c785d85dcf0424c07013433a" kindref="member">MemCache::insert</ref> is <computeroutput>expireTime</computeroutput> — the JWT <computeroutput>exp</computeroutput> claim as a <computeroutput>system_clock</computeroutput> duration since the epoch (set by decodeToken), not an interval remaining until expiry. Consequently the effective cache lifetime is that absolute value rather than a short time-until-expiry.</para>
+</simplesect>
+Caches the session under <computeroutput>"&lt;group&gt;_&lt;id&gt;"</computeroutput>, using <computeroutput>expireTime</computeroutput> as the <ref refid="classMemCache" kindref="compound">MemCache</ref> TTL. <computeroutput>expireTime</computeroutput> is the JWT <computeroutput>exp</computeroutput> claim as a system_clock duration since the epoch (populated by decodeToken), so the value handed to <ref refid="classMemCache_1ac7e13d86c785d85dcf0424c07013433a" kindref="member">MemCache::insert</ref> is that absolute duration, not a remaining-lifetime interval. message: Receives the failure reason. Returns True when the session was inserted. Throws <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref>: Propagated to the caller for retry/back-off. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="147" column="14" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="361" bodyend="384"/>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a65a1a1dc52287f3db432cde8b6d95f8a" compoundref="sessionmanager_8hpp" startline="160">clientsSessionsList</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd">~SessionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1a64bf884c729b388729752c9163db479f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SessionManager::removeSession</definition>
+        <argsstring>(std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData)</argsstring>
+        <name>removeSession</name>
+        <qualifiedname>api::v2::SessionManager::removeSession</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <briefdescription>
+<para>Removes the client&apos;s session from the cache (keyed by group and client id). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Removes the cached session identified by the client&apos;s group and id.</para>
+<para><simplesect kind="return"><para>True on removal; false when the data/id/group are missing or an error occurs.</para>
+</simplesect>
+<simplesect kind="return"><para>True when a session key could be built and the removal was attempted. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Propagated to the caller for retry/back-off. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="153" column="14" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="391" bodyend="426"/>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a65a1a1dc52287f3db432cde8b6d95f8a" compoundref="sessionmanager_8hpp" startline="160">clientsSessionsList</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="224" endline="289">logout</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd">~SessionManager</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Owns the client login flow and the in-memory session cache. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Login is deliberately split into <ref refid="classapi_1_1v2_1_1SessionManager_1abffc874efc27d46a421446767b1d3c6c" kindref="member">fetchPasswordHash()</ref> (database reads, account activation check) and <ref refid="classapi_1_1v2_1_1SessionManager_1abbdf2297a918188909ce176585214a89" kindref="member">completeLogin()</ref> (password verification, then login-time write). <ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref> invokes the two parts separately so the expensive password check can run on a <ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref>; a wrong password therefore never updates the stored login time. Sessions live in a shared <ref refid="classMemCache" kindref="compound">MemCache</ref> keyed by <computeroutput>"&lt;group&gt;_&lt;id&gt;"</computeroutput> and carry an expiry. All operations report failures through a human-readable message (or a callback for logout). <simplesect kind="see"><para><ref refid="classapi_1_1v2_1_1KeeprBase" kindref="compound">KeeprBase</ref> In everyday words: logging in is like showing ID at a desk. First we look up your account and check it is active; then we check your password; only then do we record that you logged in and hand you a session. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>api::v2::KeeprBase</label>
+        <link refid="classapi_1_1v2_1_1KeeprBase"/>
+      </node>
+      <node id="1">
+        <label>api::v2::SessionManager</label>
+        <link refid="classapi_1_1v2_1_1SessionManager"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>TokenManagerParameters</label>
+        <link refid="structTokenManagerParameters"/>
+      </node>
+      <node id="2">
+        <label>api::v2::KeeprBase</label>
+        <link refid="classapi_1_1v2_1_1KeeprBase"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>tokenManagerParameters_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>api::v2::SessionManager</label>
+        <link refid="classapi_1_1v2_1_1SessionManager"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="59" column="5" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.hpp" bodystart="60" bodyend="162"/>
+    <listofallmembers>
+      <member refid="classapi_1_1v2_1_1SessionManager_1a2be4af6233804aa5b85985ecb3e14d00" prot="public" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>clientHasValidSession</name></member>
+      <member refid="classapi_1_1v2_1_1SessionManager_1a65a1a1dc52287f3db432cde8b6d95f8a" prot="private" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>clientsSessionsList</name></member>
+      <member refid="classapi_1_1v2_1_1SessionManager_1abbdf2297a918188909ce176585214a89" prot="public" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>completeLogin</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a3b36fc37ac1fa5d0b98ca85a33513d43" prot="private" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>configurator_</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1aaf8aa6b3f37ca047d975238a41fe8285" prot="protected" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>createTokenVerifier</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1ac972310cb5c257ad144e4b2c2276ce0d" prot="protected" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>current_time_to_utc_string</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a913563947fb79295de1f2278e6cb5e62" prot="protected" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>databaseController</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" prot="protected" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>decodeToken</name></member>
+      <member refid="classapi_1_1v2_1_1SessionManager_1abffc874efc27d46a421446767b1d3c6c" prot="public" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>fetchPasswordHash</name></member>
+      <member refid="classapi_1_1v2_1_1SessionManager_1a9122497c5ad97796173492b1a4f3372f" prot="public" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>fetchPasswordHashCoro</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a7ac9299b75cd06a7004701cb2d7c3a34" prot="protected" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>getLastLoginTime</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a96a366e05f18b668479c2da9000d6289" prot="protected" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>getLastLogoutTimeIfActive</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a25af0d69c7a5d1f0fa209b6002ec8c28" prot="protected" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>getLastLogoutTimeIfActiveCoro</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a8ced4af95be98298b0a63084deece769" prot="protected" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>getPasswordHashForUserName</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1acdd434fec377861a4be32a7fbbd6549f" prot="protected" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>getPasswordHashForUserNameCoro</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a769b4981f124c8bc48570a2ec0aaa01d" prot="protected" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>getTokenManagerParameters</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1ab09740b221922b51de0a8c45c54daa85" prot="public" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>KeeprBase</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1add3bdbaa73fd820198bd4e19122e02dd" prot="public" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>KeeprBase</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1af1965f91dfd57bbf65a4f286551a5627" prot="public" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>KeeprBase</name></member>
+      <member refid="classapi_1_1v2_1_1SessionManager_1add62dbdf029d62e261f527ef187ec4ff" prot="public" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>login</name></member>
+      <member refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" prot="public" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>logout</name></member>
+      <member refid="classapi_1_1v2_1_1SessionManager_1aa7e0fae115ecf09ac1ce5a6fed83486f" prot="public" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1SessionManager_1aa3a4e1ef2013d3901e07eda1ea79d395" prot="public" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a4db23b35be5f480c9189bada5b1a7d19" prot="public" virt="non-virtual" ambiguityscope="api::v2::KeeprBase::"><scope>api::v2::SessionManager</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1aeceb10fc2e385d4f823f656d8d97c425" prot="public" virt="non-virtual" ambiguityscope="api::v2::KeeprBase::"><scope>api::v2::SessionManager</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1SessionManager_1a7b12ce1fb5e65eb8f9ad5f8ef9f5580c" prot="private" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>passwordCrypt</name></member>
+      <member refid="classapi_1_1v2_1_1SessionManager_1a64bf884c729b388729752c9163db479f" prot="public" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>removeSession</name></member>
+      <member refid="classapi_1_1v2_1_1SessionManager_1a56d6eb7cb7a8a5c41c702df255cbd502" prot="private" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>SESSION_MAX</name></member>
+      <member refid="classapi_1_1v2_1_1SessionManager_1a2526008976c4fb859de88f30dcd98811" prot="private" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>SESSION_TIMEOUT</name></member>
+      <member refid="classapi_1_1v2_1_1SessionManager_1a35bfaf5b65e09dc3a18f8ada3a305401" prot="public" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>SessionManager</name></member>
+      <member refid="classapi_1_1v2_1_1SessionManager_1af57126e07156086b627616835fe6d15c" prot="public" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>SessionManager</name></member>
+      <member refid="classapi_1_1v2_1_1SessionManager_1a429453e19b3f336e6b55d10e290dde23" prot="public" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>SessionManager</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a827a3339a5b2ecfddc1ba78ef85e7711" prot="protected" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>setNowLoginTimeGetLastLogoutTime</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1aec14dfc5acf772c02faa5ebe3c383eba" prot="protected" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>setNowLogoutTime</name></member>
+      <member refid="classapi_1_1v2_1_1SessionManager_1a7ca49324d009c30cf57fa224bfaabe4e" prot="public" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>storeSession</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a1d23b660f409ad68088514c4de125a4b" prot="private" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>tokenManagerParameters_</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" prot="protected" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>validateToken</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1adc936836bc32e25fd2348e738289c83a" prot="protected" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>validateTokenCoro</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a5eb7980e75486333cee87142faa5f9eb" prot="public" virt="virtual"><scope>api::v2::SessionManager</scope><name>~KeeprBase</name></member>
+      <member refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd" prot="public" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>~SessionManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

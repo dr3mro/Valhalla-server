@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classEnvVars" kind="class" language="C++" prot="public">
+    <compoundname>EnvVars</compoundname>
+    <derivedcompoundref refid="classEnvLoader" prot="public" virt="non-virtual">EnvLoader</derivedcompoundref>
+    <includes refid="envvars_8hpp" local="no">envvars.hpp</includes>
+    <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; EnvVars::get</definition>
+        <argsstring>(const std::string &amp;key)</argsstring>
+        <name>get</name>
+        <qualifiedname>EnvVars::get</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Reads a raw environment variable. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Asks the operating system for the value stored under <computeroutput>key</computeroutput>. In plain words: &quot;is there a variable with this name, and if so what text does it hold?&quot; The answer is wrapped in an optional so that &quot;not set&quot; is clearly different from &quot;set to empty text&quot;. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Variable name. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The value as a string, or std::nullopt when the variable is not set. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/configurator/envloader/envvars/envvars.hpp" line="57" column="26" bodyfile="src/configurator/envloader/envvars/envvars.cpp" bodystart="33" bodyend="47"/>
+        <referencedby refid="classEnvLoader_1a5b217a34a87ae9d70716e42d7d2cc96b" compoundref="envloader_8cpp" startline="79" endline="84">EnvLoader::getEnvironmentVariable</referencedby>
+        <referencedby refid="classEnvLoader_1a0a9c2b2459e1cffa605caad9957153df" compoundref="envloader_8cpp" startline="43" endline="49">EnvLoader::getEnvironmentVariable</referencedby>
+        <referencedby refid="classEnvLoader_1a1866cb32c9be29f42152a1c0c9e7b2bb" compoundref="envloader_8cpp" startline="52" endline="76">EnvLoader::getEnvironmentVariable</referencedby>
+        <referencedby refid="classEnvLoader_1a77a3c407cae008484f177781e216d1f3" compoundref="envloader_8cpp" startline="36" endline="40">EnvLoader::getEnvironmentVariable</referencedby>
+        <referencedby refid="classEnvLoader_1a2f52dfe5e8b93436843667a9e29bcf1e" compoundref="envloader_8hpp" startline="81" endline="97">EnvLoader::getEnvironmentVariable</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classEnvVars_1a711d3932ab9abc4998c8acbb454f36a8" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void EnvVars::set</definition>
+        <argsstring>(const std::string &amp;key, const std::string &amp;value)</argsstring>
+        <name>set</name>
+        <qualifiedname>EnvVars::set</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Sets (or overwrites) an environment variable in the current process. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Variable name. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>On failure an error message is logged; the call does not throw. </para>
+</simplesect>
+<simplesect kind="warning"><para>Mutating the process environment is not synchronized with other threads. </para>
+</simplesect>
+<simplesect kind="note"><para>The only caller in this repository is a test that derives a helper to expose this protected method; production configuration is read-only. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/configurator/envloader/envvars/envvars.hpp" line="69" column="17" bodyfile="src/configurator/envloader/envvars/envvars.cpp" bodystart="49" bodyend="56"/>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Thin protected wrapper around the process environment (getenv/setenv). </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Provides the raw accessors on which <ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> builds its typed conversions. The helpers are static and protected so only derived configuration types (or test code deriving from them) can read or modify the environment; callers are expected to use the <ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> overloads instead.</para>
+<para><simplesect kind="note"><para>The set of environment variables is process-global. Reading is safe while no other thread mutates the environment; mutation is intended for setup/test code before threads start, not for the request path. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>EnvLoader</label>
+        <link refid="classEnvLoader"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>EnvVars</label>
+        <link refid="classEnvVars"/>
+      </node>
+    </inheritancegraph>
+    <location file="src/configurator/envloader/envvars/envvars.hpp" line="45" column="1" bodyfile="src/configurator/envloader/envvars/envvars.hpp" bodystart="46" bodyend="70"/>
+    <listofallmembers>
+      <member refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" prot="protected" virt="non-virtual"><scope>EnvVars</scope><name>get</name></member>
+      <member refid="classEnvVars_1a711d3932ab9abc4998c8acbb454f36a8" prot="protected" virt="non-virtual"><scope>EnvVars</scope><name>set</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

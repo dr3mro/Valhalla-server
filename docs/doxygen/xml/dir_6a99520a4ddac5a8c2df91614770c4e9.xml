@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_6a99520a4ddac5a8c2df91614770c4e9" kind="dir">
+    <compoundname>src/controllers/servicecontroller</compoundname>
+    <innerfile refid="servicecontroller_8cpp">servicecontroller.cpp</innerfile>
+    <innerfile refid="servicecontroller_8hpp">servicecontroller.hpp</innerfile>
+    <innerfile refid="servicecontrollerbase_8hpp">servicecontrollerbase.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/controllers/servicecontroller/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_5a12d1058feadd75fa7122ede7770198" kind="dir">
+    <compoundname>src/gatekeeper/dosdetector</compoundname>
+    <innerfile refid="dosdetector_8cpp">dosdetector.cpp</innerfile>
+    <innerfile refid="dosdetector_8hpp">dosdetector.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/gatekeeper/dosdetector/"/>
+  </compounddef>
+</doxygen>

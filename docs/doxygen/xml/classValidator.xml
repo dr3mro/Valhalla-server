@@ -1,0 +1,795 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classValidator" kind="class" language="C++" prot="public">
+    <compoundname>Validator</compoundname>
+    <includes refid="validator_8hpp" local="no">validator.hpp</includes>
+    <innerclass refid="structValidator_1_1Rule" prot="public">Validator::Rule</innerclass>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classValidator_1a97c32b0357798462ff87ae6f3859ba23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Validator::Validator</definition>
+        <argsstring>()=default</argsstring>
+        <name>Validator</name>
+        <qualifiedname>Validator::Validator</qualifiedname>
+        <briefdescription>
+<para>Default constructor; the class is stateless. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="59" column="5"/>
+        <referencedby refid="classValidator_1a3d6ec6318595db77bb443c201b6b1bd5">operator=</referencedby>
+        <referencedby refid="classValidator_1a6c340aaaaf8745fadced39d7adf93fa2">operator=</referencedby>
+        <referencedby refid="classValidator_1a578956cdf9a226f5b0673477c3a0907d">Validator</referencedby>
+        <referencedby refid="classValidator_1a75fb844520b281adae51b55c54d3ea77">Validator</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classValidator_1a94c2f05a90c0fa6705d6eed3be4c4fd4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual Validator::~Validator</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Validator</name>
+        <qualifiedname>Validator::~Validator</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="61" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classValidator_1a578956cdf9a226f5b0673477c3a0907d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Validator::Validator</definition>
+        <argsstring>(const Validator &amp;other)=default</argsstring>
+        <name>Validator</name>
+        <qualifiedname>Validator::Validator</qualifiedname>
+        <param>
+          <type>const <ref refid="classValidator" kindref="compound">Validator</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor; no state to copy. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="63" column="5"/>
+        <references refid="classValidator_1a97c32b0357798462ff87ae6f3859ba23">Validator</references>
+      </memberdef>
+      <memberdef kind="function" id="classValidator_1a3d6ec6318595db77bb443c201b6b1bd5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classValidator" kindref="compound">Validator</ref> &amp;</type>
+        <definition>Validator &amp; Validator::operator=</definition>
+        <argsstring>(const Validator &amp;other)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Validator::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classValidator" kindref="compound">Validator</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment; no state to assign. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="65" column="15"/>
+        <references refid="classValidator_1a97c32b0357798462ff87ae6f3859ba23">Validator</references>
+      </memberdef>
+      <memberdef kind="function" id="classValidator_1a75fb844520b281adae51b55c54d3ea77" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Validator::Validator</definition>
+        <argsstring>(Validator &amp;&amp;other) noexcept=default</argsstring>
+        <name>Validator</name>
+        <qualifiedname>Validator::Validator</qualifiedname>
+        <param>
+          <type><ref refid="classValidator" kindref="compound">Validator</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor; no state to move. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="67" column="5"/>
+        <references refid="classValidator_1a97c32b0357798462ff87ae6f3859ba23">Validator</references>
+      </memberdef>
+      <memberdef kind="function" id="classValidator_1a6c340aaaaf8745fadced39d7adf93fa2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classValidator" kindref="compound">Validator</ref> &amp;</type>
+        <definition>Validator &amp; Validator::operator=</definition>
+        <argsstring>(Validator &amp;&amp;other) noexcept=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Validator::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classValidator" kindref="compound">Validator</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment; no state to move. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="69" column="15"/>
+        <references refid="classValidator_1a97c32b0357798462ff87ae6f3859ba23">Validator</references>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Validator::validateDatabaseCreateSchema</definition>
+        <argsstring>(const std::string &amp;tablename, const jsoncons::json &amp;data, api::v2::Http::Error &amp;error, const Rule &amp;rule)</argsstring>
+        <name>validateDatabaseCreateSchema</name>
+        <qualifiedname>Validator::validateDatabaseCreateSchema</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tablename</declname>
+        </param>
+        <param>
+          <type>const jsoncons::json &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structValidator_1_1Rule" kindref="compound">Rule</ref> &amp;</type>
+          <declname>rule</declname>
+        </param>
+        <briefdescription>
+<para>Validates a create (INSERT) request body against a table&apos;s schema. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tablename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target table used for the schema lookup. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parsed JSON body; must be a non-empty object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Filled with code/message on failure; HTTP 400 for malformed input or missing/non-nullable columns, HTTP 400 for an unknown table. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">rule</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Per-key exceptions (e.g. ignore a server-generated &quot;id&quot;). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the body satisfies all schema constraints.</para>
+</simplesect>
+Runs null/empty check, schema lookup, per-column type and nullability checks (checkColumns), and key-presence/prohibition checks (ensureAllKeysExist). Exceptions from jsoncons (such as a non-object body) are caught and reported as BAD_REQUEST, since these inputs are client errors rather than server faults. <simplesect kind="see"><para><ref refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" kindref="member">validateDatabaseUpdateSchema</ref>, <ref refid="classValidator_1a639d1408b7c8bf36a3b6ac6b0f780c5a" kindref="member">checkColumns</ref>, <ref refid="classValidator_1ab88bc5524278ed0edfb0827572ea02e3" kindref="member">ensureAllKeysExist</ref></para>
+</simplesect>
+See <ref refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" kindref="member">Validator::validateDatabaseCreateSchema</ref>. Processing order: reject null/empty input, resolve the table schema, validate present columns&apos; types and missing non-nullable columns, then enforce per-key rules. The duplicated-key check is intentionally disabled because jsoncons parsing already rejects duplicate keys upstream. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="195" column="17" bodyfile="src/validator/validator.cpp" bodystart="52" bodyend="104"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="classValidator_1a639d1408b7c8bf36a3b6ac6b0f780c5a" compoundref="validator_8cpp" startline="374" endline="402">checkColumns</references>
+        <references refid="classValidator_1ab88bc5524278ed0edfb0827572ea02e3" compoundref="validator_8cpp" startline="409" endline="448">ensureAllKeysExist</references>
+        <references refid="classValidator_1a3827a99ba8a6d471ad08ae9b6455108f" compoundref="validator_8cpp" startline="316" endline="331">getDatabaseSchemaForTable</references>
+        <references refid="classValidator_1ac4c157ed48ccadad45abcf3176d96075" compoundref="validator_8cpp" startline="299" endline="308">nullCheck</references>
+        <referencedby refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" compoundref="entitycontroller_8cpp" startline="57" endline="112">EntityController&lt; T &gt;::Create</referencedby>
+        <referencedby refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="290" endline="343">EntityController&lt; T &gt;::CreateAsync</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="475" endline="505">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
+        <referencedby refid="classClinicController_1af9be5b8c32bde11f7907d8ad6c031c92" compoundref="cliniccontroller_8cpp" startline="29" endline="106">ClinicController&lt; T &gt;::CreateImpl</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Validator::validateDatabaseUpdateSchema</definition>
+        <argsstring>(const std::string &amp;tablename, const jsoncons::json &amp;data, api::v2::Http::Error &amp;error, const Rule &amp;rule)</argsstring>
+        <name>validateDatabaseUpdateSchema</name>
+        <qualifiedname>Validator::validateDatabaseUpdateSchema</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tablename</declname>
+        </param>
+        <param>
+          <type>const jsoncons::json &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structValidator_1_1Rule" kindref="compound">Rule</ref> &amp;</type>
+          <declname>rule</declname>
+        </param>
+        <briefdescription>
+<para>Validates an update (PATCH/PUT) request body against a table&apos;s schema. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tablename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target table used for the schema lookup. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parsed JSON body; only a subset of columns needs to be present. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Filled with code/message on failure (HTTP 400). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">rule</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Per-key exceptions, notably ASSERT_IMMUTABLE for read-only columns. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the (partial) body is valid for an update.</para>
+</simplesect>
+Checks null/empty input and key-level constraints; unlike the create path it does not require every schema column to be present. Exceptions are translated to 400 for the same reasons as in validateDatabaseCreateSchema.</para>
+<para>See <ref refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" kindref="member">Validator::validateDatabaseUpdateSchema</ref>. Unlike the create path, only keys actually present in the body are validated for type; there is no requirement that every schema column appear (partial updates are legal). Immutable/prohibited keys are still rejected through the rule in ensureAllKeysExist. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="207" column="17" bodyfile="src/validator/validator.cpp" bodystart="112" bodyend="154"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="classValidator_1ab88bc5524278ed0edfb0827572ea02e3" compoundref="validator_8cpp" startline="409" endline="448">ensureAllKeysExist</references>
+        <references refid="classValidator_1a3827a99ba8a6d471ad08ae9b6455108f" compoundref="validator_8cpp" startline="316" endline="331">getDatabaseSchemaForTable</references>
+        <references refid="classValidator_1ac4c157ed48ccadad45abcf3176d96075" compoundref="validator_8cpp" startline="299" endline="308">nullCheck</references>
+        <referencedby refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" compoundref="entitycontroller_8cpp" startline="162" endline="221">EntityController&lt; T &gt;::Update</referencedby>
+        <referencedby refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="392" endline="450">EntityController&lt; T &gt;::UpdateAsync</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="532" endline="561">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classValidator_1a950c1350bd04c695d0add09b31db3974" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Validator::validateDatabaseReadSchema</definition>
+        <argsstring>(const std::unordered_set&lt; std::string &gt; &amp;keys, const std::string &amp;table_name, api::v2::Http::Error &amp;error, const Rule &amp;rule)</argsstring>
+        <name>validateDatabaseReadSchema</name>
+        <qualifiedname>Validator::validateDatabaseReadSchema</qualifiedname>
+        <param>
+          <type>const std::unordered_set&lt; std::string &gt; &amp;</type>
+          <declname>keys</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>table_name</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structValidator_1_1Rule" kindref="compound">Rule</ref> &amp;</type>
+          <declname>rule</declname>
+        </param>
+        <briefdescription>
+<para>Validates the projected columns of a read (SELECT) request. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">keys</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Column names requested by the client. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">table_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Table the columns are requested from. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Filled with code/message on failure: 404 if the table has no schema, 400 if a key is prohibited by the rule or absent from the schema. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">rule</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Per-key exceptions, notably ASSERT_NOT_PRESENT for forbidden columns. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when every requested key exists in the schema and none is prohibited.</para>
+</simplesect>
+See <ref refid="classValidator_1a950c1350bd04c695d0add09b31db3974" kindref="member">Validator::validateDatabaseReadSchema</ref>. Iterates the requested keys once, first applying ASSERT_NOT_PRESENT then checking membership in the cached schema. A key that is both prohibited and unknown is reported as prohibited; a missing table is reported as 404 rather than 400. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="217" column="17" bodyfile="src/validator/validator.cpp" bodystart="162" bodyend="198"/>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" compoundref="validator_8hpp" startline="93">Validator::Rule::ASSERT_NOT_PRESENT</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">Validator::Rule::check</references>
+        <references refid="classValidator_1a3827a99ba8a6d471ad08ae9b6455108f" compoundref="validator_8cpp" startline="316" endline="331">getDatabaseSchemaForTable</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa28c17a490f8c2005ea27ae8621e02b" compoundref="http_8hpp" startline="86">api::v2::Http::NOT_FOUND</references>
+        <referencedby refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="115" endline="160">EntityController&lt; T &gt;::Read</referencedby>
+        <referencedby refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="345" endline="390">EntityController&lt; T &gt;::ReadAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1ae5420af7a0b9609ca0536d2d9643679e" compoundref="clients_8hpp" startline="594" endline="705">api::v2::Clients::readAsyncImpl</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classValidator_1adf618a4a20efe4f1bd832993affd8b7a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Validator::clientRegexValidation</definition>
+        <argsstring>(const jsoncons::json &amp;data, api::v2::Http::Error &amp;error, std::unordered_set&lt; std::pair&lt; std::string, std::string &gt; &gt; &amp;db_data)</argsstring>
+        <name>clientRegexValidation</name>
+        <qualifiedname>Validator::clientRegexValidation</qualifiedname>
+        <param>
+          <type>const jsoncons::json &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type>std::unordered_set&lt; std::pair&lt; std::string, std::string &gt; &gt; &amp;</type>
+          <declname>db_data</declname>
+        </param>
+        <briefdescription>
+<para>Applies field-specific regex rules to client-supplied entity data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON object whose fields are validated by name (username, password, phone, email, dob, gender). Fields without a rule are passed through if they are non-empty strings. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Filled with 400 and a descriptive message on the first bad field. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">db_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives the validated (key, value) pairs ready for a database call. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when all fields pass; false on the first invalid or empty value.</para>
+</simplesect>
+Regexes are compiled once into a function-local static map because compiling std::regex per request is expensive. A field with a validator must be a string, non-empty and match its pattern; an unvalidated field is copied only when it is a non-empty string. <simplesect kind="note"><para>Entries already present in <computeroutput>db_data</computeroutput> are preserved; results are inserted, not assigned.</para>
+</simplesect>
+See <ref refid="classValidator_1adf618a4a20efe4f1bd832993affd8b7a" kindref="member">Validator::clientRegexValidation</ref>. Fields with a registered regex must be non-empty strings matching that pattern; unrecognised fields are accepted only if they are non-empty strings. The first offending field stops processing and fills <computeroutput>error</computeroutput>. Accepted pairs are inserted into <computeroutput>db_data</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="234" column="17" bodyfile="src/validator/validator.cpp" bodystart="205" bodyend="272"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="475" endline="505">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="532" endline="561">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classValidator_1ac4c157ed48ccadad45abcf3176d96075" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Validator::nullCheck</definition>
+        <argsstring>(const jsoncons::json &amp;data, api::v2::Http::Error &amp;error)</argsstring>
+        <name>nullCheck</name>
+        <qualifiedname>Validator::nullCheck</qualifiedname>
+        <param>
+          <type>const jsoncons::json &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Rejects a null or empty JSON body as a client error. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Body to inspect. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Set to 400 / &quot;Data is empty&quot; when the check fails. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when <computeroutput>data</computeroutput> is null or empty (i.e. validation should stop).</para>
+</simplesect>
+See <ref refid="classValidator_1ac4c157ed48ccadad45abcf3176d96075" kindref="member">Validator::nullCheck</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="244" column="52" bodyfile="src/validator/validator.cpp" bodystart="299" bodyend="308"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <referencedby refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="52" endline="104">validateDatabaseCreateSchema</referencedby>
+        <referencedby refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" compoundref="validator_8cpp" startline="112" endline="154">validateDatabaseUpdateSchema</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classValidator_1a3827a99ba8a6d471ad08ae9b6455108f" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::unordered_set&lt; <ref refid="namespaceapi_1_1v2_1a629023e05b2c9802c14aaca4634f4ab3" kindref="member">api::v2::ColumnInfo</ref> &gt;</type>
+        <definition>std::unordered_set&lt; api::v2::ColumnInfo &gt; Validator::getDatabaseSchemaForTable</definition>
+        <argsstring>(const std::string &amp;tablename, api::v2::Http::Error &amp;error, bool &amp;found)</argsstring>
+        <name>getDatabaseSchemaForTable</name>
+        <qualifiedname>Validator::getDatabaseSchemaForTable</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tablename</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type>bool &amp;</type>
+          <declname>found</declname>
+        </param>
+        <briefdescription>
+<para>Looks up a table&apos;s cached column set. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tablename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Table to look up. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Set to 400 / &quot;Table not found&quot; when the schema is missing or empty. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">found</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Set true on success, false on failure. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A copy of the table&apos;s <ref refid="structColumnInfo" kindref="compound">ColumnInfo</ref> set, or an empty set when not found. </para>
+</simplesect>
+<simplesect kind="note"><para>The caller must consult <computeroutput>found</computeroutput>; an empty successful schema is treated as failure.</para>
+</simplesect>
+See <ref refid="classValidator_1a3827a99ba8a6d471ad08ae9b6455108f" kindref="member">Validator::getDatabaseSchemaForTable</ref>. Reads the process-wide schema snapshot via <ref refid="classDatabaseSchema_1aa32c7db2e9b88c2cfec1f09a2de9d7dd" kindref="member">DatabaseSchema::getDatabaseSchema()</ref>. An absent table or an entry with no columns is treated as &quot;not found&quot; and sets <computeroutput>found</computeroutput> to false; the returned set is a copy so callers cannot mutate the cached schema. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="253" column="31" bodyfile="src/validator/validator.cpp" bodystart="316" bodyend="331"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="classDatabaseSchema_1aa32c7db2e9b88c2cfec1f09a2de9d7dd" compoundref="databaseschema_8cpp" startline="88" endline="88">DatabaseSchema::getDatabaseSchema</references>
+        <references refid="databaseschema_8hpp_1aea29cf503a423c2163e5b08142700952" compoundref="databaseschema_8hpp" startline="33">SCHEMA_t</references>
+        <referencedby refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="52" endline="104">validateDatabaseCreateSchema</referencedby>
+        <referencedby refid="classValidator_1a950c1350bd04c695d0add09b31db3974" compoundref="validator_8cpp" startline="162" endline="198">validateDatabaseReadSchema</referencedby>
+        <referencedby refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" compoundref="validator_8cpp" startline="112" endline="154">validateDatabaseUpdateSchema</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classValidator_1ac00e885c42aee13d9c7f62d591718638" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Validator::validateType</definition>
+        <argsstring>(const jsoncons::json &amp;value, const std::string &amp;expectedType)</argsstring>
+        <name>validateType</name>
+        <qualifiedname>Validator::validateType</qualifiedname>
+        <param>
+          <type>const jsoncons::json &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>expectedType</declname>
+        </param>
+        <briefdescription>
+<para>Maps a PostgreSQL type name to a jsoncons type predicate. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON value to test. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">expectedType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Schema type string (integer, float/double/real, character varying, boolean, jsonb, or date/time variants). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the JSON value&apos;s kind matches the schema type; false otherwise or for unrecognised type strings.</para>
+</simplesect>
+See <ref refid="classValidator_1ac00e885c42aee13d9c7f62d591718638" kindref="member">Validator::validateType</ref>. &quot;character varying&quot; and all date/time spellings expect JSON strings; &quot;jsonb&quot; accepts either an object or an array. Date strings are not parsed here, only type-checked. Unknown schema type strings return false, which surfaces as a type mismatch to the caller. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="262" column="52" bodyfile="src/validator/validator.cpp" bodystart="338" bodyend="365"/>
+        <referencedby refid="classValidator_1a639d1408b7c8bf36a3b6ac6b0f780c5a" compoundref="validator_8cpp" startline="374" endline="402">checkColumns</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classValidator_1a639d1408b7c8bf36a3b6ac6b0f780c5a" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Validator::checkColumns</definition>
+        <argsstring>(const jsoncons::json &amp;data, const std::unordered_set&lt; api::v2::ColumnInfo &gt; &amp;table_schema, api::v2::Http::Error &amp;error, const Rule &amp;rule)</argsstring>
+        <name>checkColumns</name>
+        <qualifiedname>Validator::checkColumns</qualifiedname>
+        <param>
+          <type>const jsoncons::json &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>const std::unordered_set&lt; <ref refid="namespaceapi_1_1v2_1a629023e05b2c9802c14aaca4634f4ab3" kindref="member">api::v2::ColumnInfo</ref> &gt; &amp;</type>
+          <declname>table_schema</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structValidator_1_1Rule" kindref="compound">Rule</ref> &amp;</type>
+          <declname>rule</declname>
+        </param>
+        <briefdescription>
+<para>Checks each schema column against the body (create path). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON object under validation. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">table_schema</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cached column definitions for the table. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Set to 400 on a missing non-nullable column or a type mismatch. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">rule</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Relaxations, notably IGNORE_IF_NOT_NULLABLE_IN_SCHEMA. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when every column constraint is satisfied.</para>
+</simplesect>
+See <ref refid="classValidator_1a639d1408b7c8bf36a3b6ac6b0f780c5a" kindref="member">Validator::checkColumns</ref>. Iterates schema columns (the authoritative source), not the body. A column that is absent is allowed when it is nullable or covered by IGNORE_IF_NOT_NULLABLE_IN_SCHEMA; a present column must match the schema&apos;s type according to validateType. The first violation aborts with HTTP 400. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="271" column="52" bodyfile="src/validator/validator.cpp" bodystart="374" bodyend="402"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">Validator::Rule::check</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a61500db96634a6ab0be12a77a8460481" compoundref="validator_8hpp" startline="91">Validator::Rule::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA</references>
+        <references refid="classValidator_1ac00e885c42aee13d9c7f62d591718638" compoundref="validator_8cpp" startline="338" endline="365">validateType</references>
+        <referencedby refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="52" endline="104">validateDatabaseCreateSchema</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classValidator_1ab88bc5524278ed0edfb0827572ea02e3" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Validator::ensureAllKeysExist</definition>
+        <argsstring>(const jsoncons::json &amp;data, const std::unordered_set&lt; api::v2::ColumnInfo &gt; &amp;table_schema, api::v2::Http::Error &amp;error, const Rule &amp;rule)</argsstring>
+        <name>ensureAllKeysExist</name>
+        <qualifiedname>Validator::ensureAllKeysExist</qualifiedname>
+        <param>
+          <type>const jsoncons::json &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>const std::unordered_set&lt; <ref refid="namespaceapi_1_1v2_1a629023e05b2c9802c14aaca4634f4ab3" kindref="member">api::v2::ColumnInfo</ref> &gt; &amp;</type>
+          <declname>table_schema</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structValidator_1_1Rule" kindref="compound">Rule</ref> &amp;</type>
+          <declname>rule</declname>
+        </param>
+        <briefdescription>
+<para>Checks that every key in the body is permitted and known to the schema. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON object whose keys are checked. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">table_schema</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cached column definitions used for the membership test. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Set to 400 on a prohibited, immutable or unknown key. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">rule</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Assertions and relaxations (ASSERT_NOT_PRESENT, ASSERT_IMMUTABLE, IGNORE_IF_MISSING_FROM_SCHEMA). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when all keys are acceptable. </para>
+</simplesect>
+<simplesect kind="note"><para>This checks keys in the data, not that all schema columns are present; the latter is enforced by checkColumns on the create path.</para>
+</simplesect>
+See <ref refid="classValidator_1ab88bc5524278ed0edfb0827572ea02e3" kindref="member">Validator::ensureAllKeysExist</ref>. Builds a name set from the schema for O(1) membership tests, then scans the body. ASSERT_NOT_PRESENT and ASSERT_IMMUTABLE are checked first so prohibited/immutable keys are reported specifically; unknown keys are allowed only under IGNORE_IF_MISSING_FROM_SCHEMA. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="284" column="17" bodyfile="src/validator/validator.cpp" bodystart="409" bodyend="448"/>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ad45728414bb4b722bdff45f0f70692c7" compoundref="validator_8hpp" startline="92">Validator::Rule::ASSERT_IMMUTABLE</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" compoundref="validator_8hpp" startline="93">Validator::Rule::ASSERT_NOT_PRESENT</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">Validator::Rule::check</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7acf64a80b49ebda9168c3d7a2b6f95f15" compoundref="validator_8hpp" startline="90">Validator::Rule::IGNORE_IF_MISSING_FROM_SCHEMA</references>
+        <referencedby refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="52" endline="104">validateDatabaseCreateSchema</referencedby>
+        <referencedby refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" compoundref="validator_8cpp" startline="112" endline="154">validateDatabaseUpdateSchema</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classValidator_1a54290b0ebd088be63c3ac68b3b85a3e0" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Validator::hasDuplicateKeys</definition>
+        <argsstring>(const jsoncons::json &amp;data, api::v2::Http::Error &amp;error)</argsstring>
+        <name>hasDuplicateKeys</name>
+        <qualifiedname>Validator::hasDuplicateKeys</qualifiedname>
+        <param>
+          <type>const jsoncons::json &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Detects duplicate keys in a JSON object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Object to scan. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Set to 400 with the duplicate key name when one is found. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when a duplicate key is present. </para>
+</simplesect>
+<simplesect kind="note"><para>Currently unused by the create/update validators: the jsoncons parser already rejects duplicate keys before these helpers run.</para>
+</simplesect>
+See <ref refid="classValidator_1a54290b0ebd088be63c3ac68b3b85a3e0" kindref="member">Validator::hasDuplicateKeys</ref>. Uses a temporary set of key names; the first repeated name fills <computeroutput>error</computeroutput> and returns true. Kept for defensive use even though the JSON parser rejects duplicates first. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="294" column="17" bodyfile="src/validator/validator.cpp" bodystart="280" bodyend="294"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Stateless collection of checks applied to client JSON before it reaches the database. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="classEntity" kindref="compound">Entity</ref> controllers call these helpers with the parsed request body, the target table name and a <ref refid="structValidator_1_1Rule" kindref="compound">Rule</ref> describing per-key exceptions. Validation is performed against a cached snapshot of the database schema (<ref refid="classDatabaseSchema" kindref="compound">DatabaseSchema</ref>), not against a live query, so the helpers are cheap enough for the request path. Every entry point is static and reports failures by filling an <ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> (code + message) and returning false rather than throwing; exceptions from the JSON layer are caught and converted to 400 responses.</para>
+<para><simplesect kind="note"><para>All members are static; <ref refid="classValidator" kindref="compound">Validator</ref> carries no state and needs no lifetime management. </para>
+</simplesect>
+<simplesect kind="warning"><para>The cached schema must have been populated before these helpers are used, otherwise table lookups fail and the validators return false. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="structValidator_1_1Rule" kindref="compound">Rule</ref>, <ref refid="classDatabaseSchema" kindref="compound">DatabaseSchema</ref>, <ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/validator/validator.hpp" line="55" column="1" bodyfile="src/validator/validator.hpp" bodystart="56" bodyend="295"/>
+    <listofallmembers>
+      <member refid="classValidator_1a639d1408b7c8bf36a3b6ac6b0f780c5a" prot="private" virt="non-virtual"><scope>Validator</scope><name>checkColumns</name></member>
+      <member refid="classValidator_1adf618a4a20efe4f1bd832993affd8b7a" prot="public" virt="non-virtual"><scope>Validator</scope><name>clientRegexValidation</name></member>
+      <member refid="classValidator_1ab88bc5524278ed0edfb0827572ea02e3" prot="private" virt="non-virtual"><scope>Validator</scope><name>ensureAllKeysExist</name></member>
+      <member refid="classValidator_1a3827a99ba8a6d471ad08ae9b6455108f" prot="private" virt="non-virtual"><scope>Validator</scope><name>getDatabaseSchemaForTable</name></member>
+      <member refid="classValidator_1a54290b0ebd088be63c3ac68b3b85a3e0" prot="private" virt="non-virtual"><scope>Validator</scope><name>hasDuplicateKeys</name></member>
+      <member refid="classValidator_1ac4c157ed48ccadad45abcf3176d96075" prot="private" virt="non-virtual"><scope>Validator</scope><name>nullCheck</name></member>
+      <member refid="classValidator_1a3d6ec6318595db77bb443c201b6b1bd5" prot="public" virt="non-virtual"><scope>Validator</scope><name>operator=</name></member>
+      <member refid="classValidator_1a6c340aaaaf8745fadced39d7adf93fa2" prot="public" virt="non-virtual"><scope>Validator</scope><name>operator=</name></member>
+      <member refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" prot="public" virt="non-virtual"><scope>Validator</scope><name>validateDatabaseCreateSchema</name></member>
+      <member refid="classValidator_1a950c1350bd04c695d0add09b31db3974" prot="public" virt="non-virtual"><scope>Validator</scope><name>validateDatabaseReadSchema</name></member>
+      <member refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" prot="public" virt="non-virtual"><scope>Validator</scope><name>validateDatabaseUpdateSchema</name></member>
+      <member refid="classValidator_1ac00e885c42aee13d9c7f62d591718638" prot="private" virt="non-virtual"><scope>Validator</scope><name>validateType</name></member>
+      <member refid="classValidator_1a97c32b0357798462ff87ae6f3859ba23" prot="public" virt="non-virtual"><scope>Validator</scope><name>Validator</name></member>
+      <member refid="classValidator_1a578956cdf9a226f5b0673477c3a0907d" prot="public" virt="non-virtual"><scope>Validator</scope><name>Validator</name></member>
+      <member refid="classValidator_1a75fb844520b281adae51b55c54d3ea77" prot="public" virt="non-virtual"><scope>Validator</scope><name>Validator</name></member>
+      <member refid="classValidator_1a94c2f05a90c0fa6705d6eed3be4c4fd4" prot="public" virt="virtual"><scope>Validator</scope><name>~Validator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

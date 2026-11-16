@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="CONTRIBUTING_8md" kind="file" language="Markdown">
+    <compoundname>CONTRIBUTING.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Contributing</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Thanks<sp/>for<sp/>helping<sp/>improve<sp/>Valhalla.<sp/>This<sp/>document<sp/>covers<sp/>how<sp/>the<sp/>code<sp/>is</highlight></codeline>
+<codeline><highlight class="normal">organised<sp/>and<sp/>the<sp/>conventions<sp/>that<sp/>keep<sp/>the<sp/>documentation<sp/>and<sp/>source</highlight></codeline>
+<codeline><highlight class="normal">consistent.<sp/>For<sp/>build<sp/>and<sp/>install<sp/>instructions<sp/>see<sp/>`README.md`;<sp/>for<sp/>a<sp/>map<sp/>of</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>runtime<sp/>components<sp/>see<sp/>`ARCHITECTURE.md`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Code<sp/>organisation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">src/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>api/v2/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HTTP<sp/>routes,<sp/>request<sp/>filters,<sp/>middlewares,<sp/>response<sp/>helpers</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>concurrency/<sp/><sp/><sp/>bounded<sp/>worker<sp/>executor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>configurator/<sp/><sp/>environment-driven<sp/>configuration<sp/>groups<sp/>+<sp/>defaults</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>controllers/<sp/><sp/><sp/>CRUDS<sp/>controller<sp/>hierarchy<sp/>(sync<sp/>+<sp/>coroutine<sp/>variants)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>database/<sp/><sp/><sp/><sp/><sp/><sp/>sync<sp/>connection<sp/>pool<sp/>and<sp/>async<sp/>Drogon<sp/>client<sp/>paths</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>entities/<sp/><sp/><sp/><sp/><sp/><sp/>domain<sp/>value<sp/>types<sp/>and<sp/>SQL<sp/>statement<sp/>builders</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gatekeeper/<sp/><sp/><sp/><sp/>authentication,<sp/>authorisation,<sp/>sessions,<sp/>tokens,<sp/>DoS<sp/>checks</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>server/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>server<sp/>bootstrap,<sp/>CORS,<sp/>startup<sp/>banner</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>store/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>thread-safe<sp/>singleton<sp/>service<sp/>registry</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>utils/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logging,<sp/>JSON,<sp/>caching,<sp/>queues,<sp/>shared<sp/>type<sp/>definitions</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>validator/<sp/><sp/><sp/><sp/><sp/>request<sp/>validation<sp/>and<sp/>database-schema<sp/>metadata</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>main.cpp<sp/><sp/><sp/><sp/><sp/><sp/><sp/>process<sp/>entry<sp/>point</highlight></codeline>
+<codeline><highlight class="normal">tests/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Catch2<sp/>suite<sp/>and<sp/>support<sp/>helpers</highlight></codeline>
+<codeline><highlight class="normal">tools/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CMake<sp/>helpers,<sp/>API-doc<sp/>generation,<sp/>k6<sp/>load<sp/>scripts</highlight></codeline>
+<codeline><highlight class="normal">scripts/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>build/run/QA/test<sp/>shell<sp/>scripts</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">New<sp/>source<sp/>files<sp/>under<sp/>`src/`<sp/>are<sp/>picked<sp/>up<sp/>automatically<sp/>by<sp/>CMake&apos;s<sp/>recursive</highlight></codeline>
+<codeline><highlight class="normal">glob<sp/>(`src/*.cpp`);<sp/>there<sp/>is<sp/>no<sp/>manual<sp/>source<sp/>list<sp/>to<sp/>edit.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Coding<sp/>conventions</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>C++20.<sp/>Build<sp/>with<sp/>`-Wall<sp/>-Wextra<sp/>-pedantic`;<sp/>do<sp/>not<sp/>introduce<sp/>new<sp/>warnings.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Formatting<sp/>is<sp/>defined<sp/>by<sp/>`.clang-format`<sp/>(LLVM-derived,<sp/>4-space<sp/>indent,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>brace-on-next-line<sp/>for<sp/>functions).<sp/>Run<sp/>`clang-format<sp/>-i`<sp/>on<sp/>touched<sp/>files.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`.clang-tidy`<sp/>configures<sp/>static<sp/>analysis;<sp/>address<sp/>findings<sp/>in<sp/>code<sp/>you<sp/>touch.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`compile_commands.json`<sp/>is<sp/>generated<sp/>for<sp/>clangd;<sp/>editor<sp/>configs<sp/>for<sp/>VS<sp/>Code</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>and<sp/>Zed<sp/>are<sp/>included<sp/>under<sp/>`.vscode/`<sp/>and<sp/>`.zed/`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Documentation<sp/>conventions</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">All<sp/>public<sp/>and<sp/>private<sp/>declarations<sp/>are<sp/>documented<sp/>with<sp/>Doxygen<sp/>`/**<sp/>...<sp/>*/`</highlight></codeline>
+<codeline><highlight class="normal">blocks<sp/>so<sp/>`doxygen<sp/>Doxyfile`<sp/>produces<sp/>a<sp/>complete<sp/>reference.<sp/>Follow<sp/>these<sp/>rules:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>**Document<sp/>intent,<sp/>not<sp/>syntax.**<sp/>Explain<sp/>*why*<sp/>a<sp/>lock,<sp/>branch,<sp/>or<sp/>type<sp/>is</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>needed,<sp/>not<sp/>that<sp/>the<sp/>line<sp/>increments<sp/>a<sp/>counter.</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>**Complete<sp/>contracts.**<sp/>Each<sp/>function<sp/>documents<sp/>parameters<sp/>(`@param[in]`,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>`@param[out]`,<sp/>`@param[in,out]`),<sp/>return<sp/>value<sp/>(`@return`),<sp/>side<sp/>effects,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>pre/postconditions,<sp/>exceptions<sp/>(`@throws`),<sp/>and<sp/>thread-safety<sp/>or<sp/>ownership</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>requirements<sp/>where<sp/>they<sp/>are<sp/>known.</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>**Evidence<sp/>only.**<sp/>Never<sp/>invent<sp/>behaviour,<sp/>guarantees,<sp/>or<sp/>exceptions.<sp/>If<sp/>a</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>property<sp/>cannot<sp/>be<sp/>established<sp/>from<sp/>the<sp/>implementation,<sp/>say<sp/>so<sp/>explicitly.</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>**Preserve<sp/>accurate<sp/>existing<sp/>comments.**<sp/>Correct<sp/>them<sp/>only<sp/>when<sp/>the<sp/>code</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>provides<sp/>clear<sp/>evidence.</highlight></codeline>
+<codeline><highlight class="normal">5.<sp/>**Classes**<sp/>carry<sp/>`@class`<sp/>and<sp/>`@brief`<sp/>plus<sp/>a<sp/>`@details`<sp/>paragraph<sp/>covering</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>responsibility,<sp/>lifecycle,<sp/>ownership<sp/>and<sp/>thread-safety.</highlight></codeline>
+<codeline><highlight class="normal">6.<sp/>**Members<sp/>and<sp/>non-obvious<sp/>locals**<sp/>get<sp/>a<sp/>short<sp/>comment<sp/>explaining<sp/>what<sp/>they</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>represent<sp/>and<sp/>why<sp/>they<sp/>exist;<sp/>do<sp/>not<sp/>add<sp/>comments<sp/>that<sp/>merely<sp/>restate<sp/>code.</highlight></codeline>
+<codeline><highlight class="normal">7.<sp/>**Ownership<sp/>and<sp/>concurrency<sp/>matter.**<sp/>Call<sp/>out<sp/>`unique_ptr`<sp/>vs<sp/>`shared_ptr`,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>borrowed<sp/>references,<sp/>`std::move`,<sp/>`const`<sp/>correctness,<sp/>atomic<sp/>memory</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>ordering,<sp/>and<sp/>lock<sp/>ordering<sp/>wherever<sp/>they<sp/>affect<sp/>maintenance.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Shell<sp/>scripts</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Shell<sp/>scripts<sp/>under<sp/>`scripts/`,<sp/>`tools/`,<sp/>`docker/`,<sp/>`.github/`<sp/>and<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">repository<sp/>root<sp/>use<sp/>the<sp/>same<sp/>header<sp/>fields,<sp/>written<sp/>as<sp/>`#`-prefixed<sp/>lines</highlight></codeline>
+<codeline><highlight class="normal">immediately<sp/>after<sp/>the<sp/>shebang<sp/>(`@file`,<sp/>`@brief`,<sp/>`@author`,<sp/>`@date`),<sp/>plus</highlight></codeline>
+<codeline><highlight class="normal">`#<sp/>@brief`<sp/>/<sp/>`#<sp/>@param`<sp/>blocks<sp/>above<sp/>each<sp/>function<sp/>and<sp/>`#`<sp/>WHY<sp/>comments<sp/>for</highlight></codeline>
+<codeline><highlight class="normal">non-obvious<sp/>commands.<sp/>Doxygen<sp/>has<sp/>no<sp/>shell<sp/>parser,<sp/>so<sp/>`.sh`<sp/>files<sp/>are<sp/>not<sp/>part</highlight></codeline>
+<codeline><highlight class="normal">of<sp/>the<sp/>Doxygen<sp/>`INPUT`;<sp/>they<sp/>are<sp/>documented<sp/>in-source<sp/>and<sp/>read<sp/>directly.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Regenerate<sp/>the<sp/>API<sp/>reference<sp/>documentation<sp/>with:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">doxygen<sp/>Doxyfile</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>open<sp/>build/docs/doxygen/html/index.html</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Build<sp/>and<sp/>test</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Dependencies<sp/>are<sp/>managed<sp/>with<sp/>Conan<sp/>and<sp/>pinned<sp/>in<sp/>`conan.lock`.<sp/>Typical<sp/>local</highlight></codeline>
+<codeline><highlight class="normal">flow<sp/>(see<sp/>`README.md`<sp/>for<sp/>the<sp/>full,<sp/>platform-specific<sp/>sequence):</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">conan<sp/>install<sp/>.<sp/>--build=missing<sp/>-s<sp/>build_type=Debug<sp/>-of<sp/>build/Debug</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--preset<sp/>conan-debug</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>--preset<sp/>conan-debug</highlight></codeline>
+<codeline><highlight class="normal">ctest<sp/>--test-dir<sp/>build/Debug<sp/>--output-on-failure</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`build.sh`<sp/>wraps<sp/>these<sp/>steps<sp/>and<sp/>runs<sp/>the<sp/>tests<sp/>via<sp/>CTest<sp/>presets.<sp/>Tests<sp/>run</highlight></codeline>
+<codeline><highlight class="normal">without<sp/>a<sp/>database<sp/>(`VALHALLA_TEST_NO_DB=true`),<sp/>so<sp/>they<sp/>work<sp/>on<sp/>any<sp/>machine.</highlight></codeline>
+<codeline><highlight class="normal">Useful<sp/>build<sp/>options:<sp/>`-DENABLE_TESTS=OFF`<sp/>and<sp/>`-DVALHALLA_BUILD_DOCS=OFF`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Contribution<sp/>workflow</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Open<sp/>an<sp/>issue<sp/>to<sp/>discuss<sp/>substantial<sp/>changes<sp/>before<sp/>implementing<sp/>them.</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Keep<sp/>commits<sp/>focused;<sp/>one<sp/>logical<sp/>change<sp/>per<sp/>pull<sp/>request.</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>Add<sp/>or<sp/>update<sp/>Doxygen<sp/>comments<sp/>alongside<sp/>code<sp/>changes,<sp/>and<sp/>update</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>`ARCHITECTURE.md`<sp/>when<sp/>component<sp/>relationships<sp/>change.</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>Run<sp/>`clang-format`,<sp/>build<sp/>and<sp/>run<sp/>the<sp/>test<sp/>suite<sp/>before<sp/>submitting.</highlight></codeline>
+<codeline><highlight class="normal">5.<sp/>Confirm<sp/>documentation<sp/>changes<sp/>do<sp/>not<sp/>alter<sp/>behaviour;<sp/>the<sp/>audit<sp/>in</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>`DOCUMENTATION_AUDIT.md`<sp/>describes<sp/>how<sp/>this<sp/>is<sp/>verified.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Open<sp/>questions</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">See<sp/>the<sp/>&quot;Open<sp/>questions&quot;<sp/>section<sp/>at<sp/>the<sp/>end<sp/>of<sp/>`DOCUMENTATION_PROGRESS.md`.</highlight></codeline>
+    </programlisting>
+    <location file="docs/CONTRIBUTING.md"/>
+  </compounddef>
+</doxygen>

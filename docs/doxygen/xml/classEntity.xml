@@ -1,0 +1,982 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classEntity" kind="class" language="C++" prot="public">
+    <compoundname>Entity</compoundname>
+    <basecompoundref refid="classBase" prot="public" virt="non-virtual">Base</basecompoundref>
+    <derivedcompoundref refid="classAppointment" prot="public" virt="non-virtual">Appointment</derivedcompoundref>
+    <derivedcompoundref refid="classCase" prot="public" virt="non-virtual">Case</derivedcompoundref>
+    <derivedcompoundref refid="classService" prot="public" virt="non-virtual">Service</derivedcompoundref>
+    <derivedcompoundref refid="classapi_1_1v2_1_1Client" prot="public" virt="non-virtual">api::v2::Client</derivedcompoundref>
+    <includes refid="entity_8hpp" local="no">entity.hpp</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" prot="protected" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string Entity::tablename</definition>
+        <argsstring></argsstring>
+        <name>tablename</name>
+        <qualifiedname>Entity::tablename</qualifiedname>
+        <briefdescription>
+<para>Table this entity targets; also the group name used by permission checks. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="381" column="41" bodyfile="src/entities/base/entity.hpp" bodystart="381" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1Client_1a9d8ec7236a309400e90639c194bb7017" compoundref="client_8hpp" startline="214" endline="237">api::v2::Client::buildClientCreateStatement</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1af26bfc187b1d8c93e829d05032c7bdb3" compoundref="client_8hpp" startline="249" endline="275">api::v2::Client::buildClientUpdateStatement</referencedby>
+        <referencedby refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" compoundref="entity_8hpp" startline="207" endline="240">buildCreateStatement</referencedby>
+        <referencedby refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" compoundref="entity_8hpp" startline="323" endline="341">buildDeleteStatement</referencedby>
+        <referencedby refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" compoundref="entity_8hpp" startline="251" endline="273">buildReadStatement</referencedby>
+        <referencedby refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" compoundref="entity_8hpp" startline="356" endline="376">buildSearchStatement</referencedby>
+        <referencedby refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" compoundref="entity_8hpp" startline="284" endline="313">buildUpdateStatement</referencedby>
+        <referencedby refid="classCase_1a0d15370d666834e72bbcc00b419238de" compoundref="case_8hpp" startline="77" endline="79">Case::Case</referencedby>
+        <referencedby refid="classEntity_1ac1d661555222fabdf77fc5750da50b19" compoundref="entity_8hpp" startline="183" endline="193">check_id_exists</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1ae448bdbb176f2a53a579df93148663ea" compoundref="client_8hpp" startline="100" endline="102">api::v2::Client::Client</referencedby>
+        <referencedby refid="classEntity_1abe34f0c0ca4b976ba455b97b2039d771" compoundref="entity_8hpp" startline="95" endline="97">Entity</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1a0b259ee6bdb5bee7b4bda6a49828d8af" compoundref="client_8hpp" startline="184" endline="196">api::v2::Client::exists</referencedby>
+        <referencedby refid="classEntity_1a78dd1f37555f08fe0b389029c2d5b775" compoundref="entity_8hpp" startline="169" endline="172">getGroupName</referencedby>
+        <referencedby refid="classCase_1a5617a4962ddeaabd3094fae406c860f6" compoundref="case_8hpp" startline="119" endline="130">Case::getPermissionsQueryForCreateImpl</referencedby>
+        <referencedby refid="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff" compoundref="case_8hpp" startline="172" endline="181">Case::getPermissionsQueryForDeleteImp</referencedby>
+        <referencedby refid="classCase_1a549bb017161d692a03db738d940b9b2f" compoundref="case_8hpp" startline="138" endline="147">Case::getPermissionsQueryForReadImp</referencedby>
+        <referencedby refid="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf" compoundref="case_8hpp" startline="155" endline="164">Case::getPermissionsQueryForUpdateImpl</referencedby>
+        <referencedby refid="classService_1a1a762691efab98926ce3c34988ccc51a" compoundref="service_8hpp" startline="92" endline="115">Service::getSqlAddStaffStatement</referencedby>
+        <referencedby refid="classUser_1ae5d3ed1b19bf6392730008203374e5b2" compoundref="people_2user_8hpp" startline="92" endline="107">User::getSqlGetServicesStatement</referencedby>
+        <referencedby refid="classService_1a6b8a06b26521f411f8c21104031ab5fe" compoundref="service_8hpp" startline="125" endline="149">Service::getSqlRemoveStaffStatement</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1aca2d94a63d7099b47ce5b1fce6ff49b1" compoundref="client_8hpp" startline="135" endline="153">api::v2::Client::getSqlToggleSuspendStatement</referencedby>
+        <referencedby refid="classService_1a8349b8181f9d015c6d7577f7194e86dc" compoundref="service_8hpp" startline="75" endline="77">Service::Service</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" prot="private" static="no" mutable="no">
+        <type>const <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref></type>
+        <definition>const EntityType Entity::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <qualifiedname>Entity::data</qualifiedname>
+        <briefdescription>
+<para>The operation-specific payload; its active alternative selects which builder is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="393" column="22" bodyfile="src/entities/base/entity.hpp" bodystart="393" bodyend="-1"/>
+        <referencedby refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" compoundref="entity_8hpp" startline="207" endline="240">buildCreateStatement</referencedby>
+        <referencedby refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" compoundref="entity_8hpp" startline="323" endline="341">buildDeleteStatement</referencedby>
+        <referencedby refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" compoundref="entity_8hpp" startline="251" endline="273">buildReadStatement</referencedby>
+        <referencedby refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" compoundref="entity_8hpp" startline="284" endline="313">buildUpdateStatement</referencedby>
+        <referencedby refid="classCase_1a0d15370d666834e72bbcc00b419238de" compoundref="case_8hpp" startline="77" endline="79">Case::Case</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1ae448bdbb176f2a53a579df93148663ea" compoundref="client_8hpp" startline="100" endline="102">api::v2::Client::Client</referencedby>
+        <referencedby refid="classEntity_1abe34f0c0ca4b976ba455b97b2039d771" compoundref="entity_8hpp" startline="95" endline="97">Entity</referencedby>
+        <referencedby refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="163" endline="163">getData</referencedby>
+        <referencedby refid="classProvider_1a8cee1947342e8204d0be826e21ea9c8a" compoundref="provider_8hpp" startline="75" endline="77">Provider::Provider</referencedby>
+        <referencedby refid="classService_1a8349b8181f9d015c6d7577f7194e86dc" compoundref="service_8hpp" startline="75" endline="77">Service::Service</referencedby>
+        <referencedby refid="classUser_1a166538549bcb7bf1f3d4aea0b777f7cb" compoundref="people_2user_8hpp" startline="71" endline="73">User::User</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classEntity_1a936dfd4b5db17a339819ae5800c33a93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Entity::Entity</definition>
+        <argsstring>(const Entity &amp;)=delete</argsstring>
+        <name>Entity</name>
+        <qualifiedname>Entity::Entity</qualifiedname>
+        <param>
+          <type>const <ref refid="classEntity" kindref="compound">Entity</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy and move operations are disabled; entities are request-scoped and constructed in place. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="81" column="5"/>
+        <references refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93">Entity</references>
+        <referencedby refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="60" endline="62">Appointment::Appointment</referencedby>
+        <referencedby refid="classCase_1a0d15370d666834e72bbcc00b419238de" compoundref="case_8hpp" startline="77" endline="79">Case::Case</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1ae448bdbb176f2a53a579df93148663ea" compoundref="client_8hpp" startline="100" endline="102">api::v2::Client::Client</referencedby>
+        <referencedby refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93">Entity</referencedby>
+        <referencedby refid="classEntity_1ad3455dba49aa870a3f298f490771600c">Entity</referencedby>
+        <referencedby refid="classEntity_1a1f6d7e8353984497c45053a421a35b53">operator=</referencedby>
+        <referencedby refid="classEntity_1adb86b6ab4d1b39b00c2472af16840fe5">operator=</referencedby>
+        <referencedby refid="classService_1a8349b8181f9d015c6d7577f7194e86dc" compoundref="service_8hpp" startline="75" endline="77">Service::Service</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classEntity_1ad3455dba49aa870a3f298f490771600c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Entity::Entity</definition>
+        <argsstring>(Entity &amp;&amp;)=delete</argsstring>
+        <name>Entity</name>
+        <qualifiedname>Entity::Entity</qualifiedname>
+        <param>
+          <type><ref refid="classEntity" kindref="compound">Entity</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="82" column="5"/>
+        <references refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93">Entity</references>
+      </memberdef>
+      <memberdef kind="function" id="classEntity_1a1f6d7e8353984497c45053a421a35b53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classEntity" kindref="compound">Entity</ref> &amp;</type>
+        <definition>Entity &amp; Entity::operator=</definition>
+        <argsstring>(const Entity &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Entity::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classEntity" kindref="compound">Entity</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="83" column="12"/>
+        <references refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93">Entity</references>
+      </memberdef>
+      <memberdef kind="function" id="classEntity_1adb86b6ab4d1b39b00c2472af16840fe5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classEntity" kindref="compound">Entity</ref> &amp;</type>
+        <definition>Entity &amp; Entity::operator=</definition>
+        <argsstring>(Entity &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Entity::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classEntity" kindref="compound">Entity</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="84" column="12"/>
+        <references refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93">Entity</references>
+      </memberdef>
+      <memberdef kind="function" id="classEntity_1abe34f0c0ca4b976ba455b97b2039d771" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Entity::Entity</definition>
+        <argsstring>(const T &amp;_data, const std::string &amp;_tablename)</argsstring>
+        <name>Entity</name>
+        <qualifiedname>Entity::Entity</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>_data</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>_tablename</declname>
+        </param>
+        <briefdescription>
+<para>Stores _data in the <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref> variant and remembers the target table name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>One of the alternatives <ref refid="namespaceapi_1_1v2_1_1Types_1a660879cfcb0c87bea3713b41e8120c21" kindref="member">api::v2::Types::EntityType</ref> can hold. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The operation-specific payload (<ref refid="classCreate__t" kindref="compound">Create_t</ref>, <ref refid="classRead__t" kindref="compound">Read_t</ref>, ...). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_tablename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classDatabase" kindref="compound">Database</ref> table name, also reported as the permission group name. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="pre"><para>T must be an alternative of <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref>; otherwise the variant construction fails. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="95" column="5" bodyfile="src/entities/base/entity.hpp" bodystart="95" bodyend="97"/>
+        <references refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" compoundref="entity_8hpp" startline="393">data</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">tablename</references>
+      </memberdef>
+      <memberdef kind="function" id="classEntity_1a605d474ccbd30c3d4350016ec173546a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Entity::~Entity</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~Entity</name>
+        <qualifiedname>Entity::~Entity</qualifiedname>
+        <briefdescription>
+<para>Destroys the entity; the borrowed <ref refid="classDatabaseController" kindref="compound">DatabaseController</ref> is not owned here. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="102" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classEntity_1a32f18508b15bf1f4c6494768bda527be" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; Entity::getSqlCreateStatement</definition>
+        <argsstring>(pqxx::params &amp;params) override</argsstring>
+        <name>getSqlCreateStatement</name>
+        <qualifiedname>Entity::getSqlCreateStatement</qualifiedname>
+        <reimplements refid="classBase_1a370479ee58fedd41365acea55b47de9b">getSqlCreateStatement</reimplements>
+        <param>
+          <type>pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Builds the INSERT statement via <ref refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" kindref="member">buildCreateStatement()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cleared and filled with the bound column values. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The INSERT text, or std::nullopt on failure. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="109" column="19" bodyfile="src/entities/base/entity.hpp" bodystart="109" bodyend="113"/>
+        <references refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" compoundref="entity_8hpp" startline="207" endline="240">buildCreateStatement</references>
+      </memberdef>
+      <memberdef kind="function" id="classEntity_1a90ab6d6ae7c3431c3ede1201654b209a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; Entity::getSqlReadStatement</definition>
+        <argsstring>(pqxx::params &amp;params) override</argsstring>
+        <name>getSqlReadStatement</name>
+        <qualifiedname>Entity::getSqlReadStatement</qualifiedname>
+        <reimplements refid="classBase_1ad1d05549ca23bf4602c86fb3f6575d30">getSqlReadStatement</reimplements>
+        <param>
+          <type>pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Builds the single-row SELECT via <ref refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" kindref="member">buildReadStatement()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cleared and filled with the bound id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The SELECT text, or std::nullopt if no id was supplied. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="120" column="19" bodyfile="src/entities/base/entity.hpp" bodystart="120" bodyend="124"/>
+        <references refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" compoundref="entity_8hpp" startline="251" endline="273">buildReadStatement</references>
+      </memberdef>
+      <memberdef kind="function" id="classEntity_1af1c8231f215f8941d8424d2b165ba818" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; Entity::getSqlUpdateStatement</definition>
+        <argsstring>(pqxx::params &amp;params) override</argsstring>
+        <name>getSqlUpdateStatement</name>
+        <qualifiedname>Entity::getSqlUpdateStatement</qualifiedname>
+        <reimplements refid="classBase_1a48122a0f0bd77d2aadcbe10b3e0863fd">getSqlUpdateStatement</reimplements>
+        <param>
+          <type>pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Builds the UPDATE statement via <ref refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" kindref="member">buildUpdateStatement()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cleared and filled with the bound SET values and id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The UPDATE text, or std::nullopt if no id was supplied. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="131" column="19" bodyfile="src/entities/base/entity.hpp" bodystart="131" bodyend="135"/>
+        <references refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" compoundref="entity_8hpp" startline="284" endline="313">buildUpdateStatement</references>
+      </memberdef>
+      <memberdef kind="function" id="classEntity_1aa66bbebb8b50f7d91153231b1f6ab997" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; Entity::getSqlDeleteStatement</definition>
+        <argsstring>(pqxx::params &amp;params) override</argsstring>
+        <name>getSqlDeleteStatement</name>
+        <qualifiedname>Entity::getSqlDeleteStatement</qualifiedname>
+        <reimplements refid="classBase_1a35f7a42b849a9eaf439715a4b280a8f4">getSqlDeleteStatement</reimplements>
+        <param>
+          <type>pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Builds the DELETE statement via <ref refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" kindref="member">buildDeleteStatement()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cleared and filled with the bound id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The DELETE text, or std::nullopt if no id was supplied. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="142" column="19" bodyfile="src/entities/base/entity.hpp" bodystart="142" bodyend="146"/>
+        <references refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" compoundref="entity_8hpp" startline="323" endline="341">buildDeleteStatement</references>
+      </memberdef>
+      <memberdef kind="function" id="classEntity_1a362c3e70e483e2378ab08414c1eacdd7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; Entity::getSqlSearchStatement</definition>
+        <argsstring>(pqxx::params &amp;params) override</argsstring>
+        <name>getSqlSearchStatement</name>
+        <qualifiedname>Entity::getSqlSearchStatement</qualifiedname>
+        <reimplements refid="classBase_1a3b86dc196e03d75434ff98e8e04fe303">getSqlSearchStatement</reimplements>
+        <param>
+          <type>pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Builds the paginated search statement via <ref refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" kindref="member">buildSearchStatement()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cleared and filled with the bound keyword, limit and offset. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The SELECT text, or std::nullopt on failure. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="153" column="19" bodyfile="src/entities/base/entity.hpp" bodystart="153" bodyend="157"/>
+        <references refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" compoundref="entity_8hpp" startline="356" endline="376">buildSearchStatement</references>
+      </memberdef>
+      <memberdef kind="function" id="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref> &amp;</type>
+        <definition>const EntityType &amp; Entity::getData</definition>
+        <argsstring>() const</argsstring>
+        <name>getData</name>
+        <qualifiedname>Entity::getData</qualifiedname>
+        <briefdescription>
+<para>Exposes the operation-specific payload held in the variant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Const reference to the <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref> variant; valid for the entity&apos;s lifetime. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="163" column="23" bodyfile="src/entities/base/entity.hpp" bodystart="163" bodyend="163"/>
+        <references refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" compoundref="entity_8hpp" startline="393">data</references>
+        <referencedby refid="classapi_1_1v2_1_1Client_1a9d8ec7236a309400e90639c194bb7017" compoundref="client_8hpp" startline="214" endline="237">api::v2::Client::buildClientCreateStatement</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1af26bfc187b1d8c93e829d05032c7bdb3" compoundref="client_8hpp" startline="249" endline="275">api::v2::Client::buildClientUpdateStatement</referencedby>
+        <referencedby refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" compoundref="entity_8hpp" startline="356" endline="376">buildSearchStatement</referencedby>
+        <referencedby refid="classEntity_1ac1d661555222fabdf77fc5750da50b19" compoundref="entity_8hpp" startline="183" endline="193">check_id_exists</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1a0b259ee6bdb5bee7b4bda6a49828d8af" compoundref="client_8hpp" startline="184" endline="196">api::v2::Client::exists</referencedby>
+        <referencedby refid="classService_1a1a762691efab98926ce3c34988ccc51a" compoundref="service_8hpp" startline="92" endline="115">Service::getSqlAddStaffStatement</referencedby>
+        <referencedby refid="classProvider_1ac2c776b47dc13f0277c0fe628f9e138d" compoundref="provider_8hpp" startline="99" endline="125">Provider::getSqlGetServicesStatement</referencedby>
+        <referencedby refid="classUser_1ae5d3ed1b19bf6392730008203374e5b2" compoundref="people_2user_8hpp" startline="92" endline="107">User::getSqlGetServicesStatement</referencedby>
+        <referencedby refid="classPatient_1af7b2fbbefcfa9f8be148faa6a92259e8" compoundref="patient_8hpp" startline="119" endline="124">Patient::getSqlGetVisitsStatement</referencedby>
+        <referencedby refid="classService_1a6b8a06b26521f411f8c21104031ab5fe" compoundref="service_8hpp" startline="125" endline="149">Service::getSqlRemoveStaffStatement</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1aca2d94a63d7099b47ce5b1fce6ff49b1" compoundref="client_8hpp" startline="135" endline="153">api::v2::Client::getSqlToggleSuspendStatement</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classEntity_1a78dd1f37555f08fe0b389029c2d5b775" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string Entity::getGroupName</definition>
+        <argsstring>() const</argsstring>
+        <name>getGroupName</name>
+        <qualifiedname>Entity::getGroupName</qualifiedname>
+        <briefdescription>
+<para>Returns the table name, which doubles as the entity&apos;s permission group name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The table name supplied at construction. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="169" column="18" bodyfile="src/entities/base/entity.hpp" bodystart="169" bodyend="172"/>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">tablename</references>
+      </memberdef>
+      <memberdef kind="function" id="classEntity_1ac1d661555222fabdf77fc5750da50b19" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool Entity::check_id_exists</definition>
+        <argsstring>()</argsstring>
+        <name>check_id_exists</name>
+        <qualifiedname>Entity::check_id_exists</qualifiedname>
+        <briefdescription>
+<para>Asks the database whether the id carried by the payload already exists in this table. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The variant alternative whose get_id() should be consulted. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>false when the payload has no id or the database reports no matching row; otherwise the database result. <ref refid="classDatabase" kindref="compound">Database</ref> failures collapse to false via value_or(false). </para>
+</simplesect>
+<simplesect kind="note"><para>Logs an error message when no id is present. Uses the shared <ref refid="classDatabaseController" kindref="compound">DatabaseController</ref>. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::bad_variant_access</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if T is not the alternative currently held by the variant. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="183" column="10" bodyfile="src/entities/base/entity.hpp" bodystart="183" bodyend="193"/>
+        <references refid="classEntity_1a154ae0093211626370549e2924f9c954" compoundref="entity_8hpp" startline="387" endline="387">databaseController</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="163" endline="163">getData</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">tablename</references>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename <ref refid="structBase_1_1Binder" kindref="compound">Binder</ref></type>
+          </param>
+        </templateparamlist>
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; Entity::buildCreateStatement</definition>
+        <argsstring>(Binder &amp;binder)</argsstring>
+        <name>buildCreateStatement</name>
+        <qualifiedname>Entity::buildCreateStatement</qualifiedname>
+        <param>
+          <type><ref refid="structBase_1_1Binder" kindref="compound">Binder</ref> &amp;</type>
+          <declname>binder</declname>
+        </param>
+        <briefdescription>
+<para>Builds the INSERT statement from a <ref refid="classCreate__t" kindref="compound">Create_t</ref> payload. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Iterates the JSON object range, binding every value and using the (sorted) keys as column names. An explicit id from the caller is inserted; otherwise &quot;id&quot; is erased so the database assigns it, which also prevents a client from choosing its own primary key. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="structBase_1_1Binder" kindref="compound">Binder</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Binder-like type providing bind(). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">binder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Appends values and returns their placeholders. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>INSERT ... RETURNING *, or std::nullopt if an exception occurs. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="207" column="19" bodyfile="src/entities/base/entity.hpp" bodystart="207" bodyend="240"/>
+        <references refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="136" endline="140">Base::Binder::bind</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" compoundref="entity_8hpp" startline="393">data</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">tablename</references>
+        <referencedby refid="classEntity_1a32f18508b15bf1f4c6494768bda527be" compoundref="entity_8hpp" startline="109" endline="113">getSqlCreateStatement</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename <ref refid="structBase_1_1Binder" kindref="compound">Binder</ref></type>
+          </param>
+        </templateparamlist>
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; Entity::buildReadStatement</definition>
+        <argsstring>(Binder &amp;binder)</argsstring>
+        <name>buildReadStatement</name>
+        <qualifiedname>Entity::buildReadStatement</qualifiedname>
+        <param>
+          <type><ref refid="structBase_1_1Binder" kindref="compound">Binder</ref> &amp;</type>
+          <declname>binder</declname>
+        </param>
+        <briefdescription>
+<para>Builds a single-row SELECT against the table&apos;s _safe view. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>An optional schema set limits the selected columns; an empty set selects *. The id is bound. A missing id is a caller error: an error is logged and no statement is returned. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="structBase_1_1Binder" kindref="compound">Binder</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Binder-like type providing bind(). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">binder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Appends the id and returns its placeholder. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>SELECT ... LIMIT 1, or std::nullopt when no id is available or an exception occurs. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="251" column="19" bodyfile="src/entities/base/entity.hpp" bodystart="251" bodyend="273"/>
+        <references refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="136" endline="140">Base::Binder::bind</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" compoundref="entity_8hpp" startline="393">data</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">tablename</references>
+        <referencedby refid="classEntity_1a90ab6d6ae7c3431c3ede1201654b209a" compoundref="entity_8hpp" startline="120" endline="124">getSqlReadStatement</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename <ref refid="structBase_1_1Binder" kindref="compound">Binder</ref></type>
+          </param>
+        </templateparamlist>
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; Entity::buildUpdateStatement</definition>
+        <argsstring>(Binder &amp;binder)</argsstring>
+        <name>buildUpdateStatement</name>
+        <qualifiedname>Entity::buildUpdateStatement</qualifiedname>
+        <param>
+          <type><ref refid="structBase_1_1Binder" kindref="compound">Binder</ref> &amp;</type>
+          <declname>binder</declname>
+        </param>
+        <briefdescription>
+<para>Builds the UPDATE statement from an <ref refid="classUpdate__t" kindref="compound">Update_t</ref> payload. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Each JSON member becomes one bound &quot;column = $n&quot; SET clause and the id is bound as the final parameter. A missing id aborts the build rather than producing an unscoped UPDATE. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="structBase_1_1Binder" kindref="compound">Binder</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Binder-like type providing bind(). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">binder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Appends SET values and the id, returning their placeholders. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UPDATE ... RETURNING *, or std::nullopt when no id is available or an exception occurs. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="284" column="19" bodyfile="src/entities/base/entity.hpp" bodystart="284" bodyend="313"/>
+        <references refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="136" endline="140">Base::Binder::bind</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" compoundref="entity_8hpp" startline="393">data</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">tablename</references>
+        <referencedby refid="classEntity_1af1c8231f215f8941d8424d2b165ba818" compoundref="entity_8hpp" startline="131" endline="135">getSqlUpdateStatement</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename <ref refid="structBase_1_1Binder" kindref="compound">Binder</ref></type>
+          </param>
+        </templateparamlist>
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; Entity::buildDeleteStatement</definition>
+        <argsstring>(Binder &amp;binder)</argsstring>
+        <name>buildDeleteStatement</name>
+        <qualifiedname>Entity::buildDeleteStatement</qualifiedname>
+        <param>
+          <type><ref refid="structBase_1_1Binder" kindref="compound">Binder</ref> &amp;</type>
+          <declname>binder</declname>
+        </param>
+        <briefdescription>
+<para>Builds the DELETE statement for the id carried by a <ref refid="classDelete__t" kindref="compound">Delete_t</ref> payload. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The id is bound; a missing id aborts the build so no unscoped DELETE is emitted. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="structBase_1_1Binder" kindref="compound">Binder</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Binder-like type providing bind(). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">binder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Appends the id and returns its placeholder. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>DELETE ... RETURNING id, or std::nullopt when no id is available or an exception occurs. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="323" column="19" bodyfile="src/entities/base/entity.hpp" bodystart="323" bodyend="341"/>
+        <references refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="136" endline="140">Base::Binder::bind</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" compoundref="entity_8hpp" startline="393">data</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">tablename</references>
+        <referencedby refid="classEntity_1aa66bbebb8b50f7d91153231b1f6ab997" compoundref="entity_8hpp" startline="142" endline="146">getSqlDeleteStatement</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename <ref refid="structBase_1_1Binder" kindref="compound">Binder</ref></type>
+          </param>
+        </templateparamlist>
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; Entity::buildSearchStatement</definition>
+        <argsstring>(Binder &amp;binder)</argsstring>
+        <name>buildSearchStatement</name>
+        <qualifiedname>Entity::buildSearchStatement</qualifiedname>
+        <param>
+          <type><ref refid="structBase_1_1Binder" kindref="compound">Binder</ref> &amp;</type>
+          <declname>binder</declname>
+        </param>
+        <briefdescription>
+<para>Builds the paginated ILIKE search statement for the table&apos;s _safe view. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The keyword is wrapped in %...% for substring matching and bound together with a limit of (requested limit + 1) and the offset; the extra row lets callers detect a further page. filter, order_by and direction are SQL identifiers and are written into the text, so they must already have been validated by <ref refid="classSearch__t" kindref="compound">Search_t</ref>. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="structBase_1_1Binder" kindref="compound">Binder</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Binder-like type providing bind(). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">binder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Appends keyword, limit and offset and returns their placeholders. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The SELECT text, or std::nullopt if an exception occurs. </para>
+</simplesect>
+<simplesect kind="note"><para>Bindings are made into named locals first because argument evaluation order is unspecified; the placeholder numbering must follow a fixed order. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="356" column="19" bodyfile="src/entities/base/entity.hpp" bodystart="356" bodyend="376"/>
+        <references refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="136" endline="140">Base::Binder::bind</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="163" endline="163">getData</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">tablename</references>
+        <referencedby refid="classEntity_1a362c3e70e483e2378ab08414c1eacdd7" compoundref="entity_8hpp" startline="153" endline="157">getSqlSearchStatement</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="classEntity_1a154ae0093211626370549e2924f9c954" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classDatabaseController" kindref="compound">DatabaseController</ref> &gt;</type>
+        <definition>static std::shared_ptr&lt; DatabaseController &gt; Entity::databaseController</definition>
+        <argsstring>()</argsstring>
+        <name>databaseController</name>
+        <qualifiedname>Entity::databaseController</qualifiedname>
+        <briefdescription>
+<para>Returns the process-wide <ref refid="classDatabaseController" kindref="compound">DatabaseController</ref> from the global object store. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Shared pointer to the cached controller; entities do not own a per-instance handle. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/entity.hpp" line="387" column="28" bodyfile="src/entities/base/entity.hpp" bodystart="387" bodyend="387"/>
+        <references refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="189" endline="200">Store::cachedObject</references>
+        <referencedby refid="classEntity_1ac1d661555222fabdf77fc5750da50b19" compoundref="entity_8hpp" startline="183" endline="193">check_id_exists</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1a0b259ee6bdb5bee7b4bda6a49828d8af" compoundref="client_8hpp" startline="184" endline="196">api::v2::Client::exists</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Concrete <ref refid="classBase" kindref="compound">Base</ref> implementation that turns a CRUD value type into SQL statements. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>An <ref refid="classEntity" kindref="compound">Entity</ref> pairs one <ref refid="namespaceapi_1_1v2_1_1Types_1a660879cfcb0c87bea3713b41e8120c21" kindref="member">api::v2::Types::EntityType</ref> alternative with the database table (also used as the permission &quot;group&quot;) it belongs to. The five <ref refid="classBase" kindref="compound">Base</ref> builders are thin adapters that create a fresh <ref refid="structBase_1_1Binder" kindref="compound">Binder</ref> and delegate to the build* helpers below; each helper owns the details of one statement shape. Instances are created for each request and are immutable after construction (both the variant and the table name are const), except for the id cached by <ref refid="classEntity_1ac1d661555222fabdf77fc5750da50b19" kindref="member">check_id_exists()</ref>. All parameter values go through Binder::bind, so they never appear in the SQL text. <simplesect kind="note"><para>Neither copy nor move is allowed; construct the entity in place for the request that uses it. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classBase" kindref="compound">Base</ref>, <ref refid="namespaceapi_1_1v2_1_1Types_1a660879cfcb0c87bea3713b41e8120c21" kindref="member">api::v2::Types::EntityType</ref> </para>
+</simplesect>
+<simplesect kind="note"><para>For a beginner: the five getSql*Statement functions are the public &quot;adapters&quot;; each makes a <ref refid="structBase_1_1Binder" kindref="compound">Binder</ref> and calls one private-ish build* helper. Splitting them this way keeps the public API small while letting each SQL shape be written and read on its own. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>Appointment</label>
+        <link refid="classAppointment"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Base</label>
+        <link refid="classBase"/>
+      </node>
+      <node id="8">
+        <label>Case</label>
+        <link refid="classCase"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>ClinicAppointment</label>
+        <link refid="classClinicAppointment"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>Clinics</label>
+        <link refid="classClinics"/>
+        <childnode refid="18" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Entity</label>
+        <link refid="classEntity"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Health</label>
+        <link refid="classHealth"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>Laboratories</label>
+        <link refid="classLaboratories"/>
+        <childnode refid="18" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>LaboratoryAppointment</label>
+        <link refid="classLaboratoryAppointment"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>PaidServices</label>
+        <link refid="classPaidServices"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>Patient</label>
+        <link refid="classPatient"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>PatientDrugs</label>
+        <link refid="classPatientDrugs"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>Pharmacies</label>
+        <link refid="classPharmacies"/>
+        <childnode refid="18" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>PharmacyAppointment</label>
+        <link refid="classPharmacyAppointment"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>Prescriptions</label>
+        <link refid="classPrescriptions"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>Provider</label>
+        <link refid="classProvider"/>
+        <childnode refid="23" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>RadiologyCenterAppointment</label>
+        <link refid="classRadiologyCenterAppointment"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>RadiologyCenters</label>
+        <link refid="classRadiologyCenters"/>
+        <childnode refid="18" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>Reports</label>
+        <link refid="classReports"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>Requests</label>
+        <link refid="classRequests"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>Service</label>
+        <link refid="classService"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>User</label>
+        <link refid="classUser"/>
+        <childnode refid="23" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>VisitDrugs</label>
+        <link refid="classVisitDrugs"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>Visits</label>
+        <link refid="classVisits"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>api::v2::Client</label>
+        <link refid="classapi_1_1v2_1_1Client"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Base</label>
+        <link refid="classBase"/>
+      </node>
+      <node id="1">
+        <label>Entity</label>
+        <link refid="classEntity"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/entities/base/entity.hpp" line="75" column="1" bodyfile="src/entities/base/entity.hpp" bodystart="76" bodyend="394"/>
+    <listofallmembers>
+      <member refid="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" virt="non-virtual"><scope>Entity</scope><name>Base</name></member>
+      <member refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" prot="protected" virt="non-virtual"><scope>Entity</scope><name>buildCreateStatement</name></member>
+      <member refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" prot="protected" virt="non-virtual"><scope>Entity</scope><name>buildDeleteStatement</name></member>
+      <member refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" prot="protected" virt="non-virtual"><scope>Entity</scope><name>buildReadStatement</name></member>
+      <member refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" prot="protected" virt="non-virtual"><scope>Entity</scope><name>buildSearchStatement</name></member>
+      <member refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" prot="protected" virt="non-virtual"><scope>Entity</scope><name>buildUpdateStatement</name></member>
+      <member refid="classEntity_1ac1d661555222fabdf77fc5750da50b19" prot="public" virt="non-virtual"><scope>Entity</scope><name>check_id_exists</name></member>
+      <member refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" prot="private" virt="non-virtual"><scope>Entity</scope><name>data</name></member>
+      <member refid="classEntity_1a154ae0093211626370549e2924f9c954" prot="protected" virt="non-virtual"><scope>Entity</scope><name>databaseController</name></member>
+      <member refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93" prot="public" virt="non-virtual"><scope>Entity</scope><name>Entity</name></member>
+      <member refid="classEntity_1ad3455dba49aa870a3f298f490771600c" prot="public" virt="non-virtual"><scope>Entity</scope><name>Entity</name></member>
+      <member refid="classEntity_1abe34f0c0ca4b976ba455b97b2039d771" prot="public" virt="non-virtual"><scope>Entity</scope><name>Entity</name></member>
+      <member refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" prot="public" virt="non-virtual"><scope>Entity</scope><name>getData</name></member>
+      <member refid="classEntity_1a78dd1f37555f08fe0b389029c2d5b775" prot="public" virt="non-virtual"><scope>Entity</scope><name>getGroupName</name></member>
+      <member refid="classEntity_1a32f18508b15bf1f4c6494768bda527be" prot="public" virt="virtual"><scope>Entity</scope><name>getSqlCreateStatement</name></member>
+      <member refid="classEntity_1aa66bbebb8b50f7d91153231b1f6ab997" prot="public" virt="virtual"><scope>Entity</scope><name>getSqlDeleteStatement</name></member>
+      <member refid="classEntity_1a90ab6d6ae7c3431c3ede1201654b209a" prot="public" virt="virtual"><scope>Entity</scope><name>getSqlReadStatement</name></member>
+      <member refid="classEntity_1a362c3e70e483e2378ab08414c1eacdd7" prot="public" virt="virtual"><scope>Entity</scope><name>getSqlSearchStatement</name></member>
+      <member refid="classEntity_1af1c8231f215f8941d8424d2b165ba818" prot="public" virt="virtual"><scope>Entity</scope><name>getSqlUpdateStatement</name></member>
+      <member refid="classEntity_1a1f6d7e8353984497c45053a421a35b53" prot="public" virt="non-virtual"><scope>Entity</scope><name>operator=</name></member>
+      <member refid="classEntity_1adb86b6ab4d1b39b00c2472af16840fe5" prot="public" virt="non-virtual"><scope>Entity</scope><name>operator=</name></member>
+      <member refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" prot="protected" virt="non-virtual"><scope>Entity</scope><name>tablename</name></member>
+      <member refid="classBase_1a306fb25541331080645a716286357ef9" prot="public" virt="virtual"><scope>Entity</scope><name>~Base</name></member>
+      <member refid="classEntity_1a605d474ccbd30c3d4350016ec173546a" prot="public" virt="non-virtual"><scope>Entity</scope><name>~Entity</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

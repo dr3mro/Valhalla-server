@@ -1,0 +1,216 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="helper_8cpp" kind="file" language="C++">
+    <compoundname>helper.cpp</compoundname>
+    <includes refid="helper_8hpp" local="yes">helper.hpp</includes>
+    <includes local="no">drogon/HttpResponse.h</includes>
+    <includes local="no">drogon/HttpTypes.h</includes>
+    <includes local="no">json/value.h</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">string</includes>
+    <includes local="no">utility</includes>
+    <includes refid="jsonhelper_8hpp" local="yes">utils/jsonhelper/jsonhelper.hpp</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>src/api/v2/helper/helper.cpp</label>
+        <link refid="helper_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>helper.hpp</label>
+        <link refid="helper_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>utils/jsonhelper/jsonhelper.hpp</label>
+        <link refid="jsonhelper_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>drogon/HttpResponse.h</label>
+      </node>
+      <node id="4">
+        <label>drogon/HttpTypes.h</label>
+      </node>
+      <node id="5">
+        <label>drogon/drogon.h</label>
+      </node>
+      <node id="7">
+        <label>functional</label>
+      </node>
+      <node id="6">
+        <label>json/value.h</label>
+      </node>
+      <node id="8">
+        <label>jsoncons/json.hpp</label>
+      </node>
+      <node id="9">
+        <label>string</label>
+      </node>
+      <node id="10">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="helper_8cpp_1a5993cee5fba70417c6e9bb08de6b2016" prot="public" static="no">
+        <type><ref refid="classapi_1_1v2_1_1Helper" kindref="compound">api::v2::Helper</ref></type>
+        <definition>using Helper = api::v2::Helper</definition>
+        <argsstring></argsstring>
+        <name>Helper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/helper/helper.cpp" line="38" column="1" bodyfile="src/api/v2/helper/helper.cpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Implementations of the shared v2 JSON response helpers. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file contains the bodies of the <ref refid="helper_8cpp_1a5993cee5fba70417c6e9bb08de6b2016" kindref="member">Helper</ref> class functions declared in <ref refid="helper_8hpp" kindref="compound">helper.hpp</ref>. Each public function (failureResponse, errorResponse, successResponse) delegates to the private reply function with the right status and body. reply creates a Drogon response, sets the status, JSON content type and body, adds Retry-After for 503, and calls the callback. The prepare function builds a JSON object with a &quot;Status&quot; tag plus the message.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: This is where the API&apos;s response format is actually produced. Every JSON success and error sent by controllers and filters passes through these few functions, so this file guarantees that status codes, content types and headers are set the same way everywhere. It is called by <ref refid="common_8hpp" kindref="compound">common.hpp</ref>, the Auth filter and all route controllers. Without it there would be no central place to enforce a consistent reply format or the retry hint for overloaded servers.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>HTTP status codes: <ulink url="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">https://developer.mozilla.org/en-US/docs/Web/HTTP/Status</ulink></para>
+</listitem><listitem><para>The Retry-After header: <ulink url="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After</ulink></para>
+</listitem><listitem><para>std::move (transfer ownership instead of copying): <ulink url="https://en.cppreference.com/w/cpp/utility/move">https://en.cppreference.com/w/cpp/utility/move</ulink></para>
+</listitem><listitem><para>CORS (background on HTTP headers): <ulink url="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>helper.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Implementations<sp/>of<sp/>the<sp/>shared<sp/>v2<sp/>JSON<sp/>response<sp/>helpers.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>file<sp/>contains<sp/>the<sp/>bodies<sp/>of<sp/>the<sp/>Helper<sp/>class<sp/>functions<sp/>declared<sp/>in<sp/>helper.hpp.<sp/>Each</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>public<sp/>function<sp/>(failureResponse,<sp/>errorResponse,<sp/>successResponse)<sp/>delegates<sp/>to<sp/>the<sp/>private</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reply<sp/>function<sp/>with<sp/>the<sp/>right<sp/>status<sp/>and<sp/>body.<sp/>reply<sp/>creates<sp/>a<sp/>Drogon<sp/>response,<sp/>sets<sp/>the</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status,<sp/>JSON<sp/>content<sp/>type<sp/>and<sp/>body,<sp/>adds<sp/>Retry-After<sp/>for<sp/>503,<sp/>and<sp/>calls<sp/>the<sp/>callback.<sp/>The</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prepare<sp/>function<sp/>builds<sp/>a<sp/>JSON<sp/>object<sp/>with<sp/>a<sp/>&quot;Status&quot;<sp/>tag<sp/>plus<sp/>the<sp/>message.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>where<sp/>the<sp/>API&apos;s<sp/>response<sp/>format<sp/>is<sp/>actually<sp/>produced.<sp/>Every<sp/>JSON<sp/>success<sp/>and<sp/>error<sp/>sent<sp/>by</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>controllers<sp/>and<sp/>filters<sp/>passes<sp/>through<sp/>these<sp/>few<sp/>functions,<sp/>so<sp/>this<sp/>file<sp/>guarantees<sp/>that<sp/>status</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>codes,<sp/>content<sp/>types<sp/>and<sp/>headers<sp/>are<sp/>set<sp/>the<sp/>same<sp/>way<sp/>everywhere.<sp/>It<sp/>is<sp/>called<sp/>by<sp/>common.hpp,<sp/>the</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>Auth<sp/>filter<sp/>and<sp/>all<sp/>route<sp/>controllers.<sp/>Without<sp/>it<sp/>there<sp/>would<sp/>be<sp/>no<sp/>central<sp/>place<sp/>to<sp/>enforce<sp/>a</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>consistent<sp/>reply<sp/>format<sp/>or<sp/>the<sp/>retry<sp/>hint<sp/>for<sp/>overloaded<sp/>servers.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>HTTP<sp/>status<sp/>codes:<sp/>https://developer.mozilla.org/en-US/docs/Web/HTTP/Status</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>The<sp/>Retry-After<sp/>header:<sp/>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>std::move<sp/>(transfer<sp/>ownership<sp/>instead<sp/>of<sp/>copying):<sp/>https://en.cppreference.com/w/cpp/utility/move</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>CORS<sp/>(background<sp/>on<sp/>HTTP<sp/>headers):<sp/>https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="helper_8hpp" kindref="compound">helper.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Own<sp/>header:<sp/>the<sp/>declarations<sp/>these<sp/>functions<sp/>implement.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpResponse.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>HttpResponse<sp/>type<sp/>created<sp/>by<sp/>reply().</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpTypes.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Status<sp/>codes<sp/>and<sp/>content-type<sp/>constants.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;json/value.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Json::Value<sp/>used<sp/>by<sp/>prepare()<sp/>to<sp/>build<sp/>the<sp/>tagged<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::function<sp/>callback<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>message<sp/>and<sp/>return<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::move<sp/>for<sp/>consuming<sp/>the<sp/>callback.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="jsonhelper_8hpp" kindref="compound">utils/jsonhelper/jsonhelper.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>JsonHelper::jsonify<sp/>parses<sp/>a<sp/>message<sp/>into<sp/>JSON.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="helper_8cpp_1a5993cee5fba70417c6e9bb08de6b2016" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="helper_8cpp_1a5993cee5fba70417c6e9bb08de6b2016" kindref="member">Helper</ref><sp/>=<sp/><ref refid="classapi_1_1v2_1_1Helper" kindref="compound">api::v2::Helper</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Local<sp/>alias<sp/>so<sp/>the<sp/>definitions<sp/>below<sp/>can<sp/>be<sp/>written<sp/>concisely.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="40"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Build<sp/>a<sp/>500<sp/>response<sp/>whose<sp/>body<sp/>carries<sp/>a<sp/>&quot;Failure&quot;<sp/>status<sp/>tag.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>@see<sp/>Helper::failureResponse</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" kindref="member">Helper::failureResponse</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>message,<sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpResponsePtr&amp;)&gt;&amp;&amp;<sp/>callback)<sp/><sp/></highlight><highlight class="comment">//<sp/>Unexpected<sp/>internal<sp/>error<sp/>-&gt;<sp/>status<sp/>500.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1Helper_1ac64aa8b347960cbc8cf263633241a633" kindref="member">reply</ref>(std::move(callback),<sp/>drogon::k500InternalServerError,<sp/><ref refid="classapi_1_1v2_1_1Helper_1a0e93abbeb3346f2d972a1894c31cb245" kindref="member">prepare</ref>(<ref refid="classapi_1_1v2_1_1Helper_1a31bece8e19e92c5c7d7dfe681acf17ad" kindref="member">FAILURE</ref>,<sp/>message));<sp/><sp/></highlight><highlight class="comment">//<sp/>Wrap<sp/>the<sp/>message<sp/>with<sp/>a<sp/>&quot;Failure&quot;<sp/>tag<sp/>and<sp/>send<sp/>it<sp/>as<sp/>500.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="49"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Build<sp/>a<sp/>response<sp/>with<sp/>the<sp/>given<sp/>status<sp/>and<sp/>an<sp/>&quot;Error&quot;<sp/>status<sp/>tag.</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>@see<sp/>Helper::errorResponse</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" kindref="member">Helper::errorResponse</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpStatusCode&amp;<sp/>code,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>message,<sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpResponsePtr&amp;)&gt;&amp;&amp;<sp/>callback)<sp/><sp/></highlight><highlight class="comment">//<sp/>Expected<sp/>error<sp/>(400,<sp/>403,<sp/>503,<sp/>...).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1Helper_1ac64aa8b347960cbc8cf263633241a633" kindref="member">reply</ref>(std::move(callback),<sp/>code,<sp/><ref refid="classapi_1_1v2_1_1Helper_1a0e93abbeb3346f2d972a1894c31cb245" kindref="member">prepare</ref>(<ref refid="classapi_1_1v2_1_1Helper_1a9633fc9b2cf52a1fec90c3241c0da359" kindref="member">ERROR</ref>,<sp/>message));<sp/><sp/></highlight><highlight class="comment">//<sp/>Wrap<sp/>the<sp/>message<sp/>with<sp/>an<sp/>&quot;Error&quot;<sp/>tag<sp/>and<sp/>send<sp/>it<sp/>with<sp/>the<sp/>given<sp/>code.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="58"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Build<sp/>a<sp/>200<sp/>response<sp/>sending<sp/>the<sp/>message<sp/>through<sp/>as-is<sp/>(assumed<sp/>already<sp/>JSON).</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/>@see<sp/>Helper::successResponse</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" kindref="member">Helper::successResponse</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>message,<sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpResponsePtr&amp;)&gt;&amp;&amp;<sp/>callback)<sp/><sp/></highlight><highlight class="comment">//<sp/>Successful<sp/>request<sp/>-&gt;<sp/>status<sp/>200.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1Helper_1ac64aa8b347960cbc8cf263633241a633" kindref="member">reply</ref>(std::move(callback),<sp/>drogon::k200OK,<sp/>message);<sp/><sp/></highlight><highlight class="comment">//<sp/>Send<sp/>the<sp/>controller&apos;s<sp/>JSON<sp/>body<sp/>unchanged<sp/>(no<sp/>Status<sp/>tag).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="67"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Assemble<sp/>the<sp/>response,<sp/>marking<sp/>503<sp/>with<sp/>Retry-After:<sp/>1,<sp/>and<sp/>deliver<sp/>it<sp/>via<sp/>the<sp/>callback.</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*<sp/>@see<sp/>Helper::reply</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classapi_1_1v2_1_1Helper_1ac64aa8b347960cbc8cf263633241a633" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1Helper_1ac64aa8b347960cbc8cf263633241a633" kindref="member">Helper::reply</ref>(std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpResponsePtr&amp;)&gt;&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpStatusCode&amp;<sp/>code,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>message)<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>one<sp/>function<sp/>that<sp/>really<sp/>builds<sp/>and<sp/>sends<sp/>every<sp/>reply.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>res<sp/>=<sp/>drogon::HttpResponse::newHttpResponse();<sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>an<sp/>empty<sp/>HTTP<sp/>response<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>res-&gt;setStatusCode(code);<sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>the<sp/>HTTP<sp/>status<sp/>(200,<sp/>400,<sp/>500,<sp/>...).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>res-&gt;setContentTypeCode(drogon::CT_APPLICATION_JSON);<sp/><sp/></highlight><highlight class="comment">//<sp/>Tell<sp/>clients<sp/>the<sp/>body<sp/>is<sp/>JSON<sp/>so<sp/>they<sp/>parse<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>res-&gt;setBody(message);<sp/><sp/></highlight><highlight class="comment">//<sp/>Store<sp/>the<sp/>prepared<sp/>body<sp/>text.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(code<sp/>==<sp/>drogon::k503ServiceUnavailable)<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>503<sp/>means<sp/>&quot;temporarily<sp/>overloaded&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res-&gt;addHeader(</highlight><highlight class="stringliteral">&quot;Retry-After&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;1&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Advise<sp/>the<sp/>client<sp/>to<sp/>retry<sp/>after<sp/>one<sp/>second.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>std::move(callback)(res);<sp/><sp/></highlight><highlight class="comment">//<sp/>Deliver<sp/>the<sp/>response<sp/>to<sp/>Drogon;<sp/>the<sp/>callback<sp/>is<sp/>consumed<sp/>exactly<sp/>once.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="84"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Convert<sp/>the<sp/>message<sp/>to<sp/>a<sp/>JSON<sp/>value,<sp/>add<sp/>the<sp/>&quot;Status&quot;<sp/>field<sp/>and<sp/>stringify<sp/>it.</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/>*<sp/>@see<sp/>Helper::prepare</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="classapi_1_1v2_1_1Helper_1a0e93abbeb3346f2d972a1894c31cb245" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classapi_1_1v2_1_1Helper_1a0e93abbeb3346f2d972a1894c31cb245" kindref="member">Helper::prepare</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>status,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>message)<sp/><sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>Json::Value<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>=<sp/><ref refid="classapi_1_1v2_1_1JsonHelper_1a641560db2243ef5bca5bb763e98b3b43" kindref="member">JsonHelper::jsonify</ref>(message);<sp/><sp/></highlight><highlight class="comment">//<sp/>Parse<sp/>the<sp/>message<sp/>text<sp/>into<sp/>a<sp/>JSON<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[</highlight><highlight class="stringliteral">&quot;Status&quot;</highlight><highlight class="normal">]<sp/><sp/><sp/>=<sp/>status;<sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>the<sp/>&quot;Failure&quot;<sp/>or<sp/>&quot;Error&quot;<sp/>tag<sp/>under<sp/>the<sp/>&quot;Status&quot;<sp/>key.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">.toStyledString();<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>a<sp/>nicely<sp/>formatted<sp/>JSON<sp/>string<sp/>for<sp/>the<sp/>response<sp/>body.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/api/v2/helper/helper.cpp"/>
+  </compounddef>
+</doxygen>

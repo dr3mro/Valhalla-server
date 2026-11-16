@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="communicate_8hpp" kind="file" language="C++">
+    <compoundname>communicate.hpp</compoundname>
+    <includes local="no">curl/curl.h</includes>
+    <includes local="no">drogon/drogon.h</includes>
+    <includes local="no">optional</includes>
+    <includes local="no">string</includes>
+    <includedby refid="staffcontroller_8cpp" local="yes">src/controllers/staffcontroller/staffcontroller.cpp</includedby>
+    <includedby refid="communicate_8cpp" local="yes">src/utils/communicate/communicate.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/utils/communicate/communicate.hpp</label>
+        <link refid="communicate_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>curl/curl.h</label>
+      </node>
+      <node id="3">
+        <label>drogon/drogon.h</label>
+      </node>
+      <node id="4">
+        <label>optional</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
+        <link refid="staffcontroller_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/utils/communicate/communicate.cpp</label>
+        <link refid="communicate_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/utils/communicate/communicate.hpp</label>
+        <link refid="communicate_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classCommunicate" prot="public">Communicate</innerclass>
+    <briefdescription>
+<para>Synchronous HTTP helper for service-to-service requests. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Declares the <ref refid="classCommunicate" kindref="compound">Communicate</ref> class, a static-only wrapper around libcurl for making outbound HTTP calls. sendRequest builds a URL from a server, port and path, sends a JSON content-type header, and performs either a GET or a POST. Two private helpers do the work: handleResponse runs the cURL transfer and WriteCallback receives the returned bytes. All calls are blocking and failures are reported as an empty std::optional.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: When one part of the system needs to talk to another service over HTTP (for example a separate microservice), it uses <ref refid="classCommunicate" kindref="compound">Communicate</ref> instead of calling libcurl itself. That keeps the awkward C-style cURL setup in one place and gives callers a simple, safe interface: pass the address and data, get back an optional string. Without it, every caller would repeat handle setup, cleanup and error handling.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>libcurl C API: <ulink url="https://curl.se/libcurl/c/">https://curl.se/libcurl/c/</ulink></para>
+</listitem><listitem><para>std::optional: <ulink url="https://en.cppreference.com/w/cpp/utility/optional">https://en.cppreference.com/w/cpp/utility/optional</ulink></para>
+</listitem><listitem><para>Callbacks / function pointers: <ulink url="https://en.cppreference.com/w/cpp/language/pointer#Pointers_to_functions">https://en.cppreference.com/w/cpp/language/pointer#Pointers_to_functions</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>communicate.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Synchronous<sp/>HTTP<sp/>helper<sp/>for<sp/>service-to-service<sp/>requests.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>Declares<sp/>the<sp/>Communicate<sp/>class,<sp/>a<sp/>static-only<sp/>wrapper<sp/>around<sp/>libcurl</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>making<sp/>outbound<sp/>HTTP<sp/>calls.<sp/>sendRequest<sp/>builds<sp/>a<sp/>URL<sp/>from<sp/>a<sp/>server,</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port<sp/>and<sp/>path,<sp/>sends<sp/>a<sp/>JSON<sp/>content-type<sp/>header,<sp/>and<sp/>performs<sp/>either<sp/>a</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GET<sp/>or<sp/>a<sp/>POST.<sp/>Two<sp/>private<sp/>helpers<sp/>do<sp/>the<sp/>work:<sp/>handleResponse<sp/>runs<sp/>the</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cURL<sp/>transfer<sp/>and<sp/>WriteCallback<sp/>receives<sp/>the<sp/>returned<sp/>bytes.<sp/>All<sp/>calls</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>are<sp/>blocking<sp/>and<sp/>failures<sp/>are<sp/>reported<sp/>as<sp/>an<sp/>empty<sp/>std::optional.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>When<sp/>one<sp/>part<sp/>of<sp/>the<sp/>system<sp/>needs<sp/>to<sp/>talk<sp/>to<sp/>another<sp/>service<sp/>over<sp/>HTTP<sp/>(for</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>example<sp/>a<sp/>separate<sp/>microservice),<sp/>it<sp/>uses<sp/>Communicate<sp/>instead<sp/>of<sp/>calling<sp/>libcurl</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>itself.<sp/>That<sp/>keeps<sp/>the<sp/>awkward<sp/>C-style<sp/>cURL<sp/>setup<sp/>in<sp/>one<sp/>place<sp/>and<sp/>gives<sp/>callers</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>a<sp/>simple,<sp/>safe<sp/>interface:<sp/>pass<sp/>the<sp/>address<sp/>and<sp/>data,<sp/>get<sp/>back<sp/>an<sp/>optional<sp/>string.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>Without<sp/>it,<sp/>every<sp/>caller<sp/>would<sp/>repeat<sp/>handle<sp/>setup,<sp/>cleanup<sp/>and<sp/>error<sp/>handling.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>libcurl<sp/>C<sp/>API:<sp/>https://curl.se/libcurl/c/</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>std::optional:<sp/>https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>Callbacks<sp/>/<sp/>function<sp/>pointers:<sp/>https://en.cppreference.com/w/cpp/language/pointer#Pointers_to_functions</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;curl/curl.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>libcurl&apos;s<sp/>C<sp/>types<sp/>(CURL,<sp/>curl_slist)<sp/>used<sp/>by<sp/>the<sp/>private<sp/>helpers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/drogon.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Provides<sp/>drogon::HttpMethod,<sp/>the<sp/>HTTP<sp/>verb<sp/>type<sp/>passed<sp/>to<sp/>sendRequest.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::optional<sp/>is<sp/>the<sp/>return<sp/>type<sp/>that<sp/>can<sp/>hold<sp/>a<sp/>response<sp/>or<sp/>&quot;no<sp/>response&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>holds<sp/>the<sp/>server,<sp/>path,<sp/>body<sp/>and<sp/>response<sp/>text.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="34"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>@class<sp/>Communicate</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Thin<sp/>static-only<sp/>wrapper<sp/>around<sp/>libcurl<sp/>for<sp/>outbound<sp/>HTTP<sp/>calls.</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>@details<sp/>Builds<sp/>`server:port/path`,<sp/>sends<sp/>a<sp/>JSON<sp/>content-type<sp/>header<sp/>and</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>performs<sp/>either<sp/>a<sp/>GET<sp/>or<sp/>a<sp/>POST<sp/>with<sp/>the<sp/>supplied<sp/>body.<sp/>There<sp/>is<sp/>no</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>instance<sp/>state:<sp/>each<sp/>call<sp/>creates<sp/>and<sp/>cleans<sp/>up<sp/>its<sp/>own<sp/>CURL<sp/>handle,</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>and<sp/>failures<sp/>are<sp/>reported<sp/>to<sp/>the<sp/>console<sp/>via<sp/>Message<sp/>and<sp/>signalled</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>to<sp/>the<sp/>caller<sp/>by<sp/>an<sp/>empty<sp/>optional<sp/>rather<sp/>than<sp/>by<sp/>an<sp/>exception.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>@note<sp/>Only<sp/>GET<sp/>and<sp/>POST<sp/>are<sp/>supported;<sp/>all<sp/>calls<sp/>are<sp/>blocking.</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classCommunicate" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classCommunicate" kindref="compound">Communicate</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>class<sp/>used<sp/>only<sp/>through<sp/>static<sp/>functions;<sp/>it<sp/>has<sp/>no<sp/>instance<sp/>state.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Sends<sp/>an<sp/>HTTP<sp/>request<sp/>and<sp/>returns<sp/>the<sp/>response<sp/>body.</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>server<sp/>Host<sp/>name<sp/>or<sp/>address<sp/>of<sp/>the<sp/>target<sp/>service.</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>port<sp/>TCP<sp/>port<sp/>of<sp/>the<sp/>target<sp/>service.</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>path<sp/>Request<sp/>path,<sp/>including<sp/>any<sp/>query<sp/>string.</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>method<sp/>HTTP<sp/>verb;<sp/>only<sp/>Get<sp/>and<sp/>Post<sp/>are<sp/>recognised.</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Request<sp/>body,<sp/>used<sp/>for<sp/>POST<sp/>(ignored<sp/>for<sp/>GET).</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>Response<sp/>body<sp/>on<sp/>success,<sp/>`std::nullopt`<sp/>on<sp/>any<sp/>failure.</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>All<sp/>exceptions<sp/>(init<sp/>failure,<sp/>unsupported<sp/>method,<sp/>cURL<sp/>error,<sp/>empty</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>body)<sp/>are<sp/>caught<sp/>internally,<sp/>logged<sp/>via<sp/>Message<sp/>and<sp/>converted<sp/>to</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>`std::nullopt`;<sp/>nothing<sp/>is<sp/>thrown<sp/>to<sp/>the<sp/>caller.</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@warning<sp/>`data`<sp/>is<sp/>passed<sp/>to<sp/>libcurl<sp/>by<sp/>pointer,<sp/>so<sp/>it<sp/>must<sp/>outlive<sp/>the</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>call;<sp/>this<sp/>holds<sp/>for<sp/>normal<sp/>synchronous<sp/>use.</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classCommunicate_1ac17ede80bd387e5c096fcf9fcb481aee" kindref="member">sendRequest</ref>(<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>one<sp/>public<sp/>entry<sp/>point:<sp/>an<sp/>optional<sp/>string<sp/>that<sp/>is<sp/>empty<sp/>on<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>server,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>port,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>path,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpMethod&amp;<sp/>method,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>data);<sp/><sp/></highlight><highlight class="comment">//<sp/>Arguments<sp/>describe<sp/>where<sp/>to<sp/>send,<sp/>which<sp/>verb<sp/>to<sp/>use<sp/>and<sp/>what<sp/>body<sp/>to<sp/>send.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Executes<sp/>the<sp/>prepared<sp/>cURL<sp/>handle<sp/>and<sp/>captures<sp/>the<sp/>response<sp/>body.</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>curl<sp/>Handle<sp/>already<sp/>configured<sp/>with<sp/>URL,<sp/>method<sp/>and<sp/>headers.</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>Accumulated<sp/>body,<sp/>or<sp/>an<sp/>empty<sp/>string<sp/>on<sp/>error.</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>A<sp/>cURL<sp/>error<sp/>or<sp/>thrown<sp/>exception<sp/>is<sp/>logged<sp/>via<sp/>Message<sp/>and<sp/>produces</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>an<sp/>empty<sp/>string;<sp/>callers<sp/>treat<sp/>that<sp/>as<sp/>failure.</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classCommunicate_1a0a4ddbbf7176276436c6c9f8bd3fa9f1" kindref="member">handleResponse</ref>(CURL*<sp/>curl);<sp/><sp/></highlight><highlight class="comment">//<sp/>Runs<sp/>the<sp/>transfer<sp/>and<sp/>returns<sp/>whatever<sp/>the<sp/>server<sp/>sent<sp/>back.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>libcurl<sp/>write<sp/>callback<sp/>that<sp/>appends<sp/>received<sp/>bytes<sp/>to<sp/>a<sp/>string.</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>contents<sp/>Pointer<sp/>to<sp/>the<sp/>received<sp/>data<sp/>block.</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>size<sp/>Size<sp/>of<sp/>each<sp/>item.</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>nmemb<sp/>Number<sp/>of<sp/>items.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>response<sp/>String<sp/>to<sp/>append<sp/>to;<sp/>must<sp/>remain<sp/>valid<sp/>for<sp/>the<sp/>transfer.</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>Number<sp/>of<sp/>bytes<sp/>consumed,<sp/>which<sp/>must<sp/>equal<sp/>`size<sp/>*<sp/>nmemb`<sp/>or</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>libcurl<sp/>reports<sp/>a<sp/>write<sp/>error.</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;size_t&gt;<sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCommunicate_1a16c7e1e24d2610ef8d00d8ebe3b7c59b" kindref="member">WriteCallback</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>contents,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nmemb,<sp/>std::string*<sp/>response);<sp/><sp/></highlight><highlight class="comment">//<sp/>libcurl<sp/>calls<sp/>this<sp/>repeatedly<sp/>with<sp/>chunks<sp/>of<sp/>the<sp/>response;<sp/>it<sp/>appends<sp/>them<sp/>to<sp/>the<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="src/utils/communicate/communicate.hpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classWatchDog" kind="class" language="C++" prot="public">
+    <compoundname>WatchDog</compoundname>
+    <includes refid="watchdog_8hpp" local="no">watchdog.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classWatchDog_1a16372b8cab4cdd8c7b6e591d44cf6d30" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; WatchDog::should_monitor</definition>
+        <argsstring></argsstring>
+        <name>should_monitor</name>
+        <qualifiedname>WatchDog::should_monitor</qualifiedname>
+        <initializer>{true}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Atomic stop flag read by the monitor loop and set by the destructor. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/watchdog.hpp" line="69" column="20" bodyfile="src/database/watchdog.hpp" bodystart="69" bodyend="69"/>
+        <referencedby refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="53" endline="117">WatchDog</referencedby>
+        <referencedby refid="classWatchDog_1a3528415da2eaba98430532547b786b17" compoundref="watchdog_8cpp" startline="125" endline="133">~WatchDog</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWatchDog_1afb7703d71422aa4eb2163ee9550227c3" prot="private" static="no" mutable="no">
+        <type>std::chrono::seconds</type>
+        <definition>std::chrono::seconds WatchDog::check_interval</definition>
+        <argsstring></argsstring>
+        <name>check_interval</name>
+        <qualifiedname>WatchDog::check_interval</qualifiedname>
+        <initializer>{1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sleep between health checks (also bounds destructor join latency). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/watchdog.hpp" line="74" column="26" bodyfile="src/database/watchdog.hpp" bodystart="74" bodyend="74"/>
+        <referencedby refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="53" endline="117">WatchDog</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWatchDog_1a98e4f26093742829ffff056ccdda85e8" prot="private" static="no" mutable="no">
+        <type>std::thread</type>
+        <definition>std::thread WatchDog::monitor_thread</definition>
+        <argsstring></argsstring>
+        <name>monitor_thread</name>
+        <qualifiedname>WatchDog::monitor_thread</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The thread running the monitoring loop; joined by the destructor. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/watchdog.hpp" line="79" column="26" bodyfile="src/database/watchdog.hpp" bodystart="79" bodyend="-1"/>
+        <referencedby refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="53" endline="117">WatchDog</referencedby>
+        <referencedby refid="classWatchDog_1a3528415da2eaba98430532547b786b17" compoundref="watchdog_8cpp" startline="125" endline="133">~WatchDog</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classWatchDog_1ac51438cc38b263b050633f99b4e45747" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>WatchDog::WatchDog</definition>
+        <argsstring>()</argsstring>
+        <name>WatchDog</name>
+        <qualifiedname>WatchDog::WatchDog</qualifiedname>
+        <briefdescription>
+<para>Starts the monitoring thread. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Starts the monitoring thread that periodically checks a pooled connection.</para>
+<para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::logic_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If a monitor thread appears already joinable (a fresh object has none, so this guard is effectively inactive on construction).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+The loop leases a connection through a <ref refid="classDatabaseHanndler" kindref="compound">DatabaseHanndler</ref> (so it is returned on scope exit), checks it, and on failure reconnects it and then asks the pool to reconnect all idle connections. <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref>, a lost connection and any other exception are logged (or warned) and followed by an interval sleep, so one bad cycle cannot spin the loop. The thread reads the atomic stop flag each iteration. <parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::logic_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If a monitor thread is already joinable. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/watchdog.hpp" line="54" column="5" bodyfile="src/database/watchdog.cpp" bodystart="53" bodyend="117"/>
+        <references refid="classWatchDog_1afb7703d71422aa4eb2163ee9550227c3" compoundref="watchdog_8hpp" startline="74" endline="74">check_interval</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <references refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" compoundref="message_8cpp" startline="39" endline="39">Message::InfoMessage</references>
+        <references refid="classWatchDog_1a98e4f26093742829ffff056ccdda85e8" compoundref="watchdog_8hpp" startline="79">monitor_thread</references>
+        <references refid="classWatchDog_1a16372b8cab4cdd8c7b6e591d44cf6d30" compoundref="watchdog_8hpp" startline="69" endline="69">should_monitor</references>
+        <references refid="classMessage_1a3d5db738594c8af1428053227959259e" compoundref="message_8cpp" startline="40" endline="40">Message::WarningMessage</references>
+        <referencedby refid="classWatchDog_1a4d8d5ca9267f3bceb4e579aaa877a3a6">operator=</referencedby>
+        <referencedby refid="classWatchDog_1a957bca000c5227fb1d95352b5ee2e2db">operator=</referencedby>
+        <referencedby refid="classWatchDog_1a26378fc6e5fb99263282c1ab7424da94">WatchDog</referencedby>
+        <referencedby refid="classWatchDog_1a508c7d705cee312d781d6637d5b0fbeb">WatchDog</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWatchDog_1a26378fc6e5fb99263282c1ab7424da94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>WatchDog::WatchDog</definition>
+        <argsstring>(const WatchDog &amp;)=delete</argsstring>
+        <name>WatchDog</name>
+        <qualifiedname>WatchDog::WatchDog</qualifiedname>
+        <param>
+          <type>const <ref refid="classWatchDog" kindref="compound">WatchDog</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/watchdog.hpp" line="55" column="5"/>
+        <references refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="53" endline="117">WatchDog</references>
+      </memberdef>
+      <memberdef kind="function" id="classWatchDog_1a508c7d705cee312d781d6637d5b0fbeb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>WatchDog::WatchDog</definition>
+        <argsstring>(WatchDog &amp;&amp;)=delete</argsstring>
+        <name>WatchDog</name>
+        <qualifiedname>WatchDog::WatchDog</qualifiedname>
+        <param>
+          <type><ref refid="classWatchDog" kindref="compound">WatchDog</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/watchdog.hpp" line="56" column="5"/>
+        <references refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="53" endline="117">WatchDog</references>
+      </memberdef>
+      <memberdef kind="function" id="classWatchDog_1a4d8d5ca9267f3bceb4e579aaa877a3a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classWatchDog" kindref="compound">WatchDog</ref> &amp;</type>
+        <definition>WatchDog &amp; WatchDog::operator=</definition>
+        <argsstring>(const WatchDog &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>WatchDog::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classWatchDog" kindref="compound">WatchDog</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/watchdog.hpp" line="57" column="14"/>
+        <references refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="53" endline="117">WatchDog</references>
+      </memberdef>
+      <memberdef kind="function" id="classWatchDog_1a957bca000c5227fb1d95352b5ee2e2db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classWatchDog" kindref="compound">WatchDog</ref> &amp;</type>
+        <definition>WatchDog &amp; WatchDog::operator=</definition>
+        <argsstring>(WatchDog &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>WatchDog::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classWatchDog" kindref="compound">WatchDog</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/watchdog.hpp" line="58" column="14"/>
+        <references refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="53" endline="117">WatchDog</references>
+      </memberdef>
+      <memberdef kind="function" id="classWatchDog_1a3528415da2eaba98430532547b786b17" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>WatchDog::~WatchDog</definition>
+        <argsstring>()</argsstring>
+        <name>~WatchDog</name>
+        <qualifiedname>WatchDog::~WatchDog</qualifiedname>
+        <briefdescription>
+<para>Signals the monitor thread to stop and joins it before returning. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Stops the monitor and waits for its thread to finish.</para>
+<para>The atomic flag is cleared first so the loop exits at its next iteration; join then guarantees the thread is no longer using <computeroutput>this</computeroutput> before destruction. This must happen before the pool the thread borrows from is torn down. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/watchdog.hpp" line="63" column="13" bodyfile="src/database/watchdog.cpp" bodystart="125" bodyend="133"/>
+        <references refid="classWatchDog_1a98e4f26093742829ffff056ccdda85e8" compoundref="watchdog_8hpp" startline="79">monitor_thread</references>
+        <references refid="classWatchDog_1a16372b8cab4cdd8c7b6e591d44cf6d30" compoundref="watchdog_8hpp" startline="69" endline="69">should_monitor</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Background health monitor for the pooled database connections. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>On construction it starts a background work thread that periodically leases one connection, checks it, and reconnects it if the link is lost (also triggering a reconnect of all idle connections through the pool). The monitor flag is atomic so the destructor can signal shutdown and then join the thread. Non-copyable and non-movable. <simplesect kind="note"><para>The destructor may block for up to one check interval while the thread wakes up. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classDatabaseHanndler" kindref="compound">DatabaseHanndler</ref>, <ref refid="classDatabaseConnectionPool_1a51134b38454f5146921c081fbf2ad5f3" kindref="member">DatabaseConnectionPool::reconnect_all</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/database/watchdog.hpp" line="46" column="1" bodyfile="src/database/watchdog.hpp" bodystart="47" bodyend="80"/>
+    <listofallmembers>
+      <member refid="classWatchDog_1afb7703d71422aa4eb2163ee9550227c3" prot="private" virt="non-virtual"><scope>WatchDog</scope><name>check_interval</name></member>
+      <member refid="classWatchDog_1a98e4f26093742829ffff056ccdda85e8" prot="private" virt="non-virtual"><scope>WatchDog</scope><name>monitor_thread</name></member>
+      <member refid="classWatchDog_1a4d8d5ca9267f3bceb4e579aaa877a3a6" prot="public" virt="non-virtual"><scope>WatchDog</scope><name>operator=</name></member>
+      <member refid="classWatchDog_1a957bca000c5227fb1d95352b5ee2e2db" prot="public" virt="non-virtual"><scope>WatchDog</scope><name>operator=</name></member>
+      <member refid="classWatchDog_1a16372b8cab4cdd8c7b6e591d44cf6d30" prot="private" virt="non-virtual"><scope>WatchDog</scope><name>should_monitor</name></member>
+      <member refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" prot="public" virt="non-virtual"><scope>WatchDog</scope><name>WatchDog</name></member>
+      <member refid="classWatchDog_1a26378fc6e5fb99263282c1ab7424da94" prot="public" virt="non-virtual"><scope>WatchDog</scope><name>WatchDog</name></member>
+      <member refid="classWatchDog_1a508c7d705cee312d781d6637d5b0fbeb" prot="public" virt="non-virtual"><scope>WatchDog</scope><name>WatchDog</name></member>
+      <member refid="classWatchDog_1a3528415da2eaba98430532547b786b17" prot="public" virt="virtual"><scope>WatchDog</scope><name>~WatchDog</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

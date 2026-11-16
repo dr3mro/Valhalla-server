@@ -1,0 +1,271 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="cors__tokens_8hpp" kind="file" language="C++">
+    <compoundname>cors_tokens.hpp</compoundname>
+    <includes local="no">algorithm</includes>
+    <includes local="no">ranges</includes>
+    <includes local="no">string</includes>
+    <includes local="no">string_view</includes>
+    <includedby refid="cors_8hpp" local="yes">src/server/cors.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/server/cors_tokens.hpp</label>
+        <link refid="cors__tokens_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>algorithm</label>
+      </node>
+      <node id="3">
+        <label>ranges</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="5">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>src/server/cors.hpp</label>
+        <link refid="cors_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/server/cors_tokens.hpp</label>
+        <link refid="cors__tokens_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceCorsTokens">CorsTokens</innernamespace>
+    <briefdescription>
+<para>Drogon-free helpers for parsing and merging CORS header token lists. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header contains small functions for working with comma-separated header values used by CORS. It can tell whether a character is legal in an HTTP token, trim and split a header value into tokens, compare strings without regard to ASCII case, sanitize a client-supplied header list, and merge a token into an existing Vary header without duplicating it. The helpers deliberately avoid depending on Drogon.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: These functions are the security and correctness layer behind the CORS code in <ref refid="cors_8hpp" kindref="compound">cors.hpp</ref>. When a browser sends an Access-Control-Request-Headers value, this file filters out dangerous characters (such as CRLF or quotes) before they are echoed into a response, preventing header-injection attacks. It also keeps the Vary header tidy so caches store separate responses for different origins. Because the helpers have no framework dependency, they can be tested on their own, which is why a dedicated test file exists for them.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>C++20 ranges and views (lazy, composable sequence operations): <ulink url="https://en.cppreference.com/w/cpp/header/ranges">https://en.cppreference.com/w/cpp/header/ranges</ulink></para>
+</listitem><listitem><para>std::string_view (a non-owning view over text): <ulink url="https://en.cppreference.com/w/cpp/string/basic_string_view">https://en.cppreference.com/w/cpp/string/basic_string_view</ulink></para>
+</listitem><listitem><para>constexpr (values/functions usable at compile time): <ulink url="https://en.cppreference.com/w/cpp/language/constexpr">https://en.cppreference.com/w/cpp/language/constexpr</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>cors_tokens.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Drogon-free<sp/>helpers<sp/>for<sp/>parsing<sp/>and<sp/>merging<sp/>CORS<sp/>header<sp/>token<sp/>lists.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>contains<sp/>small<sp/>functions<sp/>for<sp/>working<sp/>with<sp/>comma-separated<sp/>header<sp/>values<sp/>used<sp/>by<sp/>CORS.<sp/>It<sp/>can</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tell<sp/>whether<sp/>a<sp/>character<sp/>is<sp/>legal<sp/>in<sp/>an<sp/>HTTP<sp/>token,<sp/>trim<sp/>and<sp/>split<sp/>a<sp/>header<sp/>value<sp/>into<sp/>tokens,<sp/>compare</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strings<sp/>without<sp/>regard<sp/>to<sp/>ASCII<sp/>case,<sp/>sanitize<sp/>a<sp/>client-supplied<sp/>header<sp/>list,<sp/>and<sp/>merge<sp/>a<sp/>token<sp/>into<sp/>an</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>existing<sp/>Vary<sp/>header<sp/>without<sp/>duplicating<sp/>it.<sp/>The<sp/>helpers<sp/>deliberately<sp/>avoid<sp/>depending<sp/>on<sp/>Drogon.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>These<sp/>functions<sp/>are<sp/>the<sp/>security<sp/>and<sp/>correctness<sp/>layer<sp/>behind<sp/>the<sp/>CORS<sp/>code<sp/>in<sp/>cors.hpp.<sp/>When<sp/>a<sp/>browser<sp/>sends<sp/>an</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Access-Control-Request-Headers<sp/>value,<sp/>this<sp/>file<sp/>filters<sp/>out<sp/>dangerous<sp/>characters<sp/>(such<sp/>as<sp/>CRLF<sp/>or<sp/>quotes)<sp/>before</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>they<sp/>are<sp/>echoed<sp/>into<sp/>a<sp/>response,<sp/>preventing<sp/>header-injection<sp/>attacks.<sp/>It<sp/>also<sp/>keeps<sp/>the<sp/>Vary<sp/>header<sp/>tidy<sp/>so<sp/>caches</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>store<sp/>separate<sp/>responses<sp/>for<sp/>different<sp/>origins.<sp/>Because<sp/>the<sp/>helpers<sp/>have<sp/>no<sp/>framework<sp/>dependency,<sp/>they<sp/>can<sp/>be</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>tested<sp/>on<sp/>their<sp/>own,<sp/>which<sp/>is<sp/>why<sp/>a<sp/>dedicated<sp/>test<sp/>file<sp/>exists<sp/>for<sp/>them.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>C++20<sp/>ranges<sp/>and<sp/>views<sp/>(lazy,<sp/>composable<sp/>sequence<sp/>operations):<sp/>https://en.cppreference.com/w/cpp/header/ranges</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>std::string_view<sp/>(a<sp/>non-owning<sp/>view<sp/>over<sp/>text):<sp/>https://en.cppreference.com/w/cpp/string/basic_string_view</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>constexpr<sp/>(values/functions<sp/>usable<sp/>at<sp/>compile<sp/>time):<sp/>https://en.cppreference.com/w/cpp/language/constexpr</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>file<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>std::ranges::all_of<sp/>and<sp/>std::ranges::equal</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ranges&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>std::views::split<sp/>/<sp/>transform<sp/>/<sp/>filter<sp/>used<sp/>by<sp/>tokens()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>std::string<sp/>built<sp/>by<sp/>sanitizeRequestedHeaders()<sp/>and<sp/>mergeVary()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>std::string_view,<sp/>used<sp/>for<sp/>borrowed,<sp/>non-owning<sp/>text<sp/>throughout</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="33"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="34" refid="namespaceCorsTokens" refkind="compound"><highlight class="comment"><sp/>*<sp/>@namespace<sp/>CorsTokens</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Drogon-free<sp/>helpers<sp/>for<sp/>parsing<sp/>and<sp/>merging<sp/>CORS<sp/>header<sp/>token<sp/>lists.</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>@details<sp/>Kept<sp/>independent<sp/>of<sp/>the<sp/>HTTP<sp/>framework<sp/>so<sp/>token<sp/>parsing<sp/>can<sp/>be<sp/>reasoned<sp/>about,<sp/>and<sp/>tested,<sp/>on<sp/>its<sp/>own.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceCorsTokens" kindref="compound">CorsTokens</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Group<sp/>the<sp/>token<sp/>helpers,<sp/>keeping<sp/>them<sp/>independent<sp/>of<sp/>the<sp/>HTTP<sp/>framework.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Punctuation<sp/>permitted<sp/>in<sp/>an<sp/>HTTP<sp/>token,<sp/>per<sp/>the<sp/>token<sp/>grammar<sp/>used<sp/>by<sp/>the<sp/>header<sp/>parsers<sp/>below.</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="namespaceCorsTokens_1a6d06cb55654db9c60bbbbbd0ee486ae3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="namespaceCorsTokens_1a6d06cb55654db9c60bbbbbd0ee486ae3" kindref="member">tokenPunctuation</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;!#$%&amp;&apos;*+-.^_`|~&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Compile-time<sp/>punctuation<sp/>allowed<sp/>in<sp/>a<sp/>token.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Reports<sp/>whether<sp/>a<sp/>character<sp/>is<sp/>valid<sp/>inside<sp/>an<sp/>HTTP<sp/>token.</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Alphabetic,<sp/>digit<sp/>and<sp/>the<sp/>RFC<sp/>token<sp/>punctuation<sp/>characters<sp/>are<sp/>accepted;<sp/>whitespace,<sp/>comma,<sp/>quote,</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>colon<sp/>and<sp/>control<sp/>characters<sp/>are<sp/>not.<sp/>This<sp/>rejects<sp/>values<sp/>that<sp/>could<sp/>inject<sp/>extra<sp/>headers.</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>c<sp/>Character<sp/>to<sp/>classify.</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>true<sp/>when<sp/>c<sp/>may<sp/>appear<sp/>in<sp/>a<sp/>token.</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="namespaceCorsTokens_1a0435f635d81611e18d7999358f7f71f3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceCorsTokens_1a0435f635d81611e18d7999358f7f71f3" kindref="member">isTokenChar</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c)<sp/><sp/></highlight><highlight class="comment">//<sp/>Decide<sp/>whether<sp/>one<sp/>character<sp/>is<sp/>legal<sp/>inside<sp/>an<sp/>HTTP<sp/>header<sp/>token.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(c<sp/>&gt;=<sp/></highlight><highlight class="charliteral">&apos;a&apos;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>c<sp/>&lt;=<sp/></highlight><highlight class="charliteral">&apos;z&apos;</highlight><highlight class="normal">)<sp/>||<sp/>(c<sp/>&gt;=<sp/></highlight><highlight class="charliteral">&apos;A&apos;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>c<sp/>&lt;=<sp/></highlight><highlight class="charliteral">&apos;Z&apos;</highlight><highlight class="normal">)<sp/>||<sp/>(c<sp/>&gt;=<sp/></highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>c<sp/>&lt;=<sp/></highlight><highlight class="charliteral">&apos;9&apos;</highlight><highlight class="normal">)<sp/>||<sp/><ref refid="namespaceCorsTokens_1a6d06cb55654db9c60bbbbbd0ee486ae3" kindref="member">tokenPunctuation</ref>.find(c)<sp/>!=<sp/>std::string_view::npos;<sp/><sp/></highlight><highlight class="comment">//<sp/>Valid<sp/>char.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Removes<sp/>optional<sp/>whitespace<sp/>(spaces<sp/>and<sp/>tabs)<sp/>from<sp/>both<sp/>ends<sp/>of<sp/>a<sp/>header<sp/>token.</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>value<sp/>View<sp/>to<sp/>trim;<sp/>not<sp/>modified.</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>subview<sp/>of<sp/>value<sp/>with<sp/>leading/trailing<sp/>whitespace<sp/>removed,<sp/>or<sp/>an<sp/>empty<sp/>view<sp/>if<sp/>value<sp/>is<sp/>all<sp/>whitespace.</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="namespaceCorsTokens_1a7a178dc1be0dd0b0753320d19435ff96" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="namespaceCorsTokens_1a7a178dc1be0dd0b0753320d19435ff96" kindref="member">trim</ref>(std::string_view<sp/>value)<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>a<sp/>view<sp/>with<sp/>leading<sp/>and<sp/>trailing<sp/>spaces/tabs<sp/>removed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::size_t<sp/>first<sp/>=<sp/>value.find_first_not_of(</highlight><highlight class="stringliteral">&quot;<sp/>\t&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Find<sp/>the<sp/>first<sp/>character<sp/>that<sp/>is<sp/>not<sp/>a<sp/>space<sp/>or<sp/>tab.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(first<sp/>==<sp/>std::string_view::npos)<sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>there<sp/>is<sp/>none,<sp/>the<sp/>entire<sp/>view<sp/>is<sp/>whitespace.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{};<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>back<sp/>an<sp/>empty<sp/>view.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::size_t<sp/>last<sp/>=<sp/>value.find_last_not_of(</highlight><highlight class="stringliteral">&quot;<sp/>\t&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Find<sp/>the<sp/>last<sp/>non-whitespace<sp/>character.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value.substr(first,<sp/>last<sp/>-<sp/>first<sp/>+<sp/>1);<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>subview<sp/>from<sp/>first<sp/>to<sp/>last,<sp/>inclusive.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Lazily<sp/>splits<sp/>a<sp/>comma-separated<sp/>header<sp/>value<sp/>into<sp/>trimmed,<sp/>non-empty<sp/>tokens.</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>The<sp/>returned<sp/>range<sp/>is<sp/>a<sp/>view:<sp/>it<sp/>allocates<sp/>nothing<sp/>and<sp/>borrows<sp/>from<sp/>value,<sp/>so<sp/>the<sp/>caller<sp/>must<sp/>keep<sp/>the</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>underlying<sp/>string<sp/>alive<sp/>while<sp/>iterating.<sp/>Empty<sp/>list<sp/>elements<sp/>(including<sp/>ones<sp/>made<sp/>only<sp/>of<sp/>whitespace)</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>are<sp/>filtered<sp/>out.</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>value<sp/>Header<sp/>value<sp/>to<sp/>split.</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>lazy<sp/>range<sp/>of<sp/>std::string_view<sp/>tokens.</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" kindref="member">tokens</ref>(std::string_view<sp/>value)<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>a<sp/>lazy<sp/>range<sp/>that<sp/>splits,<sp/>trims<sp/>and<sp/>filters<sp/>a<sp/>header<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value<sp/>|<sp/>std::views::split(</highlight><highlight class="charliteral">&apos;,&apos;</highlight><highlight class="normal">)<sp/>|<sp/><sp/></highlight><highlight class="comment">//<sp/>Split<sp/>at<sp/>commas<sp/>into<sp/>sub-ranges<sp/>without<sp/>copying<sp/>the<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::views::transform(<sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>each<sp/>sub-range<sp/>into<sp/>a<sp/>trimmed<sp/>string_view.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[](</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>range)<sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>lambda<sp/>handles<sp/>one<sp/>split<sp/>piece.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(range.begin()<sp/>==<sp/>range.end())<sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>empty<sp/>piece<sp/>(e.g.<sp/>from<sp/>two<sp/>adjacent<sp/>commas)<sp/>needs<sp/>no<sp/>work.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::string_view{};<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>an<sp/>empty<sp/>view<sp/>so<sp/>the<sp/>filter<sp/>below<sp/>removes<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::ranges::distance<sp/>returns<sp/>a<sp/>signed<sp/>ptrdiff_t;<sp/>the<sp/>range<sp/>is<sp/>non-empty<sp/>here,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>so<sp/>converting<sp/>it<sp/>to<sp/>string_view&apos;s<sp/>unsigned<sp/>length<sp/>is<sp/>safe.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceCorsTokens_1a7a178dc1be0dd0b0753320d19435ff96" kindref="member">trim</ref>(std::string_view(&amp;*range.begin(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(std::ranges::distance(range))));<sp/><sp/></highlight><highlight class="comment">//<sp/>Trim<sp/>this<sp/>piece&apos;s<sp/>whitespace.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>})<sp/>|</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::views::filter([](std::string_view<sp/>token)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!token.empty();<sp/>});<sp/><sp/></highlight><highlight class="comment">//<sp/>Drop<sp/>empty<sp/>tokens<sp/>left<sp/>by<sp/>extra<sp/>commas<sp/>or<sp/>spaces.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>ASCII<sp/>case-insensitive<sp/>string<sp/>comparison.</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Only<sp/>A-Z<sp/>are<sp/>folded<sp/>to<sp/>a-z,<sp/>which<sp/>is<sp/>sufficient<sp/>for<sp/>HTTP<sp/>header<sp/>field<sp/>names;<sp/>non-ASCII<sp/>bytes<sp/>are</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>compared<sp/>verbatim.</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>a<sp/>First<sp/>string.</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>b<sp/>Second<sp/>string.</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>true<sp/>when<sp/>the<sp/>strings<sp/>have<sp/>equal<sp/>length<sp/>and<sp/>match<sp/>after<sp/>ASCII<sp/>lowercasing.</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="namespaceCorsTokens_1af7fe702e663ce37f7012a3bf8af3a8c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceCorsTokens_1af7fe702e663ce37f7012a3bf8af3a8c8" kindref="member">iequals</ref>(std::string_view<sp/>a,<sp/>std::string_view<sp/>b)<sp/><sp/></highlight><highlight class="comment">//<sp/>Compare<sp/>two<sp/>strings<sp/>ignoring<sp/>the<sp/>case<sp/>of<sp/>ASCII<sp/>letters.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>lower<sp/>=<sp/>[](</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(c<sp/>&gt;=<sp/></highlight><highlight class="charliteral">&apos;A&apos;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>c<sp/>&lt;=<sp/></highlight><highlight class="charliteral">&apos;Z&apos;</highlight><highlight class="normal">)<sp/>?<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(c<sp/>+<sp/>(</highlight><highlight class="charliteral">&apos;a&apos;</highlight><highlight class="normal"><sp/>-<sp/></highlight><highlight class="charliteral">&apos;A&apos;</highlight><highlight class="normal">))<sp/>:<sp/>c;<sp/>};<sp/><sp/></highlight><highlight class="comment">//<sp/>Fold<sp/>A-Z<sp/>to<sp/>a-z;<sp/>other<sp/>bytes<sp/>unchanged.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>a.size()<sp/>==<sp/>b.size()<sp/>&amp;&amp;<sp/>std::ranges::equal(a,<sp/>b,<sp/>[lower](</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>y)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>lower(x)<sp/>==<sp/>lower(y);<sp/>});<sp/><sp/></highlight><highlight class="comment">//<sp/>Same<sp/>length<sp/>and<sp/>content.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Filters<sp/>a<sp/>client-supplied<sp/>Access-Control-Request-Headers<sp/>value<sp/>down<sp/>to<sp/>syntactically<sp/>valid<sp/>tokens.</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Rejects<sp/>the<sp/>whole<sp/>value<sp/>when<sp/>it<sp/>is<sp/>empty<sp/>or<sp/>longer<sp/>than<sp/>1024<sp/>characters,<sp/>then<sp/>keeps<sp/>only<sp/>comma-separated</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tokens<sp/>made<sp/>entirely<sp/>of<sp/>token<sp/>characters<sp/>and<sp/>rejoins<sp/>them<sp/>with<sp/>&quot;,<sp/>&quot;.<sp/>This<sp/>prevents<sp/>a<sp/>preflight<sp/>request</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>from<sp/>echoing<sp/>CRLF,<sp/>quotes<sp/>or<sp/>arbitrary<sp/>separators<sp/>into<sp/>Access-Control-Allow-Headers.</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requested<sp/>Raw<sp/>header<sp/>value<sp/>from<sp/>the<sp/>request.</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>comma-and-space<sp/>separated<sp/>list<sp/>of<sp/>safe<sp/>tokens,<sp/>or<sp/>an<sp/>empty<sp/>string<sp/>when<sp/>nothing<sp/>is<sp/>acceptable.<sp/>An<sp/>empty</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>tells<sp/>Cors::apply()<sp/>to<sp/>fall<sp/>back<sp/>to<sp/>the<sp/>default<sp/>header<sp/>list.</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="namespaceCorsTokens_1ab923849059179cf6c8fb446aa5cb5e5d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceCorsTokens_1ab923849059179cf6c8fb446aa5cb5e5d" kindref="member">sanitizeRequestedHeaders</ref>(std::string_view<sp/>requested)<sp/><sp/></highlight><highlight class="comment">//<sp/>Keep<sp/>only<sp/>safe,<sp/>valid<sp/>tokens<sp/>from<sp/>a<sp/>client-supplied<sp/>header<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(requested.empty()<sp/>||<sp/>requested.size()<sp/>&gt;<sp/>1024)<sp/><sp/></highlight><highlight class="comment">//<sp/>Reject<sp/>empty<sp/>or<sp/>very<sp/>long<sp/>values<sp/>outright<sp/>to<sp/>avoid<sp/>abuse.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{};<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>empty<sp/>so<sp/>the<sp/>caller<sp/>falls<sp/>back<sp/>to<sp/>its<sp/>default<sp/>header<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>result;<sp/><sp/></highlight><highlight class="comment">//<sp/>Accumulates<sp/>the<sp/>safe<sp/>tokens,<sp/>separated<sp/>by<sp/>&quot;,<sp/>&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(std::string_view<sp/>token<sp/>:<sp/><ref refid="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" kindref="member">tokens</ref>(requested))<sp/><sp/></highlight><highlight class="comment">//<sp/>Iterate<sp/>the<sp/>lazily<sp/>split<sp/>and<sp/>trimmed<sp/>tokens.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!std::ranges::all_of(token,<sp/><ref refid="namespaceCorsTokens_1a0435f635d81611e18d7999358f7f71f3" kindref="member">isTokenChar</ref>))<sp/><sp/></highlight><highlight class="comment">//<sp/>Drop<sp/>any<sp/>token<sp/>containing<sp/>invalid<sp/>characters<sp/>such<sp/>as<sp/>CRLF<sp/>or<sp/>quotes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Skip<sp/>this<sp/>token<sp/>and<sp/>move<sp/>on<sp/>to<sp/>the<sp/>next<sp/>one.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!result.empty())<sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>a<sp/>separator<sp/>only<sp/>when<sp/>a<sp/>token<sp/>has<sp/>already<sp/>been<sp/>written.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Separate<sp/>tokens<sp/>with<sp/>a<sp/>comma<sp/>and<sp/>a<sp/>space.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.append(token);<sp/><sp/></highlight><highlight class="comment">//<sp/>Append<sp/>the<sp/>validated<sp/>token<sp/>to<sp/>the<sp/>result.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>sanitized<sp/>list,<sp/>or<sp/>empty<sp/>if<sp/>nothing<sp/>was<sp/>acceptable.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Merges<sp/>a<sp/>token<sp/>into<sp/>an<sp/>existing<sp/>Vary<sp/>header<sp/>value,<sp/>avoiding<sp/>duplicates.</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Tokens<sp/>are<sp/>compared<sp/>case-insensitively.<sp/>A<sp/>&quot;*&quot;<sp/>wildcard<sp/>in<sp/>the<sp/>existing<sp/>value<sp/>means<sp/>every<sp/>response<sp/>is</highlight></codeline>
+<codeline lineno="154"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>already<sp/>variable,<sp/>so<sp/>the<sp/>value<sp/>is<sp/>returned<sp/>unchanged;<sp/>likewise<sp/>when<sp/>the<sp/>token<sp/>is<sp/>already<sp/>present.</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Otherwise<sp/>the<sp/>token<sp/>is<sp/>appended.<sp/>The<sp/>original<sp/>string<sp/>is<sp/>returned<sp/>unchanged<sp/>when<sp/>no<sp/>edit<sp/>is<sp/>needed,<sp/>which</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lets<sp/>the<sp/>caller<sp/>skip<sp/>the<sp/>header<sp/>write.</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>existing<sp/>Current<sp/>Vary<sp/>header<sp/>value.</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>value<sp/>Token<sp/>to<sp/>add.</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>merged<sp/>Vary<sp/>value.</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161" refid="namespaceCorsTokens_1a0868524c04d18e34760e18676a1ff72f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceCorsTokens_1a0868524c04d18e34760e18676a1ff72f" kindref="member">mergeVary</ref>(std::string_view<sp/>existing,<sp/>std::string_view<sp/>value)<sp/><sp/></highlight><highlight class="comment">//<sp/>Append<sp/>a<sp/>token<sp/>to<sp/>Vary<sp/>unless<sp/>it<sp/>is<sp/>redundant.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>combined;<sp/><sp/></highlight><highlight class="comment">//<sp/>Rebuilds<sp/>the<sp/>header<sp/>list<sp/>with<sp/>tokens<sp/>separated<sp/>by<sp/>&quot;,<sp/>&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hasWildcard<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>True<sp/>if<sp/>the<sp/>existing<sp/>value<sp/>already<sp/>contains<sp/>the<sp/>&quot;*&quot;<sp/>wildcard.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>present<sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>True<sp/>if<sp/>the<sp/>requested<sp/>token<sp/>is<sp/>already<sp/>in<sp/>the<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(std::string_view<sp/>token<sp/>:<sp/><ref refid="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" kindref="member">tokens</ref>(existing))<sp/><sp/></highlight><highlight class="comment">//<sp/>Walk<sp/>each<sp/>token<sp/>of<sp/>the<sp/>existing<sp/>header<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(token<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;*&quot;</highlight><highlight class="normal">)<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>wildcard<sp/>means<sp/>every<sp/>response<sp/>is<sp/>already<sp/>variable.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hasWildcard<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Remember<sp/>that<sp/>no<sp/>change<sp/>is<sp/>needed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespaceCorsTokens_1af7fe702e663ce37f7012a3bf8af3a8c8" kindref="member">iequals</ref>(token,<sp/>value))<sp/><sp/></highlight><highlight class="comment">//<sp/>Compare<sp/>case-insensitively,<sp/>as<sp/>header<sp/>names<sp/>are<sp/>case-insensitive.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>present<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Remember<sp/>that<sp/>the<sp/>token<sp/>is<sp/>already<sp/>present.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!combined.empty())<sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>a<sp/>separator<sp/>before<sp/>all<sp/>tokens<sp/>except<sp/>the<sp/>first.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>combined<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Keep<sp/>the<sp/>list<sp/>readable<sp/>and<sp/>syntactically<sp/>correct.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>combined.append(token);<sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>this<sp/>token<sp/>into<sp/>the<sp/>rebuilt<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hasWildcard<sp/>||<sp/>present)<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>change<sp/>is<sp/>useful<sp/>if<sp/>it<sp/>is<sp/>already<sp/>wildcard<sp/>or<sp/>already<sp/>present.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::string(existing);<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>original<sp/>value,<sp/>unchanged.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!combined.empty())<sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>existing<sp/>tokens<sp/>were<sp/>copied,<sp/>separate<sp/>the<sp/>new<sp/>one<sp/>from<sp/>them.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>combined<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Insert<sp/>the<sp/>separator<sp/>before<sp/>appending.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>combined.append(value);<sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>the<sp/>new<sp/>token<sp/>at<sp/>the<sp/>end<sp/>of<sp/>the<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>combined;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>merged<sp/>value<sp/>so<sp/>the<sp/>caller<sp/>can<sp/>write<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>CorsTokens</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/server/cors_tokens.hpp"/>
+  </compounddef>
+</doxygen>

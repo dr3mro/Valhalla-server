@@ -1,0 +1,353 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="jsonhelper_8hpp" kind="file" language="C++">
+    <compoundname>jsonhelper.hpp</compoundname>
+    <includes local="no">json/value.h</includes>
+    <includes local="no">jsoncons/json.hpp</includes>
+    <includedby refid="auth_8hpp" local="yes">src/api/v2/filters/auth.hpp</includedby>
+    <includedby refid="helper_8cpp" local="yes">src/api/v2/helper/helper.cpp</includedby>
+    <includedby refid="hello_8hpp" local="yes">src/api/v2/routes/hello.hpp</includedby>
+    <includedby refid="controller_8hpp" local="yes">src/controllers/base/controller/controller.hpp</includedby>
+    <includedby refid="clientcontroller_8cpp" local="yes">src/controllers/clientcontroller/clientcontroller.cpp</includedby>
+    <includedby refid="sessionmanager_8cpp" local="no">src/gatekeeper/sessionmanager/sessionmanager.cpp</includedby>
+    <includedby refid="server_8cpp" local="yes">src/server/server.cpp</includedby>
+    <includedby refid="jsonhelper_8cpp" local="yes">src/utils/jsonhelper/jsonhelper.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/utils/jsonhelper/jsonhelper.hpp</label>
+        <link refid="jsonhelper_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>json/value.h</label>
+      </node>
+      <node id="3">
+        <label>jsoncons/json.hpp</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="8">
+        <label>src/api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/api/v2/filters/auth.hpp</label>
+        <link refid="auth_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/api/v2/helper/helper.cpp</label>
+        <link refid="helper_8cpp"/>
+      </node>
+      <node id="15">
+        <label>src/api/v2/routes/appointments.hpp</label>
+        <link refid="appointments_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>src/api/v2/routes/clients.hpp</label>
+        <link refid="clients_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>src/api/v2/routes/clinics.hpp</label>
+        <link refid="api_2v2_2routes_2clinics_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/api/v2/routes/hello.hpp</label>
+        <link refid="hello_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>src/api/v2/routes/services.hpp</label>
+        <link refid="services_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>src/api/v2/routes/staff.hpp</label>
+        <link refid="staff_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
+        <link refid="appointmentcontroller_8cpp"/>
+      </node>
+      <node id="14">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
+        <link refid="appointmentcontroller_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/controllers/base/controller/controller.hpp</label>
+        <link refid="controller_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/controllers/clientcontroller/clientcontroller.cpp</label>
+        <link refid="clientcontroller_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
+        <link refid="clientcontroller_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
+        <link refid="cliniccontroller_8cpp"/>
+      </node>
+      <node id="19">
+        <label>src/controllers/cliniccontroller/cliniccontroller.hpp</label>
+        <link refid="cliniccontroller_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
+        <link refid="entitycontroller_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/controllers/entitycontroller/entitycontroller.hpp</label>
+        <link refid="entitycontroller_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
+        <link refid="servicecontroller_8cpp"/>
+      </node>
+      <node id="22">
+        <label>src/controllers/servicecontroller/servicecontroller.hpp</label>
+        <link refid="servicecontroller_8hpp"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
+        <link refid="staffcontroller_8cpp"/>
+      </node>
+      <node id="25">
+        <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
+        <link refid="staffcontroller_8hpp"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>src/database/database.cpp</label>
+        <link refid="database_8cpp"/>
+      </node>
+      <node id="28">
+        <label>src/gatekeeper/sessionmanager/sessionmanager.cpp</label>
+        <link refid="sessionmanager_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/server/server.hpp</label>
+        <link refid="server_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>src/utils/jsonhelper/jsonhelper.cpp</label>
+        <link refid="jsonhelper_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/utils/jsonhelper/jsonhelper.hpp</label>
+        <link refid="jsonhelper_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classapi_1_1v2_1_1JsonHelper" prot="public">api::v2::JsonHelper</innerclass>
+    <innernamespace refid="namespaceapi">api</innernamespace>
+    <innernamespace refid="namespaceapi_1_1v2">api::v2</innernamespace>
+    <briefdescription>
+<para>Conversions between JsonCpp, jsoncons and response strings. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Declares the JsonHelper class, a stateless toolbox with three static functions: one wraps a text message into a JsonCpp object with a &quot;Message&quot; key, and two others turn JsonCpp or jsoncons values into pretty-printed strings. All constructors and assignments are deleted, so the class exists purely as a namespace for its helper functions.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: The codebase uses two JSON libraries: JsonCpp for HTTP response bodies (via Drogon) and jsoncons for validation work. This helper bridges them and gives the rest of the server one consistent way to build simple status/error bodies and to turn JSON values into readable text. Without it, each caller would duplicate the wrapping and stringifying logic and the output shape could drift.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>Static member functions: <ulink url="https://en.cppreference.com/w/cpp/language/static#Static_member_functions">https://en.cppreference.com/w/cpp/language/static#Static_member_functions</ulink></para>
+</listitem><listitem><para>Deleted functions (= delete): <ulink url="https://en.cppreference.com/w/cpp/language/member_functions#Deleted_functions">https://en.cppreference.com/w/cpp/language/member_functions#Deleted_functions</ulink></para>
+</listitem><listitem><para>Function overloading (two stringify versions): <ulink url="https://en.cppreference.com/w/cpp/language/overload_resolution">https://en.cppreference.com/w/cpp/language/overload_resolution</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>jsonhelper.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Conversions<sp/>between<sp/>JsonCpp,<sp/>jsoncons<sp/>and<sp/>response<sp/>strings.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>Declares<sp/>the<sp/>JsonHelper<sp/>class,<sp/>a<sp/>stateless<sp/>toolbox<sp/>with<sp/>three<sp/>static</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>functions:<sp/>one<sp/>wraps<sp/>a<sp/>text<sp/>message<sp/>into<sp/>a<sp/>JsonCpp<sp/>object<sp/>with<sp/>a</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;Message&quot;<sp/>key,<sp/>and<sp/>two<sp/>others<sp/>turn<sp/>JsonCpp<sp/>or<sp/>jsoncons<sp/>values<sp/>into</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pretty-printed<sp/>strings.<sp/>All<sp/>constructors<sp/>and<sp/>assignments<sp/>are<sp/>deleted,</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>so<sp/>the<sp/>class<sp/>exists<sp/>purely<sp/>as<sp/>a<sp/>namespace<sp/>for<sp/>its<sp/>helper<sp/>functions.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>The<sp/>codebase<sp/>uses<sp/>two<sp/>JSON<sp/>libraries:<sp/>JsonCpp<sp/>for<sp/>HTTP<sp/>response<sp/>bodies<sp/>(via</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Drogon)<sp/>and<sp/>jsoncons<sp/>for<sp/>validation<sp/>work.<sp/>This<sp/>helper<sp/>bridges<sp/>them<sp/>and<sp/>gives</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>the<sp/>rest<sp/>of<sp/>the<sp/>server<sp/>one<sp/>consistent<sp/>way<sp/>to<sp/>build<sp/>simple<sp/>status/error<sp/>bodies</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>and<sp/>to<sp/>turn<sp/>JSON<sp/>values<sp/>into<sp/>readable<sp/>text.<sp/>Without<sp/>it,<sp/>each<sp/>caller<sp/>would</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>duplicate<sp/>the<sp/>wrapping<sp/>and<sp/>stringifying<sp/>logic<sp/>and<sp/>the<sp/>output<sp/>shape<sp/>could<sp/>drift.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>Static<sp/>member<sp/>functions:<sp/>https://en.cppreference.com/w/cpp/language/static#Static_member_functions</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>Deleted<sp/>functions<sp/>(=<sp/>delete):<sp/>https://en.cppreference.com/w/cpp/language/member_functions#Deleted_functions</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>Function<sp/>overloading<sp/>(two<sp/>stringify<sp/>versions):<sp/>https://en.cppreference.com/w/cpp/language/overload_resolution</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;json/value.h&gt;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>JsonCpp&apos;s<sp/>Json::Value<sp/>type<sp/>used<sp/>for<sp/>HTTP<sp/>response<sp/>bodies.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/json.hpp&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>jsoncons&apos;<sp/>json<sp/>type<sp/>used<sp/>by<sp/>the<sp/>validation<sp/>code.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceapi_1_1v2" kindref="compound">api::v2</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Groups<sp/>this<sp/>utility<sp/>with<sp/>the<sp/>version-2<sp/>API<sp/>code.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@class<sp/>JsonHelper</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Stateless<sp/>bridge<sp/>between<sp/>the<sp/>two<sp/>JSON<sp/>libraries<sp/>and<sp/>response<sp/>bodies.</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>The<sp/>codebase<sp/>uses<sp/>JsonCpp<sp/>for<sp/>HTTP<sp/>responses<sp/>(Drogon)<sp/>and<sp/>jsoncons</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>validation.<sp/>This<sp/>utility<sp/>wraps<sp/>simple<sp/>message<sp/>objects<sp/>and</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>serialises<sp/>either<sp/>representation<sp/>to<sp/>a<sp/>pretty-printed<sp/>string.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>All<sp/>members<sp/>are<sp/>static<sp/>and<sp/>construction<sp/>is<sp/>deleted:<sp/>there<sp/>is<sp/>no</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state<sp/>and<sp/>no<sp/>thread-safety<sp/>concern<sp/>beyond<sp/>the<sp/>underlying<sp/>libraries.</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@see<sp/>Validator</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classapi_1_1v2_1_1JsonHelper" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec" kindref="member">JsonHelper</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>class<sp/>used<sp/>only<sp/>through<sp/>static<sp/>functions;<sp/>it<sp/>is<sp/>never<sp/>instantiated.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>No<sp/>instances:<sp/>the<sp/>class<sp/>is<sp/>a<sp/>namespace<sp/>for<sp/>static<sp/>helpers.</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec" kindref="member">JsonHelper</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Deleted<sp/>so<sp/>no<sp/>one<sp/>can<sp/>create<sp/>an<sp/>object<sp/>of<sp/>this<sp/>type.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Destruction<sp/>is<sp/>disabled;<sp/>instances<sp/>cannot<sp/>exist.</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="classapi_1_1v2_1_1JsonHelper_1ac95eb89cccec4cdb2d2fe73aaf59baba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1JsonHelper_1ac95eb89cccec4cdb2d2fe73aaf59baba" kindref="member">~JsonHelper</ref>()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>destructor<sp/>is<sp/>needed<sp/>because<sp/>there<sp/>are<sp/>never<sp/>any<sp/>instances.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Move<sp/>construction<sp/>is<sp/>disabled;<sp/>the<sp/>class<sp/>is<sp/>never<sp/>instantiated.</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classapi_1_1v2_1_1JsonHelper_1a78798871d18d003644e4907fa4459db2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1JsonHelper_1a78798871d18d003644e4907fa4459db2" kindref="member">JsonHelper</ref>(<ref refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec" kindref="member">JsonHelper</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>would<sp/>require<sp/>an<sp/>instance,<sp/>which<sp/>is<sp/>forbidden.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Copy<sp/>construction<sp/>is<sp/>disabled;<sp/>the<sp/>class<sp/>is<sp/>never<sp/>instantiated.</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classapi_1_1v2_1_1JsonHelper_1a5052f5e2e89fd6a559696da47b1fd207" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1JsonHelper_1a5052f5e2e89fd6a559696da47b1fd207" kindref="member">JsonHelper</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec" kindref="member">JsonHelper</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>would<sp/>require<sp/>an<sp/>instance,<sp/>which<sp/>is<sp/>forbidden.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Move<sp/>assignment<sp/>is<sp/>disabled;<sp/>the<sp/>class<sp/>is<sp/>never<sp/>instantiated.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classapi_1_1v2_1_1JsonHelper_1adc89873d3846af98352e52714f07ed48" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec" kindref="member">JsonHelper</ref>&amp;<sp/><ref refid="classapi_1_1v2_1_1JsonHelper_1adc89873d3846af98352e52714f07ed48" kindref="member">operator=</ref>(<ref refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec" kindref="member">JsonHelper</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Assignment<sp/>is<sp/>meaningless<sp/>for<sp/>a<sp/>stateless<sp/>helper.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Copy<sp/>assignment<sp/>is<sp/>disabled;<sp/>the<sp/>class<sp/>is<sp/>never<sp/>instantiated.</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="classapi_1_1v2_1_1JsonHelper_1a260ef7e1999f9d532d74694dbcfc515b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec" kindref="member">JsonHelper</ref>&amp;<sp/><ref refid="classapi_1_1v2_1_1JsonHelper_1a260ef7e1999f9d532d74694dbcfc515b" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec" kindref="member">JsonHelper</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Assignment<sp/>is<sp/>meaningless<sp/>for<sp/>a<sp/>stateless<sp/>helper.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Wraps<sp/>a<sp/>message<sp/>in<sp/>a<sp/>JSON<sp/>object<sp/>with<sp/>a<sp/>single<sp/>&quot;Message&quot;<sp/>key.</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>message<sp/>Text<sp/>to<sp/>place<sp/>in<sp/>the<sp/>object,<sp/>often<sp/>an<sp/>error<sp/>or<sp/>status<sp/>string.</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>JsonCpp<sp/>value<sp/>suitable<sp/>for<sp/>a<sp/>Drogon<sp/>response<sp/>body.</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Json::Value<sp/><ref refid="classapi_1_1v2_1_1JsonHelper_1a641560db2243ef5bca5bb763e98b3b43" kindref="member">jsonify</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>message);<sp/><sp/></highlight><highlight class="comment">//<sp/>Builds<sp/>{<sp/>&quot;Message&quot;:<sp/>&lt;text&gt;<sp/>}<sp/>for<sp/>simple<sp/>replies.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Serialises<sp/>a<sp/>JsonCpp<sp/>value<sp/>to<sp/>a<sp/>formatted<sp/>string.</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>json<sp/>Value<sp/>to<sp/>serialise.</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>Pretty-printed<sp/>JSON<sp/>text<sp/>(JsonCpp&apos;s<sp/>`toStyledString`).</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classapi_1_1v2_1_1JsonHelper_1a1b5317049b9d7659fea55b9f6c96c379" kindref="member">stringify</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Json::Value&amp;<sp/>json);<sp/><sp/></highlight><highlight class="comment">//<sp/>Converts<sp/>a<sp/>JsonCpp<sp/>value<sp/>into<sp/>indented,<sp/>human-readable<sp/>text.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Serialises<sp/>a<sp/>jsoncons<sp/>value<sp/>to<sp/>a<sp/>formatted<sp/>string.</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>json<sp/>Value<sp/>to<sp/>serialise.</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>Pretty-printed<sp/>JSON<sp/>text<sp/>(jsoncons<sp/>`dump_pretty`).</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classapi_1_1v2_1_1JsonHelper_1a1b5317049b9d7659fea55b9f6c96c379" kindref="member">stringify</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>jsoncons::json&amp;<sp/>json);<sp/><sp/></highlight><highlight class="comment">//<sp/>Overload<sp/>that<sp/>does<sp/>the<sp/>same<sp/>for<sp/>the<sp/>other<sp/>JSON<sp/>library&apos;s<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>api::v2</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/utils/jsonhelper/jsonhelper.hpp"/>
+  </compounddef>
+</doxygen>

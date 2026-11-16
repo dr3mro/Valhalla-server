@@ -1,0 +1,1535 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="staffcontroller_8cpp" kind="file" language="C++">
+    <compoundname>staffcontroller.cpp</compoundname>
+    <includes refid="staffcontroller_8hpp" local="yes">controllers/staffcontroller/staffcontroller.hpp</includes>
+    <includes local="yes">drogon/utils/coroutine.h</includes>
+    <includes local="no">drogon/HttpTypes.h</includes>
+    <includes local="no">fmt/format.h</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">exception</includes>
+    <includes local="no">jsoncons/basic_json.hpp</includes>
+    <includes local="no">jsoncons/json.hpp</includes>
+    <includes local="no">optional</includes>
+    <includes local="no">string</includes>
+    <includes local="no">string_view</includes>
+    <includes local="no">utility</includes>
+    <includes refid="configurator_8hpp" local="yes">configurator/configurator.hpp</includes>
+    <includes refid="controller_8hpp" local="yes">controllers/base/controller/controller.hpp</includes>
+    <includes refid="staffcontrollerBase_8hpp" local="yes">controllers/staffcontroller/staffcontrollerBase.hpp</includes>
+    <includes refid="entities_2base_2types_8hpp" local="yes">entities/base/types.hpp</includes>
+    <includes refid="gatekeeper_8hpp" local="yes">gatekeeper/gatekeeper.hpp</includes>
+    <includes refid="store_8hpp" local="yes">store/store.hpp</includes>
+    <includes refid="communicate_8hpp" local="yes">utils/communicate/communicate.hpp</includes>
+    <includes refid="callback_8hpp" local="yes">utils/global/callback.hpp</includes>
+    <includes refid="global_8hpp" local="yes">utils/global/global.hpp</includes>
+    <includes refid="http_8hpp" local="yes">utils/global/http.hpp</includes>
+    <includes refid="entities_2services_2clinics_2clinics_8hpp" local="yes">entities/services/clinics/clinics.hpp</includes>
+    <includes refid="laboratories_8hpp" local="yes">entities/services/laboratories.hpp</includes>
+    <includes refid="pharmacies_8hpp" local="yes">entities/services/pharmacies.hpp</includes>
+    <includes refid="radiologycenters_8hpp" local="yes">entities/services/radiologycenters.hpp</includes>
+    <incdepgraph>
+      <node id="72">
+        <label>concurrency/boundedexecutor.hpp</label>
+        <link refid="boundedexecutor_8hpp"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>configurator/configurator.hpp</label>
+        <link refid="configurator_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>defaults.hpp</label>
+        <link refid="defaults_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>configurator/envloader/envloader.hpp</label>
+        <link refid="envloader_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>envvars/envvars.hpp</label>
+        <link refid="envvars_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>controllers/base/controller/controller.hpp</label>
+        <link refid="controller_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>controllers/databasecontroller/databasecontroller.hpp</label>
+        <link refid="databasecontroller_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
+        <link refid="staffcontroller_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>controllers/staffcontroller/staffcontroller.hpp</label>
+        <link refid="staffcontroller_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+      </node>
+      <node id="88">
+        <label>controllers/staffcontroller/staffcontrollerBase.hpp</label>
+        <link refid="staffcontrollerBase_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>database/asyncdbclient.hpp</label>
+        <link refid="asyncdbclient_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>database/asyncresultmapper.hpp</label>
+        <link refid="asyncresultmapper_8hpp"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>database/asyncsqlbinder.hpp</label>
+        <link refid="asyncsqlbinder_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>database/databasebusy.hpp</label>
+        <link refid="databasebusy_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>database/databasehandler.hpp</label>
+        <link refid="databasehandler_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>database/dbprobe.hpp</label>
+        <link refid="dbprobe_8hpp"/>
+      </node>
+      <node id="51">
+        <label>entities/base/base.hpp</label>
+        <link refid="base_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>entities/base/case.hpp</label>
+        <link refid="case_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>entities/base/client.hpp</label>
+        <link refid="client_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>entities/base/entity.hpp</label>
+        <link refid="entity_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="94">
+        <label>entities/base/service.hpp</label>
+        <link refid="service_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>entities/base/types.hpp</label>
+        <link refid="entities_2base_2types_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="93">
+        <label>entities/services/clinics/clinics.hpp</label>
+        <link refid="entities_2services_2clinics_2clinics_8hpp"/>
+        <childnode refid="94" relation="include">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>entities/services/clinics/patient/patient.hpp</label>
+        <link refid="patient_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="95">
+        <label>entities/services/laboratories.hpp</label>
+        <link refid="laboratories_8hpp"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+      </node>
+      <node id="96">
+        <label>entities/services/pharmacies.hpp</label>
+        <link refid="pharmacies_8hpp"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+      </node>
+      <node id="97">
+        <label>entities/services/radiologycenters.hpp</label>
+        <link refid="radiologycenters_8hpp"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>gatekeeper/dosdetector/dosdetector.hpp</label>
+        <link refid="dosdetector_8hpp"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>gatekeeper/gatekeeper.hpp</label>
+        <link refid="gatekeeper_8hpp"/>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>gatekeeper/keeprbase/keeprbase.hpp</label>
+        <link refid="keeprbase_8hpp"/>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>gatekeeper/passwordcrypt/passwordcrypt.hpp</label>
+        <link refid="passwordcrypt_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="71">
+        <label>gatekeeper/passwordcrypt/passwordworker.hpp</label>
+        <link refid="passwordworker_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+      </node>
+      <node id="75">
+        <label>gatekeeper/permissionmanager/permissionmanager.hpp</label>
+        <link refid="permissionmanager_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>gatekeeper/sessionmanager/sessionmanager.hpp</label>
+        <link refid="sessionmanager_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+      </node>
+      <node id="85">
+        <label>gatekeeper/tokenmanager/tokenmanager.hpp</label>
+        <link refid="tokenmanager_8hpp"/>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="82">
+        <label>gatekeeper/types.hpp</label>
+        <link refid="gatekeeper_2types_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>store/store.hpp</label>
+        <link refid="store_8hpp"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="90">
+        <label>utils/communicate/communicate.hpp</label>
+        <link refid="communicate_8hpp"/>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>utils/global/callback.hpp</label>
+        <link refid="callback_8hpp"/>
+        <childnode refid="68" relation="include">
+        </childnode>
+      </node>
+      <node id="76">
+        <label>utils/global/concepts.hpp</label>
+        <link refid="concepts_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>utils/global/errorstatus.hpp</label>
+        <link refid="errorstatus_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>utils/global/global.hpp</label>
+        <link refid="global_8hpp"/>
+        <childnode refid="60" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>utils/global/http.hpp</label>
+        <link refid="http_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="77">
+        <label>utils/global/requester.hpp</label>
+        <link refid="requester_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>utils/global/types.hpp</label>
+        <link refid="utils_2global_2types_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="86">
+        <label>utils/jsonhelper/jsonhelper.hpp</label>
+        <link refid="jsonhelper_8hpp"/>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="83">
+        <label>utils/memcache/memcache.hpp</label>
+        <link refid="memcache_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>utils/message/message.hpp</label>
+        <link refid="message_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>validator/validator.hpp</label>
+        <link refid="validator_8hpp"/>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>algorithm</label>
+      </node>
+      <node id="21">
+        <label>atomic</label>
+      </node>
+      <node id="53">
+        <label>cctype</label>
+      </node>
+      <node id="27">
+        <label>chrono</label>
+      </node>
+      <node id="66">
+        <label>condition_variable</label>
+      </node>
+      <node id="54">
+        <label>cppcodec/base64_rfc4648.hpp</label>
+      </node>
+      <node id="10">
+        <label>cstddef</label>
+      </node>
+      <node id="11">
+        <label>cstdint</label>
+      </node>
+      <node id="91">
+        <label>curl/curl.h</label>
+      </node>
+      <node id="67">
+        <label>deque</label>
+      </node>
+      <node id="64">
+        <label>drogon/DrTemplateBase.h</label>
+      </node>
+      <node id="89">
+        <label>drogon/HttpTypes.h</label>
+      </node>
+      <node id="92">
+        <label>drogon/drogon.h</label>
+      </node>
+      <node id="35">
+        <label>drogon/orm/DbClient.h</label>
+      </node>
+      <node id="37">
+        <label>drogon/orm/Result.h</label>
+      </node>
+      <node id="39">
+        <label>drogon/orm/SqlBinder.h</label>
+      </node>
+      <node id="5">
+        <label>drogon/utils/coroutine.h</label>
+      </node>
+      <node id="12">
+        <label>exception</label>
+      </node>
+      <node id="7">
+        <label>fmt/core.h</label>
+      </node>
+      <node id="8">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="9">
+        <label>fmt/ranges.h</label>
+      </node>
+      <node id="68">
+        <label>functional</label>
+      </node>
+      <node id="69">
+        <label>future</label>
+      </node>
+      <node id="49">
+        <label>iterator</label>
+      </node>
+      <node id="87">
+        <label>json/value.h</label>
+      </node>
+      <node id="13">
+        <label>jsoncons/basic_json.hpp</label>
+      </node>
+      <node id="22">
+        <label>jsoncons/json.hpp</label>
+      </node>
+      <node id="80">
+        <label>jwt-cpp/jwt.h</label>
+      </node>
+      <node id="81">
+        <label>jwt-cpp/traits/kazuho-picojson/traits.h</label>
+      </node>
+      <node id="84">
+        <label>list</label>
+      </node>
+      <node id="3">
+        <label>memory</label>
+      </node>
+      <node id="23">
+        <label>mutex</label>
+      </node>
+      <node id="14">
+        <label>optional</label>
+      </node>
+      <node id="24">
+        <label>pqxx/pqxx</label>
+      </node>
+      <node id="15">
+        <label>stdexcept</label>
+      </node>
+      <node id="16">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>string_view</label>
+      </node>
+      <node id="47">
+        <label>sys/types.h</label>
+      </node>
+      <node id="73">
+        <label>thread</label>
+      </node>
+      <node id="31">
+        <label>trantor/utils/Logger.h</label>
+      </node>
+      <node id="17">
+        <label>type_traits</label>
+      </node>
+      <node id="43">
+        <label>typeindex</label>
+      </node>
+      <node id="44">
+        <label>unordered_map</label>
+      </node>
+      <node id="25">
+        <label>unordered_set</label>
+      </node>
+      <node id="18">
+        <label>utility</label>
+      </node>
+      <node id="55">
+        <label>variant</label>
+      </node>
+      <node id="40">
+        <label>vector</label>
+      </node>
+      <node id="70">
+        <label>xxhash.h</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="staffcontroller_8cpp_1aeeea97ca3883891cdc270c45ee7c33d9" prot="public" static="no">
+        <name>INSTANTIATE_STAFF_CONTROLLER</name>
+        <param><defname>TYPE</defname></param>
+        <initializer>template <ref refid="classStaffController" kindref="compound">StaffController</ref>&lt;TYPE&gt;<ref refid="classStaffController" kindref="compound">::StaffController</ref>();                                                                                    \
+template void <ref refid="classStaffController" kindref="compound">StaffController</ref>&lt;TYPE&gt;::AddStaffToEntity(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp; callback, const <ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp; requester, std::string_view data);      \
+template void <ref refid="classStaffController" kindref="compound">StaffController</ref>&lt;TYPE&gt;::RemoveStaffFromEntity(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp; callback, const <ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp; requester, std::string_view data); \
+template void <ref refid="classStaffController" kindref="compound">StaffController</ref>&lt;TYPE&gt;::InviteStaffToEntity(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp; callback, const <ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp; requester, std::string_view data); \
+template drogon::Task&lt;void&gt; <ref refid="classStaffController" kindref="compound">StaffController</ref>&lt;TYPE&gt;::AddStaffToEntityAsync(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp; callback, const <ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp; requester, std::string_view data); \
+template drogon::Task&lt;void&gt; <ref refid="classStaffController" kindref="compound">StaffController</ref>&lt;TYPE&gt;::RemoveStaffFromEntityAsync(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp; callback, const <ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp; requester, std::string_view data); \
+template drogon::Task&lt;void&gt; <ref refid="classStaffController" kindref="compound">StaffController</ref>&lt;TYPE&gt;::InviteStaffToEntityAsync(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp; callback, const <ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp; requester, std::string_view data);</initializer>
+        <briefdescription>
+<para>Forces compilation of the constructor and all member templates for one service entity type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Definitions live in this translation unit, so without these instantiations the route layer&apos;s <computeroutput>shared_ptr&lt;<ref refid="classStaffController" kindref="compound">StaffController</ref>&lt;T&gt;&gt;</computeroutput> registrations would fail to link. A &quot;translation unit&quot; is one source file plus everything it includes after preprocessing. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>TYPE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Concrete service entity class to instantiate. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/staffcontroller/staffcontroller.cpp" line="361" column="9" bodyfile="src/controllers/staffcontroller/staffcontroller.cpp" bodystart="361" bodyend="368"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="staffcontroller_8cpp_1acd40880d4e5e43f97e8ead3d0efe3666" prot="public" static="no">
+        <type><ref refid="structapi_1_1v2_1_1Types_1_1StaffData" kindref="compound">api::v2::Types::StaffData</ref></type>
+        <definition>using StaffData = api::v2::Types::StaffData</definition>
+        <argsstring></argsstring>
+        <name>StaffData</name>
+        <briefdescription>
+<para>Convenience alias for the invite/staff fields parsed from a request body. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Convenience alias for the staff-invitation payload consumed by <ref refid="classService" kindref="compound">Service</ref> builders. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/staffcontroller/staffcontroller.cpp" line="62" column="1" bodyfile="src/controllers/staffcontroller/staffcontroller.cpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Definitions for <ref refid="classStaffController" kindref="compound">StaffController</ref> and its explicit template instantiations. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Unlike the other controller adapters, this file contains real logic: request parsing, staff-management authorisation, and either a staff SQL statement or an outbound invite POST to the email-sender daemon.</para>
+<para>In plain words, each function here does the same three-step dance: (1) read the JSON request body, (2) ask <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> whether the caller is allowed to manage this service&apos;s staff, and (3) only if allowed, actually do the work — run SQL to add/remove a member, or POST an invitation to the email daemon. If anything goes wrong, the catch block turns the exception into an HTTP error reply. The macros at the end build a concrete version of the class for each service entity type so the route layer can link to it.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: This is the implementation behind the staff HTTP routes: it is where permission is actually enforced before any staff change is made and where invitations are sent. It is called through <ref refid="classStaffControllerBase" kindref="compound">StaffControllerBase</ref> by the route layer, and it calls into <ref refid="classController" kindref="compound">Controller</ref> (for SQL), <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> (for permission) and <ref refid="classCommunicate" kindref="compound">Communicate</ref> (for the email POST). Without it, the staff interface would have no behaviour and no one could add, remove or invite staff.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>try/catch (handling errors instead of crashing): <ulink url="https://en.cppreference.com/w/cpp/language/try_catch">https://en.cppreference.com/w/cpp/language/try_catch</ulink></para>
+</listitem><listitem><para>std::optional (a value that may be absent): <ulink url="https://en.cppreference.com/w/cpp/utility/optional">https://en.cppreference.com/w/cpp/utility/optional</ulink></para>
+</listitem><listitem><para>C++20 coroutines (functions that pause and resume with co_await/co_return): <ulink url="https://en.cppreference.com/w/cpp/language/coroutines">https://en.cppreference.com/w/cpp/language/coroutines</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>staffcontroller.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Definitions<sp/>for<sp/>@ref<sp/>StaffController<sp/>and<sp/>its<sp/>explicit<sp/>template<sp/>instantiations.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>Unlike<sp/>the<sp/>other<sp/>controller<sp/>adapters,<sp/>this<sp/>file<sp/>contains<sp/>real<sp/>logic:<sp/>request<sp/>parsing,</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>staff-management<sp/>authorisation,<sp/>and<sp/>either<sp/>a<sp/>staff<sp/>SQL<sp/>statement<sp/>or<sp/>an<sp/>outbound<sp/>invite</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST<sp/>to<sp/>the<sp/>email-sender<sp/>daemon.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>In<sp/>plain<sp/>words,<sp/>each<sp/>function<sp/>here<sp/>does<sp/>the<sp/>same<sp/>three-step<sp/>dance:<sp/>(1)<sp/>read<sp/>the<sp/>JSON</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>request<sp/>body,<sp/>(2)<sp/>ask<sp/>GateKeeper<sp/>whether<sp/>the<sp/>caller<sp/>is<sp/>allowed<sp/>to<sp/>manage<sp/>this<sp/>service&apos;s</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>staff,<sp/>and<sp/>(3)<sp/>only<sp/>if<sp/>allowed,<sp/>actually<sp/>do<sp/>the<sp/>work<sp/>—<sp/>run<sp/>SQL<sp/>to<sp/>add/remove<sp/>a<sp/>member,<sp/>or</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POST<sp/>an<sp/>invitation<sp/>to<sp/>the<sp/>email<sp/>daemon.<sp/>If<sp/>anything<sp/>goes<sp/>wrong,<sp/>the<sp/>catch<sp/>block<sp/>turns<sp/>the</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exception<sp/>into<sp/>an<sp/>HTTP<sp/>error<sp/>reply.<sp/>The<sp/>macros<sp/>at<sp/>the<sp/>end<sp/>build<sp/>a<sp/>concrete<sp/>version<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>class<sp/>for<sp/>each<sp/>service<sp/>entity<sp/>type<sp/>so<sp/>the<sp/>route<sp/>layer<sp/>can<sp/>link<sp/>to<sp/>it.</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>the<sp/>implementation<sp/>behind<sp/>the<sp/>staff<sp/>HTTP<sp/>routes:<sp/>it<sp/>is<sp/>where<sp/>permission<sp/>is<sp/>actually<sp/>enforced</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>before<sp/>any<sp/>staff<sp/>change<sp/>is<sp/>made<sp/>and<sp/>where<sp/>invitations<sp/>are<sp/>sent.<sp/>It<sp/>is<sp/>called<sp/>through</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>@ref<sp/>StaffControllerBase<sp/>by<sp/>the<sp/>route<sp/>layer,<sp/>and<sp/>it<sp/>calls<sp/>into<sp/>@ref<sp/>Controller<sp/>(for<sp/>SQL),</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>@ref<sp/>GateKeeper<sp/>(for<sp/>permission)<sp/>and<sp/>@ref<sp/>Communicate<sp/>(for<sp/>the<sp/>email<sp/>POST).<sp/>Without<sp/>it,<sp/>the<sp/>staff</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>interface<sp/>would<sp/>have<sp/>no<sp/>behaviour<sp/>and<sp/>no<sp/>one<sp/>could<sp/>add,<sp/>remove<sp/>or<sp/>invite<sp/>staff.</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>-<sp/>try/catch<sp/>(handling<sp/>errors<sp/>instead<sp/>of<sp/>crashing):<sp/>https://en.cppreference.com/w/cpp/language/try_catch</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>-<sp/>std::optional<sp/>(a<sp/>value<sp/>that<sp/>may<sp/>be<sp/>absent):<sp/>https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>-<sp/>C++20<sp/>coroutines<sp/>(functions<sp/>that<sp/>pause<sp/>and<sp/>resume<sp/>with<sp/>co_await/co_return):<sp/>https://en.cppreference.com/w/cpp/language/coroutines</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="staffcontroller_8hpp" kindref="compound">controllers/staffcontroller/staffcontroller.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>class<sp/>declarations<sp/>whose<sp/>method<sp/>bodies<sp/>are<sp/>defined<sp/>below.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;drogon/utils/coroutine.h&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Drogon&apos;s<sp/>coroutine<sp/>support;<sp/>defines<sp/>drogon::Task,<sp/>the<sp/>pausable<sp/>task<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpTypes.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Defines<sp/>HTTP<sp/>method<sp/>constants<sp/>such<sp/>as<sp/>drogon::HttpMethod::Post.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/format.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Formatting<sp/>helpers<sp/>(used<sp/>by<sp/>the<sp/>project&apos;s<sp/>response<sp/>macros).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Gives<sp/>fixed-width<sp/>whole-number<sp/>types<sp/>such<sp/>as<sp/>uint64_t<sp/>(an<sp/>unsigned<sp/>64-bit<sp/>number).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;exception&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Gives<sp/>std::exception,<sp/>the<sp/>base<sp/>type<sp/>caught<sp/>when<sp/>something<sp/>goes<sp/>wrong.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/basic_json.hpp&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Core<sp/>jsoncons<sp/>types<sp/>used<sp/>to<sp/>hold<sp/>and<sp/>parse<sp/>JSON<sp/>values.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/json.hpp&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Gives<sp/>jsoncons::json<sp/>and<sp/>its<sp/>parse()/at()<sp/>helpers<sp/>for<sp/>reading<sp/>request<sp/>bodies.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Gives<sp/>std::optional:<sp/>a<sp/>box<sp/>that<sp/>either<sp/>holds<sp/>a<sp/>value<sp/>or<sp/>says<sp/>&quot;there<sp/>is<sp/>no<sp/>value&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Gives<sp/>std::string,<sp/>used<sp/>for<sp/>the<sp/>optional<sp/>email-daemon<sp/>response<sp/>text.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Gives<sp/>std::string_view:<sp/>a<sp/>cheap,<sp/>non-owning<sp/>view<sp/>over<sp/>a<sp/>stretch<sp/>of<sp/>text.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Gives<sp/>std::move,<sp/>used<sp/>to<sp/>hand<sp/>the<sp/>callback<sp/>on<sp/>without<sp/>copying<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="configurator_8hpp" kindref="compound">configurator/configurator.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Defines<sp/>Configurator<sp/>and<sp/>its<sp/>EmailSenderConfig<sp/>(where<sp/>invitation<sp/>emails<sp/>are<sp/>sent).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="controller_8hpp" kindref="compound">controllers/base/controller/controller.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Provides<sp/>the<sp/>low-level<sp/>addStaff/removeStaff<sp/>SQL<sp/>helpers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="staffcontrollerBase_8hpp" kindref="compound">controllers/staffcontroller/staffcontrollerBase.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>interface<sp/>this<sp/>class<sp/>implements.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entities_2base_2types_8hpp" kindref="compound">entities/base/types.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Defines<sp/>api::v2::Types::StaffData,<sp/>the<sp/>parsed<sp/>staff<sp/>fields.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gatekeeper_8hpp" kindref="compound">gatekeeper/gatekeeper.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Defines<sp/>GateKeeper<sp/>and<sp/>its<sp/>canManageStaff<sp/>permission<sp/>checks.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="store_8hpp" kindref="compound">store/store.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>service<sp/>locator<sp/>used<sp/>in<sp/>the<sp/>constructor<sp/>to<sp/>fetch<sp/>shared<sp/>services.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="communicate_8hpp" kindref="compound">utils/communicate/communicate.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Provides<sp/>Communicate::sendRequest<sp/>for<sp/>the<sp/>outbound<sp/>invite<sp/>POST.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="callback_8hpp" kindref="compound">utils/global/callback.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Defines<sp/>CALLBACK_,<sp/>the<sp/>&quot;call<sp/>me<sp/>when<sp/>finished&quot;<sp/>function<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="global_8hpp" kindref="compound">utils/global/global.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Project-wide<sp/>macros,<sp/>including<sp/>CRITICALMESSAGERESPONSE<sp/>used<sp/>in<sp/>catch<sp/>blocks.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="http_8hpp" kindref="compound">utils/global/http.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Defines<sp/>HTTP<sp/>status<sp/>constants<sp/>such<sp/>as<sp/>OK<sp/>and<sp/>BAD_REQUEST.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="57"><highlight class="comment">/**<sp/>@brief<sp/>Convenience<sp/>alias<sp/>for<sp/>the<sp/>authorisation<sp/>service.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref><sp/>=<sp/><ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">api::v2::GateKeeper</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>short<sp/>nickname<sp/>so<sp/>we<sp/>can<sp/>write<sp/>&quot;GateKeeper&quot;<sp/>instead<sp/>of<sp/>the<sp/>longer<sp/>name.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="59"><highlight class="comment">/**<sp/>@brief<sp/>Convenience<sp/>alias<sp/>for<sp/>the<sp/>error<sp/>payload<sp/>produced<sp/>by<sp/>authorisation<sp/>failures.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="clientcontroller_8cpp_1aade4e0beb5a1397789e7ccb602ef175f" kindref="member">HttpError</ref><sp/><sp/>=<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Short<sp/>name<sp/>for<sp/>the<sp/>{code,<sp/>message}<sp/>pair<sp/>returned<sp/>when<sp/>permission<sp/>is<sp/>denied.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="61"><highlight class="comment">/**<sp/>@brief<sp/>Convenience<sp/>alias<sp/>for<sp/>the<sp/>invite/staff<sp/>fields<sp/>parsed<sp/>from<sp/>a<sp/>request<sp/>body.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="staffcontroller_8cpp_1acd40880d4e5e43f97e8ead3d0efe3666" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="staffcontroller_8cpp_1acd40880d4e5e43f97e8ead3d0efe3666" kindref="member">StaffData</ref><sp/><sp/>=<sp/><ref refid="structapi_1_1v2_1_1Types_1_1StaffData" kindref="compound">api::v2::Types::StaffData</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Short<sp/>name<sp/>for<sp/>the<sp/>struct<sp/>holding<sp/>the<sp/>staff<sp/>member&apos;s<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="64"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Resolves<sp/>shared<sp/>services<sp/>from<sp/>the<sp/>global<sp/>Store<sp/>and<sp/>snapshots<sp/>the<sp/>email-daemon<sp/>config.</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>@details<sp/>`cfg_`<sp/>and<sp/>`gateKeeper`<sp/>are<sp/>service-locator<sp/>handles;<sp/>the<sp/>`EmailSenderConfig`<sp/>value<sp/>is</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>copied<sp/>out<sp/>once<sp/>so<sp/>the<sp/>invite<sp/>path<sp/>does<sp/>not<sp/>re-read<sp/>configuration<sp/>per<sp/>request.</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*<sp/>@note<sp/>Failure<sp/>behaviour<sp/>when<sp/>a<sp/>service<sp/>is<sp/>absent<sp/>from<sp/>the<sp/>Store<sp/>is<sp/>that<sp/>of<sp/>`Store::getObject`.</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>One<sp/>constructor<sp/>definition<sp/>works<sp/>for<sp/>any<sp/>entity<sp/>type<sp/>T.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" refkind="member"><highlight class="normal"><ref refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" kindref="member">StaffController&lt;T&gt;::StaffController</ref>()</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classStaffController_1a3f42581637f6b2711eac8ada82ad135a" kindref="member">cfg_</ref>(<ref refid="classStore" kindref="compound">Store</ref>::getObject&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>&gt;()),<sp/><sp/></highlight><highlight class="comment">//<sp/>Fetch<sp/>the<sp/>shared<sp/>configuration<sp/>service<sp/>from<sp/>the<sp/>global<sp/>Store.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStaffController_1aab325c701b76d68ee35fb4202a1c4693" kindref="member">email_sender_daemon_config_</ref>(<ref refid="classStaffController_1a3f42581637f6b2711eac8ada82ad135a" kindref="member">cfg_</ref>-&gt;get&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>::<ref refid="structEmailSenderConfig" kindref="compound">EmailSenderConfig</ref>&gt;()),<sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>out<sp/>the<sp/>email-daemon<sp/>settings<sp/>once;<sp/>the<sp/>arrow<sp/>dereferences<sp/>the<sp/>shared<sp/>pointer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" kindref="member">gateKeeper</ref>(<ref refid="classStore" kindref="compound">Store</ref>::getObject&lt;<ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref>&gt;())<sp/><sp/></highlight><highlight class="comment">//<sp/>Fetch<sp/>the<sp/>shared<sp/>permission<sp/>service<sp/>from<sp/>the<sp/>Store.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="78"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*<sp/>Adds<sp/>a<sp/>staff<sp/>member<sp/>described<sp/>by<sp/>@p<sp/>data<sp/>to<sp/>the<sp/>service<sp/>entity<sp/>it<sp/>names.</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*<sp/>Parses<sp/>a<sp/>JSON<sp/>body<sp/>with<sp/>`payload`<sp/>and<sp/>`id`,<sp/>builds<sp/>@ref<sp/>StaffData<sp/>and<sp/>`T`,<sp/>checks</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>staff-management<sp/>permission<sp/>against<sp/>the<sp/>id,<sp/>and<sp/>finally<sp/>delegates<sp/>the<sp/>SQL<sp/>work<sp/>to</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`Controller::addStaff`.<sp/>On<sp/>denial<sp/>the<sp/>GateKeeper&apos;s<sp/>code<sp/>and<sp/>message<sp/>are<sp/>returned</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>verbatim;<sp/>any<sp/>thrown<sp/>exception<sp/>is<sp/>mapped<sp/>by<sp/>`CRITICALMESSAGERESPONSE`<sp/>(500,<sp/>or<sp/>503<sp/>for</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>a<sp/>busy<sp/>database).</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*<sp/>Note:<sp/>There<sp/>is<sp/>no<sp/>pre-parse<sp/>guard:<sp/>malformed<sp/>JSON<sp/>or<sp/>a<sp/>missing<sp/>key<sp/>is<sp/>an<sp/>exceptional<sp/>500<sp/>path</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>here,<sp/>unlike<sp/>the<sp/>400<sp/>responses<sp/>of<sp/>@ref<sp/>EntityController.</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/>*<sp/>callback:<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/>*<sp/>requester:<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>staff-management<sp/>permission<sp/>check.</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/>*<sp/>data:<sp/>Raw<sp/>JSON<sp/>body<sp/>containing<sp/>`id`<sp/>and<sp/>`payload`;<sp/>must<sp/>outlive<sp/>the<sp/>call.</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Works<sp/>for<sp/>whichever<sp/>entity<sp/>type<sp/>T<sp/>this<sp/>controller<sp/>was<sp/>instantiated<sp/>with.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="classStaffController_1a454ac6b5d362f6b9be674eac131f4da7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStaffController_1a454ac6b5d362f6b9be674eac131f4da7" kindref="member">StaffController&lt;T&gt;::AddStaffToEntity</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>add:<sp/>parse,<sp/>authorize,<sp/>then<sp/>run<sp/>SQL.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>jsoncons::json<sp/>staff_j;<sp/><sp/></highlight><highlight class="comment">//<sp/>Will<sp/>hold<sp/>the<sp/>parsed<sp/>JSON<sp/>request<sp/>body;<sp/>jsoncons::json<sp/>can<sp/>hold<sp/>objects,<sp/>arrays,<sp/>strings,<sp/>numbers,<sp/>etc.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="clientcontroller_8cpp_1aade4e0beb5a1397789e7ccb602ef175f" kindref="member">HttpError</ref><sp/><sp/><sp/><sp/><sp/><sp/>error;<sp/><sp/></highlight><highlight class="comment">//<sp/>Will<sp/>be<sp/>filled<sp/>with<sp/>{code,<sp/>message}<sp/>if<sp/>the<sp/>permission<sp/>check<sp/>fails.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Guard<sp/>the<sp/>whole<sp/>operation:<sp/>bad<sp/>JSON<sp/>or<sp/>a<sp/>missing<sp/>key<sp/>throws<sp/>and<sp/>is<sp/>handled<sp/>below.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>parse<sp/>failure<sp/>or<sp/>missing<sp/>key<sp/>throws<sp/>and<sp/>is<sp/>handled<sp/>as<sp/>500<sp/>by<sp/>CRITICALMESSAGERESPONSE.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>staff_j<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>jsoncons::json::parse(data);<sp/><sp/></highlight><highlight class="comment">//<sp/>Turn<sp/>the<sp/>raw<sp/>text<sp/>into<sp/>a<sp/>JSON<sp/>value<sp/>we<sp/>can<sp/>query.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jsoncons::json<sp/>payload<sp/>=<sp/>staff_j.at(</highlight><highlight class="stringliteral">&quot;payload&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Pull<sp/>out<sp/>the<sp/>&quot;payload&quot;<sp/>object<sp/>holding<sp/>the<sp/>new<sp/>staff<sp/>member&apos;s<sp/>fields.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="staffcontroller_8cpp_1acd40880d4e5e43f97e8ead3d0efe3666" kindref="member">StaffData</ref><sp/><sp/><sp/><sp/><sp/><sp/>staffData(payload);<sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>that<sp/>JSON<sp/>object<sp/>into<sp/>a<sp/>typed<sp/>StaffData<sp/>struct.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/>staff(staffData);<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>concrete<sp/>entity<sp/>(e.g.<sp/>a<sp/>Clinic)<sp/>from<sp/>the<sp/>staff<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>_id<sp/>=<sp/>staff_j.at(</highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">).as&lt;uint64_t&gt;();<sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>the<sp/>target<sp/>service<sp/>id<sp/>as<sp/>a<sp/>64-bit<sp/>unsigned<sp/>number.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Permission<sp/>decides<sp/>before<sp/>any<sp/>database<sp/>side<sp/>effect;<sp/>denial<sp/>is<sp/>reported<sp/>as-is.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" kindref="member">gateKeeper</ref>-&gt;canManageStaff&lt;T&gt;(requester,<sp/>_id,<sp/>error))<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>&quot;!&quot;<sp/>means<sp/>&quot;if<sp/>NOT<sp/>allowed&quot;:<sp/>stop<sp/>when<sp/>permission<sp/>is<sp/>denied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(callback)(error.code,<sp/>error.message);<sp/><sp/></highlight><highlight class="comment">//<sp/>Report<sp/>the<sp/>GateKeeper&apos;s<sp/>error<sp/>straight<sp/>back<sp/>to<sp/>the<sp/>caller.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Stop<sp/>here<sp/>—<sp/>no<sp/>SQL<sp/>should<sp/>run<sp/>when<sp/>permission<sp/>was<sp/>denied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Controller<sp/>builds<sp/>and<sp/>runs<sp/>the<sp/>entity&apos;s<sp/>add-staff<sp/>SQL<sp/>statement.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classController_1a29dac549946db2810cb4435323502c75" kindref="member">Controller::addStaff</ref>(staff,<sp/>std::move(callback));<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>off<sp/>the<sp/>SQL<sp/>work;<sp/>std::move<sp/>transfers<sp/>the<sp/>callback<sp/>so<sp/>no<sp/>copy<sp/>is<sp/>made.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/><sp/></highlight><highlight class="comment">//<sp/>Runs<sp/>only<sp/>if<sp/>something<sp/>above<sp/>threw<sp/>an<sp/>exception.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" kindref="member">CRITICALMESSAGERESPONSE</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Macro:<sp/>build<sp/>an<sp/>HTTP<sp/>500<sp/>(or<sp/>503<sp/>if<sp/>the<sp/>DB<sp/>is<sp/>busy)<sp/>error<sp/>reply<sp/>and<sp/>return<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="122"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/>*<sp/>Removes<sp/>a<sp/>staff<sp/>member<sp/>from<sp/>the<sp/>service<sp/>entity<sp/>named<sp/>in<sp/>@p<sp/>data.</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/>*<sp/>Same<sp/>request<sp/>shape<sp/>and<sp/>authorisation<sp/>contract<sp/>as<sp/>@ref<sp/>AddStaffToEntity,<sp/>but<sp/>delegates</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>to<sp/>`Controller::removeStaff`.<sp/>Malformed<sp/>input<sp/>is<sp/>an<sp/>exceptional<sp/>500<sp/>path;<sp/>a<sp/>failed</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>permission<sp/>check<sp/>returns<sp/>the<sp/>GateKeeper<sp/>error<sp/>unchanged.</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*<sp/>callback:<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/>*<sp/>requester:<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>staff-management<sp/>permission<sp/>check.</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/>*<sp/>data:<sp/>Raw<sp/>JSON<sp/>body<sp/>containing<sp/>`id`<sp/>(the<sp/>service)<sp/>and<sp/>`payload`<sp/>(the<sp/>staff<sp/>member).</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="132" refid="classStaffController_1aefd020493c2178716433285aca94ae50" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStaffController_1aefd020493c2178716433285aca94ae50" kindref="member">StaffController&lt;T&gt;::RemoveStaffFromEntity</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>remove:<sp/>parse,<sp/>authorize,<sp/>then<sp/>run<sp/>SQL.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Guard<sp/>against<sp/>malformed<sp/>JSON,<sp/>just<sp/>like<sp/>AddStaffToEntity.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="clientcontroller_8cpp_1aade4e0beb5a1397789e7ccb602ef175f" kindref="member">HttpError</ref><sp/><sp/><sp/><sp/><sp/><sp/>error;<sp/><sp/></highlight><highlight class="comment">//<sp/>Filled<sp/>with<sp/>the<sp/>error<sp/>if<sp/>permission<sp/>is<sp/>denied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jsoncons::json<sp/>staff_j<sp/>=<sp/>jsoncons::json::parse(data);<sp/><sp/></highlight><highlight class="comment">//<sp/>Parse<sp/>the<sp/>raw<sp/>body<sp/>into<sp/>JSON.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jsoncons::json<sp/>payload<sp/>=<sp/>staff_j.at(</highlight><highlight class="stringliteral">&quot;payload&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>staff<sp/>member&apos;s<sp/>fields.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&apos;id&apos;<sp/>names<sp/>the<sp/>service<sp/>whose<sp/>permissions<sp/>are<sp/>checked,<sp/>not<sp/>the<sp/>staff<sp/>member.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/>_id<sp/><sp/><sp/><sp/><sp/>=<sp/>staff_j.at(</highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">).as&lt;uint64_t&gt;();<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>service<sp/>id<sp/>used<sp/>for<sp/>the<sp/>permission<sp/>check.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="staffcontroller_8cpp_1acd40880d4e5e43f97e8ead3d0efe3666" kindref="member">StaffData</ref><sp/><sp/><sp/><sp/><sp/><sp/>staffData(payload);<sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>the<sp/>payload<sp/>JSON<sp/>into<sp/>a<sp/>typed<sp/>struct.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/>staff(staffData);<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>concrete<sp/>entity<sp/>from<sp/>the<sp/>staff<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" kindref="member">gateKeeper</ref>-&gt;canManageStaff&lt;T&gt;(requester,<sp/>_id,<sp/>error))<sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>NOT<sp/>allowed<sp/>to<sp/>manage<sp/>this<sp/>service&apos;s<sp/>staff...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(callback)(error.code,<sp/>error.message);<sp/><sp/></highlight><highlight class="comment">//<sp/>Send<sp/>back<sp/>the<sp/>permission<sp/>error<sp/>as-is.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Stop<sp/>before<sp/>touching<sp/>the<sp/>database.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classController_1ae33c97548e0d8cdd3f2289573d1a0dba" kindref="member">Controller::removeStaff</ref>(staff,<sp/>std::move(callback));<sp/><sp/></highlight><highlight class="comment">//<sp/>Allowed:<sp/>delegate<sp/>the<sp/>remove-staff<sp/>SQL<sp/>to<sp/>the<sp/>base.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/><sp/></highlight><highlight class="comment">//<sp/>Any<sp/>thrown<sp/>exception<sp/>is<sp/>turned<sp/>into<sp/>an<sp/>error<sp/>response.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" kindref="member">CRITICALMESSAGERESPONSE</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Macro:<sp/>reply<sp/>with<sp/>500<sp/>(or<sp/>503<sp/>for<sp/>a<sp/>busy<sp/>database).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="156"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/>*<sp/>Invites<sp/>a<sp/>staff<sp/>member<sp/>by<sp/>handing<sp/>an<sp/>invite<sp/>message<sp/>to<sp/>the<sp/>email-sender<sp/>daemon.</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/>*<sp/>Parses<sp/>`nominee_id`<sp/>and<sp/>the<sp/>@ref<sp/>StaffData<sp/>fields<sp/>from<sp/>the<sp/>whole<sp/>body,<sp/>checks</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>staff-management<sp/>permission,<sp/>and<sp/>—<sp/>if<sp/>the<sp/>fields<sp/>parsed<sp/>and<sp/>the<sp/>invite<sp/>JSON<sp/>could<sp/>be</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>built<sp/>—<sp/>POSTs<sp/>that<sp/>JSON<sp/>to<sp/>the<sp/>configured<sp/>email<sp/>daemon.<sp/>The<sp/>daemon&apos;s<sp/>body<sp/>is<sp/>relayed</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>200<sp/>on<sp/>success;<sp/>400<sp/>is<sp/>returned<sp/>when<sp/>invite<sp/>construction<sp/>or<sp/>delivery<sp/>fails.</highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp/>*<sp/>Note:<sp/>`nominee_id`<sp/>is<sp/>the<sp/>value<sp/>passed<sp/>to<sp/>`canManageStaff`<sp/>as<sp/>the<sp/>permission-check<sp/>target;</highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>note<sp/>also<sp/>that<sp/>the<sp/>email<sp/>request<sp/>is<sp/>a<sp/>synchronous<sp/>cURL<sp/>call.</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/>*<sp/>callback:<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/>*<sp/>requester:<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>staff-management<sp/>permission<sp/>check.</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp/>*<sp/>data:<sp/>Raw<sp/>JSON<sp/>body<sp/>containing<sp/>`nominee_id`<sp/>and<sp/>the<sp/>invite<sp/>fields.</highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="169" refid="classStaffController_1aca79920a9fdd6da89333627992bf6287" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStaffController_1aca79920a9fdd6da89333627992bf6287" kindref="member">StaffController&lt;T&gt;::InviteStaffToEntity</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>invite:<sp/>parse,<sp/>authorize,<sp/>then<sp/>POST<sp/>an<sp/>email.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Guard<sp/>against<sp/>parse<sp/>errors<sp/>and<sp/>network<sp/>problems.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="clientcontroller_8cpp_1aade4e0beb5a1397789e7ccb602ef175f" kindref="member">HttpError</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error;<sp/><sp/></highlight><highlight class="comment">//<sp/>Filled<sp/>if<sp/>permission<sp/>is<sp/>denied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jsoncons::json<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>staff_j<sp/>=<sp/>jsoncons::json::parse(data);<sp/><sp/></highlight><highlight class="comment">//<sp/>Parse<sp/>the<sp/>whole<sp/>body<sp/>as<sp/>JSON.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>nominee<sp/>id<sp/>doubles<sp/>as<sp/>the<sp/>permission-check<sp/>target<sp/>for<sp/>this<sp/>operation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_id<sp/><sp/><sp/><sp/><sp/>=<sp/>staff_j.at(</highlight><highlight class="stringliteral">&quot;nominee_id&quot;</highlight><highlight class="normal">).as&lt;uint64_t&gt;();<sp/><sp/></highlight><highlight class="comment">//<sp/>Id<sp/>of<sp/>the<sp/>person<sp/>being<sp/>invited;<sp/>also<sp/>used<sp/>for<sp/>the<sp/>permission<sp/>check.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="staffcontroller_8cpp_1acd40880d4e5e43f97e8ead3d0efe3666" kindref="member">StaffData</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>staffData(staff_j);<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>typed<sp/>invite<sp/>fields<sp/>from<sp/>the<sp/>JSON.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;std::string&gt;<sp/>response;<sp/><sp/></highlight><highlight class="comment">//<sp/>Will<sp/>hold<sp/>the<sp/>daemon&apos;s<sp/>reply<sp/>text;<sp/>empty<sp/>means<sp/>delivery<sp/>failed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>staff(staffData);<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>concrete<sp/>entity<sp/>from<sp/>the<sp/>invite<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" kindref="member">gateKeeper</ref>-&gt;canManageStaff&lt;T&gt;(requester,<sp/>_id,<sp/>error))<sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>NOT<sp/>allowed<sp/>to<sp/>invite<sp/>for<sp/>this<sp/>service...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(callback)(error.code,<sp/>error.message);<sp/><sp/></highlight><highlight class="comment">//<sp/>Report<sp/>the<sp/>permission<sp/>error<sp/>unchanged.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Stop;<sp/>do<sp/>not<sp/>send<sp/>any<sp/>email.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>parse_status<sp/>records<sp/>whether<sp/>StaffData<sp/>found<sp/>all<sp/>required<sp/>fields;<sp/>toInviteJson<sp/>adds<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>mail<sp/>template<sp/>and<sp/>invitation<sp/>link<sp/>to<sp/>the<sp/>JSON<sp/>that<sp/>is<sp/>sent<sp/>downstream.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(staffData.parse_status<sp/>&amp;&amp;<sp/>staffData.toInviteJson(staff_j))<sp/><sp/></highlight><highlight class="comment">//<sp/>Both<sp/>must<sp/>succeed:<sp/>fields<sp/>parsed<sp/>AND<sp/>invite<sp/>JSON<sp/>built.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>cURL<sp/>POST;<sp/>an<sp/>empty<sp/>optional<sp/>denotes<sp/>delivery<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>response<sp/>=<sp/><ref refid="classCommunicate_1ac17ede80bd387e5c096fcf9fcb481aee" kindref="member">Communicate::sendRequest</ref>(<ref refid="classStaffController_1aab325c701b76d68ee35fb4202a1c4693" kindref="member">email_sender_daemon_config_</ref>.host,<sp/><ref refid="classStaffController_1aab325c701b76d68ee35fb4202a1c4693" kindref="member">email_sender_daemon_config_</ref>.port,<sp/><sp/></highlight><highlight class="comment">//<sp/>Send<sp/>the<sp/>invite<sp/>to<sp/>the<sp/>configured<sp/>email<sp/>daemon<sp/>(host<sp/>+<sp/>port).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStaffController_1aab325c701b76d68ee35fb4202a1c4693" kindref="member">email_sender_daemon_config_</ref>.message_queue_path,<sp/>drogon::HttpMethod::Post,<sp/>staff_j.to_string());<sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>the<sp/>configured<sp/>queue<sp/>path,<sp/>an<sp/>HTTP<sp/>POST,<sp/>and<sp/>the<sp/>JSON<sp/>as<sp/>the<sp/>body.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(response.has_value())<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>value<sp/>means<sp/>the<sp/>daemon<sp/>replied<sp/>successfully.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Relay<sp/>the<sp/>daemon&apos;s<sp/>response<sp/>body<sp/>to<sp/>the<sp/>HTTP<sp/>client.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(callback)(<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" kindref="member">api::v2::Http::Status::OK</ref>,<sp/>response.value());<sp/><sp/></highlight><highlight class="comment">//<sp/>Reply<sp/>200<sp/>with<sp/>the<sp/>daemon&apos;s<sp/>body;<sp/>.value()<sp/>unwraps<sp/>the<sp/>optional.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>value<sp/>means<sp/>the<sp/>send<sp/>failed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(callback)(<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" kindref="member">api::v2::Http::Status::BAD_REQUEST</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>send<sp/>invite.&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Reply<sp/>400<sp/>with<sp/>a<sp/>diagnostic<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Parsing<sp/>or<sp/>invite-JSON<sp/>construction<sp/>failed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(callback)(<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" kindref="member">api::v2::Http::Status::BAD_REQUEST</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>create<sp/>invite<sp/>json.&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Reply<sp/>400<sp/>explaining<sp/>the<sp/>invite<sp/>could<sp/>not<sp/>be<sp/>built.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/><sp/></highlight><highlight class="comment">//<sp/>Any<sp/>unexpected<sp/>exception<sp/>is<sp/>turned<sp/>into<sp/>an<sp/>error<sp/>response.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" kindref="member">CRITICALMESSAGERESPONSE</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Macro:<sp/>reply<sp/>with<sp/>500<sp/>(or<sp/>503<sp/>for<sp/>a<sp/>busy<sp/>database).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="217"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="218"><highlight class="comment"><sp/>*<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>AddStaffToEntity.</highlight></codeline>
+<codeline lineno="219"><highlight class="comment"><sp/>*<sp/>Mirrors<sp/>the<sp/>synchronous<sp/>flow<sp/>but<sp/>co_awaits<sp/>`canManageStaffAsync`<sp/>and</highlight></codeline>
+<codeline lineno="220"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`Controller::addStaffAsync`.<sp/>The<sp/>callback<sp/>is<sp/>invoked<sp/>from<sp/>the<sp/>resumed<sp/>coroutine;</highlight></codeline>
+<codeline lineno="221"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>callers<sp/>must<sp/>co_await<sp/>the<sp/>returned<sp/>task<sp/>(the<sp/>route<sp/>layer<sp/>uses<sp/>`drogon::async_run`).</highlight></codeline>
+<codeline lineno="222"><highlight class="comment"><sp/>*<sp/>callback:<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="223"><highlight class="comment"><sp/>*<sp/>requester:<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>staff-management<sp/>permission<sp/>check.</highlight></codeline>
+<codeline lineno="224"><highlight class="comment"><sp/>*<sp/>data:<sp/>Raw<sp/>JSON<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>until<sp/>the<sp/>task<sp/>completes.</highlight></codeline>
+<codeline lineno="225"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="227" refid="classStaffController_1a53a028cf301c7a9765b3633a06275546" refkind="member"><highlight class="normal">drogon::Task&lt;void&gt;<sp/><ref refid="classStaffController_1a53a028cf301c7a9765b3633a06275546" kindref="member">StaffController&lt;T&gt;::AddStaffToEntityAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/><sp/></highlight><highlight class="comment">//<sp/>Async<sp/>add:<sp/>returns<sp/>a<sp/>pausable<sp/>task.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>jsoncons::json<sp/>staff_j;<sp/><sp/></highlight><highlight class="comment">//<sp/>Will<sp/>hold<sp/>the<sp/>parsed<sp/>JSON<sp/>body.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="clientcontroller_8cpp_1aade4e0beb5a1397789e7ccb602ef175f" kindref="member">HttpError</ref><sp/><sp/><sp/><sp/><sp/><sp/>error;<sp/><sp/></highlight><highlight class="comment">//<sp/>Filled<sp/>if<sp/>permission<sp/>is<sp/>denied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Guard<sp/>the<sp/>whole<sp/>coroutine<sp/>body<sp/>against<sp/>exceptions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>staff_j<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>jsoncons::json::parse(data);<sp/><sp/></highlight><highlight class="comment">//<sp/>Parse<sp/>the<sp/>raw<sp/>body<sp/>into<sp/>JSON.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jsoncons::json<sp/>payload<sp/>=<sp/>staff_j.at(</highlight><highlight class="stringliteral">&quot;payload&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Extract<sp/>the<sp/>new<sp/>staff<sp/>member&apos;s<sp/>fields.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="staffcontroller_8cpp_1acd40880d4e5e43f97e8ead3d0efe3666" kindref="member">StaffData</ref><sp/><sp/><sp/><sp/><sp/><sp/>staffData(payload);<sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>them<sp/>into<sp/>a<sp/>typed<sp/>struct.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/>staff(staffData);<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>concrete<sp/>entity.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>_id<sp/>=<sp/>staff_j.at(</highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">).as&lt;uint64_t&gt;();<sp/><sp/></highlight><highlight class="comment">//<sp/>Target<sp/>service<sp/>id<sp/>for<sp/>the<sp/>permission<sp/>check.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!</highlight><highlight class="keyword">co_await</highlight><highlight class="normal"><sp/><ref refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" kindref="member">gateKeeper</ref>-&gt;canManageStaffAsync&lt;T&gt;(requester,<sp/>_id,<sp/>error))<sp/><sp/></highlight><highlight class="comment">//<sp/>co_await<sp/>pauses<sp/>until<sp/>the<sp/>async<sp/>permission<sp/>answer<sp/>arrives.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(callback)(error.code,<sp/>error.message);<sp/><sp/></highlight><highlight class="comment">//<sp/>Denied:<sp/>report<sp/>the<sp/>error<sp/>through<sp/>the<sp/>callback.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Denial<sp/>ends<sp/>the<sp/>coroutine<sp/>here;<sp/>no<sp/>staff<sp/>SQL<sp/>is<sp/>submitted.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">co_return</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>this<sp/>coroutine<sp/>early<sp/>without<sp/>running<sp/>SQL.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">co_await</highlight><highlight class="normal"><sp/><ref refid="classController_1a1bb3245ec82d14644a2359cd546ea218" kindref="member">Controller::addStaffAsync</ref>(staff,<sp/>std::move(callback));<sp/><sp/></highlight><highlight class="comment">//<sp/>Pause<sp/>until<sp/>the<sp/>async<sp/>SQL<sp/>add<sp/>finishes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/><sp/></highlight><highlight class="comment">//<sp/>Exceptions<sp/>are<sp/>turned<sp/>into<sp/>an<sp/>error<sp/>response.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" kindref="member">CRITICALMESSAGERESPONSE</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Macro:<sp/>reply<sp/>with<sp/>500<sp/>(or<sp/>503<sp/>for<sp/>a<sp/>busy<sp/>database).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">co_return</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Every<sp/>coroutine<sp/>must<sp/>explicitly<sp/>finish<sp/>with<sp/>co_return.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="256"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="257"><highlight class="comment"><sp/>*<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>RemoveStaffFromEntity.</highlight></codeline>
+<codeline lineno="258"><highlight class="comment"><sp/>*<sp/>Same<sp/>parsing<sp/>and<sp/>authorisation<sp/>contract<sp/>as<sp/>the<sp/>synchronous<sp/>variant,<sp/>with<sp/>async</highlight></codeline>
+<codeline lineno="259"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>permission<sp/>and<sp/>SQL<sp/>calls;<sp/>denial<sp/>ends<sp/>the<sp/>task<sp/>before<sp/>any<sp/>database<sp/>work.</highlight></codeline>
+<codeline lineno="260"><highlight class="comment"><sp/>*<sp/>callback:<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="261"><highlight class="comment"><sp/>*<sp/>requester:<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>staff-management<sp/>permission<sp/>check.</highlight></codeline>
+<codeline lineno="262"><highlight class="comment"><sp/>*<sp/>data:<sp/>Raw<sp/>JSON<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>until<sp/>the<sp/>task<sp/>completes.</highlight></codeline>
+<codeline lineno="263"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="265" refid="classStaffController_1ac220308be6bf24122bfe037ea8c75e9c" refkind="member"><highlight class="normal">drogon::Task&lt;void&gt;<sp/><ref refid="classStaffController_1ac220308be6bf24122bfe037ea8c75e9c" kindref="member">StaffController&lt;T&gt;::RemoveStaffFromEntityAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/><sp/></highlight><highlight class="comment">//<sp/>Async<sp/>remove:<sp/>returns<sp/>a<sp/>pausable<sp/>task.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Guard<sp/>against<sp/>parse<sp/>errors<sp/>and<sp/>exceptions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="clientcontroller_8cpp_1aade4e0beb5a1397789e7ccb602ef175f" kindref="member">HttpError</ref><sp/><sp/><sp/><sp/><sp/><sp/>error;<sp/><sp/></highlight><highlight class="comment">//<sp/>Filled<sp/>if<sp/>permission<sp/>is<sp/>denied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jsoncons::json<sp/>staff_j<sp/>=<sp/>jsoncons::json::parse(data);<sp/><sp/></highlight><highlight class="comment">//<sp/>Parse<sp/>the<sp/>raw<sp/>body.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jsoncons::json<sp/>payload<sp/>=<sp/>staff_j.at(</highlight><highlight class="stringliteral">&quot;payload&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Extract<sp/>the<sp/>staff<sp/>member&apos;s<sp/>fields.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&apos;id&apos;<sp/>names<sp/>the<sp/>service<sp/>whose<sp/>permissions<sp/>are<sp/>checked,<sp/>not<sp/>the<sp/>staff<sp/>member.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/>_id<sp/><sp/><sp/><sp/><sp/>=<sp/>staff_j.at(</highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">).as&lt;uint64_t&gt;();<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>service<sp/>id<sp/>used<sp/>for<sp/>permission.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="staffcontroller_8cpp_1acd40880d4e5e43f97e8ead3d0efe3666" kindref="member">StaffData</ref><sp/><sp/><sp/><sp/><sp/><sp/>staffData(payload);<sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>payload<sp/>into<sp/>a<sp/>typed<sp/>struct.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/>staff(staffData);<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>concrete<sp/>entity.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!</highlight><highlight class="keyword">co_await</highlight><highlight class="normal"><sp/><ref refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" kindref="member">gateKeeper</ref>-&gt;canManageStaffAsync&lt;T&gt;(requester,<sp/>_id,<sp/>error))<sp/><sp/></highlight><highlight class="comment">//<sp/>Pause<sp/>until<sp/>the<sp/>permission<sp/>answer<sp/>arrives;<sp/>&quot;!&quot;<sp/>means<sp/>denied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(callback)(error.code,<sp/>error.message);<sp/><sp/></highlight><highlight class="comment">//<sp/>Report<sp/>the<sp/>permission<sp/>error.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">co_return</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Stop<sp/>the<sp/>coroutine;<sp/>skip<sp/>the<sp/>SQL.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">co_await</highlight><highlight class="normal"><sp/><ref refid="classController_1a417810c27071d4c1fae298b518d7819f" kindref="member">Controller::removeStaffAsync</ref>(staff,<sp/>std::move(callback));<sp/><sp/></highlight><highlight class="comment">//<sp/>Pause<sp/>until<sp/>the<sp/>async<sp/>remove-staff<sp/>SQL<sp/>finishes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/><sp/></highlight><highlight class="comment">//<sp/>Any<sp/>exception<sp/>is<sp/>turned<sp/>into<sp/>an<sp/>error<sp/>response.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" kindref="member">CRITICALMESSAGERESPONSE</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Macro:<sp/>reply<sp/>with<sp/>500<sp/>(or<sp/>503<sp/>for<sp/>a<sp/>busy<sp/>database).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">co_return</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Mark<sp/>the<sp/>end<sp/>of<sp/>this<sp/>coroutine.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="290"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="291"><highlight class="comment"><sp/>*<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>InviteStaffToEntity.</highlight></codeline>
+<codeline lineno="292"><highlight class="comment"><sp/>*<sp/>Mirrors<sp/>the<sp/>synchronous<sp/>flow,<sp/>with<sp/>an<sp/>async<sp/>permission<sp/>check.<sp/>The<sp/>email-daemon<sp/>POST</highlight></codeline>
+<codeline lineno="293"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remains<sp/>a<sp/>synchronous<sp/>cURL<sp/>call,<sp/>so<sp/>this<sp/>coroutine<sp/>may<sp/>block<sp/>on<sp/>network<sp/>I/O.</highlight></codeline>
+<codeline lineno="294"><highlight class="comment"><sp/>*<sp/>callback:<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="295"><highlight class="comment"><sp/>*<sp/>requester:<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>staff-management<sp/>permission<sp/>check.</highlight></codeline>
+<codeline lineno="296"><highlight class="comment"><sp/>*<sp/>data:<sp/>Raw<sp/>JSON<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>until<sp/>the<sp/>task<sp/>completes.</highlight></codeline>
+<codeline lineno="297"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="299" refid="classStaffController_1a7bfaae0026f9082bb42968cf04b421d5" refkind="member"><highlight class="normal">drogon::Task&lt;void&gt;<sp/><ref refid="classStaffController_1a7bfaae0026f9082bb42968cf04b421d5" kindref="member">StaffController&lt;T&gt;::InviteStaffToEntityAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/><sp/></highlight><highlight class="comment">//<sp/>Async<sp/>invite:<sp/>returns<sp/>a<sp/>pausable<sp/>task.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Guard<sp/>against<sp/>parse<sp/>errors<sp/>and<sp/>network<sp/>problems.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="clientcontroller_8cpp_1aade4e0beb5a1397789e7ccb602ef175f" kindref="member">HttpError</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error;<sp/><sp/></highlight><highlight class="comment">//<sp/>Filled<sp/>if<sp/>permission<sp/>is<sp/>denied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jsoncons::json<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>staff_j<sp/>=<sp/>jsoncons::json::parse(data);<sp/><sp/></highlight><highlight class="comment">//<sp/>Parse<sp/>the<sp/>whole<sp/>body<sp/>as<sp/>JSON.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>nominee<sp/>id<sp/>doubles<sp/>as<sp/>the<sp/>permission-check<sp/>target<sp/>for<sp/>this<sp/>operation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_id<sp/><sp/><sp/><sp/><sp/>=<sp/>staff_j.at(</highlight><highlight class="stringliteral">&quot;nominee_id&quot;</highlight><highlight class="normal">).as&lt;uint64_t&gt;();<sp/><sp/></highlight><highlight class="comment">//<sp/>Invitee<sp/>id,<sp/>also<sp/>used<sp/>for<sp/>the<sp/>permission<sp/>check.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="staffcontroller_8cpp_1acd40880d4e5e43f97e8ead3d0efe3666" kindref="member">StaffData</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>staffData(staff_j);<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>typed<sp/>invite<sp/>fields<sp/>from<sp/>the<sp/>JSON.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;std::string&gt;<sp/>response;<sp/><sp/></highlight><highlight class="comment">//<sp/>Holds<sp/>the<sp/>daemon&apos;s<sp/>reply;<sp/>empty<sp/>means<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>T<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>staff(staffData);<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>concrete<sp/>entity.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!</highlight><highlight class="keyword">co_await</highlight><highlight class="normal"><sp/><ref refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" kindref="member">gateKeeper</ref>-&gt;canManageStaffAsync&lt;T&gt;(requester,<sp/>_id,<sp/>error))<sp/><sp/></highlight><highlight class="comment">//<sp/>Pause<sp/>until<sp/>the<sp/>async<sp/>permission<sp/>answer;<sp/>&quot;!&quot;<sp/>means<sp/>denied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(callback)(error.code,<sp/>error.message);<sp/><sp/></highlight><highlight class="comment">//<sp/>Report<sp/>the<sp/>permission<sp/>error.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">co_return</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Stop<sp/>the<sp/>coroutine;<sp/>do<sp/>not<sp/>send<sp/>an<sp/>email.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>parse_status<sp/>records<sp/>whether<sp/>StaffData<sp/>found<sp/>all<sp/>required<sp/>fields;<sp/>toInviteJson<sp/>adds<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>mail<sp/>template<sp/>and<sp/>invitation<sp/>link<sp/>to<sp/>the<sp/>JSON<sp/>that<sp/>is<sp/>sent<sp/>downstream.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(staffData.parse_status<sp/>&amp;&amp;<sp/>staffData.toInviteJson(staff_j))<sp/><sp/></highlight><highlight class="comment">//<sp/>Require<sp/>both:<sp/>fields<sp/>parsed<sp/>AND<sp/>invite<sp/>JSON<sp/>built.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronous<sp/>cURL<sp/>POST;<sp/>an<sp/>empty<sp/>optional<sp/>denotes<sp/>delivery<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>response<sp/>=<sp/><ref refid="classCommunicate_1ac17ede80bd387e5c096fcf9fcb481aee" kindref="member">Communicate::sendRequest</ref>(<ref refid="classStaffController_1aab325c701b76d68ee35fb4202a1c4693" kindref="member">email_sender_daemon_config_</ref>.host,<sp/><ref refid="classStaffController_1aab325c701b76d68ee35fb4202a1c4693" kindref="member">email_sender_daemon_config_</ref>.port,<sp/><sp/></highlight><highlight class="comment">//<sp/>POST<sp/>the<sp/>invite<sp/>to<sp/>the<sp/>configured<sp/>email<sp/>daemon.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStaffController_1aab325c701b76d68ee35fb4202a1c4693" kindref="member">email_sender_daemon_config_</ref>.message_queue_path,<sp/>drogon::HttpMethod::Post,<sp/>staff_j.to_string());<sp/><sp/></highlight><highlight class="comment">//<sp/>Queue<sp/>path,<sp/>HTTP<sp/>POST<sp/>method,<sp/>JSON<sp/>body.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(response.has_value())<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>value<sp/>means<sp/>the<sp/>daemon<sp/>replied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Relay<sp/>the<sp/>daemon&apos;s<sp/>response<sp/>body<sp/>to<sp/>the<sp/>HTTP<sp/>client.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(callback)(<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" kindref="member">api::v2::Http::Status::OK</ref>,<sp/>response.value());<sp/><sp/></highlight><highlight class="comment">//<sp/>Reply<sp/>200<sp/>with<sp/>the<sp/>daemon&apos;s<sp/>body.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>value<sp/>means<sp/>delivery<sp/>failed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(callback)(<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" kindref="member">api::v2::Http::Status::BAD_REQUEST</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>send<sp/>invite.&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Reply<sp/>400<sp/>with<sp/>a<sp/>diagnostic.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Could<sp/>not<sp/>build<sp/>a<sp/>valid<sp/>invite.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(callback)(<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" kindref="member">api::v2::Http::Status::BAD_REQUEST</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>create<sp/>invite<sp/>json.&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Reply<sp/>400<sp/>explaining<sp/>the<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/><sp/></highlight><highlight class="comment">//<sp/>Any<sp/>unexpected<sp/>exception<sp/>becomes<sp/>an<sp/>error<sp/>response.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" kindref="member">CRITICALMESSAGERESPONSE</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Macro:<sp/>reply<sp/>with<sp/>500<sp/>(or<sp/>503<sp/>for<sp/>a<sp/>busy<sp/>database).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">co_return</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Mark<sp/>the<sp/>end<sp/>of<sp/>this<sp/>coroutine.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Entity<sp/>definitions<sp/>must<sp/>be<sp/>visible<sp/>here<sp/>for<sp/>the<sp/>explicit<sp/>instantiations<sp/>below,<sp/>which<sp/>need<sp/>T&apos;s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight><highlight class="comment">//<sp/>staff-related<sp/>SQL<sp/>statements<sp/>and<sp/>permission<sp/>queries.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entities_2services_2clinics_2clinics_8hpp" kindref="compound">entities/services/clinics/clinics.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//IWYU<sp/>pragma<sp/>:<sp/>keep</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="laboratories_8hpp" kindref="compound">entities/services/laboratories.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pharmacies_8hpp" kindref="compound">entities/services/pharmacies.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="radiologycenters_8hpp" kindref="compound">entities/services/radiologycenters.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//IWYU<sp/>pragma<sp/>:<sp/>keep</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="354"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="355"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Forces<sp/>compilation<sp/>of<sp/>the<sp/>constructor<sp/>and<sp/>all<sp/>member<sp/>templates<sp/>for<sp/>one<sp/>service<sp/>entity<sp/>type.</highlight></codeline>
+<codeline lineno="356"><highlight class="comment"><sp/>*<sp/>@details<sp/>Definitions<sp/>live<sp/>in<sp/>this<sp/>translation<sp/>unit,<sp/>so<sp/>without<sp/>these<sp/>instantiations<sp/>the<sp/>route</highlight></codeline>
+<codeline lineno="357"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>layer&apos;s<sp/>`shared_ptr&lt;StaffController&lt;T&gt;&gt;`<sp/>registrations<sp/>would<sp/>fail<sp/>to<sp/>link.</highlight></codeline>
+<codeline lineno="358"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A<sp/>&quot;translation<sp/>unit&quot;<sp/>is<sp/>one<sp/>source<sp/>file<sp/>plus<sp/>everything<sp/>it<sp/>includes<sp/>after<sp/>preprocessing.</highlight></codeline>
+<codeline lineno="359"><highlight class="comment"><sp/>*<sp/>@param<sp/>TYPE<sp/>Concrete<sp/>service<sp/>entity<sp/>class<sp/>to<sp/>instantiate.</highlight></codeline>
+<codeline lineno="360"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="361" refid="staffcontroller_8cpp_1aeeea97ca3883891cdc270c45ee7c33d9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>INSTANTIATE_STAFF_CONTROLLER(TYPE)<sp/></highlight><highlight class="comment">/*NOLINT*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="362"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>StaffController&lt;TYPE&gt;::StaffController();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="363"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>void<sp/>StaffController&lt;TYPE&gt;::AddStaffToEntity(CALLBACK_&amp;&amp;<sp/>callback,<sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data);<sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="364"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>void<sp/>StaffController&lt;TYPE&gt;::RemoveStaffFromEntity(CALLBACK_&amp;&amp;<sp/>callback,<sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data);<sp/>\</highlight></codeline>
+<codeline lineno="365"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>void<sp/>StaffController&lt;TYPE&gt;::InviteStaffToEntity(CALLBACK_&amp;&amp;<sp/>callback,<sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data);<sp/>\</highlight></codeline>
+<codeline lineno="366"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>drogon::Task&lt;void&gt;<sp/>StaffController&lt;TYPE&gt;::AddStaffToEntityAsync(CALLBACK_&amp;&amp;<sp/>callback,<sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data);<sp/>\</highlight></codeline>
+<codeline lineno="367"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>drogon::Task&lt;void&gt;<sp/>StaffController&lt;TYPE&gt;::RemoveStaffFromEntityAsync(CALLBACK_&amp;&amp;<sp/>callback,<sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data);<sp/>\</highlight></codeline>
+<codeline lineno="368"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>drogon::Task&lt;void&gt;<sp/>StaffController&lt;TYPE&gt;::InviteStaffToEntityAsync(CALLBACK_&amp;&amp;<sp/>callback,<sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Instantiate<sp/>for<sp/>all<sp/>entity<sp/>types<sp/>—<sp/>each<sp/>line<sp/>builds<sp/>one<sp/>concrete<sp/>staff<sp/>controller.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><ref refid="staffcontroller_8cpp_1aeeea97ca3883891cdc270c45ee7c33d9" kindref="member">INSTANTIATE_STAFF_CONTROLLER</ref>(<ref refid="classClinics" kindref="compound">Clinics</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>clinic<sp/>staff<sp/>controller&apos;s<sp/>code<sp/>so<sp/>the<sp/>route<sp/>layer<sp/>can<sp/>link<sp/>to<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><ref refid="staffcontroller_8cpp_1aeeea97ca3883891cdc270c45ee7c33d9" kindref="member">INSTANTIATE_STAFF_CONTROLLER</ref>(<ref refid="classPharmacies" kindref="compound">Pharmacies</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>pharmacy<sp/>staff<sp/>controller&apos;s<sp/>code<sp/>so<sp/>the<sp/>route<sp/>layer<sp/>can<sp/>link<sp/>to<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><ref refid="staffcontroller_8cpp_1aeeea97ca3883891cdc270c45ee7c33d9" kindref="member">INSTANTIATE_STAFF_CONTROLLER</ref>(<ref refid="classLaboratories" kindref="compound">Laboratories</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>laboratory<sp/>staff<sp/>controller&apos;s<sp/>code<sp/>so<sp/>the<sp/>route<sp/>layer<sp/>can<sp/>link<sp/>to<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><ref refid="staffcontroller_8cpp_1aeeea97ca3883891cdc270c45ee7c33d9" kindref="member">INSTANTIATE_STAFF_CONTROLLER</ref>(<ref refid="classRadiologyCenters" kindref="compound">RadiologyCenters</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>radiology-center<sp/>staff<sp/>controller&apos;s<sp/>code<sp/>so<sp/>the<sp/>route<sp/>layer<sp/>can<sp/>link<sp/>to<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/controllers/staffcontroller/staffcontroller.cpp"/>
+  </compounddef>
+</doxygen>

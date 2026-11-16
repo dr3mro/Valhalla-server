@@ -1,0 +1,719 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="permissionmanager__private_8cpp" kind="file" language="C++">
+    <compoundname>permissionmanager_private.cpp</compoundname>
+    <includes refid="permissionmanager__private_8hpp" local="yes">gatekeeper/permissionmanager/permissionmanager_private.hpp</includes>
+    <includes local="no">fmt/core.h</includes>
+    <includes local="no">fmt/format.h</includes>
+    <includes local="no">cstddef</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">exception</includes>
+    <includes local="no">jsoncons/basic_json.hpp</includes>
+    <includes local="no">jsoncons/json.hpp</includes>
+    <includes local="no">optional</includes>
+    <includes local="no">string</includes>
+    <includes refid="permissions_8hpp" local="yes">gatekeeper/permissionmanager/permissions.hpp</includes>
+    <includes refid="http_8hpp" local="yes">utils/global/http.hpp</includes>
+    <includes refid="requester_8hpp" local="yes">utils/global/requester.hpp</includes>
+    <incdepgraph>
+      <node id="19">
+        <label>configurator/configurator.hpp</label>
+        <link refid="configurator_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>defaults.hpp</label>
+        <link refid="defaults_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>configurator/envloader/envloader.hpp</label>
+        <link refid="envloader_8hpp"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>envvars/envvars.hpp</label>
+        <link refid="envvars_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>controllers/databasecontroller/databasecontroller.hpp</label>
+        <link refid="databasecontroller_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>database/asyncdbclient.hpp</label>
+        <link refid="asyncdbclient_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>database/asyncresultmapper.hpp</label>
+        <link refid="asyncresultmapper_8hpp"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>database/asyncsqlbinder.hpp</label>
+        <link refid="asyncsqlbinder_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>database/databasebusy.hpp</label>
+        <link refid="databasebusy_8hpp"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>database/databasehandler.hpp</label>
+        <link refid="databasehandler_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>database/dbprobe.hpp</label>
+        <link refid="dbprobe_8hpp"/>
+      </node>
+      <node id="43">
+        <label>gatekeeper/permissionmanager/permissioncache.hpp</label>
+        <link refid="permissioncache_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/gatekeeper/permissionmanager/permissionmanager_private.cpp</label>
+        <link refid="permissionmanager__private_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>gatekeeper/permissionmanager/permissionmanager_private.hpp</label>
+        <link refid="permissionmanager__private_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>gatekeeper/permissionmanager/permissions.hpp</label>
+        <link refid="permissions_8hpp"/>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>store/store.hpp</label>
+        <link refid="store_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>utils/global/http.hpp</label>
+        <link refid="http_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>utils/global/requester.hpp</label>
+        <link refid="requester_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>utils/global/types.hpp</label>
+        <link refid="utils_2global_2types_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>utils/message/message.hpp</label>
+        <link refid="message_8hpp"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>atomic</label>
+      </node>
+      <node id="21">
+        <label>chrono</label>
+      </node>
+      <node id="46">
+        <label>cstddef</label>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="31">
+        <label>drogon/orm/DbClient.h</label>
+      </node>
+      <node id="33">
+        <label>drogon/orm/Result.h</label>
+      </node>
+      <node id="35">
+        <label>drogon/orm/SqlBinder.h</label>
+      </node>
+      <node id="36">
+        <label>drogon/utils/coroutine.h</label>
+      </node>
+      <node id="4">
+        <label>exception</label>
+      </node>
+      <node id="11">
+        <label>fmt/core.h</label>
+      </node>
+      <node id="12">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="20">
+        <label>fmt/ranges.h</label>
+      </node>
+      <node id="44">
+        <label>iterator</label>
+      </node>
+      <node id="5">
+        <label>jsoncons/basic_json.hpp</label>
+      </node>
+      <node id="14">
+        <label>jsoncons/json.hpp</label>
+      </node>
+      <node id="6">
+        <label>memory</label>
+      </node>
+      <node id="15">
+        <label>mutex</label>
+      </node>
+      <node id="7">
+        <label>optional</label>
+      </node>
+      <node id="16">
+        <label>pqxx/pqxx</label>
+      </node>
+      <node id="29">
+        <label>stdexcept</label>
+      </node>
+      <node id="8">
+        <label>string</label>
+      </node>
+      <node id="26">
+        <label>trantor/utils/Logger.h</label>
+      </node>
+      <node id="22">
+        <label>type_traits</label>
+      </node>
+      <node id="40">
+        <label>typeindex</label>
+      </node>
+      <node id="41">
+        <label>unordered_map</label>
+      </node>
+      <node id="17">
+        <label>unordered_set</label>
+      </node>
+      <node id="18">
+        <label>utility</label>
+      </node>
+      <node id="37">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="permissionmanager__private_8cpp_1a69fdf8e30d39a5bacfc839feb01dd616" prot="public" static="no">
+        <type><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate" kindref="compound">api::v2::PermissionManagerPrivate</ref></type>
+        <definition>using PermissionManagerPrivate = api::v2::PermissionManagerPrivate</definition>
+        <argsstring></argsstring>
+        <name>PermissionManagerPrivate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" line="43" column="1" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="permissionmanager__private_8cpp_1a005141ff44605d200344a1f530cde902" prot="public" static="no">
+        <type><ref refid="structPermissions_1a1dc2e37dd1ca56eb9dc57829a512e092" kindref="member">Permissions::PowerLevel</ref></type>
+        <definition>using PowerLevel = Permissions::PowerLevel</definition>
+        <argsstring></argsstring>
+        <name>PowerLevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" line="44" column="1" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>The helper functions that turn permission JSON into allow/deny answers. (Originally: &quot;Implementation for permissionmanager_private: Requires staff membership plus the @p powerlevel capability bit.&quot;). </para>
+    </briefdescription>
+    <detaileddescription>
+<para>These functions look up the requester in a service&apos;s owner/admin/staff fields, decode the numeric permission mask, validate creation payloads, and combine the basic checks into rules like &quot;owner, admin, or staff
+         with CAN_READ&quot;. Every denial is explained through an Http::Error.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: It is the engine behind <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref>. Keeping the detailed JSON parsing and identity comparisons here means every entity family gets identical rules. Without it, the public manager would have no way to interpret the database&apos;s permission document.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>JSON objects and arrays: <ulink url="https://www.json.org/json-en.html">https://www.json.org/json-en.html</ulink></para>
+</listitem><listitem><para>Structured bindings (auto [a, b]): <ulink url="https://en.cppreference.com/w/cpp/language/structured_binding">https://en.cppreference.com/w/cpp/language/structured_binding</ulink></para>
+</listitem><listitem><para>Exceptions and try/catch: <ulink url="https://en.cppreference.com/w/cpp/language/try_catch">https://en.cppreference.com/w/cpp/language/try_catch</ulink></para>
+</listitem><listitem><para>HTTP 403 Forbidden: <ulink url="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403">https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>permissionmanager_private.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>The<sp/>helper<sp/>functions<sp/>that<sp/>turn<sp/>permission<sp/>JSON<sp/>into<sp/>allow/deny<sp/>answers.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(Originally:<sp/>&quot;Implementation<sp/>for<sp/>permissionmanager_private:<sp/>Requires<sp/>staff<sp/>membership<sp/>plus<sp/>the<sp/>@p<sp/>powerlevel<sp/>capability<sp/>bit.&quot;)</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>These<sp/>functions<sp/>look<sp/>up<sp/>the<sp/>requester<sp/>in<sp/>a<sp/>service&apos;s<sp/>owner/admin/staff</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fields,<sp/>decode<sp/>the<sp/>numeric<sp/>permission<sp/>mask,<sp/>validate<sp/>creation<sp/>payloads,</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>and<sp/>combine<sp/>the<sp/>basic<sp/>checks<sp/>into<sp/>rules<sp/>like<sp/>&quot;owner,<sp/>admin,<sp/>or<sp/>staff</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>with<sp/>CAN_READ&quot;.<sp/>Every<sp/>denial<sp/>is<sp/>explained<sp/>through<sp/>an<sp/>Http::Error.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>It<sp/>is<sp/>the<sp/>engine<sp/>behind<sp/>PermissionManager.<sp/>Keeping<sp/>the<sp/>detailed<sp/>JSON<sp/>parsing</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>and<sp/>identity<sp/>comparisons<sp/>here<sp/>means<sp/>every<sp/>entity<sp/>family<sp/>gets<sp/>identical<sp/>rules.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>Without<sp/>it,<sp/>the<sp/>public<sp/>manager<sp/>would<sp/>have<sp/>no<sp/>way<sp/>to<sp/>interpret<sp/>the<sp/>database&apos;s</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>permission<sp/>document.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>-<sp/>JSON<sp/>objects<sp/>and<sp/>arrays:<sp/>https://www.json.org/json-en.html</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>Structured<sp/>bindings<sp/>(auto<sp/>[a,<sp/>b]):<sp/>https://en.cppreference.com/w/cpp/language/structured_binding</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>Exceptions<sp/>and<sp/>try/catch:<sp/>https://en.cppreference.com/w/cpp/language/try_catch</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>HTTP<sp/>403<sp/>Forbidden:<sp/>https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="permissionmanager__private_8hpp" kindref="compound">gatekeeper/permissionmanager/permissionmanager_private.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>declarations<sp/>implemented<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/core.h&gt;</highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Formatting<sp/>helpers<sp/>used<sp/>for<sp/>error<sp/>messages.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/format.h&gt;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>fmt::format,<sp/>which<sp/>builds<sp/>strings<sp/>from<sp/>a<sp/>template<sp/>and<sp/>arguments.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>size_t,<sp/>used<sp/>for<sp/>positions<sp/>in<sp/>a<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>uint64_t<sp/>for<sp/>ids<sp/>and<sp/>masks.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;exception&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::exception,<sp/>caught<sp/>around<sp/>JSON<sp/>conversions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/basic_json.hpp&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>jsoncons::json,<sp/>the<sp/>permission<sp/>document<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/json.hpp&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Additional<sp/>jsoncons<sp/>helpers<sp/>for<sp/>iterating<sp/>objects.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::optional<sp/>for<sp/>staff<sp/>entries<sp/>that<sp/>may<sp/>not<sp/>exist.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>for<sp/>names,<sp/>keys<sp/>and<sp/>messages.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="permissions_8hpp" kindref="compound">gatekeeper/permissionmanager/permissions.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>PowerLevel<sp/>and<sp/>StaffPermission<sp/>bit<sp/>masks.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="http_8hpp" kindref="compound">utils/global/http.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Http::Error<sp/>and<sp/>status<sp/>codes<sp/>for<sp/>denials.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="requester_8hpp" kindref="compound">utils/global/requester.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Requester,<sp/>the<sp/>caller<sp/>whose<sp/>identity<sp/>is<sp/>checked.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="permissionmanager__private_8cpp_1a69fdf8e30d39a5bacfc839feb01dd616" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="permissionmanager__private_8cpp_1a69fdf8e30d39a5bacfc839feb01dd616" kindref="member">PermissionManagerPrivate</ref><sp/>=<sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate" kindref="compound">api::v2::PermissionManagerPrivate</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Short<sp/>alias<sp/>so<sp/>definitions<sp/>below<sp/>can<sp/>omit<sp/>the<sp/>namespace.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="permissionmanager__private_8cpp_1a005141ff44605d200344a1f530cde902" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="permissionmanager__private_8cpp_1a005141ff44605d200344a1f530cde902" kindref="member">PowerLevel</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="structPermissions_1a1dc2e37dd1ca56eb9dc57829a512e092" kindref="member">Permissions::PowerLevel</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Short<sp/>alias<sp/>for<sp/>the<sp/>bit-mask<sp/>type<sp/>used<sp/>in<sp/>comparisons.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="46"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>Requires<sp/>staff<sp/>membership<sp/>plus<sp/>the<sp/>@p<sp/>powerlevel<sp/>capability<sp/>bit.</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>error:<sp/>FORBIDDEN<sp/>with<sp/>a<sp/>reason<sp/>when<sp/>the<sp/>requester<sp/>is<sp/>not<sp/>staff.</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a6a68b225b7b685e9ed7293606870fafc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a6a68b225b7b685e9ed7293606870fafc" kindref="member">PermissionManagerPrivate::hasPermission</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>permissions_j,<sp/><sp/></highlight><highlight class="comment">//<sp/>Definition<sp/>of<sp/>the<sp/>staff-capability<sp/>check<sp/>(signature<sp/>continues<sp/>next<sp/>line).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPermissions_1a1dc2e37dd1ca56eb9dc57829a512e092" kindref="member">Permissions::PowerLevel</ref>&amp;<sp/>powerlevel,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_name,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error)<sp/><sp/></highlight><highlight class="comment">//<sp/>Rest<sp/>of<sp/>hasPermission&apos;s<sp/>signature:<sp/>the<sp/>required<sp/>bit,<sp/>a<sp/>name<sp/>for<sp/>messages,<sp/>and<sp/>the<sp/>error<sp/>output.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>entityStaffPermissions<sp/>=<sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a95781764a2c4cf1be79c2b58fa742348" kindref="member">isStaffOfService</ref>(requester,<sp/>permissions_j,<sp/>service_name,<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>find<sp/>the<sp/>caller&apos;s<sp/>staff<sp/>entry;<sp/>it<sp/>also<sp/>fills<sp/>in<sp/>error<sp/>on<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!entityStaffPermissions.has_value())<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>staff<sp/>entry<sp/>means<sp/>the<sp/>caller<sp/>is<sp/>not<sp/>on<sp/>this<sp/>service&apos;s<sp/>team.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.code<sp/><sp/><sp/><sp/>=<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" kindref="member">Http::Status::FORBIDDEN</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>403<sp/>Forbidden:<sp/>malformed<sp/>data<sp/>is<sp/>treated<sp/>as<sp/>a<sp/>denial.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.message<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;You<sp/>are<sp/>not<sp/>a<sp/>staff<sp/>of<sp/>this<sp/>service&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Explain<sp/>exactly<sp/>why<sp/>access<sp/>was<sp/>denied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Deny<sp/>the<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((entityStaffPermissions-&gt;power<sp/>&amp;<sp/>powerlevel)<sp/>!=<sp/>PowerLevel::NONE);<sp/><sp/></highlight><highlight class="comment">//<sp/>AND<sp/>the<sp/>staff<sp/>mask<sp/>with<sp/>the<sp/>required<sp/>bit;<sp/>non-zero<sp/>means<sp/>they<sp/>have<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="64"><highlight class="comment">/**<sp/>@brief<sp/>Compares<sp/>the<sp/>requester<sp/>id<sp/>with<sp/>`owner_id`<sp/>in<sp/>the<sp/>permission<sp/>JSON.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a261f7f649b795efc1d1dd8955510f9ea" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a261f7f649b795efc1d1dd8955510f9ea" kindref="member">PermissionManagerPrivate::isOwnerOfService</ref>(<sp/><sp/></highlight><highlight class="comment">//<sp/>Definition<sp/>of<sp/>the<sp/>owner-id<sp/>comparison<sp/>(signature<sp/>continues<sp/>next<sp/>line).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>permissions_j,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_name,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error)<sp/><sp/></highlight><highlight class="comment">//<sp/>Rest<sp/>of<sp/>the<sp/>signature:<sp/>caller,<sp/>permission<sp/>document,<sp/>service<sp/>name<sp/>and<sp/>error<sp/>output.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!permissions_j.has_value()<sp/>||<sp/>permissions_j-&gt;empty())<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>permission<sp/>document<sp/>means<sp/>we<sp/>cannot<sp/>decide;<sp/>treat<sp/>as<sp/>a<sp/>bad<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.message<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>get<sp/>service<sp/>permissions<sp/>for.&quot;</highlight><highlight class="normal"><sp/>+<sp/>service_name;<sp/><sp/></highlight><highlight class="comment">//<sp/>Say<sp/>which<sp/>service&apos;s<sp/>permissions<sp/>could<sp/>not<sp/>be<sp/>read.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.code<sp/><sp/><sp/><sp/>=<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" kindref="member">api::v2::Http::BAD_REQUEST</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>400<sp/>Bad<sp/>Request:<sp/>the<sp/>lookup<sp/>produced<sp/>no<sp/>usable<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Deny<sp/>the<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!requester.idMatch(permissions_j.value()[</highlight><highlight class="stringliteral">&quot;owner_id&quot;</highlight><highlight class="normal">].as&lt;uint64_t&gt;()))<sp/><sp/></highlight><highlight class="comment">//<sp/>Compare<sp/>the<sp/>caller&apos;s<sp/>id<sp/>with<sp/>the<sp/>stored<sp/>owner_id.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.code<sp/>=<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" kindref="member">Http::Status::FORBIDDEN</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>403<sp/>Forbidden:<sp/>wrong<sp/>identity<sp/>for<sp/>this<sp/>operation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.message<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;You<sp/>are<sp/>not<sp/>the<sp/>owner<sp/>of<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>service_name;<sp/><sp/></highlight><highlight class="comment">//<sp/>Append<sp/>which<sp/>service<sp/>the<sp/>caller<sp/>does<sp/>not<sp/>own.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Deny<sp/>the<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>door<sp/>succeeded,<sp/>so<sp/>allow.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="84"><highlight class="comment">/**<sp/>@brief<sp/>Compares<sp/>the<sp/>requester<sp/>id<sp/>with<sp/>`admin_id`<sp/>in<sp/>the<sp/>permission<sp/>JSON.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a9242aea2edde8ca7163099b20049595f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a9242aea2edde8ca7163099b20049595f" kindref="member">PermissionManagerPrivate::isAdminOfService</ref>(<sp/><sp/></highlight><highlight class="comment">//<sp/>Definition<sp/>of<sp/>the<sp/>admin-id<sp/>comparison<sp/>(signature<sp/>continues<sp/>next<sp/>line).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>permissions_j,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_name,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error)<sp/><sp/></highlight><highlight class="comment">//<sp/>Rest<sp/>of<sp/>the<sp/>signature:<sp/>caller,<sp/>permission<sp/>document,<sp/>service<sp/>name<sp/>and<sp/>error<sp/>output.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!permissions_j.has_value()<sp/>||<sp/>permissions_j-&gt;empty())<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>permission<sp/>document<sp/>means<sp/>we<sp/>cannot<sp/>decide;<sp/>treat<sp/>as<sp/>a<sp/>bad<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.message<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>get<sp/>service<sp/>permissions<sp/>for.&quot;</highlight><highlight class="normal"><sp/>+<sp/>service_name;<sp/><sp/></highlight><highlight class="comment">//<sp/>Say<sp/>which<sp/>service&apos;s<sp/>permissions<sp/>could<sp/>not<sp/>be<sp/>read.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.code<sp/><sp/><sp/><sp/>=<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" kindref="member">api::v2::Http::BAD_REQUEST</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>400<sp/>Bad<sp/>Request:<sp/>the<sp/>lookup<sp/>produced<sp/>no<sp/>usable<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Deny<sp/>the<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!requester.idMatch(permissions_j.value()[</highlight><highlight class="stringliteral">&quot;admin_id&quot;</highlight><highlight class="normal">].as&lt;uint64_t&gt;()))<sp/><sp/></highlight><highlight class="comment">//<sp/>Compare<sp/>the<sp/>caller&apos;s<sp/>id<sp/>with<sp/>the<sp/>stored<sp/>admin_id.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.code<sp/>=<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" kindref="member">Http::Status::FORBIDDEN</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>403<sp/>Forbidden:<sp/>wrong<sp/>identity<sp/>for<sp/>this<sp/>operation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.message<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;You<sp/>are<sp/>not<sp/>the<sp/>admin<sp/>of<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>service_name;<sp/><sp/></highlight><highlight class="comment">//<sp/>Append<sp/>which<sp/>service<sp/>the<sp/>caller<sp/>does<sp/>not<sp/>administer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Deny<sp/>the<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>door<sp/>succeeded,<sp/>so<sp/>allow.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="103"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Scans<sp/>the<sp/>`staff`<sp/>map<sp/>for<sp/>a<sp/>`&quot;&lt;id&gt;:&lt;mask&gt;&quot;`<sp/>entry<sp/>belonging<sp/>to<sp/>the<sp/>requester.</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/>*<sp/>@details<sp/>Malformed<sp/>numeric<sp/>entries<sp/>throw<sp/>and<sp/>are<sp/>reported<sp/>as<sp/>FORBIDDEN;<sp/>a<sp/>non-match<sp/>also</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>leaves<sp/>FORBIDDEN<sp/>in<sp/>@p<sp/>error.<sp/>The<sp/>mask<sp/>is<sp/>decoded<sp/>into<sp/>PowerLevel<sp/>bits.</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a95781764a2c4cf1be79c2b58fa742348" refkind="member"><highlight class="normal">std::optional&lt;Permissions::StaffPermission&gt;<sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a95781764a2c4cf1be79c2b58fa742348" kindref="member">PermissionManagerPrivate::isStaffOfService</ref>(<sp/><sp/></highlight><highlight class="comment">//<sp/>Definition<sp/>of<sp/>the<sp/>staff<sp/>lookup<sp/>(signature<sp/>continues<sp/>next<sp/>line).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>permissions_j,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_name,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error)<sp/><sp/></highlight><highlight class="comment">//<sp/>Rest<sp/>of<sp/>the<sp/>signature:<sp/>caller,<sp/>permission<sp/>document,<sp/>service<sp/>name<sp/>and<sp/>error<sp/>output.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>JSON<sp/>access<sp/>and<sp/>number<sp/>parsing<sp/>can<sp/>throw,<sp/>so<sp/>guard<sp/>them.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!permissions_j.has_value()<sp/>||<sp/>permissions_j-&gt;empty())<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>permission<sp/>document<sp/>means<sp/>we<sp/>cannot<sp/>decide;<sp/>treat<sp/>as<sp/>a<sp/>bad<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.message<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>get<sp/>service<sp/>permissions<sp/>for.&quot;</highlight><highlight class="normal"><sp/>+<sp/>service_name;<sp/><sp/></highlight><highlight class="comment">//<sp/>Say<sp/>which<sp/>service&apos;s<sp/>permissions<sp/>could<sp/>not<sp/>be<sp/>read.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.code<sp/><sp/><sp/><sp/>=<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" kindref="member">api::v2::Http::BAD_REQUEST</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>400<sp/>Bad<sp/>Request:<sp/>the<sp/>lookup<sp/>produced<sp/>no<sp/>usable<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>usable<sp/>staff<sp/>entry;<sp/>caller<sp/>should<sp/>treat<sp/>this<sp/>as<sp/>denial.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>staff<sp/>=<sp/>permissions_j.value()[</highlight><highlight class="stringliteral">&quot;staff&quot;</highlight><highlight class="normal">];<sp/><sp/></highlight><highlight class="comment">//<sp/>Grab<sp/>the<sp/>&apos;staff&apos;<sp/>object<sp/>from<sp/>the<sp/>permission<sp/>document.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>[role,<sp/>members]<sp/>:<sp/>staff.object_range())<sp/><sp/></highlight><highlight class="comment">//<sp/>Walk<sp/>every<sp/>role;<sp/>structured<sp/>binding<sp/>gives<sp/>the<sp/>role<sp/>name<sp/>and<sp/>its<sp/>member<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>member<sp/>:<sp/>members.array_range())<sp/><sp/></highlight><highlight class="comment">//<sp/>Walk<sp/>each<sp/>member<sp/>string<sp/>inside<sp/>that<sp/>role&apos;s<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!member.as&lt;std::string&gt;().empty())<sp/><sp/></highlight><highlight class="comment">//<sp/>Skip<sp/>blank<sp/>entries<sp/>so<sp/>they<sp/>cannot<sp/>cause<sp/>parse<sp/>errors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>raw_str<sp/>=<sp/>member.as&lt;std::string&gt;();<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>entry<sp/>is<sp/>stored<sp/>as<sp/>text<sp/>in<sp/>the<sp/>form<sp/>&apos;&lt;id&gt;:&lt;mask&gt;&apos;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>pos<sp/><sp/><sp/><sp/><sp/>=<sp/>raw_str.find(</highlight><highlight class="charliteral">&apos;:&apos;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Locate<sp/>the<sp/>colon<sp/>that<sp/>separates<sp/>the<sp/>id<sp/>from<sp/>the<sp/>mask.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>left<sp/><sp/><sp/><sp/>=<sp/>raw_str.substr(0,<sp/>pos);<sp/><sp/></highlight><highlight class="comment">//<sp/>Everything<sp/>before<sp/>the<sp/>colon<sp/>is<sp/>the<sp/>staff<sp/>id<sp/>as<sp/>text.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>right<sp/><sp/><sp/>=<sp/>raw_str.substr(pos<sp/>+<sp/>1);<sp/><sp/></highlight><highlight class="comment">//<sp/>Everything<sp/>after<sp/>the<sp/>colon<sp/>is<sp/>the<sp/>permission<sp/>mask<sp/>as<sp/>text.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(left<sp/>==<sp/>std::to_string(requester.getId()))<sp/><sp/></highlight><highlight class="comment">//<sp/>Is<sp/>this<sp/>entry<sp/>for<sp/>the<sp/>caller?<sp/>Compare<sp/>the<sp/>id<sp/>strings.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::optional&lt;Permissions::StaffPermission&gt;(<ref refid="structPermissions_1a9617e1834ef40047fc77ac4898e51eb5" kindref="member">Permissions::StaffPermission</ref>{<sp/><sp/></highlight><highlight class="comment">//<sp/>Found<sp/>a<sp/>match:<sp/>build<sp/>the<sp/>result<sp/>object<sp/>describing<sp/>this<sp/>staff<sp/>member.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.staff_id<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">uint64_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(std::stoull(left)),<sp/>.power<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="permissionmanager__private_8cpp_1a005141ff44605d200344a1f530cde902" kindref="member">PowerLevel</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(std::stoi(right)),<sp/>.isMember<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">});<sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>id<sp/>and<sp/>mask<sp/>strings<sp/>to<sp/>numbers,<sp/>and<sp/>flag<sp/>this<sp/>as<sp/>a<sp/>real<sp/>match.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/><sp/></highlight><highlight class="comment">//<sp/>Runs<sp/>when<sp/>a<sp/>staff<sp/>entry<sp/>is<sp/>malformed<sp/>(bad<sp/>number<sp/>or<sp/>missing<sp/>colon).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.code<sp/><sp/><sp/><sp/>=<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" kindref="member">Http::Status::FORBIDDEN</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>403<sp/>Forbidden:<sp/>malformed<sp/>data<sp/>is<sp/>treated<sp/>as<sp/>a<sp/>denial.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.message<sp/>=<sp/>std::string(</highlight><highlight class="stringliteral">&quot;Invalid<sp/>staff<sp/>permission:<sp/>&quot;</highlight><highlight class="normal">)<sp/>+<sp/>e.what();<sp/><sp/></highlight><highlight class="comment">//<sp/>Report<sp/>the<sp/>parsing<sp/>problem<sp/>in<sp/>the<sp/>denial<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>error.code<sp/><sp/><sp/><sp/>=<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" kindref="member">Http::Status::FORBIDDEN</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>403<sp/>Forbidden:<sp/>malformed<sp/>data<sp/>is<sp/>treated<sp/>as<sp/>a<sp/>denial.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>error.message<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>find<sp/>the<sp/>user<sp/>permission<sp/>level<sp/>in<sp/>service<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>service_name;<sp/><sp/></highlight><highlight class="comment">//<sp/>Reached<sp/>the<sp/>end<sp/>with<sp/>no<sp/>match:<sp/>explain<sp/>that<sp/>too.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>usable<sp/>staff<sp/>entry;<sp/>caller<sp/>should<sp/>treat<sp/>this<sp/>as<sp/>denial.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="152"><highlight class="comment">/**<sp/>@brief<sp/>Allows<sp/>access<sp/>only<sp/>when<sp/>both<sp/>the<sp/>requester&apos;s<sp/>group<sp/>and<sp/>id<sp/>match<sp/>the<sp/>target.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153" refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" kindref="member">PermissionManagerPrivate::assert_group_id_match</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>groupname,<sp/>uint64_t<sp/>client_id,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error)<sp/><sp/></highlight><highlight class="comment">//<sp/>Definition<sp/>of<sp/>the<sp/>group+id<sp/>check<sp/>for<sp/>client<sp/>records.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!requester.groupMatch(groupname)<sp/>||<sp/>!requester.idMatch(client_id))<sp/><sp/></highlight><highlight class="comment">//<sp/>Both<sp/>must<sp/>match;<sp/>either<sp/>mismatch<sp/>means<sp/>the<sp/>caller<sp/>is<sp/>touching<sp/>someone<sp/>else&apos;s<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.code<sp/><sp/><sp/><sp/>=<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" kindref="member">Http::Status::FORBIDDEN</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>403<sp/>Forbidden:<sp/>malformed<sp/>data<sp/>is<sp/>treated<sp/>as<sp/>a<sp/>denial.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.message<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;You<sp/>are<sp/>not<sp/>allowed<sp/>to<sp/>manage<sp/>client<sp/>with<sp/>id:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(client_id)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>and<sp/>group:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>groupname;<sp/><sp/></highlight><highlight class="comment">//<sp/>Say<sp/>exactly<sp/>which<sp/>client<sp/>and<sp/>group<sp/>were<sp/>rejected.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Deny<sp/>the<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>door<sp/>succeeded,<sp/>so<sp/>allow.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="164"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/>*<sp/>Validates<sp/>service<sp/>creation:<sp/>payload<sp/>present,<sp/>ids<sp/>extractable,<sp/>caller<sp/>is<sp/>the<sp/>provider.</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp/>*<sp/>error:<sp/>BAD_REQUEST<sp/>with<sp/>a<sp/>reason<sp/>on<sp/>failure.</highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a7e6031ab93f769c852bb999b4f2bdc7b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a7e6031ab93f769c852bb999b4f2bdc7b" kindref="member">api::v2::PermissionManagerPrivate::preServiceCreateChecks</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>service_j,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error)<sp/><sp/></highlight><highlight class="comment">//<sp/>Definition<sp/>of<sp/>the<sp/>service-creation<sp/>validation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!service_j.has_value())<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>creation<sp/>request<sp/>without<sp/>a<sp/>body<sp/>cannot<sp/>be<sp/>validated.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.code<sp/><sp/><sp/><sp/>=<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" kindref="member">Http::Status::BAD_REQUEST</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>400<sp/>Bad<sp/>Request:<sp/>the<sp/>payload<sp/>or<sp/>id<sp/>was<sp/>missing/invalid.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.message<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Service<sp/>data<sp/>is<sp/>not<sp/>provided.&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Explain<sp/>that<sp/>the<sp/>payload<sp/>was<sp/>missing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Deny<sp/>the<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>owner_id<sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Will<sp/>hold<sp/>the<sp/>owner<sp/>id<sp/>parsed<sp/>from<sp/>the<sp/>payload;<sp/>starts<sp/>at<sp/>zero.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>admin_id<sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Will<sp/>hold<sp/>the<sp/>admin<sp/>id<sp/>parsed<sp/>from<sp/>the<sp/>payload;<sp/>starts<sp/>at<sp/>zero.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>JSON<sp/>access<sp/>and<sp/>number<sp/>parsing<sp/>can<sp/>throw,<sp/>so<sp/>guard<sp/>them.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>owner_id<sp/>=<sp/>service_j-&gt;at(</highlight><highlight class="stringliteral">&quot;owner_id&quot;</highlight><highlight class="normal">).as&lt;uint64_t&gt;();<sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>the<sp/>initial<sp/>owner<sp/>id<sp/>from<sp/>the<sp/>JSON<sp/>body.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>admin_id<sp/>=<sp/>service_j-&gt;at(</highlight><highlight class="stringliteral">&quot;admin_id&quot;</highlight><highlight class="normal">).as&lt;uint64_t&gt;();<sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>the<sp/>initial<sp/>admin<sp/>id<sp/>from<sp/>the<sp/>JSON<sp/>body.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/><sp/></highlight><highlight class="comment">//<sp/>Runs<sp/>when<sp/>a<sp/>staff<sp/>entry<sp/>is<sp/>malformed<sp/>(bad<sp/>number<sp/>or<sp/>missing<sp/>colon).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.code<sp/><sp/><sp/><sp/>=<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" kindref="member">Http::Status::BAD_REQUEST</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>400<sp/>Bad<sp/>Request:<sp/>the<sp/>payload<sp/>or<sp/>id<sp/>was<sp/>missing/invalid.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.message<sp/>=<sp/>std::string(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>extract<sp/>id<sp/>&quot;</highlight><highlight class="normal">)<sp/>+<sp/>e.what();<sp/><sp/></highlight><highlight class="comment">//<sp/>Report<sp/>which<sp/>id<sp/>could<sp/>not<sp/>be<sp/>read<sp/>or<sp/>converted.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Deny<sp/>the<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!requester.idMatch(owner_id)<sp/>||<sp/>!requester.idMatch(admin_id))<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>caller<sp/>must<sp/>be<sp/>both<sp/>the<sp/>initial<sp/>owner<sp/>and<sp/>admin<sp/>of<sp/>the<sp/>new<sp/>service.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.code<sp/><sp/><sp/><sp/>=<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" kindref="member">Http::Status::BAD_REQUEST</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>400<sp/>Bad<sp/>Request:<sp/>the<sp/>payload<sp/>or<sp/>id<sp/>was<sp/>missing/invalid.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.message<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Initial<sp/>service<sp/>admin_id<sp/>and<sp/>owner_id<sp/>should<sp/>be<sp/>equal<sp/>to<sp/>that<sp/>of<sp/>provider_id&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Explain<sp/>the<sp/>rule<sp/>that<sp/>was<sp/>broken.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Deny<sp/>the<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!requester.isProvider())<sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>providers<sp/>are<sp/>allowed<sp/>to<sp/>create<sp/>a<sp/>service.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.code<sp/><sp/><sp/><sp/>=<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" kindref="member">Http::Status::BAD_REQUEST</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>400<sp/>Bad<sp/>Request:<sp/>the<sp/>payload<sp/>or<sp/>id<sp/>was<sp/>missing/invalid.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.message<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;You<sp/>are<sp/>not<sp/>allowed<sp/>to<sp/>create<sp/>a<sp/>service,<sp/>you<sp/>are<sp/>not<sp/>a<sp/>provider.&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Tell<sp/>the<sp/>caller<sp/>why<sp/>creation<sp/>is<sp/>denied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Deny<sp/>the<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>door<sp/>succeeded,<sp/>so<sp/>allow.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="209"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Allows<sp/>owner/admin,<sp/>or<sp/>staff<sp/>with<sp/>the<sp/>@p<sp/>required<sp/>capability<sp/>bit.</highlight></codeline>
+<codeline lineno="211"><highlight class="comment"><sp/>*<sp/>@details<sp/>On<sp/>failure<sp/>it<sp/>augments<sp/>@p<sp/>error.message<sp/>with<sp/>the<sp/>service<sp/>name<sp/>and<sp/>the<sp/>more</highlight></codeline>
+<codeline lineno="212"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>specific<sp/>message<sp/>left<sp/>by<sp/>hasPermission().</highlight></codeline>
+<codeline lineno="213"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214" refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2ca7a0ee58dc0ceb4dfc2ef1374471dc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2ca7a0ee58dc0ceb4dfc2ef1374471dc" kindref="member">api::v2::PermissionManagerPrivate::isOwnerOrAdminOrHasPermission</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>permissions_j,<sp/><sp/></highlight><highlight class="comment">//<sp/>Definition<sp/>of<sp/>the<sp/>combined<sp/>rule<sp/>(signature<sp/>continues<sp/>next<sp/>line).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_name,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error,<sp/><ref refid="structPermissions_1a1dc2e37dd1ca56eb9dc57829a512e092" kindref="member">Permissions::PowerLevel</ref><sp/>required)<sp/><sp/></highlight><highlight class="comment">//<sp/>Rest<sp/>of<sp/>the<sp/>signature:<sp/>service<sp/>name,<sp/>error<sp/>output<sp/>and<sp/>the<sp/>required<sp/>capability<sp/>bit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" kindref="member">isOwnerOrAdmin</ref>(requester,<sp/>permissions_j,<sp/>service_name,<sp/>error))<sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>door:<sp/>owner<sp/>or<sp/>admin<sp/>passes<sp/>immediately.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>door<sp/>succeeded,<sp/>so<sp/>allow.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a6a68b225b7b685e9ed7293606870fafc" kindref="member">hasPermission</ref>(requester,<sp/>permissions_j,<sp/>required,<sp/>service_name,<sp/>error))<sp/><sp/></highlight><highlight class="comment">//<sp/>Second<sp/>door:<sp/>staff<sp/>must<sp/>have<sp/>the<sp/>required<sp/>capability<sp/>bit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.code<sp/><sp/><sp/><sp/>=<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" kindref="member">Http::Status::FORBIDDEN</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>403<sp/>Forbidden:<sp/>malformed<sp/>data<sp/>is<sp/>treated<sp/>as<sp/>a<sp/>denial.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error.message<sp/>=<sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;You<sp/>don&apos;t<sp/>have<sp/>the<sp/>permission<sp/>to<sp/>manage<sp/><sp/>{}<sp/>{}&quot;</highlight><highlight class="normal">,<sp/>service_name,<sp/>error.message);<sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>the<sp/>service<sp/>name<sp/>and<sp/>the<sp/>detailed<sp/>reason<sp/>to<sp/>the<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Deny<sp/>the<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>door<sp/>succeeded,<sp/>so<sp/>allow.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="231"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="232"><highlight class="comment"><sp/>*<sp/>Allows<sp/>either<sp/>the<sp/>owner<sp/>or<sp/>the<sp/>admin<sp/>(short-circuits<sp/>on<sp/>owner<sp/>success).</highlight></codeline>
+<codeline lineno="233"><highlight class="comment"><sp/>*<sp/>error:<sp/>May<sp/>still<sp/>hold<sp/>a<sp/>message<sp/>from<sp/>a<sp/>failed<sp/>first<sp/>check<sp/>when<sp/>the<sp/>second<sp/>succeeds.</highlight></codeline>
+<codeline lineno="234"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235" refid="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" kindref="member">api::v2::PermissionManagerPrivate::isOwnerOrAdmin</ref>(<sp/><sp/></highlight><highlight class="comment">//<sp/>Definition<sp/>of<sp/>the<sp/>owner-or-admin<sp/>rule<sp/>(signature<sp/>continues<sp/>next<sp/>line).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>permissions_j,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_name,<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>&amp;<sp/>error)<sp/><sp/></highlight><highlight class="comment">//<sp/>Rest<sp/>of<sp/>the<sp/>signature:<sp/>caller,<sp/>permission<sp/>document,<sp/>service<sp/>name<sp/>and<sp/>error<sp/>output.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a261f7f649b795efc1d1dd8955510f9ea" kindref="member">isOwnerOfService</ref>(requester,<sp/>permissions_j,<sp/>service_name,<sp/>error)<sp/>||<sp/><ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a9242aea2edde8ca7163099b20049595f" kindref="member">isAdminOfService</ref>(requester,<sp/>permissions_j,<sp/>service_name,<sp/>error));<sp/><sp/></highlight><highlight class="comment">//<sp/>OR<sp/>means<sp/>the<sp/>owner<sp/>check<sp/>short-circuits<sp/>the<sp/>admin<sp/>check<sp/>on<sp/>success.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/gatekeeper/permissionmanager/permissionmanager_private.cpp"/>
+  </compounddef>
+</doxygen>

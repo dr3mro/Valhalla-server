@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="ARCHITECTURE_8md" kind="file" language="Markdown">
+    <compoundname>ARCHITECTURE.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Architecture</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>document<sp/>describes<sp/>the<sp/>runtime<sp/>architecture<sp/>of<sp/>Project<sp/>Valhalla<sp/>as<sp/>it<sp/>is</highlight></codeline>
+<codeline><highlight class="normal">implemented<sp/>in<sp/>`src/`.<sp/>It<sp/>is<sp/>complementary<sp/>to<sp/>`README.md`,<sp/>which<sp/>focuses<sp/>on</highlight></codeline>
+<codeline><highlight class="normal">installation,<sp/>configuration<sp/>and<sp/>API<sp/>usage.<sp/>For<sp/>generated<sp/>API<sp/>reference</highlight></codeline>
+<codeline><highlight class="normal">documentation,<sp/>run<sp/>`doxygen<sp/>Doxyfile`<sp/>and<sp/>open</highlight></codeline>
+<codeline><highlight class="normal">`build/docs/doxygen/html/index.html`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>1.<sp/>System<sp/>purpose</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Valhalla<sp/>is<sp/>a<sp/>C++20<sp/>REST<sp/>service<sp/>for<sp/>healthcare<sp/>scheduling.<sp/>It<sp/>exposes<sp/>a<sp/>JSON</highlight></codeline>
+<codeline><highlight class="normal">HTTP<sp/>API<sp/>under<sp/>`/api/v2`<sp/>for<sp/>managing<sp/>clients<sp/>(users<sp/>and<sp/>providers),<sp/>services</highlight></codeline>
+<codeline><highlight class="normal">(clinics,<sp/>pharmacies,<sp/>laboratories,<sp/>radiology<sp/>centres),<sp/>staff,<sp/>appointments<sp/>and</highlight></codeline>
+<codeline><highlight class="normal">clinical<sp/>records.<sp/>Requests<sp/>are<sp/>authenticated<sp/>with<sp/>JWT<sp/>bearer<sp/>tokens<sp/>and</highlight></codeline>
+<codeline><highlight class="normal">authorised<sp/>against<sp/>a<sp/>per-entity<sp/>permission<sp/>model;<sp/>data<sp/>is<sp/>persisted<sp/>in</highlight></codeline>
+<codeline><highlight class="normal">PostgreSQL<sp/>through<sp/>Drogon.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>2.<sp/>Technology<sp/>stack</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**HTTP<sp/>framework:**<sp/>Drogon<sp/>(event<sp/>loops,<sp/>routing,<sp/>filters/advice,<sp/>coroutines).</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Database:**<sp/>PostgreSQL,<sp/>accessed<sp/>either<sp/>synchronously<sp/>through<sp/>`libpqxx`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>with<sp/>a<sp/>custom<sp/>connection<sp/>pool,<sp/>or<sp/>asynchronously<sp/>through<sp/>Drogon&apos;s<sp/>`DbClient`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>(`DB_ASYNC=true`).</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Support<sp/>libraries:**<sp/>`fmt`<sp/>(formatting),<sp/>`jsoncons`<sp/>(JSON),<sp/>`jwt-cpp`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>(tokens),<sp/>`libsodium`/`cppcodec`<sp/>(password<sp/>hashing),<sp/>`xxHash`<sp/>(fingerprints),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>`spdlog`/Trantor<sp/>(logging),<sp/>cURL,<sp/>ZLIB,<sp/>c-ares.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Build:**<sp/>CMake<sp/>+<sp/>Conan,<sp/>Catch2<sp/>for<sp/>tests.<sp/>Dependency<sp/>versions<sp/>are<sp/>pinned<sp/>in</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>`conan.lock`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>3.<sp/>Component<sp/>map</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```mermaid</highlight></codeline>
+<codeline><highlight class="normal">flowchart<sp/>TD</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Client[HTTP<sp/>client]<sp/>--&gt;|TCP|<sp/>Drogon[Drogon<sp/>event<sp/>loops\nServer::run]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Drogon<sp/>--&gt;|pre-routing<sp/>advice|<sp/>Method[Method<sp/>/<sp/>OPTIONS<sp/>gate\nCors<sp/>+<sp/>isConventionalMethod]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Method<sp/>--&gt;<sp/>Filters[Filters\nAuth<sp/>·<sp/>RateLimit<sp/>·<sp/>ElapsedTime]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Filters<sp/>--&gt;<sp/>Routes[api/v2<sp/>routes\nclients<sp/>·<sp/>services<sp/>·<sp/>staff<sp/>·<sp/>appointments<sp/>·<sp/>clinic]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Routes<sp/>--&gt;<sp/>GK[GateKeeper\nlogin/logout<sp/>·<sp/>permissions<sp/>·<sp/>DoS]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Routes<sp/>--&gt;<sp/>Ctrl[Controllers\nEntityControllerBase<sp/>+<sp/>specialisations]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>GK<sp/>--&gt;<sp/>PM[PermissionManager<sp/>+<sp/>cache]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>GK<sp/>--&gt;<sp/>SM[SessionManager]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>GK<sp/>--&gt;<sp/>TM[TokenManager]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>GK<sp/>--&gt;<sp/>PW[PasswordWorker]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>GK<sp/>--&gt;<sp/>DD[DOSDetector]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Ctrl<sp/>--&gt;<sp/>Val[Validator<sp/>+<sp/>DatabaseSchema]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Ctrl<sp/>--&gt;<sp/>Ent[Entities\nCRUDS<sp/>SQL<sp/>builders]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Ent<sp/>--&gt;<sp/>DB{Layer}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DB<sp/>--&gt;|sync|<sp/>Pool[DatabaseConnectionPool<sp/>→<sp/>Database<sp/>→<sp/>DatabaseHandler<sp/>→<sp/>DbExecutor]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DB<sp/>--&gt;|async|<sp/>ACD[AsyncDbClient<sp/>→<sp/>AsyncSqlBinder<sp/>→<sp/>AsyncResultMapper]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Pool<sp/>--&gt;<sp/>PG[(PostgreSQL)]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ACD<sp/>--&gt;<sp/>PG</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CFG[Configurator<sp/>+<sp/>EnvLoader]<sp/>-.-&gt;<sp/>Server</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CFG<sp/>-.-&gt;<sp/>GK</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>CFG<sp/>-.-&gt;<sp/>DB</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Store[Store<sp/>singleton<sp/>registry]<sp/>-.-&gt;|shared<sp/>services|<sp/>Server</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Store<sp/>-.-&gt;<sp/>GK</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Store<sp/>-.-&gt;<sp/>DB</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>3.1<sp/>Bootstrap<sp/>and<sp/>lifecycle<sp/>—<sp/>`src/main.cpp`,<sp/>`src/server/`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`main()`<sp/>constructs<sp/>`Server`<sp/>behind<sp/>a<sp/>`std::unique_ptr`<sp/>and<sp/>calls<sp/>`run()`,</highlight></codeline>
+<codeline><highlight class="normal">converting<sp/>any<sp/>escaping<sp/>`std::exception`<sp/>into<sp/>`EXIT_FAILURE`.<sp/>`Server::run()`</highlight></codeline>
+<codeline><highlight class="normal">prints<sp/>the<sp/>banner,<sp/>conditionally<sp/>registers<sp/>the<sp/>async<sp/>database<sp/>client,<sp/>configures</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>Drogon<sp/>application<sp/>(listener,<sp/>thread<sp/>count,<sp/>log<sp/>level,<sp/>custom<sp/>404<sp/>page),</highlight></codeline>
+<codeline><highlight class="normal">registers<sp/>two<sp/>pieces<sp/>of<sp/>advice:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**Pre-routing<sp/>advice**<sp/>answers<sp/>`OPTIONS`<sp/>with<sp/>`204`<sp/>and<sp/>rejects<sp/>non-standard</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>verbs<sp/>with<sp/>`405`<sp/>before<sp/>any<sp/>route<sp/>runs.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Pre-sending<sp/>advice**<sp/>is<sp/>the<sp/>single<sp/>place<sp/>CORS<sp/>headers<sp/>are<sp/>written;<sp/>it<sp/>runs</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>every<sp/>response,<sp/>including<sp/>filter-generated<sp/>and<sp/>pre-routing<sp/>replies.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`drogon::app().run()`<sp/>blocks<sp/>until<sp/>the<sp/>event<sp/>loops<sp/>stop.<sp/>Shutdown<sp/>then<sp/>drains</highlight></codeline>
+<codeline><highlight class="normal">the<sp/>`DbExecutor`<sp/>and<sp/>`PasswordWorker`<sp/>queues<sp/>*before*<sp/>static<sp/>destruction,<sp/>in</highlight></codeline>
+<codeline><highlight class="normal">that<sp/>order,<sp/>because<sp/>database<sp/>tasks<sp/>may<sp/>enqueue<sp/>password<sp/>work.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>3.2<sp/>Configuration<sp/>—<sp/>`src/configurator/`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`Configurator`<sp/>owns<sp/>one<sp/>`EnvLoader`-derived<sp/>settings<sp/>group<sp/>per<sp/>subsystem</highlight></codeline>
+<codeline><highlight class="normal">(server,<sp/>database,<sp/>DoS<sp/>detector,<sp/>token<sp/>manager,<sp/>permission<sp/>cache,<sp/>password</highlight></codeline>
+<codeline><highlight class="normal">worker,<sp/>DB<sp/>executor,<sp/>front-end,<sp/>e-mail<sp/>sender).<sp/>Each<sp/>group&apos;s<sp/>constructor<sp/>reads</highlight></codeline>
+<codeline><highlight class="normal">its<sp/>environment<sp/>variables<sp/>with<sp/>defaults<sp/>declared<sp/>in<sp/>`defaults.hpp`;</highlight></codeline>
+<codeline><highlight class="normal">`printValues()`<sp/>logs<sp/>the<sp/>effective<sp/>configuration<sp/>with<sp/>secrets<sp/>redacted.</highlight></codeline>
+<codeline><highlight class="normal">`Configurator`<sp/>is<sp/>itself<sp/>obtained<sp/>from<sp/>the<sp/>`Store`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>3.3<sp/>Service<sp/>registry<sp/>—<sp/>`src/store/`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`Store`<sp/>is<sp/>a<sp/>thread-safe<sp/>singleton<sp/>registry<sp/>keyed<sp/>by<sp/>`std::type_index`:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>`getObject&lt;T&gt;()`<sp/>returns<sp/>the<sp/>registered<sp/>instance<sp/>or<sp/>lazily<sp/>constructs<sp/>one.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Construction<sp/>happens<sp/>outside<sp/>the<sp/>lock<sp/>to<sp/>avoid<sp/>holding<sp/>the<sp/>mutex<sp/>during</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>expensive<sp/>initialisation,<sp/>then<sp/>is<sp/>re-checked<sp/>before<sp/>publication<sp/>so<sp/>two</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>concurrent<sp/>first<sp/>callers<sp/>cannot<sp/>install<sp/>different<sp/>instances.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`cachedObject&lt;T&gt;()`<sp/>is<sp/>the<sp/>request-path<sp/>variant:<sp/>a<sp/>`thread_local`<sp/>pointer<sp/>is</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>reused<sp/>until<sp/>a<sp/>generation<sp/>counter<sp/>changes,<sp/>avoiding<sp/>a<sp/>mutex<sp/>and<sp/>hash<sp/>lookup</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>per<sp/>request.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`replaceObject&lt;T&gt;()`<sp/>swaps<sp/>an<sp/>instance<sp/>(used<sp/>by<sp/>tests<sp/>to<sp/>inject<sp/>fakes)<sp/>and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>increments<sp/>the<sp/>generation<sp/>counter<sp/>so<sp/>every<sp/>thread<sp/>refreshes<sp/>its<sp/>cache.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Registered<sp/>objects<sp/>are<sp/>held<sp/>as<sp/>`std::shared_ptr&lt;void&gt;`<sp/>and<sp/>handed<sp/>out<sp/>as</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>aliased<sp/>`shared_ptr&lt;T&gt;`:<sp/>ownership<sp/>is<sp/>shared,<sp/>not<sp/>transferred.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>3.4<sp/>Gatekeeper<sp/>—<sp/>`src/gatekeeper/`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`GateKeeper`<sp/>is<sp/>the<sp/>authentication/authorisation<sp/>façade.<sp/>It<sp/>parses<sp/>credentials,</highlight></codeline>
+<codeline><highlight class="normal">delegates<sp/>password<sp/>verification<sp/>to<sp/>`PasswordWorker`,<sp/>issues<sp/>and<sp/>validates<sp/>JWTs</highlight></codeline>
+<codeline><highlight class="normal">via<sp/>`TokenManager`,<sp/>tracks<sp/>sessions<sp/>in<sp/>`SessionManager`,<sp/>checks<sp/>per-entity</highlight></codeline>
+<codeline><highlight class="normal">rights<sp/>in<sp/>`PermissionManager`<sp/>(backed<sp/>by<sp/>an<sp/>idle-expiry<sp/>`PermissionCache`),<sp/>and</highlight></codeline>
+<codeline><highlight class="normal">detects<sp/>abuse<sp/>in<sp/>`DOSDetector`.<sp/>Most<sp/>operations<sp/>exist<sp/>in<sp/>two<sp/>forms:<sp/>a<sp/>callback</highlight></codeline>
+<codeline><highlight class="normal">version<sp/>used<sp/>by<sp/>synchronous<sp/>controllers<sp/>and<sp/>a<sp/>`drogon::Task`<sp/>coroutine<sp/>version</highlight></codeline>
+<codeline><highlight class="normal">used<sp/>by<sp/>asynchronous<sp/>controllers.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>3.5<sp/>Controllers<sp/>—<sp/>`src/controllers/`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`EntityControllerBase`<sp/>is<sp/>the<sp/>CRUDS<sp/>contract<sp/>(`Create`,<sp/>`Read`,<sp/>`Update`,</highlight></codeline>
+<codeline><highlight class="normal">`Delete`,<sp/>`Search`),<sp/>each<sp/>with<sp/>a<sp/>synchronous<sp/>callback<sp/>overload<sp/>and<sp/>an</highlight></codeline>
+<codeline><highlight class="normal">asynchronous<sp/>`drogon::Task&lt;void&gt;`<sp/>overload.<sp/>Concrete<sp/>controllers<sp/>(client,</highlight></codeline>
+<codeline><highlight class="normal">clinic,<sp/>service,<sp/>staff,<sp/>appointment,<sp/>generic<sp/>entity,<sp/>database)<sp/>implement<sp/>that</highlight></codeline>
+<codeline><highlight class="normal">contract.<sp/>They<sp/>validate<sp/>input<sp/>with<sp/>`Validator`,<sp/>authorise<sp/>through<sp/>`GateKeeper`,</highlight></codeline>
+<codeline><highlight class="normal">build<sp/>an<sp/>`Entity`,<sp/>and<sp/>hand<sp/>it<sp/>to<sp/>the<sp/>database<sp/>layer;<sp/>results<sp/>are<sp/>marshalled<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">JSON<sp/>and<sp/>delivered<sp/>through<sp/>the<sp/>`CALLBACK_`<sp/>(`std::function&lt;void(int,</highlight></codeline>
+<codeline><highlight class="normal">std::string)&gt;`)<sp/>or<sp/>the<sp/>coroutine.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>3.6<sp/>Entities<sp/>and<sp/>validation<sp/>—<sp/>`src/entities/`,<sp/>`src/validator/`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`Base`<sp/>declares<sp/>the<sp/>SQL-statement<sp/>interface;<sp/>`Entity`<sp/>implements<sp/>it<sp/>with<sp/>a</highlight></codeline>
+<codeline><highlight class="normal">builder<sp/>per<sp/>operation<sp/>and<sp/>a<sp/>`Binder`<sp/>that<sp/>produces<sp/>parameter<sp/>placeholders</highlight></codeline>
+<codeline><highlight class="normal">(so<sp/>values<sp/>are<sp/>never<sp/>concatenated<sp/>into<sp/>SQL).<sp/>`Types.hpp`<sp/>defines<sp/>the<sp/>per-action</highlight></codeline>
+<codeline><highlight class="normal">value<sp/>types<sp/>(`Create_t`,<sp/>`Read_t`,<sp/>`Update_t`,<sp/>`Delete_t`,<sp/>`Search_t`)<sp/>collected</highlight></codeline>
+<codeline><highlight class="normal">into<sp/>the<sp/>`EntityType`<sp/>variant.<sp/>`Validator`<sp/>applies<sp/>schema-driven<sp/>rules</highlight></codeline>
+<codeline><highlight class="normal">(nullability,<sp/>immutability,<sp/>presence)<sp/>using<sp/>bitmask<sp/>`Rule::Action`<sp/>flags;</highlight></codeline>
+<codeline><highlight class="normal">`DatabaseSchema`<sp/>supplies<sp/>the<sp/>table<sp/>metadata.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>3.7<sp/>Database<sp/>layer<sp/>—<sp/>`src/database/`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Two<sp/>interchangeable<sp/>paths:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**Synchronous<sp/>(default):**<sp/>`DatabaseConnectionPool`<sp/>owns<sp/>`Database`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>connections;<sp/>`DatabaseHandler`<sp/>borrows<sp/>and<sp/>returns<sp/>them<sp/>(with<sp/>reconnect<sp/>on</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>failure);<sp/>`DbExecutor`<sp/>serialises<sp/>work<sp/>onto<sp/>a<sp/>`BlockingPool`<sp/>worker<sp/>queue;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>`Watchdog`<sp/>checks<sp/>pool<sp/>health.<sp/>`DatabaseBusy`<sp/>is<sp/>thrown<sp/>when<sp/>no<sp/>connection<sp/>is</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>available<sp/>within<sp/>the<sp/>configured<sp/>timeout<sp/>and<sp/>maps<sp/>to<sp/>HTTP<sp/>503<sp/>via</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>`statusForException()`.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Asynchronous<sp/>(`DB_ASYNC=true`):**<sp/>`AsyncDbClient`<sp/>wraps<sp/>Drogon&apos;s</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>`DbClient`;<sp/>`AsyncSqlBinder`<sp/>binds<sp/>parameters<sp/>and<sp/>`AsyncResultMapper`<sp/>maps</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>rows<sp/>back<sp/>to<sp/>domain<sp/>values;<sp/>`AsyncDbError`<sp/>represents<sp/>failures.<sp/>This<sp/>client</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>is<sp/>registered<sp/>in<sp/>the<sp/>`Store`<sp/>only<sp/>when<sp/>the<sp/>flag<sp/>is<sp/>enabled.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>3.8<sp/>Utilities<sp/>—<sp/>`src/utils/`,<sp/>`src/concurrency/`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Logging<sp/>(`Logger`,<sp/>`Message`),<sp/>JSON<sp/>helpers,<sp/>an<sp/>in-process<sp/>`MemCache`,<sp/>a</highlight></codeline>
+<codeline><highlight class="normal">`ThreadSafeQueue`,<sp/>CORS<sp/>token<sp/>helpers,<sp/>global<sp/>HTTP/status<sp/>types,<sp/>and</highlight></codeline>
+<codeline><highlight class="normal">`BoundedExecutor`<sp/>(a<sp/>bounded<sp/>worker<sp/>pool<sp/>used<sp/>where<sp/>work<sp/>must<sp/>be<sp/>throttled).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>4.<sp/>Execution<sp/>and<sp/>data<sp/>flow</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>A<sp/>request<sp/>arrives<sp/>on<sp/>a<sp/>Drogon<sp/>event-loop<sp/>thread.</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Pre-routing<sp/>advice<sp/>handles<sp/>`OPTIONS`/unsupported<sp/>verbs;<sp/>filters<sp/>authenticate</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>(`Auth`),<sp/>apply<sp/>rate<sp/>limits<sp/>(`RateLimit`)<sp/>and<sp/>record<sp/>elapsed<sp/>time.</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>The<sp/>matched<sp/>route<sp/>parses<sp/>the<sp/>JSON<sp/>body<sp/>into<sp/>a<sp/>domain<sp/>value<sp/>type,<sp/>asks</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>`GateKeeper`<sp/>to<sp/>authorise<sp/>the<sp/>operation,<sp/>and<sp/>invokes<sp/>the<sp/>controller.</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>The<sp/>controller<sp/>validates<sp/>fields,<sp/>constructs<sp/>an<sp/>`Entity`,<sp/>and<sp/>submits<sp/>SQL</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>through<sp/>the<sp/>sync<sp/>pool<sp/>or<sp/>async<sp/>client.</highlight></codeline>
+<codeline><highlight class="normal">5.<sp/>Rows<sp/>are<sp/>mapped<sp/>back<sp/>to<sp/>JSON;<sp/>the<sp/>pre-sending<sp/>advice<sp/>attaches<sp/>CORS<sp/>headers</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>and<sp/>Drogon<sp/>writes<sp/>the<sp/>response.</highlight></codeline>
+<codeline><highlight class="normal">6.<sp/>On<sp/>shutdown<sp/>the<sp/>event<sp/>loops<sp/>stop<sp/>first,<sp/>then<sp/>the<sp/>executor<sp/>and<sp/>password<sp/>worker</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>queues<sp/>are<sp/>drained<sp/>while<sp/>the<sp/>`Store`<sp/>singletons<sp/>still<sp/>exist.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>5.<sp/>Concurrency<sp/>model</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Drogon<sp/>owns<sp/>the<sp/>HTTP<sp/>event-loop<sp/>threads<sp/>(`config_.threads`).</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`Store`<sp/>protects<sp/>its<sp/>registry<sp/>with<sp/>a<sp/>mutex;<sp/>`cachedObject&lt;T&gt;`<sp/>avoids<sp/>that</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mutex<sp/>on<sp/>hot<sp/>paths<sp/>using<sp/>`thread_local`<sp/>state<sp/>and<sp/>an<sp/>atomically-read</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>generation<sp/>counter<sp/>(`memory_order_acquire`/`release`).</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>The<sp/>synchronous<sp/>database<sp/>path<sp/>funnels<sp/>work<sp/>through<sp/>`BlockingPool`/`DbExecutor`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>worker<sp/>threads<sp/>and<sp/>checks<sp/>out<sp/>pooled<sp/>connections<sp/>with<sp/>an<sp/>acquire<sp/>timeout.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`PasswordWorker`<sp/>runs<sp/>hashing<sp/>off<sp/>the<sp/>request<sp/>threads.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>`DOSDetector`<sp/>keeps<sp/>mutable<sp/>counters<sp/>shared<sp/>across<sp/>request<sp/>threads;<sp/>its</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>injectable<sp/>clock<sp/>is<sp/>a<sp/>test<sp/>seam.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Coroutine<sp/>(`drogon::Task`)<sp/>variants<sp/>suspend<sp/>rather<sp/>than<sp/>block<sp/>event-loop</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>threads<sp/>while<sp/>waiting<sp/>on<sp/>asynchronous<sp/>I/O.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>6.<sp/>Ownership<sp/>and<sp/>lifetime</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Long-lived<sp/>services<sp/>are<sp/>shared<sp/>singletons<sp/>in<sp/>`Store`<sp/>(`shared_ptr`).</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>The<sp/>`Server`<sp/>is<sp/>uniquely<sp/>owned<sp/>in<sp/>`main()`;<sp/>its<sp/>member<sp/>services<sp/>are<sp/>shared.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Database<sp/>connections<sp/>are<sp/>borrowed<sp/>from<sp/>the<sp/>pool<sp/>via<sp/>`shared_ptr`<sp/>and<sp/>returned</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>on<sp/>destruction<sp/>of<sp/>the<sp/>handler;<sp/>the<sp/>executor<sp/>and<sp/>worker<sp/>are<sp/>explicitly<sp/>drained</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>at<sp/>shutdown<sp/>rather<sp/>than<sp/>relying<sp/>on<sp/>static<sp/>destruction<sp/>order.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Callbacks<sp/>are<sp/>captured<sp/>by<sp/>value<sp/>into<sp/>Drogon&apos;s<sp/>continuation<sp/>chain;<sp/>coroutine</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>variants<sp/>keep<sp/>their<sp/>arguments<sp/>alive<sp/>across<sp/>suspension<sp/>points.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>7.<sp/>Key<sp/>architectural<sp/>decisions</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**Advice-based<sp/>CORS:**<sp/>a<sp/>single<sp/>pre-sending<sp/>hook<sp/>guarantees<sp/>headers<sp/>on<sp/>every</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>response,<sp/>including<sp/>errors<sp/>produced<sp/>by<sp/>filters<sp/>and<sp/>advice.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Dual<sp/>database<sp/>paths:**<sp/>the<sp/>synchronous<sp/>pool<sp/>supports<sp/>deterministic<sp/>tests<sp/>and</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>simple<sp/>deployment,<sp/>while<sp/>the<sp/>async<sp/>path<sp/>scales<sp/>I/O<sp/>without<sp/>blocking<sp/>event</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>loops;<sp/>selection<sp/>is<sp/>a<sp/>configuration<sp/>flag,<sp/>not<sp/>a<sp/>code<sp/>change.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Store<sp/>with<sp/>generation-based<sp/>caching:**<sp/>centralises<sp/>singleton<sp/>lifetime<sp/>while</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>keeping<sp/>per-request<sp/>lookups<sp/>cheap<sp/>and<sp/>test-injectable.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Paired<sp/>sync/async<sp/>APIs:**<sp/>every<sp/>controller<sp/>and<sp/>gatekeeper<sp/>capability<sp/>has<sp/>a</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>coroutine<sp/>twin<sp/>so<sp/>the<sp/>same<sp/>logic<sp/>can<sp/>be<sp/>used<sp/>from<sp/>both<sp/>execution<sp/>models.</highlight></codeline>
+    </programlisting>
+    <location file="docs/ARCHITECTURE.md"/>
+  </compounddef>
+</doxygen>

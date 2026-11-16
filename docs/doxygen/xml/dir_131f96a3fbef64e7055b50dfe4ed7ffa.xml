@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_131f96a3fbef64e7055b50dfe4ed7ffa" kind="dir">
+    <compoundname>src/controllers/cliniccontroller</compoundname>
+    <innerfile refid="cliniccontroller_8cpp">cliniccontroller.cpp</innerfile>
+    <innerfile refid="cliniccontroller_8hpp">cliniccontroller.hpp</innerfile>
+    <innerfile refid="cliniccontrollerbase_8hpp">cliniccontrollerbase.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/controllers/cliniccontroller/"/>
+  </compounddef>
+</doxygen>

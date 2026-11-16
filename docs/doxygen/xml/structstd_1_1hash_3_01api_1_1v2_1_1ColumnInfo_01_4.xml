@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structstd_1_1hash_3_01api_1_1v2_1_1ColumnInfo_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>std::hash&lt; api::v2::ColumnInfo &gt;</compoundname>
+    <includes refid="utils_2global_2types_8hpp" local="no">types.hpp</includes>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structstd_1_1hash_3_01api_1_1v2_1_1ColumnInfo_01_4_1a70561d11e412c99ffc984a30106e34f2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t std::hash&lt; api::v2::ColumnInfo &gt;::operator()</definition>
+        <argsstring>(const api::v2::ColumnInfo &amp;column) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>std::hash&lt; api::v2::ColumnInfo &gt;::operator()</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a629023e05b2c9802c14aaca4634f4ab3" kindref="member">api::v2::ColumnInfo</ref> &amp;</type>
+          <declname>column</declname>
+        </param>
+        <briefdescription>
+<para>Hashes the three keyed fields, matching ColumnInfo::operator==. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/global/types.hpp" line="80" column="16" bodyfile="src/utils/global/types.hpp" bodystart="80" bodyend="87"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Hashes <ref refid="structColumnInfo" kindref="compound">ColumnInfo</ref> consistently with its operator==. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Combines Name, DataType and isNullable; Constraint is excluded so equal columns always receive equal hashes. </para>
+    </detaileddescription>
+    <location file="src/utils/global/types.hpp" line="77" column="5" bodyfile="src/utils/global/types.hpp" bodystart="78" bodyend="88"/>
+    <listofallmembers>
+      <member refid="structstd_1_1hash_3_01api_1_1v2_1_1ColumnInfo_01_4_1a70561d11e412c99ffc984a30106e34f2" prot="public" virt="non-virtual"><scope>std::hash&lt; api::v2::ColumnInfo &gt;</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

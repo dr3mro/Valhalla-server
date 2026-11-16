@@ -1,0 +1,500 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classStaffControllerBase" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>StaffControllerBase</compoundname>
+    <derivedcompoundref refid="classStaffController" prot="public" virt="non-virtual">StaffController&lt; T &gt;</derivedcompoundref>
+    <includes refid="staffcontrollerBase_8hpp" local="no">staffcontrollerBase.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>StaffControllerBase::StaffControllerBase</definition>
+        <argsstring>()=default</argsstring>
+        <name>StaffControllerBase</name>
+        <qualifiedname>StaffControllerBase::StaffControllerBase</qualifiedname>
+        <briefdescription>
+<para>Default construction; the interface holds no state of its own. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="72" column="14"/>
+        <referencedby refid="classStaffControllerBase_1aa7705dec2c86e2e4c1a6c451c5d47510">operator=</referencedby>
+        <referencedby refid="classStaffControllerBase_1a2e414f74e581716704730427bdecce8b">operator=</referencedby>
+        <referencedby refid="classStaffControllerBase_1ab5e32d9e3f0bd773d45ff02450ae52c7">StaffControllerBase</referencedby>
+        <referencedby refid="classStaffControllerBase_1a66ce135a4f3b50c831729fffc1afea72">StaffControllerBase</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classStaffControllerBase_1ab5e32d9e3f0bd773d45ff02450ae52c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>StaffControllerBase::StaffControllerBase</definition>
+        <argsstring>(const StaffControllerBase &amp;)=default</argsstring>
+        <name>StaffControllerBase</name>
+        <qualifiedname>StaffControllerBase::StaffControllerBase</qualifiedname>
+        <param>
+          <type>const <ref refid="classStaffControllerBase" kindref="compound">StaffControllerBase</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy construction is allowed; copies share no operation state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="74" column="5"/>
+        <references refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525">StaffControllerBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classStaffControllerBase_1a66ce135a4f3b50c831729fffc1afea72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>StaffControllerBase::StaffControllerBase</definition>
+        <argsstring>(StaffControllerBase &amp;&amp;)=delete</argsstring>
+        <name>StaffControllerBase</name>
+        <qualifiedname>StaffControllerBase::StaffControllerBase</qualifiedname>
+        <param>
+          <type><ref refid="classStaffControllerBase" kindref="compound">StaffControllerBase</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>Move construction is disabled; the interface is used through pointers/references. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="76" column="5"/>
+        <references refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525">StaffControllerBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classStaffControllerBase_1aa7705dec2c86e2e4c1a6c451c5d47510" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classStaffControllerBase" kindref="compound">StaffControllerBase</ref> &amp;</type>
+        <definition>StaffControllerBase &amp; StaffControllerBase::operator=</definition>
+        <argsstring>(const StaffControllerBase &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>StaffControllerBase::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classStaffControllerBase" kindref="compound">StaffControllerBase</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy assignment is allowed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="78" column="25"/>
+        <references refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525">StaffControllerBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classStaffControllerBase_1a2e414f74e581716704730427bdecce8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classStaffControllerBase" kindref="compound">StaffControllerBase</ref> &amp;</type>
+        <definition>StaffControllerBase &amp; StaffControllerBase::operator=</definition>
+        <argsstring>(StaffControllerBase &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>StaffControllerBase::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classStaffControllerBase" kindref="compound">StaffControllerBase</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>Move assignment is disabled, mirroring the deleted move constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="80" column="25"/>
+        <references refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525">StaffControllerBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classStaffControllerBase_1a32ade04e59750d16c0f40768a3c1ec4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual StaffControllerBase::~StaffControllerBase</definition>
+        <argsstring>()=default</argsstring>
+        <name>~StaffControllerBase</name>
+        <qualifiedname>StaffControllerBase::~StaffControllerBase</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor so derived controllers can be released through this interface. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="82" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classStaffControllerBase_1a968ab96cf0d0caaa4c86d4a8330c9393" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void StaffControllerBase::AddStaffToEntity</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>AddStaffToEntity</name>
+        <qualifiedname>StaffControllerBase::AddStaffToEntity</qualifiedname>
+        <reimplementedby refid="classStaffController_1a454ac6b5d362f6b9be674eac131f4da7">AddStaffToEntity</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Adds a staff member to a service entity. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Implementations parse a <computeroutput>payload</computeroutput> holding <ref refid="structapi_1_1v2_1_1Types_1_1StaffData" kindref="compound">api::v2::Types::StaffData</ref> plus an <computeroutput>id</computeroutput> identifying the service, check staff-management permission, then execute the entity&apos;s add-staff statement. A malformed body is an exceptional (500) path here, not a 400 validation response. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the staff-management permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON body with <computeroutput>id</computeroutput> and <computeroutput>payload</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="94" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="146" endline="196">api::v2::Staff::Add</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classStaffControllerBase_1a5d310e956312329648957207868ed549" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void StaffControllerBase::RemoveStaffFromEntity</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>RemoveStaffFromEntity</name>
+        <qualifiedname>StaffControllerBase::RemoveStaffFromEntity</qualifiedname>
+        <reimplementedby refid="classStaffController_1aefd020493c2178716433285aca94ae50">RemoveStaffFromEntity</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Removes a staff member from a service entity. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Same request shape and authorisation contract as <ref refid="classStaffControllerBase_1a968ab96cf0d0caaa4c86d4a8330c9393" kindref="member">AddStaffToEntity</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the staff-management permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON body with <computeroutput>id</computeroutput> and <computeroutput>payload</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="102" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="207" endline="257">api::v2::Staff::Remove</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classStaffControllerBase_1a55203753a4995d370037401bfc5f66bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void StaffControllerBase::InviteStaffToEntity</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>InviteStaffToEntity</name>
+        <qualifiedname>StaffControllerBase::InviteStaffToEntity</qualifiedname>
+        <reimplementedby refid="classStaffController_1aca79920a9fdd6da89333627992bf6287">InviteStaffToEntity</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Invites a staff member to a service entity by delegating delivery to the email daemon. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Implementations parse a <computeroutput>nominee_id</computeroutput> and the invite fields, check permission, build an invite message and POST it to the configured email-sender daemon. A 200 response echoes the daemon&apos;s body; malformed invite data or a failed send yields 400. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the staff-management permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON body with <computeroutput>nominee_id</computeroutput> and the <ref refid="structapi_1_1v2_1_1Types_1_1StaffData" kindref="compound">api::v2::Types::StaffData</ref> fields. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="112" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="85" endline="135">api::v2::Staff::Invite</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classStaffControllerBase_1a86d35c8d93f08daf0223aec4ed35b9df" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; StaffControllerBase::AddStaffToEntityAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>AddStaffToEntityAsync</name>
+        <qualifiedname>StaffControllerBase::AddStaffToEntityAsync</qualifiedname>
+        <reimplementedby refid="classStaffController_1a53a028cf301c7a9765b3633a06275546">AddStaffToEntityAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classStaffControllerBase_1a968ab96cf0d0caaa4c86d4a8330c9393" kindref="member">AddStaffToEntity</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the staff-management permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON body; must remain valid until the task completes. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="119" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classStaffControllerBase_1aadc6db473bceee230a86cf64bdbb97ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; StaffControllerBase::RemoveStaffFromEntityAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>RemoveStaffFromEntityAsync</name>
+        <qualifiedname>StaffControllerBase::RemoveStaffFromEntityAsync</qualifiedname>
+        <reimplementedby refid="classStaffController_1ac220308be6bf24122bfe037ea8c75e9c">RemoveStaffFromEntityAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classStaffControllerBase_1a5d310e956312329648957207868ed549" kindref="member">RemoveStaffFromEntity</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the staff-management permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON body; must remain valid until the task completes. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="126" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classStaffControllerBase_1a0e80ed9010fd73626ae3890c4d4ca118" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; StaffControllerBase::InviteStaffToEntityAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>InviteStaffToEntityAsync</name>
+        <qualifiedname>StaffControllerBase::InviteStaffToEntityAsync</qualifiedname>
+        <reimplementedby refid="classStaffController_1a7bfaae0026f9082bb42968cf04b421d5">InviteStaffToEntityAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classStaffControllerBase_1a55203753a4995d370037401bfc5f66bd" kindref="member">InviteStaffToEntity</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The outbound email-daemon request is a synchronous call in this variant too. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the staff-management permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON body; must remain valid until the task completes. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="134" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Type-erased interface for service-staff management operations. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Exposes three domain operations — add, remove and invite — each in a synchronous callback form and a coroutine (<computeroutput>drogon::Task&lt;void&gt;</computeroutput>) form. The staff route registry holds concrete controllers behind this base and dispatches to them via a <computeroutput>std::variant</computeroutput> over the service entity type.</para>
+<para>In plain words: &quot;synchronous&quot; means the caller gets the answer through a callback function, while the coroutine (<computeroutput>drogon::Task&lt;void&gt;</computeroutput>) versions can be paused with co_await so the server can do other work meanwhile. &quot;Virtual dispatch&quot; means a call made through this base automatically runs the real object&apos;s version. A <computeroutput>std::variant</computeroutput> is like a box that can hold one of several different controller types at a time.</para>
+<para>Invocation contract shared by every method:<itemizedlist>
+<listitem><para><computeroutput>callback</computeroutput> is <computeroutput>std::function&lt;void(int, const std::string&amp;)&gt;</computeroutput>, it is moved through the call chain and, by contract, invoked once on each completion path, including failures. Its first argument is an <ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892f" kindref="member">api::v2::Http::Status</ref> code, the second a response body.</para>
+</listitem><listitem><para><computeroutput>requester</computeroutput> is the authenticated caller; implementations require permission to manage staff of the target service before performing any side effect.</para>
+</listitem><listitem><para><computeroutput>data</computeroutput> is a non-owning view of the raw JSON request body, valid only for the call; it must carry the target service id (<computeroutput>id</computeroutput> or <computeroutput>nominee_id</computeroutput>) used for authorisation.</para>
+</listitem></itemizedlist>
+</para>
+<para>The <computeroutput>*Async</computeroutput> methods must be co_awaited; the HTTP layer wraps them in <computeroutput>drogon::async_run</computeroutput> and builds the reply from the callback result. <simplesect kind="note"><para>The interface itself is stateless; behaviour lives in <ref refid="classStaffController" kindref="compound">StaffController</ref>. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classStaffController" kindref="compound">StaffController</ref>, <ref refid="classController" kindref="compound">Controller</ref>, <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>StaffController&lt; T &gt;</label>
+        <link refid="classStaffController"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>StaffControllerBase</label>
+        <link refid="classStaffControllerBase"/>
+      </node>
+    </inheritancegraph>
+    <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="68" column="1" bodyfile="src/controllers/staffcontroller/staffcontrollerBase.hpp" bodystart="69" bodyend="135"/>
+    <listofallmembers>
+      <member refid="classStaffControllerBase_1a968ab96cf0d0caaa4c86d4a8330c9393" prot="public" virt="pure-virtual"><scope>StaffControllerBase</scope><name>AddStaffToEntity</name></member>
+      <member refid="classStaffControllerBase_1a86d35c8d93f08daf0223aec4ed35b9df" prot="public" virt="pure-virtual"><scope>StaffControllerBase</scope><name>AddStaffToEntityAsync</name></member>
+      <member refid="classStaffControllerBase_1a55203753a4995d370037401bfc5f66bd" prot="public" virt="pure-virtual"><scope>StaffControllerBase</scope><name>InviteStaffToEntity</name></member>
+      <member refid="classStaffControllerBase_1a0e80ed9010fd73626ae3890c4d4ca118" prot="public" virt="pure-virtual"><scope>StaffControllerBase</scope><name>InviteStaffToEntityAsync</name></member>
+      <member refid="classStaffControllerBase_1aa7705dec2c86e2e4c1a6c451c5d47510" prot="public" virt="non-virtual"><scope>StaffControllerBase</scope><name>operator=</name></member>
+      <member refid="classStaffControllerBase_1a2e414f74e581716704730427bdecce8b" prot="public" virt="non-virtual"><scope>StaffControllerBase</scope><name>operator=</name></member>
+      <member refid="classStaffControllerBase_1a5d310e956312329648957207868ed549" prot="public" virt="pure-virtual"><scope>StaffControllerBase</scope><name>RemoveStaffFromEntity</name></member>
+      <member refid="classStaffControllerBase_1aadc6db473bceee230a86cf64bdbb97ae" prot="public" virt="pure-virtual"><scope>StaffControllerBase</scope><name>RemoveStaffFromEntityAsync</name></member>
+      <member refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525" prot="public" virt="non-virtual"><scope>StaffControllerBase</scope><name>StaffControllerBase</name></member>
+      <member refid="classStaffControllerBase_1ab5e32d9e3f0bd773d45ff02450ae52c7" prot="public" virt="non-virtual"><scope>StaffControllerBase</scope><name>StaffControllerBase</name></member>
+      <member refid="classStaffControllerBase_1a66ce135a4f3b50c831729fffc1afea72" prot="public" virt="non-virtual"><scope>StaffControllerBase</scope><name>StaffControllerBase</name></member>
+      <member refid="classStaffControllerBase_1a32ade04e59750d16c0f40768a3c1ec4d" prot="public" virt="virtual"><scope>StaffControllerBase</scope><name>~StaffControllerBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

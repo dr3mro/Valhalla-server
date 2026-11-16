@@ -1,0 +1,620 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classDatabase" kind="class" language="C++" prot="public">
+    <compoundname>Database</compoundname>
+    <includes refid="database_8hpp" local="no">database.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; pqxx::connection &gt;</type>
+        <definition>std::shared_ptr&lt;pqxx::connection&gt; Database::connection</definition>
+        <argsstring></argsstring>
+        <name>connection</name>
+        <qualifiedname>Database::connection</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The borrowed pqxx connection; lifetime is shared with the pool. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="156" column="21" bodyfile="src/database/database.hpp" bodystart="156" bodyend="-1"/>
+        <referencedby refid="classDatabase_1a5941bc7b94fbacc46dd8acc818712afd" compoundref="database_8cpp" startline="117" endline="133">check_connection</referencedby>
+        <referencedby refid="classDatabase_1a7c0a44631de74f1d0a18119d1cd6cf1a" compoundref="database_8cpp" startline="93" endline="111">checkExists</referencedby>
+        <referencedby refid="classDatabase_1aa78586a013e7bb5fb707dc4ce330d896" compoundref="database_8cpp" startline="58" endline="75">Database</referencedby>
+        <referencedby refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" compoundref="database_8cpp" startline="340" endline="362">doSimpleQuery</referencedby>
+        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="248" endline="329">executeQuery</referencedby>
+        <referencedby refid="classDatabase_1a53e5ff850d852b1d9930ed830393e1a1" compoundref="database_8cpp" startline="207" endline="231">getAllTables</referencedby>
+        <referencedby refid="classDatabase_1aa5fe1076eec14a4e265fd4b7d1247983" compoundref="database_8cpp" startline="168" endline="199">getTableSchema</referencedby>
+        <referencedby refid="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" compoundref="database_8cpp" startline="143" endline="157">reconnect</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classDatabase_1adec58b4f1a163f78c57d6631c5caf6b0" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Database::connection_info</definition>
+        <argsstring></argsstring>
+        <name>connection_info</name>
+        <qualifiedname>Database::connection_info</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="157" column="39" bodyfile="src/database/database.hpp" bodystart="157" bodyend="-1"/>
+        <referencedby refid="classDatabase_1aa78586a013e7bb5fb707dc4ce330d896" compoundref="database_8cpp" startline="58" endline="75">Database</referencedby>
+        <referencedby refid="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" compoundref="database_8cpp" startline="143" endline="157">reconnect</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classDatabase_1a0be5b2122215021626f1150c89302594" prot="private" static="yes" mutable="no">
+        <type>const std::uint16_t</type>
+        <definition>const std::uint16_t Database::TEXT</definition>
+        <argsstring></argsstring>
+        <name>TEXT</name>
+        <qualifiedname>Database::TEXT</qualifiedname>
+        <initializer>= 1043</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>PostgreSQL type OIDs used to dispatch a result column to the right JSON conversion. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="162" column="32" bodyfile="src/database/database.hpp" bodystart="162" bodyend="-1"/>
+        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="248" endline="329">executeQuery</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classDatabase_1ad09259c9f7ccae773cbd03b9bf1eb6e6" prot="private" static="yes" mutable="no">
+        <type>const std::uint16_t</type>
+        <definition>const std::uint16_t Database::INTEGER</definition>
+        <argsstring></argsstring>
+        <name>INTEGER</name>
+        <qualifiedname>Database::INTEGER</qualifiedname>
+        <initializer>= 23</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="163" column="32" bodyfile="src/database/database.hpp" bodystart="163" bodyend="-1"/>
+        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="248" endline="329">executeQuery</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classDatabase_1a9647c8b7198f626b7d461e472fa70f9b" prot="private" static="yes" mutable="no">
+        <type>const std::uint16_t</type>
+        <definition>const std::uint16_t Database::BOOLEAN</definition>
+        <argsstring></argsstring>
+        <name>BOOLEAN</name>
+        <qualifiedname>Database::BOOLEAN</qualifiedname>
+        <initializer>= 16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="164" column="32" bodyfile="src/database/database.hpp" bodystart="164" bodyend="-1"/>
+        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="248" endline="329">executeQuery</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classDatabase_1a8fad4151f7565d3b3f57d53d50080c05" prot="private" static="yes" mutable="no">
+        <type>const std::uint16_t</type>
+        <definition>const std::uint16_t Database::JSON</definition>
+        <argsstring></argsstring>
+        <name>JSON</name>
+        <qualifiedname>Database::JSON</qualifiedname>
+        <initializer>= 114</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="165" column="32" bodyfile="src/database/database.hpp" bodystart="165" bodyend="-1"/>
+        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="248" endline="329">executeQuery</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classDatabase_1a3f5fa0c674ad45ee587e735cb37bdb4b" prot="private" static="yes" mutable="no">
+        <type>const std::uint16_t</type>
+        <definition>const std::uint16_t Database::JSONB</definition>
+        <argsstring></argsstring>
+        <name>JSONB</name>
+        <qualifiedname>Database::JSONB</qualifiedname>
+        <initializer>= 3802</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="166" column="32" bodyfile="src/database/database.hpp" bodystart="166" bodyend="-1"/>
+        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="248" endline="329">executeQuery</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classDatabase_1a83f8b6d2941a4aee50f225e08e97291c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Database::Database</definition>
+        <argsstring>(const Database &amp;)=delete</argsstring>
+        <name>Database</name>
+        <qualifiedname>Database::Database</qualifiedname>
+        <param>
+          <type>const <ref refid="classDatabase" kindref="compound">Database</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="66" column="5"/>
+        <references refid="classDatabase_1a83f8b6d2941a4aee50f225e08e97291c">Database</references>
+        <referencedby refid="classDatabase_1a83f8b6d2941a4aee50f225e08e97291c">Database</referencedby>
+        <referencedby refid="classDatabase_1a00d16c8b373c9bb4bad59550648c5393">Database</referencedby>
+        <referencedby refid="classDatabase_1a46b93a4878076c7cfddd5b4058297f14">operator=</referencedby>
+        <referencedby refid="classDatabase_1a4f753fb279bc951340001eb8f21f5b82">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classDatabase_1a00d16c8b373c9bb4bad59550648c5393" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Database::Database</definition>
+        <argsstring>(Database &amp;&amp;)=delete</argsstring>
+        <name>Database</name>
+        <qualifiedname>Database::Database</qualifiedname>
+        <param>
+          <type><ref refid="classDatabase" kindref="compound">Database</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="67" column="5"/>
+        <references refid="classDatabase_1a83f8b6d2941a4aee50f225e08e97291c">Database</references>
+      </memberdef>
+      <memberdef kind="function" id="classDatabase_1a46b93a4878076c7cfddd5b4058297f14" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classDatabase" kindref="compound">Database</ref> &amp;</type>
+        <definition>Database &amp; Database::operator=</definition>
+        <argsstring>(const Database &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Database::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classDatabase" kindref="compound">Database</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="68" column="14"/>
+        <references refid="classDatabase_1a83f8b6d2941a4aee50f225e08e97291c">Database</references>
+      </memberdef>
+      <memberdef kind="function" id="classDatabase_1a4f753fb279bc951340001eb8f21f5b82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classDatabase" kindref="compound">Database</ref> &amp;</type>
+        <definition>Database &amp; Database::operator=</definition>
+        <argsstring>(Database &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Database::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classDatabase" kindref="compound">Database</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="69" column="14"/>
+        <references refid="classDatabase_1a5941bc7b94fbacc46dd8acc818712afd" compoundref="database_8cpp" startline="117" endline="133">check_connection</references>
+        <references refid="classDatabase_1a7c0a44631de74f1d0a18119d1cd6cf1a" compoundref="database_8cpp" startline="93" endline="111">checkExists</references>
+        <references refid="classDatabase_1a83f8b6d2941a4aee50f225e08e97291c">Database</references>
+        <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="248" endline="329">executeQuery</references>
+        <references refid="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" compoundref="database_8cpp" startline="143" endline="157">reconnect</references>
+      </memberdef>
+      <memberdef kind="function" id="classDatabase_1aa78586a013e7bb5fb707dc4ce330d896" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Database::Database</definition>
+        <argsstring>(std::shared_ptr&lt; pqxx::connection &gt; &amp;&amp;conn)</argsstring>
+        <name>Database</name>
+        <qualifiedname>Database::Database</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; pqxx::connection &gt; &amp;&amp;</type>
+          <declname>conn</declname>
+        </param>
+        <briefdescription>
+<para>Takes ownership of a pqxx connection and validates it. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Runs <computeroutput>SELECT 1</computeroutput> in a nontransaction when the pointer is non-null and caches <computeroutput>connection_string()</computeroutput> for later use by <ref refid="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" kindref="member">reconnect()</ref>. A validation failure is logged as critical but does not throw; the object still exists. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">conn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Connection to take ownership of (moved from the caller).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Takes ownership of a connection, validates it and caches its connection string. A failed validation is logged (critical) but does not throw; the object still exists with the supplied pointer. <ref refid="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" kindref="member">reconnect()</ref> later depends on the cached string. conn: Connection moved into this <ref refid="classDatabase" kindref="compound">Database</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="78" column="14" bodyfile="src/database/database.cpp" bodystart="58" bodyend="75"/>
+        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="156">connection</references>
+        <references refid="classDatabase_1adec58b4f1a163f78c57d6631c5caf6b0" compoundref="database_8hpp" startline="157">connection_info</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+      </memberdef>
+      <memberdef kind="function" id="classDatabase_1a84d399a2ad58d69daab9b05330e1316d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>Database::~Database</definition>
+        <argsstring>()</argsstring>
+        <name>~Database</name>
+        <qualifiedname>Database::~Database</qualifiedname>
+        <briefdescription>
+<para>Destroys the wrapper, logging that the connection is being released. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Logs that this connection wrapper is being destroyed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="83" column="13" bodyfile="src/database/database.cpp" bodystart="80" bodyend="80"/>
+        <references refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" compoundref="message_8cpp" startline="39" endline="39">Message::InfoMessage</references>
+      </memberdef>
+      <memberdef kind="function" id="classDatabase_1a7c0a44631de74f1d0a18119d1cd6cf1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Database::checkExists</definition>
+        <argsstring>(const std::string &amp;table, const std::string &amp;column, const std::string &amp;value)</argsstring>
+        <name>checkExists</name>
+        <qualifiedname>Database::checkExists</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>table</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>column</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Returns whether a row exists in a table for the given column value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Builds <computeroutput>SELECT EXISTS (...)</computeroutput> using <computeroutput>quote_name</computeroutput> for the table and column to prevent SQL injection, binding only the value as a parameter. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">table</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Table name (identifier, quoted). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">column</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Column name (identifier, quoted). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value bound to the <computeroutput>$1</computeroutput> placeholder. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the row exists; <computeroutput>false</computeroutput> if it does not or if the query threw. </para>
+</simplesect>
+<simplesect kind="note"><para>A query error is indistinguishable from &quot;not found&quot; here (both return <computeroutput>false</computeroutput>); use <ref refid="classDatabase_1a5941bc7b94fbacc46dd8acc818712afd" kindref="member">check_connection()</ref> when that distinction matters.</para>
+</simplesect>
+Checks whether a row exists using a parameterised EXISTS query. Table and column are passed through <computeroutput>quote_name</computeroutput> (identifiers cannot be bound as parameters); only the value is bound. The transaction scope is closed before the result is read so no idle transaction is left open on the connection. table: Table name. column: Column name. value: Value bound to <computeroutput>$1</computeroutput>. Returns <computeroutput>true</computeroutput> if the row exists; <computeroutput>false</computeroutput> if not, or if the query threw. Note: Query failures are swallowed and reported as <computeroutput>false</computeroutput> (see the header note). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="96" column="10" bodyfile="src/database/database.cpp" bodystart="93" bodyend="111"/>
+        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="156">connection</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <referencedby refid="classDatabaseController_1a870dc0277e6ac74c5ddb410e1f7112a2" compoundref="databasecontroller_8cpp" startline="109" endline="112">DatabaseController::checkItemExists</referencedby>
+        <referencedby refid="classDatabase_1a4f753fb279bc951340001eb8f21f5b82">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classDatabase_1a5941bc7b94fbacc46dd8acc818712afd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Database::check_connection</definition>
+        <argsstring>()</argsstring>
+        <name>check_connection</name>
+        <qualifiedname>Database::check_connection</qualifiedname>
+        <briefdescription>
+<para>Checks whether the wrapped connection is open and responds to <computeroutput>SELECT 1</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Probes the connection with a lightweight <computeroutput>SELECT 1</computeroutput> round trip.</para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> only when the pointer is non-null, the probe succeeded and <computeroutput>is_open()</computeroutput>.</para>
+</simplesect>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> only if the pointer is non-null, the probe succeeded and the socket is open. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="102" column="10" bodyfile="src/database/database.cpp" bodystart="117" bodyend="133"/>
+        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="156">connection</references>
+        <referencedby refid="classDatabase_1a4f753fb279bc951340001eb8f21f5b82">operator=</referencedby>
+        <referencedby refid="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" compoundref="database_8cpp" startline="143" endline="157">reconnect</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Database::reconnect</definition>
+        <argsstring>()</argsstring>
+        <name>reconnect</name>
+        <qualifiedname>Database::reconnect</qualifiedname>
+        <briefdescription>
+<para>Replaces the wrapped connection with a fresh one built from the cached string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Rebuilds the wrapped connection from the string cached at construction.</para>
+<para><simplesect kind="return"><para>The result of <ref refid="classDatabase_1a5941bc7b94fbacc46dd8acc818712afd" kindref="member">check_connection()</ref> on the new connection; <computeroutput>false</computeroutput> on failure. </para>
+</simplesect>
+<simplesect kind="note"><para>Not thread-safe: callers must ensure no query is in flight. The old connection is released when the <computeroutput>shared_ptr</computeroutput> is replaced.</para>
+</simplesect>
+<simplesect kind="return"><para>The health check result of the new connection; <computeroutput>false</computeroutput> if creation or check failed.</para>
+</simplesect>
+The old connection is dropped when the <computeroutput>shared_ptr</computeroutput> is reassigned. The failure path is logged as critical. Not thread-safe: the caller must own the <ref refid="classDatabase" kindref="compound">Database</ref> exclusively (see <ref refid="classDatabaseConnectionPool_1a51134b38454f5146921c081fbf2ad5f3" kindref="member">DatabaseConnectionPool::reconnect_all</ref> and the watchdog). <simplesect kind="pre"><para><ref refid="classDatabase_1a5941bc7b94fbacc46dd8acc818712afd" kindref="member">check_connection()</ref> returned false, or a reconnect was otherwise requested. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="110" column="10" bodyfile="src/database/database.cpp" bodystart="143" bodyend="157"/>
+        <references refid="classDatabase_1a5941bc7b94fbacc46dd8acc818712afd" compoundref="database_8cpp" startline="117" endline="133">check_connection</references>
+        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="156">connection</references>
+        <references refid="classDatabase_1adec58b4f1a163f78c57d6631c5caf6b0" compoundref="database_8hpp" startline="157">connection_info</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <referencedby refid="classDatabase_1a4f753fb279bc951340001eb8f21f5b82">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename jsonType</type>
+          </param>
+          <param>
+            <type>typename TransactionType</type>
+          </param>
+        </templateparamlist>
+        <type>std::optional&lt; jsonType &gt;</type>
+        <definition>std::optional&lt; jsonType &gt; Database::executeQuery</definition>
+        <argsstring>(const std::string &amp;query, const pqxx::params &amp;params={})</argsstring>
+        <name>executeQuery</name>
+        <qualifiedname>Database::executeQuery</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>query</declname>
+        </param>
+        <param>
+          <type>const pqxx::params &amp;</type>
+          <declname>params</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Executes a parameterised query and converts the result rows to JSON. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Runs the statement through TransactionType (committed only when it is a <computeroutput>pqxx::work</computeroutput>). For a json array every result row is appended; for a single json object only the first row is returned. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>jsonType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><computeroutput>jsoncons::json</computeroutput> (first row) or <computeroutput>jsoncons::json::array</computeroutput> (all rows). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>TransactionType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Transaction wrapper, e.g. <computeroutput>pqxx::nontransaction</computeroutput> or <computeroutput>pqxx::work</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">query</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SQL text with <computeroutput>$1, $2, ...</computeroutput> placeholders. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Values bound to those placeholders. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The converted value, or <computeroutput>std::nullopt</computeroutput> if any exception was caught.</para>
+</simplesect>
+Executes a parameterised query and converts result rows to JSON. Commits the transaction only when TransactionType is <computeroutput>pqxx::work</computeroutput>; a <computeroutput>pqxx::nontransaction</computeroutput> simply ends at scope exit. Columns are converted by PostgreSQL type OID, with unhandled types falling back to a string. Template parameter jsonType: <computeroutput>jsoncons::json</computeroutput> (returns the first row) or <computeroutput>jsoncons::json::array</computeroutput> (returns all rows); any other type is rejected by a static_assert. Template parameter TransactionType: Transaction wrapper used for the execution. query: SQL text with <computeroutput>$1, $2, ...</computeroutput> placeholders. params: Values bound to those placeholders. Returns The converted value, or <computeroutput>std::nullopt</computeroutput> if any exception was caught. Note: For the single-object specialisation an empty result yields a default-constructed JSON value, not <computeroutput>std::nullopt</computeroutput> (only exceptions produce <computeroutput>std::nullopt</computeroutput>). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="126" column="19" bodyfile="src/database/database.cpp" bodystart="248" bodyend="329"/>
+        <references refid="classDatabase_1a9647c8b7198f626b7d461e472fa70f9b" compoundref="database_8hpp" startline="164">BOOLEAN</references>
+        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="156">connection</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <references refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" compoundref="message_8cpp" startline="39" endline="39">Message::InfoMessage</references>
+        <references refid="classDatabase_1ad09259c9f7ccae773cbd03b9bf1eb6e6" compoundref="database_8hpp" startline="163">INTEGER</references>
+        <references refid="classDatabase_1a8fad4151f7565d3b3f57d53d50080c05" compoundref="database_8hpp" startline="165">JSON</references>
+        <references refid="classDatabase_1a3f5fa0c674ad45ee587e735cb37bdb4b" compoundref="database_8hpp" startline="166">JSONB</references>
+        <references refid="classDatabase_1a0be5b2122215021626f1150c89302594" compoundref="database_8hpp" startline="162">TEXT</references>
+        <referencedby refid="database_8cpp_1a93a7b5be58f322ccae0d3b1564eb4011">Database::executeQuery&lt; jsoncons::json, pqxx::nontransaction &gt;</referencedby>
+        <referencedby refid="database_8cpp_1adea7d8276ce4e36cb3acb79558b4204d">Database::executeQuery&lt; jsoncons::json, pqxx::work &gt;</referencedby>
+        <referencedby refid="database_8cpp_1abf10deee0aec368650df99ba1df909b8">Database::executeQuery&lt; jsoncons::json::array, pqxx::nontransaction &gt;</referencedby>
+        <referencedby refid="classDatabaseController_1a107e601b43f856547bc04d97e8975b8d" compoundref="databasecontroller_8cpp" startline="88" endline="92">DatabaseController::executeQuery</referencedby>
+        <referencedby refid="classDatabaseController_1ae2d9c2dcf54cdec81331949a9aaea597" compoundref="databasecontroller_8cpp" startline="94" endline="97">DatabaseController::executeReadQuery</referencedby>
+        <referencedby refid="classDatabaseController_1ab854d593bad9adf157993f38f465fc18" compoundref="databasecontroller_8cpp" startline="99" endline="102">DatabaseController::executeSearchQuery</referencedby>
+        <referencedby refid="classDatabaseController_1aa758566f79643d7f383a135ef80fa9e9" compoundref="databasecontroller_8cpp" startline="114" endline="124">DatabaseController::getPasswordHashForUserName</referencedby>
+        <referencedby refid="classDatabaseController_1ae11a73cc6347582351411b8c5ef7341d" compoundref="databasecontroller_8cpp" startline="133" endline="136">DatabaseController::getPermissions</referencedby>
+        <referencedby refid="classDatabase_1a4f753fb279bc951340001eb8f21f5b82">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::optional&lt; T &gt;</type>
+        <definition>template std::optional&lt; uint64_t &gt; Database::doSimpleQuery&lt; uint64_t &gt;</definition>
+        <argsstring>(const std::string &amp;query, const pqxx::params &amp;params={})</argsstring>
+        <name>doSimpleQuery</name>
+        <qualifiedname>Database::doSimpleQuery</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>query</declname>
+        </param>
+        <param>
+          <type>const pqxx::params &amp;</type>
+          <declname>params</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Executes a query in a nontransaction and returns the first column of the first row. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Uses <computeroutput>as&lt;std::optional&lt;T&gt;&gt;()</computeroutput> so a SQL NULL becomes <computeroutput>std::nullopt</computeroutput>. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target scalar type for the returned value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">query</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SQL text with placeholders. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Values bound to those placeholders. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The value, or <computeroutput>std::nullopt</computeroutput> if the result is empty or an exception occurred.</para>
+</simplesect>
+Executes a query in a nontransaction and returns a single scalar value. Reads the first column of the first row; an empty result becomes <computeroutput>std::nullopt</computeroutput>. Template parameter T: Target scalar type (<computeroutput>as&lt;std::optional&lt;T&gt;&gt;()</computeroutput> maps SQL NULL to <computeroutput>std::nullopt</computeroutput>). query: SQL text with placeholders. params: Values bound to those placeholders. Returns The value, or <computeroutput>std::nullopt</computeroutput> on empty result or any caught exception. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="137" column="19" bodyfile="src/database/database.cpp" bodystart="340" bodyend="362"/>
+        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="156">connection</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <references refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" compoundref="message_8cpp" startline="39" endline="39">Message::InfoMessage</references>
+        <referencedby refid="database_8cpp_1af71e8706984c45b60a2cc047d2245d98">Database::doSimpleQuery&lt; std::string &gt;</referencedby>
+        <referencedby refid="classDatabaseController_1a5ac3b3112fc438ac6133b008d46b62ca" compoundref="databasecontroller_8cpp" startline="104" endline="107">DatabaseController::doReadQuery</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classDatabase_1aa5fe1076eec14a4e265fd4b7d1247983" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::unordered_set&lt; <ref refid="namespaceapi_1_1v2_1a629023e05b2c9802c14aaca4634f4ab3" kindref="member">api::v2::ColumnInfo</ref> &gt; &gt;</type>
+        <definition>std::optional&lt; std::unordered_set&lt; api::v2::ColumnInfo &gt; &gt; Database::getTableSchema</definition>
+        <argsstring>(const std::string &amp;tableName)</argsstring>
+        <name>getTableSchema</name>
+        <qualifiedname>Database::getTableSchema</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>tableName</declname>
+        </param>
+        <briefdescription>
+<para>Reads the column metadata of a table from <computeroutput>information_schema.columns</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tableName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Table to inspect. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A set of <ref refid="structColumnInfo" kindref="compound">ColumnInfo</ref> (the <computeroutput>id</computeroutput> column is excluded), or <computeroutput>std::nullopt</computeroutput> on error.</para>
+</simplesect>
+Reads the column metadata of a table, excluding the synthetic <computeroutput>id</computeroutput> column. Maps <computeroutput>information_schema.columns</computeroutput> rows into <ref refid="structColumnInfo" kindref="compound">ColumnInfo</ref>: a missing default becomes the literal &quot;None&quot; and <computeroutput>is_nullable == "YES"</computeroutput> becomes <computeroutput>true</computeroutput>. tableName: Table to inspect (bound as a parameter). Returns A set of columns, or <computeroutput>std::nullopt</computeroutput> if the query threw. Note: <ref refid="structColumnInfo" kindref="compound">ColumnInfo</ref>&apos;s equality/hash ignore the Constraint field, so the set is keyed by name, data type and nullability. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="144" column="19" bodyfile="src/database/database.cpp" bodystart="168" bodyend="199"/>
+        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="156">connection</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <referencedby refid="classDatabaseController_1a7d83a6ade653663a62d68922f0928419" compoundref="databasecontroller_8cpp" startline="126" endline="129">DatabaseController::getTableSchema</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classDatabase_1a53e5ff850d852b1d9930ed830393e1a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::unordered_set&lt; std::string &gt; &gt;</type>
+        <definition>std::optional&lt; std::unordered_set&lt; std::string &gt; &gt; Database::getAllTables</definition>
+        <argsstring>()</argsstring>
+        <name>getAllTables</name>
+        <qualifiedname>Database::getAllTables</qualifiedname>
+        <briefdescription>
+<para>Lists the table names in the <computeroutput>public</computeroutput> schema. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Lists all table names in the <computeroutput>public</computeroutput> schema.</para>
+<para><simplesect kind="return"><para>A set of table names, or <computeroutput>std::nullopt</computeroutput> on error.</para>
+</simplesect>
+<simplesect kind="return"><para>A set of names, or <computeroutput>std::nullopt</computeroutput> if the query threw.</para>
+</simplesect>
+Uses a <computeroutput>pqxx::work</computeroutput> (committed implicitly when it goes out of scope) even though the statement is read-only. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/database.hpp" line="150" column="27" bodyfile="src/database/database.cpp" bodystart="207" bodyend="231"/>
+        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="156">connection</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <referencedby refid="classDatabaseController_1acece421c53c0fef3b2965878f2422d5e" compoundref="databasecontroller_8cpp" startline="131" endline="131">DatabaseController::getAllTables</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Owns one synchronous PostgreSQL connection used by the synchronous database path. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>A <ref refid="classDatabase" kindref="compound">Database</ref> wraps a single <computeroutput>pqxx::connection</computeroutput> and offers the query helpers used by controllers through a <ref refid="classDatabaseHanndler" kindref="compound">DatabaseHanndler</ref> lease. Instances are constructed and owned by <ref refid="classDatabaseConnectionPool" kindref="compound">DatabaseConnectionPool</ref>, which hands them out one borrower at a time; callers never construct one directly. The constructor validates the connection with <computeroutput>SELECT 1</computeroutput> and caches its connection string so <ref refid="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" kindref="member">reconnect()</ref> can rebuild it later.</para>
+<para>Thread-safety: the wrapped connection is used by one borrower at a time as enforced by the pool, so no internal locking is performed. Non-copyable and non-movable: ownership stays with the pool&apos;s <computeroutput>std::shared_ptr</computeroutput>. <simplesect kind="note"><para>The constructor tolerates a null connection (no validation performed and an empty cached connection string); in normal operation the pool passes a validated connection. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classDatabaseConnectionPool" kindref="compound">DatabaseConnectionPool</ref>, <ref refid="classDatabaseHanndler" kindref="compound">DatabaseHanndler</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/database/database.hpp" line="62" column="1" bodyfile="src/database/database.hpp" bodystart="63" bodyend="167"/>
+    <listofallmembers>
+      <member refid="classDatabase_1a9647c8b7198f626b7d461e472fa70f9b" prot="private" virt="non-virtual"><scope>Database</scope><name>BOOLEAN</name></member>
+      <member refid="classDatabase_1a5941bc7b94fbacc46dd8acc818712afd" prot="public" virt="non-virtual"><scope>Database</scope><name>check_connection</name></member>
+      <member refid="classDatabase_1a7c0a44631de74f1d0a18119d1cd6cf1a" prot="public" virt="non-virtual"><scope>Database</scope><name>checkExists</name></member>
+      <member refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" prot="private" virt="non-virtual"><scope>Database</scope><name>connection</name></member>
+      <member refid="classDatabase_1adec58b4f1a163f78c57d6631c5caf6b0" prot="private" virt="non-virtual"><scope>Database</scope><name>connection_info</name></member>
+      <member refid="classDatabase_1a83f8b6d2941a4aee50f225e08e97291c" prot="public" virt="non-virtual"><scope>Database</scope><name>Database</name></member>
+      <member refid="classDatabase_1a00d16c8b373c9bb4bad59550648c5393" prot="public" virt="non-virtual"><scope>Database</scope><name>Database</name></member>
+      <member refid="classDatabase_1aa78586a013e7bb5fb707dc4ce330d896" prot="public" virt="non-virtual"><scope>Database</scope><name>Database</name></member>
+      <member refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" prot="public" virt="non-virtual"><scope>Database</scope><name>doSimpleQuery</name></member>
+      <member refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" prot="public" virt="non-virtual"><scope>Database</scope><name>executeQuery</name></member>
+      <member refid="classDatabase_1a53e5ff850d852b1d9930ed830393e1a1" prot="public" virt="non-virtual"><scope>Database</scope><name>getAllTables</name></member>
+      <member refid="classDatabase_1aa5fe1076eec14a4e265fd4b7d1247983" prot="public" virt="non-virtual"><scope>Database</scope><name>getTableSchema</name></member>
+      <member refid="classDatabase_1ad09259c9f7ccae773cbd03b9bf1eb6e6" prot="private" virt="non-virtual"><scope>Database</scope><name>INTEGER</name></member>
+      <member refid="classDatabase_1a8fad4151f7565d3b3f57d53d50080c05" prot="private" virt="non-virtual"><scope>Database</scope><name>JSON</name></member>
+      <member refid="classDatabase_1a3f5fa0c674ad45ee587e735cb37bdb4b" prot="private" virt="non-virtual"><scope>Database</scope><name>JSONB</name></member>
+      <member refid="classDatabase_1a46b93a4878076c7cfddd5b4058297f14" prot="public" virt="non-virtual"><scope>Database</scope><name>operator=</name></member>
+      <member refid="classDatabase_1a4f753fb279bc951340001eb8f21f5b82" prot="public" virt="non-virtual"><scope>Database</scope><name>operator=</name></member>
+      <member refid="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" prot="public" virt="non-virtual"><scope>Database</scope><name>reconnect</name></member>
+      <member refid="classDatabase_1a0be5b2122215021626f1150c89302594" prot="private" virt="non-virtual"><scope>Database</scope><name>TEXT</name></member>
+      <member refid="classDatabase_1a84d399a2ad58d69daab9b05330e1316d" prot="public" virt="virtual"><scope>Database</scope><name>~Database</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structapi_1_1v2_1_1Types_1_1Entity__t" kind="class" language="C++" prot="public">
+    <compoundname>api::v2::Types::Entity_t</compoundname>
+    <includes refid="entities_2base_2types_8hpp" local="no">types.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename S</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="structapi_1_1v2_1_1Types_1_1Entity__t_1af6259e1730f09af9bb584e5ee908b1a8" prot="private" static="no" mutable="no">
+        <type>const S</type>
+        <definition>const S api::v2::Types::Entity_t&lt; S &gt;::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <qualifiedname>api::v2::Types::Entity_t::data</qualifiedname>
+        <briefdescription>
+<para>The immutable operation payload. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/types.hpp" line="105" column="39" bodyfile="src/entities/base/types.hpp" bodystart="105" bodyend="-1"/>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a0c213adf1cb6c15c88517893f7e142fa" compoundref="entities_2base_2types_8hpp" startline="84" endline="84">api::v2::Types::Entity_t&lt; S &gt;::Entity_t</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a958bb81c9a5076dd3b0c2c8eddbdaaf2" compoundref="entities_2base_2types_8hpp" startline="94" endline="94">api::v2::Types::Entity_t&lt; S &gt;::get_data</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structapi_1_1v2_1_1Types_1_1Entity__t_1a3f6b26fd557472e72e86dca32f9be9e3" prot="private" static="no" mutable="no">
+        <type>const std::optional&lt; uint64_t &gt;</type>
+        <definition>const std::optional&lt;uint64_t&gt; api::v2::Types::Entity_t&lt; S &gt;::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <qualifiedname>api::v2::Types::Entity_t::id</qualifiedname>
+        <briefdescription>
+<para>The immutable optional primary key. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/types.hpp" line="110" column="29" bodyfile="src/entities/base/types.hpp" bodystart="110" bodyend="-1"/>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a0c213adf1cb6c15c88517893f7e142fa" compoundref="entities_2base_2types_8hpp" startline="84" endline="84">api::v2::Types::Entity_t&lt; S &gt;::Entity_t</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1Entity__t_1afcffcc20c0af09243571d1a51567307c" compoundref="entities_2base_2types_8hpp" startline="89" endline="89">api::v2::Types::Entity_t&lt; S &gt;::get_id</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structapi_1_1v2_1_1Types_1_1Entity__t_1a0c213adf1cb6c15c88517893f7e142fa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::Types::Entity_t&lt; S &gt;::Entity_t</definition>
+        <argsstring>(const S &amp;_data, const std::optional&lt; uint64_t &gt; _id)</argsstring>
+        <name>Entity_t</name>
+        <qualifiedname>api::v2::Types::Entity_t::Entity_t</qualifiedname>
+        <param>
+          <type>const S &amp;</type>
+          <declname>_data</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; uint64_t &gt;</type>
+          <declname>_id</declname>
+        </param>
+        <briefdescription>
+<para>Stores a payload and an optional id. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Operation payload. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Primary key, or std::nullopt when the database should assign/omit it. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/types.hpp" line="84" column="9" bodyfile="src/entities/base/types.hpp" bodystart="84" bodyend="84"/>
+        <references refid="structapi_1_1v2_1_1Types_1_1Entity__t_1af6259e1730f09af9bb584e5ee908b1a8" compoundref="entities_2base_2types_8hpp" startline="105">api::v2::Types::Entity_t&lt; S &gt;::data</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a3f6b26fd557472e72e86dca32f9be9e3" compoundref="entities_2base_2types_8hpp" startline="110">api::v2::Types::Entity_t&lt; S &gt;::id</references>
+      </memberdef>
+      <memberdef kind="function" id="structapi_1_1v2_1_1Types_1_1Entity__t_1afcffcc20c0af09243571d1a51567307c" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; uint64_t &gt;</type>
+        <definition>std::optional&lt; uint64_t &gt; api::v2::Types::Entity_t&lt; S &gt;::get_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_id</name>
+        <qualifiedname>api::v2::Types::Entity_t::get_id</qualifiedname>
+        <briefdescription>
+<para>Returns the optional primary key associated with the operation. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/types.hpp" line="89" column="24" bodyfile="src/entities/base/types.hpp" bodystart="89" bodyend="89"/>
+        <references refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a3f6b26fd557472e72e86dca32f9be9e3" compoundref="entities_2base_2types_8hpp" startline="110">api::v2::Types::Entity_t&lt; S &gt;::id</references>
+      </memberdef>
+      <memberdef kind="function" id="structapi_1_1v2_1_1Types_1_1Entity__t_1a958bb81c9a5076dd3b0c2c8eddbdaaf2" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const S &amp;</type>
+        <definition>const S &amp; api::v2::Types::Entity_t&lt; S &gt;::get_data</definition>
+        <argsstring>() const</argsstring>
+        <name>get_data</name>
+        <qualifiedname>api::v2::Types::Entity_t::get_data</qualifiedname>
+        <briefdescription>
+<para>Returns the immutable operation payload. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/types.hpp" line="94" column="33" bodyfile="src/entities/base/types.hpp" bodystart="94" bodyend="94"/>
+        <references refid="structapi_1_1v2_1_1Types_1_1Entity__t_1af6259e1730f09af9bb584e5ee908b1a8" compoundref="entities_2base_2types_8hpp" startline="105">api::v2::Types::Entity_t&lt; S &gt;::data</references>
+      </memberdef>
+      <memberdef kind="function" id="structapi_1_1v2_1_1Types_1_1Entity__t_1aba8fbeb8f0b00fa9295555252f0cfe60" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual api::v2::Types::Entity_t&lt; S &gt;::~Entity_t</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Entity_t</name>
+        <qualifiedname>api::v2::Types::Entity_t::~Entity_t</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor so derived operation types can be destroyed polymorphically. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/types.hpp" line="99" column="17"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Immutable payload-plus-optional-id base for the CRUD operation value types. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Stores the operation&apos;s data (a JSON object for create/update, a column set for read, a sentinel for delete/data) together with an optional primary key. The payload and id are const, so an instance is a fixed description of one requested operation. Concrete types below are empty specialisations that choose S and expose construction appropriate to the operation. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>S</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the payload returned by <ref refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a958bb81c9a5076dd3b0c2c8eddbdaaf2" kindref="member">get_data()</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classCreate__t" kindref="compound">Create_t</ref>, <ref refid="classRead__t" kindref="compound">Read_t</ref>, <ref refid="classUpdate__t" kindref="compound">Update_t</ref>, <ref refid="classDelete__t" kindref="compound">Delete_t</ref>, <ref refid="classData__t" kindref="compound">Data_t</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/entities/base/types.hpp" line="71" column="5" bodyfile="src/entities/base/types.hpp" bodystart="72" bodyend="111"/>
+    <listofallmembers>
+      <member refid="structapi_1_1v2_1_1Types_1_1Entity__t_1af6259e1730f09af9bb584e5ee908b1a8" prot="private" virt="non-virtual"><scope>api::v2::Types::Entity_t</scope><name>data</name></member>
+      <member refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a0c213adf1cb6c15c88517893f7e142fa" prot="public" virt="non-virtual"><scope>api::v2::Types::Entity_t</scope><name>Entity_t</name></member>
+      <member refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a958bb81c9a5076dd3b0c2c8eddbdaaf2" prot="public" virt="non-virtual"><scope>api::v2::Types::Entity_t</scope><name>get_data</name></member>
+      <member refid="structapi_1_1v2_1_1Types_1_1Entity__t_1afcffcc20c0af09243571d1a51567307c" prot="public" virt="non-virtual"><scope>api::v2::Types::Entity_t</scope><name>get_id</name></member>
+      <member refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a3f6b26fd557472e72e86dca32f9be9e3" prot="private" virt="non-virtual"><scope>api::v2::Types::Entity_t</scope><name>id</name></member>
+      <member refid="structapi_1_1v2_1_1Types_1_1Entity__t_1aba8fbeb8f0b00fa9295555252f0cfe60" prot="public" virt="virtual"><scope>api::v2::Types::Entity_t</scope><name>~Entity_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

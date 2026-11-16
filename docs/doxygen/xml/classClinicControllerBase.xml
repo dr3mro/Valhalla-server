@@ -1,0 +1,643 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classClinicControllerBase" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>ClinicControllerBase</compoundname>
+    <derivedcompoundref refid="classClinicController" prot="public" virt="non-virtual">ClinicController&lt; T &gt;</derivedcompoundref>
+    <includes refid="cliniccontrollerbase_8hpp" local="no">cliniccontrollerbase.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classClinicControllerBase_1a3e8f2c567afba1c174e17be60de26351" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ClinicControllerBase::ClinicControllerBase</definition>
+        <argsstring>()=default</argsstring>
+        <name>ClinicControllerBase</name>
+        <qualifiedname>ClinicControllerBase::ClinicControllerBase</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="50" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classClinicControllerBase_1a14929608e87a3507194222c27cb602ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual ClinicControllerBase::~ClinicControllerBase</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ClinicControllerBase</name>
+        <qualifiedname>ClinicControllerBase::~ClinicControllerBase</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="52" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classClinicControllerBase_1a572b7956fa1d19e1c688458f4108dca0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ClinicControllerBase::Create</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>Create</name>
+        <qualifiedname>ClinicControllerBase::Create</qualifiedname>
+        <reimplementedby refid="classClinicController_1a4dee307e46cd9d8a3cc2b76e603e9b24">Create</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Creates a clinic-service entity from the JSON body. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For most types the id is supplied by the client; for Patient/Visits the generic create flow is used. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once with the resulting HTTP status and body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal used to authorize creation. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body describing the new entity. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="62" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a732361aa386238582d08d4165eb4b864" compoundref="api_2v2_2routes_2clinics_8hpp" startline="86" endline="136">api::v2::Clinic::Create</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classClinicControllerBase_1a69c52c140626bbe5abb2cc9bfcc3d1b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; ClinicControllerBase::CreateAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>CreateAsync</name>
+        <qualifiedname>ClinicControllerBase::CreateAsync</qualifiedname>
+        <reimplementedby refid="classClinicController_1a223487282b083a736ff5ad040a9b79af">CreateAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classClinicControllerBase_1a572b7956fa1d19e1c688458f4108dca0" kindref="member">Create()</ref>; must be awaited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once on completion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal used to authorize creation. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body; must outlive the coroutine. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="69" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classClinicControllerBase_1abd99fedc56554304ebf14698b28cdb7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ClinicControllerBase::Read</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>Read</name>
+        <qualifiedname>ClinicControllerBase::Read</qualifiedname>
+        <reimplementedby refid="classClinicController_1a0f109a3105237cccf7b29263ad6ff4ea">Read</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Reads selected columns of a clinic-service entity identified in <computeroutput>data</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once with the resulting HTTP status and body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal used to authorize the read. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body containing <computeroutput>id</computeroutput> and <computeroutput>schema</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="76" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a55c8928811105908bdcd77a1f8e8fefb" compoundref="api_2v2_2routes_2clinics_8hpp" startline="146" endline="196">api::v2::Clinic::Read</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classClinicControllerBase_1a37d9bbe872aad4f871c285c5af09d24b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; ClinicControllerBase::ReadAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>ReadAsync</name>
+        <qualifiedname>ClinicControllerBase::ReadAsync</qualifiedname>
+        <reimplementedby refid="classClinicController_1a00e426195a2f2a48140a94d7e258bf94">ReadAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classClinicControllerBase_1abd99fedc56554304ebf14698b28cdb7c" kindref="member">Read()</ref>; must be awaited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once on completion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal used to authorize the read. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body containing <computeroutput>id</computeroutput> and <computeroutput>schema</computeroutput>; must outlive the coroutine. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="83" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classClinicControllerBase_1a75870953c9e268b975a0433484ffaf76" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ClinicControllerBase::Update</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data, std::optional&lt; uint64_t &gt; id)=0</argsstring>
+        <name>Update</name>
+        <qualifiedname>ClinicControllerBase::Update</qualifiedname>
+        <reimplementedby refid="classClinicController_1ac9602c4667f7e5dadd4be920a9258d48">Update</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Updates a clinic-service entity identified by <computeroutput>id</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once with the resulting HTTP status and body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal used to authorize the update. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body holding the fields to change. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target entity id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="91" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1ab966bc6c2f287a66e363365398ebacd7" compoundref="api_2v2_2routes_2clinics_8hpp" startline="206" endline="261">api::v2::Clinic::Update</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classClinicControllerBase_1ab1d608f74cb516ca9d1663d6f86358a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ClinicControllerBase::Delete</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; id)=0</argsstring>
+        <name>Delete</name>
+        <qualifiedname>ClinicControllerBase::Delete</qualifiedname>
+        <reimplementedby refid="classClinicController_1af4377661c51a748d9df8056f70ad2a03">Delete</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Deletes a clinic-service entity; only supported for Patient/Visits by the implementation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once with the resulting HTTP status and body (400 when unsupported). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal used to authorize the deletion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target entity id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="98" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a0041b3b3e1be2e86ea5b2aef2544d8fd" compoundref="api_2v2_2routes_2clinics_8hpp" startline="270" endline="325">api::v2::Clinic::Delete</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classClinicControllerBase_1a3c0dca8c5c1ba3d19a2c53ee4775653b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; ClinicControllerBase::DeleteAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; id)=0</argsstring>
+        <name>DeleteAsync</name>
+        <qualifiedname>ClinicControllerBase::DeleteAsync</qualifiedname>
+        <reimplementedby refid="classClinicController_1a046bf1ade561188314d73665933e5aec">DeleteAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classClinicControllerBase_1ab1d608f74cb516ca9d1663d6f86358a5" kindref="member">Delete()</ref>; must be awaited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once on completion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal used to authorize the deletion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target entity id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="105" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classClinicControllerBase_1a021464e215ff55abfa11f3b684117934" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ClinicControllerBase::Search</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>Search</name>
+        <qualifiedname>ClinicControllerBase::Search</qualifiedname>
+        <reimplementedby refid="classClinicController_1ad3d21099d98ec1e52ab290ca38389c98">Search</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Searches clinic-service entities; only supported for <ref refid="classPatient" kindref="compound">Patient</ref> by the implementation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once with the resulting HTTP status and body (400 when unsupported). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal supplied by the caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body containing criteria, limit and offset. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="112" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a5f03d36ebe2fec6696c005bc1e190605" compoundref="api_2v2_2routes_2clinics_8hpp" startline="333" endline="383">api::v2::Clinic::Search</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classClinicControllerBase_1a14f6857ba85561fd62cb5280a94e8eb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ClinicControllerBase::GetVisits</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; patient_id)=0</argsstring>
+        <name>GetVisits</name>
+        <qualifiedname>ClinicControllerBase::GetVisits</qualifiedname>
+        <reimplementedby refid="classClinicController_1ac39bb42de6ca02ad70eb6ed1064a1d61">GetVisits</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>patient_id</declname>
+        </param>
+        <briefdescription>
+<para>Retrieves the visit history of a patient; unsupported for other entity types. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once with 200 and the serialized visits, or an error status. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal used to authorize the read. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">patient_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target patient id; a missing value is rejected with 400. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="119" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1ad05abb43349c46b4bc7fc67fab45ed11" compoundref="api_2v2_2routes_2clinics_8hpp" startline="392" endline="447">api::v2::Clinic::GetVisits</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classClinicControllerBase_1a80c5adbbef552507ede8c823171d15b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; ClinicControllerBase::GetVisitsAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; patient_id)=0</argsstring>
+        <name>GetVisitsAsync</name>
+        <qualifiedname>ClinicControllerBase::GetVisitsAsync</qualifiedname>
+        <reimplementedby refid="classClinicController_1a8ed0fcaa92bbfb7e6d1d2c4c7b6dbea9">GetVisitsAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>patient_id</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classClinicControllerBase_1a14f6857ba85561fd62cb5280a94e8eb1" kindref="member">GetVisits()</ref>; must be awaited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked once on completion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal used to authorize the read. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">patient_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target patient id; a missing value is rejected with 400. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="126" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Abstract contract for clinic-service entity handlers (patients, visits, reports, prescriptions, ...). </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Defines the subset of CRUDS operations meaningful for clinic entities plus patient visit retrieval. Implementations (<ref refid="classClinicController" kindref="compound">ClinicController</ref>) specialize behaviour per entity type: for example only Patient/Visits support Delete, only <ref refid="classPatient" kindref="compound">Patient</ref> supports Search and GetVisits. <computeroutput><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref></computeroutput> is <computeroutput>std::function&lt;void(int, const std::string&amp;)&gt;</computeroutput>; implementations answer exactly once with an HTTP status code and body on every completing path, including &quot;not implemented&quot; rejections. <simplesect kind="note"><para>Only Create, Read, Delete and GetVisits have coroutine forms in this contract; Update and Search are synchronous only. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classClinicController" kindref="compound">ClinicController</ref>, <ref refid="classEntityControllerBase" kindref="compound">EntityControllerBase</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ClinicController&lt; T &gt;</label>
+        <link refid="classClinicController"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ClinicControllerBase</label>
+        <link refid="classClinicControllerBase"/>
+      </node>
+    </inheritancegraph>
+    <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="47" column="1" bodyfile="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" bodystart="48" bodyend="127"/>
+    <listofallmembers>
+      <member refid="classClinicControllerBase_1a3e8f2c567afba1c174e17be60de26351" prot="public" virt="non-virtual"><scope>ClinicControllerBase</scope><name>ClinicControllerBase</name></member>
+      <member refid="classClinicControllerBase_1a572b7956fa1d19e1c688458f4108dca0" prot="public" virt="pure-virtual"><scope>ClinicControllerBase</scope><name>Create</name></member>
+      <member refid="classClinicControllerBase_1a69c52c140626bbe5abb2cc9bfcc3d1b8" prot="public" virt="pure-virtual"><scope>ClinicControllerBase</scope><name>CreateAsync</name></member>
+      <member refid="classClinicControllerBase_1ab1d608f74cb516ca9d1663d6f86358a5" prot="public" virt="pure-virtual"><scope>ClinicControllerBase</scope><name>Delete</name></member>
+      <member refid="classClinicControllerBase_1a3c0dca8c5c1ba3d19a2c53ee4775653b" prot="public" virt="pure-virtual"><scope>ClinicControllerBase</scope><name>DeleteAsync</name></member>
+      <member refid="classClinicControllerBase_1a14f6857ba85561fd62cb5280a94e8eb1" prot="public" virt="pure-virtual"><scope>ClinicControllerBase</scope><name>GetVisits</name></member>
+      <member refid="classClinicControllerBase_1a80c5adbbef552507ede8c823171d15b0" prot="public" virt="pure-virtual"><scope>ClinicControllerBase</scope><name>GetVisitsAsync</name></member>
+      <member refid="classClinicControllerBase_1abd99fedc56554304ebf14698b28cdb7c" prot="public" virt="pure-virtual"><scope>ClinicControllerBase</scope><name>Read</name></member>
+      <member refid="classClinicControllerBase_1a37d9bbe872aad4f871c285c5af09d24b" prot="public" virt="pure-virtual"><scope>ClinicControllerBase</scope><name>ReadAsync</name></member>
+      <member refid="classClinicControllerBase_1a021464e215ff55abfa11f3b684117934" prot="public" virt="pure-virtual"><scope>ClinicControllerBase</scope><name>Search</name></member>
+      <member refid="classClinicControllerBase_1a75870953c9e268b975a0433484ffaf76" prot="public" virt="pure-virtual"><scope>ClinicControllerBase</scope><name>Update</name></member>
+      <member refid="classClinicControllerBase_1a14929608e87a3507194222c27cb602ec" prot="public" virt="virtual"><scope>ClinicControllerBase</scope><name>~ClinicControllerBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1056 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="store_8hpp" kind="file" language="C++">
+    <compoundname>store.hpp</compoundname>
+    <includes local="no">atomic</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">mutex</includes>
+    <includes local="no">stdexcept</includes>
+    <includes local="no">string</includes>
+    <includes local="no">typeindex</includes>
+    <includes local="no">unordered_map</includes>
+    <includedby refid="auth_8hpp" local="yes">src/api/v2/filters/auth.hpp</includedby>
+    <includedby refid="ratelimit_8hpp" local="yes">src/api/v2/filters/ratelimit.hpp</includedby>
+    <includedby refid="appointments_8hpp" local="yes">src/api/v2/routes/appointments.hpp</includedby>
+    <includedby refid="clients_8hpp" local="yes">src/api/v2/routes/clients.hpp</includedby>
+    <includedby refid="api_2v2_2routes_2clinics_8hpp" local="yes">src/api/v2/routes/clinics.hpp</includedby>
+    <includedby refid="services_8hpp" local="yes">src/api/v2/routes/services.hpp</includedby>
+    <includedby refid="staff_8hpp" local="yes">src/api/v2/routes/staff.hpp</includedby>
+    <includedby refid="controller_8hpp" local="yes">src/controllers/base/controller/controller.hpp</includedby>
+    <includedby refid="clientcontroller_8hpp" local="yes">src/controllers/clientcontroller/clientcontroller.hpp</includedby>
+    <includedby refid="databasecontroller_8cpp" local="yes">src/controllers/databasecontroller/databasecontroller.cpp</includedby>
+    <includedby refid="databasecontroller_8hpp" local="yes">src/controllers/databasecontroller/databasecontroller.hpp</includedby>
+    <includedby refid="entitycontroller_8hpp" local="yes">src/controllers/entitycontroller/entitycontroller.hpp</includedby>
+    <includedby refid="staffcontroller_8cpp" local="yes">src/controllers/staffcontroller/staffcontroller.cpp</includedby>
+    <includedby refid="asyncdbclient_8cpp" local="yes">src/database/asyncdbclient.cpp</includedby>
+    <includedby refid="databaseconnectionpool_8cpp" local="yes">src/database/databaseconnectionpool.cpp</includedby>
+    <includedby refid="databasehandler_8cpp" local="yes">src/database/databasehandler.cpp</includedby>
+    <includedby refid="dbexecutor_8cpp" local="yes">src/database/dbexecutor.cpp</includedby>
+    <includedby refid="entity_8hpp" local="yes">src/entities/base/entity.hpp</includedby>
+    <includedby refid="entities_2base_2types_8hpp" local="yes">src/entities/base/types.hpp</includedby>
+    <includedby refid="dosdetector_8hpp" local="yes">src/gatekeeper/dosdetector/dosdetector.hpp</includedby>
+    <includedby refid="gatekeeper_8cpp" local="yes">src/gatekeeper/gatekeeper.cpp</includedby>
+    <includedby refid="keeprbase_8hpp" local="yes">src/gatekeeper/keeprbase/keeprbase.hpp</includedby>
+    <includedby refid="passwordworker_8cpp" local="yes">src/gatekeeper/passwordcrypt/passwordworker.cpp</includedby>
+    <includedby refid="permissioncache_8hpp" local="yes">src/gatekeeper/permissionmanager/permissioncache.hpp</includedby>
+    <includedby refid="permissionmanager__private_8hpp" local="yes">src/gatekeeper/permissionmanager/permissionmanager_private.hpp</includedby>
+    <includedby refid="sessionmanager_8hpp" local="yes">src/gatekeeper/sessionmanager/sessionmanager.hpp</includedby>
+    <includedby refid="cors_8hpp" local="yes">src/server/cors.hpp</includedby>
+    <includedby refid="server_8cpp" local="yes">src/server/server.cpp</includedby>
+    <includedby refid="store_8cpp" local="yes">src/store/store.cpp</includedby>
+    <includedby refid="logger_8cpp" local="yes">src/utils/Logger/logger.cpp</includedby>
+    <includedby refid="databaseschema_8cpp" local="yes">src/validator/databaseschema/databaseschema.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/store/store.hpp</label>
+        <link refid="store_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>atomic</label>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="4">
+        <label>memory</label>
+      </node>
+      <node id="5">
+        <label>mutex</label>
+      </node>
+      <node id="6">
+        <label>stdexcept</label>
+      </node>
+      <node id="7">
+        <label>string</label>
+      </node>
+      <node id="8">
+        <label>typeindex</label>
+      </node>
+      <node id="9">
+        <label>unordered_map</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="8">
+        <label>src/api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/api/v2/filters/auth.hpp</label>
+        <link refid="auth_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/api/v2/filters/ratelimit.hpp</label>
+        <link refid="ratelimit_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/api/v2/routes/appointments.hpp</label>
+        <link refid="appointments_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/api/v2/routes/clients.hpp</label>
+        <link refid="clients_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/api/v2/routes/clinics.hpp</label>
+        <link refid="api_2v2_2routes_2clinics_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>src/api/v2/routes/services.hpp</label>
+        <link refid="services_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>src/api/v2/routes/staff.hpp</label>
+        <link refid="staff_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
+        <link refid="appointmentcontroller_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
+        <link refid="appointmentcontroller_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>src/controllers/base/controller/controller.hpp</label>
+        <link refid="controller_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>src/controllers/clientcontroller/clientcontroller.cpp</label>
+        <link refid="clientcontroller_8cpp"/>
+      </node>
+      <node id="19">
+        <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
+        <link refid="clientcontroller_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
+        <link refid="cliniccontroller_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/controllers/cliniccontroller/cliniccontroller.hpp</label>
+        <link refid="cliniccontroller_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>src/controllers/databasecontroller/databasecontroller.cpp</label>
+        <link refid="databasecontroller_8cpp"/>
+      </node>
+      <node id="28">
+        <label>src/controllers/databasecontroller/databasecontroller.hpp</label>
+        <link refid="databasecontroller_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
+        <link refid="entitycontroller_8cpp"/>
+      </node>
+      <node id="16">
+        <label>src/controllers/entitycontroller/entitycontroller.hpp</label>
+        <link refid="entitycontroller_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
+        <link refid="servicecontroller_8cpp"/>
+      </node>
+      <node id="23">
+        <label>src/controllers/servicecontroller/servicecontroller.hpp</label>
+        <link refid="servicecontroller_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
+        <link refid="staffcontroller_8cpp"/>
+      </node>
+      <node id="25">
+        <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
+        <link refid="staffcontroller_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="67">
+        <label>src/database/asyncdbclient.cpp</label>
+        <link refid="asyncdbclient_8cpp"/>
+      </node>
+      <node id="26">
+        <label>src/database/database.cpp</label>
+        <link refid="database_8cpp"/>
+      </node>
+      <node id="68">
+        <label>src/database/databaseconnectionpool.cpp</label>
+        <link refid="databaseconnectionpool_8cpp"/>
+      </node>
+      <node id="69">
+        <label>src/database/databasehandler.cpp</label>
+        <link refid="databasehandler_8cpp"/>
+      </node>
+      <node id="70">
+        <label>src/database/dbexecutor.cpp</label>
+        <link refid="dbexecutor_8cpp"/>
+      </node>
+      <node id="30">
+        <label>src/entities/appointments/base/appointment.hpp</label>
+        <link refid="appointment_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>src/entities/appointments/clinic.hpp</label>
+        <link refid="clinic_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>src/entities/appointments/laboratory.hpp</label>
+        <link refid="laboratory_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>src/entities/appointments/pharmacy.hpp</label>
+        <link refid="pharmacy_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>src/entities/appointments/radiologycenter.hpp</label>
+        <link refid="radiologycenter_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>src/entities/appointments/user.hpp</label>
+        <link refid="appointments_2user_8hpp"/>
+      </node>
+      <node id="39">
+        <label>src/entities/base/case.hpp</label>
+        <link refid="case_8hpp"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>src/entities/base/client.hpp</label>
+        <link refid="client_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>src/entities/base/entity.hpp</label>
+        <link refid="entity_8hpp"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>src/entities/base/service.hpp</label>
+        <link refid="service_8hpp"/>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+      </node>
+      <node id="71">
+        <label>src/entities/base/types.hpp</label>
+        <link refid="entities_2base_2types_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>src/entities/people/provider.hpp</label>
+        <link refid="provider_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>src/entities/people/user.hpp</label>
+        <link refid="people_2user_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>src/entities/services/clinics/clinics.hpp</label>
+        <link refid="entities_2services_2clinics_2clinics_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>src/entities/services/clinics/patient/health.hpp</label>
+        <link refid="health_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>src/entities/services/clinics/patient/patient.hpp</label>
+        <link refid="patient_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>src/entities/services/clinics/patient/patientdrugs.hpp</label>
+        <link refid="patientdrugs_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>src/entities/services/clinics/patient/reports.hpp</label>
+        <link refid="reports_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>src/entities/services/clinics/visits/paidservices.hpp</label>
+        <link refid="paidservices_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>src/entities/services/clinics/visits/prescriptions.hpp</label>
+        <link refid="prescriptions_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>src/entities/services/clinics/visits/requests.hpp</label>
+        <link refid="requests_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>src/entities/services/clinics/visits/visitdrugs.hpp</label>
+        <link refid="visitdrugs_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>src/entities/services/clinics/visits/visits.hpp</label>
+        <link refid="visits_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>src/entities/services/laboratories.hpp</label>
+        <link refid="laboratories_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>src/entities/services/pharmacies.hpp</label>
+        <link refid="pharmacies_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>src/entities/services/radiologycenters.hpp</label>
+        <link refid="radiologycenters_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="73">
+        <label>src/gatekeeper/dosdetector/dosdetector.cpp</label>
+        <link refid="dosdetector_8cpp"/>
+      </node>
+      <node id="72">
+        <label>src/gatekeeper/dosdetector/dosdetector.hpp</label>
+        <link refid="dosdetector_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>src/gatekeeper/gatekeeper.cpp</label>
+        <link refid="gatekeeper_8cpp"/>
+      </node>
+      <node id="60">
+        <label>src/gatekeeper/gatekeeper.hpp</label>
+        <link refid="gatekeeper_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>src/gatekeeper/includes.hpp</label>
+        <link refid="includes_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>src/gatekeeper/keeprbase/keeprbase.cpp</label>
+        <link refid="keeprbase_8cpp"/>
+      </node>
+      <node id="57">
+        <label>src/gatekeeper/keeprbase/keeprbase.hpp</label>
+        <link refid="keeprbase_8hpp"/>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>src/gatekeeper/passwordcrypt/passwordworker.cpp</label>
+        <link refid="passwordworker_8cpp"/>
+      </node>
+      <node id="75">
+        <label>src/gatekeeper/permissionmanager/permissioncache.hpp</label>
+        <link refid="permissioncache_8hpp"/>
+        <childnode refid="64" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>src/gatekeeper/permissionmanager/permissionmanager.cpp</label>
+        <link refid="permissionmanager_8cpp"/>
+      </node>
+      <node id="65">
+        <label>src/gatekeeper/permissionmanager/permissionmanager_private.cpp</label>
+        <link refid="permissionmanager__private_8cpp"/>
+      </node>
+      <node id="64">
+        <label>src/gatekeeper/permissionmanager/permissionmanager_private.hpp</label>
+        <link refid="permissionmanager__private_8hpp"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>src/gatekeeper/sessionmanager/sessionmanager.cpp</label>
+        <link refid="sessionmanager_8cpp"/>
+      </node>
+      <node id="59">
+        <label>src/gatekeeper/sessionmanager/sessionmanager.hpp</label>
+        <link refid="sessionmanager_8hpp"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>src/gatekeeper/tokenmanager/tokenmanager.cpp</label>
+        <link refid="tokenmanager_8cpp"/>
+      </node>
+      <node id="62">
+        <label>src/gatekeeper/tokenmanager/tokenmanager.hpp</label>
+        <link refid="tokenmanager_8hpp"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="76">
+        <label>src/server/cors.hpp</label>
+        <link refid="cors_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/server/server.hpp</label>
+        <link refid="server_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="77">
+        <label>src/store/store.cpp</label>
+        <link refid="store_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/store/store.hpp</label>
+        <link refid="store_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>src/utils/Logger/logger.cpp</label>
+        <link refid="logger_8cpp"/>
+      </node>
+      <node id="66">
+        <label>src/validator/databaseschema/databaseschema.cpp</label>
+        <link refid="databaseschema_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classStore" prot="public">Store</innerclass>
+    <briefdescription>
+<para>Process-wide service locator keyed by C++ type. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file declares <ref refid="classStore" kindref="compound">Store</ref>, the one place in the server that keeps a single shared object for each C++ type. Callers ask for an object by its type (for example &quot;the database client&quot;), and <ref refid="classStore" kindref="compound">Store</ref> either hands back the object it already made or builds it the first time. It also offers a cheap per-thread cache for busy request code and a way to swap an object for a fake one during tests.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: <ref refid="classStore" kindref="compound">Store</ref> is the server&apos;s service locator. Controllers and other long-lived objects call <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject&lt;T&gt;()</ref> or <ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject&lt;T&gt;()</ref> to get shared helpers such as the database client instead of building their own. Because the object is built only once, expensive resources are never duplicated. Tests call replaceObject&lt;T&gt;() to install a fake without changing production code. Without <ref refid="classStore" kindref="compound">Store</ref>, every caller would have to pass the same helper around by hand and could easily end up with a different copy.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para><ref refid="classService" kindref="compound">Service</ref> locator: one well-known place you ask for shared objects, by type instead of by name. <ulink url="https://en.wikipedia.org/wiki/Service_locator_pattern">https://en.wikipedia.org/wiki/Service_locator_pattern</ulink></para>
+</listitem><listitem><para>thread_local: storage that has one separate copy per running thread. <ulink url="https://en.cppreference.com/w/cpp/language/storage_duration">https://en.cppreference.com/w/cpp/language/storage_duration</ulink></para>
+</listitem><listitem><para>Atomic memory order: rules saying when one thread&apos;s writes become visible to another thread. <ulink url="https://en.cppreference.com/w/cpp/atomic/memory_order">https://en.cppreference.com/w/cpp/atomic/memory_order</ulink></para>
+</listitem><listitem><para>RAII: using a small local object to lock a mutex and unlock it automatically at the end of a scope. <ulink url="https://en.cppreference.com/w/cpp/language/raii">https://en.cppreference.com/w/cpp/language/raii</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>store.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Process-wide<sp/>service<sp/>locator<sp/>keyed<sp/>by<sp/>C++<sp/>type.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>file<sp/>declares<sp/>Store,<sp/>the<sp/>one<sp/>place<sp/>in<sp/>the<sp/>server<sp/>that<sp/>keeps<sp/>a<sp/>single<sp/>shared<sp/>object<sp/>for<sp/>each<sp/>C++<sp/>type.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Callers<sp/>ask<sp/>for<sp/>an<sp/>object<sp/>by<sp/>its<sp/>type<sp/>(for<sp/>example<sp/>&quot;the<sp/>database<sp/>client&quot;),<sp/>and<sp/>Store<sp/>either<sp/>hands<sp/>back<sp/>the</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>object<sp/>it<sp/>already<sp/>made<sp/>or<sp/>builds<sp/>it<sp/>the<sp/>first<sp/>time.<sp/>It<sp/>also<sp/>offers<sp/>a<sp/>cheap<sp/>per-thread<sp/>cache<sp/>for<sp/>busy<sp/>request</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>code<sp/>and<sp/>a<sp/>way<sp/>to<sp/>swap<sp/>an<sp/>object<sp/>for<sp/>a<sp/>fake<sp/>one<sp/>during<sp/>tests.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Store<sp/>is<sp/>the<sp/>server&apos;s<sp/>service<sp/>locator.<sp/>Controllers<sp/>and<sp/>other<sp/>long-lived<sp/>objects<sp/>call<sp/>Store::getObject&lt;T&gt;()<sp/>or</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>Store::cachedObject&lt;T&gt;()<sp/>to<sp/>get<sp/>shared<sp/>helpers<sp/>such<sp/>as<sp/>the<sp/>database<sp/>client<sp/>instead<sp/>of<sp/>building<sp/>their<sp/>own.<sp/>Because<sp/>the</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>object<sp/>is<sp/>built<sp/>only<sp/>once,<sp/>expensive<sp/>resources<sp/>are<sp/>never<sp/>duplicated.<sp/>Tests<sp/>call<sp/>replaceObject&lt;T&gt;()<sp/>to<sp/>install<sp/>a<sp/>fake</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>without<sp/>changing<sp/>production<sp/>code.<sp/>Without<sp/>Store,<sp/>every<sp/>caller<sp/>would<sp/>have<sp/>to<sp/>pass<sp/>the<sp/>same<sp/>helper<sp/>around<sp/>by<sp/>hand<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>could<sp/>easily<sp/>end<sp/>up<sp/>with<sp/>a<sp/>different<sp/>copy.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>-<sp/>Service<sp/>locator:<sp/>one<sp/>well-known<sp/>place<sp/>you<sp/>ask<sp/>for<sp/>shared<sp/>objects,<sp/>by<sp/>type<sp/>instead<sp/>of<sp/>by<sp/>name.<sp/>https://en.wikipedia.org/wiki/Service_locator_pattern</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>thread_local:<sp/>storage<sp/>that<sp/>has<sp/>one<sp/>separate<sp/>copy<sp/>per<sp/>running<sp/>thread.<sp/>https://en.cppreference.com/w/cpp/language/storage_duration</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>Atomic<sp/>memory<sp/>order:<sp/>rules<sp/>saying<sp/>when<sp/>one<sp/>thread&apos;s<sp/>writes<sp/>become<sp/>visible<sp/>to<sp/>another<sp/>thread.<sp/>https://en.cppreference.com/w/cpp/atomic/memory_order</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>RAII:<sp/>using<sp/>a<sp/>small<sp/>local<sp/>object<sp/>to<sp/>lock<sp/>a<sp/>mutex<sp/>and<sp/>unlock<sp/>it<sp/>automatically<sp/>at<sp/>the<sp/>end<sp/>of<sp/>a<sp/>scope.<sp/>https://en.cppreference.com/w/cpp/language/raii</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Compiler-enforced<sp/>header<sp/>guard:<sp/>include<sp/>this<sp/>file<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;atomic&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::atomic:<sp/>a<sp/>counter<sp/>that<sp/>several<sp/>threads<sp/>can<sp/>safely<sp/>change<sp/>at<sp/>the<sp/>same<sp/>time.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::uint64_t:<sp/>the<sp/>fixed-width<sp/>integer<sp/>used<sp/>by<sp/>the<sp/>generation<sp/>counter.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::shared_ptr<sp/>/<sp/>std::make_shared:<sp/>shared<sp/>ownership<sp/>of<sp/>the<sp/>stored<sp/>objects.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::mutex<sp/>/<sp/>std::scoped_lock:<sp/>protect<sp/>the<sp/>shared<sp/>registry<sp/>from<sp/>concurrent<sp/>access.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::runtime_error:<sp/>thrown<sp/>when<sp/>a<sp/>type<sp/>is<sp/>registered<sp/>a<sp/>second<sp/>time.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string:<sp/>used<sp/>to<sp/>build<sp/>the<sp/>&quot;already<sp/>registered&quot;<sp/>error<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;typeindex&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::type_index:<sp/>a<sp/>hashable<sp/>id<sp/>for<sp/>a<sp/>C++<sp/>type,<sp/>used<sp/>as<sp/>the<sp/>map<sp/>key.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::unordered_map:<sp/>the<sp/>type-to-object<sp/>registry<sp/>itself.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="37"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@class<sp/>Store</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Process-wide<sp/>service<sp/>locator<sp/>that<sp/>maps<sp/>a<sp/>type<sp/>to<sp/>one<sp/>shared<sp/>instance.</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>@details<sp/>The<sp/>class<sp/>has<sp/>no<sp/>non-static<sp/>state;<sp/>the<sp/>actual<sp/>registry<sp/>is<sp/>a<sp/>set<sp/>of<sp/>file-scope<sp/>static<sp/>members<sp/>defined<sp/>in</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>store.cpp.<sp/>Access<sp/>is<sp/>guarded<sp/>by<sp/>a<sp/>single<sp/>mutex,<sp/>and<sp/>a<sp/>separate<sp/>atomic<sp/>generation<sp/>counter<sp/>lets<sp/>per-thread</highlight></codeline>
+<codeline lineno="43" refid="classStore_1ad9ed1336388988b3382f9e95229262ce" refkind="member"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>caches<sp/>notice<sp/>replacements.<sp/>Objects<sp/>are<sp/>owned<sp/>through<sp/>shared_ptr&lt;void&gt;<sp/>and<sp/>recovered<sp/>by<sp/>static_pointer_cast</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>using<sp/>typeid(T)<sp/>as<sp/>the<sp/>key,<sp/>so<sp/>a<sp/>lookup<sp/>by<sp/>type<sp/>resolves<sp/>to<sp/>the<sp/>concrete<sp/>pointer<sp/>stored<sp/>for<sp/>that<sp/>type.</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>In<sp/>plain<sp/>words:<sp/>a<sp/>&quot;singleton&quot;<sp/>is<sp/>one<sp/>single<sp/>object<sp/>shared<sp/>by<sp/>the<sp/>entire<sp/>program.<sp/>You<sp/>never<sp/>create<sp/>a<sp/>Store</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>object;<sp/>you<sp/>just<sp/>call<sp/>its<sp/>static<sp/>functions.<sp/>A<sp/>shared_ptr<sp/>is<sp/>a<sp/>smart<sp/>pointer<sp/>that<sp/>keeps<sp/>its<sp/>object<sp/>alive<sp/>for</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>as<sp/>long<sp/>as<sp/>anyone<sp/>still<sp/>holds<sp/>it,<sp/>then<sp/>destroys<sp/>it<sp/>automatically<sp/>when<sp/>the<sp/>last<sp/>holder<sp/>lets<sp/>go,<sp/>so<sp/>no<sp/>manual</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>delete<sp/>is<sp/>needed.<sp/>typeid(T)<sp/>is<sp/>a<sp/>small<sp/>tag<sp/>that<sp/>identifies<sp/>a<sp/>C++<sp/>type<sp/>while<sp/>the<sp/>program<sp/>runs,<sp/>which<sp/>lets<sp/>the</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map<sp/>be<sp/>keyed<sp/>by<sp/>type<sp/>instead<sp/>of<sp/>by<sp/>a<sp/>name.<sp/>A<sp/>mutex<sp/>is<sp/>a<sp/>lock<sp/>that<sp/>only<sp/>one<sp/>thread<sp/>may<sp/>hold<sp/>at<sp/>a<sp/>time,<sp/>which</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stops<sp/>two<sp/>threads<sp/>from<sp/>changing<sp/>the<sp/>map<sp/>at<sp/>once<sp/>and<sp/>corrupting<sp/>it.<sp/>static_pointer_cast<sp/>simply<sp/>relabels<sp/>the</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>generic<sp/>stored<sp/>pointer<sp/>as<sp/>a<sp/>T<sp/>pointer;<sp/>it<sp/>performs<sp/>no<sp/>runtime<sp/>type<sp/>check.</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>@note<sp/>registerObject<sp/>refuses<sp/>duplicates;<sp/>getObject<sp/>lazily<sp/>constructs<sp/>on<sp/>first<sp/>use;<sp/>replaceObject<sp/>overwrites<sp/>without</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>throwing<sp/>and<sp/>is<sp/>intended<sp/>for<sp/>injecting<sp/>test<sp/>doubles.<sp/>(&quot;Lazily&quot;<sp/>means<sp/>the<sp/>object<sp/>is<sp/>not<sp/>built<sp/>until<sp/>somebody</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>actually<sp/>asks<sp/>for<sp/>it;<sp/>a<sp/>&quot;test<sp/>double&quot;<sp/>is<sp/>a<sp/>fake<sp/>object<sp/>used<sp/>in<sp/>place<sp/>of<sp/>the<sp/>real<sp/>one<sp/>during<sp/>tests.)</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/>@see<sp/>tests/support/fake_db.hpp</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="classStore" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classStore_1ac2dcc1a38b84201b7f08792ec626a8ce" kindref="member">Store</ref></highlight></codeline>
+<codeline lineno="59"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Default<sp/>construction;<sp/>all<sp/>state<sp/>is<sp/>static,<sp/>so<sp/>a<sp/>Store<sp/>object<sp/>holds<sp/>nothing<sp/>of<sp/>its<sp/>own.</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classStore_1ac2dcc1a38b84201b7f08792ec626a8ce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStore_1ac2dcc1a38b84201b7f08792ec626a8ce" kindref="member">Store</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Virtual<sp/>destructor;<sp/>no<sp/>owned<sp/>resources<sp/>to<sp/>release<sp/>(virtual<sp/>so<sp/>derived<sp/>classes<sp/>clean<sp/>up<sp/>correctly).</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classStore_1a294720dea685013798a06570a70071a2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classStore_1a294720dea685013798a06570a70071a2" kindref="member">~Store</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Delete<sp/>copy<sp/>constructor<sp/>and<sp/>copy<sp/>assignment<sp/>operator</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Copy<sp/>construction<sp/>is<sp/>disabled;<sp/>Store<sp/>is<sp/>a<sp/>pure<sp/>namespace-like<sp/>facade<sp/>over<sp/>static<sp/>state.</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classStore_1ae164a7ca2a02d9e4b6fbc640d742b29b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStore_1ae164a7ca2a02d9e4b6fbc640d742b29b" kindref="member">Store</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classStore_1ac2dcc1a38b84201b7f08792ec626a8ce" kindref="member">Store</ref>&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Copy<sp/>assignment<sp/>is<sp/>disabled;<sp/>copying<sp/>would<sp/>not<sp/>copy<sp/>any<sp/>state<sp/>anyway.</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="classStore_1a12f38d75c1bd78a9e0675431e70924b8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStore_1ac2dcc1a38b84201b7f08792ec626a8ce" kindref="member">Store</ref>&amp;<sp/><ref refid="classStore_1a12f38d75c1bd78a9e0675431e70924b8" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classStore_1ac2dcc1a38b84201b7f08792ec626a8ce" kindref="member">Store</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>move<sp/>constructor<sp/>and<sp/>move<sp/>assignment<sp/>operator</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Move<sp/>construction<sp/>is<sp/>defaulted;<sp/>there<sp/>is<sp/>no<sp/>data<sp/>to<sp/>move.</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classStore_1a1b7fa438d7598694ed70e9cc07f5aa60" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStore_1a1b7fa438d7598694ed70e9cc07f5aa60" kindref="member">Store</ref>(<ref refid="classStore_1ac2dcc1a38b84201b7f08792ec626a8ce" kindref="member">Store</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Move<sp/>assignment<sp/>is<sp/>defaulted;<sp/>there<sp/>is<sp/>no<sp/>data<sp/>to<sp/>move.</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="classStore_1aaef72fb28125719542eeb6f660580592" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStore_1ac2dcc1a38b84201b7f08792ec626a8ce" kindref="member">Store</ref>&amp;<sp/><ref refid="classStore_1aaef72fb28125719542eeb6f660580592" kindref="member">operator=</ref>(<ref refid="classStore_1ac2dcc1a38b84201b7f08792ec626a8ce" kindref="member">Store</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Explicitly<sp/>creates<sp/>and<sp/>registers<sp/>a<sp/>singleton,<sp/>rejecting<sp/>a<sp/>type<sp/>that<sp/>is<sp/>already<sp/>registered.</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>The<sp/>duplicate<sp/>check<sp/>and<sp/>the<sp/>insertion<sp/>use<sp/>separate<sp/>lock<sp/>scopes<sp/>so<sp/>T&apos;s<sp/>constructor<sp/>runs<sp/>without<sp/>the</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mutex<sp/>held.<sp/>That<sp/>keeps<sp/>arbitrary<sp/>constructor<sp/>code,<sp/>which<sp/>may<sp/>re-enter<sp/>Store,<sp/>from<sp/>deadlocking<sp/>on<sp/>the</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>inventory<sp/>lock.<sp/>(&quot;Deadlock&quot;<sp/>means<sp/>two<sp/>operations<sp/>waiting<sp/>on<sp/>each<sp/>other<sp/>forever.)</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Type<sp/>to<sp/>register;<sp/>used<sp/>as<sp/>the<sp/>inventory<sp/>key.</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>Args<sp/>Constructor<sp/>argument<sp/>types<sp/>for<sp/>T.</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>args<sp/>Arguments<sp/>forwarded<sp/>to<sp/>T&apos;s<sp/>constructor<sp/>(passed<sp/>on<sp/>unchanged).</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>shared_ptr<sp/>owning<sp/>the<sp/>newly<sp/>created<sp/>object,<sp/>so<sp/>the<sp/>caller<sp/>can<sp/>use<sp/>it<sp/>too.</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>std::runtime_error<sp/>if<sp/>an<sp/>object<sp/>of<sp/>type<sp/>T<sp/>is<sp/>already<sp/>registered.</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args&gt;</highlight></codeline>
+<codeline lineno="103" refid="classStore_1a1e12f060c02095975351db8f5d63cb76" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;T&gt;<sp/><ref refid="classStore_1a1e12f060c02095975351db8f5d63cb76" kindref="member">registerObject</ref>(Args&amp;&amp;...<sp/>args)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::scoped_lock<sp/>lock(<ref refid="classStore_1a76db2e16906c8ffed79259a532795255" kindref="member">inventoryMutex</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>lock<sp/>only<sp/>for<sp/>the<sp/>check,<sp/>then<sp/>release<sp/>at<sp/>the<sp/>closing<sp/>brace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classStore_1a27825898458fa79d1665a31030fdcd77" kindref="member">inventory</ref>.find(</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(T))<sp/>!=<sp/><ref refid="classStore_1a27825898458fa79d1665a31030fdcd77" kindref="member">inventory</ref>.end())<sp/><sp/></highlight><highlight class="comment">//<sp/>end()<sp/>means<sp/>&quot;not<sp/>found&quot;,<sp/>so<sp/>anything<sp/>else<sp/>means<sp/>a<sp/>duplicate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::runtime_error(</highlight><highlight class="stringliteral">&quot;Object<sp/>type<sp/>already<sp/>registered.&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::string(</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(T).name()));<sp/><sp/></highlight><highlight class="comment">//<sp/>refuse:<sp/>there<sp/>may<sp/>be<sp/>only<sp/>one<sp/>per<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>=<sp/>std::make_shared&lt;T&gt;(std::forward&lt;Args&gt;(args)...);<sp/><sp/></highlight><highlight class="comment">//<sp/>build<sp/>outside<sp/>the<sp/>lock:<sp/>constructors<sp/>may<sp/>be<sp/>slow<sp/>or<sp/>call<sp/>back<sp/>into<sp/>Store</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::scoped_lock<sp/>lock(<ref refid="classStore_1a76db2e16906c8ffed79259a532795255" kindref="member">inventoryMutex</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>lock<sp/>again<sp/>briefly,<sp/>now<sp/>only<sp/>to<sp/>publish<sp/>the<sp/>finished<sp/>object</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStore_1a27825898458fa79d1665a31030fdcd77" kindref="member">inventory</ref>[</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(T)]<sp/>=<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>operator[]<sp/>inserts<sp/>the<sp/>new<sp/>entry<sp/>under<sp/>this<sp/>type&apos;s<sp/>key</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>object;<sp/><sp/></highlight><highlight class="comment">//<sp/>caller<sp/>gets<sp/>shared<sp/>ownership;<sp/>the<sp/>registry<sp/>keeps<sp/>its<sp/>own<sp/>copy<sp/>alive<sp/>too</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>singleton<sp/>for<sp/>T,<sp/>constructing<sp/>it<sp/>on<sp/>first<sp/>use.</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>The<sp/>fast<sp/>path<sp/>looks<sp/>up<sp/>the<sp/>type<sp/>under<sp/>the<sp/>mutex<sp/>and<sp/>returns<sp/>the<sp/>existing<sp/>instance.<sp/>On<sp/>a<sp/>miss<sp/>the<sp/>object</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>constructed<sp/>outside<sp/>the<sp/>lock<sp/>(see<sp/>the<sp/>inline<sp/>comment<sp/>below)<sp/>and<sp/>then<sp/>re-checked<sp/>under<sp/>the<sp/>lock<sp/>before</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>being<sp/>published,<sp/>so<sp/>concurrent<sp/>first<sp/>calls<sp/>cannot<sp/>install<sp/>two<sp/>different<sp/>instances.<sp/>Constructor<sp/>arguments</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>are<sp/>therefore<sp/>only<sp/>used<sp/>on<sp/>the<sp/>first<sp/>successful<sp/>construction<sp/>and<sp/>ignored<sp/>on<sp/>later<sp/>calls.</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Type<sp/>to<sp/>look<sp/>up<sp/>or<sp/>create;<sp/>its<sp/>type_index<sp/>is<sp/>the<sp/>inventory<sp/>key.</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>Args<sp/>Constructor<sp/>argument<sp/>types<sp/>for<sp/>T.</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>args<sp/>Arguments<sp/>forwarded<sp/>to<sp/>T&apos;s<sp/>constructor<sp/>when<sp/>a<sp/>new<sp/>object<sp/>is<sp/>needed.</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>shared_ptr<sp/>to<sp/>the<sp/>registered<sp/>singleton;<sp/>ownership<sp/>is<sp/>shared<sp/>with<sp/>all<sp/>other<sp/>callers<sp/>and<sp/>with<sp/>the<sp/>Store.</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Marked<sp/>nodiscard<sp/>because<sp/>callers<sp/>are<sp/>expected<sp/>to<sp/>use<sp/>the<sp/>shared<sp/>instance;<sp/>the<sp/>Store<sp/>itself<sp/>retains<sp/>a<sp/>strong</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>reference<sp/>in<sp/>the<sp/>inventory.<sp/>(&quot;Strong<sp/>reference&quot;<sp/>means<sp/>a<sp/>shared_ptr<sp/>that<sp/>keeps<sp/>the<sp/>object<sp/>alive.)</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@see<sp/>registerObject(),<sp/>cachedObject(),<sp/>replaceObject()</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args&gt;</highlight></codeline>
+<codeline lineno="139" refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard(</highlight><highlight class="stringliteral">&quot;Warning:<sp/>You<sp/>should<sp/>never<sp/>discard<sp/>the<sp/>returned<sp/>object&quot;</highlight><highlight class="normal">)]]<sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;T&gt;<sp/><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">getObject</ref>(Args&amp;&amp;...<sp/>args)</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::scoped_lock<sp/>lock(<ref refid="classStore_1a76db2e16906c8ffed79259a532795255" kindref="member">inventoryMutex</ref>);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hold<sp/>the<sp/>lock<sp/>only<sp/>while<sp/>searching<sp/>the<sp/>shared<sp/>map</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>=<sp/><ref refid="classStore_1a27825898458fa79d1665a31030fdcd77" kindref="member">inventory</ref>.find(</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(T));<sp/><sp/></highlight><highlight class="comment">//<sp/>find<sp/>gives<sp/>an<sp/>iterator<sp/>pointing<sp/>at<sp/>the<sp/>entry,<sp/>or<sp/>end()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>!=<sp/><ref refid="classStore_1a27825898458fa79d1665a31030fdcd77" kindref="member">inventory</ref>.end())<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>found:<sp/>somebody<sp/>already<sp/>registered<sp/>this<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::static_pointer_cast&lt;T&gt;(object-&gt;second);<sp/><sp/></highlight><highlight class="comment">//<sp/>relabel<sp/>the<sp/>stored<sp/>void<sp/>pointer<sp/>as<sp/>T<sp/>and<sp/>return<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Construct<sp/>outside<sp/>the<sp/>lock<sp/>(construction<sp/>may<sp/>be<sp/>expensive),<sp/>but</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>re-check<sp/>under<sp/>the<sp/>lock<sp/>before<sp/>publishing<sp/>so<sp/>concurrent<sp/>first<sp/>access</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cannot<sp/>install<sp/>two<sp/>different<sp/>instances<sp/>or<sp/>throw<sp/>&quot;already<sp/>registered&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>candidate<sp/>=<sp/>std::make_shared&lt;T&gt;(std::forward&lt;Args&gt;(args)...);<sp/><sp/></highlight><highlight class="comment">//<sp/>build<sp/>a<sp/>possible<sp/>new<sp/>instance<sp/>without<sp/>blocking<sp/>other<sp/>threads</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::scoped_lock<sp/>lock(<ref refid="classStore_1a76db2e16906c8ffed79259a532795255" kindref="member">inventoryMutex</ref>);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>re-check<sp/>while<sp/>locked:<sp/>another<sp/>thread<sp/>may<sp/>have<sp/>won<sp/>the<sp/>race</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>=<sp/><ref refid="classStore_1a27825898458fa79d1665a31030fdcd77" kindref="member">inventory</ref>.find(</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(T));<sp/><sp/></highlight><highlight class="comment">//<sp/>look<sp/>for<sp/>the<sp/>type<sp/>again</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>!=<sp/><ref refid="classStore_1a27825898458fa79d1665a31030fdcd77" kindref="member">inventory</ref>.end())<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>another<sp/>thread<sp/>published<sp/>one<sp/>first</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::static_pointer_cast&lt;T&gt;(object-&gt;second);<sp/><sp/></highlight><highlight class="comment">//<sp/>return<sp/>their<sp/>instance;<sp/>our<sp/>candidate<sp/>is<sp/>discarded</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStore_1a27825898458fa79d1665a31030fdcd77" kindref="member">inventory</ref>[</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(T)]<sp/>=<sp/>candidate;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>no<sp/>one<sp/>else<sp/>did,<sp/>so<sp/>publish<sp/>ours</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>candidate;<sp/><sp/></highlight><highlight class="comment">//<sp/>return<sp/>the<sp/>object<sp/>we<sp/>created;<sp/>the<sp/>registry<sp/>also<sp/>holds<sp/>a<sp/>copy</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="168"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Thread-local<sp/>cached<sp/>lookup<sp/>of<sp/>T,<sp/>refreshed<sp/>only<sp/>when<sp/>the<sp/>Store<sp/>generation<sp/>changes.</highlight></codeline>
+<codeline lineno="169"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="170"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Each<sp/>thread<sp/>keeps<sp/>its<sp/>own<sp/>shared_ptr<sp/>and<sp/>the<sp/>generation<sp/>value<sp/>it<sp/>last<sp/>saw.<sp/>The<sp/>generation<sp/>is<sp/>loaded<sp/>with</highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>acquire<sp/>semantics,<sp/>pairing<sp/>with<sp/>the<sp/>release<sp/>fetch_add<sp/>in<sp/>replaceObject(),<sp/>so<sp/>a<sp/>thread<sp/>that<sp/>observes<sp/>a<sp/>new</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>generation<sp/>also<sp/>observes<sp/>the<sp/>replacement.<sp/>A<sp/>mismatch<sp/>or<sp/>an<sp/>empty<sp/>cache<sp/>triggers<sp/>a<sp/>full<sp/>getObject&lt;T&gt;()</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lookup;<sp/>otherwise<sp/>the<sp/>cached<sp/>pointer<sp/>is<sp/>returned<sp/>without<sp/>touching<sp/>the<sp/>mutex.</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>In<sp/>plain<sp/>words:<sp/>looking<sp/>in<sp/>the<sp/>registry<sp/>needs<sp/>a<sp/>lock,<sp/>which<sp/>is<sp/>too<sp/>slow<sp/>to<sp/>do<sp/>for<sp/>every<sp/>web<sp/>request.<sp/>So</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>each<sp/>thread<sp/>remembers<sp/>the<sp/>pointer<sp/>it<sp/>got<sp/>last<sp/>time.<sp/>&quot;Acquire&quot;<sp/>and<sp/>&quot;release&quot;<sp/>are<sp/>a<sp/>pair<sp/>of<sp/>promises:<sp/>after</highlight></codeline>
+<codeline lineno="177"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>replaceObject()<sp/>publishes<sp/>a<sp/>new<sp/>pointer<sp/>with<sp/>&quot;release&quot;,<sp/>any<sp/>thread<sp/>that<sp/>reads<sp/>the<sp/>new<sp/>number<sp/>with</highlight></codeline>
+<codeline lineno="178"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;acquire&quot;<sp/>is<sp/>also<sp/>guaranteed<sp/>to<sp/>see<sp/>that<sp/>new<sp/>pointer,<sp/>not<sp/>a<sp/>stale<sp/>one.<sp/>This<sp/>is<sp/>cheap<sp/>because<sp/>a<sp/>normal</highlight></codeline>
+<codeline lineno="179"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>read<sp/>of<sp/>the<sp/>counter<sp/>is<sp/>enough<sp/>most<sp/>of<sp/>the<sp/>time;<sp/>the<sp/>lock<sp/>is<sp/>only<sp/>used<sp/>when<sp/>something<sp/>actually<sp/>changed.</highlight></codeline>
+<codeline lineno="180"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Type<sp/>to<sp/>look<sp/>up;<sp/>on<sp/>first<sp/>use<sp/>it<sp/>must<sp/>be<sp/>constructible<sp/>by<sp/>getObject&lt;T&gt;()<sp/>with<sp/>no<sp/>arguments.</highlight></codeline>
+<codeline lineno="181"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>shared_ptr<sp/>to<sp/>the<sp/>current<sp/>singleton<sp/>for<sp/>T.</highlight></codeline>
+<codeline lineno="182"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>The<sp/>returned<sp/>pointer<sp/>is<sp/>nodiscard;<sp/>callers<sp/>should<sp/>use<sp/>it<sp/>instead<sp/>of<sp/>re-fetching<sp/>through<sp/>getObject().</highlight></codeline>
+<codeline lineno="183"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@see<sp/>getObject(),<sp/>replaceObject()</highlight></codeline>
+<codeline lineno="184"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Like<sp/>getObject&lt;T&gt;(),<sp/>but<sp/>cheap<sp/>enough<sp/>for<sp/>the<sp/>request<sp/>path:<sp/>each<sp/>thread<sp/>keeps<sp/>its<sp/>own<sp/>pointer<sp/>and<sp/>only<sp/>goes<sp/>back<sp/>to<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Store<sp/>(mutex<sp/>+<sp/>type<sp/>lookup)<sp/>after<sp/>replaceObject()<sp/>has<sp/>changed<sp/>something.<sp/>Use<sp/>it<sp/>where<sp/>an<sp/>object<sp/>is<sp/>looked<sp/>up<sp/>for<sp/>every</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>request<sp/>(member<sp/>initializers<sp/>of<sp/>objects<sp/>built<sp/>per<sp/>request);<sp/>long-lived<sp/>objects<sp/>can<sp/>keep<sp/>calling<sp/>getObject&lt;T&gt;()<sp/>once.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="189" refid="classStore_1aaf81da54b109478891030b7e04653bad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;T&gt;<sp/><ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">cachedObject</ref>()</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">thread_local</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;T&gt;<sp/>cached;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>one<sp/>copy<sp/>per<sp/>thread,<sp/>so<sp/>reading<sp/>it<sp/>needs<sp/>no<sp/>lock<sp/>at<sp/>all</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">thread_local</highlight><highlight class="normal"><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seen<sp/>=<sp/>0;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>generation<sp/>this<sp/>thread<sp/>last<sp/>saw;<sp/>0<sp/>means<sp/>&quot;never<sp/>checked<sp/>yet&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>now<sp/><sp/>=<sp/><ref refid="classStore_1ad9ed1336388988b3382f9e95229262ce" kindref="member">generation</ref>.load(std::memory_order_acquire);<sp/><sp/></highlight><highlight class="comment">//<sp/>acquire:<sp/>pairs<sp/>with<sp/>release<sp/>in<sp/>replaceObject()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!cached<sp/>||<sp/>seen<sp/>!=<sp/>now)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>empty<sp/>cache,<sp/>or<sp/>the<sp/>registry<sp/>was<sp/>changed<sp/>since<sp/>last<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cached<sp/>=<sp/><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">getObject&lt;T&gt;</ref>();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>pay<sp/>for<sp/>the<sp/>full<sp/>locked<sp/>lookup<sp/>and<sp/>remember<sp/>the<sp/>answer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>seen<sp/><sp/><sp/>=<sp/>now;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>mark<sp/>our<sp/>cache<sp/>as<sp/>up<sp/>to<sp/>date<sp/>with<sp/>the<sp/>current<sp/>generation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>cached;<sp/><sp/></highlight><highlight class="comment">//<sp/>fast<sp/>path:<sp/>hand<sp/>back<sp/>this<sp/>thread&apos;s<sp/>own<sp/>pointer<sp/>without<sp/>touching<sp/>the<sp/>mutex</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Overwrites<sp/>the<sp/>singleton<sp/>registered<sp/>for<sp/>T<sp/>and<sp/>invalidates<sp/>every<sp/>thread-local<sp/>cache.</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="205"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Uses<sp/>operator[]<sp/>on<sp/>the<sp/>inventory,<sp/>so<sp/>it<sp/>works<sp/>whether<sp/>or<sp/>not<sp/>T<sp/>was<sp/>registered<sp/>before.<sp/>The<sp/>generation<sp/>is</highlight></codeline>
+<codeline lineno="206"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>incremented<sp/>with<sp/>release<sp/>semantics<sp/>so<sp/>threads<sp/>that<sp/>acquire<sp/>it<sp/>in<sp/>cachedObject()<sp/>see<sp/>the<sp/>new<sp/>pointer<sp/>and</highlight></codeline>
+<codeline lineno="207"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>re-fetch<sp/>from<sp/>the<sp/>Store.<sp/>(&quot;Invalidates&quot;<sp/>means<sp/>it<sp/>makes<sp/>every<sp/>thread&apos;s<sp/>saved<sp/>pointer<sp/>out<sp/>of<sp/>date.)</highlight></codeline>
+<codeline lineno="208"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Type<sp/>whose<sp/>registered<sp/>instance<sp/>is<sp/>replaced.</highlight></codeline>
+<codeline lineno="209"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>obj<sp/>New<sp/>instance<sp/>to<sp/>register;<sp/>may<sp/>be<sp/>null,<sp/>in<sp/>which<sp/>case<sp/>the<sp/>key<sp/>maps<sp/>to<sp/>an<sp/>empty<sp/>shared_ptr.</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Does<sp/>not<sp/>throw:<sp/>this<sp/>is<sp/>intended<sp/>for<sp/>test<sp/>harnesses<sp/>injecting<sp/>fakes.</highlight></codeline>
+<codeline lineno="211"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@see<sp/>cachedObject()</highlight></codeline>
+<codeline lineno="212"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Replace<sp/>an<sp/>already-registered<sp/>singleton<sp/>without<sp/>throwing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Used<sp/>by<sp/>test<sp/>harnesses<sp/>to<sp/>inject<sp/>fakes<sp/>(see<sp/>tests/support/fake_db.hpp).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="216" refid="classStore_1a2a4bfc0b18f2999216eda3067988cf57" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStore_1a2a4bfc0b18f2999216eda3067988cf57" kindref="member">replaceObject</ref>(std::shared_ptr&lt;T&gt;<sp/>obj)</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::scoped_lock<sp/>lock(<ref refid="classStore_1a76db2e16906c8ffed79259a532795255" kindref="member">inventoryMutex</ref>);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>only<sp/>one<sp/>thread<sp/>may<sp/>change<sp/>the<sp/>registry<sp/>at<sp/>a<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStore_1a27825898458fa79d1665a31030fdcd77" kindref="member">inventory</ref>[</highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(T)]<sp/>=<sp/>obj;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>overwrite,<sp/>or<sp/>insert<sp/>if<sp/>there<sp/>was<sp/>no<sp/>entry<sp/>before</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStore_1ad9ed1336388988b3382f9e95229262ce" kindref="member">generation</ref>.fetch_add(1,<sp/>std::memory_order_release);<sp/><sp/></highlight><highlight class="comment">//<sp/>makes<sp/>every<sp/>thread&apos;s<sp/>cachedObject&lt;T&gt;()<sp/>look<sp/>again;<sp/>release<sp/>publishes<sp/>the<sp/>new<sp/>pointer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="224"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="225"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Type-to-instance<sp/>registry;<sp/>typeid(T)<sp/>is<sp/>the<sp/>key<sp/>and<sp/>the<sp/>value<sp/>is<sp/>type-erased<sp/>until<sp/>a<sp/>caller<sp/>casts<sp/>it<sp/>back.</highlight></codeline>
+<codeline lineno="226"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227" refid="classStore_1a27825898458fa79d1665a31030fdcd77" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::unordered_map&lt;std::type_index,<sp/>std::shared_ptr&lt;void&gt;&gt;<sp/><ref refid="classStore_1a27825898458fa79d1665a31030fdcd77" kindref="member">inventory</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>actual<sp/>&quot;type<sp/>-&gt;<sp/>object&quot;<sp/>table</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="228"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="229"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Guards<sp/>every<sp/>read<sp/>and<sp/>write<sp/>of<sp/>inventory.</highlight></codeline>
+<codeline lineno="230"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231" refid="classStore_1a76db2e16906c8ffed79259a532795255" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::mutex<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStore_1a76db2e16906c8ffed79259a532795255" kindref="member">inventoryMutex</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>blocks<sp/>other<sp/>threads<sp/>while<sp/>the<sp/>map<sp/>is<sp/>being<sp/>used</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="232"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="233"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Invalidation<sp/>counter<sp/>read<sp/>by<sp/>cachedObject()<sp/>and<sp/>bumped<sp/>by<sp/>replaceObject().</highlight></codeline>
+<codeline lineno="234"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::atomic&lt;uint64_t&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStore_1ad9ed1336388988b3382f9e95229262ce" kindref="member">generation</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>bumped<sp/>by<sp/>replaceObject();<sp/>a<sp/>changed<sp/>value<sp/>tells<sp/>caches<sp/>to<sp/>refresh</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="src/store/store.hpp"/>
+  </compounddef>
+</doxygen>

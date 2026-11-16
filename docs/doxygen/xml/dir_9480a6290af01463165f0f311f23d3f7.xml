@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_9480a6290af01463165f0f311f23d3f7" kind="dir">
+    <compoundname>src/controllers/staffcontroller</compoundname>
+    <innerfile refid="staffcontroller_8cpp">staffcontroller.cpp</innerfile>
+    <innerfile refid="staffcontroller_8hpp">staffcontroller.hpp</innerfile>
+    <innerfile refid="staffcontrollerBase_8hpp">staffcontrollerBase.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/controllers/staffcontroller/"/>
+  </compounddef>
+</doxygen>

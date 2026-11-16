@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_895520e6c86a9d19ec2fb9fe774d9cf1" kind="dir">
+    <compoundname>src/gatekeeper</compoundname>
+    <innerdir refid="dir_5a12d1058feadd75fa7122ede7770198">src/gatekeeper/dosdetector</innerdir>
+    <innerdir refid="dir_e41cde642ca878ae4e5072d357f89c14">src/gatekeeper/keeprbase</innerdir>
+    <innerdir refid="dir_faf6ca542617ada3a0daab18326503c1">src/gatekeeper/passwordcrypt</innerdir>
+    <innerdir refid="dir_16260ec1036a9bf930731f02e9c23fb6">src/gatekeeper/permissionmanager</innerdir>
+    <innerdir refid="dir_69f9620581de2778fa02346170229ed7">src/gatekeeper/sessionmanager</innerdir>
+    <innerdir refid="dir_8dbf1d317c7646a20fb7fd92fe50da3b">src/gatekeeper/tokenmanager</innerdir>
+    <innerfile refid="gatekeeper_8cpp">gatekeeper.cpp</innerfile>
+    <innerfile refid="gatekeeper_8hpp">gatekeeper.hpp</innerfile>
+    <innerfile refid="includes_8hpp">includes.hpp</innerfile>
+    <innerfile refid="gatekeeper_2types_8hpp">types.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/gatekeeper/"/>
+  </compounddef>
+</doxygen>

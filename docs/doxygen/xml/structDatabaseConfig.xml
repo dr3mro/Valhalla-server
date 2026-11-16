@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structDatabaseConfig" kind="struct" language="C++" prot="public">
+    <compoundname>DatabaseConfig</compoundname>
+    <includes refid="configurator_8hpp" local="no">configurator.hpp</includes>
+    <briefdescription>
+<para>Connection parameters for the PostgreSQL database (and the database executor). </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Reads DB_* variables with <ref refid="namespaceDefaults_1_1Database" kindref="compound">Defaults::Database</ref> fallbacks. A zero max_conn is auto-sized to <computeroutput>hardware_concurrency()*5</computeroutput> by the constructor; the same sizing is applied independently in <ref refid="structDbExecutorConfig" kindref="compound">DbExecutorConfig</ref>. <ref refid="structCredentials" kindref="compound">Credentials</ref> are never logged. <simplesect kind="warning"><para>The shipped pass default is an insecure development placeholder; override DB_PASS in any non-test deployment. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/configurator/configurator.hpp" line="166" column="1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,684 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classAppointmentControllerBase" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>AppointmentControllerBase</compoundname>
+    <derivedcompoundref refid="classAppointmentController" prot="public" virt="non-virtual">AppointmentController&lt; T &gt;</derivedcompoundref>
+    <includes refid="appointmentcontrollerbase_8hpp" local="no">appointmentcontrollerbase.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AppointmentControllerBase::AppointmentControllerBase</definition>
+        <argsstring>()=default</argsstring>
+        <name>AppointmentControllerBase</name>
+        <qualifiedname>AppointmentControllerBase::AppointmentControllerBase</qualifiedname>
+        <briefdescription>
+<para>Default construction; the interface holds no state of its own. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="72" column="14"/>
+        <referencedby refid="classAppointmentControllerBase_1af75003bf9e6874f6c577c5c1c05d5cf7">AppointmentControllerBase</referencedby>
+        <referencedby refid="classAppointmentControllerBase_1a6adc76394966241dc855c8dfe4818271">AppointmentControllerBase</referencedby>
+        <referencedby refid="classAppointmentControllerBase_1a69bb5308a8526f51cbe6ca2d3143d374">operator=</referencedby>
+        <referencedby refid="classAppointmentControllerBase_1a2810286950caafd54a805ee51b8174c7">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classAppointmentControllerBase_1af75003bf9e6874f6c577c5c1c05d5cf7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AppointmentControllerBase::AppointmentControllerBase</definition>
+        <argsstring>(AppointmentControllerBase &amp;&amp;)=default</argsstring>
+        <name>AppointmentControllerBase</name>
+        <qualifiedname>AppointmentControllerBase::AppointmentControllerBase</qualifiedname>
+        <param>
+          <type><ref refid="classAppointmentControllerBase" kindref="compound">AppointmentControllerBase</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>Move construction is allowed; copies share no operation state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="74" column="5"/>
+        <references refid="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac">AppointmentControllerBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classAppointmentControllerBase_1a6adc76394966241dc855c8dfe4818271" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AppointmentControllerBase::AppointmentControllerBase</definition>
+        <argsstring>(const AppointmentControllerBase &amp;)=default</argsstring>
+        <name>AppointmentControllerBase</name>
+        <qualifiedname>AppointmentControllerBase::AppointmentControllerBase</qualifiedname>
+        <param>
+          <type>const <ref refid="classAppointmentControllerBase" kindref="compound">AppointmentControllerBase</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy construction is allowed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="76" column="5"/>
+        <references refid="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac">AppointmentControllerBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classAppointmentControllerBase_1a69bb5308a8526f51cbe6ca2d3143d374" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classAppointmentControllerBase" kindref="compound">AppointmentControllerBase</ref> &amp;</type>
+        <definition>AppointmentControllerBase &amp; AppointmentControllerBase::operator=</definition>
+        <argsstring>(AppointmentControllerBase &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>AppointmentControllerBase::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classAppointmentControllerBase" kindref="compound">AppointmentControllerBase</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>Move assignment is allowed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="78" column="31"/>
+        <references refid="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac">AppointmentControllerBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classAppointmentControllerBase_1a2810286950caafd54a805ee51b8174c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classAppointmentControllerBase" kindref="compound">AppointmentControllerBase</ref> &amp;</type>
+        <definition>AppointmentControllerBase &amp; AppointmentControllerBase::operator=</definition>
+        <argsstring>(const AppointmentControllerBase &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>AppointmentControllerBase::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classAppointmentControllerBase" kindref="compound">AppointmentControllerBase</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy assignment is allowed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="80" column="31"/>
+        <references refid="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac">AppointmentControllerBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classAppointmentControllerBase_1aac2dc02319f959dd2e7427de1db0ac63" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual AppointmentControllerBase::~AppointmentControllerBase</definition>
+        <argsstring>()=default</argsstring>
+        <name>~AppointmentControllerBase</name>
+        <qualifiedname>AppointmentControllerBase::~AppointmentControllerBase</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor so derived controllers can be released through this interface. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="82" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classAppointmentControllerBase_1ab647aad281f3e7b378ce3a80f6f2d812" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void AppointmentControllerBase::Create</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>Create</name>
+        <qualifiedname>AppointmentControllerBase::Create</qualifiedname>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Creates an appointment entity from a JSON request body. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the create-permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON request body. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="91" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1a75506c18ee76ac6bf38b0c54cbbb53db" compoundref="appointments_8hpp" startline="83" endline="133">api::v2::Appointments::Create</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classAppointmentControllerBase_1aa38e2ee7e8e67fc65efa2ae579b8b292" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; AppointmentControllerBase::CreateAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>CreateAsync</name>
+        <qualifiedname>AppointmentControllerBase::CreateAsync</qualifiedname>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classAppointmentControllerBase_1ab647aad281f3e7b378ce3a80f6f2d812" kindref="member">Create</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the create-permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON request body; must remain valid until the task completes. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="98" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classAppointmentControllerBase_1ac74bf3e7c5e5ce53b463fc56ce84c1f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void AppointmentControllerBase::Read</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>Read</name>
+        <qualifiedname>AppointmentControllerBase::Read</qualifiedname>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Reads one appointment entity identified by an <computeroutput>id</computeroutput>/<computeroutput>schema</computeroutput> JSON request. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the read-permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON request body containing <computeroutput>id</computeroutput> and requested <computeroutput>schema</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="105" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1af9fa78f8cd4bbf7f4b7f5073055effb1" compoundref="appointments_8hpp" startline="143" endline="193">api::v2::Appointments::Read</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classAppointmentControllerBase_1acd60a9aa9a593fa82c7407008ba6cc3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; AppointmentControllerBase::ReadAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>ReadAsync</name>
+        <qualifiedname>AppointmentControllerBase::ReadAsync</qualifiedname>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classAppointmentControllerBase_1ac74bf3e7c5e5ce53b463fc56ce84c1f7" kindref="member">Read</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the read-permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON request body; must remain valid until the task completes. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="112" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classAppointmentControllerBase_1a8a91b4e32b1afb820d5b1b7af83469a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void AppointmentControllerBase::Update</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data, std::optional&lt; uint64_t &gt; _id)=0</argsstring>
+        <name>Update</name>
+        <qualifiedname>AppointmentControllerBase::Update</qualifiedname>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>_id</declname>
+        </param>
+        <briefdescription>
+<para>Updates the appointment entity identified by <computeroutput>_id</computeroutput> from a JSON request body. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the update-permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON request body with the fields to change. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target entity id; a disengaged optional is rejected by the implementation. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="120" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1ab7c172b45fbfbc8580bf0a69505e111b" compoundref="appointments_8hpp" startline="205" endline="260">api::v2::Appointments::Update</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classAppointmentControllerBase_1a4b35caba8ea117928f1f0a13855d5e94" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; AppointmentControllerBase::UpdateAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data, std::optional&lt; uint64_t &gt; _id)=0</argsstring>
+        <name>UpdateAsync</name>
+        <qualifiedname>AppointmentControllerBase::UpdateAsync</qualifiedname>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>_id</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classAppointmentControllerBase_1a8a91b4e32b1afb820d5b1b7af83469a9" kindref="member">Update</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the update-permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON request body; must remain valid until the task completes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target entity id; a disengaged optional is rejected by the implementation. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="128" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classAppointmentControllerBase_1a1677d9a8337072581bc9e2e658b5c9ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void AppointmentControllerBase::Delete</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; _id)=0</argsstring>
+        <name>Delete</name>
+        <qualifiedname>AppointmentControllerBase::Delete</qualifiedname>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>_id</declname>
+        </param>
+        <briefdescription>
+<para>Deletes the appointment entity identified by <computeroutput>_id</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the delete-permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target entity id; a disengaged optional is rejected by the implementation. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="135" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1a515ae728e10e637a657f1c912ccf9e7a" compoundref="appointments_8hpp" startline="270" endline="325">api::v2::Appointments::Delete</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classAppointmentControllerBase_1a1d3056a1551d3ab67042f274db3c86a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>virtual drogon::Task&lt; void &gt; AppointmentControllerBase::DeleteAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; _id)=0</argsstring>
+        <name>DeleteAsync</name>
+        <qualifiedname>AppointmentControllerBase::DeleteAsync</qualifiedname>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>_id</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classAppointmentControllerBase_1a1677d9a8337072581bc9e2e658b5c9ec" kindref="member">Delete</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller used for the delete-permission check. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target entity id; a disengaged optional is rejected by the implementation. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="142" column="26"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+      </memberdef>
+      <memberdef kind="function" id="classAppointmentControllerBase_1aa79a4ad4a10da6c9d6b791df603fc907" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void AppointmentControllerBase::Search</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data)=0</argsstring>
+        <name>Search</name>
+        <qualifiedname>AppointmentControllerBase::Search</qualifiedname>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Runs a paginated search over appointment entities. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Implementations return a JSON object with <computeroutput>results</computeroutput>, <computeroutput>more</computeroutput> and <computeroutput>offset</computeroutput>; the requester is accepted for interface symmetry but need not be consulted. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion handler, invoked once with (status, body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller (unused by the shipped search implementation). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw JSON search criteria. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="151" column="18"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1af86bad11dd97edc907a87ddd2cefa8dd" compoundref="appointments_8hpp" startline="334" endline="337">api::v2::Appointments::Search</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Type-erased interface for appointment-entity CRUD+S operations. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Declares a synchronous callback form and a coroutine (<computeroutput>drogon::Task&lt;void&gt;</computeroutput>) form of every operation. The appointments route registry reaches concrete controllers through this base via a <computeroutput>std::variant</computeroutput>, so its virtual functions are the dispatch point used by a single route handler for all appointment entity types.</para>
+<para>In plain words: &quot;synchronous&quot; means the answer arrives through a callback function, while the coroutine (<computeroutput>drogon::Task&lt;void&gt;</computeroutput>) versions can be paused with co_await so the server can do other work meanwhile. &quot;Virtual functions&quot; mean a call made through this base runs the real object&apos;s version. A <computeroutput>std::variant</computeroutput> is a box that can hold one of several controller types.</para>
+<para>Invocation contract shared by every method:<itemizedlist>
+<listitem><para><computeroutput>callback</computeroutput> is <computeroutput>std::function&lt;void(int, const std::string&amp;)&gt;</computeroutput>, it is moved through the call chain and, by contract, invoked once on each completion path, including failures. Its first argument is an <ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892f" kindref="member">api::v2::Http::Status</ref> code, its second a response body.</para>
+</listitem><listitem><para><computeroutput>requester</computeroutput> is the authenticated caller identity consulted for authorisation.</para>
+</listitem><listitem><para><computeroutput>data</computeroutput> is a non-owning view of the raw JSON request body, valid only for the call.</para>
+</listitem><listitem><para><computeroutput>_id</computeroutput> is the optional target id; absence is handled by the concrete implementation.</para>
+</listitem></itemizedlist>
+</para>
+<para>The <computeroutput>*Async</computeroutput> methods must be co_awaited; the HTTP layer wraps them in <computeroutput>drogon::async_run</computeroutput> and turns the callback result into a reply. <simplesect kind="note"><para>The interface itself is stateless; behaviour lives in <ref refid="classAppointmentController" kindref="compound">AppointmentController</ref>. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classAppointmentController" kindref="compound">AppointmentController</ref>, <ref refid="classEntityControllerBase" kindref="compound">EntityControllerBase</ref>, <ref refid="classController" kindref="compound">Controller</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>AppointmentController&lt; T &gt;</label>
+        <link refid="classAppointmentController"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>AppointmentControllerBase</label>
+        <link refid="classAppointmentControllerBase"/>
+      </node>
+    </inheritancegraph>
+    <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="68" column="1" bodyfile="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" bodystart="69" bodyend="152"/>
+    <listofallmembers>
+      <member refid="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac" prot="public" virt="non-virtual"><scope>AppointmentControllerBase</scope><name>AppointmentControllerBase</name></member>
+      <member refid="classAppointmentControllerBase_1af75003bf9e6874f6c577c5c1c05d5cf7" prot="public" virt="non-virtual"><scope>AppointmentControllerBase</scope><name>AppointmentControllerBase</name></member>
+      <member refid="classAppointmentControllerBase_1a6adc76394966241dc855c8dfe4818271" prot="public" virt="non-virtual"><scope>AppointmentControllerBase</scope><name>AppointmentControllerBase</name></member>
+      <member refid="classAppointmentControllerBase_1ab647aad281f3e7b378ce3a80f6f2d812" prot="public" virt="pure-virtual"><scope>AppointmentControllerBase</scope><name>Create</name></member>
+      <member refid="classAppointmentControllerBase_1aa38e2ee7e8e67fc65efa2ae579b8b292" prot="public" virt="pure-virtual"><scope>AppointmentControllerBase</scope><name>CreateAsync</name></member>
+      <member refid="classAppointmentControllerBase_1a1677d9a8337072581bc9e2e658b5c9ec" prot="public" virt="pure-virtual"><scope>AppointmentControllerBase</scope><name>Delete</name></member>
+      <member refid="classAppointmentControllerBase_1a1d3056a1551d3ab67042f274db3c86a7" prot="public" virt="pure-virtual"><scope>AppointmentControllerBase</scope><name>DeleteAsync</name></member>
+      <member refid="classAppointmentControllerBase_1a69bb5308a8526f51cbe6ca2d3143d374" prot="public" virt="non-virtual"><scope>AppointmentControllerBase</scope><name>operator=</name></member>
+      <member refid="classAppointmentControllerBase_1a2810286950caafd54a805ee51b8174c7" prot="public" virt="non-virtual"><scope>AppointmentControllerBase</scope><name>operator=</name></member>
+      <member refid="classAppointmentControllerBase_1ac74bf3e7c5e5ce53b463fc56ce84c1f7" prot="public" virt="pure-virtual"><scope>AppointmentControllerBase</scope><name>Read</name></member>
+      <member refid="classAppointmentControllerBase_1acd60a9aa9a593fa82c7407008ba6cc3d" prot="public" virt="pure-virtual"><scope>AppointmentControllerBase</scope><name>ReadAsync</name></member>
+      <member refid="classAppointmentControllerBase_1aa79a4ad4a10da6c9d6b791df603fc907" prot="public" virt="pure-virtual"><scope>AppointmentControllerBase</scope><name>Search</name></member>
+      <member refid="classAppointmentControllerBase_1a8a91b4e32b1afb820d5b1b7af83469a9" prot="public" virt="pure-virtual"><scope>AppointmentControllerBase</scope><name>Update</name></member>
+      <member refid="classAppointmentControllerBase_1a4b35caba8ea117928f1f0a13855d5e94" prot="public" virt="pure-virtual"><scope>AppointmentControllerBase</scope><name>UpdateAsync</name></member>
+      <member refid="classAppointmentControllerBase_1aac2dc02319f959dd2e7427de1db0ac63" prot="public" virt="virtual"><scope>AppointmentControllerBase</scope><name>~AppointmentControllerBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

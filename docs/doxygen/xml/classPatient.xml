@@ -1,0 +1,532 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classPatient" kind="class" language="C++" prot="public">
+    <compoundname>Patient</compoundname>
+    <basecompoundref refid="classCase" prot="public" virt="non-virtual">Case</basecompoundref>
+    <includes refid="patient_8hpp" local="no">patient.hpp</includes>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classPatient_1aaf177b2592e249054d93a81efafad800" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>auto</type>
+        <definition>auto Patient::TABLENAME</definition>
+        <argsstring></argsstring>
+        <name>TABLENAME</name>
+        <qualifiedname>Patient::TABLENAME</qualifiedname>
+        <initializer>= &quot;patients&quot;</initializer>
+        <briefdescription>
+<para>Table bound to this entity; used by CRUD builders and the permission joins. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patient.hpp" line="66" column="27" bodyfile="src/entities/services/clinics/patient/patient.hpp" bodystart="66" bodyend="-1"/>
+        <referencedby refid="classPatient_1a35aec1ab81bfaaac3433608c530e8a43" compoundref="patient_8hpp" startline="173" endline="173">getPermissionsQueryForDelete</referencedby>
+        <referencedby refid="classPatient_1a9c0cf980a6d81bf7736d9873b1d8954a" compoundref="patient_8hpp" startline="159" endline="159">getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classPatient_1aaf97e966375ff69900abb7e9668f5529" compoundref="patient_8hpp" startline="166" endline="166">getPermissionsQueryForUpdate</referencedby>
+        <referencedby refid="classPatient_1a1835153c5bb0ad17a201a73f64e5e885" compoundref="patient_8hpp" startline="100" endline="100">getTableName</referencedby>
+        <referencedby refid="classPatient_1a4ad69b097d80d827fb48995556fffce6" compoundref="patient_8hpp" startline="88" endline="90">Patient</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classPatient_1a1efed6fb3b9dbf1aefad853f1d1612f5" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>auto</type>
+        <definition>auto Patient::CREATE_KEY</definition>
+        <argsstring></argsstring>
+        <name>CREATE_KEY</name>
+        <qualifiedname>Patient::CREATE_KEY</qualifiedname>
+        <initializer>= &quot;clinic_id&quot;</initializer>
+        <briefdescription>
+<para>Create-payload key: the clinic the new patient belongs to, checked directly in <computeroutput>clinics</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patient.hpp" line="68" column="27" bodyfile="src/entities/services/clinics/patient/patient.hpp" bodystart="68" bodyend="-1"/>
+        <referencedby refid="classPatient_1ab9788dddb292e5a82a6cbf5534654ce3" compoundref="patient_8hpp" startline="105" endline="105">getCreateKey</referencedby>
+        <referencedby refid="classPatient_1a885121ad678761986a02430b9ba09527" compoundref="patient_8hpp" startline="137" endline="151">getPermissionsQueryForCreate</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPatient_1a1c6bf9f409382d4fd7e9230229834ee9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Patient::Patient</definition>
+        <argsstring>(const Patient &amp;)=delete</argsstring>
+        <name>Patient</name>
+        <qualifiedname>Patient::Patient</qualifiedname>
+        <param>
+          <type>const <ref refid="classPatient" kindref="compound">Patient</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Patients are neither copyable nor movable; construct one per operation. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patient.hpp" line="72" column="5"/>
+        <references refid="classPatient_1a1c6bf9f409382d4fd7e9230229834ee9">Patient</references>
+        <referencedby refid="classPatient_1ac84d3f1a4620ff0c18f85a107d2f5b77">operator=</referencedby>
+        <referencedby refid="classPatient_1a619ece5d8f7ae3e1eb146305e24c6340">operator=</referencedby>
+        <referencedby refid="classPatient_1a1c6bf9f409382d4fd7e9230229834ee9">Patient</referencedby>
+        <referencedby refid="classPatient_1aefeac70b7bd4b8260a1a9b7df4ddbb29">Patient</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classPatient_1aefeac70b7bd4b8260a1a9b7df4ddbb29" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Patient::Patient</definition>
+        <argsstring>(Patient &amp;&amp;)=delete</argsstring>
+        <name>Patient</name>
+        <qualifiedname>Patient::Patient</qualifiedname>
+        <param>
+          <type><ref refid="classPatient" kindref="compound">Patient</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>See the deleted copy constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patient.hpp" line="74" column="5"/>
+        <references refid="classPatient_1a1c6bf9f409382d4fd7e9230229834ee9">Patient</references>
+      </memberdef>
+      <memberdef kind="function" id="classPatient_1ac84d3f1a4620ff0c18f85a107d2f5b77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPatient" kindref="compound">Patient</ref> &amp;</type>
+        <definition>Patient &amp; Patient::operator=</definition>
+        <argsstring>(const Patient &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Patient::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classPatient" kindref="compound">Patient</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>See the deleted copy constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patient.hpp" line="76" column="13"/>
+        <references refid="classPatient_1a1c6bf9f409382d4fd7e9230229834ee9">Patient</references>
+      </memberdef>
+      <memberdef kind="function" id="classPatient_1a619ece5d8f7ae3e1eb146305e24c6340" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPatient" kindref="compound">Patient</ref> &amp;</type>
+        <definition>Patient &amp; Patient::operator=</definition>
+        <argsstring>(Patient &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Patient::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classPatient" kindref="compound">Patient</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>See the deleted copy constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patient.hpp" line="78" column="13"/>
+        <references refid="classPatient_1a1c6bf9f409382d4fd7e9230229834ee9">Patient</references>
+      </memberdef>
+      <memberdef kind="function" id="classPatient_1a4ad69b097d80d827fb48995556fffce6" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Patient::Patient</definition>
+        <argsstring>(const T &amp;_data)</argsstring>
+        <name>Patient</name>
+        <qualifiedname>Patient::Patient</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>_data</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a patient entity bound to <computeroutput>patients</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Forwards the wrapper and table name to <ref refid="classCase" kindref="compound">Case</ref>, which stores the wrapper in <ref refid="classEntity" kindref="compound">Entity</ref>. GetVisits additionally requires that wrapper to be a <ref refid="classData__t" kindref="compound">Data_t</ref> holding the patient id. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A type accepted by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref>, e.g. <ref refid="namespaceapi_1_1v2_1_1Types_1ac9a246b12a16bc018eec47370d2d6a20" kindref="member">api::v2::Types::Create_t</ref> or <ref refid="classData__t" kindref="compound">Data_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Operation data to copy into the entity. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patient.hpp" line="88" column="14" bodyfile="src/entities/services/clinics/patient/patient.hpp" bodystart="88" bodyend="90"/>
+        <references refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911">Case::Case</references>
+        <references refid="classPatient_1aaf177b2592e249054d93a81efafad800" compoundref="patient_8hpp" startline="66">TABLENAME</references>
+      </memberdef>
+      <memberdef kind="function" id="classPatient_1aee1fdb32c0ed7cfbc54abc38dc2bf2d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Patient::~Patient</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~Patient</name>
+        <qualifiedname>Patient::~Patient</qualifiedname>
+        <briefdescription>
+<para>Default destructor; the entity owns nothing beyond the data wrapper held by <ref refid="classEntity" kindref="compound">Entity</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patient.hpp" line="94" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classPatient_1af7b2fbbefcfa9f8be148faa6a92259e8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; Patient::getSqlGetVisitsStatement</definition>
+        <argsstring>(pqxx::params &amp;params)</argsstring>
+        <name>getSqlGetVisitsStatement</name>
+        <qualifiedname>Patient::getSqlGetVisitsStatement</qualifiedname>
+        <param>
+          <type>pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Builds the SELECT that lists all visits of this patient. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Resets <computeroutput>params</computeroutput>, binds the patient id held in the <ref refid="classData__t" kindref="compound">Data_t</ref> wrapper, and returns the query over <computeroutput>clinics_visits</computeroutput>. <ref refid="classController_1acd1d7cb00688b69469719ff7789f3cd9" kindref="member">Controller::GetVisits</ref> / GetVisitsAsync execute it with those same params and serialise the rows back to the caller. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bound parameters, cleared before the patient id is appended. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The <computeroutput>SELECT * FROM clinics_visits WHERE patient_id = $1;</computeroutput> statement. </para>
+</simplesect>
+<simplesect kind="pre"><para>The entity must hold a <ref refid="classData__t" kindref="compound">Data_t</ref> with an id. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::bad_variant_access</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the stored wrapper is not a <ref refid="classData__t" kindref="compound">Data_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>std::bad_optional_access</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if that wrapper has no id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>These exceptions are not caught here; the controller&apos;s handler catches them. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patient.hpp" line="119" column="19" bodyfile="src/entities/services/clinics/patient/patient.hpp" bodystart="119" bodyend="124"/>
+        <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="163" endline="163">Entity::getData</references>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classPatient_1a1835153c5bb0ad17a201a73f64e5e885" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>static constexpr auto Patient::getTableName</definition>
+        <argsstring>()</argsstring>
+        <name>getTableName</name>
+        <qualifiedname>Patient::getTableName</qualifiedname>
+        <briefdescription>
+<para>Returns the table this entity is bound to. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The constant <computeroutput>patients</computeroutput> string. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patient.hpp" line="100" column="27" bodyfile="src/entities/services/clinics/patient/patient.hpp" bodystart="100" bodyend="100"/>
+        <references refid="classPatient_1aaf177b2592e249054d93a81efafad800" compoundref="patient_8hpp" startline="66">TABLENAME</references>
+      </memberdef>
+      <memberdef kind="function" id="classPatient_1ab9788dddb292e5a82a6cbf5534654ce3" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>auto</type>
+        <definition>static constexpr auto Patient::getCreateKey</definition>
+        <argsstring>()</argsstring>
+        <name>getCreateKey</name>
+        <qualifiedname>Patient::getCreateKey</qualifiedname>
+        <briefdescription>
+<para>Returns the create-payload key used to resolve the owning clinic. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The constant <computeroutput>clinic_id</computeroutput> string. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patient.hpp" line="105" column="27" bodyfile="src/entities/services/clinics/patient/patient.hpp" bodystart="105" bodyend="105"/>
+        <references refid="classPatient_1a1efed6fb3b9dbf1aefad853f1d1612f5" compoundref="patient_8hpp" startline="68">CREATE_KEY</references>
+      </memberdef>
+      <memberdef kind="function" id="classPatient_1a885121ad678761986a02430b9ba09527" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>static std::optional&lt; std::string &gt; Patient::getPermissionsQueryForCreate</definition>
+        <argsstring>(const std::optional&lt; jsoncons::json &gt; &amp;data_j)</argsstring>
+        <name>getPermissionsQueryForCreate</name>
+        <qualifiedname>Patient::getPermissionsQueryForCreate</qualifiedname>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>data_j</declname>
+        </param>
+        <briefdescription>
+<para>Builds the SQL that resolves the owning clinic for a create request. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Reads <computeroutput>clinic_id</computeroutput> from <computeroutput>data_j</computeroutput> and calls the <ref refid="classCase" kindref="compound">Case</ref> base&apos;s patient-specific helper, which selects owner/admin/staff directly from <computeroutput>clinics</computeroutput> where id equals that value. <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> runs the returned SELECT before the insert; no insert occurs here. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">data_j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Create payload; must be engaged and contain an unsigned-integer clinic_id (the optional is dereferenced without a has_value() check). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The SELECT statement, or std::nullopt if reading or converting the key throws; the exception is logged via CRITICALMESSAGE. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classCase_1a885de6b0ca89e3462529a9b9c388b9d2" kindref="member">Case::getPermissionsQueryForCreatePatientImpl</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patient.hpp" line="137" column="26" bodyfile="src/entities/services/clinics/patient/patient.hpp" bodystart="137" bodyend="151"/>
+        <references refid="classPatient_1a1efed6fb3b9dbf1aefad853f1d1612f5" compoundref="patient_8hpp" startline="68">CREATE_KEY</references>
+        <references refid="global_8hpp_1a68447123f2c27bb7bcdbbaec4091dab7" compoundref="global_8hpp" startline="46" endline="48">CRITICALMESSAGE</references>
+        <references refid="classCase_1a885de6b0ca89e3462529a9b9c388b9d2" compoundref="case_8hpp" startline="99" endline="109">Case::getPermissionsQueryForCreatePatientImpl</references>
+      </memberdef>
+      <memberdef kind="function" id="classPatient_1a9c0cf980a6d81bf7736d9873b1d8954a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>static std::optional&lt; std::string &gt; Patient::getPermissionsQueryForRead</definition>
+        <argsstring>(const uint64_t id)</argsstring>
+        <name>getPermissionsQueryForRead</name>
+        <qualifiedname>Patient::getPermissionsQueryForRead</qualifiedname>
+        <param>
+          <type>const uint64_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Builds the SQL that fetches the owning clinic&apos;s permission columns for a row id. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Delegates to the <ref refid="classCase" kindref="compound">Case</ref> base, joining <computeroutput>clinics</computeroutput> with <computeroutput>patients</computeroutput> on clinic_id. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Row id to authorise. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The SELECT statement; the base helper has no failure path despite the optional return. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patient.hpp" line="159" column="26" bodyfile="src/entities/services/clinics/patient/patient.hpp" bodystart="159" bodyend="159"/>
+        <references refid="classCase_1a549bb017161d692a03db738d940b9b2f" compoundref="case_8hpp" startline="138" endline="147">Case::getPermissionsQueryForReadImp</references>
+        <references refid="classPatient_1aaf177b2592e249054d93a81efafad800" compoundref="patient_8hpp" startline="66">TABLENAME</references>
+      </memberdef>
+      <memberdef kind="function" id="classPatient_1aaf97e966375ff69900abb7e9668f5529" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>static std::optional&lt; std::string &gt; Patient::getPermissionsQueryForUpdate</definition>
+        <argsstring>(const uint64_t id)</argsstring>
+        <name>getPermissionsQueryForUpdate</name>
+        <qualifiedname>Patient::getPermissionsQueryForUpdate</qualifiedname>
+        <param>
+          <type>const uint64_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Builds the SQL that fetches the owning clinic&apos;s permission columns for an update. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Row id to authorise. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The SELECT statement; the base helper has no failure path despite the optional return. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patient.hpp" line="166" column="26" bodyfile="src/entities/services/clinics/patient/patient.hpp" bodystart="166" bodyend="166"/>
+        <references refid="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf" compoundref="case_8hpp" startline="155" endline="164">Case::getPermissionsQueryForUpdateImpl</references>
+        <references refid="classPatient_1aaf177b2592e249054d93a81efafad800" compoundref="patient_8hpp" startline="66">TABLENAME</references>
+      </memberdef>
+      <memberdef kind="function" id="classPatient_1a35aec1ab81bfaaac3433608c530e8a43" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>static std::optional&lt; std::string &gt; Patient::getPermissionsQueryForDelete</definition>
+        <argsstring>(const uint64_t id)</argsstring>
+        <name>getPermissionsQueryForDelete</name>
+        <qualifiedname>Patient::getPermissionsQueryForDelete</qualifiedname>
+        <param>
+          <type>const uint64_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Builds the SQL that fetches the owning clinic&apos;s permission columns for a delete. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Row id to authorise. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The SELECT statement; the base helper has no failure path despite the optional return. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/services/clinics/patient/patient.hpp" line="173" column="26" bodyfile="src/entities/services/clinics/patient/patient.hpp" bodystart="173" bodyend="173"/>
+        <references refid="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff" compoundref="case_8hpp" startline="172" endline="181">Case::getPermissionsQueryForDeleteImp</references>
+        <references refid="classPatient_1aaf177b2592e249054d93a81efafad800" compoundref="patient_8hpp" startline="66">TABLENAME</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para><ref refid="classCase" kindref="compound">Case</ref> entity for the <computeroutput>patients</computeroutput> table; the patient record owned by a clinic. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>A thin value type binding the generic Case/Entity CRUD machinery to one table. SQL generation is inherited; this class fixes the table name and overrides create authorisation: because a patient belongs directly to a clinic, the create payload&apos;s <computeroutput>clinic_id</computeroutput> is checked against <computeroutput>clinics</computeroutput> without the patient-table join used by the other <ref refid="classCase" kindref="compound">Case</ref> types. This is also the only <ref refid="classCase" kindref="compound">Case</ref> that builds a visits query; the controller uses it in GetVisits/GetVisitsAsync (guarded by <computeroutput>requires std::is_same&lt;T, <ref refid="classPatient" kindref="compound">Patient</ref>&gt;</computeroutput>). The static getPermissionsQueryFor* helpers are passed to <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> for api::v2::Case_t T. The type is registered as <ref refid="classClinicController" kindref="compound">ClinicController&lt;Patient&gt;</ref> under the <computeroutput>patients</computeroutput> serviceType, which also owns search and getvisits routes. Ownership: the wrapper is copied into <ref refid="classEntity" kindref="compound">Entity</ref> and is const thereafter; no mutable state and no locking of its own. Copy and move are explicitly deleted: create a fresh instance per operation. <simplesect kind="note"><para>No default constructor: <ref refid="classEntity" kindref="compound">Entity</ref> needs a data wrapper to build statements from. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classCase" kindref="compound">Case</ref>, <ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref>, <ref refid="classClinicController" kindref="compound">ClinicController</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>Base</label>
+        <link refid="classBase"/>
+      </node>
+      <node id="2">
+        <label>Case</label>
+        <link refid="classCase"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Entity</label>
+        <link refid="classEntity"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Patient</label>
+        <link refid="classPatient"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>Base</label>
+        <link refid="classBase"/>
+      </node>
+      <node id="2">
+        <label>Case</label>
+        <link refid="classCase"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Entity</label>
+        <link refid="classEntity"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Patient</label>
+        <link refid="classPatient"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/entities/services/clinics/patient/patient.hpp" line="62" column="1" bodyfile="src/entities/services/clinics/patient/patient.hpp" bodystart="63" bodyend="174"/>
+    <listofallmembers>
+      <member refid="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" virt="non-virtual"><scope>Patient</scope><name>Base</name></member>
+      <member refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" prot="protected" virt="non-virtual"><scope>Patient</scope><name>buildCreateStatement</name></member>
+      <member refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" prot="protected" virt="non-virtual"><scope>Patient</scope><name>buildDeleteStatement</name></member>
+      <member refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" prot="protected" virt="non-virtual"><scope>Patient</scope><name>buildReadStatement</name></member>
+      <member refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" prot="protected" virt="non-virtual"><scope>Patient</scope><name>buildSearchStatement</name></member>
+      <member refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" prot="protected" virt="non-virtual"><scope>Patient</scope><name>buildUpdateStatement</name></member>
+      <member refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" prot="public" virt="non-virtual"><scope>Patient</scope><name>Case</name></member>
+      <member refid="classCase_1a7b23df81d29fee57dd61a99a86b8261c" prot="public" virt="non-virtual"><scope>Patient</scope><name>Case</name></member>
+      <member refid="classCase_1a0d15370d666834e72bbcc00b419238de" prot="public" virt="non-virtual"><scope>Patient</scope><name>Case</name></member>
+      <member refid="classEntity_1ac1d661555222fabdf77fc5750da50b19" prot="public" virt="non-virtual"><scope>Patient</scope><name>check_id_exists</name></member>
+      <member refid="classPatient_1a1efed6fb3b9dbf1aefad853f1d1612f5" prot="private" virt="non-virtual"><scope>Patient</scope><name>CREATE_KEY</name></member>
+      <member refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" prot="private" virt="non-virtual"><scope>Patient</scope><name>data</name></member>
+      <member refid="classEntity_1a154ae0093211626370549e2924f9c954" prot="protected" virt="non-virtual"><scope>Patient</scope><name>databaseController</name></member>
+      <member refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93" prot="public" virt="non-virtual"><scope>Patient</scope><name>Entity</name></member>
+      <member refid="classEntity_1ad3455dba49aa870a3f298f490771600c" prot="public" virt="non-virtual"><scope>Patient</scope><name>Entity</name></member>
+      <member refid="classEntity_1abe34f0c0ca4b976ba455b97b2039d771" prot="public" virt="non-virtual"><scope>Patient</scope><name>Entity</name></member>
+      <member refid="classPatient_1ab9788dddb292e5a82a6cbf5534654ce3" prot="public" virt="non-virtual"><scope>Patient</scope><name>getCreateKey</name></member>
+      <member refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" prot="public" virt="non-virtual"><scope>Patient</scope><name>getData</name></member>
+      <member refid="classEntity_1a78dd1f37555f08fe0b389029c2d5b775" prot="public" virt="non-virtual"><scope>Patient</scope><name>getGroupName</name></member>
+      <member refid="classCase_1a21c9d085ff35036397c09fbf1882343b" prot="public" virt="non-virtual"><scope>Patient</scope><name>getOrgName</name></member>
+      <member refid="classPatient_1a885121ad678761986a02430b9ba09527" prot="public" virt="non-virtual"><scope>Patient</scope><name>getPermissionsQueryForCreate</name></member>
+      <member refid="classCase_1a5617a4962ddeaabd3094fae406c860f6" prot="protected" virt="non-virtual"><scope>Patient</scope><name>getPermissionsQueryForCreateImpl</name></member>
+      <member refid="classCase_1a885de6b0ca89e3462529a9b9c388b9d2" prot="protected" virt="non-virtual"><scope>Patient</scope><name>getPermissionsQueryForCreatePatientImpl</name></member>
+      <member refid="classPatient_1a35aec1ab81bfaaac3433608c530e8a43" prot="public" virt="non-virtual"><scope>Patient</scope><name>getPermissionsQueryForDelete</name></member>
+      <member refid="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff" prot="protected" virt="non-virtual"><scope>Patient</scope><name>getPermissionsQueryForDeleteImp</name></member>
+      <member refid="classPatient_1a9c0cf980a6d81bf7736d9873b1d8954a" prot="public" virt="non-virtual"><scope>Patient</scope><name>getPermissionsQueryForRead</name></member>
+      <member refid="classCase_1a549bb017161d692a03db738d940b9b2f" prot="protected" virt="non-virtual"><scope>Patient</scope><name>getPermissionsQueryForReadImp</name></member>
+      <member refid="classPatient_1aaf97e966375ff69900abb7e9668f5529" prot="public" virt="non-virtual"><scope>Patient</scope><name>getPermissionsQueryForUpdate</name></member>
+      <member refid="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf" prot="protected" virt="non-virtual"><scope>Patient</scope><name>getPermissionsQueryForUpdateImpl</name></member>
+      <member refid="classEntity_1a32f18508b15bf1f4c6494768bda527be" prot="public" virt="virtual"><scope>Patient</scope><name>getSqlCreateStatement</name></member>
+      <member refid="classEntity_1aa66bbebb8b50f7d91153231b1f6ab997" prot="public" virt="virtual"><scope>Patient</scope><name>getSqlDeleteStatement</name></member>
+      <member refid="classPatient_1af7b2fbbefcfa9f8be148faa6a92259e8" prot="public" virt="non-virtual"><scope>Patient</scope><name>getSqlGetVisitsStatement</name></member>
+      <member refid="classEntity_1a90ab6d6ae7c3431c3ede1201654b209a" prot="public" virt="virtual"><scope>Patient</scope><name>getSqlReadStatement</name></member>
+      <member refid="classEntity_1a362c3e70e483e2378ab08414c1eacdd7" prot="public" virt="virtual"><scope>Patient</scope><name>getSqlSearchStatement</name></member>
+      <member refid="classEntity_1af1c8231f215f8941d8424d2b165ba818" prot="public" virt="virtual"><scope>Patient</scope><name>getSqlUpdateStatement</name></member>
+      <member refid="classPatient_1a1835153c5bb0ad17a201a73f64e5e885" prot="public" virt="non-virtual"><scope>Patient</scope><name>getTableName</name></member>
+      <member refid="classPatient_1ac84d3f1a4620ff0c18f85a107d2f5b77" prot="public" virt="non-virtual"><scope>Patient</scope><name>operator=</name></member>
+      <member refid="classPatient_1a619ece5d8f7ae3e1eb146305e24c6340" prot="public" virt="non-virtual"><scope>Patient</scope><name>operator=</name></member>
+      <member refid="classCase_1aa0c0269d0a4f48681b880b9621004bcf" prot="public" virt="non-virtual" ambiguityscope="Case::"><scope>Patient</scope><name>operator=</name></member>
+      <member refid="classCase_1aa384eaca0046ba0bba80dfdcfe199711" prot="public" virt="non-virtual" ambiguityscope="Case::"><scope>Patient</scope><name>operator=</name></member>
+      <member refid="classEntity_1a1f6d7e8353984497c45053a421a35b53" prot="public" virt="non-virtual" ambiguityscope="Entity::"><scope>Patient</scope><name>operator=</name></member>
+      <member refid="classEntity_1adb86b6ab4d1b39b00c2472af16840fe5" prot="public" virt="non-virtual" ambiguityscope="Entity::"><scope>Patient</scope><name>operator=</name></member>
+      <member refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" prot="public" virt="non-virtual"><scope>Patient</scope><name>ORGNAME</name></member>
+      <member refid="classPatient_1a1c6bf9f409382d4fd7e9230229834ee9" prot="public" virt="non-virtual"><scope>Patient</scope><name>Patient</name></member>
+      <member refid="classPatient_1aefeac70b7bd4b8260a1a9b7df4ddbb29" prot="public" virt="non-virtual"><scope>Patient</scope><name>Patient</name></member>
+      <member refid="classPatient_1a4ad69b097d80d827fb48995556fffce6" prot="public" virt="non-virtual"><scope>Patient</scope><name>Patient</name></member>
+      <member refid="classPatient_1aaf177b2592e249054d93a81efafad800" prot="private" virt="non-virtual"><scope>Patient</scope><name>TABLENAME</name></member>
+      <member refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" prot="protected" virt="non-virtual"><scope>Patient</scope><name>tablename</name></member>
+      <member refid="classBase_1a306fb25541331080645a716286357ef9" prot="public" virt="virtual"><scope>Patient</scope><name>~Base</name></member>
+      <member refid="classCase_1afc12c279a9ecdde1f571dee7ddd185a8" prot="public" virt="non-virtual"><scope>Patient</scope><name>~Case</name></member>
+      <member refid="classEntity_1a605d474ccbd30c3d4350016ec173546a" prot="public" virt="non-virtual"><scope>Patient</scope><name>~Entity</name></member>
+      <member refid="classPatient_1aee1fdb32c0ed7cfbc54abc38dc2bf2d3" prot="public" virt="non-virtual"><scope>Patient</scope><name>~Patient</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

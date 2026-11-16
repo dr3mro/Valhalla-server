@@ -1,0 +1,570 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="global_8hpp" kind="file" language="C++">
+    <compoundname>global.hpp</compoundname>
+    <includes refid="errorstatus_8hpp" local="yes">utils/global/errorstatus.hpp</includes>
+    <includedby refid="controller_8hpp" local="yes">src/controllers/base/controller/controller.hpp</includedby>
+    <includedby refid="clientcontroller_8hpp" local="yes">src/controllers/clientcontroller/clientcontroller.hpp</includedby>
+    <includedby refid="cliniccontroller_8hpp" local="yes">src/controllers/cliniccontroller/cliniccontroller.hpp</includedby>
+    <includedby refid="staffcontroller_8cpp" local="yes">src/controllers/staffcontroller/staffcontroller.cpp</includedby>
+    <includedby refid="case_8hpp" local="yes">src/entities/base/case.hpp</includedby>
+    <includedby refid="client_8hpp" local="yes">src/entities/base/client.hpp</includedby>
+    <includedby refid="gatekeeper_8cpp" local="yes">src/gatekeeper/gatekeeper.cpp</includedby>
+    <includedby refid="keeprbase_8cpp" local="yes">src/gatekeeper/keeprbase/keeprbase.cpp</includedby>
+    <includedby refid="sessionmanager_8cpp" local="yes">src/gatekeeper/sessionmanager/sessionmanager.cpp</includedby>
+    <incdepgraph>
+      <node id="4">
+        <label>database/databasebusy.hpp</label>
+        <link refid="databasebusy_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>utils/global/errorstatus.hpp</label>
+        <link refid="errorstatus_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/utils/global/global.hpp</label>
+        <link refid="global_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>utils/global/http.hpp</label>
+        <link refid="http_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>exception</label>
+      </node>
+      <node id="5">
+        <label>stdexcept</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="8">
+        <label>unordered_map</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="9">
+        <label>src/api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>src/api/v2/routes/appointments.hpp</label>
+        <link refid="appointments_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>src/api/v2/routes/clients.hpp</label>
+        <link refid="clients_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>src/api/v2/routes/clinics.hpp</label>
+        <link refid="api_2v2_2routes_2clinics_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>src/api/v2/routes/services.hpp</label>
+        <link refid="services_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>src/api/v2/routes/staff.hpp</label>
+        <link refid="staff_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
+        <link refid="appointmentcontroller_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
+        <link refid="appointmentcontroller_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/controllers/base/controller/controller.hpp</label>
+        <link refid="controller_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/controllers/clientcontroller/clientcontroller.cpp</label>
+        <link refid="clientcontroller_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
+        <link refid="clientcontroller_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
+        <link refid="cliniccontroller_8cpp"/>
+      </node>
+      <node id="14">
+        <label>src/controllers/cliniccontroller/cliniccontroller.hpp</label>
+        <link refid="cliniccontroller_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
+        <link refid="entitycontroller_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/controllers/entitycontroller/entitycontroller.hpp</label>
+        <link refid="entitycontroller_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
+        <link refid="servicecontroller_8cpp"/>
+      </node>
+      <node id="17">
+        <label>src/controllers/servicecontroller/servicecontroller.hpp</label>
+        <link refid="servicecontroller_8hpp"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
+        <link refid="staffcontroller_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
+        <link refid="staffcontroller_8hpp"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>src/database/database.cpp</label>
+        <link refid="database_8cpp"/>
+      </node>
+      <node id="23">
+        <label>src/entities/base/case.hpp</label>
+        <link refid="case_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>src/entities/base/client.hpp</label>
+        <link refid="client_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>src/entities/people/provider.hpp</label>
+        <link refid="provider_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>src/entities/people/user.hpp</label>
+        <link refid="people_2user_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>src/entities/services/clinics/patient/health.hpp</label>
+        <link refid="health_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>src/entities/services/clinics/patient/patient.hpp</label>
+        <link refid="patient_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>src/entities/services/clinics/patient/patientdrugs.hpp</label>
+        <link refid="patientdrugs_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>src/entities/services/clinics/patient/reports.hpp</label>
+        <link refid="reports_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>src/entities/services/clinics/visits/paidservices.hpp</label>
+        <link refid="paidservices_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>src/entities/services/clinics/visits/prescriptions.hpp</label>
+        <link refid="prescriptions_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>src/entities/services/clinics/visits/requests.hpp</label>
+        <link refid="requests_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>src/entities/services/clinics/visits/visitdrugs.hpp</label>
+        <link refid="visitdrugs_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>src/entities/services/clinics/visits/visits.hpp</label>
+        <link refid="visits_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>src/gatekeeper/gatekeeper.cpp</label>
+        <link refid="gatekeeper_8cpp"/>
+      </node>
+      <node id="25">
+        <label>src/gatekeeper/includes.hpp</label>
+        <link refid="includes_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>src/gatekeeper/keeprbase/keeprbase.cpp</label>
+        <link refid="keeprbase_8cpp"/>
+      </node>
+      <node id="27">
+        <label>src/gatekeeper/permissionmanager/permissionmanager.cpp</label>
+        <link refid="permissionmanager_8cpp"/>
+      </node>
+      <node id="40">
+        <label>src/gatekeeper/sessionmanager/sessionmanager.cpp</label>
+        <link refid="sessionmanager_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/utils/global/global.hpp</label>
+        <link refid="global_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="global_8hpp_1a68447123f2c27bb7bcdbbaec4091dab7" prot="public" static="no">
+        <name>CRITICALMESSAGE</name>
+        <initializer>std::string critical_error = fmt::format(&quot;Failure: {} : {} : {} : {}&quot;, e.what(), __func__, __FILE__, __LINE__); \
+<ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(critical_error);</initializer>
+        <briefdescription>
+<para>Logs the active exception together with function, file and line. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Expands to several statements that build <computeroutput>critical_error</computeroutput> via fmt and pass it to <ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>. <simplesect kind="pre"><para>Must be expanded inside a catch handler with an exception variable named <computeroutput>e</computeroutput> in scope, and with fmt and <ref refid="classMessage" kindref="compound">Message</ref> available. </para>
+</simplesect>
+<simplesect kind="warning"><para>Declares a local variable named <computeroutput>critical_error</computeroutput>; avoid using the macro where that name is already taken. It expands to more than one statement, so guard it with braces when used as a single statement. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/global/global.hpp" line="46" column="9" bodyfile="src/utils/global/global.hpp" bodystart="46" bodyend="48"/>
+        <referencedby refid="classController_1a95c56822d667e94b031451729ce069a9" compoundref="controller_8hpp" startline="99" endline="110">Controller::Controller</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a96a366e05f18b668479c2da9000d6289" compoundref="keeprbase_8cpp" startline="89" endline="129">api::v2::KeeprBase::getLastLogoutTimeIfActive</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a25af0d69c7a5d1f0fa209b6002ec8c28" compoundref="keeprbase_8cpp" startline="403" endline="443">api::v2::KeeprBase::getLastLogoutTimeIfActiveCoro</referencedby>
+        <referencedby refid="classHealth_1acdfeb4a8a3a38cb292b0e68a8349ca84" compoundref="health_8hpp" startline="102" endline="116">Health::getPermissionsQueryForCreate</referencedby>
+        <referencedby refid="classPaidServices_1abde5fe3fd3d0658ea4853bc11b53671e" compoundref="paidservices_8hpp" startline="102" endline="116">PaidServices::getPermissionsQueryForCreate</referencedby>
+        <referencedby refid="classPatient_1a885121ad678761986a02430b9ba09527" compoundref="patient_8hpp" startline="137" endline="151">Patient::getPermissionsQueryForCreate</referencedby>
+        <referencedby refid="classPatientDrugs_1ac6fc5c6fb8c16220d1bf0fa5f456c27c" compoundref="patientdrugs_8hpp" startline="103" endline="117">PatientDrugs::getPermissionsQueryForCreate</referencedby>
+        <referencedby refid="classPrescriptions_1a5aff3d53f014e3c5219d454ee95f91e6" compoundref="prescriptions_8hpp" startline="102" endline="116">Prescriptions::getPermissionsQueryForCreate</referencedby>
+        <referencedby refid="classReports_1a3ecfc2fcb6d9a4786fa9b4c34d75ab60" compoundref="reports_8hpp" startline="103" endline="117">Reports::getPermissionsQueryForCreate</referencedby>
+        <referencedby refid="classRequests_1afa9136767535530fab2229722f167d23" compoundref="requests_8hpp" startline="102" endline="116">Requests::getPermissionsQueryForCreate</referencedby>
+        <referencedby refid="classVisitDrugs_1a15cbcaeec950481fe5fde4402de33581" compoundref="visitdrugs_8hpp" startline="105" endline="119">VisitDrugs::getPermissionsQueryForCreate</referencedby>
+        <referencedby refid="classVisits_1abc37409f355b5de5cb632f825833cee8" compoundref="visits_8hpp" startline="102" endline="116">Visits::getPermissionsQueryForCreate</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="224" endline="289">api::v2::SessionManager::logout</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" prot="public" static="no">
+        <name>CRITICALMESSAGERESPONSE</name>
+        <initializer><ref refid="global_8hpp_1a68447123f2c27bb7bcdbbaec4091dab7" kindref="member">CRITICALMESSAGE</ref>                                                                                                          \
+callback(<ref refid="namespaceapi_1_1v2_1_1Http_1aaddeb034a51d7050d6cc65cc2b46fdcf" kindref="member">api::v2::Http::statusForException</ref>(e),                                                                           \
+    <ref refid="namespaceapi_1_1v2_1_1Http_1aaddeb034a51d7050d6cc65cc2b46fdcf" kindref="member">api::v2::Http::statusForException</ref>(e) == <ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa8f68ec2a12ee4e1b4766e3fe760220" kindref="member">api::v2::Http::Status::SERVICE_UNAVAILABLE</ref> ? std::string(e.what()) : critical_error);</initializer>
+        <briefdescription>
+<para>Logs a critical error and replies to the caller through <computeroutput>callback</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>First expands CRITICALMESSAGE, then invokes <computeroutput>callback</computeroutput> with the status from statusForException. For a busy database (503) the exception&apos;s own message is returned so the client knows to retry; for any other failure (500) the detailed <computeroutput>critical_error</computeroutput> string is returned and the raw exception text is kept out of the response. <simplesect kind="pre"><para>Requires <computeroutput>e</computeroutput>, a callable <computeroutput>callback</computeroutput> compatible with CALLBACK_, and the names used by CRITICALMESSAGE to be in scope. </para>
+</simplesect>
+<simplesect kind="see"><para>statusForException, <ref refid="global_8hpp_1a68447123f2c27bb7bcdbbaec4091dab7" kindref="member">CRITICALMESSAGE</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/global/global.hpp" line="66" column="9" bodyfile="src/utils/global/global.hpp" bodystart="66" bodyend="69"/>
+        <referencedby refid="classClientController_1a42c57adab458feeb209485ce13c48b0f" compoundref="clientcontroller_8cpp" startline="279" endline="308">ClientController&lt; T &gt;::Activate</referencedby>
+        <referencedby refid="classClientController_1af7b6b7c90918fc3068478538f2e1b37d" compoundref="clientcontroller_8cpp" startline="311" endline="340">ClientController&lt; T &gt;::ActivateAsync</referencedby>
+        <referencedby refid="classStaffController_1a454ac6b5d362f6b9be674eac131f4da7" compoundref="staffcontroller_8cpp" startline="92" endline="121">StaffController&lt; T &gt;::AddStaffToEntity</referencedby>
+        <referencedby refid="classStaffController_1a53a028cf301c7a9765b3633a06275546" compoundref="staffcontroller_8cpp" startline="227" endline="255">StaffController&lt; T &gt;::AddStaffToEntityAsync</referencedby>
+        <referencedby refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" compoundref="entitycontroller_8cpp" startline="57" endline="112">EntityController&lt; T &gt;::Create</referencedby>
+        <referencedby refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="290" endline="343">EntityController&lt; T &gt;::CreateAsync</referencedby>
+        <referencedby refid="classClinicController_1af9be5b8c32bde11f7907d8ad6c031c92" compoundref="cliniccontroller_8cpp" startline="29" endline="106">ClinicController&lt; T &gt;::CreateImpl</referencedby>
+        <referencedby refid="classClientController_1a0373ac4a58de1a4105939a0db1c64699" compoundref="clientcontroller_8cpp" startline="67" endline="117">ClientController&lt; T &gt;::createNow</referencedby>
+        <referencedby refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="613" endline="648">Controller::cruds</referencedby>
+        <referencedby refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="664" endline="697">Controller::crudsAsync</referencedby>
+        <referencedby refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" compoundref="entitycontroller_8cpp" startline="224" endline="252">EntityController&lt; T &gt;::Delete</referencedby>
+        <referencedby refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" compoundref="entitycontroller_8cpp" startline="452" endline="480">EntityController&lt; T &gt;::DeleteAsync</referencedby>
+        <referencedby refid="classClientController_1abdee410951d9aa19b082955197f53162" compoundref="clientcontroller_8cpp" startline="351" endline="378">ClientController&lt; T &gt;::GetServices</referencedby>
+        <referencedby refid="classController_1ad8517f93d94b2584124d06d0904c8c28" compoundref="controller_8hpp" startline="443" endline="470">Controller::GetServices</referencedby>
+        <referencedby refid="classClientController_1aebd0c741055d14e284ea633eee9bd18d" compoundref="clientcontroller_8cpp" startline="381" endline="408">ClientController&lt; T &gt;::GetServicesAsync</referencedby>
+        <referencedby refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="483" endline="511">Controller::GetServicesAsync</referencedby>
+        <referencedby refid="classController_1acd1d7cb00688b69469719ff7789f3cd9" compoundref="controller_8hpp" startline="523" endline="545">Controller::GetVisits</referencedby>
+        <referencedby refid="classController_1a2af2297a7b4fcce1f987510786aaa5d7" compoundref="controller_8hpp" startline="557" endline="580">Controller::GetVisitsAsync</referencedby>
+        <referencedby refid="classClinicController_1ada8df541cb356fd8a275832960e9eb99" compoundref="cliniccontroller_8cpp" startline="369" endline="397">ClinicController&lt; T &gt;::GetVisitsAsyncImpl</referencedby>
+        <referencedby refid="classClinicController_1a49ca9ae245f2ca94ee937754a5d433ea" compoundref="cliniccontroller_8cpp" startline="266" endline="293">ClinicController&lt; T &gt;::GetVisitsImpl</referencedby>
+        <referencedby refid="classStaffController_1aca79920a9fdd6da89333627992bf6287" compoundref="staffcontroller_8cpp" startline="169" endline="214">StaffController&lt; T &gt;::InviteStaffToEntity</referencedby>
+        <referencedby refid="classStaffController_1a7bfaae0026f9082bb42968cf04b421d5" compoundref="staffcontroller_8cpp" startline="299" endline="345">StaffController&lt; T &gt;::InviteStaffToEntityAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" compoundref="gatekeeper_8cpp" startline="78" endline="149">api::v2::GateKeeper::login</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" compoundref="gatekeeper_8cpp" startline="151" endline="220">api::v2::GateKeeper::loginAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1aa229540ef1e83bef737798d28697b61b" compoundref="gatekeeper_8cpp" startline="222" endline="237">api::v2::GateKeeper::logout</referencedby>
+        <referencedby refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="115" endline="160">EntityController&lt; T &gt;::Read</referencedby>
+        <referencedby refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="345" endline="390">EntityController&lt; T &gt;::ReadAsync</referencedby>
+        <referencedby refid="classStaffController_1aefd020493c2178716433285aca94ae50" compoundref="staffcontroller_8cpp" startline="132" endline="155">StaffController&lt; T &gt;::RemoveStaffFromEntity</referencedby>
+        <referencedby refid="classStaffController_1ac220308be6bf24122bfe037ea8c75e9c" compoundref="staffcontroller_8cpp" startline="265" endline="289">StaffController&lt; T &gt;::RemoveStaffFromEntityAsync</referencedby>
+        <referencedby refid="classController_1aaa9930fa3fdd7c91a56392f3e1440736" compoundref="controller_8hpp" startline="261" endline="309">Controller::Search</referencedby>
+        <referencedby refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" compoundref="entitycontroller_8cpp" startline="255" endline="287">EntityController&lt; T &gt;::Search</referencedby>
+        <referencedby refid="classController_1ae3f0e461a7a50529945f6e70ba5572be" compoundref="controller_8hpp" startline="321" endline="366">Controller::SearchAsync</referencedby>
+        <referencedby refid="classEntityController_1a430903208b20b59481d07c88b66ac4f6" compoundref="entitycontroller_8cpp" startline="482" endline="514">EntityController&lt; T &gt;::SearchAsync</referencedby>
+        <referencedby refid="classClientController_1ac9f28aab768cb85f02f2ca84b694f149" compoundref="clientcontroller_8cpp" startline="213" endline="243">ClientController&lt; T &gt;::Suspend</referencedby>
+        <referencedby refid="classClientController_1a77e043006883f4a959679df477d0ad39" compoundref="clientcontroller_8cpp" startline="246" endline="276">ClientController&lt; T &gt;::SuspendAsync</referencedby>
+        <referencedby refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" compoundref="entitycontroller_8cpp" startline="162" endline="221">EntityController&lt; T &gt;::Update</referencedby>
+        <referencedby refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="392" endline="450">EntityController&lt; T &gt;::UpdateAsync</referencedby>
+        <referencedby refid="classClientController_1a8f17ab1fcb71e5c9d8e03f6cfe69559b" compoundref="clientcontroller_8cpp" startline="134" endline="166">ClientController&lt; T &gt;::updateNow</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Macros for uniform critical-error logging and response generation. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Defines two preprocessor macros. CRITICALMESSAGE builds a detailed error string (message, function, file and line) and logs it at critical severity. CRITICALMESSAGERESPONSE does that logging and then answers the caller through a callback, choosing 503 for a busy database and 500 for anything else. Because they are macros, the error text picks up the caller&apos;s <bold>func</bold>, <bold>FILE</bold> and <bold>LINE</bold> automatically instead of always pointing here.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: Many controllers and entities can fail in the same way, and each one must both log the failure and send a sensible HTTP reply. These macros make that a single line at every catch site, so error handling looks and behaves the same across the whole API. They depend on statusForException (<ref refid="errorstatus_8hpp" kindref="compound">errorstatus.hpp</ref>) for the status code and on <ref refid="classMessage" kindref="compound">Message</ref> for the log. Without them, error handling would be duplicated and would drift apart over time.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>Preprocessor macros: <ulink url="https://en.cppreference.com/w/cpp/preprocessor/replace">https://en.cppreference.com/w/cpp/preprocessor/replace</ulink></para>
+</listitem><listitem><para>std::string: <ulink url="https://en.cppreference.com/w/cpp/string/basic_string">https://en.cppreference.com/w/cpp/string/basic_string</ulink></para>
+</listitem><listitem><para>Compile-time macros <bold>func</bold>, <bold>FILE</bold>, <bold>LINE</bold>: <ulink url="https://en.cppreference.com/w/cpp/preprocessor/replace#Predefined_macros">https://en.cppreference.com/w/cpp/preprocessor/replace#Predefined_macros</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>global.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Macros<sp/>for<sp/>uniform<sp/>critical-error<sp/>logging<sp/>and<sp/>response<sp/>generation.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>Defines<sp/>two<sp/>preprocessor<sp/>macros.<sp/>CRITICALMESSAGE<sp/>builds<sp/>a<sp/>detailed</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error<sp/>string<sp/>(message,<sp/>function,<sp/>file<sp/>and<sp/>line)<sp/>and<sp/>logs<sp/>it<sp/>at<sp/>critical</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>severity.<sp/>CRITICALMESSAGERESPONSE<sp/>does<sp/>that<sp/>logging<sp/>and<sp/>then<sp/>answers</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>caller<sp/>through<sp/>a<sp/>callback,<sp/>choosing<sp/>503<sp/>for<sp/>a<sp/>busy<sp/>database<sp/>and</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>500<sp/>for<sp/>anything<sp/>else.<sp/>Because<sp/>they<sp/>are<sp/>macros,<sp/>the<sp/>error<sp/>text<sp/>picks<sp/>up</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>caller&apos;s<sp/>__func__,<sp/>__FILE__<sp/>and<sp/>__LINE__<sp/>automatically<sp/>instead<sp/>of</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>always<sp/>pointing<sp/>here.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>Many<sp/>controllers<sp/>and<sp/>entities<sp/>can<sp/>fail<sp/>in<sp/>the<sp/>same<sp/>way,<sp/>and<sp/>each<sp/>one<sp/>must<sp/>both</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>log<sp/>the<sp/>failure<sp/>and<sp/>send<sp/>a<sp/>sensible<sp/>HTTP<sp/>reply.<sp/>These<sp/>macros<sp/>make<sp/>that<sp/>a<sp/>single</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>line<sp/>at<sp/>every<sp/>catch<sp/>site,<sp/>so<sp/>error<sp/>handling<sp/>looks<sp/>and<sp/>behaves<sp/>the<sp/>same<sp/>across</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>the<sp/>whole<sp/>API.<sp/>They<sp/>depend<sp/>on<sp/>statusForException<sp/>(errorstatus.hpp)<sp/>for<sp/>the</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>status<sp/>code<sp/>and<sp/>on<sp/>Message<sp/>for<sp/>the<sp/>log.<sp/>Without<sp/>them,<sp/>error<sp/>handling<sp/>would<sp/>be</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>duplicated<sp/>and<sp/>would<sp/>drift<sp/>apart<sp/>over<sp/>time.</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>Preprocessor<sp/>macros:<sp/>https://en.cppreference.com/w/cpp/preprocessor/replace</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>std::string:<sp/>https://en.cppreference.com/w/cpp/string/basic_string</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>-<sp/>Compile-time<sp/>macros<sp/>__func__,<sp/>__FILE__,<sp/>__LINE__:<sp/>https://en.cppreference.com/w/cpp/preprocessor/replace#Predefined_macros</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="errorstatus_8hpp" kindref="compound">utils/global/errorstatus.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Provides<sp/>statusForException<sp/>used<sp/>to<sp/>map<sp/>the<sp/>caught<sp/>error<sp/>to<sp/>a<sp/>500/503<sp/>status.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="31"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@def<sp/>CRITICALMESSAGE</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Logs<sp/>the<sp/>active<sp/>exception<sp/>together<sp/>with<sp/>function,<sp/>file<sp/>and<sp/>line.</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>@details<sp/>Expands<sp/>to<sp/>several<sp/>statements<sp/>that<sp/>build<sp/>`critical_error`<sp/>via<sp/>fmt</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>and<sp/>pass<sp/>it<sp/>to<sp/>Message::CriticalMessage.</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>@pre<sp/>Must<sp/>be<sp/>expanded<sp/>inside<sp/>a<sp/>catch<sp/>handler<sp/>with<sp/>an<sp/>exception<sp/>variable<sp/>named</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>`e`<sp/>in<sp/>scope,<sp/>and<sp/>with<sp/>fmt<sp/>and<sp/>Message<sp/>available.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@warning<sp/>Declares<sp/>a<sp/>local<sp/>variable<sp/>named<sp/>`critical_error`;<sp/>avoid<sp/>using<sp/>the</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>macro<sp/>where<sp/>that<sp/>name<sp/>is<sp/>already<sp/>taken.<sp/>It<sp/>expands<sp/>to<sp/>more<sp/>than<sp/>one</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>statement,<sp/>so<sp/>guard<sp/>it<sp/>with<sp/>braces<sp/>when<sp/>used<sp/>as<sp/>a<sp/>single<sp/>statement.</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOTE:<sp/>the<sp/>macro<sp/>lines<sp/>below<sp/>are<sp/>kept<sp/>byte-for-byte;<sp/>each<sp/>backslash<sp/>continues<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>macro<sp/>onto<sp/>the<sp/>next<sp/>line,<sp/>so<sp/>a<sp/>trailing<sp/>//<sp/>comment<sp/>there<sp/>would<sp/>break<sp/>it.<sp/>The</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>expansion<sp/>first<sp/>builds<sp/>&quot;Failure:<sp/>&lt;what&gt;<sp/>:<sp/>&lt;function&gt;<sp/>:<sp/>&lt;file&gt;<sp/>:<sp/>&lt;line&gt;&quot;<sp/>and<sp/>then</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>sends<sp/>that<sp/>string<sp/>to<sp/>Message::CriticalMessage<sp/>for<sp/>logging.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="global_8hpp_1a68447123f2c27bb7bcdbbaec4091dab7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CRITICALMESSAGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>std::string<sp/>critical_error<sp/>=<sp/>fmt::format(&quot;Failure:<sp/>{}<sp/>:<sp/>{}<sp/>:<sp/>{}<sp/>:<sp/>{}&quot;,<sp/>e.what(),<sp/>__func__,<sp/>__FILE__,<sp/>__LINE__);<sp/>\</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>Message::CriticalMessage(critical_error);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Answers<sp/>503<sp/>(with<sp/>a<sp/>short<sp/>message)<sp/>when<sp/>the<sp/>database<sp/>is<sp/>busy,<sp/>500<sp/>otherwise.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="51"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>@def<sp/>CRITICALMESSAGERESPONSE</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Logs<sp/>a<sp/>critical<sp/>error<sp/>and<sp/>replies<sp/>to<sp/>the<sp/>caller<sp/>through<sp/>`callback`.</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>@details<sp/>First<sp/>expands<sp/>CRITICALMESSAGE,<sp/>then<sp/>invokes<sp/>`callback`<sp/>with<sp/>the</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>from<sp/>statusForException.<sp/>For<sp/>a<sp/>busy<sp/>database<sp/>(503)<sp/>the</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exception&apos;s<sp/>own<sp/>message<sp/>is<sp/>returned<sp/>so<sp/>the<sp/>client<sp/>knows<sp/>to<sp/>retry;</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>any<sp/>other<sp/>failure<sp/>(500)<sp/>the<sp/>detailed<sp/>`critical_error`<sp/>string<sp/>is</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>returned<sp/>and<sp/>the<sp/>raw<sp/>exception<sp/>text<sp/>is<sp/>kept<sp/>out<sp/>of<sp/>the<sp/>response.</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>@pre<sp/>Requires<sp/>`e`,<sp/>a<sp/>callable<sp/>`callback`<sp/>compatible<sp/>with<sp/>CALLBACK_,<sp/>and<sp/>the</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>names<sp/>used<sp/>by<sp/>CRITICALMESSAGE<sp/>to<sp/>be<sp/>in<sp/>scope.</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>@see<sp/>statusForException,<sp/>CRITICALMESSAGE</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOTE:<sp/>the<sp/>macro<sp/>body<sp/>is<sp/>unchanged;<sp/>again<sp/>the<sp/>backslashes<sp/>must<sp/>stay<sp/>at<sp/>end<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>line.<sp/>It<sp/>logs<sp/>via<sp/>CRITICALMESSAGE,<sp/>then<sp/>calls<sp/>callback(status,<sp/>body),<sp/>where<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>body<sp/>is<sp/>the<sp/>raw<sp/>error<sp/>text<sp/>for<sp/>503<sp/>but<sp/>the<sp/>safer<sp/>formatted<sp/>string<sp/>for<sp/>500.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CRITICALMESSAGERESPONSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>CRITICALMESSAGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>callback(api::v2::Http::statusForException(e),<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>api::v2::Http::statusForException(e)<sp/>==<sp/>api::v2::Http::Status::SERVICE_UNAVAILABLE<sp/>?<sp/>std::string(e.what())<sp/>:<sp/>critical_error);</highlight></codeline>
+    </programlisting>
+    <location file="src/utils/global/global.hpp"/>
+  </compounddef>
+</doxygen>

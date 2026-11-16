@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="namespaceDefaults_1_1DosDetector" kind="namespace" language="C++">
+    <compoundname>Defaults::DosDetector</compoundname>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceDefaults_1_1DosDetector_1a8527abee682bdccd83f9213bae5d1a35" prot="public" static="no" mutable="no">
+        <type>const uint32_t</type>
+        <definition>const uint32_t Defaults::DosDetector::MAX_REQUESTS_</definition>
+        <argsstring></argsstring>
+        <name>MAX_REQUESTS_</name>
+        <qualifiedname>Defaults::DosDetector::MAX_REQUESTS_</qualifiedname>
+        <initializer>= 10000</initializer>
+        <briefdescription>
+<para>Maximum requests per <ref refid="namespaceDefaults_1_1DosDetector_1a6170311a433902f56c1ca536e94fdaac" kindref="member">PERIOD_</ref> window. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Default values for <ref refid="classDOSDetector" kindref="compound">DOSDetector</ref> configuration. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/configurator/defaults.hpp" line="58" column="24" bodyfile="src/configurator/defaults.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceDefaults_1_1DosDetector_1a6170311a433902f56c1ca536e94fdaac" prot="public" static="no" mutable="no">
+        <type>const uint32_t</type>
+        <definition>const uint32_t Defaults::DosDetector::PERIOD_</definition>
+        <argsstring></argsstring>
+        <name>PERIOD_</name>
+        <qualifiedname>Defaults::DosDetector::PERIOD_</qualifiedname>
+        <initializer>= 30</initializer>
+        <briefdescription>
+<para>Length (seconds) of the request counting window. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/configurator/defaults.hpp" line="60" column="24" bodyfile="src/configurator/defaults.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceDefaults_1_1DosDetector_1ac32f0f7494c6b02b3e8541f42ce22a62" prot="public" static="no" mutable="no">
+        <type>const uint32_t</type>
+        <definition>const uint32_t Defaults::DosDetector::MAX_FPS_</definition>
+        <argsstring></argsstring>
+        <name>MAX_FPS_</name>
+        <qualifiedname>Defaults::DosDetector::MAX_FPS_</qualifiedname>
+        <initializer>= 100</initializer>
+        <briefdescription>
+<para>Maximum distinct client fingerprints retained. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/configurator/defaults.hpp" line="62" column="24" bodyfile="src/configurator/defaults.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceDefaults_1_1DosDetector_1a8b50cd2a12eef40213278a2e73b89b85" prot="public" static="no" mutable="no">
+        <type>const uint32_t</type>
+        <definition>const uint32_t Defaults::DosDetector::RL_DURATION_</definition>
+        <argsstring></argsstring>
+        <name>RL_DURATION_</name>
+        <qualifiedname>Defaults::DosDetector::RL_DURATION_</qualifiedname>
+        <initializer>= 30</initializer>
+        <briefdescription>
+<para>Seconds a client stays rate-limited. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/configurator/defaults.hpp" line="64" column="24" bodyfile="src/configurator/defaults.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceDefaults_1_1DosDetector_1a952d9f6e74ca67618063ea922bd63e9e" prot="public" static="no" mutable="no">
+        <type>const uint32_t</type>
+        <definition>const uint32_t Defaults::DosDetector::BAN_DURATION_</definition>
+        <argsstring></argsstring>
+        <name>BAN_DURATION_</name>
+        <qualifiedname>Defaults::DosDetector::BAN_DURATION_</qualifiedname>
+        <initializer>= 3600</initializer>
+        <briefdescription>
+<para>Seconds a banned client stays blocked. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/configurator/defaults.hpp" line="66" column="24" bodyfile="src/configurator/defaults.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceDefaults_1_1DosDetector_1aa72b7148cbba28dbfc3d579918e2868f" prot="public" static="no" mutable="no">
+        <type>const uint32_t</type>
+        <definition>const uint32_t Defaults::DosDetector::CLN_FRQ_</definition>
+        <argsstring></argsstring>
+        <name>CLN_FRQ_</name>
+        <qualifiedname>Defaults::DosDetector::CLN_FRQ_</qualifiedname>
+        <initializer>= 30</initializer>
+        <briefdescription>
+<para>Seconds between sweeps of expired limit/ban entries. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/configurator/defaults.hpp" line="68" column="24" bodyfile="src/configurator/defaults.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Default thresholds and durations for the DoS detector. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/configurator/defaults.hpp" line="48" column="1"/>
+  </compounddef>
+</doxygen>

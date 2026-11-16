@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classDbProbe" kind="class" language="C++" prot="public">
+    <compoundname>DbProbe</compoundname>
+    <includes refid="dbprobe_8hpp" local="no">dbprobe.hpp</includes>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classDbProbe_1a86209915d051bd2999972e9e448d00c2" prot="private" static="yes" mutable="no" thread_local="yes">
+        <type>bool</type>
+        <definition>bool DbProbe::active_</definition>
+        <argsstring></argsstring>
+        <name>active_</name>
+        <qualifiedname>DbProbe::active_</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/dbprobe.hpp" line="95" column="37" bodyfile="src/database/dbprobe.hpp" bodystart="95" bodyend="-1"/>
+        <referencedby refid="classDbProbe_1af3b9ebe61addb4dd1885a3d117221a1f" compoundref="dbprobe_8hpp" startline="86" endline="92">check</referencedby>
+        <referencedby refid="classDbProbe_1a05c72d2e76a859f168c039bb0a13b802" compoundref="dbprobe_8hpp" startline="69" endline="69">DbProbe</referencedby>
+        <referencedby refid="classDbProbe_1a257d22f4724c5efe3851368485a90b3b" compoundref="dbprobe_8hpp" startline="74" endline="74">~DbProbe</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classDbProbe_1a05c72d2e76a859f168c039bb0a13b802" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>DbProbe::DbProbe</definition>
+        <argsstring>()</argsstring>
+        <name>DbProbe</name>
+        <qualifiedname>DbProbe::DbProbe</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Marks the current thread as probing for the lifetime of this object. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/dbprobe.hpp" line="69" column="5" bodyfile="src/database/dbprobe.hpp" bodystart="69" bodyend="69"/>
+        <references refid="classDbProbe_1a86209915d051bd2999972e9e448d00c2" compoundref="dbprobe_8hpp" startline="95">active_</references>
+        <referencedby refid="classDbProbe_1a383566e1d3d5ad2481f7e33a786af2a0">DbProbe</referencedby>
+        <referencedby refid="classDbProbe_1ae73173ba3c220d2c072d0246276f6534">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classDbProbe_1a257d22f4724c5efe3851368485a90b3b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>DbProbe::~DbProbe</definition>
+        <argsstring>()</argsstring>
+        <name>~DbProbe</name>
+        <qualifiedname>DbProbe::~DbProbe</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Clears the probe flag for the current thread. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/dbprobe.hpp" line="74" column="5" bodyfile="src/database/dbprobe.hpp" bodystart="74" bodyend="74"/>
+        <references refid="classDbProbe_1a86209915d051bd2999972e9e448d00c2" compoundref="dbprobe_8hpp" startline="95">active_</references>
+      </memberdef>
+      <memberdef kind="function" id="classDbProbe_1a383566e1d3d5ad2481f7e33a786af2a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DbProbe::DbProbe</definition>
+        <argsstring>(const DbProbe &amp;)=delete</argsstring>
+        <name>DbProbe</name>
+        <qualifiedname>DbProbe::DbProbe</qualifiedname>
+        <param>
+          <type>const <ref refid="classDbProbe" kindref="compound">DbProbe</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/dbprobe.hpp" line="76" column="5"/>
+        <references refid="classDbProbe_1a05c72d2e76a859f168c039bb0a13b802" compoundref="dbprobe_8hpp" startline="69" endline="69">DbProbe</references>
+      </memberdef>
+      <memberdef kind="function" id="classDbProbe_1ae73173ba3c220d2c072d0246276f6534" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classDbProbe" kindref="compound">DbProbe</ref> &amp;</type>
+        <definition>DbProbe &amp; DbProbe::operator=</definition>
+        <argsstring>(const DbProbe &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>DbProbe::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classDbProbe" kindref="compound">DbProbe</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/dbprobe.hpp" line="77" column="13"/>
+        <references refid="classDbProbe_1a05c72d2e76a859f168c039bb0a13b802" compoundref="dbprobe_8hpp" startline="69" endline="69">DbProbe</references>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classDbProbe_1af3b9ebe61addb4dd1885a3d117221a1f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void DbProbe::check</definition>
+        <argsstring>()</argsstring>
+        <name>check</name>
+        <qualifiedname>DbProbe::check</qualifiedname>
+        <briefdescription>
+<para>Guards a database-access point against running on an IO thread. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="structWouldBlock" kindref="compound">WouldBlock</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If called while a <ref refid="classDbProbe" kindref="compound">DbProbe</ref> is active on this thread.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<ref refid="classDatabase" kindref="compound">Database</ref> helpers call this first; in probe mode it throws before any connection is leased, allowing the request to be re-run from the start on a DB worker where no probe is active. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/database/dbprobe.hpp" line="86" column="17" bodyfile="src/database/dbprobe.hpp" bodystart="86" bodyend="92"/>
+        <references refid="classDbProbe_1a86209915d051bd2999972e9e448d00c2" compoundref="dbprobe_8hpp" startline="95">active_</references>
+        <referencedby refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="283" endline="329">DatabaseController::executer</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>RAII marker that puts the current thread in &quot;probe&quot; mode. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>While an instance is alive, <ref refid="classDbProbe_1af3b9ebe61addb4dd1885a3d117221a1f" kindref="member">DbProbe::check()</ref> throws <ref refid="structWouldBlock" kindref="compound">WouldBlock</ref> on that thread, preventing any database access from running on a Drogon IO thread. The active flag is <computeroutput>thread_local</computeroutput>, so only the constructing thread is affected. Instances are stack-allocated within a try block in the request wrapper and must not be shared across threads. Non-copyable and non-assignable. <simplesect kind="note"><para>The destructor unconditionally clears the flag; nested probes on the same thread would clear it early, so usage assumes a single probe per thread at a time. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="structWouldBlock" kindref="compound">WouldBlock</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/database/dbprobe.hpp" line="63" column="1" bodyfile="src/database/dbprobe.hpp" bodystart="64" bodyend="96"/>
+    <listofallmembers>
+      <member refid="classDbProbe_1a86209915d051bd2999972e9e448d00c2" prot="private" virt="non-virtual"><scope>DbProbe</scope><name>active_</name></member>
+      <member refid="classDbProbe_1af3b9ebe61addb4dd1885a3d117221a1f" prot="public" virt="non-virtual"><scope>DbProbe</scope><name>check</name></member>
+      <member refid="classDbProbe_1a05c72d2e76a859f168c039bb0a13b802" prot="public" virt="non-virtual"><scope>DbProbe</scope><name>DbProbe</name></member>
+      <member refid="classDbProbe_1a383566e1d3d5ad2481f7e33a786af2a0" prot="public" virt="non-virtual"><scope>DbProbe</scope><name>DbProbe</name></member>
+      <member refid="classDbProbe_1ae73173ba3c220d2c072d0246276f6534" prot="public" virt="non-virtual"><scope>DbProbe</scope><name>operator=</name></member>
+      <member refid="classDbProbe_1a257d22f4724c5efe3851368485a90b3b" prot="public" virt="non-virtual"><scope>DbProbe</scope><name>~DbProbe</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

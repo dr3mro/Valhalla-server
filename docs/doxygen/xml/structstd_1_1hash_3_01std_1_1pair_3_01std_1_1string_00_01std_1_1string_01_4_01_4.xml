@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structstd_1_1hash_3_01std_1_1pair_3_01std_1_1string_00_01std_1_1string_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>std::hash&lt; std::pair&lt; std::string, std::string &gt; &gt;</compoundname>
+    <includes refid="utils_2global_2types_8hpp" local="no">types.hpp</includes>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structstd_1_1hash_3_01std_1_1pair_3_01std_1_1string_00_01std_1_1string_01_4_01_4_1a4a8e52b504de4adb048b08693751697e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t std::hash&lt; std::pair&lt; std::string, std::string &gt; &gt;::operator()</definition>
+        <argsstring>(const std::pair&lt; std::string, std::string &gt; &amp;pair) const</argsstring>
+        <name>operator()</name>
+        <qualifiedname>std::hash&lt; std::pair&lt; std::string, std::string &gt; &gt;::operator()</qualifiedname>
+        <param>
+          <type>const std::pair&lt; std::string, std::string &gt; &amp;</type>
+          <declname>pair</declname>
+        </param>
+        <briefdescription>
+<para>Hashes a string pair by combining its two members&apos; hashes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/global/types.hpp" line="97" column="16" bodyfile="src/utils/global/types.hpp" bodystart="97" bodyend="103"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Hashes a pair of strings by combining the hashes of its members. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/utils/global/types.hpp" line="94" column="5" bodyfile="src/utils/global/types.hpp" bodystart="95" bodyend="104"/>
+    <listofallmembers>
+      <member refid="structstd_1_1hash_3_01std_1_1pair_3_01std_1_1string_00_01std_1_1string_01_4_01_4_1a4a8e52b504de4adb048b08693751697e" prot="public" virt="non-virtual"><scope>std::hash&lt; std::pair&lt; std::string, std::string &gt; &gt;</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

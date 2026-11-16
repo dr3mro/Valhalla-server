@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structBasicPermissionCache_1_1Entry" kind="struct" language="C++" prot="private">
+    <compoundname>BasicPermissionCache::Entry</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structBasicPermissionCache_1_1Entry_1a5347d94d5d97e1193e67b5947e1f2cbc" prot="public" static="no" mutable="no">
+        <type>jsoncons::json</type>
+        <definition>jsoncons::json BasicPermissionCache&lt; ClockT &gt;::Entry::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>BasicPermissionCache::Entry::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Cached permissions JSON, the actual answer we are storing. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="192" column="24" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structBasicPermissionCache_1_1Entry_1aa4d64f4c1a99f8b22a2be95d0a4a2844" prot="public" static="no" mutable="no">
+        <type><ref refid="classBasicPermissionCache_1abf8817b8abb9f4b29023135bec1916e9" kindref="member">TimePoint</ref></type>
+        <definition>TimePoint BasicPermissionCache&lt; ClockT &gt;::Entry::expires</definition>
+        <argsstring></argsstring>
+        <name>expires</name>
+        <qualifiedname>BasicPermissionCache::Entry::expires</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Idle deadline; renewed on every hit so busy entries never expire. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="193" column="24" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="193" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A cached permissions value together with its idle-expiry deadline. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="190" column="5" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="191" bodyend="194"/>
+    <listofallmembers>
+      <member refid="structBasicPermissionCache_1_1Entry_1aa4d64f4c1a99f8b22a2be95d0a4a2844" prot="public" virt="non-virtual"><scope>BasicPermissionCache::Entry</scope><name>expires</name></member>
+      <member refid="structBasicPermissionCache_1_1Entry_1a5347d94d5d97e1193e67b5947e1f2cbc" prot="public" virt="non-virtual"><scope>BasicPermissionCache::Entry</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

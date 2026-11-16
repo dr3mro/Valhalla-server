@@ -318,7 +318,7 @@ curl -X POST $BASE/services/clinics/read -H &quot;Authorization: Bearer $TOKEN&q
 </tr>
 <tr>
 <td><strong>CORS</strong></td>
-<td><code>OPTIONS</code> answers <code>204</code> with <code>Access-Control-Allow-Origin: *</code>, methods <code>GET, POST, PUT, DELETE, OPTIONS</code>, headers <code>Content-Type, Authorization</code>.</td>
+<td><code>OPTIONS</code> answers <code>204</code> with <code>Access-Control-Allow-Origin: *</code>, methods <code>GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS</code>, and echoes valid requested headers.</td>
 </tr>
 <tr>
 <td><strong>Dates and times</strong></td>

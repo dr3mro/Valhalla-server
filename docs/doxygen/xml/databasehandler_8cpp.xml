@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="databasehandler_8cpp" kind="file" language="C++">
+    <compoundname>databasehandler.cpp</compoundname>
+    <includes refid="databasehandler_8hpp" local="yes">database/databasehandler.hpp</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">utility</includes>
+    <includes refid="databaseconnectionpool_8hpp" local="yes">database/databaseconnectionpool.hpp</includes>
+    <includes refid="store_8hpp" local="yes">store/store.hpp</includes>
+    <incdepgraph>
+      <node id="9">
+        <label>database/blockingpool.hpp</label>
+        <link refid="blockingpool_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>database/databaseconnectionpool.hpp</label>
+        <link refid="databaseconnectionpool_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/database/databasehandler.cpp</label>
+        <link refid="databasehandler_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>database/databasehandler.hpp</label>
+        <link refid="databasehandler_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>store/store.hpp</label>
+        <link refid="store_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>atomic</label>
+      </node>
+      <node id="7">
+        <label>chrono</label>
+      </node>
+      <node id="10">
+        <label>condition_variable</label>
+      </node>
+      <node id="11">
+        <label>cstddef</label>
+      </node>
+      <node id="8">
+        <label>cstdint</label>
+      </node>
+      <node id="12">
+        <label>deque</label>
+      </node>
+      <node id="3">
+        <label>memory</label>
+      </node>
+      <node id="13">
+        <label>mutex</label>
+      </node>
+      <node id="15">
+        <label>stdexcept</label>
+      </node>
+      <node id="16">
+        <label>string</label>
+      </node>
+      <node id="17">
+        <label>typeindex</label>
+      </node>
+      <node id="18">
+        <label>unordered_map</label>
+      </node>
+      <node id="4">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>Implementation for databasehandler: Delegates to the pool-taking constructor after resolving the pool from the <ref refid="classStore" kindref="compound">Store</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file implements the small RAII lease class. The default constructor finds the shared <ref refid="classDatabaseConnectionPool" kindref="compound">DatabaseConnectionPool</ref> in the <ref refid="classStore" kindref="compound">Store</ref> and hands it to the pool-taking constructor, which immediately leases a connection. The destructor returns that connection, and get_connection()/reconnect_all() simply expose the lease or forward a request to the pool.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: It is the implementation behind every synchronous database call: controllers and the watchdog create a <ref refid="classDatabaseHanndler" kindref="compound">DatabaseHanndler</ref>, and these few functions are what actually acquire and release the connection. Because the return to the pool happens in the destructor, exceptions in query code cannot strand a connection. Without this file the lease abstraction would be declared but undefined, so no synchronous request could obtain a connection.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>RAII (acquire in constructor, release in destructor): <ulink url="https://en.cppreference.com/w/cpp/language/raii">https://en.cppreference.com/w/cpp/language/raii</ulink></para>
+</listitem><listitem><para>Delegating constructors (one constructor calls another): <ulink url="https://en.cppreference.com/w/cpp/language/initializer_list">https://en.cppreference.com/w/cpp/language/initializer_list</ulink></para>
+</listitem><listitem><para>std::move (transfer ownership without copying): <ulink url="https://en.cppreference.com/w/cpp/utility/move">https://en.cppreference.com/w/cpp/utility/move</ulink></para>
+</listitem><listitem><para>std::shared_ptr: <ulink url="https://en.cppreference.com/w/cpp/memory/shared_ptr">https://en.cppreference.com/w/cpp/memory/shared_ptr</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>databasehandler.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Implementation<sp/>for<sp/>databasehandler:<sp/>Delegates<sp/>to<sp/>the<sp/>pool-taking<sp/>constructor<sp/>after<sp/>resolving<sp/>the<sp/>pool<sp/>from<sp/>the<sp/>Store.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>file<sp/>implements<sp/>the<sp/>small<sp/>RAII<sp/>lease<sp/>class.<sp/>The<sp/>default<sp/>constructor<sp/>finds<sp/>the</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shared<sp/>DatabaseConnectionPool<sp/>in<sp/>the<sp/>Store<sp/>and<sp/>hands<sp/>it<sp/>to<sp/>the<sp/>pool-taking</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>constructor,<sp/>which<sp/>immediately<sp/>leases<sp/>a<sp/>connection.<sp/>The<sp/>destructor<sp/>returns<sp/>that</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>connection,<sp/>and<sp/>get_connection()/reconnect_all()<sp/>simply<sp/>expose<sp/>the<sp/>lease<sp/>or<sp/>forward</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>a<sp/>request<sp/>to<sp/>the<sp/>pool.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>It<sp/>is<sp/>the<sp/>implementation<sp/>behind<sp/>every<sp/>synchronous<sp/>database<sp/>call:<sp/>controllers<sp/>and<sp/>the</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>watchdog<sp/>create<sp/>a<sp/>DatabaseHanndler,<sp/>and<sp/>these<sp/>few<sp/>functions<sp/>are<sp/>what<sp/>actually<sp/>acquire<sp/>and</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>release<sp/>the<sp/>connection.<sp/>Because<sp/>the<sp/>return<sp/>to<sp/>the<sp/>pool<sp/>happens<sp/>in<sp/>the<sp/>destructor,<sp/>exceptions</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>in<sp/>query<sp/>code<sp/>cannot<sp/>strand<sp/>a<sp/>connection.<sp/>Without<sp/>this<sp/>file<sp/>the<sp/>lease<sp/>abstraction<sp/>would<sp/>be</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>declared<sp/>but<sp/>undefined,<sp/>so<sp/>no<sp/>synchronous<sp/>request<sp/>could<sp/>obtain<sp/>a<sp/>connection.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>RAII<sp/>(acquire<sp/>in<sp/>constructor,<sp/>release<sp/>in<sp/>destructor):<sp/>https://en.cppreference.com/w/cpp/language/raii</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>Delegating<sp/>constructors<sp/>(one<sp/>constructor<sp/>calls<sp/>another):<sp/>https://en.cppreference.com/w/cpp/language/initializer_list</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>std::move<sp/>(transfer<sp/>ownership<sp/>without<sp/>copying):<sp/>https://en.cppreference.com/w/cpp/utility/move</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>std::shared_ptr:<sp/>https://en.cppreference.com/w/cpp/memory/shared_ptr</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="databasehandler_8hpp" kindref="compound">database/databasehandler.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>DatabaseHanndler<sp/>declaration<sp/>implemented<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::shared_ptr<sp/>and<sp/>std::move<sp/>used<sp/>for<sp/>the<sp/>pool<sp/>and<sp/>the<sp/>lease.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::move<sp/>is<sp/>formally<sp/>declared<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="databaseconnectionpool_8hpp" kindref="compound">database/databaseconnectionpool.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Full<sp/>definition<sp/>of<sp/>DatabaseConnectionPool,<sp/>needed<sp/>to<sp/>call<sp/>its<sp/>methods.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="store_8hpp" kindref="compound">store/store.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Store::getObject&lt;&gt;<sp/>locates<sp/>the<sp/>shared<sp/>pool<sp/>for<sp/>the<sp/>default<sp/>constructor.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="35"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Delegates<sp/>to<sp/>the<sp/>pool-taking<sp/>constructor<sp/>after<sp/>resolving<sp/>the<sp/>pool<sp/>from<sp/>the<sp/>Store.</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classDatabaseHanndler_1a43b2f603f6330897f5bcca99605cb433" refkind="member"><highlight class="normal"><ref refid="classDatabaseHanndler_1a43b2f603f6330897f5bcca99605cb433" kindref="member">DatabaseHanndler::DatabaseHanndler</ref>()<sp/>:<sp/><ref refid="classDatabaseHanndler_1a43b2f603f6330897f5bcca99605cb433" kindref="member">DatabaseHanndler</ref>(<ref refid="classStore" kindref="compound">Store</ref>::getObject&lt;<ref refid="classDatabaseConnectionPool" kindref="compound">DatabaseConnectionPool</ref>&gt;())<sp/>{}<sp/><sp/></highlight><highlight class="comment">//<sp/>Delegating<sp/>constructor:<sp/>find<sp/>the<sp/>global<sp/>pool<sp/>once,<sp/>then<sp/>let<sp/>the<sp/>other<sp/>constructor<sp/>do<sp/>the<sp/>leasing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="40"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>Leases<sp/>one<sp/>connection<sp/>immediately<sp/>so<sp/>the<sp/>handler<sp/>always<sp/>owns<sp/>a<sp/>valid<sp/>lease.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>pool:<sp/>Pool<sp/>to<sp/>lease<sp/>from;<sp/>stored<sp/>so<sp/>the<sp/>destructor<sp/>can<sp/>return<sp/>the<sp/>connection.</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>Throws<sp/>DatabaseBusy:<sp/>If<sp/>the<sp/>pool&apos;s<sp/>acquire<sp/>timeout<sp/>expires.</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classDatabaseHanndler_1a476a68dd38ded0e1bbb26fcb67032838" refkind="member"><highlight class="normal"><ref refid="classDatabaseHanndler_1a43b2f603f6330897f5bcca99605cb433" kindref="member">DatabaseHanndler::DatabaseHanndler</ref>(std::shared_ptr&lt;DatabaseConnectionPool&gt;<sp/>pool)<sp/>:<sp/><ref refid="classDatabaseHanndler_1a1ceb0875bc5d7bf509cff79d75c12b5e" kindref="member">databaseConnectionPool</ref>(<ref refid="namespacestd" kindref="compound">std</ref>::move(pool))<sp/>{<sp/><ref refid="classDatabaseHanndler_1a77ba118b0c1ee0849dc4e6dfbd1eca00" kindref="member">db_ptr</ref><sp/>=<sp/><ref refid="classDatabaseHanndler_1a1ceb0875bc5d7bf509cff79d75c12b5e" kindref="member">databaseConnectionPool</ref>-&gt;get_connection();<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Store<sp/>the<sp/>pool,<sp/>then<sp/>lease<sp/>a<sp/>connection<sp/>immediately;<sp/>if<sp/>none<sp/>is<sp/>free<sp/>this<sp/>throws,<sp/>so<sp/>a<sp/>half-built<sp/>handler<sp/>never<sp/>exists.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="47"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>leased<sp/>connection<sp/>to<sp/>the<sp/>pool,<sp/>if<sp/>any<sp/>is<sp/>still<sp/>held.</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>@details<sp/>The<sp/>null<sp/>check<sp/>makes<sp/>destruction<sp/>safe<sp/>even<sp/>after<sp/>a<sp/>connection<sp/>was<sp/>moved<sp/>out.</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classDatabaseHanndler_1a4a8606c696de3b957d0a1118d1cb4041" refkind="member"><highlight class="normal"><ref refid="classDatabaseHanndler_1a4a8606c696de3b957d0a1118d1cb4041" kindref="member">DatabaseHanndler::~DatabaseHanndler</ref>()</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classDatabaseHanndler_1a77ba118b0c1ee0849dc4e6dfbd1eca00" kindref="member">db_ptr</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>return<sp/>a<sp/>real<sp/>lease;<sp/>a<sp/>null<sp/>pointer<sp/>means<sp/>it<sp/>was<sp/>already<sp/>moved<sp/>away.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseHanndler_1a1ceb0875bc5d7bf509cff79d75c12b5e" kindref="member">databaseConnectionPool</ref>-&gt;return_connection(std::move(<ref refid="classDatabaseHanndler_1a77ba118b0c1ee0849dc4e6dfbd1eca00" kindref="member">db_ptr</ref>));<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>the<sp/>connection<sp/>back,<sp/>waking<sp/>one<sp/>waiter<sp/>in<sp/>the<sp/>pool.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="59"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>borrowed<sp/>connection<sp/>without<sp/>transferring<sp/>ownership.</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>@return<sp/>The<sp/>connection<sp/>leased<sp/>in<sp/>the<sp/>constructor.</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classDatabaseHanndler_1a980f5c0f9454a8c931a15f24c45a863b" refkind="member"><highlight class="normal">std::shared_ptr&lt;Database&gt;<sp/><ref refid="classDatabaseHanndler_1a980f5c0f9454a8c931a15f24c45a863b" kindref="member">DatabaseHanndler::get_connection</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classDatabaseHanndler_1a77ba118b0c1ee0849dc4e6dfbd1eca00" kindref="member">db_ptr</ref>;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>copy<sp/>of<sp/>the<sp/>shared_ptr:<sp/>the<sp/>handler<sp/>keeps<sp/>its<sp/>own<sp/>reference<sp/>until<sp/>destruction.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="65"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Forwards<sp/>the<sp/>reconnect<sp/>request<sp/>to<sp/>the<sp/>owning<sp/>pool.</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classDatabaseHanndler_1a5911c1b883276be0222ba585f86c7790" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDatabaseHanndler_1a5911c1b883276be0222ba585f86c7790" kindref="member">DatabaseHanndler::reconnect_all</ref>()<sp/>{<sp/><ref refid="classDatabaseHanndler_1a1ceb0875bc5d7bf509cff79d75c12b5e" kindref="member">databaseConnectionPool</ref>-&gt;reconnect_all();<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>handler<sp/>does<sp/>not<sp/>own<sp/>the<sp/>reconnect<sp/>logic;<sp/>the<sp/>pool<sp/>does.</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/database/databasehandler.cpp"/>
+  </compounddef>
+</doxygen>

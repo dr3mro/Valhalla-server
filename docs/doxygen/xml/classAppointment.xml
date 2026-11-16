@@ -1,0 +1,384 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classAppointment" kind="class" language="C++" prot="public">
+    <compoundname>Appointment</compoundname>
+    <basecompoundref refid="classEntity" prot="public" virt="non-virtual">Entity</basecompoundref>
+    <derivedcompoundref refid="classClinicAppointment" prot="public" virt="non-virtual">ClinicAppointment</derivedcompoundref>
+    <derivedcompoundref refid="classClinicAppointment" prot="public" virt="non-virtual">ClinicAppointment</derivedcompoundref>
+    <derivedcompoundref refid="classLaboratoryAppointment" prot="public" virt="non-virtual">LaboratoryAppointment</derivedcompoundref>
+    <derivedcompoundref refid="classPharmacyAppointment" prot="public" virt="non-virtual">PharmacyAppointment</derivedcompoundref>
+    <derivedcompoundref refid="classRadiologyCenterAppointment" prot="public" virt="non-virtual">RadiologyCenterAppointment</derivedcompoundref>
+    <includes refid="appointment_8hpp" local="no">appointment.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>Appointment::Appointment</definition>
+        <argsstring>(const T &amp;_data, const std::string &amp;_tablename)</argsstring>
+        <name>Appointment</name>
+        <qualifiedname>Appointment::Appointment</qualifiedname>
+        <param>
+          <type>const T &amp;</type>
+          <declname>_data</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>_tablename</declname>
+        </param>
+        <briefdescription>
+<para>Stores the appointment payload and table name in the base <ref refid="classEntity" kindref="compound">Entity</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Payload type held by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Operation payload. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_tablename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classAppointment" kindref="compound">Appointment</ref> table name. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/appointments/base/appointment.hpp" line="60" column="14" bodyfile="src/entities/appointments/base/appointment.hpp" bodystart="60" bodyend="62"/>
+        <references refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93">Entity::Entity</references>
+        <referencedby refid="classAppointment_1a4933d1414001449b5643b04a99b16d27">Appointment</referencedby>
+        <referencedby refid="classAppointment_1a452e32e34b2b149ac5062ae45be25697">Appointment</referencedby>
+        <referencedby refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="60" endline="62">ClinicAppointment::ClinicAppointment</referencedby>
+        <referencedby refid="classLaboratoryAppointment_1aaa503b4863b86d76d0b995f0b46db965" compoundref="laboratory_8hpp" startline="60" endline="62">LaboratoryAppointment::LaboratoryAppointment</referencedby>
+        <referencedby refid="classAppointment_1a5ec6f22f0a1858a098ef1a21562a0316">operator=</referencedby>
+        <referencedby refid="classAppointment_1a18c009147f21dc02135fa06a428c438d">operator=</referencedby>
+        <referencedby refid="classPharmacyAppointment_1ad009e1ea5ef9d5752566bf16c28e5cb8" compoundref="pharmacy_8hpp" startline="59" endline="61">PharmacyAppointment::PharmacyAppointment</referencedby>
+        <referencedby refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" compoundref="radiologycenter_8hpp" startline="60" endline="62">RadiologyCenterAppointment::RadiologyCenterAppointment</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classAppointment_1a452e32e34b2b149ac5062ae45be25697" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Appointment::Appointment</definition>
+        <argsstring>(const Appointment &amp;)=delete</argsstring>
+        <name>Appointment</name>
+        <qualifiedname>Appointment::Appointment</qualifiedname>
+        <param>
+          <type>const <ref refid="classAppointment" kindref="compound">Appointment</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Non-copyable and non-movable; construct in place for the request that uses it. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/appointments/base/appointment.hpp" line="67" column="5"/>
+        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="60" endline="62">Appointment</references>
+      </memberdef>
+      <memberdef kind="function" id="classAppointment_1a4933d1414001449b5643b04a99b16d27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Appointment::Appointment</definition>
+        <argsstring>(Appointment &amp;&amp;)=delete</argsstring>
+        <name>Appointment</name>
+        <qualifiedname>Appointment::Appointment</qualifiedname>
+        <param>
+          <type><ref refid="classAppointment" kindref="compound">Appointment</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/appointments/base/appointment.hpp" line="68" column="5"/>
+        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="60" endline="62">Appointment</references>
+      </memberdef>
+      <memberdef kind="function" id="classAppointment_1a18c009147f21dc02135fa06a428c438d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classAppointment" kindref="compound">Appointment</ref> &amp;</type>
+        <definition>Appointment &amp; Appointment::operator=</definition>
+        <argsstring>(const Appointment &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Appointment::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classAppointment" kindref="compound">Appointment</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/appointments/base/appointment.hpp" line="69" column="17"/>
+        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="60" endline="62">Appointment</references>
+      </memberdef>
+      <memberdef kind="function" id="classAppointment_1a5ec6f22f0a1858a098ef1a21562a0316" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classAppointment" kindref="compound">Appointment</ref> &amp;</type>
+        <definition>Appointment &amp; Appointment::operator=</definition>
+        <argsstring>(Appointment &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Appointment::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classAppointment" kindref="compound">Appointment</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/appointments/base/appointment.hpp" line="70" column="17"/>
+        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="60" endline="62">Appointment</references>
+      </memberdef>
+      <memberdef kind="function" id="classAppointment_1a1d8c60973bebe598bf7716023257191c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Appointment::~Appointment</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~Appointment</name>
+        <qualifiedname>Appointment::~Appointment</qualifiedname>
+        <briefdescription>
+<para>Default destructor; no resources beyond the base <ref refid="classEntity" kindref="compound">Entity</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/appointments/base/appointment.hpp" line="75" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="classAppointment_1a26159d8e97aa5b0e286e9bb22d1e923e" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>static std::optional&lt; std::string &gt; Appointment::getServicePermissionsQueryImpl</definition>
+        <argsstring>(const std::string &amp;service_name, std::uint64_t service_id)</argsstring>
+        <name>getServicePermissionsQueryImpl</name>
+        <qualifiedname>Appointment::getServicePermissionsQueryImpl</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>service_name</declname>
+        </param>
+        <param>
+          <type>std::uint64_t</type>
+          <declname>service_id</declname>
+        </param>
+        <briefdescription>
+<para>Builds a permission query for a service row by id. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">service_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Organisation table name (for example &quot;clinics&quot;). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">service_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Primary key of the service row. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>SELECT of owner_id, admin_id and staff for the given service. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/appointments/base/appointment.hpp" line="84" column="26" bodyfile="src/entities/appointments/base/appointment.hpp" bodystart="84" bodyend="91"/>
+        <referencedby refid="classClinicAppointment_1a9f696e30cf864a0cd2159202ff2bea16" compoundref="clinic_8hpp" startline="98" endline="101">ClinicAppointment::getServicePermissionsQuery</referencedby>
+        <referencedby refid="classLaboratoryAppointment_1a368ccccd84c7a292536042fbc4fc7f7f" compoundref="laboratory_8hpp" startline="93" endline="96">LaboratoryAppointment::getServicePermissionsQuery</referencedby>
+        <referencedby refid="classPharmacyAppointment_1a54aab05547e5db0a9014f81c2edaf972" compoundref="pharmacy_8hpp" startline="91" endline="94">PharmacyAppointment::getServicePermissionsQuery</referencedby>
+        <referencedby refid="classRadiologyCenterAppointment_1a18feeb99c9350f3f52342b33e2fb8644" compoundref="radiologycenter_8hpp" startline="93" endline="96">RadiologyCenterAppointment::getServicePermissionsQuery</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>static std::optional&lt; std::string &gt; Appointment::getPermissionsQueryForReadImpl</definition>
+        <argsstring>(const std::string &amp;org_name, const std::string &amp;appointments_table, std::uint64_t appointment_id)</argsstring>
+        <name>getPermissionsQueryForReadImpl</name>
+        <qualifiedname>Appointment::getPermissionsQueryForReadImpl</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>org_name</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>appointments_table</declname>
+        </param>
+        <param>
+          <type>std::uint64_t</type>
+          <declname>appointment_id</declname>
+        </param>
+        <briefdescription>
+<para>Builds a permission query that resolves a service from an appointment id. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Joins the organisation table to the appointment table on the singular foreign key column and returns the owning service&apos;s owner/admin/staff for the given appointment. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">org_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Plural organisation table name (for example &quot;clinics&quot;). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">appointments_table</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classAppointment" kindref="compound">Appointment</ref> table name. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">appointment_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Primary key of the appointment row. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>SELECT statement identifying the owning service&apos;s permission fields. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/appointments/base/appointment.hpp" line="102" column="26" bodyfile="src/entities/appointments/base/appointment.hpp" bodystart="102" bodyend="112"/>
+        <references refid="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0" compoundref="appointment_8hpp" startline="102" endline="112">getPermissionsQueryForReadImpl</references>
+        <referencedby refid="classClinicAppointment_1a271e6f972aa44fbdf85f5ee72299877a" compoundref="clinic_8hpp" startline="108" endline="111">ClinicAppointment::getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classLaboratoryAppointment_1a595757aaaa3f41e2f6fd744a2fcdb5fe" compoundref="laboratory_8hpp" startline="103" endline="106">LaboratoryAppointment::getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classPharmacyAppointment_1aaafef44e1e8889d2f67d0846da8b9b03" compoundref="pharmacy_8hpp" startline="101" endline="104">PharmacyAppointment::getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classRadiologyCenterAppointment_1a875b5ef628661ebc4be5b7b10446be2d" compoundref="radiologycenter_8hpp" startline="103" endline="106">RadiologyCenterAppointment::getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0" compoundref="appointment_8hpp" startline="102" endline="112">getPermissionsQueryForReadImpl</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para><ref refid="classBase" kindref="compound">Base</ref> entity for appointment tables shared by the service-specific appointment classes. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Extends <ref refid="classEntity" kindref="compound">Entity</ref> with static permission-query builders: one fetches the owner/admin/staff of a service, the other resolves the owning service from an appointment id by joining the appointment table to its organisation table. Concrete classes fix the table and organisation names and expose these helpers to <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref>. <simplesect kind="note"><para>These queries interpolate names and ids into the SQL text via fmt::format and take no pqxx::params; they are called with internal, trusted values and the text doubles as a cache key. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Appointment</label>
+        <link refid="classAppointment"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Base</label>
+        <link refid="classBase"/>
+      </node>
+      <node id="4">
+        <label>ClinicAppointment</label>
+        <link refid="classClinicAppointment"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Entity</label>
+        <link refid="classEntity"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>LaboratoryAppointment</label>
+        <link refid="classLaboratoryAppointment"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>PharmacyAppointment</label>
+        <link refid="classPharmacyAppointment"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>RadiologyCenterAppointment</label>
+        <link refid="classRadiologyCenterAppointment"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Appointment</label>
+        <link refid="classAppointment"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Base</label>
+        <link refid="classBase"/>
+      </node>
+      <node id="2">
+        <label>Entity</label>
+        <link refid="classEntity"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/entities/appointments/base/appointment.hpp" line="50" column="1" bodyfile="src/entities/appointments/base/appointment.hpp" bodystart="51" bodyend="130"/>
+    <listofallmembers>
+      <member refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" prot="public" virt="non-virtual"><scope>Appointment</scope><name>Appointment</name></member>
+      <member refid="classAppointment_1a452e32e34b2b149ac5062ae45be25697" prot="public" virt="non-virtual"><scope>Appointment</scope><name>Appointment</name></member>
+      <member refid="classAppointment_1a4933d1414001449b5643b04a99b16d27" prot="public" virt="non-virtual"><scope>Appointment</scope><name>Appointment</name></member>
+      <member refid="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" virt="non-virtual"><scope>Appointment</scope><name>Base</name></member>
+      <member refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" prot="protected" virt="non-virtual"><scope>Appointment</scope><name>buildCreateStatement</name></member>
+      <member refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" prot="protected" virt="non-virtual"><scope>Appointment</scope><name>buildDeleteStatement</name></member>
+      <member refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" prot="protected" virt="non-virtual"><scope>Appointment</scope><name>buildReadStatement</name></member>
+      <member refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" prot="protected" virt="non-virtual"><scope>Appointment</scope><name>buildSearchStatement</name></member>
+      <member refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" prot="protected" virt="non-virtual"><scope>Appointment</scope><name>buildUpdateStatement</name></member>
+      <member refid="classEntity_1ac1d661555222fabdf77fc5750da50b19" prot="public" virt="non-virtual"><scope>Appointment</scope><name>check_id_exists</name></member>
+      <member refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" prot="private" virt="non-virtual"><scope>Appointment</scope><name>data</name></member>
+      <member refid="classEntity_1a154ae0093211626370549e2924f9c954" prot="protected" virt="non-virtual"><scope>Appointment</scope><name>databaseController</name></member>
+      <member refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93" prot="public" virt="non-virtual"><scope>Appointment</scope><name>Entity</name></member>
+      <member refid="classEntity_1ad3455dba49aa870a3f298f490771600c" prot="public" virt="non-virtual"><scope>Appointment</scope><name>Entity</name></member>
+      <member refid="classEntity_1abe34f0c0ca4b976ba455b97b2039d771" prot="public" virt="non-virtual"><scope>Appointment</scope><name>Entity</name></member>
+      <member refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" prot="public" virt="non-virtual"><scope>Appointment</scope><name>getData</name></member>
+      <member refid="classEntity_1a78dd1f37555f08fe0b389029c2d5b775" prot="public" virt="non-virtual"><scope>Appointment</scope><name>getGroupName</name></member>
+      <member refid="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0" prot="protected" virt="non-virtual"><scope>Appointment</scope><name>getPermissionsQueryForReadImpl</name></member>
+      <member refid="classAppointment_1a26159d8e97aa5b0e286e9bb22d1e923e" prot="protected" virt="non-virtual"><scope>Appointment</scope><name>getServicePermissionsQueryImpl</name></member>
+      <member refid="classEntity_1a32f18508b15bf1f4c6494768bda527be" prot="public" virt="virtual"><scope>Appointment</scope><name>getSqlCreateStatement</name></member>
+      <member refid="classEntity_1aa66bbebb8b50f7d91153231b1f6ab997" prot="public" virt="virtual"><scope>Appointment</scope><name>getSqlDeleteStatement</name></member>
+      <member refid="classEntity_1a90ab6d6ae7c3431c3ede1201654b209a" prot="public" virt="virtual"><scope>Appointment</scope><name>getSqlReadStatement</name></member>
+      <member refid="classEntity_1a362c3e70e483e2378ab08414c1eacdd7" prot="public" virt="virtual"><scope>Appointment</scope><name>getSqlSearchStatement</name></member>
+      <member refid="classEntity_1af1c8231f215f8941d8424d2b165ba818" prot="public" virt="virtual"><scope>Appointment</scope><name>getSqlUpdateStatement</name></member>
+      <member refid="classAppointment_1a18c009147f21dc02135fa06a428c438d" prot="public" virt="non-virtual"><scope>Appointment</scope><name>operator=</name></member>
+      <member refid="classAppointment_1a5ec6f22f0a1858a098ef1a21562a0316" prot="public" virt="non-virtual"><scope>Appointment</scope><name>operator=</name></member>
+      <member refid="classEntity_1a1f6d7e8353984497c45053a421a35b53" prot="public" virt="non-virtual" ambiguityscope="Entity::"><scope>Appointment</scope><name>operator=</name></member>
+      <member refid="classEntity_1adb86b6ab4d1b39b00c2472af16840fe5" prot="public" virt="non-virtual" ambiguityscope="Entity::"><scope>Appointment</scope><name>operator=</name></member>
+      <member refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" prot="protected" virt="non-virtual"><scope>Appointment</scope><name>tablename</name></member>
+      <member refid="classAppointment_1a1d8c60973bebe598bf7716023257191c" prot="public" virt="non-virtual"><scope>Appointment</scope><name>~Appointment</name></member>
+      <member refid="classBase_1a306fb25541331080645a716286357ef9" prot="public" virt="virtual"><scope>Appointment</scope><name>~Base</name></member>
+      <member refid="classEntity_1a605d474ccbd30c3d4350016ec173546a" prot="public" virt="non-virtual"><scope>Appointment</scope><name>~Entity</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

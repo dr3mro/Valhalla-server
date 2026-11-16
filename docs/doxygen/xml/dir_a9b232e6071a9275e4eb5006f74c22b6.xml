@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_a9b232e6071a9275e4eb5006f74c22b6" kind="dir">
+    <compoundname>src/api/v2/basic</compoundname>
+    <innerfile refid="common_8hpp">common.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/api/v2/basic/"/>
+  </compounddef>
+</doxygen>

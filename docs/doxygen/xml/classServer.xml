@@ -1,0 +1,425 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classServer" kind="class" language="C++" prot="public">
+    <compoundname>Server</compoundname>
+    <includes refid="server_8hpp" local="no">server.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classServer_1aa84ff16ac0dff01780bb1f1fbc6b3d0f" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classLogger" kindref="compound">Logger</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Logger&gt; Server::logger_</definition>
+        <argsstring></argsstring>
+        <name>logger_</name>
+        <qualifiedname>Server::logger_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shared <ref refid="classLogger" kindref="compound">Logger</ref> instance used by the application; held here for the lifetime of the <ref refid="classServer" kindref="compound">Server</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/server.hpp" line="124" column="48" bodyfile="src/server/server.hpp" bodystart="124" bodyend="-1"/>
+        <referencedby refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" compoundref="server_8cpp" startline="68" endline="78">Server</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classServer_1adb978249d96530b9b06c6a88d73fd097" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classConfigurator" kindref="compound">Configurator</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Configurator&gt; Server::configurator_</definition>
+        <argsstring></argsstring>
+        <name>configurator_</name>
+        <qualifiedname>Server::configurator_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Source of the configuration values copied into config_ and db_config_. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/server.hpp" line="128" column="42" bodyfile="src/server/server.hpp" bodystart="128" bodyend="-1"/>
+        <referencedby refid="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" compoundref="server_8cpp" startline="155" endline="175">print_banner</referencedby>
+        <referencedby refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" compoundref="server_8cpp" startline="68" endline="78">Server</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classServer_1a9187a361704ab4a8649b189969582ad8" prot="private" static="no" mutable="no">
+        <type><ref refid="classConfigurator_1aec113448232bb2cde090d19e8b2b716e" kindref="member">Configurator::ServerConfig</ref></type>
+        <definition>Configurator::ServerConfig Server::config_</definition>
+        <argsstring></argsstring>
+        <name>config_</name>
+        <qualifiedname>Server::config_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Snapshot of the server settings used to configure the listener and to print the banner. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/server.hpp" line="132" column="56" bodyfile="src/server/server.hpp" bodystart="132" bodyend="-1"/>
+        <referencedby refid="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" compoundref="server_8cpp" startline="155" endline="175">print_banner</referencedby>
+        <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="92" endline="148">run</referencedby>
+        <referencedby refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" compoundref="server_8cpp" startline="68" endline="78">Server</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classServer_1add9a2053fd3293d3ea32f90174f31362" prot="private" static="no" mutable="no">
+        <type><ref refid="classConfigurator_1afdc97f6e9bd19c0197759b8860ed9a49" kindref="member">Configurator::DatabaseConfig</ref></type>
+        <definition>Configurator::DatabaseConfig Server::db_config_</definition>
+        <argsstring></argsstring>
+        <name>db_config_</name>
+        <qualifiedname>Server::db_config_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Snapshot of the database settings; its async flag selects the asynchronous DB client at startup. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/server.hpp" line="136" column="56" bodyfile="src/server/server.hpp" bodystart="136" bodyend="-1"/>
+        <referencedby refid="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" compoundref="server_8cpp" startline="155" endline="175">print_banner</referencedby>
+        <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="92" endline="148">run</referencedby>
+        <referencedby refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" compoundref="server_8cpp" startline="68" endline="78">Server</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classServer_1a4b5af6fbc728adfb0315088430f9c059" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classDatabaseSchema" kindref="compound">DatabaseSchema</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;DatabaseSchema&gt; Server::databaseSchema_</definition>
+        <argsstring></argsstring>
+        <name>databaseSchema_</name>
+        <qualifiedname>Server::databaseSchema_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shared database-schema validator, kept alive for the lifetime of the process. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/server.hpp" line="140" column="40" bodyfile="src/server/server.hpp" bodystart="140" bodyend="-1"/>
+        <referencedby refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" compoundref="server_8cpp" startline="68" endline="78">Server</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classServer_1aaaa0c607dbdbdf1fe064a1b247cc33f1" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classapi_1_1v2_1_1Filters_1_1Auth" kindref="compound">api::v2::Filters::Auth</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;api::v2::Filters::Auth&gt; Server::auth_filter_</definition>
+        <argsstring></argsstring>
+        <name>auth_filter_</name>
+        <qualifiedname>Server::auth_filter_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Authentication filter instance. Constructed here but unused: Drogon resolves filters by class name from the route macros and instantiates its own singleton via reflection. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/server.hpp" line="145" column="32" bodyfile="src/server/server.hpp" bodystart="145" bodyend="-1"/>
+        <referencedby refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" compoundref="server_8cpp" startline="68" endline="78">Server</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classServer_1ad1d6edc7edb17417bfd77dd21c3414ea" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime" kindref="compound">api::v2::MiddleWares::ElapsedTime</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;api::v2::MiddleWares::ElapsedTime&gt; Server::elapsed_time_</definition>
+        <argsstring></argsstring>
+        <name>elapsed_time_</name>
+        <qualifiedname>Server::elapsed_time_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Request-timing middleware instance. Constructed here but unused for the same reason as auth_filter_. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/server.hpp" line="149" column="21" bodyfile="src/server/server.hpp" bodystart="149" bodyend="-1"/>
+        <referencedby refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" compoundref="server_8cpp" startline="68" endline="78">Server</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classServer_1a0dc35f5ff0d3ffb61a5faf00c844da1e" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classapi_1_1v2_1_1Filters_1_1RateLimit" kindref="compound">api::v2::Filters::RateLimit</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;api::v2::Filters::RateLimit&gt; Server::rate_limit_</definition>
+        <argsstring></argsstring>
+        <name>rate_limit_</name>
+        <qualifiedname>Server::rate_limit_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Rate-limit / DoS-protection filter instance. Constructed here but unused for the same reason. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/server.hpp" line="153" column="27" bodyfile="src/server/server.hpp" bodystart="153" bodyend="-1"/>
+        <referencedby refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" compoundref="server_8cpp" startline="68" endline="78">Server</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Server::Server</definition>
+        <argsstring>()</argsstring>
+        <name>Server</name>
+        <qualifiedname>Server::Server</qualifiedname>
+        <briefdescription>
+<para>Resolves the shared singletons and caches copies of the server/database configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Resolves the <ref refid="classStore" kindref="compound">Store</ref> singletons and snapshots the configuration used throughout startup.</para>
+<para>Objects come from <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>, so a later registration through <ref refid="classStore_1a2a4bfc0b18f2999216eda3067988cf57" kindref="member">Store::replaceObject</ref> will not replace the instances held here. The filter and middleware instances are constructed here and owned by the <ref refid="classServer" kindref="compound">Server</ref> for its entire lifetime.</para>
+<para>Objects fetched here are shared_ptrs, so they remain valid for the lifetime of the <ref refid="classServer" kindref="compound">Server</ref>. The two <ref refid="classConfigurator" kindref="compound">Configurator</ref> structs are copied by value; configuration changes made after construction are not observed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/server.hpp" line="65" column="5" bodyfile="src/server/server.cpp" bodystart="68" bodyend="78"/>
+        <references refid="classServer_1aaaa0c607dbdbdf1fe064a1b247cc33f1" compoundref="server_8hpp" startline="145">auth_filter_</references>
+        <references refid="classServer_1a9187a361704ab4a8649b189969582ad8" compoundref="server_8hpp" startline="132">config_</references>
+        <references refid="classServer_1adb978249d96530b9b06c6a88d73fd097" compoundref="server_8hpp" startline="128">configurator_</references>
+        <references refid="classServer_1a4b5af6fbc728adfb0315088430f9c059" compoundref="server_8hpp" startline="140">databaseSchema_</references>
+        <references refid="classServer_1add9a2053fd3293d3ea32f90174f31362" compoundref="server_8hpp" startline="136">db_config_</references>
+        <references refid="classServer_1ad1d6edc7edb17417bfd77dd21c3414ea" compoundref="server_8hpp" startline="149">elapsed_time_</references>
+        <references refid="classServer_1aa84ff16ac0dff01780bb1f1fbc6b3d0f" compoundref="server_8hpp" startline="124">logger_</references>
+        <references refid="classServer_1a0dc35f5ff0d3ffb61a5faf00c844da1e" compoundref="server_8hpp" startline="153">rate_limit_</references>
+        <referencedby refid="classServer_1a22297d8b4e114c67bebdeb5e2e2f3a4a">operator=</referencedby>
+        <referencedby refid="classServer_1a435f402a0d4257a4ef578cb28fa19025">operator=</referencedby>
+        <referencedby refid="classServer_1aaf5176747aba430a307fd4ca82dd8c01">Server</referencedby>
+        <referencedby refid="classServer_1ae46436838354634d7929a223aacd998d">Server</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classServer_1af477592032ac4a1255befc50cd510c46" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual Server::~Server</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Server</name>
+        <qualifiedname>Server::~Server</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Virtual destructor; the <ref refid="classServer" kindref="compound">Server</ref> owns only shared_ptrs, so default destruction is sufficient. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/server.hpp" line="70" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classServer_1aaf5176747aba430a307fd4ca82dd8c01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Server::Server</definition>
+        <argsstring>(const Server &amp;)=delete</argsstring>
+        <name>Server</name>
+        <qualifiedname>Server::Server</qualifiedname>
+        <param>
+          <type>const <ref refid="classServer" kindref="compound">Server</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy construction is not supported. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/server.hpp" line="74" column="5"/>
+        <references refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" compoundref="server_8cpp" startline="68" endline="78">Server</references>
+      </memberdef>
+      <memberdef kind="function" id="classServer_1a22297d8b4e114c67bebdeb5e2e2f3a4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classServer" kindref="compound">Server</ref> &amp;</type>
+        <definition>Server &amp; Server::operator=</definition>
+        <argsstring>(const Server &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Server::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classServer" kindref="compound">Server</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy assignment is not supported. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/server.hpp" line="78" column="12"/>
+        <references refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" compoundref="server_8cpp" startline="68" endline="78">Server</references>
+      </memberdef>
+      <memberdef kind="function" id="classServer_1ae46436838354634d7929a223aacd998d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Server::Server</definition>
+        <argsstring>(Server &amp;&amp;)=default</argsstring>
+        <name>Server</name>
+        <qualifiedname>Server::Server</qualifiedname>
+        <param>
+          <type><ref refid="classServer" kindref="compound">Server</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Move construction is defaulted. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/server.hpp" line="82" column="5"/>
+        <references refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" compoundref="server_8cpp" startline="68" endline="78">Server</references>
+      </memberdef>
+      <memberdef kind="function" id="classServer_1a435f402a0d4257a4ef578cb28fa19025" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classServer" kindref="compound">Server</ref> &amp;</type>
+        <definition>Server &amp; Server::operator=</definition>
+        <argsstring>(Server &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Server::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classServer" kindref="compound">Server</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Move assignment is not supported. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/server.hpp" line="86" column="12"/>
+        <references refid="classServer_1a5bc93a8ab4205adcfc43ee9d8f4aaa83" compoundref="server_8cpp" startline="185" endline="189">isConventionalMethod</references>
+        <references refid="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" compoundref="server_8cpp" startline="155" endline="175">print_banner</references>
+        <references refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="92" endline="148">run</references>
+        <references refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" compoundref="server_8cpp" startline="68" endline="78">Server</references>
+      </memberdef>
+      <memberdef kind="function" id="classServer_1a30362b937b125d27916cf595bfc4c1a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Server::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <qualifiedname>Server::run</qualifiedname>
+        <briefdescription>
+<para>Prints the banner, configures and runs Drogon, then drains the worker pools. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Configures and runs the Drogon application, then drains the worker pools.</para>
+<para>Blocks in Drogon&apos;s <ref refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" kindref="member">run()</ref> until the event loops stop. On the way out it shuts down <ref refid="classDbExecutor" kindref="compound">DbExecutor</ref> first and <ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref> second, because database tasks may hand work to the password worker. Any std::exception from setup or teardown is reported through <ref refid="classMessage" kindref="compound">Message</ref> and turned into EXIT_FAILURE. <simplesect kind="return"><para>EXIT_SUCCESS after a clean run and shutdown, EXIT_FAILURE on a reported exception. </para>
+</simplesect>
+<simplesect kind="note"><para>SIGTERM handling is disabled (see the .disableSigtermHandling() call in the implementation), so shutdown is driven by the framework event loops stopping rather than by Drogon&apos;s own signal handler. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" kindref="member">print_banner()</ref>, <ref refid="classStore" kindref="compound">Store</ref>, <ref refid="classDbExecutor" kindref="compound">DbExecutor</ref>, <ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref></para>
+</simplesect>
+Registers the listener, thread count, upload path, log level, a custom 404 page and two global advice hooks: the pre-routing hook short-circuits OPTIONS and rejects uncommon methods, and the pre-sending hook applies CORS headers to every response. When db_config_.async is set, an <ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref> is registered in the <ref refid="classStore" kindref="compound">Store</ref> before the event loops start. Control returns from drogon::app().<ref refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" kindref="member">run()</ref> only after the event loops stop. <simplesect kind="return"><para>EXIT_SUCCESS on a clean run and shutdown, EXIT_FAILURE if setup or shutdown throws std::exception. </para>
+</simplesect>
+<simplesect kind="note"><para>The post-run shutdown order is deliberate: <ref refid="classDbExecutor" kindref="compound">DbExecutor</ref> is drained before <ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref> because database tasks may enqueue password work. Both happen here, while the <ref refid="classStore" kindref="compound">Store</ref> singletons still exist, rather than in static destructors. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" kindref="member">print_banner()</ref>, <ref refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" kindref="member">Cors::apply()</ref>, <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject()</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/server.hpp" line="99" column="9" bodyfile="src/server/server.cpp" bodystart="92" bodyend="148"/>
+        <references refid="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d" compoundref="cors_8hpp" startline="60" endline="64">Cors::allowedMethods</references>
+        <references refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="157" endline="217">Cors::apply</references>
+        <references refid="classServer_1a9187a361704ab4a8649b189969582ad8" compoundref="server_8hpp" startline="132">config_</references>
+        <references refid="classAsyncDbClient_1ac0396c3d59602cf860e6fef52c98a736" compoundref="asyncdbclient_8cpp" startline="50" endline="60">AsyncDbClient::createClient</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classServer_1add9a2053fd3293d3ea32f90174f31362" compoundref="server_8hpp" startline="136">db_config_</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="139" endline="165">Store::getObject</references>
+        <references refid="classServer_1a5bc93a8ab4205adcfc43ee9d8f4aaa83" compoundref="server_8cpp" startline="185" endline="189">isConventionalMethod</references>
+        <references refid="classapi_1_1v2_1_1JsonHelper_1a641560db2243ef5bca5bb763e98b3b43" compoundref="jsonhelper_8cpp" startline="27" endline="33">api::v2::JsonHelper::jsonify</references>
+        <references refid="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" compoundref="server_8cpp" startline="155" endline="175">print_banner</references>
+        <references refid="classStore_1a1e12f060c02095975351db8f5d63cb76" compoundref="store_8hpp" startline="103" endline="121">Store::registerObject</references>
+        <referencedby refid="classServer_1a435f402a0d4257a4ef578cb28fa19025">operator=</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Server::print_banner</definition>
+        <argsstring>()</argsstring>
+        <name>print_banner</name>
+        <qualifiedname>Server::print_banner</qualifiedname>
+        <briefdescription>
+<para>Prints the effective configuration and the ASCII logo to stdout. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Prints the effective configuration and the startup logo.</para>
+<para>The configuration dump is produced by <ref refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" kindref="member">Configurator::printValues()</ref> and is followed by version, port, thread count, database connection count, and documentation URL. stdout is explicitly flushed so the banner is visible before the Drogon loggers take over the console.</para>
+<para>Writes to stdout and explicitly flushes it so the banner appears before framework logging begins. The displayed version comes from the build-time VALHALLA_GIT_TAG, not from the <ref refid="classConfigurator" kindref="compound">Configurator</ref> snapshot. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/server.hpp" line="109" column="17" bodyfile="src/server/server.cpp" bodystart="155" bodyend="175"/>
+        <references refid="classServer_1a9187a361704ab4a8649b189969582ad8" compoundref="server_8hpp" startline="132">config_</references>
+        <references refid="classServer_1adb978249d96530b9b06c6a88d73fd097" compoundref="server_8hpp" startline="128">configurator_</references>
+        <references refid="classServer_1add9a2053fd3293d3ea32f90174f31362" compoundref="server_8hpp" startline="136">db_config_</references>
+        <references refid="classBanner_1a0f4d8408fd489c69079a28a1b2b9648f" compoundref="banner_8hpp" startline="59" endline="98">Banner::get_random_color</references>
+        <references refid="classBanner_1a773dc3b0a54676530c4a659489a4bc09" compoundref="banner_8hpp" startline="110" endline="114">Banner::print</references>
+        <references refid="classBanner_1aee5bc794e7e7e6c1dbe3476d417a0f0a" compoundref="banner_8hpp" startline="123" endline="127">Banner::print_line</references>
+        <references refid="classBanner_1accf954d53281ba0a993945630a19f66b" compoundref="banner_8hpp" startline="145" endline="145">Banner::print_logo</references>
+        <referencedby refid="classServer_1a435f402a0d4257a4ef578cb28fa19025">operator=</referencedby>
+        <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="92" endline="148">run</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classServer_1a5bc93a8ab4205adcfc43ee9d8f4aaa83" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Server::isConventionalMethod</definition>
+        <argsstring>(drogon::HttpMethod method)</argsstring>
+        <name>isConventionalMethod</name>
+        <qualifiedname>Server::isConventionalMethod</qualifiedname>
+        <param>
+          <type>drogon::HttpMethod</type>
+          <declname>method</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="classReports" kindref="compound">Reports</ref> whether an HTTP method is one this server accepts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Used by the pre-routing advice to reject uncommon methods with 405 before routing; accepted methods continue down the chain and are also advertised in the Allow / CORS headers. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">method</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Method of the incoming request. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true for GET, POST, PUT, DELETE, OPTIONS and HEAD; false otherwise (including PATCH).</para>
+</simplesect>
+<ref refid="classReports" kindref="compound">Reports</ref> whether a method should be routed rather than rejected in pre-routing.</para>
+<para>method: Method of the incoming request. Returns true for GET, POST, PUT, DELETE, OPTIONS and HEAD; false for all others, notably PATCH. Note: PATCH is advertised by <ref refid="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d" kindref="member">Cors::allowedMethods()</ref> but is not accepted here; the two lists differ in the current implementation. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/server.hpp" line="119" column="17" bodyfile="src/server/server.cpp" bodystart="185" bodyend="189"/>
+        <referencedby refid="classServer_1a435f402a0d4257a4ef578cb28fa19025">operator=</referencedby>
+        <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="92" endline="148">run</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Owns application startup: configuration, banner, Drogon wiring, and post-run executor shutdown. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The constructor resolves long-lived singletons from the <ref refid="classStore" kindref="compound">Store</ref> and copies the server and database configuration by value, so later changes to the <ref refid="classConfigurator" kindref="compound">Configurator</ref> are not seen through those copies. <ref refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" kindref="member">run()</ref> configures and starts the Drogon application, installs the pre-routing and pre-sending advice (method filtering and CORS), and blocks until the event loops stop. Only then does it shut the worker pools down, while the <ref refid="classStore" kindref="compound">Store</ref> singletons they depend on are still alive. The filter and middleware members are created eagerly so one instance is reused. Registration of the included Drogon components (including the route headers brought in by <ref refid="all__routes_8hpp" kindref="compound">all_routes.hpp</ref>) is handled by Drogon itself, outside this class. <simplesect kind="note"><para>Not copyable. Move construction is defaulted; move assignment is deleted. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="namespaceCors" kindref="compound">Cors</ref>, <ref refid="classStore" kindref="compound">Store</ref>, <ref refid="classConfigurator" kindref="compound">Configurator</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>DatabaseConfig</label>
+        <link refid="structDatabaseConfig"/>
+      </node>
+      <node id="1">
+        <label>Server</label>
+        <link refid="classServer"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>config_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>db_config_</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ServerConfig</label>
+        <link refid="structServerConfig"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/server/server.hpp" line="55" column="1" bodyfile="src/server/server.hpp" bodystart="56" bodyend="154"/>
+    <listofallmembers>
+      <member refid="classServer_1aaaa0c607dbdbdf1fe064a1b247cc33f1" prot="private" virt="non-virtual"><scope>Server</scope><name>auth_filter_</name></member>
+      <member refid="classServer_1a9187a361704ab4a8649b189969582ad8" prot="private" virt="non-virtual"><scope>Server</scope><name>config_</name></member>
+      <member refid="classServer_1adb978249d96530b9b06c6a88d73fd097" prot="private" virt="non-virtual"><scope>Server</scope><name>configurator_</name></member>
+      <member refid="classServer_1a4b5af6fbc728adfb0315088430f9c059" prot="private" virt="non-virtual"><scope>Server</scope><name>databaseSchema_</name></member>
+      <member refid="classServer_1add9a2053fd3293d3ea32f90174f31362" prot="private" virt="non-virtual"><scope>Server</scope><name>db_config_</name></member>
+      <member refid="classServer_1ad1d6edc7edb17417bfd77dd21c3414ea" prot="private" virt="non-virtual"><scope>Server</scope><name>elapsed_time_</name></member>
+      <member refid="classServer_1a5bc93a8ab4205adcfc43ee9d8f4aaa83" prot="private" virt="non-virtual"><scope>Server</scope><name>isConventionalMethod</name></member>
+      <member refid="classServer_1aa84ff16ac0dff01780bb1f1fbc6b3d0f" prot="private" virt="non-virtual"><scope>Server</scope><name>logger_</name></member>
+      <member refid="classServer_1a22297d8b4e114c67bebdeb5e2e2f3a4a" prot="public" virt="non-virtual"><scope>Server</scope><name>operator=</name></member>
+      <member refid="classServer_1a435f402a0d4257a4ef578cb28fa19025" prot="public" virt="non-virtual"><scope>Server</scope><name>operator=</name></member>
+      <member refid="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" prot="private" virt="non-virtual"><scope>Server</scope><name>print_banner</name></member>
+      <member refid="classServer_1a0dc35f5ff0d3ffb61a5faf00c844da1e" prot="private" virt="non-virtual"><scope>Server</scope><name>rate_limit_</name></member>
+      <member refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" prot="public" virt="non-virtual"><scope>Server</scope><name>run</name></member>
+      <member refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" prot="public" virt="non-virtual"><scope>Server</scope><name>Server</name></member>
+      <member refid="classServer_1aaf5176747aba430a307fd4ca82dd8c01" prot="public" virt="non-virtual"><scope>Server</scope><name>Server</name></member>
+      <member refid="classServer_1ae46436838354634d7929a223aacd998d" prot="public" virt="non-virtual"><scope>Server</scope><name>Server</name></member>
+      <member refid="classServer_1af477592032ac4a1255befc50cd510c46" prot="public" virt="virtual"><scope>Server</scope><name>~Server</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

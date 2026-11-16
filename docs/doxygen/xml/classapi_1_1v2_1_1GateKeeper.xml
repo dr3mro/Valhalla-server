@@ -1,0 +1,1835 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classapi_1_1v2_1_1GateKeeper" kind="class" language="C++" prot="public">
+    <compoundname>api::v2::GateKeeper</compoundname>
+    <includes refid="gatekeeper_8hpp" local="no">gatekeeper.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classapi_1_1v2_1_1SessionManager" kindref="compound">SessionManager</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;SessionManager&gt; api::v2::GateKeeper::sessionManager_</definition>
+        <argsstring></argsstring>
+        <name>sessionManager_</name>
+        <qualifiedname>api::v2::GateKeeper::sessionManager_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Session cache and login/logout persistence. Shared from <ref refid="classStore" kindref="compound">Store</ref>; used by login, logout and the authentication/session helpers. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="378" column="28" bodyfile="src/gatekeeper/gatekeeper.hpp" bodystart="378" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="70" endline="77">GateKeeper</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1aef829fb4539cac1a6df5195edf66184a" compoundref="gatekeeper_8cpp" startline="239" endline="253">isAuthenticationValid</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a7268e0a8290406b8ac474072e39f1948" compoundref="gatekeeper_8cpp" startline="255" endline="268">isAuthenticationValidAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" compoundref="gatekeeper_8cpp" startline="78" endline="149">login</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" compoundref="gatekeeper_8cpp" startline="151" endline="220">loginAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1aa229540ef1e83bef737798d28697b61b" compoundref="gatekeeper_8cpp" startline="222" endline="237">logout</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a1005fa5f7c6f9815782dbdb60e50c24c" compoundref="gatekeeper_8cpp" startline="270" endline="276">removeSession</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classapi_1_1v2_1_1GateKeeper_1af80a9d45a0c1c9e6abf7dfe2f149cf0d" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classapi_1_1v2_1_1TokenManager" kindref="compound">TokenManager</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;TokenManager&gt; api::v2::GateKeeper::tokenManager_</definition>
+        <argsstring></argsstring>
+        <name>tokenManager_</name>
+        <qualifiedname>api::v2::GateKeeper::tokenManager_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>JWT generation and validation. Shared from <ref refid="classStore" kindref="compound">Store</ref>; used by login and the token-validation fallback. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="379" column="30" bodyfile="src/gatekeeper/gatekeeper.hpp" bodystart="379" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="70" endline="77">GateKeeper</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1aef829fb4539cac1a6df5195edf66184a" compoundref="gatekeeper_8cpp" startline="239" endline="253">isAuthenticationValid</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a7268e0a8290406b8ac474072e39f1948" compoundref="gatekeeper_8cpp" startline="255" endline="268">isAuthenticationValidAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" compoundref="gatekeeper_8cpp" startline="78" endline="149">login</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" compoundref="gatekeeper_8cpp" startline="151" endline="220">loginAsync</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classapi_1_1v2_1_1GateKeeper_1a8f269c62483272957ea3b2dd5cd55636" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classDOSDetector" kindref="compound">DOSDetector</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;DOSDetector&gt; api::v2::GateKeeper::dosDetector_</definition>
+        <argsstring></argsstring>
+        <name>dosDetector_</name>
+        <qualifiedname>api::v2::GateKeeper::dosDetector_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shared per-IP abuse detector. Used only by isDosAttack. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="380" column="31" bodyfile="src/gatekeeper/gatekeeper.hpp" bodystart="380" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="70" endline="77">GateKeeper</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ae85cb4ffc450a0150a4db1183585d988" compoundref="gatekeeper_8cpp" startline="278" endline="278">isDosAttack</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classapi_1_1v2_1_1PermissionManager" kindref="compound">PermissionManager</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;PermissionManager&gt; api::v2::GateKeeper::permissionManager_</definition>
+        <argsstring></argsstring>
+        <name>permissionManager_</name>
+        <qualifiedname>api::v2::GateKeeper::permissionManager_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Group/ownership permission rules. Every can* helper forwards here. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="381" column="25" bodyfile="src/gatekeeper/gatekeeper.hpp" bodystart="381" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a7f6ffd25732e0c84e85fe56b28879aaa" compoundref="gatekeeper_8cpp" startline="331" endline="334">canCreate</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1afa13e2f1fbe41b8fae5deb91731da9dc" compoundref="gatekeeper_8cpp" startline="374" endline="377">canCreateAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a23268a22e5e60a61df7831eb82c11346" compoundref="gatekeeper_8cpp" startline="349" endline="352">canDelete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a72420af970b6f1328b6a811de06d16a1" compoundref="gatekeeper_8cpp" startline="392" endline="395">canDeleteAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1af4482568f67eea493dd07a8bb5c0461d" compoundref="gatekeeper_8cpp" startline="367" endline="370">canGetServices</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a11e4332c8b8c374e3a7c3a2c2caec649" compoundref="gatekeeper_8cpp" startline="410" endline="413">canGetServicesAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a6e64492dda48f1087eed55fe47cabbe2" compoundref="gatekeeper_8cpp" startline="355" endline="358">canManageStaff</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a54cd3ef474eede80d3d45c4999c2cf83" compoundref="gatekeeper_8cpp" startline="398" endline="401">canManageStaffAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a9d5d84f7e5666b5e707aaa781b1eb1ea" compoundref="gatekeeper_8cpp" startline="337" endline="340">canRead</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a3165b2ac0e3866c535957d46b22b2dfe" compoundref="gatekeeper_8cpp" startline="380" endline="383">canReadAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a8c4e977ab1ef401f06493b67e6f4dcf7" compoundref="gatekeeper_8cpp" startline="361" endline="364">canToggleActive</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a1f8ac0c6ea0a4716cb91674cfe44bc01" compoundref="gatekeeper_8cpp" startline="404" endline="407">canToggleActiveAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a6f4f8460d06aa137939e8ac440f77a0f" compoundref="gatekeeper_8cpp" startline="343" endline="346">canUpdate</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1abb0037e8d56bec3ceaf4237e6db3c36f" compoundref="gatekeeper_8cpp" startline="386" endline="389">canUpdateAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="70" endline="77">GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classapi_1_1v2_1_1GateKeeper_1af2c58e2b5f9501cd5f368e7b51648e2b" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;PasswordWorker&gt; api::v2::GateKeeper::passwordWorker_</definition>
+        <argsstring></argsstring>
+        <name>passwordWorker_</name>
+        <qualifiedname>api::v2::GateKeeper::passwordWorker_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Password hashing runs here, not on the request threads. Login hands the slow work to this pool. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="382" column="28" bodyfile="src/gatekeeper/gatekeeper.hpp" bodystart="382" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="70" endline="77">GateKeeper</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" compoundref="gatekeeper_8cpp" startline="78" endline="149">login</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" compoundref="gatekeeper_8cpp" startline="151" endline="220">loginAsync</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>GateKeeper::GateKeeper</definition>
+        <argsstring>()</argsstring>
+        <name>GateKeeper</name>
+        <qualifiedname>api::v2::GateKeeper::GateKeeper</qualifiedname>
+        <briefdescription>
+<para>Constructs the facade, resolving collaborators from the <ref refid="classStore" kindref="compound">Store</ref> singleton. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Each collaborator is held via shared_ptr, so this object shares ownership of the process-wide instances rather than creating private ones.</para>
+<para>In other words, construction just grabs five already-existing shared objects from <ref refid="classStore" kindref="compound">Store</ref>; it does not open a database or start any threads itself. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="95" column="9" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="70" bodyend="77"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a8f269c62483272957ea3b2dd5cd55636" compoundref="gatekeeper_8hpp" startline="380">dosDetector_</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1af2c58e2b5f9501cd5f368e7b51648e2b" compoundref="gatekeeper_8hpp" startline="382">passwordWorker_</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="378">sessionManager_</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1af80a9d45a0c1c9e6abf7dfe2f149cf0d" compoundref="gatekeeper_8hpp" startline="379">tokenManager_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a107ed4c865dca8c005619fb9dbcebc26">GateKeeper</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a6540627ddbc0362aef0fb8b7bd95ab0f">GateKeeper</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a5e16af906f652e29d5d5e2387a3b57de">operator=</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a8d78a30d2b3a6999da8e396126847768">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a107ed4c865dca8c005619fb9dbcebc26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::GateKeeper::GateKeeper</definition>
+        <argsstring>(const GateKeeper &amp;other)=default</argsstring>
+        <name>GateKeeper</name>
+        <qualifiedname>api::v2::GateKeeper::GateKeeper</qualifiedname>
+        <param>
+          <type>const GateKeeper &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="96" column="9"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="70" endline="77">GateKeeper</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a5e16af906f652e29d5d5e2387a3b57de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" kindref="member">GateKeeper</ref> &amp;</type>
+        <definition>GateKeeper &amp; api::v2::GateKeeper::operator=</definition>
+        <argsstring>(const GateKeeper &amp;other)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>api::v2::GateKeeper::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" kindref="member">GateKeeper</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="97" column="20"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="70" endline="77">GateKeeper</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a6540627ddbc0362aef0fb8b7bd95ab0f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::GateKeeper::GateKeeper</definition>
+        <argsstring>(GateKeeper &amp;&amp;other) noexcept=default</argsstring>
+        <name>GateKeeper</name>
+        <qualifiedname>api::v2::GateKeeper::GateKeeper</qualifiedname>
+        <param>
+          <type>GateKeeper &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="98" column="9"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="70" endline="77">GateKeeper</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a8d78a30d2b3a6999da8e396126847768" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" kindref="member">GateKeeper</ref> &amp;</type>
+        <definition>GateKeeper &amp; api::v2::GateKeeper::operator=</definition>
+        <argsstring>(GateKeeper &amp;&amp;other) noexcept=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>api::v2::GateKeeper::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" kindref="member">GateKeeper</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="99" column="20"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="70" endline="77">GateKeeper</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual api::v2::GateKeeper::~GateKeeper</definition>
+        <argsstring>()=default</argsstring>
+        <name>~GateKeeper</name>
+        <qualifiedname>api::v2::GateKeeper::~GateKeeper</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor; permits destruction through a base pointer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="103" column="17"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a7f6ffd25732e0c84e85fe56b28879aaa" compoundref="gatekeeper_8cpp" startline="331" endline="334">canCreate</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1afa13e2f1fbe41b8fae5deb91731da9dc" compoundref="gatekeeper_8cpp" startline="374" endline="377">canCreateAsync</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a23268a22e5e60a61df7831eb82c11346" compoundref="gatekeeper_8cpp" startline="349" endline="352">canDelete</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a72420af970b6f1328b6a811de06d16a1" compoundref="gatekeeper_8cpp" startline="392" endline="395">canDeleteAsync</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1af4482568f67eea493dd07a8bb5c0461d" compoundref="gatekeeper_8cpp" startline="367" endline="370">canGetServices</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a11e4332c8b8c374e3a7c3a2c2caec649" compoundref="gatekeeper_8cpp" startline="410" endline="413">canGetServicesAsync</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a6e64492dda48f1087eed55fe47cabbe2" compoundref="gatekeeper_8cpp" startline="355" endline="358">canManageStaff</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a54cd3ef474eede80d3d45c4999c2cf83" compoundref="gatekeeper_8cpp" startline="398" endline="401">canManageStaffAsync</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a9d5d84f7e5666b5e707aaa781b1eb1ea" compoundref="gatekeeper_8cpp" startline="337" endline="340">canRead</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a3165b2ac0e3866c535957d46b22b2dfe" compoundref="gatekeeper_8cpp" startline="380" endline="383">canReadAsync</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a8c4e977ab1ef401f06493b67e6f4dcf7" compoundref="gatekeeper_8cpp" startline="361" endline="364">canToggleActive</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a1f8ac0c6ea0a4716cb91674cfe44bc01" compoundref="gatekeeper_8cpp" startline="404" endline="407">canToggleActiveAsync</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a6f4f8460d06aa137939e8ac440f77a0f" compoundref="gatekeeper_8cpp" startline="343" endline="346">canUpdate</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1abb0037e8d56bec3ceaf4237e6db3c36f" compoundref="gatekeeper_8cpp" startline="386" endline="389">canUpdateAsync</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1aef829fb4539cac1a6df5195edf66184a" compoundref="gatekeeper_8cpp" startline="239" endline="253">isAuthenticationValid</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a7268e0a8290406b8ac474072e39f1948" compoundref="gatekeeper_8cpp" startline="255" endline="268">isAuthenticationValidAsync</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ae85cb4ffc450a0150a4db1183585d988" compoundref="gatekeeper_8cpp" startline="278" endline="278">isDosAttack</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" compoundref="gatekeeper_8cpp" startline="78" endline="149">login</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" compoundref="gatekeeper_8cpp" startline="151" endline="220">loginAsync</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1aa229540ef1e83bef737798d28697b61b" compoundref="gatekeeper_8cpp" startline="222" endline="237">logout</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ad3fb6e3ac62858e51a921ecef59671de" compoundref="gatekeeper_8cpp" startline="300" endline="324">parse_credentials</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1afaac61dc7abb5b7d68bad64aada544c4" compoundref="gatekeeper_8cpp" startline="280" endline="297">parse_data</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a1005fa5f7c6f9815782dbdb60e50c24c" compoundref="gatekeeper_8cpp" startline="270" endline="276">removeSession</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GateKeeper::login</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, std::string_view data, const std::string &amp;ip_address, std::string_view group)</argsstring>
+        <name>login</name>
+        <qualifiedname>api::v2::GateKeeper::login</qualifiedname>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>ip_address</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>group</declname>
+        </param>
+        <briefdescription>
+<para>Authenticates a client and issues a token, reporting the outcome through a callback. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Parses the JSON credentials on the calling thread, reads the stored password hash with <ref refid="classapi_1_1v2_1_1SessionManager" kindref="compound">SessionManager</ref>, then dispatches the slow password verification and the state-changing work (session completion, token generation) to the password worker so no Drogon IO thread is blocked. Early failures (parse or hash lookup) are reported directly on the calling thread. Errors are caught and translated into an HTTP response via the CRITICALMESSAGERESPONSE macro. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked exactly once with the HTTP status and either an error message or a JSON string containing token/username/client_id/group/ipAddress. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON request body expected to contain &quot;username&quot; and &quot;password&quot;. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ip_address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> IP, bound into the resulting token. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">group</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> group, used to select the session table.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Step by step: validate the JSON, look up the hash, then hand the slow bcrypt check plus the database write and token creation to a worker thread. The callback is the &quot;reply envelope&quot; - it is called once with a status code and a body when the answer is ready, which may be later on another thread. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="123" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="78" bodyend="149"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ad3fb6e3ac62858e51a921ecef59671de" compoundref="gatekeeper_8cpp" startline="300" endline="324">parse_credentials</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1af2c58e2b5f9501cd5f368e7b51648e2b" compoundref="gatekeeper_8hpp" startline="382">passwordWorker_</references>
+        <references refid="passwordworker_8hpp_1a11301e300507b2f5ba81930e709a5de6" compoundref="passwordworker_8hpp" startline="71" endline="75">runOnPasswordWorker</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="378">sessionManager_</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1af80a9d45a0c1c9e6abf7dfe2f149cf0d" compoundref="gatekeeper_8hpp" startline="379">tokenManager_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa521335676ea4815ed98bb811fb2d1fea" compoundref="http_8hpp" startline="83">api::v2::Http::UNAUTHORIZED</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>drogon::Task&lt; void &gt; GateKeeper::loginAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, std::string_view data, const std::string &amp;ip_address, std::string_view group)</argsstring>
+        <name>loginAsync</name>
+        <qualifiedname>api::v2::GateKeeper::loginAsync</qualifiedname>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>ip_address</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>group</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" kindref="member">login()</ref> for use on Drogon executor threads. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Mirrors <ref refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" kindref="member">login()</ref> but awaits the stored-hash lookup cooperatively (<ref refid="classapi_1_1v2_1_1SessionManager_1a9122497c5ad97796173492b1a4f3372f" kindref="member">SessionManager::fetchPasswordHashCoro</ref>) instead of blocking on it. The slow verification and all writes still run on the password worker. Early errors and the final worker result are delivered through <computeroutput>callback</computeroutput>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion callback, invoked with status and body/message. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON request body containing the credentials. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ip_address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> IP bound into the token. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">group</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> group selecting the session table. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The coroutine frame must remain alive until the awaited database read completes; callers must co_await (or otherwise drive) the returned task. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="137" column="22" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="151" bodyend="220"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ad3fb6e3ac62858e51a921ecef59671de" compoundref="gatekeeper_8cpp" startline="300" endline="324">parse_credentials</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1af2c58e2b5f9501cd5f368e7b51648e2b" compoundref="gatekeeper_8hpp" startline="382">passwordWorker_</references>
+        <references refid="passwordworker_8hpp_1a11301e300507b2f5ba81930e709a5de6" compoundref="passwordworker_8hpp" startline="71" endline="75">runOnPasswordWorker</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="378">sessionManager_</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1af80a9d45a0c1c9e6abf7dfe2f149cf0d" compoundref="gatekeeper_8hpp" startline="379">tokenManager_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa521335676ea4815ed98bb811fb2d1fea" compoundref="http_8hpp" startline="83">api::v2::Http::UNAUTHORIZED</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1aa229540ef1e83bef737798d28697b61b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GateKeeper::logout</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const std::optional&lt; std::string &gt; &amp;token, const std::string &amp;ip_address, const std::string &amp;group)</argsstring>
+        <name>logout</name>
+        <qualifiedname>api::v2::GateKeeper::logout</qualifiedname>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; std::string &gt; &amp;</type>
+          <declname>token</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>ip_address</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>group</declname>
+        </param>
+        <briefdescription>
+<para>Ends a client session, recording the logout time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Delegates to <ref refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" kindref="member">SessionManager::logout</ref>. The supplied token is merely carried in <ref refid="structClientLoginData" kindref="compound">ClientLoginData</ref> for downstream handling; this method does not itself validate it. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Completion callback (status and message/body). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">token</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional token associated with the session being closed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ip_address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> IP recorded in the logout data. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">group</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> group selecting the session table. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="147" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="222" bodyend="237"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="378">sessionManager_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1aef829fb4539cac1a6df5195edf66184a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool GateKeeper::isAuthenticationValid</definition>
+        <argsstring>(std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData, std::string &amp;message)</argsstring>
+        <name>isAuthenticationValid</name>
+        <qualifiedname>api::v2::GateKeeper::isAuthenticationValid</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Checks whether the supplied client is authenticated. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Session cache first: if <ref refid="classapi_1_1v2_1_1SessionManager" kindref="compound">SessionManager</ref> reports a valid session, returns true immediately. Otherwise falls back to JWT validation via <ref refid="classapi_1_1v2_1_1TokenManager" kindref="compound">TokenManager</ref>; on a valid token, the session is (re)established with storeSession() and its result becomes the final answer. This cache-then-token ordering avoids a signature check on every request while still honouring token revocation data. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">clientLoginData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Identity/state accumulator; may be updated with session fields. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives a human-readable reason on failure. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if an existing or freshly established session authorizes the client.</para>
+</simplesect>
+&quot;Cache first&quot; is an optimization: checking a local session record is cheaper than verifying a signed token. Only when there is no live session does it pay for the token check, and a token that is about to expire is checked against the latest logout/active data from the database before being trusted. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="164" column="22" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="239" bodyend="253"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="378">sessionManager_</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1af80a9d45a0c1c9e6abf7dfe2f149cf0d" compoundref="gatekeeper_8hpp" startline="379">tokenManager_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a7268e0a8290406b8ac474072e39f1948" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; GateKeeper::isAuthenticationValidAsync</definition>
+        <argsstring>(std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData, std::string &amp;message)</argsstring>
+        <name>isAuthenticationValidAsync</name>
+        <qualifiedname>api::v2::GateKeeper::isAuthenticationValidAsync</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1GateKeeper_1aef829fb4539cac1a6df5195edf66184a" kindref="member">isAuthenticationValid()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Same cache-then-token policy, but awaits <ref refid="classapi_1_1v2_1_1TokenManager_1ae2353b4f71d0b7f35474f8d7bba4e6b5" kindref="member">TokenManager::isTokenValidCoro</ref> instead of blocking on the token check. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">clientLoginData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Identity/state accumulator. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Failure reason. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the client is authenticated. </para>
+</simplesect>
+<simplesect kind="note"><para>Callers must drive the returned task; the frame must outlive the awaited read. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="174" column="30" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="255" bodyend="268"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="378">sessionManager_</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1af80a9d45a0c1c9e6abf7dfe2f149cf0d" compoundref="gatekeeper_8hpp" startline="379">tokenManager_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a1005fa5f7c6f9815782dbdb60e50c24c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GateKeeper::removeSession</definition>
+        <argsstring>(std::optional&lt; uint64_t &gt; client_id, const std::string &amp;group)</argsstring>
+        <name>removeSession</name>
+        <qualifiedname>api::v2::GateKeeper::removeSession</qualifiedname>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>client_id</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>group</declname>
+        </param>
+        <briefdescription>
+<para>Removes a client&apos;s cached session. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">client_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional id of the client whose session should be dropped. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">group</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> group selecting the session table. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="180" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="270" bodyend="276"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="378">sessionManager_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a7f6ffd25732e0c84e85fe56b28879aaa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool GateKeeper::canCreate</definition>
+        <argsstring>(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;data_j, Http::Error &amp;error)</argsstring>
+        <name>canCreate</name>
+        <qualifiedname>api::v2::GateKeeper::canCreate</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>data_j</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Checks whether <computeroutput>requester</computeroutput> may create a <computeroutput>T</computeroutput> resource. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Thin forwarder to <ref refid="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" kindref="member">PermissionManager::canCreate&lt;T&gt;</ref>; the <computeroutput>data_j</computeroutput> payload is inspected for ownership/relationship checks required by the create rule. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classEntity" kindref="compound">Entity</ref> type being created. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller (id and group). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data_j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional JSON payload of the prospective resource. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial/error details from the permission manager. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation is permitted. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="193" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="331" bodyend="334"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1afa13e2f1fbe41b8fae5deb91731da9dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; GateKeeper::canCreateAsync</definition>
+        <argsstring>(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;data_j, Http::Error &amp;error)</argsstring>
+        <name>canCreateAsync</name>
+        <qualifiedname>api::v2::GateKeeper::canCreateAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>data_j</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1GateKeeper_1a7f6ffd25732e0c84e85fe56b28879aaa" kindref="member">canCreate()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classEntity" kindref="compound">Entity</ref> type being created. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data_j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional JSON payload of the prospective resource. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial/error details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation is permitted. </para>
+</simplesect>
+<simplesect kind="note"><para>Callers must drive the returned task; the frame must outlive the awaited checks. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="205" column="22" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="374" bodyend="377"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a9d5d84f7e5666b5e707aaa781b1eb1ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool GateKeeper::canRead</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t entity_id, Http::Error &amp;error)</argsstring>
+        <name>canRead</name>
+        <qualifiedname>api::v2::GateKeeper::canRead</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>entity_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Checks read permission on the entity <computeroutput>entity_id</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classEntity" kindref="compound">Entity</ref> type being read. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">entity_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the entity being accessed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial/error details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation is permitted. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="216" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="337" bodyend="340"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a3165b2ac0e3866c535957d46b22b2dfe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; GateKeeper::canReadAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t entity_id, Http::Error &amp;error)</argsstring>
+        <name>canReadAsync</name>
+        <qualifiedname>api::v2::GateKeeper::canReadAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>entity_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1GateKeeper_1a9d5d84f7e5666b5e707aaa781b1eb1ea" kindref="member">canRead()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classEntity" kindref="compound">Entity</ref> type being read. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">entity_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the entity being accessed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial/error details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation is permitted. </para>
+</simplesect>
+<simplesect kind="note"><para>Callers must drive the returned task. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="228" column="22" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="380" bodyend="383"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a6f4f8460d06aa137939e8ac440f77a0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool GateKeeper::canUpdate</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t entity_id, Http::Error &amp;error)</argsstring>
+        <name>canUpdate</name>
+        <qualifiedname>api::v2::GateKeeper::canUpdate</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>entity_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Checks update permission on the entity <computeroutput>entity_id</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classEntity" kindref="compound">Entity</ref> type being updated. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">entity_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the entity being accessed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial/error details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation is permitted. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="239" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="343" bodyend="346"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1abb0037e8d56bec3ceaf4237e6db3c36f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; GateKeeper::canUpdateAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t entity_id, Http::Error &amp;error)</argsstring>
+        <name>canUpdateAsync</name>
+        <qualifiedname>api::v2::GateKeeper::canUpdateAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>entity_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1GateKeeper_1a6f4f8460d06aa137939e8ac440f77a0f" kindref="member">canUpdate()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classEntity" kindref="compound">Entity</ref> type being updated. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">entity_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the entity being accessed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial/error details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation is permitted. </para>
+</simplesect>
+<simplesect kind="note"><para>Callers must drive the returned task. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="251" column="22" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="386" bodyend="389"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a23268a22e5e60a61df7831eb82c11346" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool GateKeeper::canDelete</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t entity_id, Http::Error &amp;error)</argsstring>
+        <name>canDelete</name>
+        <qualifiedname>api::v2::GateKeeper::canDelete</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>entity_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Checks delete permission on the entity <computeroutput>entity_id</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classEntity" kindref="compound">Entity</ref> type being deleted. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">entity_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the entity being accessed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial/error details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation is permitted. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="262" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="349" bodyend="352"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a72420af970b6f1328b6a811de06d16a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; GateKeeper::canDeleteAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t entity_id, Http::Error &amp;error)</argsstring>
+        <name>canDeleteAsync</name>
+        <qualifiedname>api::v2::GateKeeper::canDeleteAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>entity_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1GateKeeper_1a23268a22e5e60a61df7831eb82c11346" kindref="member">canDelete()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classEntity" kindref="compound">Entity</ref> type being deleted. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">entity_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the entity being accessed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial/error details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation is permitted. </para>
+</simplesect>
+<simplesect kind="note"><para>Callers must drive the returned task. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="274" column="22" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="392" bodyend="395"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a6e64492dda48f1087eed55fe47cabbe2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool GateKeeper::canManageStaff</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t _id, Http::Error &amp;error)</argsstring>
+        <name>canManageStaff</name>
+        <qualifiedname>api::v2::GateKeeper::canManageStaff</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Checks whether <computeroutput>requester</computeroutput> may manage staff of the service <computeroutput>_id</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Service/entity type whose staff are being managed. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the service whose staff are targeted. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial/error details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation is permitted. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="285" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="355" bodyend="358"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a54cd3ef474eede80d3d45c4999c2cf83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; GateKeeper::canManageStaffAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t _id, Http::Error &amp;error)</argsstring>
+        <name>canManageStaffAsync</name>
+        <qualifiedname>api::v2::GateKeeper::canManageStaffAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1GateKeeper_1a6e64492dda48f1087eed55fe47cabbe2" kindref="member">canManageStaff()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Service/entity type whose staff are being managed. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the service whose staff are targeted. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial/error details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation is permitted. </para>
+</simplesect>
+<simplesect kind="note"><para>Callers must drive the returned task. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="297" column="22" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="398" bodyend="401"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a8c4e977ab1ef401f06493b67e6f4dcf7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptClient__t" kindref="compound">Client_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool GateKeeper::canToggleActive</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t _id, Http::Error &amp;error)</argsstring>
+        <name>canToggleActive</name>
+        <qualifiedname>api::v2::GateKeeper::canToggleActive</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Checks whether <computeroutput>requester</computeroutput> may toggle the active flag of client <computeroutput>_id</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> type (<ref refid="classUser" kindref="compound">User</ref> or <ref refid="classProvider" kindref="compound">Provider</ref>), constrained by <ref refid="conceptClient__t" kindref="compound">Client_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the client whose status is targeted. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial/error details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation is permitted. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="308" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="361" bodyend="364"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a1f8ac0c6ea0a4716cb91674cfe44bc01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptClient__t" kindref="compound">Client_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; GateKeeper::canToggleActiveAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t _id, Http::Error &amp;error)</argsstring>
+        <name>canToggleActiveAsync</name>
+        <qualifiedname>api::v2::GateKeeper::canToggleActiveAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1GateKeeper_1a8c4e977ab1ef401f06493b67e6f4dcf7" kindref="member">canToggleActive()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> type, constrained by <ref refid="conceptClient__t" kindref="compound">Client_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the client whose status is targeted. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial/error details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation is permitted. </para>
+</simplesect>
+<simplesect kind="note"><para>Callers must drive the returned task. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="320" column="22" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="404" bodyend="407"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1af4482568f67eea493dd07a8bb5c0461d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptClient__t" kindref="compound">Client_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool GateKeeper::canGetServices</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t _id, Http::Error &amp;error)</argsstring>
+        <name>canGetServices</name>
+        <qualifiedname>api::v2::GateKeeper::canGetServices</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Checks whether <computeroutput>requester</computeroutput> may list the services of client <computeroutput>_id</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> type, constrained by <ref refid="conceptClient__t" kindref="compound">Client_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the client whose services are requested. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial/error details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation is permitted. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="331" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="367" bodyend="370"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a11e4332c8b8c374e3a7c3a2c2caec649" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptClient__t" kindref="compound">Client_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; GateKeeper::canGetServicesAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t _id, Http::Error &amp;error)</argsstring>
+        <name>canGetServicesAsync</name>
+        <qualifiedname>api::v2::GateKeeper::canGetServicesAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1GateKeeper_1af4482568f67eea493dd07a8bb5c0461d" kindref="member">canGetServices()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> type, constrained by <ref refid="conceptClient__t" kindref="compound">Client_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the client whose services are requested. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial/error details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation is permitted. </para>
+</simplesect>
+<simplesect kind="note"><para>Callers must drive the returned task. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="343" column="22" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="410" bodyend="413"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1ae85cb4ffc450a0150a4db1183585d988" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56" kindref="member">DOSDetector::Status</ref></type>
+        <definition>DOSDetector::Status GateKeeper::isDosAttack</definition>
+        <argsstring>(const DOSDetector::Request &amp;request)</argsstring>
+        <name>isDosAttack</name>
+        <qualifiedname>api::v2::GateKeeper::isDosAttack</qualifiedname>
+        <param>
+          <type>const <ref refid="classDOSDetector_1a362a948824acc3cf457cb47e8d095cb5" kindref="member">DOSDetector::Request</ref> &amp;</type>
+          <declname>request</declname>
+        </param>
+        <briefdescription>
+<para>Classifies a request for abuse (whitelist/blacklist/rate/ban) via the shared detector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Delegates to <ref refid="classDOSDetector_1a0f0629bfa3af7f023f3f06f28f94ebad" kindref="member">DOSDetector::is_dos_attack</ref> with the shared detector instance. The RateLimit filter maps the returned status to an HTTP response. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">request</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>IP, method, path, header hash and body captured by the filter. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The detector&apos;s verdict; see <ref refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56" kindref="member">DOSDetector::Status</ref>. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classapi_1_1v2_1_1Filters_1_1RateLimit" kindref="compound">Filters::RateLimit</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="353" column="29" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="278" bodyend="278"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a8f269c62483272957ea3b2dd5cd55636" compoundref="gatekeeper_8hpp" startline="380">dosDetector_</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1afaac61dc7abb5b7d68bad64aada544c4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; jsoncons::json &gt;</type>
+        <definition>std::optional&lt; jsoncons::json &gt; GateKeeper::parse_data</definition>
+        <argsstring>(std::string_view data, std::string &amp;message, bool &amp;success)</argsstring>
+        <name>parse_data</name>
+        <qualifiedname>api::v2::GateKeeper::parse_data</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>bool &amp;</type>
+          <declname>success</declname>
+        </param>
+        <briefdescription>
+<para>Parses a JSON document from <computeroutput>data</computeroutput> without throwing to the caller. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Serialized JSON body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Appended-to diagnostic text on parse failure. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">success</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Set true only when parsing succeeded. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Parsed JSON, or std::nullopt on failure. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="363" column="27" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="280" bodyend="297"/>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ad3fb6e3ac62858e51a921ecef59671de" compoundref="gatekeeper_8cpp" startline="300" endline="324">parse_credentials</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1ad3fb6e3ac62858e51a921ecef59671de" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1ada88a3e212586efbdfd1f931b0f4a8a9" kindref="member">Types::Credentials</ref> &gt;</type>
+        <definition>std::optional&lt; Credentials &gt; GateKeeper::parse_credentials</definition>
+        <argsstring>(std::string_view data, std::string &amp;message, bool &amp;success)</argsstring>
+        <name>parse_credentials</name>
+        <qualifiedname>api::v2::GateKeeper::parse_credentials</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>bool &amp;</type>
+          <declname>success</declname>
+        </param>
+        <briefdescription>
+<para>Extracts username/password from a JSON login body. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Calls <ref refid="classapi_1_1v2_1_1GateKeeper_1afaac61dc7abb5b7d68bad64aada544c4" kindref="member">parse_data()</ref>, then reads the &quot;username&quot; and &quot;password&quot; members. Missing or ill-typed fields are reported via <computeroutput>message</computeroutput> and <computeroutput>success</computeroutput>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Serialized JSON body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Appended-to diagnostic text on failure. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">success</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Set true only when both fields were extracted. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Parsed credentials, or std::nullopt on failure. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="373" column="23" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="300" bodyend="324"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1afaac61dc7abb5b7d68bad64aada544c4" compoundref="gatekeeper_8cpp" startline="280" endline="297">parse_data</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" compoundref="gatekeeper_8cpp" startline="78" endline="149">login</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" compoundref="gatekeeper_8cpp" startline="151" endline="220">loginAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Facade over authentication, authorization and per-IP abuse detection. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref> is the single entry point used by controllers and filters for: login/logout, validating a client&apos;s session or JWT, answering permission queries (synchronous and coroutine variants), and classifying requests for DoS/rate-limit purposes. It owns no algorithmic state of its own: every operation is delegated to a collaborator obtained from the <ref refid="classStore" kindref="compound">Store</ref> singleton (<ref refid="classapi_1_1v2_1_1SessionManager" kindref="compound">SessionManager</ref>, <ref refid="classapi_1_1v2_1_1TokenManager" kindref="compound">TokenManager</ref>, <ref refid="classDOSDetector" kindref="compound">DOSDetector</ref>, <ref refid="classapi_1_1v2_1_1PermissionManager" kindref="compound">PermissionManager</ref>, <ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref>). Consequently, distinct <ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref> instances share the same underlying managers, caches and state. Any thread-safety guarantees are those of the collaborators, not of <ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref> itself. <simplesect kind="note"><para>This class is polymorphic (the authentication validators are virtual) so it can be specialized in tests or alternative deployments. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classapi_1_1v2_1_1SessionManager" kindref="compound">SessionManager</ref>, <ref refid="classapi_1_1v2_1_1TokenManager" kindref="compound">TokenManager</ref>, <ref refid="classapi_1_1v2_1_1PermissionManager" kindref="compound">PermissionManager</ref>, <ref refid="classDOSDetector" kindref="compound">DOSDetector</ref>, <ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref></para>
+</simplesect>
+For a beginner: a &quot;facade&quot; is like a receptionist. A controller does not need to know which manager to call or in what order; it just asks <ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref>. Because the manager pointers are shared_ptrs obtained from a process-wide <ref refid="classStore" kindref="compound">Store</ref>, building two GateKeepers does not create two sets of sessions - both talk to the same managers. The methods ending in &quot;Async&quot; are coroutine versions: they return a drogon::Task that the caller must drive, allowing slow database work to pause instead of blocking a server IO thread. </para>
+    </detaileddescription>
+    <location file="src/gatekeeper/gatekeeper.hpp" line="85" column="5" bodyfile="src/gatekeeper/gatekeeper.hpp" bodystart="86" bodyend="383"/>
+    <listofallmembers>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a7f6ffd25732e0c84e85fe56b28879aaa" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>canCreate</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1afa13e2f1fbe41b8fae5deb91731da9dc" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>canCreateAsync</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a23268a22e5e60a61df7831eb82c11346" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>canDelete</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a72420af970b6f1328b6a811de06d16a1" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>canDeleteAsync</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1af4482568f67eea493dd07a8bb5c0461d" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>canGetServices</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a11e4332c8b8c374e3a7c3a2c2caec649" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>canGetServicesAsync</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a6e64492dda48f1087eed55fe47cabbe2" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>canManageStaff</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a54cd3ef474eede80d3d45c4999c2cf83" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>canManageStaffAsync</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a9d5d84f7e5666b5e707aaa781b1eb1ea" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>canRead</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a3165b2ac0e3866c535957d46b22b2dfe" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>canReadAsync</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a8c4e977ab1ef401f06493b67e6f4dcf7" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>canToggleActive</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a1f8ac0c6ea0a4716cb91674cfe44bc01" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>canToggleActiveAsync</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a6f4f8460d06aa137939e8ac440f77a0f" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>canUpdate</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1abb0037e8d56bec3ceaf4237e6db3c36f" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>canUpdateAsync</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a8f269c62483272957ea3b2dd5cd55636" prot="private" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>dosDetector_</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>GateKeeper</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a107ed4c865dca8c005619fb9dbcebc26" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>GateKeeper</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a6540627ddbc0362aef0fb8b7bd95ab0f" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>GateKeeper</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1aef829fb4539cac1a6df5195edf66184a" prot="public" virt="virtual"><scope>api::v2::GateKeeper</scope><name>isAuthenticationValid</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a7268e0a8290406b8ac474072e39f1948" prot="public" virt="virtual"><scope>api::v2::GateKeeper</scope><name>isAuthenticationValidAsync</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1ae85cb4ffc450a0150a4db1183585d988" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>isDosAttack</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>login</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>loginAsync</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1aa229540ef1e83bef737798d28697b61b" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>logout</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a5e16af906f652e29d5d5e2387a3b57de" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a8d78a30d2b3a6999da8e396126847768" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1ad3fb6e3ac62858e51a921ecef59671de" prot="private" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>parse_credentials</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1afaac61dc7abb5b7d68bad64aada544c4" prot="private" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>parse_data</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1af2c58e2b5f9501cd5f368e7b51648e2b" prot="private" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>passwordWorker_</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" prot="private" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>permissionManager_</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a1005fa5f7c6f9815782dbdb60e50c24c" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>removeSession</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" prot="private" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>sessionManager_</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1af80a9d45a0c1c9e6abf7dfe2f149cf0d" prot="private" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>tokenManager_</name></member>
+      <member refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce" prot="public" virt="virtual"><scope>api::v2::GateKeeper</scope><name>~GateKeeper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

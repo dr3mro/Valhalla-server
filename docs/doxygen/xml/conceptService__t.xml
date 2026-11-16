@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="conceptService__t" kind="concept">
+    <compoundname>Service_t</compoundname>
+    <includes refid="concepts_8hpp" local="no">concepts.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <initializer>template&lt;typename T&gt;
+concept <ref refid="conceptService__t" kindref="compound">Service_t</ref> =  std::is_base_of_v&lt;<ref refid="classService" kindref="compound">Service</ref>, T&gt;</initializer>
+    <conceptparts>
+      <codepart line="57">    <programlisting>
+<codeline><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">concept<sp/></highlight><highlight class="normal">Service_t<sp/>=<sp/>std::is_base_of_v&lt;Service,<sp/>T&gt;</highlight></codeline>
+    </programlisting>
+</codepart>
+    </conceptparts>
+    <briefdescription>
+<para>Constrains <computeroutput>T</computeroutput> to <ref refid="classService" kindref="compound">Service</ref> or a type derived from it. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type to test. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classService" kindref="compound">Service</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/utils/global/concepts.hpp" line="57" column="1"/>
+  </compounddef>
+</doxygen>

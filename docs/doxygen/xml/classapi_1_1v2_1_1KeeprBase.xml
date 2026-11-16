@@ -1,0 +1,930 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classapi_1_1v2_1_1KeeprBase" kind="class" language="C++" prot="public">
+    <compoundname>api::v2::KeeprBase</compoundname>
+    <derivedcompoundref refid="classapi_1_1v2_1_1SessionManager" prot="public" virt="non-virtual">api::v2::SessionManager</derivedcompoundref>
+    <derivedcompoundref refid="classapi_1_1v2_1_1TokenManager" prot="public" virt="non-virtual">api::v2::TokenManager</derivedcompoundref>
+    <includes refid="keeprbase_8hpp" local="no">keeprbase.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classapi_1_1v2_1_1KeeprBase_1a3b36fc37ac1fa5d0b98ca85a33513d43" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classConfigurator" kindref="compound">Configurator</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Configurator&gt; api::v2::KeeprBase::configurator_</definition>
+        <argsstring></argsstring>
+        <name>configurator_</name>
+        <qualifiedname>api::v2::KeeprBase::configurator_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Owned handle keeping the configuration source alive. Shared from <ref refid="classStore" kindref="compound">Store</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="207" column="32" bodyfile="src/gatekeeper/keeprbase/keeprbase.hpp" bodystart="207" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1ab09740b221922b51de0a8c45c54daa85" compoundref="keeprbase_8hpp" startline="76" endline="76">KeeprBase</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classapi_1_1v2_1_1KeeprBase_1a1d23b660f409ad68088514c4de125a4b" prot="private" static="no" mutable="no">
+        <type><ref refid="classConfigurator_1a9ba2e563097f792da98c5844ba3d83f6" kindref="member">Configurator::TokenManagerParameters</ref></type>
+        <definition>Configurator::TokenManagerParameters api::v2::KeeprBase::tokenManagerParameters_</definition>
+        <argsstring></argsstring>
+        <name>tokenManagerParameters_</name>
+        <qualifiedname>api::v2::KeeprBase::tokenManagerParameters_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Cached copy of JWT signing/validation parameters. Includes the secret; never log it. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="208" column="46" bodyfile="src/gatekeeper/keeprbase/keeprbase.hpp" bodystart="208" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1aaf8aa6b3f37ca047d975238a41fe8285" compoundref="keeprbase_8cpp" startline="511" endline="528">createTokenVerifier</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a769b4981f124c8bc48570a2ec0aaa01d" compoundref="keeprbase_8hpp" startline="198" endline="198">getTokenManagerParameters</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1ab09740b221922b51de0a8c45c54daa85" compoundref="keeprbase_8hpp" startline="76" endline="76">KeeprBase</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1ab09740b221922b51de0a8c45c54daa85" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::KeeprBase::KeeprBase</definition>
+        <argsstring>()</argsstring>
+        <name>KeeprBase</name>
+        <qualifiedname>api::v2::KeeprBase::KeeprBase</qualifiedname>
+        <briefdescription>
+<para>Caches the configurator and its token parameters from the <ref refid="classStore" kindref="compound">Store</ref> singleton. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Grabbing a shared <ref refid="classConfigurator" kindref="compound">Configurator</ref> and copying its <ref refid="structTokenManagerParameters" kindref="compound">TokenManagerParameters</ref> once avoids repeated lookups and freezes the signing settings for this object. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="76" column="9" bodyfile="src/gatekeeper/keeprbase/keeprbase.hpp" bodystart="76" bodyend="76"/>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a3b36fc37ac1fa5d0b98ca85a33513d43" compoundref="keeprbase_8hpp" startline="207">configurator_</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a1d23b660f409ad68088514c4de125a4b" compoundref="keeprbase_8hpp" startline="208">tokenManagerParameters_</references>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1add3bdbaa73fd820198bd4e19122e02dd">KeeprBase</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1af1965f91dfd57bbf65a4f286551a5627">KeeprBase</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a4db23b35be5f480c9189bada5b1a7d19">operator=</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1aeceb10fc2e385d4f823f656d8d97c425">operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1add3bdbaa73fd820198bd4e19122e02dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::KeeprBase::KeeprBase</definition>
+        <argsstring>(const KeeprBase &amp;other)=default</argsstring>
+        <name>KeeprBase</name>
+        <qualifiedname>api::v2::KeeprBase::KeeprBase</qualifiedname>
+        <param>
+          <type>const KeeprBase &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="77" column="9"/>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1ab09740b221922b51de0a8c45c54daa85" compoundref="keeprbase_8hpp" startline="76" endline="76">KeeprBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1a4db23b35be5f480c9189bada5b1a7d19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classapi_1_1v2_1_1KeeprBase_1ab09740b221922b51de0a8c45c54daa85" kindref="member">KeeprBase</ref> &amp;</type>
+        <definition>KeeprBase &amp; api::v2::KeeprBase::operator=</definition>
+        <argsstring>(const KeeprBase &amp;other)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>api::v2::KeeprBase::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classapi_1_1v2_1_1KeeprBase_1ab09740b221922b51de0a8c45c54daa85" kindref="member">KeeprBase</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="78" column="19"/>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1ab09740b221922b51de0a8c45c54daa85" compoundref="keeprbase_8hpp" startline="76" endline="76">KeeprBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1af1965f91dfd57bbf65a4f286551a5627" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::KeeprBase::KeeprBase</definition>
+        <argsstring>(KeeprBase &amp;&amp;other) noexcept=default</argsstring>
+        <name>KeeprBase</name>
+        <qualifiedname>api::v2::KeeprBase::KeeprBase</qualifiedname>
+        <param>
+          <type>KeeprBase &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="79" column="9"/>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1ab09740b221922b51de0a8c45c54daa85" compoundref="keeprbase_8hpp" startline="76" endline="76">KeeprBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1aeceb10fc2e385d4f823f656d8d97c425" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classapi_1_1v2_1_1KeeprBase_1ab09740b221922b51de0a8c45c54daa85" kindref="member">KeeprBase</ref> &amp;</type>
+        <definition>KeeprBase &amp; api::v2::KeeprBase::operator=</definition>
+        <argsstring>(KeeprBase &amp;&amp;other) noexcept=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>api::v2::KeeprBase::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classapi_1_1v2_1_1KeeprBase_1ab09740b221922b51de0a8c45c54daa85" kindref="member">KeeprBase</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="80" column="19"/>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1ab09740b221922b51de0a8c45c54daa85" compoundref="keeprbase_8hpp" startline="76" endline="76">KeeprBase</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1a5eb7980e75486333cee87142faa5f9eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual api::v2::KeeprBase::~KeeprBase</definition>
+        <argsstring>()=default</argsstring>
+        <name>~KeeprBase</name>
+        <qualifiedname>api::v2::KeeprBase::~KeeprBase</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor; derived managers are destroyed through this base. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="84" column="17"/>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1aaf8aa6b3f37ca047d975238a41fe8285" compoundref="keeprbase_8cpp" startline="511" endline="528">createTokenVerifier</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1ac972310cb5c257ad144e4b2c2276ce0d" compoundref="keeprbase_8cpp" startline="265" endline="286">current_time_to_utc_string</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" compoundref="keeprbase_8cpp" startline="299" endline="337">decodeToken</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a7ac9299b75cd06a7004701cb2d7c3a34" compoundref="keeprbase_8cpp" startline="243" endline="256">getLastLoginTime</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a96a366e05f18b668479c2da9000d6289" compoundref="keeprbase_8cpp" startline="89" endline="129">getLastLogoutTimeIfActive</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a25af0d69c7a5d1f0fa209b6002ec8c28" compoundref="keeprbase_8cpp" startline="403" endline="443">getLastLogoutTimeIfActiveCoro</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a8ced4af95be98298b0a63084deece769" compoundref="keeprbase_8cpp" startline="536" endline="539">getPasswordHashForUserName</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1acdd434fec377861a4be32a7fbbd6549f" compoundref="keeprbase_8cpp" startline="548" endline="551">getPasswordHashForUserNameCoro</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a827a3339a5b2ecfddc1ba78ef85e7711" compoundref="keeprbase_8cpp" startline="140" endline="190">setNowLoginTimeGetLastLogoutTime</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1aec14dfc5acf772c02faa5ebe3c383eba" compoundref="keeprbase_8cpp" startline="199" endline="235">setNowLogoutTime</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" compoundref="keeprbase_8cpp" startline="349" endline="393">validateToken</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1adc936836bc32e25fd2348e738289c83a" compoundref="keeprbase_8cpp" startline="455" endline="499">validateTokenCoro</references>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1a827a3339a5b2ecfddc1ba78ef85e7711" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool KeeprBase::setNowLoginTimeGetLastLogoutTime</definition>
+        <argsstring>(std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData)</argsstring>
+        <name>setNowLoginTimeGetLastLogoutTime</name>
+        <qualifiedname>api::v2::KeeprBase::setNowLoginTimeGetLastLogoutTime</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <briefdescription>
+<para>Records a login timestamp and returns the previously stored logout time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Upserts the client&apos;s session row (<computeroutput>last_login</computeroutput>, keeping <computeroutput>last_logout</computeroutput>) and writes the new logout time back into <computeroutput>clientLoginData</computeroutput>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">clientLoginData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Supplies group/clientId; receives nowLoginTime and lastLogoutTime. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the row was updated; false for an unknown group, missing fields or DB error. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Propagated so callers can apply their retry/back-pressure policy.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Upserts the session row with the current login time and returns the old logout time. Initializing both <computeroutput>last_login</computeroutput> and <computeroutput>last_logout</computeroutput> to the new login time on insert gives a fresh session a consistent &quot;llodt&quot; claim. On conflict only <computeroutput>last_login</computeroutput> changes, so an existing logout marker survives until the next explicit logout. clientLoginData: Supplies group/clientId; receives nowLoginTime and lastLogoutTime. Returns True when the row was upserted. Throws <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref>: When the database is busy. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="95" column="39" bodyfile="src/gatekeeper/keeprbase/keeprbase.cpp" bodystart="140" bodyend="190"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1ac972310cb5c257ad144e4b2c2276ce0d" compoundref="keeprbase_8cpp" startline="265" endline="286">current_time_to_utc_string</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a913563947fb79295de1f2278e6cb5e62" compoundref="keeprbase_8hpp" startline="204" endline="204">databaseController</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1abbdf2297a918188909ce176585214a89" compoundref="sessionmanager_8cpp" startline="176" endline="206">api::v2::SessionManager::completeLogin</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a5eb7980e75486333cee87142faa5f9eb">~KeeprBase</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1a96a366e05f18b668479c2da9000d6289" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool KeeprBase::getLastLogoutTimeIfActive</definition>
+        <argsstring>(std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData)</argsstring>
+        <name>getLastLogoutTimeIfActive</name>
+        <qualifiedname>api::v2::KeeprBase::getLastLogoutTimeIfActive</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <briefdescription>
+<para>Loads the account&apos;s active flag and last logout time from the session/client tables. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Populates <computeroutput>is_active</computeroutput> and <computeroutput>lastLogoutTime</computeroutput> in <computeroutput>clientLoginData</computeroutput>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">clientLoginData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Supplies group/clientId; receives active/logout state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when a session row was found. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Propagated to callers.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Loads the account&apos;s active flag and last logout time from storage. Joins the session and client tables to populate <computeroutput>is_active</computeroutput> and <computeroutput>lastLogoutTime</computeroutput>. A <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref> exception is rethrown so callers can decide how to back off. clientLoginData: Supplies group/clientId; receives the loaded state. Returns True when a session row was found. Throws <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref>: When the database is busy. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="103" column="39" bodyfile="src/gatekeeper/keeprbase/keeprbase.cpp" bodystart="89" bodyend="129"/>
+        <references refid="global_8hpp_1a68447123f2c27bb7bcdbbaec4091dab7" compoundref="global_8hpp" startline="46" endline="48">CRITICALMESSAGE</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a913563947fb79295de1f2278e6cb5e62" compoundref="keeprbase_8hpp" startline="204" endline="204">databaseController</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" compoundref="keeprbase_8cpp" startline="349" endline="393">validateToken</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a5eb7980e75486333cee87142faa5f9eb">~KeeprBase</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1aec14dfc5acf772c02faa5ebe3c383eba" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void KeeprBase::setNowLogoutTime</definition>
+        <argsstring>(uint64_t _id, const std::string &amp;_group)</argsstring>
+        <name>setNowLogoutTime</name>
+        <qualifiedname>api::v2::KeeprBase::setNowLogoutTime</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>_id</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>_group</declname>
+        </param>
+        <briefdescription>
+<para>Upserts the client&apos;s <computeroutput>last_logout</computeroutput> timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_group</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> group selecting the session table. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Failures are logged; this helper does not report success to the caller. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Propagated to callers.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Upserts the client&apos;s <computeroutput>last_logout</computeroutput> timestamp, used to invalidate older JWTs. Failures are logged only; the caller receives no status. <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref> is rethrown. _id: <ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> id. _group: <ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> group selecting the session table. Throws <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref>: When the database is busy. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="117" column="39" bodyfile="src/gatekeeper/keeprbase/keeprbase.cpp" bodystart="199" bodyend="235"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1ac972310cb5c257ad144e4b2c2276ce0d" compoundref="keeprbase_8cpp" startline="265" endline="286">current_time_to_utc_string</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a913563947fb79295de1f2278e6cb5e62" compoundref="keeprbase_8hpp" startline="204" endline="204">databaseController</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="224" endline="289">api::v2::SessionManager::logout</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a5eb7980e75486333cee87142faa5f9eb">~KeeprBase</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1a7ac9299b75cd06a7004701cb2d7c3a34" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; KeeprBase::getLastLoginTime</definition>
+        <argsstring>(uint64_t _id, const std::string &amp;_group)</argsstring>
+        <name>getLastLoginTime</name>
+        <qualifiedname>api::v2::KeeprBase::getLastLoginTime</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>_id</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>_group</declname>
+        </param>
+        <briefdescription>
+<para>Reads the stored <computeroutput>last_login</computeroutput> timestamp for a client. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_group</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> group selecting the session table. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The timestamp, or std::nullopt for an unknown group or missing row. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="124" column="26" bodyfile="src/gatekeeper/keeprbase/keeprbase.cpp" bodystart="243" bodyend="256"/>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a913563947fb79295de1f2278e6cb5e62" compoundref="keeprbase_8hpp" startline="204" endline="204">databaseController</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a5eb7980e75486333cee87142faa5f9eb">~KeeprBase</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1a8ced4af95be98298b0a63084deece769" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; jsoncons::json &gt;</type>
+        <definition>std::optional&lt; jsoncons::json &gt; api::v2::KeeprBase::getPasswordHashForUserName</definition>
+        <argsstring>(const std::string &amp;username, const std::string &amp;_group)</argsstring>
+        <name>getPasswordHashForUserName</name>
+        <qualifiedname>api::v2::KeeprBase::getPasswordHashForUserName</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>username</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>_group</declname>
+        </param>
+        <briefdescription>
+<para>Fetches the stored password hash for a username via <ref refid="classDatabaseController" kindref="compound">DatabaseController</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">username</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classUser" kindref="compound">User</ref> name to look up. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_group</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> group selecting the account table. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>JSON result from storage; content/shape are defined by <ref refid="classDatabaseController" kindref="compound">DatabaseController</ref>.</para>
+</simplesect>
+Fetches the stored password hash for a username via <ref refid="classDatabaseController" kindref="compound">DatabaseController</ref>. username: <ref refid="classUser" kindref="compound">User</ref> name to look up. _group: <ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> group selecting the account table. Returns JSON result from storage, or std::nullopt when not found. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="131" column="23" bodyfile="src/gatekeeper/keeprbase/keeprbase.cpp" bodystart="536" bodyend="539"/>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a913563947fb79295de1f2278e6cb5e62" compoundref="keeprbase_8hpp" startline="204" endline="204">databaseController</references>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1abffc874efc27d46a421446767b1d3c6c" compoundref="sessionmanager_8cpp" startline="65" endline="115">api::v2::SessionManager::fetchPasswordHash</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a5eb7980e75486333cee87142faa5f9eb">~KeeprBase</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1acdd434fec377861a4be32a7fbbd6549f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>drogon::Task&lt; std::optional&lt; jsoncons::json &gt; &gt;</type>
+        <definition>drogon::Task&lt; std::optional&lt; jsoncons::json &gt; &gt; api::v2::KeeprBase::getPasswordHashForUserNameCoro</definition>
+        <argsstring>(const std::string &amp;username, const std::string &amp;_group)</argsstring>
+        <name>getPasswordHashForUserNameCoro</name>
+        <qualifiedname>api::v2::KeeprBase::getPasswordHashForUserNameCoro</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>username</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>_group</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1KeeprBase_1a8ced4af95be98298b0a63084deece769" kindref="member">getPasswordHashForUserName()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">username</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classUser" kindref="compound">User</ref> name to look up. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_group</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> group selecting the account table. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>JSON result from storage. </para>
+</simplesect>
+<simplesect kind="note"><para>Callers must drive the returned task; the frame must outlive the awaited query. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="139" column="22" bodyfile="src/gatekeeper/keeprbase/keeprbase.cpp" bodystart="548" bodyend="551"/>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a913563947fb79295de1f2278e6cb5e62" compoundref="keeprbase_8hpp" startline="204" endline="204">databaseController</references>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a9122497c5ad97796173492b1a4f3372f" compoundref="sessionmanager_8cpp" startline="118" endline="168">api::v2::SessionManager::fetchPasswordHashCoro</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a5eb7980e75486333cee87142faa5f9eb">~KeeprBase</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool KeeprBase::validateToken</definition>
+        <argsstring>(std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData, std::string &amp;message, jwt::decoded_jwt&lt; jwt::traits::kazuho_picojson &gt; &amp;decodedToken)</argsstring>
+        <name>validateToken</name>
+        <qualifiedname>api::v2::KeeprBase::validateToken</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>jwt::decoded_jwt&lt; jwt::traits::kazuho_picojson &gt; &amp;</type>
+          <declname>decodedToken</declname>
+        </param>
+        <briefdescription>
+<para>Validates a decoded JWT against current session state and its signature/claims. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Checks the &quot;llodt&quot; logout claim against the stored value, the account active flag, then verifies the token with <ref refid="classapi_1_1v2_1_1KeeprBase_1aaf8aa6b3f37ca047d975238a41fe8285" kindref="member">createTokenVerifier()</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">clientLoginData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Identity/state accumulator; session fields are refreshed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Failure reason. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">decodedToken</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Token to verify. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the token is still valid. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Propagated to callers.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Verifies a decoded JWT against live session state and its signature/claims. The &quot;llodt&quot; claim is compared with the stored last logout time so tokens issued before a logout are invalidated, and suspended accounts are rejected. The return value of the session read is not consulted here; the loaded fields are used directly. clientLoginData: Identity/state accumulator; session fields are refreshed. message: Failure reason. decodedToken: Token to verify. Returns True if the token remains valid. Throws <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref>: When the database is busy. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="161" column="14" bodyfile="src/gatekeeper/keeprbase/keeprbase.cpp" bodystart="349" bodyend="393"/>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1aaf8aa6b3f37ca047d975238a41fe8285" compoundref="keeprbase_8cpp" startline="511" endline="528">createTokenVerifier</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a96a366e05f18b668479c2da9000d6289" compoundref="keeprbase_8cpp" startline="89" endline="129">getLastLogoutTimeIfActive</references>
+        <referencedby refid="classapi_1_1v2_1_1TokenManager_1ad59c01322c709811a7f499f4e1d3fa95" compoundref="tokenmanager_8cpp" startline="71" endline="91">api::v2::TokenManager::isTokenValid</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a5eb7980e75486333cee87142faa5f9eb">~KeeprBase</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1a25af0d69c7a5d1f0fa209b6002ec8c28" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; KeeprBase::getLastLogoutTimeIfActiveCoro</definition>
+        <argsstring>(std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData)</argsstring>
+        <name>getLastLogoutTimeIfActiveCoro</name>
+        <qualifiedname>api::v2::KeeprBase::getLastLogoutTimeIfActiveCoro</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1KeeprBase_1a96a366e05f18b668479c2da9000d6289" kindref="member">getLastLogoutTimeIfActive()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">clientLoginData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Supplies group/clientId; receives active/logout state. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when a session row was found. </para>
+</simplesect>
+<simplesect kind="note"><para>Callers must drive the returned task; the frame must outlive the awaited query. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Propagated to callers.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Coroutine form of <ref refid="classapi_1_1v2_1_1KeeprBase_1a96a366e05f18b668479c2da9000d6289" kindref="member">getLastLogoutTimeIfActive()</ref>, awaiting the database read. Executes on the Drogon executor that drives the returned task; the frame remains alive across the co_await. <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref> is rethrown; other exceptions yield false. clientLoginData: Supplies group/clientId; receives active/logout state. Returns True when a session row was found. Throws <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref>: When the database is busy. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="170" column="22" bodyfile="src/gatekeeper/keeprbase/keeprbase.cpp" bodystart="403" bodyend="443"/>
+        <references refid="global_8hpp_1a68447123f2c27bb7bcdbbaec4091dab7" compoundref="global_8hpp" startline="46" endline="48">CRITICALMESSAGE</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a913563947fb79295de1f2278e6cb5e62" compoundref="keeprbase_8hpp" startline="204" endline="204">databaseController</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1adc936836bc32e25fd2348e738289c83a" compoundref="keeprbase_8cpp" startline="455" endline="499">validateTokenCoro</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a5eb7980e75486333cee87142faa5f9eb">~KeeprBase</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1adc936836bc32e25fd2348e738289c83a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; KeeprBase::validateTokenCoro</definition>
+        <argsstring>(std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData, std::string &amp;message, jwt::decoded_jwt&lt; jwt::traits::kazuho_picojson &gt; &amp;decodedToken)</argsstring>
+        <name>validateTokenCoro</name>
+        <qualifiedname>api::v2::KeeprBase::validateTokenCoro</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>jwt::decoded_jwt&lt; jwt::traits::kazuho_picojson &gt; &amp;</type>
+          <declname>decodedToken</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" kindref="member">validateToken()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Awaits the session-state read, then performs the same logout/active/verifier checks. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">clientLoginData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Identity/state accumulator. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Failure reason. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">decodedToken</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Token to verify. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the token is still valid. </para>
+</simplesect>
+<simplesect kind="note"><para>Callers must drive the returned task; the frame must outlive the awaited query. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Propagated to callers.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Coroutine form of <ref refid="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" kindref="member">validateToken()</ref>, awaiting the session-state read first. After the awaited read, applies the same logout/active/signature checks as the synchronous version. The coroutine frame must outlive the awaited query. clientLoginData: Identity/state accumulator. message: Failure reason. decodedToken: Token to verify. Returns True if the token remains valid. Throws <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref>: When the database is busy. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="181" column="22" bodyfile="src/gatekeeper/keeprbase/keeprbase.cpp" bodystart="455" bodyend="499"/>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1aaf8aa6b3f37ca047d975238a41fe8285" compoundref="keeprbase_8cpp" startline="511" endline="528">createTokenVerifier</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a25af0d69c7a5d1f0fa209b6002ec8c28" compoundref="keeprbase_8cpp" startline="403" endline="443">getLastLogoutTimeIfActiveCoro</references>
+        <referencedby refid="classapi_1_1v2_1_1TokenManager_1ae2353b4f71d0b7f35474f8d7bba4e6b5" compoundref="tokenmanager_8cpp" startline="94" endline="118">api::v2::TokenManager::isTokenValidCoro</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a5eb7980e75486333cee87142faa5f9eb">~KeeprBase</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1aaf8aa6b3f37ca047d975238a41fe8285" prot="protected" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>jwt::verifier&lt; jwt::default_clock, jwt::traits::kazuho_picojson &gt;</type>
+        <definition>jwt::verifier&lt; jwt::default_clock, jwt::traits::kazuho_picojson &gt; KeeprBase::createTokenVerifier</definition>
+        <argsstring>(const std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData) const</argsstring>
+        <name>createTokenVerifier</name>
+        <qualifiedname>api::v2::KeeprBase::createTokenVerifier</qualifiedname>
+        <param>
+          <type>const std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <briefdescription>
+<para>Builds an HS256 verifier bound to the configured secret and the client&apos;s claims. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">clientLoginData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Must contain username, clientId, group, ip_address and lastLogoutTime. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Configured verifier; the caller applies it to a decoded token. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::runtime_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If username, clientId or group is absent (explicitly checked). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>std::bad_optional_access</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If ip_address or lastLogoutTime is absent; those two claims are read with <computeroutput>.value()</computeroutput> without a prior presence check.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Builds an HS256 verifier bound to the configured secret and the client&apos;s claims. Verifying the issuer/type/subject/id plus the ip_address, group and llodt claims ties a token to both the signing configuration and the specific client session. clientLoginData: Must contain username, clientId, group, ip_address and lastLogoutTime. Returns A verifier ready to validate a decoded JWT. Throws std::runtime_error: If username, clientId or group is absent (the explicit guard). Throws std::bad_optional_access: If ip_address or lastLogoutTime is absent; those claims are read with <computeroutput>.value()</computeroutput> without a presence check. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="191" column="24" bodyfile="src/gatekeeper/keeprbase/keeprbase.cpp" bodystart="511" bodyend="528"/>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a1d23b660f409ad68088514c4de125a4b" compoundref="keeprbase_8hpp" startline="208">tokenManagerParameters_</references>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" compoundref="keeprbase_8cpp" startline="349" endline="393">validateToken</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1adc936836bc32e25fd2348e738289c83a" compoundref="keeprbase_8cpp" startline="455" endline="499">validateTokenCoro</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a5eb7980e75486333cee87142faa5f9eb">~KeeprBase</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1a769b4981f124c8bc48570a2ec0aaa01d" prot="protected" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classConfigurator_1a9ba2e563097f792da98c5844ba3d83f6" kindref="member">Configurator::TokenManagerParameters</ref></type>
+        <definition>Configurator::TokenManagerParameters api::v2::KeeprBase::getTokenManagerParameters</definition>
+        <argsstring>() const</argsstring>
+        <name>getTokenManagerParameters</name>
+        <qualifiedname>api::v2::KeeprBase::getTokenManagerParameters</qualifiedname>
+        <briefdescription>
+<para>Returns a copy of the token parameters cached at construction. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Cached <ref refid="structTokenManagerParameters" kindref="compound">TokenManagerParameters</ref> (including the signing secret). </para>
+</simplesect>
+<simplesect kind="warning"><para>The returned parameters contain the JWT secret; do not expose them to clients. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="198" column="47" bodyfile="src/gatekeeper/keeprbase/keeprbase.hpp" bodystart="198" bodyend="198"/>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a1d23b660f409ad68088514c4de125a4b" compoundref="keeprbase_8hpp" startline="208">tokenManagerParameters_</references>
+        <referencedby refid="classapi_1_1v2_1_1TokenManager_1ae35221cdefeaad8255a896481af08403" compoundref="tokenmanager_8cpp" startline="36" endline="66">api::v2::TokenManager::generateToken</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1a913563947fb79295de1f2278e6cb5e62" prot="protected" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classDatabaseController" kindref="compound">DatabaseController</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; DatabaseController &gt; api::v2::KeeprBase::databaseController</definition>
+        <argsstring>() const</argsstring>
+        <name>databaseController</name>
+        <qualifiedname>api::v2::KeeprBase::databaseController</qualifiedname>
+        <briefdescription>
+<para>Returns the shared <ref refid="classDatabaseController" kindref="compound">DatabaseController</ref> from the <ref refid="classStore" kindref="compound">Store</ref> cache. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Shared controller used by all helpers in this class. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="204" column="26" bodyfile="src/gatekeeper/keeprbase/keeprbase.hpp" bodystart="204" bodyend="204"/>
+        <references refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="189" endline="200">Store::cachedObject</references>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a7ac9299b75cd06a7004701cb2d7c3a34" compoundref="keeprbase_8cpp" startline="243" endline="256">getLastLoginTime</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a96a366e05f18b668479c2da9000d6289" compoundref="keeprbase_8cpp" startline="89" endline="129">getLastLogoutTimeIfActive</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a25af0d69c7a5d1f0fa209b6002ec8c28" compoundref="keeprbase_8cpp" startline="403" endline="443">getLastLogoutTimeIfActiveCoro</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a8ced4af95be98298b0a63084deece769" compoundref="keeprbase_8cpp" startline="536" endline="539">getPasswordHashForUserName</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1acdd434fec377861a4be32a7fbbd6549f" compoundref="keeprbase_8cpp" startline="548" endline="551">getPasswordHashForUserNameCoro</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a827a3339a5b2ecfddc1ba78ef85e7711" compoundref="keeprbase_8cpp" startline="140" endline="190">setNowLoginTimeGetLastLogoutTime</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1aec14dfc5acf772c02faa5ebe3c383eba" compoundref="keeprbase_8cpp" startline="199" endline="235">setNowLogoutTime</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1ac972310cb5c257ad144e4b2c2276ce0d" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string KeeprBase::current_time_to_utc_string</definition>
+        <argsstring>()</argsstring>
+        <name>current_time_to_utc_string</name>
+        <qualifiedname>api::v2::KeeprBase::current_time_to_utc_string</qualifiedname>
+        <briefdescription>
+<para>Formats the current UTC time as a fixed-width string with a +0000 offset. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Formats the current wall-clock time as a fixed-width UTC timestamp string.</para>
+<para><simplesect kind="return"><para>Timestamp string suitable for storage and JWT claims. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::runtime_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the UTC conversion fails.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Uses gmtime_r for thread-safe UTC conversion, then formats as &quot;YYYY-MM-DD HH:MM:SS +0000&quot; to match the storage and JWT claim format. <simplesect kind="return"><para>The formatted timestamp. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::runtime_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If gmtime_r fails. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="109" column="39" bodyfile="src/gatekeeper/keeprbase/keeprbase.cpp" bodystart="265" bodyend="286"/>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a827a3339a5b2ecfddc1ba78ef85e7711" compoundref="keeprbase_8cpp" startline="140" endline="190">setNowLoginTimeGetLastLogoutTime</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1aec14dfc5acf772c02faa5ebe3c383eba" compoundref="keeprbase_8cpp" startline="199" endline="235">setNowLogoutTime</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a5eb7980e75486333cee87142faa5f9eb">~KeeprBase</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool KeeprBase::decodeToken</definition>
+        <argsstring>(std::optional&lt; Types::ClientLoginData &gt; &amp;clientLoginData, std::string &amp;message, jwt::decoded_jwt&lt; jwt::traits::kazuho_picojson &gt; &amp;decoedToken)</argsstring>
+        <name>decodeToken</name>
+        <qualifiedname>api::v2::KeeprBase::decodeToken</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <declname>clientLoginData</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>jwt::decoded_jwt&lt; jwt::traits::kazuho_picojson &gt; &amp;</type>
+          <declname>decoedToken</declname>
+        </param>
+        <briefdescription>
+<para>Extracts identity claims from an already decoded JWT and checks expiry/IP binding. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Populates expireTime, group, clientId and username in <computeroutput>clientLoginData</computeroutput>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">clientLoginData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives the decoded claim values. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives a failure reason (&quot;Token expired&quot; or IP mismatch). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">decoedToken</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Decoded JWT whose payload claims are read. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if claims are present, unexpired and IP-bound. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Propagated to callers.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Extracts identity claims from a decoded JWT and checks expiry and IP binding. Rejects expired tokens and tokens whose &quot;ip_address&quot; claim differs from the request IP, then fills in group, clientId and username. This helper reads claims but does not verify the signature; use <ref refid="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" kindref="member">validateToken()</ref> for full verification. clientLoginData: Receives expireTime and the identity claims. message: Failure reason. decoedToken: Decoded JWT to read claims from. Returns True when claims are well formed, unexpired and IP-bound. Throws <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref>: When the database is busy. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="149" column="39" bodyfile="src/gatekeeper/keeprbase/keeprbase.cpp" bodystart="299" bodyend="337"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a2be4af6233804aa5b85985ecb3e14d00" compoundref="sessionmanager_8cpp" startline="297" endline="350">api::v2::SessionManager::clientHasValidSession</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1TokenManager_1ad59c01322c709811a7f499f4e1d3fa95" compoundref="tokenmanager_8cpp" startline="71" endline="91">api::v2::TokenManager::isTokenValid</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1TokenManager_1ae2353b4f71d0b7f35474f8d7bba4e6b5" compoundref="tokenmanager_8cpp" startline="94" endline="118">api::v2::TokenManager::isTokenValidCoro</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="224" endline="289">api::v2::SessionManager::logout</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a5eb7980e75486333cee87142faa5f9eb">~KeeprBase</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Shared base for session/token managers offering session-table and JWT helpers. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="classapi_1_1v2_1_1KeeprBase" kindref="compound">KeeprBase</ref> centralizes the SQL and JWT logic used by both <ref refid="classapi_1_1v2_1_1SessionManager" kindref="compound">SessionManager</ref> and <ref refid="classapi_1_1v2_1_1TokenManager" kindref="compound">TokenManager</ref>: reading/updating session rows, formatting UTC timestamps, decoding and verifying JWTs, and loading password hashes. It is stateless apart from a cached copy of <ref refid="structTokenManagerParameters" kindref="compound">TokenManagerParameters</ref>; database access goes through a cached <ref refid="classDatabaseController" kindref="compound">DatabaseController</ref> obtained from <ref refid="classStore" kindref="compound">Store</ref>, so instances share the same pool. <simplesect kind="note"><para>Assignment is disabled because the token parameters are cached at construction; copying/moving is allowed so derived managers can use normal value semantics. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classapi_1_1v2_1_1SessionManager" kindref="compound">SessionManager</ref>, <ref refid="classapi_1_1v2_1_1TokenManager" kindref="compound">TokenManager</ref></para>
+</simplesect>
+For a beginner: this is a &quot;toolbox base class&quot;. The two managers inherit it so they automatically have all these helpers. It caches the token settings once at construction, which is why assignment is removed - assigning could silently replace those cached settings. Copy/move construction is fine because it just carries the settings and the shared config handle along. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>api::v2::KeeprBase</label>
+        <link refid="classapi_1_1v2_1_1KeeprBase"/>
+      </node>
+      <node id="2">
+        <label>api::v2::SessionManager</label>
+        <link refid="classapi_1_1v2_1_1SessionManager"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>api::v2::TokenManager</label>
+        <link refid="classapi_1_1v2_1_1TokenManager"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>TokenManagerParameters</label>
+        <link refid="structTokenManagerParameters"/>
+      </node>
+      <node id="1">
+        <label>api::v2::KeeprBase</label>
+        <link refid="classapi_1_1v2_1_1KeeprBase"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>tokenManagerParameters_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/gatekeeper/keeprbase/keeprbase.hpp" line="68" column="5" bodyfile="src/gatekeeper/keeprbase/keeprbase.hpp" bodystart="69" bodyend="209"/>
+    <listofallmembers>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a3b36fc37ac1fa5d0b98ca85a33513d43" prot="private" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>configurator_</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1aaf8aa6b3f37ca047d975238a41fe8285" prot="protected" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>createTokenVerifier</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1ac972310cb5c257ad144e4b2c2276ce0d" prot="protected" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>current_time_to_utc_string</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a913563947fb79295de1f2278e6cb5e62" prot="protected" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>databaseController</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" prot="protected" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>decodeToken</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a7ac9299b75cd06a7004701cb2d7c3a34" prot="protected" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>getLastLoginTime</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a96a366e05f18b668479c2da9000d6289" prot="protected" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>getLastLogoutTimeIfActive</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a25af0d69c7a5d1f0fa209b6002ec8c28" prot="protected" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>getLastLogoutTimeIfActiveCoro</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a8ced4af95be98298b0a63084deece769" prot="protected" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>getPasswordHashForUserName</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1acdd434fec377861a4be32a7fbbd6549f" prot="protected" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>getPasswordHashForUserNameCoro</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a769b4981f124c8bc48570a2ec0aaa01d" prot="protected" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>getTokenManagerParameters</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1ab09740b221922b51de0a8c45c54daa85" prot="public" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>KeeprBase</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1add3bdbaa73fd820198bd4e19122e02dd" prot="public" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>KeeprBase</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1af1965f91dfd57bbf65a4f286551a5627" prot="public" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>KeeprBase</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a4db23b35be5f480c9189bada5b1a7d19" prot="public" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1aeceb10fc2e385d4f823f656d8d97c425" prot="public" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a827a3339a5b2ecfddc1ba78ef85e7711" prot="protected" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>setNowLoginTimeGetLastLogoutTime</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1aec14dfc5acf772c02faa5ebe3c383eba" prot="protected" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>setNowLogoutTime</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a1d23b660f409ad68088514c4de125a4b" prot="private" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>tokenManagerParameters_</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" prot="protected" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>validateToken</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1adc936836bc32e25fd2348e738289c83a" prot="protected" virt="non-virtual"><scope>api::v2::KeeprBase</scope><name>validateTokenCoro</name></member>
+      <member refid="classapi_1_1v2_1_1KeeprBase_1a5eb7980e75486333cee87142faa5f9eb" prot="public" virt="virtual"><scope>api::v2::KeeprBase</scope><name>~KeeprBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

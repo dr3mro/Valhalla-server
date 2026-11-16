@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="namespaceanonymous__namespace_02keeprbase_8cpp_03" kind="namespace" language="C++">
+    <compoundname>anonymous_namespace{keeprbase.cpp}</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceanonymous__namespace_02keeprbase_8cpp_03_1a22d455a201554dcf54b905d320ee089b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; anonymous_namespace{keeprbase.cpp}::sessionsTable</definition>
+        <argsstring>(const std::string &amp;group)</argsstring>
+        <name>sessionsTable</name>
+        <qualifiedname>anonymous_namespace{keeprbase.cpp}::sessionsTable</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>group</declname>
+        </param>
+        <briefdescription>
+<para>Maps a client group to its session table via a fixed allowlist. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Table names cannot be bound as query parameters, so interpolation is restricted to the two known groups; any other value is rejected instead of interpolated. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">group</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="controller_8hpp_1af928d8b9ced02f7387b9b56ed3877b11" kindref="member">Client</ref> group string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The table name, or std::nullopt for an unrecognized group.</para>
+</simplesect>
+SQL placeholders (like $1) can only stand for <emphasis>values</emphasis>, not for identifiers such as table names. So this function never pastes the caller&apos;s string directly into a query: it only accepts the two exact known groups and builds a safe table name. Anything else returns nullopt, and callers reject the request. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/keeprbase/keeprbase.cpp" line="71" column="19" bodyfile="src/gatekeeper/keeprbase/keeprbase.cpp" bodystart="71" bodyend="78"/>
+        <references refid="namespaceanonymous__namespace_02keeprbase_8cpp_03_1a22d455a201554dcf54b905d320ee089b" compoundref="keeprbase_8cpp" startline="71" endline="78">sessionsTable</references>
+        <referencedby refid="namespaceanonymous__namespace_02keeprbase_8cpp_03_1a22d455a201554dcf54b905d320ee089b" compoundref="keeprbase_8cpp" startline="71" endline="78">sessionsTable</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/gatekeeper/keeprbase/keeprbase.cpp" line="57" column="1"/>
+  </compounddef>
+</doxygen>

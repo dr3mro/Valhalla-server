@@ -1,0 +1,607 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classapi_1_1v2_1_1Services" kind="class" language="C++" prot="public">
+    <compoundname>api::v2::Services</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">drogon::HttpController&lt; Services &gt;</basecompoundref>
+    <includes refid="services_8hpp" local="no">services.hpp</includes>
+    <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classapi_1_1v2_1_1Services_1a66b6d31f9169c25fa487281fe69a52c8" prot="private" static="no">
+        <type>std::variant&lt; std::shared_ptr&lt; <ref refid="classServiceController" kindref="compound">ServiceController</ref>&lt; <ref refid="classClinics" kindref="compound">Clinics</ref> &gt; &gt;, std::shared_ptr&lt; <ref refid="classServiceController" kindref="compound">ServiceController</ref>&lt; <ref refid="classPharmacies" kindref="compound">Pharmacies</ref> &gt; &gt;, std::shared_ptr&lt; <ref refid="classServiceController" kindref="compound">ServiceController</ref>&lt; <ref refid="classLaboratories" kindref="compound">Laboratories</ref> &gt; &gt;, std::shared_ptr&lt; <ref refid="classServiceController" kindref="compound">ServiceController</ref>&lt; <ref refid="classRadiologyCenters" kindref="compound">RadiologyCenters</ref> &gt; &gt; &gt;</type>
+        <definition>using api::v2::Services::ServiceVariant = std::variant&lt;std::shared_ptr&lt;ServiceController&lt;Clinics&gt;&gt;, std::shared_ptr&lt;ServiceController&lt;Pharmacies&gt;&gt;,  
+           std::shared_ptr&lt;ServiceController&lt;Laboratories&gt;&gt;, std::shared_ptr&lt;ServiceController&lt;RadiologyCenters&gt;&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>ServiceVariant</name>
+        <qualifiedname>api::v2::Services::ServiceVariant</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Concrete service controllers, one per supported serviceType. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/routes/services.hpp" line="397" column="9" bodyfile="src/api/v2/routes/services.hpp" bodystart="397" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classapi_1_1v2_1_1Services_1a27cc2744d9dc621b87e71a65b0393c43" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classDbExecutor" kindref="compound">DbExecutor</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;DbExecutor&gt; api::v2::Services::dbExecutor</definition>
+        <argsstring></argsstring>
+        <name>dbExecutor</name>
+        <qualifiedname>api::v2::Services::dbExecutor</qualifiedname>
+        <initializer>= <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classDbExecutor" kindref="compound">DbExecutor</ref>&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shared pool that runs blocking database work (shared with every route). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/routes/services.hpp" line="389" column="25" bodyfile="src/api/v2/routes/services.hpp" bodystart="389" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a7a1d4a2a443909b8a43856e72288c36a" compoundref="services_8hpp" startline="79" endline="129">Create</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" compoundref="services_8hpp" startline="263" endline="318">Delete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1add4126a239d7f9a96356da45f888ff67" compoundref="services_8hpp" startline="139" endline="189">Read</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a9aaef4e8359c44c2f0d8f79e96497868" compoundref="services_8hpp" startline="327" endline="377">Search</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" compoundref="services_8hpp" startline="199" endline="254">Update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classapi_1_1v2_1_1Services_1ad98c25b11c343160fcbb0a8724436e83" prot="private" static="no" mutable="no">
+        <type>const bool</type>
+        <definition>const bool api::v2::Services::asyncDb_</definition>
+        <argsstring></argsstring>
+        <name>asyncDb_</name>
+        <qualifiedname>api::v2::Services::asyncDb_</qualifiedname>
+        <initializer>= <ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>&gt;()-&gt;get&lt;<ref refid="classConfigurator_1afdc97f6e9bd19c0197759b8860ed9a49" kindref="member">Configurator::DatabaseConfig</ref>&gt;().async</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Whether the configured DB mode uses async controller coroutines. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/routes/services.hpp" line="393" column="20" bodyfile="src/api/v2/routes/services.hpp" bodystart="393" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a7a1d4a2a443909b8a43856e72288c36a" compoundref="services_8hpp" startline="79" endline="129">Create</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" compoundref="services_8hpp" startline="263" endline="318">Delete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1add4126a239d7f9a96356da45f888ff67" compoundref="services_8hpp" startline="139" endline="189">Read</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a9aaef4e8359c44c2f0d8f79e96497868" compoundref="services_8hpp" startline="327" endline="377">Search</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" compoundref="services_8hpp" startline="199" endline="254">Update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classapi_1_1v2_1_1Services_1adf416ea73c2b51e3aa7dec93d5302773" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string_view, <ref refid="classapi_1_1v2_1_1Services_1a66b6d31f9169c25fa487281fe69a52c8" kindref="member">ServiceVariant</ref> &gt;</type>
+        <definition>std::unordered_map&lt;std::string_view, ServiceVariant&gt; api::v2::Services::serviceRegistry</definition>
+        <argsstring></argsstring>
+        <name>serviceRegistry</name>
+        <qualifiedname>api::v2::Services::serviceRegistry</qualifiedname>
+        <initializer>                               = {{&quot;clinics&quot;, <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classServiceController" kindref="compound">ServiceController</ref>&lt;<ref refid="classClinics" kindref="compound">Clinics</ref>&gt;&gt;()},  
+{&quot;pharmacies&quot;, <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classServiceController" kindref="compound">ServiceController</ref>&lt;<ref refid="classPharmacies" kindref="compound">Pharmacies</ref>&gt;&gt;()}, {&quot;laboratories&quot;, <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classServiceController" kindref="compound">ServiceController</ref>&lt;<ref refid="classLaboratories" kindref="compound">Laboratories</ref>&gt;&gt;()},  
+{&quot;radiologycenters&quot;, <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classServiceController" kindref="compound">ServiceController</ref>&lt;<ref refid="classRadiologyCenters" kindref="compound">RadiologyCenters</ref>&gt;&gt;()}}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Maps a serviceType path key to its controller variant. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/routes/services.hpp" line="403" column="28" bodyfile="src/api/v2/routes/services.hpp" bodystart="403" bodyend="405"/>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a7a1d4a2a443909b8a43856e72288c36a" compoundref="services_8hpp" startline="79" endline="129">Create</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" compoundref="services_8hpp" startline="263" endline="318">Delete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1add4126a239d7f9a96356da45f888ff67" compoundref="services_8hpp" startline="139" endline="189">Read</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a9aaef4e8359c44c2f0d8f79e96497868" compoundref="services_8hpp" startline="327" endline="377">Search</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" compoundref="services_8hpp" startline="199" endline="254">Update</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1Services_1a7a1d4a2a443909b8a43856e72288c36a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void api::v2::Services::Create</definition>
+        <argsstring>(const drogon::HttpRequestPtr &amp;req, std::function&lt; void(const drogon::HttpResponsePtr &amp;)&gt; &amp;&amp;callback, const std::string &amp;serviceType)</argsstring>
+        <name>Create</name>
+        <qualifiedname>api::v2::Services::Create</qualifiedname>
+        <param>
+          <type>const drogon::HttpRequestPtr &amp;</type>
+          <declname>req</declname>
+        </param>
+        <param>
+          <type>std::function&lt; void(const drogon::HttpResponsePtr &amp;)&gt; &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>serviceType</declname>
+        </param>
+        <briefdescription>
+<para>Create a service entity from the JSON request body. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>POST /{serviceType}/create (SECURE). Async path co_awaits CreateAsync; sync path uses executeControllerMethod. An unknown serviceType yields 400. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">req</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Request carrying the body and Auth identity attributes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Response callback, consumed exactly once. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">serviceType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Registry key taken from the path. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/routes/services.hpp" line="79" column="14" bodyfile="src/api/v2/routes/services.hpp" bodystart="79" bodyend="129"/>
+        <references refid="classapi_1_1v2_1_1Services_1ad98c25b11c343160fcbb0a8724436e83" compoundref="services_8hpp" startline="393">asyncDb_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="classServiceControllerBase_1aef2ec41694023c184286b38ab52e7727">ServiceControllerBase::Create</references>
+        <references refid="classapi_1_1v2_1_1Services_1a27cc2744d9dc621b87e71a65b0393c43" compoundref="services_8hpp" startline="389">dbExecutor</references>
+        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">api::v2::Helper::errorResponse</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">api::v2::Helper::failureResponse</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
+        <references refid="classapi_1_1v2_1_1Services_1adf416ea73c2b51e3aa7dec93d5302773" compoundref="services_8hpp" startline="403" endline="405">serviceRegistry</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="62" endline="65">api::v2::Helper::successResponse</references>
+        <referencedby refid="classapi_1_1v2_1_1Services_1ad94ba8db94caea8e091b6b574ce55bd2">METHOD_ADD</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Services_1add4126a239d7f9a96356da45f888ff67" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void api::v2::Services::Read</definition>
+        <argsstring>(const drogon::HttpRequestPtr &amp;req, std::function&lt; void(const drogon::HttpResponsePtr &amp;)&gt; &amp;&amp;callback, const std::string &amp;serviceType)</argsstring>
+        <name>Read</name>
+        <qualifiedname>api::v2::Services::Read</qualifiedname>
+        <param>
+          <type>const drogon::HttpRequestPtr &amp;</type>
+          <declname>req</declname>
+        </param>
+        <param>
+          <type>std::function&lt; void(const drogon::HttpResponsePtr &amp;)&gt; &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>serviceType</declname>
+        </param>
+        <briefdescription>
+<para>Read service entities using the criteria in the JSON request body. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>POST /{serviceType}/read (SECURE). Async path co_awaits ReadAsync; sync path uses executeControllerMethod. An unknown serviceType yields 400. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">req</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Request carrying the body and Auth identity attributes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Response callback, consumed exactly once. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">serviceType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Registry key taken from the path. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/routes/services.hpp" line="139" column="14" bodyfile="src/api/v2/routes/services.hpp" bodystart="139" bodyend="189"/>
+        <references refid="classapi_1_1v2_1_1Services_1ad98c25b11c343160fcbb0a8724436e83" compoundref="services_8hpp" startline="393">asyncDb_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1Services_1a27cc2744d9dc621b87e71a65b0393c43" compoundref="services_8hpp" startline="389">dbExecutor</references>
+        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">api::v2::Helper::errorResponse</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">api::v2::Helper::failureResponse</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
+        <references refid="classServiceControllerBase_1a5bfaadfc6a791e0035dabc436e32ebcd">ServiceControllerBase::Read</references>
+        <references refid="classapi_1_1v2_1_1Services_1adf416ea73c2b51e3aa7dec93d5302773" compoundref="services_8hpp" startline="403" endline="405">serviceRegistry</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="62" endline="65">api::v2::Helper::successResponse</references>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a92059b760f2881f6346bcc1cbc05c23e">METHOD_ADD</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void api::v2::Services::Update</definition>
+        <argsstring>(const drogon::HttpRequestPtr &amp;req, std::function&lt; void(const drogon::HttpResponsePtr &amp;)&gt; &amp;&amp;callback, const std::string &amp;serviceType)</argsstring>
+        <name>Update</name>
+        <qualifiedname>api::v2::Services::Update</qualifiedname>
+        <param>
+          <type>const drogon::HttpRequestPtr &amp;</type>
+          <declname>req</declname>
+        </param>
+        <param>
+          <type>std::function&lt; void(const drogon::HttpResponsePtr &amp;)&gt; &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>serviceType</declname>
+        </param>
+        <briefdescription>
+<para>Update the service entity identified by the &quot;id&quot; query parameter. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>PUT /{serviceType}/update (SECURE). A bad id yields 400 and returns early; async path co_awaits UpdateAsync with the parsed id, sync path uses executeControllerMethod. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">req</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Request carrying the body, id parameter and Auth identity attributes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Response callback, consumed exactly once. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">serviceType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Registry key taken from the path. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/routes/services.hpp" line="199" column="14" bodyfile="src/api/v2/routes/services.hpp" bodystart="199" bodyend="254"/>
+        <references refid="classapi_1_1v2_1_1Services_1ad98c25b11c343160fcbb0a8724436e83" compoundref="services_8hpp" startline="393">asyncDb_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1Services_1a27cc2744d9dc621b87e71a65b0393c43" compoundref="services_8hpp" startline="389">dbExecutor</references>
+        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">api::v2::Helper::errorResponse</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">api::v2::Helper::failureResponse</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
+        <references refid="namespaceapi_1_1v2_1aa69205bcc60e13d43ab454e4ac275e60" compoundref="common_8hpp" startline="87" endline="100">api::v2::parseIdParam</references>
+        <references refid="classapi_1_1v2_1_1Services_1adf416ea73c2b51e3aa7dec93d5302773" compoundref="services_8hpp" startline="403" endline="405">serviceRegistry</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="62" endline="65">api::v2::Helper::successResponse</references>
+        <references refid="classServiceControllerBase_1aefe0e5804f4eed5e0ac73a32317950d3">ServiceControllerBase::Update</references>
+        <referencedby refid="classapi_1_1v2_1_1Services_1abef488fe75e3234f0234a85bb8d51af4">METHOD_ADD</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void api::v2::Services::Delete</definition>
+        <argsstring>(const drogon::HttpRequestPtr &amp;req, std::function&lt; void(const drogon::HttpResponsePtr &amp;)&gt; &amp;&amp;callback, const std::string &amp;serviceType)</argsstring>
+        <name>Delete</name>
+        <qualifiedname>api::v2::Services::Delete</qualifiedname>
+        <param>
+          <type>const drogon::HttpRequestPtr &amp;</type>
+          <declname>req</declname>
+        </param>
+        <param>
+          <type>std::function&lt; void(const drogon::HttpResponsePtr &amp;)&gt; &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>serviceType</declname>
+        </param>
+        <briefdescription>
+<para>Delete the service entity identified by the &quot;id&quot; query parameter. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>DELETE /{serviceType}/delete (SECURE). A bad id yields 400 and returns early; async path co_awaits DeleteAsync, sync path uses executeControllerMethod. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">req</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Request carrying the id parameter and Auth identity attributes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Response callback, consumed exactly once. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">serviceType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Registry key taken from the path. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/routes/services.hpp" line="263" column="14" bodyfile="src/api/v2/routes/services.hpp" bodystart="263" bodyend="318"/>
+        <references refid="classapi_1_1v2_1_1Services_1ad98c25b11c343160fcbb0a8724436e83" compoundref="services_8hpp" startline="393">asyncDb_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1Services_1a27cc2744d9dc621b87e71a65b0393c43" compoundref="services_8hpp" startline="389">dbExecutor</references>
+        <references refid="classServiceControllerBase_1aed2131f8be6e44fdca0ac4bb17cb6dfb">ServiceControllerBase::Delete</references>
+        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">api::v2::Helper::errorResponse</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">api::v2::Helper::failureResponse</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
+        <references refid="namespaceapi_1_1v2_1aa69205bcc60e13d43ab454e4ac275e60" compoundref="common_8hpp" startline="87" endline="100">api::v2::parseIdParam</references>
+        <references refid="classapi_1_1v2_1_1Services_1adf416ea73c2b51e3aa7dec93d5302773" compoundref="services_8hpp" startline="403" endline="405">serviceRegistry</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="62" endline="65">api::v2::Helper::successResponse</references>
+        <referencedby refid="classapi_1_1v2_1_1Services_1abe501e304c844da00fc49c4afdc5f34d">METHOD_ADD</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Services_1a9aaef4e8359c44c2f0d8f79e96497868" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void api::v2::Services::Search</definition>
+        <argsstring>(const drogon::HttpRequestPtr &amp;req, std::function&lt; void(const drogon::HttpResponsePtr &amp;)&gt; &amp;&amp;callback, const std::string &amp;serviceType)</argsstring>
+        <name>Search</name>
+        <qualifiedname>api::v2::Services::Search</qualifiedname>
+        <param>
+          <type>const drogon::HttpRequestPtr &amp;</type>
+          <declname>req</declname>
+        </param>
+        <param>
+          <type>std::function&lt; void(const drogon::HttpResponsePtr &amp;)&gt; &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>serviceType</declname>
+        </param>
+        <briefdescription>
+<para>Search service entities using the criteria in the JSON request body. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>POST /{serviceType}/search (SECURE). Async path co_awaits SearchAsync; sync path uses executeControllerMethod. An unknown serviceType yields 400. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">req</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Request carrying the body and Auth identity attributes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Response callback, consumed exactly once. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">serviceType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Registry key taken from the path. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/routes/services.hpp" line="327" column="14" bodyfile="src/api/v2/routes/services.hpp" bodystart="327" bodyend="377"/>
+        <references refid="classapi_1_1v2_1_1Services_1ad98c25b11c343160fcbb0a8724436e83" compoundref="services_8hpp" startline="393">asyncDb_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1Services_1a27cc2744d9dc621b87e71a65b0393c43" compoundref="services_8hpp" startline="389">dbExecutor</references>
+        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">api::v2::Helper::errorResponse</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">api::v2::Helper::failureResponse</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
+        <references refid="classServiceControllerBase_1af9b5bf091f00982abb00edfca5f3a110">ServiceControllerBase::Search</references>
+        <references refid="classapi_1_1v2_1_1Services_1adf416ea73c2b51e3aa7dec93d5302773" compoundref="services_8hpp" startline="403" endline="405">serviceRegistry</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="62" endline="65">api::v2::Helper::successResponse</references>
+        <referencedby refid="classapi_1_1v2_1_1Services_1ad4e103fdfdd6e4e367d229da43a36101">METHOD_ADD</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Services_1ad94ba8db94caea8e091b6b574ce55bd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>METHOD_LIST_BEGIN</type>
+        <definition>METHOD_LIST_BEGIN api::v2::Services::METHOD_ADD</definition>
+        <argsstring>(Services::Create, &quot;/{serviceType}/create&quot;, drogon::Post, SECURE)</argsstring>
+        <name>METHOD_ADD</name>
+        <qualifiedname>api::v2::Services::METHOD_ADD</qualifiedname>
+        <param>
+          <type><ref refid="classapi_1_1v2_1_1Services_1a7a1d4a2a443909b8a43856e72288c36a" kindref="member">Services::Create</ref></type>
+        </param>
+        <param>
+          <type>&quot;/{serviceType}/create&quot;</type>
+        </param>
+        <param>
+          <type>drogon::Post</type>
+        </param>
+        <param>
+          <type><ref refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" kindref="member">SECURE</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/routes/services.hpp" line="380" column="9"/>
+        <references refid="classapi_1_1v2_1_1Services_1a7a1d4a2a443909b8a43856e72288c36a" compoundref="services_8hpp" startline="79" endline="129">Create</references>
+        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="68">SECURE</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Services_1a92059b760f2881f6346bcc1cbc05c23e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::Services::METHOD_ADD</definition>
+        <argsstring>(Services::Read, &quot;/{serviceType}/read&quot;, drogon::Post, SECURE)</argsstring>
+        <name>METHOD_ADD</name>
+        <qualifiedname>api::v2::Services::METHOD_ADD</qualifiedname>
+        <param>
+          <type><ref refid="classapi_1_1v2_1_1Services_1add4126a239d7f9a96356da45f888ff67" kindref="member">Services::Read</ref></type>
+        </param>
+        <param>
+          <type>&quot;/{serviceType}/read&quot;</type>
+        </param>
+        <param>
+          <type>drogon::Post</type>
+        </param>
+        <param>
+          <type><ref refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" kindref="member">SECURE</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/routes/services.hpp" line="381" column="9"/>
+        <references refid="classapi_1_1v2_1_1Services_1add4126a239d7f9a96356da45f888ff67" compoundref="services_8hpp" startline="139" endline="189">Read</references>
+        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="68">SECURE</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Services_1abef488fe75e3234f0234a85bb8d51af4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::Services::METHOD_ADD</definition>
+        <argsstring>(Services::Update, &quot;/{serviceType}/update&quot;, drogon::Put, SECURE)</argsstring>
+        <name>METHOD_ADD</name>
+        <qualifiedname>api::v2::Services::METHOD_ADD</qualifiedname>
+        <param>
+          <type><ref refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" kindref="member">Services::Update</ref></type>
+        </param>
+        <param>
+          <type>&quot;/{serviceType}/update&quot;</type>
+        </param>
+        <param>
+          <type>drogon::Put</type>
+        </param>
+        <param>
+          <type><ref refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" kindref="member">SECURE</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/routes/services.hpp" line="382" column="9"/>
+        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="68">SECURE</references>
+        <references refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" compoundref="services_8hpp" startline="199" endline="254">Update</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Services_1abe501e304c844da00fc49c4afdc5f34d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::Services::METHOD_ADD</definition>
+        <argsstring>(Services::Delete, &quot;/{serviceType}/delete&quot;, drogon::Delete, SECURE)</argsstring>
+        <name>METHOD_ADD</name>
+        <qualifiedname>api::v2::Services::METHOD_ADD</qualifiedname>
+        <param>
+          <type><ref refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" kindref="member">Services::Delete</ref></type>
+        </param>
+        <param>
+          <type>&quot;/{serviceType}/delete&quot;</type>
+        </param>
+        <param>
+          <type>drogon::Delete</type>
+        </param>
+        <param>
+          <type><ref refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" kindref="member">SECURE</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/routes/services.hpp" line="383" column="9"/>
+        <references refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" compoundref="services_8hpp" startline="263" endline="318">Delete</references>
+        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="68">SECURE</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1Services_1ad4e103fdfdd6e4e367d229da43a36101" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::Services::METHOD_ADD</definition>
+        <argsstring>(Services::Search, &quot;/{serviceType}/search&quot;, drogon::HttpMethod::Post, SECURE)</argsstring>
+        <name>METHOD_ADD</name>
+        <qualifiedname>api::v2::Services::METHOD_ADD</qualifiedname>
+        <param>
+          <type><ref refid="classapi_1_1v2_1_1Services_1a9aaef4e8359c44c2f0d8f79e96497868" kindref="member">Services::Search</ref></type>
+        </param>
+        <param>
+          <type>&quot;/{serviceType}/search&quot;</type>
+        </param>
+        <param>
+          <type>drogon::HttpMethod::Post</type>
+        </param>
+        <param>
+          <type><ref refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" kindref="member">SECURE</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/api/v2/routes/services.hpp" line="384" column="9"/>
+        <references refid="classapi_1_1v2_1_1Services_1a9aaef4e8359c44c2f0d8f79e96497868" compoundref="services_8hpp" startline="327" endline="377">Search</references>
+        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="68">SECURE</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>REST controller for service-directory entities (clinics, pharmacies, laboratories, centers). </para>
+    </briefdescription>
+    <detaileddescription>
+<para>A {serviceType} path segment selects a <ref refid="classServiceController" kindref="compound">ServiceController&lt;T&gt;</ref> from a variant registry. Handlers use the shared callback pattern to map controller status codes to JSON HTTP responses, build a <ref refid="structRequester" kindref="compound">Requester</ref> from Auth attributes, and run async coroutines or the DbExecutor-backed dispatch according to DatabaseConfig::async. All routes are SECURE. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>api::v2::Services</label>
+        <link refid="classapi_1_1v2_1_1Services"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>drogon::HttpController&lt; Services &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>api::v2::Services</label>
+        <link refid="classapi_1_1v2_1_1Services"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>drogon::HttpController&lt; Services &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/api/v2/routes/services.hpp" line="68" column="5" bodyfile="src/api/v2/routes/services.hpp" bodystart="69" bodyend="406"/>
+    <listofallmembers>
+      <member refid="classapi_1_1v2_1_1Services_1ad98c25b11c343160fcbb0a8724436e83" prot="private" virt="non-virtual"><scope>api::v2::Services</scope><name>asyncDb_</name></member>
+      <member refid="classapi_1_1v2_1_1Services_1a7a1d4a2a443909b8a43856e72288c36a" prot="public" virt="non-virtual"><scope>api::v2::Services</scope><name>Create</name></member>
+      <member refid="classapi_1_1v2_1_1Services_1a27cc2744d9dc621b87e71a65b0393c43" prot="private" virt="non-virtual"><scope>api::v2::Services</scope><name>dbExecutor</name></member>
+      <member refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" prot="public" virt="non-virtual"><scope>api::v2::Services</scope><name>Delete</name></member>
+      <member refid="classapi_1_1v2_1_1Services_1ad94ba8db94caea8e091b6b574ce55bd2" prot="public" virt="non-virtual"><scope>api::v2::Services</scope><name>METHOD_ADD</name></member>
+      <member refid="classapi_1_1v2_1_1Services_1a92059b760f2881f6346bcc1cbc05c23e" prot="public" virt="non-virtual"><scope>api::v2::Services</scope><name>METHOD_ADD</name></member>
+      <member refid="classapi_1_1v2_1_1Services_1abef488fe75e3234f0234a85bb8d51af4" prot="public" virt="non-virtual"><scope>api::v2::Services</scope><name>METHOD_ADD</name></member>
+      <member refid="classapi_1_1v2_1_1Services_1abe501e304c844da00fc49c4afdc5f34d" prot="public" virt="non-virtual"><scope>api::v2::Services</scope><name>METHOD_ADD</name></member>
+      <member refid="classapi_1_1v2_1_1Services_1ad4e103fdfdd6e4e367d229da43a36101" prot="public" virt="non-virtual"><scope>api::v2::Services</scope><name>METHOD_ADD</name></member>
+      <member refid="classapi_1_1v2_1_1Services_1add4126a239d7f9a96356da45f888ff67" prot="public" virt="non-virtual"><scope>api::v2::Services</scope><name>Read</name></member>
+      <member refid="classapi_1_1v2_1_1Services_1a9aaef4e8359c44c2f0d8f79e96497868" prot="public" virt="non-virtual"><scope>api::v2::Services</scope><name>Search</name></member>
+      <member refid="classapi_1_1v2_1_1Services_1adf416ea73c2b51e3aa7dec93d5302773" prot="private" virt="non-virtual"><scope>api::v2::Services</scope><name>serviceRegistry</name></member>
+      <member refid="classapi_1_1v2_1_1Services_1a66b6d31f9169c25fa487281fe69a52c8" prot="private" virt="non-virtual"><scope>api::v2::Services</scope><name>ServiceVariant</name></member>
+      <member refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" prot="public" virt="non-virtual"><scope>api::v2::Services</scope><name>Update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,449 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structValidator_1_1Rule" kind="struct" language="C++" prot="public">
+    <compoundname>Validator::Rule</compoundname>
+    <includes refid="validator_8hpp" local="no">validator.hpp</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" prot="public" static="no" strong="no">
+        <type>std::uint8_t</type>
+        <name>Action</name>
+        <qualifiedname>Validator::Rule::Action</qualifiedname>
+        <enumvalue id="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a0753c9c32b6bf47d97d8b16158906388" prot="public">
+          <name>NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7acf64a80b49ebda9168c3d7a2b6f95f15" prot="public">
+          <name>IGNORE_IF_MISSING_FROM_SCHEMA</name>
+          <initializer>= 1U &lt;&lt; 0U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a61500db96634a6ab0be12a77a8460481" prot="public">
+          <name>IGNORE_IF_NOT_NULLABLE_IN_SCHEMA</name>
+          <initializer>= 1U &lt;&lt; 1U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ad45728414bb4b722bdff45f0f70692c7" prot="public">
+          <name>ASSERT_IMMUTABLE</name>
+          <initializer>= 1U &lt;&lt; 2U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" prot="public">
+          <name>ASSERT_NOT_PRESENT</name>
+          <initializer>= 1U &lt;&lt; 3U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Bitmask of validation relaxations/assertions that make up a rule. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Values are powers of two and may be combined with operator|. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="87" column="9" bodyfile="src/validator/validator.hpp" bodystart="88" bodyend="94"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structValidator_1_1Rule_1ae4e62d78091b24b8d55c84d62a8988d4" prot="public" static="no" mutable="no">
+        <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref></type>
+        <definition>Action Validator::Rule::action</definition>
+        <argsstring></argsstring>
+        <name>action</name>
+        <qualifiedname>Validator::Rule::action</qualifiedname>
+        <briefdescription>
+<para>Combined action flags that this rule activates. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="97" column="69" bodyfile="src/validator/validator.hpp" bodystart="97" bodyend="-1"/>
+        <referencedby refid="structValidator_1_1Rule_1abb98001b4c39f55d78d27243042972c1" compoundref="validator_8hpp" startline="168" endline="168">hasMatch</referencedby>
+        <referencedby refid="structValidator_1_1Rule_1ad0e918d645764b151477dd4f5519fd60" compoundref="validator_8hpp" startline="163" endline="163">operator bool</referencedby>
+        <referencedby refid="structValidator_1_1Rule_1a0b659fda5a4ea8eadb780baeb147eaff" compoundref="validator_8hpp" startline="122" endline="122">Rule</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structValidator_1_1Rule_1aa033a4043c5bba70b2baf132b33525cf" prot="public" static="no" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref>, std::unordered_set&lt; std::string &gt; &gt;</type>
+        <definition>std::unordered_map&lt;Action, std::unordered_set&lt;std::string&gt; &gt; Validator::Rule::keys</definition>
+        <argsstring></argsstring>
+        <name>keys</name>
+        <qualifiedname>Validator::Rule::keys</qualifiedname>
+        <briefdescription>
+<para>Maps an action flag (or group of flags) to the keys it applies to. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="99" column="28" bodyfile="src/validator/validator.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Validator::Rule::check</definition>
+        <argsstring>(const Action &amp;check, const std::string &amp;key) const</argsstring>
+        <name>check</name>
+        <qualifiedname>Validator::Rule::check</qualifiedname>
+        <param>
+          <type>const <ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref> &amp;</type>
+          <declname>check</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Tests whether a given action applies to a given key. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">check</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref> flag being tested. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Column/key name being validated. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True only when <computeroutput>check</computeroutput> is set in this rule and <computeroutput>key</computeroutput> belongs to a flag group that intersects <computeroutput>check</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="108" column="14" bodyfile="src/validator/validator.hpp" bodystart="108" bodyend="113"/>
+        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">check</references>
+        <references refid="structValidator_1_1Rule_1aed3b6d1fbcece769c7a8fe3e735117aa" compoundref="validator_8hpp" startline="174" endline="178">hasKey</references>
+        <references refid="structValidator_1_1Rule_1abb98001b4c39f55d78d27243042972c1" compoundref="validator_8hpp" startline="168" endline="168">hasMatch</references>
+        <referencedby refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">check</referencedby>
+        <referencedby refid="classValidator_1a639d1408b7c8bf36a3b6ac6b0f780c5a" compoundref="validator_8cpp" startline="374" endline="402">Validator::checkColumns</referencedby>
+        <referencedby refid="classValidator_1ab88bc5524278ed0edfb0827572ea02e3" compoundref="validator_8cpp" startline="409" endline="448">Validator::ensureAllKeysExist</referencedby>
+        <referencedby refid="structValidator_1_1Rule_1aed3b6d1fbcece769c7a8fe3e735117aa" compoundref="validator_8hpp" startline="174" endline="178">hasKey</referencedby>
+        <referencedby refid="structValidator_1_1Rule_1abb98001b4c39f55d78d27243042972c1" compoundref="validator_8hpp" startline="168" endline="168">hasMatch</referencedby>
+        <referencedby refid="structValidator_1_1Rule_1abc50cce20918ad158ec32e1b4ab6af7a" compoundref="validator_8hpp" startline="170" endline="170">hasMatch</referencedby>
+        <referencedby refid="classValidator_1a950c1350bd04c695d0add09b31db3974" compoundref="validator_8cpp" startline="162" endline="198">Validator::validateDatabaseReadSchema</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structValidator_1_1Rule_1a0b659fda5a4ea8eadb780baeb147eaff" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Validator::Rule::Rule</definition>
+        <argsstring>(Action _action, const std::unordered_set&lt; std::string &gt; &amp;&amp;_keys)</argsstring>
+        <name>Rule</name>
+        <qualifiedname>Validator::Rule::Rule</qualifiedname>
+        <param>
+          <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref></type>
+          <declname>_action</declname>
+        </param>
+        <param>
+          <type>const std::unordered_set&lt; std::string &gt; &amp;&amp;</type>
+          <declname>_keys</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a rule combining <computeroutput>_action</computeroutput> with the given key set. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">_action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref> flags (usually a bitwise OR of several). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_keys</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Keys the flags apply to; taken by value into <ref refid="structValidator_1_1Rule_1aa033a4043c5bba70b2baf132b33525cf" kindref="member">keys</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="pre"><para>At least one <ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref> flag should be set, otherwise the rule can never match. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="122" column="18" bodyfile="src/validator/validator.hpp" bodystart="122" bodyend="122"/>
+        <references refid="structValidator_1_1Rule_1ae4e62d78091b24b8d55c84d62a8988d4" compoundref="validator_8hpp" startline="97">action</references>
+      </memberdef>
+      <memberdef kind="function" id="structValidator_1_1Rule_1a1dcb78b216655d3195ff18d50f6fc245" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Validator::Rule::Rule</definition>
+        <argsstring>()=delete</argsstring>
+        <name>Rule</name>
+        <qualifiedname>Validator::Rule::Rule</qualifiedname>
+        <briefdescription>
+<para>Rules require an explicit action and key set. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="125" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="structValidator_1_1Rule_1ad0e918d645764b151477dd4f5519fd60" prot="public" static="no" const="yes" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Validator::Rule::operator bool</definition>
+        <argsstring>() const</argsstring>
+        <name>operator bool</name>
+        <qualifiedname>Validator::Rule::operator bool</qualifiedname>
+        <briefdescription>
+<para>Convenience conversion: true when at least one action flag is set. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="163" column="18" bodyfile="src/validator/validator.hpp" bodystart="163" bodyend="163"/>
+        <references refid="structValidator_1_1Rule_1ae4e62d78091b24b8d55c84d62a8988d4" compoundref="validator_8hpp" startline="97">action</references>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="structValidator_1_1Rule_1a0f9331dd42357f3337f3907dc7aa6b52" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref></type>
+        <definition>Action operator|</definition>
+        <argsstring>(Action first, Action second)</argsstring>
+        <name>operator|</name>
+        <qualifiedname>Validator::Rule::operator|</qualifiedname>
+        <param>
+          <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref></type>
+          <declname>first</declname>
+        </param>
+        <param>
+          <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref></type>
+          <declname>second</declname>
+        </param>
+        <briefdescription>
+<para>Combines two action flags into one bitmask. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="129" column="23" bodyfile="src/validator/validator.hpp" bodystart="129" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="friend" id="structValidator_1_1Rule_1a8861cacb5e743238ed064d91c103af07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref></type>
+        <definition>Action operator&amp;</definition>
+        <argsstring>(Action first, Action second)</argsstring>
+        <name>operator&amp;</name>
+        <qualifiedname>Validator::Rule::operator&amp;</qualifiedname>
+        <param>
+          <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref></type>
+          <declname>first</declname>
+        </param>
+        <param>
+          <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref></type>
+          <declname>second</declname>
+        </param>
+        <briefdescription>
+<para>Returns the intersection of two action bitmasks. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="136" column="23" bodyfile="src/validator/validator.hpp" bodystart="136" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="friend" id="structValidator_1_1Rule_1a421109c96cbcc011372312e788137d89" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref> &amp;</type>
+        <definition>Action &amp; operator|=</definition>
+        <argsstring>(Action &amp;first, Action second)</argsstring>
+        <name>operator|=</name>
+        <qualifiedname>Validator::Rule::operator|=</qualifiedname>
+        <param>
+          <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref> &amp;</type>
+          <declname>first</declname>
+        </param>
+        <param>
+          <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref></type>
+          <declname>second</declname>
+        </param>
+        <briefdescription>
+<para>Adds <computeroutput>second&apos;s</computeroutput> flags to <computeroutput>first</computeroutput> in place. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="143" column="23" bodyfile="src/validator/validator.hpp" bodystart="143" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="friend" id="structValidator_1_1Rule_1a95db5cb0d45ec71786cbc79606332669" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref> &amp;</type>
+        <definition>Action &amp; operator&amp;=</definition>
+        <argsstring>(Action &amp;first, Action second)</argsstring>
+        <name>operator&amp;=</name>
+        <qualifiedname>Validator::Rule::operator&amp;=</qualifiedname>
+        <param>
+          <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref> &amp;</type>
+          <declname>first</declname>
+        </param>
+        <param>
+          <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref></type>
+          <declname>second</declname>
+        </param>
+        <briefdescription>
+<para>Keeps only the flags common to <computeroutput>first</computeroutput> and <computeroutput>second</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="151" column="23" bodyfile="src/validator/validator.hpp" bodystart="151" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="friend" id="structValidator_1_1Rule_1a519d13c51d7028498f52c879e6f9ee0b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref></type>
+        <definition>Action operator~</definition>
+        <argsstring>(Action first)</argsstring>
+        <name>operator~</name>
+        <qualifiedname>Validator::Rule::operator~</qualifiedname>
+        <param>
+          <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref></type>
+          <declname>first</declname>
+        </param>
+        <briefdescription>
+<para>Inverts all eight bits; include NONE filtering at the call site. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="159" column="23" bodyfile="src/validator/validator.hpp" bodystart="159" bodyend="159"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="structValidator_1_1Rule_1abb98001b4c39f55d78d27243042972c1" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Validator::Rule::hasMatch</definition>
+        <argsstring>(const Action &amp;check) const</argsstring>
+        <name>hasMatch</name>
+        <qualifiedname>Validator::Rule::hasMatch</qualifiedname>
+        <param>
+          <type>const <ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref> &amp;</type>
+          <declname>check</declname>
+        </param>
+        <briefdescription>
+<para>True when the rule&apos;s combined action intersects <computeroutput>check</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="168" column="14" bodyfile="src/validator/validator.hpp" bodystart="168" bodyend="168"/>
+        <references refid="structValidator_1_1Rule_1ae4e62d78091b24b8d55c84d62a8988d4" compoundref="validator_8hpp" startline="97">action</references>
+        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">check</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a0753c9c32b6bf47d97d8b16158906388" compoundref="validator_8hpp" startline="89">NONE</references>
+        <referencedby refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">check</referencedby>
+        <referencedby refid="structValidator_1_1Rule_1aed3b6d1fbcece769c7a8fe3e735117aa" compoundref="validator_8hpp" startline="174" endline="178">hasKey</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structValidator_1_1Rule_1abc50cce20918ad158ec32e1b4ab6af7a" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Validator::Rule::hasMatch</definition>
+        <argsstring>(const Action &amp;key, const Action &amp;check) const</argsstring>
+        <name>hasMatch</name>
+        <qualifiedname>Validator::Rule::hasMatch</qualifiedname>
+        <param>
+          <type>const <ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref> &amp;</type>
+          <declname>check</declname>
+        </param>
+        <briefdescription>
+<para>True when a stored flag group intersects <computeroutput>check</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="170" column="14" bodyfile="src/validator/validator.hpp" bodystart="170" bodyend="170"/>
+        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">check</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a0753c9c32b6bf47d97d8b16158906388" compoundref="validator_8hpp" startline="89">NONE</references>
+      </memberdef>
+      <memberdef kind="function" id="structValidator_1_1Rule_1aed3b6d1fbcece769c7a8fe3e735117aa" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Validator::Rule::hasKey</definition>
+        <argsstring>(const Action &amp;check, const std::string &amp;element) const</argsstring>
+        <name>hasKey</name>
+        <qualifiedname>Validator::Rule::hasKey</qualifiedname>
+        <param>
+          <type>const <ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref> &amp;</type>
+          <declname>check</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>element</declname>
+        </param>
+        <briefdescription>
+<para>True when <computeroutput>element</computeroutput> appears in a key set whose flags intersect <computeroutput>check</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/validator/validator.hpp" line="174" column="14" bodyfile="src/validator/validator.hpp" bodystart="174" bodyend="178"/>
+        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">check</references>
+        <references refid="structValidator_1_1Rule_1abb98001b4c39f55d78d27243042972c1" compoundref="validator_8hpp" startline="168" endline="168">hasMatch</references>
+        <referencedby refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">check</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A set of validation exceptions keyed by the actions they relax or assert. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Holds one or more bitmask <ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref> flags and, for each flag group, the set of column names it applies to. A check passes only when the relevant flag is present in <ref refid="structValidator_1_1Rule_1ae4e62d78091b24b8d55c84d62a8988d4" kindref="member">action</ref> and a matching flag group contains the key being checked. Rules are typically static const objects in controller code, composed with the bitwise operators. <simplesect kind="note"><para>Copying/moving is implicit; the key sets own their strings. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/validator/validator.hpp" line="81" column="5" bodyfile="src/validator/validator.hpp" bodystart="82" bodyend="179"/>
+    <listofallmembers>
+      <member refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" prot="public" virt="non-virtual"><scope>Validator::Rule</scope><name>Action</name></member>
+      <member refid="structValidator_1_1Rule_1ae4e62d78091b24b8d55c84d62a8988d4" prot="public" virt="non-virtual"><scope>Validator::Rule</scope><name>action</name></member>
+      <member refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ad45728414bb4b722bdff45f0f70692c7" prot="public" virt="non-virtual"><scope>Validator::Rule</scope><name>ASSERT_IMMUTABLE</name></member>
+      <member refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" prot="public" virt="non-virtual"><scope>Validator::Rule</scope><name>ASSERT_NOT_PRESENT</name></member>
+      <member refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" prot="public" virt="non-virtual"><scope>Validator::Rule</scope><name>check</name></member>
+      <member refid="structValidator_1_1Rule_1aed3b6d1fbcece769c7a8fe3e735117aa" prot="private" virt="non-virtual"><scope>Validator::Rule</scope><name>hasKey</name></member>
+      <member refid="structValidator_1_1Rule_1abb98001b4c39f55d78d27243042972c1" prot="private" virt="non-virtual"><scope>Validator::Rule</scope><name>hasMatch</name></member>
+      <member refid="structValidator_1_1Rule_1abc50cce20918ad158ec32e1b4ab6af7a" prot="private" virt="non-virtual"><scope>Validator::Rule</scope><name>hasMatch</name></member>
+      <member refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7acf64a80b49ebda9168c3d7a2b6f95f15" prot="public" virt="non-virtual"><scope>Validator::Rule</scope><name>IGNORE_IF_MISSING_FROM_SCHEMA</name></member>
+      <member refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a61500db96634a6ab0be12a77a8460481" prot="public" virt="non-virtual"><scope>Validator::Rule</scope><name>IGNORE_IF_NOT_NULLABLE_IN_SCHEMA</name></member>
+      <member refid="structValidator_1_1Rule_1aa033a4043c5bba70b2baf132b33525cf" prot="public" virt="non-virtual"><scope>Validator::Rule</scope><name>keys</name></member>
+      <member refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a0753c9c32b6bf47d97d8b16158906388" prot="public" virt="non-virtual"><scope>Validator::Rule</scope><name>NONE</name></member>
+      <member refid="structValidator_1_1Rule_1ad0e918d645764b151477dd4f5519fd60" prot="public" virt="non-virtual"><scope>Validator::Rule</scope><name>operator bool</name></member>
+      <member refid="structValidator_1_1Rule_1a8861cacb5e743238ed064d91c103af07" prot="public" virt="non-virtual"><scope>Validator::Rule</scope><name>operator&amp;</name></member>
+      <member refid="structValidator_1_1Rule_1a95db5cb0d45ec71786cbc79606332669" prot="public" virt="non-virtual"><scope>Validator::Rule</scope><name>operator&amp;=</name></member>
+      <member refid="structValidator_1_1Rule_1a0f9331dd42357f3337f3907dc7aa6b52" prot="public" virt="non-virtual"><scope>Validator::Rule</scope><name>operator|</name></member>
+      <member refid="structValidator_1_1Rule_1a421109c96cbcc011372312e788137d89" prot="public" virt="non-virtual"><scope>Validator::Rule</scope><name>operator|=</name></member>
+      <member refid="structValidator_1_1Rule_1a519d13c51d7028498f52c879e6f9ee0b" prot="public" virt="non-virtual"><scope>Validator::Rule</scope><name>operator~</name></member>
+      <member refid="structValidator_1_1Rule_1a0b659fda5a4ea8eadb780baeb147eaff" prot="public" virt="non-virtual"><scope>Validator::Rule</scope><name>Rule</name></member>
+      <member refid="structValidator_1_1Rule_1a1dcb78b216655d3195ff18d50f6fc245" prot="public" virt="non-virtual"><scope>Validator::Rule</scope><name>Rule</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="md_docs_2ARCHITECTURE" kind="page">
+    <compoundname>md_docs_2ARCHITECTURE</compoundname>
+    <title>Architecture</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="md_docs_2ARCHITECTURE_1autotoc_md41"/></para>
+<para>This document describes the runtime architecture of Project Valhalla as it is implemented in <computeroutput>src/</computeroutput>. It is complementary to <computeroutput><ref refid="README_8md" kindref="compound">README.md</ref></computeroutput>, which focuses on installation, configuration and API usage. For generated API reference documentation, run <computeroutput>doxygen Doxyfile</computeroutput> and open <computeroutput>build/docs/doxygen/html/index.html</computeroutput>.</para>
+<sect1 id="md_docs_2ARCHITECTURE_1autotoc_md42">
+<title>1. System purpose</title><para>Valhalla is a C++20 REST service for healthcare scheduling. It exposes a JSON HTTP API under <computeroutput>/api/v2</computeroutput> for managing clients (users and providers), services (clinics, pharmacies, laboratories, radiology centres), staff, appointments and clinical records. <ref refid="classRequests" kindref="compound">Requests</ref> are authenticated with JWT bearer tokens and authorised against a per-entity permission model; data is persisted in PostgreSQL through Drogon.</para>
+</sect1>
+<sect1 id="md_docs_2ARCHITECTURE_1autotoc_md43">
+<title>2. Technology stack</title><para><itemizedlist>
+<listitem><para><bold>HTTP framework:</bold> Drogon (event loops, routing, filters/advice, coroutines).</para>
+</listitem><listitem><para><bold><ref refid="classDatabase" kindref="compound">Database</ref>:</bold> PostgreSQL, accessed either synchronously through <computeroutput>libpqxx</computeroutput> with a custom connection pool, or asynchronously through Drogon&apos;s <computeroutput>DbClient</computeroutput> (<computeroutput>DB_ASYNC=true</computeroutput>).</para>
+</listitem><listitem><para><bold>Support libraries:</bold> <computeroutput>fmt</computeroutput> (formatting), <computeroutput>jsoncons</computeroutput> (JSON), <computeroutput>jwt-cpp</computeroutput> (tokens), <computeroutput>libsodium</computeroutput>/<computeroutput>cppcodec</computeroutput> (password hashing), <computeroutput>xxHash</computeroutput> (fingerprints), <computeroutput>spdlog</computeroutput>/Trantor (logging), cURL, ZLIB, c-ares.</para>
+</listitem><listitem><para><bold>Build:</bold> CMake + Conan, Catch2 for tests. Dependency versions are pinned in <computeroutput>conan.lock</computeroutput>.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md_docs_2ARCHITECTURE_1autotoc_md44">
+<title>3. Component map</title><para><mermaid>flowchart TD
+    Client[HTTP client] --&gt;|TCP| Drogon[Drogon event loops\nServer::run]
+    Drogon --&gt;|pre-routing advice| Method[Method / OPTIONS gate\nCors + isConventionalMethod]
+    Method --&gt; Filters[Filters\nAuth · RateLimit · ElapsedTime]
+    Filters --&gt; Routes[api/v2 routes\nclients · services · staff · appointments · clinic]
+    Routes --&gt; GK[GateKeeper\nlogin/logout · permissions · DoS]
+    Routes --&gt; Ctrl[Controllers\nEntityControllerBase + specialisations]
+    GK --&gt; PM[PermissionManager + cache]
+    GK --&gt; SM[SessionManager]
+    GK --&gt; TM[TokenManager]
+    GK --&gt; PW[PasswordWorker]
+    GK --&gt; DD[DOSDetector]
+    Ctrl --&gt; Val[Validator + DatabaseSchema]
+    Ctrl --&gt; Ent[Entities\nCRUDS SQL builders]
+    Ent --&gt; DB{Layer}
+    DB --&gt;|sync| Pool[DatabaseConnectionPool → Database → DatabaseHandler → DbExecutor]
+    DB --&gt;|async| ACD[AsyncDbClient → AsyncSqlBinder → AsyncResultMapper]
+    Pool --&gt; PG[(PostgreSQL)]
+    ACD --&gt; PG
+    CFG[Configurator + EnvLoader] -.-&gt; Server
+    CFG -.-&gt; GK
+    CFG -.-&gt; DB
+    Store[Store singleton registry] -.-&gt;|shared services| Server
+    Store -.-&gt; GK
+    Store -.-&gt; DB</mermaid>
+</para>
+<sect2 id="md_docs_2ARCHITECTURE_1autotoc_md45">
+<title>3.1 Bootstrap and lifecycle — <computeroutput>src/main.cpp</computeroutput>, <computeroutput>src/server/</computeroutput></title><para><computeroutput><ref refid="main_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" kindref="member">main()</ref></computeroutput> constructs <computeroutput><ref refid="classServer" kindref="compound">Server</ref></computeroutput> behind a <computeroutput>std::unique_ptr</computeroutput> and calls <computeroutput>run()</computeroutput>, converting any escaping <computeroutput>std::exception</computeroutput> into <computeroutput>EXIT_FAILURE</computeroutput>. <computeroutput><ref refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" kindref="member">Server::run()</ref></computeroutput> prints the banner, conditionally registers the async database client, configures the Drogon application (listener, thread count, log level, custom 404 page), registers two pieces of advice:</para>
+<para><itemizedlist>
+<listitem><para><bold>Pre-routing advice</bold> answers <computeroutput>OPTIONS</computeroutput> with <computeroutput>204</computeroutput> and rejects non-standard verbs with <computeroutput>405</computeroutput> before any route runs.</para>
+</listitem><listitem><para><bold>Pre-sending advice</bold> is the single place CORS headers are written; it runs for every response, including filter-generated and pre-routing replies.</para>
+</listitem></itemizedlist>
+</para>
+<para><computeroutput>drogon::app().run()</computeroutput> blocks until the event loops stop. Shutdown then drains the <computeroutput><ref refid="classDbExecutor" kindref="compound">DbExecutor</ref></computeroutput> and <computeroutput><ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref></computeroutput> queues <emphasis>before</emphasis> static destruction, in that order, because database tasks may enqueue password work.</para>
+</sect2>
+<sect2 id="md_docs_2ARCHITECTURE_1autotoc_md46">
+<title>3.2 Configuration — <computeroutput>src/configurator/</computeroutput></title><para><computeroutput><ref refid="classConfigurator" kindref="compound">Configurator</ref></computeroutput> owns one <computeroutput><ref refid="classEnvLoader" kindref="compound">EnvLoader</ref></computeroutput>-derived settings group per subsystem (server, database, DoS detector, token manager, permission cache, password worker, DB executor, front-end, e-mail sender). Each group&apos;s constructor reads its environment variables with defaults declared in <computeroutput><ref refid="defaults_8hpp" kindref="compound">defaults.hpp</ref></computeroutput>; <computeroutput>printValues()</computeroutput> logs the effective configuration with secrets redacted. <computeroutput><ref refid="classConfigurator" kindref="compound">Configurator</ref></computeroutput> is itself obtained from the <computeroutput><ref refid="classStore" kindref="compound">Store</ref></computeroutput>.</para>
+</sect2>
+<sect2 id="md_docs_2ARCHITECTURE_1autotoc_md47">
+<title>3.3 Service registry — <computeroutput>src/store/</computeroutput></title><para><computeroutput><ref refid="classStore" kindref="compound">Store</ref></computeroutput> is a thread-safe singleton registry keyed by <computeroutput>std::type_index</computeroutput>:</para>
+<para><itemizedlist>
+<listitem><para><computeroutput>getObject&lt;T&gt;()</computeroutput> returns the registered instance or lazily constructs one. Construction happens outside the lock to avoid holding the mutex during expensive initialisation, then is re-checked before publication so two concurrent first callers cannot install different instances.</para>
+</listitem><listitem><para><computeroutput>cachedObject&lt;T&gt;()</computeroutput> is the request-path variant: a <computeroutput>thread_local</computeroutput> pointer is reused until a generation counter changes, avoiding a mutex and hash lookup per request.</para>
+</listitem><listitem><para><computeroutput>replaceObject&lt;T&gt;()</computeroutput> swaps an instance (used by tests to inject fakes) and increments the generation counter so every thread refreshes its cache.</para>
+</listitem><listitem><para>Registered objects are held as <computeroutput>std::shared_ptr&lt;void&gt;</computeroutput> and handed out as aliased <computeroutput>shared_ptr&lt;T&gt;</computeroutput>: ownership is shared, not transferred.</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="md_docs_2ARCHITECTURE_1autotoc_md48">
+<title>3.4 Gatekeeper — <computeroutput>src/gatekeeper/</computeroutput></title><para><computeroutput><ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref></computeroutput> is the authentication/authorisation façade. It parses credentials, delegates password verification to <computeroutput><ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref></computeroutput>, issues and validates JWTs via <computeroutput><ref refid="tokenmanager_8cpp_1a29cda383d518dafdbd3cf3438adea93f" kindref="member">TokenManager</ref></computeroutput>, tracks sessions in <computeroutput><ref refid="sessionmanager_8cpp_1a8256b008f0e6c1884c2b7aca9d53fec2" kindref="member">SessionManager</ref></computeroutput>, checks per-entity rights in <computeroutput><ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref></computeroutput> (backed by an idle-expiry <computeroutput><ref refid="permissioncache_8hpp_1a07017f9d2fac77a264ee3c9aad001918" kindref="member">PermissionCache</ref></computeroutput>), and detects abuse in <computeroutput><ref refid="classDOSDetector" kindref="compound">DOSDetector</ref></computeroutput>. Most operations exist in two forms: a callback version used by synchronous controllers and a <computeroutput>drogon::Task</computeroutput> coroutine version used by asynchronous controllers.</para>
+</sect2>
+<sect2 id="md_docs_2ARCHITECTURE_1autotoc_md49">
+<title>3.5 Controllers — <computeroutput>src/controllers/</computeroutput></title><para><computeroutput><ref refid="classEntityControllerBase" kindref="compound">EntityControllerBase</ref></computeroutput> is the CRUDS contract (<computeroutput>Create</computeroutput>, <computeroutput>Read</computeroutput>, <computeroutput>Update</computeroutput>, <computeroutput>Delete</computeroutput>, <computeroutput>Search</computeroutput>), each with a synchronous callback overload and an asynchronous <computeroutput>drogon::Task&lt;void&gt;</computeroutput> overload. Concrete controllers (client, clinic, service, staff, appointment, generic entity, database) implement that contract. They validate input with <computeroutput><ref refid="classValidator" kindref="compound">Validator</ref></computeroutput>, authorise through <computeroutput><ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref></computeroutput>, build an <computeroutput><ref refid="classEntity" kindref="compound">Entity</ref></computeroutput>, and hand it to the database layer; results are marshalled to JSON and delivered through the <computeroutput><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref></computeroutput> (<computeroutput>std::function&lt;void(int,
+std::string)&gt;</computeroutput>) or the coroutine.</para>
+</sect2>
+<sect2 id="md_docs_2ARCHITECTURE_1autotoc_md50">
+<title>3.6 Entities and validation — <computeroutput>src/entities/</computeroutput>, <computeroutput>src/validator/</computeroutput></title><para><computeroutput><ref refid="classBase" kindref="compound">Base</ref></computeroutput> declares the SQL-statement interface; <computeroutput><ref refid="classEntity" kindref="compound">Entity</ref></computeroutput> implements it with a builder per operation and a <computeroutput>Binder</computeroutput> that produces parameter placeholders (so values are never concatenated into SQL). <computeroutput>Types.hpp</computeroutput> defines the per-action value types (<computeroutput><ref refid="classCreate__t" kindref="compound">Create_t</ref></computeroutput>, <computeroutput><ref refid="classRead__t" kindref="compound">Read_t</ref></computeroutput>, <computeroutput><ref refid="classUpdate__t" kindref="compound">Update_t</ref></computeroutput>, <computeroutput><ref refid="classDelete__t" kindref="compound">Delete_t</ref></computeroutput>, <computeroutput><ref refid="classSearch__t" kindref="compound">Search_t</ref></computeroutput>) collected into the <computeroutput><ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref></computeroutput> variant. <computeroutput><ref refid="classValidator" kindref="compound">Validator</ref></computeroutput> applies schema-driven rules (nullability, immutability, presence) using bitmask <computeroutput>Rule::Action</computeroutput> flags; <computeroutput><ref refid="classDatabaseSchema" kindref="compound">DatabaseSchema</ref></computeroutput> supplies the table metadata.</para>
+</sect2>
+<sect2 id="md_docs_2ARCHITECTURE_1autotoc_md51">
+<title>3.7 Database layer — <computeroutput>src/database/</computeroutput></title><para>Two interchangeable paths:</para>
+<para><itemizedlist>
+<listitem><para><bold>Synchronous (default):</bold> <computeroutput><ref refid="classDatabaseConnectionPool" kindref="compound">DatabaseConnectionPool</ref></computeroutput> owns <computeroutput><ref refid="classDatabase" kindref="compound">Database</ref></computeroutput> connections; <computeroutput>DatabaseHandler</computeroutput> borrows and returns them (with reconnect on failure); <computeroutput><ref refid="classDbExecutor" kindref="compound">DbExecutor</ref></computeroutput> serialises work onto a <computeroutput><ref refid="classBlockingPool" kindref="compound">BlockingPool</ref></computeroutput> worker queue; <computeroutput>Watchdog</computeroutput> checks pool health. <computeroutput><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></computeroutput> is thrown when no connection is available within the configured timeout and maps to HTTP 503 via <computeroutput>statusForException()</computeroutput>.</para>
+</listitem><listitem><para><bold>Asynchronous (<computeroutput>DB_ASYNC=true</computeroutput>):</bold> <computeroutput><ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref></computeroutput> wraps Drogon&apos;s <computeroutput>DbClient</computeroutput>; <computeroutput>AsyncSqlBinder</computeroutput> binds parameters and <computeroutput>AsyncResultMapper</computeroutput> maps rows back to domain values; <computeroutput>AsyncDbError</computeroutput> represents failures. This client is registered in the <computeroutput><ref refid="classStore" kindref="compound">Store</ref></computeroutput> only when the flag is enabled.</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="md_docs_2ARCHITECTURE_1autotoc_md52">
+<title>3.8 Utilities — <computeroutput>src/utils/</computeroutput>, <computeroutput>src/concurrency/</computeroutput></title><para>Logging (<computeroutput><ref refid="classLogger" kindref="compound">Logger</ref></computeroutput>, <computeroutput><ref refid="classMessage" kindref="compound">Message</ref></computeroutput>), JSON helpers, an in-process <computeroutput><ref refid="classMemCache" kindref="compound">MemCache</ref></computeroutput>, a <computeroutput><ref refid="classThreadSafeQueue" kindref="compound">ThreadSafeQueue</ref></computeroutput>, CORS token helpers, global HTTP/status types, and <computeroutput><ref refid="classBoundedExecutor" kindref="compound">BoundedExecutor</ref></computeroutput> (a bounded worker pool used where work must be throttled).</para>
+</sect2>
+</sect1>
+<sect1 id="md_docs_2ARCHITECTURE_1autotoc_md53">
+<title>4. Execution and data flow</title><para><orderedlist>
+<listitem><para>A request arrives on a Drogon event-loop thread.</para>
+</listitem><listitem><para>Pre-routing advice handles <computeroutput>OPTIONS</computeroutput>/unsupported verbs; filters authenticate (<computeroutput>Auth</computeroutput>), apply rate limits (<computeroutput>RateLimit</computeroutput>) and record elapsed time.</para>
+</listitem><listitem><para>The matched route parses the JSON body into a domain value type, asks <computeroutput><ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref></computeroutput> to authorise the operation, and invokes the controller.</para>
+</listitem><listitem><para>The controller validates fields, constructs an <computeroutput><ref refid="classEntity" kindref="compound">Entity</ref></computeroutput>, and submits SQL through the sync pool or async client.</para>
+</listitem><listitem><para>Rows are mapped back to JSON; the pre-sending advice attaches CORS headers and Drogon writes the response.</para>
+</listitem><listitem><para>On shutdown the event loops stop first, then the executor and password worker queues are drained while the <computeroutput><ref refid="classStore" kindref="compound">Store</ref></computeroutput> singletons still exist.</para>
+</listitem></orderedlist>
+</para>
+</sect1>
+<sect1 id="md_docs_2ARCHITECTURE_1autotoc_md54">
+<title>5. Concurrency model</title><para><itemizedlist>
+<listitem><para>Drogon owns the HTTP event-loop threads (<computeroutput>config_.threads</computeroutput>).</para>
+</listitem><listitem><para><computeroutput><ref refid="classStore" kindref="compound">Store</ref></computeroutput> protects its registry with a mutex; <computeroutput>cachedObject&lt;T&gt;</computeroutput> avoids that mutex on hot paths using <computeroutput>thread_local</computeroutput> state and an atomically-read generation counter (<computeroutput>memory_order_acquire</computeroutput>/<computeroutput>release</computeroutput>).</para>
+</listitem><listitem><para>The synchronous database path funnels work through <computeroutput><ref refid="classBlockingPool" kindref="compound">BlockingPool</ref></computeroutput>/<computeroutput><ref refid="classDbExecutor" kindref="compound">DbExecutor</ref></computeroutput> worker threads and checks out pooled connections with an acquire timeout.</para>
+</listitem><listitem><para><computeroutput><ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref></computeroutput> runs hashing off the request threads.</para>
+</listitem><listitem><para><computeroutput><ref refid="classDOSDetector" kindref="compound">DOSDetector</ref></computeroutput> keeps mutable counters shared across request threads; its injectable clock is a test seam.</para>
+</listitem><listitem><para>Coroutine (<computeroutput>drogon::Task</computeroutput>) variants suspend rather than block event-loop threads while waiting on asynchronous I/O.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md_docs_2ARCHITECTURE_1autotoc_md55">
+<title>6. Ownership and lifetime</title><para><itemizedlist>
+<listitem><para>Long-lived services are shared singletons in <computeroutput><ref refid="classStore" kindref="compound">Store</ref></computeroutput> (<computeroutput>shared_ptr</computeroutput>).</para>
+</listitem><listitem><para>The <computeroutput><ref refid="classServer" kindref="compound">Server</ref></computeroutput> is uniquely owned in <computeroutput><ref refid="main_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" kindref="member">main()</ref></computeroutput>; its member services are shared.</para>
+</listitem><listitem><para><ref refid="classDatabase" kindref="compound">Database</ref> connections are borrowed from the pool via <computeroutput>shared_ptr</computeroutput> and returned on destruction of the handler; the executor and worker are explicitly drained at shutdown rather than relying on static destruction order.</para>
+</listitem><listitem><para>Callbacks are captured by value into Drogon&apos;s continuation chain; coroutine variants keep their arguments alive across suspension points.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md_docs_2ARCHITECTURE_1autotoc_md56">
+<title>7. Key architectural decisions</title><para><itemizedlist>
+<listitem><para><bold>Advice-based CORS:</bold> a single pre-sending hook guarantees headers on every response, including errors produced by filters and advice.</para>
+</listitem><listitem><para><bold>Dual database paths:</bold> the synchronous pool supports deterministic tests and simple deployment, while the async path scales I/O without blocking event loops; selection is a configuration flag, not a code change.</para>
+</listitem><listitem><para><bold><ref refid="classStore" kindref="compound">Store</ref> with generation-based caching:</bold> centralises singleton lifetime while keeping per-request lookups cheap and test-injectable.</para>
+</listitem><listitem><para><bold>Paired sync/async APIs:</bold> every controller and gatekeeper capability has a coroutine twin so the same logic can be used from both execution models. </para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+    </detaileddescription>
+    <location file="docs/ARCHITECTURE.md"/>
+  </compounddef>
+</doxygen>

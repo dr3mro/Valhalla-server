@@ -1,0 +1,671 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="pharmacies_8hpp" kind="file" language="C++">
+    <compoundname>pharmacies.hpp</compoundname>
+    <includes local="no">jsoncons/json.hpp</includes>
+    <includes refid="service_8hpp" local="yes">entities/base/service.hpp</includes>
+    <includedby refid="services_8hpp" local="yes">src/api/v2/routes/services.hpp</includedby>
+    <includedby refid="staff_8hpp" local="yes">src/api/v2/routes/staff.hpp</includedby>
+    <includedby refid="servicecontroller_8cpp" local="yes">src/controllers/servicecontroller/servicecontroller.cpp</includedby>
+    <includedby refid="staffcontroller_8cpp" local="yes">src/controllers/staffcontroller/staffcontroller.cpp</includedby>
+    <includedby refid="includes_8hpp" local="yes">src/gatekeeper/includes.hpp</includedby>
+    <incdepgraph>
+      <node id="23">
+        <label>configurator/configurator.hpp</label>
+        <link refid="configurator_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>defaults.hpp</label>
+        <link refid="defaults_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>configurator/envloader/envloader.hpp</label>
+        <link refid="envloader_8hpp"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>envvars/envvars.hpp</label>
+        <link refid="envvars_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>controllers/databasecontroller/databasecontroller.hpp</label>
+        <link refid="databasecontroller_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>database/asyncdbclient.hpp</label>
+        <link refid="asyncdbclient_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>database/asyncresultmapper.hpp</label>
+        <link refid="asyncresultmapper_8hpp"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>database/asyncsqlbinder.hpp</label>
+        <link refid="asyncsqlbinder_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>database/databasebusy.hpp</label>
+        <link refid="databasebusy_8hpp"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>database/databasehandler.hpp</label>
+        <link refid="databasehandler_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>database/dbprobe.hpp</label>
+        <link refid="dbprobe_8hpp"/>
+      </node>
+      <node id="46">
+        <label>entities/base/base.hpp</label>
+        <link refid="base_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>entities/base/entity.hpp</label>
+        <link refid="entity_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>entities/base/service.hpp</label>
+        <link refid="service_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>entities/base/types.hpp</label>
+        <link refid="entities_2base_2types_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/entities/services/pharmacies.hpp</label>
+        <link refid="pharmacies_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>gatekeeper/passwordcrypt/passwordcrypt.hpp</label>
+        <link refid="passwordcrypt_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>store/store.hpp</label>
+        <link refid="store_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>utils/global/http.hpp</label>
+        <link refid="http_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>utils/global/types.hpp</label>
+        <link refid="utils_2global_2types_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>utils/message/message.hpp</label>
+        <link refid="message_8hpp"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>validator/validator.hpp</label>
+        <link refid="validator_8hpp"/>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>algorithm</label>
+      </node>
+      <node id="17">
+        <label>atomic</label>
+      </node>
+      <node id="50">
+        <label>cctype</label>
+      </node>
+      <node id="25">
+        <label>chrono</label>
+      </node>
+      <node id="51">
+        <label>cppcodec/base64_rfc4648.hpp</label>
+      </node>
+      <node id="47">
+        <label>cstddef</label>
+      </node>
+      <node id="5">
+        <label>cstdint</label>
+      </node>
+      <node id="35">
+        <label>drogon/orm/DbClient.h</label>
+      </node>
+      <node id="37">
+        <label>drogon/orm/Result.h</label>
+      </node>
+      <node id="39">
+        <label>drogon/orm/SqlBinder.h</label>
+      </node>
+      <node id="40">
+        <label>drogon/utils/coroutine.h</label>
+      </node>
+      <node id="6">
+        <label>exception</label>
+      </node>
+      <node id="4">
+        <label>fmt/core.h</label>
+      </node>
+      <node id="16">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="24">
+        <label>fmt/ranges.h</label>
+      </node>
+      <node id="11">
+        <label>iterator</label>
+      </node>
+      <node id="18">
+        <label>jsoncons/basic_json.hpp</label>
+      </node>
+      <node id="2">
+        <label>jsoncons/json.hpp</label>
+      </node>
+      <node id="12">
+        <label>memory</label>
+      </node>
+      <node id="19">
+        <label>mutex</label>
+      </node>
+      <node id="7">
+        <label>optional</label>
+      </node>
+      <node id="20">
+        <label>pqxx/pqxx</label>
+      </node>
+      <node id="33">
+        <label>stdexcept</label>
+      </node>
+      <node id="8">
+        <label>string</label>
+      </node>
+      <node id="52">
+        <label>string_view</label>
+      </node>
+      <node id="10">
+        <label>sys/types.h</label>
+      </node>
+      <node id="30">
+        <label>trantor/utils/Logger.h</label>
+      </node>
+      <node id="26">
+        <label>type_traits</label>
+      </node>
+      <node id="43">
+        <label>typeindex</label>
+      </node>
+      <node id="44">
+        <label>unordered_map</label>
+      </node>
+      <node id="21">
+        <label>unordered_set</label>
+      </node>
+      <node id="22">
+        <label>utility</label>
+      </node>
+      <node id="53">
+        <label>variant</label>
+      </node>
+      <node id="13">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>src/api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/api/v2/routes/services.hpp</label>
+        <link refid="services_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/api/v2/routes/staff.hpp</label>
+        <link refid="staff_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
+        <link refid="cliniccontroller_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
+        <link refid="entitycontroller_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
+        <link refid="servicecontroller_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
+        <link refid="staffcontroller_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/entities/services/pharmacies.hpp</label>
+        <link refid="pharmacies_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>src/gatekeeper/gatekeeper.cpp</label>
+        <link refid="gatekeeper_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/gatekeeper/includes.hpp</label>
+        <link refid="includes_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>src/gatekeeper/permissionmanager/permissionmanager.cpp</label>
+        <link refid="permissionmanager_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classPharmacies" prot="public">Pharmacies</innerclass>
+    <briefdescription>
+<para><ref refid="classService" kindref="compound">Service</ref> entity bound to the <computeroutput>pharmacies</computeroutput> table (a pharmacy service provider). </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header declares the <ref refid="classPharmacies" kindref="compound">Pharmacies</ref> class, a very small C++ type that stands for one pharmacy in the <computeroutput>pharmacies</computeroutput> database table. It holds almost no logic of its own. It only names the table and lets its parent class <ref refid="classService" kindref="compound">Service</ref> do the real work of building SQL statements. You create one by passing in a data wrapper made from a client request, and the parent stores that wrapper for later use.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: <ref refid="classPharmacies" kindref="compound">Pharmacies</ref> is one of the &quot;service provider&quot; types in the server, next to laboratories and radiology centres. When a client creates, reads, updates or deletes a pharmacy, or manages its staff, the route layer picks this class as <ref refid="classServiceController" kindref="compound">ServiceController&lt;Pharmacies&gt;</ref> / <ref refid="classStaffController" kindref="compound">StaffController&lt;Pharmacies&gt;</ref>. Those controllers call the inherited methods from <ref refid="classService" kindref="compound">Service</ref> and <ref refid="classEntity" kindref="compound">Entity</ref>, which produce the actual SQL. The class also publishes the table name so <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> can check that the requesting staff member is allowed to change this service. Without this file there would be no C++ type tying the <computeroutput>pharmacies</computeroutput> table to the generic CRUD machinery, so pharmacy endpoints could not work.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>static constexpr: a value fixed at compile time that belongs to the class, not to one object. <ulink url="https://en.cppreference.com/w/cpp/language/static">https://en.cppreference.com/w/cpp/language/static</ulink></para>
+</listitem><listitem><para>JSON: a text format used to carry request data; this project uses the jsoncons library to read it. <ulink url="https://jsoncons.github.io/jsoncons/">https://jsoncons.github.io/jsoncons/</ulink></para>
+</listitem><listitem><para>Template (<computeroutput>template &lt;typename T&gt;</computeroutput>): a blueprint that works with whatever data type the caller supplies. <ulink url="https://en.cppreference.com/w/cpp">https://en.cppreference.com/w/cpp</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>pharmacies.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Service<sp/>entity<sp/>bound<sp/>to<sp/>the<sp/>`pharmacies`<sp/>table<sp/>(a<sp/>pharmacy<sp/>service<sp/>provider).</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>declares<sp/>the<sp/>Pharmacies<sp/>class,<sp/>a<sp/>very<sp/>small<sp/>C++<sp/>type<sp/>that<sp/>stands<sp/>for<sp/>one<sp/>pharmacy<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`pharmacies`<sp/>database<sp/>table.<sp/>It<sp/>holds<sp/>almost<sp/>no<sp/>logic<sp/>of<sp/>its<sp/>own.<sp/>It<sp/>only<sp/>names<sp/>the<sp/>table<sp/>and<sp/>lets<sp/>its</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>parent<sp/>class<sp/>Service<sp/>do<sp/>the<sp/>real<sp/>work<sp/>of<sp/>building<sp/>SQL<sp/>statements.<sp/>You<sp/>create<sp/>one<sp/>by<sp/>passing<sp/>in<sp/>a<sp/>data</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wrapper<sp/>made<sp/>from<sp/>a<sp/>client<sp/>request,<sp/>and<sp/>the<sp/>parent<sp/>stores<sp/>that<sp/>wrapper<sp/>for<sp/>later<sp/>use.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Pharmacies<sp/>is<sp/>one<sp/>of<sp/>the<sp/>&quot;service<sp/>provider&quot;<sp/>types<sp/>in<sp/>the<sp/>server,<sp/>next<sp/>to<sp/>laboratories<sp/>and<sp/>radiology<sp/>centres.<sp/>When<sp/>a</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>client<sp/>creates,<sp/>reads,<sp/>updates<sp/>or<sp/>deletes<sp/>a<sp/>pharmacy,<sp/>or<sp/>manages<sp/>its<sp/>staff,<sp/>the<sp/>route<sp/>layer<sp/>picks<sp/>this<sp/>class<sp/>as</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>ServiceController&lt;Pharmacies&gt;<sp/>/<sp/>StaffController&lt;Pharmacies&gt;.<sp/>Those<sp/>controllers<sp/>call<sp/>the<sp/>inherited<sp/>methods<sp/>from</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>Service<sp/>and<sp/>Entity,<sp/>which<sp/>produce<sp/>the<sp/>actual<sp/>SQL.<sp/>The<sp/>class<sp/>also<sp/>publishes<sp/>the<sp/>table<sp/>name<sp/>so<sp/>PermissionManager<sp/>can</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>check<sp/>that<sp/>the<sp/>requesting<sp/>staff<sp/>member<sp/>is<sp/>allowed<sp/>to<sp/>change<sp/>this<sp/>service.<sp/>Without<sp/>this<sp/>file<sp/>there<sp/>would<sp/>be<sp/>no<sp/>C++</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>type<sp/>tying<sp/>the<sp/>`pharmacies`<sp/>table<sp/>to<sp/>the<sp/>generic<sp/>CRUD<sp/>machinery,<sp/>so<sp/>pharmacy<sp/>endpoints<sp/>could<sp/>not<sp/>work.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>static<sp/>constexpr:<sp/>a<sp/>value<sp/>fixed<sp/>at<sp/>compile<sp/>time<sp/>that<sp/>belongs<sp/>to<sp/>the<sp/>class,<sp/>not<sp/>to<sp/>one<sp/>object.<sp/>https://en.cppreference.com/w/cpp/language/static</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>JSON:<sp/>a<sp/>text<sp/>format<sp/>used<sp/>to<sp/>carry<sp/>request<sp/>data;<sp/>this<sp/>project<sp/>uses<sp/>the<sp/>jsoncons<sp/>library<sp/>to<sp/>read<sp/>it.<sp/>https://jsoncons.github.io/jsoncons/</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>Template<sp/>(`template<sp/>&lt;typename<sp/>T&gt;`):<sp/>a<sp/>blueprint<sp/>that<sp/>works<sp/>with<sp/>whatever<sp/>data<sp/>type<sp/>the<sp/>caller<sp/>supplies.<sp/>https://en.cppreference.com/w/cpp</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Compiler-enforced<sp/>header<sp/>guard:<sp/>include<sp/>this<sp/>file<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/json.hpp&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>jsoncons<sp/>JSON<sp/>library:<sp/>reads<sp/>the<sp/>request<sp/>payloads<sp/>this<sp/>entity<sp/>may<sp/>be<sp/>built<sp/>from.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="service_8hpp" kindref="compound">entities/base/service.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Service<sp/>is<sp/>the<sp/>parent<sp/>class<sp/>that<sp/>supplies<sp/>the<sp/>inherited<sp/>CRUD/staff<sp/>behaviour.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="32"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>@class<sp/>Pharmacies</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Service<sp/>entity<sp/>bound<sp/>to<sp/>the<sp/>`pharmacies`<sp/>table<sp/>(a<sp/>pharmacy<sp/>service<sp/>provider).</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>@details<sp/>A<sp/>thin<sp/>value<sp/>type<sp/>that<sp/>binds<sp/>the<sp/>generic<sp/>Service/Entity<sp/>SQL<sp/>machinery<sp/>to<sp/>one<sp/>database</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>table.<sp/>CRUD/search<sp/>statement<sp/>generation<sp/>and<sp/>staff<sp/>management<sp/>are<sp/>entirely<sp/>inherited;</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this<sp/>class<sp/>only<sp/>fixes<sp/>the<sp/>table<sp/>name<sp/>and<sp/>exposes<sp/>it<sp/>to<sp/>the<sp/>permission<sp/>layer.<sp/>Instances</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>are<sp/>built<sp/>from<sp/>one<sp/>of<sp/>the<sp/>api::v2::Types<sp/>data<sp/>wrappers<sp/>(for<sp/>example<sp/>Create_t<sp/>or<sp/>Read_t),</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>which<sp/>Entity<sp/>stores<sp/>as<sp/>an<sp/>EntityType<sp/>variant.<sp/>The<sp/>type<sp/>satisfies<sp/>the<sp/>api::v2::Service_t</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>concept<sp/>and<sp/>is<sp/>selected<sp/>through<sp/>the<sp/>`pharmacies`<sp/>entries<sp/>of<sp/>the<sp/>services<sp/>and<sp/>staff</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>route<sp/>registries<sp/>(ServiceController&lt;Pharmacies&gt;,<sp/>StaffController&lt;Pharmacies&gt;).</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Ownership:<sp/>the<sp/>wrapper<sp/>is<sp/>copied<sp/>into<sp/>the<sp/>base<sp/>and<sp/>is<sp/>const<sp/>thereafter;<sp/>no<sp/>other</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resources<sp/>are<sp/>owned.<sp/>Instances<sp/>have<sp/>no<sp/>mutable<sp/>state<sp/>and<sp/>do<sp/>no<sp/>locking<sp/>of<sp/>their<sp/>own;</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PermissionManager<sp/>uses<sp/>the<sp/>inherited<sp/>Service::getServicePermissionsQuery<sp/>together<sp/>with</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>getTableName()<sp/>to<sp/>authorise<sp/>staff<sp/>changes.</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Copy<sp/>and<sp/>move<sp/>are<sp/>deleted<sp/>by<sp/>Service:<sp/>construct<sp/>a<sp/>fresh<sp/>instance<sp/>per<sp/>operation.</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>@note<sp/>No<sp/>default<sp/>constructor:<sp/>Entity<sp/>needs<sp/>a<sp/>data<sp/>wrapper<sp/>to<sp/>build<sp/>statements<sp/>from.</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>@see<sp/>Service,<sp/>Entity,<sp/>ServiceController,<sp/>StaffController,<sp/>PermissionManager</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classPharmacies" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPharmacies_1a27f27caa71c3d1a5cbd43b92b7105278" kindref="member">Pharmacies</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Inherits<sp/>every<sp/>CRUD/search/staff<sp/>method;<sp/>this<sp/>class<sp/>only<sp/>fixes<sp/>the<sp/>table<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:<sp/><sp/></highlight><highlight class="comment">//<sp/>Implementation<sp/>details<sp/>kept<sp/>hidden<sp/>from<sp/>outside<sp/>callers.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Table<sp/>bound<sp/>to<sp/>this<sp/>entity;<sp/>also<sp/>used<sp/>as<sp/>the<sp/>service<sp/>name<sp/>in<sp/>staff<sp/>permission<sp/>queries.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classPharmacies_1ad639f6d3918eebe4fa21e3ff44bac8c0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classPharmacies_1ad639f6d3918eebe4fa21e3ff44bac8c0" kindref="member">TABLENAME</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;pharmacies&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>fixed<sp/>table<sp/>name<sp/>known<sp/>at<sp/>compile<sp/>time;<sp/>`auto`<sp/>lets<sp/>the<sp/>compiler<sp/>pick<sp/>the<sp/>exact<sp/>string-literal<sp/>type,<sp/>and<sp/>constexpr<sp/>means<sp/>it<sp/>never<sp/>changes<sp/>so<sp/>it<sp/>can<sp/>be<sp/>used<sp/>directly<sp/>in<sp/>generated<sp/>SQL<sp/>and<sp/>permission<sp/>checks.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:<sp/><sp/></highlight><highlight class="comment">//<sp/>Public<sp/>interface:<sp/>construction,<sp/>table-name<sp/>lookup<sp/>and<sp/>destruction.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pharmacies()<sp/>:<sp/>Service(TABLENAME)<sp/>{}<sp/><sp/>//<sp/>Deliberately<sp/>disabled:<sp/>Entity<sp/>needs<sp/>a<sp/>data<sp/>wrapper<sp/>before<sp/>it<sp/>can<sp/>build<sp/>any<sp/>statement.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Constructs<sp/>a<sp/>pharmacy<sp/>entity<sp/>bound<sp/>to<sp/>`pharmacies`.</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Forwards<sp/>the<sp/>wrapper<sp/>and<sp/>table<sp/>name<sp/>to<sp/>Service,<sp/>which<sp/>stores<sp/>the<sp/>wrapper<sp/>in<sp/>Entity.</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>wrapper&apos;s<sp/>type<sp/>decides<sp/>which<sp/>inherited<sp/>SQL<sp/>builder<sp/>(create/read/update/delete/</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>search)<sp/>can<sp/>legitimately<sp/>be<sp/>used<sp/>with<sp/>the<sp/>resulting<sp/>instance.</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>A<sp/>type<sp/>accepted<sp/>by<sp/>EntityType,<sp/>e.g.<sp/>api::v2::Types::Create_t<sp/>or<sp/>Read_t.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_data<sp/>Operation<sp/>data<sp/>to<sp/>copy<sp/>into<sp/>the<sp/>entity.</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>T<sp/>is<sp/>deduced<sp/>from<sp/>the<sp/>wrapper<sp/>the<sp/>caller<sp/>passes,<sp/>so<sp/>many<sp/>wrapper<sp/>types<sp/>fit<sp/>this<sp/>one<sp/>constructor.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classPharmacies_1a27f27caa71c3d1a5cbd43b92b7105278" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPharmacies_1a27f27caa71c3d1a5cbd43b92b7105278" kindref="member">Pharmacies</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T&amp;<sp/>_data)<sp/>:<sp/><ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref>(_data,<sp/><ref refid="classPharmacies_1ad639f6d3918eebe4fa21e3ff44bac8c0" kindref="member">TABLENAME</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>the<sp/>data<sp/>and<sp/>table<sp/>name<sp/>to<sp/>Service,<sp/>which<sp/>copies<sp/>them<sp/>into<sp/>Entity.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>table<sp/>this<sp/>entity<sp/>is<sp/>bound<sp/>to.</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>constant<sp/>`pharmacies`<sp/>string.</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="classPharmacies_1ac33e2e1e5b9acd10a5a62ff9772e20c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classPharmacies_1ac33e2e1e5b9acd10a5a62ff9772e20c7" kindref="member">getTableName</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPharmacies_1ad639f6d3918eebe4fa21e3ff44bac8c0" kindref="member">TABLENAME</ref>;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>the<sp/>compile-time<sp/>table<sp/>name<sp/>so<sp/>callers<sp/>(e.g.<sp/>PermissionManager)<sp/>can<sp/>build<sp/>the<sp/>right<sp/>SQL.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Destructor;<sp/>the<sp/>entity<sp/>owns<sp/>nothing<sp/>beyond<sp/>the<sp/>data<sp/>wrapper<sp/>held<sp/>by<sp/>Entity.</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="classPharmacies_1a38aefeea0809a061741cc9e92b10ef86" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPharmacies_1a38aefeea0809a061741cc9e92b10ef86" kindref="member">~Pharmacies</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>`override`<sp/>confirms<sp/>the<sp/>parent<sp/>has<sp/>a<sp/>virtual<sp/>destructor;<sp/>`=<sp/>default`<sp/>lets<sp/>the<sp/>compiler<sp/>clean<sp/>up<sp/>the<sp/>stored<sp/>wrapper.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="src/entities/services/pharmacies.hpp"/>
+  </compounddef>
+</doxygen>

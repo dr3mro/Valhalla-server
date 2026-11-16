@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="conceptapi_1_1v2_1_1ClientData__t" kind="concept">
+    <compoundname>api::v2::ClientData_t</compoundname>
+    <includes refid="client_8hpp" local="no">client.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <initializer>template&lt;typename T&gt;
+concept <ref refid="conceptapi_1_1v2_1_1ClientData__t" kindref="compound">api::v2::ClientData_t</ref> =  std::is_same&lt;T, <ref refid="structapi_1_1v2_1_1Types_1_1CreateClient__t" kindref="compound">Types::CreateClient_t</ref>&gt;::value || std::is_same&lt;T, <ref refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t" kindref="compound">Types::UpdateClient_t</ref>&gt;::value ||
+                               std::is_same&lt;T, <ref refid="structapi_1_1v2_1_1Types_1_1SuspendData" kindref="compound">Types::SuspendData</ref>&gt;::value || std::is_same&lt;T, <ref refid="namespaceapi_1_1v2_1_1Types_1adde80020c20219af8fb84408bfc566ce" kindref="member">Types::Data_t</ref>&gt;::value</initializer>
+    <conceptparts>
+      <codepart line="66">    <programlisting>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">concept<sp/></highlight><highlight class="normal">ClientData_t<sp/>=<sp/>std::is_same&lt;T,<sp/>Types::CreateClient_t&gt;::value<sp/>||<sp/>std::is_same&lt;T,<sp/>Types::UpdateClient_t&gt;::value<sp/>||</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::is_same&lt;T,<sp/>Types::SuspendData&gt;::value<sp/>||<sp/>std::is_same&lt;T,<sp/>Types::Data_t&gt;::value</highlight></codeline>
+    </programlisting>
+</codepart>
+    </conceptparts>
+    <briefdescription>
+<para>Constrains <ref refid="controller_8hpp_1af928d8b9ced02f7387b9b56ed3877b11" kindref="member">Client</ref> helpers to the payload types that carry client data or a client id. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Satisfied by <ref refid="clientcontroller_8cpp_1a664c209b78ddc22b11631338f3759859" kindref="member">CreateClient_t</ref> and <ref refid="clientcontroller_8cpp_1a51d1a4a57120d8a5220851ce8416f926" kindref="member">UpdateClient_t</ref> (which expose a validated data_set), and by <ref refid="clientcontroller_8cpp_1aafc15234bd165371dccecc0545e68ddf" kindref="member">SuspendData</ref> and <ref refid="classData__t" kindref="compound">Data_t</ref> (which carry an id only). </para>
+    </detaileddescription>
+    <location file="src/entities/base/client.hpp" line="66" column="9"/>
+  </compounddef>
+</doxygen>

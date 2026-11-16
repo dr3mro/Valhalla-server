@@ -1,0 +1,983 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classEntityController" kind="class" language="C++" prot="public">
+    <compoundname>EntityController</compoundname>
+    <basecompoundref refid="classController" prot="public" virt="non-virtual">Controller</basecompoundref>
+    <basecompoundref refid="classEntityControllerBase" prot="public" virt="non-virtual">EntityControllerBase</basecompoundref>
+    <derivedcompoundref refid="classAppointmentController" prot="public" virt="non-virtual">AppointmentController&lt; T &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classClientController" prot="public" virt="non-virtual">ClientController&lt; T &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classClinicController" prot="public" virt="non-virtual">ClinicController&lt; T &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classServiceController" prot="public" virt="non-virtual">ServiceController&lt; T &gt;</derivedcompoundref>
+    <includes refid="entitycontroller_8hpp" local="no">entitycontroller.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;GateKeeper&gt; EntityController&lt; T &gt;::gateKeeper</definition>
+        <argsstring></argsstring>
+        <name>gateKeeper</name>
+        <qualifiedname>EntityController::gateKeeper</qualifiedname>
+        <initializer>= <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref>&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shared <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> used by every operation to authorize actions on behalf of the requester. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="154" column="21" bodyfile="src/controllers/entitycontroller/entitycontroller.hpp" bodystart="154" bodyend="-1"/>
+        <referencedby refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" compoundref="entitycontroller_8cpp" startline="57" endline="112">EntityController&lt; T &gt;::Create</referencedby>
+        <referencedby refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="290" endline="343">EntityController&lt; T &gt;::CreateAsync</referencedby>
+        <referencedby refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" compoundref="entitycontroller_8cpp" startline="224" endline="252">EntityController&lt; T &gt;::Delete</referencedby>
+        <referencedby refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" compoundref="entitycontroller_8cpp" startline="452" endline="480">EntityController&lt; T &gt;::DeleteAsync</referencedby>
+        <referencedby refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="115" endline="160">EntityController&lt; T &gt;::Read</referencedby>
+        <referencedby refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="345" endline="390">EntityController&lt; T &gt;::ReadAsync</referencedby>
+        <referencedby refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" compoundref="entitycontroller_8cpp" startline="162" endline="221">EntityController&lt; T &gt;::Update</referencedby>
+        <referencedby refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="392" endline="450">EntityController&lt; T &gt;::UpdateAsync</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EntityController&lt; T &gt;::EntityController</definition>
+        <argsstring>()=default</argsstring>
+        <name>EntityController</name>
+        <qualifiedname>EntityController::EntityController</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="65" column="5"/>
+        <referencedby refid="classEntityController_1a0d747765581fc7b8e2aeb021311a20b3">EntityController&lt; T &gt;::EntityController</referencedby>
+        <referencedby refid="classEntityController_1a04d928df412682361a6b4337f2f6e027">EntityController&lt; T &gt;::EntityController</referencedby>
+        <referencedby refid="classEntityController_1a7fd4702e0d3f27df13c4395c174c0f58">EntityController&lt; T &gt;::operator=</referencedby>
+        <referencedby refid="classEntityController_1a2887bd9e566dc27e0d49dfc9f8f1d9e2">EntityController&lt; T &gt;::operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classEntityController_1a0d747765581fc7b8e2aeb021311a20b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EntityController&lt; T &gt;::EntityController</definition>
+        <argsstring>(const EntityController &amp;)=default</argsstring>
+        <name>EntityController</name>
+        <qualifiedname>EntityController::EntityController</qualifiedname>
+        <param>
+          <type>const <ref refid="classEntityController" kindref="compound">EntityController</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="66" column="5"/>
+        <references refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690">EntityController&lt; T &gt;::EntityController</references>
+      </memberdef>
+      <memberdef kind="function" id="classEntityController_1a04d928df412682361a6b4337f2f6e027" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EntityController&lt; T &gt;::EntityController</definition>
+        <argsstring>(EntityController &amp;&amp;)=default</argsstring>
+        <name>EntityController</name>
+        <qualifiedname>EntityController::EntityController</qualifiedname>
+        <param>
+          <type><ref refid="classEntityController" kindref="compound">EntityController</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="67" column="5"/>
+        <references refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690">EntityController&lt; T &gt;::EntityController</references>
+      </memberdef>
+      <memberdef kind="function" id="classEntityController_1a7fd4702e0d3f27df13c4395c174c0f58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classEntityController" kindref="compound">EntityController</ref> &amp;</type>
+        <definition>EntityController &amp; EntityController&lt; T &gt;::operator=</definition>
+        <argsstring>(const EntityController &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>EntityController::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classEntityController" kindref="compound">EntityController</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="68" column="22"/>
+        <references refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690">EntityController&lt; T &gt;::EntityController</references>
+      </memberdef>
+      <memberdef kind="function" id="classEntityController_1a2887bd9e566dc27e0d49dfc9f8f1d9e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classEntityController" kindref="compound">EntityController</ref> &amp;</type>
+        <definition>EntityController &amp; EntityController&lt; T &gt;::operator=</definition>
+        <argsstring>(EntityController &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>EntityController::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classEntityController" kindref="compound">EntityController</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="69" column="22"/>
+        <references refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690">EntityController&lt; T &gt;::EntityController</references>
+      </memberdef>
+      <memberdef kind="function" id="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EntityController&lt; T &gt;::~EntityController</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~EntityController</name>
+        <qualifiedname>EntityController::~EntityController</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="70" column="5"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" compoundref="entitycontroller_8cpp" startline="57" endline="112">EntityController&lt; T &gt;::Create</references>
+        <references refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="290" endline="343">EntityController&lt; T &gt;::CreateAsync</references>
+        <references refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" compoundref="entitycontroller_8cpp" startline="224" endline="252">EntityController&lt; T &gt;::Delete</references>
+        <references refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" compoundref="entitycontroller_8cpp" startline="452" endline="480">EntityController&lt; T &gt;::DeleteAsync</references>
+        <references refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="115" endline="160">EntityController&lt; T &gt;::Read</references>
+        <references refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="345" endline="390">EntityController&lt; T &gt;::ReadAsync</references>
+        <references refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" compoundref="entitycontroller_8cpp" startline="255" endline="287">EntityController&lt; T &gt;::Search</references>
+        <references refid="classEntityController_1a430903208b20b59481d07c88b66ac4f6" compoundref="entitycontroller_8cpp" startline="482" endline="514">EntityController&lt; T &gt;::SearchAsync</references>
+        <references refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" compoundref="entitycontroller_8cpp" startline="162" endline="221">EntityController&lt; T &gt;::Update</references>
+        <references refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="392" endline="450">EntityController&lt; T &gt;::UpdateAsync</references>
+      </memberdef>
+      <memberdef kind="function" id="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void EntityController&lt; T &gt;::Create</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data) override</argsstring>
+        <name>Create</name>
+        <qualifiedname>EntityController::Create</qualifiedname>
+        <reimplements refid="classEntityControllerBase_1a1094cb5fe08aaaba8cd5ec5c57784cf0">Create</reimplements>
+        <reimplementedby refid="classServiceController_1a138db9b26dcc863d6895ccb1f01a7123">Create</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Validates and authorizes a create request, then inserts the new entity. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Ignores server-controlled <computeroutput>id</computeroutput> in the schema rule; the database assigns the primary key. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked exactly once with the resulting HTTP status and body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal whose create permission is checked by <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body describing the new entity. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="80" column="10" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="57" bodyend="112"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="classController_1a092b50bf54ca1d6d6f706a5a052992b1" compoundref="controller_8hpp" startline="135" endline="139">Controller::Create</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
+        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="154">EntityController&lt; T &gt;::gateKeeper</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7acf64a80b49ebda9168c3d7a2b6f95f15" compoundref="validator_8hpp" startline="90">Validator::Rule::IGNORE_IF_MISSING_FROM_SCHEMA</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a61500db96634a6ab0be12a77a8460481" compoundref="validator_8hpp" startline="91">Validator::Rule::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA</references>
+        <references refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="52" endline="104">Validator::validateDatabaseCreateSchema</references>
+        <referencedby refid="classAppointmentController_1a07a0c78a16d4f88cf921a96d6a72858c" compoundref="appointmentcontroller_8cpp" startline="56" endline="59">AppointmentController&lt; T &gt;::Create</referencedby>
+        <referencedby refid="classServiceController_1a138db9b26dcc863d6895ccb1f01a7123" compoundref="servicecontroller_8cpp" startline="57" endline="60">ServiceController&lt; T &gt;::Create</referencedby>
+        <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classEntityController_1a0de2c6044f1460f85750e4d18635997b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>drogon::Task&lt; void &gt; EntityController&lt; T &gt;::CreateAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data) override</argsstring>
+        <name>CreateAsync</name>
+        <qualifiedname>EntityController::CreateAsync</qualifiedname>
+        <reimplements refid="classEntityControllerBase_1a7d18b72b305783a247f3d70c64ad391b">CreateAsync</reimplements>
+        <reimplementedby refid="classServiceController_1a5cdd73e0b08ae45f2d808070e5680025">CreateAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" kindref="member">Create()</ref>; awaits the asynchronous gate and persistence checks. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked exactly once on completion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal whose create permission is checked. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body describing the new entity; must outlive the coroutine. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="87" column="18" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="290" bodyend="343"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="classController_1a020c9869a16a1ac31bc2b2ce128cf51b" compoundref="controller_8hpp" startline="151" endline="155">Controller::CreateAsync</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
+        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="154">EntityController&lt; T &gt;::gateKeeper</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7acf64a80b49ebda9168c3d7a2b6f95f15" compoundref="validator_8hpp" startline="90">Validator::Rule::IGNORE_IF_MISSING_FROM_SCHEMA</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a61500db96634a6ab0be12a77a8460481" compoundref="validator_8hpp" startline="91">Validator::Rule::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA</references>
+        <references refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="52" endline="104">Validator::validateDatabaseCreateSchema</references>
+        <referencedby refid="classAppointmentController_1a5ae310b608a81f19c3e4a5d0bbb57666" compoundref="appointmentcontroller_8cpp" startline="68" endline="71">AppointmentController&lt; T &gt;::CreateAsync</referencedby>
+        <referencedby refid="classClientController_1a52b4114b1e619b6526ee861696eff6da" compoundref="clientcontroller_8cpp" startline="414" endline="417">ClientController&lt; T &gt;::CreateAsync</referencedby>
+        <referencedby refid="classServiceController_1a5cdd73e0b08ae45f2d808070e5680025" compoundref="servicecontroller_8cpp" startline="71" endline="74">ServiceController&lt; T &gt;::CreateAsync</referencedby>
+        <referencedby refid="classClinicController_1a6cc12150aba468806260399172fcd9ce" compoundref="cliniccontroller_8cpp" startline="119" endline="124">ClinicController&lt; T &gt;::CreateAsyncImpl</referencedby>
+        <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void EntityController&lt; T &gt;::Read</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data) override</argsstring>
+        <name>Read</name>
+        <qualifiedname>EntityController::Read</qualifiedname>
+        <reimplements refid="classEntityControllerBase_1a8a392d8c3fd918f13c644079d727effa">Read</reimplements>
+        <reimplementedby refid="classServiceController_1a92157307a0c39b6623d7a5cb75a0e7bf">Read</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Validates and authorizes a read request, then reads the selected columns of an entity. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The body must carry a numeric <computeroutput>id</computeroutput> and a <computeroutput>schema</computeroutput> array; forbidden fields (e.g. <computeroutput>password</computeroutput>) are rejected by the read-schema rule. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked exactly once with the resulting HTTP status and body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal whose read permission is checked. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body containing <computeroutput>id</computeroutput> and <computeroutput>schema</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="96" column="10" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="115" bodyend="160"/>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" compoundref="validator_8hpp" startline="93">Validator::Rule::ASSERT_NOT_PRESENT</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
+        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="154">EntityController&lt; T &gt;::gateKeeper</references>
+        <references refid="classController_1a99ba169c6f8163fd44cf966510c2730c" compoundref="controller_8hpp" startline="166" endline="170">Controller::Read</references>
+        <references refid="classValidator_1a950c1350bd04c695d0add09b31db3974" compoundref="validator_8cpp" startline="162" endline="198">Validator::validateDatabaseReadSchema</references>
+        <referencedby refid="classAppointmentController_1a304bdc460cdd955f0d08a7e5bc3611dc" compoundref="appointmentcontroller_8cpp" startline="81" endline="84">AppointmentController&lt; T &gt;::Read</referencedby>
+        <referencedby refid="classClientController_1a33f69fd2b79bc13817aa0574333266bf" compoundref="clientcontroller_8cpp" startline="120" endline="123">ClientController&lt; T &gt;::Read</referencedby>
+        <referencedby refid="classClinicController_1a0f109a3105237cccf7b29263ad6ff4ea" compoundref="cliniccontroller_8cpp" startline="320" endline="323">ClinicController&lt; T &gt;::Read</referencedby>
+        <referencedby refid="classServiceController_1a92157307a0c39b6623d7a5cb75a0e7bf" compoundref="servicecontroller_8cpp" startline="84" endline="87">ServiceController&lt; T &gt;::Read</referencedby>
+        <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>drogon::Task&lt; void &gt; EntityController&lt; T &gt;::ReadAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data) override</argsstring>
+        <name>ReadAsync</name>
+        <qualifiedname>EntityController::ReadAsync</qualifiedname>
+        <reimplements refid="classEntityControllerBase_1a023b63c4973ca2d03539b11cb9693453">ReadAsync</reimplements>
+        <reimplementedby refid="classServiceController_1ab279214d55b6c2fa43ad6ee069413c97">ReadAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" kindref="member">Read()</ref>; must be awaited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked exactly once on completion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal whose read permission is checked. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body containing <computeroutput>id</computeroutput> and <computeroutput>schema</computeroutput>; must outlive the coroutine. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="103" column="18" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="345" bodyend="390"/>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" compoundref="validator_8hpp" startline="93">Validator::Rule::ASSERT_NOT_PRESENT</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
+        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="154">EntityController&lt; T &gt;::gateKeeper</references>
+        <references refid="classController_1a055ea60472dc93fbb1c8af3d9f9d9091" compoundref="controller_8hpp" startline="181" endline="185">Controller::ReadAsync</references>
+        <references refid="classValidator_1a950c1350bd04c695d0add09b31db3974" compoundref="validator_8cpp" startline="162" endline="198">Validator::validateDatabaseReadSchema</references>
+        <referencedby refid="classAppointmentController_1a96bc67b390c572327b9cbee839ab97dd" compoundref="appointmentcontroller_8cpp" startline="93" endline="96">AppointmentController&lt; T &gt;::ReadAsync</referencedby>
+        <referencedby refid="classClientController_1a2a260581d3133c68635516102d87bbdb" compoundref="clientcontroller_8cpp" startline="420" endline="423">ClientController&lt; T &gt;::ReadAsync</referencedby>
+        <referencedby refid="classClinicController_1a00e426195a2f2a48140a94d7e258bf94" compoundref="cliniccontroller_8cpp" startline="326" endline="329">ClinicController&lt; T &gt;::ReadAsync</referencedby>
+        <referencedby refid="classServiceController_1ab279214d55b6c2fa43ad6ee069413c97" compoundref="servicecontroller_8cpp" startline="96" endline="99">ServiceController&lt; T &gt;::ReadAsync</referencedby>
+        <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classEntityController_1a351b900503468ac17e930c42fdf23bdf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void EntityController&lt; T &gt;::Update</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data, std::optional&lt; uint64_t &gt; _id) override</argsstring>
+        <name>Update</name>
+        <qualifiedname>EntityController::Update</qualifiedname>
+        <reimplements refid="classEntityControllerBase_1ae5d92e66680e04f297ac7449f1a8d9f4">Update</reimplements>
+        <reimplementedby refid="classServiceController_1a0bdcfc6e76c7864d0c84acd7be675ce4">Update</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>_id</declname>
+        </param>
+        <briefdescription>
+<para>Validates and authorizes an update request, then updates the entity. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked exactly once with the resulting HTTP status and body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal whose update permission is checked. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body holding the fields to change. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target entity id; a missing value is rejected with 400. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="111" column="10" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="162" bodyend="221"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
+        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="154">EntityController&lt; T &gt;::gateKeeper</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a0753c9c32b6bf47d97d8b16158906388" compoundref="validator_8hpp" startline="89">Validator::Rule::NONE</references>
+        <references refid="classController_1a19c2ebed1725708ab253bc0ba1d9b2c5" compoundref="controller_8hpp" startline="196" endline="200">Controller::Update</references>
+        <references refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" compoundref="validator_8cpp" startline="112" endline="154">Validator::validateDatabaseUpdateSchema</references>
+        <referencedby refid="classAppointmentController_1a8193e8f08b8afcc80abbaf8ffa9991e9" compoundref="appointmentcontroller_8cpp" startline="107" endline="110">AppointmentController&lt; T &gt;::Update</referencedby>
+        <referencedby refid="classClinicController_1ac9602c4667f7e5dadd4be920a9258d48" compoundref="cliniccontroller_8cpp" startline="332" endline="335">ClinicController&lt; T &gt;::Update</referencedby>
+        <referencedby refid="classServiceController_1a0bdcfc6e76c7864d0c84acd7be675ce4" compoundref="servicecontroller_8cpp" startline="110" endline="113">ServiceController&lt; T &gt;::Update</referencedby>
+        <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>drogon::Task&lt; void &gt; EntityController&lt; T &gt;::UpdateAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data, std::optional&lt; uint64_t &gt; _id) override</argsstring>
+        <name>UpdateAsync</name>
+        <qualifiedname>EntityController::UpdateAsync</qualifiedname>
+        <reimplements refid="classEntityControllerBase_1a65cfe323fc4255e1b8a06d5864be2616">UpdateAsync</reimplements>
+        <reimplementedby refid="classServiceController_1abbe959a26ec829cc66e5e1cfd8175577">UpdateAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>_id</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" kindref="member">Update()</ref>; must be awaited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked exactly once on completion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal whose update permission is checked. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body holding the fields to change; must outlive the coroutine. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target entity id; a missing value is rejected with 400. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="119" column="18" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="392" bodyend="450"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
+        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="154">EntityController&lt; T &gt;::gateKeeper</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a0753c9c32b6bf47d97d8b16158906388" compoundref="validator_8hpp" startline="89">Validator::Rule::NONE</references>
+        <references refid="classController_1a146f10399fc24f1052079827e6248b2a" compoundref="controller_8hpp" startline="211" endline="215">Controller::UpdateAsync</references>
+        <references refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" compoundref="validator_8cpp" startline="112" endline="154">Validator::validateDatabaseUpdateSchema</references>
+        <referencedby refid="classAppointmentController_1ac6ec86b8497afe05196a67967e6063c2" compoundref="appointmentcontroller_8cpp" startline="120" endline="123">AppointmentController&lt; T &gt;::UpdateAsync</referencedby>
+        <referencedby refid="classClientController_1ad218f6587a3135d5b5466401aac514e9" compoundref="clientcontroller_8cpp" startline="426" endline="429">ClientController&lt; T &gt;::UpdateAsync</referencedby>
+        <referencedby refid="classClinicController_1ae01eb0d9ae50dc1e58a118201030b89f" compoundref="cliniccontroller_8cpp" startline="338" endline="341">ClinicController&lt; T &gt;::UpdateAsync</referencedby>
+        <referencedby refid="classServiceController_1abbe959a26ec829cc66e5e1cfd8175577" compoundref="servicecontroller_8cpp" startline="123" endline="126">ServiceController&lt; T &gt;::UpdateAsync</referencedby>
+        <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void EntityController&lt; T &gt;::Delete</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; _id) override</argsstring>
+        <name>Delete</name>
+        <qualifiedname>EntityController::Delete</qualifiedname>
+        <reimplements refid="classEntityControllerBase_1ad7023964ed22d27aa3adc12dd5ac3d93">Delete</reimplements>
+        <reimplementedby refid="classServiceController_1adc89e37530112d08d7ee85aae48d8d3c">Delete</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>_id</declname>
+        </param>
+        <briefdescription>
+<para>Authorizes and performs a delete; a missing id is rejected with 406. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked exactly once with the resulting HTTP status and body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal whose delete permission is checked. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target entity id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="126" column="10" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="224" bodyend="252"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
+        <references refid="classController_1a1aee6ba4e59315c76893a2221808d719" compoundref="controller_8hpp" startline="226" endline="230">Controller::Delete</references>
+        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="154">EntityController&lt; T &gt;::gateKeeper</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="88">api::v2::Http::NOT_ACCEPTABLE</references>
+        <referencedby refid="classAppointmentController_1aae035bd4dac4df5e559e0e117534e260" compoundref="appointmentcontroller_8cpp" startline="133" endline="136">AppointmentController&lt; T &gt;::Delete</referencedby>
+        <referencedby refid="classClientController_1a57d1a8ba8f83b70242fcc29b7f8f70cb" compoundref="clientcontroller_8cpp" startline="169" endline="182">ClientController&lt; T &gt;::Delete</referencedby>
+        <referencedby refid="classServiceController_1adc89e37530112d08d7ee85aae48d8d3c" compoundref="servicecontroller_8cpp" startline="136" endline="139">ServiceController&lt; T &gt;::Delete</referencedby>
+        <referencedby refid="classClinicController_1aca363c98cad2d51f279275f84b8be1ce" compoundref="cliniccontroller_8cpp" startline="212" endline="216">ClinicController&lt; T &gt;::DeleteImpl</referencedby>
+        <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>drogon::Task&lt; void &gt; EntityController&lt; T &gt;::DeleteAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; _id) override</argsstring>
+        <name>DeleteAsync</name>
+        <qualifiedname>EntityController::DeleteAsync</qualifiedname>
+        <reimplements refid="classEntityControllerBase_1a0edce522edd2a4970d7853b433adbb7d">DeleteAsync</reimplements>
+        <reimplementedby refid="classServiceController_1a69e19ca4bc442fd85af8df06ed98b5dc">DeleteAsync</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; uint64_t &gt;</type>
+          <declname>_id</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" kindref="member">Delete()</ref>; must be awaited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked exactly once on completion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Principal whose delete permission is checked. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target entity id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="133" column="18" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="452" bodyend="480"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
+        <references refid="classController_1a7a0500b8cc369da32375933abd6e1fb1" compoundref="controller_8hpp" startline="241" endline="245">Controller::DeleteAsync</references>
+        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="154">EntityController&lt; T &gt;::gateKeeper</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="88">api::v2::Http::NOT_ACCEPTABLE</references>
+        <referencedby refid="classAppointmentController_1a7c0fa66b965e56315970b935e1bb2ad0" compoundref="appointmentcontroller_8cpp" startline="145" endline="148">AppointmentController&lt; T &gt;::DeleteAsync</referencedby>
+        <referencedby refid="classClientController_1addb2c711f70f69b197b67da384b80c2d" compoundref="clientcontroller_8cpp" startline="432" endline="444">ClientController&lt; T &gt;::DeleteAsync</referencedby>
+        <referencedby refid="classServiceController_1a69e19ca4bc442fd85af8df06ed98b5dc" compoundref="servicecontroller_8cpp" startline="148" endline="151">ServiceController&lt; T &gt;::DeleteAsync</referencedby>
+        <referencedby refid="classClinicController_1ae70f0975a505349680600bf924538c7a" compoundref="cliniccontroller_8cpp" startline="230" endline="234">ClinicController&lt; T &gt;::DeleteAsyncImpl</referencedby>
+        <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void EntityController&lt; T &gt;::Search</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data) override</argsstring>
+        <name>Search</name>
+        <qualifiedname>EntityController::Search</qualifiedname>
+        <reimplements refid="classEntityControllerBase_1ace1793314727472edb5aeb5e03cdf622">Search</reimplements>
+        <reimplementedby refid="classServiceController_1af655c40238892ccf0103ebf85ac4d438">Search</reimplementedby>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Parses search criteria into a <ref refid="classSearch__t" kindref="compound">Search_t</ref> and runs the paginated search. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The requester is accepted for interface uniformity but is not used by this implementation. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked exactly once with the resulting HTTP status and body. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Unused principal. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body containing criteria, limit and offset. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="141" column="10" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="255" bodyend="287"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="88">api::v2::Http::NOT_ACCEPTABLE</references>
+        <references refid="classController_1aaa9930fa3fdd7c91a56392f3e1440736" compoundref="controller_8hpp" startline="261" endline="309">Controller::Search</references>
+        <referencedby refid="classAppointmentController_1a9052acc829edcd321478db51124386d4" compoundref="appointmentcontroller_8cpp" startline="159" endline="162">AppointmentController&lt; T &gt;::Search</referencedby>
+        <referencedby refid="classClientController_1a36c5c10efab0dcfdf020f6702a6ff9bb" compoundref="clientcontroller_8cpp" startline="185" endline="188">ClientController&lt; T &gt;::Search</referencedby>
+        <referencedby refid="classServiceController_1af655c40238892ccf0103ebf85ac4d438" compoundref="servicecontroller_8cpp" startline="162" endline="165">ServiceController&lt; T &gt;::Search</referencedby>
+        <referencedby refid="classClinicController_1a1f5a5a8c1ec63ea2d5e3e7ac89be22ad" compoundref="cliniccontroller_8cpp" startline="249" endline="253">ClinicController&lt; T &gt;::SearchImpl</referencedby>
+        <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classEntityController_1a430903208b20b59481d07c88b66ac4f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>drogon::Task&lt; void &gt;</type>
+        <definition>drogon::Task&lt; void &gt; EntityController&lt; T &gt;::SearchAsync</definition>
+        <argsstring>(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data) override</argsstring>
+        <name>SearchAsync</name>
+        <qualifiedname>EntityController::SearchAsync</qualifiedname>
+        <reimplements refid="classEntityControllerBase_1a3ed2dd3c8c29b82c86ace136191b6c30">SearchAsync</reimplements>
+        <param>
+          <type><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref> &amp;&amp;</type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structRequester" kindref="compound">Requester</ref> &amp;&amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" kindref="member">Search()</ref>; must be awaited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Invoked exactly once on completion. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Unused principal. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>JSON body containing criteria, limit and offset; must outlive the coroutine. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="148" column="18" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="482" bodyend="514"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="88">api::v2::Http::NOT_ACCEPTABLE</references>
+        <references refid="classController_1ae3f0e461a7a50529945f6e70ba5572be" compoundref="controller_8hpp" startline="321" endline="366">Controller::SearchAsync</references>
+        <referencedby refid="classClientController_1ab7c4ffff79c0e56214abb463ae375925" compoundref="clientcontroller_8cpp" startline="447" endline="450">ClientController&lt; T &gt;::SearchAsync</referencedby>
+        <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence to <ref refid="classController" kindref="compound">Controller</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Combines the persistence engine (<ref refid="classController" kindref="compound">Controller</ref>) with the abstract CRUDS interface (<ref refid="classEntityControllerBase" kindref="compound">EntityControllerBase</ref>). Each operation follows the same pipeline: parse/validate the JSON body against the entity&apos;s database schema, ask <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> whether <computeroutput>requester</computeroutput> may perform the action, construct the entity from the appropriate Types data carrier, and call the matching <ref refid="classController" kindref="compound">Controller</ref> method (or its coroutine counterpart). Failure at any stage answers through <computeroutput>callback</computeroutput> and returns early, so no database connection is taken for a request that fails validation or authorization.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classEntity" kindref="compound">Entity</ref> type whose static <computeroutput>getTableName()</computeroutput> and data-carrier constructors (Create_t/Read_t/Update_t/ Delete_t/Search_t) define the schema used for validation and persistence. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>All operations are <computeroutput>override</computeroutput> implementations of <ref refid="classEntityControllerBase" kindref="compound">EntityControllerBase</ref>. Coroutine variants borrow their arguments and must be awaited while those arguments (and the controller) remain alive. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classEntityControllerBase" kindref="compound">EntityControllerBase</ref>, <ref refid="classController" kindref="compound">Controller</ref>, <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>AppointmentController&lt; T &gt;</label>
+        <link refid="classAppointmentController"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>ClientController&lt; T &gt;</label>
+        <link refid="classClientController"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>ClinicController&lt; T &gt;</label>
+        <link refid="classClinicController"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Controller</label>
+        <link refid="classController"/>
+      </node>
+      <node id="1">
+        <label>EntityController&lt; T &gt;</label>
+        <link refid="classEntityController"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>EntityControllerBase</label>
+        <link refid="classEntityControllerBase"/>
+      </node>
+      <node id="7">
+        <label>ServiceController&lt; T &gt;</label>
+        <link refid="classServiceController"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Controller</label>
+        <link refid="classController"/>
+      </node>
+      <node id="1">
+        <label>EntityController&lt; T &gt;</label>
+        <link refid="classEntityController"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>EntityControllerBase</label>
+        <link refid="classEntityControllerBase"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="62" column="1" bodyfile="src/controllers/entitycontroller/entitycontroller.hpp" bodystart="63" bodyend="155"/>
+    <listofallmembers>
+      <member refid="classController_1a29dac549946db2810cb4435323502c75" prot="protected" virt="non-virtual"><scope>EntityController</scope><name>addStaff</name></member>
+      <member refid="classController_1a1bb3245ec82d14644a2359cd546ea218" prot="protected" virt="non-virtual"><scope>EntityController</scope><name>addStaffAsync</name></member>
+      <member refid="classController_1a95c56822d667e94b031451729ce069a9" prot="public" virt="non-virtual"><scope>EntityController</scope><name>Controller</name></member>
+      <member refid="classController_1ac6a59b454d3645fb5bef2a31020ead86" prot="public" virt="non-virtual"><scope>EntityController</scope><name>Controller</name></member>
+      <member refid="classController_1a5a91bf889588243924bd2365eec28370" prot="public" virt="non-virtual"><scope>EntityController</scope><name>Controller</name></member>
+      <member refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" prot="public" virt="virtual"><scope>EntityController</scope><name>Create</name></member>
+      <member refid="classController_1a092b50bf54ca1d6d6f706a5a052992b1" prot="public" virt="non-virtual" ambiguityscope="Controller::"><scope>EntityController</scope><name>Create</name></member>
+      <member refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" prot="public" virt="virtual"><scope>EntityController</scope><name>CreateAsync</name></member>
+      <member refid="classController_1a020c9869a16a1ac31bc2b2ce128cf51b" prot="public" virt="non-virtual" ambiguityscope="Controller::"><scope>EntityController</scope><name>CreateAsync</name></member>
+      <member refid="classController_1a9572f3d51ae972102f3335d7a87d610a" prot="protected" virt="non-virtual"><scope>EntityController</scope><name>cruds</name></member>
+      <member refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" prot="protected" virt="non-virtual"><scope>EntityController</scope><name>crudsAsync</name></member>
+      <member refid="classController_1a576e9528aae60df4325fdd721c2eba23" prot="private" virt="non-virtual"><scope>EntityController</scope><name>databaseController</name></member>
+      <member refid="classController_1ae6fd410649122f029bd60165049aca25" prot="private" virt="non-virtual"><scope>EntityController</scope><name>dbexec</name></member>
+      <member refid="classController_1a2f842d61277276dde02ce616b56fff59" prot="private" virt="non-virtual"><scope>EntityController</scope><name>dbrexec</name></member>
+      <member refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" prot="public" virt="virtual"><scope>EntityController</scope><name>Delete</name></member>
+      <member refid="classController_1a1aee6ba4e59315c76893a2221808d719" prot="public" virt="non-virtual" ambiguityscope="Controller::"><scope>EntityController</scope><name>Delete</name></member>
+      <member refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" prot="public" virt="virtual"><scope>EntityController</scope><name>DeleteAsync</name></member>
+      <member refid="classController_1a7a0500b8cc369da32375933abd6e1fb1" prot="public" virt="non-virtual" ambiguityscope="Controller::"><scope>EntityController</scope><name>DeleteAsync</name></member>
+      <member refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" prot="public" virt="non-virtual"><scope>EntityController</scope><name>EntityController</name></member>
+      <member refid="classEntityController_1a0d747765581fc7b8e2aeb021311a20b3" prot="public" virt="non-virtual"><scope>EntityController</scope><name>EntityController</name></member>
+      <member refid="classEntityController_1a04d928df412682361a6b4337f2f6e027" prot="public" virt="non-virtual"><scope>EntityController</scope><name>EntityController</name></member>
+      <member refid="classEntityControllerBase_1a945e355f1db0eb3e3775f4b39ff5cc58" prot="public" virt="non-virtual"><scope>EntityController</scope><name>EntityControllerBase</name></member>
+      <member refid="classEntityControllerBase_1abfefd98b04bb8f2a2676107b1a33171d" prot="public" virt="non-virtual"><scope>EntityController</scope><name>EntityControllerBase</name></member>
+      <member refid="classEntityControllerBase_1a22613f90bc73fa078b391978d3bfc53a" prot="public" virt="non-virtual"><scope>EntityController</scope><name>EntityControllerBase</name></member>
+      <member refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" prot="private" virt="non-virtual"><scope>EntityController</scope><name>gateKeeper</name></member>
+      <member refid="classController_1ad8517f93d94b2584124d06d0904c8c28" prot="public" virt="non-virtual"><scope>EntityController</scope><name>GetServices</name></member>
+      <member refid="classController_1a2573416082a8360340c3f55c12b0c0b5" prot="public" virt="non-virtual"><scope>EntityController</scope><name>GetServicesAsync</name></member>
+      <member refid="classController_1acd1d7cb00688b69469719ff7789f3cd9" prot="public" virt="non-virtual"><scope>EntityController</scope><name>GetVisits</name></member>
+      <member refid="classController_1a2af2297a7b4fcce1f987510786aaa5d7" prot="public" virt="non-virtual"><scope>EntityController</scope><name>GetVisitsAsync</name></member>
+      <member refid="classEntityController_1a7fd4702e0d3f27df13c4395c174c0f58" prot="public" virt="non-virtual"><scope>EntityController</scope><name>operator=</name></member>
+      <member refid="classEntityController_1a2887bd9e566dc27e0d49dfc9f8f1d9e2" prot="public" virt="non-virtual"><scope>EntityController</scope><name>operator=</name></member>
+      <member refid="classController_1a6a404621633b78b5a19e6565dd7e42d0" prot="public" virt="non-virtual" ambiguityscope="Controller::"><scope>EntityController</scope><name>operator=</name></member>
+      <member refid="classController_1a83201176e6585c614555ba8609e50f59" prot="public" virt="non-virtual" ambiguityscope="Controller::"><scope>EntityController</scope><name>operator=</name></member>
+      <member refid="classEntityControllerBase_1a03a2497cb1b96cce5ac25a6fa56baaa3" prot="public" virt="non-virtual" ambiguityscope="EntityControllerBase::"><scope>EntityController</scope><name>operator=</name></member>
+      <member refid="classEntityControllerBase_1a9eebe753fa710a323d5ad30f0df721da" prot="public" virt="non-virtual" ambiguityscope="EntityControllerBase::"><scope>EntityController</scope><name>operator=</name></member>
+      <member refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" prot="public" virt="virtual"><scope>EntityController</scope><name>Read</name></member>
+      <member refid="classController_1a99ba169c6f8163fd44cf966510c2730c" prot="public" virt="non-virtual" ambiguityscope="Controller::"><scope>EntityController</scope><name>Read</name></member>
+      <member refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" prot="public" virt="virtual"><scope>EntityController</scope><name>ReadAsync</name></member>
+      <member refid="classController_1a055ea60472dc93fbb1c8af3d9f9d9091" prot="public" virt="non-virtual" ambiguityscope="Controller::"><scope>EntityController</scope><name>ReadAsync</name></member>
+      <member refid="classController_1ae33c97548e0d8cdd3f2289573d1a0dba" prot="protected" virt="non-virtual"><scope>EntityController</scope><name>removeStaff</name></member>
+      <member refid="classController_1a417810c27071d4c1fae298b518d7819f" prot="protected" virt="non-virtual"><scope>EntityController</scope><name>removeStaffAsync</name></member>
+      <member refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" prot="public" virt="virtual"><scope>EntityController</scope><name>Search</name></member>
+      <member refid="classController_1aaa9930fa3fdd7c91a56392f3e1440736" prot="public" virt="non-virtual" ambiguityscope="Controller::"><scope>EntityController</scope><name>Search</name></member>
+      <member refid="classEntityController_1a430903208b20b59481d07c88b66ac4f6" prot="public" virt="virtual"><scope>EntityController</scope><name>SearchAsync</name></member>
+      <member refid="classController_1ae3f0e461a7a50529945f6e70ba5572be" prot="public" virt="non-virtual" ambiguityscope="Controller::"><scope>EntityController</scope><name>SearchAsync</name></member>
+      <member refid="classController_1acf60ad2a21b8d7c3c7a81d9412b6cd3c" prot="public" virt="non-virtual"><scope>EntityController</scope><name>Suspend</name></member>
+      <member refid="classController_1a82399a341c86ed94ac1ade56ced71dc7" prot="public" virt="non-virtual"><scope>EntityController</scope><name>SuspendAsync</name></member>
+      <member refid="classController_1a9b6e3fd0227fcb95b0831aef3b4e5f08" prot="public" virt="non-virtual"><scope>EntityController</scope><name>Unsuspend</name></member>
+      <member refid="classController_1a0044a385830517e3a97e0b250dce4748" prot="public" virt="non-virtual"><scope>EntityController</scope><name>UnsuspendAsync</name></member>
+      <member refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" prot="public" virt="virtual"><scope>EntityController</scope><name>Update</name></member>
+      <member refid="classController_1a19c2ebed1725708ab253bc0ba1d9b2c5" prot="public" virt="non-virtual" ambiguityscope="Controller::"><scope>EntityController</scope><name>Update</name></member>
+      <member refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" prot="public" virt="virtual"><scope>EntityController</scope><name>UpdateAsync</name></member>
+      <member refid="classController_1a146f10399fc24f1052079827e6248b2a" prot="public" virt="non-virtual" ambiguityscope="Controller::"><scope>EntityController</scope><name>UpdateAsync</name></member>
+      <member refid="classController_1a8d16a7a97c266dc0d5aa5685c4dcdd89" prot="public" virt="virtual"><scope>EntityController</scope><name>~Controller</name></member>
+      <member refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b" prot="public" virt="non-virtual"><scope>EntityController</scope><name>~EntityController</name></member>
+      <member refid="classEntityControllerBase_1a202b4e0e30ec88fcd87fdeb96ac1c22b" prot="public" virt="virtual"><scope>EntityController</scope><name>~EntityControllerBase</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

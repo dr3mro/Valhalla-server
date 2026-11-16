@@ -1,0 +1,381 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classBase" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>Base</compoundname>
+    <derivedcompoundref refid="classEntity" prot="public" virt="non-virtual">Entity</derivedcompoundref>
+    <includes refid="base_8hpp" local="no">base.hpp</includes>
+    <innerclass refid="structBase_1_1Binder" prot="protected">Base::Binder</innerclass>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Base::Base</definition>
+        <argsstring>()=default</argsstring>
+        <name>Base</name>
+        <qualifiedname>Base::Base</qualifiedname>
+        <briefdescription>
+<para>Default construction; the interface itself carries no state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/base.hpp" line="61" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classBase_1a306fb25541331080645a716286357ef9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual Base::~Base</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Base</name>
+        <qualifiedname>Base::~Base</qualifiedname>
+        <briefdescription>
+<para>Permits safe deletion through a <ref refid="classBase" kindref="compound">Base</ref> pointer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/base.hpp" line="66" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classBase_1a370479ee58fedd41365acea55b47de9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>virtual std::optional&lt; std::string &gt; Base::getSqlCreateStatement</definition>
+        <argsstring>(pqxx::params &amp;params)=0</argsstring>
+        <name>getSqlCreateStatement</name>
+        <qualifiedname>Base::getSqlCreateStatement</qualifiedname>
+        <reimplementedby refid="classapi_1_1v2_1_1Client_1a994474b95fd751b3672b0abf6dd01269">getSqlCreateStatement</reimplementedby>
+        <reimplementedby refid="classEntity_1a32f18508b15bf1f4c6494768bda527be">getSqlCreateStatement</reimplementedby>
+        <param>
+          <type>pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Builds the INSERT statement for the entity&apos;s payload. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives the values for the returned placeholders; builders clear it first. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>SQL with $n placeholders, or std::nullopt if the statement cannot be built. </para>
+</simplesect>
+<simplesect kind="note"><para>Values are bound rather than embedded in the returned text. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/base.hpp" line="76" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBase_1ad1d05549ca23bf4602c86fb3f6575d30" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>virtual std::optional&lt; std::string &gt; Base::getSqlReadStatement</definition>
+        <argsstring>(pqxx::params &amp;params)=0</argsstring>
+        <name>getSqlReadStatement</name>
+        <qualifiedname>Base::getSqlReadStatement</qualifiedname>
+        <reimplementedby refid="classEntity_1a90ab6d6ae7c3431c3ede1201654b209a">getSqlReadStatement</reimplementedby>
+        <param>
+          <type>pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Builds the SELECT statement for reading one entity by id. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives the bound id; builders clear the container first. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>SQL with $n placeholders, or std::nullopt if no usable statement can be built (for example, when no id is available). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/base.hpp" line="84" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBase_1a48122a0f0bd77d2aadcbe10b3e0863fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>virtual std::optional&lt; std::string &gt; Base::getSqlUpdateStatement</definition>
+        <argsstring>(pqxx::params &amp;params)=0</argsstring>
+        <name>getSqlUpdateStatement</name>
+        <qualifiedname>Base::getSqlUpdateStatement</qualifiedname>
+        <reimplementedby refid="classapi_1_1v2_1_1Client_1a8f03cab52fd829c80e7eb46751f7f1e4">getSqlUpdateStatement</reimplementedby>
+        <reimplementedby refid="classEntity_1af1c8231f215f8941d8424d2b165ba818">getSqlUpdateStatement</reimplementedby>
+        <param>
+          <type>pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Builds the UPDATE statement for the entity&apos;s payload. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives the bound values and id; builders clear the container first. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>SQL with $n placeholders, or std::nullopt if no usable statement can be built. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/base.hpp" line="91" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBase_1a35f7a42b849a9eaf439715a4b280a8f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>virtual std::optional&lt; std::string &gt; Base::getSqlDeleteStatement</definition>
+        <argsstring>(pqxx::params &amp;params)=0</argsstring>
+        <name>getSqlDeleteStatement</name>
+        <qualifiedname>Base::getSqlDeleteStatement</qualifiedname>
+        <reimplementedby refid="classEntity_1aa66bbebb8b50f7d91153231b1f6ab997">getSqlDeleteStatement</reimplementedby>
+        <param>
+          <type>pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Builds the DELETE statement for an entity identified by id. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives the bound id; builders clear the container first. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>SQL with $n placeholders, or std::nullopt if no usable statement can be built. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/base.hpp" line="98" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBase_1a3b86dc196e03d75434ff98e8e04fe303" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>virtual std::optional&lt; std::string &gt; Base::getSqlSearchStatement</definition>
+        <argsstring>(pqxx::params &amp;params)=0</argsstring>
+        <name>getSqlSearchStatement</name>
+        <qualifiedname>Base::getSqlSearchStatement</qualifiedname>
+        <reimplementedby refid="classEntity_1a362c3e70e483e2378ab08414c1eacdd7">getSqlSearchStatement</reimplementedby>
+        <param>
+          <type>pqxx::params &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+<para>Builds the paginated search statement for the entity&apos;s table. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives the bound keyword, limit and offset; builders clear it first. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>SQL with $n placeholders, or std::nullopt if no usable statement can be built. </para>
+</simplesect>
+<simplesect kind="note"><para>Search filters and ordering identifiers cannot be bound and are instead validated before being written into the statement by the concrete value types. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/entities/base/base.hpp" line="107" column="27"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="classBase" kindref="compound">Base</ref> class for all entities in the application. Provides common functionality for creating, reading, updating, deleting, and searching entities. Derived classes must implement the virtual functions to provide the SQL statements for each operation.</para>
+<para>The interface separates deciding what SQL to run from executing it: a caller asks an entity for a statement plus its bound parameters and hands both to the database layer. Every builder returns SQL containing only $1, $2, ... placeholders and appends the actual values to the caller-supplied pqxx::params, so column values are never written into the SQL text. A builder returns std::nullopt when it cannot produce a usable statement. <simplesect kind="note"><para>The destructor is virtual because entities are used polymorphically through this interface. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="structBase_1_1Binder" kindref="compound">Binder</ref> </para>
+</simplesect>
+<simplesect kind="note"><para>For a beginner: &quot;virtual&quot; means the call is decided at runtime, so a <ref refid="classBase" kindref="compound">Base</ref> pointer can reach the correct derived-class version of each function. &quot;= 0&quot; means this class gives no body and forces children to provide one; that is what makes <ref refid="classBase" kindref="compound">Base</ref> abstract (not instantiable). </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>Appointment</label>
+        <link refid="classAppointment"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Base</label>
+        <link refid="classBase"/>
+      </node>
+      <node id="8">
+        <label>Case</label>
+        <link refid="classCase"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>ClinicAppointment</label>
+        <link refid="classClinicAppointment"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>Clinics</label>
+        <link refid="classClinics"/>
+        <childnode refid="18" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Entity</label>
+        <link refid="classEntity"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Health</label>
+        <link refid="classHealth"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>Laboratories</label>
+        <link refid="classLaboratories"/>
+        <childnode refid="18" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>LaboratoryAppointment</label>
+        <link refid="classLaboratoryAppointment"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>PaidServices</label>
+        <link refid="classPaidServices"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>Patient</label>
+        <link refid="classPatient"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>PatientDrugs</label>
+        <link refid="classPatientDrugs"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>Pharmacies</label>
+        <link refid="classPharmacies"/>
+        <childnode refid="18" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>PharmacyAppointment</label>
+        <link refid="classPharmacyAppointment"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>Prescriptions</label>
+        <link refid="classPrescriptions"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>Provider</label>
+        <link refid="classProvider"/>
+        <childnode refid="23" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>RadiologyCenterAppointment</label>
+        <link refid="classRadiologyCenterAppointment"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>RadiologyCenters</label>
+        <link refid="classRadiologyCenters"/>
+        <childnode refid="18" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>Reports</label>
+        <link refid="classReports"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>Requests</label>
+        <link refid="classRequests"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>Service</label>
+        <link refid="classService"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>User</label>
+        <link refid="classUser"/>
+        <childnode refid="23" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>VisitDrugs</label>
+        <link refid="classVisitDrugs"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>Visits</label>
+        <link refid="classVisits"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>api::v2::Client</label>
+        <link refid="classapi_1_1v2_1_1Client"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/entities/base/base.hpp" line="55" column="1" bodyfile="src/entities/base/base.hpp" bodystart="56" bodyend="153"/>
+    <listofallmembers>
+      <member refid="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" virt="non-virtual"><scope>Base</scope><name>Base</name></member>
+      <member refid="classBase_1a370479ee58fedd41365acea55b47de9b" prot="public" virt="pure-virtual"><scope>Base</scope><name>getSqlCreateStatement</name></member>
+      <member refid="classBase_1a35f7a42b849a9eaf439715a4b280a8f4" prot="public" virt="pure-virtual"><scope>Base</scope><name>getSqlDeleteStatement</name></member>
+      <member refid="classBase_1ad1d05549ca23bf4602c86fb3f6575d30" prot="public" virt="pure-virtual"><scope>Base</scope><name>getSqlReadStatement</name></member>
+      <member refid="classBase_1a3b86dc196e03d75434ff98e8e04fe303" prot="public" virt="pure-virtual"><scope>Base</scope><name>getSqlSearchStatement</name></member>
+      <member refid="classBase_1a48122a0f0bd77d2aadcbe10b3e0863fd" prot="public" virt="pure-virtual"><scope>Base</scope><name>getSqlUpdateStatement</name></member>
+      <member refid="classBase_1a306fb25541331080645a716286357ef9" prot="public" virt="virtual"><scope>Base</scope><name>~Base</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

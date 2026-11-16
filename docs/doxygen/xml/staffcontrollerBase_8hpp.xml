@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="staffcontrollerBase_8hpp" kind="file" language="C++">
+    <compoundname>staffcontrollerBase.hpp</compoundname>
+    <includes local="no">string_view</includes>
+    <includes local="yes">drogon/utils/coroutine.h</includes>
+    <includes refid="callback_8hpp" local="yes">utils/global/callback.hpp</includes>
+    <includes refid="requester_8hpp" local="yes">utils/global/requester.hpp</includes>
+    <includedby refid="staff_8hpp" local="yes">src/api/v2/routes/staff.hpp</includedby>
+    <includedby refid="staffcontroller_8cpp" local="yes">src/controllers/staffcontroller/staffcontroller.cpp</includedby>
+    <includedby refid="staffcontroller_8hpp" local="yes">src/controllers/staffcontroller/staffcontroller.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>src/controllers/staffcontroller/staffcontrollerBase.hpp</label>
+        <link refid="staffcontrollerBase_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>utils/global/callback.hpp</label>
+        <link refid="callback_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>utils/global/requester.hpp</label>
+        <link refid="requester_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>cstdint</label>
+      </node>
+      <node id="3">
+        <label>drogon/utils/coroutine.h</label>
+      </node>
+      <node id="5">
+        <label>functional</label>
+      </node>
+      <node id="8">
+        <label>string</label>
+      </node>
+      <node id="2">
+        <label>string_view</label>
+      </node>
+      <node id="9">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>src/api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/api/v2/routes/staff.hpp</label>
+        <link refid="staff_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
+        <link refid="staffcontroller_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
+        <link refid="staffcontroller_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/controllers/staffcontroller/staffcontrollerBase.hpp</label>
+        <link refid="staffcontrollerBase_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classStaffControllerBase" prot="public">StaffControllerBase</innerclass>
+    <briefdescription>
+<para>Type-erased interface for service-staff management operations. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>In plain words, this file lists the three jobs that deal with the people who work for a service entity (a clinic, pharmacy, etc.): Add a staff member, Remove a staff member, and Invite a staff member by email. &quot;Type-erased&quot; means the rest of the server can call these jobs without knowing which exact kind of service is behind them. Each job appears twice: an ordinary version that reports its result through a callback (a &quot;call me when you are done&quot; function), and an &quot;async&quot; version that uses a coroutine (a function that can pause and resume later). This file only declares the jobs; the real work lives in the class that inherits from it.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: This is the doorway the staff HTTP routes use to reach the concrete staff controller for any service type. Because the functions here are &quot;virtual&quot;, one route handler can serve clinics, pharmacies, laboratories and radiology centers alike — the call is automatically forwarded to the right object (selected with a <computeroutput>std::variant</computeroutput>, a variable that can hold one of several types). This file calls into nothing itself, but it is the contract that <ref refid="classStaffController" kindref="compound">StaffController</ref> implements and that the route registry depends on. Without it, managing staff would need separate route code for each entity type.</para>
+<para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
+<listitem><para>Virtual functions (calling the right version through a base pointer): <ulink url="https://en.cppreference.com/w/cpp/language/virtual">https://en.cppreference.com/w/cpp/language/virtual</ulink></para>
+</listitem><listitem><para>C++20 coroutines (functions that pause and resume with co_await/co_return): <ulink url="https://en.cppreference.com/w/cpp/language/coroutines">https://en.cppreference.com/w/cpp/language/coroutines</ulink></para>
+</listitem><listitem><para>std::variant (a type-safe union holding one of several alternatives): <ulink url="https://en.cppreference.com/w/cpp/utility/variant">https://en.cppreference.com/w/cpp/utility/variant</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+</simplesect>
+<simplesect kind="date"><para>2026-11-16 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>staffcontrollerBase.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Type-erased<sp/>interface<sp/>for<sp/>service-staff<sp/>management<sp/>operations.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>In<sp/>plain<sp/>words,<sp/>this<sp/>file<sp/>lists<sp/>the<sp/>three<sp/>jobs<sp/>that<sp/>deal<sp/>with<sp/>the<sp/>people<sp/>who<sp/>work<sp/>for<sp/>a</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>service<sp/>entity<sp/>(a<sp/>clinic,<sp/>pharmacy,<sp/>etc.):<sp/>Add<sp/>a<sp/>staff<sp/>member,<sp/>Remove<sp/>a<sp/>staff<sp/>member,<sp/>and</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Invite<sp/>a<sp/>staff<sp/>member<sp/>by<sp/>email.<sp/>&quot;Type-erased&quot;<sp/>means<sp/>the<sp/>rest<sp/>of<sp/>the<sp/>server<sp/>can<sp/>call<sp/>these<sp/>jobs</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>without<sp/>knowing<sp/>which<sp/>exact<sp/>kind<sp/>of<sp/>service<sp/>is<sp/>behind<sp/>them.<sp/>Each<sp/>job<sp/>appears<sp/>twice:<sp/>an<sp/>ordinary</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>version<sp/>that<sp/>reports<sp/>its<sp/>result<sp/>through<sp/>a<sp/>callback<sp/>(a<sp/>&quot;call<sp/>me<sp/>when<sp/>you<sp/>are<sp/>done&quot;<sp/>function),<sp/>and</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>an<sp/>&quot;async&quot;<sp/>version<sp/>that<sp/>uses<sp/>a<sp/>coroutine<sp/>(a<sp/>function<sp/>that<sp/>can<sp/>pause<sp/>and<sp/>resume<sp/>later).<sp/>This<sp/>file</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>only<sp/>declares<sp/>the<sp/>jobs;<sp/>the<sp/>real<sp/>work<sp/>lives<sp/>in<sp/>the<sp/>class<sp/>that<sp/>inherits<sp/>from<sp/>it.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>the<sp/>doorway<sp/>the<sp/>staff<sp/>HTTP<sp/>routes<sp/>use<sp/>to<sp/>reach<sp/>the<sp/>concrete<sp/>staff<sp/>controller<sp/>for<sp/>any<sp/>service</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>type.<sp/>Because<sp/>the<sp/>functions<sp/>here<sp/>are<sp/>&quot;virtual&quot;,<sp/>one<sp/>route<sp/>handler<sp/>can<sp/>serve<sp/>clinics,<sp/>pharmacies,</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>laboratories<sp/>and<sp/>radiology<sp/>centers<sp/>alike<sp/>—<sp/>the<sp/>call<sp/>is<sp/>automatically<sp/>forwarded<sp/>to<sp/>the<sp/>right<sp/>object</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>(selected<sp/>with<sp/>a<sp/>`std::variant`,<sp/>a<sp/>variable<sp/>that<sp/>can<sp/>hold<sp/>one<sp/>of<sp/>several<sp/>types).<sp/>This<sp/>file<sp/>calls<sp/>into</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>nothing<sp/>itself,<sp/>but<sp/>it<sp/>is<sp/>the<sp/>contract<sp/>that<sp/>@ref<sp/>StaffController<sp/>implements<sp/>and<sp/>that<sp/>the<sp/>route</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>registry<sp/>depends<sp/>on.<sp/>Without<sp/>it,<sp/>managing<sp/>staff<sp/>would<sp/>need<sp/>separate<sp/>route<sp/>code<sp/>for<sp/>each<sp/>entity<sp/>type.</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>Virtual<sp/>functions<sp/>(calling<sp/>the<sp/>right<sp/>version<sp/>through<sp/>a<sp/>base<sp/>pointer):<sp/>https://en.cppreference.com/w/cpp/language/virtual</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>C++20<sp/>coroutines<sp/>(functions<sp/>that<sp/>pause<sp/>and<sp/>resume<sp/>with<sp/>co_await/co_return):<sp/>https://en.cppreference.com/w/cpp/language/coroutines</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>-<sp/>std::variant<sp/>(a<sp/>type-safe<sp/>union<sp/>holding<sp/>one<sp/>of<sp/>several<sp/>alternatives):<sp/>https://en.cppreference.com/w/cpp/utility/variant</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>file<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file,<sp/>so<sp/>its<sp/>declarations<sp/>are<sp/>never<sp/>duplicated.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Gives<sp/>std::string_view:<sp/>a<sp/>cheap,<sp/>non-owning<sp/>view<sp/>over<sp/>a<sp/>stretch<sp/>of<sp/>text.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;drogon/utils/coroutine.h&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Drogon&apos;s<sp/>coroutine<sp/>support;<sp/>defines<sp/>drogon::Task,<sp/>the<sp/>pausable<sp/>task<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="callback_8hpp" kindref="compound">utils/global/callback.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Defines<sp/>CALLBACK_,<sp/>the<sp/>&quot;call<sp/>me<sp/>when<sp/>finished&quot;<sp/>function<sp/>type<sp/>passed<sp/>to<sp/>every<sp/>operation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="requester_8hpp" kindref="compound">utils/global/requester.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Defines<sp/>api::v2::Requester:<sp/>who<sp/>is<sp/>making<sp/>the<sp/>request<sp/>(used<sp/>for<sp/>permission<sp/>checks).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="structRequester" kindref="compound">Requester</ref><sp/>=<sp/><ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">api::v2::Requester</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>short<sp/>nickname<sp/>so<sp/>we<sp/>can<sp/>write<sp/>&quot;Requester&quot;<sp/>instead<sp/>of<sp/>the<sp/>longer<sp/>&quot;api::v2::Requester&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="39"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>@class<sp/>StaffControllerBase</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Type-erased<sp/>interface<sp/>for<sp/>service-staff<sp/>management<sp/>operations.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>@details<sp/>Exposes<sp/>three<sp/>domain<sp/>operations<sp/>—<sp/>add,<sp/>remove<sp/>and<sp/>invite<sp/>—<sp/>each<sp/>in<sp/>a<sp/>synchronous</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback<sp/>form<sp/>and<sp/>a<sp/>coroutine<sp/>(`drogon::Task&lt;void&gt;`)<sp/>form.<sp/>The<sp/>staff<sp/>route<sp/>registry</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>holds<sp/>concrete<sp/>controllers<sp/>behind<sp/>this<sp/>base<sp/>and<sp/>dispatches<sp/>to<sp/>them<sp/>via<sp/>a</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`std::variant`<sp/>over<sp/>the<sp/>service<sp/>entity<sp/>type.</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>In<sp/>plain<sp/>words:<sp/>&quot;synchronous&quot;<sp/>means<sp/>the<sp/>caller<sp/>gets<sp/>the<sp/>answer<sp/>through<sp/>a<sp/>callback</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>function,<sp/>while<sp/>the<sp/>coroutine<sp/>(`drogon::Task&lt;void&gt;`)<sp/>versions<sp/>can<sp/>be<sp/>paused<sp/>with<sp/>co_await</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>so<sp/>the<sp/>server<sp/>can<sp/>do<sp/>other<sp/>work<sp/>meanwhile.<sp/>&quot;Virtual<sp/>dispatch&quot;<sp/>means<sp/>a<sp/>call<sp/>made<sp/>through</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this<sp/>base<sp/>automatically<sp/>runs<sp/>the<sp/>real<sp/>object&apos;s<sp/>version.<sp/>A<sp/>`std::variant`<sp/>is<sp/>like<sp/>a<sp/>box<sp/>that</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>can<sp/>hold<sp/>one<sp/>of<sp/>several<sp/>different<sp/>controller<sp/>types<sp/>at<sp/>a<sp/>time.</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Invocation<sp/>contract<sp/>shared<sp/>by<sp/>every<sp/>method:</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>`callback`<sp/>is<sp/>`std::function&lt;void(int,<sp/>const<sp/>std::string&amp;)&gt;`,<sp/>it<sp/>is<sp/>moved<sp/>through</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>call<sp/>chain<sp/>and,<sp/>by<sp/>contract,<sp/>invoked<sp/>once<sp/>on<sp/>each<sp/>completion<sp/>path,<sp/>including</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>failures.<sp/>Its<sp/>first<sp/>argument<sp/>is<sp/>an<sp/>@ref<sp/>api::v2::Http::Status<sp/>code,<sp/>the<sp/>second<sp/>a</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>response<sp/>body.</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>`requester`<sp/>is<sp/>the<sp/>authenticated<sp/>caller;<sp/>implementations<sp/>require<sp/>permission<sp/>to</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>manage<sp/>staff<sp/>of<sp/>the<sp/>target<sp/>service<sp/>before<sp/>performing<sp/>any<sp/>side<sp/>effect.</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>`data`<sp/>is<sp/>a<sp/>non-owning<sp/>view<sp/>of<sp/>the<sp/>raw<sp/>JSON<sp/>request<sp/>body,<sp/>valid<sp/>only<sp/>for<sp/>the<sp/>call;</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>must<sp/>carry<sp/>the<sp/>target<sp/>service<sp/>id<sp/>(`id`<sp/>or<sp/>`nominee_id`)<sp/>used<sp/>for<sp/>authorisation.</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>`*Async`<sp/>methods<sp/>must<sp/>be<sp/>co_awaited;<sp/>the<sp/>HTTP<sp/>layer<sp/>wraps<sp/>them<sp/>in</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`drogon::async_run`<sp/>and<sp/>builds<sp/>the<sp/>reply<sp/>from<sp/>the<sp/>callback<sp/>result.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>@note<sp/>The<sp/>interface<sp/>itself<sp/>is<sp/>stateless;<sp/>behaviour<sp/>lives<sp/>in<sp/>@ref<sp/>StaffController.</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>@see<sp/>StaffController,<sp/>Controller,<sp/>GateKeeper</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classStaffControllerBase" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525" kindref="member">StaffControllerBase</ref></highlight></codeline>
+<codeline lineno="69"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Default<sp/>construction;<sp/>the<sp/>interface<sp/>holds<sp/>no<sp/>state<sp/>of<sp/>its<sp/>own.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525" kindref="member">StaffControllerBase</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;explicit&quot;<sp/>blocks<sp/>surprise<sp/>implicit<sp/>conversions;<sp/>&quot;=<sp/>default&quot;<sp/>lets<sp/>the<sp/>compiler<sp/>write<sp/>this<sp/>constructor.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Copy<sp/>construction<sp/>is<sp/>allowed;<sp/>copies<sp/>share<sp/>no<sp/>operation<sp/>state.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classStaffControllerBase_1ab5e32d9e3f0bd773d45ff02450ae52c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStaffControllerBase_1ab5e32d9e3f0bd773d45ff02450ae52c7" kindref="member">StaffControllerBase</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525" kindref="member">StaffControllerBase</ref>&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copying<sp/>is<sp/>harmless<sp/>here<sp/>because<sp/>the<sp/>interface<sp/>stores<sp/>no<sp/>data.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Move<sp/>construction<sp/>is<sp/>disabled;<sp/>the<sp/>interface<sp/>is<sp/>used<sp/>through<sp/>pointers/references.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classStaffControllerBase_1a66ce135a4f3b50c831729fffc1afea72" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStaffControllerBase_1a66ce135a4f3b50c831729fffc1afea72" kindref="member">StaffControllerBase</ref>(<ref refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525" kindref="member">StaffControllerBase</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;=<sp/>delete&quot;<sp/>makes<sp/>any<sp/>attempt<sp/>to<sp/>move<sp/>this<sp/>interface<sp/>a<sp/>compile-time<sp/>error.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Copy<sp/>assignment<sp/>is<sp/>allowed.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="classStaffControllerBase_1aa7705dec2c86e2e4c1a6c451c5d47510" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525" kindref="member">StaffControllerBase</ref>&amp;<sp/><ref refid="classStaffControllerBase_1aa7705dec2c86e2e4c1a6c451c5d47510" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525" kindref="member">StaffControllerBase</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copy-assignment<sp/>is<sp/>fine<sp/>for<sp/>the<sp/>same<sp/>&quot;no<sp/>state&quot;<sp/>reason.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Move<sp/>assignment<sp/>is<sp/>disabled,<sp/>mirroring<sp/>the<sp/>deleted<sp/>move<sp/>constructor.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classStaffControllerBase_1a2e414f74e581716704730427bdecce8b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525" kindref="member">StaffControllerBase</ref>&amp;<sp/><ref refid="classStaffControllerBase_1a2e414f74e581716704730427bdecce8b" kindref="member">operator=</ref>(<ref refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525" kindref="member">StaffControllerBase</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Move-assignment<sp/>is<sp/>blocked<sp/>to<sp/>match<sp/>the<sp/>deleted<sp/>move<sp/>constructor.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Virtual<sp/>destructor<sp/>so<sp/>derived<sp/>controllers<sp/>can<sp/>be<sp/>released<sp/>through<sp/>this<sp/>interface.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="classStaffControllerBase_1a32ade04e59750d16c0f40768a3c1ec4d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classStaffControllerBase_1a32ade04e59750d16c0f40768a3c1ec4d" kindref="member">~StaffControllerBase</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;virtual&quot;<sp/>ensures<sp/>deleting<sp/>through<sp/>this<sp/>base<sp/>pointer<sp/>still<sp/>runs<sp/>the<sp/>derived<sp/>class&apos;s<sp/>cleanup.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>CRUDS<sp/>—<sp/>short<sp/>label<sp/>copied<sp/>from<sp/>the<sp/>other<sp/>controller<sp/>families;<sp/>the<sp/>real<sp/>jobs<sp/>here<sp/>are<sp/>add/remove/invite<sp/>staff.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Adds<sp/>a<sp/>staff<sp/>member<sp/>to<sp/>a<sp/>service<sp/>entity.</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Implementations<sp/>parse<sp/>a<sp/>`payload`<sp/>holding<sp/>@ref<sp/>api::v2::Types::StaffData<sp/>plus<sp/>an</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`id`<sp/>identifying<sp/>the<sp/>service,<sp/>check<sp/>staff-management<sp/>permission,<sp/>then<sp/>execute<sp/>the</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entity&apos;s<sp/>add-staff<sp/>statement.<sp/>A<sp/>malformed<sp/>body<sp/>is<sp/>an<sp/>exceptional<sp/>(500)<sp/>path<sp/>here,</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>not<sp/>a<sp/>400<sp/>validation<sp/>response.</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>staff-management<sp/>permission<sp/>check.</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body<sp/>with<sp/>`id`<sp/>and<sp/>`payload`.</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="classStaffControllerBase_1a968ab96cf0d0caaa4c86d4a8330c9393" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStaffControllerBase_1a968ab96cf0d0caaa4c86d4a8330c9393" kindref="member">AddStaffToEntity</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;=<sp/>0&quot;<sp/>=<sp/>pure<sp/>virtual:<sp/>derived<sp/>classes<sp/>MUST<sp/>implement<sp/>this;<sp/>&quot;virtual&quot;<sp/>enables<sp/>base-pointer<sp/>dispatch.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Removes<sp/>a<sp/>staff<sp/>member<sp/>from<sp/>a<sp/>service<sp/>entity.</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Same<sp/>request<sp/>shape<sp/>and<sp/>authorisation<sp/>contract<sp/>as<sp/>@ref<sp/>AddStaffToEntity.</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>staff-management<sp/>permission<sp/>check.</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body<sp/>with<sp/>`id`<sp/>and<sp/>`payload`.</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="classStaffControllerBase_1a5d310e956312329648957207868ed549" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStaffControllerBase_1a5d310e956312329648957207868ed549" kindref="member">RemoveStaffFromEntity</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Pure<sp/>virtual<sp/>remove<sp/>job;<sp/>same<sp/>callback/permission<sp/>rules<sp/>as<sp/>AddStaffToEntity.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Invites<sp/>a<sp/>staff<sp/>member<sp/>to<sp/>a<sp/>service<sp/>entity<sp/>by<sp/>delegating<sp/>delivery<sp/>to<sp/>the<sp/>email<sp/>daemon.</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Implementations<sp/>parse<sp/>a<sp/>`nominee_id`<sp/>and<sp/>the<sp/>invite<sp/>fields,<sp/>check<sp/>permission,<sp/>build</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>an<sp/>invite<sp/>message<sp/>and<sp/>POST<sp/>it<sp/>to<sp/>the<sp/>configured<sp/>email-sender<sp/>daemon.<sp/>A<sp/>200<sp/>response</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>echoes<sp/>the<sp/>daemon&apos;s<sp/>body;<sp/>malformed<sp/>invite<sp/>data<sp/>or<sp/>a<sp/>failed<sp/>send<sp/>yields<sp/>400.</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>staff-management<sp/>permission<sp/>check.</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body<sp/>with<sp/>`nominee_id`<sp/>and<sp/>the<sp/>@ref<sp/>api::v2::Types::StaffData<sp/>fields.</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="classStaffControllerBase_1a55203753a4995d370037401bfc5f66bd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStaffControllerBase_1a55203753a4995d370037401bfc5f66bd" kindref="member">InviteStaffToEntity</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/><sp/><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Pure<sp/>virtual<sp/>invite<sp/>job;<sp/>unlike<sp/>the<sp/>others<sp/>it<sp/>sends<sp/>an<sp/>email<sp/>rather<sp/>than<sp/>running<sp/>SQL.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>AddStaffToEntity.</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>staff-management<sp/>permission<sp/>check.</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>until<sp/>the<sp/>task<sp/>completes.</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="classStaffControllerBase_1a86d35c8d93f08daf0223aec4ed35b9df" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classStaffControllerBase_1a86d35c8d93f08daf0223aec4ed35b9df" kindref="member">AddStaffToEntityAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/><sp/><sp/><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Same<sp/>job<sp/>as<sp/>AddStaffToEntity,<sp/>but<sp/>as<sp/>a<sp/>pausable<sp/>task<sp/>to<sp/>be<sp/>used<sp/>with<sp/>co_await.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>RemoveStaffFromEntity.</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>staff-management<sp/>permission<sp/>check.</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>until<sp/>the<sp/>task<sp/>completes.</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="classStaffControllerBase_1aadc6db473bceee230a86cf64bdbb97ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classStaffControllerBase_1aadc6db473bceee230a86cf64bdbb97ae" kindref="member">RemoveStaffFromEntityAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Pausable<sp/>version<sp/>of<sp/>RemoveStaffFromEntity.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>InviteStaffToEntity.</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>The<sp/>outbound<sp/>email-daemon<sp/>request<sp/>is<sp/>a<sp/>synchronous<sp/>call<sp/>in<sp/>this<sp/>variant<sp/>too.</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>staff-management<sp/>permission<sp/>check.</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>until<sp/>the<sp/>task<sp/>completes.</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="classStaffControllerBase_1a0e80ed9010fd73626ae3890c4d4ca118" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classStaffControllerBase_1a0e80ed9010fd73626ae3890c4d4ca118" kindref="member">InviteStaffToEntityAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/><sp/>=<sp/>0;<sp/><sp/></highlight><highlight class="comment">//<sp/>Pausable<sp/>version<sp/>of<sp/>Invite;<sp/>the<sp/>email<sp/>send<sp/>itself<sp/>still<sp/>blocks<sp/>even<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp"/>
+  </compounddef>
+</doxygen>

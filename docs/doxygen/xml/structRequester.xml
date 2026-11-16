@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="structRequester" kind="struct" language="C++" prot="public">
+    <compoundname>Requester</compoundname>
+    <includes refid="requester_8hpp" local="no">requester.hpp</includes>
+    <briefdescription>
+<para>Value object describing who issued a request. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Holds an opaque numeric id and a group name. It is copied into lambdas dispatched to worker threads and consulted by the permission manager, so instances are cheap value types with defaulted copy/move operations. <simplesect kind="note"><para>Group checks are literal string comparisons against hardcoded names such as &quot;admins&quot;, &quot;users&quot;, &quot;providers&quot;, &quot;staff&quot; and &quot;owners&quot; (isSuper matches &quot;Super&quot; with a capital S). The GroupId enumeration is declared but is not used to validate or store <computeroutput>group</computeroutput>. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/utils/global/requester.hpp" line="34" column="1"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,2237 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classapi_1_1v2_1_1PermissionManager" kind="class" language="C++" prot="public">
+    <compoundname>api::v2::PermissionManager</compoundname>
+    <includes refid="permissionmanager_8hpp" local="no">permissionmanager.hpp</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::PermissionManager::PermissionManager</definition>
+        <argsstring>()=default</argsstring>
+        <name>PermissionManager</name>
+        <qualifiedname>api::v2::PermissionManager::PermissionManager</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="58" column="9"/>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1ae276f363c2d49a6818eced74bebf4ca6">operator=</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a6ee8b35704a2706f3a1ee3d1eb1b0d4d">operator=</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1abb670098c751db8d9eb061535e4c0d0c">PermissionManager</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a2e6ebe0e6b8c79b266e1bf2b232a1d6f">PermissionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1abb670098c751db8d9eb061535e4c0d0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::PermissionManager::PermissionManager</definition>
+        <argsstring>(const PermissionManager &amp;)=default</argsstring>
+        <name>PermissionManager</name>
+        <qualifiedname>api::v2::PermissionManager::PermissionManager</qualifiedname>
+        <param>
+          <type>const PermissionManager &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="59" column="9"/>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea">PermissionManager</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1ae276f363c2d49a6818eced74bebf4ca6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea" kindref="member">PermissionManager</ref> &amp;</type>
+        <definition>PermissionManager &amp; api::v2::PermissionManager::operator=</definition>
+        <argsstring>(const PermissionManager &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>api::v2::PermissionManager::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea" kindref="member">PermissionManager</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="60" column="27"/>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea">PermissionManager</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a2e6ebe0e6b8c79b266e1bf2b232a1d6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>api::v2::PermissionManager::PermissionManager</definition>
+        <argsstring>(PermissionManager &amp;&amp;)=default</argsstring>
+        <name>PermissionManager</name>
+        <qualifiedname>api::v2::PermissionManager::PermissionManager</qualifiedname>
+        <param>
+          <type>PermissionManager &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="61" column="9"/>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea">PermissionManager</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a6ee8b35704a2706f3a1ee3d1eb1b0d4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea" kindref="member">PermissionManager</ref> &amp;</type>
+        <definition>PermissionManager &amp; api::v2::PermissionManager::operator=</definition>
+        <argsstring>(PermissionManager &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>api::v2::PermissionManager::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea" kindref="member">PermissionManager</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="62" column="27"/>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea">PermissionManager</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual api::v2::PermissionManager::~PermissionManager</definition>
+        <argsstring>()=default</argsstring>
+        <name>~PermissionManager</name>
+        <qualifiedname>api::v2::PermissionManager::~PermissionManager</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="63" column="17"/>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" compoundref="permissionmanager_8cpp" startline="47" endline="51">canCreate</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1ab38a9fb015cfa0c0a21684b1b7e5c75d" compoundref="permissionmanager_8cpp" startline="233" endline="237">canCreateAsync</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a71258d4ae15f18d8a002c192c0fb6e2a" compoundref="permissionmanager_8cpp" startline="67" endline="70">canDelete</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a0adc8dfb1a38a0e3953a4032f3673980" compoundref="permissionmanager_8cpp" startline="253" endline="256">canDeleteAsync</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a3fdd025d52c5c4b4140c3ff6790921fd" compoundref="permissionmanager_8cpp" startline="81" endline="84">canGetServices</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a30126a03fc03c2870325aa6df4543518" compoundref="permissionmanager_8cpp" startline="267" endline="270">canGetServicesAsync</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1aff6b99de61b84feb36a534319778195b" compoundref="permissionmanager_8cpp" startline="55" endline="58">canRead</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1aed948cb4da3d53102be81025ef98bda2" compoundref="permissionmanager_8cpp" startline="241" endline="244">canReadAsync</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a30eb01bee43eade86f66faa01e47fc91" compoundref="permissionmanager_8cpp" startline="74" endline="77">canToggleActive</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1afa8aa5d58764cb40be9d226283f5197a" compoundref="permissionmanager_8cpp" startline="260" endline="263">canToggleActiveAsync</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a96e35dad77cb2e1dbd0ffffa7c648fdc" compoundref="permissionmanager_8cpp" startline="61" endline="64">canUpdate</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1afded6faae3268475fa32898c00b5476e" compoundref="permissionmanager_8cpp" startline="247" endline="250">canUpdateAsync</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptClient__t" kindref="compound">Client_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool PermissionManager::canCreate</definition>
+        <argsstring>(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;data_j, Http::Error &amp;error)</argsstring>
+        <name>canCreate</name>
+        <qualifiedname>api::v2::PermissionManager::canCreate</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>data_j</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> creation is unrestricted (always allowed). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Allows appointment creation for owner/admin or staff with CAN_WRITE; needs a clinic id in the payload.</para>
+<para>Allows case creation for owner/admin or staff with CAN_WRITE; query derived from payload.</para>
+<para>Delegates service creation to the owner/admin preconditions on the payload.</para>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> creation is unrestricted; see <ref refid="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" kindref="member">PermissionManager::canCreate</ref>.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> type, constrained by <ref refid="conceptClient__t" kindref="compound">Client_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller (unused). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data_j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional JSON payload (unused). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Denial details (unused). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Always <computeroutput>true</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="75" column="14" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="47" bodyend="51"/>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1ab38a9fb015cfa0c0a21684b1b7e5c75d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptClient__t" kindref="compound">Client_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; PermissionManager::canCreateAsync</definition>
+        <argsstring>(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;data_j, Http::Error &amp;error)</argsstring>
+        <name>canCreateAsync</name>
+        <qualifiedname>api::v2::PermissionManager::canCreateAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>data_j</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" kindref="member">canCreate()</ref> for clients; always returns <computeroutput>true</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Coroutine form of appointment <ref refid="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" kindref="member">canCreate()</ref>; needs a clinic id in the payload.</para>
+<para>Coroutine form of case <ref refid="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" kindref="member">canCreate()</ref>; owner/admin or CAN_WRITE staff.</para>
+<para>Coroutine form of service <ref refid="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" kindref="member">canCreate()</ref>; checks the owner/admin preconditions.</para>
+<para>Coroutine form of client <ref refid="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" kindref="member">canCreate()</ref>; always returns <computeroutput>true</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="79" column="22" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="233" bodyend="237"/>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1aff6b99de61b84feb36a534319778195b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptClient__t" kindref="compound">Client_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool PermissionManager::canRead</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t client_id, Http::Error &amp;error)</argsstring>
+        <name>canRead</name>
+        <qualifiedname>api::v2::PermissionManager::canRead</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>client_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Allows reading a client only if requester group and id match the target. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Allows appointment reads for owner/admin or staff with CAN_READ.</para>
+<para>Allows case reads for owner/admin or staff with CAN_READ.</para>
+<para>Allows service reads for owner, admin, or staff with CAN_READ.</para>
+<para>Allows a client read only when group and id match the target client.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> type, constrained by <ref refid="conceptClient__t" kindref="compound">Client_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">client_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the client being accessed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when both group and id match. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="90" column="14" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="55" bodyend="58"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1aed948cb4da3d53102be81025ef98bda2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptClient__t" kindref="compound">Client_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; PermissionManager::canReadAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t client_id, Http::Error &amp;error)</argsstring>
+        <name>canReadAsync</name>
+        <qualifiedname>api::v2::PermissionManager::canReadAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>client_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1aff6b99de61b84feb36a534319778195b" kindref="member">canRead()</ref> for clients. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Coroutine form of appointment <ref refid="classapi_1_1v2_1_1PermissionManager_1aff6b99de61b84feb36a534319778195b" kindref="member">canRead()</ref>; owner/admin or CAN_READ staff.</para>
+<para>Coroutine form of case <ref refid="classapi_1_1v2_1_1PermissionManager_1aff6b99de61b84feb36a534319778195b" kindref="member">canRead()</ref>; owner/admin or CAN_READ staff.</para>
+<para>Coroutine form of service <ref refid="classapi_1_1v2_1_1PermissionManager_1aff6b99de61b84feb36a534319778195b" kindref="member">canRead()</ref>; owner/admin or CAN_READ staff.</para>
+<para>Coroutine form of client <ref refid="classapi_1_1v2_1_1PermissionManager_1aff6b99de61b84feb36a534319778195b" kindref="member">canRead()</ref>; group and id must match. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="94" column="22" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="241" bodyend="244"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a96e35dad77cb2e1dbd0ffffa7c648fdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptClient__t" kindref="compound">Client_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool PermissionManager::canUpdate</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t client_id, Http::Error &amp;error)</argsstring>
+        <name>canUpdate</name>
+        <qualifiedname>api::v2::PermissionManager::canUpdate</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>client_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Allows updating a client only if requester group and id match the target. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Allows appointment updates for owner/admin or staff with CAN_WRITE.</para>
+<para>Allows case updates for owner/admin or staff with CAN_WRITE.</para>
+<para>Allows service updates for owner, admin, or staff with CAN_WRITE.</para>
+<para>Allows a client update only when group and id match the target client.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> type, constrained by <ref refid="conceptClient__t" kindref="compound">Client_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">client_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the client being accessed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when both group and id match. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="105" column="14" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="61" bodyend="64"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1afded6faae3268475fa32898c00b5476e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptClient__t" kindref="compound">Client_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; PermissionManager::canUpdateAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t client_id, Http::Error &amp;error)</argsstring>
+        <name>canUpdateAsync</name>
+        <qualifiedname>api::v2::PermissionManager::canUpdateAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>client_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1a96e35dad77cb2e1dbd0ffffa7c648fdc" kindref="member">canUpdate()</ref> for clients. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Coroutine form of appointment <ref refid="classapi_1_1v2_1_1PermissionManager_1a96e35dad77cb2e1dbd0ffffa7c648fdc" kindref="member">canUpdate()</ref>; owner/admin or CAN_WRITE staff.</para>
+<para>Coroutine form of case <ref refid="classapi_1_1v2_1_1PermissionManager_1a96e35dad77cb2e1dbd0ffffa7c648fdc" kindref="member">canUpdate()</ref>; owner/admin or CAN_WRITE staff.</para>
+<para>Coroutine form of service <ref refid="classapi_1_1v2_1_1PermissionManager_1a96e35dad77cb2e1dbd0ffffa7c648fdc" kindref="member">canUpdate()</ref>; owner/admin or CAN_WRITE staff.</para>
+<para>Coroutine form of client <ref refid="classapi_1_1v2_1_1PermissionManager_1a96e35dad77cb2e1dbd0ffffa7c648fdc" kindref="member">canUpdate()</ref>; group and id must match. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="109" column="22" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="247" bodyend="250"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a71258d4ae15f18d8a002c192c0fb6e2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptClient__t" kindref="compound">Client_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool PermissionManager::canDelete</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t client_id, Http::Error &amp;error)</argsstring>
+        <name>canDelete</name>
+        <qualifiedname>api::v2::PermissionManager::canDelete</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>client_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Allows deleting a client only if requester group and id match the target. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Allows appointment deletion for owner/admin or staff with CAN_DELETE.</para>
+<para>Allows case deletion for owner/admin or staff with CAN_DELETE.</para>
+<para>Restricts service deletion to the owner (admins/staff are not enough).</para>
+<para>Allows a client deletion only when group and id match the target client.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> type, constrained by <ref refid="conceptClient__t" kindref="compound">Client_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">client_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the client being accessed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when both group and id match. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="120" column="14" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="67" bodyend="70"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a0adc8dfb1a38a0e3953a4032f3673980" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptClient__t" kindref="compound">Client_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; PermissionManager::canDeleteAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t client_id, Http::Error &amp;error)</argsstring>
+        <name>canDeleteAsync</name>
+        <qualifiedname>api::v2::PermissionManager::canDeleteAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>client_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1a71258d4ae15f18d8a002c192c0fb6e2a" kindref="member">canDelete()</ref> for clients. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Coroutine form of appointment <ref refid="classapi_1_1v2_1_1PermissionManager_1a71258d4ae15f18d8a002c192c0fb6e2a" kindref="member">canDelete()</ref>; owner/admin or CAN_DELETE staff.</para>
+<para>Coroutine form of case <ref refid="classapi_1_1v2_1_1PermissionManager_1a71258d4ae15f18d8a002c192c0fb6e2a" kindref="member">canDelete()</ref>; owner/admin or CAN_DELETE staff.</para>
+<para>Coroutine form of service <ref refid="classapi_1_1v2_1_1PermissionManager_1a71258d4ae15f18d8a002c192c0fb6e2a" kindref="member">canDelete()</ref>; owner only.</para>
+<para>Coroutine form of client <ref refid="classapi_1_1v2_1_1PermissionManager_1a71258d4ae15f18d8a002c192c0fb6e2a" kindref="member">canDelete()</ref>; group and id must match. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="124" column="22" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="253" bodyend="256"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a30eb01bee43eade86f66faa01e47fc91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptClient__t" kindref="compound">Client_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool PermissionManager::canToggleActive</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t client_id, Http::Error &amp;error)</argsstring>
+        <name>canToggleActive</name>
+        <qualifiedname>api::v2::PermissionManager::canToggleActive</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>client_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Allows toggling a client&apos;s active flag only on a matching group and id. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> type, constrained by <ref refid="conceptClient__t" kindref="compound">Client_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">client_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the client whose status is targeted. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when both group and id match. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="135" column="14" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="74" bodyend="77"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1afa8aa5d58764cb40be9d226283f5197a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptClient__t" kindref="compound">Client_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; PermissionManager::canToggleActiveAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t client_id, Http::Error &amp;error)</argsstring>
+        <name>canToggleActiveAsync</name>
+        <qualifiedname>api::v2::PermissionManager::canToggleActiveAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>client_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1a30eb01bee43eade86f66faa01e47fc91" kindref="member">canToggleActive()</ref> for clients. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Coroutine form of client <ref refid="classapi_1_1v2_1_1PermissionManager_1a30eb01bee43eade86f66faa01e47fc91" kindref="member">canToggleActive()</ref>; group and id must match. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="139" column="22" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="260" bodyend="263"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a3fdd025d52c5c4b4140c3ff6790921fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptClient__t" kindref="compound">Client_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool PermissionManager::canGetServices</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t client_id, Http::Error &amp;error)</argsstring>
+        <name>canGetServices</name>
+        <qualifiedname>api::v2::PermissionManager::canGetServices</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>client_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Allows listing a client&apos;s services only on a matching group and id. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classapi_1_1v2_1_1Client" kindref="compound">Client</ref> type, constrained by <ref refid="conceptClient__t" kindref="compound">Client_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">client_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the client whose services are requested. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when both group and id match. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="150" column="14" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="81" bodyend="84"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a30126a03fc03c2870325aa6df4543518" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptClient__t" kindref="compound">Client_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; PermissionManager::canGetServicesAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t client_id, Http::Error &amp;error)</argsstring>
+        <name>canGetServicesAsync</name>
+        <qualifiedname>api::v2::PermissionManager::canGetServicesAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>client_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1a3fdd025d52c5c4b4140c3ff6790921fd" kindref="member">canGetServices()</ref> for clients. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Coroutine form of client <ref refid="classapi_1_1v2_1_1PermissionManager_1a3fdd025d52c5c4b4140c3ff6790921fd" kindref="member">canGetServices()</ref>; group and id must match. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="154" column="22" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="267" bodyend="270"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a3ea07c998d2818c6ef1585a83d58de31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptService__t" kindref="compound">Service_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool api::v2::PermissionManager::canCreate</definition>
+        <argsstring>(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;service_j, Http::Error &amp;error)</argsstring>
+        <name>canCreate</name>
+        <qualifiedname>api::v2::PermissionManager::canCreate</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>service_j</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Checks preconditions for creating a service (payload present, provider is owner/admin). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classService" kindref="compound">Service</ref> type, constrained by <ref refid="conceptService__t" kindref="compound">Service_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">service_j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Payload containing the initial owner_id/admin_id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the creation preconditions hold. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="167" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a4fde2b6b7c617ef97f0a3aa6a5135425" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptService__t" kindref="compound">Service_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; api::v2::PermissionManager::canCreateAsync</definition>
+        <argsstring>(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;service_j, Http::Error &amp;error)</argsstring>
+        <name>canCreateAsync</name>
+        <qualifiedname>api::v2::PermissionManager::canCreateAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>service_j</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" kindref="member">canCreate()</ref> for services. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="171" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a52a131813fb846d82e3b7b4b3363a6b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptService__t" kindref="compound">Service_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool api::v2::PermissionManager::canRead</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t service_id, Http::Error &amp;error)</argsstring>
+        <name>canRead</name>
+        <qualifiedname>api::v2::PermissionManager::canRead</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>service_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Allows service reads for the owner, admin, or staff with the CAN_READ bit. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classService" kindref="compound">Service</ref> type, constrained by <ref refid="conceptService__t" kindref="compound">Service_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">service_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the service whose permissions are loaded. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the requester holds sufficient permission. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="182" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1abd8a7e3b5ffcb254c3954daa0cb44ceb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptService__t" kindref="compound">Service_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; api::v2::PermissionManager::canReadAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t service_id, Http::Error &amp;error)</argsstring>
+        <name>canReadAsync</name>
+        <qualifiedname>api::v2::PermissionManager::canReadAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>service_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1aff6b99de61b84feb36a534319778195b" kindref="member">canRead()</ref> for services. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="186" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a99d92a72b1a2a99f6392b3a4f9b08374" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptService__t" kindref="compound">Service_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool api::v2::PermissionManager::canUpdate</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t service_id, Http::Error &amp;error)</argsstring>
+        <name>canUpdate</name>
+        <qualifiedname>api::v2::PermissionManager::canUpdate</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>service_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Allows service updates for the owner, admin, or staff with the CAN_WRITE bit. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classService" kindref="compound">Service</ref> type, constrained by <ref refid="conceptService__t" kindref="compound">Service_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">service_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the service whose permissions are loaded. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the requester holds sufficient permission. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="197" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a49df60ee2868117406972f850747ee34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptService__t" kindref="compound">Service_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; api::v2::PermissionManager::canUpdateAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t service_id, Http::Error &amp;error)</argsstring>
+        <name>canUpdateAsync</name>
+        <qualifiedname>api::v2::PermissionManager::canUpdateAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>service_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1a96e35dad77cb2e1dbd0ffffa7c648fdc" kindref="member">canUpdate()</ref> for services. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="201" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a5ce6653354254b4b6b1788b68bce6fff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptService__t" kindref="compound">Service_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool api::v2::PermissionManager::canDelete</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t service_id, Http::Error &amp;error)</argsstring>
+        <name>canDelete</name>
+        <qualifiedname>api::v2::PermissionManager::canDelete</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>service_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Allows service deletion for the owner only. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classService" kindref="compound">Service</ref> type, constrained by <ref refid="conceptService__t" kindref="compound">Service_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">service_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the service whose permissions are loaded. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the requester is the owner. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="212" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a984d7b5d477fa1a100f742adda535fb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptService__t" kindref="compound">Service_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; api::v2::PermissionManager::canDeleteAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t service_id, Http::Error &amp;error)</argsstring>
+        <name>canDeleteAsync</name>
+        <qualifiedname>api::v2::PermissionManager::canDeleteAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>service_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1a71258d4ae15f18d8a002c192c0fb6e2a" kindref="member">canDelete()</ref> for services. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="216" column="22"/>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a850868371bb029e826761eff3b329c5c" compoundref="permissionmanager_8cpp" startline="128" endline="135">canManageStaff</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1af314003136240877cbf15fe24c288a05" compoundref="permissionmanager_8cpp" startline="311" endline="317">canManageStaffAsync</references>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a850868371bb029e826761eff3b329c5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool PermissionManager::canManageStaff</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t service_id, Http::Error &amp;error)</argsstring>
+        <name>canManageStaff</name>
+        <qualifiedname>api::v2::PermissionManager::canManageStaff</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>service_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Allows staff management for the service owner or admin only. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Restricts staff management to the service owner or admin.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classEntity" kindref="compound">Entity</ref> type exposing getTableName()/getServicePermissionsQuery(). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">service_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id of the service whose permissions are loaded. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the requester is owner or admin. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="227" column="14" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="128" bodyend="135"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3e7c77aa55023f9d5ccc345e7b68f2ab" compoundref="permissionmanager__private_8hpp" startline="206" endline="232">api::v2::PermissionManagerPrivate::getPermissionsOfEntity</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" compoundref="permissionmanager__private_8cpp" startline="235" endline="239">api::v2::PermissionManagerPrivate::isOwnerOrAdmin</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a984d7b5d477fa1a100f742adda535fb3">canDeleteAsync</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1af314003136240877cbf15fe24c288a05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; PermissionManager::canManageStaffAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t service_id, Http::Error &amp;error)</argsstring>
+        <name>canManageStaffAsync</name>
+        <qualifiedname>api::v2::PermissionManager::canManageStaffAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>service_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1a850868371bb029e826761eff3b329c5c" kindref="member">canManageStaff()</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1a850868371bb029e826761eff3b329c5c" kindref="member">canManageStaff()</ref>; owner or admin only. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="231" column="22" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="311" bodyend="317"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a070d79b55b8f3262de2b815a636defd7" compoundref="permissionmanager__private_8hpp" startline="246" endline="272">api::v2::PermissionManagerPrivate::getPermissionsOfEntityCoro</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" compoundref="permissionmanager__private_8cpp" startline="235" endline="239">api::v2::PermissionManagerPrivate::isOwnerOrAdmin</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a984d7b5d477fa1a100f742adda535fb3">canDeleteAsync</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a516ef7c5e4679c36c93b26bdd434509b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptCase__t" kindref="compound">Case_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool api::v2::PermissionManager::canCreate</definition>
+        <argsstring>(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;data_j, Http::Error &amp;error)</argsstring>
+        <name>canCreate</name>
+        <qualifiedname>api::v2::PermissionManager::canCreate</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>data_j</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Allows creating a case for owner/admin or staff with the CAN_WRITE bit. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The permission query is derived from <computeroutput>data_j</computeroutput> (which identifies the parent service) via T::getPermissionsQueryForCreate. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classCase" kindref="compound">Case</ref> type, constrained by <ref refid="conceptCase__t" kindref="compound">Case_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data_j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Payload used to build the permission query. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the requester holds sufficient permission. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="246" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1af13c583f1a64ce0d38551683c50ec070" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptCase__t" kindref="compound">Case_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; api::v2::PermissionManager::canCreateAsync</definition>
+        <argsstring>(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;data_j, Http::Error &amp;error)</argsstring>
+        <name>canCreateAsync</name>
+        <qualifiedname>api::v2::PermissionManager::canCreateAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>data_j</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" kindref="member">canCreate()</ref> for cases. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="250" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a589a8a5cdfa8dbacb4f8a6dc70718a13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptCase__t" kindref="compound">Case_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool api::v2::PermissionManager::canRead</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t case_id, Http::Error &amp;error)</argsstring>
+        <name>canRead</name>
+        <qualifiedname>api::v2::PermissionManager::canRead</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>case_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Allows reading a case for owner/admin or staff with the CAN_READ bit. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classCase" kindref="compound">Case</ref> type, constrained by <ref refid="conceptCase__t" kindref="compound">Case_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">case_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id used to build the permission query. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the requester holds sufficient permission. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="261" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a69637b8a9b6d0d73f1f8ae12a91c5fd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptCase__t" kindref="compound">Case_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; api::v2::PermissionManager::canReadAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t case_id, Http::Error &amp;error)</argsstring>
+        <name>canReadAsync</name>
+        <qualifiedname>api::v2::PermissionManager::canReadAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>case_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1aff6b99de61b84feb36a534319778195b" kindref="member">canRead()</ref> for cases. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="265" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a27ca0858f19c5a91561fc6baac4c921b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptCase__t" kindref="compound">Case_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool api::v2::PermissionManager::canUpdate</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t case_id, Http::Error &amp;error)</argsstring>
+        <name>canUpdate</name>
+        <qualifiedname>api::v2::PermissionManager::canUpdate</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>case_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Allows updating a case for owner/admin or staff with the CAN_WRITE bit. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classCase" kindref="compound">Case</ref> type, constrained by <ref refid="conceptCase__t" kindref="compound">Case_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">case_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id used to build the permission query. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the requester holds sufficient permission. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="276" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a3f8bed5ca5e8f25c1f7ddd7b414c3cc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptCase__t" kindref="compound">Case_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; api::v2::PermissionManager::canUpdateAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t case_id, Http::Error &amp;error)</argsstring>
+        <name>canUpdateAsync</name>
+        <qualifiedname>api::v2::PermissionManager::canUpdateAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>case_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1a96e35dad77cb2e1dbd0ffffa7c648fdc" kindref="member">canUpdate()</ref> for cases. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="280" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a9ba39dbfd12564c994c208afe10d9d41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptCase__t" kindref="compound">Case_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool api::v2::PermissionManager::canDelete</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t _id, Http::Error &amp;error)</argsstring>
+        <name>canDelete</name>
+        <qualifiedname>api::v2::PermissionManager::canDelete</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Allows deleting a case for owner/admin or staff with the CAN_DELETE bit. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classCase" kindref="compound">Case</ref> type, constrained by <ref refid="conceptCase__t" kindref="compound">Case_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id used to build the permission query. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the requester holds sufficient permission. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="291" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a16329f4f9bbd3a5e6044bded5958d259" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptCase__t" kindref="compound">Case_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; api::v2::PermissionManager::canDeleteAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t _id, Http::Error &amp;error)</argsstring>
+        <name>canDeleteAsync</name>
+        <qualifiedname>api::v2::PermissionManager::canDeleteAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1a71258d4ae15f18d8a002c192c0fb6e2a" kindref="member">canDelete()</ref> for cases. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="295" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a3ea07c998d2818c6ef1585a83d58de31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptAppointment__t" kindref="compound">Appointment_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool api::v2::PermissionManager::canCreate</definition>
+        <argsstring>(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;service_j, Http::Error &amp;error)</argsstring>
+        <name>canCreate</name>
+        <qualifiedname>api::v2::PermissionManager::canCreate</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>service_j</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Allows creating an appointment for owner/admin or staff with the CAN_WRITE bit. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The target service id is extracted from <computeroutput>service_j</computeroutput> (&quot;clinic_id&quot;); a missing or invalid value fails the check before any permission lookup. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classAppointment" kindref="compound">Appointment</ref> type, constrained by <ref refid="conceptAppointment__t" kindref="compound">Appointment_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">service_j</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Payload containing the clinic/service id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the requester holds sufficient permission. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="310" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a4fde2b6b7c617ef97f0a3aa6a5135425" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptAppointment__t" kindref="compound">Appointment_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; api::v2::PermissionManager::canCreateAsync</definition>
+        <argsstring>(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;service_j, Http::Error &amp;error)</argsstring>
+        <name>canCreateAsync</name>
+        <qualifiedname>api::v2::PermissionManager::canCreateAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
+          <declname>service_j</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" kindref="member">canCreate()</ref> for appointments. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="314" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a52a131813fb846d82e3b7b4b3363a6b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptAppointment__t" kindref="compound">Appointment_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool api::v2::PermissionManager::canRead</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t service_id, Http::Error &amp;error)</argsstring>
+        <name>canRead</name>
+        <qualifiedname>api::v2::PermissionManager::canRead</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>service_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Allows reading an appointment for owner/admin or staff with the CAN_READ bit. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classAppointment" kindref="compound">Appointment</ref> type, constrained by <ref refid="conceptAppointment__t" kindref="compound">Appointment_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">service_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id used to build the permission query. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the requester holds sufficient permission. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="325" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1abd8a7e3b5ffcb254c3954daa0cb44ceb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptAppointment__t" kindref="compound">Appointment_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; api::v2::PermissionManager::canReadAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t service_id, Http::Error &amp;error)</argsstring>
+        <name>canReadAsync</name>
+        <qualifiedname>api::v2::PermissionManager::canReadAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>service_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1aff6b99de61b84feb36a534319778195b" kindref="member">canRead()</ref> for appointments. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="329" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a99d92a72b1a2a99f6392b3a4f9b08374" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptAppointment__t" kindref="compound">Appointment_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool api::v2::PermissionManager::canUpdate</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t service_id, Http::Error &amp;error)</argsstring>
+        <name>canUpdate</name>
+        <qualifiedname>api::v2::PermissionManager::canUpdate</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>service_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Allows updating an appointment for owner/admin or staff with the CAN_WRITE bit. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classAppointment" kindref="compound">Appointment</ref> type, constrained by <ref refid="conceptAppointment__t" kindref="compound">Appointment_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">service_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id used to build the permission query. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the requester holds sufficient permission. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="340" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a49df60ee2868117406972f850747ee34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptAppointment__t" kindref="compound">Appointment_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; api::v2::PermissionManager::canUpdateAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t service_id, Http::Error &amp;error)</argsstring>
+        <name>canUpdateAsync</name>
+        <qualifiedname>api::v2::PermissionManager::canUpdateAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>service_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1a96e35dad77cb2e1dbd0ffffa7c648fdc" kindref="member">canUpdate()</ref> for appointments. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="344" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a9ba39dbfd12564c994c208afe10d9d41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptAppointment__t" kindref="compound">Appointment_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool api::v2::PermissionManager::canDelete</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t _id, Http::Error &amp;error)</argsstring>
+        <name>canDelete</name>
+        <qualifiedname>api::v2::PermissionManager::canDelete</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Allows deleting an appointment for owner/admin or staff with the CAN_DELETE bit. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classAppointment" kindref="compound">Appointment</ref> type, constrained by <ref refid="conceptAppointment__t" kindref="compound">Appointment_t</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">requester</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Authenticated caller. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id used to build the permission query. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Receives denial details. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when the requester holds sufficient permission. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="355" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a16329f4f9bbd3a5e6044bded5958d259" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="conceptAppointment__t" kindref="compound">Appointment_t</ref></type>
+            <declname>T</declname>
+            <defname>T</defname>
+          </param>
+        </templateparamlist>
+        <type>drogon::Task&lt; bool &gt;</type>
+        <definition>drogon::Task&lt; bool &gt; api::v2::PermissionManager::canDeleteAsync</definition>
+        <argsstring>(const Requester &amp;requester, uint64_t _id, Http::Error &amp;error)</argsstring>
+        <name>canDeleteAsync</name>
+        <qualifiedname>api::v2::PermissionManager::canDeleteAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <declname>requester</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>_id</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Coroutine form of <ref refid="classapi_1_1v2_1_1PermissionManager_1a71258d4ae15f18d8a002c192c0fb6e2a" kindref="member">canDelete()</ref> for appointments. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="359" column="22"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Central authorization facade: answers &quot;may this requester perform this operation on this entity?&quot;. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Overloads are grouped by the concept constraining the entity type (<ref refid="conceptClient__t" kindref="compound">Client_t</ref>, <ref refid="conceptService__t" kindref="compound">Service_t</ref>, <ref refid="conceptCase__t" kindref="compound">Case_t</ref>, <ref refid="conceptAppointment__t" kindref="compound">Appointment_t</ref>). Most checks load the entity&apos;s permission JSON (through <ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3e7c77aa55023f9d5ccc345e7b68f2ab" kindref="member">PermissionManagerPrivate::getPermissionsOfEntity</ref>) and apply the service owner/admin/staff rules; the plain client checks only assert that the requester&apos;s group and id match the target client. Every <computeroutput>*Async</computeroutput> overload is the coroutine counterpart of a synchronous check; those needing permission data use the async (database/cached) lookup. On denial, <computeroutput>error</computeroutput> receives a status and reason. <simplesect kind="note"><para>Each overload is explicitly instantiated for the supported entity types at the bottom of <ref refid="permissionmanager_8cpp" kindref="compound">permissionmanager.cpp</ref>; this header only declares them. In everyday words: think of this class as a receptionist who checks ID before letting someone do something. It does not fetch data itself; it asks <ref refid="classapi_1_1v2_1_1PermissionManagerPrivate" kindref="compound">PermissionManagerPrivate</ref> for the facts and then decides. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="55" column="5" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.hpp" bodystart="56" bodyend="362"/>
+    <listofallmembers>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canCreate</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a3ea07c998d2818c6ef1585a83d58de31" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canCreate</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a516ef7c5e4679c36c93b26bdd434509b" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canCreate</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a3ea07c998d2818c6ef1585a83d58de31" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canCreate</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1ab38a9fb015cfa0c0a21684b1b7e5c75d" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canCreateAsync</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a4fde2b6b7c617ef97f0a3aa6a5135425" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canCreateAsync</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1af13c583f1a64ce0d38551683c50ec070" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canCreateAsync</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a4fde2b6b7c617ef97f0a3aa6a5135425" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canCreateAsync</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a71258d4ae15f18d8a002c192c0fb6e2a" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canDelete</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a5ce6653354254b4b6b1788b68bce6fff" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canDelete</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a9ba39dbfd12564c994c208afe10d9d41" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canDelete</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a9ba39dbfd12564c994c208afe10d9d41" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canDelete</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a0adc8dfb1a38a0e3953a4032f3673980" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canDeleteAsync</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a984d7b5d477fa1a100f742adda535fb3" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canDeleteAsync</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a16329f4f9bbd3a5e6044bded5958d259" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canDeleteAsync</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a16329f4f9bbd3a5e6044bded5958d259" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canDeleteAsync</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a3fdd025d52c5c4b4140c3ff6790921fd" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canGetServices</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a30126a03fc03c2870325aa6df4543518" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canGetServicesAsync</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a850868371bb029e826761eff3b329c5c" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canManageStaff</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1af314003136240877cbf15fe24c288a05" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canManageStaffAsync</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1aff6b99de61b84feb36a534319778195b" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canRead</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a52a131813fb846d82e3b7b4b3363a6b2" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canRead</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a589a8a5cdfa8dbacb4f8a6dc70718a13" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canRead</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a52a131813fb846d82e3b7b4b3363a6b2" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canRead</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1aed948cb4da3d53102be81025ef98bda2" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canReadAsync</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1abd8a7e3b5ffcb254c3954daa0cb44ceb" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canReadAsync</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a69637b8a9b6d0d73f1f8ae12a91c5fd2" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canReadAsync</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1abd8a7e3b5ffcb254c3954daa0cb44ceb" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canReadAsync</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a30eb01bee43eade86f66faa01e47fc91" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canToggleActive</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1afa8aa5d58764cb40be9d226283f5197a" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canToggleActiveAsync</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a96e35dad77cb2e1dbd0ffffa7c648fdc" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canUpdate</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a99d92a72b1a2a99f6392b3a4f9b08374" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canUpdate</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a27ca0858f19c5a91561fc6baac4c921b" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canUpdate</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a99d92a72b1a2a99f6392b3a4f9b08374" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canUpdate</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1afded6faae3268475fa32898c00b5476e" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canUpdateAsync</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a49df60ee2868117406972f850747ee34" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canUpdateAsync</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a3f8bed5ca5e8f25c1f7ddd7b414c3cc6" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canUpdateAsync</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a49df60ee2868117406972f850747ee34" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canUpdateAsync</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1ae276f363c2d49a6818eced74bebf4ca6" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a6ee8b35704a2706f3a1ee3d1eb1b0d4d" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>operator=</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>PermissionManager</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1abb670098c751db8d9eb061535e4c0d0c" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>PermissionManager</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1a2e6ebe0e6b8c79b266e1bf2b232a1d6f" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>PermissionManager</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919" prot="public" virt="virtual"><scope>api::v2::PermissionManager</scope><name>~PermissionManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

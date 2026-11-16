@@ -1,0 +1,458 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="classStore" kind="class" language="C++" prot="public">
+    <compoundname>Store</compoundname>
+    <includes refid="store_8hpp" local="no">store.hpp</includes>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classStore_1a27825898458fa79d1665a31030fdcd77" prot="private" static="yes" mutable="no">
+        <type>std::unordered_map&lt; std::type_index, std::shared_ptr&lt; void &gt; &gt;</type>
+        <definition>std::unordered_map&lt; std::type_index, std::shared_ptr&lt; void &gt; &gt; Store::inventory</definition>
+        <argsstring></argsstring>
+        <name>inventory</name>
+        <qualifiedname>Store::inventory</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type-to-instance registry; typeid(T) is the key and the value is type-erased until a caller casts it back.</para>
+<para>Type-keyed singleton registry shared by every translation unit. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/store/store.hpp" line="227" column="31" bodyfile="src/store/store.hpp" bodystart="227" bodyend="-1"/>
+        <referencedby refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="139" endline="165">getObject</referencedby>
+        <referencedby refid="classStore_1a1e12f060c02095975351db8f5d63cb76" compoundref="store_8hpp" startline="103" endline="121">registerObject</referencedby>
+        <referencedby refid="classStore_1a2a4bfc0b18f2999216eda3067988cf57" compoundref="store_8hpp" startline="216" endline="221">replaceObject</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classStore_1a76db2e16906c8ffed79259a532795255" prot="private" static="yes" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex Store::inventoryMutex</definition>
+        <argsstring></argsstring>
+        <name>inventoryMutex</name>
+        <qualifiedname>Store::inventoryMutex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Guards every read and write of inventory.</para>
+<para>Serialises access to the registry. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/store/store.hpp" line="231" column="71" bodyfile="src/store/store.hpp" bodystart="231" bodyend="-1"/>
+        <referencedby refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="139" endline="165">getObject</referencedby>
+        <referencedby refid="classStore_1a1e12f060c02095975351db8f5d63cb76" compoundref="store_8hpp" startline="103" endline="121">registerObject</referencedby>
+        <referencedby refid="classStore_1a2a4bfc0b18f2999216eda3067988cf57" compoundref="store_8hpp" startline="216" endline="221">replaceObject</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classStore_1ad9ed1336388988b3382f9e95229262ce" prot="private" static="yes" mutable="no">
+        <type>std::atomic&lt; uint64_t &gt;</type>
+        <definition>std::atomic&lt; uint64_t &gt; Store::generation</definition>
+        <argsstring></argsstring>
+        <name>generation</name>
+        <qualifiedname>Store::generation</qualifiedname>
+        <initializer>{1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Invalidation counter read by <ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">cachedObject()</ref> and bumped by <ref refid="classStore_1a2a4bfc0b18f2999216eda3067988cf57" kindref="member">replaceObject()</ref>.</para>
+<para>Starts at 1 so a fresh thread&apos;s cached &quot;seen&quot; value of 0 is always stale on its first <ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">cachedObject()</ref> call. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/store/store.hpp" line="235" column="61" bodyfile="src/store/store.hpp" bodystart="43" bodyend="43"/>
+        <referencedby refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="189" endline="200">cachedObject</referencedby>
+        <referencedby refid="classStore_1a2a4bfc0b18f2999216eda3067988cf57" compoundref="store_8hpp" startline="216" endline="221">replaceObject</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classStore_1ac2dcc1a38b84201b7f08792ec626a8ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Store::Store</definition>
+        <argsstring>()=default</argsstring>
+        <name>Store</name>
+        <qualifiedname>Store::Store</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Default construction; all state is static, so a <ref refid="classStore" kindref="compound">Store</ref> object holds nothing of its own. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/store/store.hpp" line="64" column="5"/>
+        <referencedby refid="classStore_1a12f38d75c1bd78a9e0675431e70924b8">operator=</referencedby>
+        <referencedby refid="classStore_1aaef72fb28125719542eeb6f660580592">operator=</referencedby>
+        <referencedby refid="classStore_1ae164a7ca2a02d9e4b6fbc640d742b29b">Store</referencedby>
+        <referencedby refid="classStore_1a1b7fa438d7598694ed70e9cc07f5aa60">Store</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classStore_1a294720dea685013798a06570a70071a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual Store::~Store</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Store</name>
+        <qualifiedname>Store::~Store</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Virtual destructor; no owned resources to release (virtual so derived classes clean up correctly). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/store/store.hpp" line="68" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classStore_1ae164a7ca2a02d9e4b6fbc640d742b29b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Store::Store</definition>
+        <argsstring>(const Store &amp;)=delete</argsstring>
+        <name>Store</name>
+        <qualifiedname>Store::Store</qualifiedname>
+        <param>
+          <type>const <ref refid="classStore" kindref="compound">Store</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy construction is disabled; <ref refid="classStore" kindref="compound">Store</ref> is a pure namespace-like facade over static state. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/store/store.hpp" line="74" column="5"/>
+        <references refid="classStore_1ac2dcc1a38b84201b7f08792ec626a8ce">Store</references>
+      </memberdef>
+      <memberdef kind="function" id="classStore_1a12f38d75c1bd78a9e0675431e70924b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classStore" kindref="compound">Store</ref> &amp;</type>
+        <definition>Store &amp; Store::operator=</definition>
+        <argsstring>(const Store &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Store::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classStore" kindref="compound">Store</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy assignment is disabled; copying would not copy any state anyway. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/store/store.hpp" line="78" column="11"/>
+        <references refid="classStore_1ac2dcc1a38b84201b7f08792ec626a8ce">Store</references>
+      </memberdef>
+      <memberdef kind="function" id="classStore_1a1b7fa438d7598694ed70e9cc07f5aa60" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Store::Store</definition>
+        <argsstring>(Store &amp;&amp;)=default</argsstring>
+        <name>Store</name>
+        <qualifiedname>Store::Store</qualifiedname>
+        <param>
+          <type><ref refid="classStore" kindref="compound">Store</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Move construction is defaulted; there is no data to move. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/store/store.hpp" line="84" column="5"/>
+        <references refid="classStore_1ac2dcc1a38b84201b7f08792ec626a8ce">Store</references>
+      </memberdef>
+      <memberdef kind="function" id="classStore_1aaef72fb28125719542eeb6f660580592" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classStore" kindref="compound">Store</ref> &amp;</type>
+        <definition>Store &amp; Store::operator=</definition>
+        <argsstring>(Store &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Store::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classStore" kindref="compound">Store</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Move assignment is defaulted; there is no data to move. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/store/store.hpp" line="88" column="11"/>
+        <references refid="classStore_1ac2dcc1a38b84201b7f08792ec626a8ce">Store</references>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classStore_1a1e12f060c02095975351db8f5d63cb76" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>std::shared_ptr&lt; T &gt;</type>
+        <definition>static std::shared_ptr&lt; T &gt; Store::registerObject</definition>
+        <argsstring>(Args &amp;&amp;... args)</argsstring>
+        <name>registerObject</name>
+        <qualifiedname>Store::registerObject</qualifiedname>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Explicitly creates and registers a singleton, rejecting a type that is already registered. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The duplicate check and the insertion use separate lock scopes so T&apos;s constructor runs without the mutex held. That keeps arbitrary constructor code, which may re-enter <ref refid="classStore" kindref="compound">Store</ref>, from deadlocking on the inventory lock. (&quot;Deadlock&quot; means two operations waiting on each other forever.) <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type to register; used as the inventory key. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Constructor argument types for T. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arguments forwarded to T&apos;s constructor (passed on unchanged). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A shared_ptr owning the newly created object, so the caller can use it too. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::runtime_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if an object of type T is already registered. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/store/store.hpp" line="103" column="28" bodyfile="src/store/store.hpp" bodystart="103" bodyend="121"/>
+        <references refid="classStore_1a27825898458fa79d1665a31030fdcd77" compoundref="store_8hpp" startline="227">inventory</references>
+        <references refid="classStore_1a76db2e16906c8ffed79259a532795255" compoundref="store_8hpp" startline="231">inventoryMutex</references>
+        <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="92" endline="148">Server::run</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classStore_1a0607fb3b583c06ca910ed6c9881e790c" prot="public" static="yes" nodiscard="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>std::shared_ptr&lt; T &gt;</type>
+        <definition>static std::shared_ptr&lt; T &gt; Store::getObject</definition>
+        <argsstring>(Args &amp;&amp;... args)</argsstring>
+        <name>getObject</name>
+        <qualifiedname>Store::getObject</qualifiedname>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Returns the singleton for T, constructing it on first use. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The fast path looks up the type under the mutex and returns the existing instance. On a miss the object is constructed outside the lock (see the inline comment below) and then re-checked under the lock before being published, so concurrent first calls cannot install two different instances. Constructor arguments are therefore only used on the first successful construction and ignored on later calls. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type to look up or create; its type_index is the inventory key. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Constructor argument types for T. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arguments forwarded to T&apos;s constructor when a new object is needed. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A shared_ptr to the registered singleton; ownership is shared with all other callers and with the <ref refid="classStore" kindref="compound">Store</ref>. </para>
+</simplesect>
+<simplesect kind="note"><para>Marked nodiscard because callers are expected to use the shared instance; the <ref refid="classStore" kindref="compound">Store</ref> itself retains a strong reference in the inventory. (&quot;Strong reference&quot; means a shared_ptr that keeps the object alive.) </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classStore_1a1e12f060c02095975351db8f5d63cb76" kindref="member">registerObject()</ref>, <ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">cachedObject()</ref>, <ref refid="classStore_1a2a4bfc0b18f2999216eda3067988cf57" kindref="member">replaceObject()</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/store/store.hpp" line="139" column="29" bodyfile="src/store/store.hpp" bodystart="139" bodyend="165"/>
+        <references refid="classStore_1a27825898458fa79d1665a31030fdcd77" compoundref="store_8hpp" startline="227">inventory</references>
+        <references refid="classStore_1a76db2e16906c8ffed79259a532795255" compoundref="store_8hpp" startline="231">inventoryMutex</references>
+        <referencedby refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="189" endline="200">cachedObject</referencedby>
+        <referencedby refid="classDatabaseController_1a757e16ca56537bd8eed3d9abe9768954" compoundref="databasecontroller_8cpp" startline="247" endline="274">DatabaseController::checkItemExistsCoro</referencedby>
+        <referencedby refid="namespaceanonymous__namespace_02dbexecutor_8cpp_03_1a620e60141d4e4ce74d6607d537dc171b" compoundref="dbexecutor_8cpp" startline="39" endline="39">anonymous_namespace{dbexecutor.cpp}::config</referencedby>
+        <referencedby refid="namespaceanonymous__namespace_02passwordworker_8cpp_03_1a1cd044eb064a305d097941336a0c925c" compoundref="passwordworker_8cpp" startline="33" endline="33">anonymous_namespace{passwordworker.cpp}::config</referencedby>
+        <referencedby refid="classController_1a95c56822d667e94b031451729ce069a9" compoundref="controller_8hpp" startline="99" endline="110">Controller::Controller</referencedby>
+        <referencedby refid="classAsyncDbClient_1ac0396c3d59602cf860e6fef52c98a736" compoundref="asyncdbclient_8cpp" startline="50" endline="60">AsyncDbClient::createClient</referencedby>
+        <referencedby refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" compoundref="databaseschema_8cpp" startline="44" endline="61">DatabaseSchema::DatabaseSchema</referencedby>
+        <referencedby refid="classDatabaseController_1ac586f1fc3a54b3bbf1ff5369e403ed20" compoundref="databasecontroller_8cpp" startline="219" endline="245">DatabaseController::doReadQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a2685c684b979ee32be0f286df38c1449" compoundref="databasecontroller_8cpp" startline="48" endline="86">DatabaseController::ensureBackends</referencedby>
+        <referencedby refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="144" endline="171">DatabaseController::executeQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1aa3de6b2217aa0ba75ec4eb5286d36799" compoundref="databasecontroller_8cpp" startline="173" endline="194">DatabaseController::executeReadQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a7b2bb5792bc55ec851dcd7ae997c58a4" compoundref="databasecontroller_8cpp" startline="196" endline="217">DatabaseController::executeSearchQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1abb1622b85d3e413bcb1dee3521a9d24f" compoundref="databasecontroller_8cpp" startline="323" endline="350">DatabaseController::getAllTablesCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a2a0585031d4e0a5e8dfdeb7d77041563" compoundref="databasecontroller_8cpp" startline="352" endline="373">DatabaseController::getPermissionsCoro</referencedby>
+        <referencedby refid="classDatabaseController_1ab6502e9c51e8657b16ffe4795949ebe7" compoundref="databasecontroller_8cpp" startline="287" endline="321">DatabaseController::getTableSchemaCoro</referencedby>
+        <referencedby refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f" compoundref="permissioncache_8hpp" startline="161" endline="165">BasicPermissionCache&lt; ClockT &gt;::instance</referencedby>
+        <referencedby refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" compoundref="logger_8cpp" startline="38" endline="89">Logger::Logger</referencedby>
+        <referencedby refid="classDatabaseSchema_1a801e1391c1907e56401a867210b8c25d" compoundref="databaseschema_8cpp" startline="69" endline="83">DatabaseSchema::populateSchema</referencedby>
+        <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="92" endline="148">Server::run</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classStore_1aaf81da54b109478891030b7e04653bad" prot="public" static="yes" nodiscard="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::shared_ptr&lt; T &gt;</type>
+        <definition>static std::shared_ptr&lt; T &gt; Store::cachedObject</definition>
+        <argsstring>()</argsstring>
+        <name>cachedObject</name>
+        <qualifiedname>Store::cachedObject</qualifiedname>
+        <briefdescription>
+<para>Thread-local cached lookup of T, refreshed only when the <ref refid="classStore" kindref="compound">Store</ref> generation changes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Each thread keeps its own shared_ptr and the generation value it last saw. The generation is loaded with acquire semantics, pairing with the release fetch_add in <ref refid="classStore_1a2a4bfc0b18f2999216eda3067988cf57" kindref="member">replaceObject()</ref>, so a thread that observes a new generation also observes the replacement. A mismatch or an empty cache triggers a full <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">getObject&lt;T&gt;()</ref> lookup; otherwise the cached pointer is returned without touching the mutex.</para>
+<para>In plain words: looking in the registry needs a lock, which is too slow to do for every web request. So each thread remembers the pointer it got last time. &quot;Acquire&quot; and &quot;release&quot; are a pair of promises: after <ref refid="classStore_1a2a4bfc0b18f2999216eda3067988cf57" kindref="member">replaceObject()</ref> publishes a new pointer with &quot;release&quot;, any thread that reads the new number with &quot;acquire&quot; is also guaranteed to see that new pointer, not a stale one. This is cheap because a normal read of the counter is enough most of the time; the lock is only used when something actually changed. <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type to look up; on first use it must be constructible by <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">getObject&lt;T&gt;()</ref> with no arguments. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A shared_ptr to the current singleton for T. </para>
+</simplesect>
+<simplesect kind="note"><para>The returned pointer is nodiscard; callers should use it instead of re-fetching through <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">getObject()</ref>. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">getObject()</ref>, <ref refid="classStore_1a2a4bfc0b18f2999216eda3067988cf57" kindref="member">replaceObject()</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/store/store.hpp" line="189" column="29" bodyfile="src/store/store.hpp" bodystart="189" bodyend="200"/>
+        <references refid="classStore_1ad9ed1336388988b3382f9e95229262ce" compoundref="store_8hpp" startline="43" endline="43">generation</references>
+        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="139" endline="165">getObject</references>
+        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="157" endline="217">Cors::apply</referencedby>
+        <referencedby refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="664" endline="697">Controller::crudsAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a913563947fb79295de1f2278e6cb5e62" compoundref="keeprbase_8hpp" startline="204" endline="204">api::v2::KeeprBase::databaseController</referencedby>
+        <referencedby refid="classEntity_1a154ae0093211626370549e2924f9c954" compoundref="entity_8hpp" startline="387" endline="387">Entity::databaseController</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Filters_1_1Auth_1a3b6912ca8535567fb2c00dc07e0cc1ce" compoundref="auth_8hpp" startline="81" endline="189">api::v2::Filters::Auth::doFilter</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3e7c77aa55023f9d5ccc345e7b68f2ab" compoundref="permissionmanager__private_8hpp" startline="206" endline="232">api::v2::PermissionManagerPrivate::getPermissionsOfEntity</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a070d79b55b8f3262de2b815a636defd7" compoundref="permissionmanager__private_8hpp" startline="246" endline="272">api::v2::PermissionManagerPrivate::getPermissionsOfEntityCoro</referencedby>
+        <referencedby refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="483" endline="511">Controller::GetServicesAsync</referencedby>
+        <referencedby refid="classController_1a2af2297a7b4fcce1f987510786aaa5d7" compoundref="controller_8hpp" startline="557" endline="580">Controller::GetVisitsAsync</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classStore_1a2a4bfc0b18f2999216eda3067988cf57" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void Store::replaceObject</definition>
+        <argsstring>(std::shared_ptr&lt; T &gt; obj)</argsstring>
+        <name>replaceObject</name>
+        <qualifiedname>Store::replaceObject</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; T &gt;</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+<para>Overwrites the singleton registered for T and invalidates every thread-local cache. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Uses operator[] on the inventory, so it works whether or not T was registered before. The generation is incremented with release semantics so threads that acquire it in <ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">cachedObject()</ref> see the new pointer and re-fetch from the <ref refid="classStore" kindref="compound">Store</ref>. (&quot;Invalidates&quot; means it makes every thread&apos;s saved pointer out of date.) <parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type whose registered instance is replaced. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">obj</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New instance to register; may be null, in which case the key maps to an empty shared_ptr. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Does not throw: this is intended for test harnesses injecting fakes. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">cachedObject()</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/store/store.hpp" line="216" column="17" bodyfile="src/store/store.hpp" bodystart="216" bodyend="221"/>
+        <references refid="classStore_1ad9ed1336388988b3382f9e95229262ce" compoundref="store_8hpp" startline="43" endline="43">generation</references>
+        <references refid="classStore_1a27825898458fa79d1665a31030fdcd77" compoundref="store_8hpp" startline="227">inventory</references>
+        <references refid="classStore_1a76db2e16906c8ffed79259a532795255" compoundref="store_8hpp" startline="231">inventoryMutex</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Process-wide service locator that maps a type to one shared instance. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The class has no non-static state; the actual registry is a set of file-scope static members defined in <ref refid="store_8cpp" kindref="compound">store.cpp</ref>. Access is guarded by a single mutex, and a separate atomic generation counter lets per-thread caches notice replacements. Objects are owned through shared_ptr&lt;void&gt; and recovered by static_pointer_cast using typeid(T) as the key, so a lookup by type resolves to the concrete pointer stored for that type.</para>
+<para>In plain words: a &quot;singleton&quot; is one single object shared by the entire program. You never create a <ref refid="classStore" kindref="compound">Store</ref> object; you just call its static functions. A shared_ptr is a smart pointer that keeps its object alive for as long as anyone still holds it, then destroys it automatically when the last holder lets go, so no manual delete is needed. typeid(T) is a small tag that identifies a C++ type while the program runs, which lets the map be keyed by type instead of by a name. A mutex is a lock that only one thread may hold at a time, which stops two threads from changing the map at once and corrupting it. static_pointer_cast simply relabels the generic stored pointer as a T pointer; it performs no runtime type check. <simplesect kind="note"><para>registerObject refuses duplicates; getObject lazily constructs on first use; replaceObject overwrites without throwing and is intended for injecting test doubles. (&quot;Lazily&quot; means the object is not built until somebody actually asks for it; a &quot;test double&quot; is a fake object used in place of the real one during tests.) </para>
+</simplesect>
+<simplesect kind="see"><para>tests/support/fake_db.hpp </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="src/store/store.hpp" line="58" column="1" bodyfile="src/store/store.hpp" bodystart="59" bodyend="236"/>
+    <listofallmembers>
+      <member refid="classStore_1aaf81da54b109478891030b7e04653bad" prot="public" virt="non-virtual"><scope>Store</scope><name>cachedObject</name></member>
+      <member refid="classStore_1ad9ed1336388988b3382f9e95229262ce" prot="private" virt="non-virtual"><scope>Store</scope><name>generation</name></member>
+      <member refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" prot="public" virt="non-virtual"><scope>Store</scope><name>getObject</name></member>
+      <member refid="classStore_1a27825898458fa79d1665a31030fdcd77" prot="private" virt="non-virtual"><scope>Store</scope><name>inventory</name></member>
+      <member refid="classStore_1a76db2e16906c8ffed79259a532795255" prot="private" virt="non-virtual"><scope>Store</scope><name>inventoryMutex</name></member>
+      <member refid="classStore_1a12f38d75c1bd78a9e0675431e70924b8" prot="public" virt="non-virtual"><scope>Store</scope><name>operator=</name></member>
+      <member refid="classStore_1aaef72fb28125719542eeb6f660580592" prot="public" virt="non-virtual"><scope>Store</scope><name>operator=</name></member>
+      <member refid="classStore_1a1e12f060c02095975351db8f5d63cb76" prot="public" virt="non-virtual"><scope>Store</scope><name>registerObject</name></member>
+      <member refid="classStore_1a2a4bfc0b18f2999216eda3067988cf57" prot="public" virt="non-virtual"><scope>Store</scope><name>replaceObject</name></member>
+      <member refid="classStore_1ac2dcc1a38b84201b7f08792ec626a8ce" prot="public" virt="non-virtual"><scope>Store</scope><name>Store</name></member>
+      <member refid="classStore_1ae164a7ca2a02d9e4b6fbc640d742b29b" prot="public" virt="non-virtual"><scope>Store</scope><name>Store</name></member>
+      <member refid="classStore_1a1b7fa438d7598694ed70e9cc07f5aa60" prot="public" virt="non-virtual"><scope>Store</scope><name>Store</name></member>
+      <member refid="classStore_1a294720dea685013798a06570a70071a2" prot="public" virt="virtual"><scope>Store</scope><name>~Store</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

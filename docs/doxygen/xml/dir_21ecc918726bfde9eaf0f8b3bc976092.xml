@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_21ecc918726bfde9eaf0f8b3bc976092" kind="dir">
+    <compoundname>src/controllers/clientcontroller</compoundname>
+    <innerfile refid="clientcontroller_8cpp">clientcontroller.cpp</innerfile>
+    <innerfile refid="clientcontroller_8hpp">clientcontroller.hpp</innerfile>
+    <innerfile refid="clientcontrollerbase_8hpp">clientcontrollerbase.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/controllers/clientcontroller/"/>
+  </compounddef>
+</doxygen>
