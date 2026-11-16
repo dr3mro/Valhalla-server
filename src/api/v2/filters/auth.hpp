@@ -54,19 +54,22 @@ namespace api::v2::Filters
             static const bool asyncDb = Store::cachedObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
             if (asyncDb)
             {
-                const size_t bearerMagicLocal = bearerMagic;
-                auto handler = [this, req, bearerMagicLocal, fcb = std::move(fcb), fccb = std::move(fccb)]() mutable -> drogon::AsyncTask
+                const size_t                   bearerMagicLocal = bearerMagic;
+                std::shared_ptr<GateKeeper>    gateKeeperLocal   = gateKeeper;
+                // Move the callbacks into storage owned by the coroutine frame: async_run moves the
+                // factory (and its captures) into the coroutine, so they outlive every suspension.
+                drogon::async_run([req, bearerMagicLocal, gateKeeperLocal, fcb = std::move(fcb), fccb = std::move(fccb)]() mutable -> drogon::Task<void>
                 {
                     std::optional<Types::ClientLoginData> clientLoginData = Types::ClientLoginData{};
                     clientLoginData->token                                = req->getHeader("Authorization").substr(bearerMagicLocal);
                     clientLoginData->ip_address                           = req->getPeerAddr().toIp();
-                    std::string        message;
-                    bool               valid = false;
-                    drogon::FilterCallback cb = std::move(fcb);
+                    std::string             message;
+                    bool                    valid = false;
+                    drogon::FilterCallback   cb    = std::move(fcb);
                     drogon::FilterChainCallback chain = std::move(fccb);
                     try
                     {
-                        valid = co_await gateKeeper->isAuthenticationValidAsync(clientLoginData, message);
+                        valid = co_await gateKeeperLocal->isAuthenticationValidAsync(clientLoginData, message);
                     }
                     catch (const DatabaseBusy& e)
                     {
@@ -93,8 +96,7 @@ namespace api::v2::Filters
 
                     // Token is valid, pass control to the next filter/handler
                     std::move(chain)();
-                };
-                handler();
+                });
                 return;
             }
 
