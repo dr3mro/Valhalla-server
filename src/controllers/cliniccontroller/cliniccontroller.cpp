@@ -324,6 +324,52 @@ void ClinicController<T>::GetVisits(CALLBACK_&& callback, const Requester&& requ
     GetVisitsImpl(std::move(callback), std::move(requester), patient_id);
 }
 
+template <typename T>
+template <typename U>
+drogon::Task<void> ClinicController<T>::GetVisitsAsyncImpl(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> patient_id)
+    requires(std::is_same<U, Patient>::value)
+{
+    Http::Error error;
+    try
+    {
+        if (!patient_id.has_value())
+        {
+            callback(api::v2::Http::Status::BAD_REQUEST, "Missing patient id.");
+            co_return;
+        }
+        T entity((Types::Data_t(patient_id.value())));
+
+        if (!co_await gateKeeper->canReadAsync<T>(requester, patient_id.value(), error))
+        {
+            callback(error.code, error.message);
+            co_return;
+        }
+
+        co_await Controller::GetVisitsAsync(entity, std::move(callback));
+    }
+    catch (const std::exception& e)
+    {
+        CRITICALMESSAGERESPONSE
+    }
+    co_return;
+}
+
+template <typename T>
+template <typename U>
+drogon::Task<void> ClinicController<T>::GetVisitsAsyncImpl(
+    CALLBACK_&& callback, [[maybe_unused]] const Requester&& requester, [[maybe_unused]] const std::optional<uint64_t> patient_id)
+    requires(!std::is_same<U, Patient>::value)
+{
+    callback(api::v2::Http::Status::BAD_REQUEST, fmt::format("GetVisit is NOT implemented for entity type {}", T::getTableName()));
+    co_return;
+}
+
+template <typename T>
+drogon::Task<void> ClinicController<T>::GetVisitsAsync(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> patient_id)
+{
+    co_await GetVisitsAsyncImpl(std::move(callback), std::move(requester), patient_id);
+}
+
 #define INSTANTIATE_CLINIC_CONTROLLER(TYPE)                                                                                                             \
     template void ClinicController<TYPE>::CreateImpl(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                         \
     template drogon::Task<void> ClinicController<TYPE>::CreateAsyncImpl(CALLBACK_&& callback, const Requester&& requester, std::string_view data); \
@@ -340,7 +386,9 @@ void ClinicController<T>::GetVisits(CALLBACK_&& callback, const Requester&& requ
     template void ClinicController<TYPE>::Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id);                        \
     template drogon::Task<void> ClinicController<TYPE>::DeleteAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id); \
     template void ClinicController<TYPE>::Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                             \
-    template void ClinicController<TYPE>::GetVisits(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> patient_id);
+    template void ClinicController<TYPE>::GetVisits(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> patient_id);             \
+    template drogon::Task<void> ClinicController<TYPE>::GetVisitsAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> patient_id); \
+    template drogon::Task<void> ClinicController<TYPE>::GetVisitsAsyncImpl(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> patient_id);
 
 #include "gatekeeper/includes.hpp"  // IWYU pragma: keep
 // Instantiate for all entity types

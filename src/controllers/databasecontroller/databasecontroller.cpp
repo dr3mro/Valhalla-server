@@ -126,7 +126,10 @@ drogon::Task<std::optional<jsoncons::json>> DatabaseController::executeQueryCoro
     }
     try
     {
-        const auto result = co_await asyncdb::execSqlCoro(*asyncClient->client(), query, params);
+        // Drogon transaction: BEGIN is sent on creation, COMMIT on destruction, ROLLBACK on exception -
+        // the asynchronous counterpart of the pqxx::work used by the synchronous path.
+        const auto transaction = co_await asyncClient->client()->newTransactionCoro();
+        const auto result      = co_await asyncdb::execSqlCoro(*transaction, query, params);
         co_return asyncdb::mapResultToObject(result);
     }
     catch (const std::exception& e)

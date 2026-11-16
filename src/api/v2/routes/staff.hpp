@@ -4,6 +4,7 @@
 #include <drogon/HttpRequest.h>
 #include <drogon/HttpResponse.h>
 #include <drogon/HttpTypes.h>
+#include <drogon/utils/coroutine.h>
 
 #include <functional>
 #include <memory>
@@ -14,6 +15,7 @@
 #include <variant>
 
 #include "api/v2/basic/common.hpp"  // IWYU pragma: keep
+#include "configurator/configurator.hpp"
 #include "controllers/staffcontroller/staffcontroller.hpp"
 #include "controllers/staffcontroller/staffcontrollerBase.hpp"
 #include "entities/services/clinics/clinics.hpp"
@@ -30,16 +32,157 @@ namespace api::v2
        public:
         void Invite(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
+            const bool async = asyncDb_;
+            if (async)
+            {
+                auto cb = std::move(callback);
+                auto handler = [this, req, cb, serviceType]() mutable -> drogon::AsyncTask
+                {
+                                        CALLBACK_ mcb = [cb](int code, const std::string& content)
+                    {
+                        using Reply = std::function<void(const drogon::HttpResponsePtr&)>;
+                        switch (code)
+                        {
+                            case api::v2::Http::Status::OK:
+                                Helper::successResponse(content, Reply(cb));
+                                break;
+                            case api::v2::Http::Status::INTERNAL_SERVER_ERROR:
+                                Helper::failureResponse(content, Reply(cb));
+                                break;
+                            default:
+                                Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code), content, Reply(cb));
+                                break;
+                        }
+                    };
+
+                    Requester requester(req->getAttributes()->get<uint64_t>("clientID"), req->getAttributes()->get<std::string>("clientGroup"));
+
+                    auto ctlIt = staffRegistry.find(serviceType);
+                    if (ctlIt == staffRegistry.end())
+                    {
+                        std::move(mcb)(api::v2::Http::Status::BAD_REQUEST, fmt::format("Type mapping not found for: {}", serviceType));
+                        co_return;
+                    }
+
+                    try
+                    {
+                        co_await std::visit([&](auto& controller) -> drogon::Task<void> {
+                            co_await controller->InviteStaffToEntityAsync(std::move(mcb), std::move(requester), req->body());
+                        }, ctlIt->second);
+                    }
+                    catch (const std::exception& e)
+                    {
+                        Helper::failureResponse(e.what(), std::move(cb));
+                    }
+                };
+                handler();
+                return;
+            }
+
             executeControllerMethod(*dbExecutor, staffRegistry, serviceType, &StaffControllerBase::InviteStaffToEntity, req, std::move(callback), req->body());
         }
 
         void Add(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
+            const bool async = asyncDb_;
+            if (async)
+            {
+                auto cb = std::move(callback);
+                auto handler = [this, req, cb, serviceType]() mutable -> drogon::AsyncTask
+                {
+                                        CALLBACK_ mcb = [cb](int code, const std::string& content)
+                    {
+                        using Reply = std::function<void(const drogon::HttpResponsePtr&)>;
+                        switch (code)
+                        {
+                            case api::v2::Http::Status::OK:
+                                Helper::successResponse(content, Reply(cb));
+                                break;
+                            case api::v2::Http::Status::INTERNAL_SERVER_ERROR:
+                                Helper::failureResponse(content, Reply(cb));
+                                break;
+                            default:
+                                Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code), content, Reply(cb));
+                                break;
+                        }
+                    };
+
+                    Requester requester(req->getAttributes()->get<uint64_t>("clientID"), req->getAttributes()->get<std::string>("clientGroup"));
+
+                    auto ctlIt = staffRegistry.find(serviceType);
+                    if (ctlIt == staffRegistry.end())
+                    {
+                        std::move(mcb)(api::v2::Http::Status::BAD_REQUEST, fmt::format("Type mapping not found for: {}", serviceType));
+                        co_return;
+                    }
+
+                    try
+                    {
+                        co_await std::visit([&](auto& controller) -> drogon::Task<void> {
+                            co_await controller->AddStaffToEntityAsync(std::move(mcb), std::move(requester), req->body());
+                        }, ctlIt->second);
+                    }
+                    catch (const std::exception& e)
+                    {
+                        Helper::failureResponse(e.what(), std::move(cb));
+                    }
+                };
+                handler();
+                return;
+            }
+
             executeControllerMethod(*dbExecutor, staffRegistry, serviceType, &StaffControllerBase::AddStaffToEntity, req, std::move(callback), req->body());
         }
 
         void Remove(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
+            const bool async = asyncDb_;
+            if (async)
+            {
+                auto cb = std::move(callback);
+                auto handler = [this, req, cb, serviceType]() mutable -> drogon::AsyncTask
+                {
+                                        CALLBACK_ mcb = [cb](int code, const std::string& content)
+                    {
+                        using Reply = std::function<void(const drogon::HttpResponsePtr&)>;
+                        switch (code)
+                        {
+                            case api::v2::Http::Status::OK:
+                                Helper::successResponse(content, Reply(cb));
+                                break;
+                            case api::v2::Http::Status::INTERNAL_SERVER_ERROR:
+                                Helper::failureResponse(content, Reply(cb));
+                                break;
+                            default:
+                                Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code), content, Reply(cb));
+                                break;
+                        }
+                    };
+
+                    Requester requester(req->getAttributes()->get<uint64_t>("clientID"), req->getAttributes()->get<std::string>("clientGroup"));
+
+                    auto ctlIt = staffRegistry.find(serviceType);
+                    if (ctlIt == staffRegistry.end())
+                    {
+                        std::move(mcb)(api::v2::Http::Status::BAD_REQUEST, fmt::format("Type mapping not found for: {}", serviceType));
+                        co_return;
+                    }
+
+                    try
+                    {
+                        co_await std::visit([&](auto& controller) -> drogon::Task<void> {
+                            co_await controller->RemoveStaffFromEntityAsync(std::move(mcb), std::move(requester), req->body());
+                        }, ctlIt->second);
+                    }
+                    catch (const std::exception& e)
+                    {
+                        Helper::failureResponse(e.what(), std::move(cb));
+                    }
+                };
+                handler();
+                return;
+            }
+
             executeControllerMethod(*dbExecutor, staffRegistry, serviceType, &StaffControllerBase::RemoveStaffFromEntity, req, std::move(callback), req->body());
         }
 
@@ -51,6 +194,7 @@ namespace api::v2
 
        private:
         std::shared_ptr<DbExecutor> dbExecutor = Store::getObject<DbExecutor>();  // runs the blocking database work, shared with every route
+        const bool asyncDb_ = Store::cachedObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
         using StaffVariant = std::variant<std::shared_ptr<StaffController<Clinics>>, std::shared_ptr<StaffController<Pharmacies>>,
             std::shared_ptr<StaffController<Laboratories>>, std::shared_ptr<StaffController<RadiologyCenters>>>;
 

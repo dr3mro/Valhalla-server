@@ -4,6 +4,7 @@
 #include <memory>
 #include <string_view>
 
+#include "drogon/utils/coroutine.h"
 #include "controllers/base/controller/controller.hpp"
 #include "controllers/staffcontroller/staffcontrollerBase.hpp"
 #include "utils/global/callback.hpp"
@@ -31,6 +32,9 @@ class StaffController : public StaffControllerBase, public Controller
     void AddStaffToEntity(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
     void RemoveStaffFromEntity(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
     void InviteStaffToEntity(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
+    drogon::Task<void> AddStaffToEntityAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
+    drogon::Task<void> RemoveStaffFromEntityAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
+    drogon::Task<void> InviteStaffToEntityAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
 
    private:
     std::shared_ptr<Configurator>   cfg_;

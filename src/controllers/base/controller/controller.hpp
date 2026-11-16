@@ -440,4 +440,18 @@ class Controller
         std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlRemoveStaffStatement;
         cruds(entity, sqlstatement, dbexec, std::move(callback));
     }
+
+    template <typename T>
+    drogon::Task<void> addStaffAsync(T& entity, CALLBACK_&& callback)
+    {
+        std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlAddStaffStatement;
+        co_await crudsAsync(entity, sqlstatement, &DatabaseController::executeQueryCoro, std::move(callback));
+    }
+
+    template <typename T>
+    drogon::Task<void> removeStaffAsync(T& entity, CALLBACK_&& callback)
+    {
+        std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlRemoveStaffStatement;
+        co_await crudsAsync(entity, sqlstatement, &DatabaseController::executeQueryCoro, std::move(callback));
+    }
 };

@@ -62,6 +62,14 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
     void GetVisitsImpl(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> patient_id)
         requires(!std::is_same<U, Patient>::value);
 
+    template <typename U = T>
+    drogon::Task<void> GetVisitsAsyncImpl(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> patient_id)
+        requires(std::is_same<U, Patient>::value);
+
+    template <typename U = T>
+    drogon::Task<void> GetVisitsAsyncImpl(CALLBACK_&& callback, [[maybe_unused]] const Requester&& requester, [[maybe_unused]] std::optional<uint64_t> patient_id)
+        requires(!std::is_same<U, Patient>::value);
+
    public:
     explicit ClinicController()  = default;
     ~ClinicController() override = default;
@@ -76,4 +84,5 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
     drogon::Task<void> DeleteAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id) final;
     void Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data) final;
     void GetVisits(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> patient_id) final;
+    drogon::Task<void> GetVisitsAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> patient_id) final;
 };

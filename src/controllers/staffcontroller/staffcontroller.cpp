@@ -1,6 +1,8 @@
 
 #include "controllers/staffcontroller/staffcontroller.hpp"
 
+#include "drogon/utils/coroutine.h"
+
 #include <drogon/HttpTypes.h>
 #include <fmt/format.h>
 
@@ -123,6 +125,97 @@ void StaffController<T>::InviteStaffToEntity(CALLBACK_&& callback, const Request
     }
 }
 
+
+template <typename T>
+drogon::Task<void> StaffController<T>::AddStaffToEntityAsync(CALLBACK_&& callback, [[maybe_unused]] const Requester&& requester, std::string_view data)
+{
+    jsoncons::json staff_j;
+    HttpError      error;
+    try
+    {
+        staff_j                = jsoncons::json::parse(data);
+        jsoncons::json payload = staff_j.at("payload");
+        StaffData      staffData(payload);
+
+        T staff(staffData);
+
+        co_await Controller::addStaffAsync(staff, std::move(callback));
+    }
+    catch (const std::exception& e)
+    {
+        CRITICALMESSAGERESPONSE
+    }
+    co_return;
+}
+template <typename T>
+drogon::Task<void> StaffController<T>::RemoveStaffFromEntityAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+{
+    try
+    {
+        HttpError      error;
+        jsoncons::json staff_j = jsoncons::json::parse(data);
+        jsoncons::json payload = staff_j.at("payload");
+        uint64_t       _id     = staff_j.at("id").as<uint64_t>();
+        StaffData      staffData(payload);
+
+        T staff(staffData);
+        if (!co_await gateKeeper->canManageStaffAsync<T>(requester, _id, error))
+        {
+            std::move(callback)(error.code, error.message);
+            co_return;
+        }
+        co_await Controller::removeStaffAsync(staff, std::move(callback));
+    }
+    catch (const std::exception& e)
+    {
+        CRITICALMESSAGERESPONSE
+    }
+    co_return;
+}
+template <typename T>
+drogon::Task<void> StaffController<T>::InviteStaffToEntityAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+{
+    try
+    {
+        HttpError                  error;
+        jsoncons::json             staff_j = jsoncons::json::parse(data);
+        uint64_t                   _id     = staff_j.at("nominee_id").as<uint64_t>();
+        StaffData                  staffData(staff_j);
+        std::optional<std::string> response;
+        T                          staff(staffData);
+
+        if (!co_await gateKeeper->canManageStaffAsync<T>(requester, _id, error))
+        {
+            std::move(callback)(error.code, error.message);
+            co_return;
+        }
+
+        if (staffData.parse_status && staffData.toInviteJson(staff_j))
+        {
+            response = Communicate::sendRequest(email_sender_daemon_config_.host, email_sender_daemon_config_.port,
+                email_sender_daemon_config_.message_queue_path, drogon::HttpMethod::Post, staff_j.to_string());
+
+            if (response.has_value())
+            {
+                std::move(callback)(api::v2::Http::Status::OK, response.value());
+            }
+            else
+            {
+                std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Failed to send invite.");
+            }
+        }
+        else
+        {
+            std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Failed to create invite json.");
+        }
+    }
+    catch (const std::exception& e)
+    {
+        CRITICALMESSAGERESPONSE
+    }
+    co_return;
+}
+
 #include "entities/services/clinics/clinics.hpp"   //IWYU pragma : keep
 #include "entities/services/laboratories.hpp"      // IWYU pragma : keep
 #include "entities/services/pharmacies.hpp"        // IWYU pragma: keep
@@ -132,7 +225,10 @@ void StaffController<T>::InviteStaffToEntity(CALLBACK_&& callback, const Request
     template StaffController<TYPE>::StaffController();                                                                                    \
     template void StaffController<TYPE>::AddStaffToEntity(CALLBACK_&& callback, const Requester&& requester, std::string_view data);      \
     template void StaffController<TYPE>::RemoveStaffFromEntity(CALLBACK_&& callback, const Requester&& requester, std::string_view data); \
-    template void StaffController<TYPE>::InviteStaffToEntity(CALLBACK_&& callback, const Requester&& requester, std::string_view data);
+    template void StaffController<TYPE>::InviteStaffToEntity(CALLBACK_&& callback, const Requester&& requester, std::string_view data); \
+    template drogon::Task<void> StaffController<TYPE>::AddStaffToEntityAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data); \
+    template drogon::Task<void> StaffController<TYPE>::RemoveStaffFromEntityAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data); \
+    template drogon::Task<void> StaffController<TYPE>::InviteStaffToEntityAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data);
 
 // Instantiate for all entity types
 
