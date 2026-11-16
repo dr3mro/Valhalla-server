@@ -35,6 +35,10 @@ ${C_BOLD}${C_M}╚════════════════════�
 ${C_BOLD}Usage:${C_N} ./run.sh <command> [args...]
 
 ${C_BOLD}${C_Y}${E_BUILD}Build & run:${C_N}
+  ${C_C}conan init${C_N}              ${C_DIM}Detect conan profile${C_N}
+  ${C_C}conan install${C_N}           ${C_DIM}Install deps (both)${C_N}
+  ${C_C}conan install release${C_N}   ${C_DIM}Install release deps${C_N}
+  ${C_C}conan install debug${C_N}     ${C_DIM}Install debug deps${C_N}
   ${C_C}build${C_N}                   ${C_DIM}Build Debug + Release${C_N}
   ${C_C}build release${C_N}           ${C_DIM}Build Release only${C_N}
   ${C_C}build debug${C_N}             ${C_DIM}Build Debug only${C_N}
@@ -231,6 +235,22 @@ shift || true
 case "$cmd" in
     help|-h|--help) usage ;;
     list) list_cmds ;;
+    conan)
+        sub="${1:-}"; shift || true
+        case "$sub" in
+            init) conan profile detect --force ;;
+            install)
+                profile="${1:-both}"; shift || true
+                case "$profile" in
+                    release) conan install . --build=missing -s build_type=Release -s compiler.cppstd=gnu20 -c "trantor/*:tools.build:cxxflags=[\"-Wno-error=unused-result\"]" ;;
+                    debug) conan install . --build=missing -s build_type=Debug -s compiler.cppstd=gnu20 -c "trantor/*:tools.build:cxxflags=[\"-Wno-error=unused-result\"]" ;;
+                    both|all|"") conan install . --build=missing -s build_type=Release -s compiler.cppstd=gnu20 -c "trantor/*:tools.build:cxxflags=[\"-Wno-error=unused-result\"]" && conan install . --build=missing -s build_type=Debug -s compiler.cppstd=gnu20 -c "trantor/*:tools.build:cxxflags=[\"-Wno-error=unused-result\"]" ;;
+                    *) err "Unknown conan install profile: $profile"; exit 2 ;;
+                esac
+                ;;
+            *) err "Unknown conan command: $sub"; exit 2 ;;
+        esac
+        ;;
     build)
         profile="${1:-all}"; shift || true
         case "$profile" in
