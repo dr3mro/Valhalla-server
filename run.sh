@@ -41,6 +41,7 @@ ${C_BOLD}${C_Y}${E_BUILD}Build & run:${C_N}
   ${C_C}build openapi${C_N}    ${C_DIM}Regenerate OpenAPI docs${C_N}
   ${C_C}configure release${C_N} ${C_DIM}Configure Release build${C_N}
   ${C_C}configure debug${C_N}  ${C_DIM}Configure Debug build${C_N}
+  ${C_C}configure both${C_N}   ${C_DIM}Configure both builds${C_N}
   ${C_C}clean${C_N}            ${C_DIM}Clean Debug + Release${C_N}
   ${C_C}clean release${C_N}    ${C_DIM}Clean Release only${C_N}
   ${C_C}clean debug${C_N}      ${C_DIM}Clean Debug only${C_N}
@@ -256,6 +257,7 @@ case "$cmd" in
         case "$profile" in
             release) cmake -S "$ROOT" -B "$ROOT/build/Release" -DCMAKE_BUILD_TYPE=Release -G Ninja "$@" ;;
             debug) cmake -S "$ROOT" -B "$ROOT/build/Debug" -DCMAKE_BUILD_TYPE=Debug -G Ninja "$@" ;;
+            both|all|"") cmake -S "$ROOT" -B "$ROOT/build/Release" -DCMAKE_BUILD_TYPE=Release -G Ninja "$@" && cmake -S "$ROOT" -B "$ROOT/build/Debug" -DCMAKE_BUILD_TYPE=Debug -G Ninja "$@" ;;
             *) err "Unknown configure profile: $profile"; exit 2 ;;
         esac
         ;;
