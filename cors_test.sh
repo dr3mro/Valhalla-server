@@ -8,18 +8,90 @@ set -uo pipefail
 STRICT="${STRICT:-0}"
 CASE="${CASE:-all}"
 BASE="http://localhost:8080"
-for arg in "$@"; do
-    case "$arg" in
-        --strict) STRICT=1 ;;
-        --case) shift; CASE="${1:-all}" ;;
-        --case=*) CASE="${arg#*=}" ;;
-        -h|--help)
-            sed -n '2,10p' "$0"
-            exit 0
+
+usage() {
+    sed -n '2,14p' "$0"
+}
+
+parse_args() {
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            --strict) STRICT=1; shift ;;
+            --case)
+                if [[ $# -lt 2 ]]; then
+                    printf 'error: --case needs a value (basic, 403, 429, 503, all)\n' >&2
+                    return 2
+                fi
+                CASE="$2"
+                shift 2
+                ;;
+            --case=*)
+                CASE="${1#*=}"
+                shift
+                ;;
+            -h|--help)
+                usage
+                exit 0
+                ;;
+            --self-test)
+                SELF_TEST=1
+                shift
+                ;;
+            --print-parsed)
+                PRINT_PARSED=1
+                shift
+                ;;
+            *)
+                BASE="$1"
+                shift
+                ;;
+        esac
+    done
+    case "$CASE" in
+        basic|403|429|503|all) ;;
+        *)
+            printf 'error: invalid case %q (valid: basic, 403, 429, 503, all)\n' "$CASE" >&2
+            return 2
             ;;
-        *) BASE="$arg" ;;
     esac
-done
+    return 0
+}
+
+SELF_TEST=0
+PRINT_PARSED=0
+parse_args "$@" || exit 2
+
+if [[ $PRINT_PARSED -eq 1 ]]; then
+    printf 'CASE=%s STRICT=%s BASE=%s\n' "$CASE" "$STRICT" "$BASE"
+    exit 0
+fi
+
+if [[ $SELF_TEST -eq 1 ]]; then
+    fail=0
+    run_case() {
+        local ec="$1" es="$2" eb="$3"
+        shift 3
+        local actual
+        actual="$("$0" --print-parsed "$@" 2>/dev/null)" || { printf 'FAIL %s -> command error\n' "$*"; fail=1; return; }
+        if [[ $actual == "CASE=$ec STRICT=$es BASE=$eb" ]]; then
+            printf 'ok   %s -> %s\n' "$*" "$actual"
+        else
+            printf 'FAIL %s -> %s (expected CASE=%s STRICT=%s BASE=%s)\n' "$*" "$actual" "$ec" "$es" "$eb"
+            fail=1
+        fi
+    }
+    run_case all 0 http://localhost:8080
+    run_case 403 1 http://localhost:8080 --case 403 --strict
+    run_case 403 0 http://x --case 403 http://x
+    run_case 429 0 http://x --case=429 http://x
+    run_case all 1 http://x --strict http://x
+    run_case all 0 http://localhost:8080
+    # error cases
+    if "$0" --print-parsed --case >/dev/null 2>&1; then printf 'FAIL --case alone should fail\n'; fail=1; else printf 'ok   --case alone -> error\n'; fi
+    if "$0" --print-parsed --case bogus >/dev/null 2>&1; then printf 'FAIL --case bogus should fail\n'; fail=1; else printf 'ok   --case bogus -> error\n'; fi
+    printf '\nself-test: %d failure(s)\n' "$fail"
+    exit "$fail"
+fi
 
 fail=0
 passed=0
@@ -164,4 +236,5 @@ if [[ $fail -gt 0 ]]; then
     exit 1
 fi
 exit 0
+
 
