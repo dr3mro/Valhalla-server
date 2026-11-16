@@ -32,6 +32,8 @@ PREFLIGHT_BURST="${PREFLIGHT_BURST:-60}"
 API="$BASE/api/v2"
 
 passed=0; failed=0
+# Set indirectly by fetch() through printf -v; initialised here so the assignments are visible to shellcheck.
+ph=""; ps=""; rh=""; rs=""
 pass() { passed=$((passed + 1)); printf 'ok   %s\n' "$1"; }
 fail() { failed=$((failed + 1)); printf 'FAIL %s\n' "$1"; [[ -n ${2:-} ]] && printf '       %s\n' "$2"; }
 
@@ -47,7 +49,7 @@ fetch() {
 
 # header_values <headers> <name>: one line per occurrence, value only (CR removed, name case-insensitive).
 header_values() {
-    printf '%s\n' "$1" | tr -d '\r' | awk -v n="$(printf '%s' "$2" | tr 'A-Z' 'a-z')" '
+    printf '%s\n' "$1" | tr -d '\r' | awk -v n="$(printf '%s' "$2" | tr '[:upper:]' '[:lower:]')" '
         { i = index($0, ":"); if (i > 0 && tolower(substr($0, 1, i - 1)) == n) { v = substr($0, i + 1); sub(/^[ \t]+/, "", v); sub(/[ \t]+$/, "", v); print v } }'
 }
 header_count() { header_values "$1" "$2" | grep -c . || true; }
@@ -55,8 +57,8 @@ header_count() { header_values "$1" "$2" | grep -c . || true; }
 # list_has <comma list> <item>: case-insensitive membership test for a comma separated header value.
 list_has() {
     local item
-    item="$(printf '%s' "$2" | tr 'A-Z' 'a-z')"
-    printf '%s' "$1" | tr 'A-Z' 'a-z' | tr ',' '\n' | sed 's/^[ \t]*//; s/[ \t]*$//' | grep -Fxq -- "$item"
+    item="$(printf '%s' "$2" | tr '[:upper:]' '[:lower:]')"
+    printf '%s' "$1" | tr '[:upper:]' '[:lower:]' | tr ',' '\n' | sed 's/^[ \t]*//; s/[ \t]*$//' | grep -Fxq -- "$item"
 }
 
 # Apply the browser's preflight rules. Echoes nothing; returns 0 and sets REASON on failure.
@@ -103,7 +105,7 @@ SCENARIOS=(
     "services (GET + bearer)|GET|/clients/users/services|authorization"
 )
 
-if ! fetch h s "$BASE/api/v2/hello"; then
+if ! fetch _probe_headers _probe_status "$BASE/api/v2/hello"; then
     printf 'FAIL cannot reach %s (is the container running and mapped with -p 8080:8080? try: docker ps)\n' "$BASE"
     exit 1
 fi
