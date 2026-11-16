@@ -30,8 +30,6 @@ namespace asyncdb
                 continue;
             }
 
-            const auto sql_type = field.sqlType();
-
             const std::string name(field_name);
             const std::string value(field.c_str());
 
