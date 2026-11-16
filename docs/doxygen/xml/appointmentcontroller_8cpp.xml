@@ -887,7 +887,7 @@
         </childnode>
       </node>
       <node id="34">
-        <label>utils/message/message.hpp</label>
+        <label>message/message.hpp</label>
         <link refid="message_8hpp"/>
         <childnode refid="35" relation="include">
         </childnode>

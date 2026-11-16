@@ -38,7 +38,7 @@
 #include <string>  // std::string, both the message type and the colour type.
 #include <vector>  // std::vector holds the list of log levels to iterate over.
 
-#include "utils/message/message.hpp"  // The Message facade under test.
+#include "message/message.hpp"  // The Message facade under test.
 
 // Message is a thin logging facade over trantor's logger. Without a running
 // server its only observable contract is "does not throw and always accepts a

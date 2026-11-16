@@ -83,12 +83,12 @@
 // Banner helpers used to print the startup banner
 #include "server/extras/banner.hpp"
 // Store, the global registry of shared singleton objects
+#include "logger/logger.hpp"  // the Logger type resolved from the Store
 #include "store/store.hpp"
-#include "utils/Logger/logger.hpp"  // the Logger type resolved from the Store
 // JsonHelper::jsonify(), which builds the custom 404 JSON body
 #include "utils/jsonhelper/jsonhelper.hpp"
 // Message helpers used to report startup failures
-#include "utils/message/message.hpp"
+#include "message/message.hpp"
 // the DatabaseSchema type resolved from the Store
 #include "validator/databaseschema/databaseschema.hpp"
 

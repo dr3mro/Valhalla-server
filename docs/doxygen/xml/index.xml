@@ -848,25 +848,6 @@
     <member refid="classLaboratoryAppointment_1a368ccccd84c7a292536042fbc4fc7f7f" kind="function"><name>getServicePermissionsQuery</name></member>
     <member refid="classLaboratoryAppointment_1a595757aaaa3f41e2f6fd744a2fcdb5fe" kind="function"><name>getPermissionsQueryForRead</name></member>
   </compound>
-  <compound refid="classLogger" kind="class"><name>Logger</name>
-    <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030a" kind="enum"><name>Color</name></member>
-    <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aae2322fba4b3adff1c29dac4a307cc7a1" kind="enumvalue"><name>Red</name></member>
-    <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa6471477fc2170c1406cab151cc408fc3" kind="enumvalue"><name>Green</name></member>
-    <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa1f63a6ccfabbf1f73b71ea9a7bb20d11" kind="enumvalue"><name>Yellow</name></member>
-    <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aab132ee8c05459d4b4bb086aead371f73" kind="enumvalue"><name>Blue</name></member>
-    <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa67f75574bad3cad98bd85ab4b31f928b" kind="enumvalue"><name>Magenta</name></member>
-    <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa2452b8b4727e598db8da33ee8da920a1" kind="enumvalue"><name>White</name></member>
-    <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa0b21c9bcf230758908c7739987f8969c" kind="enumvalue"><name>Reset</name></member>
-    <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa6a0196682c2f0a57a8a0e2b9e2fc7aae" kind="enumvalue"><name>Cyan</name></member>
-    <member refid="classLogger_1aeae0a292d6930a7c81a1a0c4ece5534c" kind="variable"><name>logger_</name></member>
-    <member refid="classLogger_1ad7e6a73dfe5abb26f51a1502bcab57cf" kind="variable"><name>MAX_LOG_SIZE</name></member>
-    <member refid="classLogger_1acae717b9d2cb047d186ee740872d53fe" kind="variable"><name>THREADPOOL</name></member>
-    <member refid="classLogger_1a0f3eebbd1afb203f076c9791306ce250" kind="variable"><name>THREADS</name></member>
-    <member refid="classLogger_1a9295d6101a19ddde8dee20236b86c89d" kind="variable"><name>MAX_LOG_FILES</name></member>
-    <member refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" kind="function"><name>Logger</name></member>
-    <member refid="classLogger_1ad5bca94a0174ce580d9d36c807fbe107" kind="function"><name>log</name></member>
-    <member refid="classLogger_1aaffbcae12c11b5435c8a1743c7402acc" kind="function"><name>get_color</name></member>
-  </compound>
   <compound refid="classMemCache" kind="class"><name>MemCache</name>
     <member refid="classMemCache_1ab849b6bdf3b4922b00f173434e61d073" kind="typedef"><name>Clock</name></member>
     <member refid="classMemCache_1ae2921b17188672eabd81d40c51c8d10f" kind="typedef"><name>TimePoint</name></member>
@@ -2002,10 +1983,6 @@
   </compound>
   <compound refid="jsonhelper_8hpp" kind="file"><name>jsonhelper.hpp</name>
   </compound>
-  <compound refid="logger_8cpp" kind="file"><name>logger.cpp</name>
-  </compound>
-  <compound refid="logger_8hpp" kind="file"><name>logger.hpp</name>
-  </compound>
   <compound refid="memcache_8hpp" kind="file"><name>memcache.hpp</name>
   </compound>
   <compound refid="message_8cpp" kind="file"><name>message.cpp</name>
@@ -2086,8 +2063,6 @@
   <compound refid="dir_c497795109aedca4a3c21e46e404f9eb" kind="dir"><name>src/utils/jsonhelper</name>
   </compound>
   <compound refid="dir_e41cde642ca878ae4e5072d357f89c14" kind="dir"><name>src/gatekeeper/keeprbase</name>
-  </compound>
-  <compound refid="dir_aa69360cb144e79247e38227b5fa5a59" kind="dir"><name>src/utils/Logger</name>
   </compound>
   <compound refid="dir_b3a3f116620f69a0dd273db55d342609" kind="dir"><name>src/utils/memcache</name>
   </compound>

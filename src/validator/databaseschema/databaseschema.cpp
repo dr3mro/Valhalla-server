@@ -40,7 +40,7 @@
 // For Store::getObject, which supplies the shared DatabaseController.
 #include "store/store.hpp"
 // For logging helpers like ErrorMessage and WarningMessage.
-#include "utils/message/message.hpp"
+#include "message/message.hpp"
 
 SCHEMA_t
     DatabaseSchema::databaseSchema;  // Define the one shared schema map (empty

@@ -52,7 +52,7 @@
 
 // Project logging helpers, kept available for diagnostics; this file itself
 // does not log.
-#include "utils/message/message.hpp"
+#include "message/message.hpp"
 
 namespace asyncdb {
   /**

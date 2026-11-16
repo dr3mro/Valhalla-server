@@ -53,9 +53,9 @@
 #include "gatekeeper/types.hpp"       // Credentials and ClientLoginData.
 #include "utils/global/callback.hpp"  // CALLBACK_, the HTTP response callback.
 // Shared global helpers (e.g. CRITICALMESSAGE).
+#include "message/message.hpp"  // Message::CriticalMessage for logging.
 #include "utils/global/global.hpp"
 #include "utils/global/http.hpp"  // HTTP status codes and statusForException().
-#include "utils/message/message.hpp"  // Message::CriticalMessage for logging.
 
 using SessionManager =
     api::v2::SessionManager;  // Short alias so definitions below can omit the

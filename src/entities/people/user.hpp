@@ -39,7 +39,7 @@
 #include "entities/base/client.hpp"
 // Types::Data_t, the id-only payload used here.
 #include "entities/base/types.hpp"
-#include "utils/message/message.hpp"  // Message logging for build failures.
+#include "message/message.hpp"  // Message logging for build failures.
 
 /**
  * @brief Convenience alias for the id-only payload used by get-services
@@ -85,7 +85,8 @@ class User : public Client {
   explicit User(const ClientData_t& data)
       // "explicit" prevents implicit conversions;
       // TABLENAME fixes the target table.
-      : Client(data, TABLENAME) {
+      : Client(data,
+               TABLENAME) {
   }
   // User() : Client(std::string(TABLENAME)) {}
   /**

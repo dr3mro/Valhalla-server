@@ -1,16 +1,33 @@
-<?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+<?xml version='1.0' encoding='UTF-8' standalone='no' ?>
+<doxygen
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="compound.xsd"
+    version="1.18.0"
+    xml:lang="en-US"
+>
   <compounddef id="tokenmanager_8hpp" kind="file" language="C++">
     <compoundname>tokenmanager.hpp</compoundname>
     <includes local="yes">drogon/utils/coroutine.h</includes>
-    <includes refid="keeprbase_8hpp" local="yes">gatekeeper/keeprbase/keeprbase.hpp</includes>
-    <includedby refid="gatekeeper_8cpp" local="yes">src/gatekeeper/gatekeeper.cpp</includedby>
-    <includedby refid="gatekeeper_8hpp" local="yes">src/gatekeeper/gatekeeper.hpp</includedby>
-    <includedby refid="tokenmanager_8cpp" local="yes">src/gatekeeper/tokenmanager/tokenmanager.cpp</includedby>
+    <includes
+            refid="keeprbase_8hpp"
+            local="yes"
+        >gatekeeper/keeprbase/keeprbase.hpp</includes>
+    <includedby
+            refid="gatekeeper_8cpp"
+            local="yes"
+        >src/gatekeeper/gatekeeper.cpp</includedby>
+    <includedby
+            refid="gatekeeper_8hpp"
+            local="yes"
+        >src/gatekeeper/gatekeeper.hpp</includedby>
+    <includedby
+            refid="tokenmanager_8cpp"
+            local="yes"
+        >src/gatekeeper/tokenmanager/tokenmanager.cpp</includedby>
     <incdepgraph>
       <node id="11">
         <label>configurator/configurator.hpp</label>
-        <link refid="configurator_8hpp"/>
+        <link refid="configurator_8hpp" />
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
@@ -36,7 +53,7 @@
       </node>
       <node id="23">
         <label>defaults.hpp</label>
-        <link refid="defaults_8hpp"/>
+        <link refid="defaults_8hpp" />
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
@@ -44,7 +61,7 @@
       </node>
       <node id="18">
         <label>configurator/envloader/envloader.hpp</label>
-        <link refid="envloader_8hpp"/>
+        <link refid="envloader_8hpp" />
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
@@ -60,7 +77,7 @@
       </node>
       <node id="20">
         <label>envvars/envvars.hpp</label>
-        <link refid="envvars_8hpp"/>
+        <link refid="envvars_8hpp" />
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
@@ -68,7 +85,7 @@
       </node>
       <node id="24">
         <label>controllers/databasecontroller/databasecontroller.hpp</label>
-        <link refid="databasecontroller_8hpp"/>
+        <link refid="databasecontroller_8hpp" />
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
@@ -122,7 +139,7 @@
       </node>
       <node id="30">
         <label>database/asyncdbclient.hpp</label>
-        <link refid="asyncdbclient_8hpp"/>
+        <link refid="asyncdbclient_8hpp" />
         <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
@@ -134,7 +151,7 @@
       </node>
       <node id="32">
         <label>database/asyncresultmapper.hpp</label>
-        <link refid="asyncresultmapper_8hpp"/>
+        <link refid="asyncresultmapper_8hpp" />
         <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
@@ -148,7 +165,7 @@
       </node>
       <node id="34">
         <label>database/asyncsqlbinder.hpp</label>
-        <link refid="asyncsqlbinder_8hpp"/>
+        <link refid="asyncsqlbinder_8hpp" />
         <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
@@ -166,7 +183,7 @@
       </node>
       <node id="37">
         <label>database/databasebusy.hpp</label>
-        <link refid="databasebusy_8hpp"/>
+        <link refid="databasebusy_8hpp" />
         <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
@@ -174,17 +191,17 @@
       </node>
       <node id="39">
         <label>database/databasehandler.hpp</label>
-        <link refid="databasehandler_8hpp"/>
+        <link refid="databasehandler_8hpp" />
         <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="40">
         <label>database/dbprobe.hpp</label>
-        <link refid="dbprobe_8hpp"/>
+        <link refid="dbprobe_8hpp" />
       </node>
       <node id="3">
         <label>gatekeeper/keeprbase/keeprbase.hpp</label>
-        <link refid="keeprbase_8hpp"/>
+        <link refid="keeprbase_8hpp" />
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
@@ -212,7 +229,7 @@
       </node>
       <node id="1">
         <label>src/gatekeeper/tokenmanager/tokenmanager.hpp</label>
-        <link refid="tokenmanager_8hpp"/>
+        <link refid="tokenmanager_8hpp" />
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
@@ -220,7 +237,7 @@
       </node>
       <node id="45">
         <label>gatekeeper/types.hpp</label>
-        <link refid="gatekeeper_2types_8hpp"/>
+        <link refid="gatekeeper_2types_8hpp" />
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
@@ -232,7 +249,7 @@
       </node>
       <node id="41">
         <label>store/store.hpp</label>
-        <link refid="store_8hpp"/>
+        <link refid="store_8hpp" />
         <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
@@ -252,13 +269,13 @@
       </node>
       <node id="44">
         <label>utils/global/types.hpp</label>
-        <link refid="utils_2global_2types_8hpp"/>
+        <link refid="utils_2global_2types_8hpp" />
         <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="21">
-        <label>utils/message/message.hpp</label>
-        <link refid="message_8hpp"/>
+        <label>message/message.hpp</label>
+        <link refid="message_8hpp" />
         <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
@@ -352,59 +369,61 @@
     <invincdepgraph>
       <node id="10">
         <label>src/api/v2/all_routes.hpp</label>
-        <link refid="all__routes_8hpp"/>
+        <link refid="all__routes_8hpp" />
         <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="4">
         <label>src/api/v2/filters/auth.hpp</label>
-        <link refid="auth_8hpp"/>
+        <link refid="auth_8hpp" />
         <childnode refid="5" relation="include">
         </childnode>
       </node>
       <node id="8">
         <label>src/api/v2/filters/ratelimit.hpp</label>
-        <link refid="ratelimit_8hpp"/>
+        <link refid="ratelimit_8hpp" />
         <childnode refid="5" relation="include">
         </childnode>
       </node>
       <node id="17">
         <label>src/api/v2/routes/appointments.hpp</label>
-        <link refid="appointments_8hpp"/>
+        <link refid="appointments_8hpp" />
         <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="9">
         <label>src/api/v2/routes/clients.hpp</label>
-        <link refid="clients_8hpp"/>
+        <link refid="clients_8hpp" />
         <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="21">
         <label>src/api/v2/routes/clinics.hpp</label>
-        <link refid="api_2v2_2routes_2clinics_8hpp"/>
+        <link refid="api_2v2_2routes_2clinics_8hpp" />
         <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="24">
         <label>src/api/v2/routes/services.hpp</label>
-        <link refid="services_8hpp"/>
+        <link refid="services_8hpp" />
         <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="27">
         <label>src/api/v2/routes/staff.hpp</label>
-        <link refid="staff_8hpp"/>
+        <link refid="staff_8hpp" />
         <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="15">
-        <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
-        <link refid="appointmentcontroller_8cpp"/>
+        <label
+                >src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
+        <link refid="appointmentcontroller_8cpp" />
       </node>
       <node id="16">
-        <label>src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
-        <link refid="appointmentcontroller_8hpp"/>
+        <label
+                >src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
+        <link refid="appointmentcontroller_8hpp" />
         <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
@@ -412,7 +431,7 @@
       </node>
       <node id="11">
         <label>src/controllers/base/controller/controller.hpp</label>
-        <link refid="controller_8hpp"/>
+        <link refid="controller_8hpp" />
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
@@ -428,11 +447,11 @@
       </node>
       <node id="12">
         <label>src/controllers/clientcontroller/clientcontroller.cpp</label>
-        <link refid="clientcontroller_8cpp"/>
+        <link refid="clientcontroller_8cpp" />
       </node>
       <node id="18">
         <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
-        <link refid="clientcontroller_8hpp"/>
+        <link refid="clientcontroller_8hpp" />
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
@@ -440,11 +459,11 @@
       </node>
       <node id="19">
         <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
-        <link refid="cliniccontroller_8cpp"/>
+        <link refid="cliniccontroller_8cpp" />
       </node>
       <node id="20">
         <label>src/controllers/cliniccontroller/cliniccontroller.hpp</label>
-        <link refid="cliniccontroller_8hpp"/>
+        <link refid="cliniccontroller_8hpp" />
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
@@ -452,11 +471,11 @@
       </node>
       <node id="13">
         <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
-        <link refid="entitycontroller_8cpp"/>
+        <link refid="entitycontroller_8cpp" />
       </node>
       <node id="14">
         <label>src/controllers/entitycontroller/entitycontroller.hpp</label>
-        <link refid="entitycontroller_8hpp"/>
+        <link refid="entitycontroller_8hpp" />
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
@@ -478,11 +497,11 @@
       </node>
       <node id="22">
         <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
-        <link refid="servicecontroller_8cpp"/>
+        <link refid="servicecontroller_8cpp" />
       </node>
       <node id="23">
         <label>src/controllers/servicecontroller/servicecontroller.hpp</label>
-        <link refid="servicecontroller_8hpp"/>
+        <link refid="servicecontroller_8hpp" />
         <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
@@ -490,11 +509,11 @@
       </node>
       <node id="25">
         <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
-        <link refid="staffcontroller_8cpp"/>
+        <link refid="staffcontroller_8cpp" />
       </node>
       <node id="26">
         <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
-        <link refid="staffcontroller_8hpp"/>
+        <link refid="staffcontroller_8hpp" />
         <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
@@ -502,15 +521,15 @@
       </node>
       <node id="28">
         <label>src/database/database.cpp</label>
-        <link refid="database_8cpp"/>
+        <link refid="database_8cpp" />
       </node>
       <node id="2">
         <label>src/gatekeeper/gatekeeper.cpp</label>
-        <link refid="gatekeeper_8cpp"/>
+        <link refid="gatekeeper_8cpp" />
       </node>
       <node id="3">
         <label>src/gatekeeper/gatekeeper.hpp</label>
-        <link refid="gatekeeper_8hpp"/>
+        <link refid="gatekeeper_8hpp" />
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
@@ -530,11 +549,11 @@
       </node>
       <node id="29">
         <label>src/gatekeeper/tokenmanager/tokenmanager.cpp</label>
-        <link refid="tokenmanager_8cpp"/>
+        <link refid="tokenmanager_8cpp" />
       </node>
       <node id="1">
         <label>src/gatekeeper/tokenmanager/tokenmanager.hpp</label>
-        <link refid="tokenmanager_8hpp"/>
+        <link refid="tokenmanager_8hpp" />
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
@@ -544,39 +563,60 @@
       </node>
       <node id="6">
         <label>src/main.cpp</label>
-        <link refid="main_8cpp"/>
+        <link refid="main_8cpp" />
       </node>
       <node id="7">
         <label>src/server/server.cpp</label>
-        <link refid="server_8cpp"/>
+        <link refid="server_8cpp" />
       </node>
       <node id="5">
         <label>src/server/server.hpp</label>
-        <link refid="server_8hpp"/>
+        <link refid="server_8hpp" />
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
-    <innerclass refid="classapi_1_1v2_1_1TokenManager" prot="public">api::v2::TokenManager</innerclass>
+    <innerclass
+            refid="classapi_1_1v2_1_1TokenManager"
+            prot="public"
+        >api::v2::TokenManager</innerclass>
     <innernamespace refid="namespaceapi">api</innernamespace>
     <innernamespace refid="namespaceapi_1_1v2">api::v2</innernamespace>
     <briefdescription>
-<para>Creates and checks the signed tokens used to authenticate clients. (Originally: &quot;Issues and validates the HS256 JWTs that authenticate
+<para
+            >Creates and checks the signed tokens used to authenticate clients. (Originally: &quot;Issues and validates the HS256 JWTs that authenticate
 clients.&quot;). </para>
     </briefdescription>
     <detaileddescription>
-<para>This header declares <ref refid="tokenmanager_8cpp_1a29cda383d518dafdbd3cf3438adea93f" kindref="member">TokenManager</ref>. It builds a JWT (a signed, self-contained credential) from the client&apos;s identity, and checks tokens that clients send back. A coroutine variant performs the checks without blocking web request threads.</para>
-<para>WHY THIS FILE MATTERS IN THE SERVER: After a successful login, the client receives one of these tokens and sends it with later requests. <ref refid="tokenmanager_8cpp_1a29cda383d518dafdbd3cf3438adea93f" kindref="member">TokenManager</ref> is what turns that string back into a trusted identity. Without it, the server could not recognize returning users.</para>
+<para>This header declares <ref
+                    refid="tokenmanager_8cpp_1a29cda383d518dafdbd3cf3438adea93f"
+                    kindref="member"
+                >TokenManager</ref>. It builds a JWT (a signed, self-contained credential) from the client&apos;s identity, and checks tokens that clients send back. A coroutine variant performs the checks without blocking web request threads.</para>
+<para
+            >WHY THIS FILE MATTERS IN THE SERVER: After a successful login, the client receives one of these tokens and sends it with later requests. <ref
+                    refid="tokenmanager_8cpp_1a29cda383d518dafdbd3cf3438adea93f"
+                    kindref="member"
+                >TokenManager</ref> is what turns that string back into a trusted identity. Without it, the server could not recognize returning users.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
-<listitem><para>JWT (JSON Web Token): <ulink url="https://jwt.io/introduction">https://jwt.io/introduction</ulink></para>
-</listitem><listitem><para>HMAC / HS256 signing: <ulink url="https://en.wikipedia.org/wiki/HMAC">https://en.wikipedia.org/wiki/HMAC</ulink></para>
-</listitem><listitem><para>Coroutines in C++: <ulink url="https://en.cppreference.com/w/cpp/language/coroutines">https://en.cppreference.com/w/cpp/language/coroutines</ulink></para>
-</listitem><listitem><para>std::optional: <ulink url="https://en.cppreference.com/w/cpp/utility/optional">https://en.cppreference.com/w/cpp/utility/optional</ulink></para>
+<listitem><para>JWT (JSON Web Token): <ulink
+                                url="https://jwt.io/introduction"
+                            >https://jwt.io/introduction</ulink></para>
+</listitem><listitem><para>HMAC / HS256 signing: <ulink
+                                url="https://en.wikipedia.org/wiki/HMAC"
+                            >https://en.wikipedia.org/wiki/HMAC</ulink></para>
+</listitem><listitem><para>Coroutines in C++: <ulink
+                                url="https://en.cppreference.com/w/cpp/language/coroutines"
+                            >https://en.cppreference.com/w/cpp/language/coroutines</ulink></para>
+</listitem><listitem><para>std::optional: <ulink
+                                url="https://en.cppreference.com/w/cpp/utility/optional"
+                            >https://en.cppreference.com/w/cpp/utility/optional</ulink></para>
 </listitem></itemizedlist>
 </para>
-<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+<para><simplesect kind="author"><para>Amr Osman <ulink
+                            url="mailto:dr3mro@gmail.com"
+                        >dr3mro@gmail.com</ulink> </para>
 </simplesect>
 <simplesect kind="date"><para>2026-11-16 </para>
 </simplesect>
@@ -584,113 +624,474 @@ clients.&quot;). </para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>tokenmanager.hpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Creates<sp/>and<sp/>checks<sp/>the<sp/>signed<sp/>tokens<sp/>used<sp/>to<sp/>authenticate<sp/>clients.</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(Originally:<sp/>&quot;Issues<sp/>and<sp/>validates<sp/>the<sp/>HS256<sp/>JWTs<sp/>that<sp/>authenticate</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>clients.&quot;)</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>declares<sp/>TokenManager.<sp/>It<sp/>builds<sp/>a<sp/>JWT<sp/>(a<sp/>signed,</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self-contained<sp/>credential)<sp/>from<sp/>the<sp/>client&apos;s<sp/>identity,<sp/>and<sp/>checks</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tokens<sp/>that<sp/>clients<sp/>send<sp/>back.<sp/>A<sp/>coroutine<sp/>variant<sp/>performs<sp/>the</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>checks<sp/>without<sp/>blocking<sp/>web<sp/>request<sp/>threads.</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>After<sp/>a<sp/>successful<sp/>login,<sp/>the<sp/>client<sp/>receives<sp/>one<sp/>of<sp/>these<sp/>tokens<sp/>and<sp/>sends</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>it<sp/>with<sp/>later<sp/>requests.<sp/>TokenManager<sp/>is<sp/>what<sp/>turns<sp/>that<sp/>string<sp/>back<sp/>into<sp/>a</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>trusted<sp/>identity.<sp/>Without<sp/>it,<sp/>the<sp/>server<sp/>could<sp/>not<sp/>recognize<sp/>returning<sp/>users.</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>-<sp/>JWT<sp/>(JSON<sp/>Web<sp/>Token):<sp/>https://jwt.io/introduction</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>HMAC<sp/>/<sp/>HS256<sp/>signing:<sp/>https://en.wikipedia.org/wiki/HMAC</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>Coroutines<sp/>in<sp/>C++:<sp/>https://en.cppreference.com/w/cpp/language/coroutines</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>std::optional:<sp/>https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>drogon::Task<sp/>for<sp/>the<sp/>coroutine<sp/>validation<sp/>method.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;drogon/utils/coroutine.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Base<sp/>class<sp/>holding<sp/>token<sp/>parameters<sp/>and<sp/>validation<sp/>helpers.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="keeprbase_8hpp" kindref="compound">gatekeeper/keeprbase/keeprbase.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Top-level<sp/>API<sp/>namespace.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceapi" kindref="compound">api</ref><sp/>{</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Version<sp/>2<sp/>of<sp/>the<sp/>API.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceapi_1_1v2" kindref="compound">v2</ref><sp/>{</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="36"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="37"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@class<sp/>TokenManager</highlight></codeline>
-<codeline lineno="38"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Issues<sp/>and<sp/>validates<sp/>the<sp/>HS256<sp/>JWTs<sp/>that<sp/>authenticate<sp/>clients.</highlight></codeline>
-<codeline lineno="39"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Token<sp/>parameters<sp/>(issuer,<sp/>type,<sp/>validity<sp/>and<sp/>secret)<sp/>come</highlight></codeline>
-<codeline lineno="40"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>from<sp/>the<sp/>Configurator<sp/>via<sp/>KeeprBase.<sp/>Generated<sp/>tokens<sp/>carry<sp/>identity</highlight></codeline>
-<codeline lineno="41"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>claims<sp/>and<sp/>last-logout<sp/>time<sp/>so<sp/>a<sp/>later<sp/>logout<sp/>can<sp/>be<sp/>detected.</highlight></codeline>
-<codeline lineno="42"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Validation<sp/>first<sp/>decodes<sp/>the<sp/>token<sp/>into<sp/>the<sp/>ClientLoginData,<sp/>then</highlight></codeline>
-<codeline lineno="43"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>verifies<sp/>it<sp/>with<sp/>KeeprBase::validateToken;<sp/>the<sp/>coroutine<sp/>form<sp/>awaits</highlight></codeline>
-<codeline lineno="44"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>the<sp/>async<sp/>variant.</highlight></codeline>
-<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@see<sp/>KeeprBase</highlight></codeline>
-<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>In<sp/>everyday<sp/>words:<sp/>this<sp/>class<sp/>is<sp/>like<sp/>a<sp/>badge<sp/>printer<sp/>and<sp/>badge</highlight></codeline>
-<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>checker.<sp/>It<sp/>stamps<sp/>a<sp/>badge<sp/>with<sp/>the<sp/>user&apos;s<sp/>identity<sp/>and<sp/>an<sp/>expiry,</highlight></codeline>
-<codeline lineno="48"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>and<sp/>later<sp/>checks<sp/>that<sp/>a<sp/>presented<sp/>badge<sp/>is<sp/>genuine<sp/>and<sp/>still<sp/>current.</highlight></codeline>
-<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reuses<sp/>the<sp/>base<sp/>class&apos;s<sp/>token</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>settings<sp/>and<sp/>validation<sp/>code.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="52" refid="classapi_1_1v2_1_1TokenManager" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classapi_1_1v2_1_1TokenManager_1a44a20c5df34f7fa410b1c3e4891650be" kindref="member">TokenManager</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1KeeprBase_1ab09740b221922b51de0a8c45c54daa85" kindref="member">KeeprBase</ref><sp/>{</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>following<sp/>methods<sp/>are<sp/>the<sp/>public<sp/>interface.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Constructs<sp/>a<sp/>manager<sp/>using<sp/>the<sp/>Configurator-backed<sp/>token</highlight></codeline>
-<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>parameters.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56" refid="classapi_1_1v2_1_1TokenManager_1a44a20c5df34f7fa410b1c3e4891650be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1TokenManager_1a44a20c5df34f7fa410b1c3e4891650be" kindref="member">TokenManager</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>extra<sp/>setup;<sp/>the<sp/>base<sp/>class<sp/>loads</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>token<sp/>parameters.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58" refid="classapi_1_1v2_1_1TokenManager_1a1776a30879fdb359d4cdcd6451835e81" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1TokenManager_1a1776a30879fdb359d4cdcd6451835e81" kindref="member">~TokenManager</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Virtual<sp/>destructor<sp/>for<sp/>safe<sp/>cleanup</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>through<sp/>a<sp/>base<sp/>pointer.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Creates<sp/>a<sp/>signed<sp/>JWT<sp/>from<sp/>the<sp/>client&apos;s<sp/>identity<sp/>and<sp/>stores</highlight></codeline>
-<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>it<sp/>in<sp/>the<sp/>data.</highlight></codeline>
-<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>clientLoginData<sp/>Supplies<sp/>claims<sp/>and<sp/>receives<sp/>the</highlight></codeline>
-<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>generated<sp/>token.</highlight></codeline>
-<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>when<sp/>a<sp/>token<sp/>was<sp/>produced;<sp/>false<sp/>on<sp/>a</highlight></codeline>
-<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>signing/configuration<sp/>error.</highlight></codeline>
-<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>The<sp/>token<sp/>embeds<sp/>the<sp/>issue/expiry<sp/>times<sp/>and<sp/>last-logout</highlight></codeline>
-<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>time;<sp/>signing<sp/>failures<sp/>are<sp/>logged<sp/>via<sp/>Message::CriticalMessage.</highlight></codeline>
-<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Failure<sp/>paths<sp/>(missing<sp/>claims,<sp/>signing<sp/>exception)<sp/>are</highlight></codeline>
-<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>covered<sp/>by<sp/>tests/gatekeeper/test_tokenmanager.cpp.</highlight></codeline>
-<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1TokenManager_1ae35221cdefeaad8255a896481af08403" kindref="member">generateToken</ref>(</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;Types::ClientLoginData&gt;&amp;</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>clientLoginData);<sp/><sp/></highlight><highlight class="comment">//<sp/>Signs<sp/>a<sp/>new<sp/>token<sp/>and<sp/>stores<sp/>it<sp/>in</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clientLoginData;<sp/>true<sp/>on<sp/>success.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Decodes<sp/>and<sp/>validates<sp/>the<sp/>client&apos;s<sp/>JWT<sp/>against<sp/>current</highlight></codeline>
-<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>account<sp/>state.</highlight></codeline>
-<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>clientLoginData<sp/>Supplies<sp/>the<sp/>token;<sp/>updated<sp/>with</highlight></codeline>
-<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>decoded<sp/>claims.</highlight></codeline>
-<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>message<sp/>Receives<sp/>a<sp/>human-readable<sp/>failure<sp/>reason.</highlight></codeline>
-<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>only<sp/>for<sp/>a<sp/>decodable,<sp/>cryptographically<sp/>valid,</highlight></codeline>
-<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>current<sp/>token.</highlight></codeline>
-<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1TokenManager_1ad59c01322c709811a7f499f4e1d3fa95" kindref="member">isTokenValid</ref>(</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;Types::ClientLoginData&gt;&amp;<sp/>clientLoginData,</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string&amp;<sp/>message);<sp/><sp/></highlight><highlight class="comment">//<sp/>Decodes<sp/>and<sp/>fully<sp/>validates<sp/>a<sp/>token;<sp/>true</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>only<sp/>when<sp/>it<sp/>is<sp/>current<sp/>and<sp/>genuine.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>isTokenValid();<sp/>awaits<sp/>the<sp/>async<sp/>token</highlight></codeline>
-<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>checks.</highlight></codeline>
-<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>clientLoginData<sp/>Supplies<sp/>the<sp/>token;<sp/>updated<sp/>with</highlight></codeline>
-<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>decoded<sp/>claims.</highlight></codeline>
-<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>message<sp/>Receives<sp/>a<sp/>human-readable<sp/>failure<sp/>reason.</highlight></codeline>
-<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>only<sp/>for<sp/>a<sp/>valid<sp/>token.</highlight></codeline>
-<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>Propagated<sp/>from<sp/>the<sp/>async<sp/>validation<sp/>path.</highlight></codeline>
-<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Task&lt;bool&gt;<sp/><ref refid="classapi_1_1v2_1_1TokenManager_1ae2353b4f71d0b7f35474f8d7bba4e6b5" kindref="member">isTokenValidCoro</ref>(</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;Types::ClientLoginData&gt;&amp;<sp/>clientLoginData,</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string&amp;<sp/>message);<sp/><sp/></highlight><highlight class="comment">//<sp/>Coroutine<sp/>form<sp/>of<sp/>token<sp/>validation,</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>used<sp/>by<sp/>async<sp/>routes.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>v2</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>api</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp />*<sp />@file<sp
+                    />tokenmanager.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp />*<sp />@brief<sp
+                    />Creates<sp />and<sp />checks<sp />the<sp />signed<sp
+                    />tokens<sp />used<sp />to<sp />authenticate<sp
+                    />clients.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp />*<sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp />(Originally:<sp />&quot;Issues<sp
+                    />and<sp />validates<sp />the<sp />HS256<sp />JWTs<sp
+                    />that<sp />authenticate</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp />*<sp
+                    />clients.&quot;)</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp />*<sp />@details<sp
+                    />This<sp />header<sp />declares<sp />TokenManager.<sp
+                    />It<sp />builds<sp />a<sp />JWT<sp />(a<sp
+                    />signed,</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp />*<sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp />self-contained<sp
+                    />credential)<sp />from<sp />the<sp />client&apos;s<sp
+                    />identity,<sp />and<sp />checks</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp />*<sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp />tokens<sp />that<sp
+                    />clients<sp />send<sp />back.<sp />A<sp />coroutine<sp
+                    />variant<sp />performs<sp />the</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp />*<sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp />checks<sp />without<sp
+                    />blocking<sp />web<sp />request<sp
+                    />threads.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp />*<sp />WHY<sp />THIS<sp
+                    />FILE<sp />MATTERS<sp />IN<sp />THE<sp
+                    />SERVER:</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp />*<sp />After<sp />a<sp
+                    />successful<sp />login,<sp />the<sp />client<sp
+                    />receives<sp />one<sp />of<sp />these<sp />tokens<sp
+                    />and<sp />sends</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp />*<sp />it<sp />with<sp
+                    />later<sp />requests.<sp />TokenManager<sp />is<sp
+                    />what<sp />turns<sp />that<sp />string<sp />back<sp
+                    />into<sp />a</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp />*<sp />trusted<sp
+                    />identity.<sp />Without<sp />it,<sp />the<sp />server<sp
+                    />could<sp />not<sp />recognize<sp />returning<sp
+                    />users.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp />*<sp />CONCEPTS<sp
+                    />TO<sp />LEARN<sp />(for<sp
+                    />beginners):</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp />*<sp />-<sp />JWT<sp
+                    />(JSON<sp />Web<sp />Token):<sp
+                    />https://jwt.io/introduction</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp />*<sp />-<sp />HMAC<sp
+                    />/<sp />HS256<sp />signing:<sp
+                    />https://en.wikipedia.org/wiki/HMAC</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp />*<sp />-<sp
+                    />Coroutines<sp />in<sp />C++:<sp
+                    />https://en.cppreference.com/w/cpp/language/coroutines</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp />*<sp />-<sp
+                    />std::optional:<sp
+                    />https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp />*<sp />@author<sp
+                    />Amr<sp />Osman<sp
+                    />&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp />*<sp />@date<sp
+                    />2026-11-16</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="25"><highlight class="normal" /></codeline>
+<codeline lineno="26"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#pragma<sp />once<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Include<sp />this<sp />header<sp />at<sp />most<sp
+                    />once<sp />per<sp />source<sp />file.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="27"><highlight class="normal" /></codeline>
+<codeline lineno="28"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />drogon::Task<sp />for<sp />the<sp />coroutine<sp
+                    />validation<sp />method.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="29"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp
+                    />&quot;drogon/utils/coroutine.h&quot;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="30"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />Base<sp />class<sp />holding<sp />token<sp
+                    />parameters<sp />and<sp />validation<sp
+                    />helpers.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="31"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&quot;<ref
+                        refid="keeprbase_8hpp"
+                        kindref="compound"
+                    >gatekeeper/keeprbase/keeprbase.hpp</ref>&quot;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="32"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />Top-level<sp />API<sp
+                    />namespace.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="33"><highlight class="normal" /><highlight
+                    class="keyword"
+                >namespace<sp /></highlight><highlight class="normal"><ref
+                        refid="namespaceapi"
+                        kindref="compound"
+                    >api</ref><sp />{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Version<sp
+                    />2<sp />of<sp />the<sp />API.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="35"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="keyword">namespace<sp
+                    /></highlight><highlight class="normal"><ref
+                        refid="namespaceapi_1_1v2"
+                        kindref="compound"
+                    >v2</ref><sp />{</highlight><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="36"><highlight class="comment"><sp /><sp /><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    />*<sp />@class<sp />TokenManager</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    />*<sp />@brief<sp />Issues<sp />and<sp />validates<sp
+                    />the<sp />HS256<sp />JWTs<sp />that<sp />authenticate<sp
+                    />clients.</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    />*<sp />@details<sp />Token<sp />parameters<sp
+                    />(issuer,<sp />type,<sp />validity<sp />and<sp />secret)<sp
+                    />come</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    />*<sp />from<sp />the<sp />Configurator<sp />via<sp
+                    />KeeprBase.<sp />Generated<sp />tokens<sp />carry<sp
+                    />identity</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    />*<sp />claims<sp />and<sp />last-logout<sp />time<sp
+                    />so<sp />a<sp />later<sp />logout<sp />can<sp />be<sp
+                    />detected.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    />*<sp />Validation<sp />first<sp />decodes<sp />the<sp
+                    />token<sp />into<sp />the<sp />ClientLoginData,<sp
+                    />then</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    />*<sp />verifies<sp />it<sp />with<sp
+                    />KeeprBase::validateToken;<sp />the<sp />coroutine<sp
+                    />form<sp />awaits</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    />*<sp />the<sp />async<sp />variant.</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    />*<sp />@see<sp />KeeprBase</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    />*<sp />In<sp />everyday<sp />words:<sp />this<sp
+                    />class<sp />is<sp />like<sp />a<sp />badge<sp />printer<sp
+                    />and<sp />badge</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    />*<sp />checker.<sp />It<sp />stamps<sp />a<sp />badge<sp
+                    />with<sp />the<sp />user&apos;s<sp />identity<sp />and<sp
+                    />an<sp />expiry,</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    />*<sp />and<sp />later<sp />checks<sp />that<sp />a<sp
+                    />presented<sp />badge<sp />is<sp />genuine<sp />and<sp
+                    />still<sp />current.</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="50"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Reuses<sp
+                    />the<sp />base<sp />class&apos;s<sp
+                    />token</highlight><highlight class="normal" /></codeline>
+<codeline lineno="51"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />settings<sp
+                    />and<sp />validation<sp />code.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="52"
+                refid="classapi_1_1v2_1_1TokenManager"
+                refkind="compound"
+            ><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="keyword">class<sp
+                    /></highlight><highlight class="normal"><ref
+                        refid="classapi_1_1v2_1_1TokenManager_1a44a20c5df34f7fa410b1c3e4891650be"
+                        kindref="member"
+                    >TokenManager</ref><sp />:<sp /></highlight><highlight
+                    class="keyword"
+                >public</highlight><highlight class="normal"><sp /><ref
+                        refid="classapi_1_1v2_1_1KeeprBase_1ab09740b221922b51de0a8c45c54daa85"
+                        kindref="member"
+                    >KeeprBase</ref><sp />{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >public</highlight><highlight class="normal">:<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />The<sp
+                    />following<sp />methods<sp />are<sp />the<sp />public<sp
+                    />interface.</highlight><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="54"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp />/**<sp />@brief<sp />Constructs<sp />a<sp
+                    />manager<sp />using<sp />the<sp />Configurator-backed<sp
+                    />token</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />parameters.<sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="56"
+                refid="classapi_1_1v2_1_1TokenManager_1a44a20c5df34f7fa410b1c3e4891650be"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><sp /><sp /><sp /><sp /><ref
+                        refid="classapi_1_1v2_1_1TokenManager_1a44a20c5df34f7fa410b1c3e4891650be"
+                        kindref="member"
+                    >TokenManager</ref>()<sp />=<sp /></highlight><highlight
+                    class="keywordflow"
+                >default</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />No<sp
+                    />extra<sp />setup;<sp />the<sp />base<sp />class<sp
+                    />loads</highlight><highlight class="normal" /></codeline>
+<codeline lineno="57"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />the<sp
+                    />token<sp />parameters.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="58"
+                refid="classapi_1_1v2_1_1TokenManager_1a1776a30879fdb359d4cdcd6451835e81"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >virtual</highlight><highlight class="normal"><sp /><ref
+                        refid="classapi_1_1v2_1_1TokenManager_1a1776a30879fdb359d4cdcd6451835e81"
+                        kindref="member"
+                    >~TokenManager</ref>()<sp />=<sp /></highlight><highlight
+                    class="keywordflow"
+                >default</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Virtual<sp
+                    />destructor<sp />for<sp />safe<sp
+                    />cleanup</highlight><highlight class="normal" /></codeline>
+<codeline lineno="59"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />through<sp
+                    />a<sp />base<sp />pointer.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="60"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="61"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp />/**</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />@brief<sp />Creates<sp />a<sp
+                    />signed<sp />JWT<sp />from<sp />the<sp />client&apos;s<sp
+                    />identity<sp />and<sp />stores</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />it<sp />in<sp />the<sp
+                    />data.</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />@param[in,out]<sp />clientLoginData<sp
+                    />Supplies<sp />claims<sp />and<sp />receives<sp
+                    />the</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />generated<sp
+                    />token.</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />@return<sp />True<sp />when<sp />a<sp
+                    />token<sp />was<sp />produced;<sp />false<sp />on<sp
+                    />a</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />signing/configuration<sp
+                    />error.</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />@note<sp />The<sp />token<sp
+                    />embeds<sp />the<sp />issue/expiry<sp />times<sp />and<sp
+                    />last-logout</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />time;<sp />signing<sp />failures<sp
+                    />are<sp />logged<sp />via<sp
+                    />Message::CriticalMessage.</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />@note<sp />Failure<sp />paths<sp
+                    />(missing<sp />claims,<sp />signing<sp />exception)<sp
+                    />are</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />covered<sp />by<sp
+                    />tests/gatekeeper/test_tokenmanager.cpp.</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="73"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keywordtype"
+                >bool</highlight><highlight class="normal"><sp /><ref
+                        refid="classapi_1_1v2_1_1TokenManager_1ae35221cdefeaad8255a896481af08403"
+                        kindref="member"
+                    >generateToken</ref>(</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp
+                    />std::optional&lt;Types::ClientLoginData&gt;&amp;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    />clientLoginData);<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Signs<sp />a<sp />new<sp />token<sp />and<sp
+                    />stores<sp />it<sp />in</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="76"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />clientLoginData;<sp />true<sp />on<sp
+                    />success.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="77"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="78"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp />/**</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />@brief<sp />Decodes<sp />and<sp
+                    />validates<sp />the<sp />client&apos;s<sp />JWT<sp
+                    />against<sp />current</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />account<sp
+                    />state.</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />@param[in,out]<sp />clientLoginData<sp
+                    />Supplies<sp />the<sp />token;<sp />updated<sp
+                    />with</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />decoded<sp
+                    />claims.</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />@param[out]<sp />message<sp
+                    />Receives<sp />a<sp />human-readable<sp />failure<sp
+                    />reason.</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />@return<sp />True<sp />only<sp />for<sp
+                    />a<sp />decodable,<sp />cryptographically<sp
+                    />valid,</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />current<sp
+                    />token.</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="87"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keywordtype"
+                >bool</highlight><highlight class="normal"><sp /><ref
+                        refid="classapi_1_1v2_1_1TokenManager_1ad59c01322c709811a7f499f4e1d3fa95"
+                        kindref="member"
+                    >isTokenValid</ref>(</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp
+                    />std::optional&lt;Types::ClientLoginData&gt;&amp;<sp
+                    />clientLoginData,</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp />std::string&amp;<sp
+                    />message);<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Decodes<sp />and<sp />fully<sp />validates<sp />a<sp
+                    />token;<sp />true</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="90"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />only<sp
+                    />when<sp />it<sp />is<sp />current<sp />and<sp
+                    />genuine.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="91"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="92"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp />/**</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />@brief<sp />Coroutine<sp />form<sp
+                    />of<sp />isTokenValid();<sp />awaits<sp />the<sp />async<sp
+                    />token</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />checks.</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />@param[in,out]<sp />clientLoginData<sp
+                    />Supplies<sp />the<sp />token;<sp />updated<sp
+                    />with</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />decoded<sp
+                    />claims.</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />@param[out]<sp />message<sp
+                    />Receives<sp />a<sp />human-readable<sp />failure<sp
+                    />reason.</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />@return<sp />True<sp />only<sp />for<sp
+                    />a<sp />valid<sp />token.</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*<sp />@throws<sp />DatabaseBusy<sp
+                    />Propagated<sp />from<sp />the<sp />async<sp
+                    />validation<sp />path.</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="101"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />drogon::Task&lt;bool&gt;<sp /><ref
+                        refid="classapi_1_1v2_1_1TokenManager_1ae2353b4f71d0b7f35474f8d7bba4e6b5"
+                        kindref="member"
+                    >isTokenValidCoro</ref>(</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp
+                    />std::optional&lt;Types::ClientLoginData&gt;&amp;<sp
+                    />clientLoginData,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp />std::string&amp;<sp
+                    />message);<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Coroutine<sp />form<sp />of<sp />token<sp
+                    />validation,</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="104"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />used<sp
+                    />by<sp />async<sp />routes.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="105"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />};</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp /><sp />}<sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />namespace<sp />v2</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="107"><highlight class="normal">}<sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />namespace<sp />api</highlight><highlight
+                    class="normal"
+                /></codeline>
     </programlisting>
-    <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp"/>
+    <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" />
   </compounddef>
 </doxygen>

@@ -56,7 +56,7 @@
 #include <utility>  // std::move / std::forward: move values without copying
 
 // Message::InfoMessage / CriticalMessage: log helpers
-#include "utils/message/message.hpp"
+#include "message/message.hpp"
 
 namespace {
   // Set while a thread is running tasks for an executor; lets

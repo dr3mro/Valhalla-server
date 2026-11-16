@@ -23,7 +23,7 @@
     <includes refid="database_8hpp" local="yes">database.hpp</includes>
     <includes refid="databasebusy_8hpp" local="yes">database/databasebusy.hpp</includes>
     <includes refid="store_8hpp" local="yes">store/store.hpp</includes>
-    <includes refid="message_8hpp" local="yes">utils/message/message.hpp</includes>
+    <includes refid="message_8hpp" local="yes">message/message.hpp</includes>
     <incdepgraph>
       <node id="24">
         <label>configurator/configurator.hpp</label>
@@ -224,7 +224,7 @@
         </childnode>
       </node>
       <node id="31">
-        <label>utils/message/message.hpp</label>
+        <label>message/message.hpp</label>
         <link refid="message_8hpp"/>
         <childnode refid="32" relation="include">
         </childnode>
@@ -417,7 +417,7 @@
 <codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Store::getObject&lt;&gt;<sp/>locates<sp/>the<sp/>shared<sp/>Configurator<sp/>at<sp/>construction.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="store_8hpp" kindref="compound">store/store.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Message<sp/>helpers<sp/>emit<sp/>the<sp/>startup,<sp/>warning<sp/>and<sp/>fatal<sp/>logs.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">utils/message/message.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">message/message.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="79"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="80"><highlight class="comment"><sp/>*<sp/>Opens<sp/>one<sp/>pqxx<sp/>connection<sp/>using<sp/>the<sp/>configured<sp/>credentials<sp/>and<sp/>a<sp/>connect</highlight></codeline>

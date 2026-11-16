@@ -73,7 +73,7 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", "functions_vars" ],
+        [ "Variables", "functions_vars.html", null ],
         [ "Typedefs", "functions_type.html", null ],
         [ "Enumerations", "functions_enum.html", null ],
         [ "Enumerator", "functions_eval.html", null ],
@@ -98,13 +98,13 @@ var NAVTREEINDEX =
 "all__routes_8hpp.html",
 "classClinicController.html#a49ca9ae245f2ca94ee937754a5d433ea",
 "classDbProbe.html",
-"classPrescriptions.html",
-"classapi_1_1v2_1_1Appointments.html#a3f94fa04d6ce713f5c0d6896ad848655",
-"classapi_1_1v2_1_1Helper.html#a0e93abbeb3346f2d972a1894c31cb245",
-"classapi_1_1v2_1_1Services.html#add4126a239d7f9a96356da45f888ff67",
-"entity_8hpp.html",
-"namespaceDefaults_1_1Database.html#a7e4ef467bcf44500097539bd2a0b3e5d",
-"structPermissions.html#a0c912ae21ea01916744be3ce748462da"
+"classProvider.html#aaa88add3f2765173dc916334d4dc611e",
+"classapi_1_1v2_1_1Appointments.html#af86bad11dd97edc907a87ddd2cefa8dd",
+"classapi_1_1v2_1_1Helper.html#a9633fc9b2cf52a1fec90c3241c0da359",
+"classapi_1_1v2_1_1SessionManager.html#a64bf884c729b388729752c9163db479f",
+"envvars_8cpp_source.html",
+"namespaceDefaults_1_1TokenParameters.html#af82d2e7594dd9a9e542d7a9584b73e30",
+"structValidator_1_1Rule.html#ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';

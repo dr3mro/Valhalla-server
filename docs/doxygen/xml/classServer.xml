@@ -5,7 +5,7 @@
     <includes refid="server_8hpp" local="no">server.hpp</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classServer_1aa84ff16ac0dff01780bb1f1fbc6b3d0f" prot="private" static="no" mutable="no">
-        <type>std::shared_ptr&lt; <ref refid="classLogger" kindref="compound">Logger</ref> &gt;</type>
+        <type>std::shared_ptr&lt; Logger &gt;</type>
         <definition>std::shared_ptr&lt;Logger&gt; Server::logger_</definition>
         <argsstring></argsstring>
         <name>logger_</name>
@@ -13,7 +13,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Shared <ref refid="classLogger" kindref="compound">Logger</ref> instance used by the application; held here for the lifetime of the <ref refid="classServer" kindref="compound">Server</ref>. </para>
+<para>Shared Logger instance used by the application; held here for the lifetime of the <ref refid="classServer" kindref="compound">Server</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

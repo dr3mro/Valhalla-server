@@ -70,7 +70,7 @@
 // Http::Error / Status, used to report client vs server errors.
 #include "utils/global/http.hpp"
 // Message::ErrorMessage / CriticalMessage for logging failures.
-#include "utils/message/message.hpp"
+#include "message/message.hpp"
 // Validator: schema and regex validation of request bodies.
 #include "validator/validator.hpp"
 // Nested namespace; names here are referenced as
@@ -103,8 +103,10 @@ namespace api::v2::Types {
      * @param[in] _id Primary key, or std::nullopt when the database should
      * assign/omit it.
      */
-    Entity_t(const S& _data, const std::optional<uint64_t> _id)
-        : data(_data), id(_id) {
+    Entity_t(const S&                      _data,
+             const std::optional<uint64_t> _id)
+        : data(_data),
+          id(_id) {
     }  // Copy both inputs into const members so the operation description
        // cannot change later.
 
@@ -169,8 +171,10 @@ namespace api::v2::Types {
      * @param[in] _data JSON object whose members become INSERT columns.
      * @param[in] id Primary key to insert.
      */
-    Create_t(const jsoncons::json& _data, const uint64_t id)
-        : Entity_t(_data, id) {
+    Create_t(const jsoncons::json& _data,
+             const uint64_t        id)
+        : Entity_t(_data,
+                   id) {
     }  // Two-argument form: keep the caller's id in the INSERT.
 
     // No id: the database assigns it (the column default is nextval of the
@@ -181,7 +185,8 @@ namespace api::v2::Types {
      * @param[in] _data JSON object whose members become INSERT columns.
      */
     explicit Create_t(const jsoncons::json& _data)
-        : Entity_t(_data, std::nullopt) {
+        : Entity_t(_data,
+                   std::nullopt) {
     }  // One-argument form: nullopt tells the builder to leave the id
        // column out.
 
@@ -211,8 +216,10 @@ namespace api::v2::Types {
      * @param[in] _data Names of the columns to select (empty means all).
      * @param[in] _id Primary key of the row to read.
      */
-    Read_t(const std::unordered_set<std::string>& _data, const uint64_t _id)
-        : Entity_t(_data, _id) {
+    Read_t(const std::unordered_set<std::string>& _data,
+           const uint64_t                         _id)
+        : Entity_t(_data,
+                   _id) {
     }  // An unordered set avoids duplicate column names and makes
        // membership checks fast.
 
@@ -238,8 +245,10 @@ namespace api::v2::Types {
      * @param[in] _data JSON object whose members become SET clauses.
      * @param[in] _id Primary key of the row to update.
      */
-    Update_t(const jsoncons::json& _data, const uint64_t _id)
-        : Entity_t(_data, _id) {
+    Update_t(const jsoncons::json& _data,
+             const uint64_t        _id)
+        : Entity_t(_data,
+                   _id) {
     }  // The id scopes the UPDATE so it touches only one row.
 
     /**
@@ -264,7 +273,9 @@ namespace api::v2::Types {
      * @brief Constructs a delete operation for the given id.
      * @param[in] _id Primary key of the row to delete.
      */
-    explicit Delete_t(const uint64_t _id) : Entity_t('\0', _id) {
+    explicit Delete_t(const uint64_t _id)
+        : Entity_t('\0',
+                   _id) {
     }  // '\0' is a throwaway placeholder because
        // Entity_t still requires some payload type.
 
@@ -291,7 +302,9 @@ namespace api::v2::Types {
      * @brief Constructs an id-only lookup operation.
      * @param[in] _id Client id to look up.
      */
-    explicit Data_t(const uint64_t _id) : Entity_t('\0', _id) {
+    explicit Data_t(const uint64_t _id)
+        : Entity_t('\0',
+                   _id) {
     }  // Same sentinel trick as Delete_t; only
        // the id matters for the lookup.
 
@@ -363,7 +376,8 @@ namespace api::v2::Types {
      */
     // The bool is an output parameter: parsing never
     // throws at the caller for a bad body.
-    Search_t(const jsoncons::json& search_j, bool& success) {
+    Search_t(const jsoncons::json& search_j,
+             bool&                 success) {
       // A missing/malformed field here (e.g. an empty "{}" body) is a
       // client error, not a server error. success=false tells the caller
       // (EntityController::Search) to reply with a normal "Failed to
@@ -641,7 +655,10 @@ namespace api::v2::Types {
                    bool&                 success)
         // Creates have no id yet, so pass nullopt to
         // the base.
-        : ClientData_t(_data, std::nullopt, error, success) {
+        : ClientData_t(_data,
+                       std::nullopt,
+                       error,
+                       success) {
       try {
         Validator::Rule rule(Validator::Rule::Action::ASSERT_NOT_PRESENT,
                              {"id"});  // Build a rule saying "id must not be in
@@ -688,7 +705,8 @@ namespace api::v2::Types {
      * @brief Returns the validated (and password-hashed) column/value pairs
      * for the INSERT.
      */
-    const std::unordered_set<std::pair<std::string, std::string>>&
+    const std::unordered_set<std::pair<std::string,
+                                       std::string>>&
     get_data_set() const {
       return data_set;
     }  // Const reference so callers cannot mutate the validated data.
@@ -730,7 +748,10 @@ namespace api::v2::Types {
                               // decide which fields are allowed.
         // Pass the id through to the base for later
         // use by the UPDATE builder.
-        : ClientData_t(_data, _id, error, success) {
+        : ClientData_t(_data,
+                       _id,
+                       error,
+                       success) {
       try {
         success = Validator::
             validateDatabaseUpdateSchema(tablename,
@@ -772,7 +793,8 @@ namespace api::v2::Types {
      * @brief Returns the validated column/value pairs for the UPDATE SET
      * clause.
      */
-    const std::unordered_set<std::pair<std::string, std::string>>&
+    const std::unordered_set<std::pair<std::string,
+                                       std::string>>&
     get_data_set() const {
       return data_set;
     }  // Const reference keeps the validated data read-only.

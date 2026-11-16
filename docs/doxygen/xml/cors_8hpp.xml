@@ -1,5 +1,10 @@
-<?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+<?xml version='1.0' encoding='UTF-8' standalone='no' ?>
+<doxygen
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="compound.xsd"
+    version="1.18.0"
+    xml:lang="en-US"
+>
   <compounddef id="cors_8hpp" kind="file" language="C++">
     <compoundname>cors.hpp</compoundname>
     <includes local="no">drogon/HttpRequest.h</includes>
@@ -8,14 +13,23 @@
     <includes local="no">string</includes>
     <includes local="no">string_view</includes>
     <includes local="no">vector</includes>
-    <includes refid="configurator_8hpp" local="yes">configurator/configurator.hpp</includes>
-    <includes refid="cors__tokens_8hpp" local="yes">server/cors_tokens.hpp</includes>
+    <includes
+            refid="configurator_8hpp"
+            local="yes"
+        >configurator/configurator.hpp</includes>
+    <includes
+            refid="cors__tokens_8hpp"
+            local="yes"
+        >server/cors_tokens.hpp</includes>
     <includes refid="store_8hpp" local="yes">store/store.hpp</includes>
-    <includedby refid="server_8cpp" local="yes">src/server/server.cpp</includedby>
+    <includedby
+            refid="server_8cpp"
+            local="yes"
+        >src/server/server.cpp</includedby>
     <incdepgraph>
       <node id="8">
         <label>configurator/configurator.hpp</label>
-        <link refid="configurator_8hpp"/>
+        <link refid="configurator_8hpp" />
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
@@ -41,7 +55,7 @@
       </node>
       <node id="22">
         <label>defaults.hpp</label>
-        <link refid="defaults_8hpp"/>
+        <link refid="defaults_8hpp" />
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
@@ -49,7 +63,7 @@
       </node>
       <node id="16">
         <label>configurator/envloader/envloader.hpp</label>
-        <link refid="envloader_8hpp"/>
+        <link refid="envloader_8hpp" />
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
@@ -65,7 +79,7 @@
       </node>
       <node id="18">
         <label>envvars/envvars.hpp</label>
-        <link refid="envvars_8hpp"/>
+        <link refid="envvars_8hpp" />
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
@@ -73,7 +87,7 @@
       </node>
       <node id="1">
         <label>src/server/cors.hpp</label>
-        <link refid="cors_8hpp"/>
+        <link refid="cors_8hpp" />
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
@@ -95,7 +109,7 @@
       </node>
       <node id="23">
         <label>server/cors_tokens.hpp</label>
-        <link refid="cors__tokens_8hpp"/>
+        <link refid="cors__tokens_8hpp" />
         <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
@@ -107,7 +121,7 @@
       </node>
       <node id="26">
         <label>store/store.hpp</label>
-        <link refid="store_8hpp"/>
+        <link refid="store_8hpp" />
         <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
@@ -126,8 +140,8 @@
         </childnode>
       </node>
       <node id="20">
-        <label>utils/message/message.hpp</label>
-        <link refid="message_8hpp"/>
+        <label>message/message.hpp</label>
+        <link refid="message_8hpp" />
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
@@ -209,29 +223,50 @@
     <invincdepgraph>
       <node id="1">
         <label>src/server/cors.hpp</label>
-        <link refid="cors_8hpp"/>
+        <link refid="cors_8hpp" />
         <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="2">
         <label>src/server/server.cpp</label>
-        <link refid="server_8cpp"/>
+        <link refid="server_8cpp" />
       </node>
     </invincdepgraph>
     <innernamespace refid="namespaceCors">Cors</innernamespace>
     <briefdescription>
-<para>CORS header helpers applied to every response by the pre-sending advice in <ref refid="server_8cpp" kindref="compound">server.cpp</ref>. </para>
+<para
+            >CORS header helpers applied to every response by the pre-sending advice in <ref
+                    refid="server_8cpp"
+                    kindref="compound"
+                >server.cpp</ref>. </para>
     </briefdescription>
     <detaileddescription>
-<para>This header provides small functions that write the Cross-Origin Resource Sharing (CORS) headers onto an outgoing HTTP response. CORS is the browser rule that decides whether a web page on one domain may read a response from another domain. The code here reads the configured list of allowed origins, reflects an exact match back with credentials, or falls back to a wildcard or first configured origin. It also handles preflight (OPTIONS) requests by echoing a sanitized list of requested headers.</para>
-<para>WHY THIS FILE MATTERS IN THE SERVER: Without these headers, a browser front end served from a different address than the API would be blocked by its same-origin policy, even though the API itself works. <ref refid="server_8cpp" kindref="compound">server.cpp</ref> calls <ref refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" kindref="member">Cors::apply()</ref> for every single response, so this file is the one central place that makes the REST API reachable from a web app. It also contains the small token helpers&apos; entry points used by the preflight logic, so CORS behaviour stays consistent and easy to audit.</para>
+<para
+            >This header provides small functions that write the Cross-Origin Resource Sharing (CORS) headers onto an outgoing HTTP response. CORS is the browser rule that decides whether a web page on one domain may read a response from another domain. The code here reads the configured list of allowed origins, reflects an exact match back with credentials, or falls back to a wildcard or first configured origin. It also handles preflight (OPTIONS) requests by echoing a sanitized list of requested headers.</para>
+<para
+            >WHY THIS FILE MATTERS IN THE SERVER: Without these headers, a browser front end served from a different address than the API would be blocked by its same-origin policy, even though the API itself works. <ref
+                    refid="server_8cpp"
+                    kindref="compound"
+                >server.cpp</ref> calls <ref
+                    refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590"
+                    kindref="member"
+                >Cors::apply()</ref> for every single response, so this file is the one central place that makes the REST API reachable from a web app. It also contains the small token helpers&apos; entry points used by the preflight logic, so CORS behaviour stays consistent and easy to audit.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
-<listitem><para>CORS (browser cross-origin rules): <ulink url="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</ulink></para>
-</listitem><listitem><para>Inline functions and function-local statics: <ulink url="https://en.cppreference.com/w/cpp/language/inline">https://en.cppreference.com/w/cpp/language/inline</ulink></para>
-</listitem><listitem><para>std::string_view (a non-owning view over text): <ulink url="https://en.cppreference.com/w/cpp/string/basic_string_view">https://en.cppreference.com/w/cpp/string/basic_string_view</ulink></para>
+<listitem><para>CORS (browser cross-origin rules): <ulink
+                                url="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+                            >https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</ulink></para>
+</listitem><listitem><para>Inline functions and function-local statics: <ulink
+                                url="https://en.cppreference.com/w/cpp/language/inline"
+                            >https://en.cppreference.com/w/cpp/language/inline</ulink></para>
+</listitem><listitem><para
+                        >std::string_view (a non-owning view over text): <ulink
+                                url="https://en.cppreference.com/w/cpp/string/basic_string_view"
+                            >https://en.cppreference.com/w/cpp/string/basic_string_view</ulink></para>
 </listitem></itemizedlist>
 </para>
-<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+<para><simplesect kind="author"><para>Amr Osman <ulink
+                            url="mailto:dr3mro@gmail.com"
+                        >dr3mro@gmail.com</ulink> </para>
 </simplesect>
 <simplesect kind="date"><para>2026-11-16 </para>
 </simplesect>
@@ -239,335 +274,1728 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>cors.hpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>CORS<sp/>header<sp/>helpers<sp/>applied<sp/>to<sp/>every<sp/>response<sp/>by<sp/>the<sp/>pre-sending</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>advice<sp/>in<sp/>server.cpp.</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>provides<sp/>small<sp/>functions<sp/>that<sp/>write<sp/>the<sp/>Cross-Origin</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>Resource<sp/>Sharing<sp/>(CORS)<sp/>headers<sp/>onto<sp/>an<sp/>outgoing<sp/>HTTP<sp/>response.<sp/>CORS<sp/>is<sp/>the</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>browser<sp/>rule<sp/>that<sp/>decides<sp/>whether<sp/>a<sp/>web<sp/>page<sp/>on<sp/>one<sp/>domain<sp/>may<sp/>read<sp/>a</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>response<sp/>from<sp/>another<sp/>domain.<sp/>The<sp/>code<sp/>here<sp/>reads<sp/>the<sp/>configured</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>list<sp/>of<sp/>allowed<sp/>origins,<sp/>reflects<sp/>an<sp/>exact<sp/>match<sp/>back<sp/>with<sp/>credentials,<sp/>or</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>falls<sp/>back<sp/>to<sp/>a<sp/>wildcard<sp/>or<sp/>first<sp/>configured<sp/>origin.<sp/>It<sp/>also<sp/>handles</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>preflight<sp/>(OPTIONS)<sp/>requests<sp/>by<sp/>echoing<sp/>a<sp/>sanitized<sp/>list<sp/>of</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>requested<sp/>headers.</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>Without<sp/>these<sp/>headers,<sp/>a<sp/>browser<sp/>front<sp/>end<sp/>served<sp/>from<sp/>a<sp/>different<sp/>address</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>than<sp/>the<sp/>API<sp/>would<sp/>be<sp/>blocked<sp/>by<sp/>its<sp/>same-origin<sp/>policy,<sp/>even<sp/>though<sp/>the<sp/>API</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>itself<sp/>works.<sp/>server.cpp<sp/>calls<sp/>Cors::apply()<sp/>for<sp/>every<sp/>single<sp/>response,<sp/>so</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>this<sp/>file<sp/>is<sp/>the<sp/>one<sp/>central<sp/>place<sp/>that<sp/>makes<sp/>the<sp/>REST<sp/>API<sp/>reachable<sp/>from<sp/>a</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>web<sp/>app.<sp/>It<sp/>also<sp/>contains<sp/>the<sp/>small<sp/>token<sp/>helpers&apos;<sp/>entry<sp/>points<sp/>used<sp/>by<sp/>the</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>preflight<sp/>logic,<sp/>so<sp/>CORS<sp/>behaviour<sp/>stays<sp/>consistent<sp/>and<sp/>easy<sp/>to<sp/>audit.</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>-<sp/>CORS<sp/>(browser<sp/>cross-origin<sp/>rules):</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</highlight></codeline>
-<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>-<sp/>Inline<sp/>functions<sp/>and<sp/>function-local<sp/>statics:</highlight></codeline>
-<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/language/inline</highlight></codeline>
-<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>-<sp/>std::string_view<sp/>(a<sp/>non-owning<sp/>view<sp/>over<sp/>text):</highlight></codeline>
-<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/string/basic_string_view</highlight></codeline>
-<codeline lineno="30"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="33"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>file<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>drogon::HttpRequestPtr,<sp/>used<sp/>to<sp/>read<sp/>Origin<sp/>and<sp/>preflight<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpRequest.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>drogon::HttpResponsePtr<sp/>and<sp/>its<sp/>addHeader/getHeader/headers<sp/>methods</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpResponse.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>drogon::Options,<sp/>used<sp/>to<sp/>detect<sp/>preflight<sp/>requests</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpTypes.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>std::string<sp/>constants<sp/>and<sp/>return<sp/>values</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>std::string_view<sp/>parameters<sp/>that<sp/>borrow<sp/>text<sp/>without<sp/>copying<sp/>it</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>std::vector&lt;std::string&gt;<sp/>holding<sp/>the<sp/>split<sp/>origin<sp/>list</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>Configurator::FrontEndConfig<sp/>and<sp/>its<sp/>cors_allowed_origins<sp/>field</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="configurator_8hpp" kindref="compound">configurator/configurator.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>the<sp/>Drogon-free<sp/>token<sp/>helpers<sp/>mergeVary()<sp/>and<sp/>sanitizeRequestedHeaders()</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="cors__tokens_8hpp" kindref="compound">server/cors_tokens.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>Store::cachedObject&lt;Configurator&gt;()<sp/>used<sp/>to<sp/>read<sp/>live<sp/>settings</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="store_8hpp" kindref="compound">store/store.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp />*<sp />@file<sp
+                    />cors.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp />*<sp />@brief<sp />CORS<sp
+                    />header<sp />helpers<sp />applied<sp />to<sp />every<sp
+                    />response<sp />by<sp />the<sp
+                    />pre-sending</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp />*<sp />advice<sp />in<sp
+                    />server.cpp.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp />*<sp />@details<sp
+                    />This<sp />header<sp />provides<sp />small<sp
+                    />functions<sp />that<sp />write<sp />the<sp
+                    />Cross-Origin</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp />*<sp />Resource<sp
+                    />Sharing<sp />(CORS)<sp />headers<sp />onto<sp />an<sp
+                    />outgoing<sp />HTTP<sp />response.<sp />CORS<sp />is<sp
+                    />the</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp />*<sp />browser<sp
+                    />rule<sp />that<sp />decides<sp />whether<sp />a<sp
+                    />web<sp />page<sp />on<sp />one<sp />domain<sp />may<sp
+                    />read<sp />a</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp />*<sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp />response<sp />from<sp
+                    />another<sp />domain.<sp />The<sp />code<sp />here<sp
+                    />reads<sp />the<sp />configured</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp />*<sp />list<sp />of<sp
+                    />allowed<sp />origins,<sp />reflects<sp />an<sp />exact<sp
+                    />match<sp />back<sp />with<sp />credentials,<sp
+                    />or</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp />*<sp />falls<sp />back<sp
+                    />to<sp />a<sp />wildcard<sp />or<sp />first<sp
+                    />configured<sp />origin.<sp />It<sp />also<sp
+                    />handles</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp />*<sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp />preflight<sp
+                    />(OPTIONS)<sp />requests<sp />by<sp />echoing<sp />a<sp
+                    />sanitized<sp />list<sp />of</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp />*<sp />requested<sp
+                    />headers.</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp />*<sp />WHY<sp />THIS<sp
+                    />FILE<sp />MATTERS<sp />IN<sp />THE<sp
+                    />SERVER:</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp />*<sp />Without<sp
+                    />these<sp />headers,<sp />a<sp />browser<sp />front<sp
+                    />end<sp />served<sp />from<sp />a<sp />different<sp
+                    />address</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp />*<sp />than<sp />the<sp
+                    />API<sp />would<sp />be<sp />blocked<sp />by<sp />its<sp
+                    />same-origin<sp />policy,<sp />even<sp />though<sp />the<sp
+                    />API</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp />*<sp />itself<sp
+                    />works.<sp />server.cpp<sp />calls<sp />Cors::apply()<sp
+                    />for<sp />every<sp />single<sp />response,<sp
+                    />so</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp />*<sp />this<sp />file<sp
+                    />is<sp />the<sp />one<sp />central<sp />place<sp />that<sp
+                    />makes<sp />the<sp />REST<sp />API<sp />reachable<sp
+                    />from<sp />a</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp />*<sp />web<sp />app.<sp
+                    />It<sp />also<sp />contains<sp />the<sp />small<sp
+                    />token<sp />helpers&apos;<sp />entry<sp />points<sp
+                    />used<sp />by<sp />the</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp />*<sp />preflight<sp
+                    />logic,<sp />so<sp />CORS<sp />behaviour<sp />stays<sp
+                    />consistent<sp />and<sp />easy<sp />to<sp
+                    />audit.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp />*<sp />CONCEPTS<sp
+                    />TO<sp />LEARN<sp />(for<sp
+                    />beginners):</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp />*<sp />-<sp />CORS<sp
+                    />(browser<sp />cross-origin<sp
+                    />rules):</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp />*<sp
+                    />https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp />*<sp />-<sp />Inline<sp
+                    />functions<sp />and<sp />function-local<sp
+                    />statics:</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp />*<sp
+                    />https://en.cppreference.com/w/cpp/language/inline</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp />*<sp />-<sp
+                    />std::string_view<sp />(a<sp />non-owning<sp />view<sp
+                    />over<sp />text):</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp />*<sp
+                    />https://en.cppreference.com/w/cpp/string/basic_string_view</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp />*<sp />@author<sp
+                    />Amr<sp />Osman<sp
+                    />&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp />*<sp />@date<sp
+                    />2026-11-16</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="34"><highlight class="normal" /></codeline>
+<codeline lineno="35"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#pragma<sp />once<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Include<sp />this<sp />file<sp />at<sp />most<sp
+                    />once<sp />per<sp />source<sp />file.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="36"><highlight class="normal" /></codeline>
+<codeline lineno="37"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />for<sp />drogon::HttpRequestPtr,<sp />used<sp />to<sp
+                    />read<sp />Origin<sp />and<sp />preflight<sp
+                    />headers</highlight><highlight class="normal" /></codeline>
+<codeline lineno="38"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp
+                    />&lt;drogon/HttpRequest.h&gt;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="39"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />for<sp />drogon::HttpResponsePtr<sp />and<sp />its<sp
+                    />addHeader/getHeader/headers<sp
+                    />methods</highlight><highlight class="normal" /></codeline>
+<codeline lineno="40"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp
+                    />&lt;drogon/HttpResponse.h&gt;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="41"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />for<sp />drogon::Options,<sp />used<sp />to<sp
+                    />detect<sp />preflight<sp />requests</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="42"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;drogon/HttpTypes.h&gt;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="43"><highlight class="normal" /></codeline>
+<codeline lineno="44"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;string&gt;</highlight><highlight
+                    class="normal"
+                ><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />for<sp />std::string<sp />constants<sp />and<sp
+                    />return<sp />values</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="45"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />for<sp />std::string_view<sp />parameters<sp />that<sp
+                    />borrow<sp />text<sp />without<sp />copying<sp
+                    />it</highlight><highlight class="normal" /></codeline>
+<codeline lineno="46"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;string_view&gt;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="47"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;vector&gt;</highlight><highlight
+                    class="normal"
+                ><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />for<sp />std::vector&lt;std::string&gt;<sp />holding<sp
+                    />the<sp />split<sp />origin<sp />list</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="48"><highlight class="normal" /></codeline>
+<codeline lineno="49"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />for<sp />Configurator::FrontEndConfig<sp />and<sp
+                    />its<sp />cors_allowed_origins<sp
+                    />field</highlight><highlight class="normal" /></codeline>
+<codeline lineno="50"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&quot;<ref
+                        refid="configurator_8hpp"
+                        kindref="compound"
+                    >configurator/configurator.hpp</ref>&quot;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="51"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />for<sp />the<sp />Drogon-free<sp />token<sp
+                    />helpers<sp />mergeVary()<sp />and<sp
+                    />sanitizeRequestedHeaders()</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="52"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&quot;<ref
+                        refid="cors__tokens_8hpp"
+                        kindref="compound"
+                    >server/cors_tokens.hpp</ref>&quot;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="53"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />for<sp />Store::cachedObject&lt;Configurator&gt;()<sp
+                    />used<sp />to<sp />read<sp />live<sp
+                    />settings</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="54"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&quot;<ref
+                        refid="store_8hpp"
+                        kindref="compound"
+                    >store/store.hpp</ref>&quot;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="55"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
 <codeline lineno="56"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="57" refid="namespaceCors" refkind="compound"><highlight class="comment"><sp/>*<sp/>@namespace<sp/>Cors</highlight></codeline>
-<codeline lineno="58"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Writes<sp/>the<sp/>CORS<sp/>response<sp/>headers<sp/>onto<sp/>every<sp/>outgoing<sp/>response.</highlight></codeline>
-<codeline lineno="59"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="60"><highlight class="comment"><sp/>*<sp/>@details<sp/>CORS<sp/>response<sp/>headers,<sp/>written<sp/>in<sp/>exactly<sp/>one<sp/>place<sp/>(the<sp/>pre-sending</highlight></codeline>
-<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>advice<sp/>in<sp/>server.cpp).<sp/>Drogon<sp/>stores<sp/>headers<sp/>in<sp/>a<sp/>map<sp/>keyed<sp/>by<sp/>the</highlight></codeline>
-<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>lower-cased<sp/>name,<sp/>and<sp/>addHeader<sp/>replaces<sp/>an<sp/>existing<sp/>value</highlight></codeline>
-<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>(HttpResponseImpl.h:194-210),<sp/>so<sp/>a<sp/>header<sp/>can<sp/>never<sp/>appear<sp/>twice.</highlight></codeline>
-<codeline lineno="64"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Group<sp/>the<sp/>CORS<sp/>helper<sp/>functions<sp/>together<sp/>without<sp/>needing<sp/>an</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>object<sp/>instance.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceCors" kindref="compound">Cors</ref><sp/>{</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="68"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Short<sp/>alias<sp/>so<sp/>call<sp/>sites<sp/>can<sp/>use<sp/>detail::<sp/>for<sp/>the<sp/>Drogon-free<sp/>token</highlight></codeline>
-<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/>*<sp/>helpers.</highlight></codeline>
-<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">detail<sp/>=<sp/><ref refid="namespaceCorsTokens" kindref="compound">CorsTokens</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>alias:<sp/>detail::<sp/>now<sp/>means<sp/>CorsTokens,</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>keeping<sp/>call<sp/>sites<sp/>short.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="75"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>The<sp/>method<sp/>list<sp/>advertised<sp/>in<sp/>Allow<sp/>and</highlight></codeline>
-<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Access-Control-Allow-Methods.</highlight></codeline>
-<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@note<sp/>PATCH<sp/>is<sp/>advertised<sp/>here<sp/>but<sp/>Server::isConventionalMethod()<sp/>rejects</highlight></codeline>
-<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/>*<sp/>it<sp/>with<sp/>405.</highlight></codeline>
-<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>process-lifetime<sp/>constant<sp/>string,<sp/>returned<sp/>by<sp/>reference<sp/>to</highlight></codeline>
-<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/>*<sp/>avoid<sp/>a<sp/>copy<sp/>per<sp/>response.</highlight></codeline>
-<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>fixed<sp/>list<sp/>of<sp/>methods<sp/>the<sp/>server<sp/>advertises</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>as<sp/>allowed.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="85" refid="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d" kindref="member">allowedMethods</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>value<sp/>=</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Built<sp/>once<sp/>and<sp/>reused;<sp/>inline<sp/>means<sp/>one<sp/>copy<sp/>in<sp/>the<sp/>program.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;GET,<sp/>POST,<sp/>PUT,<sp/>PATCH,<sp/>DELETE,<sp/>HEAD,<sp/>OPTIONS&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>by<sp/>reference<sp/>so<sp/>no<sp/>copy<sp/>is<sp/>made<sp/>on<sp/>every</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>response.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="93"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>The<sp/>fallback<sp/>Access-Control-Allow-Headers<sp/>list<sp/>used<sp/>on</highlight></codeline>
-<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/>*<sp/>non-preflight<sp/>responses.</highlight></codeline>
-<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>process-lifetime<sp/>constant<sp/>string,<sp/>returned<sp/>by<sp/>reference<sp/>to</highlight></codeline>
-<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/>*<sp/>avoid<sp/>a<sp/>copy<sp/>per<sp/>response.</highlight></codeline>
-<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>standard<sp/>list<sp/>of<sp/>request<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>allowed<sp/>cross-origin.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="101" refid="namespaceCors_1af54c7b1b495f97a9cef25ac756aec7d5" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="namespaceCors_1af54c7b1b495f97a9cef25ac756aec7d5" kindref="member">defaultAllowedHeaders</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>value<sp/>=</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Created<sp/>once<sp/>at<sp/>first<sp/>use,<sp/>not<sp/>on<sp/>each<sp/>call.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Content-Type,<sp/>Authorization,<sp/>Accept,<sp/>X-Requested-With&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>by<sp/>reference<sp/>to<sp/>avoid<sp/>allocating<sp/>a<sp/>new<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="108"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Headers<sp/>browsers<sp/>are<sp/>allowed<sp/>to<sp/>expose<sp/>to<sp/>page<sp/>scripts.</highlight></codeline>
-<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>process-lifetime<sp/>constant<sp/>string,<sp/>returned<sp/>by<sp/>reference<sp/>to</highlight></codeline>
-<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/>*<sp/>avoid<sp/>a<sp/>copy<sp/>per<sp/>response.</highlight></codeline>
-<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>response<sp/>headers<sp/>that<sp/>JavaScript<sp/>is</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>permitted<sp/>to<sp/>read.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="115" refid="namespaceCors_1ab2139d17f81f7754423b94b0dfdc53bc" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="namespaceCors_1ab2139d17f81f7754423b94b0dfdc53bc" kindref="member">exposedHeaders</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>value<sp/>=</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Retry-After,<sp/>Content-Length&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>shared<sp/>constant;<sp/>built<sp/>only</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>once.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>by<sp/>reference<sp/>so<sp/>callers<sp/>do<sp/>not<sp/>pay<sp/>for<sp/>a<sp/>copy.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="122"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>The<sp/>Access-Control-Max-Age<sp/>value<sp/>(seconds)<sp/>emitted<sp/>on<sp/>preflight</highlight></codeline>
-<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/>*<sp/>responses.</highlight></codeline>
-<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>process-lifetime<sp/>constant<sp/>string;<sp/>7200<sp/>matches<sp/>the<sp/>browser<sp/>cap.</highlight></codeline>
-<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>how<sp/>long,<sp/>in<sp/>seconds,<sp/>a<sp/>browser<sp/>may<sp/>cache<sp/>a</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>preflight<sp/>result.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="129" refid="namespaceCors_1a67bce05e328fb07dd233d14e40bac82c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="namespaceCors_1a67bce05e328fb07dd233d14e40bac82c" kindref="member">preflightMaxAge</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>value<sp/>=</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;7200&quot;</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>browsers<sp/>cap<sp/>this<sp/>at<sp/>2<sp/>hours<sp/>anyway</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>by<sp/>reference<sp/>to<sp/>keep<sp/>the<sp/>hot<sp/>path<sp/>copy-free.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="135"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="136"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Adds<sp/>a<sp/>token<sp/>to<sp/>the<sp/>response&apos;s<sp/>Vary<sp/>header<sp/>only<sp/>if<sp/>it<sp/>is<sp/>not</highlight></codeline>
-<codeline lineno="137"><highlight class="comment"><sp/><sp/><sp/>*<sp/>already<sp/>present.</highlight></codeline>
-<codeline lineno="138"><highlight class="comment"><sp/><sp/><sp/>*</highlight></codeline>
-<codeline lineno="139"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Deduplication<sp/>is<sp/>delegated<sp/>to<sp/>CorsTokens::mergeVary;<sp/>comparing</highlight></codeline>
-<codeline lineno="140"><highlight class="comment"><sp/><sp/><sp/>*<sp/>before<sp/>writing<sp/>avoids<sp/>touching<sp/>the<sp/>header<sp/>map<sp/>on<sp/>responses<sp/>that<sp/>already</highlight></codeline>
-<codeline lineno="141"><highlight class="comment"><sp/><sp/><sp/>*<sp/>carry<sp/>the<sp/>value.</highlight></codeline>
-<codeline lineno="142"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>resp<sp/>Response<sp/>whose<sp/>Vary<sp/>header<sp/>may<sp/>be<sp/>updated.</highlight></codeline>
-<codeline lineno="143"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>value<sp/>Header<sp/>name<sp/>to<sp/>add,<sp/>for<sp/>example<sp/>&quot;Origin&quot;.</highlight></codeline>
-<codeline lineno="144"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>one<sp/>token<sp/>to<sp/>Vary<sp/>only<sp/>when<sp/>it<sp/>is<sp/>missing.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="146" refid="namespaceCors_1a183f8c59d0e3f8136c11f88df8f40bfb" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceCors_1a183f8c59d0e3f8136c11f88df8f40bfb" kindref="member">addToVary</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpResponsePtr&amp;<sp/>resp,</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value)<sp/>{</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>existing<sp/>=</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resp-&gt;getHeader(</highlight><highlight class="stringliteral">&quot;vary&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>the<sp/>current<sp/>Vary<sp/>header<sp/>(empty</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>string<sp/>when<sp/>absent).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>merged<sp/>=</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>detail::mergeVary(existing,</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value);<sp/><sp/></highlight><highlight class="comment">//<sp/>Reuse<sp/>the<sp/>helper<sp/>that<sp/>appends<sp/>without</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>duplicates.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>touch<sp/>the<sp/>response<sp/>if<sp/>the<sp/>merge</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>actually<sp/>changed<sp/>the<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(merged<sp/>!=<sp/>existing)<sp/>{</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>resp-&gt;addHeader(</highlight><highlight class="stringliteral">&quot;Vary&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>merged);<sp/><sp/></highlight><highlight class="comment">//<sp/>Store<sp/>the<sp/>updated<sp/>list<sp/>back<sp/>on<sp/>the<sp/>response.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="163"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="164"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Splits<sp/>the<sp/>comma-separated<sp/>cors_allowed_origins<sp/>setting<sp/>into</highlight></codeline>
-<codeline lineno="165"><highlight class="comment"><sp/><sp/><sp/>*<sp/>individual<sp/>origins.</highlight></codeline>
-<codeline lineno="166"><highlight class="comment"><sp/><sp/><sp/>*</highlight></codeline>
-<codeline lineno="167"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Spaces<sp/>are<sp/>skipped<sp/>and<sp/>empty<sp/>tokens<sp/>discarded,<sp/>so<sp/>a<sp/>trailing</highlight></codeline>
-<codeline lineno="168"><highlight class="comment"><sp/><sp/><sp/>*<sp/>comma<sp/>or<sp/>whitespace<sp/>after<sp/>a<sp/>comma<sp/>does<sp/>not<sp/>create<sp/>a<sp/>bogus<sp/>origin.<sp/>Order</highlight></codeline>
-<codeline lineno="169"><highlight class="comment"><sp/><sp/><sp/>*<sp/>is<sp/>preserved<sp/>because<sp/>apply()<sp/>falls<sp/>back<sp/>to<sp/>the<sp/>first<sp/>entry.</highlight></codeline>
-<codeline lineno="170"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>value<sp/>Raw<sp/>configuration<sp/>value.</highlight></codeline>
-<codeline lineno="171"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>Origins<sp/>in<sp/>configuration<sp/>order.</highlight></codeline>
-<codeline lineno="172"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Split<sp/>the<sp/>configured<sp/>comma-separated<sp/>string<sp/>into<sp/>origins.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="174" refid="namespaceCors_1a91b925e2a3993e560726033702df8818" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="namespaceCors_1a91b925e2a3993e560726033702df8818" kindref="member">splitOrigins</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>value)<sp/>{</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>out;<sp/><sp/></highlight><highlight class="comment">//<sp/>Accumulates<sp/>the<sp/>origins<sp/>found,<sp/>keeping</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>their<sp/>original<sp/>order.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cur;<sp/><sp/></highlight><highlight class="comment">//<sp/>Holds<sp/>the<sp/>characters<sp/>of<sp/>the<sp/>origin<sp/>currently<sp/>being<sp/>built.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Examine<sp/>every<sp/>character<sp/>in<sp/>the<sp/>configured<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c<sp/>:<sp/>value)<sp/>{</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>comma<sp/>ends<sp/>the<sp/>current<sp/>origin.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(c<sp/>==<sp/></highlight><highlight class="charliteral">&apos;,&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!cur.empty())</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out.push_back(cur);<sp/><sp/></highlight><highlight class="comment">//<sp/>Save<sp/>a<sp/>non-empty<sp/>origin;<sp/>ignore</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>empty<sp/>ones<sp/>from<sp/>stray<sp/>commas.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>the<sp/>buffer<sp/>for<sp/>the<sp/>next<sp/>origin.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Skip<sp/>spaces<sp/>but<sp/>keep<sp/>every<sp/>other<sp/>character.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cur.clear();</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(c<sp/>!=<sp/></highlight><highlight class="charliteral">&apos;<sp/>&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cur.push_back(c);<sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>this<sp/>character<sp/>to<sp/>the<sp/>origin<sp/>being<sp/>built.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!cur.empty())</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>out.push_back(cur);<sp/><sp/></highlight><highlight class="comment">//<sp/>Do<sp/>not<sp/>forget<sp/>the<sp/>final<sp/>origin;<sp/>no<sp/>trailing</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>comma<sp/>ends<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>out;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>list<sp/>in<sp/>configuration<sp/>order<sp/>for<sp/>the<sp/>caller<sp/>to</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>use.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="200"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="201"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Decorates<sp/>a<sp/>response<sp/>with<sp/>CORS<sp/>headers;<sp/>invoked<sp/>once<sp/>per<sp/>response</highlight></codeline>
-<codeline lineno="202"><highlight class="comment"><sp/><sp/><sp/>*<sp/>from<sp/>the<sp/>pre-sending<sp/>advice.</highlight></codeline>
-<codeline lineno="203"><highlight class="comment"><sp/><sp/><sp/>*</highlight></codeline>
-<codeline lineno="204"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>If<sp/>the<sp/>response<sp/>already<sp/>carries<sp/>Access-Control-Allow-Origin:</highlight></codeline>
-<codeline lineno="205"><highlight class="comment"><sp/><sp/><sp/>*<sp/>&quot;*&quot;,<sp/>it<sp/>is<sp/>left<sp/>untouched.<sp/>Otherwise<sp/>the<sp/>current<sp/>cors_allowed_origins</highlight></codeline>
-<codeline lineno="206"><highlight class="comment"><sp/><sp/><sp/>*<sp/>setting<sp/>is<sp/>read<sp/>from<sp/>the<sp/>Configurator.<sp/>An<sp/>exact<sp/>match<sp/>to<sp/>the<sp/>request&apos;s</highlight></codeline>
-<codeline lineno="207"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Origin<sp/>is<sp/>reflected<sp/>back<sp/>with<sp/>Allow-Credentials<sp/>and<sp/>Vary:</highlight></codeline>
-<codeline lineno="208"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Origin;<sp/>if<sp/>origins<sp/>are<sp/>configured<sp/>but<sp/>none<sp/>match,<sp/>the<sp/>first<sp/>configured</highlight></codeline>
-<codeline lineno="209"><highlight class="comment"><sp/><sp/><sp/>*<sp/>origin<sp/>is<sp/>used<sp/>without<sp/>credentials;<sp/>if<sp/>the<sp/>setting<sp/>is<sp/>&quot;*&quot;,<sp/>the<sp/>wildcard</highlight></codeline>
-<codeline lineno="210"><highlight class="comment"><sp/><sp/><sp/>*<sp/>is<sp/>used.<sp/>For<sp/>OPTIONS<sp/>requests<sp/>a<sp/>sanitized<sp/>echo<sp/>of</highlight></codeline>
-<codeline lineno="211"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Access-Control-Request-Headers<sp/>replaces<sp/>the<sp/>default<sp/>header<sp/>list,<sp/>and</highlight></codeline>
-<codeline lineno="212"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Max-Age<sp/>plus<sp/>Vary<sp/>are<sp/>added.<sp/>Every<sp/>write<sp/>uses<sp/>HttpResponse::addHeader,</highlight></codeline>
-<codeline lineno="213"><highlight class="comment"><sp/><sp/><sp/>*<sp/>which<sp/>replaces<sp/>an<sp/>existing<sp/>value<sp/>rather<sp/>than<sp/>duplicating<sp/>it.</highlight></codeline>
-<codeline lineno="214"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>req<sp/>Request<sp/>being<sp/>answered;<sp/>supplies<sp/>Origin<sp/>and,<sp/>for</highlight></codeline>
-<codeline lineno="215"><highlight class="comment"><sp/><sp/><sp/>*<sp/>preflights,<sp/>the<sp/>requested<sp/>headers.</highlight></codeline>
-<codeline lineno="216"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>resp<sp/>Response<sp/>to<sp/>decorate.</highlight></codeline>
-<codeline lineno="217"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@note<sp/>No<sp/>shared<sp/>mutable<sp/>state<sp/>is<sp/>modified<sp/>here;<sp/>the<sp/>configuration<sp/>is<sp/>read</highlight></codeline>
-<codeline lineno="218"><highlight class="comment"><sp/><sp/><sp/>*<sp/>through<sp/>Store&apos;s<sp/>thread-local<sp/>cache.</highlight></codeline>
-<codeline lineno="219"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@see<sp/>CorsTokens::sanitizeRequestedHeaders(),<sp/>CorsTokens::mergeVary()</highlight></codeline>
-<codeline lineno="220"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Write<sp/>the<sp/>correct<sp/>CORS<sp/>headers<sp/>onto<sp/>this<sp/>response.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="222" refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" kindref="member">apply</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpRequestPtr&amp;<sp/><sp/>req,</highlight></codeline>
-<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpResponsePtr&amp;<sp/>resp)<sp/>{</highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>originKey<sp/>=</highlight></codeline>
-<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;access-control-allow-origin&quot;</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Drogon<sp/>keys<sp/>headers<sp/>in<sp/>lowercase;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>built<sp/>once<sp/>at<sp/>first<sp/>use.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>headers<sp/>=<sp/>resp-&gt;headers();<sp/><sp/></highlight><highlight class="comment">//<sp/>Reference<sp/>to<sp/>the<sp/>header<sp/>map<sp/>so<sp/>we</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>can<sp/>inspect<sp/>what<sp/>is<sp/>already<sp/>set.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/>originIt<sp/>=</highlight></codeline>
-<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>headers.find(originKey);<sp/><sp/></highlight><highlight class="comment">//<sp/>Look<sp/>for<sp/>an<sp/>existing<sp/>allow-origin<sp/>header.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>a<sp/>wildcard<sp/>was<sp/>already<sp/>set,<sp/>there<sp/>is<sp/>nothing<sp/>to<sp/>add.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(originIt<sp/>!=<sp/>headers.end()<sp/>&amp;&amp;<sp/>originIt-&gt;second<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;*&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Leave<sp/>the<sp/>response<sp/>untouched;<sp/>another<sp/>layer<sp/>already</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>allowed<sp/>every<sp/>origin.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="236"><highlight class="normal"></highlight></codeline>
-<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>allowed<sp/>=<sp/><ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject&lt;Configurator&gt;</ref>()</highlight></codeline>
-<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;get&lt;<ref refid="classConfigurator_1a8b3e99fef2ad5bf59793fa235a97aa3c" kindref="member">Configurator::FrontEndConfig</ref>&gt;()</highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cors_allowed_origins;<sp/><sp/></highlight><highlight class="comment">//<sp/>Live<sp/>CORS<sp/>config.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>requestOrigin<sp/>=</highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>req-&gt;getHeader(</highlight><highlight class="stringliteral">&quot;Origin&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>Origin<sp/>header<sp/>the<sp/>browser<sp/>sent</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(empty<sp/>if<sp/>none).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="243"><highlight class="normal"></highlight></codeline>
-<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>useCredentials<sp/>=</highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Starts<sp/>false;<sp/>only<sp/>an<sp/>exact<sp/>origin<sp/>match<sp/>will<sp/>turn<sp/>it<sp/>on.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>allowOrigin<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;*&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>to<sp/>wildcard;<sp/>replaced<sp/>if</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>specific<sp/>origins<sp/>are<sp/>configured.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>concrete<sp/>list<sp/>is<sp/>configured,<sp/>so<sp/>we<sp/>must<sp/>choose</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>one<sp/>origin.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(allowed<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;*&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>origins<sp/>=<sp/><ref refid="namespaceCors_1a91b925e2a3993e560726033702df8818" kindref="member">splitOrigins</ref>(allowed);<sp/><sp/></highlight><highlight class="comment">//<sp/>Break<sp/>the<sp/>configured<sp/>string<sp/>into</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>individual<sp/>origins.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compare<sp/>each<sp/>configured<sp/>origin</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>with<sp/>the<sp/>request&apos;s<sp/>Origin.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>o<sp/>:<sp/>origins)<sp/>{</highlight></codeline>
-<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>exact<sp/>match<sp/>is<sp/>safe<sp/>to<sp/>reflect</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>allow<sp/>credentials<sp/>for.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!requestOrigin.empty()<sp/>&amp;&amp;<sp/>o<sp/>==<sp/>requestOrigin)<sp/>{</highlight></codeline>
-<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>allowOrigin<sp/><sp/><sp/><sp/>=<sp/>requestOrigin;<sp/><sp/></highlight><highlight class="comment">//<sp/>Reflect<sp/>exactly<sp/>what<sp/>the</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>browser<sp/>sent<sp/>back<sp/>to<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>useCredentials<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Credentials<sp/>require<sp/>an<sp/>exact</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>origin,<sp/>never<sp/>a<sp/>wildcard.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Stop<sp/>searching<sp/>once<sp/>a<sp/>match<sp/>is<sp/>found.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>exact<sp/>match,<sp/>but<sp/>a<sp/>list<sp/>exists:<sp/>fall</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>back<sp/>to<sp/>its<sp/>first<sp/>entry.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(allowOrigin<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;*&quot;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>!origins.empty())<sp/>{</highlight></codeline>
-<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>allowOrigin<sp/>=<sp/>origins.front();<sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>the<sp/>first<sp/>configured</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>origin,<sp/>without<sp/>credentials.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="273"><highlight class="normal"></highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Write<sp/>the<sp/>header<sp/>only<sp/>if<sp/>missing<sp/>or<sp/>different.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(originIt<sp/>==<sp/>headers.end()<sp/>||<sp/>originIt-&gt;second<sp/>!=<sp/>allowOrigin)<sp/>{</highlight></codeline>
-<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>resp-&gt;addHeader(</highlight><highlight class="stringliteral">&quot;Access-Control-Allow-Origin&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>allowOrigin);<sp/><sp/></highlight><highlight class="comment">//<sp/>Tell<sp/>the<sp/>browser<sp/>which<sp/>origin<sp/>may<sp/>read</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>response.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>the<sp/>credentials<sp/>flag<sp/>only<sp/>for<sp/>an<sp/>exact</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>origin<sp/>match.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(useCredentials)<sp/>{</highlight></codeline>
-<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>resp-&gt;addHeader(</highlight><highlight class="stringliteral">&quot;Access-Control-Allow-Credentials&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Allow<sp/>cookies/auth<sp/>to<sp/>be<sp/>sent<sp/>cross-origin.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceCors_1a183f8c59d0e3f8136c11f88df8f40bfb" kindref="member">addToVary</ref>(resp,</highlight></codeline>
-<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Origin&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Vary<sp/>on<sp/>Origin<sp/>so<sp/>caches<sp/>keep<sp/>separate<sp/>copies<sp/>per</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>origin.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/>resp-&gt;addHeader(</highlight><highlight class="stringliteral">&quot;Access-Control-Allow-Methods&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d" kindref="member">allowedMethods</ref>());<sp/><sp/></highlight><highlight class="comment">//<sp/>Advertise<sp/>the<sp/>HTTP<sp/>methods<sp/>permitted</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cross-origin.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>resp-&gt;addHeader(</highlight><highlight class="stringliteral">&quot;Access-Control-Expose-Headers&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceCors_1ab2139d17f81f7754423b94b0dfdc53bc" kindref="member">exposedHeaders</ref>());<sp/><sp/></highlight><highlight class="comment">//<sp/>List<sp/>the<sp/>response<sp/>headers<sp/>scripts<sp/>may</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>read.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="295"><highlight class="normal"></highlight></codeline>
-<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>requested<sp/>=<sp/>req-&gt;getHeader(</highlight></codeline>
-<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Access-Control-Request-Headers&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Preflight<sp/>field<sp/>naming<sp/>the</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>headers<sp/>the<sp/>browser<sp/>wants<sp/>to</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>send.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="300"><highlight class="normal"></highlight></codeline>
-<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string*<sp/>allowedHeaders<sp/>=</highlight></codeline>
-<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="namespaceCors_1af54c7b1b495f97a9cef25ac756aec7d5" kindref="member">defaultAllowedHeaders</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>By<sp/>default,<sp/>advertise<sp/>the<sp/>standard</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>header<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>echoed;<sp/><sp/></highlight><highlight class="comment">//<sp/>Will<sp/>hold<sp/>the<sp/>sanitized<sp/>copy<sp/>of<sp/>the<sp/>client&apos;s</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>requested<sp/>headers.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>preflight<sp/>requests<sp/>carry</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Access-Control-Request-Headers.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(req-&gt;method()<sp/>==<sp/>drogon::Options)<sp/>{</highlight></codeline>
-<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>echoed<sp/>=<sp/>detail::sanitizeRequestedHeaders(</highlight></codeline>
-<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>requested);<sp/><sp/></highlight><highlight class="comment">//<sp/>Filter<sp/>the<sp/>request<sp/>value<sp/>down<sp/>to<sp/>safe<sp/>tokens.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>the<sp/>echo<sp/>only<sp/>if<sp/>some<sp/>valid<sp/>tokens</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>survived<sp/>filtering.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!echoed.empty())<sp/>{</highlight></codeline>
-<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>allowedHeaders<sp/>=<sp/>&amp;echoed;<sp/><sp/></highlight><highlight class="comment">//<sp/>Point<sp/>at<sp/>the<sp/>echoed<sp/>list<sp/>instead</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>of<sp/>the<sp/>default<sp/>one.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>resp-&gt;addHeader(</highlight><highlight class="stringliteral">&quot;Access-Control-Max-Age&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceCors_1a67bce05e328fb07dd233d14e40bac82c" kindref="member">preflightMaxAge</ref>());<sp/><sp/></highlight><highlight class="comment">//<sp/>Tell<sp/>the<sp/>browser<sp/>how<sp/>long<sp/>it<sp/>may</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cache<sp/>this<sp/>preflight.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceCors_1a183f8c59d0e3f8136c11f88df8f40bfb" kindref="member">addToVary</ref>(resp,</highlight></codeline>
-<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Access-Control-Request-Headers&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Vary<sp/>on<sp/>requested<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>so<sp/>caches<sp/>do<sp/>not<sp/>mix<sp/>them</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>up.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/>resp-&gt;addHeader(</highlight><highlight class="stringliteral">&quot;Access-Control-Allow-Headers&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*allowedHeaders);<sp/><sp/></highlight><highlight class="comment">//<sp/>Write<sp/>the<sp/>final<sp/>list:<sp/>default<sp/>or</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>sanitized<sp/>echo.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="328"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="329"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Cors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="namespaceCors" refkind="compound"><highlight
+                    class="comment"
+                ><sp />*<sp />@namespace<sp />Cors</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp />*<sp />@brief<sp
+                    />Writes<sp />the<sp />CORS<sp />response<sp />headers<sp
+                    />onto<sp />every<sp />outgoing<sp
+                    />response.</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp />*<sp />@details<sp
+                    />CORS<sp />response<sp />headers,<sp />written<sp />in<sp
+                    />exactly<sp />one<sp />place<sp />(the<sp
+                    />pre-sending</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp />*<sp />advice<sp />in<sp
+                    />server.cpp).<sp />Drogon<sp />stores<sp />headers<sp
+                    />in<sp />a<sp />map<sp />keyed<sp />by<sp
+                    />the</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp />*<sp />lower-cased<sp
+                    />name,<sp />and<sp />addHeader<sp />replaces<sp />an<sp
+                    />existing<sp />value</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp />*<sp
+                    />(HttpResponseImpl.h:194-210),<sp />so<sp />a<sp
+                    />header<sp />can<sp />never<sp />appear<sp
+                    />twice.</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="65"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />Group<sp />the<sp />CORS<sp />helper<sp />functions<sp
+                    />together<sp />without<sp />needing<sp
+                    />an</highlight><highlight class="normal" /></codeline>
+<codeline lineno="66"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />object<sp />instance.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="67"><highlight class="normal" /><highlight
+                    class="keyword"
+                >namespace<sp /></highlight><highlight class="normal"><ref
+                        refid="namespaceCors"
+                        kindref="compound"
+                    >Cors</ref><sp />{</highlight><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="68"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />Short<sp />alias<sp />so<sp />call<sp />sites<sp />can<sp
+                    />use<sp />detail::<sp />for<sp />the<sp />Drogon-free<sp
+                    />token</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />helpers.</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="72"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="keyword">namespace<sp
+                    /></highlight><highlight class="normal">detail<sp />=<sp
+                    /><ref
+                        refid="namespaceCorsTokens"
+                        kindref="compound"
+                    >CorsTokens</ref>;<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />An<sp />alias:<sp />detail::<sp />now<sp />means<sp
+                    />CorsTokens,</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="73"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />keeping<sp
+                    />call<sp />sites<sp />short.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="74"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="75"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />The<sp />method<sp />list<sp />advertised<sp
+                    />in<sp />Allow<sp />and</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />Access-Control-Allow-Methods.</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@note<sp />PATCH<sp />is<sp />advertised<sp />here<sp
+                    />but<sp />Server::isConventionalMethod()<sp
+                    />rejects</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp /><sp /><sp />*<sp />it<sp
+                    />with<sp />405.</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@return<sp />A<sp />process-lifetime<sp />constant<sp
+                    />string,<sp />returned<sp />by<sp />reference<sp
+                    />to</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />avoid<sp />a<sp />copy<sp />per<sp
+                    />response.</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="83"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Return<sp
+                    />the<sp />fixed<sp />list<sp />of<sp />methods<sp />the<sp
+                    />server<sp />advertises</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="84"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />as<sp
+                    />allowed.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="85"
+                refid="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >inline</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    />std::string&amp;<sp /><ref
+                        refid="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d"
+                        kindref="member"
+                    >allowedMethods</ref>()<sp />{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >static</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp />std::string<sp
+                    />value<sp />=</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Built<sp />once<sp />and<sp />reused;<sp />inline<sp
+                    />means<sp />one<sp />copy<sp />in<sp />the<sp
+                    />program.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="88"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="stringliteral"
+                >&quot;GET,<sp />POST,<sp />PUT,<sp />PATCH,<sp />DELETE,<sp
+                    />HEAD,<sp />OPTIONS&quot;</highlight><highlight
+                    class="normal"
+                >;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal"><sp />value;<sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />Return<sp />by<sp />reference<sp />so<sp />no<sp />copy<sp
+                    />is<sp />made<sp />on<sp />every</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="90"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />response.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="91"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="93"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />The<sp />fallback<sp
+                    />Access-Control-Allow-Headers<sp />list<sp />used<sp
+                    />on</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />non-preflight<sp />responses.</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@return<sp />A<sp />process-lifetime<sp />constant<sp
+                    />string,<sp />returned<sp />by<sp />reference<sp
+                    />to</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />avoid<sp />a<sp />copy<sp />per<sp
+                    />response.</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="99"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Return<sp
+                    />the<sp />standard<sp />list<sp />of<sp />request<sp
+                    />headers</highlight><highlight class="normal" /></codeline>
+<codeline lineno="100"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />allowed<sp
+                    />cross-origin.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="101"
+                refid="namespaceCors_1af54c7b1b495f97a9cef25ac756aec7d5"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >inline</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    />std::string&amp;<sp /><ref
+                        refid="namespaceCors_1af54c7b1b495f97a9cef25ac756aec7d5"
+                        kindref="member"
+                    >defaultAllowedHeaders</ref>()<sp />{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >static</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp />std::string<sp
+                    />value<sp />=</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Created<sp />once<sp />at<sp />first<sp />use,<sp
+                    />not<sp />on<sp />each<sp />call.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="104"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="stringliteral"
+                >&quot;Content-Type,<sp />Authorization,<sp />Accept,<sp
+                    />X-Requested-With&quot;</highlight><highlight
+                    class="normal"
+                >;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal"><sp />value;<sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />Return<sp />by<sp />reference<sp />to<sp />avoid<sp
+                    />allocating<sp />a<sp />new<sp
+                    />string.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="106"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="108"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Headers<sp />browsers<sp />are<sp />allowed<sp
+                    />to<sp />expose<sp />to<sp />page<sp
+                    />scripts.</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@return<sp />A<sp />process-lifetime<sp />constant<sp
+                    />string,<sp />returned<sp />by<sp />reference<sp
+                    />to</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />avoid<sp />a<sp />copy<sp />per<sp
+                    />response.</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="113"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Return<sp
+                    />the<sp />response<sp />headers<sp />that<sp
+                    />JavaScript<sp />is</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="114"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />permitted<sp />to<sp />read.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="115"
+                refid="namespaceCors_1ab2139d17f81f7754423b94b0dfdc53bc"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >inline</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    />std::string&amp;<sp /><ref
+                        refid="namespaceCors_1ab2139d17f81f7754423b94b0dfdc53bc"
+                        kindref="member"
+                    >exposedHeaders</ref>()<sp />{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >static</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp />std::string<sp
+                    />value<sp />=</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="stringliteral"
+                >&quot;Retry-After,<sp
+                    />Content-Length&quot;</highlight><highlight
+                    class="normal"
+                >;<sp /><sp /></highlight><highlight class="comment">//<sp
+                    />A<sp />shared<sp />constant;<sp />built<sp
+                    />only</highlight><highlight class="normal" /></codeline>
+<codeline lineno="118"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />once.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="119"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal"><sp />value;<sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />Return<sp />by<sp />reference<sp />so<sp />callers<sp
+                    />do<sp />not<sp />pay<sp />for<sp />a<sp
+                    />copy.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="120"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="122"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />The<sp />Access-Control-Max-Age<sp />value<sp
+                    />(seconds)<sp />emitted<sp />on<sp
+                    />preflight</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />responses.</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@return<sp />A<sp />process-lifetime<sp />constant<sp
+                    />string;<sp />7200<sp />matches<sp />the<sp />browser<sp
+                    />cap.</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="127"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Return<sp
+                    />how<sp />long,<sp />in<sp />seconds,<sp />a<sp
+                    />browser<sp />may<sp />cache<sp />a</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="128"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />preflight<sp />result.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="129"
+                refid="namespaceCors_1a67bce05e328fb07dd233d14e40bac82c"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >inline</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    />std::string&amp;<sp /><ref
+                        refid="namespaceCors_1a67bce05e328fb07dd233d14e40bac82c"
+                        kindref="member"
+                    >preflightMaxAge</ref>()<sp />{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >static</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp />std::string<sp
+                    />value<sp />=</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="stringliteral"
+                >&quot;7200&quot;</highlight><highlight class="normal">;<sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />browsers<sp />cap<sp />this<sp />at<sp />2<sp
+                    />hours<sp />anyway</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="132"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal"><sp />value;<sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />Return<sp />by<sp />reference<sp />to<sp />keep<sp
+                    />the<sp />hot<sp />path<sp
+                    />copy-free.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="133"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="135"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Adds<sp />a<sp />token<sp />to<sp />the<sp
+                    />response&apos;s<sp />Vary<sp />header<sp />only<sp />if<sp
+                    />it<sp />is<sp />not</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />already<sp />present.</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp /><sp /><sp
+                    />*</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@details<sp />Deduplication<sp />is<sp />delegated<sp
+                    />to<sp />CorsTokens::mergeVary;<sp
+                    />comparing</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />before<sp />writing<sp />avoids<sp />touching<sp />the<sp
+                    />header<sp />map<sp />on<sp />responses<sp />that<sp
+                    />already</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />carry<sp />the<sp />value.</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in,out]<sp />resp<sp />Response<sp />whose<sp
+                    />Vary<sp />header<sp />may<sp />be<sp
+                    />updated.</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />value<sp />Header<sp />name<sp />to<sp
+                    />add,<sp />for<sp />example<sp
+                    />&quot;Origin&quot;.</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="145"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Add<sp
+                    />one<sp />token<sp />to<sp />Vary<sp />only<sp />when<sp
+                    />it<sp />is<sp />missing.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="146"
+                refid="namespaceCors_1a183f8c59d0e3f8136c11f88df8f40bfb"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >inline</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keywordtype"
+                >void</highlight><highlight class="normal"><sp /><ref
+                        refid="namespaceCors_1a183f8c59d0e3f8136c11f88df8f40bfb"
+                        kindref="member"
+                    >addToVary</ref>(</highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    />drogon::HttpResponsePtr&amp;<sp
+                    />resp,</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    />std::string_view<sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp />value)<sp
+                    />{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    />std::string&amp;<sp />existing<sp
+                    />=</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp
+                    />resp-&gt;getHeader(</highlight><highlight
+                    class="stringliteral"
+                >&quot;vary&quot;</highlight><highlight class="normal">);<sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />Read<sp />the<sp />current<sp />Vary<sp />header<sp
+                    />(empty</highlight><highlight class="normal" /></codeline>
+<codeline lineno="150"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />string<sp
+                    />when<sp />absent).</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="151"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp />std::string<sp
+                    />merged<sp />=</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp
+                    />detail::mergeVary(existing,</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp />value);<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Reuse<sp />the<sp />helper<sp />that<sp />appends<sp
+                    />without</highlight><highlight class="normal" /></codeline>
+<codeline lineno="154"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />duplicates.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="155"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Only<sp
+                    />touch<sp />the<sp />response<sp />if<sp />the<sp
+                    />merge</highlight><highlight class="normal" /></codeline>
+<codeline lineno="156"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />actually<sp
+                    />changed<sp />the<sp />list.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="157"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp />(merged<sp
+                    />!=<sp />existing)<sp />{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />resp-&gt;addHeader(</highlight><highlight
+                    class="stringliteral"
+                >&quot;Vary&quot;</highlight><highlight
+                    class="normal"
+                >,</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp />merged);<sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />Store<sp />the<sp />updated<sp />list<sp />back<sp />on<sp
+                    />the<sp />response.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="160"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="163"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Splits<sp />the<sp />comma-separated<sp
+                    />cors_allowed_origins<sp />setting<sp
+                    />into</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />individual<sp />origins.</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp /><sp /><sp
+                    />*</highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@details<sp />Spaces<sp />are<sp />skipped<sp />and<sp
+                    />empty<sp />tokens<sp />discarded,<sp />so<sp />a<sp
+                    />trailing</highlight></codeline>
+<codeline lineno="168"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />comma<sp />or<sp />whitespace<sp />after<sp />a<sp
+                    />comma<sp />does<sp />not<sp />create<sp />a<sp />bogus<sp
+                    />origin.<sp />Order</highlight></codeline>
+<codeline lineno="169"><highlight class="comment"><sp /><sp /><sp />*<sp />is<sp
+                    />preserved<sp />because<sp />apply()<sp />falls<sp
+                    />back<sp />to<sp />the<sp />first<sp
+                    />entry.</highlight></codeline>
+<codeline lineno="170"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />value<sp />Raw<sp />configuration<sp
+                    />value.</highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@return<sp />Origins<sp />in<sp />configuration<sp
+                    />order.</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="173"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Split<sp
+                    />the<sp />configured<sp />comma-separated<sp />string<sp
+                    />into<sp />origins.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="174"
+                refid="namespaceCors_1a91b925e2a3993e560726033702df8818"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >inline</highlight><highlight class="normal"><sp
+                    />std::vector&lt;std::string&gt;<sp /><ref
+                        refid="namespaceCors_1a91b925e2a3993e560726033702df8818"
+                        kindref="member"
+                    >splitOrigins</ref>(</highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    />std::string&amp;<sp />value)<sp />{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />std::vector&lt;std::string&gt;<sp />out;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />Accumulates<sp />the<sp />origins<sp />found,<sp
+                    />keeping</highlight><highlight class="normal" /></codeline>
+<codeline lineno="176"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />their<sp
+                    />original<sp />order.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="177"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />std::string</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp />cur;<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Holds<sp />the<sp />characters<sp />of<sp />the<sp
+                    />origin<sp />currently<sp />being<sp
+                    />built.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="179"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Examine<sp
+                    />every<sp />character<sp />in<sp />the<sp />configured<sp
+                    />value.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="180"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >for</highlight><highlight class="normal"><sp
+                    />(</highlight><highlight
+                    class="keywordtype"
+                >char</highlight><highlight class="normal"><sp />c<sp />:<sp
+                    />value)<sp />{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp />A<sp
+                    />comma<sp />ends<sp />the<sp />current<sp
+                    />origin.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="182"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp />(c<sp />==<sp
+                    /></highlight><highlight
+                    class="charliteral"
+                >&apos;,&apos;</highlight><highlight class="normal">)<sp
+                    />{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp
+                    />(!cur.empty())</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp />out.push_back(cur);<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Save<sp
+                    />a<sp />non-empty<sp />origin;<sp
+                    />ignore</highlight><highlight class="normal" /></codeline>
+<codeline lineno="185"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />empty<sp />ones<sp />from<sp />stray<sp
+                    />commas.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="186"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Reset<sp />the<sp />buffer<sp />for<sp />the<sp
+                    />next<sp />origin.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="187"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Skip<sp />spaces<sp />but<sp />keep<sp />every<sp
+                    />other<sp />character.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="188"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp />cur.clear();</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />}<sp /></highlight><highlight
+                    class="keywordflow"
+                >else</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp />(c<sp />!=<sp
+                    /></highlight><highlight class="charliteral">&apos;<sp
+                    />&apos;</highlight><highlight class="normal">)<sp
+                    />{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp />cur.push_back(c);<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Add<sp
+                    />this<sp />character<sp />to<sp />the<sp />origin<sp
+                    />being<sp />built.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="191"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp
+                    />(!cur.empty())</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />out.push_back(cur);<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Do<sp
+                    />not<sp />forget<sp />the<sp />final<sp />origin;<sp
+                    />no<sp />trailing</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="195"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />comma<sp />ends<sp />it.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="196"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal"><sp />out;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Return<sp
+                    />the<sp />list<sp />in<sp />configuration<sp />order<sp
+                    />for<sp />the<sp />caller<sp />to</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="197"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />use.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="198"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="200"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Decorates<sp />a<sp />response<sp />with<sp
+                    />CORS<sp />headers;<sp />invoked<sp />once<sp />per<sp
+                    />response</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />from<sp />the<sp />pre-sending<sp
+                    />advice.</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp /><sp /><sp
+                    />*</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@details<sp />If<sp />the<sp />response<sp />already<sp
+                    />carries<sp
+                    />Access-Control-Allow-Origin:</highlight></codeline>
+<codeline lineno="205"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />&quot;*&quot;,<sp />it<sp />is<sp />left<sp
+                    />untouched.<sp />Otherwise<sp />the<sp />current<sp
+                    />cors_allowed_origins</highlight></codeline>
+<codeline lineno="206"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />setting<sp />is<sp />read<sp />from<sp />the<sp
+                    />Configurator.<sp />An<sp />exact<sp />match<sp />to<sp
+                    />the<sp />request&apos;s</highlight></codeline>
+<codeline lineno="207"><highlight class="comment"><sp /><sp /><sp />*<sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp />Origin<sp
+                    />is<sp />reflected<sp />back<sp />with<sp
+                    />Allow-Credentials<sp />and<sp
+                    />Vary:</highlight></codeline>
+<codeline lineno="208"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />Origin;<sp />if<sp />origins<sp />are<sp />configured<sp
+                    />but<sp />none<sp />match,<sp />the<sp />first<sp
+                    />configured</highlight></codeline>
+<codeline lineno="209"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />origin<sp />is<sp />used<sp />without<sp />credentials;<sp
+                    />if<sp />the<sp />setting<sp />is<sp />&quot;*&quot;,<sp
+                    />the<sp />wildcard</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp /><sp /><sp />*<sp />is<sp
+                    />used.<sp />For<sp />OPTIONS<sp />requests<sp />a<sp
+                    />sanitized<sp />echo<sp />of</highlight></codeline>
+<codeline lineno="211"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />Access-Control-Request-Headers<sp />replaces<sp />the<sp
+                    />default<sp />header<sp />list,<sp
+                    />and</highlight></codeline>
+<codeline lineno="212"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />Max-Age<sp />plus<sp />Vary<sp />are<sp />added.<sp
+                    />Every<sp />write<sp />uses<sp
+                    />HttpResponse::addHeader,</highlight></codeline>
+<codeline lineno="213"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />which<sp />replaces<sp />an<sp />existing<sp />value<sp
+                    />rather<sp />than<sp />duplicating<sp
+                    />it.</highlight></codeline>
+<codeline lineno="214"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />req<sp />Request<sp />being<sp
+                    />answered;<sp />supplies<sp />Origin<sp />and,<sp
+                    />for</highlight></codeline>
+<codeline lineno="215"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />preflights,<sp />the<sp />requested<sp
+                    />headers.</highlight></codeline>
+<codeline lineno="216"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in,out]<sp />resp<sp />Response<sp />to<sp
+                    />decorate.</highlight></codeline>
+<codeline lineno="217"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@note<sp />No<sp />shared<sp />mutable<sp />state<sp
+                    />is<sp />modified<sp />here;<sp />the<sp />configuration<sp
+                    />is<sp />read</highlight></codeline>
+<codeline lineno="218"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />through<sp />Store&apos;s<sp />thread-local<sp
+                    />cache.</highlight></codeline>
+<codeline lineno="219"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@see<sp />CorsTokens::sanitizeRequestedHeaders(),<sp
+                    />CorsTokens::mergeVary()</highlight></codeline>
+<codeline lineno="220"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="221"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Write<sp
+                    />the<sp />correct<sp />CORS<sp />headers<sp />onto<sp
+                    />this<sp />response.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="222"
+                refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >inline</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keywordtype"
+                >void</highlight><highlight class="normal"><sp /><ref
+                        refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590"
+                        kindref="member"
+                    >apply</ref>(</highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    />drogon::HttpRequestPtr&amp;<sp /><sp
+                    />req,</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    />drogon::HttpResponsePtr&amp;<sp />resp)<sp
+                    />{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >static</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp />std::string<sp
+                    />originKey<sp />=</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="stringliteral"
+                >&quot;access-control-allow-origin&quot;</highlight><highlight
+                    class="normal"
+                >;<sp /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Drogon<sp />keys<sp />headers<sp />in<sp
+                    />lowercase;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="226"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />built<sp
+                    />once<sp />at<sp />first<sp />use.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="227"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >auto</highlight><highlight class="normal">&amp;<sp />headers<sp
+                    />=<sp />resp-&gt;headers();<sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />Reference<sp />to<sp />the<sp />header<sp />map<sp />so<sp
+                    />we</highlight><highlight class="normal" /></codeline>
+<codeline lineno="228"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />can<sp
+                    />inspect<sp />what<sp />is<sp />already<sp
+                    />set.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="229"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >auto</highlight><highlight class="normal"><sp /><sp
+                    />originIt<sp />=</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp />headers.find(originKey);<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Look<sp
+                    />for<sp />an<sp />existing<sp />allow-origin<sp
+                    />header.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="231"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />If<sp
+                    />a<sp />wildcard<sp />was<sp />already<sp />set,<sp
+                    />there<sp />is<sp />nothing<sp />to<sp
+                    />add.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="232"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp />(originIt<sp
+                    />!=<sp />headers.end()<sp />&amp;&amp;<sp
+                    />originIt-&gt;second<sp />==<sp /></highlight><highlight
+                    class="stringliteral"
+                >&quot;*&quot;</highlight><highlight class="normal">)<sp
+                    />{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Leave<sp
+                    />the<sp />response<sp />untouched;<sp />another<sp
+                    />layer<sp />already</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="234"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />allowed<sp
+                    />every<sp />origin.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="235"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal" /></codeline>
+<codeline lineno="237"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp />std::string<sp
+                    />allowed<sp />=<sp /><ref
+                        refid="classStore_1aaf81da54b109478891030b7e04653bad"
+                        kindref="member"
+                    >Store::cachedObject&lt;Configurator&gt;</ref>()</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp />-&gt;get&lt;<ref
+                        refid="classConfigurator_1a8b3e99fef2ad5bf59793fa235a97aa3c"
+                        kindref="member"
+                    >Configurator::FrontEndConfig</ref>&gt;()</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp />.cors_allowed_origins;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Live<sp
+                    />CORS<sp />config.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="240"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp />std::string<sp
+                    />requestOrigin<sp />=</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp />req-&gt;getHeader(</highlight><highlight
+                    class="stringliteral"
+                >&quot;Origin&quot;</highlight><highlight class="normal">);<sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />Get<sp />the<sp />Origin<sp />header<sp />the<sp
+                    />browser<sp />sent</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="242"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />(empty<sp
+                    />if<sp />none).</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="243"><highlight class="normal" /></codeline>
+<codeline lineno="244"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordtype"
+                >bool</highlight><highlight class="normal"><sp
+                    />useCredentials<sp />=</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >false</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Starts<sp
+                    />false;<sp />only<sp />an<sp />exact<sp />origin<sp
+                    />match<sp />will<sp />turn<sp />it<sp
+                    />on.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="246"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />std::string<sp />allowOrigin<sp />=<sp
+                    /></highlight><highlight
+                    class="stringliteral"
+                >&quot;*&quot;</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Default<sp
+                    />to<sp />wildcard;<sp />replaced<sp
+                    />if</highlight><highlight class="normal" /></codeline>
+<codeline lineno="247"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />specific<sp />origins<sp />are<sp
+                    />configured.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="248"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />A<sp
+                    />concrete<sp />list<sp />is<sp />configured,<sp />so<sp
+                    />we<sp />must<sp />choose</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="249"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />one<sp
+                    />origin.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="250"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp />(allowed<sp
+                    />!=<sp /></highlight><highlight
+                    class="stringliteral"
+                >&quot;*&quot;</highlight><highlight class="normal">)<sp
+                    />{</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keyword"
+                >auto</highlight><highlight class="normal"><sp />origins<sp
+                    />=<sp /><ref
+                        refid="namespaceCors_1a91b925e2a3993e560726033702df8818"
+                        kindref="member"
+                    >splitOrigins</ref>(allowed);<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Break<sp
+                    />the<sp />configured<sp />string<sp
+                    />into</highlight><highlight class="normal" /></codeline>
+<codeline lineno="252"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />individual<sp />origins.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="253"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />Compare<sp />each<sp />configured<sp
+                    />origin</highlight><highlight class="normal" /></codeline>
+<codeline lineno="254"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />with<sp />the<sp />request&apos;s<sp
+                    />Origin.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="255"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keywordflow"
+                >for</highlight><highlight class="normal"><sp
+                    />(</highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >auto</highlight><highlight class="normal">&amp;<sp />o<sp
+                    />:<sp />origins)<sp />{</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />An<sp />exact<sp />match<sp />is<sp />safe<sp />to<sp
+                    />reflect</highlight><highlight class="normal" /></codeline>
+<codeline lineno="257"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />and<sp />allow<sp />credentials<sp
+                    />for.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="258"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp
+                    />(!requestOrigin.empty()<sp />&amp;&amp;<sp />o<sp />==<sp
+                    />requestOrigin)<sp />{</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp />allowOrigin<sp /><sp /><sp
+                    /><sp />=<sp />requestOrigin;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Reflect<sp
+                    />exactly<sp />what<sp />the</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="260"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />browser<sp
+                    />sent<sp />back<sp />to<sp />it.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="261"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp />useCredentials<sp />=<sp
+                    /></highlight><highlight
+                    class="keyword"
+                >true</highlight><highlight class="normal">;<sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />Credentials<sp />require<sp />an<sp
+                    />exact</highlight><highlight class="normal" /></codeline>
+<codeline lineno="262"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />origin,<sp
+                    />never<sp />a<sp />wildcard.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="263"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="keywordflow"
+                >break</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Stop<sp
+                    />searching<sp />once<sp />a<sp />match<sp />is<sp
+                    />found.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="264"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp />}</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />}</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp />No<sp
+                    />exact<sp />match,<sp />but<sp />a<sp />list<sp
+                    />exists:<sp />fall</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="267"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />back<sp />to<sp />its<sp />first<sp
+                    />entry.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="268"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp />(allowOrigin<sp
+                    />==<sp /></highlight><highlight
+                    class="stringliteral"
+                >&quot;*&quot;</highlight><highlight class="normal"><sp
+                    />&amp;&amp;<sp />!origins.empty())<sp
+                    />{</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp />allowOrigin<sp />=<sp
+                    />origins.front();<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Use<sp />the<sp />first<sp
+                    />configured</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="270"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />origin,<sp />without<sp
+                    />credentials.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="271"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />}</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="273"><highlight class="normal" /></codeline>
+<codeline lineno="274"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Write<sp
+                    />the<sp />header<sp />only<sp />if<sp />missing<sp />or<sp
+                    />different.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="275"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp />(originIt<sp
+                    />==<sp />headers.end()<sp />||<sp />originIt-&gt;second<sp
+                    />!=<sp />allowOrigin)<sp />{</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />resp-&gt;addHeader(</highlight><highlight
+                    class="stringliteral"
+                >&quot;Access-Control-Allow-Origin&quot;</highlight><highlight
+                    class="normal"
+                >,</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp />allowOrigin);<sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />Tell<sp />the<sp />browser<sp />which<sp />origin<sp
+                    />may<sp />read</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="278"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />this<sp />response.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="279"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Add<sp
+                    />the<sp />credentials<sp />flag<sp />only<sp />for<sp
+                    />an<sp />exact</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="281"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />origin<sp
+                    />match.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="282"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp
+                    />(useCredentials)<sp />{</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />resp-&gt;addHeader(</highlight><highlight
+                    class="stringliteral"
+                >&quot;Access-Control-Allow-Credentials&quot;</highlight><highlight
+                    class="normal"
+                >,</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="stringliteral"
+                >&quot;true&quot;</highlight><highlight class="normal">);<sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />Allow<sp />cookies/auth<sp />to<sp />be<sp />sent<sp
+                    />cross-origin.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="285"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><ref
+                        refid="namespaceCors_1a183f8c59d0e3f8136c11f88df8f40bfb"
+                        kindref="member"
+                    >addToVary</ref>(resp,</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="stringliteral"
+                >&quot;Origin&quot;</highlight><highlight class="normal">);<sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />Vary<sp />on<sp />Origin<sp />so<sp />caches<sp />keep<sp
+                    />separate<sp />copies<sp />per</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="287"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />origin.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="288"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />resp-&gt;addHeader(</highlight><highlight
+                    class="stringliteral"
+                >&quot;Access-Control-Allow-Methods&quot;</highlight><highlight
+                    class="normal"
+                >,</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><ref
+                        refid="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d"
+                        kindref="member"
+                    >allowedMethods</ref>());<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Advertise<sp />the<sp />HTTP<sp />methods<sp
+                    />permitted</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="291"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />cross-origin.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="292"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />resp-&gt;addHeader(</highlight><highlight
+                    class="stringliteral"
+                >&quot;Access-Control-Expose-Headers&quot;</highlight><highlight
+                    class="normal"
+                >,</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><ref
+                        refid="namespaceCors_1ab2139d17f81f7754423b94b0dfdc53bc"
+                        kindref="member"
+                    >exposedHeaders</ref>());<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />List<sp />the<sp />response<sp />headers<sp
+                    />scripts<sp />may</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="294"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />read.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="295"><highlight class="normal" /></codeline>
+<codeline lineno="296"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    />std::string&amp;<sp />requested<sp />=<sp
+                    />req-&gt;getHeader(</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="stringliteral"
+                >&quot;Access-Control-Request-Headers&quot;</highlight><highlight
+                    class="normal"
+                >);<sp /><sp /></highlight><highlight class="comment">//<sp
+                    />Preflight<sp />field<sp />naming<sp
+                    />the</highlight><highlight class="normal" /></codeline>
+<codeline lineno="298"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />headers<sp
+                    />the<sp />browser<sp />wants<sp />to</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="299"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />send.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="300"><highlight class="normal" /></codeline>
+<codeline lineno="301"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    />std::string*<sp />allowedHeaders<sp
+                    />=</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp />&amp;<ref
+                        refid="namespaceCors_1af54c7b1b495f97a9cef25ac756aec7d5"
+                        kindref="member"
+                    >defaultAllowedHeaders</ref>();<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />By<sp
+                    />default,<sp />advertise<sp />the<sp
+                    />standard</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="303"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />header<sp
+                    />list.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="304"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />std::string<sp />echoed;<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Will<sp />hold<sp />the<sp />sanitized<sp />copy<sp
+                    />of<sp />the<sp />client&apos;s</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="305"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />requested<sp />headers.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="306"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Only<sp
+                    />preflight<sp />requests<sp />carry</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="307"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />Access-Control-Request-Headers.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="308"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp
+                    />(req-&gt;method()<sp />==<sp />drogon::Options)<sp
+                    />{</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />echoed<sp />=<sp
+                    />detail::sanitizeRequestedHeaders(</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp />requested);<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Filter<sp
+                    />the<sp />request<sp />value<sp />down<sp />to<sp />safe<sp
+                    />tokens.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="311"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />Use<sp />the<sp />echo<sp />only<sp />if<sp />some<sp
+                    />valid<sp />tokens</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="312"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />survived<sp />filtering.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="313"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp
+                    />(!echoed.empty())<sp />{</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp />allowedHeaders<sp />=<sp
+                    />&amp;echoed;<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Point<sp />at<sp />the<sp />echoed<sp />list<sp
+                    />instead</highlight><highlight class="normal" /></codeline>
+<codeline lineno="315"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />of<sp
+                    />the<sp />default<sp />one.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="316"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />}</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />resp-&gt;addHeader(</highlight><highlight
+                    class="stringliteral"
+                >&quot;Access-Control-Max-Age&quot;</highlight><highlight
+                    class="normal"
+                >,</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><ref
+                        refid="namespaceCors_1a67bce05e328fb07dd233d14e40bac82c"
+                        kindref="member"
+                    >preflightMaxAge</ref>());<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Tell<sp />the<sp />browser<sp />how<sp />long<sp
+                    />it<sp />may</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="319"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />cache<sp
+                    />this<sp />preflight.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="320"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><ref
+                        refid="namespaceCors_1a183f8c59d0e3f8136c11f88df8f40bfb"
+                        kindref="member"
+                    >addToVary</ref>(resp,</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="stringliteral"
+                >&quot;Access-Control-Request-Headers&quot;</highlight><highlight
+                    class="normal"
+                >);<sp /><sp /></highlight><highlight class="comment">//<sp
+                    />Vary<sp />on<sp />requested<sp
+                    />headers</highlight><highlight class="normal" /></codeline>
+<codeline lineno="322"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />so<sp
+                    />caches<sp />do<sp />not<sp />mix<sp
+                    />them</highlight><highlight class="normal" /></codeline>
+<codeline lineno="323"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />up.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="324"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />resp-&gt;addHeader(</highlight><highlight
+                    class="stringliteral"
+                >&quot;Access-Control-Allow-Headers&quot;</highlight><highlight
+                    class="normal"
+                >,</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp />*allowedHeaders);<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Write<sp
+                    />the<sp />final<sp />list:<sp />default<sp
+                    />or</highlight><highlight class="normal" /></codeline>
+<codeline lineno="327"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />sanitized<sp />echo.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="328"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="329"><highlight class="normal">}<sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />namespace<sp />Cors</highlight><highlight
+                    class="normal"
+                /></codeline>
     </programlisting>
-    <location file="src/server/cors.hpp"/>
+    <location file="src/server/cors.hpp" />
   </compounddef>
 </doxygen>

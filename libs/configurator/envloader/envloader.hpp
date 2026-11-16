@@ -37,6 +37,7 @@
 // std::chrono::seconds represents durations measured in whole seconds.
 #include <chrono>
 // std::exception is the base type caught when a numeric conversion fails.
+#include <cstdint>
 #include <exception>
 // std::string holds variable names, values and the tokens of a parsed set.
 #include <string>
@@ -46,7 +47,7 @@
 // Provides EnvVars, the base class with the raw get()/set() helpers used here.
 #include "envvars/envvars.hpp"
 // Provides Message::ErrorMessage used to log bad environment values.
-#include "utils/message/message.hpp"
+#include "message/message.hpp"
 
 /**
  * @class EnvLoader
@@ -79,6 +80,22 @@ class EnvLoader
    * helpers. */
   explicit EnvLoader() = default;  // Nothing to initialise; the inherited
                                    // EnvVars has no data members.
+
+  /** @name Copy and move special members
+   *  @brief Trivial copy and move because EnvLoader owns no state of its own.
+   *  @details EnvLoader has no data members: the only state it touches is the
+   *  stateless, process-wide environment reached through the inherited EnvVars
+   *  helpers. The compiler-generated copy/move constructors and assignment
+   *  operators are therefore correct, and spelling them out with `= default`
+   *  makes that intent explicit. Derived sections own their own settings, so
+   *  each of them controls its own copy and move behaviour.
+   *  @{
+   */
+  EnvLoader(const EnvLoader&)            = default;
+  EnvLoader(EnvLoader&&)                 = default;
+  EnvLoader& operator=(const EnvLoader&) = default;
+  EnvLoader& operator=(EnvLoader&&)      = default;
+  /** @} */
   /** @brief Virtual destructor so sections can be destroyed through this
    * base. */
   virtual ~EnvLoader() = default;  // Virtual so deleting through an EnvLoader*
@@ -112,7 +129,8 @@ class EnvLoader
   // defaultValue if the variable
   // is missing or invalid.
   template <typename T>
-  T getEnvironmentVariable(const std::string& key, T defaultValue) {
+  static T getEnvironmentVariable(const std::string& key,
+                                  T                  defaultValue) {
     auto value = get(key);  // Fetch the raw text via the inherited helper;
                             // an empty optional means "not set".
     // No value stored under this name, so there is nothing to
@@ -146,7 +164,7 @@ class EnvLoader
    * @return The variable's exact string value, or @p defaultValue when
    * absent.
    */
-  std::string getEnvironmentVariable(
+  static std::string getEnvironmentVariable(
       const std::string& key,
       const std::string& defaultValue);  // Returns the text unchanged, or the
                                          // fallback when the name is absent.
@@ -160,7 +178,7 @@ class EnvLoader
    * @note Matching is case-sensitive; "True", "1" and "TRUE" all evaluate to
    * false.
    */
-  bool getEnvironmentVariable(
+  static bool getEnvironmentVariable(
       const std::string& key,
       bool defaultValue);  // True only for the exact word "true"; the default
                            // applies only when unset.
@@ -174,7 +192,7 @@ class EnvLoader
    * @note A negative count is rejected (with an error log) and the default is
    * kept, since durations are stored as unsigned seconds.
    */
-  std::chrono::seconds getEnvironmentVariable(
+  static std::chrono::seconds getEnvironmentVariable(
       const std::string& key,
       const std::chrono::seconds&
           defaultValue);  // Interprets the value as whole seconds, rejecting
@@ -186,7 +204,7 @@ class EnvLoader
    * @return Parsed set, or an empty set when the variable is absent or empty.
    * @see parseSet
    */
-  std::unordered_set<std::string> getEnvironmentVariable(
+  static std::unordered_set<std::string> getEnvironmentVariable(
       const std::string& key);  // Splits "a, b, c" into a set of tokens;
                                 // missing means an empty set.
 
@@ -208,17 +226,17 @@ class EnvLoader
    * @param[in] factor Multiplier applied to the CPU count.
    * @note A hardware_concurrency() of zero is treated as one CPU.
    */
-  void optimize_performance(
+  static void optimize_performance(
       uint16_t& parameter,
       uint8_t factor);  // Replaces a zero "auto" value with CPUs times factor.
-  /**
-   * @brief Splits a comma-separated string into a trimmed set of non-empty
-   * tokens.
-   * @param[in] str Raw comma-separated value; may be empty.
-   * @return Set of tokens with surrounding whitespace removed; empty tokens
-   * are dropped.
-   */
-  std::unordered_set<std::string> parseSet(
+                        /**
+                         * @brief Splits a comma-separated string into a trimmed set of non-empty
+                         * tokens.
+                         * @param[in] str Raw comma-separated value; may be empty.
+                         * @return Set of tokens with surrounding whitespace removed; empty tokens
+                         * are dropped.
+                         */
+  static std::unordered_set<std::string> parseSet(
       const std::string& str);  // Turns "a, , b" into {"a","b"}, trimming
                                 // spaces and ignoring blanks.
 };

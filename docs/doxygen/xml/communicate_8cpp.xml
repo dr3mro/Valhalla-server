@@ -6,7 +6,7 @@
     <includes local="no">curl/curl.h</includes>
     <includes local="no">fmt/format.h</includes>
     <includes local="no">string</includes>
-    <includes refid="message_8hpp" local="yes">utils/message/message.hpp</includes>
+    <includes refid="message_8hpp" local="yes">message/message.hpp</includes>
     <incdepgraph>
       <node id="1">
         <label>src/utils/communicate/communicate.cpp</label>
@@ -35,7 +35,7 @@
         </childnode>
       </node>
       <node id="8">
-        <label>utils/message/message.hpp</label>
+        <label>message/message.hpp</label>
         <link refid="message_8hpp"/>
         <childnode refid="9" relation="include">
         </childnode>
@@ -122,7 +122,7 @@
 <codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>holds<sp/>the<sp/>URL,<sp/>request<sp/>body<sp/>and<sp/>response.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Message<sp/>is<sp/>used<sp/>to<sp/>log<sp/>failures<sp/>to<sp/>the<sp/>console.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">utils/message/message.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">message/message.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Returns<sp/>the<sp/>response<sp/>body,<sp/>or<sp/>nothing<sp/>on<sp/>any</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>

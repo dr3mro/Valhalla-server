@@ -72,7 +72,7 @@
 // api::v2::ColumnInfo, filled in by getTableSchema().
 #include "utils/global/types.hpp"
 // Message::{Critical,Info,Error}Message used for all logging here.
-#include "utils/message/message.hpp"
+#include "message/message.hpp"
 
 /**
  * Takes ownership of a connection, validates it and caches its connection
@@ -352,7 +352,8 @@ std::optional<std::unordered_set<std::string>> Database::getAllTables() {
  * specialisation an empty result yields a default-constructed JSON value, not
  * `std::nullopt` (only exceptions produce `std::nullopt`).
  */
-template <typename jsonType, typename TransactionType>
+template <typename jsonType,
+          typename TransactionType>
 std::optional<jsonType> Database::executeQuery(const std::string&  query,
                                                const pqxx::params& params) {
   static_assert(std::is_same_v<jsonType, jsoncons::json> ||
@@ -528,13 +529,17 @@ template std::optional<uint64_t> Database::doSimpleQuery<uint64_t>(
     const std::string&,
     const pqxx::params&);  // 64-bit integer lookups (ids, counts).
 template std::optional<std::string> Database::doSimpleQuery<std::string>(
-    const std::string&, const pqxx::params&);  // Text lookups.
-template std::optional<jsoncons::json>
-Database::executeQuery<jsoncons::json, pqxx::nontransaction>(
-    const std::string&, const pqxx::params&);  // First row, no transaction.
-template std::optional<jsoncons::json>
-Database::executeQuery<jsoncons::json, pqxx::work>(
-    const std::string&, const pqxx::params&);  // First row, committing writes.
-template std::optional<jsoncons::json::array>
-Database::executeQuery<jsoncons::json::array, pqxx::nontransaction>(
-    const std::string&, const pqxx::params&);  // All rows, no transaction.
+    const std::string&,
+    const pqxx::params&);  // Text lookups.
+template std::optional<jsoncons::json> Database::executeQuery<
+    jsoncons::json,
+    pqxx::nontransaction>(const std::string&,
+                          const pqxx::params&);  // First row, no transaction.
+template std::optional<jsoncons::json> Database::executeQuery<jsoncons::json,
+                                                              pqxx::work>(
+    const std::string&,
+    const pqxx::params&);  // First row, committing writes.
+template std::optional<jsoncons::json::array> Database::executeQuery<
+    jsoncons::json::array,
+    pqxx::nontransaction>(const std::string&,
+                          const pqxx::params&);  // All rows, no transaction.

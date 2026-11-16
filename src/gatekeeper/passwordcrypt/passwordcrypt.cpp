@@ -39,7 +39,7 @@
 
 #include "sodium/core.h"  // sodium_init(), the one-time library setup call.
 // Message::CriticalMessage() for reporting failures.
-#include "utils/message/message.hpp"
+#include "message/message.hpp"
 
 namespace {
   // Argon2id at OWASP's minimum recommended cost (19 MiB of memory, 2 passes,

@@ -39,7 +39,6 @@
     <includedby refid="cors_8hpp" local="yes">src/server/cors.hpp</includedby>
     <includedby refid="server_8cpp" local="yes">src/server/server.cpp</includedby>
     <includedby refid="store_8cpp" local="yes">src/store/store.cpp</includedby>
-    <includedby refid="logger_8cpp" local="yes">src/utils/Logger/logger.cpp</includedby>
     <includedby refid="databaseschema_8cpp" local="yes">src/validator/databaseschema/databaseschema.cpp</includedby>
     <incdepgraph>
       <node id="1">
@@ -779,14 +778,8 @@
         </childnode>
         <childnode refid="77" relation="include">
         </childnode>
-        <childnode refid="78" relation="include">
-        </childnode>
         <childnode refid="66" relation="include">
         </childnode>
-      </node>
-      <node id="78">
-        <label>src/utils/Logger/logger.cpp</label>
-        <link refid="logger_8cpp"/>
       </node>
       <node id="66">
         <label>src/validator/databaseschema/databaseschema.cpp</label>

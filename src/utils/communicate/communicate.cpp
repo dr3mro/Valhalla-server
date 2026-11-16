@@ -39,7 +39,7 @@
 #include <string>  // std::string holds the URL, request body and response.
 
 // Message is used to log failures to the console.
-#include "utils/message/message.hpp"
+#include "message/message.hpp"
 
 // Returns the response body, or nothing on any
 // failure.

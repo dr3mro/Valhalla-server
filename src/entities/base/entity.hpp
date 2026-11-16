@@ -62,7 +62,7 @@
 // Store::cachedObject, used to fetch the shared controller.
 #include "store/store.hpp"
 // Message::ErrorMessage / CriticalMessage for logging failures.
-#include "utils/message/message.hpp"
+#include "message/message.hpp"
 
 /**
  * @brief Short names for the CRUD value types and the variant they live in (see
@@ -128,11 +128,13 @@ class Entity : public Base {
    * @pre T must be an alternative of EntityType; otherwise the variant
    * construction fails.
    */
-  Entity(const T& _data, const std::string& _tablename)
+  Entity(const T&           _data,
+         const std::string& _tablename)
       // Copy the table name, then wrap the payload
       // in the variant so the active alternative
       // records the operation.
-      : tablename(_tablename), data(EntityType(_data)) {
+      : tablename(_tablename),
+        data(EntityType(_data)) {
   }
 
   /**

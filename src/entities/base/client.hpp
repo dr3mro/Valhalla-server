@@ -57,8 +57,8 @@
 #include "entities/base/types.hpp"
 #include "fmt/format.h"  // fmt::format / fmt::join for statement assembly.
 // Shared global helpers used by this hierarchy.
+#include "message/message.hpp"  // Message logging for build failures.
 #include "utils/global/global.hpp"
-#include "utils/message/message.hpp"  // Message logging for build failures.
 /**
  * @brief Username column name used by Client::exists() and the client
  * validation layer.
@@ -128,10 +128,12 @@ namespace api {
        * "providers").
        */
       template <typename T>
-      Client(const T& data, const std::string& tablename)
+      Client(const T&           data,
+             const std::string& tablename)
           // Forward both to the base; the table will be
           // "users" or "providers".
-          : Entity(data, tablename) {
+          : Entity(data,
+                   tablename) {
       }
 
       /**
@@ -182,7 +184,8 @@ namespace api {
       // One shared builder for both suspend
       // and activate.
       std::optional<std::string> getSqlToggleSuspendStatement(
-          bool state, pqxx::params& params) {
+          bool          state,
+          pqxx::params& params) {
         try {
           Types::SuspendData suspenddata = std::get<Types::SuspendData>(
               getData());  // The payload must be SuspendData, or

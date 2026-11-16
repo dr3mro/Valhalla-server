@@ -5,12 +5,11 @@ var searchData=
   ['watchdog_2ecpp_2',['watchdog.cpp',['../watchdog_8cpp.html',1,'']]],
   ['watchdog_2ehpp_3',['watchdog.hpp',['../watchdog_8hpp.html',1,'']]],
   ['watchdog_5f_4',['watchDog_',['../classDatabaseController.html#abbc84ebe21df91c2d77041778e86d199',1,'DatabaseController']]],
-  ['white_5',['White',['../classLogger.html#a87da4787054457b9c0bb0987dcd0030aa2452b8b4727e598db8da33ee8da920a1',1,'Logger']]],
-  ['whitelist_5f_6',['whitelist_',['../classDOSDetector.html#a718d71ac63ba8e97aa101239e6184eba',1,'DOSDetector']]],
-  ['whitelisted_7',['WHITELISTED',['../classDOSDetector.html#acf5c41607da4d0e603dbe116fb4a5f56a7cd7955250b12853bd245c9ed76a5ba7',1,'DOSDetector']]],
-  ['with_20docker_8',['Run with Docker',['../index.html#autotoc_md14',1,'']]],
-  ['workers_5f_9',['WORKERS_',['../namespaceDefaults_1_1PasswordWorker.html#aef760679652d4d0d25022ada37ee585a',1,'Defaults::PasswordWorker']]],
-  ['workflow_10',['Contribution workflow',['../md_docs_2CONTRIBUTING.html#autotoc_md63',1,'']]],
-  ['wouldblock_11',['WouldBlock',['../structWouldBlock.html',1,'']]],
-  ['writecallback_12',['WriteCallback',['../classCommunicate.html#a16c7e1e24d2610ef8d00d8ebe3b7c59b',1,'Communicate']]]
+  ['whitelist_5f_5',['whitelist_',['../classDOSDetector.html#a718d71ac63ba8e97aa101239e6184eba',1,'DOSDetector']]],
+  ['whitelisted_6',['WHITELISTED',['../classDOSDetector.html#acf5c41607da4d0e603dbe116fb4a5f56a7cd7955250b12853bd245c9ed76a5ba7',1,'DOSDetector']]],
+  ['with_20docker_7',['Run with Docker',['../index.html#autotoc_md14',1,'']]],
+  ['workers_5f_8',['WORKERS_',['../namespaceDefaults_1_1PasswordWorker.html#aef760679652d4d0d25022ada37ee585a',1,'Defaults::PasswordWorker']]],
+  ['workflow_9',['Contribution workflow',['../md_docs_2CONTRIBUTING.html#autotoc_md63',1,'']]],
+  ['wouldblock_10',['WouldBlock',['../structWouldBlock.html',1,'']]],
+  ['writecallback_11',['WriteCallback',['../classCommunicate.html#a16c7e1e24d2610ef8d00d8ebe3b7c59b',1,'Communicate']]]
 ];

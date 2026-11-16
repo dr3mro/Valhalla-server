@@ -67,7 +67,7 @@
 #include "gatekeeper/types.hpp"     // Types::ClientLoginData.
 #include "utils/global/global.hpp"  // CRITICALMESSAGE logging macro.
 // Message::ErrorMessage / CriticalMessage.
-#include "utils/message/message.hpp"
+#include "message/message.hpp"
 using KeeprBase =
     api::v2::KeeprBase;  // Short alias for the class name used below.
 
@@ -249,7 +249,8 @@ bool KeeprBase::setNowLoginTimeGetLastLogoutTime(
  * rethrown. _id: Client id. _group: Client group selecting the session table.
  * Throws DatabaseBusy: When the database is busy.
  */
-void KeeprBase::setNowLogoutTime(uint64_t _id, const std::string& _group) {
+void KeeprBase::setNowLogoutTime(uint64_t           _id,
+                                 const std::string& _group) {
   try {
     std::string logout_time =
         current_time_to_utc_string();  // Timestamp marking "logged out at".
@@ -301,7 +302,8 @@ void KeeprBase::setNowLogoutTime(uint64_t _id, const std::string& _group) {
  * @return The timestamp, or std::nullopt for an unknown group or missing row.
  */
 std::optional<std::string> KeeprBase::getLastLoginTime(
-    uint64_t _id, const std::string& _group) {
+    uint64_t           _id,
+    const std::string& _group) {
   const auto sessions = sessionsTable(_group);  // Resolve the safe table name.
   // Unknown group.
   if (!sessions.has_value()) {
@@ -635,7 +637,8 @@ drogon::Task<bool> KeeprBase::validateTokenCoro(
  * lastLogoutTime is absent; those claims are read with `.value()` without a
  * presence check.
  */
-jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson>
+jwt::verifier<jwt::default_clock,
+              jwt::traits::kazuho_picojson>
 KeeprBase::createTokenVerifier(
     const std::optional<Types::ClientLoginData>& clientLoginData) const {
   // Guard the claims that are explicitly checked.
@@ -684,7 +687,8 @@ KeeprBase::createTokenVerifier(
  * Returns JSON result from storage, or std::nullopt when not found.
  */
 std::optional<jsoncons::json> api::v2::KeeprBase::getPasswordHashForUserName(
-    const std::string& username, const std::string& _group) {
+    const std::string& username,
+    const std::string& _group) {
   return databaseController()
       ->getPasswordHashForUserName(username, _group);  // Pure forwarder to the
                                                        // database controller.

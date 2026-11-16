@@ -44,7 +44,7 @@
 #include "entities/base/entity.hpp"
 // Types::StaffData, the staff-invitation payload.
 #include "entities/base/types.hpp"
-#include "utils/message/message.hpp"  // Message logging for build failures.
+#include "message/message.hpp"  // Message logging for build failures.
 
 /**
  * @brief Convenience alias for the staff-invitation payload consumed by Service
@@ -89,9 +89,11 @@ class Service : public Entity {
    * @param[in] tablename Service table name.
    */
   template <typename T>
-  Service(const T& data, const std::string& tablename)
+  Service(const T&           data,
+          const std::string& tablename)
       // Forward both values to the base unchanged.
-      : Entity(data, tablename) {
+      : Entity(data,
+               tablename) {
   }
   // Service(const std::string &tablename) : Entity(tablename) {};
   /**
@@ -211,7 +213,8 @@ class Service : public Entity {
   // Static: called directly by the permission
   // layer, no object needed.
   static std::optional<std::string> getServicePermissionsQuery(
-      const std::string& service_name, std::uint64_t service_id) {
+      const std::string& service_name,
+      std::uint64_t      service_id) {
     return fmt::format(
         "SELECT owner_id,admin_id,staff FROM {} WHERE id = '{}' LIMIT 1;",
         service_name,

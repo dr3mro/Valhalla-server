@@ -117,7 +117,6 @@ var hierarchy =
       [ "api::v2::SessionManager", "classapi_1_1v2_1_1SessionManager.html", null ],
       [ "api::v2::TokenManager", "classapi_1_1v2_1_1TokenManager.html", null ]
     ] ],
-    [ "Logger", "classLogger.html", null ],
     [ "MemCache&lt; T, ClockT &gt;", "classMemCache.html", null ],
     [ "Message", "classMessage.html", null ],
     [ "PasswordCrypt", "classPasswordCrypt.html", null ],

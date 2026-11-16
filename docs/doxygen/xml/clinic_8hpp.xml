@@ -1,18 +1,35 @@
-<?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+<?xml version='1.0' encoding='UTF-8' standalone='no' ?>
+<doxygen
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="compound.xsd"
+    version="1.18.0"
+    xml:lang="en-US"
+>
   <compounddef id="clinic_8hpp" kind="file" language="C++">
     <compoundname>clinic.hpp</compoundname>
     <includes local="no">cstdint</includes>
     <includes local="no">optional</includes>
     <includes local="no">string</includes>
-    <includes refid="appointment_8hpp" local="yes">entities/appointments/base/appointment.hpp</includes>
-    <includedby refid="appointments_8hpp" local="yes">src/api/v2/routes/appointments.hpp</includedby>
-    <includedby refid="appointmentcontroller_8cpp" local="yes">src/controllers/appointmentcontroller/appointmentcontroller.cpp</includedby>
-    <includedby refid="includes_8hpp" local="yes">src/gatekeeper/includes.hpp</includedby>
+    <includes
+            refid="appointment_8hpp"
+            local="yes"
+        >entities/appointments/base/appointment.hpp</includes>
+    <includedby
+            refid="appointments_8hpp"
+            local="yes"
+        >src/api/v2/routes/appointments.hpp</includedby>
+    <includedby
+            refid="appointmentcontroller_8cpp"
+            local="yes"
+        >src/controllers/appointmentcontroller/appointmentcontroller.cpp</includedby>
+    <includedby
+            refid="includes_8hpp"
+            local="yes"
+        >src/gatekeeper/includes.hpp</includedby>
     <incdepgraph>
       <node id="22">
         <label>configurator/configurator.hpp</label>
-        <link refid="configurator_8hpp"/>
+        <link refid="configurator_8hpp" />
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
@@ -38,7 +55,7 @@
       </node>
       <node id="30">
         <label>defaults.hpp</label>
-        <link refid="defaults_8hpp"/>
+        <link refid="defaults_8hpp" />
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
@@ -46,7 +63,7 @@
       </node>
       <node id="26">
         <label>configurator/envloader/envloader.hpp</label>
-        <link refid="envloader_8hpp"/>
+        <link refid="envloader_8hpp" />
         <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
@@ -62,7 +79,7 @@
       </node>
       <node id="27">
         <label>envvars/envvars.hpp</label>
-        <link refid="envvars_8hpp"/>
+        <link refid="envvars_8hpp" />
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
@@ -70,7 +87,7 @@
       </node>
       <node id="13">
         <label>controllers/databasecontroller/databasecontroller.hpp</label>
-        <link refid="databasecontroller_8hpp"/>
+        <link refid="databasecontroller_8hpp" />
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
@@ -124,7 +141,7 @@
       </node>
       <node id="31">
         <label>database/asyncdbclient.hpp</label>
-        <link refid="asyncdbclient_8hpp"/>
+        <link refid="asyncdbclient_8hpp" />
         <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
@@ -136,7 +153,7 @@
       </node>
       <node id="33">
         <label>database/asyncresultmapper.hpp</label>
-        <link refid="asyncresultmapper_8hpp"/>
+        <link refid="asyncresultmapper_8hpp" />
         <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
@@ -150,7 +167,7 @@
       </node>
       <node id="35">
         <label>database/asyncsqlbinder.hpp</label>
-        <link refid="asyncsqlbinder_8hpp"/>
+        <link refid="asyncsqlbinder_8hpp" />
         <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
@@ -168,7 +185,7 @@
       </node>
       <node id="38">
         <label>database/databasebusy.hpp</label>
-        <link refid="databasebusy_8hpp"/>
+        <link refid="databasebusy_8hpp" />
         <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
@@ -176,17 +193,17 @@
       </node>
       <node id="40">
         <label>database/databasehandler.hpp</label>
-        <link refid="databasehandler_8hpp"/>
+        <link refid="databasehandler_8hpp" />
         <childnode refid="11" relation="include">
         </childnode>
       </node>
       <node id="41">
         <label>database/dbprobe.hpp</label>
-        <link refid="dbprobe_8hpp"/>
+        <link refid="dbprobe_8hpp" />
       </node>
       <node id="5">
         <label>entities/appointments/base/appointment.hpp</label>
-        <link refid="appointment_8hpp"/>
+        <link refid="appointment_8hpp" />
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
@@ -200,7 +217,7 @@
       </node>
       <node id="1">
         <label>src/entities/appointments/clinic.hpp</label>
-        <link refid="clinic_8hpp"/>
+        <link refid="clinic_8hpp" />
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
@@ -212,7 +229,7 @@
       </node>
       <node id="46">
         <label>entities/base/base.hpp</label>
-        <link refid="base_8hpp"/>
+        <link refid="base_8hpp" />
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
@@ -226,7 +243,7 @@
       </node>
       <node id="7">
         <label>entities/base/entity.hpp</label>
-        <link refid="entity_8hpp"/>
+        <link refid="entity_8hpp" />
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
@@ -262,7 +279,7 @@
       </node>
       <node id="48">
         <label>entities/base/types.hpp</label>
-        <link refid="entities_2base_2types_8hpp"/>
+        <link refid="entities_2base_2types_8hpp" />
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
@@ -314,7 +331,7 @@
       </node>
       <node id="54">
         <label>gatekeeper/passwordcrypt/passwordcrypt.hpp</label>
-        <link refid="passwordcrypt_8hpp"/>
+        <link refid="passwordcrypt_8hpp" />
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
@@ -322,7 +339,7 @@
       </node>
       <node id="42">
         <label>store/store.hpp</label>
-        <link refid="store_8hpp"/>
+        <link refid="store_8hpp" />
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
@@ -342,7 +359,7 @@
       </node>
       <node id="55">
         <label>utils/global/http.hpp</label>
-        <link refid="http_8hpp"/>
+        <link refid="http_8hpp" />
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
@@ -350,13 +367,13 @@
       </node>
       <node id="45">
         <label>utils/global/types.hpp</label>
-        <link refid="utils_2global_2types_8hpp"/>
+        <link refid="utils_2global_2types_8hpp" />
         <childnode refid="4" relation="include">
         </childnode>
       </node>
       <node id="28">
-        <label>utils/message/message.hpp</label>
-        <link refid="message_8hpp"/>
+        <label>message/message.hpp</label>
+        <link refid="message_8hpp" />
         <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
@@ -364,7 +381,7 @@
       </node>
       <node id="56">
         <label>validator/validator.hpp</label>
-        <link refid="validator_8hpp"/>
+        <link refid="validator_8hpp" />
         <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
@@ -490,31 +507,32 @@
     <invincdepgraph>
       <node id="3">
         <label>src/api/v2/all_routes.hpp</label>
-        <link refid="all__routes_8hpp"/>
+        <link refid="all__routes_8hpp" />
         <childnode refid="4" relation="include">
         </childnode>
       </node>
       <node id="2">
         <label>src/api/v2/routes/appointments.hpp</label>
-        <link refid="appointments_8hpp"/>
+        <link refid="appointments_8hpp" />
         <childnode refid="3" relation="include">
         </childnode>
       </node>
       <node id="5">
-        <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
-        <link refid="appointmentcontroller_8cpp"/>
+        <label
+                >src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
+        <link refid="appointmentcontroller_8cpp" />
       </node>
       <node id="7">
         <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
-        <link refid="cliniccontroller_8cpp"/>
+        <link refid="cliniccontroller_8cpp" />
       </node>
       <node id="8">
         <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
-        <link refid="entitycontroller_8cpp"/>
+        <link refid="entitycontroller_8cpp" />
       </node>
       <node id="1">
         <label>src/entities/appointments/clinic.hpp</label>
-        <link refid="clinic_8hpp"/>
+        <link refid="clinic_8hpp" />
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
@@ -524,11 +542,11 @@
       </node>
       <node id="9">
         <label>src/gatekeeper/gatekeeper.cpp</label>
-        <link refid="gatekeeper_8cpp"/>
+        <link refid="gatekeeper_8cpp" />
       </node>
       <node id="6">
         <label>src/gatekeeper/includes.hpp</label>
-        <link refid="includes_8hpp"/>
+        <link refid="includes_8hpp" />
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
@@ -540,27 +558,52 @@
       </node>
       <node id="10">
         <label>src/gatekeeper/permissionmanager/permissionmanager.cpp</label>
-        <link refid="permissionmanager_8cpp"/>
+        <link refid="permissionmanager_8cpp" />
       </node>
       <node id="4">
         <label>src/server/server.cpp</label>
-        <link refid="server_8cpp"/>
+        <link refid="server_8cpp" />
       </node>
     </invincdepgraph>
-    <innerclass refid="classClinicAppointment" prot="public">ClinicAppointment</innerclass>
+    <innerclass
+            refid="classClinicAppointment"
+            prot="public"
+        >ClinicAppointment</innerclass>
     <briefdescription>
-<para><ref refid="classAppointment" kindref="compound">Appointment</ref> entity bound to the clinics organisation and its appointment table. </para>
+<para><ref
+                    refid="classAppointment"
+                    kindref="compound"
+                >Appointment</ref> entity bound to the clinics organisation and its appointment table. </para>
     </briefdescription>
     <detaileddescription>
-<para>This is a thin concrete specialisation of <ref refid="classAppointment" kindref="compound">Appointment</ref>. It fixes the table name (&quot;clinics_appointments&quot;) and organisation name (&quot;clinics&quot;), forwards a payload to the base constructor, and exposes two static permission-query helpers by calling the shared <ref refid="classAppointment" kindref="compound">Appointment</ref> implementations. It adds no state or logic of its own.</para>
-<para>WHY THIS FILE MATTERS IN THE SERVER: Controllers that work with clinic appointments construct this class so the generic <ref refid="classAppointment" kindref="compound">Appointment</ref> code is tied to the right table and organisation. <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref> calls its two static helpers to authorise appointment actions. Without it, the shared permission logic would have no clinic- specific table and organisation names to work with.</para>
+<para>This is a thin concrete specialisation of <ref
+                    refid="classAppointment"
+                    kindref="compound"
+                >Appointment</ref>. It fixes the table name (&quot;clinics_appointments&quot;) and organisation name (&quot;clinics&quot;), forwards a payload to the base constructor, and exposes two static permission-query helpers by calling the shared <ref
+                    refid="classAppointment"
+                    kindref="compound"
+                >Appointment</ref> implementations. It adds no state or logic of its own.</para>
+<para
+            >WHY THIS FILE MATTERS IN THE SERVER: Controllers that work with clinic appointments construct this class so the generic <ref
+                    refid="classAppointment"
+                    kindref="compound"
+                >Appointment</ref> code is tied to the right table and organisation. <ref
+                    refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21"
+                    kindref="member"
+                >PermissionManager</ref> calls its two static helpers to authorise appointment actions. Without it, the shared permission logic would have no clinic- specific table and organisation names to work with.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
-<listitem><para>std::optional: <ulink url="https://en.cppreference.com/w/cpp/utility/optional">https://en.cppreference.com/w/cpp/utility/optional</ulink></para>
-</listitem><listitem><para>Static constexpr member: a compile-time constant stored on the class; it can be used as a default argument or template value and needs no object.</para>
-</listitem><listitem><para>static constexpr auto: lets the compiler deduce the type of the constant (here a string literal).</para>
+<listitem><para>std::optional: <ulink
+                                url="https://en.cppreference.com/w/cpp/utility/optional"
+                            >https://en.cppreference.com/w/cpp/utility/optional</ulink></para>
+</listitem><listitem><para
+                        >Static constexpr member: a compile-time constant stored on the class; it can be used as a default argument or template value and needs no object.</para>
+</listitem><listitem><para
+                        >static constexpr auto: lets the compiler deduce the type of the constant (here a string literal).</para>
 </listitem></itemizedlist>
 </para>
-<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+<para><simplesect kind="author"><para>Amr Osman <ulink
+                            url="mailto:dr3mro@gmail.com"
+                        >dr3mro@gmail.com</ulink> </para>
 </simplesect>
 <simplesect kind="date"><para>2026-11-16 </para>
 </simplesect>
@@ -568,158 +611,785 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>clinic.hpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Appointment<sp/>entity<sp/>bound<sp/>to<sp/>the<sp/>clinics<sp/>organisation<sp/>and<sp/>its</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>appointment<sp/>table.</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>is<sp/>a<sp/>thin<sp/>concrete<sp/>specialisation<sp/>of<sp/>Appointment.<sp/>It<sp/>fixes<sp/>the</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>table<sp/>name</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>(&quot;clinics_appointments&quot;)<sp/>and<sp/>organisation<sp/>name<sp/>(&quot;clinics&quot;),<sp/>forwards<sp/>a</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>payload<sp/>to<sp/>the<sp/>base<sp/>constructor,<sp/>and<sp/>exposes<sp/>two<sp/>static<sp/>permission-query</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>helpers<sp/>by<sp/>calling<sp/>the<sp/>shared<sp/>Appointment<sp/>implementations.<sp/>It<sp/>adds<sp/>no<sp/>state</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>or<sp/>logic<sp/>of<sp/>its<sp/>own.</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>Controllers<sp/>that<sp/>work<sp/>with<sp/>clinic<sp/>appointments<sp/>construct<sp/>this<sp/>class<sp/>so<sp/>the</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>generic<sp/>Appointment<sp/>code<sp/>is<sp/>tied<sp/>to<sp/>the<sp/>right<sp/>table<sp/>and<sp/>organisation.</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>PermissionManager<sp/>calls<sp/>its<sp/>two<sp/>static<sp/>helpers<sp/>to<sp/>authorise<sp/>appointment</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>actions.<sp/>Without<sp/>it,<sp/>the<sp/>shared<sp/>permission<sp/>logic<sp/>would<sp/>have<sp/>no<sp/>clinic-</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>specific<sp/>table<sp/>and<sp/>organisation<sp/>names<sp/>to<sp/>work<sp/>with.</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>std::optional:<sp/>https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>Static<sp/>constexpr<sp/>member:<sp/>a<sp/>compile-time<sp/>constant<sp/>stored<sp/>on<sp/>the<sp/>class;<sp/>it</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>can<sp/>be<sp/>used<sp/>as<sp/>a<sp/>default<sp/>argument<sp/>or<sp/>template<sp/>value<sp/>and<sp/>needs<sp/>no<sp/>object.</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>-<sp/>static<sp/>constexpr<sp/>auto:<sp/>lets<sp/>the<sp/>compiler<sp/>deduce<sp/>the<sp/>type<sp/>of<sp/>the<sp/>constant</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>(here<sp/>a<sp/>string<sp/>literal).</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="28"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>std::uint64_t,<sp/>the<sp/>type<sp/>used<sp/>for<sp/>ids<sp/>in<sp/>the<sp/>permission<sp/>helpers.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>std::optional&lt;std::string&gt;,<sp/>the<sp/>return<sp/>type<sp/>of<sp/>the<sp/>helpers.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>for<sp/>table<sp/>names.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Appointment,<sp/>the<sp/>base<sp/>class<sp/>with<sp/>the<sp/>shared<sp/>permission-query<sp/>implementations.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="appointment_8hpp" kindref="compound">entities/appointments/base/appointment.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp />*<sp />@file<sp
+                    />clinic.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp />*<sp />@brief<sp
+                    />Appointment<sp />entity<sp />bound<sp />to<sp />the<sp
+                    />clinics<sp />organisation<sp />and<sp
+                    />its</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp />*<sp />appointment<sp
+                    />table.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp />*<sp />@details<sp
+                    />This<sp />is<sp />a<sp />thin<sp />concrete<sp
+                    />specialisation<sp />of<sp />Appointment.<sp />It<sp
+                    />fixes<sp />the</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp />*<sp />table<sp
+                    />name</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp />*<sp
+                    />(&quot;clinics_appointments&quot;)<sp />and<sp
+                    />organisation<sp />name<sp />(&quot;clinics&quot;),<sp
+                    />forwards<sp />a</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp />*<sp />payload<sp />to<sp
+                    />the<sp />base<sp />constructor,<sp />and<sp />exposes<sp
+                    />two<sp />static<sp
+                    />permission-query</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp />*<sp />helpers<sp />by<sp
+                    />calling<sp />the<sp />shared<sp />Appointment<sp
+                    />implementations.<sp />It<sp />adds<sp />no<sp
+                    />state</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp />*<sp />or<sp />logic<sp
+                    />of<sp />its<sp />own.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp />*<sp />WHY<sp />THIS<sp
+                    />FILE<sp />MATTERS<sp />IN<sp />THE<sp
+                    />SERVER:</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp />*<sp />Controllers<sp
+                    />that<sp />work<sp />with<sp />clinic<sp />appointments<sp
+                    />construct<sp />this<sp />class<sp />so<sp
+                    />the</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp />*<sp />generic<sp
+                    />Appointment<sp />code<sp />is<sp />tied<sp />to<sp
+                    />the<sp />right<sp />table<sp />and<sp
+                    />organisation.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp />*<sp
+                    />PermissionManager<sp />calls<sp />its<sp />two<sp
+                    />static<sp />helpers<sp />to<sp />authorise<sp
+                    />appointment</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp />*<sp />actions.<sp
+                    />Without<sp />it,<sp />the<sp />shared<sp />permission<sp
+                    />logic<sp />would<sp />have<sp />no<sp
+                    />clinic-</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp />*<sp />specific<sp
+                    />table<sp />and<sp />organisation<sp />names<sp />to<sp
+                    />work<sp />with.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp />*<sp />CONCEPTS<sp
+                    />TO<sp />LEARN<sp />(for<sp
+                    />beginners):</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp />*<sp />-<sp
+                    />std::optional:<sp
+                    />https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp />*<sp />-<sp />Static<sp
+                    />constexpr<sp />member:<sp />a<sp />compile-time<sp
+                    />constant<sp />stored<sp />on<sp />the<sp />class;<sp
+                    />it</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp />*<sp />can<sp />be<sp
+                    />used<sp />as<sp />a<sp />default<sp />argument<sp />or<sp
+                    />template<sp />value<sp />and<sp />needs<sp />no<sp
+                    />object.</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp />*<sp />-<sp />static<sp
+                    />constexpr<sp />auto:<sp />lets<sp />the<sp />compiler<sp
+                    />deduce<sp />the<sp />type<sp />of<sp />the<sp
+                    />constant</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp />*<sp />(here<sp />a<sp
+                    />string<sp />literal).</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp />*<sp />@author<sp
+                    />Amr<sp />Osman<sp
+                    />&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp />*<sp />@date<sp
+                    />2026-11-16</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="29"><highlight class="normal" /></codeline>
+<codeline lineno="30"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#pragma<sp />once<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Include<sp />this<sp />header<sp />at<sp />most<sp
+                    />once<sp />per<sp />source<sp />file.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="31"><highlight class="normal" /></codeline>
+<codeline lineno="32"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />std::uint64_t,<sp />the<sp />type<sp />used<sp />for<sp
+                    />ids<sp />in<sp />the<sp />permission<sp
+                    />helpers.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="33"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;cstdint&gt;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="34"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />std::optional&lt;std::string&gt;,<sp />the<sp
+                    />return<sp />type<sp />of<sp />the<sp
+                    />helpers.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="35"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;optional&gt;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="36"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;string&gt;</highlight><highlight
+                    class="normal"
+                ><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />std::string<sp />for<sp />table<sp
+                    />names.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="37"><highlight class="normal" /></codeline>
+<codeline lineno="38"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />Appointment,<sp />the<sp />base<sp />class<sp />with<sp
+                    />the<sp />shared<sp />permission-query<sp
+                    />implementations.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="39"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&quot;<ref
+                        refid="appointment_8hpp"
+                        kindref="compound"
+                    >entities/appointments/base/appointment.hpp</ref>&quot;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="40"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
 <codeline lineno="41"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>@class<sp/>ClinicAppointment</highlight></codeline>
-<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Appointment<sp/>entity<sp/>bound<sp/>to<sp/>the<sp/>clinics<sp/>organisation<sp/>and<sp/>its</highlight></codeline>
-<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>appointment<sp/>table.</highlight></codeline>
-<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>@details<sp/>A<sp/>thin<sp/>concrete<sp/>specialisation<sp/>of<sp/>Appointment:<sp/>it<sp/>fixes<sp/>TABLENAME</highlight></codeline>
-<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>and<sp/>ORGNAME<sp/>and<sp/>forwards<sp/>the<sp/>two<sp/>permission-query<sp/>requests<sp/>to<sp/>the<sp/>shared<sp/>base</highlight></codeline>
-<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>implementations.</highlight></codeline>
-<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>@see<sp/>Appointment</highlight></codeline>
-<codeline lineno="49"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50" refid="classClinicAppointment" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;public&quot;<sp/>inheritance<sp/>keeps<sp/>all<sp/>the<sp/>base<sp/>CRUD</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>builders<sp/>available.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" kindref="member">Appointment</ref><sp/>{</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="55"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="56"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Database<sp/>table<sp/>holding<sp/>clinic<sp/>appointments.</highlight></codeline>
-<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58" refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" kindref="member">TABLENAME</ref><sp/>=</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;clinics_appointments&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>exact<sp/>table<sp/>this<sp/>class<sp/>reads<sp/>and<sp/>writes;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>constant<sp/>because<sp/>it<sp/>never<sp/>changes.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="62"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Plural<sp/>organisation<sp/>name<sp/>used<sp/>for<sp/>permission<sp/>service<sp/>lookup.</highlight></codeline>
-<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65" refid="classClinicAppointment_1acfca8961c6e9f2ccd550c9f0f8237f9b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1acfca8961c6e9f2ccd550c9f0f8237f9b" kindref="member">ORGNAME</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;clinics&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>owning<sp/>organisation,<sp/>used</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>to<sp/>build<sp/>permission<sp/>queries.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="69"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Stores<sp/>the<sp/>appointment<sp/>payload,<sp/>binding<sp/>it<sp/>to<sp/>the<sp/>clinic</highlight></codeline>
-<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/>*<sp/>appointment<sp/>table.</highlight></codeline>
-<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Payload<sp/>type<sp/>held<sp/>by<sp/>EntityType.</highlight></codeline>
-<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_data<sp/>Operation<sp/>payload.</highlight></codeline>
-<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="76" refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T&amp;<sp/>_data)</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;explicit&quot;<sp/>prevents<sp/>accidental<sp/>conversions;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TABLENAME<sp/>fixes<sp/>the<sp/>table<sp/>for<sp/>this<sp/>class.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" kindref="member">Appointment</ref>(_data,<sp/><ref refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" kindref="member">TABLENAME</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="82"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>No<sp/>default<sp/>construction;<sp/>the<sp/>payload<sp/>and<sp/>table<sp/>name<sp/>are<sp/>required.</highlight></codeline>
-<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="85" refid="classClinicAppointment_1ae3f070f0bdd3df7509a408757ce87e05" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classClinicAppointment_1ae3f070f0bdd3df7509a408757ce87e05" kindref="member">ClinicAppointment</ref>()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>ClinicAppointment<sp/>without<sp/>a<sp/>payload</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>makes<sp/>no<sp/>sense,<sp/>so<sp/>forbid<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="88"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Non-copyable<sp/>and<sp/>non-movable;<sp/>construct<sp/>in<sp/>place<sp/>for<sp/>the<sp/>request</highlight></codeline>
-<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/>*<sp/>that<sp/>uses<sp/>it.</highlight></codeline>
-<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="92" refid="classClinicAppointment_1a3357977125025b54a7d12a88de9bc4cc" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classClinicAppointment_1a3357977125025b54a7d12a88de9bc4cc" kindref="member">ClinicAppointment</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="93" refid="classClinicAppointment_1a6f23042843785fdf6184609a570f75ca" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classClinicAppointment_1a6f23042843785fdf6184609a570f75ca" kindref="member">ClinicAppointment</ref>(<ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="94" refid="classClinicAppointment_1a2884f35bddf960135583cafc3a9bf6ce" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>&amp;<sp/><ref refid="classClinicAppointment_1a2884f35bddf960135583cafc3a9bf6ce" kindref="member">operator=</ref>(<ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>&amp;&amp;)<sp/>=</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="96" refid="classClinicAppointment_1a27717d22eec5dd4dbab1c959bdd516c8" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>&amp;<sp/><ref refid="classClinicAppointment_1a27717d22eec5dd4dbab1c959bdd516c8" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>&amp;)<sp/>=</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="99"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>clinic<sp/>appointment<sp/>table<sp/>name.</highlight></codeline>
-<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="102" refid="classClinicAppointment_1a152526d304bed176515509bd5f950144" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1a152526d304bed176515509bd5f950144" kindref="member">getTableName</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" kindref="member">TABLENAME</ref>;</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Static<sp/>accessor<sp/>for<sp/>code<sp/>that<sp/>needs<sp/>the<sp/>table<sp/>name<sp/>without<sp/>an<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="106"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>owning<sp/>organisation<sp/>name<sp/>(&quot;clinics&quot;).</highlight></codeline>
-<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="109" refid="classClinicAppointment_1a63a89ea0269a0e0b778e66779b11a525" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1a63a89ea0269a0e0b778e66779b11a525" kindref="member">getOrgName</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1acfca8961c6e9f2ccd550c9f0f8237f9b" kindref="member">ORGNAME</ref>;</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Static<sp/>accessor<sp/>for<sp/>the<sp/>organisation<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="113"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="114"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>destructor;<sp/>no<sp/>state<sp/>beyond<sp/>the<sp/>base<sp/>Appointment.</highlight></codeline>
-<codeline lineno="115"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="116" refid="classClinicAppointment_1a97bf9248ddfd1900b070ebe454b7c663" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classClinicAppointment_1a97bf9248ddfd1900b070ebe454b7c663" kindref="member">~ClinicAppointment</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Nothing<sp/>extra<sp/>to<sp/>clean<sp/>up.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="118"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>permission<sp/>query<sp/>for<sp/>a<sp/>clinic<sp/>service<sp/>row.</highlight></codeline>
-<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_name<sp/>Organisation<sp/>table<sp/>name.</highlight></codeline>
-<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_id<sp/>Organisation<sp/>row<sp/>id.</highlight></codeline>
-<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>SELECT<sp/>of<sp/>the<sp/>clinic&apos;s<sp/>owner/admin/staff.</highlight></codeline>
-<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Public<sp/>wrapper<sp/>with<sp/>the<sp/>name</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>PermissionManager<sp/>expects.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="126" refid="classClinicAppointment_1a9f696e30cf864a0cd2159202ff2bea16" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classClinicAppointment_1a9f696e30cf864a0cd2159202ff2bea16" kindref="member">getServicePermissionsQuery</ref>(</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_name,<sp/>std::uint64_t<sp/>service_id)<sp/>{</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classAppointment_1a26159d8e97aa5b0e286e9bb22d1e923e" kindref="member">getServicePermissionsQueryImpl</ref>(service_name,</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>service_id);<sp/><sp/></highlight><highlight class="comment">//<sp/>Delegate<sp/>all<sp/>the<sp/>work</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>to<sp/>the<sp/>shared<sp/>base</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>implementation.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="134"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="135"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>permission<sp/>query<sp/>that<sp/>resolves<sp/>the<sp/>owning<sp/>clinic<sp/>from</highlight></codeline>
-<codeline lineno="136"><highlight class="comment"><sp/><sp/><sp/>*<sp/>an<sp/>appointment<sp/>id.</highlight></codeline>
-<codeline lineno="137"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>appointment_id<sp/>Appointment<sp/>row<sp/>id.</highlight></codeline>
-<codeline lineno="138"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>SELECT<sp/>of<sp/>the<sp/>owning<sp/>clinic&apos;s<sp/>owner/admin/staff.</highlight></codeline>
-<codeline lineno="139"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Public<sp/>wrapper<sp/>for<sp/>the<sp/>&quot;find<sp/>owner<sp/>of</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>appointment&quot;<sp/>query.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="142" refid="classClinicAppointment_1a271e6f972aa44fbdf85f5ee72299877a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classClinicAppointment_1a271e6f972aa44fbdf85f5ee72299877a" kindref="member">getPermissionsQueryForRead</ref>(</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::uint64_t<sp/>appointment_id)<sp/>{</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0" kindref="member">getPermissionsQueryForReadImpl</ref>(<ref refid="classClinicAppointment_1acfca8961c6e9f2ccd550c9f0f8237f9b" kindref="member">ORGNAME</ref>,</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" kindref="member">TABLENAME</ref>,</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>appointment_id);<sp/><sp/></highlight><highlight class="comment">//<sp/>Supply<sp/>this</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>class&apos;s<sp/>clinic</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>organisation<sp/>and</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>table<sp/>names<sp/>to</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>base.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp />*<sp />@class<sp
+                    />ClinicAppointment</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp />*<sp />@brief<sp
+                    />Appointment<sp />entity<sp />bound<sp />to<sp />the<sp
+                    />clinics<sp />organisation<sp />and<sp
+                    />its</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp />*<sp />appointment<sp
+                    />table.</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp />*<sp />@details<sp />A<sp
+                    />thin<sp />concrete<sp />specialisation<sp />of<sp
+                    />Appointment:<sp />it<sp />fixes<sp
+                    />TABLENAME</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp />*<sp />and<sp
+                    />ORGNAME<sp />and<sp />forwards<sp />the<sp />two<sp
+                    />permission-query<sp />requests<sp />to<sp />the<sp
+                    />shared<sp />base</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp />*<sp
+                    />implementations.</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp />*<sp />@see<sp
+                    />Appointment</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="50"
+                refid="classClinicAppointment"
+                refkind="compound"
+            ><highlight class="normal" /><highlight class="keyword">class<sp
+                    /></highlight><highlight class="normal"><ref
+                        refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd"
+                        kindref="member"
+                    >ClinicAppointment</ref></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />&quot;public&quot;<sp />inheritance<sp />keeps<sp />all<sp
+                    />the<sp />base<sp />CRUD</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="52"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />builders<sp
+                    />available.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="53"><highlight class="normal"><sp /><sp /><sp /><sp />:<sp
+                    /></highlight><highlight
+                    class="keyword"
+                >public</highlight><highlight class="normal"><sp /><ref
+                        refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9"
+                        kindref="member"
+                    >Appointment</ref><sp />{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp /></highlight><highlight
+                    class="keyword"
+                >private</highlight><highlight
+                    class="normal"
+                >:</highlight><highlight class="comment" /></codeline>
+<codeline lineno="55"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Database<sp />table<sp />holding<sp
+                    />clinic<sp />appointments.</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="58"
+                refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >static</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >constexpr</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >auto</highlight><highlight class="normal"><sp /><ref
+                        refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69"
+                        kindref="member"
+                    >TABLENAME</ref><sp />=</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="stringliteral"
+                >&quot;clinics_appointments&quot;</highlight><highlight
+                    class="normal"
+                >;<sp /><sp /></highlight><highlight class="comment">//<sp
+                    />The<sp />exact<sp />table<sp />this<sp />class<sp
+                    />reads<sp />and<sp />writes;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="60"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />constant<sp />because<sp />it<sp />never<sp
+                    />changes.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="61"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="62"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Plural<sp />organisation<sp />name<sp
+                    />used<sp />for<sp />permission<sp />service<sp
+                    />lookup.</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="65"
+                refid="classClinicAppointment_1acfca8961c6e9f2ccd550c9f0f8237f9b"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >static</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >constexpr</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >auto</highlight><highlight class="normal"><sp /><ref
+                        refid="classClinicAppointment_1acfca8961c6e9f2ccd550c9f0f8237f9b"
+                        kindref="member"
+                    >ORGNAME</ref><sp />=<sp /></highlight><highlight
+                    class="stringliteral"
+                >&quot;clinics&quot;</highlight><highlight class="normal">;<sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />The<sp />owning<sp />organisation,<sp
+                    />used</highlight><highlight class="normal" /></codeline>
+<codeline lineno="66"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp />to<sp
+                    />build<sp />permission<sp />queries.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="67"><highlight class="normal" /></codeline>
+<codeline lineno="68"><highlight class="normal"><sp /></highlight><highlight
+                    class="keyword"
+                >public</highlight><highlight
+                    class="normal"
+                >:</highlight><highlight class="comment" /></codeline>
+<codeline lineno="69"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Stores<sp />the<sp />appointment<sp
+                    />payload,<sp />binding<sp />it<sp />to<sp />the<sp
+                    />clinic</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />appointment<sp />table.</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@tparam<sp />T<sp />Payload<sp />type<sp />held<sp />by<sp
+                    />EntityType.</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />_data<sp />Operation<sp
+                    />payload.</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="75"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >template</highlight><highlight class="normal"><sp
+                    />&lt;</highlight><highlight
+                    class="keyword"
+                >typename</highlight><highlight class="normal"><sp
+                    />T&gt;</highlight></codeline>
+<codeline
+                lineno="76"
+                refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >explicit</highlight><highlight class="normal"><sp /><ref
+                        refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd"
+                        kindref="member"
+                    >ClinicAppointment</ref>(</highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp />T&amp;<sp
+                    />_data)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />&quot;explicit&quot;<sp />prevents<sp />accidental<sp
+                    />conversions;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="78"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />TABLENAME<sp />fixes<sp />the<sp />table<sp />for<sp
+                    />this<sp />class.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="79"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />:<sp /><ref
+                        refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9"
+                        kindref="member"
+                    >Appointment</ref>(_data,<sp /><ref
+                        refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69"
+                        kindref="member"
+                    >TABLENAME</ref>)<sp />{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="82"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />No<sp />default<sp />construction;<sp />the<sp
+                    />payload<sp />and<sp />table<sp />name<sp />are<sp
+                    />required.</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="85"
+                refid="classClinicAppointment_1ae3f070f0bdd3df7509a408757ce87e05"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><ref
+                        refid="classClinicAppointment_1ae3f070f0bdd3df7509a408757ce87e05"
+                        kindref="member"
+                    >ClinicAppointment</ref>()<sp />=<sp
+                    /></highlight><highlight
+                    class="keyword"
+                >delete</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />A<sp
+                    />ClinicAppointment<sp />without<sp />a<sp
+                    />payload</highlight><highlight class="normal" /></codeline>
+<codeline lineno="86"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />makes<sp
+                    />no<sp />sense,<sp />so<sp />forbid<sp
+                    />it.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="87"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="88"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Non-copyable<sp />and<sp />non-movable;<sp
+                    />construct<sp />in<sp />place<sp />for<sp />the<sp
+                    />request</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />that<sp />uses<sp />it.</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="92"
+                refid="classClinicAppointment_1a3357977125025b54a7d12a88de9bc4cc"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><ref
+                        refid="classClinicAppointment_1a3357977125025b54a7d12a88de9bc4cc"
+                        kindref="member"
+                    >ClinicAppointment</ref>(</highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp /><ref
+                        refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd"
+                        kindref="member"
+                    >ClinicAppointment</ref>&amp;)<sp />=<sp
+                    /></highlight><highlight
+                    class="keyword"
+                >delete</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />No<sp
+                    />copy.</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="93"
+                refid="classClinicAppointment_1a6f23042843785fdf6184609a570f75ca"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><ref
+                        refid="classClinicAppointment_1a6f23042843785fdf6184609a570f75ca"
+                        kindref="member"
+                    >ClinicAppointment</ref>(<ref
+                        refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd"
+                        kindref="member"
+                    >ClinicAppointment</ref>&amp;&amp;)<sp /><sp /><sp /><sp
+                    /><sp /><sp />=<sp /></highlight><highlight
+                    class="keyword"
+                >delete</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />No<sp
+                    />move.</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="94"
+                refid="classClinicAppointment_1a2884f35bddf960135583cafc3a9bf6ce"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><ref
+                        refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd"
+                        kindref="member"
+                    >ClinicAppointment</ref>&amp;<sp /><ref
+                        refid="classClinicAppointment_1a2884f35bddf960135583cafc3a9bf6ce"
+                        kindref="member"
+                    >operator=</ref>(<ref
+                        refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd"
+                        kindref="member"
+                    >ClinicAppointment</ref>&amp;&amp;)<sp
+                    />=</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keyword"
+                >delete</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />No<sp
+                    />move<sp />assignment.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="96"
+                refid="classClinicAppointment_1a27717d22eec5dd4dbab1c959bdd516c8"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><ref
+                        refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd"
+                        kindref="member"
+                    >ClinicAppointment</ref>&amp;<sp /><ref
+                        refid="classClinicAppointment_1a27717d22eec5dd4dbab1c959bdd516c8"
+                        kindref="member"
+                    >operator=</ref>(</highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp /><ref
+                        refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd"
+                        kindref="member"
+                    >ClinicAppointment</ref>&amp;)<sp />=</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keyword"
+                >delete</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />No<sp
+                    />copy<sp />assignment.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="98"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="99"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Returns<sp />the<sp />clinic<sp
+                    />appointment<sp />table<sp />name.</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="102"
+                refid="classClinicAppointment_1a152526d304bed176515509bd5f950144"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >static</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >constexpr</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >auto</highlight><highlight class="normal"><sp /><ref
+                        refid="classClinicAppointment_1a152526d304bed176515509bd5f950144"
+                        kindref="member"
+                    >getTableName</ref>()<sp />{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal"><sp /><ref
+                        refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69"
+                        kindref="member"
+                    >TABLENAME</ref>;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp /><sp />}<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Static<sp
+                    />accessor<sp />for<sp />code<sp />that<sp />needs<sp
+                    />the<sp />table<sp />name<sp />without<sp />an<sp
+                    />object.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="105"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="106"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Returns<sp />the<sp />owning<sp
+                    />organisation<sp />name<sp
+                    />(&quot;clinics&quot;).</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="109"
+                refid="classClinicAppointment_1a63a89ea0269a0e0b778e66779b11a525"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >static</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >constexpr</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >auto</highlight><highlight class="normal"><sp /><ref
+                        refid="classClinicAppointment_1a63a89ea0269a0e0b778e66779b11a525"
+                        kindref="member"
+                    >getOrgName</ref>()<sp />{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal"><sp /><ref
+                        refid="classClinicAppointment_1acfca8961c6e9f2ccd550c9f0f8237f9b"
+                        kindref="member"
+                    >ORGNAME</ref>;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp /><sp />}<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Static<sp
+                    />accessor<sp />for<sp />the<sp />organisation<sp
+                    />name.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="112"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="113"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Default<sp />destructor;<sp />no<sp />state<sp
+                    />beyond<sp />the<sp />base<sp
+                    />Appointment.</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="116"
+                refid="classClinicAppointment_1a97bf9248ddfd1900b070ebe454b7c663"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><ref
+                        refid="classClinicAppointment_1a97bf9248ddfd1900b070ebe454b7c663"
+                        kindref="member"
+                    >~ClinicAppointment</ref>()<sp /></highlight><highlight
+                    class="keyword"
+                >override</highlight><highlight class="normal"><sp />=<sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >default</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Nothing<sp
+                    />extra<sp />to<sp />clean<sp />up.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="117"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="118"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Builds<sp />the<sp />permission<sp />query<sp
+                    />for<sp />a<sp />clinic<sp />service<sp
+                    />row.</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />service_name<sp />Organisation<sp
+                    />table<sp />name.</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />service_id<sp />Organisation<sp />row<sp
+                    />id.</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@return<sp />SELECT<sp />of<sp />the<sp />clinic&apos;s<sp
+                    />owner/admin/staff.</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="124"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Public<sp
+                    />wrapper<sp />with<sp />the<sp />name</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="125"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />PermissionManager<sp />expects.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="126"
+                refid="classClinicAppointment_1a9f696e30cf864a0cd2159202ff2bea16"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >static</highlight><highlight class="normal"><sp
+                    />std::optional&lt;std::string&gt;<sp /><ref
+                        refid="classClinicAppointment_1a9f696e30cf864a0cd2159202ff2bea16"
+                        kindref="member"
+                    >getServicePermissionsQuery</ref>(</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    />std::string&amp;<sp />service_name,<sp />std::uint64_t<sp
+                    />service_id)<sp />{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal"><sp /><ref
+                        refid="classAppointment_1a26159d8e97aa5b0e286e9bb22d1e923e"
+                        kindref="member"
+                    >getServicePermissionsQueryImpl</ref>(service_name,</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp />service_id);<sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />Delegate<sp />all<sp />the<sp />work</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="130"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp />to<sp
+                    />the<sp />shared<sp />base</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="131"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />implementation.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="132"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="134"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Builds<sp />the<sp />permission<sp />query<sp
+                    />that<sp />resolves<sp />the<sp />owning<sp />clinic<sp
+                    />from</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp /><sp /><sp />*<sp />an<sp
+                    />appointment<sp />id.</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />appointment_id<sp />Appointment<sp
+                    />row<sp />id.</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@return<sp />SELECT<sp />of<sp />the<sp />owning<sp
+                    />clinic&apos;s<sp
+                    />owner/admin/staff.</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="140"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Public<sp
+                    />wrapper<sp />for<sp />the<sp />&quot;find<sp />owner<sp
+                    />of</highlight><highlight class="normal" /></codeline>
+<codeline lineno="141"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />this<sp
+                    />appointment&quot;<sp />query.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="142"
+                refid="classClinicAppointment_1a271e6f972aa44fbdf85f5ee72299877a"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >static</highlight><highlight class="normal"><sp
+                    />std::optional&lt;std::string&gt;<sp /><ref
+                        refid="classClinicAppointment_1a271e6f972aa44fbdf85f5ee72299877a"
+                        kindref="member"
+                    >getPermissionsQueryForRead</ref>(</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />std::uint64_t<sp />appointment_id)<sp
+                    />{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal"><sp /><ref
+                        refid="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0"
+                        kindref="member"
+                    >getPermissionsQueryForReadImpl</ref>(<ref
+                        refid="classClinicAppointment_1acfca8961c6e9f2ccd550c9f0f8237f9b"
+                        kindref="member"
+                    >ORGNAME</ref>,</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><ref
+                        refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69"
+                        kindref="member"
+                    >TABLENAME</ref>,</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    />appointment_id);<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Supply<sp />this</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="147"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />class&apos;s<sp />clinic</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="148"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />organisation<sp />and</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="149"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />table<sp />names<sp />to</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="150"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />the<sp />base.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="151"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
 <codeline lineno="152"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="src/entities/appointments/clinic.hpp"/>
+    <location file="src/entities/appointments/clinic.hpp" />
   </compounddef>
 </doxygen>

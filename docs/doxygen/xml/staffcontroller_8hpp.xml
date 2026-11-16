@@ -1,19 +1,39 @@
-<?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+<?xml version='1.0' encoding='UTF-8' standalone='no' ?>
+<doxygen
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="compound.xsd"
+    version="1.18.0"
+    xml:lang="en-US"
+>
   <compounddef id="staffcontroller_8hpp" kind="file" language="C++">
     <compoundname>staffcontroller.hpp</compoundname>
     <includes local="no">memory</includes>
     <includes local="no">string_view</includes>
-    <includes refid="controller_8hpp" local="yes">controllers/base/controller/controller.hpp</includes>
-    <includes refid="staffcontrollerBase_8hpp" local="yes">controllers/staffcontroller/staffcontrollerBase.hpp</includes>
+    <includes
+            refid="controller_8hpp"
+            local="yes"
+        >controllers/base/controller/controller.hpp</includes>
+    <includes
+            refid="staffcontrollerBase_8hpp"
+            local="yes"
+        >controllers/staffcontroller/staffcontrollerBase.hpp</includes>
     <includes local="yes">drogon/utils/coroutine.h</includes>
-    <includes refid="callback_8hpp" local="yes">utils/global/callback.hpp</includes>
-    <includedby refid="staff_8hpp" local="yes">src/api/v2/routes/staff.hpp</includedby>
-    <includedby refid="staffcontroller_8cpp" local="yes">src/controllers/staffcontroller/staffcontroller.cpp</includedby>
+    <includes
+            refid="callback_8hpp"
+            local="yes"
+        >utils/global/callback.hpp</includes>
+    <includedby
+            refid="staff_8hpp"
+            local="yes"
+        >src/api/v2/routes/staff.hpp</includedby>
+    <includedby
+            refid="staffcontroller_8cpp"
+            local="yes"
+        >src/controllers/staffcontroller/staffcontroller.cpp</includedby>
     <incdepgraph>
       <node id="23">
         <label>configurator/configurator.hpp</label>
-        <link refid="configurator_8hpp"/>
+        <link refid="configurator_8hpp" />
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
@@ -39,7 +59,7 @@
       </node>
       <node id="29">
         <label>defaults.hpp</label>
-        <link refid="defaults_8hpp"/>
+        <link refid="defaults_8hpp" />
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
@@ -47,7 +67,7 @@
       </node>
       <node id="25">
         <label>configurator/envloader/envloader.hpp</label>
-        <link refid="envloader_8hpp"/>
+        <link refid="envloader_8hpp" />
         <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
@@ -63,7 +83,7 @@
       </node>
       <node id="26">
         <label>envvars/envvars.hpp</label>
-        <link refid="envvars_8hpp"/>
+        <link refid="envvars_8hpp" />
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
@@ -71,7 +91,7 @@
       </node>
       <node id="4">
         <label>controllers/base/controller/controller.hpp</label>
-        <link refid="controller_8hpp"/>
+        <link refid="controller_8hpp" />
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
@@ -127,7 +147,7 @@
       </node>
       <node id="17">
         <label>controllers/databasecontroller/databasecontroller.hpp</label>
-        <link refid="databasecontroller_8hpp"/>
+        <link refid="databasecontroller_8hpp" />
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
@@ -181,7 +201,7 @@
       </node>
       <node id="1">
         <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
-        <link refid="staffcontroller_8hpp"/>
+        <link refid="staffcontroller_8hpp" />
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
@@ -197,7 +217,7 @@
       </node>
       <node id="87">
         <label>controllers/staffcontroller/staffcontrollerBase.hpp</label>
-        <link refid="staffcontrollerBase_8hpp"/>
+        <link refid="staffcontrollerBase_8hpp" />
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
@@ -209,7 +229,7 @@
       </node>
       <node id="30">
         <label>database/asyncdbclient.hpp</label>
-        <link refid="asyncdbclient_8hpp"/>
+        <link refid="asyncdbclient_8hpp" />
         <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
@@ -221,7 +241,7 @@
       </node>
       <node id="32">
         <label>database/asyncresultmapper.hpp</label>
-        <link refid="asyncresultmapper_8hpp"/>
+        <link refid="asyncresultmapper_8hpp" />
         <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
@@ -235,7 +255,7 @@
       </node>
       <node id="34">
         <label>database/asyncsqlbinder.hpp</label>
-        <link refid="asyncsqlbinder_8hpp"/>
+        <link refid="asyncsqlbinder_8hpp" />
         <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
@@ -253,7 +273,7 @@
       </node>
       <node id="38">
         <label>database/databasebusy.hpp</label>
-        <link refid="databasebusy_8hpp"/>
+        <link refid="databasebusy_8hpp" />
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
@@ -261,17 +281,17 @@
       </node>
       <node id="39">
         <label>database/databasehandler.hpp</label>
-        <link refid="databasehandler_8hpp"/>
+        <link refid="databasehandler_8hpp" />
         <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="40">
         <label>database/dbprobe.hpp</label>
-        <link refid="dbprobe_8hpp"/>
+        <link refid="dbprobe_8hpp" />
       </node>
       <node id="50">
         <label>entities/base/base.hpp</label>
-        <link refid="base_8hpp"/>
+        <link refid="base_8hpp" />
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
@@ -285,7 +305,7 @@
       </node>
       <node id="61">
         <label>entities/base/case.hpp</label>
-        <link refid="case_8hpp"/>
+        <link refid="case_8hpp" />
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
@@ -301,7 +321,7 @@
       </node>
       <node id="45">
         <label>entities/base/client.hpp</label>
-        <link refid="client_8hpp"/>
+        <link refid="client_8hpp" />
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
@@ -339,7 +359,7 @@
       </node>
       <node id="49">
         <label>entities/base/entity.hpp</label>
-        <link refid="entity_8hpp"/>
+        <link refid="entity_8hpp" />
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
@@ -375,7 +395,7 @@
       </node>
       <node id="51">
         <label>entities/base/types.hpp</label>
-        <link refid="entities_2base_2types_8hpp"/>
+        <link refid="entities_2base_2types_8hpp" />
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
@@ -427,7 +447,7 @@
       </node>
       <node id="60">
         <label>entities/services/clinics/patient/patient.hpp</label>
-        <link refid="patient_8hpp"/>
+        <link refid="patient_8hpp" />
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
@@ -449,7 +469,7 @@
       </node>
       <node id="64">
         <label>gatekeeper/dosdetector/dosdetector.hpp</label>
-        <link refid="dosdetector_8hpp"/>
+        <link refid="dosdetector_8hpp" />
         <childnode refid="65" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
@@ -487,7 +507,7 @@
       </node>
       <node id="62">
         <label>gatekeeper/gatekeeper.hpp</label>
-        <link refid="gatekeeper_8hpp"/>
+        <link refid="gatekeeper_8hpp" />
         <childnode refid="63" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
@@ -529,7 +549,7 @@
       </node>
       <node id="77">
         <label>gatekeeper/keeprbase/keeprbase.hpp</label>
-        <link refid="keeprbase_8hpp"/>
+        <link refid="keeprbase_8hpp" />
         <childnode refid="78" relation="include">
         </childnode>
         <childnode refid="79" relation="include">
@@ -557,7 +577,7 @@
       </node>
       <node id="55">
         <label>gatekeeper/passwordcrypt/passwordcrypt.hpp</label>
-        <link refid="passwordcrypt_8hpp"/>
+        <link refid="passwordcrypt_8hpp" />
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
@@ -565,7 +585,7 @@
       </node>
       <node id="70">
         <label>gatekeeper/passwordcrypt/passwordworker.hpp</label>
-        <link refid="passwordworker_8hpp"/>
+        <link refid="passwordworker_8hpp" />
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
@@ -577,7 +597,7 @@
       </node>
       <node id="73">
         <label>gatekeeper/permissionmanager/permissionmanager.hpp</label>
-        <link refid="permissionmanager_8hpp"/>
+        <link refid="permissionmanager_8hpp" />
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
@@ -595,7 +615,7 @@
       </node>
       <node id="76">
         <label>gatekeeper/sessionmanager/sessionmanager.hpp</label>
-        <link refid="sessionmanager_8hpp"/>
+        <link refid="sessionmanager_8hpp" />
         <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
@@ -621,7 +641,7 @@
       </node>
       <node id="84">
         <label>gatekeeper/tokenmanager/tokenmanager.hpp</label>
-        <link refid="tokenmanager_8hpp"/>
+        <link refid="tokenmanager_8hpp" />
         <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="77" relation="include">
@@ -629,7 +649,7 @@
       </node>
       <node id="80">
         <label>gatekeeper/types.hpp</label>
-        <link refid="gatekeeper_2types_8hpp"/>
+        <link refid="gatekeeper_2types_8hpp" />
         <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
@@ -641,7 +661,7 @@
       </node>
       <node id="41">
         <label>store/store.hpp</label>
-        <link refid="store_8hpp"/>
+        <link refid="store_8hpp" />
         <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
@@ -661,19 +681,19 @@
       </node>
       <node id="72">
         <label>utils/global/callback.hpp</label>
-        <link refid="callback_8hpp"/>
+        <link refid="callback_8hpp" />
         <childnode refid="68" relation="include">
         </childnode>
       </node>
       <node id="74">
         <label>utils/global/concepts.hpp</label>
-        <link refid="concepts_8hpp"/>
+        <link refid="concepts_8hpp" />
         <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="59">
         <label>utils/global/errorstatus.hpp</label>
-        <link refid="errorstatus_8hpp"/>
+        <link refid="errorstatus_8hpp" />
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
@@ -683,13 +703,13 @@
       </node>
       <node id="58">
         <label>utils/global/global.hpp</label>
-        <link refid="global_8hpp"/>
+        <link refid="global_8hpp" />
         <childnode refid="59" relation="include">
         </childnode>
       </node>
       <node id="56">
         <label>utils/global/http.hpp</label>
-        <link refid="http_8hpp"/>
+        <link refid="http_8hpp" />
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="43" relation="include">
@@ -697,7 +717,7 @@
       </node>
       <node id="75">
         <label>utils/global/requester.hpp</label>
-        <link refid="requester_8hpp"/>
+        <link refid="requester_8hpp" />
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
@@ -707,13 +727,13 @@
       </node>
       <node id="44">
         <label>utils/global/types.hpp</label>
-        <link refid="utils_2global_2types_8hpp"/>
+        <link refid="utils_2global_2types_8hpp" />
         <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="85">
         <label>utils/jsonhelper/jsonhelper.hpp</label>
-        <link refid="jsonhelper_8hpp"/>
+        <link refid="jsonhelper_8hpp" />
         <childnode refid="86" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
@@ -721,7 +741,7 @@
       </node>
       <node id="81">
         <label>utils/memcache/memcache.hpp</label>
-        <link refid="memcache_8hpp"/>
+        <link refid="memcache_8hpp" />
         <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="66" relation="include">
@@ -740,8 +760,8 @@
         </childnode>
       </node>
       <node id="27">
-        <label>utils/message/message.hpp</label>
-        <link refid="message_8hpp"/>
+        <label>message/message.hpp</label>
+        <link refid="message_8hpp" />
         <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
@@ -749,7 +769,7 @@
       </node>
       <node id="57">
         <label>validator/validator.hpp</label>
-        <link refid="validator_8hpp"/>
+        <link refid="validator_8hpp" />
         <childnode refid="47" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
@@ -911,23 +931,23 @@
     <invincdepgraph>
       <node id="3">
         <label>src/api/v2/all_routes.hpp</label>
-        <link refid="all__routes_8hpp"/>
+        <link refid="all__routes_8hpp" />
         <childnode refid="4" relation="include">
         </childnode>
       </node>
       <node id="2">
         <label>src/api/v2/routes/staff.hpp</label>
-        <link refid="staff_8hpp"/>
+        <link refid="staff_8hpp" />
         <childnode refid="3" relation="include">
         </childnode>
       </node>
       <node id="5">
         <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
-        <link refid="staffcontroller_8cpp"/>
+        <link refid="staffcontroller_8cpp" />
       </node>
       <node id="1">
         <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
-        <link refid="staffcontroller_8hpp"/>
+        <link refid="staffcontroller_8hpp" />
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
@@ -935,25 +955,63 @@
       </node>
       <node id="4">
         <label>src/server/server.cpp</label>
-        <link refid="server_8cpp"/>
+        <link refid="server_8cpp" />
       </node>
     </invincdepgraph>
-    <innerclass refid="classStaffController" prot="public">StaffController</innerclass>
+    <innerclass
+            refid="classStaffController"
+            prot="public"
+        >StaffController</innerclass>
     <innernamespace refid="namespaceapi">api</innernamespace>
     <innernamespace refid="namespaceapi_1_1v2">api::v2</innernamespace>
     <briefdescription>
 <para>Implements staff management for one service entity type. </para>
     </briefdescription>
     <detaileddescription>
-<para>In plain words, this file defines the class that actually carries out the three staff jobs declared in <ref refid="classStaffControllerBase" kindref="compound">StaffControllerBase</ref> - adding a member, removing a member, and inviting a member by email. Unlike the service controllers, this class is not an <ref refid="classEntityController" kindref="compound">EntityController</ref>, it inherits <ref refid="classController" kindref="compound">Controller</ref> for the low-level &quot;add/remove staff&quot; database helpers and writes the job logic itself. For each job it reads the request, asks the authorisation service (<ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref>) whether the caller is allowed, and only then does something — run SQL or send an HTTP request to the email daemon.</para>
-<para>WHY THIS FILE MATTERS IN THE SERVER: It is the concrete implementation behind the staff HTTP routes. The route layer calls these methods through <ref refid="classStaffControllerBase" kindref="compound">StaffControllerBase</ref> (with a <computeroutput>std::variant</computeroutput> choosing the entity type); each call lands here, where permission is checked before any change is made. It calls into <ref refid="classController" kindref="compound">Controller</ref> for SQL, <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> for permission decisions and the email daemon for invitations. Without it, there would be no code to add, remove or invite staff, and the staff interface would have nothing behind it.</para>
+<para
+            >In plain words, this file defines the class that actually carries out the three staff jobs declared in <ref
+                    refid="classStaffControllerBase"
+                    kindref="compound"
+                >StaffControllerBase</ref> - adding a member, removing a member, and inviting a member by email. Unlike the service controllers, this class is not an <ref
+                    refid="classEntityController"
+                    kindref="compound"
+                >EntityController</ref>, it inherits <ref
+                    refid="classController"
+                    kindref="compound"
+                >Controller</ref> for the low-level &quot;add/remove staff&quot; database helpers and writes the job logic itself. For each job it reads the request, asks the authorisation service (<ref
+                    refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1"
+                    kindref="member"
+                >GateKeeper</ref>) whether the caller is allowed, and only then does something — run SQL or send an HTTP request to the email daemon.</para>
+<para
+            >WHY THIS FILE MATTERS IN THE SERVER: It is the concrete implementation behind the staff HTTP routes. The route layer calls these methods through <ref
+                    refid="classStaffControllerBase"
+                    kindref="compound"
+                >StaffControllerBase</ref> (with a <computeroutput
+                >std::variant</computeroutput> choosing the entity type); each call lands here, where permission is checked before any change is made. It calls into <ref
+                    refid="classController"
+                    kindref="compound"
+                >Controller</ref> for SQL, <ref
+                    refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1"
+                    kindref="member"
+                >GateKeeper</ref> for permission decisions and the email daemon for invitations. Without it, there would be no code to add, remove or invite staff, and the staff interface would have nothing behind it.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
-<listitem><para>std::shared_ptr (a smart pointer that shares ownership of an object): <ulink url="https://en.cppreference.com/w/cpp/memory/shared_ptr">https://en.cppreference.com/w/cpp/memory/shared_ptr</ulink></para>
-</listitem><listitem><para>Forward declarations (telling the compiler a type exists before defining it): <ulink url="https://en.cppreference.com/w/cpp/language/declarations">https://en.cppreference.com/w/cpp/language/declarations</ulink></para>
-</listitem><listitem><para>C++20 coroutines (functions that pause and resume with co_await/co_return): <ulink url="https://en.cppreference.com/w/cpp/language/coroutines">https://en.cppreference.com/w/cpp/language/coroutines</ulink></para>
+<listitem><para
+                        >std::shared_ptr (a smart pointer that shares ownership of an object): <ulink
+                                url="https://en.cppreference.com/w/cpp/memory/shared_ptr"
+                            >https://en.cppreference.com/w/cpp/memory/shared_ptr</ulink></para>
+</listitem><listitem><para
+                        >Forward declarations (telling the compiler a type exists before defining it): <ulink
+                                url="https://en.cppreference.com/w/cpp/language/declarations"
+                            >https://en.cppreference.com/w/cpp/language/declarations</ulink></para>
+</listitem><listitem><para
+                        >C++20 coroutines (functions that pause and resume with co_await/co_return): <ulink
+                                url="https://en.cppreference.com/w/cpp/language/coroutines"
+                            >https://en.cppreference.com/w/cpp/language/coroutines</ulink></para>
 </listitem></itemizedlist>
 </para>
-<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+<para><simplesect kind="author"><para>Amr Osman <ulink
+                            url="mailto:dr3mro@gmail.com"
+                        >dr3mro@gmail.com</ulink> </para>
 </simplesect>
 <simplesect kind="date"><para>2026-11-16 </para>
 </simplesect>
@@ -961,260 +1019,1185 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>staffcontroller.hpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Implements<sp/>staff<sp/>management<sp/>for<sp/>one<sp/>service<sp/>entity<sp/>type.</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>In<sp/>plain<sp/>words,<sp/>this<sp/>file<sp/>defines<sp/>the<sp/>class<sp/>that<sp/>actually<sp/>carries</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>out<sp/>the<sp/>three<sp/>staff<sp/>jobs<sp/>declared<sp/>in<sp/>@ref<sp/>StaffControllerBase<sp/>-<sp/>adding<sp/>a</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>member,<sp/>removing<sp/>a<sp/>member,<sp/>and<sp/>inviting<sp/>a<sp/>member<sp/>by<sp/>email.<sp/>Unlike<sp/>the<sp/>service</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>controllers,<sp/>this<sp/>class<sp/>is<sp/>not<sp/>an<sp/>@ref<sp/>EntityController,<sp/>it<sp/>inherits<sp/>@ref</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>Controller<sp/>for<sp/>the<sp/>low-level<sp/>&quot;add/remove<sp/>staff&quot;<sp/>database<sp/>helpers<sp/>and<sp/>writes</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>job<sp/>logic<sp/>itself.<sp/>For<sp/>each<sp/>job<sp/>it<sp/>reads<sp/>the<sp/>request,<sp/>asks<sp/>the</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>authorisation<sp/>service<sp/>(GateKeeper)<sp/>whether<sp/>the<sp/>caller<sp/>is<sp/>allowed,<sp/>and<sp/>only</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>then<sp/>does<sp/>something<sp/>—<sp/>run<sp/>SQL<sp/>or<sp/>send<sp/>an<sp/>HTTP<sp/>request<sp/>to<sp/>the<sp/>email<sp/>daemon.</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>It<sp/>is<sp/>the<sp/>concrete<sp/>implementation<sp/>behind<sp/>the<sp/>staff<sp/>HTTP<sp/>routes.<sp/>The<sp/>route</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>layer<sp/>calls<sp/>these<sp/>methods<sp/>through<sp/>@ref<sp/>StaffControllerBase<sp/>(with<sp/>a</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>`std::variant`<sp/>choosing<sp/>the<sp/>entity<sp/>type);<sp/>each<sp/>call<sp/>lands<sp/>here,<sp/>where</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>permission<sp/>is<sp/>checked<sp/>before<sp/>any<sp/>change<sp/>is<sp/>made.<sp/>It<sp/>calls<sp/>into<sp/>@ref</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>Controller<sp/>for<sp/>SQL,</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>@ref<sp/>GateKeeper<sp/>for<sp/>permission<sp/>decisions<sp/>and<sp/>the<sp/>email<sp/>daemon<sp/>for</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>invitations.<sp/>Without<sp/>it,<sp/>there<sp/>would<sp/>be<sp/>no<sp/>code<sp/>to<sp/>add,<sp/>remove<sp/>or<sp/>invite</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>staff,<sp/>and<sp/>the<sp/>staff<sp/>interface<sp/>would<sp/>have<sp/>nothing<sp/>behind<sp/>it.</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>-<sp/>std::shared_ptr<sp/>(a<sp/>smart<sp/>pointer<sp/>that<sp/>shares<sp/>ownership<sp/>of<sp/>an<sp/>object):</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/memory/shared_ptr</highlight></codeline>
-<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>-<sp/>Forward<sp/>declarations<sp/>(telling<sp/>the<sp/>compiler<sp/>a<sp/>type<sp/>exists<sp/>before<sp/>defining</highlight></codeline>
-<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>it):<sp/>https://en.cppreference.com/w/cpp/language/declarations</highlight></codeline>
-<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>-<sp/>C++20<sp/>coroutines<sp/>(functions<sp/>that<sp/>pause<sp/>and<sp/>resume<sp/>with<sp/>co_await/co_return):</highlight></codeline>
-<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/language/coroutines</highlight></codeline>
-<codeline lineno="30"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="33"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>file<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file,<sp/>so<sp/>its</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>declarations<sp/>are<sp/>never<sp/>duplicated.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Gives<sp/>std::shared_ptr,<sp/>the<sp/>smart<sp/>pointer<sp/>used<sp/>to<sp/>hold<sp/>shared<sp/>dependencies.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Gives<sp/>std::string_view:<sp/>a<sp/>cheap,<sp/>non-owning<sp/>view<sp/>over<sp/>a<sp/>stretch<sp/>of<sp/>text.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>base<sp/>providing<sp/>the<sp/>low-level<sp/>add/remove-staff<sp/>SQL<sp/>helpers.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="controller_8hpp" kindref="compound">controllers/base/controller/controller.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>interface<sp/>(pure<sp/>virtual<sp/>jobs)<sp/>that<sp/>this<sp/>class<sp/>implements.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="staffcontrollerBase_8hpp" kindref="compound">controllers/staffcontroller/staffcontrollerBase.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Drogon&apos;s<sp/>coroutine<sp/>support;<sp/>defines<sp/>drogon::Task,<sp/>the<sp/>pausable<sp/>task<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;drogon/utils/coroutine.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Defines<sp/>CALLBACK_,<sp/>the<sp/>&quot;call<sp/>me<sp/>when<sp/>finished&quot;<sp/>function<sp/>type<sp/>passed<sp/>to<sp/>every</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>operation.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="callback_8hpp" kindref="compound">utils/global/callback.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Groups<sp/>related<sp/>classes<sp/>under<sp/>the<sp/>&quot;api::v2&quot;<sp/>namespace<sp/>to</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>avoid<sp/>name<sp/>clashes.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceapi_1_1v2" kindref="compound">api::v2</ref><sp/>{</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="56"><highlight class="comment"><sp/><sp/>/**<sp/>@brief<sp/>Authorisation<sp/>service<sp/>used<sp/>to<sp/>decide<sp/>whether<sp/>a<sp/>requester<sp/>may</highlight></codeline>
-<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/>*<sp/>manage<sp/>a<sp/>service&apos;s<sp/>staff.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>declaration:<sp/>says<sp/>this<sp/>class<sp/>exists<sp/>without</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>needing<sp/>its<sp/>full<sp/>definition<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>api::v2</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="62"><highlight class="comment">/**<sp/>@brief<sp/>Convenience<sp/>alias<sp/>for<sp/>the<sp/>authorisation<sp/>service.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref><sp/>=</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">api::v2::GateKeeper</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>short<sp/>nickname<sp/>so<sp/>we<sp/>can<sp/>write<sp/>&quot;GateKeeper&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>instead<sp/>of<sp/>&quot;api::v2::GateKeeper&quot;.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="66"><highlight class="comment">/**<sp/>@brief<sp/>Forward<sp/>declaration<sp/>of<sp/>the<sp/>owning<sp/>runtime-configuration<sp/>aggregate.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classConfigurator" kindref="compound">Configurator</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Says<sp/>the<sp/>configuration<sp/>class<sp/>exists;<sp/>only<sp/>a<sp/>pointer<sp/>to</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>it<sp/>is<sp/>stored,<sp/>so<sp/>the<sp/>full<sp/>definition<sp/>is<sp/>not<sp/>needed<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp />*<sp />@file<sp
+                    />staffcontroller.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp />*<sp />@brief<sp
+                    />Implements<sp />staff<sp />management<sp />for<sp />one<sp
+                    />service<sp />entity<sp />type.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp />*<sp />@details<sp />In<sp
+                    />plain<sp />words,<sp />this<sp />file<sp />defines<sp
+                    />the<sp />class<sp />that<sp />actually<sp
+                    />carries</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp />*<sp />out<sp />the<sp
+                    />three<sp />staff<sp />jobs<sp />declared<sp />in<sp
+                    />@ref<sp />StaffControllerBase<sp />-<sp />adding<sp
+                    />a</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp />*<sp />member,<sp
+                    />removing<sp />a<sp />member,<sp />and<sp />inviting<sp
+                    />a<sp />member<sp />by<sp />email.<sp />Unlike<sp />the<sp
+                    />service</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp />*<sp />controllers,<sp
+                    />this<sp />class<sp />is<sp />not<sp />an<sp />@ref<sp
+                    />EntityController,<sp />it<sp />inherits<sp
+                    />@ref</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp />*<sp />Controller<sp
+                    />for<sp />the<sp />low-level<sp />&quot;add/remove<sp
+                    />staff&quot;<sp />database<sp />helpers<sp />and<sp
+                    />writes</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp />*<sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp />the<sp />job<sp
+                    />logic<sp />itself.<sp />For<sp />each<sp />job<sp />it<sp
+                    />reads<sp />the<sp />request,<sp />asks<sp
+                    />the</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp />*<sp />authorisation<sp
+                    />service<sp />(GateKeeper)<sp />whether<sp />the<sp
+                    />caller<sp />is<sp />allowed,<sp />and<sp
+                    />only</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp />*<sp />then<sp />does<sp
+                    />something<sp />—<sp />run<sp />SQL<sp />or<sp />send<sp
+                    />an<sp />HTTP<sp />request<sp />to<sp />the<sp />email<sp
+                    />daemon.</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp />*<sp />WHY<sp />THIS<sp
+                    />FILE<sp />MATTERS<sp />IN<sp />THE<sp
+                    />SERVER:</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp />*<sp />It<sp />is<sp
+                    />the<sp />concrete<sp />implementation<sp />behind<sp
+                    />the<sp />staff<sp />HTTP<sp />routes.<sp />The<sp
+                    />route</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp />*<sp />layer<sp
+                    />calls<sp />these<sp />methods<sp />through<sp />@ref<sp
+                    />StaffControllerBase<sp />(with<sp
+                    />a</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp />*<sp />`std::variant`<sp
+                    />choosing<sp />the<sp />entity<sp />type);<sp />each<sp
+                    />call<sp />lands<sp />here,<sp
+                    />where</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp />*<sp />permission<sp
+                    />is<sp />checked<sp />before<sp />any<sp />change<sp
+                    />is<sp />made.<sp />It<sp />calls<sp />into<sp
+                    />@ref</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp />*<sp />Controller<sp
+                    />for<sp />SQL,</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp />*<sp />@ref<sp
+                    />GateKeeper<sp />for<sp />permission<sp />decisions<sp
+                    />and<sp />the<sp />email<sp />daemon<sp
+                    />for</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp />*<sp />invitations.<sp
+                    />Without<sp />it,<sp />there<sp />would<sp />be<sp />no<sp
+                    />code<sp />to<sp />add,<sp />remove<sp />or<sp
+                    />invite</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp />*<sp />staff,<sp />and<sp
+                    />the<sp />staff<sp />interface<sp />would<sp />have<sp
+                    />nothing<sp />behind<sp />it.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp />*<sp />CONCEPTS<sp
+                    />TO<sp />LEARN<sp />(for<sp
+                    />beginners):</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp />*<sp />-<sp
+                    />std::shared_ptr<sp />(a<sp />smart<sp />pointer<sp
+                    />that<sp />shares<sp />ownership<sp />of<sp />an<sp
+                    />object):</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp />*<sp
+                    />https://en.cppreference.com/w/cpp/memory/shared_ptr</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp />*<sp />-<sp />Forward<sp
+                    />declarations<sp />(telling<sp />the<sp />compiler<sp
+                    />a<sp />type<sp />exists<sp />before<sp
+                    />defining</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp />*<sp />it):<sp
+                    />https://en.cppreference.com/w/cpp/language/declarations</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp />*<sp />-<sp />C++20<sp
+                    />coroutines<sp />(functions<sp />that<sp />pause<sp
+                    />and<sp />resume<sp />with<sp
+                    />co_await/co_return):</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp />*<sp
+                    />https://en.cppreference.com/w/cpp/language/coroutines</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp />*<sp />@author<sp
+                    />Amr<sp />Osman<sp
+                    />&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp />*<sp />@date<sp
+                    />2026-11-16</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="34"><highlight class="normal" /></codeline>
+<codeline lineno="35"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#pragma<sp />once<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Include<sp />this<sp />file<sp />at<sp />most<sp
+                    />once<sp />per<sp />source<sp />file,<sp />so<sp
+                    />its</highlight><highlight class="normal" /></codeline>
+<codeline lineno="36"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />declarations<sp />are<sp />never<sp
+                    />duplicated.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="37"><highlight class="normal" /></codeline>
+<codeline lineno="38"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />Gives<sp />std::shared_ptr,<sp />the<sp />smart<sp
+                    />pointer<sp />used<sp />to<sp />hold<sp />shared<sp
+                    />dependencies.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="39"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;memory&gt;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="40"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />Gives<sp />std::string_view:<sp />a<sp />cheap,<sp
+                    />non-owning<sp />view<sp />over<sp />a<sp />stretch<sp
+                    />of<sp />text.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="41"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;string_view&gt;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="42"><highlight class="normal" /></codeline>
+<codeline lineno="43"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />The<sp />base<sp />providing<sp />the<sp />low-level<sp
+                    />add/remove-staff<sp />SQL<sp
+                    />helpers.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="44"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&quot;<ref
+                        refid="controller_8hpp"
+                        kindref="compound"
+                    >controllers/base/controller/controller.hpp</ref>&quot;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="45"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />The<sp />interface<sp />(pure<sp />virtual<sp
+                    />jobs)<sp />that<sp />this<sp />class<sp
+                    />implements.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="46"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&quot;<ref
+                        refid="staffcontrollerBase_8hpp"
+                        kindref="compound"
+                    >controllers/staffcontroller/staffcontrollerBase.hpp</ref>&quot;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="47"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />Drogon&apos;s<sp />coroutine<sp />support;<sp
+                    />defines<sp />drogon::Task,<sp />the<sp />pausable<sp
+                    />task<sp />type.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="48"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp
+                    />&quot;drogon/utils/coroutine.h&quot;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="49"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />Defines<sp />CALLBACK_,<sp />the<sp />&quot;call<sp
+                    />me<sp />when<sp />finished&quot;<sp />function<sp
+                    />type<sp />passed<sp />to<sp />every</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="50"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />operation.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="51"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&quot;<ref
+                        refid="callback_8hpp"
+                        kindref="compound"
+                    >utils/global/callback.hpp</ref>&quot;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="52"><highlight class="normal" /></codeline>
+<codeline lineno="53"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />Groups<sp />related<sp />classes<sp />under<sp />the<sp
+                    />&quot;api::v2&quot;<sp />namespace<sp
+                    />to</highlight><highlight class="normal" /></codeline>
+<codeline lineno="54"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />avoid<sp />name<sp />clashes.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="55"><highlight class="normal" /><highlight
+                    class="keyword"
+                >namespace<sp /></highlight><highlight class="normal"><ref
+                        refid="namespaceapi_1_1v2"
+                        kindref="compound"
+                    >api::v2</ref><sp />{</highlight><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="56"><highlight class="comment"><sp /><sp />/**<sp />@brief<sp
+                    />Authorisation<sp />service<sp />used<sp />to<sp
+                    />decide<sp />whether<sp />a<sp />requester<sp
+                    />may</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />manage<sp />a<sp />service&apos;s<sp />staff.<sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="58"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="keyword">class<sp
+                    /></highlight><highlight class="normal"><ref
+                        refid="classapi_1_1v2_1_1GateKeeper"
+                        kindref="compound"
+                    >GateKeeper</ref>;<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Forward<sp />declaration:<sp />says<sp />this<sp
+                    />class<sp />exists<sp />without</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="59"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />needing<sp />its<sp />full<sp />definition<sp
+                    />here.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="60"><highlight class="normal">}<sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />namespace<sp />api::v2</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="61"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="62"><highlight class="comment">/**<sp />@brief<sp
+                    />Convenience<sp />alias<sp />for<sp />the<sp
+                    />authorisation<sp />service.<sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="63"><highlight class="normal" /><highlight
+                    class="keyword"
+                >using<sp /></highlight><highlight class="normal"><ref
+                        refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1"
+                        kindref="member"
+                    >GateKeeper</ref><sp />=</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp /><sp /><sp /><sp /><ref
+                        refid="classapi_1_1v2_1_1GateKeeper"
+                        kindref="compound"
+                    >api::v2::GateKeeper</ref>;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />A<sp
+                    />short<sp />nickname<sp />so<sp />we<sp />can<sp />write<sp
+                    />&quot;GateKeeper&quot;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="65"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />instead<sp />of<sp
+                    />&quot;api::v2::GateKeeper&quot;.</highlight><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="66"><highlight class="comment">/**<sp />@brief<sp />Forward<sp
+                    />declaration<sp />of<sp />the<sp />owning<sp
+                    />runtime-configuration<sp />aggregate.<sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="67"><highlight class="normal" /><highlight
+                    class="keyword"
+                >class<sp /></highlight><highlight class="normal"><ref
+                        refid="classConfigurator"
+                        kindref="compound"
+                    >Configurator</ref>;<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Says<sp />the<sp />configuration<sp />class<sp
+                    />exists;<sp />only<sp />a<sp />pointer<sp
+                    />to</highlight><highlight class="normal" /></codeline>
+<codeline lineno="68"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />it<sp />is<sp />stored,<sp />so<sp />the<sp />full<sp
+                    />definition<sp />is<sp />not<sp />needed<sp
+                    />here.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="69"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
 <codeline lineno="70"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="71"><highlight class="comment"><sp/>*<sp/>@class<sp/>StaffController</highlight></codeline>
-<codeline lineno="72"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Implements<sp/>staff<sp/>management<sp/>for<sp/>one<sp/>service<sp/>entity<sp/>type.</highlight></codeline>
-<codeline lineno="73"><highlight class="comment"><sp/>*<sp/>@tparam<sp/>T<sp/>Service<sp/>entity<sp/>type<sp/>(e.g.<sp/>`Clinics`);<sp/>no<sp/>concept<sp/>constraint<sp/>is</highlight></codeline>
-<codeline lineno="74"><highlight class="comment"><sp/>*<sp/>declared,<sp/>but<sp/>the<sp/>implementation<sp/>relies<sp/>on<sp/>`T`<sp/>constructing<sp/>from<sp/>@ref</highlight></codeline>
-<codeline lineno="75"><highlight class="comment"><sp/>*<sp/>api::v2::Types::StaffData<sp/>and<sp/>on<sp/>`T::getSqlAddStaffStatement`<sp/>/</highlight></codeline>
-<codeline lineno="76"><highlight class="comment"><sp/>*<sp/>`T::getSqlRemoveStaffStatement`<sp/>being<sp/>available<sp/>through</highlight></codeline>
-<codeline lineno="77"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@ref<sp/>Controller.</highlight></codeline>
-<codeline lineno="78"><highlight class="comment"><sp/>*<sp/>@details<sp/>Unlike<sp/>@ref<sp/>ServiceController<sp/>this<sp/>is<sp/>not<sp/>an<sp/>`EntityController`:<sp/>it</highlight></codeline>
-<codeline lineno="79"><highlight class="comment"><sp/>*<sp/>inherits<sp/>@ref<sp/>Controller<sp/>for<sp/>the<sp/>low-level<sp/>add/remove-staff<sp/>SQL<sp/>helpers<sp/>and</highlight></codeline>
-<codeline lineno="80"><highlight class="comment"><sp/>*<sp/>implements<sp/>the<sp/>domain<sp/>operations<sp/>of<sp/>@ref<sp/>StaffControllerBase<sp/>directly.<sp/>Each</highlight></codeline>
-<codeline lineno="81"><highlight class="comment"><sp/>*<sp/>operation<sp/>parses<sp/>the<sp/>request<sp/>body,<sp/>obtains<sp/>a<sp/>`GateKeeper`<sp/>staff-management</highlight></codeline>
-<codeline lineno="82"><highlight class="comment"><sp/>*<sp/>decision,<sp/>and<sp/>only<sp/>then<sp/>performs<sp/>a<sp/>side<sp/>effect<sp/>(an<sp/>SQL<sp/>statement,<sp/>or<sp/>an<sp/>HTTP</highlight></codeline>
-<codeline lineno="83"><highlight class="comment"><sp/>*<sp/>POST<sp/>to<sp/>the<sp/>email-sender<sp/>daemon<sp/>for<sp/>invites).</highlight></codeline>
-<codeline lineno="84"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="85"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Plain-language<sp/>version:<sp/>`T`<sp/>is<sp/>the<sp/>concrete<sp/>entity<sp/>(say<sp/>`Clinics`).</highlight></codeline>
-<codeline lineno="86"><highlight class="comment"><sp/>*<sp/>The<sp/>class<sp/>relies<sp/>on<sp/>`T`<sp/>being<sp/>constructible<sp/>from<sp/>staff<sp/>data<sp/>and<sp/>on<sp/>`T`</highlight></codeline>
-<codeline lineno="87"><highlight class="comment"><sp/>*<sp/>providing<sp/>the<sp/>add/remove<sp/>staff<sp/>SQL<sp/>statements;<sp/>those<sp/>are<sp/>compile-time</highlight></codeline>
-<codeline lineno="88"><highlight class="comment"><sp/>*<sp/>expectations<sp/>rather<sp/>than<sp/>an<sp/>enforced<sp/>concept.<sp/>The<sp/>three<sp/>jobs<sp/>here<sp/>do<sp/>real</highlight></codeline>
-<codeline lineno="89"><highlight class="comment"><sp/>*<sp/>work<sp/>(parse,<sp/>check<sp/>permission,<sp/>act),<sp/>unlike<sp/>the<sp/>pure<sp/>forwarding<sp/>service</highlight></codeline>
-<codeline lineno="90"><highlight class="comment"><sp/>*<sp/>controllers.</highlight></codeline>
-<codeline lineno="91"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="92"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Explicit<sp/>instantiations<sp/>exist<sp/>for<sp/>`Clinics`,<sp/>`Pharmacies`,</highlight></codeline>
-<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>`Laboratories`<sp/>and<sp/>`RadiologyCenters`;<sp/>the<sp/>staff<sp/>route<sp/>registry<sp/>stores</highlight></codeline>
-<codeline lineno="94"><highlight class="comment"><sp/>*<sp/>instances<sp/>as<sp/>shared<sp/>pointers<sp/>and<sp/>selects<sp/>one<sp/>by<sp/>service<sp/>name.</highlight></codeline>
-<codeline lineno="95"><highlight class="comment"><sp/>*<sp/>@note<sp/>Instances<sp/>are<sp/>shared<sp/>across<sp/>Drogon<sp/>workers;<sp/>the<sp/>cached<sp/>dependencies</highlight></codeline>
-<codeline lineno="96"><highlight class="comment"><sp/>*<sp/>below<sp/>are<sp/>populated<sp/>in<sp/>the<sp/>constructor<sp/>and<sp/>are<sp/>not<sp/>mutated<sp/>by<sp/>the<sp/>operations.</highlight></codeline>
-<codeline lineno="97"><highlight class="comment"><sp/>*<sp/>@see<sp/>StaffControllerBase,<sp/>Controller,<sp/>GateKeeper,<sp/>Configurator</highlight></codeline>
-<codeline lineno="98"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&quot;template<sp/>&lt;typename<sp/>T&gt;&quot;<sp/>means<sp/>T<sp/>is<sp/>a<sp/>type<sp/>chosen</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"></highlight><highlight class="comment">//<sp/>later,<sp/>e.g.<sp/>Clinics<sp/>or<sp/>Pharmacies.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Implements<sp/>the<sp/>staff<sp/>interface<sp/>and</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//<sp/>reuses<sp/>Controller&apos;s<sp/>SQL<sp/>helpers.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="104" refid="classStaffController" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" kindref="member">StaffController</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525" kindref="member">StaffControllerBase</ref>,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classController_1a95c56822d667e94b031451729ce069a9" kindref="member">Controller</ref><sp/>{</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="106"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Resolves<sp/>shared<sp/>dependencies<sp/>from<sp/>the<sp/>global<sp/>service<sp/>locator<sp/>and</highlight></codeline>
-<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/>*<sp/>snapshots<sp/>config.</highlight></codeline>
-<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Reads<sp/>the<sp/>registered<sp/>@ref<sp/>Configurator<sp/>and<sp/>@ref<sp/>GateKeeper</highlight></codeline>
-<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/>*<sp/>instances<sp/>through<sp/>`Store::getObject`,<sp/>then<sp/>copies<sp/>`EmailSenderConfig`<sp/>out</highlight></codeline>
-<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/>*<sp/>of<sp/>the<sp/>Configurator<sp/>so<sp/>the<sp/>invite<sp/>path<sp/>does<sp/>not<sp/>have<sp/>to<sp/>query</highlight></codeline>
-<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/>*<sp/>configuration<sp/>per<sp/>request.</highlight></codeline>
-<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@note<sp/>Failure<sp/>behaviour<sp/>when<sp/>a<sp/>service<sp/>is<sp/>absent<sp/>from<sp/>the<sp/>Store<sp/>is<sp/>that</highlight></codeline>
-<codeline lineno="114"><highlight class="comment"><sp/><sp/><sp/>*<sp/>of<sp/>`Store::getObject`.</highlight></codeline>
-<codeline lineno="115"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><ref refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" kindref="member">StaffController</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Constructor:<sp/>grabs<sp/>the<sp/>shared<sp/>configuration<sp/>and</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>permission<sp/>services<sp/>once,<sp/>at<sp/>startup.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="118"><highlight class="comment"><sp/><sp/>/**<sp/>@brief<sp/>Copy<sp/>construction<sp/>is<sp/>disabled<sp/>so<sp/>each<sp/>registered<sp/>controller<sp/>has<sp/>a</highlight></codeline>
-<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/>*<sp/>single<sp/>identity.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="120" refid="classStaffController_1af44e90b3c1914495477d4046fc71c151" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classStaffController_1af44e90b3c1914495477d4046fc71c151" kindref="member">StaffController</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" kindref="member">StaffController</ref>&amp;)<sp/>=</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;=<sp/>delete&quot;<sp/>forbids<sp/>copying;<sp/>the<sp/>controller<sp/>is<sp/>shared,<sp/>not</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>duplicated.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="123"><highlight class="comment"><sp/><sp/>/**<sp/>@brief<sp/>Move<sp/>construction<sp/>is<sp/>disabled.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="124" refid="classStaffController_1aa6585747b8fafe5c7a3b7080968f6b9d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classStaffController_1aa6585747b8fafe5c7a3b7080968f6b9d" kindref="member">StaffController</ref>(<ref refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" kindref="member">StaffController</ref>&amp;&amp;)<sp/>=</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Moving<sp/>is<sp/>also<sp/>forbidden<sp/>to<sp/>keep<sp/>one<sp/>clear<sp/>identity.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="126"><highlight class="comment"><sp/><sp/>/**<sp/>@brief<sp/>Copy<sp/>assignment<sp/>is<sp/>disabled.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="127" refid="classStaffController_1a8b0067a20c16696da7f15899b0804985" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" kindref="member">StaffController</ref>&amp;<sp/><ref refid="classStaffController_1a8b0067a20c16696da7f15899b0804985" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" kindref="member">StaffController</ref>&amp;)<sp/>=</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Assigning<sp/>a<sp/>copy<sp/>is<sp/>blocked<sp/>for<sp/>the<sp/>same<sp/>reason.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="129"><highlight class="comment"><sp/><sp/>/**<sp/>@brief<sp/>Move<sp/>assignment<sp/>is<sp/>disabled.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="130" refid="classStaffController_1a6c1f92044026b4fc6703b3f513fd915a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" kindref="member">StaffController</ref>&amp;<sp/><ref refid="classStaffController_1a6c1f92044026b4fc6703b3f513fd915a" kindref="member">operator=</ref>(<ref refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" kindref="member">StaffController</ref>&amp;&amp;)<sp/>=</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Move-assignment<sp/>is<sp/>blocked<sp/>as<sp/>well.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="132"><highlight class="comment"><sp/><sp/>/**<sp/>@brief<sp/>Defaulted<sp/>destructor;<sp/>shared<sp/>dependencies<sp/>are<sp/>released<sp/>through</highlight></codeline>
-<codeline lineno="133"><highlight class="comment"><sp/><sp/><sp/>*<sp/>their<sp/>shared<sp/>pointers.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="134" refid="classStaffController_1a0e4a65120d9fea6f89fa8ed411fe536a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classStaffController_1a0e4a65120d9fea6f89fa8ed411fe536a" kindref="member">~StaffController</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;override&quot;<sp/>matches<sp/>the<sp/>base&apos;s<sp/>virtual<sp/>destructor;<sp/>shared</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>pointers<sp/>clean<sp/>up<sp/>automatically.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="137"><highlight class="normal"></highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CRUDS<sp/>—<sp/>short<sp/>label<sp/>inherited<sp/>from<sp/>the<sp/>other<sp/>controller<sp/>families;<sp/>real</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>jobs<sp/>here<sp/>are<sp/>add/remove/invite<sp/>staff.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="140"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="141"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Adds<sp/>a<sp/>staff<sp/>member<sp/>described<sp/>by<sp/>@p<sp/>data<sp/>to<sp/>the<sp/>service<sp/>entity</highlight></codeline>
-<codeline lineno="142"><highlight class="comment"><sp/><sp/><sp/>*<sp/>identified<sp/>in<sp/>that<sp/>body.</highlight></codeline>
-<codeline lineno="143"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Parses<sp/>`payload`/`id`,<sp/>constructs<sp/>@ref<sp/>api::v2::Types::StaffData</highlight></codeline>
-<codeline lineno="144"><highlight class="comment"><sp/><sp/><sp/>*<sp/>and<sp/>`T`,<sp/>checks<sp/>`canManageStaff`,<sp/>then<sp/>delegates<sp/>to</highlight></codeline>
-<codeline lineno="145"><highlight class="comment"><sp/><sp/><sp/>*<sp/>`Controller::addStaff`.<sp/>A<sp/>parse<sp/>failure<sp/>is<sp/>an<sp/>exceptional<sp/>500<sp/>path;<sp/>an</highlight></codeline>
-<codeline lineno="146"><highlight class="comment"><sp/><sp/><sp/>*<sp/>authorisation<sp/>failure<sp/>returns<sp/>the<sp/>GateKeeper<sp/>error<sp/>code.</highlight></codeline>
-<codeline lineno="147"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,</highlight></codeline>
-<codeline lineno="148"><highlight class="comment"><sp/><sp/><sp/>*<sp/>body).</highlight></codeline>
-<codeline lineno="149"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>staff-management</highlight></codeline>
-<codeline lineno="150"><highlight class="comment"><sp/><sp/><sp/>*<sp/>permission<sp/>check.</highlight></codeline>
-<codeline lineno="151"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body<sp/>containing<sp/>`id`<sp/>and<sp/>`payload`.</highlight></codeline>
-<codeline lineno="152"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStaffController_1a454ac6b5d362f6b9be674eac131f4da7" kindref="member">AddStaffToEntity</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data)</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;override&quot;<sp/>means<sp/>this<sp/>implements<sp/>the<sp/>pure<sp/>virtual<sp/>job<sp/>from</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>StaffControllerBase.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="158"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="159"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Removes<sp/>a<sp/>staff<sp/>member<sp/>from<sp/>a<sp/>service<sp/>entity.</highlight></codeline>
-<codeline lineno="160"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Same<sp/>request<sp/>shape,<sp/>authorisation<sp/>and<sp/>error<sp/>behaviour<sp/>as<sp/>@ref</highlight></codeline>
-<codeline lineno="161"><highlight class="comment"><sp/><sp/><sp/>*<sp/>AddStaffToEntity,<sp/>but<sp/>delegates<sp/>to<sp/>`Controller::removeStaff`.</highlight></codeline>
-<codeline lineno="162"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,</highlight></codeline>
-<codeline lineno="163"><highlight class="comment"><sp/><sp/><sp/>*<sp/>body).</highlight></codeline>
-<codeline lineno="164"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>staff-management</highlight></codeline>
-<codeline lineno="165"><highlight class="comment"><sp/><sp/><sp/>*<sp/>permission<sp/>check.</highlight></codeline>
-<codeline lineno="166"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body<sp/>containing<sp/>`id`<sp/>and<sp/>`payload`.</highlight></codeline>
-<codeline lineno="167"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStaffController_1aefd020493c2178716433285aca94ae50" kindref="member">RemoveStaffFromEntity</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,</highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data)</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Same<sp/>rules<sp/>as<sp/>Add,<sp/>but<sp/>calls<sp/>the<sp/>remove-staff<sp/>SQL<sp/>helper.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="172"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="173"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Invites<sp/>a<sp/>staff<sp/>member<sp/>by<sp/>handing<sp/>an<sp/>invite<sp/>message<sp/>to<sp/>the</highlight></codeline>
-<codeline lineno="174"><highlight class="comment"><sp/><sp/><sp/>*<sp/>email-sender<sp/>daemon.</highlight></codeline>
-<codeline lineno="175"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Parses<sp/>`nominee_id`<sp/>and<sp/>@ref<sp/>api::v2::Types::StaffData,<sp/>checks</highlight></codeline>
-<codeline lineno="176"><highlight class="comment"><sp/><sp/><sp/>*<sp/>`canManageStaff`,<sp/>builds<sp/>the<sp/>invite<sp/>JSON<sp/>and<sp/>POSTs<sp/>it<sp/>via</highlight></codeline>
-<codeline lineno="177"><highlight class="comment"><sp/><sp/><sp/>*<sp/>`Communicate::sendRequest`.<sp/>Reports<sp/>200<sp/>with<sp/>the<sp/>daemon&apos;s<sp/>body<sp/>on</highlight></codeline>
-<codeline lineno="178"><highlight class="comment"><sp/><sp/><sp/>*<sp/>delivery,<sp/>400<sp/>when<sp/>invite<sp/>construction<sp/>or<sp/>delivery<sp/>fails.</highlight></codeline>
-<codeline lineno="179"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,</highlight></codeline>
-<codeline lineno="180"><highlight class="comment"><sp/><sp/><sp/>*<sp/>body).</highlight></codeline>
-<codeline lineno="181"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>staff-management</highlight></codeline>
-<codeline lineno="182"><highlight class="comment"><sp/><sp/><sp/>*<sp/>permission<sp/>check.</highlight></codeline>
-<codeline lineno="183"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body<sp/>containing<sp/>`nominee_id`<sp/>and<sp/>the<sp/>invite</highlight></codeline>
-<codeline lineno="184"><highlight class="comment"><sp/><sp/><sp/>*<sp/>fields.</highlight></codeline>
-<codeline lineno="185"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStaffController_1aca79920a9fdd6da89333627992bf6287" kindref="member">InviteStaffToEntity</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data)</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>invite<sp/>job<sp/>sends<sp/>an<sp/>email<sp/>instead<sp/>of<sp/>running<sp/>SQL.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="190"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="191"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>AddStaffToEntity.</highlight></codeline>
-<codeline lineno="192"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>co_awaits<sp/>the<sp/>async<sp/>permission<sp/>check<sp/>and</highlight></codeline>
-<codeline lineno="193"><highlight class="comment"><sp/><sp/><sp/>*<sp/>`Controller::addStaffAsync`.</highlight></codeline>
-<codeline lineno="194"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,</highlight></codeline>
-<codeline lineno="195"><highlight class="comment"><sp/><sp/><sp/>*<sp/>body).</highlight></codeline>
-<codeline lineno="196"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>staff-management</highlight></codeline>
-<codeline lineno="197"><highlight class="comment"><sp/><sp/><sp/>*<sp/>permission<sp/>check.</highlight></codeline>
-<codeline lineno="198"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>until<sp/>the<sp/>task</highlight></codeline>
-<codeline lineno="199"><highlight class="comment"><sp/><sp/><sp/>*<sp/>completes.</highlight></codeline>
-<codeline lineno="200"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classStaffController_1a53a028cf301c7a9765b3633a06275546" kindref="member">AddStaffToEntityAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data)</highlight></codeline>
-<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Pausable<sp/>version<sp/>of<sp/>Add;<sp/>returns<sp/>a<sp/>task<sp/>instead<sp/>of</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>finishing<sp/>immediately.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="206"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="207"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>RemoveStaffFromEntity.</highlight></codeline>
-<codeline lineno="208"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>co_awaits<sp/>the<sp/>async<sp/>permission<sp/>check<sp/>and</highlight></codeline>
-<codeline lineno="209"><highlight class="comment"><sp/><sp/><sp/>*<sp/>`Controller::removeStaffAsync`.</highlight></codeline>
-<codeline lineno="210"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,</highlight></codeline>
-<codeline lineno="211"><highlight class="comment"><sp/><sp/><sp/>*<sp/>body).</highlight></codeline>
-<codeline lineno="212"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>staff-management</highlight></codeline>
-<codeline lineno="213"><highlight class="comment"><sp/><sp/><sp/>*<sp/>permission<sp/>check.</highlight></codeline>
-<codeline lineno="214"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>until<sp/>the<sp/>task</highlight></codeline>
-<codeline lineno="215"><highlight class="comment"><sp/><sp/><sp/>*<sp/>completes.</highlight></codeline>
-<codeline lineno="216"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classStaffController_1ac220308be6bf24122bfe037ea8c75e9c" kindref="member">RemoveStaffFromEntityAsync</ref>(</highlight></codeline>
-<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
-<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,</highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Pausable<sp/>version<sp/>of<sp/>Remove.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="221"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="222"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>InviteStaffToEntity.</highlight></codeline>
-<codeline lineno="223"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@note<sp/>The<sp/>email-daemon<sp/>POST<sp/>is<sp/>a<sp/>synchronous<sp/>cURL<sp/>call<sp/>in<sp/>this<sp/>variant</highlight></codeline>
-<codeline lineno="224"><highlight class="comment"><sp/><sp/><sp/>*<sp/>too.</highlight></codeline>
-<codeline lineno="225"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler,<sp/>invoked<sp/>once<sp/>with<sp/>(status,</highlight></codeline>
-<codeline lineno="226"><highlight class="comment"><sp/><sp/><sp/>*<sp/>body).</highlight></codeline>
-<codeline lineno="227"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>used<sp/>for<sp/>the<sp/>staff-management</highlight></codeline>
-<codeline lineno="228"><highlight class="comment"><sp/><sp/><sp/>*<sp/>permission<sp/>check.</highlight></codeline>
-<codeline lineno="229"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>until<sp/>the<sp/>task</highlight></codeline>
-<codeline lineno="230"><highlight class="comment"><sp/><sp/><sp/>*<sp/>completes.</highlight></codeline>
-<codeline lineno="231"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="232"><highlight class="normal"><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classStaffController_1a7bfaae0026f9082bb42968cf04b421d5" kindref="member">InviteStaffToEntityAsync</ref>(</highlight></codeline>
-<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,</highlight></codeline>
-<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Pausable<sp/>version<sp/>of<sp/>Invite;<sp/>the</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>email<sp/>send<sp/>itself<sp/>still<sp/>blocks.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="237"><highlight class="normal"></highlight></codeline>
-<codeline lineno="238"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="239"><highlight class="comment"><sp/><sp/>/**<sp/>@brief<sp/>Retained<sp/>Configurator<sp/>service<sp/>handle<sp/>obtained<sp/>at<sp/>construction.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="240"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;Configurator&gt;</highlight></codeline>
-<codeline lineno="241" refid="classStaffController_1a3f42581637f6b2711eac8ada82ad135a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStaffController_1a3f42581637f6b2711eac8ada82ad135a" kindref="member">cfg_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>shared<sp/>smart<sp/>pointer<sp/>to<sp/>configuration;<sp/>the<sp/>trailing</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>underscore<sp/>marks<sp/>it<sp/>as<sp/>a<sp/>private<sp/>member.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="243"><highlight class="comment"><sp/><sp/>/**<sp/>@brief<sp/>Snapshot<sp/>of<sp/>the<sp/>email-daemon<sp/>endpoint/queue<sp/>used<sp/>to<sp/>POST<sp/>invites.</highlight></codeline>
-<codeline lineno="244"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><ref refid="classConfigurator_1ae7a8c53bf3a5ab860650fbc02354b222" kindref="member">Configurator::EmailSenderConfig</ref></highlight></codeline>
-<codeline lineno="246" refid="classStaffController_1aab325c701b76d68ee35fb4202a1c4693" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStaffController_1aab325c701b76d68ee35fb4202a1c4693" kindref="member">email_sender_daemon_config_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>copy<sp/>of<sp/>where<sp/>to<sp/>send<sp/>invite<sp/>emails,</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>saved<sp/>once<sp/>so<sp/>we<sp/>do<sp/>not<sp/>re-read<sp/>config</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>per<sp/>request.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="249"><highlight class="comment"><sp/><sp/>/**<sp/>@brief<sp/>Shared<sp/>authorisation<sp/>service<sp/>consulted<sp/>on<sp/>every<sp/>staff-management</highlight></codeline>
-<codeline lineno="250"><highlight class="comment"><sp/><sp/><sp/>*<sp/>request.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;GateKeeper&gt;</highlight></codeline>
-<codeline lineno="252" refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" kindref="member">gateKeeper</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Shared<sp/>smart<sp/>pointer<sp/>to<sp/>the<sp/>permission<sp/>service<sp/>used</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>before<sp/>every<sp/>staff<sp/>change.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp />*<sp />@class<sp
+                    />StaffController</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp />*<sp />@brief<sp
+                    />Implements<sp />staff<sp />management<sp />for<sp />one<sp
+                    />service<sp />entity<sp />type.</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp />*<sp />@tparam<sp />T<sp
+                    />Service<sp />entity<sp />type<sp />(e.g.<sp
+                    />`Clinics`);<sp />no<sp />concept<sp />constraint<sp
+                    />is</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp />*<sp />declared,<sp
+                    />but<sp />the<sp />implementation<sp />relies<sp />on<sp
+                    />`T`<sp />constructing<sp />from<sp
+                    />@ref</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp />*<sp
+                    />api::v2::Types::StaffData<sp />and<sp />on<sp
+                    />`T::getSqlAddStaffStatement`<sp />/</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp />*<sp
+                    />`T::getSqlRemoveStaffStatement`<sp />being<sp
+                    />available<sp />through</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp />*<sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp />@ref<sp
+                    />Controller.</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp />*<sp />@details<sp
+                    />Unlike<sp />@ref<sp />ServiceController<sp />this<sp
+                    />is<sp />not<sp />an<sp />`EntityController`:<sp
+                    />it</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp />*<sp />inherits<sp
+                    />@ref<sp />Controller<sp />for<sp />the<sp />low-level<sp
+                    />add/remove-staff<sp />SQL<sp />helpers<sp
+                    />and</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp />*<sp />implements<sp
+                    />the<sp />domain<sp />operations<sp />of<sp />@ref<sp
+                    />StaffControllerBase<sp />directly.<sp
+                    />Each</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp />*<sp />operation<sp
+                    />parses<sp />the<sp />request<sp />body,<sp />obtains<sp
+                    />a<sp />`GateKeeper`<sp
+                    />staff-management</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp />*<sp />decision,<sp
+                    />and<sp />only<sp />then<sp />performs<sp />a<sp />side<sp
+                    />effect<sp />(an<sp />SQL<sp />statement,<sp />or<sp
+                    />an<sp />HTTP</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp />*<sp />POST<sp />to<sp
+                    />the<sp />email-sender<sp />daemon<sp />for<sp
+                    />invites).</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp />*<sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp />Plain-language<sp
+                    />version:<sp />`T`<sp />is<sp />the<sp />concrete<sp
+                    />entity<sp />(say<sp />`Clinics`).</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp />*<sp />The<sp />class<sp
+                    />relies<sp />on<sp />`T`<sp />being<sp />constructible<sp
+                    />from<sp />staff<sp />data<sp />and<sp />on<sp
+                    />`T`</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp />*<sp />providing<sp
+                    />the<sp />add/remove<sp />staff<sp />SQL<sp
+                    />statements;<sp />those<sp />are<sp
+                    />compile-time</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp />*<sp />expectations<sp
+                    />rather<sp />than<sp />an<sp />enforced<sp />concept.<sp
+                    />The<sp />three<sp />jobs<sp />here<sp />do<sp
+                    />real</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp />*<sp />work<sp
+                    />(parse,<sp />check<sp />permission,<sp />act),<sp
+                    />unlike<sp />the<sp />pure<sp />forwarding<sp
+                    />service</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp />*<sp
+                    />controllers.</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp />*<sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp />Explicit<sp
+                    />instantiations<sp />exist<sp />for<sp />`Clinics`,<sp
+                    />`Pharmacies`,</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp />*<sp />`Laboratories`<sp
+                    />and<sp />`RadiologyCenters`;<sp />the<sp />staff<sp
+                    />route<sp />registry<sp />stores</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp />*<sp />instances<sp
+                    />as<sp />shared<sp />pointers<sp />and<sp />selects<sp
+                    />one<sp />by<sp />service<sp />name.</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp />*<sp />@note<sp
+                    />Instances<sp />are<sp />shared<sp />across<sp />Drogon<sp
+                    />workers;<sp />the<sp />cached<sp
+                    />dependencies</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp />*<sp />below<sp />are<sp
+                    />populated<sp />in<sp />the<sp />constructor<sp />and<sp
+                    />are<sp />not<sp />mutated<sp />by<sp />the<sp
+                    />operations.</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp />*<sp />@see<sp
+                    />StaffControllerBase,<sp />Controller,<sp />GateKeeper,<sp
+                    />Configurator</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="99"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />&quot;template<sp />&lt;typename<sp />T&gt;&quot;<sp
+                    />means<sp />T<sp />is<sp />a<sp />type<sp
+                    />chosen</highlight><highlight class="normal" /></codeline>
+<codeline lineno="100"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />later,<sp />e.g.<sp />Clinics<sp />or<sp
+                    />Pharmacies.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="101"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />Implements<sp />the<sp />staff<sp />interface<sp
+                    />and</highlight><highlight class="normal" /></codeline>
+<codeline lineno="102"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />reuses<sp />Controller&apos;s<sp />SQL<sp
+                    />helpers.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="103"><highlight class="normal" /><highlight
+                    class="keyword"
+                >template</highlight><highlight class="normal"><sp
+                    />&lt;</highlight><highlight
+                    class="keyword"
+                >typename</highlight><highlight class="normal"><sp
+                    />T&gt;</highlight></codeline>
+<codeline
+                lineno="104"
+                refid="classStaffController"
+                refkind="compound"
+            ><highlight class="normal" /><highlight class="keyword">class<sp
+                    /></highlight><highlight class="normal"><ref
+                        refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840"
+                        kindref="member"
+                    >StaffController</ref><sp />:<sp /></highlight><highlight
+                    class="keyword"
+                >public</highlight><highlight class="normal"><sp /><ref
+                        refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525"
+                        kindref="member"
+                    >StaffControllerBase</ref>,<sp /></highlight><highlight
+                    class="keyword"
+                >public</highlight><highlight class="normal"><sp /><ref
+                        refid="classController_1a95c56822d667e94b031451729ce069a9"
+                        kindref="member"
+                    >Controller</ref><sp />{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp /></highlight><highlight
+                    class="keyword"
+                >public</highlight><highlight
+                    class="normal"
+                >:</highlight><highlight class="comment" /></codeline>
+<codeline lineno="106"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Resolves<sp />shared<sp />dependencies<sp
+                    />from<sp />the<sp />global<sp />service<sp />locator<sp
+                    />and</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />snapshots<sp />config.</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@details<sp />Reads<sp />the<sp />registered<sp />@ref<sp
+                    />Configurator<sp />and<sp />@ref<sp
+                    />GateKeeper</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />instances<sp />through<sp />`Store::getObject`,<sp
+                    />then<sp />copies<sp />`EmailSenderConfig`<sp
+                    />out</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp /><sp /><sp />*<sp />of<sp
+                    />the<sp />Configurator<sp />so<sp />the<sp />invite<sp
+                    />path<sp />does<sp />not<sp />have<sp />to<sp
+                    />query</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />configuration<sp />per<sp
+                    />request.</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@note<sp />Failure<sp />behaviour<sp />when<sp />a<sp
+                    />service<sp />is<sp />absent<sp />from<sp />the<sp
+                    />Store<sp />is<sp />that</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp /><sp /><sp />*<sp />of<sp
+                    />`Store::getObject`.</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="116"><highlight class="normal"><sp /><sp /><ref
+                        refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840"
+                        kindref="member"
+                    >StaffController</ref>();<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Constructor:<sp />grabs<sp />the<sp />shared<sp
+                    />configuration<sp />and</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="117"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />permission<sp />services<sp />once,<sp />at<sp
+                    />startup.</highlight><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="118"><highlight class="comment"><sp /><sp />/**<sp />@brief<sp
+                    />Copy<sp />construction<sp />is<sp />disabled<sp />so<sp
+                    />each<sp />registered<sp />controller<sp />has<sp
+                    />a</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />single<sp />identity.<sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="120"
+                refid="classStaffController_1af44e90b3c1914495477d4046fc71c151"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><ref
+                        refid="classStaffController_1af44e90b3c1914495477d4046fc71c151"
+                        kindref="member"
+                    >StaffController</ref>(</highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp /><ref
+                        refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840"
+                        kindref="member"
+                    >StaffController</ref>&amp;)<sp />=</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keyword"
+                >delete</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />&quot;=<sp
+                    />delete&quot;<sp />forbids<sp />copying;<sp />the<sp
+                    />controller<sp />is<sp />shared,<sp
+                    />not</highlight><highlight class="normal" /></codeline>
+<codeline lineno="122"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />duplicated.</highlight><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="123"><highlight class="comment"><sp /><sp />/**<sp />@brief<sp
+                    />Move<sp />construction<sp />is<sp />disabled.<sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="124"
+                refid="classStaffController_1aa6585747b8fafe5c7a3b7080968f6b9d"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><ref
+                        refid="classStaffController_1aa6585747b8fafe5c7a3b7080968f6b9d"
+                        kindref="member"
+                    >StaffController</ref>(<ref
+                        refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840"
+                        kindref="member"
+                    >StaffController</ref>&amp;&amp;)<sp
+                    />=</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keyword"
+                >delete</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Moving<sp
+                    />is<sp />also<sp />forbidden<sp />to<sp />keep<sp />one<sp
+                    />clear<sp />identity.</highlight><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="126"><highlight class="comment"><sp /><sp />/**<sp />@brief<sp
+                    />Copy<sp />assignment<sp />is<sp />disabled.<sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="127"
+                refid="classStaffController_1a8b0067a20c16696da7f15899b0804985"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><ref
+                        refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840"
+                        kindref="member"
+                    >StaffController</ref>&amp;<sp /><ref
+                        refid="classStaffController_1a8b0067a20c16696da7f15899b0804985"
+                        kindref="member"
+                    >operator=</ref>(</highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp /><ref
+                        refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840"
+                        kindref="member"
+                    >StaffController</ref>&amp;)<sp />=</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keyword"
+                >delete</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />Assigning<sp />a<sp />copy<sp />is<sp />blocked<sp
+                    />for<sp />the<sp />same<sp />reason.</highlight><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="129"><highlight class="comment"><sp /><sp />/**<sp />@brief<sp
+                    />Move<sp />assignment<sp />is<sp />disabled.<sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="130"
+                refid="classStaffController_1a6c1f92044026b4fc6703b3f513fd915a"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><ref
+                        refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840"
+                        kindref="member"
+                    >StaffController</ref>&amp;<sp /><ref
+                        refid="classStaffController_1a6c1f92044026b4fc6703b3f513fd915a"
+                        kindref="member"
+                    >operator=</ref>(<ref
+                        refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840"
+                        kindref="member"
+                    >StaffController</ref>&amp;&amp;)<sp
+                    />=</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keyword"
+                >delete</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />Move-assignment<sp />is<sp />blocked<sp />as<sp
+                    />well.</highlight><highlight class="comment" /></codeline>
+<codeline lineno="132"><highlight class="comment"><sp /><sp />/**<sp />@brief<sp
+                    />Defaulted<sp />destructor;<sp />shared<sp
+                    />dependencies<sp />are<sp />released<sp
+                    />through</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />their<sp />shared<sp />pointers.<sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="134"
+                refid="classStaffController_1a0e4a65120d9fea6f89fa8ed411fe536a"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><ref
+                        refid="classStaffController_1a0e4a65120d9fea6f89fa8ed411fe536a"
+                        kindref="member"
+                    >~StaffController</ref>()<sp /></highlight><highlight
+                    class="keyword"
+                >override</highlight><highlight class="normal"><sp
+                    />=</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keywordflow"
+                >default</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />&quot;override&quot;<sp />matches<sp />the<sp
+                    />base&apos;s<sp />virtual<sp />destructor;<sp
+                    />shared</highlight><highlight class="normal" /></codeline>
+<codeline lineno="136"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />pointers<sp />clean<sp />up<sp
+                    />automatically.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="137"><highlight class="normal" /></codeline>
+<codeline lineno="138"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />CRUDS<sp
+                    />—<sp />short<sp />label<sp />inherited<sp />from<sp
+                    />the<sp />other<sp />controller<sp />families;<sp
+                    />real</highlight><highlight class="normal" /></codeline>
+<codeline lineno="139"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />jobs<sp
+                    />here<sp />are<sp />add/remove/invite<sp
+                    />staff.</highlight><highlight class="comment" /></codeline>
+<codeline lineno="140"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Adds<sp />a<sp />staff<sp />member<sp
+                    />described<sp />by<sp />@p<sp />data<sp />to<sp />the<sp
+                    />service<sp />entity</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />identified<sp />in<sp />that<sp
+                    />body.</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@details<sp />Parses<sp />`payload`/`id`,<sp
+                    />constructs<sp />@ref<sp
+                    />api::v2::Types::StaffData</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />and<sp />`T`,<sp />checks<sp />`canManageStaff`,<sp
+                    />then<sp />delegates<sp />to</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />`Controller::addStaff`.<sp />A<sp />parse<sp />failure<sp
+                    />is<sp />an<sp />exceptional<sp />500<sp />path;<sp
+                    />an</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />authorisation<sp />failure<sp />returns<sp />the<sp
+                    />GateKeeper<sp />error<sp />code.</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in,out]<sp />callback<sp />Completion<sp
+                    />handler,<sp />invoked<sp />once<sp />with<sp
+                    />(status,</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />body).</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />requester<sp />Authenticated<sp
+                    />caller<sp />used<sp />for<sp />the<sp
+                    />staff-management</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />permission<sp />check.</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />data<sp />Raw<sp />JSON<sp />body<sp
+                    />containing<sp />`id`<sp />and<sp
+                    />`payload`.</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="153"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight
+                    class="keywordtype"
+                >void</highlight><highlight class="normal"><sp /><ref
+                        refid="classStaffController_1a454ac6b5d362f6b9be674eac131f4da7"
+                        kindref="member"
+                    >AddStaffToEntity</ref>(<ref
+                        refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3"
+                        kindref="member"
+                    >CALLBACK_</ref>&amp;&amp;<sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp />callback,</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp /><ref
+                        refid="structRequester"
+                        kindref="compound"
+                    >Requester</ref>&amp;&amp;<sp
+                    />requester,</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    />std::string_view<sp /><sp />data)</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keyword"
+                >override</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />&quot;override&quot;<sp />means<sp />this<sp
+                    />implements<sp />the<sp />pure<sp />virtual<sp />job<sp
+                    />from</highlight><highlight class="normal" /></codeline>
+<codeline lineno="157"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />StaffControllerBase.</highlight><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="158"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Removes<sp />a<sp />staff<sp />member<sp
+                    />from<sp />a<sp />service<sp
+                    />entity.</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@details<sp />Same<sp />request<sp />shape,<sp
+                    />authorisation<sp />and<sp />error<sp />behaviour<sp
+                    />as<sp />@ref</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />AddStaffToEntity,<sp />but<sp />delegates<sp />to<sp
+                    />`Controller::removeStaff`.</highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in,out]<sp />callback<sp />Completion<sp
+                    />handler,<sp />invoked<sp />once<sp />with<sp
+                    />(status,</highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />body).</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />requester<sp />Authenticated<sp
+                    />caller<sp />used<sp />for<sp />the<sp
+                    />staff-management</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />permission<sp />check.</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />data<sp />Raw<sp />JSON<sp />body<sp
+                    />containing<sp />`id`<sp />and<sp
+                    />`payload`.</highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="168"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight
+                    class="keywordtype"
+                >void</highlight><highlight class="normal"><sp /><ref
+                        refid="classStaffController_1aefd020493c2178716433285aca94ae50"
+                        kindref="member"
+                    >RemoveStaffFromEntity</ref>(<ref
+                        refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3"
+                        kindref="member"
+                    >CALLBACK_</ref>&amp;&amp;<sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp />callback,</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp /><ref
+                        refid="structRequester"
+                        kindref="compound"
+                    >Requester</ref>&amp;&amp;<sp
+                    />requester,</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp />std::string_view<sp /><sp
+                    />data)</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keyword"
+                >override</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Same<sp
+                    />rules<sp />as<sp />Add,<sp />but<sp />calls<sp />the<sp
+                    />remove-staff<sp />SQL<sp />helper.</highlight><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="172"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Invites<sp />a<sp />staff<sp />member<sp
+                    />by<sp />handing<sp />an<sp />invite<sp />message<sp
+                    />to<sp />the</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />email-sender<sp />daemon.</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@details<sp />Parses<sp />`nominee_id`<sp />and<sp
+                    />@ref<sp />api::v2::Types::StaffData,<sp
+                    />checks</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />`canManageStaff`,<sp />builds<sp />the<sp />invite<sp
+                    />JSON<sp />and<sp />POSTs<sp />it<sp
+                    />via</highlight></codeline>
+<codeline lineno="177"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />`Communicate::sendRequest`.<sp />Reports<sp />200<sp
+                    />with<sp />the<sp />daemon&apos;s<sp />body<sp
+                    />on</highlight></codeline>
+<codeline lineno="178"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />delivery,<sp />400<sp />when<sp />invite<sp
+                    />construction<sp />or<sp />delivery<sp
+                    />fails.</highlight></codeline>
+<codeline lineno="179"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in,out]<sp />callback<sp />Completion<sp
+                    />handler,<sp />invoked<sp />once<sp />with<sp
+                    />(status,</highlight></codeline>
+<codeline lineno="180"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />body).</highlight></codeline>
+<codeline lineno="181"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />requester<sp />Authenticated<sp
+                    />caller<sp />used<sp />for<sp />the<sp
+                    />staff-management</highlight></codeline>
+<codeline lineno="182"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />permission<sp />check.</highlight></codeline>
+<codeline lineno="183"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />data<sp />Raw<sp />JSON<sp />body<sp
+                    />containing<sp />`nominee_id`<sp />and<sp />the<sp
+                    />invite</highlight></codeline>
+<codeline lineno="184"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />fields.</highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="186"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight
+                    class="keywordtype"
+                >void</highlight><highlight class="normal"><sp /><ref
+                        refid="classStaffController_1aca79920a9fdd6da89333627992bf6287"
+                        kindref="member"
+                    >InviteStaffToEntity</ref>(<ref
+                        refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3"
+                        kindref="member"
+                    >CALLBACK_</ref>&amp;&amp;<sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp />callback,</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp /><ref
+                        refid="structRequester"
+                        kindref="compound"
+                    >Requester</ref>&amp;&amp;<sp
+                    />requester,</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />std::string_view<sp /><sp
+                    />data)</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keyword"
+                >override</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />The<sp
+                    />invite<sp />job<sp />sends<sp />an<sp />email<sp
+                    />instead<sp />of<sp />running<sp
+                    />SQL.</highlight><highlight class="comment" /></codeline>
+<codeline lineno="190"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="191"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Coroutine<sp />form<sp />of<sp />@ref<sp
+                    />AddStaffToEntity.</highlight></codeline>
+<codeline lineno="192"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@details<sp />co_awaits<sp />the<sp />async<sp
+                    />permission<sp />check<sp />and</highlight></codeline>
+<codeline lineno="193"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />`Controller::addStaffAsync`.</highlight></codeline>
+<codeline lineno="194"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in,out]<sp />callback<sp />Completion<sp
+                    />handler,<sp />invoked<sp />once<sp />with<sp
+                    />(status,</highlight></codeline>
+<codeline lineno="195"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />body).</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />requester<sp />Authenticated<sp
+                    />caller<sp />used<sp />for<sp />the<sp
+                    />staff-management</highlight></codeline>
+<codeline lineno="197"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />permission<sp />check.</highlight></codeline>
+<codeline lineno="198"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />data<sp />Raw<sp />JSON<sp />body;<sp
+                    />must<sp />remain<sp />valid<sp />until<sp />the<sp
+                    />task</highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />completes.</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="201"><highlight class="normal"><sp /><sp
+                    />drogon::Task&lt;void&gt;<sp /><ref
+                        refid="classStaffController_1a53a028cf301c7a9765b3633a06275546"
+                        kindref="member"
+                    >AddStaffToEntityAsync</ref>(<ref
+                        refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3"
+                        kindref="member"
+                    >CALLBACK_</ref>&amp;&amp;<sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp />callback,</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp /><ref
+                        refid="structRequester"
+                        kindref="compound"
+                    >Requester</ref>&amp;&amp;<sp
+                    />requester,</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    />std::string_view<sp /><sp />data)</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keyword"
+                >override</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Pausable<sp
+                    />version<sp />of<sp />Add;<sp />returns<sp />a<sp />task<sp
+                    />instead<sp />of</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="205"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />finishing<sp />immediately.</highlight><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="206"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="207"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Coroutine<sp />form<sp />of<sp />@ref<sp
+                    />RemoveStaffFromEntity.</highlight></codeline>
+<codeline lineno="208"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@details<sp />co_awaits<sp />the<sp />async<sp
+                    />permission<sp />check<sp />and</highlight></codeline>
+<codeline lineno="209"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />`Controller::removeStaffAsync`.</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in,out]<sp />callback<sp />Completion<sp
+                    />handler,<sp />invoked<sp />once<sp />with<sp
+                    />(status,</highlight></codeline>
+<codeline lineno="211"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />body).</highlight></codeline>
+<codeline lineno="212"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />requester<sp />Authenticated<sp
+                    />caller<sp />used<sp />for<sp />the<sp
+                    />staff-management</highlight></codeline>
+<codeline lineno="213"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />permission<sp />check.</highlight></codeline>
+<codeline lineno="214"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />data<sp />Raw<sp />JSON<sp />body;<sp
+                    />must<sp />remain<sp />valid<sp />until<sp />the<sp
+                    />task</highlight></codeline>
+<codeline lineno="215"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />completes.</highlight></codeline>
+<codeline lineno="216"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="217"><highlight class="normal"><sp /><sp
+                    />drogon::Task&lt;void&gt;<sp /><ref
+                        refid="classStaffController_1ac220308be6bf24122bfe037ea8c75e9c"
+                        kindref="member"
+                    >RemoveStaffFromEntityAsync</ref>(</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><ref
+                        refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3"
+                        kindref="member"
+                    >CALLBACK_</ref>&amp;&amp;<sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp />callback,</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp /><ref
+                        refid="structRequester"
+                        kindref="compound"
+                    >Requester</ref>&amp;&amp;<sp
+                    />requester,</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />std::string_view<sp /><sp />data)<sp
+                    /></highlight><highlight
+                    class="keyword"
+                >override</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Pausable<sp
+                    />version<sp />of<sp />Remove.</highlight><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="221"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="222"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Coroutine<sp />form<sp />of<sp />@ref<sp
+                    />InviteStaffToEntity.</highlight></codeline>
+<codeline lineno="223"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@note<sp />The<sp />email-daemon<sp />POST<sp />is<sp
+                    />a<sp />synchronous<sp />cURL<sp />call<sp />in<sp
+                    />this<sp />variant</highlight></codeline>
+<codeline lineno="224"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />too.</highlight></codeline>
+<codeline lineno="225"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in,out]<sp />callback<sp />Completion<sp
+                    />handler,<sp />invoked<sp />once<sp />with<sp
+                    />(status,</highlight></codeline>
+<codeline lineno="226"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />body).</highlight></codeline>
+<codeline lineno="227"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />requester<sp />Authenticated<sp
+                    />caller<sp />used<sp />for<sp />the<sp
+                    />staff-management</highlight></codeline>
+<codeline lineno="228"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />permission<sp />check.</highlight></codeline>
+<codeline lineno="229"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />data<sp />Raw<sp />JSON<sp />body;<sp
+                    />must<sp />remain<sp />valid<sp />until<sp />the<sp
+                    />task</highlight></codeline>
+<codeline lineno="230"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />completes.</highlight></codeline>
+<codeline lineno="231"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="232"><highlight class="normal"><sp /><sp
+                    />drogon::Task&lt;void&gt;<sp /><ref
+                        refid="classStaffController_1a7bfaae0026f9082bb42968cf04b421d5"
+                        kindref="member"
+                    >InviteStaffToEntityAsync</ref>(</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><ref
+                        refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3"
+                        kindref="member"
+                    >CALLBACK_</ref>&amp;&amp;<sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp />callback,</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp /><ref
+                        refid="structRequester"
+                        kindref="compound"
+                    >Requester</ref>&amp;&amp;<sp
+                    />requester,</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />std::string_view<sp /><sp />data)<sp
+                    /></highlight><highlight
+                    class="keyword"
+                >override</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Pausable<sp
+                    />version<sp />of<sp />Invite;<sp
+                    />the</highlight><highlight class="normal" /></codeline>
+<codeline lineno="236"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />email<sp />send<sp />itself<sp />still<sp
+                    />blocks.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="237"><highlight class="normal" /></codeline>
+<codeline lineno="238"><highlight class="normal"><sp /></highlight><highlight
+                    class="keyword"
+                >private</highlight><highlight
+                    class="normal"
+                >:</highlight><highlight class="comment" /></codeline>
+<codeline lineno="239"><highlight class="comment"><sp /><sp />/**<sp />@brief<sp
+                    />Retained<sp />Configurator<sp />service<sp />handle<sp
+                    />obtained<sp />at<sp />construction.<sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="240"><highlight class="normal"><sp /><sp
+                    />std::shared_ptr&lt;Configurator&gt;</highlight></codeline>
+<codeline
+                lineno="241"
+                refid="classStaffController_1a3f42581637f6b2711eac8ada82ad135a"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><sp /><sp /><sp /><sp /><ref
+                        refid="classStaffController_1a3f42581637f6b2711eac8ada82ad135a"
+                        kindref="member"
+                    >cfg_</ref>;<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />A<sp />shared<sp />smart<sp />pointer<sp />to<sp
+                    />configuration;<sp />the<sp
+                    />trailing</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="242"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />underscore<sp />marks<sp />it<sp />as<sp />a<sp
+                    />private<sp />member.</highlight><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="243"><highlight class="comment"><sp /><sp />/**<sp />@brief<sp
+                    />Snapshot<sp />of<sp />the<sp />email-daemon<sp
+                    />endpoint/queue<sp />used<sp />to<sp />POST<sp
+                    />invites.</highlight></codeline>
+<codeline lineno="244"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="245"><highlight class="normal"><sp /><sp /><ref
+                        refid="classConfigurator_1ae7a8c53bf3a5ab860650fbc02354b222"
+                        kindref="member"
+                    >Configurator::EmailSenderConfig</ref></highlight></codeline>
+<codeline
+                lineno="246"
+                refid="classStaffController_1aab325c701b76d68ee35fb4202a1c4693"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><sp /><sp /><sp /><sp /><ref
+                        refid="classStaffController_1aab325c701b76d68ee35fb4202a1c4693"
+                        kindref="member"
+                    >email_sender_daemon_config_</ref>;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />A<sp
+                    />copy<sp />of<sp />where<sp />to<sp />send<sp />invite<sp
+                    />emails,</highlight><highlight class="normal" /></codeline>
+<codeline lineno="247"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />saved<sp />once<sp />so<sp />we<sp />do<sp />not<sp
+                    />re-read<sp />config</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="248"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />per<sp />request.</highlight><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="249"><highlight class="comment"><sp /><sp />/**<sp />@brief<sp
+                    />Shared<sp />authorisation<sp />service<sp />consulted<sp
+                    />on<sp />every<sp />staff-management</highlight></codeline>
+<codeline lineno="250"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />request.<sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="251"><highlight class="normal"><sp /><sp
+                    />std::shared_ptr&lt;GateKeeper&gt;</highlight></codeline>
+<codeline
+                lineno="252"
+                refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><sp /><sp /><sp /><sp /><ref
+                        refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04"
+                        kindref="member"
+                    >gateKeeper</ref>;<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Shared<sp />smart<sp />pointer<sp />to<sp />the<sp
+                    />permission<sp />service<sp />used</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="253"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />before<sp />every<sp />staff<sp
+                    />change.</highlight><highlight class="normal" /></codeline>
 <codeline lineno="254"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="src/controllers/staffcontroller/staffcontroller.hpp"/>
+    <location file="src/controllers/staffcontroller/staffcontroller.hpp" />
   </compounddef>
 </doxygen>

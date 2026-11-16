@@ -10,7 +10,7 @@
     <includes local="no">string</includes>
     <includes refid="entity_8hpp" local="yes">entities/base/entity.hpp</includes>
     <includes refid="entities_2base_2types_8hpp" local="yes">entities/base/types.hpp</includes>
-    <includes refid="message_8hpp" local="yes">utils/message/message.hpp</includes>
+    <includes refid="message_8hpp" local="yes">message/message.hpp</includes>
     <includedby refid="entities_2services_2clinics_2clinics_8hpp" local="yes">src/entities/services/clinics/clinics.hpp</includedby>
     <includedby refid="laboratories_8hpp" local="yes">src/entities/services/laboratories.hpp</includedby>
     <includedby refid="pharmacies_8hpp" local="yes">src/entities/services/pharmacies.hpp</includedby>
@@ -357,7 +357,7 @@
         </childnode>
       </node>
       <node id="27">
-        <label>utils/message/message.hpp</label>
+        <label>message/message.hpp</label>
         <link refid="message_8hpp"/>
         <childnode refid="28" relation="include">
         </childnode>
@@ -684,7 +684,7 @@
 <codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entity_8hpp" kindref="compound">entities/base/entity.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Types::StaffData,<sp/>the<sp/>staff-invitation<sp/>payload.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entities_2base_2types_8hpp" kindref="compound">entities/base/types.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">utils/message/message.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Message<sp/>logging<sp/>for<sp/>build<sp/>failures.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">message/message.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Message<sp/>logging<sp/>for<sp/>build<sp/>failures.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="49"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="50"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Convenience<sp/>alias<sp/>for<sp/>the<sp/>staff-invitation<sp/>payload<sp/>consumed<sp/>by<sp/>Service</highlight></codeline>

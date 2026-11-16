@@ -1,5 +1,10 @@
-<?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+<?xml version='1.0' encoding='UTF-8' standalone='no' ?>
+<doxygen
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="compound.xsd"
+    version="1.18.0"
+    xml:lang="en-US"
+>
   <compounddef id="permissioncache_8hpp" kind="file" language="C++">
     <compoundname>permissioncache.hpp</compoundname>
     <includes local="no">atomic</includes>
@@ -11,13 +16,19 @@
     <includes local="no">optional</includes>
     <includes local="no">string</includes>
     <includes local="no">unordered_map</includes>
-    <includes refid="configurator_8hpp" local="yes">configurator/configurator.hpp</includes>
+    <includes
+            refid="configurator_8hpp"
+            local="yes"
+        >configurator/configurator.hpp</includes>
     <includes refid="store_8hpp" local="yes">store/store.hpp</includes>
-    <includedby refid="permissionmanager__private_8hpp" local="yes">src/gatekeeper/permissionmanager/permissionmanager_private.hpp</includedby>
+    <includedby
+            refid="permissionmanager__private_8hpp"
+            local="yes"
+        >src/gatekeeper/permissionmanager/permissionmanager_private.hpp</includedby>
     <incdepgraph>
       <node id="11">
         <label>configurator/configurator.hpp</label>
-        <link refid="configurator_8hpp"/>
+        <link refid="configurator_8hpp" />
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
@@ -43,7 +54,7 @@
       </node>
       <node id="22">
         <label>defaults.hpp</label>
-        <link refid="defaults_8hpp"/>
+        <link refid="defaults_8hpp" />
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
@@ -51,7 +62,7 @@
       </node>
       <node id="17">
         <label>configurator/envloader/envloader.hpp</label>
-        <link refid="envloader_8hpp"/>
+        <link refid="envloader_8hpp" />
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
@@ -67,7 +78,7 @@
       </node>
       <node id="19">
         <label>envvars/envvars.hpp</label>
-        <link refid="envvars_8hpp"/>
+        <link refid="envvars_8hpp" />
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
@@ -75,7 +86,7 @@
       </node>
       <node id="1">
         <label>src/gatekeeper/permissionmanager/permissioncache.hpp</label>
-        <link refid="permissioncache_8hpp"/>
+        <link refid="permissioncache_8hpp" />
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
@@ -101,7 +112,7 @@
       </node>
       <node id="23">
         <label>store/store.hpp</label>
-        <link refid="store_8hpp"/>
+        <link refid="store_8hpp" />
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
@@ -120,8 +131,8 @@
         </childnode>
       </node>
       <node id="20">
-        <label>utils/message/message.hpp</label>
-        <link refid="message_8hpp"/>
+        <label>message/message.hpp</label>
+        <link refid="message_8hpp" />
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
@@ -188,35 +199,51 @@
     <invincdepgraph>
       <node id="1">
         <label>src/gatekeeper/permissionmanager/permissioncache.hpp</label>
-        <link refid="permissioncache_8hpp"/>
+        <link refid="permissioncache_8hpp" />
         <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="3">
         <label>src/gatekeeper/permissionmanager/permissionmanager.cpp</label>
-        <link refid="permissionmanager_8cpp"/>
+        <link refid="permissionmanager_8cpp" />
       </node>
       <node id="4">
-        <label>src/gatekeeper/permissionmanager/permissionmanager_private.cpp</label>
-        <link refid="permissionmanager__private_8cpp"/>
+        <label
+                >src/gatekeeper/permissionmanager/permissionmanager_private.cpp</label>
+        <link refid="permissionmanager__private_8cpp" />
       </node>
       <node id="2">
-        <label>src/gatekeeper/permissionmanager/permissionmanager_private.hpp</label>
-        <link refid="permissionmanager__private_8hpp"/>
+        <label
+                >src/gatekeeper/permissionmanager/permissionmanager_private.hpp</label>
+        <link refid="permissionmanager__private_8hpp" />
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
-    <innerclass refid="classBasicPermissionCache" prot="public">BasicPermissionCache</innerclass>
-    <innerclass refid="structBasicPermissionCache_1_1Entry" prot="private">BasicPermissionCache::Entry</innerclass>
+    <innerclass
+            refid="classBasicPermissionCache"
+            prot="public"
+        >BasicPermissionCache</innerclass>
+    <innerclass
+            refid="structBasicPermissionCache_1_1Entry"
+            prot="private"
+        >BasicPermissionCache::Entry</innerclass>
     <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="permissioncache_8hpp_1af89da15e5a12d8824c558d44b4452c26" prot="public" static="no">
-        <type><ref refid="classBasicPermissionCache" kindref="compound">BasicPermissionCache</ref>&lt;&gt;</type>
-        <definition>using PermissionCache = 
+      <memberdef
+                kind="typedef"
+                id="permissioncache_8hpp_1af89da15e5a12d8824c558d44b4452c26"
+                prot="public"
+                static="no"
+            >
+        <type><ref
+                        refid="classBasicPermissionCache"
+                        kindref="compound"
+                    >BasicPermissionCache</ref>&lt;&gt;</type>
+        <definition>using PermissionCache =
 BasicPermissionCache&lt;&gt;</definition>
-        <argsstring></argsstring>
+        <argsstring />
         <name>PermissionCache</name>
         <briefdescription>
 <para>Convenience alias for the default-clock permission cache. </para>
@@ -225,24 +252,47 @@ BasicPermissionCache&lt;&gt;</definition>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="278" column="1" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="278" bodyend="-1"/>
+        <location
+                    file="src/gatekeeper/permissionmanager/permissioncache.hpp"
+                    line="278"
+                    column="1"
+                    bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp"
+                    bodystart="278"
+                    bodyend="-1"
+                />
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>A short-lived, thread-safe cache of permission data read from the database. (Originally: &quot;Idle-expiry cache for permission lookups, keyed by
+<para
+            >A short-lived, thread-safe cache of permission data read from the database. (Originally: &quot;Idle-expiry cache for permission lookups, keyed by
 the generated permission.&quot;). </para>
     </briefdescription>
     <detaileddescription>
-<para>This header defines a template cache that remembers the answer to a permission query for a while. Each use renews the entry&apos;s lifetime; unused entries expire. A generation counter prevents a slow read from putting stale data back after the cache has been flushed.</para>
-<para>WHY THIS FILE MATTERS IN THE SERVER: Permission checks happen on almost every request. Reading them from PostgreSQL each time would be slow, so <ref refid="permissionmanager__private_8cpp_1a4b3594f285e47314250d2927a3b7cc87" kindref="member">PermissionManagerPrivate</ref> asks this cache first. Without it, authorization would mean a database round-trip on every API call.</para>
+<para
+            >This header defines a template cache that remembers the answer to a permission query for a while. Each use renews the entry&apos;s lifetime; unused entries expire. A generation counter prevents a slow read from putting stale data back after the cache has been flushed.</para>
+<para
+            >WHY THIS FILE MATTERS IN THE SERVER: Permission checks happen on almost every request. Reading them from PostgreSQL each time would be slow, so <ref
+                    refid="permissionmanager__private_8cpp_1a4b3594f285e47314250d2927a3b7cc87"
+                    kindref="member"
+                >PermissionManagerPrivate</ref> asks this cache first. Without it, authorization would mean a database round-trip on every API call.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
-<listitem><para>Caching and time-to-live (TTL): <ulink url="https://en.wikipedia.org/wiki/Cache_(computing)">https://en.wikipedia.org/wiki/Cache_(computing)</ulink></para>
-</listitem><listitem><para>Mutexes and thread safety: <ulink url="https://en.cppreference.com/w/cpp/thread/mutex">https://en.cppreference.com/w/cpp/thread/mutex</ulink></para>
-</listitem><listitem><para>std::chrono (clocks and durations): <ulink url="https://en.cppreference.com/w/cpp/chrono">https://en.cppreference.com/w/cpp/chrono</ulink></para>
-</listitem><listitem><para>std::unordered_map (hash table): <ulink url="https://en.cppreference.com/w/cpp/container/unordered_map">https://en.cppreference.com/w/cpp/container/unordered_map</ulink></para>
+<listitem><para>Caching and time-to-live (TTL): <ulink
+                                url="https://en.wikipedia.org/wiki/Cache_(computing)"
+                            >https://en.wikipedia.org/wiki/Cache_(computing)</ulink></para>
+</listitem><listitem><para>Mutexes and thread safety: <ulink
+                                url="https://en.cppreference.com/w/cpp/thread/mutex"
+                            >https://en.cppreference.com/w/cpp/thread/mutex</ulink></para>
+</listitem><listitem><para>std::chrono (clocks and durations): <ulink
+                                url="https://en.cppreference.com/w/cpp/chrono"
+                            >https://en.cppreference.com/w/cpp/chrono</ulink></para>
+</listitem><listitem><para>std::unordered_map (hash table): <ulink
+                                url="https://en.cppreference.com/w/cpp/container/unordered_map"
+                            >https://en.cppreference.com/w/cpp/container/unordered_map</ulink></para>
 </listitem></itemizedlist>
 </para>
-<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+<para><simplesect kind="author"><para>Amr Osman <ulink
+                            url="mailto:dr3mro@gmail.com"
+                        >dr3mro@gmail.com</ulink> </para>
 </simplesect>
 <simplesect kind="date"><para>2026-11-16 </para>
 </simplesect>
@@ -250,286 +300,1490 @@ the generated permission.&quot;). </para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>permissioncache.hpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>A<sp/>short-lived,<sp/>thread-safe<sp/>cache<sp/>of<sp/>permission<sp/>data<sp/>read<sp/>from<sp/>the</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>database.<sp/>(Originally:<sp/>&quot;Idle-expiry<sp/>cache<sp/>for<sp/>permission<sp/>lookups,<sp/>keyed<sp/>by</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>the<sp/>generated<sp/>permission.&quot;)</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>defines<sp/>a<sp/>template<sp/>cache<sp/>that<sp/>remembers<sp/>the<sp/>answer<sp/>to<sp/>a</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>permission<sp/>query<sp/>for<sp/>a<sp/>while.<sp/>Each<sp/>use<sp/>renews<sp/>the<sp/>entry&apos;s<sp/>lifetime;</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unused<sp/>entries<sp/>expire.<sp/>A<sp/>generation<sp/>counter<sp/>prevents<sp/>a<sp/>slow<sp/>read</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>from<sp/>putting<sp/>stale<sp/>data<sp/>back<sp/>after<sp/>the<sp/>cache<sp/>has<sp/>been<sp/>flushed.</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Permission<sp/>checks<sp/>happen<sp/>on<sp/>almost<sp/>every<sp/>request.<sp/>Reading<sp/>them<sp/>from</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>PostgreSQL<sp/>each<sp/>time<sp/>would<sp/>be<sp/>slow,<sp/>so<sp/>PermissionManagerPrivate<sp/>asks<sp/>this</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>cache<sp/>first.<sp/>Without<sp/>it,<sp/>authorization<sp/>would<sp/>mean<sp/>a<sp/>database<sp/>round-trip<sp/>on</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>every<sp/>API<sp/>call.</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>Caching<sp/>and<sp/>time-to-live<sp/>(TTL):</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>https://en.wikipedia.org/wiki/Cache_(computing)</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>Mutexes<sp/>and<sp/>thread<sp/>safety:<sp/>https://en.cppreference.com/w/cpp/thread/mutex</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>std::chrono<sp/>(clocks<sp/>and<sp/>durations):</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/chrono</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>-<sp/>std::unordered_map<sp/>(hash<sp/>table):</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/container/unordered_map</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="28"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>std::atomic<sp/>for<sp/>a<sp/>generation<sp/>counter<sp/>shared<sp/>between<sp/>threads.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;atomic&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;chrono&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Clocks,<sp/>time<sp/>points<sp/>and<sp/>seconds<sp/>used<sp/>for<sp/>expiry.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::uint64_t<sp/>for<sp/>the<sp/>generation<sp/>token.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iterator&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::next,<sp/>used<sp/>to<sp/>advance<sp/>a<sp/>map<sp/>iterator<sp/>while<sp/>erasing.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>jsoncons::json,<sp/>the<sp/>type<sp/>of<sp/>the<sp/>cached<sp/>permission<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/basic_json.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::mutex<sp/>and<sp/>std::lock_guard<sp/>for<sp/>thread<sp/>safety.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::optional<sp/>for<sp/>&quot;maybe<sp/>a<sp/>cached<sp/>value&quot;.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>for<sp/>the<sp/>cache<sp/>key<sp/>(the<sp/>query<sp/>text).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>underlying<sp/>hash<sp/>table<sp/>that<sp/>stores<sp/>the<sp/>entries.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PermissionCacheConfig,<sp/>the<sp/>source<sp/>of<sp/>the<sp/>TTL.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="configurator_8hpp" kindref="compound">configurator/configurator.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Store,<sp/>used<sp/>to<sp/>reach<sp/>the<sp/>global<sp/>Configurator<sp/>in<sp/>instance().</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="store_8hpp" kindref="compound">store/store.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp />*<sp />@file<sp
+                    />permissioncache.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp />*<sp />@brief<sp />A<sp
+                    />short-lived,<sp />thread-safe<sp />cache<sp />of<sp
+                    />permission<sp />data<sp />read<sp />from<sp
+                    />the</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp />*<sp />database.<sp
+                    />(Originally:<sp />&quot;Idle-expiry<sp />cache<sp />for<sp
+                    />permission<sp />lookups,<sp />keyed<sp
+                    />by</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp />*<sp />the<sp
+                    />generated<sp />permission.&quot;)</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp />*<sp />@details<sp
+                    />This<sp />header<sp />defines<sp />a<sp />template<sp
+                    />cache<sp />that<sp />remembers<sp />the<sp />answer<sp
+                    />to<sp />a</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp />*<sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp />permission<sp
+                    />query<sp />for<sp />a<sp />while.<sp />Each<sp />use<sp
+                    />renews<sp />the<sp />entry&apos;s<sp
+                    />lifetime;</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp />*<sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp />unused<sp />entries<sp
+                    />expire.<sp />A<sp />generation<sp />counter<sp
+                    />prevents<sp />a<sp />slow<sp />read</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp />*<sp />from<sp
+                    />putting<sp />stale<sp />data<sp />back<sp />after<sp
+                    />the<sp />cache<sp />has<sp />been<sp
+                    />flushed.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp />*<sp />WHY<sp />THIS<sp
+                    />FILE<sp />MATTERS<sp />IN<sp />THE<sp
+                    />SERVER:</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp />*<sp />Permission<sp
+                    />checks<sp />happen<sp />on<sp />almost<sp />every<sp
+                    />request.<sp />Reading<sp />them<sp
+                    />from</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp />*<sp />PostgreSQL<sp
+                    />each<sp />time<sp />would<sp />be<sp />slow,<sp />so<sp
+                    />PermissionManagerPrivate<sp />asks<sp
+                    />this</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp />*<sp />cache<sp
+                    />first.<sp />Without<sp />it,<sp />authorization<sp
+                    />would<sp />mean<sp />a<sp />database<sp />round-trip<sp
+                    />on</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp />*<sp />every<sp />API<sp
+                    />call.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp />*<sp />CONCEPTS<sp
+                    />TO<sp />LEARN<sp />(for<sp
+                    />beginners):</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp />*<sp />-<sp />Caching<sp
+                    />and<sp />time-to-live<sp />(TTL):</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp />*<sp
+                    />https://en.wikipedia.org/wiki/Cache_(computing)</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp />*<sp />-<sp />Mutexes<sp
+                    />and<sp />thread<sp />safety:<sp
+                    />https://en.cppreference.com/w/cpp/thread/mutex</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp />*<sp />-<sp
+                    />std::chrono<sp />(clocks<sp />and<sp
+                    />durations):</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp />*<sp
+                    />https://en.cppreference.com/w/cpp/chrono</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp />*<sp />-<sp
+                    />std::unordered_map<sp />(hash<sp
+                    />table):</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp />*<sp
+                    />https://en.cppreference.com/w/cpp/container/unordered_map</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp />*<sp />@author<sp
+                    />Amr<sp />Osman<sp
+                    />&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp />*<sp />@date<sp
+                    />2026-11-16</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="29"><highlight class="normal" /></codeline>
+<codeline lineno="30"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#pragma<sp />once<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Include<sp />this<sp />header<sp />at<sp />most<sp
+                    />once<sp />per<sp />source<sp />file.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="31"><highlight class="normal" /></codeline>
+<codeline lineno="32"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />std::atomic<sp />for<sp />a<sp />generation<sp
+                    />counter<sp />shared<sp />between<sp
+                    />threads.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="33"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;atomic&gt;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="34"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;chrono&gt;</highlight><highlight
+                    class="normal"
+                ><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Clocks,<sp />time<sp />points<sp />and<sp />seconds<sp
+                    />used<sp />for<sp />expiry.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="35"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;cstdint&gt;</highlight><highlight
+                    class="normal"
+                ><sp /><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />std::uint64_t<sp />for<sp />the<sp />generation<sp
+                    />token.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="36"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;iterator&gt;</highlight><highlight
+                    class="normal"
+                ><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />std::next,<sp />used<sp />to<sp />advance<sp />a<sp
+                    />map<sp />iterator<sp />while<sp
+                    />erasing.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="37"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />jsoncons::json,<sp />the<sp />type<sp />of<sp />the<sp
+                    />cached<sp />permission<sp />data.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="38"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp
+                    />&lt;jsoncons/basic_json.hpp&gt;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="39"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;mutex&gt;</highlight><highlight
+                    class="normal"
+                ><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />std::mutex<sp />and<sp />std::lock_guard<sp />for<sp
+                    />thread<sp />safety.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="40"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;optional&gt;</highlight><highlight
+                    class="normal"
+                ><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />std::optional<sp />for<sp />&quot;maybe<sp />a<sp
+                    />cached<sp />value&quot;.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="41"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;string&gt;</highlight><highlight
+                    class="normal"
+                ><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />std::string<sp />for<sp />the<sp />cache<sp />key<sp
+                    />(the<sp />query<sp />text).</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="42"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;unordered_map&gt;</highlight><highlight
+                    class="normal"
+                ><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />The<sp />underlying<sp />hash<sp />table<sp />that<sp
+                    />stores<sp />the<sp />entries.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="43"><highlight class="normal" /></codeline>
+<codeline lineno="44"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />PermissionCacheConfig,<sp />the<sp />source<sp />of<sp
+                    />the<sp />TTL.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="45"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&quot;<ref
+                        refid="configurator_8hpp"
+                        kindref="compound"
+                    >configurator/configurator.hpp</ref>&quot;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="46"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />Store,<sp />used<sp />to<sp />reach<sp />the<sp
+                    />global<sp />Configurator<sp />in<sp
+                    />instance().</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="47"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&quot;<ref
+                        refid="store_8hpp"
+                        kindref="compound"
+                    >store/store.hpp</ref>&quot;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="48"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
 <codeline lineno="49"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>@class<sp/>BasicPermissionCache</highlight></codeline>
-<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Idle-expiry<sp/>cache<sp/>for<sp/>permission<sp/>lookups,<sp/>keyed<sp/>by<sp/>the<sp/>generated</highlight></codeline>
-<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>permission<sp/>query<sp/>(which<sp/>embeds<sp/>the<sp/>entity<sp/>table<sp/>and<sp/>id).</highlight></codeline>
-<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>@details<sp/>Each<sp/>hit<sp/>renews<sp/>the<sp/>entry&apos;s<sp/>lifetime;<sp/>an<sp/>entry<sp/>that<sp/>is<sp/>not<sp/>used<sp/>for</highlight></codeline>
-<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>the<sp/>TTL<sp/>is<sp/>removed.<sp/>The<sp/>TTL<sp/>comes<sp/>from<sp/>Configurator::PermissionCacheConfig</highlight></codeline>
-<codeline lineno="55"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(PERMISSION_CACHE_TTL,<sp/>default<sp/>300<sp/>seconds);<sp/>0<sp/>disables<sp/>the<sp/>cache.</highlight></codeline>
-<codeline lineno="56"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="57"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Security<sp/>trade-off:<sp/>there<sp/>is<sp/>no<sp/>invalidation<sp/>on<sp/>writes,<sp/>so<sp/>a<sp/>revoked</highlight></codeline>
-<codeline lineno="58"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>permission<sp/>can<sp/>keep<sp/>being<sp/>served<sp/>while<sp/>its<sp/>entry<sp/>stays<sp/>in<sp/>use.</highlight></codeline>
-<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>invalidateAll()<sp/>is<sp/>available<sp/>for<sp/>callers<sp/>that<sp/>need<sp/>an<sp/>explicit<sp/>flush.</highlight></codeline>
-<codeline lineno="60"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="61"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>All<sp/>public<sp/>operations<sp/>are<sp/>thread-safe<sp/>via<sp/>mutex_;<sp/>generation_<sp/>is</highlight></codeline>
-<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>atomic<sp/>so<sp/>readers<sp/>can<sp/>take<sp/>a<sp/>token<sp/>without<sp/>locking<sp/>and<sp/>have<sp/>a<sp/>racing<sp/>put()</highlight></codeline>
-<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>rejected.<sp/>Think<sp/>of<sp/>it<sp/>as<sp/>a<sp/>notepad:<sp/>look<sp/>up<sp/>a<sp/>question,<sp/>and<sp/>if<sp/>the<sp/>answer<sp/>is</highlight></codeline>
-<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>still<sp/>fresh<sp/>use<sp/>it;<sp/>otherwise<sp/>ask<sp/>the<sp/>database<sp/>and<sp/>jot<sp/>the<sp/>new<sp/>answer<sp/>down.</highlight></codeline>
-<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>@tparam<sp/>ClockT<sp/>Clock<sp/>used<sp/>for<sp/>idle<sp/>expiry;<sp/>defaults<sp/>to</highlight></codeline>
-<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>std::chrono::steady_clock.</highlight></codeline>
-<codeline lineno="67"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>ClockT<sp/>=<sp/>std::chrono::</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>clock<sp/>is<sp/>a<sp/>template<sp/>parameter<sp/>mainly<sp/>so</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>tests<sp/>can<sp/>substitute<sp/>a<sp/>fake<sp/>clock.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;Basic&quot;<sp/>because<sp/>a</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>convenience<sp/>alias</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>with<sp/>the<sp/>default</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clock<sp/>is<sp/>provided<sp/>at</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>end.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>steady_clock&gt;</highlight></codeline>
-<codeline lineno="77" refid="classBasicPermissionCache" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBasicPermissionCache_1a3fc019a15afdf799e9ff844805f5cf5c" kindref="member">BasicPermissionCache</ref><sp/>{</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Everything<sp/>below<sp/>is<sp/>callable<sp/>by<sp/>users<sp/>of<sp/>the<sp/>cache.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="79" refid="classBasicPermissionCache_1a3e99cd08033671e7ac34d935c0abc383" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classBasicPermissionCache_1a3e99cd08033671e7ac34d935c0abc383" kindref="member">Clock</ref><sp/>=<sp/>ClockT;<sp/></highlight><highlight class="comment">/**&lt;<sp/>Clock<sp/>type<sp/>used<sp/>for<sp/>expiry<sp/>timestamps;<sp/>a<sp/>local</highlight></codeline>
-<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nickname<sp/>for<sp/>readability.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="81" refid="classBasicPermissionCache_1a38b5bd729bd632f83084ea88809e34fd" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classBasicPermissionCache_1a38b5bd729bd632f83084ea88809e34fd" kindref="member">TimePoint</ref><sp/>=</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Clock::time_point;<sp/></highlight><highlight class="comment">/**&lt;<sp/>Timestamp<sp/>type<sp/>produced<sp/>by<sp/>Clock;<sp/>a</highlight></codeline>
-<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>local<sp/>nickname<sp/>used<sp/>for<sp/>deadlines.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="85"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Constructs<sp/>a<sp/>cache<sp/>with<sp/>the<sp/>given<sp/>idle<sp/>TTL<sp/>and<sp/>capacity.</highlight></codeline>
-<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>ttl<sp/>Idle<sp/>lifetime;<sp/>a<sp/>value<sp/>of<sp/>zero<sp/>disables<sp/>the<sp/>cache</highlight></codeline>
-<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/>*<sp/>entirely.</highlight></codeline>
-<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>max_entries<sp/>Capacity;<sp/>when<sp/>reached<sp/>on<sp/>put(),<sp/>the<sp/>whole<sp/>map<sp/>is</highlight></codeline>
-<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/>*<sp/>cleared.</highlight></codeline>
-<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="92" refid="classBasicPermissionCache_1a3fc019a15afdf799e9ff844805f5cf5c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classBasicPermissionCache_1a3fc019a15afdf799e9ff844805f5cf5c" kindref="member">BasicPermissionCache</ref>(std::chrono::seconds<sp/>ttl,</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>max_entries<sp/>=<sp/>10000)</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e" kindref="member">ttl_</ref>(ttl),<sp/><ref refid="classBasicPermissionCache_1afdda5e1b17df93c281620fb1cda65529" kindref="member">max_entries_</ref>(max_entries)<sp/>{</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Stores<sp/>the<sp/>idle<sp/>lifetime<sp/>and<sp/>capacity;<sp/>&quot;explicit&quot;<sp/>prevents<sp/>accidental</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>implicit<sp/>construction.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="97"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="98"><highlight class="comment"><sp/><sp/>/**<sp/>@brief<sp/>Whether<sp/>caching<sp/>is<sp/>active<sp/>(i.e.<sp/>the<sp/>TTL<sp/>is<sp/>positive).<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="99" refid="classBasicPermissionCache_1a8bc94b095c9e39dcdc328b79671cb768" refkind="member"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBasicPermissionCache_1a8bc94b095c9e39dcdc328b79671cb768" kindref="member">enabled</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e" kindref="member">ttl_</ref>.count()<sp/>&gt;<sp/>0;</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Caching<sp/>is<sp/>on<sp/>only<sp/>when<sp/>the<sp/>TTL<sp/>is<sp/>a<sp/>positive<sp/>number<sp/>of<sp/>seconds.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="103"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Token<sp/>to<sp/>pass<sp/>to<sp/>put();<sp/>a<sp/>put<sp/>with<sp/>a<sp/>stale<sp/>token<sp/>is<sp/>dropped,<sp/>so<sp/>a<sp/>read</highlight></codeline>
-<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/>*<sp/>that<sp/>raced<sp/>with<sp/>a<sp/>write<sp/>cannot<sp/>store<sp/>pre-write<sp/>data.</highlight></codeline>
-<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="107" refid="classBasicPermissionCache_1a96ddf9f59ee4f1f686cab167c68effbb" refkind="member"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/>uint64_t<sp/><ref refid="classBasicPermissionCache_1a96ddf9f59ee4f1f686cab167c68effbb" kindref="member">generation</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBasicPermissionCache_1ac46e90790cb55a68825ada64c3924ee3" kindref="member">generation_</ref>.load(std::memory_order_acquire);</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Reads<sp/>the<sp/>current<sp/>epoch<sp/>without<sp/>locking;<sp/>acquire<sp/>pairs<sp/>with<sp/>the</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>release<sp/>in<sp/>invalidateAll().</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="112"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Looks<sp/>up<sp/>@p<sp/>key,<sp/>renewing<sp/>the<sp/>entry&apos;s<sp/>idle<sp/>timer<sp/>on<sp/>a<sp/>hit.</highlight></codeline>
-<codeline lineno="114"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>key<sp/>Generated<sp/>permission<sp/>query<sp/>string.</highlight></codeline>
-<codeline lineno="115"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>cached<sp/>JSON<sp/>on<sp/>a<sp/>live<sp/>hit;<sp/>`std::nullopt`<sp/>when<sp/>disabled,</highlight></codeline>
-<codeline lineno="116"><highlight class="comment"><sp/><sp/><sp/>*<sp/>absent,<sp/>or<sp/>expired<sp/>(expired<sp/>entries<sp/>are<sp/>erased).</highlight></codeline>
-<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="118" refid="classBasicPermissionCache_1a617931f09a54fec0b8fc808ca00930db" refkind="member"><highlight class="normal"><sp/><sp/>std::optional&lt;jsoncons::json&gt;<sp/><ref refid="classBasicPermissionCache_1a617931f09a54fec0b8fc808ca00930db" kindref="member">get</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key)<sp/>{</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>caching<sp/>is<sp/>disabled,<sp/>never<sp/>pretend<sp/>to<sp/>have<sp/>a</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cached<sp/>answer.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBasicPermissionCache_1a8bc94b095c9e39dcdc328b79671cb768" kindref="member">enabled</ref>())<sp/>{</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>value<sp/>to<sp/>give<sp/>back.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6" kindref="member">mutex_</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Lock<sp/>for<sp/>the<sp/>whole<sp/>lookup<sp/>so<sp/>no<sp/>other<sp/>thread<sp/>can<sp/>change</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>map<sp/>mid-read.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/><ref refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" kindref="member">map_</ref>.find(key);<sp/><sp/></highlight><highlight class="comment">//<sp/>Look<sp/>for<sp/>an<sp/>entry<sp/>with<sp/>this<sp/>query<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Not<sp/>found:<sp/>a<sp/>plain<sp/>cache<sp/>miss.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>==<sp/><ref refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" kindref="member">map_</ref>.end())<sp/>{</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Caller<sp/>should<sp/>read<sp/>from<sp/>the<sp/>database.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Found<sp/>but<sp/>too<sp/>old<sp/>(idle<sp/>past<sp/>its<sp/>TTL).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(Clock::now()<sp/>&gt;=<sp/>it-&gt;second.expires)<sp/>{</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" kindref="member">map_</ref>.erase(it);<sp/><sp/></highlight><highlight class="comment">//<sp/>Remove<sp/>the<sp/>stale<sp/>entry<sp/>so<sp/>it<sp/>cannot<sp/>be<sp/>used<sp/>again.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Treat<sp/>a<sp/>stale<sp/>entry<sp/>as<sp/>a<sp/>miss.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>it-&gt;second.expires<sp/>=</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Clock::now()<sp/>+<sp/><ref refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e" kindref="member">ttl_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>used:<sp/>renew<sp/>the<sp/>idle<sp/>timer<sp/>because<sp/>this</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>entry<sp/>was<sp/>just<sp/>used.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>it-&gt;second.value;<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>back<sp/>the<sp/>cached<sp/>JSON<sp/>by<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="143"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="144"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Stores<sp/>@p<sp/>value<sp/>under<sp/>@p<sp/>key<sp/>if<sp/>the<sp/>cache<sp/>is<sp/>still<sp/>in<sp/>the<sp/>same</highlight></codeline>
-<codeline lineno="145"><highlight class="comment"><sp/><sp/><sp/>*<sp/>generation.</highlight></codeline>
-<codeline lineno="146"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>The<sp/>generation<sp/>check<sp/>prevents<sp/>a<sp/>read<sp/>that<sp/>raced<sp/>with<sp/>an</highlight></codeline>
-<codeline lineno="147"><highlight class="comment"><sp/><sp/><sp/>*<sp/>invalidation<sp/>from<sp/>re-inserting<sp/>pre-write<sp/>data.<sp/>Before<sp/>inserting,<sp/>expired</highlight></codeline>
-<codeline lineno="148"><highlight class="comment"><sp/><sp/><sp/>*<sp/>entries<sp/>are<sp/>swept<sp/>and,<sp/>if<sp/>the<sp/>map<sp/>is<sp/>full,<sp/>all<sp/>entries<sp/>are<sp/>cleared.</highlight></codeline>
-<codeline lineno="149"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>key<sp/>Generated<sp/>permission<sp/>query<sp/>string.</highlight></codeline>
-<codeline lineno="150"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>value<sp/>Permissions<sp/>JSON<sp/>returned<sp/>by<sp/>the<sp/>database.</highlight></codeline>
-<codeline lineno="151"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>generation_at_read<sp/>Token<sp/>from<sp/>generation()<sp/>taken<sp/>before<sp/>the</highlight></codeline>
-<codeline lineno="152"><highlight class="comment"><sp/><sp/><sp/>*<sp/>read.</highlight></codeline>
-<codeline lineno="153"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="154" refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" kindref="member">put</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><sp/><sp/><sp/>key,</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>jsoncons::json&amp;<sp/>value,</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>generation_at_read)<sp/>{</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Nothing<sp/>to<sp/>store<sp/>when<sp/>caching<sp/>is<sp/>off.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBasicPermissionCache_1a8bc94b095c9e39dcdc328b79671cb768" kindref="member">enabled</ref>())<sp/>{</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Do<sp/>nothing.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6" kindref="member">mutex_</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Guard<sp/>the<sp/>map<sp/>for<sp/>the<sp/>whole<sp/>operation.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>flush<sp/>happened<sp/>while<sp/>the</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>database<sp/>read<sp/>was<sp/>in<sp/>flight.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(generation_at_read<sp/>!=<sp/><ref refid="classBasicPermissionCache_1ac46e90790cb55a68825ada64c3924ee3" kindref="member">generation_</ref>.load(std::memory_order_acquire))<sp/>{</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Drop<sp/>this<sp/>stale<sp/>result<sp/>instead<sp/>of<sp/>re-inserting<sp/>old<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBasicPermissionCache_1a7191cb562feddfcea0c6172b11df74eb" kindref="member">sweepExpired</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>try<sp/>to<sp/>make<sp/>room<sp/>by<sp/>removing<sp/>already-expired</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>entries.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Still<sp/>full:<sp/>hit<sp/>the<sp/>capacity<sp/>limit.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" kindref="member">map_</ref>.size()<sp/>&gt;=<sp/><ref refid="classBasicPermissionCache_1afdda5e1b17df93c281620fb1cda65529" kindref="member">max_entries_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" kindref="member">map_</ref>.clear();<sp/><sp/></highlight><highlight class="comment">//<sp/>Simplest<sp/>policy:<sp/>throw<sp/>everything<sp/>away<sp/>to<sp/>bound</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>memory<sp/>use.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" kindref="member">map_</ref>[key]<sp/>=<sp/><ref refid="structBasicPermissionCache_1_1Entry" kindref="compound">Entry</ref>{value,</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Clock::now()<sp/>+</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e" kindref="member">ttl_</ref>};<sp/><sp/></highlight><highlight class="comment">//<sp/>Store<sp/>the<sp/>value<sp/>with<sp/>a<sp/>fresh<sp/>idle<sp/>deadline.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="180"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="181"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Flushes<sp/>all<sp/>entries<sp/>and<sp/>bumps<sp/>the<sp/>generation<sp/>so<sp/>any<sp/>pending<sp/>stale</highlight></codeline>
-<codeline lineno="182"><highlight class="comment"><sp/><sp/><sp/>*<sp/>put()<sp/>is<sp/>dropped.</highlight></codeline>
-<codeline lineno="183"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Callers<sp/>can<sp/>use<sp/>this<sp/>for<sp/>an<sp/>explicit<sp/>invalidation<sp/>(e.g.<sp/>after<sp/>a</highlight></codeline>
-<codeline lineno="184"><highlight class="comment"><sp/><sp/><sp/>*<sp/>permission<sp/>write),<sp/>since<sp/>the<sp/>cache<sp/>otherwise<sp/>has<sp/>no<sp/>write-triggered</highlight></codeline>
-<codeline lineno="185"><highlight class="comment"><sp/><sp/><sp/>*<sp/>invalidation.</highlight></codeline>
-<codeline lineno="186"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="187" refid="classBasicPermissionCache_1ad3230e761d0a35d3b772d299d8d72b09" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBasicPermissionCache_1ad3230e761d0a35d3b772d299d8d72b09" kindref="member">invalidateAll</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6" kindref="member">mutex_</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Serialize<sp/>the<sp/>flush<sp/>with<sp/>reads<sp/>and<sp/>writes.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBasicPermissionCache_1ac46e90790cb55a68825ada64c3924ee3" kindref="member">generation_</ref></highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.fetch_add(1,</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::memory_order_acq_rel);<sp/><sp/></highlight><highlight class="comment">//<sp/>Bump<sp/>the<sp/>epoch<sp/>so<sp/>any</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>in-flight<sp/>put()<sp/>with<sp/>the<sp/>old</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>token<sp/>is<sp/>rejected.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" kindref="member">map_</ref>.clear();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Remove<sp/>every<sp/>cached<sp/>entry.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="198"><highlight class="comment"><sp/><sp/>/**<sp/>@brief<sp/>Number<sp/>of<sp/>entries<sp/>currently<sp/>held<sp/>(including<sp/>any<sp/>not<sp/>yet<sp/>swept).</highlight></codeline>
-<codeline lineno="199"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="200" refid="classBasicPermissionCache_1a66c8c31a6096dff363916fee3be53fe4" refkind="member"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classBasicPermissionCache_1a66c8c31a6096dff363916fee3be53fe4" kindref="member">size</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock(</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6" kindref="member">mutex_</ref>);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Lock<sp/>so<sp/>the<sp/>size<sp/>is<sp/>read<sp/>consistently.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" kindref="member">map_</ref>.size();<sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>entries<sp/>currently<sp/>held<sp/>(expired<sp/>ones</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>may<sp/>still<sp/>be<sp/>present<sp/>until<sp/>swept).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="206"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="207"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="208"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>process-wide<sp/>singleton,<sp/>configured<sp/>from<sp/>Configurator.</highlight></codeline>
-<codeline lineno="209"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>The<sp/>singleton&apos;s<sp/>TTL<sp/>is<sp/>fixed<sp/>at<sp/>first<sp/>use<sp/>from</highlight></codeline>
-<codeline lineno="210"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Configurator::PermissionCacheConfig;<sp/>thread-safe<sp/>initialization</highlight></codeline>
-<codeline lineno="211"><highlight class="comment"><sp/><sp/><sp/>*<sp/>is<sp/>guaranteed<sp/>by<sp/>the<sp/>function-local<sp/>static.</highlight></codeline>
-<codeline lineno="212"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="213" refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classBasicPermissionCache_1a3fc019a15afdf799e9ff844805f5cf5c" kindref="member">BasicPermissionCache</ref>&amp;<sp/><ref refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f" kindref="member">instance</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classBasicPermissionCache_1a3fc019a15afdf799e9ff844805f5cf5c" kindref="member">BasicPermissionCache</ref><sp/>cache(</highlight></codeline>
-<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject&lt;Configurator&gt;</ref>()</highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;<ref refid="classBasicPermissionCache_1a617931f09a54fec0b8fc808ca00930db" kindref="member">get&lt;Configurator::PermissionCacheConfig&gt;</ref>()</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.ttl);<sp/><sp/></highlight><highlight class="comment">//<sp/>Created<sp/>once<sp/>on<sp/>first<sp/>use;<sp/>C++<sp/>guarantees<sp/>thread-safe</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initialization<sp/>of<sp/>a<sp/>function-local<sp/>static.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>cache;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Every<sp/>caller<sp/>shares<sp/>this<sp/>one<sp/>process-wide<sp/>cache.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="221"><highlight class="normal"></highlight></codeline>
-<codeline lineno="222"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="223"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="224"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Erases<sp/>entries<sp/>idle<sp/>past<sp/>the<sp/>TTL,<sp/>at<sp/>most<sp/>once<sp/>per<sp/>minute.</highlight></codeline>
-<codeline lineno="225"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Rate-limited<sp/>via<sp/>next_sweep_<sp/>to<sp/>avoid<sp/>a<sp/>full<sp/>scan<sp/>on<sp/>every</highlight></codeline>
-<codeline lineno="226"><highlight class="comment"><sp/><sp/><sp/>*<sp/>put();<sp/>expired<sp/>entries<sp/>that<sp/>are<sp/>looked<sp/>up<sp/>are<sp/>still<sp/>erased<sp/>immediately<sp/>by</highlight></codeline>
-<codeline lineno="227"><highlight class="comment"><sp/><sp/><sp/>*<sp/>get().</highlight></codeline>
-<codeline lineno="228"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@pre<sp/>Caller<sp/>holds<sp/>mutex_.</highlight></codeline>
-<codeline lineno="229"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="230"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Drop<sp/>entries<sp/>that<sp/>have<sp/>been<sp/>idle<sp/>past<sp/>the<sp/>TTL<sp/>(at<sp/>most<sp/>once<sp/>a<sp/>minute).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="231" refid="classBasicPermissionCache_1a7191cb562feddfcea0c6172b11df74eb" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBasicPermissionCache_1a7191cb562feddfcea0c6172b11df74eb" kindref="member">sweepExpired</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>now<sp/>=<sp/>Clock::now();<sp/><sp/></highlight><highlight class="comment">//<sp/>One<sp/>timestamp<sp/>for<sp/>the<sp/>whole<sp/>sweep<sp/>so</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>cutoff<sp/>is<sp/>consistent.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Rate<sp/>limit:<sp/>do<sp/>not<sp/>scan<sp/>more<sp/>than<sp/>about<sp/>once</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>minute.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(now<sp/>&lt;<sp/><ref refid="classBasicPermissionCache_1ad1eb0a45f99a5ef044d6a371c12aa01e" kindref="member">next_sweep_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Not<sp/>time<sp/>yet;<sp/>skip<sp/>the<sp/>work.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBasicPermissionCache_1ad1eb0a45f99a5ef044d6a371c12aa01e" kindref="member">next_sweep_</ref><sp/>=</highlight></codeline>
-<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>now<sp/>+<sp/>std::chrono::seconds{60};<sp/><sp/></highlight><highlight class="comment">//<sp/>Schedule<sp/>the<sp/>next<sp/>allowed<sp/>sweep.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/><ref refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" kindref="member">map_</ref>.begin();</highlight></codeline>
-<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Walk<sp/>every<sp/>entry;<sp/>note<sp/>there<sp/>is<sp/>no<sp/>++it<sp/>in</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>header.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>!=<sp/><ref refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" kindref="member">map_</ref>.end();)<sp/>{</highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>=<sp/>(now<sp/>&gt;=<sp/>it-&gt;second.expires)</highlight></codeline>
-<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>?<sp/><ref refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" kindref="member">map_</ref>.erase(it)</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>std::next(it);<sp/><sp/></highlight><highlight class="comment">//<sp/>Erase<sp/>expired<sp/>entries;<sp/>erase()<sp/>returns<sp/>the</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>next<sp/>iterator,<sp/>otherwise<sp/>advance<sp/>manually.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="250"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="251"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="252"><highlight class="comment"><sp/><sp/>/**<sp/>@brief<sp/>A<sp/>cached<sp/>permissions<sp/>value<sp/>together<sp/>with<sp/>its<sp/>idle-expiry</highlight></codeline>
-<codeline lineno="253"><highlight class="comment"><sp/><sp/><sp/>*<sp/>deadline.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="254" refid="structBasicPermissionCache_1_1Entry" refkind="compound"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structBasicPermissionCache_1_1Entry" kindref="compound">Entry</ref><sp/>{</highlight></codeline>
-<codeline lineno="255" refid="structBasicPermissionCache_1_1Entry_1a5347d94d5d97e1193e67b5947e1f2cbc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>jsoncons::json<sp/><ref refid="structBasicPermissionCache_1_1Entry_1a5347d94d5d97e1193e67b5947e1f2cbc" kindref="member">value</ref>;<sp/></highlight><highlight class="comment">/**&lt;<sp/>Cached<sp/>permissions<sp/>JSON,<sp/>the<sp/>actual<sp/>answer<sp/>we</highlight></codeline>
-<codeline lineno="256"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>are<sp/>storing.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="257" refid="structBasicPermissionCache_1_1Entry_1aa4d64f4c1a99f8b22a2be95d0a4a2844" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBasicPermissionCache_1a38b5bd729bd632f83084ea88809e34fd" kindref="member">TimePoint</ref><sp/><ref refid="structBasicPermissionCache_1_1Entry_1aa4d64f4c1a99f8b22a2be95d0a4a2844" kindref="member">expires</ref>;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/**&lt;<sp/>Idle<sp/>deadline;<sp/>renewed<sp/>on<sp/>every<sp/>hit<sp/>so<sp/>busy</highlight></codeline>
-<codeline lineno="258"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entries<sp/>never<sp/>expire.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="259"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
-<codeline lineno="260"><highlight class="normal"></highlight></codeline>
-<codeline lineno="261" refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e" refkind="member"><highlight class="normal"><sp/><sp/>std::chrono::seconds<sp/><ref refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e" kindref="member">ttl_</ref>;<sp/></highlight><highlight class="comment">/**&lt;<sp/>Idle<sp/>lifetime;<sp/>zero<sp/>disables<sp/>caching.<sp/>Set</highlight></codeline>
-<codeline lineno="262"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>once<sp/>in<sp/>the<sp/>constructor.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="263"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="264" refid="classBasicPermissionCache_1afdda5e1b17df93c281620fb1cda65529" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBasicPermissionCache_1afdda5e1b17df93c281620fb1cda65529" kindref="member">max_entries_</ref>;<sp/><sp/></highlight><highlight class="comment">/**&lt;<sp/>Capacity<sp/>before<sp/>a<sp/>full<sp/>clear;<sp/>bounds<sp/>memory<sp/>usage.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="265" refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6" refkind="member"><highlight class="normal"><sp/><sp/>std::mutex<sp/><ref refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6" kindref="member">mutex_</ref>;<sp/></highlight><highlight class="comment">/**&lt;<sp/>Guards<sp/>map_<sp/>and<sp/>next_sweep_<sp/>so<sp/>threads<sp/>cannot</highlight></codeline>
-<codeline lineno="266"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>corrupt<sp/>them.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="267" refid="classBasicPermissionCache_1ac46e90790cb55a68825ada64c3924ee3" refkind="member"><highlight class="normal"><sp/><sp/>std::atomic&lt;uint64_t&gt;<sp/><ref refid="classBasicPermissionCache_1ac46e90790cb55a68825ada64c3924ee3" kindref="member">generation_</ref>{</highlight></codeline>
-<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>0};<sp/></highlight><highlight class="comment">/**&lt;<sp/>Bumped<sp/>on<sp/>invalidateAll()<sp/>to<sp/>reject<sp/>stale<sp/>puts;<sp/>atomic<sp/>so</highlight></codeline>
-<codeline lineno="269"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>readers<sp/>need<sp/>no<sp/>lock.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="270"><highlight class="normal"><sp/><sp/>std::unordered_map&lt;std::string,<sp/>Entry&gt;</highlight></codeline>
-<codeline lineno="271" refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" kindref="member">map_</ref>;<sp/></highlight><highlight class="comment">/**&lt;<sp/>Cache<sp/>contents<sp/>keyed<sp/>by<sp/>query<sp/>string,<sp/>the<sp/>actual<sp/>hash<sp/>table.</highlight></codeline>
-<codeline lineno="272"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="273" refid="classBasicPermissionCache_1ad1eb0a45f99a5ef044d6a371c12aa01e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBasicPermissionCache_1a38b5bd729bd632f83084ea88809e34fd" kindref="member">TimePoint</ref><sp/><ref refid="classBasicPermissionCache_1ad1eb0a45f99a5ef044d6a371c12aa01e" kindref="member">next_sweep_</ref>{};<sp/></highlight><highlight class="comment">/**&lt;<sp/>Earliest<sp/>time<sp/>of<sp/>the<sp/>next<sp/>sweepExpired()<sp/>scan;</highlight></codeline>
-<codeline lineno="274"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>default-constructed<sp/>to<sp/>the<sp/>clock&apos;s<sp/>epoch.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp />*<sp />@class<sp
+                    />BasicPermissionCache</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp />*<sp />@brief<sp
+                    />Idle-expiry<sp />cache<sp />for<sp />permission<sp
+                    />lookups,<sp />keyed<sp />by<sp />the<sp
+                    />generated</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp />*<sp />permission<sp
+                    />query<sp />(which<sp />embeds<sp />the<sp />entity<sp
+                    />table<sp />and<sp />id).</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp />*<sp />@details<sp
+                    />Each<sp />hit<sp />renews<sp />the<sp />entry&apos;s<sp
+                    />lifetime;<sp />an<sp />entry<sp />that<sp />is<sp />not<sp
+                    />used<sp />for</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp />*<sp />the<sp />TTL<sp
+                    />is<sp />removed.<sp />The<sp />TTL<sp />comes<sp />from<sp
+                    />Configurator::PermissionCacheConfig</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp />*<sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp
+                    />(PERMISSION_CACHE_TTL,<sp />default<sp />300<sp
+                    />seconds);<sp />0<sp />disables<sp />the<sp
+                    />cache.</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp />*<sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp />Security<sp
+                    />trade-off:<sp />there<sp />is<sp />no<sp />invalidation<sp
+                    />on<sp />writes,<sp />so<sp />a<sp
+                    />revoked</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp />*<sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp />permission<sp />can<sp
+                    />keep<sp />being<sp />served<sp />while<sp />its<sp
+                    />entry<sp />stays<sp />in<sp />use.</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp />*<sp />invalidateAll()<sp
+                    />is<sp />available<sp />for<sp />callers<sp />that<sp
+                    />need<sp />an<sp />explicit<sp
+                    />flush.</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp />*<sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp />All<sp />public<sp
+                    />operations<sp />are<sp />thread-safe<sp />via<sp
+                    />mutex_;<sp />generation_<sp />is</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp />*<sp />atomic<sp />so<sp
+                    />readers<sp />can<sp />take<sp />a<sp />token<sp
+                    />without<sp />locking<sp />and<sp />have<sp />a<sp
+                    />racing<sp />put()</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp />*<sp />rejected.<sp
+                    />Think<sp />of<sp />it<sp />as<sp />a<sp />notepad:<sp
+                    />look<sp />up<sp />a<sp />question,<sp />and<sp />if<sp
+                    />the<sp />answer<sp />is</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp />*<sp />still<sp
+                    />fresh<sp />use<sp />it;<sp />otherwise<sp />ask<sp
+                    />the<sp />database<sp />and<sp />jot<sp />the<sp />new<sp
+                    />answer<sp />down.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp />*<sp />@tparam<sp
+                    />ClockT<sp />Clock<sp />used<sp />for<sp />idle<sp
+                    />expiry;<sp />defaults<sp />to</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp />*<sp
+                    />std::chrono::steady_clock.</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="68"><highlight class="normal" /><highlight
+                    class="keyword"
+                >template</highlight><highlight class="normal"><sp
+                    />&lt;</highlight><highlight
+                    class="keyword"
+                >typename</highlight><highlight class="normal"><sp />ClockT<sp
+                    />=<sp />std::chrono::</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />The<sp
+                    />clock<sp />is<sp />a<sp />template<sp />parameter<sp
+                    />mainly<sp />so</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="70"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />tests<sp
+                    />can<sp />substitute<sp />a<sp />fake<sp
+                    />clock.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="71"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />&quot;Basic&quot;<sp />because<sp
+                    />a</highlight><highlight class="normal" /></codeline>
+<codeline lineno="72"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />convenience<sp />alias</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="73"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />with<sp
+                    />the<sp />default</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="74"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />clock<sp
+                    />is<sp />provided<sp />at</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="75"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />the<sp
+                    />end.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="76"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp
+                    />steady_clock&gt;</highlight></codeline>
+<codeline
+                lineno="77"
+                refid="classBasicPermissionCache"
+                refkind="compound"
+            ><highlight class="normal" /><highlight class="keyword">class<sp
+                    /></highlight><highlight class="normal"><ref
+                        refid="classBasicPermissionCache_1a3fc019a15afdf799e9ff844805f5cf5c"
+                        kindref="member"
+                    >BasicPermissionCache</ref><sp />{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp /></highlight><highlight
+                    class="keyword"
+                >public</highlight><highlight class="normal">:<sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Everything<sp />below<sp />is<sp />callable<sp />by<sp
+                    />users<sp />of<sp />the<sp />cache.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="79"
+                refid="classBasicPermissionCache_1a3e99cd08033671e7ac34d935c0abc383"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >using<sp /></highlight><highlight class="normal"><ref
+                        refid="classBasicPermissionCache_1a3e99cd08033671e7ac34d935c0abc383"
+                        kindref="member"
+                    >Clock</ref><sp />=<sp />ClockT;<sp /></highlight><highlight
+                    class="comment"
+                >/**&lt;<sp />Clock<sp />type<sp />used<sp />for<sp />expiry<sp
+                    />timestamps;<sp />a<sp />local</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />nickname<sp />for<sp />readability.<sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="81"
+                refid="classBasicPermissionCache_1a38b5bd729bd632f83084ea88809e34fd"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >using<sp /></highlight><highlight class="normal"><ref
+                        refid="classBasicPermissionCache_1a38b5bd729bd632f83084ea88809e34fd"
+                        kindref="member"
+                    >TimePoint</ref><sp />=</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keyword"
+                >typename</highlight><highlight class="normal"><sp
+                    />Clock::time_point;<sp /></highlight><highlight
+                    class="comment"
+                >/**&lt;<sp />Timestamp<sp />type<sp />produced<sp />by<sp
+                    />Clock;<sp />a</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />local<sp />nickname<sp />used<sp />for<sp
+                    />deadlines.<sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="84"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="85"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Constructs<sp />a<sp />cache<sp />with<sp
+                    />the<sp />given<sp />idle<sp />TTL<sp />and<sp
+                    />capacity.</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />ttl<sp />Idle<sp />lifetime;<sp />a<sp
+                    />value<sp />of<sp />zero<sp />disables<sp />the<sp
+                    />cache</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />entirely.</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />max_entries<sp />Capacity;<sp />when<sp
+                    />reached<sp />on<sp />put(),<sp />the<sp />whole<sp
+                    />map<sp />is</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />cleared.</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="92"
+                refid="classBasicPermissionCache_1a3fc019a15afdf799e9ff844805f5cf5c"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >explicit</highlight><highlight class="normal"><sp /><ref
+                        refid="classBasicPermissionCache_1a3fc019a15afdf799e9ff844805f5cf5c"
+                        kindref="member"
+                    >BasicPermissionCache</ref>(std::chrono::seconds<sp
+                    />ttl,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordtype"
+                >size_t</highlight><highlight class="normal"><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />max_entries<sp />=<sp
+                    />10000)</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />:<sp /><ref
+                        refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e"
+                        kindref="member"
+                    >ttl_</ref>(ttl),<sp /><ref
+                        refid="classBasicPermissionCache_1afdda5e1b17df93c281620fb1cda65529"
+                        kindref="member"
+                    >max_entries_</ref>(max_entries)<sp
+                    />{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp /><sp />}<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Stores<sp
+                    />the<sp />idle<sp />lifetime<sp />and<sp />capacity;<sp
+                    />&quot;explicit&quot;<sp />prevents<sp
+                    />accidental</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="96"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />implicit<sp
+                    />construction.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="97"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="98"><highlight class="comment"><sp /><sp />/**<sp />@brief<sp
+                    />Whether<sp />caching<sp />is<sp />active<sp />(i.e.<sp
+                    />the<sp />TTL<sp />is<sp />positive).<sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="99"
+                refid="classBasicPermissionCache_1a8bc94b095c9e39dcdc328b79671cb768"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp />[[nodiscard]]<sp
+                    /></highlight><highlight
+                    class="keywordtype"
+                >bool</highlight><highlight class="normal"><sp /><ref
+                        refid="classBasicPermissionCache_1a8bc94b095c9e39dcdc328b79671cb768"
+                        kindref="member"
+                    >enabled</ref>()</highlight><highlight class="keyword"><sp
+                    />const<sp /></highlight><highlight
+                    class="normal"
+                >{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal"><sp /><ref
+                        refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e"
+                        kindref="member"
+                    >ttl_</ref>.count()<sp />&gt;<sp />0;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp /><sp />}<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Caching<sp
+                    />is<sp />on<sp />only<sp />when<sp />the<sp />TTL<sp
+                    />is<sp />a<sp />positive<sp />number<sp />of<sp
+                    />seconds.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="102"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="103"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />Token<sp />to<sp />pass<sp />to<sp />put();<sp />a<sp
+                    />put<sp />with<sp />a<sp />stale<sp />token<sp />is<sp
+                    />dropped,<sp />so<sp />a<sp />read</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />that<sp />raced<sp />with<sp />a<sp />write<sp />cannot<sp
+                    />store<sp />pre-write<sp />data.</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="107"
+                refid="classBasicPermissionCache_1a96ddf9f59ee4f1f686cab167c68effbb"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp />[[nodiscard]]<sp
+                    />uint64_t<sp /><ref
+                        refid="classBasicPermissionCache_1a96ddf9f59ee4f1f686cab167c68effbb"
+                        kindref="member"
+                    >generation</ref>()</highlight><highlight
+                    class="keyword"
+                ><sp />const<sp /></highlight><highlight
+                    class="normal"
+                >{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal"><sp /><ref
+                        refid="classBasicPermissionCache_1ac46e90790cb55a68825ada64c3924ee3"
+                        kindref="member"
+                    >generation_</ref>.load(std::memory_order_acquire);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp /><sp />}<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Reads<sp
+                    />the<sp />current<sp />epoch<sp />without<sp />locking;<sp
+                    />acquire<sp />pairs<sp />with<sp
+                    />the</highlight><highlight class="normal" /></codeline>
+<codeline lineno="110"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />release<sp
+                    />in<sp />invalidateAll().</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="111"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="112"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Looks<sp />up<sp />@p<sp />key,<sp
+                    />renewing<sp />the<sp />entry&apos;s<sp />idle<sp
+                    />timer<sp />on<sp />a<sp />hit.</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />key<sp />Generated<sp />permission<sp
+                    />query<sp />string.</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@return<sp />The<sp />cached<sp />JSON<sp />on<sp />a<sp
+                    />live<sp />hit;<sp />`std::nullopt`<sp />when<sp
+                    />disabled,</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />absent,<sp />or<sp />expired<sp />(expired<sp />entries<sp
+                    />are<sp />erased).</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="118"
+                refid="classBasicPermissionCache_1a617931f09a54fec0b8fc808ca00930db"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp
+                    />std::optional&lt;jsoncons::json&gt;<sp /><ref
+                        refid="classBasicPermissionCache_1a617931f09a54fec0b8fc808ca00930db"
+                        kindref="member"
+                    >get</ref>(</highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    />std::string&amp;<sp />key)<sp />{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />If<sp
+                    />caching<sp />is<sp />disabled,<sp />never<sp />pretend<sp
+                    />to<sp />have<sp />a</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="120"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />cached<sp
+                    />answer.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="121"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp />(!<ref
+                        refid="classBasicPermissionCache_1a8bc94b095c9e39dcdc328b79671cb768"
+                        kindref="member"
+                    >enabled</ref>())<sp />{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal"><sp
+                    />std::nullopt;<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />No<sp />value<sp />to<sp />give<sp
+                    />back.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="123"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />std::lock_guard&lt;std::mutex&gt;<sp
+                    />lock(</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><ref
+                        refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6"
+                        kindref="member"
+                    >mutex_</ref>);<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Lock<sp />for<sp />the<sp />whole<sp />lookup<sp
+                    />so<sp />no<sp />other<sp />thread<sp />can<sp
+                    />change</highlight><highlight class="normal" /></codeline>
+<codeline lineno="126"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />the<sp />map<sp />mid-read.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="127"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >auto</highlight><highlight class="normal"><sp />it<sp />=<sp
+                    /><ref
+                        refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642"
+                        kindref="member"
+                    >map_</ref>.find(key);<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Look<sp />for<sp />an<sp />entry<sp />with<sp />this<sp
+                    />query<sp />string.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="128"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Not<sp
+                    />found:<sp />a<sp />plain<sp />cache<sp
+                    />miss.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="129"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp />(it<sp />==<sp
+                    /><ref
+                        refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642"
+                        kindref="member"
+                    >map_</ref>.end())<sp />{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal"><sp
+                    />std::nullopt;<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Caller<sp />should<sp />read<sp />from<sp />the<sp
+                    />database.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="131"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Found<sp
+                    />but<sp />too<sp />old<sp />(idle<sp />past<sp />its<sp
+                    />TTL).</highlight><highlight class="normal" /></codeline>
+<codeline lineno="133"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp />(Clock::now()<sp
+                    />&gt;=<sp />it-&gt;second.expires)<sp
+                    />{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><ref
+                        refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642"
+                        kindref="member"
+                    >map_</ref>.erase(it);<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Remove<sp />the<sp />stale<sp />entry<sp />so<sp
+                    />it<sp />cannot<sp />be<sp />used<sp
+                    />again.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="135"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal"><sp
+                    />std::nullopt;<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Treat<sp />a<sp />stale<sp />entry<sp />as<sp />a<sp
+                    />miss.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="136"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />it-&gt;second.expires<sp />=</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp />Clock::now()<sp />+<sp /><ref
+                        refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e"
+                        kindref="member"
+                    >ttl_</ref>;<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />used:<sp />renew<sp />the<sp />idle<sp />timer<sp
+                    />because<sp />this</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="139"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />entry<sp />was<sp />just<sp
+                    />used.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="140"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal"><sp
+                    />it-&gt;second.value;<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Hand<sp />back<sp />the<sp />cached<sp />JSON<sp
+                    />by<sp />value.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="141"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="143"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Stores<sp />@p<sp />value<sp />under<sp
+                    />@p<sp />key<sp />if<sp />the<sp />cache<sp />is<sp
+                    />still<sp />in<sp />the<sp />same</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />generation.</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@details<sp />The<sp />generation<sp />check<sp
+                    />prevents<sp />a<sp />read<sp />that<sp />raced<sp
+                    />with<sp />an</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />invalidation<sp />from<sp />re-inserting<sp />pre-write<sp
+                    />data.<sp />Before<sp />inserting,<sp
+                    />expired</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />entries<sp />are<sp />swept<sp />and,<sp />if<sp />the<sp
+                    />map<sp />is<sp />full,<sp />all<sp />entries<sp />are<sp
+                    />cleared.</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />key<sp />Generated<sp />permission<sp
+                    />query<sp />string.</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />value<sp />Permissions<sp />JSON<sp
+                    />returned<sp />by<sp />the<sp
+                    />database.</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@param[in]<sp />generation_at_read<sp />Token<sp />from<sp
+                    />generation()<sp />taken<sp />before<sp
+                    />the</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />read.</highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="154"
+                refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keywordtype"
+                >void</highlight><highlight class="normal"><sp /><ref
+                        refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc"
+                        kindref="member"
+                    >put</ref>(</highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    />std::string&amp;<sp /><sp /><sp /><sp
+                    />key,</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    />jsoncons::json&amp;<sp />value,</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp />uint64_t<sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />generation_at_read)<sp
+                    />{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Nothing<sp
+                    />to<sp />store<sp />when<sp />caching<sp />is<sp
+                    />off.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="158"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp />(!<ref
+                        refid="classBasicPermissionCache_1a8bc94b095c9e39dcdc328b79671cb768"
+                        kindref="member"
+                    >enabled</ref>())<sp />{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Do<sp
+                    />nothing.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="160"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />std::lock_guard&lt;std::mutex&gt;<sp
+                    />lock(</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><ref
+                        refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6"
+                        kindref="member"
+                    >mutex_</ref>);<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Guard<sp />the<sp />map<sp />for<sp />the<sp />whole<sp
+                    />operation.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="163"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />A<sp
+                    />flush<sp />happened<sp />while<sp
+                    />the</highlight><highlight class="normal" /></codeline>
+<codeline lineno="164"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />database<sp
+                    />read<sp />was<sp />in<sp />flight.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="165"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp
+                    />(generation_at_read<sp />!=<sp /><ref
+                        refid="classBasicPermissionCache_1ac46e90790cb55a68825ada64c3924ee3"
+                        kindref="member"
+                    >generation_</ref>.load(std::memory_order_acquire))<sp
+                    />{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Drop<sp
+                    />this<sp />stale<sp />result<sp />instead<sp />of<sp
+                    />re-inserting<sp />old<sp />data.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="167"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp /><sp /><sp /><sp /><ref
+                        refid="classBasicPermissionCache_1a7191cb562feddfcea0c6172b11df74eb"
+                        kindref="member"
+                    >sweepExpired</ref>();<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />First<sp />try<sp />to<sp />make<sp />room<sp />by<sp
+                    />removing<sp />already-expired</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="169"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />entries.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="170"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Still<sp
+                    />full:<sp />hit<sp />the<sp />capacity<sp
+                    />limit.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="171"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp />(<ref
+                        refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642"
+                        kindref="member"
+                    >map_</ref>.size()<sp />&gt;=<sp /><ref
+                        refid="classBasicPermissionCache_1afdda5e1b17df93c281620fb1cda65529"
+                        kindref="member"
+                    >max_entries_</ref>)<sp />{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><ref
+                        refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642"
+                        kindref="member"
+                    >map_</ref>.clear();<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Simplest<sp />policy:<sp />throw<sp />everything<sp
+                    />away<sp />to<sp />bound</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="173"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />memory<sp />use.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="174"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp /><sp /><sp /><sp /><ref
+                        refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642"
+                        kindref="member"
+                    >map_</ref>[key]<sp />=<sp /><ref
+                        refid="structBasicPermissionCache_1_1Entry"
+                        kindref="compound"
+                    >Entry</ref>{value,</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp />Clock::now()<sp
+                    />+</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><ref
+                        refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e"
+                        kindref="member"
+                    >ttl_</ref>};<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Store<sp />the<sp />value<sp />with<sp />a<sp
+                    />fresh<sp />idle<sp />deadline.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="178"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="180"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="181"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Flushes<sp />all<sp />entries<sp />and<sp
+                    />bumps<sp />the<sp />generation<sp />so<sp />any<sp
+                    />pending<sp />stale</highlight></codeline>
+<codeline lineno="182"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />put()<sp />is<sp />dropped.</highlight></codeline>
+<codeline lineno="183"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@details<sp />Callers<sp />can<sp />use<sp />this<sp
+                    />for<sp />an<sp />explicit<sp />invalidation<sp />(e.g.<sp
+                    />after<sp />a</highlight></codeline>
+<codeline lineno="184"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />permission<sp />write),<sp />since<sp />the<sp />cache<sp
+                    />otherwise<sp />has<sp />no<sp
+                    />write-triggered</highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />invalidation.</highlight></codeline>
+<codeline lineno="186"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="187"
+                refid="classBasicPermissionCache_1ad3230e761d0a35d3b772d299d8d72b09"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keywordtype"
+                >void</highlight><highlight class="normal"><sp /><ref
+                        refid="classBasicPermissionCache_1ad3230e761d0a35d3b772d299d8d72b09"
+                        kindref="member"
+                    >invalidateAll</ref>()<sp />{</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />std::lock_guard&lt;std::mutex&gt;<sp
+                    />lock(</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><ref
+                        refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6"
+                        kindref="member"
+                    >mutex_</ref>);<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Serialize<sp />the<sp />flush<sp />with<sp />reads<sp
+                    />and<sp />writes.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="190"><highlight class="normal"><sp /><sp /><sp /><sp /><ref
+                        refid="classBasicPermissionCache_1ac46e90790cb55a68825ada64c3924ee3"
+                        kindref="member"
+                    >generation_</ref></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp />.fetch_add(1,</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp />std::memory_order_acq_rel);<sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />Bump<sp />the<sp />epoch<sp />so<sp
+                    />any</highlight><highlight class="normal" /></codeline>
+<codeline lineno="193"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />in-flight<sp />put()<sp />with<sp />the<sp
+                    />old</highlight><highlight class="normal" /></codeline>
+<codeline lineno="194"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />token<sp />is<sp />rejected.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="195"><highlight class="normal"><sp /><sp /><sp /><sp /><ref
+                        refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642"
+                        kindref="member"
+                    >map_</ref>.clear();<sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Remove<sp />every<sp />cached<sp
+                    />entry.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="196"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="198"><highlight class="comment"><sp /><sp />/**<sp />@brief<sp
+                    />Number<sp />of<sp />entries<sp />currently<sp />held<sp
+                    />(including<sp />any<sp />not<sp />yet<sp
+                    />swept).</highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="200"
+                refid="classBasicPermissionCache_1a66c8c31a6096dff363916fee3be53fe4"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp />[[nodiscard]]<sp
+                    /></highlight><highlight
+                    class="keywordtype"
+                >size_t</highlight><highlight class="normal"><sp /><ref
+                        refid="classBasicPermissionCache_1a66c8c31a6096dff363916fee3be53fe4"
+                        kindref="member"
+                    >size</ref>()<sp />{</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />std::lock_guard&lt;std::mutex&gt;<sp
+                    />lock(</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><ref
+                        refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6"
+                        kindref="member"
+                    >mutex_</ref>);<sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />Lock<sp />so<sp />the<sp />size<sp />is<sp />read<sp
+                    />consistently.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="203"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal"><sp /><ref
+                        refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642"
+                        kindref="member"
+                    >map_</ref>.size();<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Number<sp />of<sp />entries<sp />currently<sp />held<sp
+                    />(expired<sp />ones</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="204"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />may<sp
+                    />still<sp />be<sp />present<sp />until<sp
+                    />swept).</highlight><highlight class="normal" /></codeline>
+<codeline lineno="205"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="206"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="207"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="208"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Returns<sp />the<sp />process-wide<sp
+                    />singleton,<sp />configured<sp />from<sp
+                    />Configurator.</highlight></codeline>
+<codeline lineno="209"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@details<sp />The<sp />singleton&apos;s<sp />TTL<sp
+                    />is<sp />fixed<sp />at<sp />first<sp />use<sp
+                    />from</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp /><sp /><sp />*<sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    />Configurator::PermissionCacheConfig;<sp />thread-safe<sp
+                    />initialization</highlight></codeline>
+<codeline lineno="211"><highlight class="comment"><sp /><sp /><sp />*<sp />is<sp
+                    />guaranteed<sp />by<sp />the<sp />function-local<sp
+                    />static.</highlight></codeline>
+<codeline lineno="212"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="213"
+                refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >static</highlight><highlight class="normal"><sp /><ref
+                        refid="classBasicPermissionCache_1a3fc019a15afdf799e9ff844805f5cf5c"
+                        kindref="member"
+                    >BasicPermissionCache</ref>&amp;<sp /><ref
+                        refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f"
+                        kindref="member"
+                    >instance</ref>()<sp />{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >static</highlight><highlight class="normal"><sp /><ref
+                        refid="classBasicPermissionCache_1a3fc019a15afdf799e9ff844805f5cf5c"
+                        kindref="member"
+                    >BasicPermissionCache</ref><sp
+                    />cache(</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><ref
+                        refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c"
+                        kindref="member"
+                    >Store::getObject&lt;Configurator&gt;</ref>()</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp />-&gt;<ref
+                        refid="classBasicPermissionCache_1a617931f09a54fec0b8fc808ca00930db"
+                        kindref="member"
+                    >get&lt;Configurator::PermissionCacheConfig&gt;</ref>()</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp />.ttl);<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Created<sp
+                    />once<sp />on<sp />first<sp />use;<sp />C++<sp
+                    />guarantees<sp />thread-safe</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="218"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />initialization<sp />of<sp />a<sp />function-local<sp
+                    />static.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="219"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal"><sp />cache;<sp
+                    /><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />Every<sp />caller<sp />shares<sp />this<sp />one<sp
+                    />process-wide<sp />cache.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="220"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal" /></codeline>
+<codeline lineno="222"><highlight class="normal"><sp /></highlight><highlight
+                    class="keyword"
+                >private</highlight><highlight
+                    class="normal"
+                >:</highlight><highlight class="comment" /></codeline>
+<codeline lineno="223"><highlight class="comment"><sp /><sp
+                    />/**</highlight></codeline>
+<codeline lineno="224"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@brief<sp />Erases<sp />entries<sp />idle<sp />past<sp
+                    />the<sp />TTL,<sp />at<sp />most<sp />once<sp />per<sp
+                    />minute.</highlight></codeline>
+<codeline lineno="225"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@details<sp />Rate-limited<sp />via<sp />next_sweep_<sp
+                    />to<sp />avoid<sp />a<sp />full<sp />scan<sp />on<sp
+                    />every</highlight></codeline>
+<codeline lineno="226"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />put();<sp />expired<sp />entries<sp />that<sp />are<sp
+                    />looked<sp />up<sp />are<sp />still<sp />erased<sp
+                    />immediately<sp />by</highlight></codeline>
+<codeline lineno="227"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />get().</highlight></codeline>
+<codeline lineno="228"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />@pre<sp />Caller<sp />holds<sp
+                    />mutex_.</highlight></codeline>
+<codeline lineno="229"><highlight class="comment"><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="230"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Drop<sp
+                    />entries<sp />that<sp />have<sp />been<sp />idle<sp
+                    />past<sp />the<sp />TTL<sp />(at<sp />most<sp />once<sp
+                    />a<sp />minute).</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="231"
+                refid="classBasicPermissionCache_1a7191cb562feddfcea0c6172b11df74eb"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keywordtype"
+                >void</highlight><highlight class="normal"><sp /><ref
+                        refid="classBasicPermissionCache_1a7191cb562feddfcea0c6172b11df74eb"
+                        kindref="member"
+                    >sweepExpired</ref>()<sp />{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >auto</highlight><highlight class="normal"><sp />now<sp />=<sp
+                    />Clock::now();<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />One<sp />timestamp<sp />for<sp />the<sp />whole<sp
+                    />sweep<sp />so</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="233"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />the<sp />cutoff<sp />is<sp
+                    />consistent.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="234"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Rate<sp
+                    />limit:<sp />do<sp />not<sp />scan<sp />more<sp />than<sp
+                    />about<sp />once</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="235"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />a<sp
+                    />minute.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="236"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp />(now<sp />&lt;<sp
+                    /><ref
+                        refid="classBasicPermissionCache_1ad1eb0a45f99a5ef044d6a371c12aa01e"
+                        kindref="member"
+                    >next_sweep_</ref>)<sp />{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal">;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Not<sp
+                    />time<sp />yet;<sp />skip<sp />the<sp
+                    />work.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="238"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp /><sp /><sp /><sp /><ref
+                        refid="classBasicPermissionCache_1ad1eb0a45f99a5ef044d6a371c12aa01e"
+                        kindref="member"
+                    >next_sweep_</ref><sp />=</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp />now<sp />+<sp
+                    />std::chrono::seconds{60};<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Schedule<sp
+                    />the<sp />next<sp />allowed<sp
+                    />sweep.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="241"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >for</highlight><highlight class="normal"><sp
+                    />(</highlight><highlight
+                    class="keyword"
+                >auto</highlight><highlight class="normal"><sp />it<sp />=<sp
+                    /><ref
+                        refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642"
+                        kindref="member"
+                    >map_</ref>.begin();</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Walk<sp />every<sp />entry;<sp />note<sp />there<sp
+                    />is<sp />no<sp />++it<sp />in</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="243"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />the<sp />header.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="244"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp />it<sp />!=<sp /><ref
+                        refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642"
+                        kindref="member"
+                    >map_</ref>.end();)<sp />{</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />it<sp />=<sp />(now<sp />&gt;=<sp
+                    />it-&gt;second.expires)</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    />?<sp /><ref
+                        refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642"
+                        kindref="member"
+                    >map_</ref>.erase(it)</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    />:<sp />std::next(it);<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Erase<sp />expired<sp />entries;<sp />erase()<sp
+                    />returns<sp />the</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="248"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />next<sp
+                    />iterator,<sp />otherwise<sp />advance<sp
+                    />manually.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="249"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="251"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="252"><highlight class="comment"><sp /><sp />/**<sp />@brief<sp
+                    />A<sp />cached<sp />permissions<sp />value<sp />together<sp
+                    />with<sp />its<sp />idle-expiry</highlight></codeline>
+<codeline lineno="253"><highlight class="comment"><sp /><sp /><sp />*<sp
+                    />deadline.<sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="254"
+                refid="structBasicPermissionCache_1_1Entry"
+                refkind="compound"
+            ><highlight class="normal"><sp /><sp /></highlight><highlight
+                    class="keyword"
+                >struct<sp /></highlight><highlight class="normal"><ref
+                        refid="structBasicPermissionCache_1_1Entry"
+                        kindref="compound"
+                    >Entry</ref><sp />{</highlight></codeline>
+<codeline
+                lineno="255"
+                refid="structBasicPermissionCache_1_1Entry_1a5347d94d5d97e1193e67b5947e1f2cbc"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><sp /><sp />jsoncons::json<sp
+                    /><ref
+                        refid="structBasicPermissionCache_1_1Entry_1a5347d94d5d97e1193e67b5947e1f2cbc"
+                        kindref="member"
+                    >value</ref>;<sp /></highlight><highlight
+                    class="comment"
+                >/**&lt;<sp />Cached<sp />permissions<sp />JSON,<sp />the<sp
+                    />actual<sp />answer<sp />we</highlight></codeline>
+<codeline lineno="256"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp />are<sp />storing.<sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="257"
+                refid="structBasicPermissionCache_1_1Entry_1aa4d64f4c1a99f8b22a2be95d0a4a2844"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><sp /><sp /><ref
+                        refid="classBasicPermissionCache_1a38b5bd729bd632f83084ea88809e34fd"
+                        kindref="member"
+                    >TimePoint</ref><sp /><ref
+                        refid="structBasicPermissionCache_1_1Entry_1aa4d64f4c1a99f8b22a2be95d0a4a2844"
+                        kindref="member"
+                    >expires</ref>;<sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">/**&lt;<sp
+                    />Idle<sp />deadline;<sp />renewed<sp />on<sp />every<sp
+                    />hit<sp />so<sp />busy</highlight></codeline>
+<codeline lineno="258"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp />entries<sp />never<sp />expire.<sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline lineno="259"><highlight class="normal"><sp /><sp
+                    />};</highlight></codeline>
+<codeline lineno="260"><highlight class="normal" /></codeline>
+<codeline
+                lineno="261"
+                refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp />std::chrono::seconds<sp
+                    /><ref
+                        refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e"
+                        kindref="member"
+                    >ttl_</ref>;<sp /></highlight><highlight
+                    class="comment"
+                >/**&lt;<sp />Idle<sp />lifetime;<sp />zero<sp />disables<sp
+                    />caching.<sp />Set</highlight></codeline>
+<codeline lineno="262"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp />once<sp />in<sp
+                    />the<sp />constructor.<sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="263"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight
+                    class="keywordtype"
+                >size_t</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="264"
+                refid="classBasicPermissionCache_1afdda5e1b17df93c281620fb1cda65529"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><sp /><sp /><sp /><sp /><ref
+                        refid="classBasicPermissionCache_1afdda5e1b17df93c281620fb1cda65529"
+                        kindref="member"
+                    >max_entries_</ref>;<sp /><sp /></highlight><highlight
+                    class="comment"
+                >/**&lt;<sp />Capacity<sp />before<sp />a<sp />full<sp
+                    />clear;<sp />bounds<sp />memory<sp />usage.<sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="265"
+                refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp />std::mutex<sp /><ref
+                        refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6"
+                        kindref="member"
+                    >mutex_</ref>;<sp /></highlight><highlight
+                    class="comment"
+                >/**&lt;<sp />Guards<sp />map_<sp />and<sp />next_sweep_<sp
+                    />so<sp />threads<sp />cannot</highlight></codeline>
+<codeline lineno="266"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    />corrupt<sp />them.<sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="267"
+                refid="classBasicPermissionCache_1ac46e90790cb55a68825ada64c3924ee3"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp
+                    />std::atomic&lt;uint64_t&gt;<sp /><ref
+                        refid="classBasicPermissionCache_1ac46e90790cb55a68825ada64c3924ee3"
+                        kindref="member"
+                    >generation_</ref>{</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />0};<sp /></highlight><highlight
+                    class="comment"
+                >/**&lt;<sp />Bumped<sp />on<sp />invalidateAll()<sp />to<sp
+                    />reject<sp />stale<sp />puts;<sp />atomic<sp
+                    />so</highlight></codeline>
+<codeline lineno="269"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp />readers<sp
+                    />need<sp />no<sp />lock.<sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="270"><highlight class="normal"><sp /><sp
+                    />std::unordered_map&lt;std::string,<sp
+                    />Entry&gt;</highlight></codeline>
+<codeline
+                lineno="271"
+                refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><sp /><sp /><sp /><sp /><ref
+                        refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642"
+                        kindref="member"
+                    >map_</ref>;<sp /></highlight><highlight
+                    class="comment"
+                >/**&lt;<sp />Cache<sp />contents<sp />keyed<sp />by<sp
+                    />query<sp />string,<sp />the<sp />actual<sp />hash<sp
+                    />table.</highlight></codeline>
+<codeline lineno="272"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="273"
+                refid="classBasicPermissionCache_1ad1eb0a45f99a5ef044d6a371c12aa01e"
+                refkind="member"
+            ><highlight class="normal"><sp /><sp /><ref
+                        refid="classBasicPermissionCache_1a38b5bd729bd632f83084ea88809e34fd"
+                        kindref="member"
+                    >TimePoint</ref><sp /><ref
+                        refid="classBasicPermissionCache_1ad1eb0a45f99a5ef044d6a371c12aa01e"
+                        kindref="member"
+                    >next_sweep_</ref>{};<sp /></highlight><highlight
+                    class="comment"
+                >/**&lt;<sp />Earliest<sp />time<sp />of<sp />the<sp />next<sp
+                    />sweepExpired()<sp />scan;</highlight></codeline>
+<codeline lineno="274"><highlight class="comment"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp />default-constructed<sp
+                    />to<sp />the<sp />clock&apos;s<sp />epoch.<sp
+                    />*/</highlight><highlight class="normal" /></codeline>
 <codeline lineno="275"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="276"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="277"><highlight class="comment">/**<sp/>@brief<sp/>Convenience<sp/>alias<sp/>for<sp/>the<sp/>default-clock<sp/>permission<sp/>cache.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="278" refid="permissioncache_8hpp_1af89da15e5a12d8824c558d44b4452c26" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="permissioncache_8hpp_1af89da15e5a12d8824c558d44b4452c26" kindref="member">PermissionCache</ref><sp/>=</highlight></codeline>
-<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBasicPermissionCache" kindref="compound">BasicPermissionCache&lt;&gt;</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Most<sp/>code<sp/>uses<sp/>this<sp/>name;<sp/>the<sp/>template<sp/>stays</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>open<sp/>for<sp/>tests<sp/>with<sp/>a<sp/>fake<sp/>clock.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
+<codeline lineno="277"><highlight class="comment">/**<sp />@brief<sp
+                    />Convenience<sp />alias<sp />for<sp />the<sp
+                    />default-clock<sp />permission<sp />cache.<sp
+                    />*/</highlight><highlight class="normal" /></codeline>
+<codeline
+                lineno="278"
+                refid="permissioncache_8hpp_1af89da15e5a12d8824c558d44b4452c26"
+                refkind="member"
+            ><highlight class="normal" /><highlight class="keyword">using<sp
+                    /></highlight><highlight class="normal"><ref
+                        refid="permissioncache_8hpp_1af89da15e5a12d8824c558d44b4452c26"
+                        kindref="member"
+                    >PermissionCache</ref><sp />=</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp /><sp /><sp /><sp /><ref
+                        refid="classBasicPermissionCache"
+                        kindref="compound"
+                    >BasicPermissionCache&lt;&gt;</ref>;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Most<sp
+                    />code<sp />uses<sp />this<sp />name;<sp />the<sp
+                    />template<sp />stays</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="280"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />open<sp />for<sp />tests<sp />with<sp />a<sp />fake<sp
+                    />clock.</highlight><highlight class="normal" /></codeline>
     </programlisting>
-    <location file="src/gatekeeper/permissionmanager/permissioncache.hpp"/>
+    <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" />
   </compounddef>
 </doxygen>

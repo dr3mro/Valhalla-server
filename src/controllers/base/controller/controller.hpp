@@ -83,7 +83,7 @@
 // JSON helper used to serialize results.
 #include "utils/jsonhelper/jsonhelper.hpp"
 // Logging macros such as CRITICALMESSAGERESPONSE.
-#include "utils/message/message.hpp"
+#include "message/message.hpp"
 
 // Convenience aliases for the entity data carriers used by the CRUDS helpers
 // below.
@@ -184,7 +184,8 @@ class Controller {
    * @see cruds
    */
   template <typename T>
-  void Create(T& entity, CALLBACK_&& callback) {
+  void Create(T&          entity,
+              CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlCreateStatement;  // Pointer to the INSERT builder; may
                                     // return no statement if data is
@@ -208,7 +209,8 @@ class Controller {
    * @see crudsAsync, Create
    */
   template <typename T>
-  drogon::Task<void> CreateAsync(T& entity, CALLBACK_&& callback) {
+  drogon::Task<void> CreateAsync(T&          entity,
+                                 CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlCreateStatement;  // Pointer to the INSERT builder; may
                                     // return no statement if data is
@@ -231,7 +233,8 @@ class Controller {
    * @see cruds
    */
   template <typename T>
-  void Read(T& entity, CALLBACK_&& callback) {
+  void Read(T&          entity,
+            CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlReadStatement;  // Pointer to the SELECT builder for
                                   // reading selected columns.
@@ -253,7 +256,8 @@ class Controller {
    * @see crudsAsync, Read
    */
   template <typename T>
-  drogon::Task<void> ReadAsync(T& entity, CALLBACK_&& callback) {
+  drogon::Task<void> ReadAsync(T&          entity,
+                               CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlReadStatement;  // Pointer to the SELECT builder for
                                   // reading selected columns.
@@ -275,7 +279,8 @@ class Controller {
    * @see cruds
    */
   template <typename T>
-  void Update(T& entity, CALLBACK_&& callback) {
+  void Update(T&          entity,
+              CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlUpdateStatement;  // Pointer to the UPDATE builder for the
                                     // target row.
@@ -297,7 +302,8 @@ class Controller {
    * @see crudsAsync, Update
    */
   template <typename T>
-  drogon::Task<void> UpdateAsync(T& entity, CALLBACK_&& callback) {
+  drogon::Task<void> UpdateAsync(T&          entity,
+                                 CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlUpdateStatement;  // Pointer to the UPDATE builder for the
                                     // target row.
@@ -318,7 +324,8 @@ class Controller {
    * @see cruds
    */
   template <typename T>
-  void Delete(T& entity, CALLBACK_&& callback) {
+  void Delete(T&          entity,
+              CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlDeleteStatement;  // Pointer to the DELETE builder for the
                                     // target id.
@@ -340,7 +347,8 @@ class Controller {
    * @see crudsAsync, Delete
    */
   template <typename T>
-  drogon::Task<void> DeleteAsync(T& entity, CALLBACK_&& callback) {
+  drogon::Task<void> DeleteAsync(T&          entity,
+                                 CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlDeleteStatement;  // Pointer to the DELETE builder for the
                                     // target id.
@@ -371,7 +379,8 @@ class Controller {
    * @see executeSearchQuery (DatabaseController)
    */
   template <typename T>
-  void Search(T& entity, CALLBACK_&& callback) {
+  void Search(T&          entity,
+              CALLBACK_&& callback) {
     jsoncons::json response_json;
     response_json["more"]   = false;  // Assume no further page until the
                                       // row-count probe proves otherwise.
@@ -455,7 +464,8 @@ class Controller {
    * @see Search, crudsAsync
    */
   template <typename T>
-  drogon::Task<void> SearchAsync(T& entity, CALLBACK_&& callback) {
+  drogon::Task<void> SearchAsync(T&          entity,
+                                 CALLBACK_&& callback) {
     jsoncons::json response_json;
     response_json["more"]   = false;  // Assume no further page until the
                                       // row-count probe proves otherwise.
@@ -533,8 +543,10 @@ class Controller {
    * @see cruds, Unsuspend
    */
   template <typename T>
-  void Suspend(T& entity, CALLBACK_&& callback)
-    requires(std::is_base_of_v<Client, T>)
+  void Suspend(T&          entity,
+               CALLBACK_&& callback)
+    requires(std::is_base_of_v<Client,
+                               T>)
   {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlSuspendStatement;  // Pointer to the builder that flips a
@@ -553,8 +565,10 @@ class Controller {
    * @see cruds, Suspend
    */
   template <typename T>
-  void Unsuspend(T& entity, CALLBACK_&& callback)
-    requires(std::is_base_of_v<Client, T>)
+  void Unsuspend(T&          entity,
+                 CALLBACK_&& callback)
+    requires(std::is_base_of_v<Client,
+                               T>)
   {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlActivateStatement;  // Pointer to the builder that flips a
@@ -573,8 +587,10 @@ class Controller {
    * @see crudsAsync, Suspend
    */
   template <typename T>
-  drogon::Task<void> SuspendAsync(T& entity, CALLBACK_&& callback)
-    requires(std::is_base_of_v<Client, T>)
+  drogon::Task<void> SuspendAsync(T&          entity,
+                                  CALLBACK_&& callback)
+    requires(std::is_base_of_v<Client,
+                               T>)
   {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlSuspendStatement;  // Pointer to the builder that flips a
@@ -596,8 +612,10 @@ class Controller {
    * @see crudsAsync, Unsuspend
    */
   template <typename T>
-  drogon::Task<void> UnsuspendAsync(T& entity, CALLBACK_&& callback)
-    requires(std::is_base_of_v<Client, T>)
+  drogon::Task<void> UnsuspendAsync(T&          entity,
+                                    CALLBACK_&& callback)
+    requires(std::is_base_of_v<Client,
+                               T>)
   {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlActivateStatement;  // Pointer to the builder that flips a
@@ -623,8 +641,10 @@ class Controller {
    * @see GetServicesAsync
    */
   template <typename T>
-  void GetServices(T& entity, CALLBACK_&& callback)
-    requires(std::is_base_of_v<Client, T>)
+  void GetServices(T&          entity,
+                   CALLBACK_&& callback)
+    requires(std::is_base_of_v<Client,
+                               T>)
   {
     std::optional<jsoncons::json> services;  // Will hold the serialized service
                                              // list once the query returns.
@@ -671,8 +691,10 @@ class Controller {
    * @see GetServices, Store::cachedObject
    */
   template <typename T>
-  drogon::Task<void> GetServicesAsync(T& entity, CALLBACK_&& callback)
-    requires(std::is_base_of_v<Client, T>)
+  drogon::Task<void> GetServicesAsync(T&          entity,
+                                      CALLBACK_&& callback)
+    requires(std::is_base_of_v<Client,
+                               T>)
   {
     std::optional<jsoncons::json> services;  // Will hold the serialized service
                                              // list once the query returns.
@@ -726,8 +748,10 @@ class Controller {
    * @see GetVisitsAsync
    */
   template <typename T>
-  void GetVisits(T& entity, CALLBACK_&& callback)
-    requires std::is_same<T, Patient>::value
+  void GetVisits(T&          entity,
+                 CALLBACK_&& callback)
+    requires std::is_same<T,
+                          Patient>::value
   {
     jsoncons::json visits;  // Default JSON value; serialized even when no
                             // statement is produced.
@@ -766,8 +790,10 @@ class Controller {
    * @see GetVisits, Store::cachedObject
    */
   template <typename T>
-  drogon::Task<void> GetVisitsAsync(T& entity, CALLBACK_&& callback)
-    requires std::is_same<T, Patient>::value
+  drogon::Task<void> GetVisitsAsync(T&          entity,
+                                    CALLBACK_&& callback)
+    requires std::is_same<T,
+                          Patient>::value
   {
     jsoncons::json visits;  // Default JSON value; serialized even when no
                             // statement is produced.
@@ -812,14 +838,16 @@ class Controller {
    * Create/Update/Delete and staff edits.
    */
   std::optional<jsoncons::json> (DatabaseController::*dbexec)(
-      const std::string&, const pqxx::params&) =
+      const std::string&,
+      const pqxx::params&) =
       &DatabaseController::executeQuery;  // Selects the write executor for
                                           // Create/Update/Delete.
   /**
    * Member-function pointer selecting the read executor used by Read.
    */
   std::optional<jsoncons::json> (DatabaseController::*dbrexec)(
-      const std::string&, const pqxx::params&) =
+      const std::string&,
+      const pqxx::params&) =
       &DatabaseController::executeReadQuery;  // Selects the read executor for
                                               // Read.
 
@@ -843,11 +871,13 @@ class Controller {
    * @param[in,out] callback Invoked exactly once on any returning path.
    * @note Shared implementation for every synchronous CRUDS helper.
    */
-  template <typename S, typename T>
+  template <typename S,
+            typename T>
   void cruds(T& entity,
              S& sqlstatement,
              std::optional<jsoncons::json> (DatabaseController::*func)(
-                 const std::string&, const pqxx::params&),
+                 const std::string&,
+                 const pqxx::params&),
              CALLBACK_&& callback) {
     std::optional<jsoncons::json>
         results_j;  // Will hold the single result object returned by the DB
@@ -911,12 +941,14 @@ class Controller {
    * coroutine.
    * @see cruds
    */
-  template <typename S, typename T>
+  template <typename S,
+            typename T>
   drogon::Task<void> crudsAsync(
       T& entity,
       S& sqlstatement,
       drogon::Task<std::optional<jsoncons::json>> (DatabaseController::*func)(
-          const std::string&, const pqxx::params&),
+          const std::string&,
+          const pqxx::params&),
       CALLBACK_&& callback) {
     std::optional<jsoncons::json>
         results_j;  // Will hold the single result object returned by the DB
@@ -971,7 +1003,8 @@ class Controller {
    * @see cruds
    */
   template <typename T>
-  void addStaff(T& entity, CALLBACK_&& callback) {
+  void addStaff(T&          entity,
+                CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlAddStaffStatement;  // Pointer to the builder that links a
                                       // staff member.
@@ -988,7 +1021,8 @@ class Controller {
    * @see cruds
    */
   template <typename T>
-  void removeStaff(T& entity, CALLBACK_&& callback) {
+  void removeStaff(T&          entity,
+                   CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlRemoveStaffStatement;  // Pointer to the builder that
                                          // unlinks a staff member.
@@ -1006,7 +1040,8 @@ class Controller {
    * @see crudsAsync, addStaff
    */
   template <typename T>
-  drogon::Task<void> addStaffAsync(T& entity, CALLBACK_&& callback) {
+  drogon::Task<void> addStaffAsync(T&          entity,
+                                   CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlAddStaffStatement;  // Pointer to the builder that links a
                                       // staff member.
@@ -1027,7 +1062,8 @@ class Controller {
    * @see crudsAsync, removeStaff
    */
   template <typename T>
-  drogon::Task<void> removeStaffAsync(T& entity, CALLBACK_&& callback) {
+  drogon::Task<void> removeStaffAsync(T&          entity,
+                                      CALLBACK_&& callback) {
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlRemoveStaffStatement;  // Pointer to the builder that
                                          // unlinks a staff member.

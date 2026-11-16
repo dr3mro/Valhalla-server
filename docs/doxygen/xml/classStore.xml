@@ -325,7 +325,6 @@
         <referencedby refid="classDatabaseController_1a2a0585031d4e0a5e8dfdeb7d77041563" compoundref="databasecontroller_8cpp" startline="512" endline="538">DatabaseController::getPermissionsCoro</referencedby>
         <referencedby refid="classDatabaseController_1ab6502e9c51e8657b16ffe4795949ebe7" compoundref="databasecontroller_8cpp" startline="415" endline="471">DatabaseController::getTableSchemaCoro</referencedby>
         <referencedby refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f" compoundref="permissioncache_8hpp" startline="213" endline="220">BasicPermissionCache&lt; ClockT &gt;::instance</referencedby>
-        <referencedby refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" compoundref="logger_8cpp" startline="44" endline="150">Logger::Logger</referencedby>
         <referencedby refid="classDatabaseSchema_1a801e1391c1907e56401a867210b8c25d" compoundref="databaseschema_8cpp" startline="92" endline="114">DatabaseSchema::populateSchema</referencedby>
         <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="156" endline="295">Server::run</referencedby>
       </memberdef>

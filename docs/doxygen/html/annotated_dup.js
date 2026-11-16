@@ -85,7 +85,6 @@ var annotated_dup =
     [ "Health", "classHealth.html", "classHealth" ],
     [ "Laboratories", "classLaboratories.html", "classLaboratories" ],
     [ "LaboratoryAppointment", "classLaboratoryAppointment.html", "classLaboratoryAppointment" ],
-    [ "Logger", "classLogger.html", "classLogger" ],
     [ "MemCache", "classMemCache.html", "classMemCache" ],
     [ "Message", "classMessage.html", "classMessage" ],
     [ "PaidServices", "classPaidServices.html", "classPaidServices" ],

@@ -37,14 +37,18 @@
 // Provides spdlog::async_logger and the thread-pool support.
 #include <spdlog/async.h>
 // The core spdlog API (register_logger, set_default_logger, etc.).
+#include <spdlog/async_logger.h>
 #include <spdlog/spdlog.h>
+#include <trantor/utils/Logger.h>
 
 // Provides fixed-size integer types such as std::uint8_t used by the colour
 // enum.
 #include <cstddef>
+#include <cstdint>
 #include <memory>  // std::shared_ptr is used to own the logger.
 // std::string is the message type and the colour-map value type.
 #include <string>
+#include <unordered_map>
 
 // Logger routes Trantor log records through an asynchronous spdlog backend.
 /**
@@ -107,34 +111,35 @@ class Logger {
   /**
    * @brief Maximum size in bytes of a single log file before rotation.
    */
-  static constexpr uint64_t MAX_LOG_SIZE = static_cast<uint64_t>(
-      1024 * 1024 * 5);  // 5 MiB: when the active file reaches this size,
-                         // spdlog starts a new one.
+  static constexpr uint64_t MAX_LOG_SIZE =
+      static_cast<uint64_t>(1024 * 1024 * 5);
+  // 5 MiB: when the active file reaches this size,
+  // spdlog starts a new one.
   /**
    * @brief Capacity of the spdlog asynchronous message queue.
    */
-  static constexpr uint64_t THREADPOOL =
-      8;  // Queue holds up to 8 pending messages before the overflow policy
-          // kicks in.
+  static constexpr uint64_t THREADPOOL = 8;
+  // Queue holds up to 8 pending messages before the overflow policy
+  // kicks in.
   /**
    * @brief Number of spdlog worker threads draining the queue.
    */
-  static constexpr uint64_t THREADS =
-      2;  // Two background threads write messages out, so callers are not
-          // blocked by disk I/O.
+  static constexpr uint64_t THREADS = 2;
+  // Two background threads write messages out, so callers are not
+  // blocked by disk I/O.
   /**
    * @brief Number of rotated log files retained on disk.
    */
-  static constexpr uint64_t MAX_LOG_FILES =
-      3;  // Keep at most three files; older ones are discarded as rotation
-          // continues.
+  static constexpr uint64_t MAX_LOG_FILES = 3;
+  // Keep at most three files; older ones are discarded as rotation
+  // continues.
 
   /**
    * @brief ANSI colours used when formatting log patterns and messages.
    */
   // Named colours stored compactly as 8-bit
   // numbers; used to build ANSI escape sequences.
-  enum Color : std::uint8_t {
+  enum class Color : std::uint8_t {
     Red,      // Bright red, used for errors.
     Green,    // Bright green, used for success.
     Yellow,   // Bright yellow, used for warnings.
@@ -142,7 +147,7 @@ class Logger {
     Magenta,  // Soft purple, used for debug messages.
     White,    // Bright white, used for general messages.
     Reset,    // Resets terminal colour back to normal.
-    Cyan      // Bold cyan, used for optional context.
+    Cyan,     // Bold cyan, used for optional context.
   };
   /**
    * @brief Returns the ANSI escape sequence for a log colour.
@@ -154,4 +159,9 @@ class Logger {
   static std::string get_color(
       Color color);  // Looks up the terminal escape code for one of the
                      // colours above.
+
+  /**
+   * @brief A read-only map from `Color` to ANSI escape sequence.
+   */
+  static std::unordered_map<Logger::Color, std::string> COLOR_MAP;
 };

@@ -66,9 +66,9 @@
 #include "database/dbprobe.hpp"
 // Drogon Task return type of the async methods.
 #include "drogon/utils/coroutine.h"
+#include "message/message.hpp"  // Logging helpers.
 #include "store/store.hpp"  // Service locator for backends and fake injection.
-#include "utils/global/types.hpp"     // ColumnInfo and other shared types.
-#include "utils/message/message.hpp"  // Logging helpers.
+#include "utils/global/types.hpp"  // ColumnInfo and other shared types.
 class Case;     // Forward declaration: only a pointer/name is needed in this
                 // header.
 class Service;  // Forward declaration to avoid a heavy include.
@@ -399,8 +399,11 @@ class DatabaseController {
    * @throws DatabaseBusy rethrown so callers can answer 503; other exceptions
    * are logged and swallowed.
    */
-  template <typename Result, typename Func, typename... Args>
-  std::optional<Result> executer(const Func& func, Args&&... args) {
+  template <typename Result,
+            typename Func,
+            typename... Args>
+  std::optional<Result> executer(const Func& func,
+                                 Args&&... args) {
     DbProbe::check();  // on the IO-thread fast path this throws WouldBlock:
                        // the request moves to the DB executor
     try {

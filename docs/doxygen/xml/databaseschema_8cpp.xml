@@ -1,20 +1,31 @@
-<?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+<?xml version='1.0' encoding='UTF-8' standalone='no' ?>
+<doxygen
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="compound.xsd"
+    version="1.18.0"
+    xml:lang="en-US"
+>
   <compounddef id="databaseschema_8cpp" kind="file" language="C++">
     <compoundname>databaseschema.cpp</compoundname>
-    <includes refid="databaseschema_8hpp" local="yes">databaseschema.hpp</includes>
+    <includes
+            refid="databaseschema_8hpp"
+            local="yes"
+        >databaseschema.hpp</includes>
     <includes local="no">fmt/core.h</includes>
     <includes local="no">fmt/format.h</includes>
     <includes local="no">cstdlib</includes>
     <includes local="no">stdexcept</includes>
     <includes local="no">string</includes>
-    <includes refid="databasecontroller_8hpp" local="yes">controllers/databasecontroller/databasecontroller.hpp</includes>
+    <includes
+            refid="databasecontroller_8hpp"
+            local="yes"
+        >controllers/databasecontroller/databasecontroller.hpp</includes>
     <includes refid="store_8hpp" local="yes">store/store.hpp</includes>
-    <includes refid="message_8hpp" local="yes">utils/message/message.hpp</includes>
+    <includes refid="message_8hpp" local="yes">message/message.hpp</includes>
     <incdepgraph>
       <node id="22">
         <label>configurator/configurator.hpp</label>
-        <link refid="configurator_8hpp"/>
+        <link refid="configurator_8hpp" />
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
@@ -40,7 +51,7 @@
       </node>
       <node id="30">
         <label>defaults.hpp</label>
-        <link refid="defaults_8hpp"/>
+        <link refid="defaults_8hpp" />
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
@@ -48,7 +59,7 @@
       </node>
       <node id="26">
         <label>configurator/envloader/envloader.hpp</label>
-        <link refid="envloader_8hpp"/>
+        <link refid="envloader_8hpp" />
         <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
@@ -64,7 +75,7 @@
       </node>
       <node id="27">
         <label>envvars/envvars.hpp</label>
-        <link refid="envvars_8hpp"/>
+        <link refid="envvars_8hpp" />
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
@@ -72,7 +83,7 @@
       </node>
       <node id="11">
         <label>controllers/databasecontroller/databasecontroller.hpp</label>
-        <link refid="databasecontroller_8hpp"/>
+        <link refid="databasecontroller_8hpp" />
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
@@ -126,7 +137,7 @@
       </node>
       <node id="31">
         <label>database/asyncdbclient.hpp</label>
-        <link refid="asyncdbclient_8hpp"/>
+        <link refid="asyncdbclient_8hpp" />
         <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
@@ -138,7 +149,7 @@
       </node>
       <node id="33">
         <label>database/asyncresultmapper.hpp</label>
-        <link refid="asyncresultmapper_8hpp"/>
+        <link refid="asyncresultmapper_8hpp" />
         <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
@@ -152,7 +163,7 @@
       </node>
       <node id="35">
         <label>database/asyncsqlbinder.hpp</label>
-        <link refid="asyncsqlbinder_8hpp"/>
+        <link refid="asyncsqlbinder_8hpp" />
         <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
@@ -170,7 +181,7 @@
       </node>
       <node id="39">
         <label>database/databasebusy.hpp</label>
-        <link refid="databasebusy_8hpp"/>
+        <link refid="databasebusy_8hpp" />
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
@@ -178,17 +189,17 @@
       </node>
       <node id="40">
         <label>database/databasehandler.hpp</label>
-        <link refid="databasehandler_8hpp"/>
+        <link refid="databasehandler_8hpp" />
         <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="41">
         <label>database/dbprobe.hpp</label>
-        <link refid="dbprobe_8hpp"/>
+        <link refid="dbprobe_8hpp" />
       </node>
       <node id="42">
         <label>store/store.hpp</label>
-        <link refid="store_8hpp"/>
+        <link refid="store_8hpp" />
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
@@ -208,13 +219,13 @@
       </node>
       <node id="6">
         <label>utils/global/types.hpp</label>
-        <link refid="utils_2global_2types_8hpp"/>
+        <link refid="utils_2global_2types_8hpp" />
         <childnode refid="3" relation="include">
         </childnode>
       </node>
       <node id="28">
-        <label>utils/message/message.hpp</label>
-        <link refid="message_8hpp"/>
+        <label>message/message.hpp</label>
+        <link refid="message_8hpp" />
         <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
@@ -222,7 +233,7 @@
       </node>
       <node id="1">
         <label>src/validator/databaseschema/databaseschema.cpp</label>
-        <link refid="databaseschema_8cpp"/>
+        <link refid="databaseschema_8cpp" />
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
@@ -244,7 +255,7 @@
       </node>
       <node id="2">
         <label>databaseschema.hpp</label>
-        <link refid="databaseschema_8hpp"/>
+        <link refid="databaseschema_8hpp" />
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
@@ -337,16 +348,37 @@
       </node>
     </incdepgraph>
     <briefdescription>
-<para>Implementation of the process-wide database schema cache declared in <ref refid="databaseschema_8hpp" kindref="compound">databaseschema.hpp</ref>. </para>
+<para>Implementation of the process-wide database schema cache declared in <ref
+                    refid="databaseschema_8hpp"
+                    kindref="compound"
+                >databaseschema.hpp</ref>. </para>
     </briefdescription>
     <detaileddescription>
-<para>This file defines the single shared schema map and the functions that manage it: the constructor that fills it for every table at startup, populateSchema() that loads one table&apos;s columns, getDatabaseSchema() that hands out a read-only view of the map, and printSchema() that logs its contents. Failures while reading the schema are treated as fatal at startup.</para>
-<para>WHY THIS FILE MATTERS IN THE SERVER: This is where the schema snapshot that <ref refid="classValidator" kindref="compound">Validator</ref> relies on is actually built. <ref refid="classServer" kindref="compound">Server</ref>&apos;s constructor creates a <ref refid="classDatabaseSchema" kindref="compound">DatabaseSchema</ref> object, which uses <ref refid="classDatabaseController" kindref="compound">DatabaseController</ref> to discover tables and columns and stores them here. Without this file the cache would be empty, so validation could not run and every request would need a live database schema query.</para>
+<para
+            >This file defines the single shared schema map and the functions that manage it: the constructor that fills it for every table at startup, populateSchema() that loads one table&apos;s columns, getDatabaseSchema() that hands out a read-only view of the map, and printSchema() that logs its contents. Failures while reading the schema are treated as fatal at startup.</para>
+<para
+            >WHY THIS FILE MATTERS IN THE SERVER: This is where the schema snapshot that <ref
+                    refid="classValidator"
+                    kindref="compound"
+                >Validator</ref> relies on is actually built. <ref
+                    refid="classServer"
+                    kindref="compound"
+                >Server</ref>&apos;s constructor creates a <ref
+                    refid="classDatabaseSchema"
+                    kindref="compound"
+                >DatabaseSchema</ref> object, which uses <ref
+                    refid="classDatabaseController"
+                    kindref="compound"
+                >DatabaseController</ref> to discover tables and columns and stores them here. Without this file the cache would be empty, so validation could not run and every request would need a live database schema query.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
-<listitem><para>Static data members / storage duration: <ulink url="https://en.cppreference.com/w/cpp/language/storage_duration">https://en.cppreference.com/w/cpp/language/storage_duration</ulink></para>
+<listitem><para>Static data members / storage duration: <ulink
+                                url="https://en.cppreference.com/w/cpp/language/storage_duration"
+                            >https://en.cppreference.com/w/cpp/language/storage_duration</ulink></para>
 </listitem></itemizedlist>
 </para>
-<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
+<para><simplesect kind="author"><para>Amr Osman <ulink
+                            url="mailto:dr3mro@gmail.com"
+                        >dr3mro@gmail.com</ulink> </para>
 </simplesect>
 <simplesect kind="date"><para>2026-11-16 </para>
 </simplesect>
@@ -354,152 +386,703 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>databaseschema.cpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Implementation<sp/>of<sp/>the<sp/>process-wide<sp/>database<sp/>schema<sp/>cache<sp/>declared<sp/>in</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>databaseschema.hpp.</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>file<sp/>defines<sp/>the<sp/>single<sp/>shared<sp/>schema<sp/>map<sp/>and<sp/>the<sp/>functions</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>that<sp/>manage<sp/>it:<sp/>the<sp/>constructor<sp/>that<sp/>fills<sp/>it<sp/>for<sp/>every<sp/>table<sp/>at<sp/>startup,</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>populateSchema()<sp/>that<sp/>loads<sp/>one<sp/>table&apos;s<sp/>columns,<sp/>getDatabaseSchema()<sp/>that</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>hands<sp/>out<sp/>a<sp/>read-only<sp/>view<sp/>of<sp/>the<sp/>map,<sp/>and<sp/>printSchema()<sp/>that<sp/>logs<sp/>its</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>contents.<sp/>Failures<sp/>while<sp/>reading<sp/>the<sp/>schema<sp/>are<sp/>treated<sp/>as<sp/>fatal<sp/>at<sp/>startup.</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>where<sp/>the<sp/>schema<sp/>snapshot<sp/>that<sp/>Validator<sp/>relies<sp/>on<sp/>is<sp/>actually<sp/>built.</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>Server&apos;s<sp/>constructor<sp/>creates<sp/>a<sp/>DatabaseSchema<sp/>object,<sp/>which<sp/>uses</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>DatabaseController<sp/>to<sp/>discover<sp/>tables<sp/>and<sp/>columns<sp/>and<sp/>stores<sp/>them<sp/>here.</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>Without<sp/>this<sp/>file<sp/>the<sp/>cache<sp/>would<sp/>be<sp/>empty,<sp/>so<sp/>validation<sp/>could<sp/>not<sp/>run<sp/>and</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>every<sp/>request<sp/>would<sp/>need<sp/>a<sp/>live<sp/>database<sp/>schema<sp/>query.</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>Static<sp/>data<sp/>members<sp/>/<sp/>storage<sp/>duration:</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/language/storage_duration</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Bring<sp/>in<sp/>the<sp/>DatabaseSchema<sp/>class,<sp/>SCHEMA_t<sp/>and<sp/>the<sp/>declarations<sp/>we<sp/>define.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="databaseschema_8hpp" kindref="compound">databaseschema.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/core.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>fmt::format<sp/>used<sp/>to<sp/>build<sp/>log<sp/>messages.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Additional<sp/>fmt<sp/>formatting<sp/>support<sp/>used<sp/>by<sp/>the<sp/>library<sp/>headers.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/format.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>For<sp/>EXIT_FAILURE<sp/>and<sp/>exit(),<sp/>used<sp/>on<sp/>fatal<sp/>startup<sp/>errors.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>std::runtime_error<sp/>thrown<sp/>when<sp/>no<sp/>tables<sp/>are<sp/>found.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>std::string<sp/>operations<sp/>on<sp/>table<sp/>names.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>For<sp/>DatabaseController::getAllTables/getTableSchema.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="databasecontroller_8hpp" kindref="compound">controllers/databasecontroller/databasecontroller.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>For<sp/>Store::getObject,<sp/>which<sp/>supplies<sp/>the<sp/>shared<sp/>DatabaseController.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="store_8hpp" kindref="compound">store/store.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>For<sp/>logging<sp/>helpers<sp/>like<sp/>ErrorMessage<sp/>and<sp/>WarningMessage.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">utils/message/message.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><ref refid="databaseschema_8hpp_1aea29cf503a423c2163e5b08142700952" kindref="member">SCHEMA_t</ref></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDatabaseSchema_1a607a79c489b46a2d8b1d72f40dcfd272" kindref="member">DatabaseSchema::databaseSchema</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Define<sp/>the<sp/>one<sp/>shared<sp/>schema<sp/>map<sp/>(empty</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>until<sp/>the<sp/>constructor<sp/>fills<sp/>it).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp />*<sp />@file<sp
+                    />databaseschema.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp />*<sp />@brief<sp
+                    />Implementation<sp />of<sp />the<sp />process-wide<sp
+                    />database<sp />schema<sp />cache<sp />declared<sp
+                    />in</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp />*<sp
+                    />databaseschema.hpp.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp />*<sp />@details<sp
+                    />This<sp />file<sp />defines<sp />the<sp />single<sp
+                    />shared<sp />schema<sp />map<sp />and<sp />the<sp
+                    />functions</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp />*<sp />that<sp />manage<sp
+                    />it:<sp />the<sp />constructor<sp />that<sp />fills<sp
+                    />it<sp />for<sp />every<sp />table<sp />at<sp
+                    />startup,</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp />*<sp />populateSchema()<sp
+                    />that<sp />loads<sp />one<sp />table&apos;s<sp
+                    />columns,<sp />getDatabaseSchema()<sp
+                    />that</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp />*<sp />hands<sp />out<sp
+                    />a<sp />read-only<sp />view<sp />of<sp />the<sp />map,<sp
+                    />and<sp />printSchema()<sp />that<sp />logs<sp
+                    />its</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp />*<sp />contents.<sp
+                    />Failures<sp />while<sp />reading<sp />the<sp />schema<sp
+                    />are<sp />treated<sp />as<sp />fatal<sp />at<sp
+                    />startup.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp />*<sp />WHY<sp />THIS<sp
+                    />FILE<sp />MATTERS<sp />IN<sp />THE<sp
+                    />SERVER:</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp />*<sp />This<sp />is<sp
+                    />where<sp />the<sp />schema<sp />snapshot<sp />that<sp
+                    />Validator<sp />relies<sp />on<sp />is<sp />actually<sp
+                    />built.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp />*<sp />Server&apos;s<sp
+                    />constructor<sp />creates<sp />a<sp />DatabaseSchema<sp
+                    />object,<sp />which<sp />uses</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp />*<sp
+                    />DatabaseController<sp />to<sp />discover<sp />tables<sp
+                    />and<sp />columns<sp />and<sp />stores<sp />them<sp
+                    />here.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp />*<sp />Without<sp
+                    />this<sp />file<sp />the<sp />cache<sp />would<sp />be<sp
+                    />empty,<sp />so<sp />validation<sp />could<sp />not<sp
+                    />run<sp />and</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp />*<sp />every<sp
+                    />request<sp />would<sp />need<sp />a<sp />live<sp
+                    />database<sp />schema<sp />query.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp />*<sp />CONCEPTS<sp
+                    />TO<sp />LEARN<sp />(for<sp
+                    />beginners):</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp />*<sp />-<sp />Static<sp
+                    />data<sp />members<sp />/<sp />storage<sp
+                    />duration:</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp />*<sp
+                    />https://en.cppreference.com/w/cpp/language/storage_duration</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp />*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp />*<sp />@author<sp
+                    />Amr<sp />Osman<sp
+                    />&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp />*<sp />@date<sp
+                    />2026-11-16</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="25"><highlight class="normal" /></codeline>
+<codeline lineno="26"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />Bring<sp />in<sp />the<sp />DatabaseSchema<sp
+                    />class,<sp />SCHEMA_t<sp />and<sp />the<sp
+                    />declarations<sp />we<sp />define.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="27"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&quot;<ref
+                        refid="databaseschema_8hpp"
+                        kindref="compound"
+                    >databaseschema.hpp</ref>&quot;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="28"><highlight class="normal" /></codeline>
+<codeline lineno="29"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;fmt/core.h&gt;</highlight><highlight
+                    class="normal"
+                ><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />For<sp />fmt::format<sp />used<sp />to<sp />build<sp
+                    />log<sp />messages.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="30"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />Additional<sp />fmt<sp />formatting<sp />support<sp
+                    />used<sp />by<sp />the<sp />library<sp
+                    />headers.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="31"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;fmt/format.h&gt;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="32"><highlight class="normal" /></codeline>
+<codeline lineno="33"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />For<sp />EXIT_FAILURE<sp />and<sp />exit(),<sp
+                    />used<sp />on<sp />fatal<sp />startup<sp
+                    />errors.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="34"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;cstdlib&gt;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="35"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;stdexcept&gt;</highlight><highlight
+                    class="normal"
+                ><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />For<sp />std::runtime_error<sp />thrown<sp />when<sp
+                    />no<sp />tables<sp />are<sp />found.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="36"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&lt;string&gt;</highlight><highlight
+                    class="normal"
+                ><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />For<sp />std::string<sp />operations<sp />on<sp
+                    />table<sp />names.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="37"><highlight class="normal" /></codeline>
+<codeline lineno="38"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />For<sp
+                    />DatabaseController::getAllTables/getTableSchema.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="39"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&quot;<ref
+                        refid="databasecontroller_8hpp"
+                        kindref="compound"
+                    >controllers/databasecontroller/databasecontroller.hpp</ref>&quot;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="40"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />For<sp />Store::getObject,<sp />which<sp />supplies<sp
+                    />the<sp />shared<sp
+                    />DatabaseController.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="41"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&quot;<ref
+                        refid="store_8hpp"
+                        kindref="compound"
+                    >store/store.hpp</ref>&quot;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="42"><highlight class="normal" /><highlight
+                    class="comment"
+                >//<sp />For<sp />logging<sp />helpers<sp />like<sp
+                    />ErrorMessage<sp />and<sp
+                    />WarningMessage.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="43"><highlight class="normal" /><highlight
+                    class="preprocessor"
+                >#include<sp />&quot;<ref
+                        refid="message_8hpp"
+                        kindref="compound"
+                    >message/message.hpp</ref>&quot;</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="44"><highlight class="normal" /></codeline>
+<codeline lineno="45"><highlight class="normal"><ref
+                        refid="databaseschema_8hpp_1aea29cf503a423c2163e5b08142700952"
+                        kindref="member"
+                    >SCHEMA_t</ref></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp /><sp /><sp /><sp /><ref
+                        refid="classDatabaseSchema_1a607a79c489b46a2d8b1d72f40dcfd272"
+                        kindref="member"
+                    >DatabaseSchema::databaseSchema</ref>;<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Define<sp
+                    />the<sp />one<sp />shared<sp />schema<sp />map<sp
+                    />(empty</highlight><highlight class="normal" /></codeline>
+<codeline lineno="47"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />until<sp />the<sp />constructor<sp />fills<sp
+                    />it).</highlight><highlight class="normal" /></codeline>
+<codeline lineno="48"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
 <codeline lineno="49"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>See<sp/>DatabaseSchema::DatabaseSchema.</highlight></codeline>
-<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>Retrieves<sp/>DatabaseController<sp/>from<sp/>Store,<sp/>asks<sp/>it<sp/>for<sp/>all<sp/>table<sp/>names,<sp/>and</highlight></codeline>
-<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>calls<sp/>populateSchema()<sp/>for<sp/>each.<sp/>A<sp/>missing<sp/>or<sp/>empty<sp/>table<sp/>list<sp/>is<sp/>a<sp/>fatal</highlight></codeline>
-<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>startup<sp/>condition.<sp/>Note:<sp/>The<sp/>exit(EXIT_FAILURE)<sp/>/<sp/>&quot;Exiting...&quot;<sp/>statements</highlight></codeline>
-<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>after<sp/>the<sp/>throw<sp/>are<sp/>unreachable;<sp/>the<sp/>throw<sp/>is<sp/>the<sp/>active<sp/>error<sp/>path.</highlight></codeline>
-<codeline lineno="55"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56" refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" refkind="member"><highlight class="normal"><ref refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" kindref="member">DatabaseSchema::DatabaseSchema</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>dbctl<sp/>=</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject&lt;DatabaseController&gt;</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Fetch<sp/>the<sp/>shared<sp/>controller</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>that<sp/>can<sp/>query<sp/>the<sp/>database.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>tables<sp/>=<sp/>dbctl-&gt;getAllTables();<sp/><sp/></highlight><highlight class="comment">//<sp/>Ask<sp/>it<sp/>for<sp/>the<sp/>list<sp/>of<sp/>table<sp/>names</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(an<sp/>optional<sp/>that<sp/>may<sp/>be<sp/>empty).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>table<sp/>list<sp/>at<sp/>all,<sp/>or<sp/>an<sp/>empty<sp/>list,<sp/>is<sp/>a<sp/>fatal</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>startup<sp/>error.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!tables.has_value()<sp/>||<sp/>tables-&gt;empty())<sp/>{</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::runtime_error(</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;No<sp/>tables<sp/>found<sp/>in<sp/>database.\n&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Report<sp/>the<sp/>failure<sp/>as<sp/>an</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>exception<sp/>to<sp/>the<sp/>caller.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight><highlight class="stringliteral">&quot;Exiting...&quot;</highlight><highlight class="normal">);<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Unreachable:<sp/>the<sp/>throw<sp/>above</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>already<sp/>left<sp/>this<sp/>function.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>exit(EXIT_FAILURE);</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*NOLINT*/</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Unreachable<sp/>fallback<sp/>that<sp/>would<sp/>end<sp/>the<sp/>process<sp/>on</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>table<sp/>:</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Visit<sp/>each<sp/>table<sp/>name<sp/>that<sp/>was<sp/>returned.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tables.value())<sp/>{</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDatabaseSchema_1a801e1391c1907e56401a867210b8c25d" kindref="member">populateSchema</ref>(table);<sp/><sp/></highlight><highlight class="comment">//<sp/>Load<sp/>that<sp/>table&apos;s<sp/>columns<sp/>into<sp/>the<sp/>shared<sp/>map.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>printSchema();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp />*<sp />See<sp
+                    />DatabaseSchema::DatabaseSchema.</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp />*<sp />Retrieves<sp
+                    />DatabaseController<sp />from<sp />Store,<sp />asks<sp
+                    />it<sp />for<sp />all<sp />table<sp />names,<sp
+                    />and</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp />*<sp />calls<sp
+                    />populateSchema()<sp />for<sp />each.<sp />A<sp
+                    />missing<sp />or<sp />empty<sp />table<sp />list<sp />is<sp
+                    />a<sp />fatal</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp />*<sp />startup<sp
+                    />condition.<sp />Note:<sp />The<sp />exit(EXIT_FAILURE)<sp
+                    />/<sp />&quot;Exiting...&quot;<sp
+                    />statements</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp />*<sp />after<sp />the<sp
+                    />throw<sp />are<sp />unreachable;<sp />the<sp />throw<sp
+                    />is<sp />the<sp />active<sp />error<sp
+                    />path.</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="56"
+                refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c"
+                refkind="member"
+            ><highlight class="normal"><ref
+                        refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c"
+                        kindref="member"
+                    >DatabaseSchema::DatabaseSchema</ref>()<sp
+                    />{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >auto</highlight><highlight class="normal"><sp />dbctl<sp
+                    />=</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><ref
+                        refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c"
+                        kindref="member"
+                    >Store::getObject&lt;DatabaseController&gt;</ref>();<sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />Fetch<sp />the<sp />shared<sp
+                    />controller</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="59"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />that<sp />can<sp />query<sp />the<sp
+                    />database.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="60"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >auto</highlight><highlight class="normal"><sp />tables<sp
+                    />=<sp />dbctl-&gt;getAllTables();<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Ask<sp
+                    />it<sp />for<sp />the<sp />list<sp />of<sp />table<sp
+                    />names</highlight><highlight class="normal" /></codeline>
+<codeline lineno="61"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />(an<sp />optional<sp />that<sp />may<sp />be<sp
+                    />empty).</highlight><highlight class="normal" /></codeline>
+<codeline lineno="62"><highlight class="normal" /></codeline>
+<codeline lineno="63"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />No<sp
+                    />table<sp />list<sp />at<sp />all,<sp />or<sp />an<sp
+                    />empty<sp />list,<sp />is<sp />a<sp
+                    />fatal</highlight><highlight class="normal" /></codeline>
+<codeline lineno="64"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />startup<sp
+                    />error.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="65"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp
+                    />(!tables.has_value()<sp />||<sp />tables-&gt;empty())<sp
+                    />{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >throw</highlight><highlight class="normal"><sp
+                    />std::runtime_error(</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="stringliteral"
+                >&quot;No<sp />tables<sp />found<sp />in<sp
+                    />database.\n&quot;</highlight><highlight
+                    class="normal"
+                >);<sp /><sp /></highlight><highlight class="comment">//<sp
+                    />Report<sp />the<sp />failure<sp />as<sp
+                    />an</highlight><highlight class="normal" /></codeline>
+<codeline lineno="68"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />exception<sp />to<sp />the<sp
+                    />caller.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="69"><highlight class="normal"><sp /><sp /><sp /><sp /><ref
+                        refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba"
+                        kindref="member"
+                    >Message::ErrorMessage</ref>(</highlight><highlight
+                    class="stringliteral"
+                >&quot;Exiting...&quot;</highlight><highlight
+                    class="normal"
+                >);<sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Unreachable:<sp />the<sp />throw<sp
+                    />above</highlight><highlight class="normal" /></codeline>
+<codeline lineno="70"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />already<sp
+                    />left<sp />this<sp />function.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="71"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />exit(EXIT_FAILURE);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="comment"
+                >/*NOLINT*/</highlight><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />Unreachable<sp />fallback<sp />that<sp />would<sp />end<sp
+                    />the<sp />process<sp />on</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="73"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />failure.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="74"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal" /></codeline>
+<codeline lineno="76"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >for</highlight><highlight class="normal"><sp
+                    />(</highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >auto</highlight><highlight class="normal">&amp;<sp />table<sp
+                    />:</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />Visit<sp />each<sp />table<sp />name<sp />that<sp />was<sp
+                    />returned.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="78"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp />tables.value())<sp />{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp /><sp /><sp /><sp /><ref
+                        refid="classDatabaseSchema_1a801e1391c1907e56401a867210b8c25d"
+                        kindref="member"
+                    >populateSchema</ref>(table);<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Load<sp
+                    />that<sp />table&apos;s<sp />columns<sp />into<sp />the<sp
+                    />shared<sp />map.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="80"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />printSchema();</highlight><highlight
+                    class="normal"
+                /></codeline>
 <codeline lineno="82"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
 <codeline lineno="84"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="85"><highlight class="comment"><sp/>*<sp/>See<sp/>DatabaseSchema::populateSchema.</highlight></codeline>
-<codeline lineno="86"><highlight class="comment"><sp/>*<sp/>Fetches<sp/>the<sp/>column<sp/>descriptions<sp/>through<sp/>DatabaseController<sp/>and<sp/>stores<sp/>them</highlight></codeline>
-<codeline lineno="87"><highlight class="comment"><sp/>*<sp/>under</highlight></codeline>
-<codeline lineno="88"><highlight class="comment"><sp/>*<sp/>@p<sp/>tableName<sp/>in<sp/>the<sp/>static<sp/>map.<sp/>Failure<sp/>is<sp/>treated<sp/>as<sp/>fatal:<sp/>an<sp/>error<sp/>is</highlight></codeline>
-<codeline lineno="89"><highlight class="comment"><sp/>*<sp/>logged<sp/>and<sp/>exit(EXIT_FAILURE)<sp/>is<sp/>called<sp/>rather<sp/>than<sp/>leaving<sp/>a<sp/>partially</highlight></codeline>
-<codeline lineno="90"><highlight class="comment"><sp/>*<sp/>populated<sp/>cache.</highlight></codeline>
-<codeline lineno="91"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="92" refid="classDatabaseSchema_1a801e1391c1907e56401a867210b8c25d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDatabaseSchema_1a801e1391c1907e56401a867210b8c25d" kindref="member">DatabaseSchema::populateSchema</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>tableName)<sp/>{</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>dbctl<sp/>=</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject&lt;DatabaseController&gt;</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>controller<sp/>used<sp/>to</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>query<sp/>this<sp/>table&apos;s<sp/>schema.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>schema<sp/>=<sp/>dbctl-&gt;getTableSchema(</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tableName);<sp/><sp/></highlight><highlight class="comment">//<sp/>Ask<sp/>for<sp/>the<sp/>columns<sp/>of<sp/>this<sp/>table<sp/>(an<sp/>optional).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>query<sp/>succeeded<sp/>and<sp/>produced<sp/>column</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>descriptions.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(schema.has_value())<sp/>{</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Store<sp/>the<sp/>columns<sp/>under<sp/>the</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>table<sp/>name<sp/>in<sp/>the<sp/>shared<sp/>map.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>table&apos;s<sp/>schema<sp/>could<sp/>not<sp/>be<sp/>read.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDatabaseSchema_1a607a79c489b46a2d8b1d72f40dcfd272" kindref="member">databaseSchema</ref>[tableName]<sp/>=<sp/>dbctl-&gt;getTableSchema(tableName).value();</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a3d5db738594c8af1428053227959259e" kindref="member">Message::WarningMessage</ref>(</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;Table<sp/>not<sp/>found.\n&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tableName));<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>a<sp/>warning<sp/>naming<sp/>the<sp/>problem.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Exiting...&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>that<sp/>startup<sp/>is<sp/>being<sp/>abandoned.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>exit(EXIT_FAILURE);</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*NOLINT*/</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>the<sp/>process<sp/>rather<sp/>than<sp/>keep<sp/>a<sp/>half-filled<sp/>cache.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp />*<sp />See<sp
+                    />DatabaseSchema::populateSchema.</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp />*<sp />Fetches<sp
+                    />the<sp />column<sp />descriptions<sp />through<sp
+                    />DatabaseController<sp />and<sp />stores<sp
+                    />them</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp />*<sp
+                    />under</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp />*<sp />@p<sp
+                    />tableName<sp />in<sp />the<sp />static<sp />map.<sp
+                    />Failure<sp />is<sp />treated<sp />as<sp />fatal:<sp
+                    />an<sp />error<sp />is</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp />*<sp />logged<sp />and<sp
+                    />exit(EXIT_FAILURE)<sp />is<sp />called<sp />rather<sp
+                    />than<sp />leaving<sp />a<sp
+                    />partially</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp />*<sp />populated<sp
+                    />cache.</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="92"
+                refid="classDatabaseSchema_1a801e1391c1907e56401a867210b8c25d"
+                refkind="member"
+            ><highlight class="normal" /><highlight
+                    class="keywordtype"
+                >void</highlight><highlight class="normal"><sp /><ref
+                        refid="classDatabaseSchema_1a801e1391c1907e56401a867210b8c25d"
+                        kindref="member"
+                    >DatabaseSchema::populateSchema</ref>(</highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    />std::string&amp;<sp />tableName)<sp
+                    />{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >auto</highlight><highlight class="normal"><sp />dbctl<sp
+                    />=</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><ref
+                        refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c"
+                        kindref="member"
+                    >Store::getObject&lt;DatabaseController&gt;</ref>();<sp
+                    /><sp /></highlight><highlight class="comment">//<sp
+                    />Get<sp />the<sp />controller<sp />used<sp
+                    />to</highlight><highlight class="normal" /></codeline>
+<codeline lineno="95"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />query<sp />this<sp />table&apos;s<sp
+                    />schema.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="96"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >auto</highlight><highlight class="normal"><sp />schema<sp
+                    />=<sp />dbctl-&gt;getTableSchema(</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp />tableName);<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Ask<sp />for<sp />the<sp />columns<sp />of<sp />this<sp
+                    />table<sp />(an<sp />optional).</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="98"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />The<sp
+                    />query<sp />succeeded<sp />and<sp />produced<sp
+                    />column</highlight><highlight class="normal" /></codeline>
+<codeline lineno="99"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp
+                    />descriptions.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="100"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >if</highlight><highlight class="normal"><sp
+                    />(schema.has_value())<sp />{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Store<sp
+                    />the<sp />columns<sp />under<sp />the</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="102"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />table<sp
+                    />name<sp />in<sp />the<sp />shared<sp
+                    />map.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="103"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />The<sp
+                    />table&apos;s<sp />schema<sp />could<sp />not<sp />be<sp
+                    />read.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="104"><highlight class="normal"><sp /><sp /><sp /><sp /><ref
+                        refid="classDatabaseSchema_1a607a79c489b46a2d8b1d72f40dcfd272"
+                        kindref="member"
+                    >databaseSchema</ref>[tableName]<sp />=<sp
+                    />dbctl-&gt;getTableSchema(tableName).value();</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp /><sp />}<sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >else</highlight><highlight class="normal"><sp
+                    />{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp /><sp /><sp /><sp /><ref
+                        refid="classMessage_1a3d5db738594c8af1428053227959259e"
+                        kindref="member"
+                    >Message::WarningMessage</ref>(</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp />fmt::format(</highlight><highlight
+                    class="stringliteral"
+                >&quot;Table<sp />not<sp />found.\n&quot;</highlight><highlight
+                    class="normal"
+                >,</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp />tableName));<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Log<sp
+                    />a<sp />warning<sp />naming<sp />the<sp
+                    />problem.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="109"><highlight class="normal"><sp /><sp /><sp /><sp /><ref
+                        refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba"
+                        kindref="member"
+                    >Message::ErrorMessage</ref>(</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /></highlight><highlight
+                    class="stringliteral"
+                >&quot;Exiting...&quot;</highlight><highlight
+                    class="normal"
+                >);<sp /><sp /></highlight><highlight class="comment">//<sp
+                    />Log<sp />that<sp />startup<sp />is<sp />being<sp
+                    />abandoned.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="111"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />exit(EXIT_FAILURE);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="comment"
+                >/*NOLINT*/</highlight><highlight class="normal"><sp /><sp
+                    /></highlight><highlight class="comment">//<sp />End<sp
+                    />the<sp />process<sp />rather<sp />than<sp />keep<sp />a<sp
+                    />half-filled<sp />cache.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="113"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
 <codeline lineno="114"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
 <codeline lineno="116"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="117"><highlight class="comment"><sp/>*<sp/>See<sp/>DatabaseSchema::getDatabaseSchema.</highlight></codeline>
-<codeline lineno="118"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="119" refid="classDatabaseSchema_1aa32c7db2e9b88c2cfec1f09a2de9d7dd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="databaseschema_8hpp_1aea29cf503a423c2163e5b08142700952" kindref="member">SCHEMA_t</ref>&amp;<sp/><ref refid="classDatabaseSchema_1aa32c7db2e9b88c2cfec1f09a2de9d7dd" kindref="member">DatabaseSchema::getDatabaseSchema</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classDatabaseSchema_1a607a79c489b46a2d8b1d72f40dcfd272" kindref="member">databaseSchema</ref>;</highlight></codeline>
-<codeline lineno="121"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>out<sp/>a<sp/>read-only<sp/>reference<sp/>to<sp/>the<sp/>shared<sp/>map,<sp/>no<sp/>copy<sp/>needed.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp />*<sp />See<sp
+                    />DatabaseSchema::getDatabaseSchema.</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="119"
+                refid="classDatabaseSchema_1aa32c7db2e9b88c2cfec1f09a2de9d7dd"
+                refkind="member"
+            ><highlight class="normal" /><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp /><ref
+                        refid="databaseschema_8hpp_1aea29cf503a423c2163e5b08142700952"
+                        kindref="member"
+                    >SCHEMA_t</ref>&amp;<sp /><ref
+                        refid="classDatabaseSchema_1aa32c7db2e9b88c2cfec1f09a2de9d7dd"
+                        kindref="member"
+                    >DatabaseSchema::getDatabaseSchema</ref>()<sp
+                    />{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >return</highlight><highlight class="normal"><sp /><ref
+                        refid="classDatabaseSchema_1a607a79c489b46a2d8b1d72f40dcfd272"
+                        kindref="member"
+                    >databaseSchema</ref>;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">}<sp /><sp
+                    /></highlight><highlight class="comment">//<sp />Hand<sp
+                    />out<sp />a<sp />read-only<sp />reference<sp />to<sp
+                    />the<sp />shared<sp />map,<sp />no<sp />copy<sp
+                    />needed.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="122"><highlight class="normal" /><highlight
+                    class="comment"
+                /></codeline>
 <codeline lineno="123"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="124"><highlight class="comment"><sp/>*<sp/>See<sp/>DatabaseSchema::printSchema.</highlight></codeline>
-<codeline lineno="125"><highlight class="comment"><sp/>*<sp/>Emits<sp/>one<sp/>info-level<sp/>line<sp/>per<sp/>column,<sp/>including<sp/>table<sp/>name,<sp/>column<sp/>name,<sp/>data</highlight></codeline>
-<codeline lineno="126"><highlight class="comment"><sp/>*<sp/>type,<sp/>constraint<sp/>and<sp/>nullability.<sp/>Read-only<sp/>diagnostic<sp/>helper.</highlight></codeline>
-<codeline lineno="127"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="128" refid="classDatabaseSchema_1a6a5d958e7d5a760bcd929c88b1d93fa7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classDatabaseSchema_1a6a5d958e7d5a760bcd929c88b1d93fa7" kindref="member">DatabaseSchema::printSchema</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>[tableName,<sp/>columns]<sp/>:</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Walk<sp/>every<sp/>(table<sp/>name,<sp/>column<sp/>set)<sp/>pair<sp/>in<sp/>the</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cache.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabaseSchema_1a607a79c489b46a2d8b1d72f40dcfd272" kindref="member">databaseSchema</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>column<sp/>:</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Walk<sp/>every<sp/>column<sp/>description<sp/>inside<sp/>that<sp/>table.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>columns)<sp/>{</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" kindref="member">Message::InfoMessage</ref>(</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;{}<sp/>:<sp/>{}<sp/>-<sp/>{}<sp/>-<sp/>{}<sp/>-<sp/>{}<sp/>\n&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tableName,</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>column.Name,</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>column.DataType,</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>column.Constraint,</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>column</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.isNullable));<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>one<sp/>line<sp/>describing<sp/>the<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp />*<sp />See<sp
+                    />DatabaseSchema::printSchema.</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp />*<sp />Emits<sp />one<sp
+                    />info-level<sp />line<sp />per<sp />column,<sp
+                    />including<sp />table<sp />name,<sp />column<sp />name,<sp
+                    />data</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp />*<sp />type,<sp
+                    />constraint<sp />and<sp />nullability.<sp />Read-only<sp
+                    />diagnostic<sp />helper.</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp />*/</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline
+                lineno="128"
+                refid="classDatabaseSchema_1a6a5d958e7d5a760bcd929c88b1d93fa7"
+                refkind="member"
+            ><highlight class="normal" /><highlight
+                    class="keywordtype"
+                >void</highlight><highlight class="normal"><sp /><ref
+                        refid="classDatabaseSchema_1a6a5d958e7d5a760bcd929c88b1d93fa7"
+                        kindref="member"
+                    >DatabaseSchema::printSchema</ref>()<sp
+                    />{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >for</highlight><highlight class="normal"><sp
+                    />(</highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >auto</highlight><highlight class="normal">&amp;<sp
+                    />[tableName,<sp />columns]<sp />:</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />Walk<sp />every<sp />(table<sp />name,<sp />column<sp
+                    />set)<sp />pair<sp />in<sp />the</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="131"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /></highlight><highlight class="comment">//<sp
+                    />cache.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="132"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><ref
+                        refid="classDatabaseSchema_1a607a79c489b46a2d8b1d72f40dcfd272"
+                        kindref="member"
+                    >databaseSchema</ref>)<sp />{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp /><sp /><sp /><sp
+                    /></highlight><highlight
+                    class="keywordflow"
+                >for</highlight><highlight class="normal"><sp
+                    />(</highlight><highlight
+                    class="keyword"
+                >const</highlight><highlight class="normal"><sp
+                    /></highlight><highlight
+                    class="keyword"
+                >auto</highlight><highlight class="normal">&amp;<sp />column<sp
+                    />:</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Walk<sp />every<sp />column<sp />description<sp
+                    />inside<sp />that<sp />table.</highlight><highlight
+                    class="normal"
+                /></codeline>
+<codeline lineno="135"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp />columns)<sp
+                    />{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><ref
+                        refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886"
+                        kindref="member"
+                    >Message::InfoMessage</ref>(</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp
+                    />fmt::format(</highlight><highlight
+                    class="stringliteral"
+                >&quot;{}<sp />:<sp />{}<sp />-<sp />{}<sp />-<sp />{}<sp />-<sp
+                    />{}<sp />\n&quot;</highlight><highlight
+                    class="normal"
+                >,</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    />tableName,</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    />column.Name,</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    />column.DataType,</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    />column.Constraint,</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    />column</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
+                    /><sp />.isNullable));<sp /><sp /></highlight><highlight
+                    class="comment"
+                >//<sp />Log<sp />one<sp />line<sp />describing<sp />the<sp
+                    />column.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="144"><highlight class="normal"><sp /><sp /><sp /><sp
+                    />}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp /><sp
+                    />}</highlight></codeline>
 <codeline lineno="146"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="src/validator/databaseschema/databaseschema.cpp"/>
+    <location file="src/validator/databaseschema/databaseschema.cpp" />
   </compounddef>
 </doxygen>

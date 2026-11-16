@@ -48,8 +48,8 @@
 #include "store/store.hpp"
 #include "utils/global/http.hpp"  // Http::Error and status codes for denials.
 // Requester, the caller whose identity is checked.
+#include "message/message.hpp"  // Logging helpers for errors.
 #include "utils/global/requester.hpp"
-#include "utils/message/message.hpp"  // Logging helpers for errors.
 // Same namespace as the public manager.
 namespace api::v2 {
   /**
@@ -302,7 +302,8 @@ namespace api::v2 {
     // Fetches permissions
     // (cache first, database
     // on a miss).
-    template <typename Func, typename... Args>
+    template <typename Func,
+              typename... Args>
     static std::optional<jsoncons::json> getPermissionsOfEntity(Func&& func,
                                                                 Args&... args) {
       std::optional<std::string> query =
@@ -377,9 +378,11 @@ namespace api::v2 {
     // Coroutine version of the
     // fetch; awaits the async
     // database read.
-    template <typename Func, typename... Args>
+    template <typename Func,
+              typename... Args>
     static drogon::Task<std::optional<jsoncons::json>>
-    getPermissionsOfEntityCoro(Func&& func, Args&... args) {
+    getPermissionsOfEntityCoro(Func&& func,
+                               Args&... args) {
       std::optional<std::string> query =
           std::invoke(std::forward<Func>(func),
                       std::forward<Args>(

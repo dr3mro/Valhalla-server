@@ -5,7 +5,7 @@ var searchData=
   ['generatetoken_2',['generateToken',['../classapi_1_1v2_1_1TokenManager.html#ae35221cdefeaad8255a896481af08403',1,'api::v2::TokenManager']]],
   ['generation_3',['generation',['../classBasicPermissionCache.html#a96ddf9f59ee4f1f686cab167c68effbb',1,'BasicPermissionCache']]],
   ['get_4',['get',['../classConfigurator.html#a656bf84cc5f0920ae21cd952164fbaef',1,'Configurator::get()'],['../classEnvVars.html#a84ea9a96f8f19c0d80cec58da34d7861',1,'EnvVars::get()'],['../classBasicPermissionCache.html#a617931f09a54fec0b8fc808ca00930db',1,'BasicPermissionCache::get()'],['../classMemCache.html#aa1473dd4fba512396e813d4c35ab39eb',1,'MemCache::get()']]],
-  ['get_5fcolor_5',['get_color',['../classLogger.html#aaffbcae12c11b5435c8a1743c7402acc',1,'Logger::get_color()'],['../classMessage.html#ab1578286398f61ef66338441d1ea99e3',1,'Message::get_color()']]],
+  ['get_5fcolor_5',['get_color',['../classMessage.html#ab1578286398f61ef66338441d1ea99e3',1,'Message']]],
   ['get_5fconnection_6',['get_connection',['../classDatabaseConnectionPool.html#a39716826b3e5be2f15603d8cf809446b',1,'DatabaseConnectionPool::get_connection()'],['../classDatabaseHanndler.html#a980f5c0f9454a8c931a15f24c45a863b',1,'DatabaseHanndler::get_connection()']]],
   ['get_5fdata_7',['get_data',['../structapi_1_1v2_1_1Types_1_1Entity__t.html#a958bb81c9a5076dd3b0c2c8eddbdaaf2',1,'api::v2::Types::Entity_t']]],
   ['get_5fdata_5fjson_8',['get_data_json',['../structapi_1_1v2_1_1Types_1_1ClientData__t.html#a1ae1de4ae01c497a90e0820734c7fcd0',1,'api::v2::Types::ClientData_t']]],

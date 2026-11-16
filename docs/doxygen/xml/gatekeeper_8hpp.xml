@@ -473,7 +473,7 @@
         </childnode>
       </node>
       <node id="30">
-        <label>utils/message/message.hpp</label>
+        <label>message/message.hpp</label>
         <link refid="message_8hpp"/>
         <childnode refid="31" relation="include">
         </childnode>

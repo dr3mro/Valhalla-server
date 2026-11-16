@@ -55,7 +55,7 @@
 #include "database/databasebusy.hpp"
 // DatabaseHanndler provides the RAII lease used each cycle.
 #include "database/databasehandler.hpp"
-#include "utils/message/message.hpp"  // Message helpers log every state change.
+#include "message/message.hpp"  // Message helpers log every state change.
 
 /**
  * @brief Starts the monitoring thread that periodically checks a pooled

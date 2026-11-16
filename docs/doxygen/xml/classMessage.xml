@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/message/message.hpp" line="54" column="3"/>
+        <location file="src/message/message.hpp" line="54" column="3"/>
         <referencedby refid="classMessage_1a86c3737ea3a70780ed5ea7c5403b9507">Message</referencedby>
         <referencedby refid="classMessage_1a2a8c28d1a44fbc15a2bd8b974bbfa242">Message</referencedby>
         <referencedby refid="classMessage_1a7da4c19efcee0fbbe592e3fe67a95021">operator=</referencedby>
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/message/message.hpp" line="59" column="11"/>
+        <location file="src/message/message.hpp" line="59" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classMessage_1a86c3737ea3a70780ed5ea7c5403b9507" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/message/message.hpp" line="64" column="3"/>
+        <location file="src/message/message.hpp" line="64" column="3"/>
         <references refid="classMessage_1a4e0c3e0a2be25186519ba075d7851b71">Message</references>
       </memberdef>
       <memberdef kind="function" id="classMessage_1a2a8c28d1a44fbc15a2bd8b974bbfa242" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -75,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/message/message.hpp" line="69" column="3"/>
+        <location file="src/message/message.hpp" line="69" column="3"/>
         <references refid="classMessage_1a4e0c3e0a2be25186519ba075d7851b71">Message</references>
       </memberdef>
       <memberdef kind="function" id="classMessage_1a7da4c19efcee0fbbe592e3fe67a95021" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -95,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/message/message.hpp" line="74" column="11"/>
+        <location file="src/message/message.hpp" line="74" column="11"/>
         <references refid="classMessage_1a4e0c3e0a2be25186519ba075d7851b71">Message</references>
       </memberdef>
       <memberdef kind="function" id="classMessage_1a7307e42c5da334c23ad52a2e7eaf755c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -115,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/message/message.hpp" line="79" column="11"/>
+        <location file="src/message/message.hpp" line="79" column="11"/>
         <references refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" compoundref="message_8cpp" startline="60" endline="62">ConfMessage</references>
         <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">CriticalMessage</references>
         <references refid="classMessage_1a35ba4529b26ccea626d1b885815369cb" compoundref="message_8cpp" startline="45" endline="47">DebugMessage</references>
@@ -157,7 +157,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/message/message.hpp" line="86" column="15" bodyfile="src/utils/message/message.cpp" bodystart="45" bodyend="47"/>
+        <location file="src/message/message.hpp" line="86" column="15" bodyfile="src/utils/message/message.cpp" bodystart="45" bodyend="47"/>
         <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="90" endline="102">MessageImpl</references>
         <referencedby refid="classMessage_1a7307e42c5da334c23ad52a2e7eaf755c">operator=</referencedby>
       </memberdef>
@@ -188,7 +188,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/message/message.hpp" line="92" column="15" bodyfile="src/utils/message/message.cpp" bodystart="48" bodyend="50"/>
+        <location file="src/message/message.hpp" line="92" column="15" bodyfile="src/utils/message/message.cpp" bodystart="48" bodyend="50"/>
         <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="90" endline="102">MessageImpl</references>
         <referencedby refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" compoundref="database_8cpp" startline="495" endline="523">Database::doSimpleQuery</referencedby>
         <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="356" endline="484">Database::executeQuery</referencedby>
@@ -225,7 +225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/message/message.hpp" line="98" column="15" bodyfile="src/utils/message/message.cpp" bodystart="51" bodyend="53"/>
+        <location file="src/message/message.hpp" line="98" column="15" bodyfile="src/utils/message/message.cpp" bodystart="51" bodyend="53"/>
         <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="90" endline="102">MessageImpl</references>
         <referencedby refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="133" endline="257">DatabaseConnectionPool::DatabaseConnectionPool</referencedby>
         <referencedby refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" compoundref="databaseconnectionpool_8cpp" startline="269" endline="323">DatabaseConnectionPool::get_connection</referencedby>
@@ -260,7 +260,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/message/message.hpp" line="105" column="15" bodyfile="src/utils/message/message.cpp" bodystart="54" bodyend="56"/>
+        <location file="src/message/message.hpp" line="105" column="15" bodyfile="src/utils/message/message.cpp" bodystart="54" bodyend="56"/>
         <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="90" endline="102">MessageImpl</references>
         <referencedby refid="classapi_1_1v2_1_1Client_1a9d8ec7236a309400e90639c194bb7017" compoundref="client_8hpp" startline="311" endline="347">api::v2::Client::buildClientCreateStatement</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Client_1af26bfc187b1d8c93e829d05032c7bdb3" compoundref="client_8hpp" startline="365" endline="409">api::v2::Client::buildClientUpdateStatement</referencedby>
@@ -341,7 +341,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/message/message.hpp" line="111" column="15" bodyfile="src/utils/message/message.cpp" bodystart="57" bodyend="59"/>
+        <location file="src/message/message.hpp" line="111" column="15" bodyfile="src/utils/message/message.cpp" bodystart="57" bodyend="59"/>
         <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="90" endline="102">MessageImpl</references>
         <referencedby refid="classapi_1_1v2_1_1Client_1a9d8ec7236a309400e90639c194bb7017" compoundref="client_8hpp" startline="311" endline="347">api::v2::Client::buildClientCreateStatement</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Client_1af26bfc187b1d8c93e829d05032c7bdb3" compoundref="client_8hpp" startline="365" endline="409">api::v2::Client::buildClientUpdateStatement</referencedby>
@@ -435,7 +435,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/message/message.hpp" line="118" column="15" bodyfile="src/utils/message/message.cpp" bodystart="60" bodyend="62"/>
+        <location file="src/message/message.hpp" line="118" column="15" bodyfile="src/utils/message/message.cpp" bodystart="60" bodyend="62"/>
         <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="90" endline="102">MessageImpl</references>
         <referencedby refid="classMessage_1a7307e42c5da334c23ad52a2e7eaf755c">operator=</referencedby>
       </memberdef>
@@ -466,7 +466,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/message/message.hpp" line="124" column="15" bodyfile="src/utils/message/message.cpp" bodystart="63" bodyend="65"/>
+        <location file="src/message/message.hpp" line="124" column="15" bodyfile="src/utils/message/message.cpp" bodystart="63" bodyend="65"/>
         <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="90" endline="102">MessageImpl</references>
         <referencedby refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="133" endline="257">DatabaseConnectionPool::DatabaseConnectionPool</referencedby>
         <referencedby refid="classMessage_1a7307e42c5da334c23ad52a2e7eaf755c">operator=</referencedby>
@@ -509,7 +509,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/message/message.hpp" line="132" column="22" bodyfile="src/utils/message/message.cpp" bodystart="69" bodyend="88"/>
+        <location file="src/message/message.hpp" line="132" column="22" bodyfile="src/utils/message/message.cpp" bodystart="69" bodyend="88"/>
         <referencedby refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="90" endline="102">MessageImpl</referencedby>
         <referencedby refid="classMessage_1a7307e42c5da334c23ad52a2e7eaf755c">operator=</referencedby>
       </memberdef>
@@ -554,7 +554,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/message/message.hpp" line="142" column="15" bodyfile="src/utils/message/message.cpp" bodystart="90" bodyend="102"/>
+        <location file="src/message/message.hpp" line="142" column="15" bodyfile="src/utils/message/message.cpp" bodystart="90" bodyend="102"/>
         <references refid="classMessage_1ab1578286398f61ef66338441d1ea99e3" compoundref="message_8cpp" startline="69" endline="88">get_color</references>
         <references refid="classMessage_1a866730d10417555fd9cf17fe1b94b0f4" compoundref="message_8cpp" startline="127" endline="137">removeNewLine</references>
         <referencedby refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" compoundref="message_8cpp" startline="60" endline="62">ConfMessage</referencedby>
@@ -605,7 +605,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/message/message.hpp" line="151" column="15" bodyfile="src/utils/message/message.cpp" bodystart="103" bodyend="124"/>
+        <location file="src/message/message.hpp" line="151" column="15" bodyfile="src/utils/message/message.cpp" bodystart="103" bodyend="124"/>
         <references refid="classMessage_1a866730d10417555fd9cf17fe1b94b0f4" compoundref="message_8cpp" startline="127" endline="137">removeNewLine</references>
       </memberdef>
       <memberdef kind="function" id="classMessage_1a866730d10417555fd9cf17fe1b94b0f4" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -637,7 +637,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/message/message.hpp" line="160" column="22" bodyfile="src/utils/message/message.cpp" bodystart="127" bodyend="137"/>
+        <location file="src/message/message.hpp" line="160" column="22" bodyfile="src/utils/message/message.cpp" bodystart="127" bodyend="137"/>
         <referencedby refid="classMessage_1ad8533b3d0c485b9d43149a4e506fd311" compoundref="message_8cpp" startline="103" endline="124">MessageImpl</referencedby>
         <referencedby refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="90" endline="102">MessageImpl</referencedby>
         <referencedby refid="classMessage_1a7307e42c5da334c23ad52a2e7eaf755c">operator=</referencedby>
@@ -647,11 +647,11 @@
 <para>Stateless facade for emitting coloured status messages. </para>
     </briefdescription>
     <detaileddescription>
-<para>Severity helpers (Debug through Critical) write through trantor::Logger, so they flow into the configured Logger/spdlog sinks. ConfMessage and InitMessage are startup/status notices that instead print directly to stdout with a <computeroutput>[Project Valhalla]</computeroutput> prefix. All methods are static; instances carry no state. <simplesect kind="see"><para><ref refid="classLogger" kindref="compound">Logger</ref> </para>
+<para>Severity helpers (Debug through Critical) write through trantor::Logger, so they flow into the configured Logger/spdlog sinks. ConfMessage and InitMessage are startup/status notices that instead print directly to stdout with a <computeroutput>[Project Valhalla]</computeroutput> prefix. All methods are static; instances carry no state. <simplesect kind="see"><para>Logger </para>
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/utils/message/message.hpp" line="49" column="1" bodyfile="src/utils/message/message.hpp" bodystart="49" bodyend="163"/>
+    <location file="src/message/message.hpp" line="49" column="1" bodyfile="src/message/message.hpp" bodystart="49" bodyend="163"/>
     <listofallmembers>
       <member refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" prot="public" virt="non-virtual"><scope>Message</scope><name>ConfMessage</name></member>
       <member refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" prot="public" virt="non-virtual"><scope>Message</scope><name>CriticalMessage</name></member>

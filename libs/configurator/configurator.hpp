@@ -62,13 +62,13 @@
 #include <unordered_set>
 
 // Base class that converts environment strings into typed values with defaults.
-#include "configurator/envloader/envloader.hpp"
+#include "envloader/envloader.hpp"
 // The fallback constants used whenever an environment variable is missing or
 // invalid.
 #include "defaults.hpp"
 // Provides Message::ConfMessage/WarningMessage used to print settings on
 // startup.
-#include "utils/message/message.hpp"
+#include "message/message.hpp"
 /** @brief Git tag captured at build time.
  *
  * @details Besides identifying the build, this string doubles as the

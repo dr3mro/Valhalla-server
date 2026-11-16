@@ -38,17 +38,23 @@
 #include <fmt/core.h>
 
 // std::exception is the base type caught when a numeric conversion fails.
+#include <chrono>
+#include <cstdint>
 #include <exception>
 // std::stringstream lets parseSet() read a string piece by piece, like a file.
 #include <sstream>
 // std::thread::hardware_concurrency reports how many CPUs the machine has.
+#include <string>
 #include <thread>
+#include <unordered_set>
+
+#include "message.hpp"
 
 // Reads a string variable: return the stored text verbatim, or the default when
 // it is absent.
 // Returns the raw text or the fallback
 // when the name is missing.
-std::string EnvLoader::getEnvironmentVariable(const std::string& key,
+std::string EnvLoader::getEnvironmentVariable(const std::string& key,  // NOLINT
                                               const std::string& defaultValue) {
   auto value = get(key);  // Fetch the raw value through EnvVars; an empty
                           // optional means "not set".
@@ -75,7 +81,8 @@ bool EnvLoader::getEnvironmentVariable(const std::string& key,
 // Interprets the value as seconds, or keeps the default
 // on bad input.
 std::chrono::seconds EnvLoader::getEnvironmentVariable(
-    const std::string& key, const std::chrono::seconds& defaultValue) {
+    const std::string&          key,
+    const std::chrono::seconds& defaultValue) {
   auto value = get(key);  // Fetch the raw value through EnvVars.
   // Variable absent: there is nothing to convert.
   if (!value.has_value()) {
@@ -132,12 +139,12 @@ std::unordered_set<std::string> EnvLoader::parseSet(const std::string& str) {
   std::unordered_set<std::string>
       result;  // The output set; duplicates disappear automatically because a
                // set holds unique values only.
-  std::stringstream ss(str);  // Wrap the text so getline can pull out
-                              // comma-delimited pieces one at a time.
-  std::string       item;     // Temporary holder for each piece as it is read.
+  std::stringstream sstream(str);  // Wrap the text so getline can pull out
+                                   // comma-delimited pieces one at a time.
+  std::string       item;  // Temporary holder for each piece as it is read.
   // Keep reading until no more comma-separated
   // pieces remain; each pass handles one token.
-  while (std::getline(ss, item, ',')) {
+  while (std::getline(sstream, item, ',')) {
     // Trim any leading or trailing whitespace
     item.erase(item.find_last_not_of(" \n\r\t") +
                1);  // Cut off trailing spaces/newlines by erasing from just

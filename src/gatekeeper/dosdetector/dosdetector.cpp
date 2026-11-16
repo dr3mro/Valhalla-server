@@ -68,7 +68,7 @@
 #include <utility>        // std::move for config/clock in the test constructor.
 
 // Message::ErrorMessage / CriticalMessage for logging failures.
-#include "utils/message/message.hpp"
+#include "message/message.hpp"
 
 /**
  * @brief Production constructor: compiles configured matchers and starts the
@@ -105,7 +105,8 @@ DOSDetector::DOSDetector() {
  * valid independently of the caller's lifetime. config: Fully specified
  * detector configuration. clock: Clock source for all timing decisions.
  */
-DOSDetector::DOSDetector(Configurator::DOSDetectorConfig config, ClockFn clock)
+DOSDetector::DOSDetector(Configurator::DOSDetectorConfig config,
+                         ClockFn                         clock)
     // Own the config so the reference stays valid;
     // take the injected clock.
     : owned_config_(std::move(config)),
@@ -581,9 +582,12 @@ inline bool __attribute((always_inline)) DOSDetector::isRateLimited(
  * Returns True while the IP is still blocked; false otherwise (including on
  * exception).
  */
-template <typename Map, typename Mutex>
+template <typename Map,
+          typename Mutex>
 inline bool __attribute((always_inline)) DOSDetector::checkStatus(
-    const std::string& remote_ip, Map& ip_map, Mutex& mtx) {
+    const std::string& remote_ip,
+    Map&               ip_map,
+    Mutex&             mtx) {
   try {
     auto now = clock_();  // Current time from the detector clock.
     std::lock_guard<Mutex> lock(

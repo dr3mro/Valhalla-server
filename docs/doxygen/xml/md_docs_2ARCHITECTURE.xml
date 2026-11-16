@@ -88,7 +88,7 @@ std::string)&gt;</computeroutput>) or the coroutine.</para>
 </para>
 </sect2>
 <sect2 id="md_docs_2ARCHITECTURE_1autotoc_md52">
-<title>3.8 Utilities — <computeroutput>src/utils/</computeroutput>, <computeroutput>src/concurrency/</computeroutput></title><para>Logging (<computeroutput><ref refid="classLogger" kindref="compound">Logger</ref></computeroutput>, <computeroutput><ref refid="classMessage" kindref="compound">Message</ref></computeroutput>), JSON helpers, an in-process <computeroutput><ref refid="classMemCache" kindref="compound">MemCache</ref></computeroutput>, a <computeroutput><ref refid="classThreadSafeQueue" kindref="compound">ThreadSafeQueue</ref></computeroutput>, CORS token helpers, global HTTP/status types, and <computeroutput>BoundedExecutor</computeroutput> (a bounded worker pool used where work must be throttled).</para>
+<title>3.8 Utilities — <computeroutput>src/utils/</computeroutput>, <computeroutput>src/concurrency/</computeroutput></title><para>Logging (<computeroutput>Logger</computeroutput>, <computeroutput><ref refid="classMessage" kindref="compound">Message</ref></computeroutput>), JSON helpers, an in-process <computeroutput><ref refid="classMemCache" kindref="compound">MemCache</ref></computeroutput>, a <computeroutput><ref refid="classThreadSafeQueue" kindref="compound">ThreadSafeQueue</ref></computeroutput>, CORS token helpers, global HTTP/status types, and <computeroutput>BoundedExecutor</computeroutput> (a bounded worker pool used where work must be throttled).</para>
 </sect2>
 </sect1>
 <sect1 id="md_docs_2ARCHITECTURE_1autotoc_md53">

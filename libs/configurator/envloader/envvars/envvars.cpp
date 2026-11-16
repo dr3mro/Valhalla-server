@@ -31,24 +31,27 @@
 #include "envvars.hpp"
 
 // Used to build the error text in set() by filling in the {}.
+#include <_stdlib.h>
 #include <fmt/format.h>
 
 // Provides std::getenv and setenv, the C functions that access the process
 // environment.
 #include <cstdlib>
+#include <optional>
+#include <string>
 
 // Provides Message::ErrorMessage used to log a failed set operation.
-#include "utils/message/message.hpp"
+#include "message/message.hpp"
 
 // Returns the raw value or an empty optional when
 // the variable is not set.
 std::optional<std::string> EnvVars::get(const std::string& key) {
   // Retrieve the value associated with the environment variable key
-  const char* _key = key.c_str();  // The C API needs a null-terminated char
-                                   // array, so convert the C++ string to one.
-  const char* value =
-      std::getenv(_key);  // Ask the OS for the value; it returns nullptr when
-                          // the name does not exist.
+  const char* _key  = key.c_str();  // The C API needs a null-terminated char
+                                    // array, so convert the C++ string to one.
+  const char* value = std::getenv(_key);  // NOLINT
+  // Ask the OS for the value; it returns nullptr
+  //  when the name does not exist.
 
   // If the value exists, copy it into a std::string that outlives this call
   // A non-null pointer means the variable is present;
@@ -66,12 +69,15 @@ std::optional<std::string> EnvVars::get(const std::string& key) {
 
 // Stores value under key; used by tests to fake
 // settings, not on the request path.
-void EnvVars::set(const std::string& key, const std::string& value) {
+void EnvVars::set(const std::string& key,
+                  const std::string& value) {
   // Overwrite = 1 so repeated calls replace the existing value rather than
   // being ignored.
   // The OS returns 0 on success; any other result means the write
   // failed (bad name, no memory, etc.).
-  if (setenv(key.c_str(), value.c_str(), 1) != 0) {
+  if (setenv(key.c_str(),  // NOLINT
+             value.c_str(),
+             1) != 0) {
     Message::ErrorMessage(
         fmt::format("Failed to set environment variable {}.",
                     key));  // Log the failure with the variable name; do not

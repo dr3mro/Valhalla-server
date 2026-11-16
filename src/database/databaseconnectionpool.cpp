@@ -74,7 +74,7 @@
 // Store::getObject<> locates the shared Configurator at construction.
 #include "store/store.hpp"
 // Message helpers emit the startup, warning and fatal logs.
-#include "utils/message/message.hpp"
+#include "message/message.hpp"
 
 /**
  * Opens one pqxx connection using the configured credentials and a connect

@@ -68,21 +68,34 @@ void Message::InitMessage(const std::string& status_message) {
 // matching ANSI escape sequence.
 std::string Message::get_color(trantor::Logger::LogLevel level) {
   static const std::unordered_map<trantor::Logger::LogLevel, std::string>
-      color_map =
-          {// A read-only map built once, pairing each level with its colour.
-           {trantor::Logger::LogLevel::kTrace,
-            "\033[38;5;140m"},  // Soft Purple (for subtle debug messages)
-           {trantor::Logger::LogLevel::kDebug,
-            "\033[38;5;140m"},  // Soft Purple (for subtle debug messages)
-           {trantor::Logger::LogLevel::kInfo,
-            "\033[1;34m"},  // Bold Blue (clear and calm for info)
-           {trantor::Logger::LogLevel::kWarn,
-            "\033[1;93m"},  // Bright Yellow (attention-grabbing for
-                            // warnings)
-           {trantor::Logger::LogLevel::kError,
-            "\033[1;91m"},  // Bright Red (strong and clear for errors)
-                            // messages)
-           {trantor::Logger::LogLevel::kFatal, "\033[38;5;196m"}};
+      color_map = {
+          // A read-only map built once, pairing each level with its colour.
+          {
+              trantor::Logger::LogLevel::kTrace,
+              "\033[38;5;140m",
+          },  // Soft Purple (for subtle debug messages)
+          {
+              trantor::Logger::LogLevel::kDebug,
+              "\033[38;5;140m",
+          },  // Soft Purple (for subtle debug messages)
+          {
+              trantor::Logger::LogLevel::kInfo,
+              "\033[1;34m",
+          },  // Bold Blue (clear and calm for info)
+          {
+              trantor::Logger::LogLevel::kWarn,
+              "\033[1;93m",
+          },  // Bright Yellow (attention-grabbing for
+              // warnings)
+          {
+              trantor::Logger::LogLevel::kError,
+              "\033[1;91m",
+          },  // Bright Red (strong and clear for errors)
+          {
+              trantor::Logger::LogLevel::kFatal,
+              "\033[38;5;196m",
+          },
+  };
   return color_map.at(level);  // .at looks up the level and throws
                                // std::out_of_range if it is somehow missing.
 }
