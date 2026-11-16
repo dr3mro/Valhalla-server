@@ -165,7 +165,7 @@ fetch_tree() {
   # The version we record is the commit that last touched valhalla.sh, not $SHA:
   # an update is offered only when the tool itself changes, not on every
   # unrelated commit to the branch.
-  FILE_SHA="$(api "https://api.github.com/repos/$REPO/commits?path=valhalla.sh&sha=$SHA&per_page=1" |
+  FILE_SHA="$(api "https://api.github.com/repos/$REPO/commits?path=scripts/vdt/valhalla.sh&sha=$SHA&per_page=1" |
     sed -n 's/.*"sha": *"\([0-9a-f]\{40\}\)".*/\1/p' | head -n1)"
   [ -n "$FILE_SHA" ] || FILE_SHA="$SHA"
 
@@ -175,7 +175,7 @@ fetch_tree() {
     die "couldn't list the repository files (API rate limit? set GITHUB_TOKEN)"
 
   count=0
-  for f in valhalla.sh test_api.sh schemathesis_test.sh install.sh docs/openapi.json $payloads; do
+  for f in scripts/vdt/valhalla.sh scripts/test/test_api.sh scripts/test/schemathesis_test.sh install.sh docs/openapi.json $payloads; do
     mkdir -p "$stage/$(dirname "$f")"
     curl -fsSL "https://raw.githubusercontent.com/$REPO/$SHA/$f" -o "$stage/$f" ||
       die "download failed: $f (does $REF contain it?)"
@@ -190,7 +190,7 @@ copy_tree() {
   stage="$1"
   [ -f "$SOURCE/valhalla.sh" ] || die "VALHALLA_SOURCE has no valhalla.sh: $SOURCE"
   say "📋  Copying from $SOURCE"
-  for f in valhalla.sh test_api.sh schemathesis_test.sh install.sh docs/openapi.json; do
+  for f in scripts/vdt/valhalla.sh scripts/test/test_api.sh scripts/test/schemathesis_test.sh install.sh docs/openapi.json; do
     mkdir -p "$stage/$(dirname "$f")"
     cp "$SOURCE/$f" "$stage/$f"
   done
@@ -331,9 +331,9 @@ place_files() {
   mkdir -p "$DIR"
   for f in $MANAGED; do rm -rf "${DIR:?}/$f"; done
   # Installed without the .sh extension, under the tool's name.
-  mv "$stage/valhalla.sh" "$stage/vdt"
-  mv "$stage/test_api.sh" "$stage/test_api"
-  mv "$stage/schemathesis_test.sh" "$stage/schemathesis_test"
+  mv "$stage/scripts/vdt/valhalla.sh" "$stage/vdt"
+  mv "$stage/scripts/test/test_api.sh" "$stage/test_api"
+  mv "$stage/scripts/test/schemathesis_test.sh" "$stage/schemathesis_test"
   mv "$stage/install.sh" "$stage/installer"
   (cd "$stage" && tar -cf - .) | (cd "$DIR" && tar -xf -)
   # Downloads arrive as plain files (curl doesn't keep the executable bit).

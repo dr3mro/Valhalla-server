@@ -44,7 +44,7 @@ Settings: the installer creates `~/.local/share/vdt/config` (`.env` format) with
 
 Update the tool with `vdt install` (or `vdt install v1.2.3` for a specific tag): it downloads the new version first, and only then removes the current copy and installs, so a failed download changes nothing. `vdt version` shows what's installed. Remove it with `vdt uninstall`, which works offline. Both keep your `.env` and `dumps/`.
 
-From a checkout of this repository, `./valhalla.sh` is the same tool (the installed `vdt` command is this file under another name). Details: [Manage it with `valhalla.sh`](#manage-it-with-valhallash). Without the tool: [Run with Docker](#run-with-docker). To build and run natively: [Getting Started](#getting-started).
+From a checkout of this repository, `./scripts/vdt/valhalla.sh` is the same tool (the installed `vdt` command is this file under another name). Details: [Manage it with `valhalla.sh`](#manage-it-with-valhallash). Without the tool: [Run with Docker](#run-with-docker). To build and run natively: [Getting Started](#getting-started).
 
 ---
 
@@ -224,16 +224,16 @@ cmake --build build/Debug   -j"$(nproc)"
 cmake --build build/Release -j"$(nproc)"
 ```
 
-Or run the convenience script `./build.sh`, which goes further than the steps above:
+Or run the convenience script `./scripts/build/build.sh`, which goes further than the steps above:
 
 1. Runs the same Conan, CMake and build steps for Debug and Release.
 2. Runs the unit tests for both (`ctest --preset conan-release` and `ctest --preset conan-debug`).
-3. **Starts the Release server in the background** (`./run_release.sh &`) and runs the API test suite (`./test_api.sh`) against it.
+3. **Starts the Release server in the background** (`./scripts/run/run_release.sh &`) and runs the API test suite (`./scripts/test/test_api.sh`) against it.
 
 Step 3 needs a running, initialised PostgreSQL (see [Database setup](#database-setup)), and it leaves the server running afterwards. Stop it with `pkill -f build/Release/server`.
 
 ```bash
-./build.sh
+./scripts/build/build.sh
 ```
 
 The resulting binary is named `server` and is placed in the corresponding build directory (`build/Release/server`).
@@ -262,7 +262,7 @@ sudo systemctl restart postgresql
 
 ```bash
 sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"   # choose a real password outside local dev
-PGPASSWORD=postgres ./db_init.sh                                      # runs init.sql against 127.0.0.1
+PGPASSWORD=postgres ./scripts/run/db_init.sh                                      # runs init.sql against 127.0.0.1
 ```
 
 `db_init.sh` connects as `postgres` to the `postgres` database on `127.0.0.1`. To use another database or user, run `psql -h <host> -U <user> -d <db> -f init.sql` yourself.
@@ -287,11 +287,11 @@ EOF
 Then start it:
 
 ```bash
-./run_release.sh            # run build/Release/server with the .env loaded
-./run_release.sh --build    # rebuild Release first, then run
+./scripts/run/run_release.sh            # run build/Release/server with the .env loaded
+./scripts/run/run_release.sh --build    # rebuild Release first, then run
 ```
 
-To use a different file, run `ENV_FILE=/path/to/file ./run_release.sh`. Or run the binary directly with the variables exported in your shell: `./build/Release/server`.
+To use a different file, run `ENV_FILE=/path/to/file ./scripts/run/run_release.sh`. Or run the binary directly with the variables exported in your shell: `./build/Release/server`.
 
 Verify it is up:
 
@@ -421,7 +421,7 @@ container start valhalla
 container image prune         # optional: remove unused images
 ```
 
-Or let [`valhalla.sh`](#manage-it-with-valhallash) do all of it: `./valhalla.sh update`.
+Or let [`valhalla.sh`](#manage-it-with-valhallash) do all of it: `./scripts/vdt/valhalla.sh update`.
 
 If you run with `--rm` or the shell alias, the pull is all you need: the next `run` uses the new image. To see which version is running, check the `Version` line in the startup banner (`docker logs valhalla` or `container logs valhalla`).
 
@@ -462,7 +462,7 @@ The build compiles every C++ dependency from source on Alpine and runs the unit 
 curl -fsSL https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh | sh
 ```
 
-Then open a new terminal and use `vdt` instead of `./valhalla.sh` (e.g. `vdt run`, `vdt status`). Afterwards the tool manages itself with the same installer. The installer keeps a copy of itself next to the tool, so `uninstall` works offline; `install` downloads the latest installer first, then uninstalls the current copy and installs the new one (if the download fails, nothing is removed):
+Then open a new terminal and use `vdt` instead of `./scripts/vdt/valhalla.sh` (e.g. `vdt run`, `vdt status`). Afterwards the tool manages itself with the same installer. The installer keeps a copy of itself next to the tool, so `uninstall` works offline; `install` downloads the latest installer first, then uninstalls the current copy and installs the new one (if the download fails, nothing is removed):
 
 ```bash
 vdt install            # update to the latest version (your config and dumps/ are kept)
@@ -470,33 +470,33 @@ vdt install v1.2.3     # a specific tag, branch or commit
 vdt uninstall          # remove it and its lines in ~/.zshrc / ~/.bashrc (asks first)
 ```
 
-The installed copy has everything except `build`, which needs a full checkout of the repository. From a checkout, every command works the same as `./valhalla.sh <command>`:
+The installed copy has everything except `build`, which needs a full checkout of the repository. From a checkout, every command works the same as `./scripts/vdt/valhalla.sh <command>`:
 
 ```bash
-./valhalla.sh run             # create (pulling the image if needed) or start the container
-./valhalla.sh update          # pull :latest, recreate the container with the same settings, free old images
-./valhalla.sh update v1.2.3   # same, for a specific tag
-./valhalla.sh build           # build the image from this checkout and run it
-./valhalla.sh stop            # stop it without removing it (run starts it again)
-./valhalla.sh restart         # restart it (the database is wiped, as on every start)
-./valhalla.sh status          # state, image, port, health and version
-./valhalla.sh outdated        # is there a newer image on Docker Hub?
-./valhalla.sh show            # follow the log (Ctrl+C stops following, not the server)
-./valhalla.sh logs 50         # last 50 log lines
-./valhalla.sh stats           # live CPU and memory use
-./valhalla.sh env             # what a new container would get from .env, secrets hidden
-./valhalla.sh doc             # open the API docs in the browser
-./valhalla.sh psql            # psql on the bundled database
-./valhalla.sh dump            # save the database to ~/.local/share/vdt/dumps
-./valhalla.sh restore FILE    # load a dump back (e.g. after restart or update)
-./valhalla.sh shell           # a shell inside the container
-./valhalla.sh test            # run test_api.sh against it (test fuzz / test all for Schemathesis)
-./valhalla.sh secret          # write a random TOKEN_SECRET to .env
-./valhalla.sh install         # install or update the `vdt` command from GitHub
-./valhalla.sh uninstall       # remove the installed `vdt` command
-./valhalla.sh delete          # remove the container (asks first)
-./valhalla.sh clean           # remove the container and all local images of it (asks first)
-./valhalla.sh version         # the tool's version
+./scripts/vdt/valhalla.sh run             # create (pulling the image if needed) or start the container
+./scripts/vdt/valhalla.sh update          # pull :latest, recreate the container with the same settings, free old images
+./scripts/vdt/valhalla.sh update v1.2.3   # same, for a specific tag
+./scripts/vdt/valhalla.sh build           # build the image from this checkout and run it
+./scripts/vdt/valhalla.sh stop            # stop it without removing it (run starts it again)
+./scripts/vdt/valhalla.sh restart         # restart it (the database is wiped, as on every start)
+./scripts/vdt/valhalla.sh status          # state, image, port, health and version
+./scripts/vdt/valhalla.sh outdated        # is there a newer image on Docker Hub?
+./scripts/vdt/valhalla.sh show            # follow the log (Ctrl+C stops following, not the server)
+./scripts/vdt/valhalla.sh logs 50         # last 50 log lines
+./scripts/vdt/valhalla.sh stats           # live CPU and memory use
+./scripts/vdt/valhalla.sh env             # what a new container would get from .env, secrets hidden
+./scripts/vdt/valhalla.sh doc             # open the API docs in the browser
+./scripts/vdt/valhalla.sh psql            # psql on the bundled database
+./scripts/vdt/valhalla.sh dump            # save the database to ~/.local/share/vdt/dumps
+./scripts/vdt/valhalla.sh restore FILE    # load a dump back (e.g. after restart or update)
+./scripts/vdt/valhalla.sh shell           # a shell inside the container
+./scripts/vdt/valhalla.sh test            # run test_api.sh against it (test fuzz / test all for Schemathesis)
+./scripts/vdt/valhalla.sh secret          # write a random TOKEN_SECRET to .env
+./scripts/vdt/valhalla.sh install         # install or update the `vdt` command from GitHub
+./scripts/vdt/valhalla.sh uninstall       # remove the installed `vdt` command
+./scripts/vdt/valhalla.sh delete          # remove the container (asks first)
+./scripts/vdt/valhalla.sh clean           # remove the container and all local images of it (asks first)
+./scripts/vdt/valhalla.sh version         # the tool's version
 ```
 
 Options go before or after the command: `--name`, `--port`, `--runtime`, `--env-file`, `-n`/`--dry-run` (see what any command would change, without changing anything), `-y`/`--yes` and `-p`/`--persist` / `--no-persist` (see Persistence below). The first time you run it, it adds tab completion to `~/.zshrc` and/or `~/.bashrc`; open a new terminal to use it (set `VALHALLA_NO_COMPLETION=1` to skip).
@@ -505,7 +505,7 @@ Each command first checks the tools it needs (`curl`, `python3` for Apple Contai
 
 Every `run`, `update` and `restart` waits until `/api/v2/hello` answers and prints the version line from the log.
 
-It passes every variable in a settings file to the container, using the first it finds: `.env` in the directory you run it from, `.env` next to the script (your checkout), or `~/.local/share/vdt/config` (same format). The installer creates that last one with defaults for a small local container: `SERVER_THREADS = 2`, `DB_MAX_CONN = 2`, and raised `MAX_REQUESTS`/`MAX_FPS`. It's yours from then on: kept on update, and on uninstall unless it's still the unedited default. The script itself hard-codes no server settings; anything no `.env` sets falls back to the server's defaults (4 threads, 10 connections, `MAX_REQUESTS` 10000, `MAX_FPS` 100). Only one file is used; they aren't merged. Variables set in the shell win over `.env` for a single run (`SERVER_THREADS=4 ./valhalla.sh update`). Quoted values, spaces around `=` and ` # comments` are fine. After editing `.env`, run `./valhalla.sh update` to apply it. Use another file with `--env-file path` (or `VALHALLA_ENV_FILE`), or skip it with `--env-file none`.
+It passes every variable in a settings file to the container, using the first it finds: `.env` in the directory you run it from, `.env` next to the script (your checkout), or `~/.local/share/vdt/config` (same format). The installer creates that last one with defaults for a small local container: `SERVER_THREADS = 2`, `DB_MAX_CONN = 2`, and raised `MAX_REQUESTS`/`MAX_FPS`. It's yours from then on: kept on update, and on uninstall unless it's still the unedited default. The script itself hard-codes no server settings; anything no `.env` sets falls back to the server's defaults (4 threads, 10 connections, `MAX_REQUESTS` 10000, `MAX_FPS` 100). Only one file is used; they aren't merged. Variables set in the shell win over `.env` for a single run (`SERVER_THREADS=4 ./scripts/vdt/valhalla.sh update`). Quoted values, spaces around `=` and ` # comments` are fine. After editing `.env`, run `./scripts/vdt/valhalla.sh update` to apply it. Use another file with `--env-file path` (or `VALHALLA_ENV_FILE`), or skip it with `--env-file none`.
 
 **Disk space.** After `update` and `build`, the tool removes its own older images that no container uses: never the image the new container runs, and never the `-deps` build image. It then frees leftover layers. On Docker that's only the dangling images that came from this repository; Apple Container can't tell where an image came from, so there it runs `container image prune`, which removes only dangling (untagged, unused) images. It reports the image disk usage before and after. `-n` shows what it would remove, and `--no-prune` (or `VALHALLA_NO_PRUNE=1`) keeps everything.
 
@@ -517,7 +517,7 @@ It passes every variable in a settings file to the container, using the first it
 
 In a terminal, `vdt` messages and `help` (or `--help`) use colors, Unicode box drawing, BMP symbols and emoji as far as the terminal supports them, and help is paged with `less` when it's longer than the screen; piped or with `NO_COLOR=1` output is plain text. Force a style with `VALHALLA_FANCY=0` (plain) to `3` (everything).
 
-Full help (`./valhalla.sh help`):
+Full help (`./scripts/vdt/valhalla.sh help`):
 
 ```text
 Valhalla Deployment Tool (vdt): run and manage the Valhalla server locally.
@@ -685,7 +685,7 @@ MAX_REQUESTS/MAX_FPS so the API docs' Benchmark and Test console panels
 don't get your IP rate-limited. Edit it freely; it's kept on update.
 MAX_REQUESTS, MAX_FPS, PERMISSION_CACHE_TTL, DB_ACQUIRE_TIMEOUT_MS, PASSWORD_WORKERS, PASSWORD_QUEUE_MAX, DB_WORKERS, DB_QUEUE_MAX, DB_IO_FASTPATH, TOKEN_SECRET, SERVER_THREADS and DB_MAX_CONN set in
 the shell win over the env file for one run (e.g. SERVER_THREADS=4
-./valhalla.sh update). Variables set nowhere aren't passed, so the server
+./scripts/vdt/valhalla.sh update). Variables set nowhere aren't passed, so the server
 uses its own defaults (in brackets below).
 
 TOKEN_SECRET (signs the login tokens) is never generated per start. The
@@ -867,10 +867,10 @@ The page is embedded into the binary, and every `cmake --build` regenerates it f
 
 ```bash
 tools/docs/build.sh        # regenerates docs/api.html, openapi.json and the Postman collection
-./run_release.sh --build   # re-embed the page and restart
+./scripts/run/run_release.sh --build   # re-embed the page and restart
 ```
 
-To include real response samples in the docs, run `SAMPLES_OUT=api_tests/samples.jsonl ./test_api.sh` against a running server before `tools/docs/build.sh`.
+To include real response samples in the docs, run `SAMPLES_OUT=api_tests/samples.jsonl ./scripts/test/test_api.sh` against a running server before `tools/docs/build.sh`.
 
 ### Clients — `/clients/{clientType}/...` (`clientType` ∈ `users`, `providers`)
 
@@ -1008,31 +1008,31 @@ Put these settings where the container or server actually reads them: a project 
 `WHITELIST` disables DoS checks for matching IPs, so it is for development only. Never whitelist a broad pattern in production.
 
 ### Browser simulation
-`./cors_react_check.sh` simulates what a browser does before and after cross-origin calls from a React dev server. It runs on macOS's default bash 3.2 (arrays and `read -a` are supported there) and uses only POSIX-ish `sed`, `awk`, `tr` and `grep` calls.
+`./scripts/test/cors_react_check.sh` simulates what a browser does before and after cross-origin calls from a React dev server. It runs on macOS's default bash 3.2 (arrays and `read -a` are supported there) and uses only POSIX-ish `sed`, `awk`, `tr` and `grep` calls.
 
 ```
-./cors_react_check.sh http://localhost:8080
-./cors_react_check.sh --credentials http://localhost:8080   # expected to fail: wildcard Allow-Origin is rejected with credentials
+./scripts/test/cors_react_check.sh http://localhost:8080
+./scripts/test/cors_react_check.sh --credentials http://localhost:8080   # expected to fail: wildcard Allow-Origin is rejected with credentials
 cd tools/cors && python3 -m http.server 3000
 # then open http://localhost:3000/browser_check.html (or use port 5173)
 ```
 
 Headless Chromium against the page reported all 7 calls as PASS (HTTP 400/401/200, nothing blocked by the browser). The `--credentials` variant is expected to fail with the wildcard-origin message; that is the documented limitation, not a regression.
 
-To run `./cors_test.sh --strict` against cases that need low DoS thresholds, start separate server instances on different ports (a banned IP stays banned, so 429 and 503 cannot both be provoked on the same instance):
+To run `./scripts/test/cors_test.sh --strict` against cases that need low DoS thresholds, start separate server instances on different ports (a banned IP stays banned, so 429 and 503 cannot both be provoked on the same instance):
 
 ```
 # 403 case
 ENV_FILE=none MAX_REQUESTS=1000000 MAX_FPS=1000000 RL_DURATION=1 BAN_DURATION=1 \
-  BLACKLIST='^127\.0\.0\.1$' WHITELIST='' SERVER_PORT=8099 ./run_release.sh
+  BLACKLIST='^127\.0\.0\.1$' WHITELIST='' SERVER_PORT=8099 ./scripts/run/run_release.sh
 
 # 429 case
 ENV_FILE=none MAX_REQUESTS=1000000 MAX_FPS=5 RL_DURATION=5 BAN_DURATION=5 \
-  WHITELIST='' BLACKLIST='' SERVER_PORT=8100 ./run_release.sh
+  WHITELIST='' BLACKLIST='' SERVER_PORT=8100 ./scripts/run/run_release.sh
 
 # 503 case
 ENV_FILE=none MAX_REQUESTS=5 MAX_FPS=1000000 RL_DURATION=5 BAN_DURATION=5 \
-  WHITELIST='' BLACKLIST='' SERVER_PORT=8101 ./run_release.sh
+  WHITELIST='' BLACKLIST='' SERVER_PORT=8101 ./scripts/run/run_release.sh
 ```
 
 `run_release.sh` loads `ENV_FILE` and exports every value from it, so settings in the file override the shell environment. Set `ENV_FILE=none` to use the command-line variables, or create one file per instance with a heredoc in a temporary directory (`tmpdir=$(mktemp -d)`).
@@ -1040,10 +1040,10 @@ ENV_FILE=none MAX_REQUESTS=5 MAX_FPS=1000000 RL_DURATION=5 BAN_DURATION=5 \
 Then run the matching case against each instance:
 
 ```
-./cors_test.sh --case 403 --strict http://localhost:8099
-./cors_test.sh --case 429 --strict http://localhost:8100
-./cors_test.sh --case 503 --strict http://localhost:8101
-./cors_test.sh --case basic --strict http://localhost:8080
+./scripts/test/cors_test.sh --case 403 --strict http://localhost:8099
+./scripts/test/cors_test.sh --case 429 --strict http://localhost:8100
+./scripts/test/cors_test.sh --case 503 --strict http://localhost:8101
+./scripts/test/cors_test.sh --case basic --strict http://localhost:8080
 ```
 
 Each instance proves its targeted case. The other cases are skipped there by design.

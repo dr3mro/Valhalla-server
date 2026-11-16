@@ -47,7 +47,7 @@
 # duration of the test, or add your test machine's IP to WHITELIST, then restart the server.
 set -uo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BASE_URL="${BASE_URL:-http://127.0.0.1:8080/api/v2}"
 PAYLOAD_DIR="${PAYLOAD_DIR:-$ROOT/api_tests/payloads}"
 OUT_DIR="${OUT_DIR:-$ROOT/sqlmap-results}"

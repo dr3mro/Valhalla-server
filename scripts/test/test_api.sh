@@ -21,7 +21,7 @@
 # shellcheck disable=SC2034,SC2154
 set -uo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BASE_URL="${BASE_URL:-http://127.0.0.1:8080/api/v2}"
 PAYLOAD_DIR="${PAYLOAD_DIR:-$ROOT/api_tests/payloads}"
 VERBOSE="${VERBOSE:-0}"

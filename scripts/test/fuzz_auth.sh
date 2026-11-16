@@ -6,7 +6,7 @@
 # Env:   BASE_URL (default http://127.0.0.1:8080/api/v2)
 set -uo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BASE_URL="${BASE_URL:-http://127.0.0.1:8080/api/v2}"
 SCRIPT="$ROOT/api_tests/fuzz_auth.py"
 

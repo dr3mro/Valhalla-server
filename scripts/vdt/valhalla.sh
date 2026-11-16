@@ -239,6 +239,8 @@ while [[ -L $SCRIPT ]]; do
 done
 SCRIPT="$(cd "$(dirname "$SCRIPT")" && pwd)/$(basename "$SCRIPT")"
 ROOT="$(dirname "$SCRIPT")"
+# When run from a checkout, the script lives under scripts/vdt; lift ROOT to the repo root.
+if [[ -d "$ROOT/../../.git" ]]; then ROOT="$(cd "$ROOT/../.." && pwd)"; fi
 # How the user called it (vdt, valhalla.sh, ./valhalla.sh), for messages.
 PROG="$0"
 [[ $PROG == */* && $(command -v "$(basename "$PROG")" 2>/dev/null) == "$PROG" ]] && PROG="$(basename "$PROG")"
@@ -1209,10 +1211,20 @@ need_file() { [[ -f $ROOT/$1 ]] || MISSING+=("$1"); }
 # script_path NAME: NAME.sh next to this script (repository) or NAME
 # (installed by install.sh, without the extension).
 script_path() {
-  if [[ -x $ROOT/$1.sh ]]; then echo "$ROOT/$1.sh"
-  elif [[ -x $ROOT/$1 ]]; then echo "$ROOT/$1"
-  else return 1
-  fi
+  # Installed layout is flat ($ROOT/test_api); repository layout is nested.
+  local cand
+  for cand in \
+      "$ROOT/$1.sh" \
+      "$ROOT/$1" \
+      "$ROOT/scripts/test/$1.sh" \
+      "$ROOT/scripts/test/$1" \
+      "$ROOT/scripts/run/$1.sh" \
+      "$ROOT/scripts/run/$1" \
+      "$ROOT/scripts/build/$1.sh" \
+      "$ROOT/scripts/build/$1"; do
+    if [[ -x $cand ]]; then echo "$cand"; return 0; fi
+  done
+  return 1
 }
 
 # need_script NAME: like need_file, for companion scripts.
@@ -2070,7 +2082,7 @@ tool_installed_sha() {
 # empty when unreachable. Only commits affecting valhalla.sh are considered,
 # so unrelated commits do not trigger an update.
 latest_tool_sha() {
-  curl -fsSL -m 8 "https://api.github.com/repos/$REPO_SLUG/commits?path=valhalla.sh&per_page=1" 2>/dev/null |
+  curl -fsSL -m 8 "https://api.github.com/repos/$REPO_SLUG/commits?path=scripts/vdt/valhalla.sh&per_page=1" 2>/dev/null |
     sed -n 's/.*"sha": *"\([0-9a-f]\{40\}\)".*//p' | head -n1
 }
 

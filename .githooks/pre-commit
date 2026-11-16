@@ -5,9 +5,9 @@ set -uo pipefail
 root="$(git rev-parse --show-toplevel)"
 
 status=0
-"$root/tools/lint_sh.sh" --staged || status=1
-"$root/tools/check_format.sh" --staged || status=1
-"$root/tools/check_project_rules.sh" --staged || status=1
-"$root/tools/check_hygiene.sh" --staged || status=1
+"$root/scripts/qa/lint_sh.sh" --staged || status=1
+"$root/scripts/qa/check_format.sh" --staged || status=1
+"$root/scripts/qa/check_project_rules.sh" --staged || status=1
+"$root/scripts/qa/check_hygiene.sh" --staged || status=1
 
 exit "$status"

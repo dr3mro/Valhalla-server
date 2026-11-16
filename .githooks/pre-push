@@ -4,4 +4,4 @@ set -uo pipefail
 
 root="$(git rev-parse --show-toplevel)"
 
-"$root/tools/lint_sh.sh"
+"$root/scripts/qa/lint_sh.sh"

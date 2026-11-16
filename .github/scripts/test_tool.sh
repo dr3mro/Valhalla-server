@@ -197,7 +197,7 @@ fails "--raw outside payload" "--raw is a payload option" vdt status --raw
 fails "--image-only outside update" "update options" vdt run --image-only
 fails "bad --runtime" "runtime must be 'docker' or 'container'" vdt --runtime bogus status
 fails "completion for an unknown shell" "supports zsh or bash" vdt completion fish
-outputs "checkout copy: version says checkout" "\(checkout $REPO\)$" "$TOOL_BASH" "$REPO/valhalla.sh" version
+outputs "checkout copy: version says checkout" "\(checkout $REPO\)$" "$TOOL_BASH" "$REPO/scripts/vdt/valhalla.sh" version
 
 section "Tool: completion"
 outputs "bash: commands" "^payload$" "$TOOL_BASH" -c 'eval "$("$1" completion bash)"; COMP_WORDS=(vdt pay); COMP_CWORD=1; _vdt; printf "%s\n" "${COMPREPLY[@]}"' _ "$V"
@@ -250,7 +250,7 @@ for c in run update; do
 done
 outputs "run -n --persist: mounts dumps/" "/persist" vdt run -n --persist
 outputs "run -n --port: uses the port" "18099" vdt run -n --port 18099
-outputs "build -n: docker build from the checkout" "docker build -f $REPO/docker/Dockerfile" "$TOOL_BASH" "$REPO/valhalla.sh" build -n
+outputs "build -n: docker build from the checkout" "docker build -f $REPO/docker/Dockerfile" "$TOOL_BASH" "$REPO/scripts/vdt/valhalla.sh" build -n
 fails "build from the installed copy needs a checkout" "docker/Dockerfile" vdt build -n
 outputs "delete -n: nothing to delete" "doesn't exist" vdt delete -n
 outputs "clean -n: lists nothing" "Dry run \(docker\): would remove container" vdt clean -n
@@ -302,16 +302,16 @@ outputs "get_tag.sh: from git" '^-DGIT_TAG=".*"$' sh -c "cd '$REPO' && \"\$0\" .
 RR="$WORK/rr"
 mkdir -p "$RR/build/Release"
 cp "$REPO/run_release.sh" "$RR/"
-fails "run_release.sh: no binary" "not found. Run ./build.sh" "$TOOL_BASH" "$RR/run_release.sh"
+fails "run_release.sh: no binary" "not found. Run scripts/build/build.sh" "$TOOL_BASH" "$REPO/scripts/run/run_release.sh"
 printf '#!/bin/sh\necho "args=$*"; env | grep -E "^(A|B|C|D|E|F)=" | sort\n' >"$RR/build/Release/server"
 chmod +x "$RR/build/Release/server"
 printf '# comment\nA=1\n  B = two words  \nexport C="quoted # not a comment"\nD='"'"'single'"'"'\r\n\nE=$(echo injected)\nbad line\n' >"$RR/.env"
-out="$("$TOOL_BASH" "$RR/run_release.sh" --flag 2>&1)"
+out="$("$TOOL_BASH" "$REPO/scripts/run/run_release.sh" --flag 2>&1)"
 expect="$(printf 'args=--flag\nA=1\nB=two words\nC=quoted # not a comment\nD=single\nE=$(echo injected)')"
 if [[ $out == "$expect" ]]; then ok "run_release.sh: parses .env without running it"; else bad "run_release.sh: parses .env without running it" "$out"; fi
 
 # test_api.sh against a port nothing listens on: fails fast, doesn't hang.
-fails "test_api.sh: no server -> fails" "hello|FAIL|fail|error" env BASE_URL=http://127.0.0.1:9/api/v2 "$TOOL_BASH" "$REPO/test_api.sh"
+fails "test_api.sh: no server -> fails" "hello|FAIL|fail|error" env BASE_URL=http://127.0.0.1:9/api/v2 "$TOOL_BASH" "$REPO/scripts/test/test_api.sh"
 
 # ── summary ────────────────────────────────────────────────────────────────
 printf '\n%d passed, %d failed\n' "$PASS" "$FAIL"

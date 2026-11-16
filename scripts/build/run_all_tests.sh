@@ -25,7 +25,7 @@
 #   -h, --help       show this help
 set -uo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT" || exit 1
 
 # Defaults
@@ -115,7 +115,7 @@ print_summary() {
 # 1. Shell lint
 if [[ $DO_LINT -eq 1 ]]; then
     echo "===== shell lint ====="
-    if "$ROOT/tools/lint_sh.sh"; then record "shell lint" 0; else record "shell lint" 1; fi
+    if "$ROOT/scripts/qa/lint_sh.sh"; then record "shell lint" 0; else record "shell lint" 1; fi
 fi
 
 # 2. Build + unit tests
@@ -165,14 +165,14 @@ fi
 # 3. Database init (runs by default before starting the server)
 if [[ $SKIP_SERVER -eq 0 && $SKIP_DB_INIT -eq 0 ]]; then
     echo "===== database init ====="
-    if "$ROOT/db_init.sh"; then record "database init" 0; else record "database init" 1; fi
+    if "$ROOT/scripts/run/db_init.sh"; then record "database init" 0; else record "database init" 1; fi
 fi
 
 # 4. Start server
 SRV_PID=""
 if [[ $SKIP_SERVER -eq 0 ]]; then
     echo "===== starting server (run4bench configuration) ====="
-    "$ROOT/run4bench.sh" >/tmp/valhalla_run_all.log 2>&1 &
+    "$ROOT/scripts/run/run4bench.sh" >/tmp/valhalla_run_all.log 2>&1 &
     SRV_PID=$!
     # Wait for health
     for _ in $(seq 1 30); do
@@ -207,42 +207,42 @@ trap cleanup EXIT
 # 5. API tests
 if [[ $DO_API -eq 1 ]]; then
     echo "===== test_api.sh ====="
-    if "$ROOT/test_api.sh"; then record "test_api" 0; else record "test_api" 1; fi
+    if "$ROOT/scripts/test/test_api.sh"; then record "test_api" 0; else record "test_api" 1; fi
 fi
 
 # 6. fuzz_auth
 if [[ $DO_FUZZ -eq 1 ]]; then
     echo "===== fuzz_auth.sh ====="
-    if "$ROOT/fuzz_auth.sh"; then record "fuzz_auth" 0; else record "fuzz_auth" 1; fi
+    if "$ROOT/scripts/test/fuzz_auth.sh"; then record "fuzz_auth" 0; else record "fuzz_auth" 1; fi
 fi
 
 # 7. CORS
 if [[ $DO_CORS -eq 1 ]]; then
     echo "===== cors_test.sh ====="
-    if "$ROOT/cors_test.sh" "http://localhost:$PORT"; then record "cors_test" 0; else record "cors_test" 1; fi
+    if "$ROOT/scripts/test/cors_test.sh" "http://localhost:$PORT"; then record "cors_test" 0; else record "cors_test" 1; fi
     echo "===== cors_react_check.sh ====="
-    if "$ROOT/cors_react_check.sh" "http://localhost:$PORT"; then record "cors_react_check" 0; else record "cors_react_check" 1; fi
+    if "$ROOT/scripts/test/cors_react_check.sh" "http://localhost:$PORT"; then record "cors_react_check" 0; else record "cors_react_check" 1; fi
 fi
 
 # 8. sqlmap (opt-in)
 if [[ $DO_SQLMAP -eq 1 ]]; then
     echo "===== sqlmap_test.sh ====="
-    if "$ROOT/sqlmap_test.sh"; then record "sqlmap" 0; else record "sqlmap" 1; fi
+    if "$ROOT/scripts/test/sqlmap_test.sh"; then record "sqlmap" 0; else record "sqlmap" 1; fi
 fi
 
 # 9. schemathesis (opt-in)
 if [[ $DO_SCHEMATHESIS -eq 1 ]]; then
     echo "===== schemathesis_test.sh ====="
-    if "$ROOT/schemathesis_test.sh"; then record "schemathesis" 0; else record "schemathesis" 1; fi
+    if "$ROOT/scripts/test/schemathesis_test.sh"; then record "schemathesis" 0; else record "schemathesis" 1; fi
 fi
 
 # 10. perf baseline (opt-in)
 if [[ $DO_PERF -eq 1 ]]; then
     echo "===== perf baseline ====="
     if [[ $PERF_FULL -eq 1 ]]; then
-        if "$ROOT/tools/perf_baseline.sh"; then record "perf baseline" 0; else record "perf baseline" 1; fi
+        if "$ROOT/scripts/test/perf_baseline.sh"; then record "perf baseline" 0; else record "perf baseline" 1; fi
     else
-        if "$ROOT/tools/perf_baseline.sh" --smoke; then record "perf smoke" 0; else record "perf smoke" 1; fi
+        if "$ROOT/scripts/test/perf_baseline.sh" --smoke; then record "perf smoke" 0; else record "perf smoke" 1; fi
     fi
 fi
 

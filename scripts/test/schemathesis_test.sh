@@ -22,7 +22,7 @@
 #        ~/.local if the `st` command isn't already on PATH).
 set -uo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BASE_URL="${BASE_URL:-http://127.0.0.1:8080/api/v2}"
 SPEC="${SPEC:-$ROOT/docs/openapi.json}"
 OUT_DIR="${OUT_DIR:-$ROOT/schemathesis-results}"

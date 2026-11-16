@@ -4,7 +4,7 @@
 #   --build   (re)build build/Release before running
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT"
 
 ENV_FILE="${ENV_FILE:-$ROOT/.env}"
@@ -34,7 +34,7 @@ if [[ ${1:-} == "--build" ]]; then
 	cmake --build build/Release
 fi
 
-[[ -x $BIN ]] || { echo "error: $BIN not found. Run ./build.sh or use --build" >&2; exit 1; }
+[[ -x $BIN ]] || { echo "error: $BIN not found. Run scripts/build/build.sh or use --build" >&2; exit 1; }
 
 load_env "$ENV_FILE"
 exec "$BIN" "$@"

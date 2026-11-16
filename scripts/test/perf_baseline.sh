@@ -32,7 +32,7 @@
 #       widen WHITELIST (see the RL_* / BAN_* / WHITELIST notes in valhalla.sh).
 set -uo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 MODE=native; REBUILD=0; RESET_DB=0; ENV_FILE="${ENV_FILE:-}"
 LABEL="baseline"; START=1; BUILD=1; KEEP=0; SMOKE=0; PORT=8080; RUNTIME="${RUNTIME:-${VALHALLA_RUNTIME:-container}}"
 DURATION="20s"; SWEEP="1 8 32 128"
