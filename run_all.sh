@@ -72,13 +72,32 @@ BASE_URL="${BASE_URL:-http://127.0.0.1:$PORT/api/v2}"
 export BASE_URL
 
 failures=0
+SUITE_NAMES=()
+SUITE_STATUS=()
+
 record() { # name status
     if [[ $2 -ne 0 ]]; then
         echo "FAIL: $1" >&2
         failures=$((failures + 1))
+        SUITE_STATUS+=("FAIL")
     else
         echo "PASS: $1"
+        SUITE_STATUS+=("PASS")
     fi
+    SUITE_NAMES+=("$1")
+}
+
+print_summary() {
+    echo "===== summary ====="
+    printf '%-28s %s\n' "Suite" "Result"
+    printf '%-28s %s\n' "----------------------------" "------"
+    if [[ ${#SUITE_NAMES[@]} -gt 0 ]]; then
+        local i
+        for i in "${!SUITE_NAMES[@]}"; do
+            printf '%-28s %s\n' "${SUITE_NAMES[$i]}" "${SUITE_STATUS[$i]}"
+        done
+    fi
+    echo "failures: $failures"
 }
 
 # 1. Shell lint
@@ -94,6 +113,7 @@ if [[ $DO_BUILD -eq 1 ]]; then
         if "$ROOT/build.sh"; then record "build" 0; else record "build" 1; fi
     else
         echo "build artifacts present; skipping full build (use --no-build to force, or remove build/ to rebuild)"
+        record "build" 0
     fi
 fi
 
@@ -138,10 +158,12 @@ if [[ $SKIP_SERVER -eq 0 ]]; then
         echo "server failed to start; log:" >&2
         tail -40 /tmp/valhalla_run_all.log >&2
         record "server start" 1
+        print_summary
         # clean up
         if [[ -n $SRV_PID ]]; then kill "$SRV_PID" 2>/dev/null || true; wait "$SRV_PID" 2>/dev/null || true; fi
         exit 1
     fi
+    record "server start" 0
 fi
 
 # shellcheck disable=SC2329
@@ -196,6 +218,5 @@ if [[ $DO_PERF -eq 1 ]]; then
     fi
 fi
 
-echo "===== summary ====="
-echo "failures: $failures"
+print_summary
 exit "$failures"
