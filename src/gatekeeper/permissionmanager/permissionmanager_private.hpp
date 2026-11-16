@@ -11,6 +11,8 @@
 #include "gatekeeper/permissionmanager/permissioncache.hpp"
 #include "gatekeeper/permissionmanager/permissions.hpp"
 #include "store/store.hpp"
+#include "drogon/utils/coroutine.h"
+#include "database/asyncdbclient.hpp"
 #include "utils/global/http.hpp"
 #include "utils/global/requester.hpp"
 #include "utils/message/message.hpp"
@@ -101,6 +103,35 @@ namespace api::v2
 
             cache.put(query.value(), permissions_j.value(), generation);
             return permissions_j;
+        }
+
+        template <typename Func, typename... Args>
+        static drogon::Task<std::optional<jsoncons::json>> getPermissionsOfEntityCoro(Func&& func, Args&... args)
+        {
+            std::optional<std::string> query = std::invoke(std::forward<Func>(func), std::forward<Args>(args)...);
+
+            if (!query.has_value() || query->empty())
+            {
+                co_return std::nullopt;
+            }
+
+            auto& cache = PermissionCache::instance();
+            if (auto cached = cache.get(query.value()); cached.has_value())
+            {
+                co_return cached;
+            }
+
+            const std::shared_ptr<DatabaseController> db_ctl = Store::cachedObject<DatabaseController>();
+            const uint64_t                            generation = cache.generation();
+            std::optional<jsoncons::json>             permissions_j = co_await db_ctl->getPermissionsCoro(query.value());
+
+            if (!permissions_j.has_value() || permissions_j->empty())
+            {
+                co_return std::nullopt;
+            }
+
+            cache.put(query.value(), permissions_j.value(), generation);
+            co_return permissions_j;
         }
 
        private:
