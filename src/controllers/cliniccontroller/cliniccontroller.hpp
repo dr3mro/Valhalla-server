@@ -62,6 +62,7 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
     void Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data) final;
     drogon::Task<void> ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) final;
     void Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id) final;
+    drogon::Task<void> UpdateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id) final;
     void Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id) final;
     drogon::Task<void> DeleteAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id) final;
     void Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data) final;

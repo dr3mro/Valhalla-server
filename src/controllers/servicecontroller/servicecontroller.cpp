@@ -40,6 +40,12 @@ void ServiceController<T>::Update(CALLBACK_&& callback, const Requester&& reques
 }
 
 template <Service_t T>
+drogon::Task<void> ServiceController<T>::UpdateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::optional<uint64_t> _id)
+{
+    co_await EntityController<T>::UpdateAsync(std::move(callback), std::forward<const Requester&&>(requester), data, _id);
+}
+
+template <Service_t T>
 void ServiceController<T>::Delete(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> _id)
 {
     EntityController<T>::Delete(std::move(callback), std::forward<const Requester&&>(requester), _id);
@@ -62,6 +68,7 @@ void ServiceController<T>::Search(CALLBACK_&& callback, const Requester&& reques
     template void ServiceController<TYPE>::Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                               \
     template drogon::Task<void> ServiceController<TYPE>::ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data); \
     template void ServiceController<TYPE>::Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id); \
+    template drogon::Task<void> ServiceController<TYPE>::UpdateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id);\
     template void ServiceController<TYPE>::Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id);                        \
     template drogon::Task<void> ServiceController<TYPE>::DeleteAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id); \
     template void ServiceController<TYPE>::Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data);

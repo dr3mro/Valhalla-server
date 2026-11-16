@@ -201,6 +201,12 @@ void ClinicController<T>::Update(CALLBACK_&& callback, const Requester&& request
 }
 
 template <typename T>
+drogon::Task<void> ClinicController<T>::UpdateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::optional<uint64_t> id)
+{
+    co_await EntityController<T>::UpdateAsync(std::move(callback), std::move(requester), data, id);
+}
+
+template <typename T>
 void ClinicController<T>::Delete(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> id)
 {
     DeleteImpl(std::move(callback), std::move(requester), id);
@@ -234,6 +240,7 @@ void ClinicController<T>::GetVisits(CALLBACK_&& callback, const Requester&& requ
     template void ClinicController<TYPE>::Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                               \
     template drogon::Task<void> ClinicController<TYPE>::ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data); \
     template void ClinicController<TYPE>::Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id); \
+    template drogon::Task<void> ClinicController<TYPE>::UpdateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id);\
     template void ClinicController<TYPE>::Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id);                        \
     template drogon::Task<void> ClinicController<TYPE>::DeleteAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id); \
     template void ClinicController<TYPE>::Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                             \
