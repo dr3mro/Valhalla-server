@@ -9,8 +9,6 @@ CMakePresets.json
 CMakeUserPresets.json
 compile_commands.json
 *.DS_Store
-.env
-**/.env
 .schemathesis/
 schemathesis-results/
 sqlmap-results/
