@@ -78,6 +78,7 @@ class Configurator
     using DatabaseConfig = struct DatabaseConfig : public EnvLoader
     {
         bool        ssl;
+        bool        async;  // DB_ASYNC: asynchronous database access (Drogon DbClient) instead of the synchronous pool
         uint16_t    max_conn;
         uint32_t    acquire_timeout_ms;
         uint16_t    port;
@@ -88,6 +89,7 @@ class Configurator
 
         DatabaseConfig()
             : ssl(getEnvironmentVariable("DB_SSL", Defaults::Database::DB_SSL_)),
+              async(getEnvironmentVariable("DB_ASYNC", Defaults::Database::DB_ASYNC_)),
               max_conn(getEnvironmentVariable("DB_MAX_CONN", Defaults::Database::DB_MAX_CONN_)),
               acquire_timeout_ms(getEnvironmentVariable("DB_ACQUIRE_TIMEOUT_MS", Defaults::Database::DB_ACQUIRE_TIMEOUT_MS_)),
               port(getEnvironmentVariable("DB_PORT", Defaults::Database::DB_PORT_)),
@@ -110,6 +112,7 @@ class Configurator
             Message::ConfMessage(fmt::format("User: {}", user));
             Message::ConfMessage(fmt::format("Pass: {}", pass));
             Message::ConfMessage(fmt::format("SSL: {}", ssl));
+            Message::ConfMessage(fmt::format("Async: {}", async));
             Message::ConfMessage(fmt::format("Max Connections: {}", max_conn));
             Message::ConfMessage(fmt::format("Connection Wait Timeout: {} ms", acquire_timeout_ms));
         }
