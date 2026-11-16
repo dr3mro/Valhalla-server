@@ -361,6 +361,7 @@ template <Client_t T>
 drogon::Task<void> ClientController<T>::DeleteAsync(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> client_id)
 {
     co_await EntityController<T>::DeleteAsync(std::move(callback), std::move(requester), client_id);
+    gateKeeper->removeSession(client_id, T::getTableName());
 }
 
 template <Client_t T>
