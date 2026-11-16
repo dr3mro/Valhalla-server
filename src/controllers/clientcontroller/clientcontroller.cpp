@@ -188,6 +188,36 @@ void ClientController<T>::Suspend(CALLBACK_&& callback, const Requester&& reques
 }
 
 template <Client_t T>
+drogon::Task<void> ClientController<T>::SuspendAsync(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> client_id)
+{
+    try
+    {
+        if (!client_id.has_value())
+        {
+            std::move(callback)(api::v2::Http::Status::NOT_ACCEPTABLE, "Invalid id provided");
+            co_return;
+        }
+
+        SuspendData suspendData(client_id.value());
+        T           client(suspendData);
+        HttpError   error;
+
+        if (!gateKeeper->canToggleActive<T>(requester, client_id.value(), error))
+        {
+            std::move(callback)(error.code, error.message);
+            co_return;
+        }
+
+        co_await Controller::SuspendAsync(client, std::move(callback));
+        gateKeeper->removeSession(client_id, T::getTableName());
+    }
+    catch (const std::exception& e)
+    {
+        CRITICALMESSAGERESPONSE
+    }
+}
+
+template <Client_t T>
 void ClientController<T>::Activate(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> client_id)
 {
     try
@@ -209,6 +239,35 @@ void ClientController<T>::Activate(CALLBACK_&& callback, const Requester&& reque
         }
 
         Controller::Unsuspend(client, std::move(callback));
+    }
+    catch (const std::exception& e)
+    {
+        CRITICALMESSAGERESPONSE
+    }
+}
+
+template <Client_t T>
+drogon::Task<void> ClientController<T>::ActivateAsync(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> client_id)
+{
+    try
+    {
+        if (!client_id.has_value())
+        {
+            std::move(callback)(api::v2::Http::Status::NOT_ACCEPTABLE, "Invalid id provided");
+            co_return;
+        }
+        SuspendData suspendData(client_id.value());
+
+        T client(suspendData);
+
+        HttpError error;
+        if (!gateKeeper->canToggleActive<T>(requester, client_id.value(), error))
+        {
+            std::move(callback)(error.code, error.message);
+            co_return;
+        }
+
+        co_await Controller::UnsuspendAsync(client, std::move(callback));
     }
     catch (const std::exception& e)
     {
@@ -326,6 +385,8 @@ drogon::Task<void> ClientController<T>::SearchAsync(CALLBACK_&& callback, const 
     template void ClientController<TYPE>::Suspend(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id);                  \
     template void ClientController<TYPE>::Activate(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id);                 \
     template void ClientController<TYPE>::ResetPassword(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                        \
+    template drogon::Task<void> ClientController<TYPE>::SuspendAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id); \
+    template drogon::Task<void> ClientController<TYPE>::ActivateAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id); \
     template void ClientController<TYPE>::GetServices(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id); \
     template drogon::Task<void> ClientController<TYPE>::GetServicesAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id); \
 

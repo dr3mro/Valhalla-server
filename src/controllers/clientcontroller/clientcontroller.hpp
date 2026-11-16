@@ -44,7 +44,9 @@ class ClientController : public EntityController<T>, public ClientControllerBase
     void Login(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::string& ip_address) final;
     void Logout(CALLBACK_&& callback, const Requester&& requester, const std::optional<std::string>& token, const std::string& ip_address) final;
     void Suspend(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id) final;
+    drogon::Task<void> SuspendAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id) final;
     void Activate(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id) final;
+    drogon::Task<void> ActivateAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id) final;
     void ResetPassword(CALLBACK_&& callback, const Requester&& requester, std::string_view data) final;
     void GetServices(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id) final;
     drogon::Task<void> GetServicesAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id) final;
