@@ -64,6 +64,7 @@ ${C_BOLD}${C_Y}${E_TEST}Tests:${C_N}
   ${C_C}sqlmap${C_N}                  ${C_DIM}Run sqlmap tests${C_N}
   ${C_C}schemathesis${C_N}            ${C_DIM}Run schemathesis tests${C_N}
   ${C_C}cors${C_N}                    ${C_DIM}Run CORS tests${C_N}
+  ${C_C}cors-react${C_N}              ${C_DIM}Run React browser CORS checks${C_N}
   ${C_C}bench${C_N}                   ${C_DIM}Run performance baseline${C_N}
   ${C_C}lint${C_N}                    ${C_DIM}Run shell lint${C_N}
   ${C_C}db-init${C_N}                 ${C_DIM}Initialize database${C_N}
@@ -86,6 +87,7 @@ list_cmds() {
     printf '%s %s\n' "$E_ROCKET" "release"
     printf '%s %s\n' "$E_BUILD" "build"
     printf '%s %s\n' "$E_TEST" "tests"
+    printf '%s %s\n' "$E_TEST" "cors-react"
     printf '%s %s\n' "$E_LINT" "lint"
     printf '%s %s\n' "$E_SERVER" "server"
     printf '%s %s\n' "$E_STOP" "stop (via 'server stop')"
@@ -339,7 +341,7 @@ case "$cmd" in
 _run_sh() {
     local cur
     cur="${COMP_WORDS[COMP_CWORD]}"
-    local commands="build release debug configure clean server tests api fuzz sqlmap schemathesis cors bench lint db-init all conan list help completion"
+    local commands="build release debug configure clean server tests api fuzz sqlmap schemathesis cors cors-react bench lint db-init all conan list help completion"
     local options="--help --no-color --no-build --keep-server --skip-server --skip-db-init --background --port --base-url"
     if [[ $cur == -* ]]; then
         COMPREPLY=( $(compgen -W "$options" -- "$cur") )
@@ -391,6 +393,7 @@ _run_sh() {
         'sqlmap:Run sqlmap tests'
         'schemathesis:Run schemathesis'
         'cors:Run CORS tests'
+        'cors-react:Run React browser CORS checks'
         'bench:Run perf baseline'
         'lint:Run shell lint'
         'db-init:Init database'
@@ -497,6 +500,7 @@ ZSH_COMPLETION
     sqlmap) "$ROOT/scripts/test/sqlmap_test.sh" "$@" ;;
     schemathesis) "$ROOT/scripts/test/schemathesis_test.sh" "$@" ;;
     cors) "$ROOT/scripts/test/cors_test.sh" "$@" ;;
+    cors-react|cors_react|react-cors) "$ROOT/scripts/test/cors_react_check.sh" "$@" ;;
     bench|perf) "$ROOT/scripts/test/perf_baseline.sh" "$@" ;;
     lint) "$ROOT/scripts/qa/lint_sh.sh" "$@" ;;
     db-init) "$ROOT/scripts/run/db_init.sh" "$@" ;;
