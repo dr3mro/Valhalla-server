@@ -71,6 +71,8 @@ ${C_BOLD}${C_Y}${E_TEST}Tests:${C_N}
 ${C_BOLD}${C_Y}${E_INFO}Other:${C_N}
   ${C_C}list${C_N}                    ${C_DIM}List commands${C_N}
   ${C_C}help${C_N}                    ${C_DIM}Show this help${C_N}
+  ${C_C}completion bash|zsh${C_N}     ${C_DIM}Print completion script${C_N}
+  ${C_C}completion setup${C_N}       ${C_DIM}Add completion to shell rc${C_N}
 ${C_BOLD}${C_Y}Examples:${C_N}
   ./run.sh release --build
   ./run.sh all --debug
