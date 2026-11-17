@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['memcache_0',['MemCache',['../classMemCache.html',1,'']]]
+  ['keeprbase_0',['KeeprBase',['../classapi_1_1v2_1_1KeeprBase.html',1,'api::v2']]]
 ];

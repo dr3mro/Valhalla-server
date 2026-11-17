@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_629e5eafe7b51b5c70e97b50670b4ff5" kind="dir">
+    <compoundname>libs/configurator/envloader</compoundname>
+    <innerdir refid="dir_39d7e4083dd9b259e863d83effc86063">libs/configurator/envloader/envvars</innerdir>
+    <innerfile refid="envloader_8cpp">envloader.cpp</innerfile>
+    <innerfile refid="envloader_8hpp">envloader.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libs/configurator/envloader/"/>
+  </compounddef>
+</doxygen>

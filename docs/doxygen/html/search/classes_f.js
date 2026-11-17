@@ -1,6 +1,18 @@
 var searchData=
 [
-  ['update_5ft_0',['Update_t',['../classUpdate__t.html',1,'']]],
-  ['updateclient_5ft_1',['UpdateClient_t',['../structapi_1_1v2_1_1Types_1_1UpdateClient__t.html',1,'api::v2::Types']]],
-  ['user_2',['User',['../classUser.html',1,'']]]
+  ['search_5ft_0',['Search_t',['../classSearch__t.html',1,'']]],
+  ['server_1',['Server',['../classServer.html',1,'']]],
+  ['serverconfig_2',['ServerConfig',['../structServerConfig.html',1,'']]],
+  ['service_3',['Service',['../classService.html',1,'']]],
+  ['servicecontroller_4',['ServiceController',['../classServiceController.html',1,'']]],
+  ['servicecontrollerbase_5',['ServiceControllerBase',['../classServiceControllerBase.html',1,'']]],
+  ['services_6',['Services',['../classapi_1_1v2_1_1Services.html',1,'api::v2']]],
+  ['sessionmanager_7',['SessionManager',['../classapi_1_1v2_1_1SessionManager.html',1,'api::v2']]],
+  ['staff_8',['Staff',['../classapi_1_1v2_1_1Staff.html',1,'api::v2']]],
+  ['staffcontroller_9',['StaffController',['../classStaffController.html',1,'']]],
+  ['staffcontrollerbase_10',['StaffControllerBase',['../classStaffControllerBase.html',1,'']]],
+  ['staffdata_11',['StaffData',['../structapi_1_1v2_1_1Types_1_1StaffData.html',1,'api::v2::Types']]],
+  ['stats_12',['Stats',['../structBoundedExecutor_1_1Stats.html',1,'BoundedExecutor']]],
+  ['store_13',['Store',['../classStore.html',1,'']]],
+  ['suspenddata_14',['SuspendData',['../structapi_1_1v2_1_1Types_1_1SuspendData.html',1,'api::v2::Types']]]
 ];

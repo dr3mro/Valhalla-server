@@ -14,7 +14,8 @@ var searchData=
   ['dbexecutor_2ecpp_11',['dbexecutor.cpp',['../dbexecutor_8cpp.html',1,'']]],
   ['dbexecutor_2ehpp_12',['dbexecutor.hpp',['../dbexecutor_8hpp.html',1,'']]],
   ['dbprobe_2ehpp_13',['dbprobe.hpp',['../dbprobe_8hpp.html',1,'']]],
-  ['doc_2ehpp_14',['doc.hpp',['../doc_8hpp.html',1,'']]],
-  ['dosdetector_2ecpp_15',['dosdetector.cpp',['../dosdetector_8cpp.html',1,'']]],
-  ['dosdetector_2ehpp_16',['dosdetector.hpp',['../dosdetector_8hpp.html',1,'']]]
+  ['defaults_2ehpp_14',['defaults.hpp',['../defaults_8hpp.html',1,'']]],
+  ['doc_2ehpp_15',['doc.hpp',['../doc_8hpp.html',1,'']]],
+  ['dosdetector_2ecpp_16',['dosdetector.cpp',['../dosdetector_8cpp.html',1,'']]],
+  ['dosdetector_2ehpp_17',['dosdetector.hpp',['../dosdetector_8hpp.html',1,'']]]
 ];

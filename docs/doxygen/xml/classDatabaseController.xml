@@ -56,13 +56,13 @@
         <referencedby refid="classDatabaseController_1a2685c684b979ee32be0f286df38c1449" compoundref="databasecontroller_8cpp" startline="61" endline="110">ensureBackends</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classDatabaseController_1ac8c9c76391d1ebcaa3fd2abdd93754b3" prot="private" static="no" mutable="no">
-        <type>std::shared_ptr&lt; Configurator::Testing &gt;</type>
+        <type>std::shared_ptr&lt; <ref refid="classConfigurator_1a6029dd81a8d2fe9a1eaa17bf2a508e03" kindref="member">Configurator::Testing</ref> &gt;</type>
         <definition>std::shared_ptr&lt;Configurator::Testing&gt; DatabaseController::testing_config_</definition>
         <argsstring></argsstring>
         <name>testing_config_</name>
         <qualifiedname>DatabaseController::testing_config_</qualifiedname>
         <initializer>                            =
-std::make_shared&lt;Configurator::Testing&gt;()</initializer>
+std::make_shared&lt;<ref refid="classConfigurator_1a6029dd81a8d2fe9a1eaa17bf2a508e03" kindref="member">Configurator::Testing</ref>&gt;()</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -520,6 +520,7 @@ std::make_shared&lt;Configurator::Testing&gt;()</initializer>
         <inbodydescription>
         </inbodydescription>
         <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="206" column="25" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="158" bodyend="176"/>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="357" endline="485">Database::executeQuery</references>
         <references refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="405" endline="448">executer</references>
       </memberdef>
@@ -688,6 +689,7 @@ std::make_shared&lt;Configurator::Testing&gt;()</initializer>
         <inbodydescription>
         </inbodydescription>
         <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="253" column="24" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="205" bodyend="246"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="63" endline="66">DatabaseBusy::DatabaseBusy</references>
         <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="157" endline="169">asyncdb::execSqlCoro</references>
         <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
@@ -753,6 +755,7 @@ std::make_shared&lt;Configurator::Testing&gt;()</initializer>
         <inbodydescription>
         </inbodydescription>
         <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="266" column="24" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="249" bodyend="278"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="63" endline="66">DatabaseBusy::DatabaseBusy</references>
         <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="157" endline="169">asyncdb::execSqlCoro</references>
         <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
@@ -813,6 +816,7 @@ std::make_shared&lt;Configurator::Testing&gt;()</initializer>
         <inbodydescription>
         </inbodydescription>
         <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="279" column="3" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="281" bodyend="311"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="63" endline="66">DatabaseBusy::DatabaseBusy</references>
         <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="157" endline="169">asyncdb::execSqlCoro</references>
         <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
@@ -871,6 +875,7 @@ std::make_shared&lt;Configurator::Testing&gt;()</initializer>
         <inbodydescription>
         </inbodydescription>
         <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="291" column="24" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="313" bodyend="349"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="63" endline="66">DatabaseBusy::DatabaseBusy</references>
         <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="157" endline="169">asyncdb::execSqlCoro</references>
         <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
@@ -939,6 +944,7 @@ std::make_shared&lt;Configurator::Testing&gt;()</initializer>
         <inbodydescription>
         </inbodydescription>
         <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="306" column="24" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="351" bodyend="391"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="63" endline="66">DatabaseBusy::DatabaseBusy</references>
         <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="157" endline="169">asyncdb::execSqlCoro</references>
         <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
@@ -995,6 +1001,7 @@ std::make_shared&lt;Configurator::Testing&gt;()</initializer>
         <inbodydescription>
         </inbodydescription>
         <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="319" column="3" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="394" bodyend="412"/>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classDatabaseController_1aa3de6b2217aa0ba75ec4eb5286d36799" compoundref="databasecontroller_8cpp" startline="249" endline="278">executeReadQueryCoro</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1ab6502e9c51e8657b16ffe4795949ebe7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -1036,6 +1043,7 @@ std::make_shared&lt;Configurator::Testing&gt;()</initializer>
         <inbodydescription>
         </inbodydescription>
         <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="330" column="3" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="415" bodyend="471"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="63" endline="66">DatabaseBusy::DatabaseBusy</references>
         <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="157" endline="169">asyncdb::execSqlCoro</references>
         <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
@@ -1067,6 +1075,7 @@ std::make_shared&lt;Configurator::Testing&gt;()</initializer>
         <inbodydescription>
         </inbodydescription>
         <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="339" column="3" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="474" bodyend="509"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="63" endline="66">DatabaseBusy::DatabaseBusy</references>
         <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="157" endline="169">asyncdb::execSqlCoro</references>
         <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
@@ -1111,6 +1120,7 @@ std::make_shared&lt;Configurator::Testing&gt;()</initializer>
         <inbodydescription>
         </inbodydescription>
         <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="347" column="24" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="512" bodyend="538"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="63" endline="66">DatabaseBusy::DatabaseBusy</references>
         <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="157" endline="169">asyncdb::execSqlCoro</references>
         <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
@@ -1230,6 +1240,7 @@ std::make_shared&lt;Configurator::Testing&gt;()</initializer>
         </inbodydescription>
         <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="405" column="17" bodyfile="src/controllers/databasecontroller/databasecontroller.hpp" bodystart="405" bodyend="448"/>
         <references refid="classDbProbe_1af3b9ebe61addb4dd1885a3d117221a1f" compoundref="dbprobe_8hpp" startline="113" endline="119">DbProbe::check</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <references refid="classDatabaseController_1a31ddc963543c94188989eab4aa24e2ec" compoundref="databasecontroller_8hpp" startline="361">databaseConnectionPool_</references>
         <references refid="classDatabaseController_1a2685c684b979ee32be0f286df38c1449" compoundref="databasecontroller_8cpp" startline="61" endline="110">ensureBackends</references>
         <referencedby refid="classDatabaseController_1a870dc0277e6ac74c5ddb410e1f7112a2" compoundref="databasecontroller_8cpp" startline="148" endline="156">checkItemExists</referencedby>

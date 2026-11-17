@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="101" column="16" bodyfile="src/configurator/defaults.hpp" bodystart="101" bodyend="-1"/>
+        <location file="libs/configurator/defaults.hpp" line="101" column="16" bodyfile="libs/configurator/defaults.hpp" bodystart="101" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1Database_1a18363b0d02fa671504bd6b17cee4fe6e" prot="public" static="no" mutable="no">
         <type>const bool</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="105" column="16" bodyfile="src/configurator/defaults.hpp" bodystart="105" bodyend="-1"/>
+        <location file="libs/configurator/defaults.hpp" line="105" column="16" bodyfile="libs/configurator/defaults.hpp" bodystart="105" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1Database_1a7cb6887a36fd11f1b999b11806ea28bb" prot="public" static="no" mutable="no">
         <type>const uint8_t</type>
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="109" column="19" bodyfile="src/configurator/defaults.hpp" bodystart="109" bodyend="-1"/>
+        <location file="libs/configurator/defaults.hpp" line="109" column="19" bodyfile="libs/configurator/defaults.hpp" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1Database_1a4beafb87f90b2ca03b55ac18ad0fdc8a" prot="public" static="no" mutable="no">
         <type>const uint32_t</type>
@@ -66,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="114" column="20" bodyfile="src/configurator/defaults.hpp" bodystart="114" bodyend="-1"/>
+        <location file="libs/configurator/defaults.hpp" line="114" column="20" bodyfile="libs/configurator/defaults.hpp" bodystart="114" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1Database_1a0cb8a029c93f4a2f6bcd49e66024c4e2" prot="public" static="no" mutable="no">
         <type>const uint16_t</type>
@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="118" column="20" bodyfile="src/configurator/defaults.hpp" bodystart="118" bodyend="-1"/>
+        <location file="libs/configurator/defaults.hpp" line="118" column="20" bodyfile="libs/configurator/defaults.hpp" bodystart="118" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1Database_1a7e4ef467bcf44500097539bd2a0b3e5d" prot="public" static="no" mutable="no">
         <type>const std::string</type>
@@ -100,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="122" column="23" bodyfile="src/configurator/defaults.hpp" bodystart="122" bodyend="-1"/>
+        <location file="libs/configurator/defaults.hpp" line="122" column="23" bodyfile="libs/configurator/defaults.hpp" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1Database_1a54161f583a9af3c55158a6aeea9db362" prot="public" static="no" mutable="no">
         <type>const std::string</type>
@@ -117,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="126" column="23" bodyfile="src/configurator/defaults.hpp" bodystart="126" bodyend="-1"/>
+        <location file="libs/configurator/defaults.hpp" line="126" column="23" bodyfile="libs/configurator/defaults.hpp" bodystart="126" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1Database_1adc651e7d941513e9a7597124eed52ad8" prot="public" static="no" mutable="no">
         <type>const std::string</type>
@@ -134,7 +134,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="130" column="23" bodyfile="src/configurator/defaults.hpp" bodystart="130" bodyend="-1"/>
+        <location file="libs/configurator/defaults.hpp" line="130" column="23" bodyfile="libs/configurator/defaults.hpp" bodystart="130" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1Database_1a01a6ae2031f44305b102d31f618af968" prot="public" static="no" mutable="no">
         <type>const std::string</type>
@@ -151,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="134" column="23" bodyfile="src/configurator/defaults.hpp" bodystart="134" bodyend="-1"/>
+        <location file="libs/configurator/defaults.hpp" line="134" column="23" bodyfile="libs/configurator/defaults.hpp" bodystart="134" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -159,6 +159,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/configurator/defaults.hpp" line="91" column="1"/>
+    <location file="libs/configurator/defaults.hpp" line="91" column="1"/>
   </compounddef>
 </doxygen>

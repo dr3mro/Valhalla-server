@@ -157,7 +157,7 @@ Protected Member Functions</h2></td></tr>
 <tr class="memdesc:adc936836bc32e25fd2348e738289c83a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a42038514e4e95779bf05a6f5d1ecad44" title="Validates a decoded JWT against current session state and its signature/claims.">validateToken()</a>.  <br /></td></tr>
 <tr class="memitem:aaf8aa6b3f37ca047d975238a41fe8285" id="r_aaf8aa6b3f37ca047d975238a41fe8285"><td class="memItemLeft">jwt::verifier&lt; jwt::default_clock, jwt::traits::kazuho_picojson &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aaf8aa6b3f37ca047d975238a41fe8285">createTokenVerifier</a> (const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;clientLoginData) const</td></tr>
 <tr class="memdesc:aaf8aa6b3f37ca047d975238a41fe8285"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds an HS256 verifier bound to the configured secret and the client's claims.  <br /></td></tr>
-<tr class="memitem:a769b4981f124c8bc48570a2ec0aaa01d" id="r_a769b4981f124c8bc48570a2ec0aaa01d"><td class="memItemLeft">Configurator::TokenManagerParameters&#160;</td><td class="memItemRight"><a class="el" href="#a769b4981f124c8bc48570a2ec0aaa01d">getTokenManagerParameters</a> () const</td></tr>
+<tr class="memitem:a769b4981f124c8bc48570a2ec0aaa01d" id="r_a769b4981f124c8bc48570a2ec0aaa01d"><td class="memItemLeft"><a class="el" href="classConfigurator.html#af1c24b094032c664c8f543c85ed36b14">Configurator::TokenManagerParameters</a>&#160;</td><td class="memItemRight"><a class="el" href="#a769b4981f124c8bc48570a2ec0aaa01d">getTokenManagerParameters</a> () const</td></tr>
 <tr class="memdesc:a769b4981f124c8bc48570a2ec0aaa01d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a copy of the token parameters cached at construction.  <br /></td></tr>
 <tr class="memitem:a913563947fb79295de1f2278e6cb5e62" id="r_a913563947fb79295de1f2278e6cb5e62"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classDatabaseController.html">DatabaseController</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a913563947fb79295de1f2278e6cb5e62">databaseController</a> () const</td></tr>
 <tr class="memdesc:a913563947fb79295de1f2278e6cb5e62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the shared <a class="el" href="classDatabaseController.html" title="Single gateway through which controllers execute SQL, in both blocking and coroutine form.">DatabaseController</a> from the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> cache.  <br /></td></tr>
@@ -171,12 +171,12 @@ Static Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a3b36fc37ac1fa5d0b98ca85a33513d43" id="r_a3b36fc37ac1fa5d0b98ca85a33513d43"><td class="memItemLeft">std::shared_ptr&lt; Configurator &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a3b36fc37ac1fa5d0b98ca85a33513d43">configurator_</a></td></tr>
-<tr class="memitem:a1d23b660f409ad68088514c4de125a4b" id="r_a1d23b660f409ad68088514c4de125a4b"><td class="memItemLeft">Configurator::TokenManagerParameters&#160;</td><td class="memItemRight"><a class="el" href="#a1d23b660f409ad68088514c4de125a4b">tokenManagerParameters_</a></td></tr>
+<tr class="memitem:a3b36fc37ac1fa5d0b98ca85a33513d43" id="r_a3b36fc37ac1fa5d0b98ca85a33513d43"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classConfigurator.html">Configurator</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a3b36fc37ac1fa5d0b98ca85a33513d43">configurator_</a></td></tr>
+<tr class="memitem:a1d23b660f409ad68088514c4de125a4b" id="r_a1d23b660f409ad68088514c4de125a4b"><td class="memItemLeft"><a class="el" href="classConfigurator.html#af1c24b094032c664c8f543c85ed36b14">Configurator::TokenManagerParameters</a>&#160;</td><td class="memItemRight"><a class="el" href="#a1d23b660f409ad68088514c4de125a4b">tokenManagerParameters_</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Shared base for session/token managers offering session-table and JWT helpers. </p>
-<p><a class="el" href="classapi_1_1v2_1_1KeeprBase.html" title="Shared base for session/token managers offering session-table and JWT helpers.">KeeprBase</a> centralizes the SQL and JWT logic used by both <a class="el" href="classapi_1_1v2_1_1SessionManager.html" title="Owns the client login flow and the in-memory session cache.">SessionManager</a> and <a class="el" href="classapi_1_1v2_1_1TokenManager.html" title="Issues and validates the HS256 JWTs that authenticate clients.">TokenManager</a>: reading/updating session rows, formatting UTC timestamps, decoding and verifying JWTs, and loading password hashes. It is stateless apart from a cached copy of TokenManagerParameters; database access goes through a cached <a class="el" href="classDatabaseController.html" title="Single gateway through which controllers execute SQL, in both blocking and coroutine form.">DatabaseController</a> obtained from <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a>, so instances share the same pool. </p><dl class="section note"><dt>Note</dt><dd>Assignment is disabled because the token parameters are cached at construction; copying/moving is allowed so derived managers can use normal value semantics. </dd></dl>
+<p><a class="el" href="classapi_1_1v2_1_1KeeprBase.html" title="Shared base for session/token managers offering session-table and JWT helpers.">KeeprBase</a> centralizes the SQL and JWT logic used by both <a class="el" href="classapi_1_1v2_1_1SessionManager.html" title="Owns the client login flow and the in-memory session cache.">SessionManager</a> and <a class="el" href="classapi_1_1v2_1_1TokenManager.html" title="Issues and validates the HS256 JWTs that authenticate clients.">TokenManager</a>: reading/updating session rows, formatting UTC timestamps, decoding and verifying JWTs, and loading password hashes. It is stateless apart from a cached copy of <a class="el" href="structTokenManagerParameters.html" title="Parameters governing issuance and verification of auth tokens.">TokenManagerParameters</a>; database access goes through a cached <a class="el" href="classDatabaseController.html" title="Single gateway through which controllers execute SQL, in both blocking and coroutine form.">DatabaseController</a> obtained from <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a>, so instances share the same pool. </p><dl class="section note"><dt>Note</dt><dd>Assignment is disabled because the token parameters are cached at construction; copying/moving is allowed so derived managers can use normal value semantics. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classapi_1_1v2_1_1SessionManager.html" title="Owns the client login flow and the in-memory session cache.">SessionManager</a>, <a class="el" href="classapi_1_1v2_1_1TokenManager.html" title="Issues and validates the HS256 JWTs that authenticate clients.">TokenManager</a></dd></dl>
 <p>For a beginner: this is a "toolbox base class". The two managers inherit it so they automatically have all these helpers. It caches the token settings once at construction, which is why assignment is removed - assigning could silently replace those cached settings. Copy/move construction is fine because it just carries the settings and the shared config handle along. </p>
 
@@ -206,7 +206,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Caches the configurator and its token parameters from the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> singleton. </p>
-<p>Grabbing a shared Configurator and copying its TokenManagerParameters once avoids repeated lookups and freezes the signing settings for this object. </p>
+<p>Grabbing a shared <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a> and copying its <a class="el" href="structTokenManagerParameters.html" title="Parameters governing issuance and verification of auth tokens.">TokenManagerParameters</a> once avoids repeated lookups and freezes the signing settings for this object. </p>
 
 <p class="definition">Definition at line <a class="el" href="keeprbase_8hpp_source.html#l00098">98</a> of file <a class="el" href="keeprbase_8hpp_source.html">keeprbase.hpp</a>.</p>
 
@@ -480,6 +480,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="keeprbase_8cpp_source.html#l00378">378</a> of file <a class="el" href="keeprbase_8cpp_source.html">keeprbase.cpp</a>.</p>
 
+<p class="reference">References <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>.</p>
+
 <p class="reference">Referenced by <a class="el" href="sessionmanager_8cpp_source.html#l00468">api::v2::SessionManager::clientHasValidSession()</a>, <a class="el" href="tokenmanager_8cpp_source.html#l00131">api::v2::TokenManager::isTokenValid()</a>, <a class="el" href="tokenmanager_8cpp_source.html#l00167">api::v2::TokenManager::isTokenValidCoro()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00343">api::v2::SessionManager::logout()</a>, and <a class="el" href="#a5eb7980e75486333cee87142faa5f9eb">~KeeprBase()</a>.</p>
 
 </div>
@@ -523,7 +525,7 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="keeprbase_8cpp_source.html#l00304">304</a> of file <a class="el" href="keeprbase_8cpp_source.html">keeprbase.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="keeprbase_8hpp_source.html#l00308">databaseController()</a>.</p>
+<p class="reference">References <a class="el" href="keeprbase_8hpp_source.html#l00308">databaseController()</a>, and <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a5eb7980e75486333cee87142faa5f9eb">~KeeprBase()</a>.</p>
 
@@ -570,7 +572,7 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="keeprbase_8cpp_source.html#l00111">111</a> of file <a class="el" href="keeprbase_8cpp_source.html">keeprbase.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="global_8hpp_source.html#l00048">CRITICALMESSAGE</a>, and <a class="el" href="keeprbase_8hpp_source.html#l00308">databaseController()</a>.</p>
+<p class="reference">References <a class="el" href="global_8hpp_source.html#l00048">CRITICALMESSAGE</a>, <a class="el" href="keeprbase_8hpp_source.html#l00308">databaseController()</a>, and <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="keeprbase_8cpp_source.html#l00440">validateToken()</a>, and <a class="el" href="#a5eb7980e75486333cee87142faa5f9eb">~KeeprBase()</a>.</p>
 
@@ -618,7 +620,7 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="keeprbase_8cpp_source.html#l00510">510</a> of file <a class="el" href="keeprbase_8cpp_source.html">keeprbase.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="global_8hpp_source.html#l00048">CRITICALMESSAGE</a>, and <a class="el" href="keeprbase_8hpp_source.html#l00308">databaseController()</a>.</p>
+<p class="reference">References <a class="el" href="global_8hpp_source.html#l00048">CRITICALMESSAGE</a>, <a class="el" href="keeprbase_8hpp_source.html#l00308">databaseController()</a>, and <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="keeprbase_8cpp_source.html#l00572">validateTokenCoro()</a>, and <a class="el" href="#a5eb7980e75486333cee87142faa5f9eb">~KeeprBase()</a>.</p>
 
@@ -726,7 +728,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Configurator::TokenManagerParameters api::v2::KeeprBase::getTokenManagerParameters </td>
+          <td class="memname"><a class="el" href="classConfigurator.html#af1c24b094032c664c8f543c85ed36b14">Configurator::TokenManagerParameters</a> api::v2::KeeprBase::getTokenManagerParameters </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -740,7 +742,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns a copy of the token parameters cached at construction. </p>
-<dl class="section return"><dt>Returns</dt><dd>Cached TokenManagerParameters (including the signing secret). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Cached <a class="el" href="structTokenManagerParameters.html" title="Parameters governing issuance and verification of auth tokens.">TokenManagerParameters</a> (including the signing secret). </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>The returned parameters contain the JWT secret; do not expose them to clients. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="keeprbase_8hpp_source.html#l00300">300</a> of file <a class="el" href="keeprbase_8hpp_source.html">keeprbase.hpp</a>.</p>
@@ -846,7 +848,7 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="keeprbase_8cpp_source.html#l00180">180</a> of file <a class="el" href="keeprbase_8cpp_source.html">keeprbase.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="keeprbase_8cpp_source.html#l00334">current_time_to_utc_string()</a>, and <a class="el" href="keeprbase_8hpp_source.html#l00308">databaseController()</a>.</p>
+<p class="reference">References <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="keeprbase_8cpp_source.html#l00334">current_time_to_utc_string()</a>, <a class="el" href="keeprbase_8hpp_source.html#l00308">databaseController()</a>, and <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="sessionmanager_8cpp_source.html#l00266">api::v2::SessionManager::completeLogin()</a>, and <a class="el" href="#a5eb7980e75486333cee87142faa5f9eb">~KeeprBase()</a>.</p>
 
@@ -898,7 +900,7 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="keeprbase_8cpp_source.html#l00252">252</a> of file <a class="el" href="keeprbase_8cpp_source.html">keeprbase.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="keeprbase_8cpp_source.html#l00334">current_time_to_utc_string()</a>, and <a class="el" href="keeprbase_8hpp_source.html#l00308">databaseController()</a>.</p>
+<p class="reference">References <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="keeprbase_8cpp_source.html#l00334">current_time_to_utc_string()</a>, <a class="el" href="keeprbase_8hpp_source.html#l00308">databaseController()</a>, and <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="sessionmanager_8cpp_source.html#l00343">api::v2::SessionManager::logout()</a>, and <a class="el" href="#a5eb7980e75486333cee87142faa5f9eb">~KeeprBase()</a>.</p>
 
@@ -956,7 +958,7 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="keeprbase_8cpp_source.html#l00440">440</a> of file <a class="el" href="keeprbase_8cpp_source.html">keeprbase.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="keeprbase_8cpp_source.html#l00642">createTokenVerifier()</a>, and <a class="el" href="keeprbase_8cpp_source.html#l00111">getLastLogoutTimeIfActive()</a>.</p>
+<p class="reference">References <a class="el" href="keeprbase_8cpp_source.html#l00642">createTokenVerifier()</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, and <a class="el" href="keeprbase_8cpp_source.html#l00111">getLastLogoutTimeIfActive()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="tokenmanager_8cpp_source.html#l00131">api::v2::TokenManager::isTokenValid()</a>, and <a class="el" href="#a5eb7980e75486333cee87142faa5f9eb">~KeeprBase()</a>.</p>
 
@@ -1015,7 +1017,7 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="keeprbase_8cpp_source.html#l00572">572</a> of file <a class="el" href="keeprbase_8cpp_source.html">keeprbase.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="keeprbase_8cpp_source.html#l00642">createTokenVerifier()</a>, and <a class="el" href="keeprbase_8cpp_source.html#l00510">getLastLogoutTimeIfActiveCoro()</a>.</p>
+<p class="reference">References <a class="el" href="keeprbase_8cpp_source.html#l00642">createTokenVerifier()</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, and <a class="el" href="keeprbase_8cpp_source.html#l00510">getLastLogoutTimeIfActiveCoro()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="tokenmanager_8cpp_source.html#l00167">api::v2::TokenManager::isTokenValidCoro()</a>, and <a class="el" href="#a5eb7980e75486333cee87142faa5f9eb">~KeeprBase()</a>.</p>
 
@@ -1032,7 +1034,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;Configurator&gt; api::v2::KeeprBase::configurator_</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classConfigurator.html">Configurator</a>&gt; api::v2::KeeprBase::configurator_</td>
         </tr>
       </table>
   </td>
@@ -1059,7 +1061,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Configurator::TokenManagerParameters api::v2::KeeprBase::tokenManagerParameters_</td>
+          <td class="memname"><a class="el" href="classConfigurator.html#af1c24b094032c664c8f543c85ed36b14">Configurator::TokenManagerParameters</a> api::v2::KeeprBase::tokenManagerParameters_</td>
         </tr>
       </table>
   </td>

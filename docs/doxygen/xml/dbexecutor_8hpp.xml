@@ -4,7 +4,7 @@
     <compoundname>dbexecutor.hpp</compoundname>
     <includes local="no">cstddef</includes>
     <includes local="no">utility</includes>
-    <includes local="yes">concurrency/boundedexecutor.hpp</includes>
+    <includes refid="boundedexecutor_8hpp" local="yes">concurrency/boundedexecutor.hpp</includes>
     <includes refid="callback_8hpp" local="yes">utils/global/callback.hpp</includes>
     <includedby refid="common_8hpp" local="yes">src/api/v2/basic/common.hpp</includedby>
     <includedby refid="appointments_8hpp" local="yes">src/api/v2/routes/appointments.hpp</includedby>
@@ -15,6 +15,40 @@
     <includedby refid="dbexecutor_8cpp" local="yes">src/database/dbexecutor.cpp</includedby>
     <includedby refid="server_8cpp" local="yes">src/server/server.cpp</includedby>
     <incdepgraph>
+      <node id="4">
+        <label>concurrency/boundedexecutor.hpp</label>
+        <link refid="boundedexecutor_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
       <node id="1">
         <label>src/database/dbexecutor.hpp</label>
         <link refid="dbexecutor_8hpp"/>
@@ -24,26 +58,64 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>utils/global/callback.hpp</label>
+        <link refid="callback_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>utils/global/http.hpp</label>
+        <link refid="http_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="5">
-        <label>utils/global/callback.hpp</label>
-        <link refid="callback_8hpp"/>
-        <childnode refid="6" relation="include">
-        </childnode>
+        <label>atomic</label>
       </node>
-      <node id="4">
-        <label>concurrency/boundedexecutor.hpp</label>
+      <node id="6">
+        <label>chrono</label>
+      </node>
+      <node id="7">
+        <label>condition_variable</label>
       </node>
       <node id="2">
         <label>cstddef</label>
       </node>
-      <node id="6">
+      <node id="8">
+        <label>cstdint</label>
+      </node>
+      <node id="9">
+        <label>deque</label>
+      </node>
+      <node id="10">
         <label>functional</label>
+      </node>
+      <node id="11">
+        <label>memory</label>
+      </node>
+      <node id="12">
+        <label>mutex</label>
+      </node>
+      <node id="13">
+        <label>string</label>
+      </node>
+      <node id="14">
+        <label>thread</label>
+      </node>
+      <node id="18">
+        <label>unordered_map</label>
       </node>
       <node id="3">
         <label>utility</label>
+      </node>
+      <node id="15">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
@@ -213,15 +285,16 @@
         <location file="src/database/dbexecutor.hpp" line="125" column="6" bodyfile="src/database/dbexecutor.hpp" bodystart="125" bodyend="133"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <references refid="dbexecutor_8hpp_1a936968e57939fceaf59b5600a46630aa" compoundref="dbexecutor_8hpp" startline="125" endline="133">runOnDbExecutor</references>
+        <references refid="boundedexecutor_8hpp_1af76f5db524067c26a058b1fee7e90e82" compoundref="boundedexecutor_8hpp" startline="400" endline="415">runOnExecutor</references>
         <referencedby refid="namespaceapi_1_1v2_1aa679c4967ecfe1f25818539f137414d3" compoundref="common_8hpp" startline="188" endline="371">api::v2::executeControllerMethod</referencedby>
         <referencedby refid="dbexecutor_8hpp_1a936968e57939fceaf59b5600a46630aa" compoundref="dbexecutor_8hpp" startline="125" endline="133">runOnDbExecutor</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>BoundedExecutor configured for the synchronous database path. </para>
+<para><ref refid="classBoundedExecutor" kindref="compound">BoundedExecutor</ref> configured for the synchronous database path. </para>
     </briefdescription>
     <detaileddescription>
-<para>This header declares <ref refid="classDbExecutor" kindref="compound">DbExecutor</ref>, a thin subclass of BoundedExecutor that runs blocking database work off the Drogon IO threads. It has two constructors: one takes worker count, queue size and fast-path flag from configuration, the other takes explicit sizes for tests. It also provides <ref refid="dbexecutor_8hpp_1a936968e57939fceaf59b5600a46630aa" kindref="member">runOnDbExecutor()</ref>, a helper that submits work and answers 503 itself if the bounded queue is full.</para>
+<para>This header declares <ref refid="classDbExecutor" kindref="compound">DbExecutor</ref>, a thin subclass of <ref refid="classBoundedExecutor" kindref="compound">BoundedExecutor</ref> that runs blocking database work off the Drogon IO threads. It has two constructors: one takes worker count, queue size and fast-path flag from configuration, the other takes explicit sizes for tests. It also provides <ref refid="dbexecutor_8hpp_1a936968e57939fceaf59b5600a46630aa" kindref="member">runOnDbExecutor()</ref>, a helper that submits work and answers 503 itself if the bounded queue is full.</para>
 <para>WHY THIS FILE MATTERS IN THE SERVER: Drogon&apos;s IO threads must stay free to accept and route HTTP requests; a slow SQL query on one of them would stall every other request. Routes obtain the shared <ref refid="classDbExecutor" kindref="compound">DbExecutor</ref> from the <ref refid="classStore" kindref="compound">Store</ref> and call <ref refid="dbexecutor_8hpp_1a936968e57939fceaf59b5600a46630aa" kindref="member">runOnDbExecutor()</ref> so permission checks, queries and response building run on dedicated workers. The optional IO-thread fast path (see <ref refid="dbprobe_8hpp" kindref="compound">dbprobe.hpp</ref>) lets requests that need no database finish without ever queueing. Without this executor, blocking database work would run on IO threads and the server would grind to a halt under load.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
 <listitem><para>Inheritance / derived classes: <ulink url="https://en.cppreference.com/w/cpp/language/derived_class">https://en.cppreference.com/w/cpp/language/derived_class</ulink></para>
@@ -281,7 +354,7 @@
 <codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>BoundedExecutor<sp/>is<sp/>the<sp/>base<sp/>class<sp/>that<sp/>implements<sp/>the<sp/>worker<sp/>pool.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;concurrency/boundedexecutor.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="boundedexecutor_8hpp" kindref="compound">concurrency/boundedexecutor.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CALLBACK_<sp/>is<sp/>the<sp/>status+message<sp/>callback<sp/>type<sp/>passed<sp/>through<sp/>the<sp/>executor.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="callback_8hpp" kindref="compound">utils/global/callback.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
@@ -303,7 +376,7 @@
 <codeline lineno="63" refid="classDbExecutor" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classDbExecutor_1a8dadc723449f985ba60361ce11896244" kindref="member">DbExecutor</ref></highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reuses<sp/>the<sp/>generic<sp/>worker<sp/>pool;<sp/>only<sp/>the</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>database-specific<sp/>setup<sp/>is<sp/>added<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>BoundedExecutor<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" kindref="member">BoundedExecutor</ref><sp/>{</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="68"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
 <codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Constructs<sp/>the<sp/>executor<sp/>sized<sp/>and<sp/>configured<sp/>from<sp/>the</highlight></codeline>
@@ -332,7 +405,7 @@
 <codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/>*<sp/>mode.</highlight></codeline>
 <codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="94" refid="classDbExecutor_1a5d6abf2368cd71250974124d570b7f2b" refkind="member"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classDbExecutor_1a5d6abf2368cd71250974124d570b7f2b" kindref="member">ioFastPath</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classDbExecutor_1afc7b383dd9357cbeda1c8f7d8fc7484d" kindref="member">io_fast_path_</ref><sp/>&amp;&amp;<sp/>!inlineMode();</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classDbExecutor_1afc7b383dd9357cbeda1c8f7d8fc7484d" kindref="member">io_fast_path_</ref><sp/>&amp;&amp;<sp/>!<ref refid="classBoundedExecutor_1a49df17e54d15d8a492f13e876c74f4cf" kindref="member">inlineMode</ref>();</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Inline<sp/>mode<sp/>(zero<sp/>workers)<sp/>has<sp/>no<sp/>IO<sp/>thread<sp/>to<sp/>offload<sp/>from,<sp/>so<sp/>the</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fast<sp/>path<sp/>is<sp/>pointless<sp/>there.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="98"><highlight class="normal"></highlight></codeline>
@@ -363,7 +436,7 @@
 <codeline lineno="123"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Body&gt;</highlight></codeline>
 <codeline lineno="125" refid="dbexecutor_8hpp_1a936968e57939fceaf59b5600a46630aa" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="dbexecutor_8hpp_1a936968e57939fceaf59b5600a46630aa" kindref="member">runOnDbExecutor</ref>(<ref refid="classDbExecutor" kindref="compound">DbExecutor</ref>&amp;<sp/>executor,<sp/><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/>Body&amp;&amp;<sp/>body)<sp/>{</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/>runOnExecutor(executor,</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><ref refid="boundedexecutor_8hpp_1af76f5db524067c26a058b1fee7e90e82" kindref="member">runOnExecutor</ref>(executor,</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(callback),</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;The<sp/>server<sp/>is<sp/>busy,<sp/>try<sp/>again<sp/>shortly.&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::forward&lt;Body&gt;(</highlight></codeline>

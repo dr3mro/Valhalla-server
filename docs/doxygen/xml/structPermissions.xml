@@ -467,7 +467,7 @@
 <para>Powers are single-bit flags stored in a uint8_t. Two groups of bits are distinguished by convention: identity bits (USER, PROVIDER, IS_ADMIN, IS_OWNER, IS_SUPER) and capability bits (CAN_READ, CAN_WRITE, CAN_DELETE). A value is a bitwise combination, so a single mask can express roles plus capabilities. <simplesect kind="note"><para>All the test helpers (<ref refid="structPermissions_1ac96d5536a15d787a3baf4854926a996c" kindref="member">hasPower()</ref>, <ref refid="structPermissions_1afd7453a69128f00dcd4e27c3522e31ef" kindref="member">hasMatch()</ref>, operator&amp;) answer &quot;any
 bit in common&quot;, not &quot;all requested bits present&quot;.</para>
 </simplesect>
-In everyday words: imagine an 8-switch control panel, one switch per right. Each switch is a power of two (1, 2, 4, 8, ...). Turning on several switches and adding the numbers produces a single value that remembers exactly which switches are on. Testing &quot;is any of these switches on?&quot; is a fast bitwise AND. </para>
+In everyday words: imagine an 8-switch control panel, one switch per right. Each switch is a power of two (1, 2, 4, 8, ...). Turning on several switches and adding the numbers produces a single value that remembers exactly which switches are on. <ref refid="structTesting" kindref="compound">Testing</ref> &quot;is any of these switches on?&quot; is a fast bitwise AND. </para>
     </detaileddescription>
     <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="56" column="1" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="56" bodyend="188"/>
     <listofallmembers>

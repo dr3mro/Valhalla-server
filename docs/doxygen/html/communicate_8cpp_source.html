@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('communicate_8c
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &lt;string&gt;</span>  <span class="comment">// std::string holds the URL, request body and response.</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">// Message is used to log failures to the console.</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &quot;message/message.hpp&quot;</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &quot;<a class="code" href="message_8hpp.html">message/message.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">// Returns the response body, or nothing on any</span></div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// failure.</span></div>
@@ -264,9 +264,9 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('communicate_8c
 <div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="comment">// including from handleResponse&#39;s callers.</span></div>
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    curl_slist_free_all(headers);</div>
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    Message::ErrorMessage(fmt::format(<span class="stringliteral">&quot;Failed to send request to {}.&quot;</span>,</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <a class="code hl_function" href="classMessage.html#a1fd9a043b58e6adceb8d111bc891feba">Message::ErrorMessage</a>(fmt::format(<span class="stringliteral">&quot;Failed to send request to {}.&quot;</span>,</div>
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>                                      url));  <span class="comment">// Log which URL failed.</span></div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    Message::CriticalMessage(</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <a class="code hl_function" href="classMessage.html#aa085f3b7f644c7c1075eac59e3c2f7a9">Message::CriticalMessage</a>(</div>
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        e.what());  <span class="comment">// Log the underlying error text at critical level.</span></div>
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <span class="comment">// Only free the handle if it was actually created.</span></div>
@@ -306,9 +306,9 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('communicate_8c
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>                               std::string(curl_easy_strerror(res)));</div>
 <div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    }</div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    Message::ErrorMessage(fmt::format(</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <a class="code hl_function" href="classMessage.html#a1fd9a043b58e6adceb8d111bc891feba">Message::ErrorMessage</a>(fmt::format(</div>
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        <span class="stringliteral">&quot;Failed to handle request.&quot;</span>));   <span class="comment">// Log a generic failure notice.</span></div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    Message::CriticalMessage(e.what());  <span class="comment">// Log the specific error text.</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <a class="code hl_function" href="classMessage.html#aa085f3b7f644c7c1075eac59e3c2f7a9">Message::CriticalMessage</a>(e.what());  <span class="comment">// Log the specific error text.</span></div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    response.clear();  <span class="comment">// Clear the response to indicate failure</span></div>
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>  }</div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
@@ -333,7 +333,10 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('communicate_8c
 <div class="ttc" id="aclassCommunicate_html_a0a4ddbbf7176276436c6c9f8bd3fa9f1"><div class="ttname"><a href="classCommunicate.html#a0a4ddbbf7176276436c6c9f8bd3fa9f1">Communicate::handleResponse</a></div><div class="ttdeci">static std::optional&lt; std::string &gt; handleResponse(CURL *curl)</div><div class="ttdoc">Executes the prepared cURL handle and captures the response body.</div><div class="ttdef"><b>Definition</b> <a href="#l00162">communicate.cpp:162</a></div></div>
 <div class="ttc" id="aclassCommunicate_html_a16c7e1e24d2610ef8d00d8ebe3b7c59b"><div class="ttname"><a href="classCommunicate.html#a16c7e1e24d2610ef8d00d8ebe3b7c59b">Communicate::WriteCallback</a></div><div class="ttdeci">static std::optional&lt; size_t &gt; WriteCallback(void *contents, size_t size, size_t nmemb, std::string *response)</div><div class="ttdoc">libcurl write callback that appends received bytes to a string.</div><div class="ttdef"><b>Definition</b> <a href="#l00196">communicate.cpp:196</a></div></div>
 <div class="ttc" id="aclassCommunicate_html_ac17ede80bd387e5c096fcf9fcb481aee"><div class="ttname"><a href="classCommunicate.html#ac17ede80bd387e5c096fcf9fcb481aee">Communicate::sendRequest</a></div><div class="ttdeci">static std::optional&lt; std::string &gt; sendRequest(const std::string &amp;server, int port, const std::string &amp;path, const drogon::HttpMethod &amp;method, const std::string &amp;data)</div><div class="ttdoc">Sends an HTTP request and returns the response body.</div><div class="ttdef"><b>Definition</b> <a href="#l00047">communicate.cpp:47</a></div></div>
+<div class="ttc" id="aclassMessage_html_a1fd9a043b58e6adceb8d111bc891feba"><div class="ttname"><a href="classMessage.html#a1fd9a043b58e6adceb8d111bc891feba">Message::ErrorMessage</a></div><div class="ttdeci">static void ErrorMessage(const std::string &amp;status_message)</div><div class="ttdoc">Logs a message at error severity.</div><div class="ttdef"><b>Definition</b> <a href="message_8cpp_source.html#l00054">message.cpp:54</a></div></div>
+<div class="ttc" id="aclassMessage_html_aa085f3b7f644c7c1075eac59e3c2f7a9"><div class="ttname"><a href="classMessage.html#aa085f3b7f644c7c1075eac59e3c2f7a9">Message::CriticalMessage</a></div><div class="ttdeci">static void CriticalMessage(const std::string &amp;status_message)</div><div class="ttdoc">Logs a message at fatal severity (used for critical errors).</div><div class="ttdef"><b>Definition</b> <a href="message_8cpp_source.html#l00057">message.cpp:57</a></div></div>
 <div class="ttc" id="acommunicate_8hpp_html"><div class="ttname"><a href="communicate_8hpp.html">communicate.hpp</a></div><div class="ttdoc">Synchronous HTTP helper for service-to-service requests.</div></div>
+<div class="ttc" id="amessage_8hpp_html"><div class="ttname"><a href="message_8hpp.html">message.hpp</a></div><div class="ttdoc">Static helpers for coloured console/status logging.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

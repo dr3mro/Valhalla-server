@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['search_5ft_0',['Search_t',['../controller_8hpp.html#aae5d6e887384ae12de7a6b10d953cd2b',1,'Search_t:&#160;controller.hpp'],['../namespaceapi_1_1v2_1_1Types.html#af59be698801945d220b24ee56e2b01ef',1,'api::v2::Types::Search_t']]],
-  ['servicevariant_1',['ServiceVariant',['../classapi_1_1v2_1_1Services.html#a15ac0e21c6a4dd6a3852bca715aac048',1,'api::v2::Services']]],
-  ['sessionmanager_2',['SessionManager',['../sessionmanager_8cpp.html#aa7df7e3b388a985439e1eb11eba04a0f',1,'sessionmanager.cpp']]],
-  ['staffdata_3',['StaffData',['../staffcontroller_8cpp.html#a05f271479525f9aae1900f939d81a7f9',1,'staffcontroller.cpp']]],
-  ['staffpermission_4',['StaffPermission',['../structPermissions.html#a26a1c9adb722c5389044eb29c0db4e1e',1,'Permissions']]],
-  ['staffvariant_5',['StaffVariant',['../classapi_1_1v2_1_1Staff.html#ae4172ea31830e79b8b2b28aa4770f549',1,'api::v2::Staff']]],
-  ['suspenddata_6',['SuspendData',['../clientcontroller_8cpp.html#a6077dd2da3713e139a37b02ece1f6aaf',1,'clientcontroller.cpp']]]
+  ['read_5ft_0',['Read_t',['../entitycontroller_8cpp.html#a55725b9cf45e5143432537010a85c1d5',1,'Read_t:&#160;entitycontroller.cpp'],['../namespaceapi_1_1v2_1_1Types.html#a8f8491af0a58d8af1037feb2b65b38a1',1,'api::v2::Types::Read_t']]],
+  ['request_1',['Request',['../classDOSDetector.html#a43f9aacef13939c478b0b533aaf7d6ca',1,'DOSDetector']]],
+  ['requester_2',['Requester',['../appointmentcontrollerbase_8hpp.html#a8aac836dbb3d1b4bc56b33de7ad245a4',1,'Requester:&#160;appointmentcontrollerbase.hpp'],['../namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c',1,'api::v2::Requester']]]
 ];

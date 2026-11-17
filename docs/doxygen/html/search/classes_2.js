@@ -15,8 +15,9 @@ var searchData=
   ['clinics_12',['Clinics',['../classClinics.html',1,'']]],
   ['columninfo_13',['ColumnInfo',['../structColumnInfo.html',1,'']]],
   ['communicate_14',['Communicate',['../classCommunicate.html',1,'']]],
-  ['controller_15',['Controller',['../classController.html',1,'']]],
-  ['create_5ft_16',['Create_t',['../classCreate__t.html',1,'']]],
-  ['createclient_5ft_17',['CreateClient_t',['../structapi_1_1v2_1_1Types_1_1CreateClient__t.html',1,'api::v2::Types']]],
-  ['credentials_18',['Credentials',['../structCredentials.html',1,'']]]
+  ['configurator_15',['Configurator',['../classConfigurator.html',1,'']]],
+  ['controller_16',['Controller',['../classController.html',1,'']]],
+  ['create_5ft_17',['Create_t',['../classCreate__t.html',1,'']]],
+  ['createclient_5ft_18',['CreateClient_t',['../structapi_1_1v2_1_1Types_1_1CreateClient__t.html',1,'api::v2::Types']]],
+  ['credentials_19',['Credentials',['../structCredentials.html',1,'']]]
 ];

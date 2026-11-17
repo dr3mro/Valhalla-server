@@ -1,5 +1,8 @@
 var namespaces_dup =
 [
+    [ "anonymous_namespace{boundedexecutor.cpp}", "namespaceanonymous__namespace_02boundedexecutor_8cpp_03.html", [
+      [ "currentExecutor", "namespaceanonymous__namespace_02boundedexecutor_8cpp_03.html#ab84b8609fe5c97780788c6d292a2c64c", null ]
+    ] ],
     [ "anonymous_namespace{dbexecutor.cpp}", "namespaceanonymous__namespace_02dbexecutor_8cpp_03.html", [
       [ "config", "namespaceanonymous__namespace_02dbexecutor_8cpp_03.html#a620e60141d4e4ce74d6607d537dc171b", null ]
     ] ],
@@ -50,5 +53,6 @@ var namespaces_dup =
       [ "trim", "namespaceCorsTokens.html#a7a178dc1be0dd0b0753320d19435ff96", null ],
       [ "tokenPunctuation", "namespaceCorsTokens.html#a6d06cb55654db9c60bbbbbd0ee486ae3", null ]
     ] ],
+    [ "Defaults", "namespaceDefaults.html", "namespaceDefaults" ],
     [ "std", "namespacestd.html", "namespacestd" ]
 ];

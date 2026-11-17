@@ -4,7 +4,7 @@
     <compoundname>anonymous_namespace{dbexecutor.cpp}</compoundname>
     <sectiondef kind="func">
       <memberdef kind="function" id="namespaceanonymous__namespace_02dbexecutor_8cpp_03_1a620e60141d4e4ce74d6607d537dc171b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const Configurator::DbExecutorConfig &amp;</type>
+        <type>const <ref refid="classConfigurator_1a6552d2f57b9bbb898d49d7512cc3c829" kindref="member">Configurator::DbExecutorConfig</ref> &amp;</type>
         <definition>const Configurator::DbExecutorConfig &amp; anonymous_namespace{dbexecutor.cpp}::config</definition>
         <argsstring>()</argsstring>
         <name>config</name>
@@ -12,7 +12,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Returns the DB executor settings held by the application-wide Configurator. </para>
+<para>Returns the DB executor settings held by the application-wide <ref refid="classConfigurator" kindref="compound">Configurator</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

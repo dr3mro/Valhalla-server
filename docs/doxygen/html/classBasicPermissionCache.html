@@ -153,7 +153,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a6282dd3b2250a617863292fa8e42701f" id="r_a6282dd3b2250a617863292fa8e42701f"><td class="memItemLeft">static <a class="el" href="classBasicPermissionCache.html">BasicPermissionCache</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a6282dd3b2250a617863292fa8e42701f">instance</a> ()</td></tr>
-<tr class="memdesc:a6282dd3b2250a617863292fa8e42701f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the process-wide singleton, configured from Configurator.  <br /></td></tr>
+<tr class="memdesc:a6282dd3b2250a617863292fa8e42701f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the process-wide singleton, configured from <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a>.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -172,7 +172,7 @@ Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename ClockT = std::chrono::        steady_clock&gt;<br />
 class BasicPermissionCache&lt; ClockT &gt;</div><p>Idle-expiry cache for permission lookups, keyed by the generated permission query (which embeds the entity table and id). </p>
-<p>Each hit renews the entry's lifetime; an entry that is not used for the TTL is removed. The TTL comes from Configurator::PermissionCacheConfig (PERMISSION_CACHE_TTL, default 300 seconds); 0 disables the cache.</p>
+<p>Each hit renews the entry's lifetime; an entry that is not used for the TTL is removed. The TTL comes from <a class="el" href="classConfigurator.html#a32f2368e1e72e5bd29909e000c0c9e4c">Configurator::PermissionCacheConfig</a> (PERMISSION_CACHE_TTL, default 300 seconds); 0 disables the cache.</p>
 <p>Security trade-off: there is no invalidation on writes, so a revoked permission can keep being served while its entry stays in use. <a class="el" href="#ad3230e761d0a35d3b772d299d8d72b09" title="Flushes all entries and bumps the generation so any pending stale put() is dropped.">invalidateAll()</a> is available for callers that need an explicit flush. </p><pre class="fragment">     All public operations are thread-safe via mutex_; generation_ is
 </pre><p> atomic so readers can take a token without locking and have a racing <a class="el" href="#abc720e1381076a0f4954ba9f6b39adfc" title="Stores value under key if the cache is still in the same generation.">put()</a> rejected. Think of it as a notepad: look up a question, and if the answer is still fresh use it; otherwise ask the database and jot the new answer down. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -405,8 +405,8 @@ template&lt;typename ClockT = std::chrono::        steady_clock&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the process-wide singleton, configured from Configurator. </p>
-<p>The singleton's TTL is fixed at first use from Configurator::PermissionCacheConfig; thread-safe initialization is guaranteed by the function-local static. </p>
+<p>Returns the process-wide singleton, configured from <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a>. </p>
+<p>The singleton's TTL is fixed at first use from <a class="el" href="classConfigurator.html#a32f2368e1e72e5bd29909e000c0c9e4c">Configurator::PermissionCacheConfig</a>; thread-safe initialization is guaranteed by the function-local static. </p>
 
 <p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00213">213</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 

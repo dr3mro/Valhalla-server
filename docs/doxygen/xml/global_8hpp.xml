@@ -394,12 +394,12 @@
                                          __func__,                     \
                                          __FILE__,                     \
                                          __LINE__);                    \
-Message::CriticalMessage(critical_error);</initializer>
+<ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(critical_error);</initializer>
         <briefdescription>
 <para>Logs the active exception together with function, file and line. </para>
         </briefdescription>
         <detaileddescription>
-<para>Expands to several statements that build <computeroutput>critical_error</computeroutput> via fmt and pass it to Message::CriticalMessage. <simplesect kind="pre"><para>Must be expanded inside a catch handler with an exception variable named <computeroutput>e</computeroutput> in scope, and with fmt and Message available. </para>
+<para>Expands to several statements that build <computeroutput>critical_error</computeroutput> via fmt and pass it to <ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>. <simplesect kind="pre"><para>Must be expanded inside a catch handler with an exception variable named <computeroutput>e</computeroutput> in scope, and with fmt and <ref refid="classMessage" kindref="compound">Message</ref> available. </para>
 </simplesect>
 <simplesect kind="warning"><para>Declares a local variable named <computeroutput>critical_error</computeroutput>; avoid using the macro where that name is already taken. It expands to more than one statement, so guard it with braces when used as a single statement. </para>
 </simplesect>
@@ -488,7 +488,7 @@ callback(<ref refid="namespaceapi_1_1v2_1_1Http_1aaddeb034a51d7050d6cc65cc2b46fd
     </briefdescription>
     <detaileddescription>
 <para>Defines two preprocessor macros. CRITICALMESSAGE builds a detailed error string (message, function, file and line) and logs it at critical severity. CRITICALMESSAGERESPONSE does that logging and then answers the caller through a callback, choosing 503 for a busy database and 500 for anything else. Because they are macros, the error text picks up the caller&apos;s <bold>func</bold>, <bold>FILE</bold> and <bold>LINE</bold> automatically instead of always pointing here.</para>
-<para>WHY THIS FILE MATTERS IN THE SERVER: Many controllers and entities can fail in the same way, and each one must both log the failure and send a sensible HTTP reply. These macros make that a single line at every catch site, so error handling looks and behaves the same across the whole API. They depend on statusForException (<ref refid="errorstatus_8hpp" kindref="compound">errorstatus.hpp</ref>) for the status code and on Message for the log. Without them, error handling would be duplicated and would drift apart over time.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: Many controllers and entities can fail in the same way, and each one must both log the failure and send a sensible HTTP reply. These macros make that a single line at every catch site, so error handling looks and behaves the same across the whole API. They depend on statusForException (<ref refid="errorstatus_8hpp" kindref="compound">errorstatus.hpp</ref>) for the status code and on <ref refid="classMessage" kindref="compound">Message</ref> for the log. Without them, error handling would be duplicated and would drift apart over time.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
 <listitem><para>Preprocessor macros: <ulink url="https://en.cppreference.com/w/cpp/preprocessor/replace">https://en.cppreference.com/w/cpp/preprocessor/replace</ulink></para>
 </listitem><listitem><para>std::string: <ulink url="https://en.cppreference.com/w/cpp/string/basic_string">https://en.cppreference.com/w/cpp/string/basic_string</ulink></para>

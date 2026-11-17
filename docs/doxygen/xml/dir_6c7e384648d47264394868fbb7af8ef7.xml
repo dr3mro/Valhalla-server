@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_6c7e384648d47264394868fbb7af8ef7" kind="dir">
+    <compoundname>libs/logger</compoundname>
+    <innerfile refid="logger_8cpp">logger.cpp</innerfile>
+    <innerfile refid="logger_8hpp">logger.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libs/logger/"/>
+  </compounddef>
+</doxygen>

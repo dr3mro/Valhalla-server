@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['laboratories_0',['Laboratories',['../classLaboratories.html',1,'']]],
-  ['laboratoryappointment_1',['LaboratoryAppointment',['../classLaboratoryAppointment.html',1,'']]]
+  ['jsonhelper_0',['JsonHelper',['../classapi_1_1v2_1_1JsonHelper.html',1,'api::v2']]]
 ];

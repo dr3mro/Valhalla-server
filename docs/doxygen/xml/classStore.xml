@@ -375,6 +375,7 @@
         <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a070d79b55b8f3262de2b815a636defd7" compoundref="permissionmanager__private_8hpp" startline="384" endline="433">api::v2::PermissionManagerPrivate::getPermissionsOfEntityCoro</referencedby>
         <referencedby refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="694" endline="734">Controller::GetServicesAsync</referencedby>
         <referencedby refid="classController_1a2af2297a7b4fcce1f987510786aaa5d7" compoundref="controller_8hpp" startline="793" endline="826">Controller::GetVisitsAsync</referencedby>
+        <referencedby refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" compoundref="logger_8cpp" startline="86" endline="198">Logger::Logger</referencedby>
       </memberdef>
       <memberdef kind="function" id="classStore_1a2a4bfc0b18f2999216eda3067988cf57" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>

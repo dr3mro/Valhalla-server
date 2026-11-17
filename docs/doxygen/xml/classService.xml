@@ -194,6 +194,8 @@
         </inbodydescription>
         <location file="src/entities/base/service.hpp" line="116" column="17" bodyfile="src/entities/base/service.hpp" bodystart="116" bodyend="153"/>
         <references refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="178" endline="184">Base::Binder::bind</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="222" endline="224">Entity::getData</references>
         <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="575">Entity::tablename</references>
       </memberdef>
@@ -228,6 +230,8 @@
         </inbodydescription>
         <location file="src/entities/base/service.hpp" line="167" column="17" bodyfile="src/entities/base/service.hpp" bodystart="167" bodyend="202"/>
         <references refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="178" endline="184">Base::Binder::bind</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="222" endline="224">Entity::getData</references>
         <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="575">Entity::tablename</references>
       </memberdef>

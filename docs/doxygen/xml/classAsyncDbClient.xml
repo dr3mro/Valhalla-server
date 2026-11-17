@@ -189,9 +189,9 @@ No validation or configuration happens here; a null client is accepted for tests
         </briefdescription>
         <detaileddescription>
 <para>Creates the Drogon Pg client from the <ref refid="classStore" kindref="compound">Store</ref>&apos;s database configuration.</para>
-<para>Reads <computeroutput>Configurator::DatabaseConfig</computeroutput> from the <ref refid="classStore" kindref="compound">Store</ref>, builds the connection string with <computeroutput><ref refid="classAsyncDbClient_1a060a2df97483204c119b2d3322de7455" kindref="member">connectionString</ref></computeroutput>, requests <computeroutput>DB_MAX_CONN</computeroutput> connections and applies the acquire timeout, converting milliseconds to the seconds Drogon expects. <simplesect kind="return"><para>A newly created client, ready to be wrapped and registered with <computeroutput><ref refid="classStore_1a1e12f060c02095975351db8f5d63cb76" kindref="member">Store::registerObject</ref>&lt;<ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref>&gt;</computeroutput>. </para>
+<para>Reads <computeroutput><ref refid="classConfigurator_1a78caa68d4554c8ab0d0c1753ce8edbe2" kindref="member">Configurator::DatabaseConfig</ref></computeroutput> from the <ref refid="classStore" kindref="compound">Store</ref>, builds the connection string with <computeroutput><ref refid="classAsyncDbClient_1a060a2df97483204c119b2d3322de7455" kindref="member">connectionString</ref></computeroutput>, requests <computeroutput>DB_MAX_CONN</computeroutput> connections and applies the acquire timeout, converting milliseconds to the seconds Drogon expects. <simplesect kind="return"><para>A newly created client, ready to be wrapped and registered with <computeroutput><ref refid="classStore_1a1e12f060c02095975351db8f5d63cb76" kindref="member">Store::registerObject</ref>&lt;<ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref>&gt;</computeroutput>. </para>
 </simplesect>
-<simplesect kind="pre"><para>A <computeroutput>Configurator</computeroutput> object is registered in the <ref refid="classStore" kindref="compound">Store</ref>.</para>
+<simplesect kind="pre"><para>A <computeroutput><ref refid="classConfigurator" kindref="compound">Configurator</ref></computeroutput> object is registered in the <ref refid="classStore" kindref="compound">Store</ref>.</para>
 </simplesect>
 <computeroutput>newPgClient</computeroutput> receives the generated connection string and <computeroutput>DB_MAX_CONN</computeroutput>; the timeout is then set from <computeroutput>DB_ACQUIRE_TIMEOUT_MS</computeroutput>. Any connection-establishment work is left to Drogon. </para>
         </detaileddescription>
@@ -211,7 +211,7 @@ No validation or configuration happens here; a null client is accepted for tests
         <name>connectionString</name>
         <qualifiedname>AsyncDbClient::connectionString</qualifiedname>
         <param>
-          <type>const Configurator::DatabaseConfig &amp;</type>
+          <type>const <ref refid="classConfigurator_1a78caa68d4554c8ab0d0c1753ce8edbe2" kindref="member">Configurator::DatabaseConfig</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>

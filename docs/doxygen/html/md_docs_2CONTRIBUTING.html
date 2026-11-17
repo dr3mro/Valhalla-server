@@ -164,7 +164,7 @@ Shell scripts</h2>
 <p>Shell scripts under <span class="tt">scripts/</span>, <span class="tt">tools/</span>, <span class="tt">docker/</span>, <span class="tt">.github/</span> and the repository root use the same header fields, written as <span class="tt">#</span>-prefixed lines immediately after the shebang (<span class="tt">@file</span>, <span class="tt">@brief</span>, <span class="tt">@author</span>, <span class="tt">@date</span>), plus <span class="tt"># @brief</span> / <span class="tt"># @param</span> blocks above each function and <span class="tt">#</span> WHY comments for non-obvious commands. Doxygen has no shell parser, so <span class="tt">.sh</span> files are not part of the Doxygen <span class="tt">INPUT</span>; they are documented in-source and read directly.</p>
 <p>Regenerate the API reference documentation with:</p>
 <div class="fragment"><div class="line">doxygen Doxyfile</div>
-<div class="line"># open build/docs/doxygen/html/index.html</div>
+<div class="line"># open docs/doxygen/html/index.html</div>
 </div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md62"></a>
 Build and test</h1>
 <p>Dependencies are managed with Conan and pinned in <span class="tt">conan.lock</span>. Typical local flow (see <span class="tt"><a class="el" href="README_8md.html">README.md</a></span> for the full, platform-specific sequence):</p>

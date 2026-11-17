@@ -19,8 +19,110 @@
     <includes local="no">utility</includes>
     <includes refid="controller_8hpp" local="yes">controllers/base/controller/controller.hpp</includes>
     <includes refid="utils_2global_2types_8hpp" local="yes">utils/global/types.hpp</includes>
-    <includes local="yes">message/message.hpp</includes>
+    <includes refid="message_8hpp" local="yes">message/message.hpp</includes>
     <incdepgraph>
+      <node id="73">
+        <label>concurrency/boundedexecutor.hpp</label>
+        <link refid="boundedexecutor_8hpp"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>configurator/configurator.hpp</label>
+        <link refid="configurator_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>defaults.hpp</label>
+        <link refid="defaults_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>envloader/envloader.hpp</label>
+        <link refid="envloader_8hpp"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>envvars/envvars.hpp</label>
+        <link refid="envvars_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>message/message.hpp</label>
+        <link refid="message_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
       <node id="20">
         <label>controllers/base/controller/controller.hpp</label>
         <link refid="controller_8hpp"/>
@@ -52,29 +154,29 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
+        <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="58" relation="include">
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
         </childnode>
         <childnode refid="60" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="58" relation="include">
         </childnode>
-        <childnode refid="71" relation="include">
+        <childnode refid="87" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
-        </childnode>
-        <childnode refid="54" relation="include">
-        </childnode>
-        <childnode refid="84" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
       <node id="24">
@@ -110,31 +212,31 @@
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="33">
         <label>database/asyncdbclient.hpp</label>
         <link refid="asyncdbclient_8hpp"/>
-        <childnode refid="29" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -143,10 +245,10 @@
         <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="35">
         <label>database/asyncresultmapper.hpp</label>
         <link refid="asyncresultmapper_8hpp"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -157,14 +259,14 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="37">
         <label>database/asyncsqlbinder.hpp</label>
         <link refid="asyncsqlbinder_8hpp"/>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
         <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -172,7 +274,7 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -212,7 +314,7 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -241,7 +343,7 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="36">
+      <node id="41">
         <label>database/databasebusy.hpp</label>
         <link refid="databasebusy_8hpp"/>
         <childnode refid="23" relation="include">
@@ -249,17 +351,17 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="37">
+      <node id="42">
         <label>database/databasehandler.hpp</label>
         <link refid="databasehandler_8hpp"/>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="38">
+      <node id="43">
         <label>database/dbprobe.hpp</label>
         <link refid="dbprobe_8hpp"/>
       </node>
-      <node id="48">
+      <node id="52">
         <label>entities/base/base.hpp</label>
         <link refid="base_8hpp"/>
         <childnode refid="3" relation="include">
@@ -273,7 +375,7 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="59">
+      <node id="63">
         <label>entities/base/case.hpp</label>
         <link refid="case_8hpp"/>
         <childnode refid="14" relation="include">
@@ -284,25 +386,25 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
+        <childnode refid="60" relation="include">
         </childnode>
       </node>
-      <node id="43">
+      <node id="47">
         <label>entities/base/client.hpp</label>
         <link refid="client_8hpp"/>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -314,31 +416,31 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
+        <childnode refid="53" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
+        <childnode refid="60" relation="include">
         </childnode>
       </node>
-      <node id="47">
+      <node id="51">
         <label>entities/base/entity.hpp</label>
         <link refid="entity_8hpp"/>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -346,35 +448,35 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
+        <childnode refid="53" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="49">
+      <node id="53">
         <label>entities/base/types.hpp</label>
         <link refid="entities_2base_2types_8hpp"/>
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="50" relation="include">
+        <childnode refid="54" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="55" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -400,22 +502,22 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="56" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="53" relation="include">
+        <childnode refid="57" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="54" relation="include">
+        <childnode refid="58" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
+        <childnode refid="59" relation="include">
         </childnode>
       </node>
-      <node id="58">
+      <node id="62">
         <label>entities/services/clinics/patient/patient.hpp</label>
         <link refid="patient_8hpp"/>
         <childnode refid="14" relation="include">
@@ -432,29 +534,29 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="59" relation="include">
+        <childnode refid="63" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
+        <childnode refid="53" relation="include">
         </childnode>
       </node>
-      <node id="62">
+      <node id="66">
         <label>gatekeeper/dosdetector/dosdetector.hpp</label>
         <link refid="dosdetector_8hpp"/>
-        <childnode refid="63" relation="include">
+        <childnode refid="67" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="64" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="65" relation="include">
+        <childnode refid="68" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="66" relation="include">
+        <childnode refid="69" relation="include">
         </childnode>
-        <childnode refid="67" relation="include">
+        <childnode refid="70" relation="include">
         </childnode>
-        <childnode refid="68" relation="include">
+        <childnode refid="71" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -466,19 +568,19 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
       </node>
-      <node id="60">
+      <node id="64">
         <label>gatekeeper/gatekeeper.hpp</label>
         <link refid="gatekeeper_8hpp"/>
-        <childnode refid="61" relation="include">
+        <childnode refid="65" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -494,35 +596,35 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="62" relation="include">
-        </childnode>
-        <childnode refid="69" relation="include">
+        <childnode refid="66" relation="include">
         </childnode>
         <childnode refid="72" relation="include">
         </childnode>
-        <childnode refid="75" relation="include">
-        </childnode>
-        <childnode refid="83" relation="include">
+        <childnode refid="76" relation="include">
         </childnode>
         <childnode refid="79" relation="include">
         </childnode>
-        <childnode refid="71" relation="include">
+        <childnode refid="86" relation="include">
         </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
-        <childnode refid="54" relation="include">
+        <childnode refid="75" relation="include">
         </childnode>
-        <childnode refid="74" relation="include">
-        </childnode>
-      </node>
-      <node id="76">
-        <label>gatekeeper/keeprbase/keeprbase.hpp</label>
-        <link refid="keeprbase_8hpp"/>
         <childnode refid="77" relation="include">
         </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
         <childnode refid="78" relation="include">
+        </childnode>
+      </node>
+      <node id="80">
+        <label>gatekeeper/keeprbase/keeprbase.hpp</label>
+        <link refid="keeprbase_8hpp"/>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -538,14 +640,14 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="79" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
       </node>
-      <node id="53">
+      <node id="57">
         <label>gatekeeper/passwordcrypt/passwordcrypt.hpp</label>
         <link refid="passwordcrypt_8hpp"/>
         <childnode refid="9" relation="include">
@@ -553,19 +655,19 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="69">
+      <node id="72">
         <label>gatekeeper/passwordcrypt/passwordworker.hpp</label>
         <link refid="passwordworker_8hpp"/>
         <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="70" relation="include">
+        <childnode refid="73" relation="include">
         </childnode>
-        <childnode refid="71" relation="include">
+        <childnode refid="75" relation="include">
         </childnode>
       </node>
-      <node id="72">
+      <node id="76">
         <label>gatekeeper/permissionmanager/permissionmanager.hpp</label>
         <link refid="permissionmanager_8hpp"/>
         <childnode refid="5" relation="include">
@@ -574,19 +676,19 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="77" relation="include">
         </childnode>
-        <childnode refid="54" relation="include">
+        <childnode refid="58" relation="include">
         </childnode>
-        <childnode refid="74" relation="include">
+        <childnode refid="78" relation="include">
         </childnode>
       </node>
-      <node id="75">
+      <node id="79">
         <label>gatekeeper/sessionmanager/sessionmanager.hpp</label>
         <link refid="sessionmanager_8hpp"/>
-        <childnode refid="64" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -594,33 +696,33 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="76" relation="include">
+        <childnode refid="80" relation="include">
         </childnode>
-        <childnode refid="53" relation="include">
+        <childnode refid="57" relation="include">
         </childnode>
-        <childnode refid="79" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="71" relation="include">
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+      </node>
+      <node id="86">
+        <label>gatekeeper/tokenmanager/tokenmanager.hpp</label>
+        <link refid="tokenmanager_8hpp"/>
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="80" relation="include">
         </childnode>
       </node>
       <node id="83">
-        <label>gatekeeper/tokenmanager/tokenmanager.hpp</label>
-        <link refid="tokenmanager_8hpp"/>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="76" relation="include">
-        </childnode>
-      </node>
-      <node id="79">
         <label>gatekeeper/types.hpp</label>
         <link refid="gatekeeper_2types_8hpp"/>
-        <childnode refid="64" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -629,7 +731,7 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="44">
         <label>store/store.hpp</label>
         <link refid="store_8hpp"/>
         <childnode refid="25" relation="include">
@@ -644,48 +746,48 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
       </node>
-      <node id="71">
+      <node id="75">
         <label>utils/global/callback.hpp</label>
         <link refid="callback_8hpp"/>
-        <childnode refid="67" relation="include">
+        <childnode refid="70" relation="include">
         </childnode>
       </node>
-      <node id="73">
+      <node id="77">
         <label>utils/global/concepts.hpp</label>
         <link refid="concepts_8hpp"/>
         <childnode refid="18" relation="include">
         </childnode>
       </node>
-      <node id="57">
+      <node id="61">
         <label>utils/global/errorstatus.hpp</label>
         <link refid="errorstatus_8hpp"/>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="54" relation="include">
+        <childnode refid="58" relation="include">
         </childnode>
       </node>
-      <node id="56">
+      <node id="60">
         <label>utils/global/global.hpp</label>
         <link refid="global_8hpp"/>
-        <childnode refid="57" relation="include">
+        <childnode refid="61" relation="include">
         </childnode>
       </node>
-      <node id="54">
+      <node id="58">
         <label>utils/global/http.hpp</label>
         <link refid="http_8hpp"/>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
       </node>
-      <node id="74">
+      <node id="78">
         <label>utils/global/requester.hpp</label>
         <link refid="requester_8hpp"/>
         <childnode refid="5" relation="include">
@@ -701,38 +803,38 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="84">
+      <node id="87">
         <label>utils/jsonhelper/jsonhelper.hpp</label>
         <link refid="jsonhelper_8hpp"/>
-        <childnode refid="85" relation="include">
+        <childnode refid="88" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="80">
+      <node id="84">
         <label>utils/memcache/memcache.hpp</label>
         <link refid="memcache_8hpp"/>
-        <childnode refid="64" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="65" relation="include">
+        <childnode refid="68" relation="include">
         </childnode>
-        <childnode refid="81" relation="include">
+        <childnode refid="85" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+        <childnode refid="74" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="55">
+      <node id="59">
         <label>validator/validator.hpp</label>
         <link refid="validator_8hpp"/>
-        <childnode refid="45" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -740,39 +842,33 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="54" relation="include">
+        <childnode refid="58" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="45">
+      <node id="49">
         <label>algorithm</label>
       </node>
       <node id="25">
         <label>atomic</label>
       </node>
-      <node id="50">
+      <node id="54">
         <label>cctype</label>
       </node>
-      <node id="64">
+      <node id="28">
         <label>chrono</label>
       </node>
-      <node id="70">
-        <label>concurrency/boundedexecutor.hpp</label>
-      </node>
-      <node id="65">
+      <node id="68">
         <label>condition_variable</label>
       </node>
-      <node id="27">
-        <label>configurator/configurator.hpp</label>
-      </node>
-      <node id="51">
+      <node id="55">
         <label>cppcodec/base64_rfc4648.hpp</label>
       </node>
       <node id="22">
@@ -784,22 +880,22 @@
       <node id="15">
         <label>cstdlib</label>
       </node>
-      <node id="66">
+      <node id="69">
         <label>deque</label>
       </node>
-      <node id="61">
+      <node id="65">
         <label>drogon/DrTemplateBase.h</label>
       </node>
-      <node id="29">
+      <node id="34">
         <label>drogon/orm/DbClient.h</label>
       </node>
-      <node id="31">
+      <node id="36">
         <label>drogon/orm/Result.h</label>
       </node>
-      <node id="33">
+      <node id="38">
         <label>drogon/orm/SqlBinder.h</label>
       </node>
-      <node id="34">
+      <node id="39">
         <label>drogon/utils/coroutine.h</label>
       </node>
       <node id="16">
@@ -814,16 +910,16 @@
       <node id="21">
         <label>fmt/ranges.h</label>
       </node>
-      <node id="67">
+      <node id="70">
         <label>functional</label>
       </node>
-      <node id="68">
+      <node id="71">
         <label>future</label>
       </node>
-      <node id="46">
+      <node id="50">
         <label>iterator</label>
       </node>
-      <node id="85">
+      <node id="88">
         <label>json/value.h</label>
       </node>
       <node id="6">
@@ -832,20 +928,17 @@
       <node id="7">
         <label>jsoncons/json.hpp</label>
       </node>
-      <node id="77">
+      <node id="81">
         <label>jwt-cpp/jwt.h</label>
       </node>
-      <node id="78">
+      <node id="82">
         <label>jwt-cpp/traits/kazuho-picojson/traits.h</label>
       </node>
-      <node id="81">
+      <node id="85">
         <label>list</label>
       </node>
       <node id="8">
         <label>memory</label>
-      </node>
-      <node id="39">
-        <label>message/message.hpp</label>
       </node>
       <node id="26">
         <label>mutex</label>
@@ -865,10 +958,10 @@
       <node id="17">
         <label>string_view</label>
       </node>
-      <node id="44">
+      <node id="48">
         <label>sys/types.h</label>
       </node>
-      <node id="82">
+      <node id="74">
         <label>thread</label>
       </node>
       <node id="4">
@@ -877,10 +970,10 @@
       <node id="18">
         <label>type_traits</label>
       </node>
-      <node id="41">
+      <node id="45">
         <label>typeindex</label>
       </node>
-      <node id="42">
+      <node id="46">
         <label>unordered_map</label>
       </node>
       <node id="12">
@@ -889,13 +982,13 @@
       <node id="19">
         <label>utility</label>
       </node>
-      <node id="52">
+      <node id="56">
         <label>variant</label>
       </node>
-      <node id="35">
+      <node id="40">
         <label>vector</label>
       </node>
-      <node id="63">
+      <node id="67">
         <label>xxhash.h</label>
       </node>
     </incdepgraph>
@@ -1081,7 +1174,7 @@
 <codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//<sp/>api::v2::ColumnInfo,<sp/>filled<sp/>in<sp/>by<sp/>getTableSchema().</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utils_2global_2types_8hpp" kindref="compound">utils/global/types.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Message::{Critical,Info,Error}Message<sp/>used<sp/>for<sp/>all<sp/>logging<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;message/message.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">message/message.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="77"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="78"><highlight class="comment"><sp/>*<sp/>Takes<sp/>ownership<sp/>of<sp/>a<sp/>connection,<sp/>validates<sp/>it<sp/>and<sp/>caches<sp/>its<sp/>connection</highlight></codeline>
@@ -1115,7 +1208,7 @@
 <codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabase_1adec58b4f1a163f78c57d6631c5caf6b0" kindref="member">connection_info</ref><sp/>=<sp/><ref refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" kindref="member">connection</ref>-&gt;connection_string();</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;Exception<sp/>caught<sp/>during<sp/>database<sp/>connection:<sp/>{}&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e.what()));<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>exact<sp/>driver<sp/>error<sp/>for<sp/>diagnosis.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -1125,7 +1218,7 @@
 <codeline lineno="116"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Logs<sp/>that<sp/>this<sp/>connection<sp/>wrapper<sp/>is<sp/>being<sp/>destroyed.</highlight></codeline>
 <codeline lineno="117"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="118" refid="classDatabase_1a84d399a2ad58d69daab9b05330e1316d" refkind="member"><highlight class="normal"><ref refid="classDatabase_1a84d399a2ad58d69daab9b05330e1316d" kindref="member">Database::~Database</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/>Message::InfoMessage(</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><ref refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" kindref="member">Message::InfoMessage</ref>(</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;Database<sp/>connection<sp/>{}<sp/>is<sp/>now<sp/>exterminated.&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">this</highlight><highlight class="normal">)));</highlight></codeline>
 <codeline lineno="122"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>Logging<sp/>the<sp/>address<sp/>makes<sp/>each<sp/>connection&apos;s<sp/>lifetime<sp/>traceable.</highlight><highlight class="normal"></highlight></codeline>
@@ -1172,7 +1265,7 @@
 <codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>from<sp/>&quot;not<sp/>found&quot;<sp/>for<sp/>callers.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result[0][0].as&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">&gt;();</highlight></codeline>
 <codeline lineno="165"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;Error<sp/>executing<sp/>query:<sp/>{}&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e.what()));<sp/><sp/></highlight><highlight class="comment">//<sp/>Still<sp/>log<sp/>it<sp/>so<sp/>the<sp/>failure<sp/>is<sp/>visible<sp/>in</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>logs.</highlight><highlight class="normal"></highlight></codeline>
@@ -1232,7 +1325,7 @@
 <codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>failure<sp/>leaves<sp/>the<sp/>old<sp/>pointer<sp/>in<sp/>place;<sp/>report<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classDatabase_1a5941bc7b94fbacc46dd8acc818712afd" kindref="member">check_connection</ref>();</highlight></codeline>
 <codeline lineno="225"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(</highlight></codeline>
 <codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>reconnect<sp/>to<sp/>database,{}&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e.what()));<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>driver&apos;s<sp/>reason<sp/>for<sp/>the<sp/>reconnect</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
@@ -1301,7 +1394,7 @@
 <codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>failed<sp/>query<sp/>must<sp/>not<sp/>crash<sp/>the<sp/>caller.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>schema;</highlight></codeline>
 <codeline lineno="294"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(</highlight></codeline>
 <codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;Error<sp/>executing<sp/>query:<sp/>{}&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e.what()));<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>failure<sp/>with<sp/>the<sp/>driver&apos;s<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>the<sp/>empty<sp/>optional<sp/>to<sp/>signal<sp/>&quot;schema</highlight><highlight class="normal"></highlight></codeline>
@@ -1341,7 +1434,7 @@
 <codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>failed<sp/>query<sp/>must<sp/>not<sp/>crash<sp/>the<sp/>caller.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tables;</highlight></codeline>
 <codeline lineno="334"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(fmt::format(</highlight><highlight class="stringliteral">&quot;Error<sp/>executing<sp/>query:<sp/>{}&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(fmt::format(</highlight><highlight class="stringliteral">&quot;Error<sp/>executing<sp/>query:<sp/>{}&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e.what()));<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Signal<sp/>that<sp/>the<sp/>table<sp/>list<sp/>could<sp/>not<sp/>be<sp/>read.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="338"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -1483,11 +1576,11 @@
 <codeline lineno="474"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>propagate<sp/>to<sp/>the<sp/>caller.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="475"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>reply;</highlight></codeline>
 <codeline lineno="476"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="477"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::ErrorMessage(</highlight></codeline>
+<codeline lineno="477"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
 <codeline lineno="478"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>executing<sp/>query:&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>a<sp/>short<sp/>marker<sp/>first.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="479"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::InfoMessage(query);<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>exact<sp/>SQL<sp/>to<sp/>make<sp/>the<sp/>failing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="479"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" kindref="member">Message::InfoMessage</ref>(query);<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>exact<sp/>SQL<sp/>to<sp/>make<sp/>the<sp/>failing</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="480"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>statement<sp/>identifiable.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="481"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(</highlight></codeline>
+<codeline lineno="481"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(</highlight></codeline>
 <codeline lineno="482"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>driver/conversion<sp/>error<sp/>itself.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="483"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="484"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Signal<sp/>failure<sp/>with<sp/>an<sp/>empty<sp/>optional.</highlight><highlight class="normal"></highlight></codeline>
@@ -1524,9 +1617,9 @@
 <codeline lineno="515"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>any<sp/>error<sp/>into<sp/>the<sp/>empty<sp/>result.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="516"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>result[0][0].as&lt;std::optional&lt;T&gt;&gt;();</highlight></codeline>
 <codeline lineno="517"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="518"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::ErrorMessage(</highlight><highlight class="stringliteral">&quot;Error<sp/>executing<sp/>query:&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Marker<sp/>line<sp/>in<sp/>the<sp/>log.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="519"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::InfoMessage(query);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>failing<sp/>SQL<sp/>statement.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="520"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>error<sp/>text<sp/>from<sp/>libpqxx.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="518"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight><highlight class="stringliteral">&quot;Error<sp/>executing<sp/>query:&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Marker<sp/>line<sp/>in<sp/>the<sp/>log.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="519"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" kindref="member">Message::InfoMessage</ref>(query);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>failing<sp/>SQL<sp/>statement.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="520"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>error<sp/>text<sp/>from<sp/>libpqxx.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="521"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Report<sp/>failure<sp/>to<sp/>the<sp/>caller.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="522"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>throw;<sp/><sp/>//<sp/>Rethrow<sp/>the<sp/>exception<sp/>to<sp/>indicate<sp/>failure</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="523"><highlight class="normal"><sp/><sp/>}</highlight></codeline>

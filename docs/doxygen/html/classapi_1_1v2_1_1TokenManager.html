@@ -168,7 +168,7 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memdesc:adc936836bc32e25fd2348e738289c83a pro_methods_classapi_1_1v2_1_1KeeprBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a42038514e4e95779bf05a6f5d1ecad44" title="Validates a decoded JWT against current session state and its signature/claims.">validateToken()</a>.  <br /></td></tr>
 <tr class="memitem:aaf8aa6b3f37ca047d975238a41fe8285 pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_aaf8aa6b3f37ca047d975238a41fe8285"><td class="memItemLeft">jwt::verifier&lt; jwt::default_clock, jwt::traits::kazuho_picojson &gt;&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#aaf8aa6b3f37ca047d975238a41fe8285">createTokenVerifier</a> (const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;clientLoginData) const</td></tr>
 <tr class="memdesc:aaf8aa6b3f37ca047d975238a41fe8285 pro_methods_classapi_1_1v2_1_1KeeprBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds an HS256 verifier bound to the configured secret and the client's claims.  <br /></td></tr>
-<tr class="memitem:a769b4981f124c8bc48570a2ec0aaa01d pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_a769b4981f124c8bc48570a2ec0aaa01d"><td class="memItemLeft">Configurator::TokenManagerParameters&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a769b4981f124c8bc48570a2ec0aaa01d">getTokenManagerParameters</a> () const</td></tr>
+<tr class="memitem:a769b4981f124c8bc48570a2ec0aaa01d pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_a769b4981f124c8bc48570a2ec0aaa01d"><td class="memItemLeft"><a class="el" href="classConfigurator.html#af1c24b094032c664c8f543c85ed36b14">Configurator::TokenManagerParameters</a>&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a769b4981f124c8bc48570a2ec0aaa01d">getTokenManagerParameters</a> () const</td></tr>
 <tr class="memdesc:a769b4981f124c8bc48570a2ec0aaa01d pro_methods_classapi_1_1v2_1_1KeeprBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a copy of the token parameters cached at construction.  <br /></td></tr>
 <tr class="memitem:a913563947fb79295de1f2278e6cb5e62 pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_a913563947fb79295de1f2278e6cb5e62"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classDatabaseController.html">DatabaseController</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a913563947fb79295de1f2278e6cb5e62">databaseController</a> () const</td></tr>
 <tr class="memdesc:a913563947fb79295de1f2278e6cb5e62 pro_methods_classapi_1_1v2_1_1KeeprBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the shared <a class="el" href="classDatabaseController.html" title="Single gateway through which controllers execute SQL, in both blocking and coroutine form.">DatabaseController</a> from the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> cache.  <br /></td></tr>
@@ -180,7 +180,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Issues and validates the HS256 JWTs that authenticate clients. </p>
-<p>Token parameters (issuer, type, validity and secret) come from the Configurator via <a class="el" href="classapi_1_1v2_1_1KeeprBase.html" title="Shared base for session/token managers offering session-table and JWT helpers.">KeeprBase</a>. Generated tokens carry identity claims and last-logout time so a later logout can be detected. Validation first decodes the token into the <a class="el" href="structClientLoginData.html" title="Mutable accumulator that carries a client&#39;s identity through login and authentication.">ClientLoginData</a>, then verifies it with <a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a42038514e4e95779bf05a6f5d1ecad44" title="Validates a decoded JWT against current session state and its signature/claims.">KeeprBase::validateToken</a>; the coroutine form awaits the async variant. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classapi_1_1v2_1_1KeeprBase.html" title="Shared base for session/token managers offering session-table and JWT helpers.">KeeprBase</a> In everyday words: this class is like a badge printer and badge checker. It stamps a badge with the user's identity and an expiry, and later checks that a presented badge is genuine and still current. </dd></dl>
+<p>Token parameters (issuer, type, validity and secret) come from the <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a> via <a class="el" href="classapi_1_1v2_1_1KeeprBase.html" title="Shared base for session/token managers offering session-table and JWT helpers.">KeeprBase</a>. Generated tokens carry identity claims and last-logout time so a later logout can be detected. Validation first decodes the token into the <a class="el" href="structClientLoginData.html" title="Mutable accumulator that carries a client&#39;s identity through login and authentication.">ClientLoginData</a>, then verifies it with <a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a42038514e4e95779bf05a6f5d1ecad44" title="Validates a decoded JWT against current session state and its signature/claims.">KeeprBase::validateToken</a>; the coroutine form awaits the async variant. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classapi_1_1v2_1_1KeeprBase.html" title="Shared base for session/token managers offering session-table and JWT helpers.">KeeprBase</a> In everyday words: this class is like a badge printer and badge checker. It stamps a badge with the user's identity and an expiry, and later checks that a presented badge is genuine and still current. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="tokenmanager_8hpp_source.html#l00052">52</a> of file <a class="el" href="tokenmanager_8hpp_source.html">tokenmanager.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -263,7 +263,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True when a token was produced; false on a signing/configuration error. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>The token embeds the issue/expiry times and last-logout time; signing failures are logged via Message::CriticalMessage. </dd>
+<dl class="section note"><dt>Note</dt><dd>The token embeds the issue/expiry times and last-logout time; signing failures are logged via <a class="el" href="classMessage.html#aa085f3b7f644c7c1075eac59e3c2f7a9" title="Logs a message at fatal severity (used for critical errors).">Message::CriticalMessage</a>. </dd>
 <dd>
 Failure paths (missing claims, signing exception) are covered by tests/gatekeeper/test_tokenmanager.cpp.</dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>True on success; false when signing throws (reported as a critical message). </dd></dl>
@@ -271,7 +271,7 @@ Failure paths (missing claims, signing exception) are covered by tests/gatekeepe
 
 <p class="definition">Definition at line <a class="el" href="tokenmanager_8cpp_source.html#l00043">43</a> of file <a class="el" href="tokenmanager_8cpp_source.html">tokenmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="keeprbase_8hpp_source.html#l00300">api::v2::KeeprBase::getTokenManagerParameters()</a>.</p>
+<p class="reference">References <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, and <a class="el" href="keeprbase_8hpp_source.html#l00300">api::v2::KeeprBase::getTokenManagerParameters()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a1776a30879fdb359d4cdcd6451835e81">~TokenManager()</a>.</p>
 
@@ -309,7 +309,7 @@ Failure paths (missing claims, signing exception) are covered by tests/gatekeepe
 
 <p class="definition">Definition at line <a class="el" href="tokenmanager_8cpp_source.html#l00131">131</a> of file <a class="el" href="tokenmanager_8cpp_source.html">tokenmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="keeprbase_8cpp_source.html#l00378">api::v2::KeeprBase::decodeToken()</a>, and <a class="el" href="keeprbase_8cpp_source.html#l00440">api::v2::KeeprBase::validateToken()</a>.</p>
+<p class="reference">References <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="keeprbase_8cpp_source.html#l00378">api::v2::KeeprBase::decodeToken()</a>, and <a class="el" href="keeprbase_8cpp_source.html#l00440">api::v2::KeeprBase::validateToken()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a1776a30879fdb359d4cdcd6451835e81">~TokenManager()</a>.</p>
 
@@ -353,7 +353,7 @@ Failure paths (missing claims, signing exception) are covered by tests/gatekeepe
 
 <p class="definition">Definition at line <a class="el" href="tokenmanager_8cpp_source.html#l00167">167</a> of file <a class="el" href="tokenmanager_8cpp_source.html">tokenmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="keeprbase_8cpp_source.html#l00378">api::v2::KeeprBase::decodeToken()</a>, and <a class="el" href="keeprbase_8cpp_source.html#l00572">api::v2::KeeprBase::validateTokenCoro()</a>.</p>
+<p class="reference">References <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="keeprbase_8cpp_source.html#l00378">api::v2::KeeprBase::decodeToken()</a>, and <a class="el" href="keeprbase_8cpp_source.html#l00572">api::v2::KeeprBase::validateTokenCoro()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a1776a30879fdb359d4cdcd6451835e81">~TokenManager()</a>.</p>
 

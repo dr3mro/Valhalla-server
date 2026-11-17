@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('dbexecutor_8cp
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="dbexecutor_8hpp_source.html">database/dbexecutor.hpp</a>&quot;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
-<code>#include &quot;configurator/configurator.hpp&quot;</code><br />
+<code>#include &quot;<a class="el" href="configurator_8hpp_source.html">configurator/configurator.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="store_8hpp_source.html">store/store.hpp</a>&quot;</code><br />
 </div>
 <p><a href="dbexecutor_8cpp_source.html">Go to the source code of this file.</a></p>
@@ -134,11 +134,11 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a620e60141d4e4ce74d6607d537dc171b" id="r_a620e60141d4e4ce74d6607d537dc171b"><td class="memItemLeft">const Configurator::DbExecutorConfig &amp;&#160;</td><td class="memItemRight"><a class="el" href="namespaceanonymous__namespace_02dbexecutor_8cpp_03.html#a620e60141d4e4ce74d6607d537dc171b">anonymous_namespace{dbexecutor.cpp}::config</a> ()</td></tr>
+<tr class="memitem:a620e60141d4e4ce74d6607d537dc171b" id="r_a620e60141d4e4ce74d6607d537dc171b"><td class="memItemLeft">const <a class="el" href="classConfigurator.html#a6552d2f57b9bbb898d49d7512cc3c829">Configurator::DbExecutorConfig</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="namespaceanonymous__namespace_02dbexecutor_8cpp_03.html#a620e60141d4e4ce74d6607d537dc171b">anonymous_namespace{dbexecutor.cpp}::config</a> ()</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation for dbexecutor: Builds the executor from configuration, naming it "DB executor" for diagnostics. </p>
-<p>This file implements the two <a class="el" href="classDbExecutor.html" title="BoundedExecutor configured for the synchronous database path.">DbExecutor</a> constructors. Both forward the worker, queue and name settings to the BoundedExecutor base and store the IO fast-path flag. The default constructor reads every setting from the application-wide Configurator; the other takes explicit values, which keeps unit tests independent of configuration.</p>
+<p>This file implements the two <a class="el" href="classDbExecutor.html" title="BoundedExecutor configured for the synchronous database path.">DbExecutor</a> constructors. Both forward the worker, queue and name settings to the <a class="el" href="classBoundedExecutor.html" title="Fixed-size worker pool with a shared bounded queue for slow, blocking work.">BoundedExecutor</a> base and store the IO fast-path flag. The default constructor reads every setting from the application-wide <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a>; the other takes explicit values, which keeps unit tests independent of configuration.</p>
 <p>WHY THIS FILE MATTERS IN THE SERVER: It is the small piece that turns configured numbers into the actual worker pool used for all blocking database work. The "DB executor" label passed to the base class shows up in logs and statistics, so operators can tune worker counts and queue sizes. Without these constructors the <a class="el" href="classDbExecutor.html" title="BoundedExecutor configured for the synchronous database path.">DbExecutor</a> declared in the header could not be created, and routes would have nowhere to send blocking queries.</p>
 <p>CONCEPTS TO LEARN (for beginners):</p><ul>
 <li>Base-class initialisation in a constructor initializer list: <a href="https://en.cppreference.com/w/cpp/language/initializer_list">https://en.cppreference.com/w/cpp/language/initializer_list</a></li>

@@ -31,13 +31,13 @@ var NAVTREE =
       [ "2. Technology stack", "md_docs_2ARCHITECTURE.html#autotoc_md43", null ],
       [ "3. Component map", "md_docs_2ARCHITECTURE.html#autotoc_md44", [
         [ "3.1 Bootstrap and lifecycle — <span class=\"tt\">src/main.cpp</span>, <span class=\"tt\">src/server/</span>", "md_docs_2ARCHITECTURE.html#autotoc_md45", null ],
-        [ "3.2 Configuration — <span class=\"tt\">src/configurator/</span>", "md_docs_2ARCHITECTURE.html#autotoc_md46", null ],
+        [ "3.2 Configuration — <span class=\"tt\">libs/configurator/</span>", "md_docs_2ARCHITECTURE.html#autotoc_md46", null ],
         [ "3.3 Service registry — <span class=\"tt\">src/store/</span>", "md_docs_2ARCHITECTURE.html#autotoc_md47", null ],
         [ "3.4 Gatekeeper — <span class=\"tt\">src/gatekeeper/</span>", "md_docs_2ARCHITECTURE.html#autotoc_md48", null ],
         [ "3.5 Controllers — <span class=\"tt\">src/controllers/</span>", "md_docs_2ARCHITECTURE.html#autotoc_md49", null ],
         [ "3.6 Entities and validation — <span class=\"tt\">src/entities/</span>, <span class=\"tt\">src/validator/</span>", "md_docs_2ARCHITECTURE.html#autotoc_md50", null ],
         [ "3.7 Database layer — <span class=\"tt\">src/database/</span>", "md_docs_2ARCHITECTURE.html#autotoc_md51", null ],
-        [ "3.8 Utilities — <span class=\"tt\">src/utils/</span>, <span class=\"tt\">src/concurrency/</span>", "md_docs_2ARCHITECTURE.html#autotoc_md52", null ]
+        [ "3.8 Utilities — <span class=\"tt\">src/utils/</span>, <span class=\"tt\">libs/</span>", "md_docs_2ARCHITECTURE.html#autotoc_md52", null ]
       ] ],
       [ "4. Execution and data flow", "md_docs_2ARCHITECTURE.html#autotoc_md53", null ],
       [ "5. Concurrency model", "md_docs_2ARCHITECTURE.html#autotoc_md54", null ],
@@ -73,7 +73,7 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ],
+        [ "Variables", "functions_vars.html", "functions_vars" ],
         [ "Typedefs", "functions_type.html", null ],
         [ "Enumerations", "functions_enum.html", null ],
         [ "Enumerator", "functions_eval.html", null ],
@@ -85,6 +85,7 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
@@ -95,14 +96,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "all__routes_8hpp.html",
-"classClinicController.html#a49ca9ae245f2ca94ee937754a5d433ea",
-"classEntity.html#ad32e6480f1780dc4b3c6466edc214f34",
-"classServer.html#aa84ff16ac0dff01780bb1f1fbc6b3d0f",
-"classapi_1_1v2_1_1Clients.html#a4fbe27eadcfb26e6b6bfe9963c23847d",
-"classapi_1_1v2_1_1KeeprBase.html#aaf8aa6b3f37ca047d975238a41fe8285",
-"classapi_1_1v2_1_1TokenManager.html#ae35221cdefeaad8255a896481af08403",
-"helper_8hpp.html",
-"reports_8hpp_source.html"
+"classClientControllerBase.html#af9f1272d9d14a2a2d1b4ba8117728cf8",
+"classDatabaseController.html#acece421c53c0fef3b2965878f2422d5e",
+"classPatient.html#a9c0cf980a6d81bf7736d9873b1d8954a",
+"classVisitDrugs.html#a159d440a52935fadf1b3a98c68ecc4ac",
+"classapi_1_1v2_1_1GateKeeper.html#a8d78a30d2b3a6999da8e396126847768",
+"classapi_1_1v2_1_1PermissionManagerPrivate.html#a885d7b03354ce85c0937e7c42c2216c2",
+"dir_830b5d70e821af41beaccee741d74fd7.html",
+"md_docs_2ARCHITECTURE.html#autotoc_md56",
+"servicecontrollerbase_8hpp_source.html"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';

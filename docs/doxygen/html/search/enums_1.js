@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['powerlevel_0',['PowerLevel',['../structPermissions.html#a1dc2e37dd1ca56eb9dc57829a512e092',1,'Permissions']]]
+  ['color_0',['Color',['../classLogger.html#a87da4787054457b9c0bb0987dcd0030a',1,'Logger']]]
 ];

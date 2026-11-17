@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="207" column="20" bodyfile="src/configurator/defaults.hpp" bodystart="207" bodyend="-1"/>
+        <location file="libs/configurator/defaults.hpp" line="207" column="20" bodyfile="libs/configurator/defaults.hpp" bodystart="207" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1TokenParameters_1a149299356bd51590ac0178d7efb271c0" prot="public" static="no" mutable="no">
         <type>const std::string</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="211" column="23" bodyfile="src/configurator/defaults.hpp" bodystart="211" bodyend="-1"/>
+        <location file="libs/configurator/defaults.hpp" line="211" column="23" bodyfile="libs/configurator/defaults.hpp" bodystart="211" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1TokenParameters_1a6c11dc93d055319b522a61cf797cc937" prot="public" static="no" mutable="no">
         <type>const std::string</type>
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="215" column="23" bodyfile="src/configurator/defaults.hpp" bodystart="215" bodyend="-1"/>
+        <location file="libs/configurator/defaults.hpp" line="215" column="23" bodyfile="libs/configurator/defaults.hpp" bodystart="215" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1TokenParameters_1af82d2e7594dd9a9e542d7a9584b73e30" prot="public" static="no" mutable="no">
         <type>const std::string</type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="219" column="23" bodyfile="src/configurator/defaults.hpp" bodystart="219" bodyend="-1"/>
+        <location file="libs/configurator/defaults.hpp" line="219" column="23" bodyfile="libs/configurator/defaults.hpp" bodystart="219" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -78,6 +78,6 @@
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/configurator/defaults.hpp" line="199" column="1"/>
+    <location file="libs/configurator/defaults.hpp" line="199" column="1"/>
   </compounddef>
 </doxygen>

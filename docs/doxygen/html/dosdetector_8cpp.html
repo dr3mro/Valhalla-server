@@ -138,13 +138,13 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('dosdetector_8c
 <code>#include &lt;unordered_map&gt;</code><br />
 <code>#include &lt;unordered_set&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
-<code>#include &quot;message/message.hpp&quot;</code><br />
+<code>#include &quot;<a class="el" href="message_8hpp_source.html">message/message.hpp</a>&quot;</code><br />
 </div>
 <p><a href="dosdetector_8cpp_source.html">Go to the source code of this file.</a></p>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation for dosdetector: Production constructor: compiles configured matchers and starts the cleanup thread. </p>
 <p>This file contains the working logic of the per-IP abuse detector. The constructors turn configuration strings (regular expressions, CIDR ranges, wildcards, exact IPs) into small predicate functions and launch a background cleanup thread. is_dos_attack() is the main entry point: it checks the static lists first, then the dynamic rate/ban state, and records each request so repeat offenders can be escalated. A separate helper hashes the request into a fingerprint, and several mutex-guarded maps hold the timestamps and block/unblock times.</p>
-<p>WHY THIS FILE MATTERS IN THE SERVER: This file is the actual "bouncer" behind Filters::RateLimit. Every request that reaches the rate-limit filter ends up in is_dos_attack(), which returns a Status the filter turns into an allow or an HTTP error. It calls into Configurator (read at construction), xxHash (to fingerprint requests) and Message (for logging). Without this implementation the detector class in the header would have no behaviour, and the server would be unable to detect or slow down flooding and brute-force clients.</p>
+<p>WHY THIS FILE MATTERS IN THE SERVER: This file is the actual "bouncer" behind Filters::RateLimit. Every request that reaches the rate-limit filter ends up in is_dos_attack(), which returns a Status the filter turns into an allow or an HTTP error. It calls into <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a> (read at construction), xxHash (to fingerprint requests) and <a class="el" href="classMessage.html" title="Stateless facade for emitting coloured status messages.">Message</a> (for logging). Without this implementation the detector class in the header would have no behaviour, and the server would be unable to detect or slow down flooding and brute-force clients.</p>
 <p>CONCEPTS TO LEARN (for beginners):</p><ul>
 <li>Mutex/lock_guard (automatic lock that unlocks when the scope ends): <a href="https://en.cppreference.com/w/cpp/thread/lock_guard">https://en.cppreference.com/w/cpp/thread/lock_guard</a></li>
 <li>Condition variable / wait_for (sleep until woken or a timeout): <a href="https://en.cppreference.com/w/cpp/thread/condition_variable">https://en.cppreference.com/w/cpp/thread/condition_variable</a></li>

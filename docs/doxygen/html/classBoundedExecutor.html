@@ -169,29 +169,24 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a99feeabf885fe43e0196051f6a80803e" id="r_a99feeabf885fe43e0196051f6a80803e"><td class="memItemLeft">std::vector&lt; std::unique_ptr&lt; <a class="el" href="structBoundedExecutor_1_1Worker.html">Worker</a> &gt; &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a99feeabf885fe43e0196051f6a80803e">workers_</a></td></tr>
 <tr class="memitem:a4b55370d142b9901015c7106e19a98ec" id="r_a4b55370d142b9901015c7106e19a98ec"><td class="memItemLeft">std::size_t&#160;</td><td class="memItemRight"><a class="el" href="#a4b55370d142b9901015c7106e19a98ec">queue_max_</a></td></tr>
 <tr class="memitem:a8df5c3b6d47a7bb92e508c4df34581fe" id="r_a8df5c3b6d47a7bb92e508c4df34581fe"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="#a8df5c3b6d47a7bb92e508c4df34581fe">name_</a></td></tr>
-<tr class="memitem:a2fe4e0d777523f51d59935f89030ac1c" id="r_a2fe4e0d777523f51d59935f89030ac1c"><td class="memItemLeft">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a2fe4e0d777523f51d59935f89030ac1c">stopping_</a> {false}</td></tr>
-<tr class="memitem:a567da16c5009c3a32c8b6d052ed11e39" id="r_a567da16c5009c3a32c8b6d052ed11e39"><td class="memItemLeft">std::atomic&lt; std::size_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a567da16c5009c3a32c8b6d052ed11e39">next_</a> {0}</td></tr>
-<tr class="memitem:afbb5f9247d4cf5e3e52a9c25c036d0a6" id="r_afbb5f9247d4cf5e3e52a9c25c036d0a6"><td class="memItemLeft">std::atomic&lt; std::size_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#afbb5f9247d4cf5e3e52a9c25c036d0a6">queued_</a> {0}</td></tr>
-<tr class="memitem:a586729a32716a35da700a96fbc590333" id="r_a586729a32716a35da700a96fbc590333"><td class="memItemLeft">std::atomic&lt; std::uint64_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a586729a32716a35da700a96fbc590333">submitted_</a> {0}</td></tr>
-<tr class="memitem:a1ba84f816094cdfc44f7cbf5faf1704c" id="r_a1ba84f816094cdfc44f7cbf5faf1704c"><td class="memItemLeft">std::atomic&lt; std::uint64_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a1ba84f816094cdfc44f7cbf5faf1704c">rejected_</a> {0}</td></tr>
-<tr class="memitem:a2279dc6bf7730b6dd74cfa7c5a3ecc0c" id="r_a2279dc6bf7730b6dd74cfa7c5a3ecc0c"><td class="memItemLeft">std::atomic&lt; std::uint64_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a2279dc6bf7730b6dd74cfa7c5a3ecc0c">max_queue_</a> {0}</td></tr>
-<tr class="memitem:a70d24f4375b291df10a0145de6de32d6" id="r_a70d24f4375b291df10a0145de6de32d6"><td class="memItemLeft">std::atomic&lt; std::uint64_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a70d24f4375b291df10a0145de6de32d6">wait_ns_</a> {0}</td></tr>
-<tr class="memitem:a651cb39909b6c74ca951ff00808901f0" id="r_a651cb39909b6c74ca951ff00808901f0"><td class="memItemLeft">std::atomic&lt; std::uint64_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a651cb39909b6c74ca951ff00808901f0">waited_tasks_</a> {0}</td></tr>
+<tr class="memitem:a2fe4e0d777523f51d59935f89030ac1c" id="r_a2fe4e0d777523f51d59935f89030ac1c"><td class="memItemLeft">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a2fe4e0d777523f51d59935f89030ac1c">stopping_</a></td></tr>
+<tr class="memitem:a567da16c5009c3a32c8b6d052ed11e39" id="r_a567da16c5009c3a32c8b6d052ed11e39"><td class="memItemLeft">std::atomic&lt; std::size_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a567da16c5009c3a32c8b6d052ed11e39">next_</a></td></tr>
+<tr class="memitem:afbb5f9247d4cf5e3e52a9c25c036d0a6" id="r_afbb5f9247d4cf5e3e52a9c25c036d0a6"><td class="memItemLeft">std::atomic&lt; std::size_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#afbb5f9247d4cf5e3e52a9c25c036d0a6">queued_</a></td></tr>
+<tr class="memitem:a586729a32716a35da700a96fbc590333" id="r_a586729a32716a35da700a96fbc590333"><td class="memItemLeft">std::atomic&lt; std::uint64_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a586729a32716a35da700a96fbc590333">submitted_</a></td></tr>
+<tr class="memitem:a1ba84f816094cdfc44f7cbf5faf1704c" id="r_a1ba84f816094cdfc44f7cbf5faf1704c"><td class="memItemLeft">std::atomic&lt; std::uint64_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a1ba84f816094cdfc44f7cbf5faf1704c">rejected_</a></td></tr>
+<tr class="memitem:a2279dc6bf7730b6dd74cfa7c5a3ecc0c" id="r_a2279dc6bf7730b6dd74cfa7c5a3ecc0c"><td class="memItemLeft">std::atomic&lt; std::uint64_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a2279dc6bf7730b6dd74cfa7c5a3ecc0c">max_queue_</a></td></tr>
+<tr class="memitem:a70d24f4375b291df10a0145de6de32d6" id="r_a70d24f4375b291df10a0145de6de32d6"><td class="memItemLeft">std::atomic&lt; std::uint64_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a70d24f4375b291df10a0145de6de32d6">wait_ns_</a></td></tr>
+<tr class="memitem:a651cb39909b6c74ca951ff00808901f0" id="r_a651cb39909b6c74ca951ff00808901f0"><td class="memItemLeft">std::atomic&lt; std::uint64_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a651cb39909b6c74ca951ff00808901f0">waited_tasks_</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Fixed-size worker pool with a shared bounded queue for slow, blocking work. </p>
 <p>A fixed pool of threads with a bounded queue. It exists so that slow, blocking work (database calls, password hashing) never runs on a Drogon IO thread. <a class="el" href="#a23e0bc9b4043755faf6f7b419cfec09b" title="Offers a task to the pool without waiting for capacity.">submit()</a> never blocks: it returns false when the queue is full, and the caller answers 503.</p>
-<p>Every worker has its own queue and its own lock, so submitters and workers do not all contend on one mutex. <a class="el" href="#a23e0bc9b4043755faf6f7b419cfec09b" title="Offers a task to the pool without waiting for capacity.">submit()</a> picks an idle worker if there is one (so a task never waits behind a slow one while another worker sleeps), otherwise the worker with the shortest queue, so the queues stay the same length and waiting time stays fair (plain round-robin left some queues long and some short, and the tasks in the long ones waited 20 times longer). Only an idle worker is woken (a busy one needs no wake-up, it looks at its queue when it finishes). A worker that has run out of work takes tasks from the other workers' queues before it sleeps. The queue limit is shared: at most queue_max tasks wait across all workers. </p><pre class="fragment">     With zero workers every task runs inline, on the submitting thread. Unit tests use that so they stay synchronous.
-
-     In plain words: imagine a fixed number of chefs (worker threads) each with their own order ticket rack
-     (queue). New orders go to a free chef, or to the shortest rack if nobody is free. A chef with no tickets
-     peek at other racks and helps out before going to sleep ("work stealing"). There is one overall limit on
-     how many tickets may wait; past that, submit() says "no" immediately so the caller can send HTTP 503 rather
-     than let the backlog grow without bound.
-</pre> <dl class="section note"><dt>Note</dt><dd>Not copyable or movable; instances are kept alive by shared_ptr, typically through the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a>. </dd></dl>
+<p>Every worker has its own queue and its own lock, so submitters and workers do not all contend on one mutex. <a class="el" href="#a23e0bc9b4043755faf6f7b419cfec09b" title="Offers a task to the pool without waiting for capacity.">submit()</a> picks an idle worker if there is one (so a task never waits behind a slow one while another worker sleeps), otherwise the worker with the shortest queue, so the queues stay the same length and waiting time stays fair (plain round-robin left some queues long and some short, and the tasks in the long ones waited 20 times longer). Only an idle worker is woken (a busy one needs no wake-up, it looks at its queue when it finishes). A worker that has run out of work takes tasks from the other workers' queues before it sleeps. The queue limit is shared: at most queue_max tasks wait across all workers.</p>
+<p>With zero workers every task runs inline, on the submitting thread. Unit tests use that so they stay synchronous.</p>
+<p>In plain words: imagine a fixed number of chefs (worker threads) each with their own order ticket rack (queue). New orders go to a free chef, or to the shortest rack if nobody is free. A chef with no tickets peek at other racks and helps out before going to sleep ("work stealing"). There is one overall limit on how many tickets may wait; past that, <a class="el" href="#a23e0bc9b4043755faf6f7b419cfec09b" title="Offers a task to the pool without waiting for capacity.">submit()</a> says "no" immediately so the caller can send HTTP 503 rather than let the backlog grow without bound. </p><dl class="section note"><dt>Note</dt><dd>Not copyable or movable; instances are kept alive by shared_ptr, typically through the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a>. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classDbExecutor.html" title="BoundedExecutor configured for the synchronous database path.">DbExecutor</a>, <a class="el" href="classPasswordWorker.html" title="The pool for deliberately slow password work (hashing and verification), so it never runs on a Drogon...">PasswordWorker</a>, <a class="el" href="boundedexecutor_8hpp.html#af76f5db524067c26a058b1fee7e90e82" title="Runs body(callback) on an executor, answering 503 immediately when the queue is full.">runOnExecutor()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00068">68</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00100">100</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2100a9eea1114c0b39094c7a5e4bda83" name="a2100a9eea1114c0b39094c7a5e4bda83"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2100a9eea1114c0b39094c7a5e4bda83">&#9670;&#160;</a></span>BoundedExecutor() <span class="overload">[1/3]</span></h2>
@@ -229,11 +224,11 @@ Private Attributes</h2></td></tr>
 <p>Allocates the workers, starts their threads and waits until each reports itself idle.</p>
 <p>queue_max is clamped to at least 1. All <a class="el" href="structBoundedExecutor_1_1Worker.html" title="One worker&#39;s thread, queue, lock and condition variable.">Worker</a> objects are created before any thread starts, because a worker may steal from every other queue. Starting threads only after that avoids a race where a worker sees a not-yet-constructed peer. The final spin (with yield) removes the startup race with an immediate <a class="el" href="#a23e0bc9b4043755faf6f7b419cfec09b" title="Offers a task to the pool without waiting for capacity.">submit()</a>. workers: Number of worker threads; 0 gives inline mode. queue_max: Shared queue capacity, clamped to at least 1. name: Log label for this pool. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8cpp_source.html#l00061">61</a> of file <a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8cpp_source.html#l00082">82</a> of file <a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="boundedexecutor_8hpp_source.html#l00241">name_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00237">queue_max_</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00301">run()</a>, and <a class="el" href="boundedexecutor_8hpp_source.html#l00233">workers_</a>.</p>
+<p class="reference">References <a class="el" href="boundedexecutor_8hpp_source.html#l00329">name_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00325">queue_max_</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00419">run()</a>, and <a class="el" href="boundedexecutor_8hpp_source.html#l00320">workers_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="#ac3bc3b2e136a2da3b6c0eb080b69daf5">BoundedExecutor()</a>, <a class="el" href="#a9a159a4e6c10282bbd73960ec8527039">BoundedExecutor()</a>, <a class="el" href="dbexecutor_8cpp_source.html#l00045">DbExecutor::DbExecutor()</a>, <a class="el" href="dbexecutor_8cpp_source.html#l00053">DbExecutor::DbExecutor()</a>, <a class="el" href="#aacbf4b69d06b66824a929caa6e0585df">operator=()</a>, <a class="el" href="#a8907e36d0d8e8f509ad165e11d56e1fd">operator=()</a>, <a class="el" href="passwordworker_8cpp_source.html#l00037">PasswordWorker::PasswordWorker()</a>, and <a class="el" href="passwordworker_8cpp_source.html#l00040">PasswordWorker::PasswordWorker()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#ac3bc3b2e136a2da3b6c0eb080b69daf5">BoundedExecutor()</a>, <a class="el" href="#a9a159a4e6c10282bbd73960ec8527039">BoundedExecutor()</a>, <a class="el" href="dbexecutor_8cpp_source.html#l00060">DbExecutor::DbExecutor()</a>, <a class="el" href="dbexecutor_8cpp_source.html#l00072">DbExecutor::DbExecutor()</a>, <a class="el" href="#aacbf4b69d06b66824a929caa6e0585df">operator=()</a>, <a class="el" href="#a8907e36d0d8e8f509ad165e11d56e1fd">operator=()</a>, <a class="el" href="passwordworker_8cpp_source.html#l00050">PasswordWorker::PasswordWorker()</a>, and <a class="el" href="passwordworker_8cpp_source.html#l00057">PasswordWorker::PasswordWorker()</a>.</p>
 
 </div>
 </div>
@@ -261,7 +256,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Copy construction is disabled; an executor owns live threads that cannot be duplicated. </p>
 
-<p class="reference">References <a class="el" href="boundedexecutor_8cpp_source.html#l00061">BoundedExecutor()</a>.</p>
+<p class="reference">References <a class="el" href="boundedexecutor_8cpp_source.html#l00082">BoundedExecutor()</a>.</p>
 
 </div>
 </div>
@@ -289,7 +284,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Move construction is disabled; workers capture the address of the executor, which a move would invalidate. </p>
 
-<p class="reference">References <a class="el" href="boundedexecutor_8cpp_source.html#l00061">BoundedExecutor()</a>.</p>
+<p class="reference">References <a class="el" href="boundedexecutor_8cpp_source.html#l00082">BoundedExecutor()</a>.</p>
 
 </div>
 </div>
@@ -320,9 +315,9 @@ Private Attributes</h2></td></tr>
 <p>Calls <a class="el" href="#a4ce5576deaf59219ec40e8402a6817ba" title="Drains queued tasks, joins the workers and reports accumulated statistics once.">shutdown()</a> so queued work is drained and threads joined before members are destroyed.</p>
 <p>Any still-queued tasks are drained and the worker threads joined before resources are released. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8cpp_source.html#l00088">88</a> of file <a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8cpp_source.html#l00120">120</a> of file <a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="boundedexecutor_8cpp_source.html#l00099">shutdown()</a>.</p>
+<p class="reference">References <a class="el" href="boundedexecutor_8cpp_source.html#l00136">shutdown()</a>.</p>
 
 </div>
 </div>
@@ -360,11 +355,11 @@ Private Attributes</h2></td></tr>
 <p>Accumulates a task's queue wait time and the number of sampled tasks.</p>
 <p>Uses a monotonic steady_clock timestamp and relaxed atomics: these counters are tuning gauges, not synchronization points. "Monotonic" means the clock never jumps backwards, so subtracting two timestamps always gives a sensible elapsed time. item: Task whose queued_at timestamp is subtracted from now. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8cpp_source.html#l00281">281</a> of file <a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8cpp_source.html#l00394">394</a> of file <a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="boundedexecutor_8hpp_source.html#l00186">BoundedExecutor::Item::queued_at</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00264">wait_ns_</a>, and <a class="el" href="boundedexecutor_8hpp_source.html#l00268">waited_tasks_</a>.</p>
+<p class="reference">References <a class="el" href="boundedexecutor_8hpp_source.html#l00258">BoundedExecutor::Item::queued_at</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00359">wait_ns_</a>, and <a class="el" href="boundedexecutor_8hpp_source.html#l00364">waited_tasks_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00301">run()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00419">run()</a>.</p>
 
 </div>
 </div>
@@ -392,11 +387,11 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>True when no worker threads exist and tasks run on the submitting thread. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00138">138</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00192">192</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="boundedexecutor_8hpp_source.html#l00233">workers_</a>.</p>
+<p class="reference">References <a class="el" href="boundedexecutor_8hpp_source.html#l00320">workers_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dbexecutor_8hpp_source.html#l00071">DbExecutor::ioFastPath()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00154">submit()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dbexecutor_8hpp_source.html#l00094">DbExecutor::ioFastPath()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00218">submit()</a>.</p>
 
 </div>
 </div>
@@ -429,7 +424,7 @@ Private Attributes</h2></td></tr>
 <dd>
 true when the thread_local marker equals this executor. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8cpp_source.html#l00229">229</a> of file <a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8cpp_source.html#l00327">327</a> of file <a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a>.</p>
 
 </div>
 </div>
@@ -457,7 +452,7 @@ true when the thread_local marker equals this executor. </dd></dl>
 </div><div class="memdoc">
 <p>Move assignment is disabled; see the move constructor. </p>
 
-<p class="reference">References <a class="el" href="boundedexecutor_8cpp_source.html#l00061">BoundedExecutor()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00099">shutdown()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00154">submit()</a>.</p>
+<p class="reference">References <a class="el" href="boundedexecutor_8cpp_source.html#l00082">BoundedExecutor()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00136">shutdown()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00218">submit()</a>.</p>
 
 </div>
 </div>
@@ -485,7 +480,7 @@ true when the thread_local marker equals this executor. </dd></dl>
 </div><div class="memdoc">
 <p>Copy assignment is disabled; see the copy constructor. </p>
 
-<p class="reference">References <a class="el" href="boundedexecutor_8cpp_source.html#l00061">BoundedExecutor()</a>.</p>
+<p class="reference">References <a class="el" href="boundedexecutor_8cpp_source.html#l00082">BoundedExecutor()</a>.</p>
 
 </div>
 </div>
@@ -513,9 +508,9 @@ true when the thread_local marker equals this executor. </dd></dl>
 </div><div class="memdoc">
 <p>Number of tasks currently waiting across all queues; relaxed because it is only a live gauge. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00133">133</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00185">185</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="boundedexecutor_8hpp_source.html#l00247">queued_</a>.</p>
+<p class="reference">References <a class="el" href="boundedexecutor_8hpp_source.html#l00338">queued_</a>.</p>
 
 </div>
 </div>
@@ -552,11 +547,11 @@ true when the thread_local marker equals this executor. </dd></dl>
 <p><a class="el" href="structBoundedExecutor_1_1Worker.html" title="One worker&#39;s thread, queue, lock and condition variable.">Worker</a> loop: take tasks, run them, and sleep only when every queue is empty.</p>
 <p>Marks the thread with the thread_local executor pointer, then loops taking and running tasks. A task that throws is logged and swallowed so one misbehaving task cannot end the worker thread. When no work is available the worker re-arms its idle flag on every pass before waiting, because a <a class="el" href="#a23e0bc9b4043755faf6f7b419cfec09b" title="Offers a task to the pool without waiting for capacity.">submit()</a> may have claimed it while a thief took the task, leaving a wake-up with an empty queue; sleeping with idle cleared would hide the worker from every later <a class="el" href="#a23e0bc9b4043755faf6f7b419cfec09b" title="Offers a task to the pool without waiting for capacity.">submit()</a>. The loop exits only when stopping is set and the worker's own queue is empty, at which point no new task can arrive. self: Index of this worker. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8cpp_source.html#l00301">301</a> of file <a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8cpp_source.html#l00419">419</a> of file <a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="boundedexecutor_8cpp_source.html#l00281">account()</a>, <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00200">BoundedExecutor::Worker::cv</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00203">BoundedExecutor::Worker::idle</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00199">BoundedExecutor::Worker::mutex</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00241">name_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00201">BoundedExecutor::Worker::queue</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00245">stopping_</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00241">take()</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00185">BoundedExecutor::Item::task</a>, and <a class="el" href="boundedexecutor_8hpp_source.html#l00233">workers_</a>.</p>
+<p class="reference">References <a class="el" href="boundedexecutor_8cpp_source.html#l00394">account()</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00275">BoundedExecutor::Worker::cv</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00280">BoundedExecutor::Worker::idle</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00273">BoundedExecutor::Worker::mutex</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00329">name_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00276">BoundedExecutor::Worker::queue</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00334">stopping_</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00340">take()</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00255">BoundedExecutor::Item::task</a>, and <a class="el" href="boundedexecutor_8hpp_source.html#l00320">workers_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00061">BoundedExecutor()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00082">BoundedExecutor()</a>.</p>
 
 </div>
 </div>
@@ -581,11 +576,11 @@ true when the thread_local marker equals this executor. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a8f39a779cb5d5a79e3442b21635be122" title="Destructor; calls shutdown().">~BoundedExecutor()</a></dd></dl>
 <p>The stopping flag is published with release semantics; the empty-lock/notify pair then wakes a worker that is either waiting or about to wait, and each worker checks the flag under its own mutex before sleeping. Join is skipped for the calling thread so a task may shut down its own pool. Statistics are logged only when there is something to report, and the counters are cleared so a second call does not log them again. ("Joining" a thread means waiting here until that thread's code has finished.) </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8cpp_source.html#l00099">99</a> of file <a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8cpp_source.html#l00136">136</a> of file <a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="boundedexecutor_8hpp_source.html#l00169">BoundedExecutor::Stats::avg_wait_us</a>, <a class="el" href="message_8cpp_source.html#l00039">Message::InfoMessage()</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00168">BoundedExecutor::Stats::max_queue</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00241">name_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00167">BoundedExecutor::Stats::rejected</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00256">rejected_</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00135">stats()</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00245">stopping_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00166">BoundedExecutor::Stats::submitted</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00252">submitted_</a>, and <a class="el" href="boundedexecutor_8hpp_source.html#l00233">workers_</a>.</p>
+<p class="reference">References <a class="el" href="boundedexecutor_8hpp_source.html#l00237">BoundedExecutor::Stats::avg_wait_us</a>, <a class="el" href="message_8cpp_source.html#l00048">Message::InfoMessage()</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00235">BoundedExecutor::Stats::max_queue</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00329">name_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00233">BoundedExecutor::Stats::rejected</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00349">rejected_</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00187">stats()</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00334">stopping_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00232">BoundedExecutor::Stats::submitted</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00344">submitted_</a>, and <a class="el" href="boundedexecutor_8hpp_source.html#l00320">workers_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="#aacbf4b69d06b66824a929caa6e0585df">operator=()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00088">~BoundedExecutor()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#aacbf4b69d06b66824a929caa6e0585df">operator=()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00120">~BoundedExecutor()</a>.</p>
 
 </div>
 </div>
@@ -619,11 +614,11 @@ true when the thread_local marker equals this executor. </dd></dl>
 <a class="el" href="structBoundedExecutor_1_1Stats.html" title="Snapshot of tuning counters for tasks that passed through the queue.">Stats</a> snapshot; avg_wait_us is total wait time divided by waited tasks, in microseconds, or 0.0 before any task has been taken by a worker. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Values are approximate while the pool is running; they are exact after <a class="el" href="#a4ce5576deaf59219ec40e8402a6817ba" title="Drains queued tasks, joins the workers and reports accumulated statistics once.">shutdown()</a>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8cpp_source.html#l00135">135</a> of file <a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8cpp_source.html#l00187">187</a> of file <a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="boundedexecutor_8hpp_source.html#l00260">max_queue_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00256">rejected_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00252">submitted_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00264">wait_ns_</a>, and <a class="el" href="boundedexecutor_8hpp_source.html#l00268">waited_tasks_</a>.</p>
+<p class="reference">References <a class="el" href="boundedexecutor_8hpp_source.html#l00354">max_queue_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00349">rejected_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00344">submitted_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00359">wait_ns_</a>, and <a class="el" href="boundedexecutor_8hpp_source.html#l00364">waited_tasks_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00099">shutdown()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00136">shutdown()</a>.</p>
 
 </div>
 </div>
@@ -662,11 +657,11 @@ true when the thread_local marker equals this executor. </dd></dl>
 <p>Enqueues a task without blocking, preferring an idle worker and enforcing a shared queue limit.</p>
 <p>Inline mode runs the task immediately on the caller. Otherwise the shared queued_ counter is reserved with acq_rel semantics and released if the pool turns out to be full or stopping. The target worker is chosen from a round-robin start: the first idle one, else the shortest queue. The stopping flag is checked again while holding that worker's mutex, matching the worker's own exit check. Only a worker that was idle is notified; a busy worker rechecks its queue when it finishes a task. task: Nullary callable to execute (takes no arguments). Returns true if the task ran inline or was queued; false if it was rejected. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8cpp_source.html#l00154">154</a> of file <a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8cpp_source.html#l00218">218</a> of file <a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="boundedexecutor_8hpp_source.html#l00200">BoundedExecutor::Worker::cv</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00202">BoundedExecutor::Worker::depth</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00203">BoundedExecutor::Worker::idle</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00138">inlineMode()</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00260">max_queue_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00199">BoundedExecutor::Worker::mutex</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00246">next_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00201">BoundedExecutor::Worker::queue</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00237">queue_max_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00247">queued_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00256">rejected_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00245">stopping_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00252">submitted_</a>, and <a class="el" href="boundedexecutor_8hpp_source.html#l00233">workers_</a>.</p>
+<p class="reference">References <a class="el" href="boundedexecutor_8hpp_source.html#l00275">BoundedExecutor::Worker::cv</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00277">BoundedExecutor::Worker::depth</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00280">BoundedExecutor::Worker::idle</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00192">inlineMode()</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00354">max_queue_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00273">BoundedExecutor::Worker::mutex</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00336">next_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00276">BoundedExecutor::Worker::queue</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00325">queue_max_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00338">queued_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00349">rejected_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00334">stopping_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00344">submitted_</a>, and <a class="el" href="boundedexecutor_8hpp_source.html#l00320">workers_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="#aacbf4b69d06b66824a929caa6e0585df">operator=()</a>, and <a class="el" href="boundedexecutor_8hpp_source.html#l00295">runOnExecutor()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#aacbf4b69d06b66824a929caa6e0585df">operator=()</a>, and <a class="el" href="boundedexecutor_8hpp_source.html#l00400">runOnExecutor()</a>.</p>
 
 </div>
 </div>
@@ -706,14 +701,13 @@ true when the thread_local marker equals this executor. </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if a task was taken, false if no queue had work.</dd></dl>
-<p>Takes a task from this worker's queue, or steals one from a peer if necessary.</p>
-<p>Tries the worker's own queue under its mutex first. On a miss it scans peers using try_lock, so it never waits for a peer that may be busy with a slow task. Each successful take decrements the shared queued_ counter with acq_rel semantics. self: Index of the calling worker. item: Receives the task and its queueing timestamp. Returns true if a task was taken; false if all queues were empty or locked. </p>
+<p>Takes a task from this worker's queue, or steals one from a peer if necessary. Tries the worker's own queue under its mutex first. On a miss it scans peers using try_lock, so it never waits for a peer that may be busy with a slow task. Each successful take decrements the shared queued_ counter with acq_rel semantics. self: Index of the calling worker. item: Receives the task and its queueing timestamp. Returns true if a task was taken; false if all queues were empty or locked. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8cpp_source.html#l00241">241</a> of file <a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8cpp_source.html#l00340">340</a> of file <a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="boundedexecutor_8hpp_source.html#l00202">BoundedExecutor::Worker::depth</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00199">BoundedExecutor::Worker::mutex</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00201">BoundedExecutor::Worker::queue</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00247">queued_</a>, and <a class="el" href="boundedexecutor_8hpp_source.html#l00233">workers_</a>.</p>
+<p class="reference">References <a class="el" href="boundedexecutor_8hpp_source.html#l00277">BoundedExecutor::Worker::depth</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00273">BoundedExecutor::Worker::mutex</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00276">BoundedExecutor::Worker::queue</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00338">queued_</a>, and <a class="el" href="boundedexecutor_8hpp_source.html#l00320">workers_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00301">run()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00419">run()</a>.</p>
 
 </div>
 </div>
@@ -741,9 +735,9 @@ true when the thread_local marker equals this executor. </dd></dl>
 </div><div class="memdoc">
 <p>Number of worker threads; zero in inline mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00142">142</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00198">198</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="boundedexecutor_8hpp_source.html#l00233">workers_</a>.</p>
+<p class="reference">References <a class="el" href="boundedexecutor_8hpp_source.html#l00320">workers_</a>.</p>
 
 </div>
 </div>
@@ -758,7 +752,7 @@ true when the thread_local marker equals this executor. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;std::uint64_t&gt; BoundedExecutor::max_queue_ {0}</td>
+          <td class="memname">std::atomic&lt;std::uint64_t&gt; BoundedExecutor::max_queue_</td>
         </tr>
       </table>
   </td>
@@ -767,11 +761,13 @@ true when the thread_local marker equals this executor. </dd></dl>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Largest value queued_ has reached. </p>
+<b>Initial value:</b><div class="fragment"><div class="line">{</div>
+<div class="line">      0}</div>
+</div><!-- fragment --><p>Largest value queued_ has reached. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00260">260</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00354">354</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00135">stats()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00154">submit()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00187">stats()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00218">submit()</a>.</p>
 
 </div>
 </div>
@@ -796,9 +792,9 @@ true when the thread_local marker equals this executor. </dd></dl>
 </div><div class="memdoc">
 <p>Log/statistics label for this pool. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00241">241</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00329">329</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00061">BoundedExecutor()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00301">run()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00099">shutdown()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00082">BoundedExecutor()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00419">run()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00136">shutdown()</a>.</p>
 
 </div>
 </div>
@@ -812,7 +808,7 @@ true when the thread_local marker equals this executor. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;std::size_t&gt; BoundedExecutor::next_ {0}</td>
+          <td class="memname">std::atomic&lt;std::size_t&gt; BoundedExecutor::next_</td>
         </tr>
       </table>
   </td>
@@ -821,10 +817,12 @@ true when the thread_local marker equals this executor. </dd></dl>
   </tr>
 </table>
 </div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{</div>
+<div class="line">      0}</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00336">336</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00246">246</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00154">submit()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00218">submit()</a>.</p>
 
 </div>
 </div>
@@ -849,9 +847,9 @@ true when the thread_local marker equals this executor. </dd></dl>
 </div><div class="memdoc">
 <p>Shared queue limit, at least 1. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00237">237</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00325">325</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00061">BoundedExecutor()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00154">submit()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00082">BoundedExecutor()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00218">submit()</a>.</p>
 
 </div>
 </div>
@@ -865,7 +863,7 @@ true when the thread_local marker equals this executor. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;std::size_t&gt; BoundedExecutor::queued_ {0}</td>
+          <td class="memname">std::atomic&lt;std::size_t&gt; BoundedExecutor::queued_</td>
         </tr>
       </table>
   </td>
@@ -874,10 +872,12 @@ true when the thread_local marker equals this executor. </dd></dl>
   </tr>
 </table>
 </div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{</div>
+<div class="line">      0}</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00338">338</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00247">247</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8hpp_source.html#l00133">pending()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00154">submit()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00241">take()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8hpp_source.html#l00185">pending()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00218">submit()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00340">take()</a>.</p>
 
 </div>
 </div>
@@ -891,7 +891,7 @@ true when the thread_local marker equals this executor. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;std::uint64_t&gt; BoundedExecutor::rejected_ {0}</td>
+          <td class="memname">std::atomic&lt;std::uint64_t&gt; BoundedExecutor::rejected_</td>
         </tr>
       </table>
   </td>
@@ -900,11 +900,13 @@ true when the thread_local marker equals this executor. </dd></dl>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Tasks refused because the queue was full or the pool was stopping. </p>
+<b>Initial value:</b><div class="fragment"><div class="line">{</div>
+<div class="line">      0}</div>
+</div><!-- fragment --><p>Tasks refused because the queue was full or the pool was stopping. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00256">256</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00349">349</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00099">shutdown()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00135">stats()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00154">submit()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00136">shutdown()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00187">stats()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00218">submit()</a>.</p>
 
 </div>
 </div>
@@ -918,7 +920,7 @@ true when the thread_local marker equals this executor. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;bool&gt; BoundedExecutor::stopping_ {false}</td>
+          <td class="memname">std::atomic&lt;bool&gt; BoundedExecutor::stopping_</td>
         </tr>
       </table>
   </td>
@@ -927,11 +929,13 @@ true when the thread_local marker equals this executor. </dd></dl>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Set by <a class="el" href="#a4ce5576deaf59219ec40e8402a6817ba" title="Drains queued tasks, joins the workers and reports accumulated statistics once.">shutdown()</a>; checked by <a class="el" href="#a23e0bc9b4043755faf6f7b419cfec09b" title="Offers a task to the pool without waiting for capacity.">submit()</a> both outside and inside the target worker's lock. </p>
+<b>Initial value:</b><div class="fragment"><div class="line">{</div>
+<div class="line">      <span class="keyword">false</span>}</div>
+</div><!-- fragment --><p>Set by <a class="el" href="#a4ce5576deaf59219ec40e8402a6817ba" title="Drains queued tasks, joins the workers and reports accumulated statistics once.">shutdown()</a>; checked by <a class="el" href="#a23e0bc9b4043755faf6f7b419cfec09b" title="Offers a task to the pool without waiting for capacity.">submit()</a> both outside and inside the target worker's lock. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00245">245</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00334">334</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00301">run()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00099">shutdown()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00154">submit()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00419">run()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00136">shutdown()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00218">submit()</a>.</p>
 
 </div>
 </div>
@@ -945,7 +949,7 @@ true when the thread_local marker equals this executor. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;std::uint64_t&gt; BoundedExecutor::submitted_ {0}</td>
+          <td class="memname">std::atomic&lt;std::uint64_t&gt; BoundedExecutor::submitted_</td>
         </tr>
       </table>
   </td>
@@ -954,11 +958,13 @@ true when the thread_local marker equals this executor. </dd></dl>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Accepted tasks that went through the queue. </p>
+<b>Initial value:</b><div class="fragment"><div class="line">{</div>
+<div class="line">      0}</div>
+</div><!-- fragment --><p>Accepted tasks that went through the queue. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00252">252</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00344">344</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00099">shutdown()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00135">stats()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00154">submit()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00136">shutdown()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00187">stats()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00218">submit()</a>.</p>
 
 </div>
 </div>
@@ -972,7 +978,7 @@ true when the thread_local marker equals this executor. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;std::uint64_t&gt; BoundedExecutor::wait_ns_ {0}</td>
+          <td class="memname">std::atomic&lt;std::uint64_t&gt; BoundedExecutor::wait_ns_</td>
         </tr>
       </table>
   </td>
@@ -981,11 +987,13 @@ true when the thread_local marker equals this executor. </dd></dl>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Total wait time in nanoseconds, used to compute avg_wait_us. </p>
+<b>Initial value:</b><div class="fragment"><div class="line">{</div>
+<div class="line">      0}</div>
+</div><!-- fragment --><p>Total wait time in nanoseconds, used to compute avg_wait_us. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00264">264</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00359">359</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00281">account()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00135">stats()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00394">account()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00187">stats()</a>.</p>
 
 </div>
 </div>
@@ -999,7 +1007,7 @@ true when the thread_local marker equals this executor. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;std::uint64_t&gt; BoundedExecutor::waited_tasks_ {0}</td>
+          <td class="memname">std::atomic&lt;std::uint64_t&gt; BoundedExecutor::waited_tasks_</td>
         </tr>
       </table>
   </td>
@@ -1008,11 +1016,13 @@ true when the thread_local marker equals this executor. </dd></dl>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Number of tasks included in wait_ns_. </p>
+<b>Initial value:</b><div class="fragment"><div class="line">{</div>
+<div class="line">      0}</div>
+</div><!-- fragment --><p>Number of tasks included in wait_ns_. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00268">268</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00364">364</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00281">account()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00135">stats()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00394">account()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00187">stats()</a>.</p>
 
 </div>
 </div>
@@ -1037,15 +1047,15 @@ true when the thread_local marker equals this executor. </dd></dl>
 </div><div class="memdoc">
 <p><a class="el" href="structBoundedExecutor_1_1Worker.html" title="One worker&#39;s thread, queue, lock and condition variable.">Worker</a> objects, created before and started after all of them exist; empty in inline mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00233">233</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00320">320</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00061">BoundedExecutor()</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00138">inlineMode()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00301">run()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00099">shutdown()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00154">submit()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00241">take()</a>, and <a class="el" href="boundedexecutor_8hpp_source.html#l00142">workerCount()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00082">BoundedExecutor()</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00192">inlineMode()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00419">run()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00136">shutdown()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00218">submit()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00340">take()</a>, and <a class="el" href="boundedexecutor_8hpp_source.html#l00198">workerCount()</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/concurrency/<a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a></li>
-<li>src/concurrency/<a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a></li>
+<li>libs/concurrency/<a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a></li>
+<li>libs/concurrency/<a class="el" href="boundedexecutor_8cpp_source.html">boundedexecutor.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

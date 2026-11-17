@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.18.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Valhalla Server: src/concurrency/boundedexecutor.hpp File Reference</title>
+<title>Valhalla Server: libs/concurrency/boundedexecutor.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="codefolding.js"></script>
@@ -203,11 +203,12 @@ template&lt;typename Body&gt; </div>
 </div><div class="memdoc">
 
 <p>Runs body(callback) on an executor, answering 503 immediately when the queue is full. </p>
-<p>Runs body(callback) on the executor. When the queue is full the callback is answered right away with 503 and body never runs. The callback is shared with the task so that it is still available for that reply.</p>
-<p>The callback is moved into a shared_ptr that both the queued task and this function hold. On acceptance the task runs on a worker thread (or inline when the executor has no workers) and body receives the callback as an rvalue. On rejection the callback is invoked here, on the submitting thread, with SERVICE_UNAVAILABLE and busy_message; body is destroyed without being called.</p>
-<p>In plain words: hand the slow job (body) and the HTTP reply function (callback) to the pool. If the pool takes the job, a worker runs body later and body sends the reply. If the pool is full, we send a 503 right now using the same callback. Either way the client always gets an answer, and the callback is never lost. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+<p>Runs body(callback) on the executor. When the queue is full the callback is answered right away with 503 and body never runs. The callback is shared with the task so that it is still available for that reply. </p><pre class="fragment">     The callback is moved into a shared_ptr that both the queued task
+</pre><p> and this function hold. On acceptance the task runs on a worker thread (or inline when the executor has no workers) and body receives the callback as an rvalue. On rejection the callback is invoked here, on the submitting thread, with SERVICE_UNAVAILABLE and busy_message; body is destroyed without being called. </p><pre class="fragment">     In plain words: hand the slow job (body) and the HTTP reply function
+</pre><p> (callback) to the pool. If the pool takes the job, a worker runs body later and body sends the reply. If the pool is full, we send a 503 right now using the same callback. Either way the client always gets an answer, and the callback is never lost. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">Body</td><td>Callable invocable with a CALLBACK_ (std::function&lt;void(int, const std::string&amp;)&gt;); it is captured by the task, so it must be move-constructible. </td></tr>
+    <tr><td class="paramname">Body</td><td>Callable invocable with a CALLBACK_ (std::function&lt;void(int,
+const std::string&amp;)&gt;); it is captured by the task, so it must be move-constructible. </td></tr>
   </table>
   </dd>
 </dl>
@@ -223,11 +224,11 @@ template&lt;typename Body&gt; </div>
 <dl class="section note"><dt>Note</dt><dd>Because the callback is moved into the task, callers must not use it after passing it here. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classBoundedExecutor.html#a23e0bc9b4043755faf6f7b419cfec09b" title="Offers a task to the pool without waiting for capacity.">BoundedExecutor::submit()</a>, <a class="el" href="dbexecutor_8hpp.html#a936968e57939fceaf59b5600a46630aa" title="Submits body to a DbExecutor, answering 503 if it cannot be accepted.">runOnDbExecutor()</a>, <a class="el" href="passwordworker_8hpp.html#a11301e300507b2f5ba81930e709a5de6" title="Runs body on worker, answering the callback with 503 if the queue is full.">runOnPasswordWorker()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00295">295</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00400">400</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00295">runOnExecutor()</a>, <a class="el" href="http_8hpp_source.html#l00100">api::v2::Http::SERVICE_UNAVAILABLE</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00154">BoundedExecutor::submit()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00400">runOnExecutor()</a>, <a class="el" href="http_8hpp_source.html#l00128">api::v2::Http::SERVICE_UNAVAILABLE</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00218">BoundedExecutor::submit()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dbexecutor_8hpp_source.html#l00093">runOnDbExecutor()</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00295">runOnExecutor()</a>, and <a class="el" href="passwordworker_8hpp_source.html#l00071">runOnPasswordWorker()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dbexecutor_8hpp_source.html#l00125">runOnDbExecutor()</a>, <a class="el" href="boundedexecutor_8hpp_source.html#l00400">runOnExecutor()</a>, and <a class="el" href="passwordworker_8hpp_source.html#l00088">runOnPasswordWorker()</a>.</p>
 
 </div>
 </div>
@@ -244,7 +245,7 @@ template&lt;typename Body&gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_2c0c1a91490a41565d9fe0ee1c4cba07.html">concurrency</a></li><li class="navelem"><a href="boundedexecutor_8hpp.html">boundedexecutor.hpp</a></li>
+    <li class="navelem"><a href="dir_6719ab1f1f7655efc2fa43f7eb574fd1.html">libs</a></li><li class="navelem"><a href="dir_a95e9d16d1d6472bd9ba6e3b5774a613.html">concurrency</a></li><li class="navelem"><a href="boundedexecutor_8hpp.html">boundedexecutor.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
   </ul>
 </div>

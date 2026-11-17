@@ -8,5 +8,6 @@ var concepts =
     [ "Appointment_t", "conceptAppointment__t.html", null ],
     [ "Case_t", "conceptCase__t.html", null ],
     [ "Client_t", "conceptClient__t.html", null ],
+    [ "Config", "conceptConfig.html", null ],
     [ "Service_t", "conceptService__t.html", null ]
 ];

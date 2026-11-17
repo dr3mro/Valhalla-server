@@ -4,7 +4,7 @@ A high-performance, multi-tenant healthcare backend written in modern C++20. Val
 
 > **Status:** Active development. The API surface and data model are still evolving.
 
-> **Documentation & code architecture:** The generated [Doxygen reference](https://dr3mro.github.io/Valhalla-server/doxygen/html/index.html) documents the C++ API, class hierarchy, and source layout. For the HTTP API itself, see [Interactive API docs](#interactive-api-docs).
+> **Documentation & code architecture:** The generated [Doxygen reference](https://dr3mro.github.io/Valhalla-server/doxygen/html/index.html) documents the C++ API, class hierarchy, and source layout. For the HTTP API itself, see the “Interactive API docs” section below.
 
 ---
 
@@ -133,9 +133,9 @@ Password worker (PASSWORD_WORKERS threads, queue PASSWORD_QUEUE_MAX)  ──► 
 - **Controllers** (`src/controllers`) implement CRUD/search logic against a generic base.
 - **Entities** (`src/entities`) model the domain: people (users, providers), services (clinics, laboratories, pharmacies, radiology centers), patients, visits, and appointments.
 - **Gatekeeper** (`src/gatekeeper`) holds the cross-cutting security concerns: DoS detector, token and session managers, the permission manager with its idle-expiry cache, and password hashing (Argon2id, with legacy scrypt hashes still accepted at login).
-- **Concurrency** (`src/concurrency`) has `BoundedExecutor`, the fixed-size thread pool with a bounded queue that `submit()` never blocks on. The DB executor (`src/database/dbexecutor`, legacy `DB_ASYNC=false` path) and the password worker are two instances. With zero workers a task runs inline, which the unit tests use.
+- **Concurrency** (`libs/concurrency`) has `BoundedExecutor`, the fixed-size thread pool with a bounded queue that `submit()` never blocks on. The DB executor (`src/database/dbexecutor`, legacy `DB_ASYNC=false` path) and the password worker are two instances. With zero workers a task runs inline, which the unit tests use.
 - **Database** (`src/database`) has the asynchronous client wrapper (`AsyncDbClient`, the default `DB_ASYNC=true` path), the legacy connection pool (`BlockingPool`, waits with a timeout and throws `DatabaseBusy`, which becomes 503), the watchdog that reconnects dropped connections, and the handler that borrows a connection for one query.
-- **Configurator** (`src/configurator`) loads and validates configuration from the environment at startup.
+- **Configurator** (`libs/configurator`) loads and validates configuration from the environment at startup.
 - **Store** (`src/store`) provides shared singleton object access. Objects built for every request use `Store::cachedObject<T>()`, which keeps a per-thread pointer and only goes back to the Store when an object has been replaced (tests replace the database controller with a fake).
 
 ## Tech Stack
@@ -758,7 +758,7 @@ is reset on every start.
 
 ## Configuration
 
-All configuration is supplied through environment variables; defaults live in `src/configurator/defaults.hpp`. The frontend and email-sender defaults point at fixed Docker-network IPs (`172.20.0.5`/`.6`), and the token secret and database credentials are development values, so override them for any real deployment.
+All configuration is supplied through environment variables; defaults live in `libs/configurator/defaults.hpp`. The frontend and email-sender defaults point at fixed Docker-network IPs (`172.20.0.5`/`.6`), and the token secret and database credentials are development values, so override them for any real deployment.
 
 ### Server
 
@@ -953,36 +953,58 @@ The interactive docs currently only show the `clinics` variant.
 ## Project Layout
 
 ```
+CMakeLists.txt          # Thin root: project() + includes the modules below
+cmake/                  # Configure-time CMake modules (see cmake/README.md)
+├── CompilerSetup.cmake   # compiler, warnings, LTO, ccache
+├── ProjectSetup.cmake    # include dirs, version.cpp generation
+├── CoreTargets.cmake     # server_core, server, valhalla_version
+├── Dependencies.cmake    # Conan find_package calls
+├── Doxygen.cmake         # valhalla_doxygen (defined only on tagged HEADs)
+├── ApiEmbed.cmake        # embeds docs/api.html into a generated header
+├── ApiDocs.cmake         # valhalla_docs regeneration target
+├── ConanVariables.cmake  # third-party dependency switches
+├── Linking.cmake         # local libs + final links
+├── Sanitizers.cmake      # Linux Debug ASan/UBSan/LSan
+└── Testing.cmake         # ENABLE_TESTS + CTest registration
+libs/                   # Reusable static libraries
+├── concurrency/        # BoundedExecutor: thread pool with a bounded queue
+├── configurator/       # Environment-driven configuration + defaults
+├── logger/             # Async spdlog logging (wired into Trantor)
+└── message/            # Shared message / error types
 src/
 ├── api/v2/             # REST API: routes, filters, middlewares, helpers
 ├── controllers/        # Business logic per resource (clients, clinics, services, …)
 ├── entities/           # Domain models (people, services, patients, visits, appointments)
-├── gatekeeper/         # Security: DoS detector, tokens, sessions, RBAC, password hashing and its worker pool
-├── concurrency/        # BoundedExecutor: thread pool with a bounded queue
-├── configurator/       # Environment-driven configuration + defaults
+├── gatekeeper/         # Security: DoS detector, tokens, sessions, RBAC, password hashing
 ├── database/           # Connection pool, watchdog, handlers, DB executor
 ├── validator/          # Request + database-schema validation
 ├── store/              # Shared object store
-├── server/             # Server bootstrap (entry point)
-└── utils/              # Logging, caching, messaging, JSON helpers, thread-safe queue
+├── server/             # Server bootstrap and CORS configuration
+├── utils/              # Communicate, JSON helpers, memcache, thread-safe queue
+├── main.cpp            # Entry point
+└── version.cpp.in      # Template for the generated version.cpp
 scripts/
 ├── build/              # build.sh, get_tag.sh, run_all_tests.sh
 ├── db/init.sql         # Database schema
 ├── lib/ui.sh           # Shared shell UI helpers
 ├── qa/                 # Format, hygiene and project-rule checks
 ├── run/                # db_init.sh, run_debug.sh, run_release.sh, run4bench.sh
-├── test/               # test_api.sh, cors_test.sh, cors_react_check.sh, fuzz_auth.sh, sqlmap_test.sh, schemathesis_test.sh
+├── test/               # API, CORS, fuzz and schema test scripts
 └── vdt/valhalla.sh     # Docker/Apple Container deployment tool (the `vdt` command)
-tests/                  # Catch2 unit tests (+ vendored Catch CMake helpers)
+tests/                  # Catch2 unit tests, organized by module (+ vendored Catch CMake helpers)
 tests/api_tests/        # Request payloads and samples used by test_api.sh
-docs/                   # API docs (api.html, openapi.json, Postman collection) + ARCHITECTURE.md, CONTRIBUTING.md
-│   └── doxygen/        # Published Doxygen reference (HTML + XML), excluded from Doxygen input
+docs/                   # API docs + ARCHITECTURE.md, CONTRIBUTING.md
+├── doxygen/            # Published Doxygen reference (HTML + XML), excluded from Doxygen input
+└── perf/               # Performance reports
 tools/
-├── cmake/              # CMake helpers (HTML embedding, docs generation, versioning)
-├── conan/              # Conan helper variables, lockfile update script
-└── docs/               # API docs generator (build.sh, build_docs.py, Swagger UI assets)
+├── cmake/              # Script-mode helpers (cmake -P): version, docs, HTML embedding
+├── conan/              # Conan helper variables, default profile, lockfile update script
+├── cors/               # CORS browser check page
+├── docs/               # API docs generator (build.sh, build_docs.py, Swagger UI assets)
+└── k6/                 # Load-test scripts
 docker/                 # All-in-one Alpine image (Dockerfile + entrypoint)
-.github/                # Release and CI workflows, Dependabot config
+.github/                # Release and CI workflows, reusable actions, Dependabot config
+.githooks/              # pre-commit, commit-msg and pre-push checks
 config                  # Default server settings (tracked)
 Doxyfile                # Doxygen configuration
 conan.lock              # Pinned dependency versions (all platforms)
@@ -1085,10 +1107,12 @@ The C++ source is documented with Doxygen: every class, function and
 non-obvious implementation detail has a Doxygen-compatible comment.
 See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the component map and
 [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) for the documentation conventions.
-The HTML/XML reference is generated by the `valhalla_doxygen` CMake target, which
-runs on every `cmake --build` when Doxygen is available. The result is published
-under `docs/doxygen/` (HTML and XML, tracked alongside the API docs). Doxygen
-excludes that directory from its own input, so it never documents its output:
+The HTML/XML reference is generated by the `valhalla_doxygen` CMake target. The
+target is defined only when the current commit has a git tag, so on a tagged HEAD
+it runs as part of every `cmake --build`; untagged builds skip it. The result is
+published under `docs/doxygen/` (HTML and XML, tracked alongside the API docs)
+and served at https://dr3mro.github.io/Valhalla-server/doxygen/html/index.html.
+Doxygen excludes that directory from its own input, so it never documents its output:
 
 ```bash
 cmake --build build/Debug --target valhalla_doxygen

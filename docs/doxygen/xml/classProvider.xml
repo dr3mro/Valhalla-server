@@ -197,6 +197,7 @@
         </inbodydescription>
         <location file="src/entities/people/provider.hpp" line="127" column="17" bodyfile="src/entities/people/provider.hpp" bodystart="127" bodyend="160"/>
         <references refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" compoundref="client_8hpp" startline="418">api::v2::Client::client_id</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="222" endline="224">Entity::getData</references>
       </memberdef>
     </sectiondef>

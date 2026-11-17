@@ -154,7 +154,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="165" column="3" bodyfile="src/configurator/configurator.hpp" bodystart="165" bodyend="303"/>
+        <location file="libs/configurator/configurator.hpp" line="165" column="3" bodyfile="libs/configurator/configurator.hpp" bodystart="165" bodyend="303"/>
       </memberdef>
       <memberdef kind="typedef" id="classConfigurator_1a78caa68d4554c8ab0d0c1753ce8edbe2" prot="public" static="no">
         <type>struct <ref refid="classConfigurator_1a78caa68d4554c8ab0d0c1753ce8edbe2" kindref="member">DatabaseConfig</ref> :public <ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> { bool ssl; bool async; uint16_t max_conn; uint32_t acquire_timeout_ms; uint16_t port; std::string name; std::string user; std::string pass; std::string host; <ref refid="classConfigurator_1a78caa68d4554c8ab0d0c1753ce8edbe2" kindref="member">DatabaseConfig</ref>() :ssl(getEnvironmentVariable(&quot;DB_SSL&quot;, Defaults::Database:: DB_SSL_)), async( getEnvironmentVariable(&quot;DB_ASYNC&quot;, Defaults::Database:: DB_ASYNC_)), max_conn( getEnvironmentVariable(&quot;DB_MAX_CONN&quot;, Defaults::Database:: DB_MAX_CONN_)), acquire_timeout_ms(getEnvironmentVariable( &quot;DB_ACQUIRE_TIMEOUT_MS&quot;, <ref refid="namespaceDefaults_1_1Database_1a4beafb87f90b2ca03b55ac18ad0fdc8a" kindref="member">Defaults::Database::DB_ACQUIRE_TIMEOUT_MS_</ref>)), port(getEnvironmentVariable(&quot;DB_PORT&quot;, Defaults::Database:: DB_PORT_)), name(getEnvironmentVariable(&quot;DB_NAME&quot;, Defaults::Database:: DB_NAME_)), user(getEnvironmentVariable(&quot;DB_USER&quot;, Defaults::Database:: DB_USER_)), pass(getEnvironmentVariable(&quot;DB_PASS&quot;, Defaults::Database:: DB_PASS_)), host(getEnvironmentVariable(&quot;DB_HOST&quot;, Defaults::Database:: DB_HOST_)) { optimize_performance(max_conn, 5); } void <ref refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" kindref="member">printValues</ref>() const override { <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( &quot;------------------------------------------------&quot;); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( &quot;-----------------Database <ref refid="conceptConfig" kindref="compound">Config</ref>----------------&quot;); Message::ConfMessage( &quot;------------------------------------------------&quot;); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Host: {}&quot;, host)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>(fmt::format(&quot;Port: {}&quot;, port)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Name: {}&quot;, name)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;User: {}&quot;, user)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>(&quot;Pass: [redacted]&quot;); Message::ConfMessage( fmt::format(&quot;SSL: {}&quot;, ssl)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>(fmt::format(&quot;Async: {}&quot;, async)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Max Connections: {}&quot;, max_conn)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Connection Wait Timeout: {} ms&quot;, acquire_timeout_ms)); } }</type>
@@ -285,7 +285,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="316" column="3" bodyfile="src/configurator/configurator.hpp" bodystart="316" bodyend="443"/>
+        <location file="libs/configurator/configurator.hpp" line="316" column="3" bodyfile="libs/configurator/configurator.hpp" bodystart="316" bodyend="443"/>
       </memberdef>
       <memberdef kind="typedef" id="classConfigurator_1a927a53596c80ae2c5f02c21f85af9d83" prot="public" static="no">
         <type>struct <ref refid="classConfigurator_1a927a53596c80ae2c5f02c21f85af9d83" kindref="member">ServerConfig</ref> :public <ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> { std::string host; std::string name; std::string ver; std::string desc; uint16_t port; uint16_t threads; uint8_t debug_level; bool log_to_console; bool log_to_file; std::string log_dir; std::string log_file; std::string upload_dir; <ref refid="classConfigurator_1a927a53596c80ae2c5f02c21f85af9d83" kindref="member">ServerConfig</ref>() :host( getEnvironmentVariable(&quot;SERVER_HOST&quot;, Defaults::Server:: SERVER_HOST_)), name(getEnvironmentVariable(&quot;SERVER_NAME&quot;, Defaults::Server:: SERVER_NAME_)), ver(getEnvironmentVariable(&quot;dev&quot;, Defaults::Server:: SERVER_VER_)), desc(getEnvironmentVariable(&quot;SERVER_DESCRIPTION&quot;, Defaults::Server:: SERVER_DESC_)), port( getEnvironmentVariable(&quot;SERVER_PORT&quot;, Defaults::Server:: SERVER_PORT_)), threads( getEnvironmentVariable(&quot;SERVER_THREADS&quot;, Defaults::Server:: SERVER_THREADS_)), debug_level( getEnvironmentVariable(&quot;SERVER_DEBUG_LEVEL&quot;, <ref refid="namespaceDefaults_1_1Server_1a487839278f4fe06b8c5bd3c8fbcdea9e" kindref="member">Defaults::Server::SERVER_DEBUG_LEVEL_</ref>)), log_to_console( getEnvironmentVariable(&quot;SERVER_LOG_TO_CONSOLE&quot;, <ref refid="namespaceDefaults_1_1Server_1adc26c17a02a2ccbd2b1b146107c4c1e3" kindref="member">Defaults::Server::SERVER_LOG_TO_CONSOLE_</ref>)), log_to_file( getEnvironmentVariable(&quot;SERVER_LOG_TO_FILE&quot;, Defaults::Server:: SERVER_LOG_TO_FILE_)), log_dir(getEnvironmentVariable(&quot;SERVER_LOG_DIR&quot;, Defaults::Server:: SERVER_LOG_DIR_)), log_file( getEnvironmentVariable(&quot;SERVER_LOG_FILE&quot;, Defaults::Server:: SERVER_LOG_FILE_)), upload_dir(getEnvironmentVariable(&quot;SERVER_UPLOAD_DIR&quot;, Defaults::Server:: SERVER_UPLOAD_DIR_)) { optimize_performance(threads, 4); } void <ref refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" kindref="member">printValues</ref>() const override { <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( &quot;------------------------------------------------&quot;); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( &quot;-------------------ServerConfig-----------------&quot;); Message::ConfMessage( &quot;------------------------------------------------&quot;); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Host: {}&quot;, host)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Port: {}&quot;, port)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Name: {}&quot;, name)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Version: {}&quot;, ver)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Description: {}&quot;, desc)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Threads: {}&quot;, threads)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Debug Level: {}&quot;, debug_level)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Log to console: {}&quot;, log_to_console)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Log to file: {}&quot;, log_to_file)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Log directory: {}&quot;, log_dir)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Log file: {}&quot;, log_file)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>(fmt::format(&quot;Upload directory: {}&quot;, upload_dir)); } }</type>
@@ -447,7 +447,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="454" column="3" bodyfile="src/configurator/configurator.hpp" bodystart="454" bodyend="610"/>
+        <location file="libs/configurator/configurator.hpp" line="454" column="3" bodyfile="libs/configurator/configurator.hpp" bodystart="454" bodyend="610"/>
       </memberdef>
       <memberdef kind="typedef" id="classConfigurator_1af1c24b094032c664c8f543c85ed36b14" prot="public" static="no">
         <type>struct <ref refid="classConfigurator_1af1c24b094032c664c8f543c85ed36b14" kindref="member">TokenManagerParameters</ref> :public <ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> { uint64_t validity; std::string issuer; std::string type; std::string secret; <ref refid="classConfigurator_1af1c24b094032c664c8f543c85ed36b14" kindref="member">TokenManagerParameters</ref>() :validity( getEnvironmentVariable(&quot;TOKEN_VALIDITY&quot;, Defaults::TokenParameters:: TOKEN_VALIDITY_)), issuer( getEnvironmentVariable(&quot;TOKEN_ISSUER&quot;, Defaults::TokenParameters:: TOKEN_ISSUER_)), type(getEnvironmentVariable(&quot;TOKEN_TYPE&quot;, Defaults::TokenParameters:: TOKEN_TYPE_)), secret(getEnvironmentVariable(&quot;TOKEN_SECRET&quot;, Defaults::TokenParameters:: TOKEN_SECRET_)) { } void <ref refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" kindref="member">printValues</ref>() const override { <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( &quot;------------------------------------------------&quot;); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( &quot;-------------TokenManagerParameters-------------&quot;); Message::ConfMessage( &quot;------------------------------------------------&quot;); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Issuer: {}&quot;, issuer)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Type: {}&quot;, type)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Validity: {} minutes&quot;, validity)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>(&quot;Secret: [redacted]&quot;); if(secret==Defaults::TokenParameters:: TOKEN_SECRET_) { <ref refid="classMessage_1a3d5db738594c8af1428053227959259e" kindref="member">Message::WarningMessage</ref>( &quot;TOKEN_SECRET is set to the default value; set a secure &quot; &quot;secret for production.&quot;); } } }</type>
@@ -538,7 +538,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="621" column="3" bodyfile="src/configurator/configurator.hpp" bodystart="621" bodyend="704"/>
+        <location file="libs/configurator/configurator.hpp" line="621" column="3" bodyfile="libs/configurator/configurator.hpp" bodystart="621" bodyend="704"/>
       </memberdef>
       <memberdef kind="typedef" id="classConfigurator_1a8b3e99fef2ad5bf59793fa235a97aa3c" prot="public" static="no">
         <type>struct <ref refid="classConfigurator_1a8b3e99fef2ad5bf59793fa235a97aa3c" kindref="member">FrontEndConfig</ref> :public <ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> { uint16_t port; std::string host; std::string invite_path; std::string cors_allowed_origins; <ref refid="classConfigurator_1a8b3e99fef2ad5bf59793fa235a97aa3c" kindref="member">FrontEndConfig</ref>() :port(getEnvironmentVariable(&quot;FRONTEND_PORT&quot;, Defaults::FrontEnd:: PORT_)), host(getEnvironmentVariable(&quot;FRONTEND_HOST&quot;, Defaults::FrontEnd:: HOST_)), invite_path(getEnvironmentVariable(&quot;FRONTEND_INVITE_PATH&quot;, <ref refid="namespaceDefaults_1_1FrontEnd_1a2f75870d28630538f7e42843bf4cbf9c" kindref="member">Defaults::FrontEnd::INVITE_PATH_</ref>)), cors_allowed_origins(getEnvironmentVariable(&quot;CORS_ALLOWED_ORIGINS&quot;, std::string(&quot;*&quot;))) { } void <ref refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" kindref="member">printValues</ref>() const override { <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( &quot;------------------------------------------------&quot;); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( &quot;------------------FrontEnd <ref refid="conceptConfig" kindref="compound">Config</ref>----------------&quot;); Message::ConfMessage( &quot;------------------------------------------------&quot;); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Frontend host: {}&quot;, host)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Frontend port: {}&quot;, port)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>(fmt::format(&quot;Frontend invite path: {}&quot;, invite_path)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;CORS allowed origins: {}&quot;, cors_allowed_origins)); } }</type>
@@ -616,7 +616,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="713" column="3" bodyfile="src/configurator/configurator.hpp" bodystart="713" bodyend="780"/>
+        <location file="libs/configurator/configurator.hpp" line="713" column="3" bodyfile="libs/configurator/configurator.hpp" bodystart="713" bodyend="780"/>
       </memberdef>
       <memberdef kind="typedef" id="classConfigurator_1ae7a8c53bf3a5ab860650fbc02354b222" prot="public" static="no">
         <type>struct <ref refid="classConfigurator_1ae7a8c53bf3a5ab860650fbc02354b222" kindref="member">EmailSenderConfig</ref> :public <ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> { uint16_t port; std::string host; std::string message_queue_path; <ref refid="classConfigurator_1ae7a8c53bf3a5ab860650fbc02354b222" kindref="member">EmailSenderConfig</ref>() :port(getEnvironmentVariable(&quot;EMAIL_SENDER_PORT&quot;, Defaults::EmailSenderDaemon:: PORT_)), host(getEnvironmentVariable(&quot;EMAIL_SENDER_HOST&quot;, Defaults::EmailSenderDaemon:: HOST_)), message_queue_path( getEnvironmentVariable(&quot;EMAIL_SENDER_QUEUE_PATH&quot;, Defaults::EmailSenderDaemon:: QUEUE_PATH_)) { } void <ref refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" kindref="member">printValues</ref>() const override { <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( &quot;------------------------------------------------&quot;); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( &quot;----------------EmailSender <ref refid="conceptConfig" kindref="compound">Config</ref>--------------&quot;); Message::ConfMessage( &quot;------------------------------------------------&quot;); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>(fmt::format(&quot;EmailSender host: {}&quot;, host)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;EmailSender port: {}&quot;, port)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;EmailSender queue path: {}&quot;, message_queue_path)); } }</type>
@@ -682,7 +682,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="788" column="3" bodyfile="src/configurator/configurator.hpp" bodystart="788" bodyend="841"/>
+        <location file="libs/configurator/configurator.hpp" line="788" column="3" bodyfile="libs/configurator/configurator.hpp" bodystart="788" bodyend="841"/>
       </memberdef>
       <memberdef kind="typedef" id="classConfigurator_1a32f2368e1e72e5bd29909e000c0c9e4c" prot="public" static="no">
         <type>struct <ref refid="classConfigurator_1a32f2368e1e72e5bd29909e000c0c9e4c" kindref="member">PermissionCacheConfig</ref> :public <ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> { std::chrono::seconds ttl; <ref refid="classConfigurator_1a32f2368e1e72e5bd29909e000c0c9e4c" kindref="member">PermissionCacheConfig</ref>() :ttl(getEnvironmentVariable(&quot;PERMISSION_CACHE_TTL&quot;, std::chrono::seconds( Defaults::PermissionCache::TTL_))) { } void <ref refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" kindref="member">printValues</ref>() const override { <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( &quot;------------------------------------------------&quot;); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( &quot;-------------Permission Cache <ref refid="conceptConfig" kindref="compound">Config</ref>------------&quot;); Message::ConfMessage( &quot;------------------------------------------------&quot;); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>(fmt::format(&quot;Permission cache TTL: {} seconds&quot;, ttl.count())); } }</type>
@@ -726,7 +726,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="850" column="3" bodyfile="src/configurator/configurator.hpp" bodystart="850" bodyend="881"/>
+        <location file="libs/configurator/configurator.hpp" line="850" column="3" bodyfile="libs/configurator/configurator.hpp" bodystart="850" bodyend="881"/>
       </memberdef>
       <memberdef kind="typedef" id="classConfigurator_1a49c1e1c556694b995447dd4a4cad1935" prot="public" static="no">
         <type>struct <ref refid="classConfigurator_1a49c1e1c556694b995447dd4a4cad1935" kindref="member">PasswordWorkerConfig</ref> :public <ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> { uint16_t workers; uint32_t queue_max; <ref refid="classConfigurator_1a49c1e1c556694b995447dd4a4cad1935" kindref="member">PasswordWorkerConfig</ref>() :workers( getEnvironmentVariable(&quot;PASSWORD_WORKERS&quot;, Defaults::PasswordWorker:: WORKERS_)), queue_max(getEnvironmentVariable(&quot;PASSWORD_QUEUE_MAX&quot;, Defaults::PasswordWorker:: QUEUE_MAX_)) { } void <ref refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" kindref="member">printValues</ref>() const override { <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( &quot;------------------------------------------------&quot;); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( &quot;-------------Password Worker <ref refid="conceptConfig" kindref="compound">Config</ref>-------------&quot;); Message::ConfMessage( &quot;------------------------------------------------&quot;); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Password workers: {}&quot;, workers)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>(fmt::format(&quot;Password queue max: {}&quot;, queue_max)); } }</type>
@@ -783,7 +783,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="891" column="3" bodyfile="src/configurator/configurator.hpp" bodystart="891" bodyend="935"/>
+        <location file="libs/configurator/configurator.hpp" line="891" column="3" bodyfile="libs/configurator/configurator.hpp" bodystart="891" bodyend="935"/>
       </memberdef>
       <memberdef kind="typedef" id="classConfigurator_1a6552d2f57b9bbb898d49d7512cc3c829" prot="public" static="no">
         <type>struct <ref refid="classConfigurator_1a6552d2f57b9bbb898d49d7512cc3c829" kindref="member">DbExecutorConfig</ref> :public <ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> { uint16_t workers; uint32_t queue_max; bool io_fast_path; <ref refid="classConfigurator_1a6552d2f57b9bbb898d49d7512cc3c829" kindref="member">DbExecutorConfig</ref>() :workers(defaultWorkers()), queue_max( getEnvironmentVariable(&quot;DB_QUEUE_MAX&quot;, Defaults::DbExecutor:: QUEUE_MAX_)), io_fast_path(getEnvironmentVariable(&quot;DB_IO_FASTPATH&quot;, Defaults::DbExecutor:: IO_FAST_PATH_)) { workers= getEnvironmentVariable(&quot;DB_WORKERS&quot;, workers); } void <ref refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" kindref="member">printValues</ref>() const override { <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( &quot;------------------------------------------------&quot;); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( &quot;---------------DB Executor <ref refid="conceptConfig" kindref="compound">Config</ref>---------------&quot;); Message::ConfMessage( &quot;------------------------------------------------&quot;); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;DB workers: {}&quot;, workers)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>(fmt::format(&quot;DB queue max: {}&quot;, queue_max)); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;DB IO fast path: {}&quot;, io_fast_path)); } private: uint16_t defaultWorkers() { auto pool=static_cast&lt; uint16_t &gt;( getEnvironmentVariable(&quot;DB_MAX_CONN&quot;, static_cast&lt; uint16_t &gt;( Defaults::Database:: DB_MAX_CONN_))); optimize_performance(pool, 5); return pool; } }</type>
@@ -876,7 +876,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="947" column="3" bodyfile="src/configurator/configurator.hpp" bodystart="947" bodyend="1033"/>
+        <location file="libs/configurator/configurator.hpp" line="947" column="3" bodyfile="libs/configurator/configurator.hpp" bodystart="947" bodyend="1033"/>
       </memberdef>
       <memberdef kind="typedef" id="classConfigurator_1a6029dd81a8d2fe9a1eaa17bf2a508e03" prot="public" static="no">
         <type>struct <ref refid="classConfigurator_1a6029dd81a8d2fe9a1eaa17bf2a508e03" kindref="member">Testing</ref> :public <ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> { public: bool no_db; <ref refid="classConfigurator_1a6029dd81a8d2fe9a1eaa17bf2a508e03" kindref="member">Testing</ref>() :no_db( getEnvironmentVariable(&quot;VALHALLA_TEST_NO_DB&quot;, <ref refid="namespaceDefaults_1_1Testing_1a797b761e7035e9593588e27408f1b55b" kindref="member">Defaults::Testing::VALHALLA_TEST_NO_DB_</ref>)) { } void <ref refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" kindref="member">printValues</ref>() const override { <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( &quot;------------------------------------------------&quot;); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( &quot;-----------------Testing <ref refid="conceptConfig" kindref="compound">Config</ref>-----------------&quot;); Message::ConfMessage( &quot;------------------------------------------------&quot;); <ref refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kindref="member">Message::ConfMessage</ref>( fmt::format(&quot;Testing no_db: {}&quot;, no_db)); } }</type>
@@ -923,7 +923,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="1044" column="3" bodyfile="src/configurator/configurator.hpp" bodystart="1044" bodyend="1078"/>
+        <location file="libs/configurator/configurator.hpp" line="1044" column="3" bodyfile="libs/configurator/configurator.hpp" bodystart="1044" bodyend="1078"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -940,7 +940,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="1101" column="21" bodyfile="src/configurator/configurator.hpp" bodystart="1101" bodyend="-1"/>
+        <location file="libs/configurator/configurator.hpp" line="1101" column="21" bodyfile="libs/configurator/configurator.hpp" bodystart="1101" bodyend="-1"/>
         <referencedby refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" compoundref="configurator_8hpp" startline="137" endline="155">printValues</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classConfigurator_1a6d21bcd329d6c2fadbcf48b1efa7b56b" prot="private" static="no" mutable="no">
@@ -955,7 +955,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="1103" column="21" bodyfile="src/configurator/configurator.hpp" bodystart="1103" bodyend="-1"/>
+        <location file="libs/configurator/configurator.hpp" line="1103" column="21" bodyfile="libs/configurator/configurator.hpp" bodystart="1103" bodyend="-1"/>
         <referencedby refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" compoundref="configurator_8hpp" startline="137" endline="155">printValues</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classConfigurator_1a953a9938a91816807e761f78f91de20c" prot="private" static="no" mutable="no">
@@ -970,7 +970,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="1104" column="21" bodyfile="src/configurator/configurator.hpp" bodystart="1104" bodyend="-1"/>
+        <location file="libs/configurator/configurator.hpp" line="1104" column="21" bodyfile="libs/configurator/configurator.hpp" bodystart="1104" bodyend="-1"/>
         <referencedby refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" compoundref="configurator_8hpp" startline="137" endline="155">printValues</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classConfigurator_1a6c0b1beecdd34ed7cc9a57a1de960715" prot="private" static="no" mutable="no">
@@ -985,7 +985,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="1106" column="21" bodyfile="src/configurator/configurator.hpp" bodystart="1106" bodyend="-1"/>
+        <location file="libs/configurator/configurator.hpp" line="1106" column="21" bodyfile="libs/configurator/configurator.hpp" bodystart="1106" bodyend="-1"/>
         <referencedby refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" compoundref="configurator_8hpp" startline="137" endline="155">printValues</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classConfigurator_1a0e0e891626210eec166117bf5aa4b9f8" prot="private" static="no" mutable="no">
@@ -1000,7 +1000,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="1107" column="21" bodyfile="src/configurator/configurator.hpp" bodystart="1107" bodyend="-1"/>
+        <location file="libs/configurator/configurator.hpp" line="1107" column="21" bodyfile="libs/configurator/configurator.hpp" bodystart="1107" bodyend="-1"/>
         <referencedby refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" compoundref="configurator_8hpp" startline="137" endline="155">printValues</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classConfigurator_1a8e754f2350e68b7668065eae1ded1b2e" prot="private" static="no" mutable="no">
@@ -1015,7 +1015,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="1108" column="21" bodyfile="src/configurator/configurator.hpp" bodystart="1108" bodyend="-1"/>
+        <location file="libs/configurator/configurator.hpp" line="1108" column="21" bodyfile="libs/configurator/configurator.hpp" bodystart="1108" bodyend="-1"/>
         <referencedby refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" compoundref="configurator_8hpp" startline="137" endline="155">printValues</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classConfigurator_1aea1e4e0be48a562b8aa5616ee596b513" prot="private" static="no" mutable="no">
@@ -1030,7 +1030,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="1109" column="25" bodyfile="src/configurator/configurator.hpp" bodystart="1109" bodyend="-1"/>
+        <location file="libs/configurator/configurator.hpp" line="1109" column="25" bodyfile="libs/configurator/configurator.hpp" bodystart="1109" bodyend="-1"/>
         <referencedby refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" compoundref="configurator_8hpp" startline="137" endline="155">printValues</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classConfigurator_1ad245f8d60306d7915fb3f2857bbf341c" prot="private" static="no" mutable="no">
@@ -1045,7 +1045,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="1111" column="20" bodyfile="src/configurator/configurator.hpp" bodystart="1111" bodyend="-1"/>
+        <location file="libs/configurator/configurator.hpp" line="1111" column="20" bodyfile="libs/configurator/configurator.hpp" bodystart="1111" bodyend="-1"/>
         <referencedby refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" compoundref="configurator_8hpp" startline="137" endline="155">printValues</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classConfigurator_1a9c2028d7fb1d041cbd4c8d79b118863b" prot="private" static="no" mutable="no">
@@ -1060,7 +1060,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="1112" column="20" bodyfile="src/configurator/configurator.hpp" bodystart="1112" bodyend="-1"/>
+        <location file="libs/configurator/configurator.hpp" line="1112" column="20" bodyfile="libs/configurator/configurator.hpp" bodystart="1112" bodyend="-1"/>
         <referencedby refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" compoundref="configurator_8hpp" startline="137" endline="155">printValues</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classConfigurator_1a2d5be41d723d735ca02725171f487377" prot="private" static="no" mutable="no">
@@ -1075,7 +1075,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="1113" column="20" bodyfile="src/configurator/configurator.hpp" bodystart="1113" bodyend="-1"/>
+        <location file="libs/configurator/configurator.hpp" line="1113" column="20" bodyfile="libs/configurator/configurator.hpp" bodystart="1113" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -1092,7 +1092,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="119" column="3"/>
+        <location file="libs/configurator/configurator.hpp" line="119" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classConfigurator_1a553baa4562680a91034b5f0a7ec756c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -1107,7 +1107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="123" column="11"/>
+        <location file="libs/configurator/configurator.hpp" line="123" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -1125,7 +1125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="137" column="8" bodyfile="src/configurator/configurator.hpp" bodystart="137" bodyend="155"/>
+        <location file="libs/configurator/configurator.hpp" line="137" column="8" bodyfile="libs/configurator/configurator.hpp" bodystart="137" bodyend="155"/>
         <references refid="classConfigurator_1a6d21bcd329d6c2fadbcf48b1efa7b56b" compoundref="configurator_8hpp" startline="1103">database_config_</references>
         <references refid="classConfigurator_1a9c2028d7fb1d041cbd4c8d79b118863b" compoundref="configurator_8hpp" startline="1112">db_executor_config_</references>
         <references refid="classConfigurator_1a953a9938a91816807e761f78f91de20c" compoundref="configurator_8hpp" startline="1104">dos_detector_config_</references>
@@ -1172,7 +1172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/configurator.hpp" line="1094" column="5"/>
+        <location file="libs/configurator/configurator.hpp" line="1094" column="5"/>
         <referencedby refid="configurator_8cpp_1a37fe145d060f2d2124ff314a7c8c42e3" compoundref="configurator_8cpp" startline="69" endline="72">Configurator::get&lt; Configurator::DatabaseConfig &gt;</referencedby>
         <referencedby refid="configurator_8cpp_1a6aad408bff1e378942af2b63e73635b9" compoundref="configurator_8cpp" startline="165" endline="168">Configurator::get&lt; Configurator::DbExecutorConfig &gt;</referencedby>
         <referencedby refid="configurator_8cpp_1abf9f7867bfca11a980bedbaf2ebe38dc" compoundref="configurator_8cpp" startline="52" endline="55">Configurator::get&lt; Configurator::DOSDetectorConfig &gt;</referencedby>
@@ -1274,7 +1274,7 @@
         <link refid="structTokenManagerParameters"/>
       </node>
     </collaborationgraph>
-    <location file="src/configurator/configurator.hpp" line="114" column="1" bodyfile="src/configurator/configurator.hpp" bodystart="114" bodyend="1114"/>
+    <location file="libs/configurator/configurator.hpp" line="114" column="1" bodyfile="libs/configurator/configurator.hpp" bodystart="114" bodyend="1114"/>
     <listofallmembers>
       <member refid="classConfigurator_1a3169a899e75a9c609012778685f882b8" prot="public" virt="non-virtual"><scope>Configurator</scope><name>Configurator</name></member>
       <member refid="classConfigurator_1a6d21bcd329d6c2fadbcf48b1efa7b56b" prot="private" virt="non-virtual"><scope>Configurator</scope><name>database_config_</name></member>

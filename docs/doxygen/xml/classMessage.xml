@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/message/message.hpp" line="54" column="3"/>
+        <location file="libs/message/message.hpp" line="54" column="3"/>
         <referencedby refid="classMessage_1a86c3737ea3a70780ed5ea7c5403b9507">Message</referencedby>
         <referencedby refid="classMessage_1a2a8c28d1a44fbc15a2bd8b974bbfa242">Message</referencedby>
         <referencedby refid="classMessage_1a7da4c19efcee0fbbe592e3fe67a95021">operator=</referencedby>
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/message/message.hpp" line="59" column="11"/>
+        <location file="libs/message/message.hpp" line="59" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classMessage_1a86c3737ea3a70780ed5ea7c5403b9507" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/message/message.hpp" line="64" column="3"/>
+        <location file="libs/message/message.hpp" line="64" column="3"/>
         <references refid="classMessage_1a4e0c3e0a2be25186519ba075d7851b71">Message</references>
       </memberdef>
       <memberdef kind="function" id="classMessage_1a2a8c28d1a44fbc15a2bd8b974bbfa242" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -75,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/message/message.hpp" line="69" column="3"/>
+        <location file="libs/message/message.hpp" line="69" column="3"/>
         <references refid="classMessage_1a4e0c3e0a2be25186519ba075d7851b71">Message</references>
       </memberdef>
       <memberdef kind="function" id="classMessage_1a7da4c19efcee0fbbe592e3fe67a95021" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -95,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/message/message.hpp" line="74" column="11"/>
+        <location file="libs/message/message.hpp" line="74" column="11"/>
         <references refid="classMessage_1a4e0c3e0a2be25186519ba075d7851b71">Message</references>
       </memberdef>
       <memberdef kind="function" id="classMessage_1a7307e42c5da334c23ad52a2e7eaf755c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -115,17 +115,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/message/message.hpp" line="79" column="11"/>
+        <location file="libs/message/message.hpp" line="79" column="11"/>
         <references refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" compoundref="message_8cpp" startline="60" endline="62">ConfMessage</references>
         <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">CriticalMessage</references>
         <references refid="classMessage_1a35ba4529b26ccea626d1b885815369cb" compoundref="message_8cpp" startline="45" endline="47">DebugMessage</references>
         <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">ErrorMessage</references>
-        <references refid="classMessage_1ab1578286398f61ef66338441d1ea99e3" compoundref="message_8cpp" startline="69" endline="88">get_color</references>
+        <references refid="classMessage_1ab1578286398f61ef66338441d1ea99e3" compoundref="message_8cpp" startline="69" endline="101">get_color</references>
         <references refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" compoundref="message_8cpp" startline="48" endline="50">InfoMessage</references>
         <references refid="classMessage_1aaa3d510c50f46a224c9021dfd5d33ecb" compoundref="message_8cpp" startline="63" endline="65">InitMessage</references>
         <references refid="classMessage_1a4e0c3e0a2be25186519ba075d7851b71">Message</references>
-        <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="90" endline="102">MessageImpl</references>
-        <references refid="classMessage_1a866730d10417555fd9cf17fe1b94b0f4" compoundref="message_8cpp" startline="127" endline="137">removeNewLine</references>
+        <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="103" endline="115">MessageImpl</references>
+        <references refid="classMessage_1a866730d10417555fd9cf17fe1b94b0f4" compoundref="message_8cpp" startline="140" endline="150">removeNewLine</references>
         <references refid="classMessage_1a3d5db738594c8af1428053227959259e" compoundref="message_8cpp" startline="51" endline="53">WarningMessage</references>
       </memberdef>
     </sectiondef>
@@ -157,8 +157,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/message/message.hpp" line="86" column="15" bodyfile="src/utils/message/message.cpp" bodystart="45" bodyend="47"/>
-        <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="90" endline="102">MessageImpl</references>
+        <location file="libs/message/message.hpp" line="86" column="15" bodyfile="libs/message/message.cpp" bodystart="45" bodyend="47"/>
+        <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="103" endline="115">MessageImpl</references>
         <referencedby refid="classMessage_1a7307e42c5da334c23ad52a2e7eaf755c">operator=</referencedby>
       </memberdef>
       <memberdef kind="function" id="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -188,13 +188,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/message/message.hpp" line="92" column="15" bodyfile="src/utils/message/message.cpp" bodystart="48" bodyend="50"/>
-        <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="90" endline="102">MessageImpl</references>
-        <referencedby refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" compoundref="database_8cpp" startline="495" endline="523">Database::doSimpleQuery</referencedby>
-        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="356" endline="484">Database::executeQuery</referencedby>
+        <location file="libs/message/message.hpp" line="92" column="15" bodyfile="libs/message/message.cpp" bodystart="48" bodyend="50"/>
+        <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="103" endline="115">MessageImpl</references>
+        <referencedby refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" compoundref="database_8cpp" startline="496" endline="524">Database::doSimpleQuery</referencedby>
+        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="357" endline="485">Database::executeQuery</referencedby>
         <referencedby refid="classMessage_1a7307e42c5da334c23ad52a2e7eaf755c">operator=</referencedby>
         <referencedby refid="classDatabaseSchema_1a6a5d958e7d5a760bcd929c88b1d93fa7" compoundref="databaseschema_8cpp" startline="128" endline="146">DatabaseSchema::printSchema</referencedby>
         <referencedby refid="classDatabaseConnectionPool_1a51134b38454f5146921c081fbf2ad5f3" compoundref="databaseconnectionpool_8cpp" startline="343" endline="406">DatabaseConnectionPool::reconnect_all</referencedby>
+        <referencedby refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" compoundref="boundedexecutor_8cpp" startline="136" endline="176">BoundedExecutor::shutdown</referencedby>
         <referencedby refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="71" endline="207">WatchDog::WatchDog</referencedby>
         <referencedby refid="classDatabase_1a84d399a2ad58d69daab9b05330e1316d" compoundref="database_8cpp" startline="118" endline="122">Database::~Database</referencedby>
       </memberdef>
@@ -225,8 +226,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/message/message.hpp" line="98" column="15" bodyfile="src/utils/message/message.cpp" bodystart="51" bodyend="53"/>
-        <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="90" endline="102">MessageImpl</references>
+        <location file="libs/message/message.hpp" line="98" column="15" bodyfile="libs/message/message.cpp" bodystart="51" bodyend="53"/>
+        <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="103" endline="115">MessageImpl</references>
         <referencedby refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="133" endline="257">DatabaseConnectionPool::DatabaseConnectionPool</referencedby>
         <referencedby refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" compoundref="databaseconnectionpool_8cpp" startline="269" endline="323">DatabaseConnectionPool::get_connection</referencedby>
         <referencedby refid="classMessage_1a7307e42c5da334c23ad52a2e7eaf755c">operator=</referencedby>
@@ -260,59 +261,59 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/message/message.hpp" line="105" column="15" bodyfile="src/utils/message/message.cpp" bodystart="54" bodyend="56"/>
-        <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="90" endline="102">MessageImpl</references>
-        <referencedby refid="classapi_1_1v2_1_1Client_1a9d8ec7236a309400e90639c194bb7017" compoundref="client_8hpp" startline="311" endline="347">api::v2::Client::buildClientCreateStatement</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Client_1af26bfc187b1d8c93e829d05032c7bdb3" compoundref="client_8hpp" startline="365" endline="409">api::v2::Client::buildClientUpdateStatement</referencedby>
-        <referencedby refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" compoundref="entity_8hpp" startline="295" endline="354">Entity::buildCreateStatement</referencedby>
-        <referencedby refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" compoundref="entity_8hpp" startline="490" endline="513">Entity::buildDeleteStatement</referencedby>
-        <referencedby refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" compoundref="entity_8hpp" startline="368" endline="410">Entity::buildReadStatement</referencedby>
-        <referencedby refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" compoundref="entity_8hpp" startline="533" endline="567">Entity::buildSearchStatement</referencedby>
-        <referencedby refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" compoundref="entity_8hpp" startline="425" endline="476">Entity::buildUpdateStatement</referencedby>
-        <referencedby refid="classEntity_1ac1d661555222fabdf77fc5750da50b19" compoundref="entity_8hpp" startline="253" endline="277">Entity::check_id_exists</referencedby>
-        <referencedby refid="classDOSDetector_1ab7e6cf04bd21b93f1cc36f71dd65f9d3" compoundref="dosdetector_8cpp" startline="585" endline="613">DOSDetector::checkStatus</referencedby>
-        <referencedby refid="classDOSDetector_1ada39f5488bee5dc50c8b1d43759e68b8" compoundref="dosdetector_8cpp" startline="306" endline="342">DOSDetector::cleanUpTask</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a6c90d78e4dd68ae25af5e18582fb3910" compoundref="entities_2base_2types_8hpp" startline="497" endline="534">api::v2::Types::ClientData_t::ClientData_t</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="638" endline="686">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
+        <location file="libs/message/message.hpp" line="105" column="15" bodyfile="libs/message/message.cpp" bodystart="54" bodyend="56"/>
+        <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="103" endline="115">MessageImpl</references>
+        <referencedby refid="classapi_1_1v2_1_1Client_1a9d8ec7236a309400e90639c194bb7017" compoundref="client_8hpp" startline="314" endline="350">api::v2::Client::buildClientCreateStatement</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1af26bfc187b1d8c93e829d05032c7bdb3" compoundref="client_8hpp" startline="368" endline="412">api::v2::Client::buildClientUpdateStatement</referencedby>
+        <referencedby refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" compoundref="entity_8hpp" startline="297" endline="356">Entity::buildCreateStatement</referencedby>
+        <referencedby refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" compoundref="entity_8hpp" startline="492" endline="515">Entity::buildDeleteStatement</referencedby>
+        <referencedby refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" compoundref="entity_8hpp" startline="370" endline="412">Entity::buildReadStatement</referencedby>
+        <referencedby refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" compoundref="entity_8hpp" startline="535" endline="569">Entity::buildSearchStatement</referencedby>
+        <referencedby refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" compoundref="entity_8hpp" startline="427" endline="478">Entity::buildUpdateStatement</referencedby>
+        <referencedby refid="classEntity_1ac1d661555222fabdf77fc5750da50b19" compoundref="entity_8hpp" startline="255" endline="279">Entity::check_id_exists</referencedby>
+        <referencedby refid="classDOSDetector_1ab7e6cf04bd21b93f1cc36f71dd65f9d3" compoundref="dosdetector_8cpp" startline="587" endline="617">DOSDetector::checkStatus</referencedby>
+        <referencedby refid="classDOSDetector_1ada39f5488bee5dc50c8b1d43759e68b8" compoundref="dosdetector_8cpp" startline="307" endline="343">DOSDetector::cleanUpTask</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a6c90d78e4dd68ae25af5e18582fb3910" compoundref="entities_2base_2types_8hpp" startline="511" endline="548">api::v2::Types::ClientData_t::ClientData_t</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="652" endline="703">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
         <referencedby refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="133" endline="257">DatabaseConnectionPool::DatabaseConnectionPool</referencedby>
         <referencedby refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" compoundref="databaseschema_8cpp" startline="56" endline="82">DatabaseSchema::DatabaseSchema</referencedby>
         <referencedby refid="classDOSDetector_1abd16610d356d1e768aff5a1b4897c65e" compoundref="dosdetector_8cpp" startline="81" endline="100">DOSDetector::DOSDetector</referencedby>
-        <referencedby refid="classDOSDetector_1a02b5e5995faaeca724ecf87bdeb6601f" compoundref="dosdetector_8cpp" startline="108" endline="129">DOSDetector::DOSDetector</referencedby>
-        <referencedby refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" compoundref="database_8cpp" startline="495" endline="523">Database::doSimpleQuery</referencedby>
-        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="356" endline="484">Database::executeQuery</referencedby>
-        <referencedby refid="classDOSDetector_1ae5377d4536dfce50aef85c19fdf5e29e" compoundref="dosdetector_8cpp" startline="355" endline="386">DOSDetector::generateRequestFingerprint</referencedby>
-        <referencedby refid="classEnvLoader_1a1866cb32c9be29f42152a1c0c9e7b2bb" compoundref="envloader_8cpp" startline="77" endline="112">EnvLoader::getEnvironmentVariable</referencedby>
-        <referencedby refid="classEnvLoader_1a2f52dfe5e8b93436843667a9e29bcf1e" compoundref="envloader_8hpp" startline="115" endline="140">EnvLoader::getEnvironmentVariable</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a7ac9299b75cd06a7004701cb2d7c3a34" compoundref="keeprbase_8cpp" startline="303" endline="321">api::v2::KeeprBase::getLastLoginTime</referencedby>
+        <referencedby refid="classDOSDetector_1a02b5e5995faaeca724ecf87bdeb6601f" compoundref="dosdetector_8cpp" startline="108" endline="130">DOSDetector::DOSDetector</referencedby>
+        <referencedby refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" compoundref="database_8cpp" startline="496" endline="524">Database::doSimpleQuery</referencedby>
+        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="357" endline="485">Database::executeQuery</referencedby>
+        <referencedby refid="classDOSDetector_1ae5377d4536dfce50aef85c19fdf5e29e" compoundref="dosdetector_8cpp" startline="356" endline="387">DOSDetector::generateRequestFingerprint</referencedby>
+        <referencedby refid="classEnvLoader_1a1866cb32c9be29f42152a1c0c9e7b2bb" compoundref="envloader_8cpp" startline="83" endline="119">EnvLoader::getEnvironmentVariable</referencedby>
+        <referencedby refid="classEnvLoader_1a3433869e7d95286c2dcf0360cd9c06eb" compoundref="envloader_8hpp" startline="132" endline="158">EnvLoader::getEnvironmentVariable</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a7ac9299b75cd06a7004701cb2d7c3a34" compoundref="keeprbase_8cpp" startline="304" endline="323">api::v2::KeeprBase::getLastLoginTime</referencedby>
         <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a96a366e05f18b668479c2da9000d6289" compoundref="keeprbase_8cpp" startline="111" endline="169">api::v2::KeeprBase::getLastLogoutTimeIfActive</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a25af0d69c7a5d1f0fa209b6002ec8c28" compoundref="keeprbase_8cpp" startline="508" endline="558">api::v2::KeeprBase::getLastLogoutTimeIfActiveCoro</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a25af0d69c7a5d1f0fa209b6002ec8c28" compoundref="keeprbase_8cpp" startline="510" endline="560">api::v2::KeeprBase::getLastLogoutTimeIfActiveCoro</referencedby>
         <referencedby refid="classDatabaseController_1aa758566f79643d7f383a135ef80fa9e9" compoundref="databasecontroller_8cpp" startline="158" endline="176">DatabaseController::getPasswordHashForUserName</referencedby>
         <referencedby refid="classDatabaseController_1a0389040d66c5126fd7750a189aefaa14" compoundref="databasecontroller_8cpp" startline="394" endline="412">DatabaseController::getPasswordHashForUserNameCoro</referencedby>
-        <referencedby refid="classService_1a1a762691efab98926ce3c34988ccc51a" compoundref="service_8hpp" startline="114" endline="151">Service::getSqlAddStaffStatement</referencedby>
-        <referencedby refid="classProvider_1ac2c776b47dc13f0277c0fe628f9e138d" compoundref="provider_8hpp" startline="126" endline="159">Provider::getSqlGetServicesStatement</referencedby>
-        <referencedby refid="classUser_1ae5d3ed1b19bf6392730008203374e5b2" compoundref="people_2user_8hpp" startline="112" endline="132">User::getSqlGetServicesStatement</referencedby>
-        <referencedby refid="classService_1a6b8a06b26521f411f8c21104031ab5fe" compoundref="service_8hpp" startline="165" endline="200">Service::getSqlRemoveStaffStatement</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Client_1aca2d94a63d7099b47ce5b1fce6ff49b1" compoundref="client_8hpp" startline="184" endline="215">api::v2::Client::getSqlToggleSuspendStatement</referencedby>
+        <referencedby refid="classService_1a1a762691efab98926ce3c34988ccc51a" compoundref="service_8hpp" startline="116" endline="153">Service::getSqlAddStaffStatement</referencedby>
+        <referencedby refid="classProvider_1ac2c776b47dc13f0277c0fe628f9e138d" compoundref="provider_8hpp" startline="127" endline="160">Provider::getSqlGetServicesStatement</referencedby>
+        <referencedby refid="classUser_1ae5d3ed1b19bf6392730008203374e5b2" compoundref="people_2user_8hpp" startline="113" endline="133">User::getSqlGetServicesStatement</referencedby>
+        <referencedby refid="classService_1a6b8a06b26521f411f8c21104031ab5fe" compoundref="service_8hpp" startline="167" endline="202">Service::getSqlRemoveStaffStatement</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1aca2d94a63d7099b47ce5b1fce6ff49b1" compoundref="client_8hpp" startline="186" endline="218">api::v2::Client::getSqlToggleSuspendStatement</referencedby>
         <referencedby refid="classCommunicate_1a0a4ddbbf7176276436c6c9f8bd3fa9f1" compoundref="communicate_8cpp" startline="162" endline="193">Communicate::handleResponse</referencedby>
-        <referencedby refid="classDOSDetector_1a0f0629bfa3af7f023f3f06f28f94ebad" compoundref="dosdetector_8cpp" startline="171" endline="211">DOSDetector::is_dos_attack</referencedby>
-        <referencedby refid="classDOSDetector_1a3f43f0afbf5d81ebb4d30e86ef4cb1a8" compoundref="dosdetector_8cpp" startline="538" endline="551">DOSDetector::isBanned</referencedby>
-        <referencedby refid="classDOSDetector_1ad7a88f1fa5f23698309d4c06d6dd12de" compoundref="dosdetector_8cpp" startline="519" endline="532">DOSDetector::isBlacklisted</referencedby>
-        <referencedby refid="classDOSDetector_1ad888b72a13f8be0828fe41dbdea72147" compoundref="dosdetector_8cpp" startline="557" endline="571">DOSDetector::isRateLimited</referencedby>
-        <referencedby refid="classDOSDetector_1a27e26c16f32b42c6ce7724034d29acb4" compoundref="dosdetector_8cpp" startline="499" endline="512">DOSDetector::isWhitelisted</referencedby>
+        <referencedby refid="classDOSDetector_1a0f0629bfa3af7f023f3f06f28f94ebad" compoundref="dosdetector_8cpp" startline="172" endline="212">DOSDetector::is_dos_attack</referencedby>
+        <referencedby refid="classDOSDetector_1a3f43f0afbf5d81ebb4d30e86ef4cb1a8" compoundref="dosdetector_8cpp" startline="539" endline="552">DOSDetector::isBanned</referencedby>
+        <referencedby refid="classDOSDetector_1ad7a88f1fa5f23698309d4c06d6dd12de" compoundref="dosdetector_8cpp" startline="520" endline="533">DOSDetector::isBlacklisted</referencedby>
+        <referencedby refid="classDOSDetector_1ad888b72a13f8be0828fe41dbdea72147" compoundref="dosdetector_8cpp" startline="558" endline="572">DOSDetector::isRateLimited</referencedby>
+        <referencedby refid="classDOSDetector_1a27e26c16f32b42c6ce7724034d29acb4" compoundref="dosdetector_8cpp" startline="500" endline="513">DOSDetector::isWhitelisted</referencedby>
         <referencedby refid="classMessage_1a7307e42c5da334c23ad52a2e7eaf755c">operator=</referencedby>
         <referencedby refid="classDatabaseSchema_1a801e1391c1907e56401a867210b8c25d" compoundref="databaseschema_8cpp" startline="92" endline="114">DatabaseSchema::populateSchema</referencedby>
-        <referencedby refid="classDOSDetector_1aee42ffb7cac8307be5d3846f5faf7b3c" compoundref="dosdetector_8cpp" startline="626" endline="722">DOSDetector::processRequest</referencedby>
+        <referencedby refid="classDOSDetector_1aee42ffb7cac8307be5d3846f5faf7b3c" compoundref="dosdetector_8cpp" startline="630" endline="726">DOSDetector::processRequest</referencedby>
         <referencedby refid="classDatabaseConnectionPool_1a51134b38454f5146921c081fbf2ad5f3" compoundref="databaseconnectionpool_8cpp" startline="343" endline="406">DatabaseConnectionPool::reconnect_all</referencedby>
         <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="156" endline="295">Server::run</referencedby>
         <referencedby refid="classCommunicate_1ac17ede80bd387e5c096fcf9fcb481aee" compoundref="communicate_8cpp" startline="47" endline="160">Communicate::sendRequest</referencedby>
-        <referencedby refid="classEnvVars_1a711d3932ab9abc4998c8acbb454f36a8" compoundref="envvars_8cpp" startline="69" endline="80">EnvVars::set</referencedby>
+        <referencedby refid="classEnvVars_1a711d3932ab9abc4998c8acbb454f36a8" compoundref="envvars_8cpp" startline="71" endline="83">EnvVars::set</referencedby>
         <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a827a3339a5b2ecfddc1ba78ef85e7711" compoundref="keeprbase_8cpp" startline="180" endline="244">api::v2::KeeprBase::setNowLoginTimeGetLastLogoutTime</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1aec14dfc5acf772c02faa5ebe3c383eba" compoundref="keeprbase_8cpp" startline="252" endline="295">api::v2::KeeprBase::setNowLogoutTime</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="869" endline="895">api::v2::Types::StaffData::StaffData</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a45122c90e774a3c1e67316590dd15245" compoundref="entities_2base_2types_8hpp" startline="910" endline="941">api::v2::Types::StaffData::toInviteJson</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="723" endline="770">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1aec14dfc5acf772c02faa5ebe3c383eba" compoundref="keeprbase_8cpp" startline="252" endline="296">api::v2::KeeprBase::setNowLogoutTime</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="891" endline="917">api::v2::Types::StaffData::StaffData</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a45122c90e774a3c1e67316590dd15245" compoundref="entities_2base_2types_8hpp" startline="932" endline="963">api::v2::Types::StaffData::toInviteJson</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="741" endline="791">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
         <referencedby refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="71" endline="207">WatchDog::WatchDog</referencedby>
-        <referencedby refid="classDOSDetector_1a9cb1ca1eef96a9f1712559ed0d910eab" compoundref="dosdetector_8cpp" startline="138" endline="161">DOSDetector::~DOSDetector</referencedby>
+        <referencedby refid="classDOSDetector_1a9cb1ca1eef96a9f1712559ed0d910eab" compoundref="dosdetector_8cpp" startline="139" endline="162">DOSDetector::~DOSDetector</referencedby>
       </memberdef>
       <memberdef kind="function" id="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -341,72 +342,73 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/message/message.hpp" line="111" column="15" bodyfile="src/utils/message/message.cpp" bodystart="57" bodyend="59"/>
-        <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="90" endline="102">MessageImpl</references>
-        <referencedby refid="classapi_1_1v2_1_1Client_1a9d8ec7236a309400e90639c194bb7017" compoundref="client_8hpp" startline="311" endline="347">api::v2::Client::buildClientCreateStatement</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Client_1af26bfc187b1d8c93e829d05032c7bdb3" compoundref="client_8hpp" startline="365" endline="409">api::v2::Client::buildClientUpdateStatement</referencedby>
-        <referencedby refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" compoundref="entity_8hpp" startline="295" endline="354">Entity::buildCreateStatement</referencedby>
-        <referencedby refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" compoundref="entity_8hpp" startline="490" endline="513">Entity::buildDeleteStatement</referencedby>
-        <referencedby refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" compoundref="entity_8hpp" startline="368" endline="410">Entity::buildReadStatement</referencedby>
-        <referencedby refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" compoundref="entity_8hpp" startline="533" endline="567">Entity::buildSearchStatement</referencedby>
-        <referencedby refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" compoundref="entity_8hpp" startline="425" endline="476">Entity::buildUpdateStatement</referencedby>
+        <location file="libs/message/message.hpp" line="111" column="15" bodyfile="libs/message/message.cpp" bodystart="57" bodyend="59"/>
+        <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="103" endline="115">MessageImpl</references>
+        <referencedby refid="classapi_1_1v2_1_1Client_1a9d8ec7236a309400e90639c194bb7017" compoundref="client_8hpp" startline="314" endline="350">api::v2::Client::buildClientCreateStatement</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1af26bfc187b1d8c93e829d05032c7bdb3" compoundref="client_8hpp" startline="368" endline="412">api::v2::Client::buildClientUpdateStatement</referencedby>
+        <referencedby refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" compoundref="entity_8hpp" startline="297" endline="356">Entity::buildCreateStatement</referencedby>
+        <referencedby refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" compoundref="entity_8hpp" startline="492" endline="515">Entity::buildDeleteStatement</referencedby>
+        <referencedby refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" compoundref="entity_8hpp" startline="370" endline="412">Entity::buildReadStatement</referencedby>
+        <referencedby refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" compoundref="entity_8hpp" startline="535" endline="569">Entity::buildSearchStatement</referencedby>
+        <referencedby refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" compoundref="entity_8hpp" startline="427" endline="478">Entity::buildUpdateStatement</referencedby>
         <referencedby refid="classDatabase_1a7c0a44631de74f1d0a18119d1cd6cf1a" compoundref="database_8cpp" startline="134" endline="173">Database::checkExists</referencedby>
         <referencedby refid="classDatabaseController_1a757e16ca56537bd8eed3d9abe9768954" compoundref="databasecontroller_8cpp" startline="351" endline="391">DatabaseController::checkItemExistsCoro</referencedby>
-        <referencedby refid="classDOSDetector_1ab7e6cf04bd21b93f1cc36f71dd65f9d3" compoundref="dosdetector_8cpp" startline="585" endline="613">DOSDetector::checkStatus</referencedby>
-        <referencedby refid="classDOSDetector_1ada39f5488bee5dc50c8b1d43759e68b8" compoundref="dosdetector_8cpp" startline="306" endline="342">DOSDetector::cleanUpTask</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a6c90d78e4dd68ae25af5e18582fb3910" compoundref="entities_2base_2types_8hpp" startline="497" endline="534">api::v2::Types::ClientData_t::ClientData_t</referencedby>
+        <referencedby refid="classDOSDetector_1ab7e6cf04bd21b93f1cc36f71dd65f9d3" compoundref="dosdetector_8cpp" startline="587" endline="617">DOSDetector::checkStatus</referencedby>
+        <referencedby refid="classDOSDetector_1ada39f5488bee5dc50c8b1d43759e68b8" compoundref="dosdetector_8cpp" startline="307" endline="343">DOSDetector::cleanUpTask</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a6c90d78e4dd68ae25af5e18582fb3910" compoundref="entities_2base_2types_8hpp" startline="511" endline="548">api::v2::Types::ClientData_t::ClientData_t</referencedby>
         <referencedby refid="classapi_1_1v2_1_1SessionManager_1a2be4af6233804aa5b85985ecb3e14d00" compoundref="sessionmanager_8cpp" startline="468" endline="547">api::v2::SessionManager::clientHasValidSession</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="638" endline="686">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="652" endline="703">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
         <referencedby refid="classDatabaseConnectionPool_1a37fcc8910499c8a84a3196b77d4f032a" compoundref="databaseconnectionpool_8cpp" startline="86" endline="122">DatabaseConnectionPool::createDatabaseConnection</referencedby>
         <referencedby refid="classDatabase_1aa78586a013e7bb5fb707dc4ce330d896" compoundref="database_8cpp" startline="83" endline="113">Database::Database</referencedby>
         <referencedby refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="133" endline="257">DatabaseConnectionPool::DatabaseConnectionPool</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" compoundref="keeprbase_8cpp" startline="376" endline="427">api::v2::KeeprBase::decodeToken</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" compoundref="keeprbase_8cpp" startline="378" endline="429">api::v2::KeeprBase::decodeToken</referencedby>
         <referencedby refid="classDatabaseController_1ac586f1fc3a54b3bbf1ff5369e403ed20" compoundref="databasecontroller_8cpp" startline="313" endline="349">DatabaseController::doReadQueryCoro</referencedby>
         <referencedby refid="classDOSDetector_1abd16610d356d1e768aff5a1b4897c65e" compoundref="dosdetector_8cpp" startline="81" endline="100">DOSDetector::DOSDetector</referencedby>
-        <referencedby refid="classDOSDetector_1a02b5e5995faaeca724ecf87bdeb6601f" compoundref="dosdetector_8cpp" startline="108" endline="129">DOSDetector::DOSDetector</referencedby>
-        <referencedby refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" compoundref="database_8cpp" startline="495" endline="523">Database::doSimpleQuery</referencedby>
-        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="356" endline="484">Database::executeQuery</referencedby>
+        <referencedby refid="classDOSDetector_1a02b5e5995faaeca724ecf87bdeb6601f" compoundref="dosdetector_8cpp" startline="108" endline="130">DOSDetector::DOSDetector</referencedby>
+        <referencedby refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" compoundref="database_8cpp" startline="496" endline="524">Database::doSimpleQuery</referencedby>
+        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="357" endline="485">Database::executeQuery</referencedby>
         <referencedby refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="205" endline="246">DatabaseController::executeQueryCoro</referencedby>
-        <referencedby refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="403" endline="445">DatabaseController::executer</referencedby>
+        <referencedby refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="405" endline="448">DatabaseController::executer</referencedby>
         <referencedby refid="classDatabaseController_1aa3de6b2217aa0ba75ec4eb5286d36799" compoundref="databasecontroller_8cpp" startline="249" endline="278">DatabaseController::executeReadQueryCoro</referencedby>
         <referencedby refid="classDatabaseController_1a7b2bb5792bc55ec851dcd7ae997c58a4" compoundref="databasecontroller_8cpp" startline="281" endline="311">DatabaseController::executeSearchQueryCoro</referencedby>
-        <referencedby refid="classDOSDetector_1ae5377d4536dfce50aef85c19fdf5e29e" compoundref="dosdetector_8cpp" startline="355" endline="386">DOSDetector::generateRequestFingerprint</referencedby>
+        <referencedby refid="classDOSDetector_1ae5377d4536dfce50aef85c19fdf5e29e" compoundref="dosdetector_8cpp" startline="356" endline="387">DOSDetector::generateRequestFingerprint</referencedby>
         <referencedby refid="classapi_1_1v2_1_1TokenManager_1ae35221cdefeaad8255a896481af08403" compoundref="tokenmanager_8cpp" startline="43" endline="124">api::v2::TokenManager::generateToken</referencedby>
         <referencedby refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" compoundref="databaseconnectionpool_8cpp" startline="269" endline="323">DatabaseConnectionPool::get_connection</referencedby>
         <referencedby refid="classDatabase_1a53e5ff850d852b1d9930ed830393e1a1" compoundref="database_8cpp" startline="309" endline="339">Database::getAllTables</referencedby>
         <referencedby refid="classDatabaseController_1abb1622b85d3e413bcb1dee3521a9d24f" compoundref="databasecontroller_8cpp" startline="474" endline="509">DatabaseController::getAllTablesCoro</referencedby>
         <referencedby refid="classDatabaseController_1a2a0585031d4e0a5e8dfdeb7d77041563" compoundref="databasecontroller_8cpp" startline="512" endline="538">DatabaseController::getPermissionsCoro</referencedby>
-        <referencedby refid="classService_1a1a762691efab98926ce3c34988ccc51a" compoundref="service_8hpp" startline="114" endline="151">Service::getSqlAddStaffStatement</referencedby>
-        <referencedby refid="classUser_1ae5d3ed1b19bf6392730008203374e5b2" compoundref="people_2user_8hpp" startline="112" endline="132">User::getSqlGetServicesStatement</referencedby>
-        <referencedby refid="classService_1a6b8a06b26521f411f8c21104031ab5fe" compoundref="service_8hpp" startline="165" endline="200">Service::getSqlRemoveStaffStatement</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Client_1aca2d94a63d7099b47ce5b1fce6ff49b1" compoundref="client_8hpp" startline="184" endline="215">api::v2::Client::getSqlToggleSuspendStatement</referencedby>
+        <referencedby refid="classService_1a1a762691efab98926ce3c34988ccc51a" compoundref="service_8hpp" startline="116" endline="153">Service::getSqlAddStaffStatement</referencedby>
+        <referencedby refid="classUser_1ae5d3ed1b19bf6392730008203374e5b2" compoundref="people_2user_8hpp" startline="113" endline="133">User::getSqlGetServicesStatement</referencedby>
+        <referencedby refid="classService_1a6b8a06b26521f411f8c21104031ab5fe" compoundref="service_8hpp" startline="167" endline="202">Service::getSqlRemoveStaffStatement</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1aca2d94a63d7099b47ce5b1fce6ff49b1" compoundref="client_8hpp" startline="186" endline="218">api::v2::Client::getSqlToggleSuspendStatement</referencedby>
         <referencedby refid="classDatabase_1aa5fe1076eec14a4e265fd4b7d1247983" compoundref="database_8cpp" startline="243" endline="301">Database::getTableSchema</referencedby>
         <referencedby refid="classDatabaseController_1ab6502e9c51e8657b16ffe4795949ebe7" compoundref="databasecontroller_8cpp" startline="415" endline="471">DatabaseController::getTableSchemaCoro</referencedby>
         <referencedby refid="classCommunicate_1a0a4ddbbf7176276436c6c9f8bd3fa9f1" compoundref="communicate_8cpp" startline="162" endline="193">Communicate::handleResponse</referencedby>
         <referencedby refid="classPasswordCrypt_1aaa1e7f7eec2be8279ba7330313001546" compoundref="passwordcrypt_8cpp" startline="88" endline="116">PasswordCrypt::hashPassword</referencedby>
-        <referencedby refid="classDOSDetector_1a0f0629bfa3af7f023f3f06f28f94ebad" compoundref="dosdetector_8cpp" startline="171" endline="211">DOSDetector::is_dos_attack</referencedby>
-        <referencedby refid="classDOSDetector_1a3f43f0afbf5d81ebb4d30e86ef4cb1a8" compoundref="dosdetector_8cpp" startline="538" endline="551">DOSDetector::isBanned</referencedby>
-        <referencedby refid="classDOSDetector_1ad7a88f1fa5f23698309d4c06d6dd12de" compoundref="dosdetector_8cpp" startline="519" endline="532">DOSDetector::isBlacklisted</referencedby>
-        <referencedby refid="classDOSDetector_1ad888b72a13f8be0828fe41dbdea72147" compoundref="dosdetector_8cpp" startline="557" endline="571">DOSDetector::isRateLimited</referencedby>
+        <referencedby refid="classDOSDetector_1a0f0629bfa3af7f023f3f06f28f94ebad" compoundref="dosdetector_8cpp" startline="172" endline="212">DOSDetector::is_dos_attack</referencedby>
+        <referencedby refid="classDOSDetector_1a3f43f0afbf5d81ebb4d30e86ef4cb1a8" compoundref="dosdetector_8cpp" startline="539" endline="552">DOSDetector::isBanned</referencedby>
+        <referencedby refid="classDOSDetector_1ad7a88f1fa5f23698309d4c06d6dd12de" compoundref="dosdetector_8cpp" startline="520" endline="533">DOSDetector::isBlacklisted</referencedby>
+        <referencedby refid="classDOSDetector_1ad888b72a13f8be0828fe41dbdea72147" compoundref="dosdetector_8cpp" startline="558" endline="572">DOSDetector::isRateLimited</referencedby>
         <referencedby refid="classapi_1_1v2_1_1TokenManager_1ad59c01322c709811a7f499f4e1d3fa95" compoundref="tokenmanager_8cpp" startline="131" endline="162">api::v2::TokenManager::isTokenValid</referencedby>
         <referencedby refid="classapi_1_1v2_1_1TokenManager_1ae2353b4f71d0b7f35474f8d7bba4e6b5" compoundref="tokenmanager_8cpp" startline="167" endline="206">api::v2::TokenManager::isTokenValidCoro</referencedby>
-        <referencedby refid="classDOSDetector_1a27e26c16f32b42c6ce7724034d29acb4" compoundref="dosdetector_8cpp" startline="499" endline="512">DOSDetector::isWhitelisted</referencedby>
+        <referencedby refid="classDOSDetector_1a27e26c16f32b42c6ce7724034d29acb4" compoundref="dosdetector_8cpp" startline="500" endline="513">DOSDetector::isWhitelisted</referencedby>
         <referencedby refid="classMessage_1a7307e42c5da334c23ad52a2e7eaf755c">operator=</referencedby>
         <referencedby refid="classPasswordCrypt_1aa0ec7c19855b6ab5e9e6a53706bc4bb5" compoundref="passwordcrypt_8cpp" startline="71" endline="78">PasswordCrypt::PasswordCrypt</referencedby>
-        <referencedby refid="classDOSDetector_1aee42ffb7cac8307be5d3846f5faf7b3c" compoundref="dosdetector_8cpp" startline="626" endline="722">DOSDetector::processRequest</referencedby>
+        <referencedby refid="classDOSDetector_1aee42ffb7cac8307be5d3846f5faf7b3c" compoundref="dosdetector_8cpp" startline="630" endline="726">DOSDetector::processRequest</referencedby>
         <referencedby refid="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" compoundref="database_8cpp" startline="212" endline="232">Database::reconnect</referencedby>
         <referencedby refid="classDatabaseConnectionPool_1a51134b38454f5146921c081fbf2ad5f3" compoundref="databaseconnectionpool_8cpp" startline="343" endline="406">DatabaseConnectionPool::reconnect_all</referencedby>
         <referencedby refid="classapi_1_1v2_1_1SessionManager_1a64bf884c729b388729752c9163db479f" compoundref="sessionmanager_8cpp" startline="605" endline="650">api::v2::SessionManager::removeSession</referencedby>
+        <referencedby refid="classBoundedExecutor_1a14e1a972664d0af29d59d074675c5ffe" compoundref="boundedexecutor_8cpp" startline="419" endline="475">BoundedExecutor::run</referencedby>
         <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="156" endline="295">Server::run</referencedby>
         <referencedby refid="classCommunicate_1ac17ede80bd387e5c096fcf9fcb481aee" compoundref="communicate_8cpp" startline="47" endline="160">Communicate::sendRequest</referencedby>
         <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a827a3339a5b2ecfddc1ba78ef85e7711" compoundref="keeprbase_8cpp" startline="180" endline="244">api::v2::KeeprBase::setNowLoginTimeGetLastLogoutTime</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1aec14dfc5acf772c02faa5ebe3c383eba" compoundref="keeprbase_8cpp" startline="252" endline="295">api::v2::KeeprBase::setNowLogoutTime</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1aec14dfc5acf772c02faa5ebe3c383eba" compoundref="keeprbase_8cpp" startline="252" endline="296">api::v2::KeeprBase::setNowLogoutTime</referencedby>
         <referencedby refid="classapi_1_1v2_1_1SessionManager_1a7ca49324d009c30cf57fa224bfaabe4e" compoundref="sessionmanager_8cpp" startline="558" endline="596">api::v2::SessionManager::storeSession</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="723" endline="770">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" compoundref="keeprbase_8cpp" startline="438" endline="498">api::v2::KeeprBase::validateToken</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1adc936836bc32e25fd2348e738289c83a" compoundref="keeprbase_8cpp" startline="570" endline="625">api::v2::KeeprBase::validateTokenCoro</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="741" endline="791">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" compoundref="keeprbase_8cpp" startline="440" endline="500">api::v2::KeeprBase::validateToken</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1adc936836bc32e25fd2348e738289c83a" compoundref="keeprbase_8cpp" startline="572" endline="627">api::v2::KeeprBase::validateTokenCoro</referencedby>
         <referencedby refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="71" endline="207">WatchDog::WatchDog</referencedby>
-        <referencedby refid="classDOSDetector_1a9cb1ca1eef96a9f1712559ed0d910eab" compoundref="dosdetector_8cpp" startline="138" endline="161">DOSDetector::~DOSDetector</referencedby>
+        <referencedby refid="classDOSDetector_1a9cb1ca1eef96a9f1712559ed0d910eab" compoundref="dosdetector_8cpp" startline="139" endline="162">DOSDetector::~DOSDetector</referencedby>
       </memberdef>
       <memberdef kind="function" id="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -435,8 +437,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/message/message.hpp" line="118" column="15" bodyfile="src/utils/message/message.cpp" bodystart="60" bodyend="62"/>
-        <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="90" endline="102">MessageImpl</references>
+        <location file="libs/message/message.hpp" line="118" column="15" bodyfile="libs/message/message.cpp" bodystart="60" bodyend="62"/>
+        <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="103" endline="115">MessageImpl</references>
         <referencedby refid="classMessage_1a7307e42c5da334c23ad52a2e7eaf755c">operator=</referencedby>
       </memberdef>
       <memberdef kind="function" id="classMessage_1aaa3d510c50f46a224c9021dfd5d33ecb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -466,8 +468,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/message/message.hpp" line="124" column="15" bodyfile="src/utils/message/message.cpp" bodystart="63" bodyend="65"/>
-        <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="90" endline="102">MessageImpl</references>
+        <location file="libs/message/message.hpp" line="124" column="15" bodyfile="libs/message/message.cpp" bodystart="63" bodyend="65"/>
+        <references refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="103" endline="115">MessageImpl</references>
         <referencedby refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="133" endline="257">DatabaseConnectionPool::DatabaseConnectionPool</referencedby>
         <referencedby refid="classMessage_1a7307e42c5da334c23ad52a2e7eaf755c">operator=</referencedby>
       </memberdef>
@@ -509,8 +511,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/message/message.hpp" line="132" column="22" bodyfile="src/utils/message/message.cpp" bodystart="69" bodyend="88"/>
-        <referencedby refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="90" endline="102">MessageImpl</referencedby>
+        <location file="libs/message/message.hpp" line="132" column="22" bodyfile="libs/message/message.cpp" bodystart="69" bodyend="101"/>
+        <referencedby refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="103" endline="115">MessageImpl</referencedby>
         <referencedby refid="classMessage_1a7307e42c5da334c23ad52a2e7eaf755c">operator=</referencedby>
       </memberdef>
     </sectiondef>
@@ -554,9 +556,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/message/message.hpp" line="142" column="15" bodyfile="src/utils/message/message.cpp" bodystart="90" bodyend="102"/>
-        <references refid="classMessage_1ab1578286398f61ef66338441d1ea99e3" compoundref="message_8cpp" startline="69" endline="88">get_color</references>
-        <references refid="classMessage_1a866730d10417555fd9cf17fe1b94b0f4" compoundref="message_8cpp" startline="127" endline="137">removeNewLine</references>
+        <location file="libs/message/message.hpp" line="142" column="15" bodyfile="libs/message/message.cpp" bodystart="103" bodyend="115"/>
+        <references refid="classMessage_1ab1578286398f61ef66338441d1ea99e3" compoundref="message_8cpp" startline="69" endline="101">get_color</references>
+        <references refid="classMessage_1a866730d10417555fd9cf17fe1b94b0f4" compoundref="message_8cpp" startline="140" endline="150">removeNewLine</references>
         <referencedby refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" compoundref="message_8cpp" startline="60" endline="62">ConfMessage</referencedby>
         <referencedby refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">CriticalMessage</referencedby>
         <referencedby refid="classMessage_1a35ba4529b26ccea626d1b885815369cb" compoundref="message_8cpp" startline="45" endline="47">DebugMessage</referencedby>
@@ -605,8 +607,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/message/message.hpp" line="151" column="15" bodyfile="src/utils/message/message.cpp" bodystart="103" bodyend="124"/>
-        <references refid="classMessage_1a866730d10417555fd9cf17fe1b94b0f4" compoundref="message_8cpp" startline="127" endline="137">removeNewLine</references>
+        <location file="libs/message/message.hpp" line="151" column="15" bodyfile="libs/message/message.cpp" bodystart="116" bodyend="137"/>
+        <references refid="classMessage_1a866730d10417555fd9cf17fe1b94b0f4" compoundref="message_8cpp" startline="140" endline="150">removeNewLine</references>
       </memberdef>
       <memberdef kind="function" id="classMessage_1a866730d10417555fd9cf17fe1b94b0f4" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -637,9 +639,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/message/message.hpp" line="160" column="22" bodyfile="src/utils/message/message.cpp" bodystart="127" bodyend="137"/>
-        <referencedby refid="classMessage_1ad8533b3d0c485b9d43149a4e506fd311" compoundref="message_8cpp" startline="103" endline="124">MessageImpl</referencedby>
-        <referencedby refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="90" endline="102">MessageImpl</referencedby>
+        <location file="libs/message/message.hpp" line="160" column="22" bodyfile="libs/message/message.cpp" bodystart="140" bodyend="150"/>
+        <referencedby refid="classMessage_1ad8533b3d0c485b9d43149a4e506fd311" compoundref="message_8cpp" startline="116" endline="137">MessageImpl</referencedby>
+        <referencedby refid="classMessage_1a2491b74248227f3621af9b740c352ab9" compoundref="message_8cpp" startline="103" endline="115">MessageImpl</referencedby>
         <referencedby refid="classMessage_1a7307e42c5da334c23ad52a2e7eaf755c">operator=</referencedby>
       </memberdef>
     </sectiondef>
@@ -647,11 +649,11 @@
 <para>Stateless facade for emitting coloured status messages. </para>
     </briefdescription>
     <detaileddescription>
-<para>Severity helpers (Debug through Critical) write through trantor::Logger, so they flow into the configured Logger/spdlog sinks. ConfMessage and InitMessage are startup/status notices that instead print directly to stdout with a <computeroutput>[Project Valhalla]</computeroutput> prefix. All methods are static; instances carry no state. <simplesect kind="see"><para>Logger </para>
+<para>Severity helpers (Debug through Critical) write through trantor::Logger, so they flow into the configured Logger/spdlog sinks. ConfMessage and InitMessage are startup/status notices that instead print directly to stdout with a <computeroutput>[Project Valhalla]</computeroutput> prefix. All methods are static; instances carry no state. <simplesect kind="see"><para><ref refid="classLogger" kindref="compound">Logger</ref> </para>
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/message/message.hpp" line="49" column="1" bodyfile="src/message/message.hpp" bodystart="49" bodyend="163"/>
+    <location file="libs/message/message.hpp" line="49" column="1" bodyfile="libs/message/message.hpp" bodystart="49" bodyend="163"/>
     <listofallmembers>
       <member refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" prot="public" virt="non-virtual"><scope>Message</scope><name>ConfMessage</name></member>
       <member refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" prot="public" virt="non-virtual"><scope>Message</scope><name>CriticalMessage</name></member>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['yellow_0',['Yellow',['../classLogger.html#a87da4787054457b9c0bb0987dcd0030aa1f63a6ccfabbf1f73b71ea9a7bb20d11',1,'Logger']]]
+  ['yellow_0',['Yellow',['../classLogger.html#a87da4787054457b9c0bb0987dcd0030aa51e6cd92b6c45f9affdc158ecca2b8b8',1,'Logger']]]
 ];

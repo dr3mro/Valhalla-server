@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_ffe88d93b30ce0d9dfe79a976a3e9e60" kind="dir">
+    <compoundname>libs/message</compoundname>
+    <innerfile refid="message_8cpp">message.cpp</innerfile>
+    <innerfile refid="message_8hpp">message.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libs/message/"/>
+  </compounddef>
+</doxygen>

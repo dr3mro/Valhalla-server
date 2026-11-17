@@ -127,24 +127,24 @@
     </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classDOSDetector_1a2b0c5dddb5473f80e8241ad5b73c52a1" prot="private" static="no" mutable="no">
-        <type>std::shared_ptr&lt; Configurator &gt;</type>
+        <type>std::shared_ptr&lt; <ref refid="classConfigurator" kindref="compound">Configurator</ref> &gt;</type>
         <definition>std::shared_ptr&lt;Configurator&gt; DOSDetector::configurator_</definition>
         <argsstring></argsstring>
         <name>configurator_</name>
         <qualifiedname>DOSDetector::configurator_</qualifiedname>
         <initializer>                          =
-<ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;Configurator&gt;()</initializer>
+<ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>&gt;()</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Configuration source used by the default constructor; also keeps the Configurator alive. </para>
+<para>Configuration source used by the default constructor; also keeps the <ref refid="classConfigurator" kindref="compound">Configurator</ref> alive. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/gatekeeper/dosdetector/dosdetector.hpp" line="214" column="19" bodyfile="src/gatekeeper/dosdetector/dosdetector.hpp" bodystart="214" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classDOSDetector_1ac85a9453160ecbc88fa0195399746a2c" prot="private" static="no" mutable="no">
-        <type>std::optional&lt; Configurator::DOSDetectorConfig &gt;</type>
+        <type>std::optional&lt; <ref refid="classConfigurator_1a73f1bdb52e6a9845bd21b01baf868205" kindref="member">Configurator::DOSDetectorConfig</ref> &gt;</type>
         <definition>std::optional&lt;Configurator::DOSDetectorConfig&gt; DOSDetector::owned_config_</definition>
         <argsstring></argsstring>
         <name>owned_config_</name>
@@ -160,13 +160,13 @@
         <referencedby refid="classDOSDetector_1a02b5e5995faaeca724ecf87bdeb6601f" compoundref="dosdetector_8cpp" startline="108" endline="130">DOSDetector</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classDOSDetector_1a7f2d8e67c8965359df70c5d6f04b8850" prot="private" static="no" mutable="no">
-        <type>const Configurator::DOSDetectorConfig &amp;</type>
+        <type>const <ref refid="classConfigurator_1a73f1bdb52e6a9845bd21b01baf868205" kindref="member">Configurator::DOSDetectorConfig</ref> &amp;</type>
         <definition>const Configurator::DOSDetectorConfig&amp; DOSDetector::config_</definition>
         <argsstring></argsstring>
         <name>config_</name>
         <qualifiedname>DOSDetector::config_</qualifiedname>
         <initializer>                                          = <ref refid="classDOSDetector_1a2b0c5dddb5473f80e8241ad5b73c52a1" kindref="member">configurator_</ref>-&gt;get&lt;
-Configurator::DOSDetectorConfig&gt;()</initializer>
+<ref refid="classConfigurator_1a73f1bdb52e6a9845bd21b01baf868205" kindref="member">Configurator::DOSDetectorConfig</ref>&gt;()</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -487,12 +487,12 @@ XOR is used to combine the digests because a XOR b equals b XOR a; that makes th
         <name>DOSDetector</name>
         <qualifiedname>DOSDetector::DOSDetector</qualifiedname>
         <briefdescription>
-<para>Production constructor: loads configuration from the <ref refid="classStore" kindref="compound">Store</ref> Configurator. </para>
+<para>Production constructor: loads configuration from the <ref refid="classStore" kindref="compound">Store</ref> <ref refid="classConfigurator" kindref="compound">Configurator</ref>. </para>
         </briefdescription>
         <detaileddescription>
 <para>Production constructor: compiles configured matchers and starts the cleanup thread.</para>
 <para>Compiles the whitelist/blacklist patterns and starts the background cleanup thread using the real steady clock.</para>
-<para>Configuration comes from the <ref refid="classStore" kindref="compound">Store</ref> Configurator and the real steady clock is used. Exceptions during setup are logged rather than propagated, which may leave the detector partially initialized (for example without a cleanup thread). </para>
+<para>Configuration comes from the <ref refid="classStore" kindref="compound">Store</ref> <ref refid="classConfigurator" kindref="compound">Configurator</ref> and the real steady clock is used. Exceptions during setup are logged rather than propagated, which may leave the detector partially initialized (for example without a cleanup thread). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -502,6 +502,8 @@ XOR is used to combine the digests because a XOR b equals b XOR a; that makes th
         <references refid="classDOSDetector_1ada39f5488bee5dc50c8b1d43759e68b8" compoundref="dosdetector_8cpp" startline="307" endline="343">cleanUpTask</references>
         <references refid="classDOSDetector_1adfcce8a99f7efd589f1740d5ef96cc8a" compoundref="dosdetector_8cpp" startline="400" endline="493">compileMatcher</references>
         <references refid="classDOSDetector_1a7f2d8e67c8965359df70c5d6f04b8850" compoundref="dosdetector_8hpp" startline="222">config_</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classDOSDetector_1a718d71ac63ba8e97aa101239e6184eba" compoundref="dosdetector_8hpp" startline="265">whitelist_</references>
         <referencedby refid="classDOSDetector_1aeacc9da23e23c51f1f45120e742db41f">DOSDetector</referencedby>
         <referencedby refid="classDOSDetector_1ac46c08f34730ac62b4ed19270dcae3c3">DOSDetector</referencedby>
@@ -516,7 +518,7 @@ XOR is used to combine the digests because a XOR b equals b XOR a; that makes th
         <name>DOSDetector</name>
         <qualifiedname>DOSDetector::DOSDetector</qualifiedname>
         <param>
-          <type>Configurator::DOSDetectorConfig</type>
+          <type><ref refid="classConfigurator_1a73f1bdb52e6a9845bd21b01baf868205" kindref="member">Configurator::DOSDetectorConfig</ref></type>
           <declname>config</declname>
         </param>
         <param>
@@ -527,7 +529,7 @@ XOR is used to combine the digests because a XOR b equals b XOR a; that makes th
 <para>Test/embedding constructor taking an explicit config and clock. </para>
         </briefdescription>
         <detaileddescription>
-<para>Test seam: fully specified config + clock. Production behaviour is unchanged; the default constructor still reads the <ref refid="classStore" kindref="compound">Store</ref> Configurator and uses the real steady clock. Owns the supplied config for the detector&apos;s lifetime so <computeroutput><ref refid="classDOSDetector_1a7f2d8e67c8965359df70c5d6f04b8850" kindref="member">config_</ref></computeroutput> stays valid. <parameterlist kind="param"><parameteritem>
+<para>Test seam: fully specified config + clock. Production behaviour is unchanged; the default constructor still reads the <ref refid="classStore" kindref="compound">Store</ref> <ref refid="classConfigurator" kindref="compound">Configurator</ref> and uses the real steady clock. Owns the supplied config for the detector&apos;s lifetime so <computeroutput><ref refid="classDOSDetector_1a7f2d8e67c8965359df70c5d6f04b8850" kindref="member">config_</ref></computeroutput> stays valid. <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">config</parametername>
 </parameternamelist>
@@ -555,6 +557,8 @@ Test/embedding constructor with injected config and clock. The config is copied 
         <references refid="classDOSDetector_1a224e823915842704075388f6db617817" compoundref="dosdetector_8hpp" startline="227" endline="229">clock_</references>
         <references refid="classDOSDetector_1adfcce8a99f7efd589f1740d5ef96cc8a" compoundref="dosdetector_8cpp" startline="400" endline="493">compileMatcher</references>
         <references refid="classDOSDetector_1a7f2d8e67c8965359df70c5d6f04b8850" compoundref="dosdetector_8hpp" startline="222">config_</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classDOSDetector_1ac85a9453160ecbc88fa0195399746a2c" compoundref="dosdetector_8hpp" startline="219">owned_config_</references>
         <references refid="classDOSDetector_1a718d71ac63ba8e97aa101239e6184eba" compoundref="dosdetector_8hpp" startline="265">whitelist_</references>
       </memberdef>
@@ -650,6 +654,8 @@ Test/embedding constructor with injected config and clock. The config is copied 
         <references refid="classDOSDetector_1a85a29786faddab10befa275001efafb1" compoundref="dosdetector_8hpp" startline="282">async_task_clean_</references>
         <references refid="classDOSDetector_1a20712a340e5afa19c44c89b3fcc87fd8" compoundref="dosdetector_8hpp" startline="289">clean_cv_</references>
         <references refid="classDOSDetector_1ac7ab86c43c8ac90a76865b34db677161" compoundref="dosdetector_8hpp" startline="287">clean_mutex_</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classDOSDetector_1a917abeb77d41bddf1a6838a1a790148c" compoundref="dosdetector_8hpp" startline="284" endline="285">running_clean_</references>
       </memberdef>
       <memberdef kind="function" id="classDOSDetector_1a0f0629bfa3af7f023f3f06f28f94ebad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -684,7 +690,9 @@ Classifies <computeroutput>request</computeroutput>, checking static lists befor
         <location file="src/gatekeeper/dosdetector/dosdetector.hpp" line="211" column="23" bodyfile="src/gatekeeper/dosdetector/dosdetector.cpp" bodystart="172" bodyend="212"/>
         <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56a33b4862a96740947705cdde04e1f8eed" compoundref="dosdetector_8hpp" startline="112">BANNED</references>
         <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56a003cd69fd87a565b2a745493daba101a" compoundref="dosdetector_8hpp" startline="109">BLACKLISTED</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56abb230e74fde1ec798a86be9890e48949" compoundref="dosdetector_8hpp" startline="113">ERROR</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classDOSDetector_1a3f43f0afbf5d81ebb4d30e86ef4cb1a8" compoundref="dosdetector_8cpp" startline="539" endline="552">isBanned</references>
         <references refid="classDOSDetector_1ad7a88f1fa5f23698309d4c06d6dd12de" compoundref="dosdetector_8cpp" startline="520" endline="533">isBlacklisted</references>
         <references refid="classDOSDetector_1ad888b72a13f8be0828fe41dbdea72147" compoundref="dosdetector_8cpp" startline="558" endline="572">isRateLimited</references>
@@ -818,6 +826,8 @@ Classifies <computeroutput>request</computeroutput>, checking static lists befor
         <references refid="classDOSDetector_1a1e045ac8ff2e0a4da350f1f599ebadf2" compoundref="dosdetector_8cpp" startline="221" endline="257">clean_requests</references>
         <references refid="classDOSDetector_1a224e823915842704075388f6db617817" compoundref="dosdetector_8hpp" startline="227" endline="229">clock_</references>
         <references refid="classDOSDetector_1a7f2d8e67c8965359df70c5d6f04b8850" compoundref="dosdetector_8hpp" startline="222">config_</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classDOSDetector_1a917abeb77d41bddf1a6838a1a790148c" compoundref="dosdetector_8hpp" startline="284" endline="285">running_clean_</references>
         <referencedby refid="classDOSDetector_1abd16610d356d1e768aff5a1b4897c65e" compoundref="dosdetector_8cpp" startline="81" endline="100">DOSDetector</referencedby>
         <referencedby refid="classDOSDetector_1a02b5e5995faaeca724ecf87bdeb6601f" compoundref="dosdetector_8cpp" startline="108" endline="130">DOSDetector</referencedby>
@@ -857,7 +867,9 @@ request&quot; for repeat counting; an empty body still yields a digest of the he
         <inbodydescription>
         </inbodydescription>
         <location file="src/gatekeeper/dosdetector/dosdetector.hpp" line="301" column="3" bodyfile="src/gatekeeper/dosdetector/dosdetector.cpp" bodystart="356" bodyend="387"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <references refid="classDOSDetector_1abd16610d356d1e768aff5a1b4897c65e" compoundref="dosdetector_8cpp" startline="81" endline="100">DOSDetector</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classDOSDetector_1ae5377d4536dfce50aef85c19fdf5e29e" compoundref="dosdetector_8cpp" startline="356" endline="387">generateRequestFingerprint</references>
         <referencedby refid="classDOSDetector_1ae5377d4536dfce50aef85c19fdf5e29e" compoundref="dosdetector_8cpp" startline="356" endline="387">generateRequestFingerprint</referencedby>
         <referencedby refid="classDOSDetector_1aee42ffb7cac8307be5d3846f5faf7b3c" compoundref="dosdetector_8cpp" startline="630" endline="726">processRequest</referencedby>
@@ -883,6 +895,8 @@ whitelisted&quot;. </para>
         <inbodydescription>
         </inbodydescription>
         <location file="src/gatekeeper/dosdetector/dosdetector.hpp" line="305" column="17" bodyfile="src/gatekeeper/dosdetector/dosdetector.cpp" bodystart="500" bodyend="513"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classDOSDetector_1a718d71ac63ba8e97aa101239e6184eba" compoundref="dosdetector_8hpp" startline="265">whitelist_</references>
         <referencedby refid="classDOSDetector_1a0f0629bfa3af7f023f3f06f28f94ebad" compoundref="dosdetector_8cpp" startline="172" endline="212">is_dos_attack</referencedby>
       </memberdef>
@@ -908,6 +922,8 @@ blacklisted&quot;. </para>
         </inbodydescription>
         <location file="src/gatekeeper/dosdetector/dosdetector.hpp" line="308" column="17" bodyfile="src/gatekeeper/dosdetector/dosdetector.cpp" bodystart="520" bodyend="533"/>
         <references refid="classDOSDetector_1a8b7b28d08da0dd7f2e446446393c87f6" compoundref="dosdetector_8hpp" startline="268">blacklist_</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <referencedby refid="classDOSDetector_1a0f0629bfa3af7f023f3f06f28f94ebad" compoundref="dosdetector_8cpp" startline="172" endline="212">is_dos_attack</referencedby>
       </memberdef>
       <memberdef kind="function" id="classDOSDetector_1adfcce8a99f7efd589f1740d5ef96cc8a" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -968,6 +984,8 @@ blacklisted&quot;. </para>
         <references refid="classDOSDetector_1a398b33ad9f7f4cee2864295fa2181e17" compoundref="dosdetector_8hpp" startline="276">ban_mutex_</references>
         <references refid="classDOSDetector_1aa3ad60332fbfca9a886add5f2b423f72" compoundref="dosdetector_8hpp" startline="259">banned_ips_</references>
         <references refid="classDOSDetector_1ab7e6cf04bd21b93f1cc36f71dd65f9d3" compoundref="dosdetector_8cpp" startline="587" endline="617">checkStatus</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <referencedby refid="classDOSDetector_1a0f0629bfa3af7f023f3f06f28f94ebad" compoundref="dosdetector_8cpp" startline="172" endline="212">is_dos_attack</referencedby>
       </memberdef>
       <memberdef kind="function" id="classDOSDetector_1ad888b72a13f8be0828fe41dbdea72147" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -991,6 +1009,8 @@ blacklisted&quot;. </para>
         </inbodydescription>
         <location file="src/gatekeeper/dosdetector/dosdetector.hpp" line="321" column="17" bodyfile="src/gatekeeper/dosdetector/dosdetector.cpp" bodystart="558" bodyend="572"/>
         <references refid="classDOSDetector_1ab7e6cf04bd21b93f1cc36f71dd65f9d3" compoundref="dosdetector_8cpp" startline="587" endline="617">checkStatus</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classDOSDetector_1acbb2b440f8a6672b17d891e67bdfd645" compoundref="dosdetector_8hpp" startline="274">ratelimit_mutex_</references>
         <references refid="classDOSDetector_1a7414d016492551e5efb514c3a37c46aa" compoundref="dosdetector_8hpp" startline="256">ratelimited_ips_</references>
         <referencedby refid="classDOSDetector_1a0f0629bfa3af7f023f3f06f28f94ebad" compoundref="dosdetector_8cpp" startline="172" endline="212">is_dos_attack</referencedby>
@@ -1032,6 +1052,8 @@ blacklisted&quot;. </para>
         </inbodydescription>
         <location file="src/gatekeeper/dosdetector/dosdetector.hpp" line="330" column="17" bodyfile="src/gatekeeper/dosdetector/dosdetector.cpp" bodystart="587" bodyend="617"/>
         <references refid="classDOSDetector_1a224e823915842704075388f6db617817" compoundref="dosdetector_8hpp" startline="227" endline="229">clock_</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <referencedby refid="classDOSDetector_1a3f43f0afbf5d81ebb4d30e86ef4cb1a8" compoundref="dosdetector_8cpp" startline="539" endline="552">isBanned</referencedby>
         <referencedby refid="classDOSDetector_1ad888b72a13f8be0828fe41dbdea72147" compoundref="dosdetector_8cpp" startline="558" endline="572">isRateLimited</referencedby>
       </memberdef>
@@ -1073,7 +1095,9 @@ blacklisted&quot;. </para>
         <references refid="classDOSDetector_1aa3ad60332fbfca9a886add5f2b423f72" compoundref="dosdetector_8hpp" startline="259">banned_ips_</references>
         <references refid="classDOSDetector_1a224e823915842704075388f6db617817" compoundref="dosdetector_8hpp" startline="227" endline="229">clock_</references>
         <references refid="classDOSDetector_1a7f2d8e67c8965359df70c5d6f04b8850" compoundref="dosdetector_8hpp" startline="222">config_</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56abb230e74fde1ec798a86be9890e48949" compoundref="dosdetector_8hpp" startline="113">ERROR</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classDOSDetector_1ae5377d4536dfce50aef85c19fdf5e29e" compoundref="dosdetector_8cpp" startline="356" endline="387">generateRequestFingerprint</references>
         <references refid="classDOSDetector_1acbb2b440f8a6672b17d891e67bdfd645" compoundref="dosdetector_8hpp" startline="274">ratelimit_mutex_</references>
         <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56a82c037da5fe6323a8669bb68fbadb7bf" compoundref="dosdetector_8hpp" startline="110">RATELIMITED</references>

@@ -1,23 +1,18 @@
-<?xml version='1.0' encoding='UTF-8' standalone='no' ?>
-<doxygen
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="compound.xsd"
-    version="1.18.0"
-    xml:lang="en-US"
->
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
   <compounddef id="configurator_8cpp" kind="file" language="C++">
     <compoundname>configurator.cpp</compoundname>
     <includes refid="configurator_8hpp" local="yes">configurator.hpp</includes>
     <incdepgraph>
       <node id="1">
-        <label>src/configurator/configurator.cpp</label>
-        <link refid="configurator_8cpp" />
+        <label>libs/configurator/configurator.cpp</label>
+        <link refid="configurator_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="2">
         <label>configurator.hpp</label>
-        <link refid="configurator_8hpp" />
+        <link refid="configurator_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
@@ -43,16 +38,18 @@
       </node>
       <node id="17">
         <label>defaults.hpp</label>
-        <link refid="defaults_8hpp" />
+        <link refid="defaults_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="11">
-        <label>configurator/envloader/envloader.hpp</label>
-        <link refid="envloader_8hpp" />
+        <label>envloader/envloader.hpp</label>
+        <link refid="envloader_8hpp"/>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
@@ -67,7 +64,7 @@
       </node>
       <node id="13">
         <label>envvars/envvars.hpp</label>
-        <link refid="envvars_8hpp" />
+        <link refid="envvars_8hpp"/>
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
@@ -75,7 +72,7 @@
       </node>
       <node id="15">
         <label>message/message.hpp</label>
-        <link refid="message_8hpp" />
+        <link refid="message_8hpp"/>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
@@ -116,74 +113,32 @@
       </node>
     </incdepgraph>
     <sectiondef kind="func">
-      <memberdef
-                kind="function"
-                id="configurator_8cpp_1abf9f7867bfca11a980bedbaf2ebe38dc"
-                prot="public"
-                static="no"
-                const="no"
-                explicit="no"
-                inline="no"
-                virt="non-virtual"
-            >
+      <memberdef kind="function" id="configurator_8cpp_1abf9f7867bfca11a980bedbaf2ebe38dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type><ref
-                        refid="classConfigurator_1a73f1bdb52e6a9845bd21b01baf868205"
-                        kindref="member"
-                    >Configurator::DOSDetectorConfig</ref> &amp;</type>
-        <definition
-                >Configurator::DOSDetectorConfig &amp; Configurator::get&lt; Configurator::DOSDetectorConfig &gt;</definition>
+        <type><ref refid="classConfigurator_1a73f1bdb52e6a9845bd21b01baf868205" kindref="member">Configurator::DOSDetectorConfig</ref> &amp;</type>
+        <definition>Configurator::DOSDetectorConfig &amp; Configurator::get&lt; Configurator::DOSDetectorConfig &gt;</definition>
         <argsstring>()</argsstring>
         <name>Configurator::get&lt; Configurator::DOSDetectorConfig &gt;</name>
-        <qualifiedname
-                >get&lt; Configurator::DOSDetectorConfig &gt;</qualifiedname>
+        <qualifiedname>get&lt; Configurator::DOSDetectorConfig &gt;</qualifiedname>
         <briefdescription>
 <para>Returns the DoS-detection section. </para>
         </briefdescription>
         <detaileddescription>
-<para
-                    >A DoS (denial-of-service) detector watches request rates to spot abuse. This specialization gives callers access to that section&apos;s limits and fingerprint lists. <simplesect
-                            kind="see"
-                        ><para><ref
-                                    refid="classConfigurator_1a73f1bdb52e6a9845bd21b01baf868205"
-                                    kindref="member"
-                                >Configurator::DOSDetectorConfig</ref> </para>
+<para>A DoS (denial-of-service) detector watches request rates to spot abuse. This specialization gives callers access to that section&apos;s limits and fingerprint lists. <simplesect kind="see"><para><ref refid="classConfigurator_1a73f1bdb52e6a9845bd21b01baf868205" kindref="member">Configurator::DOSDetectorConfig</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location
-                    file="src/configurator/configurator.cpp"
-                    line="51"
-                    column="1"
-                    bodyfile="src/configurator/configurator.cpp"
-                    bodystart="52"
-                    bodyend="55"
-                />
-        <references
-                    refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                >Configurator::get</references>
+        <location file="libs/configurator/configurator.cpp" line="51" column="1" bodyfile="libs/configurator/configurator.cpp" bodystart="52" bodyend="55"/>
+        <references refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef">Configurator::get</references>
       </memberdef>
-      <memberdef
-                kind="function"
-                id="configurator_8cpp_1a37fe145d060f2d2124ff314a7c8c42e3"
-                prot="public"
-                static="no"
-                const="no"
-                explicit="no"
-                inline="no"
-                virt="non-virtual"
-            >
+      <memberdef kind="function" id="configurator_8cpp_1a37fe145d060f2d2124ff314a7c8c42e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type><ref
-                        refid="classConfigurator_1a78caa68d4554c8ab0d0c1753ce8edbe2"
-                        kindref="member"
-                    >Configurator::DatabaseConfig</ref> &amp;</type>
-        <definition
-                >Configurator::DatabaseConfig &amp; Configurator::get&lt; Configurator::DatabaseConfig &gt;</definition>
+        <type><ref refid="classConfigurator_1a78caa68d4554c8ab0d0c1753ce8edbe2" kindref="member">Configurator::DatabaseConfig</ref> &amp;</type>
+        <definition>Configurator::DatabaseConfig &amp; Configurator::get&lt; Configurator::DatabaseConfig &gt;</definition>
         <argsstring>()</argsstring>
         <name>Configurator::get&lt; Configurator::DatabaseConfig &gt;</name>
         <qualifiedname>get&lt; Configurator::DatabaseConfig &gt;</qualifiedname>
@@ -191,48 +146,20 @@
 <para>Returns the database connection section. </para>
         </briefdescription>
         <detaileddescription>
-<para
-                    >Exposes host, port, credentials and pool sizing used to connect to PostgreSQL. <simplesect
-                            kind="see"
-                        ><para><ref
-                                    refid="classConfigurator_1a78caa68d4554c8ab0d0c1753ce8edbe2"
-                                    kindref="member"
-                                >Configurator::DatabaseConfig</ref> </para>
+<para>Exposes host, port, credentials and pool sizing used to connect to PostgreSQL. <simplesect kind="see"><para><ref refid="classConfigurator_1a78caa68d4554c8ab0d0c1753ce8edbe2" kindref="member">Configurator::DatabaseConfig</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location
-                    file="src/configurator/configurator.cpp"
-                    line="68"
-                    column="1"
-                    bodyfile="src/configurator/configurator.cpp"
-                    bodystart="69"
-                    bodyend="72"
-                />
-        <references
-                    refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                >Configurator::get</references>
+        <location file="libs/configurator/configurator.cpp" line="68" column="1" bodyfile="libs/configurator/configurator.cpp" bodystart="69" bodyend="72"/>
+        <references refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef">Configurator::get</references>
       </memberdef>
-      <memberdef
-                kind="function"
-                id="configurator_8cpp_1a2463f6649c49aeed4c5ad140e53fbdc4"
-                prot="public"
-                static="no"
-                const="no"
-                explicit="no"
-                inline="no"
-                virt="non-virtual"
-            >
+      <memberdef kind="function" id="configurator_8cpp_1a2463f6649c49aeed4c5ad140e53fbdc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type><ref
-                        refid="classConfigurator_1a927a53596c80ae2c5f02c21f85af9d83"
-                        kindref="member"
-                    >Configurator::ServerConfig</ref> &amp;</type>
-        <definition
-                >Configurator::ServerConfig &amp; Configurator::get&lt; Configurator::ServerConfig &gt;</definition>
+        <type><ref refid="classConfigurator_1a927a53596c80ae2c5f02c21f85af9d83" kindref="member">Configurator::ServerConfig</ref> &amp;</type>
+        <definition>Configurator::ServerConfig &amp; Configurator::get&lt; Configurator::ServerConfig &gt;</definition>
         <argsstring>()</argsstring>
         <name>Configurator::get&lt; Configurator::ServerConfig &gt;</name>
         <qualifiedname>get&lt; Configurator::ServerConfig &gt;</qualifiedname>
@@ -240,99 +167,41 @@
 <para>Returns the Drogon server section. </para>
         </briefdescription>
         <detaileddescription>
-<para
-                    >Exposes identity, networking, threading and logging settings for the HTTP server. <simplesect
-                            kind="see"
-                        ><para><ref
-                                    refid="classConfigurator_1a927a53596c80ae2c5f02c21f85af9d83"
-                                    kindref="member"
-                                >Configurator::ServerConfig</ref> </para>
+<para>Exposes identity, networking, threading and logging settings for the HTTP server. <simplesect kind="see"><para><ref refid="classConfigurator_1a927a53596c80ae2c5f02c21f85af9d83" kindref="member">Configurator::ServerConfig</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location
-                    file="src/configurator/configurator.cpp"
-                    line="85"
-                    column="1"
-                    bodyfile="src/configurator/configurator.cpp"
-                    bodystart="85"
-                    bodyend="88"
-                />
-        <references
-                    refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                >Configurator::get</references>
+        <location file="libs/configurator/configurator.cpp" line="85" column="1" bodyfile="libs/configurator/configurator.cpp" bodystart="85" bodyend="88"/>
+        <references refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef">Configurator::get</references>
       </memberdef>
-      <memberdef
-                kind="function"
-                id="configurator_8cpp_1ae7adf245069916dc41b1f06a4874b69f"
-                prot="public"
-                static="no"
-                const="no"
-                explicit="no"
-                inline="no"
-                virt="non-virtual"
-            >
+      <memberdef kind="function" id="configurator_8cpp_1ae7adf245069916dc41b1f06a4874b69f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type><ref
-                        refid="classConfigurator_1af1c24b094032c664c8f543c85ed36b14"
-                        kindref="member"
-                    >Configurator::TokenManagerParameters</ref> &amp;</type>
-        <definition
-                >Configurator::TokenManagerParameters &amp; Configurator::get&lt; Configurator::TokenManagerParameters &gt;</definition>
+        <type><ref refid="classConfigurator_1af1c24b094032c664c8f543c85ed36b14" kindref="member">Configurator::TokenManagerParameters</ref> &amp;</type>
+        <definition>Configurator::TokenManagerParameters &amp; Configurator::get&lt; Configurator::TokenManagerParameters &gt;</definition>
         <argsstring>()</argsstring>
-        <name
-                >Configurator::get&lt; Configurator::TokenManagerParameters &gt;</name>
-        <qualifiedname
-                >get&lt; Configurator::TokenManagerParameters &gt;</qualifiedname>
+        <name>Configurator::get&lt; Configurator::TokenManagerParameters &gt;</name>
+        <qualifiedname>get&lt; Configurator::TokenManagerParameters &gt;</qualifiedname>
         <briefdescription>
 <para>Returns the token-manager section. </para>
         </briefdescription>
         <detaileddescription>
-<para
-                    >Exposes how long auth tokens live and the issuer/type/secret used to sign them. <simplesect
-                            kind="see"
-                        ><para><ref
-                                    refid="classConfigurator_1af1c24b094032c664c8f543c85ed36b14"
-                                    kindref="member"
-                                >Configurator::TokenManagerParameters</ref> </para>
+<para>Exposes how long auth tokens live and the issuer/type/secret used to sign them. <simplesect kind="see"><para><ref refid="classConfigurator_1af1c24b094032c664c8f543c85ed36b14" kindref="member">Configurator::TokenManagerParameters</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location
-                    file="src/configurator/configurator.cpp"
-                    line="100"
-                    column="1"
-                    bodyfile="src/configurator/configurator.cpp"
-                    bodystart="101"
-                    bodyend="104"
-                />
-        <references
-                    refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                >Configurator::get</references>
+        <location file="libs/configurator/configurator.cpp" line="100" column="1" bodyfile="libs/configurator/configurator.cpp" bodystart="101" bodyend="104"/>
+        <references refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef">Configurator::get</references>
       </memberdef>
-      <memberdef
-                kind="function"
-                id="configurator_8cpp_1a9e84e3dd8087b35e1eed2332bd4b6beb"
-                prot="public"
-                static="no"
-                const="no"
-                explicit="no"
-                inline="no"
-                virt="non-virtual"
-            >
+      <memberdef kind="function" id="configurator_8cpp_1a9e84e3dd8087b35e1eed2332bd4b6beb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type><ref
-                        refid="classConfigurator_1a8b3e99fef2ad5bf59793fa235a97aa3c"
-                        kindref="member"
-                    >Configurator::FrontEndConfig</ref> &amp;</type>
-        <definition
-                >Configurator::FrontEndConfig &amp; Configurator::get&lt; Configurator::FrontEndConfig &gt;</definition>
+        <type><ref refid="classConfigurator_1a8b3e99fef2ad5bf59793fa235a97aa3c" kindref="member">Configurator::FrontEndConfig</ref> &amp;</type>
+        <definition>Configurator::FrontEndConfig &amp; Configurator::get&lt; Configurator::FrontEndConfig &gt;</definition>
         <argsstring>()</argsstring>
         <name>Configurator::get&lt; Configurator::FrontEndConfig &gt;</name>
         <qualifiedname>get&lt; Configurator::FrontEndConfig &gt;</qualifiedname>
@@ -340,250 +209,104 @@
 <para>Returns the frontend/CORS section. </para>
         </briefdescription>
         <detaileddescription>
-<para
-                    >Exposes where the web frontend lives and which origins may call the API (CORS = the browser rule that controls which websites can use the API). <simplesect
-                            kind="see"
-                        ><para><ref
-                                    refid="classConfigurator_1a8b3e99fef2ad5bf59793fa235a97aa3c"
-                                    kindref="member"
-                                >Configurator::FrontEndConfig</ref> </para>
+<para>Exposes where the web frontend lives and which origins may call the API (CORS = the browser rule that controls which websites can use the API). <simplesect kind="see"><para><ref refid="classConfigurator_1a8b3e99fef2ad5bf59793fa235a97aa3c" kindref="member">Configurator::FrontEndConfig</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location
-                    file="src/configurator/configurator.cpp"
-                    line="116"
-                    column="1"
-                    bodyfile="src/configurator/configurator.cpp"
-                    bodystart="117"
-                    bodyend="120"
-                />
-        <references
-                    refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                >Configurator::get</references>
+        <location file="libs/configurator/configurator.cpp" line="116" column="1" bodyfile="libs/configurator/configurator.cpp" bodystart="117" bodyend="120"/>
+        <references refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef">Configurator::get</references>
       </memberdef>
-      <memberdef
-                kind="function"
-                id="configurator_8cpp_1ae91a8d5b9607f23dae89cbb1d173bad4"
-                prot="public"
-                static="no"
-                const="no"
-                explicit="no"
-                inline="no"
-                virt="non-virtual"
-            >
+      <memberdef kind="function" id="configurator_8cpp_1ae91a8d5b9607f23dae89cbb1d173bad4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type><ref
-                        refid="classConfigurator_1a32f2368e1e72e5bd29909e000c0c9e4c"
-                        kindref="member"
-                    >Configurator::PermissionCacheConfig</ref> &amp;</type>
-        <definition
-                >Configurator::PermissionCacheConfig &amp; Configurator::get&lt; Configurator::PermissionCacheConfig &gt;</definition>
+        <type><ref refid="classConfigurator_1a32f2368e1e72e5bd29909e000c0c9e4c" kindref="member">Configurator::PermissionCacheConfig</ref> &amp;</type>
+        <definition>Configurator::PermissionCacheConfig &amp; Configurator::get&lt; Configurator::PermissionCacheConfig &gt;</definition>
         <argsstring>()</argsstring>
-        <name
-                >Configurator::get&lt; Configurator::PermissionCacheConfig &gt;</name>
-        <qualifiedname
-                >get&lt; Configurator::PermissionCacheConfig &gt;</qualifiedname>
+        <name>Configurator::get&lt; Configurator::PermissionCacheConfig &gt;</name>
+        <qualifiedname>get&lt; Configurator::PermissionCacheConfig &gt;</qualifiedname>
         <briefdescription>
 <para>Returns the permission-cache section. </para>
         </briefdescription>
         <detaileddescription>
-<para
-                    >Exposes how long a cached permission decision stays valid before it is discarded. <simplesect
-                            kind="see"
-                        ><para><ref
-                                    refid="classConfigurator_1a32f2368e1e72e5bd29909e000c0c9e4c"
-                                    kindref="member"
-                                >Configurator::PermissionCacheConfig</ref> </para>
+<para>Exposes how long a cached permission decision stays valid before it is discarded. <simplesect kind="see"><para><ref refid="classConfigurator_1a32f2368e1e72e5bd29909e000c0c9e4c" kindref="member">Configurator::PermissionCacheConfig</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location
-                    file="src/configurator/configurator.cpp"
-                    line="132"
-                    column="1"
-                    bodyfile="src/configurator/configurator.cpp"
-                    bodystart="133"
-                    bodyend="136"
-                />
-        <references
-                    refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                >Configurator::get</references>
+        <location file="libs/configurator/configurator.cpp" line="132" column="1" bodyfile="libs/configurator/configurator.cpp" bodystart="133" bodyend="136"/>
+        <references refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef">Configurator::get</references>
       </memberdef>
-      <memberdef
-                kind="function"
-                id="configurator_8cpp_1a0a76733ed0e1cd48b51b3ace0e1843d7"
-                prot="public"
-                static="no"
-                const="no"
-                explicit="no"
-                inline="no"
-                virt="non-virtual"
-            >
+      <memberdef kind="function" id="configurator_8cpp_1a0a76733ed0e1cd48b51b3ace0e1843d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type><ref
-                        refid="classConfigurator_1a49c1e1c556694b995447dd4a4cad1935"
-                        kindref="member"
-                    >Configurator::PasswordWorkerConfig</ref> &amp;</type>
-        <definition
-                >Configurator::PasswordWorkerConfig &amp; Configurator::get&lt; Configurator::PasswordWorkerConfig &gt;</definition>
+        <type><ref refid="classConfigurator_1a49c1e1c556694b995447dd4a4cad1935" kindref="member">Configurator::PasswordWorkerConfig</ref> &amp;</type>
+        <definition>Configurator::PasswordWorkerConfig &amp; Configurator::get&lt; Configurator::PasswordWorkerConfig &gt;</definition>
         <argsstring>()</argsstring>
-        <name
-                >Configurator::get&lt; Configurator::PasswordWorkerConfig &gt;</name>
-        <qualifiedname
-                >get&lt; Configurator::PasswordWorkerConfig &gt;</qualifiedname>
+        <name>Configurator::get&lt; Configurator::PasswordWorkerConfig &gt;</name>
+        <qualifiedname>get&lt; Configurator::PasswordWorkerConfig &gt;</qualifiedname>
         <briefdescription>
 <para>Returns the password-worker pool section. </para>
         </briefdescription>
         <detaileddescription>
-<para
-                    >Exposes how many background threads hash passwords and how deep their queue can grow. <simplesect
-                            kind="see"
-                        ><para><ref
-                                    refid="classConfigurator_1a49c1e1c556694b995447dd4a4cad1935"
-                                    kindref="member"
-                                >Configurator::PasswordWorkerConfig</ref> </para>
+<para>Exposes how many background threads hash passwords and how deep their queue can grow. <simplesect kind="see"><para><ref refid="classConfigurator_1a49c1e1c556694b995447dd4a4cad1935" kindref="member">Configurator::PasswordWorkerConfig</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location
-                    file="src/configurator/configurator.cpp"
-                    line="148"
-                    column="1"
-                    bodyfile="src/configurator/configurator.cpp"
-                    bodystart="149"
-                    bodyend="152"
-                />
-        <references
-                    refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                >Configurator::get</references>
+        <location file="libs/configurator/configurator.cpp" line="148" column="1" bodyfile="libs/configurator/configurator.cpp" bodystart="149" bodyend="152"/>
+        <references refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef">Configurator::get</references>
       </memberdef>
-      <memberdef
-                kind="function"
-                id="configurator_8cpp_1a6aad408bff1e378942af2b63e73635b9"
-                prot="public"
-                static="no"
-                const="no"
-                explicit="no"
-                inline="no"
-                virt="non-virtual"
-            >
+      <memberdef kind="function" id="configurator_8cpp_1a6aad408bff1e378942af2b63e73635b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type><ref
-                        refid="classConfigurator_1a6552d2f57b9bbb898d49d7512cc3c829"
-                        kindref="member"
-                    >Configurator::DbExecutorConfig</ref> &amp;</type>
-        <definition
-                >Configurator::DbExecutorConfig &amp; Configurator::get&lt; Configurator::DbExecutorConfig &gt;</definition>
+        <type><ref refid="classConfigurator_1a6552d2f57b9bbb898d49d7512cc3c829" kindref="member">Configurator::DbExecutorConfig</ref> &amp;</type>
+        <definition>Configurator::DbExecutorConfig &amp; Configurator::get&lt; Configurator::DbExecutorConfig &gt;</definition>
         <argsstring>()</argsstring>
         <name>Configurator::get&lt; Configurator::DbExecutorConfig &gt;</name>
-        <qualifiedname
-                >get&lt; Configurator::DbExecutorConfig &gt;</qualifiedname>
+        <qualifiedname>get&lt; Configurator::DbExecutorConfig &gt;</qualifiedname>
         <briefdescription>
 <para>Returns the database-executor section. </para>
         </briefdescription>
         <detaileddescription>
-<para
-                    >Exposes worker count and queue limits for the component that runs database work. <simplesect
-                            kind="see"
-                        ><para><ref
-                                    refid="classConfigurator_1a6552d2f57b9bbb898d49d7512cc3c829"
-                                    kindref="member"
-                                >Configurator::DbExecutorConfig</ref> </para>
+<para>Exposes worker count and queue limits for the component that runs database work. <simplesect kind="see"><para><ref refid="classConfigurator_1a6552d2f57b9bbb898d49d7512cc3c829" kindref="member">Configurator::DbExecutorConfig</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location
-                    file="src/configurator/configurator.cpp"
-                    line="164"
-                    column="1"
-                    bodyfile="src/configurator/configurator.cpp"
-                    bodystart="165"
-                    bodyend="168"
-                />
-        <references
-                    refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                >Configurator::get</references>
+        <location file="libs/configurator/configurator.cpp" line="164" column="1" bodyfile="libs/configurator/configurator.cpp" bodystart="165" bodyend="168"/>
+        <references refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef">Configurator::get</references>
       </memberdef>
-      <memberdef
-                kind="function"
-                id="configurator_8cpp_1af3566eb568e2adec6a05e7cc81d096eb"
-                prot="public"
-                static="no"
-                const="no"
-                explicit="no"
-                inline="no"
-                virt="non-virtual"
-            >
+      <memberdef kind="function" id="configurator_8cpp_1af3566eb568e2adec6a05e7cc81d096eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type><ref
-                        refid="classConfigurator_1ae7a8c53bf3a5ab860650fbc02354b222"
-                        kindref="member"
-                    >Configurator::EmailSenderConfig</ref> &amp;</type>
-        <definition
-                >Configurator::EmailSenderConfig &amp; Configurator::get&lt; Configurator::EmailSenderConfig &gt;</definition>
+        <type><ref refid="classConfigurator_1ae7a8c53bf3a5ab860650fbc02354b222" kindref="member">Configurator::EmailSenderConfig</ref> &amp;</type>
+        <definition>Configurator::EmailSenderConfig &amp; Configurator::get&lt; Configurator::EmailSenderConfig &gt;</definition>
         <argsstring>()</argsstring>
         <name>Configurator::get&lt; Configurator::EmailSenderConfig &gt;</name>
-        <qualifiedname
-                >get&lt; Configurator::EmailSenderConfig &gt;</qualifiedname>
+        <qualifiedname>get&lt; Configurator::EmailSenderConfig &gt;</qualifiedname>
         <briefdescription>
 <para>Returns the email-sender daemon section. </para>
         </briefdescription>
         <detaileddescription>
-<para
-                    >Exposes how to reach the external service that actually delivers emails. <simplesect
-                            kind="see"
-                        ><para><ref
-                                    refid="classConfigurator_1ae7a8c53bf3a5ab860650fbc02354b222"
-                                    kindref="member"
-                                >Configurator::EmailSenderConfig</ref> </para>
+<para>Exposes how to reach the external service that actually delivers emails. <simplesect kind="see"><para><ref refid="classConfigurator_1ae7a8c53bf3a5ab860650fbc02354b222" kindref="member">Configurator::EmailSenderConfig</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location
-                    file="src/configurator/configurator.cpp"
-                    line="180"
-                    column="1"
-                    bodyfile="src/configurator/configurator.cpp"
-                    bodystart="181"
-                    bodyend="184"
-                />
-        <references
-                    refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                >Configurator::get</references>
+        <location file="libs/configurator/configurator.cpp" line="180" column="1" bodyfile="libs/configurator/configurator.cpp" bodystart="181" bodyend="184"/>
+        <references refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef">Configurator::get</references>
       </memberdef>
-      <memberdef
-                kind="function"
-                id="configurator_8cpp_1a89637a28842c84e0f22e8bb067b0aad1"
-                prot="public"
-                static="no"
-                const="no"
-                explicit="no"
-                inline="no"
-                virt="non-virtual"
-            >
+      <memberdef kind="function" id="configurator_8cpp_1a89637a28842c84e0f22e8bb067b0aad1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type><ref
-                        refid="classConfigurator_1a6029dd81a8d2fe9a1eaa17bf2a508e03"
-                        kindref="member"
-                    >Configurator::Testing</ref> &amp;</type>
-        <definition
-                >Configurator::Testing &amp; Configurator::get&lt; Configurator::Testing &gt;</definition>
+        <type><ref refid="classConfigurator_1a6029dd81a8d2fe9a1eaa17bf2a508e03" kindref="member">Configurator::Testing</ref> &amp;</type>
+        <definition>Configurator::Testing &amp; Configurator::get&lt; Configurator::Testing &gt;</definition>
         <argsstring>()</argsstring>
         <name>Configurator::get&lt; Configurator::Testing &gt;</name>
         <qualifiedname>get&lt; Configurator::Testing &gt;</qualifiedname>
@@ -591,72 +314,29 @@
 <para>Returns the test-only section. </para>
         </briefdescription>
         <detaileddescription>
-<para
-                    >Exposes switches that let the test harness start the server without a real database. <simplesect
-                            kind="see"
-                        ><para><ref
-                                    refid="classConfigurator_1a6029dd81a8d2fe9a1eaa17bf2a508e03"
-                                    kindref="member"
-                                >Configurator::Testing</ref> </para>
+<para>Exposes switches that let the test harness start the server without a real database. <simplesect kind="see"><para><ref refid="classConfigurator_1a6029dd81a8d2fe9a1eaa17bf2a508e03" kindref="member">Configurator::Testing</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location
-                    file="src/configurator/configurator.cpp"
-                    line="195"
-                    column="1"
-                    bodyfile="src/configurator/configurator.cpp"
-                    bodystart="195"
-                    bodyend="198"
-                />
-        <references
-                    refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                >Configurator::get</references>
+        <location file="libs/configurator/configurator.cpp" line="195" column="1" bodyfile="libs/configurator/configurator.cpp" bodystart="195" bodyend="198"/>
+        <references refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef">Configurator::get</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>Explicit <ref
-                    refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                    kindref="member"
-                >Configurator::get&lt;T&gt;()</ref> specializations that expose each configuration section. </para>
+<para>Explicit <ref refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef" kindref="member">Configurator::get&lt;T&gt;()</ref> specializations that expose each configuration section. </para>
     </briefdescription>
     <detaileddescription>
-<para>The <ref
-                    refid="classConfigurator"
-                    kindref="compound"
-                >Configurator</ref> class declares a generic get&lt;T&gt;() accessor but does not define its behaviour for any particular type. This file supplies one explicit specialization per configuration section. Each one simply returns the matching private member stored in the <ref
-                    refid="classConfigurator"
-                    kindref="compound"
-                >Configurator</ref> object. In plain words: this file is the lookup table that maps a type name, such as <ref
-                    refid="structServerConfig"
-                    kindref="compound"
-                >ServerConfig</ref>, to the actual settings object of that type held by the <ref
-                    refid="classConfigurator"
-                    kindref="compound"
-                >Configurator</ref>.</para>
-<para
-            >WHY THIS FILE MATTERS IN THE SERVER: Code throughout the server asks for its settings by type, for example <computeroutput
-                >store.config().get&lt;<ref
-                        refid="classConfigurator_1a927a53596c80ae2c5f02c21f85af9d83"
-                        kindref="member"
-                    >Configurator::ServerConfig</ref>&gt;()</computeroutput>. Those calls only link successfully because this file defines each specialization. Without it, the compiler accepts the calls but the linker reports undefined references, so the server cannot obtain any of its configuration sections at runtime. Keeping the definitions here (not in the header) also means adding a new section requires updating this single mapping.</para>
+<para>The <ref refid="classConfigurator" kindref="compound">Configurator</ref> class declares a generic get&lt;T&gt;() accessor but does not define its behaviour for any particular type. This file supplies one explicit specialization per configuration section. Each one simply returns the matching private member stored in the <ref refid="classConfigurator" kindref="compound">Configurator</ref> object. In plain words: this file is the lookup table that maps a type name, such as <ref refid="structServerConfig" kindref="compound">ServerConfig</ref>, to the actual settings object of that type held by the <ref refid="classConfigurator" kindref="compound">Configurator</ref>.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: Code throughout the server asks for its settings by type, for example <computeroutput>store.config().get&lt;<ref refid="classConfigurator_1a927a53596c80ae2c5f02c21f85af9d83" kindref="member">Configurator::ServerConfig</ref>&gt;()</computeroutput>. Those calls only link successfully because this file defines each specialization. Without it, the compiler accepts the calls but the linker reports undefined references, so the server cannot obtain any of its configuration sections at runtime. Keeping the definitions here (not in the header) also means adding a new section requires updating this single mapping.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
-<listitem><para>C++ concepts and constraints: <ulink
-                                url="https://en.cppreference.com/w/cpp/language/constraints"
-                            >https://en.cppreference.com/w/cpp/language/constraints</ulink></para>
-</listitem><listitem><para>Explicit (full) template specialization: <ulink
-                                url="https://en.cppreference.com/w/cpp/language/template_specialization"
-                            >https://en.cppreference.com/w/cpp/language/template_specialization</ulink></para>
-</listitem><listitem><para>Function templates: <ulink
-                                url="https://en.cppreference.com/w/cpp/language/function_template"
-                            >https://en.cppreference.com/w/cpp/language/function_template</ulink></para>
+<listitem><para>C++ concepts and constraints: <ulink url="https://en.cppreference.com/w/cpp/language/constraints">https://en.cppreference.com/w/cpp/language/constraints</ulink></para>
+</listitem><listitem><para>Explicit (full) template specialization: <ulink url="https://en.cppreference.com/w/cpp/language/template_specialization">https://en.cppreference.com/w/cpp/language/template_specialization</ulink></para>
+</listitem><listitem><para>Function templates: <ulink url="https://en.cppreference.com/w/cpp/language/function_template">https://en.cppreference.com/w/cpp/language/function_template</ulink></para>
 </listitem></itemizedlist>
 </para>
-<para><simplesect kind="author"><para>Amr Osman <ulink
-                            url="mailto:dr3mro@gmail.com"
-                        >dr3mro@gmail.com</ulink> </para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
 </simplesect>
 <simplesect kind="date"><para>2026-11-16 </para>
 </simplesect>
@@ -664,821 +344,204 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="2"><highlight class="comment"><sp />*<sp />@file<sp
-                    />configurator.cpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp />*<sp />@brief<sp
-                    />Explicit<sp />Configurator::get&lt;T&gt;()<sp
-                    />specializations<sp />that<sp />expose<sp
-                    />each</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp />*<sp />configuration<sp
-                    />section.</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp />*<sp />@details<sp
-                    />The<sp />Configurator<sp />class<sp />declares<sp />a<sp
-                    />generic<sp />get&lt;T&gt;()<sp />accessor<sp />but<sp
-                    />does</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp />*<sp />not<sp />define<sp
-                    />its<sp />behaviour<sp />for<sp />any<sp />particular<sp
-                    />type.<sp />This<sp />file<sp />supplies<sp
-                    />one</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp />*<sp />explicit<sp
-                    />specialization<sp />per<sp />configuration<sp
-                    />section.<sp />Each<sp />one<sp />simply<sp
-                    />returns</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp />*<sp />the<sp
-                    />matching<sp />private<sp />member<sp />stored<sp />in<sp
-                    />the<sp />Configurator<sp />object.<sp />In<sp
-                    />plain</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp />*<sp />words:<sp />this<sp
-                    />file<sp />is<sp />the<sp />lookup<sp />table<sp />that<sp
-                    />maps<sp />a<sp />type<sp />name,<sp />such<sp
-                    />as</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp />*<sp />ServerConfig,<sp
-                    />to<sp />the<sp />actual<sp />settings<sp />object<sp
-                    />of<sp />that<sp />type<sp />held<sp />by<sp
-                    />the</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp />*<sp
-                    />Configurator.</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp />*</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp />*<sp />WHY<sp />THIS<sp
-                    />FILE<sp />MATTERS<sp />IN<sp />THE<sp
-                    />SERVER:</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp />*<sp />Code<sp
-                    />throughout<sp />the<sp />server<sp />asks<sp />for<sp
-                    />its<sp />settings<sp />by<sp />type,<sp />for<sp
-                    />example</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp />*<sp
-                    />`store.config().get&lt;Configurator::ServerConfig&gt;()`.<sp
-                    />Those<sp />calls<sp />only<sp
-                    />link</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp />*<sp />successfully<sp
-                    />because<sp />this<sp />file<sp />defines<sp />each<sp
-                    />specialization.<sp />Without<sp />it,<sp
-                    />the</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp />*<sp />compiler<sp
-                    />accepts<sp />the<sp />calls<sp />but<sp />the<sp
-                    />linker<sp />reports<sp />undefined<sp />references,<sp
-                    />so</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp />*<sp />the<sp />server<sp
-                    />cannot<sp />obtain<sp />any<sp />of<sp />its<sp
-                    />configuration<sp />sections<sp />at<sp
-                    />runtime.</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp />*<sp />Keeping<sp
-                    />the<sp />definitions<sp />here<sp />(not<sp />in<sp
-                    />the<sp />header)<sp />also<sp />means<sp />adding<sp
-                    />a<sp />new</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp />*<sp />section<sp
-                    />requires<sp />updating<sp />this<sp />single<sp
-                    />mapping.</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp />*</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp />*<sp />CONCEPTS<sp
-                    />TO<sp />LEARN<sp />(for<sp
-                    />beginners):</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp />*<sp />-<sp />C++<sp
-                    />concepts<sp />and<sp />constraints:</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp />*<sp
-                    />https://en.cppreference.com/w/cpp/language/constraints</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp />*<sp />-<sp />Explicit<sp
-                    />(full)<sp />template<sp
-                    />specialization:</highlight></codeline>
-<codeline lineno="26"><highlight class="comment"><sp />*<sp
-                    />https://en.cppreference.com/w/cpp/language/template_specialization</highlight></codeline>
-<codeline lineno="27"><highlight class="comment"><sp />*<sp />-<sp />Function<sp
-                    />templates:</highlight></codeline>
-<codeline lineno="28"><highlight class="comment"><sp />*<sp
-                    />https://en.cppreference.com/w/cpp/language/function_template</highlight></codeline>
-<codeline lineno="29"><highlight class="comment"><sp />*</highlight></codeline>
-<codeline lineno="30"><highlight class="comment"><sp />*<sp />@author<sp
-                    />Amr<sp />Osman<sp
-                    />&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="31"><highlight class="comment"><sp />*<sp />@date<sp
-                    />2026-11-16</highlight></codeline>
-<codeline lineno="32"><highlight class="comment"><sp />*/</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="33"><highlight class="normal" /></codeline>
-<codeline lineno="34"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Brings<sp />in<sp />the<sp />Configurator<sp />class<sp
-                    />whose<sp />get&lt;T&gt;()<sp />members<sp />are<sp
-                    />defined<sp />here.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="35"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#include<sp />&quot;<ref
-                        refid="configurator_8hpp"
-                        kindref="compound"
-                    >configurator.hpp</ref>&quot;</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="36"><highlight class="normal" /></codeline>
-<codeline lineno="37"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Specialization<sp />for<sp
-                    />DOSDetectorConfig</highlight><highlight
-                    class="comment"
-                /></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>configurator.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Explicit<sp/>Configurator::get&lt;T&gt;()<sp/>specializations<sp/>that<sp/>expose<sp/>each</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>configuration<sp/>section.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>The<sp/>Configurator<sp/>class<sp/>declares<sp/>a<sp/>generic<sp/>get&lt;T&gt;()<sp/>accessor<sp/>but<sp/>does</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>not<sp/>define<sp/>its<sp/>behaviour<sp/>for<sp/>any<sp/>particular<sp/>type.<sp/>This<sp/>file<sp/>supplies<sp/>one</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>explicit<sp/>specialization<sp/>per<sp/>configuration<sp/>section.<sp/>Each<sp/>one<sp/>simply<sp/>returns</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>the<sp/>matching<sp/>private<sp/>member<sp/>stored<sp/>in<sp/>the<sp/>Configurator<sp/>object.<sp/>In<sp/>plain</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>words:<sp/>this<sp/>file<sp/>is<sp/>the<sp/>lookup<sp/>table<sp/>that<sp/>maps<sp/>a<sp/>type<sp/>name,<sp/>such<sp/>as</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>ServerConfig,<sp/>to<sp/>the<sp/>actual<sp/>settings<sp/>object<sp/>of<sp/>that<sp/>type<sp/>held<sp/>by<sp/>the</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>Configurator.</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>Code<sp/>throughout<sp/>the<sp/>server<sp/>asks<sp/>for<sp/>its<sp/>settings<sp/>by<sp/>type,<sp/>for<sp/>example</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>`store.config().get&lt;Configurator::ServerConfig&gt;()`.<sp/>Those<sp/>calls<sp/>only<sp/>link</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>successfully<sp/>because<sp/>this<sp/>file<sp/>defines<sp/>each<sp/>specialization.<sp/>Without<sp/>it,<sp/>the</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>compiler<sp/>accepts<sp/>the<sp/>calls<sp/>but<sp/>the<sp/>linker<sp/>reports<sp/>undefined<sp/>references,<sp/>so</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>the<sp/>server<sp/>cannot<sp/>obtain<sp/>any<sp/>of<sp/>its<sp/>configuration<sp/>sections<sp/>at<sp/>runtime.</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>Keeping<sp/>the<sp/>definitions<sp/>here<sp/>(not<sp/>in<sp/>the<sp/>header)<sp/>also<sp/>means<sp/>adding<sp/>a<sp/>new</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>section<sp/>requires<sp/>updating<sp/>this<sp/>single<sp/>mapping.</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>-<sp/>C++<sp/>concepts<sp/>and<sp/>constraints:</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/language/constraints</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>-<sp/>Explicit<sp/>(full)<sp/>template<sp/>specialization:</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/language/template_specialization</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>-<sp/>Function<sp/>templates:</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/language/function_template</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Brings<sp/>in<sp/>the<sp/>Configurator<sp/>class<sp/>whose<sp/>get&lt;T&gt;()<sp/>members<sp/>are<sp/>defined<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="configurator_8hpp" kindref="compound">configurator.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Specialization<sp/>for<sp/>DOSDetectorConfig</highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="38"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="39"><highlight class="comment"><sp />*<sp />@brief<sp
-                    />Returns<sp />the<sp />DoS-detection<sp
-                    />section.</highlight></codeline>
-<codeline lineno="40"><highlight class="comment"><sp />*<sp />@details<sp />A<sp
-                    />DoS<sp />(denial-of-service)<sp />detector<sp />watches<sp
-                    />request<sp />rates<sp />to<sp
-                    />spot</highlight></codeline>
-<codeline lineno="41"><highlight class="comment"><sp />*<sp />abuse.<sp
-                    />This<sp />specialization<sp />gives<sp />callers<sp
-                    />access<sp />to<sp />that<sp />section&apos;s<sp
-                    />limits<sp />and</highlight></codeline>
-<codeline lineno="42"><highlight class="comment"><sp />*<sp />fingerprint<sp
-                    />lists.</highlight></codeline>
-<codeline lineno="43"><highlight class="comment"><sp />*<sp />@see<sp
-                    />Configurator::DOSDetectorConfig</highlight></codeline>
-<codeline lineno="44"><highlight class="comment"><sp />*/</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="45"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />This<sp />is<sp />a<sp />full<sp />specialization:<sp
-                    />a<sp />hand-written<sp />version<sp
-                    />for</highlight><highlight class="normal" /></codeline>
-<codeline lineno="46"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />exactly<sp />one<sp />template<sp
-                    />argument.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="47"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Callers<sp />asking<sp />for</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="48"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />DOSDetectorConfig<sp />reach</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="49"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />the<sp />member<sp />below.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="50"><highlight class="normal" /><highlight
-                    class="keyword"
-                >template</highlight><highlight class="normal"><sp
-                    />&lt;&gt;</highlight></codeline>
-<codeline
-                lineno="51"
-                refid="configurator_8cpp_1abf9f7867bfca11a980bedbaf2ebe38dc"
-                refkind="member"
-            ><highlight class="normal"><ref
-                        refid="classConfigurator_1a73f1bdb52e6a9845bd21b01baf868205"
-                        kindref="member"
-                    >Configurator::DOSDetectorConfig</ref>&amp;</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><ref
-                        refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                        kindref="member"
-                    >Configurator::get&lt;Configurator::DOSDetectorConfig&gt;</ref>()<sp
-                    />{</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp
-                    />dos_detector_config_;<sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Hand<sp />back<sp />the<sp />stored<sp />DoS<sp
-                    />settings<sp />section</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="54"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />by<sp
-                    />reference<sp />(no<sp />copy).</highlight><highlight
-                    class="normal"
-                /></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>DoS-detection<sp/>section.</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>@details<sp/>A<sp/>DoS<sp/>(denial-of-service)<sp/>detector<sp/>watches<sp/>request<sp/>rates<sp/>to<sp/>spot</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>abuse.<sp/>This<sp/>specialization<sp/>gives<sp/>callers<sp/>access<sp/>to<sp/>that<sp/>section&apos;s<sp/>limits<sp/>and</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>fingerprint<sp/>lists.</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>@see<sp/>Configurator::DOSDetectorConfig</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>a<sp/>full<sp/>specialization:<sp/>a<sp/>hand-written<sp/>version<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>exactly<sp/>one<sp/>template<sp/>argument.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Callers<sp/>asking<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>DOSDetectorConfig<sp/>reach</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>member<sp/>below.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="51" refid="configurator_8cpp_1abf9f7867bfca11a980bedbaf2ebe38dc" refkind="member"><highlight class="normal"><ref refid="classConfigurator_1a73f1bdb52e6a9845bd21b01baf868205" kindref="member">Configurator::DOSDetectorConfig</ref>&amp;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><ref refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef" kindref="member">Configurator::get&lt;Configurator::DOSDetectorConfig&gt;</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>dos_detector_config_;<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>back<sp/>the<sp/>stored<sp/>DoS<sp/>settings<sp/>section</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>by<sp/>reference<sp/>(no<sp/>copy).</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="55"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="56"><highlight class="normal" /></codeline>
-<codeline lineno="57"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Specialization<sp />for<sp
-                    />DatabaseConfig</highlight><highlight
-                    class="comment"
-                /></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Specialization<sp/>for<sp/>DatabaseConfig</highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="58"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="59"><highlight class="comment"><sp />*<sp />@brief<sp
-                    />Returns<sp />the<sp />database<sp />connection<sp
-                    />section.</highlight></codeline>
-<codeline lineno="60"><highlight class="comment"><sp />*<sp />@details<sp
-                    />Exposes<sp />host,<sp />port,<sp />credentials<sp />and<sp
-                    />pool<sp />sizing<sp />used<sp />to<sp />connect<sp
-                    />to</highlight></codeline>
-<codeline lineno="61"><highlight class="comment"><sp />*<sp
-                    />PostgreSQL.</highlight></codeline>
-<codeline lineno="62"><highlight class="comment"><sp />*<sp />@see<sp
-                    />Configurator::DatabaseConfig</highlight></codeline>
-<codeline lineno="63"><highlight class="comment"><sp />*/</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="64"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Full<sp />specialization<sp />for<sp />the<sp
-                    />database<sp />connection<sp />settings<sp
-                    />type.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="65"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Maps<sp />the<sp />DatabaseConfig</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="66"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />type<sp />to<sp />its<sp />stored<sp
-                    />member.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="67"><highlight class="normal" /><highlight
-                    class="keyword"
-                >template</highlight><highlight class="normal"><sp
-                    />&lt;&gt;</highlight></codeline>
-<codeline
-                lineno="68"
-                refid="configurator_8cpp_1a37fe145d060f2d2124ff314a7c8c42e3"
-                refkind="member"
-            ><highlight class="normal"><ref
-                        refid="classConfigurator_1a78caa68d4554c8ab0d0c1753ce8edbe2"
-                        kindref="member"
-                    >Configurator::DatabaseConfig</ref>&amp;</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><ref
-                        refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                        kindref="member"
-                    >Configurator::get&lt;Configurator::DatabaseConfig&gt;</ref>()<sp
-                    />{</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp
-                    />database_config_;<sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Hand<sp />back<sp />the<sp />stored<sp />database<sp
-                    />settings<sp />section</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="71"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />by<sp />reference.</highlight><highlight
-                    class="normal"
-                /></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>database<sp/>connection<sp/>section.</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/>@details<sp/>Exposes<sp/>host,<sp/>port,<sp/>credentials<sp/>and<sp/>pool<sp/>sizing<sp/>used<sp/>to<sp/>connect<sp/>to</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>PostgreSQL.</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>@see<sp/>Configurator::DatabaseConfig</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Full<sp/>specialization<sp/>for<sp/>the<sp/>database<sp/>connection<sp/>settings<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Maps<sp/>the<sp/>DatabaseConfig</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>type<sp/>to<sp/>its<sp/>stored<sp/>member.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="68" refid="configurator_8cpp_1a37fe145d060f2d2124ff314a7c8c42e3" refkind="member"><highlight class="normal"><ref refid="classConfigurator_1a78caa68d4554c8ab0d0c1753ce8edbe2" kindref="member">Configurator::DatabaseConfig</ref>&amp;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><ref refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef" kindref="member">Configurator::get&lt;Configurator::DatabaseConfig&gt;</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>database_config_;<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>back<sp/>the<sp/>stored<sp/>database<sp/>settings<sp/>section</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>by<sp/>reference.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="72"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="73"><highlight class="normal" /></codeline>
-<codeline lineno="74"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Specialization<sp />for<sp
-                    />ServerConfig</highlight><highlight
-                    class="comment"
-                /></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Specialization<sp/>for<sp/>ServerConfig</highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="75"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="76"><highlight class="comment"><sp />*<sp />@brief<sp
-                    />Returns<sp />the<sp />Drogon<sp />server<sp
-                    />section.</highlight></codeline>
-<codeline lineno="77"><highlight class="comment"><sp />*<sp />@details<sp
-                    />Exposes<sp />identity,<sp />networking,<sp />threading<sp
-                    />and<sp />logging<sp />settings<sp />for<sp
-                    />the</highlight></codeline>
-<codeline lineno="78"><highlight class="comment"><sp />*<sp />HTTP<sp
-                    />server.</highlight></codeline>
-<codeline lineno="79"><highlight class="comment"><sp />*<sp />@see<sp
-                    />Configurator::ServerConfig</highlight></codeline>
-<codeline lineno="80"><highlight class="comment"><sp />*/</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="81"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Full<sp />specialization<sp />for<sp />the<sp
-                    />Drogon<sp />server<sp />settings<sp
-                    />type.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="82"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Maps<sp />the<sp />ServerConfig<sp
-                    />type</highlight><highlight class="normal" /></codeline>
-<codeline lineno="83"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />to<sp />its<sp />stored<sp
-                    />member.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="84"><highlight class="normal" /><highlight
-                    class="keyword"
-                >template</highlight><highlight class="normal"><sp
-                    />&lt;&gt;</highlight></codeline>
-<codeline
-                lineno="85"
-                refid="configurator_8cpp_1a2463f6649c49aeed4c5ad140e53fbdc4"
-                refkind="member"
-            ><highlight class="normal"><ref
-                        refid="classConfigurator_1a927a53596c80ae2c5f02c21f85af9d83"
-                        kindref="member"
-                    >Configurator::ServerConfig</ref>&amp;<sp /><ref
-                        refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                        kindref="member"
-                    >Configurator::get&lt;Configurator::ServerConfig&gt;</ref>()<sp
-                    />{</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp
-                    />server_config_;<sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Hand<sp />back<sp />the<sp />stored<sp />server<sp
-                    />settings<sp />section<sp />by</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="87"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight class="comment">//<sp
-                    />reference.</highlight><highlight
-                    class="normal"
-                /></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>Drogon<sp/>server<sp/>section.</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/>*<sp/>@details<sp/>Exposes<sp/>identity,<sp/>networking,<sp/>threading<sp/>and<sp/>logging<sp/>settings<sp/>for<sp/>the</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/>*<sp/>HTTP<sp/>server.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*<sp/>@see<sp/>Configurator::ServerConfig</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Full<sp/>specialization<sp/>for<sp/>the<sp/>Drogon<sp/>server<sp/>settings<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Maps<sp/>the<sp/>ServerConfig<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//<sp/>to<sp/>its<sp/>stored<sp/>member.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="85" refid="configurator_8cpp_1a2463f6649c49aeed4c5ad140e53fbdc4" refkind="member"><highlight class="normal"><ref refid="classConfigurator_1a927a53596c80ae2c5f02c21f85af9d83" kindref="member">Configurator::ServerConfig</ref>&amp;<sp/><ref refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef" kindref="member">Configurator::get&lt;Configurator::ServerConfig&gt;</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>server_config_;<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>back<sp/>the<sp/>stored<sp/>server<sp/>settings<sp/>section<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reference.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="88"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="89"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Specialization<sp />for<sp
-                    />TokenManagerParameters</highlight><highlight
-                    class="comment"
-                /></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Specialization<sp/>for<sp/>TokenManagerParameters</highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="90"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="91"><highlight class="comment"><sp />*<sp />@brief<sp
-                    />Returns<sp />the<sp />token-manager<sp
-                    />section.</highlight></codeline>
-<codeline lineno="92"><highlight class="comment"><sp />*<sp />@details<sp
-                    />Exposes<sp />how<sp />long<sp />auth<sp />tokens<sp
-                    />live<sp />and<sp />the<sp />issuer/type/secret<sp
-                    />used<sp />to</highlight></codeline>
-<codeline lineno="93"><highlight class="comment"><sp />*<sp />sign<sp
-                    />them.</highlight></codeline>
-<codeline lineno="94"><highlight class="comment"><sp />*<sp />@see<sp
-                    />Configurator::TokenManagerParameters</highlight></codeline>
-<codeline lineno="95"><highlight class="comment"><sp />*/</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="96"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Full<sp />specialization<sp />for<sp />the<sp
-                    />authentication<sp />token<sp />settings<sp
-                    />type.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="97"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Maps<sp />TokenManagerParameters<sp
-                    />to</highlight><highlight class="normal" /></codeline>
-<codeline lineno="98"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />its<sp />stored<sp />member.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="99"><highlight class="normal" /><highlight
-                    class="keyword"
-                >template</highlight><highlight class="normal"><sp
-                    />&lt;&gt;</highlight></codeline>
-<codeline
-                lineno="100"
-                refid="configurator_8cpp_1ae7adf245069916dc41b1f06a4874b69f"
-                refkind="member"
-            ><highlight class="normal"><ref
-                        refid="classConfigurator_1af1c24b094032c664c8f543c85ed36b14"
-                        kindref="member"
-                    >Configurator::TokenManagerParameters</ref>&amp;</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><ref
-                        refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                        kindref="member"
-                    >Configurator::get&lt;Configurator::TokenManagerParameters&gt;</ref>()<sp
-                    />{</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp
-                    />token_manager_parameters_;<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Hand<sp
-                    />back<sp />the<sp />stored<sp />token<sp
-                    />settings</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="103"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /></highlight><highlight class="comment">//<sp
-                    />section<sp />by<sp />reference.</highlight><highlight
-                    class="normal"
-                /></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>token-manager<sp/>section.</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*<sp/>@details<sp/>Exposes<sp/>how<sp/>long<sp/>auth<sp/>tokens<sp/>live<sp/>and<sp/>the<sp/>issuer/type/secret<sp/>used<sp/>to</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>sign<sp/>them.</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*<sp/>@see<sp/>Configurator::TokenManagerParameters</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Full<sp/>specialization<sp/>for<sp/>the<sp/>authentication<sp/>token<sp/>settings<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Maps<sp/>TokenManagerParameters<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="comment">//<sp/>its<sp/>stored<sp/>member.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="100" refid="configurator_8cpp_1ae7adf245069916dc41b1f06a4874b69f" refkind="member"><highlight class="normal"><ref refid="classConfigurator_1af1c24b094032c664c8f543c85ed36b14" kindref="member">Configurator::TokenManagerParameters</ref>&amp;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><ref refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef" kindref="member">Configurator::get&lt;Configurator::TokenManagerParameters&gt;</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>token_manager_parameters_;<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>back<sp/>the<sp/>stored<sp/>token<sp/>settings</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>section<sp/>by<sp/>reference.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="104"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="105"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="106"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="107"><highlight class="comment"><sp />*<sp />@brief<sp
-                    />Returns<sp />the<sp />frontend/CORS<sp
-                    />section.</highlight></codeline>
-<codeline lineno="108"><highlight class="comment"><sp />*<sp />@details<sp
-                    />Exposes<sp />where<sp />the<sp />web<sp />frontend<sp
-                    />lives<sp />and<sp />which<sp />origins<sp />may<sp
-                    />call<sp />the</highlight></codeline>
-<codeline lineno="109"><highlight class="comment"><sp />*<sp />API<sp />(CORS<sp
-                    />=<sp />the<sp />browser<sp />rule<sp />that<sp
-                    />controls<sp />which<sp />websites<sp />can<sp />use<sp
-                    />the<sp />API).</highlight></codeline>
-<codeline lineno="110"><highlight class="comment"><sp />*<sp />@see<sp
-                    />Configurator::FrontEndConfig</highlight></codeline>
-<codeline lineno="111"><highlight class="comment"><sp />*/</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="112"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Full<sp />specialization<sp />for<sp />the<sp
-                    />frontend/CORS<sp />settings<sp
-                    />type.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="113"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Maps<sp />FrontEndConfig<sp />to<sp
-                    />its</highlight><highlight class="normal" /></codeline>
-<codeline lineno="114"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />stored<sp />member.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="115"><highlight class="normal" /><highlight
-                    class="keyword"
-                >template</highlight><highlight class="normal"><sp
-                    />&lt;&gt;</highlight></codeline>
-<codeline
-                lineno="116"
-                refid="configurator_8cpp_1a9e84e3dd8087b35e1eed2332bd4b6beb"
-                refkind="member"
-            ><highlight class="normal"><ref
-                        refid="classConfigurator_1a8b3e99fef2ad5bf59793fa235a97aa3c"
-                        kindref="member"
-                    >Configurator::FrontEndConfig</ref>&amp;</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><ref
-                        refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                        kindref="member"
-                    >Configurator::get&lt;Configurator::FrontEndConfig&gt;</ref>()<sp
-                    />{</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp
-                    />frontend_config_;<sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Hand<sp />back<sp />the<sp />stored<sp />frontend<sp
-                    />settings<sp />section</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="119"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />by<sp />reference.</highlight><highlight
-                    class="normal"
-                /></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>frontend/CORS<sp/>section.</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/>*<sp/>@details<sp/>Exposes<sp/>where<sp/>the<sp/>web<sp/>frontend<sp/>lives<sp/>and<sp/>which<sp/>origins<sp/>may<sp/>call<sp/>the</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/>*<sp/>API<sp/>(CORS<sp/>=<sp/>the<sp/>browser<sp/>rule<sp/>that<sp/>controls<sp/>which<sp/>websites<sp/>can<sp/>use<sp/>the<sp/>API).</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/>*<sp/>@see<sp/>Configurator::FrontEndConfig</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Full<sp/>specialization<sp/>for<sp/>the<sp/>frontend/CORS<sp/>settings<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Maps<sp/>FrontEndConfig<sp/>to<sp/>its</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="comment">//<sp/>stored<sp/>member.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="116" refid="configurator_8cpp_1a9e84e3dd8087b35e1eed2332bd4b6beb" refkind="member"><highlight class="normal"><ref refid="classConfigurator_1a8b3e99fef2ad5bf59793fa235a97aa3c" kindref="member">Configurator::FrontEndConfig</ref>&amp;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><ref refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef" kindref="member">Configurator::get&lt;Configurator::FrontEndConfig&gt;</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>frontend_config_;<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>back<sp/>the<sp/>stored<sp/>frontend<sp/>settings<sp/>section</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>by<sp/>reference.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="120"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="121"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="122"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="123"><highlight class="comment"><sp />*<sp />@brief<sp
-                    />Returns<sp />the<sp />permission-cache<sp
-                    />section.</highlight></codeline>
-<codeline lineno="124"><highlight class="comment"><sp />*<sp />@details<sp
-                    />Exposes<sp />how<sp />long<sp />a<sp />cached<sp
-                    />permission<sp />decision<sp />stays<sp />valid<sp
-                    />before<sp />it</highlight></codeline>
-<codeline lineno="125"><highlight class="comment"><sp />*<sp />is<sp
-                    />discarded.</highlight></codeline>
-<codeline lineno="126"><highlight class="comment"><sp />*<sp />@see<sp
-                    />Configurator::PermissionCacheConfig</highlight></codeline>
-<codeline lineno="127"><highlight class="comment"><sp />*/</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="128"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Full<sp />specialization<sp />for<sp />the<sp
-                    />permission-cache<sp />settings<sp
-                    />type.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="129"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Maps<sp />PermissionCacheConfig<sp />to<sp
-                    />its</highlight><highlight class="normal" /></codeline>
-<codeline lineno="130"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />stored<sp />member.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="131"><highlight class="normal" /><highlight
-                    class="keyword"
-                >template</highlight><highlight class="normal"><sp
-                    />&lt;&gt;</highlight></codeline>
-<codeline
-                lineno="132"
-                refid="configurator_8cpp_1ae91a8d5b9607f23dae89cbb1d173bad4"
-                refkind="member"
-            ><highlight class="normal"><ref
-                        refid="classConfigurator_1a32f2368e1e72e5bd29909e000c0c9e4c"
-                        kindref="member"
-                    >Configurator::PermissionCacheConfig</ref>&amp;</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><ref
-                        refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                        kindref="member"
-                    >Configurator::get&lt;Configurator::PermissionCacheConfig&gt;</ref>()<sp
-                    />{</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp
-                    />permission_cache_config_;<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Hand<sp
-                    />back<sp />the<sp />stored<sp
-                    />permission-cache</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="135"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight class="comment">//<sp
-                    />settings<sp />section<sp />by<sp
-                    />reference.</highlight><highlight
-                    class="normal"
-                /></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>permission-cache<sp/>section.</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/>*<sp/>@details<sp/>Exposes<sp/>how<sp/>long<sp/>a<sp/>cached<sp/>permission<sp/>decision<sp/>stays<sp/>valid<sp/>before<sp/>it</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/>*<sp/>is<sp/>discarded.</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*<sp/>@see<sp/>Configurator::PermissionCacheConfig</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Full<sp/>specialization<sp/>for<sp/>the<sp/>permission-cache<sp/>settings<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Maps<sp/>PermissionCacheConfig<sp/>to<sp/>its</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="comment">//<sp/>stored<sp/>member.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="132" refid="configurator_8cpp_1ae91a8d5b9607f23dae89cbb1d173bad4" refkind="member"><highlight class="normal"><ref refid="classConfigurator_1a32f2368e1e72e5bd29909e000c0c9e4c" kindref="member">Configurator::PermissionCacheConfig</ref>&amp;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><ref refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef" kindref="member">Configurator::get&lt;Configurator::PermissionCacheConfig&gt;</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>permission_cache_config_;<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>back<sp/>the<sp/>stored<sp/>permission-cache</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>settings<sp/>section<sp/>by<sp/>reference.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="136"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="137"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="138"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="139"><highlight class="comment"><sp />*<sp />@brief<sp
-                    />Returns<sp />the<sp />password-worker<sp />pool<sp
-                    />section.</highlight></codeline>
-<codeline lineno="140"><highlight class="comment"><sp />*<sp />@details<sp
-                    />Exposes<sp />how<sp />many<sp />background<sp />threads<sp
-                    />hash<sp />passwords<sp />and<sp />how<sp
-                    />deep</highlight></codeline>
-<codeline lineno="141"><highlight class="comment"><sp />*<sp />their<sp
-                    />queue<sp />can<sp />grow.</highlight></codeline>
-<codeline lineno="142"><highlight class="comment"><sp />*<sp />@see<sp
-                    />Configurator::PasswordWorkerConfig</highlight></codeline>
-<codeline lineno="143"><highlight class="comment"><sp />*/</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="144"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Full<sp />specialization<sp />for<sp />the<sp
-                    />password-worker<sp />settings<sp
-                    />type.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="145"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Maps<sp />PasswordWorkerConfig<sp />to<sp
-                    />its</highlight><highlight class="normal" /></codeline>
-<codeline lineno="146"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />stored<sp />member.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="147"><highlight class="normal" /><highlight
-                    class="keyword"
-                >template</highlight><highlight class="normal"><sp
-                    />&lt;&gt;</highlight></codeline>
-<codeline
-                lineno="148"
-                refid="configurator_8cpp_1a0a76733ed0e1cd48b51b3ace0e1843d7"
-                refkind="member"
-            ><highlight class="normal"><ref
-                        refid="classConfigurator_1a49c1e1c556694b995447dd4a4cad1935"
-                        kindref="member"
-                    >Configurator::PasswordWorkerConfig</ref>&amp;</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><ref
-                        refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                        kindref="member"
-                    >Configurator::get&lt;Configurator::PasswordWorkerConfig&gt;</ref>()<sp
-                    />{</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp
-                    />password_worker_config_;<sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Hand<sp />back<sp />the<sp />stored<sp
-                    />password-worker</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="151"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />settings<sp
-                    />section<sp />by<sp />reference.</highlight><highlight
-                    class="normal"
-                /></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>password-worker<sp/>pool<sp/>section.</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/>*<sp/>@details<sp/>Exposes<sp/>how<sp/>many<sp/>background<sp/>threads<sp/>hash<sp/>passwords<sp/>and<sp/>how<sp/>deep</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/>*<sp/>their<sp/>queue<sp/>can<sp/>grow.</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/>*<sp/>@see<sp/>Configurator::PasswordWorkerConfig</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Full<sp/>specialization<sp/>for<sp/>the<sp/>password-worker<sp/>settings<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Maps<sp/>PasswordWorkerConfig<sp/>to<sp/>its</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="comment">//<sp/>stored<sp/>member.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="148" refid="configurator_8cpp_1a0a76733ed0e1cd48b51b3ace0e1843d7" refkind="member"><highlight class="normal"><ref refid="classConfigurator_1a49c1e1c556694b995447dd4a4cad1935" kindref="member">Configurator::PasswordWorkerConfig</ref>&amp;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><ref refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef" kindref="member">Configurator::get&lt;Configurator::PasswordWorkerConfig&gt;</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>password_worker_config_;<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>back<sp/>the<sp/>stored<sp/>password-worker</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>settings<sp/>section<sp/>by<sp/>reference.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="152"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="153"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="154"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="155"><highlight class="comment"><sp />*<sp />@brief<sp
-                    />Returns<sp />the<sp />database-executor<sp
-                    />section.</highlight></codeline>
-<codeline lineno="156"><highlight class="comment"><sp />*<sp />@details<sp
-                    />Exposes<sp />worker<sp />count<sp />and<sp />queue<sp
-                    />limits<sp />for<sp />the<sp />component<sp />that<sp
-                    />runs</highlight></codeline>
-<codeline lineno="157"><highlight class="comment"><sp />*<sp />database<sp
-                    />work.</highlight></codeline>
-<codeline lineno="158"><highlight class="comment"><sp />*<sp />@see<sp
-                    />Configurator::DbExecutorConfig</highlight></codeline>
-<codeline lineno="159"><highlight class="comment"><sp />*/</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="160"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Full<sp />specialization<sp />for<sp />the<sp
-                    />database-executor<sp />settings<sp
-                    />type.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="161"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Maps<sp />DbExecutorConfig<sp
-                    />to</highlight><highlight class="normal" /></codeline>
-<codeline lineno="162"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />its<sp />stored<sp />member.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="163"><highlight class="normal" /><highlight
-                    class="keyword"
-                >template</highlight><highlight class="normal"><sp
-                    />&lt;&gt;</highlight></codeline>
-<codeline
-                lineno="164"
-                refid="configurator_8cpp_1a6aad408bff1e378942af2b63e73635b9"
-                refkind="member"
-            ><highlight class="normal"><ref
-                        refid="classConfigurator_1a6552d2f57b9bbb898d49d7512cc3c829"
-                        kindref="member"
-                    >Configurator::DbExecutorConfig</ref>&amp;</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><ref
-                        refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                        kindref="member"
-                    >Configurator::get&lt;Configurator::DbExecutorConfig&gt;</ref>()<sp
-                    />{</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp
-                    />db_executor_config_;<sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Hand<sp />back<sp />the<sp />stored<sp
-                    />database-executor</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="167"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />settings<sp />section<sp />by<sp
-                    />reference.</highlight><highlight
-                    class="normal"
-                /></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>database-executor<sp/>section.</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/>*<sp/>@details<sp/>Exposes<sp/>worker<sp/>count<sp/>and<sp/>queue<sp/>limits<sp/>for<sp/>the<sp/>component<sp/>that<sp/>runs</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/>*<sp/>database<sp/>work.</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/>*<sp/>@see<sp/>Configurator::DbExecutorConfig</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Full<sp/>specialization<sp/>for<sp/>the<sp/>database-executor<sp/>settings<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Maps<sp/>DbExecutorConfig<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="comment">//<sp/>its<sp/>stored<sp/>member.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="164" refid="configurator_8cpp_1a6aad408bff1e378942af2b63e73635b9" refkind="member"><highlight class="normal"><ref refid="classConfigurator_1a6552d2f57b9bbb898d49d7512cc3c829" kindref="member">Configurator::DbExecutorConfig</ref>&amp;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><ref refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef" kindref="member">Configurator::get&lt;Configurator::DbExecutorConfig&gt;</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>db_executor_config_;<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>back<sp/>the<sp/>stored<sp/>database-executor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>settings<sp/>section<sp/>by<sp/>reference.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="168"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="169"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="170"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="171"><highlight class="comment"><sp />*<sp />@brief<sp
-                    />Returns<sp />the<sp />email-sender<sp />daemon<sp
-                    />section.</highlight></codeline>
-<codeline lineno="172"><highlight class="comment"><sp />*<sp />@details<sp
-                    />Exposes<sp />how<sp />to<sp />reach<sp />the<sp
-                    />external<sp />service<sp />that<sp />actually<sp
-                    />delivers</highlight></codeline>
-<codeline lineno="173"><highlight class="comment"><sp />*<sp
-                    />emails.</highlight></codeline>
-<codeline lineno="174"><highlight class="comment"><sp />*<sp />@see<sp
-                    />Configurator::EmailSenderConfig</highlight></codeline>
-<codeline lineno="175"><highlight class="comment"><sp />*/</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="176"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Full<sp />specialization<sp />for<sp />the<sp
-                    />email-sender<sp />settings<sp
-                    />type.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="177"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Maps<sp />EmailSenderConfig</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="178"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />to<sp />its<sp />stored<sp
-                    />member.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="179"><highlight class="normal" /><highlight
-                    class="keyword"
-                >template</highlight><highlight class="normal"><sp
-                    />&lt;&gt;</highlight></codeline>
-<codeline
-                lineno="180"
-                refid="configurator_8cpp_1af3566eb568e2adec6a05e7cc81d096eb"
-                refkind="member"
-            ><highlight class="normal"><ref
-                        refid="classConfigurator_1ae7a8c53bf3a5ab860650fbc02354b222"
-                        kindref="member"
-                    >Configurator::EmailSenderConfig</ref>&amp;</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><ref
-                        refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                        kindref="member"
-                    >Configurator::get&lt;Configurator::EmailSenderConfig&gt;</ref>()<sp
-                    />{</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp
-                    />email_sender_config_;<sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Hand<sp />back<sp />the<sp />stored<sp
-                    />email-sender<sp />settings</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="183"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />section<sp
-                    />by<sp />reference.</highlight><highlight
-                    class="normal"
-                /></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>email-sender<sp/>daemon<sp/>section.</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/>*<sp/>@details<sp/>Exposes<sp/>how<sp/>to<sp/>reach<sp/>the<sp/>external<sp/>service<sp/>that<sp/>actually<sp/>delivers</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/>*<sp/>emails.</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/>*<sp/>@see<sp/>Configurator::EmailSenderConfig</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Full<sp/>specialization<sp/>for<sp/>the<sp/>email-sender<sp/>settings<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Maps<sp/>EmailSenderConfig</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="comment">//<sp/>to<sp/>its<sp/>stored<sp/>member.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="180" refid="configurator_8cpp_1af3566eb568e2adec6a05e7cc81d096eb" refkind="member"><highlight class="normal"><ref refid="classConfigurator_1ae7a8c53bf3a5ab860650fbc02354b222" kindref="member">Configurator::EmailSenderConfig</ref>&amp;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><ref refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef" kindref="member">Configurator::get&lt;Configurator::EmailSenderConfig&gt;</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>email_sender_config_;<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>back<sp/>the<sp/>stored<sp/>email-sender<sp/>settings</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>section<sp/>by<sp/>reference.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="184"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="185"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="186"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="187"><highlight class="comment"><sp />*<sp />@brief<sp
-                    />Returns<sp />the<sp />test-only<sp
-                    />section.</highlight></codeline>
-<codeline lineno="188"><highlight class="comment"><sp />*<sp />@details<sp
-                    />Exposes<sp />switches<sp />that<sp />let<sp />the<sp
-                    />test<sp />harness<sp />start<sp />the<sp />server<sp
-                    />without</highlight></codeline>
-<codeline lineno="189"><highlight class="comment"><sp />*<sp />a<sp />real<sp
-                    />database.</highlight></codeline>
-<codeline lineno="190"><highlight class="comment"><sp />*<sp />@see<sp
-                    />Configurator::Testing</highlight></codeline>
-<codeline lineno="191"><highlight class="comment"><sp />*/</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="192"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Full<sp />specialization<sp />for<sp />the<sp
-                    />test-only<sp />settings<sp />type.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="193"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Maps<sp />the<sp />Testing<sp />type<sp />to<sp
-                    />its<sp />stored<sp />member.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="194"><highlight class="normal" /><highlight
-                    class="keyword"
-                >template</highlight><highlight class="normal"><sp
-                    />&lt;&gt;</highlight></codeline>
-<codeline
-                lineno="195"
-                refid="configurator_8cpp_1a89637a28842c84e0f22e8bb067b0aad1"
-                refkind="member"
-            ><highlight class="normal"><ref
-                        refid="classConfigurator_1a6029dd81a8d2fe9a1eaa17bf2a508e03"
-                        kindref="member"
-                    >Configurator::Testing</ref>&amp;<sp /><ref
-                        refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef"
-                        kindref="member"
-                    >Configurator::get&lt;Configurator::Testing&gt;</ref>()<sp
-                    />{</highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp />testing_;<sp
-                    /><sp /></highlight><highlight class="comment">//<sp
-                    />Hand<sp />back<sp />the<sp />stored<sp />test-only<sp
-                    />switch<sp />section<sp />by</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="197"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />reference.</highlight><highlight
-                    class="normal"
-                /></codeline>
+<codeline lineno="187"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>test-only<sp/>section.</highlight></codeline>
+<codeline lineno="188"><highlight class="comment"><sp/>*<sp/>@details<sp/>Exposes<sp/>switches<sp/>that<sp/>let<sp/>the<sp/>test<sp/>harness<sp/>start<sp/>the<sp/>server<sp/>without</highlight></codeline>
+<codeline lineno="189"><highlight class="comment"><sp/>*<sp/>a<sp/>real<sp/>database.</highlight></codeline>
+<codeline lineno="190"><highlight class="comment"><sp/>*<sp/>@see<sp/>Configurator::Testing</highlight></codeline>
+<codeline lineno="191"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Full<sp/>specialization<sp/>for<sp/>the<sp/>test-only<sp/>settings<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Maps<sp/>the<sp/>Testing<sp/>type<sp/>to<sp/>its<sp/>stored<sp/>member.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="195" refid="configurator_8cpp_1a89637a28842c84e0f22e8bb067b0aad1" refkind="member"><highlight class="normal"><ref refid="classConfigurator_1a6029dd81a8d2fe9a1eaa17bf2a508e03" kindref="member">Configurator::Testing</ref>&amp;<sp/><ref refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef" kindref="member">Configurator::get&lt;Configurator::Testing&gt;</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>testing_;<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>back<sp/>the<sp/>stored<sp/>test-only<sp/>switch<sp/>section<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reference.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="198"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="src/configurator/configurator.cpp" />
+    <location file="libs/configurator/configurator.cpp"/>
   </compounddef>
 </doxygen>

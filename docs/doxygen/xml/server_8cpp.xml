@@ -21,37 +21,163 @@
     <includes local="no">utility</includes>
     <includes refid="all__routes_8hpp" local="yes">api/v2/all_routes.hpp</includes>
     <includes refid="elapsedtime_8hpp" local="yes">api/v2/middlewares/elapsedtime.hpp</includes>
-    <includes local="yes">configurator/configurator.hpp</includes>
+    <includes refid="configurator_8hpp" local="yes">configurator/configurator.hpp</includes>
     <includes refid="asyncdbclient_8hpp" local="yes">database/asyncdbclient.hpp</includes>
     <includes refid="dbexecutor_8hpp" local="yes">database/dbexecutor.hpp</includes>
     <includes refid="passwordworker_8hpp" local="yes">gatekeeper/passwordcrypt/passwordworker.hpp</includes>
     <includes refid="cors_8hpp" local="yes">server/cors.hpp</includes>
     <includes refid="banner_8hpp" local="yes">server/extras/banner.hpp</includes>
-    <includes local="yes">logger/logger.hpp</includes>
+    <includes refid="logger_8hpp" local="yes">logger/logger.hpp</includes>
     <includes refid="store_8hpp" local="yes">store/store.hpp</includes>
     <includes refid="jsonhelper_8hpp" local="yes">utils/jsonhelper/jsonhelper.hpp</includes>
-    <includes local="yes">message/message.hpp</includes>
+    <includes refid="message_8hpp" local="yes">message/message.hpp</includes>
     <includes refid="databaseschema_8hpp" local="yes">validator/databaseschema/databaseschema.hpp</includes>
     <incdepgraph>
-      <node id="82">
-        <label>api/v2/all_routes.hpp</label>
-        <link refid="all__routes_8hpp"/>
-        <childnode refid="83" relation="include">
+      <node id="49">
+        <label>concurrency/boundedexecutor.hpp</label>
+        <link refid="boundedexecutor_8hpp"/>
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="115" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="121" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
-        <childnode refid="133" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="135" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="136" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="144" relation="include">
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>configurator/configurator.hpp</label>
+        <link refid="configurator_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>defaults.hpp</label>
+        <link refid="defaults_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>envloader/envloader.hpp</label>
+        <link refid="envloader_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>envvars/envvars.hpp</label>
+        <link refid="envvars_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="155">
+        <label>logger/logger.hpp</label>
+        <link refid="logger_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+        <childnode refid="157" relation="include">
+        </childnode>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>message/message.hpp</label>
+        <link refid="message_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="86">
+        <label>api/v2/all_routes.hpp</label>
+        <link refid="all__routes_8hpp"/>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="124" relation="include">
+        </childnode>
+        <childnode refid="136" relation="include">
+        </childnode>
+        <childnode refid="138" relation="include">
+        </childnode>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="147" relation="include">
+        </childnode>
+      </node>
+      <node id="90">
         <label>api/v2/basic/common.hpp</label>
         <link refid="common_8hpp"/>
         <childnode refid="8" relation="include">
@@ -62,15 +188,15 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="53" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -78,27 +204,27 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="87" relation="include">
+        <childnode refid="91" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="88" relation="include">
+        <childnode refid="92" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="89" relation="include">
+        <childnode refid="93" relation="include">
         </childnode>
-        <childnode refid="63" relation="include">
+        <childnode refid="70" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="56" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -128,20 +254,20 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="66" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="72" relation="include">
         </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
       </node>
-      <node id="74">
+      <node id="79">
         <label>api/v2/filters/ratelimit.hpp</label>
         <link refid="ratelimit_8hpp"/>
         <childnode refid="7" relation="include">
@@ -156,24 +282,24 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
       </node>
-      <node id="88">
+      <node id="92">
         <label>api/v2/helper/helper.hpp</label>
         <link refid="helper_8hpp"/>
         <childnode refid="3" relation="include">
@@ -182,19 +308,19 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="78" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="75">
+      <node id="80">
         <label>api/v2/middlewares/elapsedtime.hpp</label>
         <link refid="elapsedtime_8hpp"/>
-        <childnode refid="76" relation="include">
+        <childnode refid="81" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -204,23 +330,23 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="77" relation="include">
+        <childnode refid="82" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="78" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="83">
+      <node id="87">
         <label>api/v2/routes/appointments.hpp</label>
         <link refid="appointments_8hpp"/>
-        <childnode refid="84" relation="include">
+        <childnode refid="88" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -228,101 +354,101 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="85" relation="include">
-        </childnode>
-        <childnode refid="86" relation="include">
-        </childnode>
-        <childnode refid="90" relation="include">
-        </childnode>
-        <childnode refid="91" relation="include">
-        </childnode>
-        <childnode refid="89" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="110" relation="include">
-        </childnode>
-        <childnode refid="112" relation="include">
-        </childnode>
-        <childnode refid="113" relation="include">
-        </childnode>
-        <childnode refid="114" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
-      </node>
-      <node id="115">
-        <label>api/v2/routes/clients.hpp</label>
-        <link refid="clients_8hpp"/>
-        <childnode refid="84" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="85" relation="include">
+        <childnode refid="89" relation="include">
         </childnode>
-        <childnode refid="86" relation="include">
+        <childnode refid="90" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
         </childnode>
         <childnode refid="116" relation="include">
         </childnode>
         <childnode refid="117" relation="include">
         </childnode>
-        <childnode refid="50" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
+      </node>
+      <node id="118">
+        <label>api/v2/routes/clients.hpp</label>
+        <link refid="clients_8hpp"/>
+        <childnode refid="88" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="89" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="119" relation="include">
         </childnode>
         <childnode refid="120" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="61" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="63" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="104" relation="include">
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="122" relation="include">
+        </childnode>
+        <childnode refid="123" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
         </childnode>
       </node>
-      <node id="121">
+      <node id="124">
         <label>api/v2/routes/clinics.hpp</label>
         <link refid="api_2v2_2routes_2clinics_8hpp"/>
-        <childnode refid="84" relation="include">
+        <childnode refid="88" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -332,39 +458,33 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="85" relation="include">
-        </childnode>
-        <childnode refid="86" relation="include">
-        </childnode>
-        <childnode refid="122" relation="include">
-        </childnode>
-        <childnode refid="123" relation="include">
-        </childnode>
         <childnode refid="89" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
         </childnode>
         <childnode refid="126" relation="include">
         </childnode>
-        <childnode refid="107" relation="include">
+        <childnode refid="93" relation="include">
         </childnode>
-        <childnode refid="127" relation="include">
-        </childnode>
-        <childnode refid="128" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="129" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
         </childnode>
         <childnode refid="130" relation="include">
         </childnode>
@@ -372,57 +492,21 @@
         </childnode>
         <childnode refid="132" relation="include">
         </childnode>
-        <childnode refid="125" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-      </node>
-      <node id="133">
-        <label>api/v2/routes/doc.hpp</label>
-        <link refid="doc_8hpp"/>
-        <childnode refid="84" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="86" relation="include">
+        <childnode refid="133" relation="include">
         </childnode>
         <childnode refid="134" relation="include">
         </childnode>
-      </node>
-      <node id="135">
-        <label>api/v2/routes/hello.hpp</label>
-        <link refid="hello_8hpp"/>
-        <childnode refid="84" relation="include">
+        <childnode refid="135" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="128" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="86" relation="include">
-        </childnode>
-        <childnode refid="72" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
       </node>
       <node id="136">
-        <label>api/v2/routes/services.hpp</label>
-        <link refid="services_8hpp"/>
-        <childnode refid="84" relation="include">
+        <label>api/v2/routes/doc.hpp</label>
+        <link refid="doc_8hpp"/>
+        <childnode refid="88" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -430,45 +514,21 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="85" relation="include">
-        </childnode>
-        <childnode refid="86" relation="include">
+        <childnode refid="90" relation="include">
         </childnode>
         <childnode refid="137" relation="include">
         </childnode>
-        <childnode refid="138" relation="include">
-        </childnode>
-        <childnode refid="89" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="139" relation="include">
-        </childnode>
-        <childnode refid="141" relation="include">
-        </childnode>
-        <childnode refid="142" relation="include">
-        </childnode>
-        <childnode refid="143" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
       </node>
-      <node id="144">
-        <label>api/v2/routes/staff.hpp</label>
-        <link refid="staff_8hpp"/>
-        <childnode refid="84" relation="include">
+      <node id="138">
+        <label>api/v2/routes/hello.hpp</label>
+        <link refid="hello_8hpp"/>
+        <childnode refid="88" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -476,383 +536,449 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+      </node>
+      <node id="139">
+        <label>api/v2/routes/services.hpp</label>
+        <link refid="services_8hpp"/>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="85" relation="include">
+        <childnode refid="89" relation="include">
         </childnode>
-        <childnode refid="86" relation="include">
+        <childnode refid="90" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="140" relation="include">
+        </childnode>
+        <childnode refid="141" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="142" relation="include">
+        </childnode>
+        <childnode refid="144" relation="include">
         </childnode>
         <childnode refid="145" relation="include">
         </childnode>
         <childnode refid="146" relation="include">
         </childnode>
-        <childnode refid="89" relation="include">
-        </childnode>
-        <childnode refid="139" relation="include">
-        </childnode>
-        <childnode refid="141" relation="include">
-        </childnode>
-        <childnode refid="142" relation="include">
-        </childnode>
-        <childnode refid="143" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
       </node>
-      <node id="90">
-        <label>controllers/appointmentcontroller/appointmentcontroller.hpp</label>
-        <link refid="appointmentcontroller_8hpp"/>
-        <childnode refid="21" relation="include">
+      <node id="147">
+        <label>api/v2/routes/staff.hpp</label>
+        <link refid="staff_8hpp"/>
+        <childnode refid="88" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="91" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="92" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="148" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="142" relation="include">
+        </childnode>
+        <childnode refid="144" relation="include">
+        </childnode>
+        <childnode refid="145" relation="include">
+        </childnode>
+        <childnode refid="146" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
       </node>
-      <node id="91">
+      <node id="94">
+        <label>controllers/appointmentcontroller/appointmentcontroller.hpp</label>
+        <link refid="appointmentcontroller_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+      </node>
+      <node id="95">
         <label>controllers/appointmentcontroller/appointmentcontrollerbase.hpp</label>
         <link refid="appointmentcontrollerbase_8hpp"/>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="45" relation="include">
-        </childnode>
-      </node>
-      <node id="93">
-        <label>controllers/base/controller/controller.hpp</label>
-        <link refid="controller_8hpp"/>
-        <childnode refid="51" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="94" relation="include">
+        <childnode refid="56" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="53" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
+      </node>
+      <node id="97">
+        <label>controllers/base/controller/controller.hpp</label>
+        <link refid="controller_8hpp"/>
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="50" relation="include">
+        <childnode refid="61" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
+        <childnode refid="63" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="95" relation="include">
+        <childnode refid="98" relation="include">
         </childnode>
-        <childnode refid="101" relation="include">
+        <childnode refid="104" relation="include">
         </childnode>
-        <childnode refid="107" relation="include">
+        <childnode refid="110" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="105" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
-        </childnode>
-        <childnode refid="72" relation="include">
-        </childnode>
-        <childnode refid="64" relation="include">
-        </childnode>
-      </node>
-      <node id="116">
-        <label>controllers/clientcontroller/clientcontroller.hpp</label>
-        <link refid="clientcontroller_8hpp"/>
-        <childnode refid="51" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="117" relation="include">
-        </childnode>
-        <childnode refid="92" relation="include">
-        </childnode>
-        <childnode refid="109" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
-        <childnode refid="105" relation="include">
-        </childnode>
-      </node>
-      <node id="117">
-        <label>controllers/clientcontroller/clientcontrollerbase.hpp</label>
-        <link refid="clientcontrollerbase_8hpp"/>
-        <childnode refid="118" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="45" relation="include">
-        </childnode>
-      </node>
-      <node id="122">
-        <label>controllers/cliniccontroller/cliniccontroller.hpp</label>
-        <link refid="cliniccontroller_8hpp"/>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="123" relation="include">
-        </childnode>
-        <childnode refid="92" relation="include">
-        </childnode>
-        <childnode refid="107" relation="include">
-        </childnode>
-        <childnode refid="125" relation="include">
-        </childnode>
-        <childnode refid="105" relation="include">
-        </childnode>
-      </node>
-      <node id="123">
-        <label>controllers/cliniccontroller/cliniccontrollerbase.hpp</label>
-        <link refid="cliniccontrollerbase_8hpp"/>
-        <childnode refid="124" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="45" relation="include">
-        </childnode>
-      </node>
-      <node id="50">
-        <label>controllers/databasecontroller/databasecontroller.hpp</label>
-        <link refid="databasecontroller_8hpp"/>
-        <childnode refid="51" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="108" relation="include">
         </childnode>
         <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="77" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="119">
+        <label>controllers/clientcontroller/clientcontroller.hpp</label>
+        <link refid="clientcontroller_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
         <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="54" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+      </node>
+      <node id="120">
+        <label>controllers/clientcontroller/clientcontrollerbase.hpp</label>
+        <link refid="clientcontrollerbase_8hpp"/>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+      </node>
+      <node id="125">
+        <label>controllers/cliniccontroller/cliniccontroller.hpp</label>
+        <link refid="cliniccontroller_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
+        </childnode>
+        <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+      </node>
+      <node id="126">
+        <label>controllers/cliniccontroller/cliniccontrollerbase.hpp</label>
+        <link refid="cliniccontrollerbase_8hpp"/>
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>controllers/databasecontroller/databasecontroller.hpp</label>
+        <link refid="databasecontroller_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
         <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
-        </childnode>
-        <childnode refid="57" relation="include">
-        </childnode>
-        <childnode refid="59" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="62" relation="include">
-        </childnode>
         <childnode refid="63" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="64" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="65" relation="include">
         </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
       </node>
-      <node id="92">
+      <node id="96">
         <label>controllers/entitycontroller/entitycontroller.hpp</label>
         <link refid="entitycontroller_8hpp"/>
-        <childnode refid="52" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="93" relation="include">
+        <childnode refid="97" relation="include">
         </childnode>
-        <childnode refid="109" relation="include">
+        <childnode refid="112" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="112">
+        <label>controllers/entitycontroller/entitycontrollerbase.hpp</label>
+        <link refid="entitycontrollerbase_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
         </childnode>
       </node>
-      <node id="109">
-        <label>controllers/entitycontroller/entitycontrollerbase.hpp</label>
-        <link refid="entitycontrollerbase_8hpp"/>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="45" relation="include">
-        </childnode>
-      </node>
-      <node id="137">
+      <node id="140">
         <label>controllers/servicecontroller/servicecontroller.hpp</label>
         <link refid="servicecontroller_8hpp"/>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="92" relation="include">
+        <childnode refid="96" relation="include">
         </childnode>
-        <childnode refid="109" relation="include">
+        <childnode refid="112" relation="include">
         </childnode>
-        <childnode refid="138" relation="include">
+        <childnode refid="141" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="55" relation="include">
         </childnode>
       </node>
-      <node id="138">
+      <node id="141">
         <label>controllers/servicecontroller/servicecontrollerbase.hpp</label>
         <link refid="servicecontrollerbase_8hpp"/>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="91" relation="include">
+        <childnode refid="95" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="56" relation="include">
         </childnode>
       </node>
-      <node id="145">
+      <node id="148">
         <label>controllers/staffcontroller/staffcontroller.hpp</label>
         <link refid="staffcontroller_8hpp"/>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="93" relation="include">
+        <childnode refid="97" relation="include">
         </childnode>
-        <childnode refid="146" relation="include">
+        <childnode refid="149" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
       </node>
-      <node id="146">
+      <node id="149">
         <label>controllers/staffcontroller/staffcontrollerBase.hpp</label>
         <link refid="staffcontrollerBase_8hpp"/>
-        <childnode refid="24" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="56" relation="include">
         </childnode>
       </node>
-      <node id="55">
+      <node id="63">
         <label>database/asyncdbclient.hpp</label>
         <link refid="asyncdbclient_8hpp"/>
-        <childnode refid="56" relation="include">
+        <childnode refid="64" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -861,490 +987,274 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="57">
+      <node id="65">
         <label>database/asyncresultmapper.hpp</label>
         <link refid="asyncresultmapper_8hpp"/>
-        <childnode refid="58" relation="include">
+        <childnode refid="66" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="59">
+      <node id="67">
         <label>database/asyncsqlbinder.hpp</label>
         <link refid="asyncsqlbinder_8hpp"/>
-        <childnode refid="56" relation="include">
+        <childnode refid="64" relation="include">
         </childnode>
-        <childnode refid="60" relation="include">
+        <childnode refid="68" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="54" relation="include">
+        <childnode refid="62" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="61" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="29">
         <label>database/databasebusy.hpp</label>
         <link refid="databasebusy_8hpp"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="62">
+      <node id="69">
         <label>database/databasehandler.hpp</label>
         <link refid="databasehandler_8hpp"/>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="89">
+      <node id="93">
         <label>database/dbexecutor.hpp</label>
         <link refid="dbexecutor_8hpp"/>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
       </node>
-      <node id="63">
+      <node id="70">
         <label>database/dbprobe.hpp</label>
         <link refid="dbprobe_8hpp"/>
       </node>
-      <node id="111">
+      <node id="114">
         <label>entities/appointments/base/appointment.hpp</label>
         <link refid="appointment_8hpp"/>
-        <childnode refid="51" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="99" relation="include">
-        </childnode>
-      </node>
-      <node id="110">
-        <label>entities/appointments/clinic.hpp</label>
-        <link refid="clinic_8hpp"/>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="111" relation="include">
-        </childnode>
-      </node>
-      <node id="112">
-        <label>entities/appointments/laboratory.hpp</label>
-        <link refid="laboratory_8hpp"/>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="111" relation="include">
-        </childnode>
-      </node>
-      <node id="113">
-        <label>entities/appointments/pharmacy.hpp</label>
-        <link refid="pharmacy_8hpp"/>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="111" relation="include">
-        </childnode>
-      </node>
-      <node id="114">
-        <label>entities/appointments/radiologycenter.hpp</label>
-        <link refid="radiologycenter_8hpp"/>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="111" relation="include">
-        </childnode>
-      </node>
-      <node id="100">
-        <label>entities/base/base.hpp</label>
-        <link refid="base_8hpp"/>
-        <childnode refid="52" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="54" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-      </node>
-      <node id="108">
-        <label>entities/base/case.hpp</label>
-        <link refid="case_8hpp"/>
-        <childnode refid="51" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="99" relation="include">
-        </childnode>
-        <childnode refid="105" relation="include">
-        </childnode>
-      </node>
-      <node id="95">
-        <label>entities/base/client.hpp</label>
-        <link refid="client_8hpp"/>
-        <childnode refid="51" relation="include">
-        </childnode>
-        <childnode refid="96" relation="include">
-        </childnode>
-        <childnode refid="97" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="53" relation="include">
-        </childnode>
-        <childnode refid="98" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="43" relation="include">
-        </childnode>
-        <childnode refid="61" relation="include">
-        </childnode>
-        <childnode refid="99" relation="include">
-        </childnode>
-        <childnode refid="101" relation="include">
-        </childnode>
-        <childnode refid="52" relation="include">
-        </childnode>
-        <childnode refid="64" relation="include">
-        </childnode>
-        <childnode refid="105" relation="include">
-        </childnode>
-      </node>
-      <node id="99">
-        <label>entities/base/entity.hpp</label>
-        <link refid="entity_8hpp"/>
-        <childnode refid="51" relation="include">
-        </childnode>
-        <childnode refid="96" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="53" relation="include">
-        </childnode>
-        <childnode refid="98" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="61" relation="include">
-        </childnode>
-        <childnode refid="50" relation="include">
-        </childnode>
-        <childnode refid="100" relation="include">
-        </childnode>
-        <childnode refid="101" relation="include">
-        </childnode>
-        <childnode refid="52" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="64" relation="include">
-        </childnode>
-      </node>
-      <node id="140">
-        <label>entities/base/service.hpp</label>
-        <link refid="service_8hpp"/>
-        <childnode refid="51" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="53" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="99" relation="include">
-        </childnode>
-        <childnode refid="101" relation="include">
-        </childnode>
-        <childnode refid="64" relation="include">
-        </childnode>
-      </node>
-      <node id="101">
-        <label>entities/base/types.hpp</label>
-        <link refid="entities_2base_2types_8hpp"/>
-        <childnode refid="51" relation="include">
-        </childnode>
-        <childnode refid="52" relation="include">
-        </childnode>
-        <childnode refid="97" relation="include">
         </childnode>
         <childnode refid="102" relation="include">
         </childnode>
-        <childnode refid="103" relation="include">
+      </node>
+      <node id="113">
+        <label>entities/appointments/clinic.hpp</label>
+        <link refid="clinic_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+      </node>
+      <node id="115">
+        <label>entities/appointments/laboratory.hpp</label>
+        <link refid="laboratory_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+      </node>
+      <node id="116">
+        <label>entities/appointments/pharmacy.hpp</label>
+        <link refid="pharmacy_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+      </node>
+      <node id="117">
+        <label>entities/appointments/radiologycenter.hpp</label>
+        <link refid="radiologycenter_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+      </node>
+      <node id="103">
+        <label>entities/base/base.hpp</label>
+        <link refid="base_8hpp"/>
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="53" relation="include">
+        <childnode refid="62" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+      </node>
+      <node id="111">
+        <label>entities/base/case.hpp</label>
+        <link refid="case_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+      </node>
+      <node id="98">
+        <label>entities/base/client.hpp</label>
+        <link refid="client_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
         <childnode refid="17" relation="include">
         </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+      </node>
+      <node id="102">
+        <label>entities/base/entity.hpp</label>
+        <link refid="entity_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
         <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="143">
+        <label>entities/base/service.hpp</label>
+        <link refid="service_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="85" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="67" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
-        </childnode>
-        <childnode refid="64" relation="include">
+        <childnode refid="102" relation="include">
         </childnode>
         <childnode refid="104" relation="include">
         </childnode>
-      </node>
-      <node id="119">
-        <label>entities/people/provider.hpp</label>
-        <link refid="provider_8hpp"/>
-        <childnode refid="51" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="53" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="95" relation="include">
-        </childnode>
-        <childnode refid="101" relation="include">
-        </childnode>
-        <childnode refid="64" relation="include">
-        </childnode>
-      </node>
-      <node id="120">
-        <label>entities/people/user.hpp</label>
-        <link refid="people_2user_8hpp"/>
-        <childnode refid="51" relation="include">
-        </childnode>
-        <childnode refid="53" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="95" relation="include">
-        </childnode>
-        <childnode refid="101" relation="include">
-        </childnode>
-        <childnode refid="64" relation="include">
-        </childnode>
-      </node>
-      <node id="139">
-        <label>entities/services/clinics/clinics.hpp</label>
-        <link refid="entities_2services_2clinics_2clinics_8hpp"/>
-        <childnode refid="140" relation="include">
-        </childnode>
-      </node>
-      <node id="126">
-        <label>entities/services/clinics/patient/health.hpp</label>
-        <link refid="health_8hpp"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="108" relation="include">
-        </childnode>
-      </node>
-      <node id="107">
-        <label>entities/services/clinics/patient/patient.hpp</label>
-        <link refid="patient_8hpp"/>
-        <childnode refid="51" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="53" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="108" relation="include">
-        </childnode>
-        <childnode refid="101" relation="include">
-        </childnode>
-      </node>
-      <node id="127">
-        <label>entities/services/clinics/patient/patientdrugs.hpp</label>
-        <link refid="patientdrugs_8hpp"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="108" relation="include">
-        </childnode>
-      </node>
-      <node id="128">
-        <label>entities/services/clinics/patient/reports.hpp</label>
-        <link refid="reports_8hpp"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="108" relation="include">
-        </childnode>
-      </node>
-      <node id="129">
-        <label>entities/services/clinics/visits/paidservices.hpp</label>
-        <link refid="paidservices_8hpp"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="108" relation="include">
-        </childnode>
-      </node>
-      <node id="130">
-        <label>entities/services/clinics/visits/prescriptions.hpp</label>
-        <link refid="prescriptions_8hpp"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="108" relation="include">
-        </childnode>
-      </node>
-      <node id="131">
-        <label>entities/services/clinics/visits/requests.hpp</label>
-        <link refid="requests_8hpp"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="108" relation="include">
-        </childnode>
-      </node>
-      <node id="132">
-        <label>entities/services/clinics/visits/visitdrugs.hpp</label>
-        <link refid="visitdrugs_8hpp"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="108" relation="include">
-        </childnode>
-      </node>
-      <node id="125">
-        <label>entities/services/clinics/visits/visits.hpp</label>
-        <link refid="visits_8hpp"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="108" relation="include">
-        </childnode>
-      </node>
-      <node id="141">
-        <label>entities/services/laboratories.hpp</label>
-        <link refid="laboratories_8hpp"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="140" relation="include">
-        </childnode>
-      </node>
-      <node id="142">
-        <label>entities/services/pharmacies.hpp</label>
-        <link refid="pharmacies_8hpp"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="140" relation="include">
-        </childnode>
-      </node>
-      <node id="143">
-        <label>entities/services/radiologycenters.hpp</label>
-        <link refid="radiologycenters_8hpp"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="140" relation="include">
-        </childnode>
-      </node>
-      <node id="25">
-        <label>gatekeeper/dosdetector/dosdetector.hpp</label>
-        <link refid="dosdetector_8hpp"/>
         <childnode refid="26" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+      </node>
+      <node id="104">
+        <label>entities/base/types.hpp</label>
+        <link refid="entities_2base_2types_8hpp"/>
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="100" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="105" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="106" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
@@ -1352,63 +1262,279 @@
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-      </node>
-      <node id="19">
-        <label>gatekeeper/gatekeeper.hpp</label>
-        <link refid="gatekeeper_8hpp"/>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="89" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="71" relation="include">
+        <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="66" relation="include">
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
+      </node>
+      <node id="122">
+        <label>entities/people/provider.hpp</label>
+        <link refid="provider_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="123">
+        <label>entities/people/user.hpp</label>
+        <link refid="people_2user_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="142">
+        <label>entities/services/clinics/clinics.hpp</label>
+        <link refid="entities_2services_2clinics_2clinics_8hpp"/>
+        <childnode refid="143" relation="include">
+        </childnode>
+      </node>
+      <node id="129">
+        <label>entities/services/clinics/patient/health.hpp</label>
+        <link refid="health_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+      </node>
+      <node id="110">
+        <label>entities/services/clinics/patient/patient.hpp</label>
+        <link refid="patient_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+      </node>
+      <node id="130">
+        <label>entities/services/clinics/patient/patientdrugs.hpp</label>
+        <link refid="patientdrugs_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+      </node>
+      <node id="131">
+        <label>entities/services/clinics/patient/reports.hpp</label>
+        <link refid="reports_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+      </node>
+      <node id="132">
+        <label>entities/services/clinics/visits/paidservices.hpp</label>
+        <link refid="paidservices_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+      </node>
+      <node id="133">
+        <label>entities/services/clinics/visits/prescriptions.hpp</label>
+        <link refid="prescriptions_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+      </node>
+      <node id="134">
+        <label>entities/services/clinics/visits/requests.hpp</label>
+        <link refid="requests_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+      </node>
+      <node id="135">
+        <label>entities/services/clinics/visits/visitdrugs.hpp</label>
+        <link refid="visitdrugs_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+      </node>
+      <node id="128">
+        <label>entities/services/clinics/visits/visits.hpp</label>
+        <link refid="visits_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+      </node>
+      <node id="144">
+        <label>entities/services/laboratories.hpp</label>
+        <link refid="laboratories_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="143" relation="include">
+        </childnode>
+      </node>
+      <node id="145">
+        <label>entities/services/pharmacies.hpp</label>
+        <link refid="pharmacies_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="143" relation="include">
+        </childnode>
+      </node>
+      <node id="146">
+        <label>entities/services/radiologycenters.hpp</label>
+        <link refid="radiologycenters_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="143" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>gatekeeper/dosdetector/dosdetector.hpp</label>
+        <link refid="dosdetector_8hpp"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="40" relation="include">
         </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
         <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
         <childnode refid="45" relation="include">
         </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
       </node>
-      <node id="47">
-        <label>gatekeeper/keeprbase/keeprbase.hpp</label>
-        <link refid="keeprbase_8hpp"/>
+      <node id="32">
+        <label>gatekeeper/gatekeeper.hpp</label>
+        <link refid="gatekeeper_8hpp"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
         <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
+        <childnode refid="54" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="57" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>gatekeeper/keeprbase/keeprbase.hpp</label>
+        <link refid="keeprbase_8hpp"/>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -1418,16 +1544,16 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="50" relation="include">
+        <childnode refid="61" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="66" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
       </node>
-      <node id="67">
+      <node id="73">
         <label>gatekeeper/passwordcrypt/passwordcrypt.hpp</label>
         <link refid="passwordcrypt_8hpp"/>
         <childnode refid="12" relation="include">
@@ -1435,40 +1561,40 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="38">
+      <node id="48">
         <label>gatekeeper/passwordcrypt/passwordworker.hpp</label>
         <link refid="passwordworker_8hpp"/>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
       </node>
-      <node id="41">
+      <node id="54">
         <label>gatekeeper/permissionmanager/permissionmanager.hpp</label>
         <link refid="permissionmanager_8hpp"/>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="55" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="56" relation="include">
         </childnode>
       </node>
-      <node id="46">
+      <node id="57">
         <label>gatekeeper/sessionmanager/sessionmanager.hpp</label>
         <link refid="sessionmanager_8hpp"/>
-        <childnode refid="28" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -1476,42 +1602,42 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="58" relation="include">
         </childnode>
-        <childnode refid="67" relation="include">
+        <childnode refid="73" relation="include">
         </childnode>
-        <childnode refid="66" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="68" relation="include">
+        <childnode refid="74" relation="include">
         </childnode>
       </node>
-      <node id="71">
+      <node id="76">
         <label>gatekeeper/tokenmanager/tokenmanager.hpp</label>
         <link refid="tokenmanager_8hpp"/>
-        <childnode refid="18" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="58" relation="include">
         </childnode>
       </node>
-      <node id="66">
+      <node id="72">
         <label>gatekeeper/types.hpp</label>
         <link refid="gatekeeper_2types_8hpp"/>
-        <childnode refid="28" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="147">
+      <node id="150">
         <label>server/cors.hpp</label>
         <link refid="cors_8hpp"/>
         <childnode refid="8" relation="include">
@@ -1522,43 +1648,43 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="61" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="148" relation="include">
+        <childnode refid="151" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+      </node>
+      <node id="151">
+        <label>server/cors_tokens.hpp</label>
+        <link refid="cors__tokens_8hpp"/>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="152" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
       </node>
-      <node id="148">
-        <label>server/cors_tokens.hpp</label>
-        <link refid="cors__tokens_8hpp"/>
-        <childnode refid="97" relation="include">
-        </childnode>
-        <childnode refid="149" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-      </node>
-      <node id="150">
+      <node id="153">
         <label>server/extras/banner.hpp</label>
         <link refid="banner_8hpp"/>
-        <childnode refid="77" relation="include">
+        <childnode refid="82" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="80" relation="include">
+        <childnode refid="84" relation="include">
         </childnode>
-        <childnode refid="151" relation="include">
+        <childnode refid="154" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="61" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -1566,7 +1692,7 @@
         <link refid="server_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="79" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -1578,19 +1704,19 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="77" relation="include">
+        <childnode refid="82" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="78" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="80" relation="include">
+        <childnode refid="84" relation="include">
         </childnode>
-        <childnode refid="53" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="81" relation="include">
+        <childnode refid="85" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -1598,31 +1724,31 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+        <childnode refid="86" relation="include">
         </childnode>
-        <childnode refid="75" relation="include">
+        <childnode refid="80" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
+        <childnode refid="63" relation="include">
         </childnode>
-        <childnode refid="89" relation="include">
+        <childnode refid="93" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="147" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="150" relation="include">
         </childnode>
-        <childnode refid="152" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="72" relation="include">
-        </childnode>
-        <childnode refid="64" relation="include">
-        </childnode>
         <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="155" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="159" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -1636,199 +1762,193 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="74" relation="include">
+        <childnode refid="79" relation="include">
         </childnode>
-        <childnode refid="75" relation="include">
+        <childnode refid="80" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="36">
+      <node id="46">
         <label>store/store.hpp</label>
         <link refid="store_8hpp"/>
-        <childnode refid="27" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="52">
         <label>utils/global/callback.hpp</label>
         <link refid="callback_8hpp"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
       </node>
-      <node id="42">
+      <node id="55">
         <label>utils/global/concepts.hpp</label>
         <link refid="concepts_8hpp"/>
-        <childnode refid="43" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="106">
+      <node id="109">
         <label>utils/global/errorstatus.hpp</label>
         <link refid="errorstatus_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
         <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
-        </childnode>
       </node>
-      <node id="105">
+      <node id="108">
         <label>utils/global/global.hpp</label>
         <link refid="global_8hpp"/>
-        <childnode refid="106" relation="include">
+        <childnode refid="109" relation="include">
         </childnode>
       </node>
-      <node id="44">
+      <node id="53">
         <label>utils/global/http.hpp</label>
         <link refid="http_8hpp"/>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
       </node>
-      <node id="45">
+      <node id="56">
         <label>utils/global/requester.hpp</label>
         <link refid="requester_8hpp"/>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="65">
+      <node id="71">
         <label>utils/global/types.hpp</label>
         <link refid="utils_2global_2types_8hpp"/>
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="72">
+      <node id="77">
         <label>utils/jsonhelper/jsonhelper.hpp</label>
         <link refid="jsonhelper_8hpp"/>
-        <childnode refid="73" relation="include">
+        <childnode refid="78" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
       </node>
-      <node id="68">
+      <node id="74">
         <label>utils/memcache/memcache.hpp</label>
         <link refid="memcache_8hpp"/>
-        <childnode refid="28" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
-        <childnode refid="69" relation="include">
+        <childnode refid="75" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="70" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="153">
+      <node id="159">
         <label>validator/databaseschema/databaseschema.hpp</label>
         <link refid="databaseschema_8hpp"/>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="65" relation="include">
-        </childnode>
-      </node>
-      <node id="104">
-        <label>validator/validator.hpp</label>
-        <link refid="validator_8hpp"/>
-        <childnode refid="97" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="71" relation="include">
+        </childnode>
+      </node>
+      <node id="107">
+        <label>validator/validator.hpp</label>
+        <link refid="validator_8hpp"/>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="65" relation="include">
+        <childnode refid="71" relation="include">
         </childnode>
       </node>
-      <node id="97">
+      <node id="100">
         <label>algorithm</label>
       </node>
-      <node id="134">
+      <node id="137">
         <label>api_html.hpp</label>
       </node>
-      <node id="27">
+      <node id="39">
         <label>atomic</label>
       </node>
-      <node id="102">
+      <node id="105">
         <label>cctype</label>
       </node>
-      <node id="28">
+      <node id="19">
         <label>chrono</label>
       </node>
-      <node id="39">
-        <label>concurrency/boundedexecutor.hpp</label>
-      </node>
-      <node id="29">
+      <node id="40">
         <label>condition_variable</label>
       </node>
-      <node id="15">
-        <label>configurator/configurator.hpp</label>
-      </node>
-      <node id="103">
+      <node id="106">
         <label>cppcodec/base64_rfc4648.hpp</label>
       </node>
       <node id="11">
         <label>cstddef</label>
       </node>
-      <node id="21">
+      <node id="20">
         <label>cstdint</label>
       </node>
-      <node id="80">
+      <node id="84">
         <label>cstdlib</label>
       </node>
-      <node id="30">
+      <node id="41">
         <label>deque</label>
       </node>
-      <node id="20">
+      <node id="33">
         <label>drogon/DrTemplateBase.h</label>
       </node>
-      <node id="79">
+      <node id="83">
         <label>drogon/HttpAppFramework.h</label>
       </node>
-      <node id="84">
+      <node id="88">
         <label>drogon/HttpController.h</label>
       </node>
       <node id="7">
         <label>drogon/HttpFilter.h</label>
       </node>
-      <node id="76">
+      <node id="81">
         <label>drogon/HttpMiddleware.h</label>
       </node>
       <node id="8">
@@ -1846,136 +1966,139 @@
       <node id="10">
         <label>drogon/drogon_callbacks.h</label>
       </node>
-      <node id="56">
+      <node id="64">
         <label>drogon/orm/DbClient.h</label>
       </node>
-      <node id="58">
+      <node id="66">
         <label>drogon/orm/Result.h</label>
       </node>
-      <node id="60">
+      <node id="68">
         <label>drogon/orm/SqlBinder.h</label>
       </node>
-      <node id="124">
+      <node id="127">
         <label>drogon/utils/FunctionTraits.h</label>
       </node>
-      <node id="18">
+      <node id="31">
         <label>drogon/utils/coroutine.h</label>
       </node>
-      <node id="53">
+      <node id="24">
         <label>exception</label>
       </node>
-      <node id="77">
+      <node id="82">
         <label>fmt/color.h</label>
       </node>
-      <node id="51">
+      <node id="16">
         <label>fmt/core.h</label>
       </node>
-      <node id="52">
+      <node id="17">
         <label>fmt/format.h</label>
       </node>
-      <node id="94">
+      <node id="18">
         <label>fmt/ranges.h</label>
       </node>
-      <node id="31">
+      <node id="42">
         <label>functional</label>
       </node>
-      <node id="32">
+      <node id="43">
         <label>future</label>
       </node>
-      <node id="81">
+      <node id="85">
         <label>iostream</label>
       </node>
-      <node id="98">
+      <node id="101">
         <label>iterator</label>
       </node>
-      <node id="73">
+      <node id="78">
         <label>json/value.h</label>
       </node>
-      <node id="22">
+      <node id="34">
         <label>jsoncons/basic_json.hpp</label>
       </node>
-      <node id="23">
+      <node id="35">
         <label>jsoncons/json.hpp</label>
       </node>
-      <node id="48">
+      <node id="59">
         <label>jwt-cpp/jwt.h</label>
       </node>
-      <node id="49">
+      <node id="60">
         <label>jwt-cpp/traits/kazuho-picojson/traits.h</label>
       </node>
-      <node id="69">
+      <node id="75">
         <label>list</label>
-      </node>
-      <node id="152">
-        <label>logger/logger.hpp</label>
       </node>
       <node id="5">
         <label>memory</label>
       </node>
-      <node id="64">
-        <label>message/message.hpp</label>
-      </node>
-      <node id="33">
+      <node id="44">
         <label>mutex</label>
       </node>
       <node id="12">
         <label>optional</label>
       </node>
-      <node id="54">
+      <node id="62">
         <label>pqxx/pqxx</label>
       </node>
-      <node id="151">
+      <node id="154">
         <label>random</label>
       </node>
-      <node id="149">
+      <node id="152">
         <label>ranges</label>
       </node>
-      <node id="17">
+      <node id="156">
+        <label>spdlog/async.h</label>
+      </node>
+      <node id="157">
+        <label>spdlog/async_logger.h</label>
+      </node>
+      <node id="158">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="30">
         <label>stdexcept</label>
       </node>
-      <node id="118">
+      <node id="121">
         <label>stdint.h</label>
       </node>
       <node id="13">
         <label>string</label>
       </node>
-      <node id="24">
+      <node id="36">
         <label>string_view</label>
       </node>
-      <node id="96">
+      <node id="99">
         <label>sys/types.h</label>
       </node>
-      <node id="70">
+      <node id="50">
         <label>thread</label>
       </node>
-      <node id="78">
+      <node id="27">
         <label>trantor/utils/Logger.h</label>
       </node>
-      <node id="87">
+      <node id="91">
         <label>tuple</label>
       </node>
-      <node id="43">
+      <node id="21">
         <label>type_traits</label>
       </node>
-      <node id="37">
+      <node id="47">
         <label>typeindex</label>
       </node>
-      <node id="34">
+      <node id="45">
         <label>unordered_map</label>
       </node>
-      <node id="35">
+      <node id="22">
         <label>unordered_set</label>
       </node>
       <node id="14">
         <label>utility</label>
       </node>
-      <node id="85">
+      <node id="89">
         <label>variant</label>
       </node>
-      <node id="61">
+      <node id="51">
         <label>vector</label>
       </node>
-      <node id="26">
+      <node id="38">
         <label>xxhash.h</label>
       </node>
     </incdepgraph>
@@ -2071,7 +2194,7 @@
 <codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>timing<sp/>middleware<sp/>used<sp/>by<sp/>the<sp/>pre-sending<sp/>hook</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="elapsedtime_8hpp" kindref="compound">api/v2/middlewares/elapsedtime.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Configurator<sp/>types<sp/>used<sp/>to<sp/>read<sp/>the<sp/>cached<sp/>settings</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;configurator/configurator.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="configurator_8hpp" kindref="compound">configurator/configurator.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>AsyncDbClient,<sp/>created<sp/>and<sp/>registered<sp/>when<sp/>async<sp/>DB<sp/>mode<sp/>is<sp/>enabled</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="asyncdbclient_8hpp" kindref="compound">database/asyncdbclient.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//<sp/>DbExecutor,<sp/>whose<sp/>task<sp/>queue<sp/>is<sp/>drained<sp/>during<sp/>shutdown</highlight><highlight class="normal"></highlight></codeline>
@@ -2083,12 +2206,12 @@
 <codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Banner<sp/>helpers<sp/>used<sp/>to<sp/>print<sp/>the<sp/>startup<sp/>banner</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="banner_8hpp" kindref="compound">server/extras/banner.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Store,<sp/>the<sp/>global<sp/>registry<sp/>of<sp/>shared<sp/>singleton<sp/>objects</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;logger/logger.hpp&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>Logger<sp/>type<sp/>resolved<sp/>from<sp/>the<sp/>Store</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logger_8hpp" kindref="compound">logger/logger.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>Logger<sp/>type<sp/>resolved<sp/>from<sp/>the<sp/>Store</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="store_8hpp" kindref="compound">store/store.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">//<sp/>JsonHelper::jsonify(),<sp/>which<sp/>builds<sp/>the<sp/>custom<sp/>404<sp/>JSON<sp/>body</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="jsonhelper_8hpp" kindref="compound">utils/jsonhelper/jsonhelper.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Message<sp/>helpers<sp/>used<sp/>to<sp/>report<sp/>startup<sp/>failures</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;message/message.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">message/message.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>DatabaseSchema<sp/>type<sp/>resolved<sp/>from<sp/>the<sp/>Store</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="databaseschema_8hpp" kindref="compound">validator/databaseschema/databaseschema.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="94"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
@@ -2124,10 +2247,10 @@
 <codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>one<sp/>rate-limit</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>filter<sp/>instance<sp/>(last,<sp/>so</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>no<sp/>trailing<sp/>comma).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classServer_1aa84ff16ac0dff01780bb1f1fbc6b3d0f" kindref="member">logger_</ref>(<ref refid="classStore" kindref="compound">Store</ref>::getObject&lt;Logger&gt;()),</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1adb978249d96530b9b06c6a88d73fd097" kindref="member">configurator_</ref>(<ref refid="classStore" kindref="compound">Store</ref>::getObject&lt;Configurator&gt;()),</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>(<ref refid="classServer_1adb978249d96530b9b06c6a88d73fd097" kindref="member">configurator_</ref>-&gt;get&lt;Configurator::ServerConfig&gt;()),</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1add9a2053fd3293d3ea32f90174f31362" kindref="member">db_config_</ref>(<ref refid="classServer_1adb978249d96530b9b06c6a88d73fd097" kindref="member">configurator_</ref>-&gt;get&lt;Configurator::DatabaseConfig&gt;()),</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classServer_1aa84ff16ac0dff01780bb1f1fbc6b3d0f" kindref="member">logger_</ref>(<ref refid="classStore" kindref="compound">Store</ref>::getObject&lt;<ref refid="classLogger" kindref="compound">Logger</ref>&gt;()),</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1adb978249d96530b9b06c6a88d73fd097" kindref="member">configurator_</ref>(<ref refid="classStore" kindref="compound">Store</ref>::getObject&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>&gt;()),</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>(<ref refid="classServer_1adb978249d96530b9b06c6a88d73fd097" kindref="member">configurator_</ref>-&gt;get&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>::<ref refid="structServerConfig" kindref="compound">ServerConfig</ref>&gt;()),</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1add9a2053fd3293d3ea32f90174f31362" kindref="member">db_config_</ref>(<ref refid="classServer_1adb978249d96530b9b06c6a88d73fd097" kindref="member">configurator_</ref>-&gt;get&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>::<ref refid="structDatabaseConfig" kindref="compound">DatabaseConfig</ref>&gt;()),</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1a4b5af6fbc728adfb0315088430f9c059" kindref="member">databaseSchema_</ref>(<ref refid="classStore" kindref="compound">Store</ref>::getObject&lt;<ref refid="classDatabaseSchema" kindref="compound">DatabaseSchema</ref>&gt;()),</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1aaaa0c607dbdbdf1fe064a1b247cc33f1" kindref="member">auth_filter_</ref>(<ref refid="namespacestd" kindref="compound">std</ref>::make_shared&lt;<ref refid="namespaceapi" kindref="compound">api</ref>::v2::<ref refid="namespaceapi_1_1v2_1_1Filters" kindref="compound">Filters</ref>::Auth&gt;()),</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1ad1d6edc7edb17417bfd77dd21c3414ea" kindref="member">elapsed_time_</ref>(<ref refid="namespacestd" kindref="compound">std</ref>::make_shared&lt;<ref refid="namespaceapi" kindref="compound">api</ref>::v2::<ref refid="namespaceapi_1_1v2_1_1MiddleWares" kindref="compound">MiddleWares</ref>::ElapsedTime&gt;()),</highlight></codeline>
@@ -2282,11 +2405,11 @@
 <codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>above<sp/>threw<sp/>an<sp/>exception.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject&lt;PasswordWorker&gt;</ref>()-&gt;shutdown();</highlight></codeline>
 <codeline lineno="284"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::ErrorMessage(</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
 <codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>start<sp/>server<sp/>on<sp/>{}:{}.&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.host,</highlight></codeline>
 <codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.port));<sp/><sp/></highlight><highlight class="comment">//<sp/>Report<sp/>which<sp/>address<sp/>failed<sp/>to<sp/>start.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>the<sp/>exception&apos;s<sp/>own</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>the<sp/>exception&apos;s<sp/>own</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>description<sp/>as<sp/>a<sp/>critical<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;<sp/><sp/></highlight><highlight class="comment">//<sp/>Signal<sp/>failure<sp/>to<sp/>main(),<sp/>and<sp/>from<sp/>there<sp/>to<sp/>the</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>operating<sp/>system.</highlight><highlight class="normal"></highlight></codeline>

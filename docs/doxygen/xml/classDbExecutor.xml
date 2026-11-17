@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
   <compounddef id="classDbExecutor" kind="class" language="C++" prot="public">
     <compoundname>DbExecutor</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">BoundedExecutor</basecompoundref>
+    <basecompoundref refid="classBoundedExecutor" prot="public" virt="non-virtual">BoundedExecutor</basecompoundref>
     <includes refid="dbexecutor_8hpp" local="no">dbexecutor.hpp</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classDbExecutor_1afc7b383dd9357cbeda1c8f7d8fc7484d" prot="private" static="no" mutable="no">
@@ -33,7 +33,7 @@
         <name>DbExecutor</name>
         <qualifiedname>DbExecutor::DbExecutor</qualifiedname>
         <briefdescription>
-<para>Constructs the executor sized and configured from the Configurator. </para>
+<para>Constructs the executor sized and configured from the <ref refid="classConfigurator" kindref="compound">Configurator</ref>. </para>
         </briefdescription>
         <detaileddescription>
 <para>Builds the executor from configuration, naming it &quot;DB executor&quot; for diagnostics. </para>
@@ -41,6 +41,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="src/database/dbexecutor.hpp" line="72" column="3" bodyfile="src/database/dbexecutor.cpp" bodystart="60" bodyend="63"/>
+        <references refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" compoundref="boundedexecutor_8cpp" startline="82" endline="114">BoundedExecutor::BoundedExecutor</references>
         <references refid="classDbExecutor_1afc7b383dd9357cbeda1c8f7d8fc7484d" compoundref="dbexecutor_8hpp" startline="103">io_fast_path_</references>
       </memberdef>
       <memberdef kind="function" id="classDbExecutor_1a2aa554b6f63dcd750b482fc6c3dcff61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -96,6 +97,7 @@ Builds the executor with explicit sizes, naming it &quot;DB executor&quot; for d
         <inbodydescription>
         </inbodydescription>
         <location file="src/database/dbexecutor.hpp" line="82" column="3" bodyfile="src/database/dbexecutor.cpp" bodystart="72" bodyend="77"/>
+        <references refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" compoundref="boundedexecutor_8cpp" startline="82" endline="114">BoundedExecutor::BoundedExecutor</references>
         <references refid="classDbExecutor_1afc7b383dd9357cbeda1c8f7d8fc7484d" compoundref="dbexecutor_8hpp" startline="103">io_fast_path_</references>
       </memberdef>
       <memberdef kind="function" id="classDbExecutor_1a5d6abf2368cd71250974124d570b7f2b" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -115,21 +117,23 @@ Builds the executor with explicit sizes, naming it &quot;DB executor&quot; for d
         <inbodydescription>
         </inbodydescription>
         <location file="src/database/dbexecutor.hpp" line="94" column="9" bodyfile="src/database/dbexecutor.hpp" bodystart="94" bodyend="96"/>
+        <references refid="classBoundedExecutor_1a49df17e54d15d8a492f13e876c74f4cf" compoundref="boundedexecutor_8hpp" startline="192" endline="194">BoundedExecutor::inlineMode</references>
         <references refid="classDbExecutor_1afc7b383dd9357cbeda1c8f7d8fc7484d" compoundref="dbexecutor_8hpp" startline="103">io_fast_path_</references>
         <referencedby refid="namespaceapi_1_1v2_1aa679c4967ecfe1f25818539f137414d3" compoundref="common_8hpp" startline="188" endline="371">api::v2::executeControllerMethod</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>BoundedExecutor configured for the synchronous database path. </para>
+<para><ref refid="classBoundedExecutor" kindref="compound">BoundedExecutor</ref> configured for the synchronous database path. </para>
     </briefdescription>
     <detaileddescription>
-<para>Runs blocking database work (permission checks, queries, response building) off the Drogon IO threads. Worker count and queue capacity come from configuration in the default constructor; the other constructor allows explicit sizes for tests. When configured, requests may first be attempted on the IO thread via a <ref refid="classDbProbe" kindref="compound">DbProbe</ref> (see <ref refid="classDbExecutor_1a5d6abf2368cd71250974124d570b7f2b" kindref="member">ioFastPath()</ref>). Thread-safety and shutdown semantics are inherited from BoundedExecutor. <simplesect kind="see"><para>BoundedExecutor, <ref refid="classDbProbe" kindref="compound">DbProbe</ref>, <ref refid="dbexecutor_8hpp_1a936968e57939fceaf59b5600a46630aa" kindref="member">runOnDbExecutor</ref> </para>
+<para>Runs blocking database work (permission checks, queries, response building) off the Drogon IO threads. <ref refid="structBoundedExecutor_1_1Worker" kindref="compound">Worker</ref> count and queue capacity come from configuration in the default constructor; the other constructor allows explicit sizes for tests. When configured, requests may first be attempted on the IO thread via a <ref refid="classDbProbe" kindref="compound">DbProbe</ref> (see <ref refid="classDbExecutor_1a5d6abf2368cd71250974124d570b7f2b" kindref="member">ioFastPath()</ref>). Thread-safety and shutdown semantics are inherited from <ref refid="classBoundedExecutor" kindref="compound">BoundedExecutor</ref>. <simplesect kind="see"><para><ref refid="classBoundedExecutor" kindref="compound">BoundedExecutor</ref>, <ref refid="classDbProbe" kindref="compound">DbProbe</ref>, <ref refid="dbexecutor_8hpp_1a936968e57939fceaf59b5600a46630aa" kindref="member">runOnDbExecutor</ref> </para>
 </simplesect>
 </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="2">
         <label>BoundedExecutor</label>
+        <link refid="classBoundedExecutor"/>
       </node>
       <node id="1">
         <label>DbExecutor</label>
@@ -141,6 +145,7 @@ Builds the executor with explicit sizes, naming it &quot;DB executor&quot; for d
     <collaborationgraph>
       <node id="2">
         <label>BoundedExecutor</label>
+        <link refid="classBoundedExecutor"/>
       </node>
       <node id="1">
         <label>DbExecutor</label>
@@ -151,10 +156,37 @@ Builds the executor with explicit sizes, naming it &quot;DB executor&quot; for d
     </collaborationgraph>
     <location file="src/database/dbexecutor.hpp" line="63" column="1" bodyfile="src/database/dbexecutor.hpp" bodystart="66" bodyend="105"/>
     <listofallmembers>
+      <member refid="classBoundedExecutor_1ada1436c03655174b30be553eacacba3d" prot="private" virt="non-virtual"><scope>DbExecutor</scope><name>account</name></member>
+      <member refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" prot="public" virt="non-virtual"><scope>DbExecutor</scope><name>BoundedExecutor</name></member>
+      <member refid="classBoundedExecutor_1a9a159a4e6c10282bbd73960ec8527039" prot="public" virt="non-virtual"><scope>DbExecutor</scope><name>BoundedExecutor</name></member>
+      <member refid="classBoundedExecutor_1ac3bc3b2e136a2da3b6c0eb080b69daf5" prot="public" virt="non-virtual"><scope>DbExecutor</scope><name>BoundedExecutor</name></member>
       <member refid="classDbExecutor_1a8dadc723449f985ba60361ce11896244" prot="public" virt="non-virtual"><scope>DbExecutor</scope><name>DbExecutor</name></member>
       <member refid="classDbExecutor_1a2aa554b6f63dcd750b482fc6c3dcff61" prot="public" virt="non-virtual"><scope>DbExecutor</scope><name>DbExecutor</name></member>
+      <member refid="classBoundedExecutor_1a49df17e54d15d8a492f13e876c74f4cf" prot="public" virt="non-virtual"><scope>DbExecutor</scope><name>inlineMode</name></member>
       <member refid="classDbExecutor_1afc7b383dd9357cbeda1c8f7d8fc7484d" prot="private" virt="non-virtual"><scope>DbExecutor</scope><name>io_fast_path_</name></member>
       <member refid="classDbExecutor_1a5d6abf2368cd71250974124d570b7f2b" prot="public" virt="non-virtual"><scope>DbExecutor</scope><name>ioFastPath</name></member>
+      <member refid="classBoundedExecutor_1a2279dc6bf7730b6dd74cfa7c5a3ecc0c" prot="private" virt="non-virtual"><scope>DbExecutor</scope><name>max_queue_</name></member>
+      <member refid="classBoundedExecutor_1a8df5c3b6d47a7bb92e508c4df34581fe" prot="private" virt="non-virtual"><scope>DbExecutor</scope><name>name_</name></member>
+      <member refid="classBoundedExecutor_1a567da16c5009c3a32c8b6d052ed11e39" prot="private" virt="non-virtual"><scope>DbExecutor</scope><name>next_</name></member>
+      <member refid="classBoundedExecutor_1a4d2a977a3f48f26956a39f5f5cd4ddb3" prot="public" virt="non-virtual"><scope>DbExecutor</scope><name>onWorkerThread</name></member>
+      <member refid="classBoundedExecutor_1a8907e36d0d8e8f509ad165e11d56e1fd" prot="public" virt="non-virtual"><scope>DbExecutor</scope><name>operator=</name></member>
+      <member refid="classBoundedExecutor_1aacbf4b69d06b66824a929caa6e0585df" prot="public" virt="non-virtual"><scope>DbExecutor</scope><name>operator=</name></member>
+      <member refid="classBoundedExecutor_1aa3c7def6899c02451c22a5ec458939d2" prot="public" virt="non-virtual"><scope>DbExecutor</scope><name>pending</name></member>
+      <member refid="classBoundedExecutor_1a4b55370d142b9901015c7106e19a98ec" prot="private" virt="non-virtual"><scope>DbExecutor</scope><name>queue_max_</name></member>
+      <member refid="classBoundedExecutor_1afbb5f9247d4cf5e3e52a9c25c036d0a6" prot="private" virt="non-virtual"><scope>DbExecutor</scope><name>queued_</name></member>
+      <member refid="classBoundedExecutor_1a1ba84f816094cdfc44f7cbf5faf1704c" prot="private" virt="non-virtual"><scope>DbExecutor</scope><name>rejected_</name></member>
+      <member refid="classBoundedExecutor_1a14e1a972664d0af29d59d074675c5ffe" prot="private" virt="non-virtual"><scope>DbExecutor</scope><name>run</name></member>
+      <member refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" prot="public" virt="non-virtual"><scope>DbExecutor</scope><name>shutdown</name></member>
+      <member refid="classBoundedExecutor_1a37f079e009f3b711023b031941cb7e2e" prot="public" virt="non-virtual"><scope>DbExecutor</scope><name>stats</name></member>
+      <member refid="classBoundedExecutor_1a2fe4e0d777523f51d59935f89030ac1c" prot="private" virt="non-virtual"><scope>DbExecutor</scope><name>stopping_</name></member>
+      <member refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" prot="public" virt="non-virtual"><scope>DbExecutor</scope><name>submit</name></member>
+      <member refid="classBoundedExecutor_1a586729a32716a35da700a96fbc590333" prot="private" virt="non-virtual"><scope>DbExecutor</scope><name>submitted_</name></member>
+      <member refid="classBoundedExecutor_1a161a33a863940e718dc25a66dd4c3aa9" prot="private" virt="non-virtual"><scope>DbExecutor</scope><name>take</name></member>
+      <member refid="classBoundedExecutor_1a70d24f4375b291df10a0145de6de32d6" prot="private" virt="non-virtual"><scope>DbExecutor</scope><name>wait_ns_</name></member>
+      <member refid="classBoundedExecutor_1a651cb39909b6c74ca951ff00808901f0" prot="private" virt="non-virtual"><scope>DbExecutor</scope><name>waited_tasks_</name></member>
+      <member refid="classBoundedExecutor_1ab0246f1fb4aff4e008f03c2542976df2" prot="public" virt="non-virtual"><scope>DbExecutor</scope><name>workerCount</name></member>
+      <member refid="classBoundedExecutor_1a99feeabf885fe43e0196051f6a80803e" prot="private" virt="non-virtual"><scope>DbExecutor</scope><name>workers_</name></member>
+      <member refid="classBoundedExecutor_1a8f39a779cb5d5a79e3442b21635be122" prot="public" virt="virtual"><scope>DbExecutor</scope><name>~BoundedExecutor</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

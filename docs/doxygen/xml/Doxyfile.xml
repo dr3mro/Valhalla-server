@@ -136,6 +136,7 @@
     <value><![CDATA[docs/ARCHITECTURE.md]]></value>
     <value><![CDATA[docs/CONTRIBUTING.md]]></value>
     <value><![CDATA[src]]></value>
+    <value><![CDATA[libs]]></value>
   </option>
   <option  id='INPUT_ENCODING' default='yes' type='string'><value><![CDATA[UTF-8]]></value></option>
   <option  id='INPUT_FILE_ENCODING' default='yes' type='stringlist'>

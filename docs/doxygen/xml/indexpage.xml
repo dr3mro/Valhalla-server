@@ -10,7 +10,7 @@
 <para>A high-performance, multi-tenant healthcare backend written in modern C++20. Valhalla exposes a versioned REST API for managing medical service providers (clinics, laboratories, pharmacies, radiology centers), their staff, patients, visits, and appointments — with authentication, role-based permissions, and built-in abuse protection baked into the request pipeline.</para>
 <para><blockquote><para><bold>Status:</bold> Active development. The API surface and data model are still evolving. </para>
 </blockquote></para>
-<para><blockquote><para><bold>Documentation &amp; code architecture:</bold> The generated <ulink url="https://dr3mro.github.io/Valhalla-server/doxygen/html/index.html">Doxygen reference</ulink> documents the C++ API, class hierarchy, and source layout. For the HTTP API itself, see Interactive API docs. </para>
+<para><blockquote><para><bold>Documentation &amp; code architecture:</bold> The generated <ulink url="https://dr3mro.github.io/Valhalla-server/doxygen/html/index.html">Doxygen reference</ulink> documents the C++ API, class hierarchy, and source layout. For the HTTP API itself, see the “Interactive API docs” section below. </para>
 </blockquote></para>
 <para><hruler/>
 </para>
@@ -133,9 +133,9 @@
 </listitem><listitem><para><bold>Controllers</bold> (<computeroutput>src/controllers</computeroutput>) implement CRUD/search logic against a generic base.</para>
 </listitem><listitem><para><bold>Entities</bold> (<computeroutput>src/entities</computeroutput>) model the domain: people (users, providers), services (clinics, laboratories, pharmacies, radiology centers), patients, visits, and appointments.</para>
 </listitem><listitem><para><bold>Gatekeeper</bold> (<computeroutput>src/gatekeeper</computeroutput>) holds the cross-cutting security concerns: DoS detector, token and session managers, the permission manager with its idle-expiry cache, and password hashing (Argon2id, with legacy scrypt hashes still accepted at login).</para>
-</listitem><listitem><para><bold>Concurrency</bold> (<computeroutput>src/concurrency</computeroutput>) has <computeroutput>BoundedExecutor</computeroutput>, the fixed-size thread pool with a bounded queue that <computeroutput>submit()</computeroutput> never blocks on. The DB executor (<computeroutput>src/database/dbexecutor</computeroutput>, legacy <computeroutput>DB_ASYNC=false</computeroutput> path) and the password worker are two instances. With zero workers a task runs inline, which the unit tests use.</para>
+</listitem><listitem><para><bold>Concurrency</bold> (<computeroutput>libs/concurrency</computeroutput>) has <computeroutput><ref refid="classBoundedExecutor" kindref="compound">BoundedExecutor</ref></computeroutput>, the fixed-size thread pool with a bounded queue that <computeroutput>submit()</computeroutput> never blocks on. The DB executor (<computeroutput>src/database/dbexecutor</computeroutput>, legacy <computeroutput>DB_ASYNC=false</computeroutput> path) and the password worker are two instances. With zero workers a task runs inline, which the unit tests use.</para>
 </listitem><listitem><para><bold><ref refid="classDatabase" kindref="compound">Database</ref></bold> (<computeroutput>src/database</computeroutput>) has the asynchronous client wrapper (<computeroutput><ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref></computeroutput>, the default <computeroutput>DB_ASYNC=true</computeroutput> path), the legacy connection pool (<computeroutput><ref refid="classBlockingPool" kindref="compound">BlockingPool</ref></computeroutput>, waits with a timeout and throws <computeroutput><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></computeroutput>, which becomes 503), the watchdog that reconnects dropped connections, and the handler that borrows a connection for one query.</para>
-</listitem><listitem><para><bold>Configurator</bold> (<computeroutput>src/configurator</computeroutput>) loads and validates configuration from the environment at startup.</para>
+</listitem><listitem><para><bold><ref refid="classConfigurator" kindref="compound">Configurator</ref></bold> (<computeroutput>libs/configurator</computeroutput>) loads and validates configuration from the environment at startup.</para>
 </listitem><listitem><para><bold><ref refid="classStore" kindref="compound">Store</ref></bold> (<computeroutput>src/store</computeroutput>) provides shared singleton object access. Objects built for every request use <computeroutput><ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;T&gt;()</computeroutput>, which keeps a per-thread pointer and only goes back to the <ref refid="classStore" kindref="compound">Store</ref> when an object has been replaced (tests replace the database controller with a fake).</para>
 </listitem></itemizedlist>
 </para>
@@ -170,7 +170,7 @@
 </entry><entry thead="no"><para>jsoncons, picojson (jsoncpp via Drogon)  </para>
 </entry></row>
 <row>
-<entry thead="no"><para>Config  </para>
+<entry thead="no"><para><ref refid="conceptConfig" kindref="compound">Config</ref>  </para>
 </entry><entry thead="no"><para>Environment variables  </para>
 </entry></row>
 <row>
@@ -186,7 +186,7 @@
 </entry><entry thead="no"><para>xxhash, cppcodec, zlib  </para>
 </entry></row>
 <row>
-<entry thead="no"><para>Testing  </para>
+<entry thead="no"><para><ref refid="structTesting" kindref="compound">Testing</ref>  </para>
 </entry><entry thead="no"><para>Catch2  </para>
 </entry></row>
 <row>
@@ -730,7 +730,7 @@
 </sect2>
 </sect1>
 <sect1 id="index_1autotoc_md15">
-<title>Configuration</title><para>All configuration is supplied through environment variables; defaults live in <computeroutput>src/configurator/defaults.hpp</computeroutput>. The frontend and email-sender defaults point at fixed Docker-network IPs (<computeroutput>172.20.0.5</computeroutput>/<computeroutput>.6</computeroutput>), and the token secret and database credentials are development values, so override them for any real deployment.</para>
+<title>Configuration</title><para>All configuration is supplied through environment variables; defaults live in <computeroutput><ref refid="defaults_8hpp" kindref="compound">libs/configurator/defaults.hpp</ref></computeroutput>. The frontend and email-sender defaults point at fixed Docker-network IPs (<computeroutput>172.20.0.5</computeroutput>/<computeroutput>.6</computeroutput>), and the token secret and database credentials are development values, so override them for any real deployment.</para>
 <sect2 id="index_1autotoc_md16">
 <title>Server</title><para><table rows="8" cols="3"><row>
 <entry thead="yes"><para>Variable  </para>
@@ -1309,36 +1309,58 @@
 </sect2>
 </sect1>
 <sect1 id="index_1autotoc_md33">
-<title>Project Layout</title><para><programlisting><codeline><highlight class="normal">src/</highlight></codeline>
+<title>Project Layout</title><para><programlisting><codeline><highlight class="normal">CMakeLists.txt<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Thin<sp/>root:<sp/>project()<sp/>+<sp/>includes<sp/>the<sp/>modules<sp/>below</highlight></codeline>
+<codeline><highlight class="normal">cmake/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Configure-time<sp/>CMake<sp/>modules<sp/>(see<sp/>cmake/README.md)</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>CompilerSetup.cmake<sp/><sp/><sp/>#<sp/>compiler,<sp/>warnings,<sp/>LTO,<sp/>ccache</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>ProjectSetup.cmake<sp/><sp/><sp/><sp/>#<sp/>include<sp/>dirs,<sp/>version.cpp<sp/>generation</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>CoreTargets.cmake<sp/><sp/><sp/><sp/><sp/>#<sp/>server_core,<sp/>server,<sp/>valhalla_version</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>Dependencies.cmake<sp/><sp/><sp/><sp/>#<sp/>Conan<sp/>find_package<sp/>calls</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>Doxygen.cmake<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>valhalla_doxygen<sp/>(defined<sp/>only<sp/>on<sp/>tagged<sp/>HEADs)</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>ApiEmbed.cmake<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>embeds<sp/>docs/api.html<sp/>into<sp/>a<sp/>generated<sp/>header</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>ApiDocs.cmake<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>valhalla_docs<sp/>regeneration<sp/>target</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>ConanVariables.cmake<sp/><sp/>#<sp/>third-party<sp/>dependency<sp/>switches</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>Linking.cmake<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>local<sp/>libs<sp/>+<sp/>final<sp/>links</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>Sanitizers.cmake<sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Linux<sp/>Debug<sp/>ASan/UBSan/LSan</highlight></codeline>
+<codeline><highlight class="normal">└──<sp/>Testing.cmake<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>ENABLE_TESTS<sp/>+<sp/>CTest<sp/>registration</highlight></codeline>
+<codeline><highlight class="normal">libs/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Reusable<sp/>static<sp/>libraries</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>concurrency/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>BoundedExecutor:<sp/>thread<sp/>pool<sp/>with<sp/>a<sp/>bounded<sp/>queue</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>configurator/<sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Environment-driven<sp/>configuration<sp/>+<sp/>defaults</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>logger/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Async<sp/>spdlog<sp/>logging<sp/>(wired<sp/>into<sp/>Trantor)</highlight></codeline>
+<codeline><highlight class="normal">└──<sp/>message/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Shared<sp/>message<sp/>/<sp/>error<sp/>types</highlight></codeline>
+<codeline><highlight class="normal">src/</highlight></codeline>
 <codeline><highlight class="normal">├──<sp/>api/v2/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>REST<sp/>API:<sp/>routes,<sp/>filters,<sp/>middlewares,<sp/>helpers</highlight></codeline>
 <codeline><highlight class="normal">├──<sp/>controllers/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Business<sp/>logic<sp/>per<sp/>resource<sp/>(clients,<sp/>clinics,<sp/>services,<sp/>…)</highlight></codeline>
 <codeline><highlight class="normal">├──<sp/>entities/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Domain<sp/>models<sp/>(people,<sp/>services,<sp/>patients,<sp/>visits,<sp/>appointments)</highlight></codeline>
-<codeline><highlight class="normal">├──<sp/>gatekeeper/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Security:<sp/>DoS<sp/>detector,<sp/>tokens,<sp/>sessions,<sp/>RBAC,<sp/>password<sp/>hashing<sp/>and<sp/>its<sp/>worker<sp/>pool</highlight></codeline>
-<codeline><highlight class="normal">├──<sp/>concurrency/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>BoundedExecutor:<sp/>thread<sp/>pool<sp/>with<sp/>a<sp/>bounded<sp/>queue</highlight></codeline>
-<codeline><highlight class="normal">├──<sp/>configurator/<sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Environment-driven<sp/>configuration<sp/>+<sp/>defaults</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>gatekeeper/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Security:<sp/>DoS<sp/>detector,<sp/>tokens,<sp/>sessions,<sp/>RBAC,<sp/>password<sp/>hashing</highlight></codeline>
 <codeline><highlight class="normal">├──<sp/>database/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Connection<sp/>pool,<sp/>watchdog,<sp/>handlers,<sp/>DB<sp/>executor</highlight></codeline>
 <codeline><highlight class="normal">├──<sp/>validator/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Request<sp/>+<sp/>database-schema<sp/>validation</highlight></codeline>
 <codeline><highlight class="normal">├──<sp/>store/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Shared<sp/>object<sp/>store</highlight></codeline>
-<codeline><highlight class="normal">├──<sp/>server/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Server<sp/>bootstrap<sp/>(entry<sp/>point)</highlight></codeline>
-<codeline><highlight class="normal">└──<sp/>utils/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Logging,<sp/>caching,<sp/>messaging,<sp/>JSON<sp/>helpers,<sp/>thread-safe<sp/>queue</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>server/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Server<sp/>bootstrap<sp/>and<sp/>CORS<sp/>configuration</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>utils/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Communicate,<sp/>JSON<sp/>helpers,<sp/>memcache,<sp/>thread-safe<sp/>queue</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>main.cpp<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Entry<sp/>point</highlight></codeline>
+<codeline><highlight class="normal">└──<sp/>version.cpp.in<sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Template<sp/>for<sp/>the<sp/>generated<sp/>version.cpp</highlight></codeline>
 <codeline><highlight class="normal">scripts/</highlight></codeline>
 <codeline><highlight class="normal">├──<sp/>build/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>build.sh,<sp/>get_tag.sh,<sp/>run_all_tests.sh</highlight></codeline>
 <codeline><highlight class="normal">├──<sp/>db/init.sql<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Database<sp/>schema</highlight></codeline>
 <codeline><highlight class="normal">├──<sp/>lib/ui.sh<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Shared<sp/>shell<sp/>UI<sp/>helpers</highlight></codeline>
 <codeline><highlight class="normal">├──<sp/>qa/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Format,<sp/>hygiene<sp/>and<sp/>project-rule<sp/>checks</highlight></codeline>
 <codeline><highlight class="normal">├──<sp/>run/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>db_init.sh,<sp/>run_debug.sh,<sp/>run_release.sh,<sp/>run4bench.sh</highlight></codeline>
-<codeline><highlight class="normal">├──<sp/>test/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>test_api.sh,<sp/>cors_test.sh,<sp/>cors_react_check.sh,<sp/>fuzz_auth.sh,<sp/>sqlmap_test.sh,<sp/>schemathesis_test.sh</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>test/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>API,<sp/>CORS,<sp/>fuzz<sp/>and<sp/>schema<sp/>test<sp/>scripts</highlight></codeline>
 <codeline><highlight class="normal">└──<sp/>vdt/valhalla.sh<sp/><sp/><sp/><sp/><sp/>#<sp/>Docker/Apple<sp/>Container<sp/>deployment<sp/>tool<sp/>(the<sp/>`vdt`<sp/>command)</highlight></codeline>
-<codeline><highlight class="normal">tests/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Catch2<sp/>unit<sp/>tests<sp/>(+<sp/>vendored<sp/>Catch<sp/>CMake<sp/>helpers)</highlight></codeline>
+<codeline><highlight class="normal">tests/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Catch2<sp/>unit<sp/>tests,<sp/>organized<sp/>by<sp/>module<sp/>(+<sp/>vendored<sp/>Catch<sp/>CMake<sp/>helpers)</highlight></codeline>
 <codeline><highlight class="normal">tests/api_tests/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Request<sp/>payloads<sp/>and<sp/>samples<sp/>used<sp/>by<sp/>test_api.sh</highlight></codeline>
-<codeline><highlight class="normal">docs/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>API<sp/>docs<sp/>(api.html,<sp/>openapi.json,<sp/>Postman<sp/>collection)<sp/>+<sp/>ARCHITECTURE.md,<sp/>CONTRIBUTING.md</highlight></codeline>
-<codeline><highlight class="normal">│<sp/><sp/><sp/>└──<sp/>doxygen/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Published<sp/>Doxygen<sp/>reference<sp/>(HTML<sp/>+<sp/>XML),<sp/>excluded<sp/>from<sp/>Doxygen<sp/>input</highlight></codeline>
+<codeline><highlight class="normal">docs/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>API<sp/>docs<sp/>+<sp/>ARCHITECTURE.md,<sp/>CONTRIBUTING.md</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>doxygen/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Published<sp/>Doxygen<sp/>reference<sp/>(HTML<sp/>+<sp/>XML),<sp/>excluded<sp/>from<sp/>Doxygen<sp/>input</highlight></codeline>
+<codeline><highlight class="normal">└──<sp/>perf/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Performance<sp/>reports</highlight></codeline>
 <codeline><highlight class="normal">tools/</highlight></codeline>
-<codeline><highlight class="normal">├──<sp/>cmake/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>CMake<sp/>helpers<sp/>(HTML<sp/>embedding,<sp/>docs<sp/>generation,<sp/>versioning)</highlight></codeline>
-<codeline><highlight class="normal">├──<sp/>conan/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Conan<sp/>helper<sp/>variables,<sp/>lockfile<sp/>update<sp/>script</highlight></codeline>
-<codeline><highlight class="normal">└──<sp/>docs/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>API<sp/>docs<sp/>generator<sp/>(build.sh,<sp/>build_docs.py,<sp/>Swagger<sp/>UI<sp/>assets)</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>cmake/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Script-mode<sp/>helpers<sp/>(cmake<sp/>-P):<sp/>version,<sp/>docs,<sp/>HTML<sp/>embedding</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>conan/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Conan<sp/>helper<sp/>variables,<sp/>default<sp/>profile,<sp/>lockfile<sp/>update<sp/>script</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>cors/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>CORS<sp/>browser<sp/>check<sp/>page</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>docs/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>API<sp/>docs<sp/>generator<sp/>(build.sh,<sp/>build_docs.py,<sp/>Swagger<sp/>UI<sp/>assets)</highlight></codeline>
+<codeline><highlight class="normal">└──<sp/>k6/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Load-test<sp/>scripts</highlight></codeline>
 <codeline><highlight class="normal">docker/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>All-in-one<sp/>Alpine<sp/>image<sp/>(Dockerfile<sp/>+<sp/>entrypoint)</highlight></codeline>
-<codeline><highlight class="normal">.github/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Release<sp/>and<sp/>CI<sp/>workflows,<sp/>Dependabot<sp/>config</highlight></codeline>
+<codeline><highlight class="normal">.github/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Release<sp/>and<sp/>CI<sp/>workflows,<sp/>reusable<sp/>actions,<sp/>Dependabot<sp/>config</highlight></codeline>
+<codeline><highlight class="normal">.githooks/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>pre-commit,<sp/>commit-msg<sp/>and<sp/>pre-push<sp/>checks</highlight></codeline>
 <codeline><highlight class="normal">config<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Default<sp/>server<sp/>settings<sp/>(tracked)</highlight></codeline>
 <codeline><highlight class="normal">Doxyfile<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Doxygen<sp/>configuration</highlight></codeline>
 <codeline><highlight class="normal">conan.lock<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Pinned<sp/>dependency<sp/>versions<sp/>(all<sp/>platforms)</highlight></codeline>
@@ -1410,7 +1432,7 @@
 </programlisting></para>
 </sect2>
 <sect2 id="index_1autotoc_md38">
-<title>Source documentation</title><para>The C++ source is documented with Doxygen: every class, function and non-obvious implementation detail has a Doxygen-compatible comment. See <ref refid="md_docs_2ARCHITECTURE" kindref="compound"><computeroutput>docs/ARCHITECTURE.md</computeroutput></ref> for the component map and <ref refid="md_docs_2CONTRIBUTING" kindref="compound"><computeroutput>docs/CONTRIBUTING.md</computeroutput></ref> for the documentation conventions. The HTML/XML reference is generated by the <computeroutput>valhalla_doxygen</computeroutput> CMake target, which runs on every <computeroutput>cmake --build</computeroutput> when Doxygen is available. The result is published under <computeroutput>docs/doxygen/</computeroutput> (HTML and XML, tracked alongside the API docs). Doxygen excludes that directory from its own input, so it never documents its output:</para>
+<title>Source documentation</title><para>The C++ source is documented with Doxygen: every class, function and non-obvious implementation detail has a Doxygen-compatible comment. See <ref refid="md_docs_2ARCHITECTURE" kindref="compound"><computeroutput>docs/ARCHITECTURE.md</computeroutput></ref> for the component map and <ref refid="md_docs_2CONTRIBUTING" kindref="compound"><computeroutput>docs/CONTRIBUTING.md</computeroutput></ref> for the documentation conventions. The HTML/XML reference is generated by the <computeroutput>valhalla_doxygen</computeroutput> CMake target. The target is defined only when the current commit has a git tag, so on a tagged HEAD it runs as part of every <computeroutput>cmake --build</computeroutput>; untagged builds skip it. The result is published under <computeroutput>docs/doxygen/</computeroutput> (HTML and XML, tracked alongside the API docs) and served at <ulink url="https://dr3mro.github.io/Valhalla-server/doxygen/html/index.html">https://dr3mro.github.io/Valhalla-server/doxygen/html/index.html</ulink>. Doxygen excludes that directory from its own input, so it never documents its output:</para>
 <para><programlisting filename=".bash"><codeline><highlight class="normal">cmake<sp/>--build<sp/>build/Debug<sp/>--target<sp/>valhalla_doxygen</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>open<sp/>docs/doxygen/html/index.html</highlight></codeline>
 </programlisting></para>

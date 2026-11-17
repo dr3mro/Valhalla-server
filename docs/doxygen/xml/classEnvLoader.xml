@@ -4,6 +4,84 @@
     <compoundname>EnvLoader</compoundname>
     <basecompoundref refid="classEnvVars" prot="public" virt="non-virtual">EnvVars</basecompoundref>
     <includes refid="envloader_8hpp" local="no">envloader.hpp</includes>
+    <sectiondef kind="user-defined">
+      <header>Copy and move special members</header>
+      <description><para>Trivial copy and move because <ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> owns no state of its own.</para>
+<para><ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> has no data members: the only state it touches is the stateless, process-wide environment reached through the inherited <ref refid="classEnvVars" kindref="compound">EnvVars</ref> helpers. The compiler-generated copy/move constructors and assignment operators are therefore correct, and spelling them out with <computeroutput>= default</computeroutput> makes that intent explicit. Derived sections own their own settings, so each of them controls its own copy and move behaviour. </para>
+</description>
+      <memberdef kind="function" id="classEnvLoader_1a6733b841e754089ebd18db384588a59a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EnvLoader::EnvLoader</definition>
+        <argsstring>(const EnvLoader &amp;)=default</argsstring>
+        <name>EnvLoader</name>
+        <qualifiedname>EnvLoader::EnvLoader</qualifiedname>
+        <param>
+          <type>const <ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libs/configurator/envloader/envloader.hpp" line="94" column="3"/>
+        <references refid="classEnvLoader_1a20a23295f90e857692c0f2759fa4a3d4">EnvLoader</references>
+      </memberdef>
+      <memberdef kind="function" id="classEnvLoader_1aed2c3c2f939f2b0b7b033bc3d67d2a5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EnvLoader::EnvLoader</definition>
+        <argsstring>(EnvLoader &amp;&amp;)=default</argsstring>
+        <name>EnvLoader</name>
+        <qualifiedname>EnvLoader::EnvLoader</qualifiedname>
+        <param>
+          <type><ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libs/configurator/envloader/envloader.hpp" line="95" column="3"/>
+        <references refid="classEnvLoader_1a20a23295f90e857692c0f2759fa4a3d4">EnvLoader</references>
+      </memberdef>
+      <memberdef kind="function" id="classEnvLoader_1a3591039030f01c57b167e6f1ba57ebb9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> &amp;</type>
+        <definition>EnvLoader &amp; EnvLoader::operator=</definition>
+        <argsstring>(const EnvLoader &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>EnvLoader::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libs/configurator/envloader/envloader.hpp" line="96" column="13"/>
+        <references refid="classEnvLoader_1a20a23295f90e857692c0f2759fa4a3d4">EnvLoader</references>
+      </memberdef>
+      <memberdef kind="function" id="classEnvLoader_1a79df74667a8349147b1b02867e220b95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> &amp;</type>
+        <definition>EnvLoader &amp; EnvLoader::operator=</definition>
+        <argsstring>(EnvLoader &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>EnvLoader::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classEnvLoader" kindref="compound">EnvLoader</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libs/configurator/envloader/envloader.hpp" line="97" column="13"/>
+        <references refid="classEnvLoader_1a20a23295f90e857692c0f2759fa4a3d4">EnvLoader</references>
+      </memberdef>
+    </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classEnvLoader_1a20a23295f90e857692c0f2759fa4a3d4" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -18,7 +96,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="80" column="12"/>
+        <location file="libs/configurator/envloader/envloader.hpp" line="81" column="12"/>
+        <referencedby refid="classEnvLoader_1a6733b841e754089ebd18db384588a59a">EnvLoader</referencedby>
+        <referencedby refid="classEnvLoader_1aed2c3c2f939f2b0b7b033bc3d67d2a5b">EnvLoader</referencedby>
+        <referencedby refid="classEnvLoader_1a3591039030f01c57b167e6f1ba57ebb9">operator=</referencedby>
+        <referencedby refid="classEnvLoader_1a79df74667a8349147b1b02867e220b95">operator=</referencedby>
       </memberdef>
       <memberdef kind="function" id="classEnvLoader_1a6a34c4493098a7fc9327fc80a520287c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -33,16 +115,36 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="84" column="11"/>
+        <location file="libs/configurator/envloader/envloader.hpp" line="101" column="11"/>
       </memberdef>
-      <memberdef kind="function" id="classEnvLoader_1a2f52dfe5e8b93436843667a9e29bcf1e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classEnvLoader_1a4f95654bec2fd3765dd4d725e0581d9f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void EnvLoader::printValues</definition>
+        <argsstring>() const =0</argsstring>
+        <name>printValues</name>
+        <qualifiedname>EnvLoader::printValues</qualifiedname>
+        <briefdescription>
+<para>Logs this section&apos;s effective values. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Implemented by every <ref refid="classConfigurator" kindref="compound">Configurator</ref> section; secret-bearing fields must be redacted by the implementation. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libs/configurator/envloader/envloader.hpp" line="216" column="16"/>
+        <references refid="classEnvLoader_1a5001a46f772e4564fd39201debbe7a30" compoundref="envloader_8cpp" startline="170" endline="184">optimize_performance</references>
+        <references refid="classEnvLoader_1ad54a73563266bd46fda3994caf3aede7" compoundref="envloader_8cpp" startline="138" endline="165">parseSet</references>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classEnvLoader_1a3433869e7d95286c2dcf0360cd9c06eb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename T</type>
           </param>
         </templateparamlist>
         <type>T</type>
-        <definition>T EnvLoader::getEnvironmentVariable</definition>
+        <definition>static T EnvLoader::getEnvironmentVariable</definition>
         <argsstring>(const std::string &amp;key, T defaultValue)</argsstring>
         <name>getEnvironmentVariable</name>
         <qualifiedname>EnvLoader::getEnvironmentVariable</qualifiedname>
@@ -98,11 +200,11 @@ std::chrono::seconds&amp;)</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="115" column="5" bodyfile="src/configurator/envloader/envloader.hpp" bodystart="115" bodyend="140"/>
+        <location file="libs/configurator/envloader/envloader.hpp" line="132" column="12" bodyfile="libs/configurator/envloader/envloader.hpp" bodystart="132" bodyend="158"/>
         <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
-        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="45" endline="65">EnvVars::get</references>
+        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="47" endline="67">EnvVars::get</references>
       </memberdef>
-      <memberdef kind="function" id="classEnvLoader_1a77a3c407cae008484f177781e216d1f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classEnvLoader_1a77a3c407cae008484f177781e216d1f3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string EnvLoader::getEnvironmentVariable</definition>
         <argsstring>(const std::string &amp;key, const std::string &amp;defaultValue)</argsstring>
@@ -143,10 +245,10 @@ std::chrono::seconds&amp;)</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="149" column="15" bodyfile="src/configurator/envloader/envloader.cpp" bodystart="51" bodyend="58"/>
-        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="45" endline="65">EnvVars::get</references>
+        <location file="libs/configurator/envloader/envloader.hpp" line="167" column="22" bodyfile="libs/configurator/envloader/envloader.cpp" bodystart="57" bodyend="64"/>
+        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="47" endline="67">EnvVars::get</references>
       </memberdef>
-      <memberdef kind="function" id="classEnvLoader_1a0a9c2b2459e1cffa605caad9957153df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classEnvLoader_1a0a9c2b2459e1cffa605caad9957153df" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool EnvLoader::getEnvironmentVariable</definition>
         <argsstring>(const std::string &amp;key, bool defaultValue)</argsstring>
@@ -189,10 +291,10 @@ std::chrono::seconds&amp;)</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="163" column="8" bodyfile="src/configurator/envloader/envloader.cpp" bodystart="63" bodyend="72"/>
-        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="45" endline="65">EnvVars::get</references>
+        <location file="libs/configurator/envloader/envloader.hpp" line="181" column="15" bodyfile="libs/configurator/envloader/envloader.cpp" bodystart="69" bodyend="78"/>
+        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="47" endline="67">EnvVars::get</references>
       </memberdef>
-      <memberdef kind="function" id="classEnvLoader_1a1866cb32c9be29f42152a1c0c9e7b2bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classEnvLoader_1a1866cb32c9be29f42152a1c0c9e7b2bb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::chrono::seconds</type>
         <definition>std::chrono::seconds EnvLoader::getEnvironmentVariable</definition>
         <argsstring>(const std::string &amp;key, const std::chrono::seconds &amp;defaultValue)</argsstring>
@@ -235,11 +337,11 @@ std::chrono::seconds&amp;)</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="177" column="24" bodyfile="src/configurator/envloader/envloader.cpp" bodystart="77" bodyend="112"/>
+        <location file="libs/configurator/envloader/envloader.hpp" line="195" column="31" bodyfile="libs/configurator/envloader/envloader.cpp" bodystart="83" bodyend="119"/>
         <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
-        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="45" endline="65">EnvVars::get</references>
+        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="47" endline="67">EnvVars::get</references>
       </memberdef>
-      <memberdef kind="function" id="classEnvLoader_1a5b217a34a87ae9d70716e42d7d2cc96b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classEnvLoader_1a5b217a34a87ae9d70716e42d7d2cc96b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::unordered_set&lt; std::string &gt;</type>
         <definition>std::unordered_set&lt; std::string &gt; EnvLoader::getEnvironmentVariable</definition>
         <argsstring>(const std::string &amp;key)</argsstring>
@@ -270,31 +372,13 @@ std::chrono::seconds&amp;)</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="189" column="22" bodyfile="src/configurator/envloader/envloader.cpp" bodystart="117" bodyend="125"/>
-        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="45" endline="65">EnvVars::get</references>
-        <references refid="classEnvLoader_1ad54a73563266bd46fda3994caf3aede7" compoundref="envloader_8cpp" startline="131" endline="158">parseSet</references>
-      </memberdef>
-      <memberdef kind="function" id="classEnvLoader_1a4f95654bec2fd3765dd4d725e0581d9f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
-        <definition>virtual void EnvLoader::printValues</definition>
-        <argsstring>() const =0</argsstring>
-        <name>printValues</name>
-        <qualifiedname>EnvLoader::printValues</qualifiedname>
-        <briefdescription>
-<para>Logs this section&apos;s effective values. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>Implemented by every <ref refid="classConfigurator" kindref="compound">Configurator</ref> section; secret-bearing fields must be redacted by the implementation. </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="198" column="16"/>
-        <references refid="classEnvLoader_1a5001a46f772e4564fd39201debbe7a30" compoundref="envloader_8cpp" startline="163" endline="177">optimize_performance</references>
-        <references refid="classEnvLoader_1ad54a73563266bd46fda3994caf3aede7" compoundref="envloader_8cpp" startline="131" endline="158">parseSet</references>
+        <location file="libs/configurator/envloader/envloader.hpp" line="207" column="29" bodyfile="libs/configurator/envloader/envloader.cpp" bodystart="124" bodyend="132"/>
+        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="47" endline="67">EnvVars::get</references>
+        <references refid="classEnvLoader_1ad54a73563266bd46fda3994caf3aede7" compoundref="envloader_8cpp" startline="138" endline="165">parseSet</references>
       </memberdef>
     </sectiondef>
-    <sectiondef kind="protected-func">
-      <memberdef kind="function" id="classEnvLoader_1a5001a46f772e4564fd39201debbe7a30" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+    <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="classEnvLoader_1a5001a46f772e4564fd39201debbe7a30" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void EnvLoader::optimize_performance</definition>
         <argsstring>(uint16_t &amp;parameter, uint8_t factor)</argsstring>
@@ -335,10 +419,10 @@ std::chrono::seconds&amp;)</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="211" column="8" bodyfile="src/configurator/envloader/envloader.cpp" bodystart="163" bodyend="177"/>
+        <location file="libs/configurator/envloader/envloader.hpp" line="229" column="15" bodyfile="libs/configurator/envloader/envloader.cpp" bodystart="170" bodyend="184"/>
         <referencedby refid="classEnvLoader_1a4f95654bec2fd3765dd4d725e0581d9f">printValues</referencedby>
       </memberdef>
-      <memberdef kind="function" id="classEnvLoader_1ad54a73563266bd46fda3994caf3aede7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classEnvLoader_1ad54a73563266bd46fda3994caf3aede7" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::unordered_set&lt; std::string &gt;</type>
         <definition>std::unordered_set&lt; std::string &gt; EnvLoader::parseSet</definition>
         <argsstring>(const std::string &amp;str)</argsstring>
@@ -367,8 +451,8 @@ std::chrono::seconds&amp;)</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="221" column="22" bodyfile="src/configurator/envloader/envloader.cpp" bodystart="131" bodyend="158"/>
-        <referencedby refid="classEnvLoader_1a5b217a34a87ae9d70716e42d7d2cc96b" compoundref="envloader_8cpp" startline="117" endline="125">getEnvironmentVariable</referencedby>
+        <location file="libs/configurator/envloader/envloader.hpp" line="239" column="29" bodyfile="libs/configurator/envloader/envloader.cpp" bodystart="138" bodyend="165"/>
+        <referencedby refid="classEnvLoader_1a5b217a34a87ae9d70716e42d7d2cc96b" compoundref="envloader_8cpp" startline="124" endline="132">getEnvironmentVariable</referencedby>
         <referencedby refid="classEnvLoader_1a4f95654bec2fd3765dd4d725e0581d9f">printValues</referencedby>
       </memberdef>
     </sectiondef>
@@ -376,7 +460,7 @@ std::chrono::seconds&amp;)</ref> </para>
 <para><ref refid="classBase" kindref="compound">Base</ref> for configuration sections that read typed values from the process environment. </para>
     </briefdescription>
     <detaileddescription>
-<para>Extends <ref refid="classEnvVars" kindref="compound">EnvVars</ref> with a family of <ref refid="classEnvLoader_1a2f52dfe5e8b93436843667a9e29bcf1e" kindref="member">getEnvironmentVariable()</ref> overloads that convert a raw string into the target type and fall back to a caller-supplied default when the variable is absent (or, for numeric/duration types, malformed). Conversion failures are reported through <ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref> rather than thrown, so a bad environment cannot prevent startup. Derived classes must implement <ref refid="classEnvLoader_1a4f95654bec2fd3765dd4d725e0581d9f" kindref="member">printValues()</ref> and typically call these accessors from their constructor initializer lists.</para>
+<para>Extends <ref refid="classEnvVars" kindref="compound">EnvVars</ref> with a family of <ref refid="classEnvLoader_1a3433869e7d95286c2dcf0360cd9c06eb" kindref="member">getEnvironmentVariable()</ref> overloads that convert a raw string into the target type and fall back to a caller-supplied default when the variable is absent (or, for numeric/duration types, malformed). Conversion failures are reported through <ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref> rather than thrown, so a bad environment cannot prevent startup. Derived classes must implement <ref refid="classEnvLoader_1a4f95654bec2fd3765dd4d725e0581d9f" kindref="member">printValues()</ref> and typically call these accessors from their constructor initializer lists.</para>
 <para><simplesect kind="note"><para>Numeric overloads parse through std::stoi, so integer values outside the range of a signed int are rejected even when the destination type is wider. </para>
 </simplesect>
 <simplesect kind="warning"><para>A present boolean variable equals true only when it is exactly &quot;true&quot;; any other present value is interpreted as false (not as the supplied default). </para>
@@ -409,15 +493,19 @@ std::chrono::seconds&amp;)</ref> </para>
         <link refid="classEnvVars"/>
       </node>
     </collaborationgraph>
-    <location file="src/configurator/envloader/envloader.hpp" line="72" column="1" bodyfile="src/configurator/envloader/envloader.hpp" bodystart="75" bodyend="224"/>
+    <location file="libs/configurator/envloader/envloader.hpp" line="73" column="1" bodyfile="libs/configurator/envloader/envloader.hpp" bodystart="76" bodyend="242"/>
     <listofallmembers>
       <member refid="classEnvLoader_1a20a23295f90e857692c0f2759fa4a3d4" prot="public" virt="non-virtual"><scope>EnvLoader</scope><name>EnvLoader</name></member>
+      <member refid="classEnvLoader_1a6733b841e754089ebd18db384588a59a" prot="public" virt="non-virtual"><scope>EnvLoader</scope><name>EnvLoader</name></member>
+      <member refid="classEnvLoader_1aed2c3c2f939f2b0b7b033bc3d67d2a5b" prot="public" virt="non-virtual"><scope>EnvLoader</scope><name>EnvLoader</name></member>
       <member refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" prot="protected" virt="non-virtual"><scope>EnvLoader</scope><name>get</name></member>
-      <member refid="classEnvLoader_1a2f52dfe5e8b93436843667a9e29bcf1e" prot="public" virt="non-virtual"><scope>EnvLoader</scope><name>getEnvironmentVariable</name></member>
+      <member refid="classEnvLoader_1a3433869e7d95286c2dcf0360cd9c06eb" prot="public" virt="non-virtual"><scope>EnvLoader</scope><name>getEnvironmentVariable</name></member>
       <member refid="classEnvLoader_1a77a3c407cae008484f177781e216d1f3" prot="public" virt="non-virtual"><scope>EnvLoader</scope><name>getEnvironmentVariable</name></member>
       <member refid="classEnvLoader_1a0a9c2b2459e1cffa605caad9957153df" prot="public" virt="non-virtual"><scope>EnvLoader</scope><name>getEnvironmentVariable</name></member>
       <member refid="classEnvLoader_1a1866cb32c9be29f42152a1c0c9e7b2bb" prot="public" virt="non-virtual"><scope>EnvLoader</scope><name>getEnvironmentVariable</name></member>
       <member refid="classEnvLoader_1a5b217a34a87ae9d70716e42d7d2cc96b" prot="public" virt="non-virtual"><scope>EnvLoader</scope><name>getEnvironmentVariable</name></member>
+      <member refid="classEnvLoader_1a3591039030f01c57b167e6f1ba57ebb9" prot="public" virt="non-virtual"><scope>EnvLoader</scope><name>operator=</name></member>
+      <member refid="classEnvLoader_1a79df74667a8349147b1b02867e220b95" prot="public" virt="non-virtual"><scope>EnvLoader</scope><name>operator=</name></member>
       <member refid="classEnvLoader_1a5001a46f772e4564fd39201debbe7a30" prot="protected" virt="non-virtual"><scope>EnvLoader</scope><name>optimize_performance</name></member>
       <member refid="classEnvLoader_1ad54a73563266bd46fda3994caf3aede7" prot="protected" virt="non-virtual"><scope>EnvLoader</scope><name>parseSet</name></member>
       <member refid="classEnvLoader_1a4f95654bec2fd3765dd4d725e0581d9f" prot="public" virt="pure-virtual"><scope>EnvLoader</scope><name>printValues</name></member>

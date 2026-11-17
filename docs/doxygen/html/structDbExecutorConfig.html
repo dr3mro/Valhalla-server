@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('structDbExecut
 <div class="textblock"><p>Sizing and fast-path toggle for the database request executor. </p>
 <p><span class="tt">workers</span> defaults to the same value as DatabaseConfig::max_conn (one worker per connection); it can be overridden with DB_WORKERS. At <span class="tt">queue_max</span> waiting requests, new submissions are refused with HTTP 503. The optional <span class="tt">io_fast_path</span> attempts requests on the IO thread first, which only helps when many requests are rejected without ever issuing a query. </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/configurator/<a class="el" href="configurator_8hpp_source.html">configurator.hpp</a></li>
+<li>libs/configurator/<a class="el" href="configurator_8hpp_source.html">configurator.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

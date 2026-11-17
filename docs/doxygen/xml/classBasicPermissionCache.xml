@@ -378,10 +378,10 @@ typename Clock::time_point</definition>
         <name>instance</name>
         <qualifiedname>BasicPermissionCache::instance</qualifiedname>
         <briefdescription>
-<para>Returns the process-wide singleton, configured from Configurator. </para>
+<para>Returns the process-wide singleton, configured from <ref refid="classConfigurator" kindref="compound">Configurator</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>The singleton&apos;s TTL is fixed at first use from Configurator::PermissionCacheConfig; thread-safe initialization is guaranteed by the function-local static. </para>
+<para>The singleton&apos;s TTL is fixed at first use from <ref refid="classConfigurator_1a32f2368e1e72e5bd29909e000c0c9e4c" kindref="member">Configurator::PermissionCacheConfig</ref>; thread-safe initialization is guaranteed by the function-local static. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -420,7 +420,7 @@ typename Clock::time_point</definition>
 <para>Idle-expiry cache for permission lookups, keyed by the generated permission query (which embeds the entity table and id). </para>
     </briefdescription>
     <detaileddescription>
-<para>Each hit renews the entry&apos;s lifetime; an entry that is not used for the TTL is removed. The TTL comes from Configurator::PermissionCacheConfig (PERMISSION_CACHE_TTL, default 300 seconds); 0 disables the cache.</para>
+<para>Each hit renews the entry&apos;s lifetime; an entry that is not used for the TTL is removed. The TTL comes from <ref refid="classConfigurator_1a32f2368e1e72e5bd29909e000c0c9e4c" kindref="member">Configurator::PermissionCacheConfig</ref> (PERMISSION_CACHE_TTL, default 300 seconds); 0 disables the cache.</para>
 <para>Security trade-off: there is no invalidation on writes, so a revoked permission can keep being served while its entry stays in use. <ref refid="classBasicPermissionCache_1ad3230e761d0a35d3b772d299d8d72b09" kindref="member">invalidateAll()</ref> is available for callers that need an explicit flush. <verbatim>     All public operations are thread-safe via mutex_; generation_ is
 </verbatim> atomic so readers can take a token without locking and have a racing <ref refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" kindref="member">put()</ref> rejected. Think of it as a notepad: look up a question, and if the answer is still fresh use it; otherwise ask the database and jot the new answer down. <parameterlist kind="templateparam"><parameteritem>
 <parameternamelist>

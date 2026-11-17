@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gatekeeper_0',['GateKeeper',['../classapi_1_1v2_1_1GateKeeper.html',1,'api::v2']]]
+  ['frontendconfig_0',['FrontEndConfig',['../structFrontEndConfig.html',1,'']]]
 ];

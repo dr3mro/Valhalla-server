@@ -83,7 +83,7 @@
 <codeline></codeline>
 <codeline><highlight class="normal">```bash</highlight></codeline>
 <codeline><highlight class="normal">doxygen<sp/>Doxyfile</highlight></codeline>
-<codeline><highlight class="normal">#<sp/>open<sp/>build/docs/doxygen/html/index.html</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>open<sp/>docs/doxygen/html/index.html</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>Build<sp/>and<sp/>test</highlight></codeline>

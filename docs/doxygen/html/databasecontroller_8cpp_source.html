@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('databasecontro
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#include &lt;string_view&gt;</span>    <span class="comment">// String views where needed.</span></div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#include &lt;unordered_set&gt;</span>  <span class="comment">// Schema/table result sets.</span></div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#include &quot;configurator/configurator.hpp&quot;</span>  <span class="comment">// Test configuration.</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#include &quot;<a class="code" href="configurator_8hpp.html">configurator/configurator.hpp</a>&quot;</span>  <span class="comment">// Test configuration.</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#include &quot;<a class="code" href="database_8hpp.html">database/database.hpp</a>&quot;</span>          <span class="comment">// The blocking SQL helper functions.</span></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#include &quot;<a class="code" href="databaseconnectionpool_8hpp.html">database/databaseconnectionpool.hpp</a>&quot;</span>  <span class="comment">// The blocking connection pool.</span></div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#include &quot;<a class="code" href="watchdog_8hpp.html">database/watchdog.hpp</a>&quot;</span>                <span class="comment">// Pool watchdog type.</span></div>
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('databasecontro
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>  <span class="comment">// Identifiers cannot be bound: only the two client tables are accepted.</span></div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>  <span class="comment">// Only fixed table names are safe to interpolate.</span></div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  <span class="keywordflow">if</span> (tablename != <span class="stringliteral">&quot;users&quot;</span> &amp;&amp; tablename != <span class="stringliteral">&quot;providers&quot;</span>) {</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    Message::ErrorMessage(</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <a class="code hl_function" href="classMessage.html#a1fd9a043b58e6adceb8d111bc891feba">Message::ErrorMessage</a>(</div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        fmt::format(<span class="stringliteral">&quot;Unknown client table: {}&quot;</span>,</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>                    tablename));  <span class="comment">// Log a rejected identifier.</span></div>
 <div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="keywordflow">return</span> std::nullopt;</div>
@@ -373,7 +373,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('databasecontro
 <div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    <span class="keyword">co_return</span> <a class="code hl_function" href="namespaceasyncdb.html#a4cf3b925d86a0c5232a9573b8cf300b8">asyncdb::mapResultToObject</a>(</div>
 <div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        result);  <span class="comment">// Convert the rows into a JSON object.</span></div>
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    Message::CriticalMessage(</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    <a class="code hl_function" href="classMessage.html#aa085f3b7f644c7c1075eac59e3c2f7a9">Message::CriticalMessage</a>(</div>
 <div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        fmt::format(<span class="stringliteral">&quot;Exception occurred during async query execution: {}&quot;</span>,</div>
 <div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>                    e.what()));</div>
 <div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    <span class="comment">// A busy database is not a failed query: propagate DatabaseBusy so the</span></div>
@@ -409,7 +409,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('databasecontro
 <div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    <span class="keyword">co_return</span> <a class="code hl_function" href="namespaceasyncdb.html#a4cf3b925d86a0c5232a9573b8cf300b8">asyncdb::mapResultToObject</a>(</div>
 <div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        result);  <span class="comment">// Convert the rows into a JSON object.</span></div>
 <div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    Message::CriticalMessage(</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    <a class="code hl_function" href="classMessage.html#aa085f3b7f644c7c1075eac59e3c2f7a9">Message::CriticalMessage</a>(</div>
 <div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        fmt::format(<span class="stringliteral">&quot;Exception occurred during async read query execution: {}&quot;</span>,</div>
 <div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>                    e.what()));</div>
 <div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    <span class="comment">// Distinct from a failed query: signals overload.</span></div>
@@ -443,7 +443,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('databasecontro
 <div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>    <span class="keyword">co_return</span> <a class="code hl_function" href="namespaceasyncdb.html#a0c9b2304653f373d0ec4ac262d7cf2bf">asyncdb::mapResultToArray</a>(</div>
 <div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        result);  <span class="comment">// Convert the rows into a JSON array.</span></div>
 <div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    Message::CriticalMessage(</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    <a class="code hl_function" href="classMessage.html#aa085f3b7f644c7c1075eac59e3c2f7a9">Message::CriticalMessage</a>(</div>
 <div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>        fmt::</div>
 <div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>            format(<span class="stringliteral">&quot;Exception occurred during async search query execution: {}&quot;</span>,</div>
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>                   e.what()));</div>
@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('databasecontro
 <div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>    <span class="keyword">co_return</span> std::string(</div>
 <div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>        result[0][0].c_str());  <span class="comment">// Return the very first cell as a string.</span></div>
 <div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    Message::CriticalMessage(</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    <a class="code hl_function" href="classMessage.html#aa085f3b7f644c7c1075eac59e3c2f7a9">Message::CriticalMessage</a>(</div>
 <div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>        fmt::</div>
 <div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>            format(<span class="stringliteral">&quot;Exception occurred during async simple query execution: {}&quot;</span>,</div>
 <div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>                   e.what()));</div>
@@ -528,7 +528,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('databasecontro
 <div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>    <span class="keyword">co_return</span> result[0][0]</div>
 <div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>        .as&lt;<span class="keywordtype">bool</span>&gt;();  <span class="comment">// EXISTS always yields one row; read its boolean.</span></div>
 <div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>    Message::CriticalMessage(</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>    <a class="code hl_function" href="classMessage.html#aa085f3b7f644c7c1075eac59e3c2f7a9">Message::CriticalMessage</a>(</div>
 <div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>        fmt::format(<span class="stringliteral">&quot;Exception occurred during async exists check: {}&quot;</span>,</div>
 <div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>                    e.what()));</div>
 <div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>    <span class="comment">// Distinct from a failed query: signals overload.</span></div>
@@ -548,7 +548,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('databasecontro
 <div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>    <span class="keyword">const</span> std::string&amp; username, <span class="keyword">const</span> std::string&amp; tablename) {</div>
 <div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>  <span class="comment">// Only fixed table names are safe to interpolate.</span></div>
 <div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>  <span class="keywordflow">if</span> (tablename != <span class="stringliteral">&quot;users&quot;</span> &amp;&amp; tablename != <span class="stringliteral">&quot;providers&quot;</span>) {</div>
-<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>    Message::ErrorMessage(</div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>    <a class="code hl_function" href="classMessage.html#a1fd9a043b58e6adceb8d111bc891feba">Message::ErrorMessage</a>(</div>
 <div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>        fmt::format(<span class="stringliteral">&quot;Unknown client table: {}&quot;</span>,</div>
 <div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>                    tablename));  <span class="comment">// Log a rejected identifier.</span></div>
 <div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>    <span class="keyword">co_return</span> std::nullopt;       <span class="comment">// Return an empty result; callers treat this</span></div>
@@ -612,7 +612,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('databasecontro
 <div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span>    }</div>
 <div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span>    <span class="keyword">co_return</span> schema;  <span class="comment">// Hand the column set back to the caller.</span></div>
 <div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span>    Message::CriticalMessage(</div>
+<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span>    <a class="code hl_function" href="classMessage.html#aa085f3b7f644c7c1075eac59e3c2f7a9">Message::CriticalMessage</a>(</div>
 <div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span>        fmt::format(<span class="stringliteral">&quot;Exception occurred during async schema load: {}&quot;</span>,</div>
 <div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span>                    e.what()));</div>
 <div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span>    <span class="comment">// Distinct from a failed query: signals overload.</span></div>
@@ -652,7 +652,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('databasecontro
 <div class="line"><a id="l00495" name="l00495"></a><span class="lineno">  495</span>    }</div>
 <div class="line"><a id="l00496" name="l00496"></a><span class="lineno">  496</span>    <span class="keyword">co_return</span> tables;  <span class="comment">// Hand the table set back to the caller.</span></div>
 <div class="line"><a id="l00497" name="l00497"></a><span class="lineno">  497</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><a id="l00498" name="l00498"></a><span class="lineno">  498</span>    Message::CriticalMessage(</div>
+<div class="line"><a id="l00498" name="l00498"></a><span class="lineno">  498</span>    <a class="code hl_function" href="classMessage.html#aa085f3b7f644c7c1075eac59e3c2f7a9">Message::CriticalMessage</a>(</div>
 <div class="line"><a id="l00499" name="l00499"></a><span class="lineno">  499</span>        fmt::format(<span class="stringliteral">&quot;Exception occurred during async table list: {}&quot;</span>,</div>
 <div class="line"><a id="l00500" name="l00500"></a><span class="lineno">  500</span>                    e.what()));</div>
 <div class="line"><a id="l00501" name="l00501"></a><span class="lineno">  501</span>    <span class="comment">// Distinct from a failed query: signals overload.</span></div>
@@ -683,7 +683,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('databasecontro
 <div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span>    <span class="keyword">co_return</span> <a class="code hl_function" href="namespaceasyncdb.html#a4cf3b925d86a0c5232a9573b8cf300b8">asyncdb::mapResultToObject</a>(</div>
 <div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span>        result);  <span class="comment">// Convert the rows into a JSON object.</span></div>
 <div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span>  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span>    Message::CriticalMessage(</div>
+<div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span>    <a class="code hl_function" href="classMessage.html#aa085f3b7f644c7c1075eac59e3c2f7a9">Message::CriticalMessage</a>(</div>
 <div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span>        fmt::format(<span class="stringliteral">&quot;Exception occurred during async permissions query: {}&quot;</span>,</div>
 <div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>                    e.what()));</div>
 <div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span>    <span class="comment">// Distinct from a failed query: signals overload.</span></div>
@@ -731,7 +731,10 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('databasecontro
 <div class="ttc" id="aclassDatabase_html_a66e88237437bd5d3d0bb1200876353b4"><div class="ttname"><a href="classDatabase.html#a66e88237437bd5d3d0bb1200876353b4">Database::doSimpleQuery</a></div><div class="ttdeci">std::optional&lt; T &gt; doSimpleQuery(const std::string &amp;query, const pqxx::params &amp;params={})</div><div class="ttdoc">Executes a query in a nontransaction and returns the first column of the first row.</div><div class="ttdef"><b>Definition</b> <a href="database_8cpp_source.html#l00496">database.cpp:496</a></div></div>
 <div class="ttc" id="aclassDatabase_html_a7c0a44631de74f1d0a18119d1cd6cf1a"><div class="ttname"><a href="classDatabase.html#a7c0a44631de74f1d0a18119d1cd6cf1a">Database::checkExists</a></div><div class="ttdeci">bool checkExists(const std::string &amp;table, const std::string &amp;column, const std::string &amp;value)</div><div class="ttdoc">Returns whether a row exists in a table for the given column value.</div><div class="ttdef"><b>Definition</b> <a href="database_8cpp_source.html#l00134">database.cpp:134</a></div></div>
 <div class="ttc" id="aclassDatabase_html_aa5fe1076eec14a4e265fd4b7d1247983"><div class="ttname"><a href="classDatabase.html#aa5fe1076eec14a4e265fd4b7d1247983">Database::getTableSchema</a></div><div class="ttdeci">std::optional&lt; std::unordered_set&lt; api::v2::ColumnInfo &gt; &gt; getTableSchema(const std::string &amp;tableName)</div><div class="ttdoc">Reads the column metadata of a table from information_schema.columns.</div><div class="ttdef"><b>Definition</b> <a href="database_8cpp_source.html#l00243">database.cpp:243</a></div></div>
+<div class="ttc" id="aclassMessage_html_a1fd9a043b58e6adceb8d111bc891feba"><div class="ttname"><a href="classMessage.html#a1fd9a043b58e6adceb8d111bc891feba">Message::ErrorMessage</a></div><div class="ttdeci">static void ErrorMessage(const std::string &amp;status_message)</div><div class="ttdoc">Logs a message at error severity.</div><div class="ttdef"><b>Definition</b> <a href="message_8cpp_source.html#l00054">message.cpp:54</a></div></div>
+<div class="ttc" id="aclassMessage_html_aa085f3b7f644c7c1075eac59e3c2f7a9"><div class="ttname"><a href="classMessage.html#aa085f3b7f644c7c1075eac59e3c2f7a9">Message::CriticalMessage</a></div><div class="ttdeci">static void CriticalMessage(const std::string &amp;status_message)</div><div class="ttdoc">Logs a message at fatal severity (used for critical errors).</div><div class="ttdef"><b>Definition</b> <a href="message_8cpp_source.html#l00057">message.cpp:57</a></div></div>
 <div class="ttc" id="aclassStore_html_a0607fb3b583c06ca910ed6c9881e790c"><div class="ttname"><a href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject</a></div><div class="ttdeci">static std::shared_ptr&lt; T &gt; getObject(Args &amp;&amp;... args)</div><div class="ttdoc">Returns the singleton for T, constructing it on first use.</div><div class="ttdef"><b>Definition</b> <a href="store_8hpp_source.html#l00190">store.hpp:190</a></div></div>
+<div class="ttc" id="aconfigurator_8hpp_html"><div class="ttname"><a href="configurator_8hpp.html">configurator.hpp</a></div><div class="ttdoc">Environment-driven configuration sections and typed accessors for the server.</div></div>
 <div class="ttc" id="adatabase_8hpp_html"><div class="ttname"><a href="database_8hpp.html">database.hpp</a></div><div class="ttdoc">Owns one synchronous PostgreSQL connection used by the synchronous database path.</div></div>
 <div class="ttc" id="adatabaseconnectionpool_8hpp_html"><div class="ttname"><a href="databaseconnectionpool_8hpp.html">databaseconnectionpool.hpp</a></div><div class="ttdoc">Owns the fixed set of synchronous Database connections and leases them to callers.</div></div>
 <div class="ttc" id="adatabasecontroller_8hpp_html"><div class="ttname"><a href="databasecontroller_8hpp.html">databasecontroller.hpp</a></div><div class="ttdoc">Single gateway through which controllers execute SQL, in both blocking and coroutine form.</div></div>

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
+  <compounddef id="dir_21095bce345e24e4e3d4860c8c3571a6" kind="dir">
+    <compoundname>libs/configurator</compoundname>
+    <innerdir refid="dir_629e5eafe7b51b5c70e97b50670b4ff5">libs/configurator/envloader</innerdir>
+    <innerfile refid="configurator_8cpp">configurator.cpp</innerfile>
+    <innerfile refid="configurator_8hpp">configurator.hpp</innerfile>
+    <innerfile refid="defaults_8hpp">defaults.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="libs/configurator/"/>
+  </compounddef>
+</doxygen>

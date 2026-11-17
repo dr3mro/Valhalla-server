@@ -71,8 +71,10 @@
         <location file="src/entities/base/types.hpp" line="652" column="5" bodyfile="src/entities/base/types.hpp" bodystart="652" bodyend="703"/>
         <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" compoundref="validator_8hpp" startline="113">Validator::Rule::ASSERT_NOT_PRESENT</references>
         <references refid="classValidator_1adf618a4a20efe4f1bd832993affd8b7a" compoundref="validator_8cpp" startline="275" endline="390">Validator::clientRegexValidation</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1adc52add57f54dc3d0d39360a71e1ff22" compoundref="entities_2base_2types_8hpp" startline="577">api::v2::Types::ClientData_t::data_j</references>
         <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1ad6c132aa0d6b24951d7933dfffa81260" compoundref="entities_2base_2types_8hpp" startline="571">api::v2::Types::ClientData_t::data_set</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a7f7e2dd8e7b65786c7d988cee10628fa" compoundref="entities_2base_2types_8hpp" startline="595" endline="620">api::v2::Types::ClientData_t::hashPassword</references>
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="123">api::v2::Http::INTERNAL_SERVER_ERROR</references>
         <references refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="66" endline="139">Validator::validateDatabaseCreateSchema</references>

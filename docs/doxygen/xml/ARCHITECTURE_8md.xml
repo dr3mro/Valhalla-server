@@ -10,10 +10,11 @@
 <codeline><highlight class="normal">#<sp/>Architecture</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">This<sp/>document<sp/>describes<sp/>the<sp/>runtime<sp/>architecture<sp/>of<sp/>Project<sp/>Valhalla<sp/>as<sp/>it<sp/>is</highlight></codeline>
-<codeline><highlight class="normal">implemented<sp/>in<sp/>`src/`.<sp/>It<sp/>is<sp/>complementary<sp/>to<sp/>`README.md`,<sp/>which<sp/>focuses<sp/>on</highlight></codeline>
-<codeline><highlight class="normal">installation,<sp/>configuration<sp/>and<sp/>API<sp/>usage.<sp/>For<sp/>generated<sp/>API<sp/>reference</highlight></codeline>
-<codeline><highlight class="normal">documentation,<sp/>run<sp/>`doxygen<sp/>Doxyfile`<sp/>and<sp/>open</highlight></codeline>
-<codeline><highlight class="normal">`build/docs/doxygen/html/index.html`.</highlight></codeline>
+<codeline><highlight class="normal">implemented<sp/>in<sp/>`src/`<sp/>and<sp/>the<sp/>reusable<sp/>libraries<sp/>under<sp/>`libs/`.<sp/>It<sp/>is</highlight></codeline>
+<codeline><highlight class="normal">complementary<sp/>to<sp/>`README.md`,<sp/>which<sp/>focuses<sp/>on<sp/>installation,<sp/>configuration<sp/>and</highlight></codeline>
+<codeline><highlight class="normal">API<sp/>usage.<sp/>The<sp/>generated<sp/>API<sp/>reference<sp/>is<sp/>published<sp/>at</highlight></codeline>
+<codeline><highlight class="normal">https://dr3mro.github.io/Valhalla-server/doxygen/html/index.html;<sp/>to<sp/>build<sp/>it</highlight></codeline>
+<codeline><highlight class="normal">locally,<sp/>run<sp/>`doxygen<sp/>Doxyfile`<sp/>and<sp/>open<sp/>`docs/doxygen/html/index.html`.</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>1.<sp/>System<sp/>purpose</highlight></codeline>
 <codeline></codeline>
@@ -83,7 +84,7 @@
 <codeline><highlight class="normal">the<sp/>`DbExecutor`<sp/>and<sp/>`PasswordWorker`<sp/>queues<sp/>*before*<sp/>static<sp/>destruction,<sp/>in</highlight></codeline>
 <codeline><highlight class="normal">that<sp/>order,<sp/>because<sp/>database<sp/>tasks<sp/>may<sp/>enqueue<sp/>password<sp/>work.</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">###<sp/>3.2<sp/>Configuration<sp/>—<sp/>`src/configurator/`</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>3.2<sp/>Configuration<sp/>—<sp/>`libs/configurator/`</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">`Configurator`<sp/>owns<sp/>one<sp/>`EnvLoader`-derived<sp/>settings<sp/>group<sp/>per<sp/>subsystem</highlight></codeline>
 <codeline><highlight class="normal">(server,<sp/>database,<sp/>DoS<sp/>detector,<sp/>token<sp/>manager,<sp/>permission<sp/>cache,<sp/>password</highlight></codeline>
@@ -154,11 +155,13 @@
 <codeline><highlight class="normal"><sp/><sp/>rows<sp/>back<sp/>to<sp/>domain<sp/>values;<sp/>`AsyncDbError`<sp/>represents<sp/>failures.<sp/>This<sp/>client</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>is<sp/>registered<sp/>in<sp/>the<sp/>`Store`<sp/>only<sp/>when<sp/>the<sp/>flag<sp/>is<sp/>enabled.</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">###<sp/>3.8<sp/>Utilities<sp/>—<sp/>`src/utils/`,<sp/>`src/concurrency/`</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>3.8<sp/>Utilities<sp/>—<sp/>`src/utils/`,<sp/>`libs/`</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">Logging<sp/>(`Logger`,<sp/>`Message`),<sp/>JSON<sp/>helpers,<sp/>an<sp/>in-process<sp/>`MemCache`,<sp/>a</highlight></codeline>
-<codeline><highlight class="normal">`ThreadSafeQueue`,<sp/>CORS<sp/>token<sp/>helpers,<sp/>global<sp/>HTTP/status<sp/>types,<sp/>and</highlight></codeline>
-<codeline><highlight class="normal">`BoundedExecutor`<sp/>(a<sp/>bounded<sp/>worker<sp/>pool<sp/>used<sp/>where<sp/>work<sp/>must<sp/>be<sp/>throttled).</highlight></codeline>
+<codeline><highlight class="normal">`libs/logger/`<sp/>holds<sp/>the<sp/>async<sp/>`Logger`<sp/>(spdlog<sp/>with<sp/>console<sp/>and<sp/>rotating<sp/>file</highlight></codeline>
+<codeline><highlight class="normal">sinks,<sp/>also<sp/>wired<sp/>into<sp/>Trantor)<sp/>and<sp/>`libs/message/`<sp/>holds<sp/>`Message`.<sp/>JSON</highlight></codeline>
+<codeline><highlight class="normal">helpers,<sp/>an<sp/>in-process<sp/>`MemCache`,<sp/>a<sp/>`ThreadSafeQueue`,<sp/>CORS<sp/>token<sp/>helpers<sp/>and</highlight></codeline>
+<codeline><highlight class="normal">global<sp/>HTTP/status<sp/>types<sp/>live<sp/>in<sp/>`src/utils/`.<sp/>`libs/concurrency/`<sp/>provides</highlight></codeline>
+<codeline><highlight class="normal">`BoundedExecutor`,<sp/>a<sp/>bounded<sp/>worker<sp/>pool<sp/>used<sp/>where<sp/>work<sp/>must<sp/>be<sp/>throttled.</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>4.<sp/>Execution<sp/>and<sp/>data<sp/>flow</highlight></codeline>
 <codeline></codeline>

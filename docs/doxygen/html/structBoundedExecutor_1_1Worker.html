@@ -127,7 +127,7 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a93f2577dc374b3da707f8ac94b17b73c" id="r_a93f2577dc374b3da707f8ac94b17b73c"><td class="memItemLeft">std::mutex&#160;</td><td class="memItemRight"><a class="el" href="#a93f2577dc374b3da707f8ac94b17b73c">mutex</a></td></tr>
 <tr class="memitem:a67b3712ac7683ac32a183909d82c4407" id="r_a67b3712ac7683ac32a183909d82c4407"><td class="memItemLeft">std::condition_variable&#160;</td><td class="memItemRight"><a class="el" href="#a67b3712ac7683ac32a183909d82c4407">cv</a></td></tr>
 <tr class="memitem:ae377b765251b61e956eefe01e2eee129" id="r_ae377b765251b61e956eefe01e2eee129"><td class="memItemLeft">std::deque&lt; <a class="el" href="structBoundedExecutor_1_1Item.html">Item</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ae377b765251b61e956eefe01e2eee129">queue</a></td></tr>
-<tr class="memitem:a30bd7b8412c2f314a3a2b9e07e21cb5f" id="r_a30bd7b8412c2f314a3a2b9e07e21cb5f"><td class="memItemLeft">std::atomic&lt; std::size_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a30bd7b8412c2f314a3a2b9e07e21cb5f">depth</a> {0}</td></tr>
+<tr class="memitem:a30bd7b8412c2f314a3a2b9e07e21cb5f" id="r_a30bd7b8412c2f314a3a2b9e07e21cb5f"><td class="memItemLeft">std::atomic&lt; std::size_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a30bd7b8412c2f314a3a2b9e07e21cb5f">depth</a></td></tr>
 <tr class="memitem:ad2c5a6f211775e44ced8f1bc7f3787ea" id="r_ad2c5a6f211775e44ced8f1bc7f3787ea"><td class="memItemLeft">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ad2c5a6f211775e44ced8f1bc7f3787ea">idle</a> {false}</td></tr>
 <tr class="memitem:ae3cda487924221535ebcdebad35539f9" id="r_ae3cda487924221535ebcdebad35539f9"><td class="memItemLeft">std::thread&#160;</td><td class="memItemRight"><a class="el" href="#ae3cda487924221535ebcdebad35539f9">thread</a></td></tr>
 </table>
@@ -135,7 +135,7 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>One worker's thread, queue, lock and condition variable. </p>
 <p>Each worker has its own mutex so submitters and workers do not contend on a single lock. depth and idle are atomics so <a class="el" href="classBoundedExecutor.html#a23e0bc9b4043755faf6f7b419cfec09b" title="Offers a task to the pool without waiting for capacity.">submit()</a> can make scheduling decisions without locking every worker. ("Contend" means having to wait for the same lock; giving each worker its own reduces that waiting.) </p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00197">197</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00272">272</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
 <a id="a67b3712ac7683ac32a183909d82c4407" name="a67b3712ac7683ac32a183909d82c4407"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a67b3712ac7683ac32a183909d82c4407">&#9670;&#160;</a></span>cv</h2>
@@ -149,9 +149,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00200">200</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00275">275</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00301">BoundedExecutor::run()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00154">BoundedExecutor::submit()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00419">BoundedExecutor::run()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00218">BoundedExecutor::submit()</a>.</p>
 
 </div>
 </div>
@@ -162,14 +162,16 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;std::size_t&gt; BoundedExecutor::Worker::depth {0}</td>
+          <td class="memname">std::atomic&lt;std::size_t&gt; BoundedExecutor::Worker::depth</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{</div>
+<div class="line">        0}</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00277">277</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00202">202</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00154">BoundedExecutor::submit()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00241">BoundedExecutor::take()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00218">BoundedExecutor::submit()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00340">BoundedExecutor::take()</a>.</p>
 
 </div>
 </div>
@@ -185,9 +187,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00203">203</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00280">280</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00301">BoundedExecutor::run()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00154">BoundedExecutor::submit()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00419">BoundedExecutor::run()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00218">BoundedExecutor::submit()</a>.</p>
 
 </div>
 </div>
@@ -203,9 +205,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00199">199</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00273">273</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00301">BoundedExecutor::run()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00154">BoundedExecutor::submit()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00241">BoundedExecutor::take()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00419">BoundedExecutor::run()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00218">BoundedExecutor::submit()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00340">BoundedExecutor::take()</a>.</p>
 
 </div>
 </div>
@@ -221,9 +223,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00201">201</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00276">276</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00301">BoundedExecutor::run()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00154">BoundedExecutor::submit()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00241">BoundedExecutor::take()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="boundedexecutor_8cpp_source.html#l00419">BoundedExecutor::run()</a>, <a class="el" href="boundedexecutor_8cpp_source.html#l00218">BoundedExecutor::submit()</a>, and <a class="el" href="boundedexecutor_8cpp_source.html#l00340">BoundedExecutor::take()</a>.</p>
 
 </div>
 </div>
@@ -239,12 +241,12 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00204">204</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundedexecutor_8hpp_source.html#l00282">282</a> of file <a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/concurrency/<a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a></li>
+<li>libs/concurrency/<a class="el" href="boundedexecutor_8hpp_source.html">boundedexecutor.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

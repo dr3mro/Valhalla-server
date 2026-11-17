@@ -11,8 +11,16 @@
     <includes local="no">jsoncons/basic_json.hpp</includes>
     <includes local="no">jsoncons/json.hpp</includes>
     <includes local="no">string</includes>
-    <includes local="yes">message/message.hpp</includes>
+    <includes refid="message_8hpp" local="yes">message/message.hpp</includes>
     <incdepgraph>
+      <node id="12">
+        <label>message/message.hpp</label>
+        <link refid="message_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
       <node id="1">
         <label>src/database/asyncresultmapper.cpp</label>
         <link refid="asyncresultmapper_8cpp"/>
@@ -72,14 +80,14 @@
       <node id="5">
         <label>jsoncons/json.hpp</label>
       </node>
-      <node id="12">
-        <label>message/message.hpp</label>
-      </node>
       <node id="6">
         <label>optional</label>
       </node>
       <node id="7">
         <label>string</label>
+      </node>
+      <node id="13">
+        <label>trantor/utils/Logger.h</label>
       </node>
     </incdepgraph>
     <innernamespace refid="namespaceasyncdb">asyncdb</innernamespace>
@@ -158,7 +166,7 @@
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Project<sp/>logging<sp/>helpers,<sp/>kept<sp/>available<sp/>for<sp/>diagnostics;<sp/>this<sp/>file<sp/>itself</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>does<sp/>not<sp/>log.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;message/message.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">message/message.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceasyncdb" kindref="compound">asyncdb</ref><sp/>{</highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="58"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>

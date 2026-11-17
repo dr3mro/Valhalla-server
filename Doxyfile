@@ -20,7 +20,8 @@ CREATE_SUBDIRS         = NO
 INPUT                  = README.md \
                          docs/ARCHITECTURE.md \
                          docs/CONTRIBUTING.md \
-                         src
+                         src \
+                         libs
 FILE_PATTERNS          = *.cpp *.hpp *.h *.md
 RECURSIVE              = YES
 EXCLUDE                = build \

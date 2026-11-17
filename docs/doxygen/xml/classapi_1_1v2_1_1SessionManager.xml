@@ -566,6 +566,7 @@ Validates a cached session against the supplied token and adopts the stored iden
         </inbodydescription>
         <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="188" column="10" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="468" bodyend="547"/>
         <references refid="classapi_1_1v2_1_1SessionManager_1a65a1a1dc52287f3db432cde8b6d95f8a" compoundref="sessionmanager_8hpp" startline="231">clientsSessionsList</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <references refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" compoundref="keeprbase_8cpp" startline="378" endline="429">api::v2::KeeprBase::decodeToken</references>
         <referencedby refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd">~SessionManager</referencedby>
       </memberdef>
@@ -614,6 +615,7 @@ Caches the session under <computeroutput>"&lt;group&gt;_&lt;id&gt;"</computerout
         </inbodydescription>
         <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="206" column="10" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="558" bodyend="596"/>
         <references refid="classapi_1_1v2_1_1SessionManager_1a65a1a1dc52287f3db432cde8b6d95f8a" compoundref="sessionmanager_8hpp" startline="231">clientsSessionsList</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <referencedby refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd">~SessionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1a64bf884c729b388729752c9163db479f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -650,6 +652,7 @@ Caches the session under <computeroutput>"&lt;group&gt;_&lt;id&gt;"</computerout
         </inbodydescription>
         <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="216" column="10" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="605" bodyend="650"/>
         <references refid="classapi_1_1v2_1_1SessionManager_1a65a1a1dc52287f3db432cde8b6d95f8a" compoundref="sessionmanager_8hpp" startline="231">clientsSessionsList</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="343" endline="458">logout</referencedby>
         <referencedby refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd">~SessionManager</referencedby>
       </memberdef>
@@ -675,9 +678,16 @@ Caches the session under <computeroutput>"&lt;group&gt;_&lt;id&gt;"</computerout
       </node>
     </inheritancegraph>
     <collaborationgraph>
+      <node id="3">
+        <label>TokenManagerParameters</label>
+        <link refid="structTokenManagerParameters"/>
+      </node>
       <node id="2">
         <label>api::v2::KeeprBase</label>
         <link refid="classapi_1_1v2_1_1KeeprBase"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>tokenManagerParameters_</edgelabel>
+        </childnode>
       </node>
       <node id="1">
         <label>api::v2::SessionManager</label>

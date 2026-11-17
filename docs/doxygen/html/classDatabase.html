@@ -262,7 +262,7 @@ Static Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="database_8cpp_source.html#l00083">83</a> of file <a class="el" href="database_8cpp_source.html">database.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="database_8hpp_source.html#l00232">connection</a>, and <a class="el" href="database_8hpp_source.html#l00234">connection_info</a>.</p>
+<p class="reference">References <a class="el" href="database_8hpp_source.html#l00232">connection</a>, <a class="el" href="database_8hpp_source.html#l00234">connection_info</a>, and <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>.</p>
 
 </div>
 </div>
@@ -293,6 +293,8 @@ Static Private Attributes</h2></td></tr>
 <p>Logs that this connection wrapper is being destroyed. </p>
 
 <p class="definition">Definition at line <a class="el" href="database_8cpp_source.html#l00118">118</a> of file <a class="el" href="database_8cpp_source.html">database.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="message_8cpp_source.html#l00048">Message::InfoMessage()</a>.</p>
 
 </div>
 </div>
@@ -365,7 +367,7 @@ Static Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="database_8cpp_source.html#l00134">134</a> of file <a class="el" href="database_8cpp_source.html">database.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="database_8hpp_source.html#l00232">connection</a>.</p>
+<p class="reference">References <a class="el" href="database_8hpp_source.html#l00232">connection</a>, and <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="databasecontroller_8cpp_source.html#l00148">DatabaseController::checkItemExists()</a>, and <a class="el" href="#a4f753fb279bc951340001eb8f21f5b82">operator=()</a>.</p>
 
@@ -411,7 +413,7 @@ template&lt;typename T&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="database_8cpp_source.html#l00496">496</a> of file <a class="el" href="database_8cpp_source.html">database.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="database_8hpp_source.html#l00232">connection</a>.</p>
+<p class="reference">References <a class="el" href="database_8hpp_source.html#l00232">connection</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, and <a class="el" href="message_8cpp_source.html#l00048">Message::InfoMessage()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="database_8cpp.html#af71e8706984c45b60a2cc047d2245d98">Database::doSimpleQuery&lt; std::string &gt;()</a>, and <a class="el" href="databasecontroller_8cpp_source.html#l00141">DatabaseController::doReadQuery()</a>.</p>
 
@@ -458,7 +460,7 @@ template&lt;typename jsonType, typename TransactionType&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="database_8cpp_source.html#l00357">357</a> of file <a class="el" href="database_8cpp_source.html">database.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="database_8hpp_source.html#l00246">BOOLEAN</a>, <a class="el" href="database_8hpp_source.html#l00232">connection</a>, <a class="el" href="database_8hpp_source.html#l00244">INTEGER</a>, <a class="el" href="database_8hpp_source.html#l00248">JSON</a>, <a class="el" href="database_8hpp_source.html#l00250">JSONB</a>, and <a class="el" href="database_8hpp_source.html#l00242">TEXT</a>.</p>
+<p class="reference">References <a class="el" href="database_8hpp_source.html#l00246">BOOLEAN</a>, <a class="el" href="database_8hpp_source.html#l00232">connection</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="message_8cpp_source.html#l00048">Message::InfoMessage()</a>, <a class="el" href="database_8hpp_source.html#l00244">INTEGER</a>, <a class="el" href="database_8hpp_source.html#l00248">JSON</a>, <a class="el" href="database_8hpp_source.html#l00250">JSONB</a>, and <a class="el" href="database_8hpp_source.html#l00242">TEXT</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="database_8cpp.html#a93a7b5be58f322ccae0d3b1564eb4011">Database::executeQuery&lt; jsoncons::json, pqxx::nontransaction &gt;()</a>, <a class="el" href="database_8cpp.html#adea7d8276ce4e36cb3acb79558b4204d">Database::executeQuery&lt; jsoncons::json, pqxx::work &gt;()</a>, <a class="el" href="database_8cpp.html#abf10deee0aec368650df99ba1df909b8">Database::executeQuery&lt; jsoncons::json::array, pqxx::nontransaction &gt;()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00112">DatabaseController::executeQuery()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00123">DatabaseController::executeReadQuery()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00132">DatabaseController::executeSearchQuery()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00158">DatabaseController::getPasswordHashForUserName()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00190">DatabaseController::getPermissions()</a>, and <a class="el" href="#a4f753fb279bc951340001eb8f21f5b82">operator=()</a>.</p>
 
@@ -488,7 +490,7 @@ A set of names, or <span class="tt">std::nullopt</span> if the query threw.</dd>
 
 <p class="definition">Definition at line <a class="el" href="database_8cpp_source.html#l00309">309</a> of file <a class="el" href="database_8cpp_source.html">database.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="database_8hpp_source.html#l00232">connection</a>.</p>
+<p class="reference">References <a class="el" href="database_8hpp_source.html#l00232">connection</a>, and <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="databasecontroller_8cpp_source.html#l00186">DatabaseController::getAllTables()</a>.</p>
 
@@ -521,7 +523,7 @@ A set of names, or <span class="tt">std::nullopt</span> if the query threw.</dd>
 
 <p class="definition">Definition at line <a class="el" href="database_8cpp_source.html#l00243">243</a> of file <a class="el" href="database_8cpp_source.html">database.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="database_8hpp_source.html#l00232">connection</a>.</p>
+<p class="reference">References <a class="el" href="database_8hpp_source.html#l00232">connection</a>, and <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="databasecontroller_8cpp_source.html#l00179">DatabaseController::getTableSchema()</a>.</p>
 
@@ -605,7 +607,7 @@ A set of names, or <span class="tt">std::nullopt</span> if the query threw.</dd>
 
 <p class="definition">Definition at line <a class="el" href="database_8cpp_source.html#l00212">212</a> of file <a class="el" href="database_8cpp_source.html">database.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="database_8cpp_source.html#l00180">check_connection()</a>, <a class="el" href="database_8hpp_source.html#l00232">connection</a>, and <a class="el" href="database_8hpp_source.html#l00234">connection_info</a>.</p>
+<p class="reference">References <a class="el" href="database_8cpp_source.html#l00180">check_connection()</a>, <a class="el" href="database_8hpp_source.html#l00232">connection</a>, <a class="el" href="database_8hpp_source.html#l00234">connection_info</a>, and <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a4f753fb279bc951340001eb8f21f5b82">operator=()</a>.</p>
 

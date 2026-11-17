@@ -13,5 +13,7 @@ var searchData=
   ['front_10',['front',['../classThreadSafeQueue.html#a33be668a849175ebee2439b3a3facaf2',1,'ThreadSafeQueue']]],
   ['front_20end_20development_20cors_20and_20docker_11',['Front-end development (CORS and Docker)',['../index.html#autotoc_md34',1,'']]],
   ['frontend_20email_20sender_12',['Frontend &amp;amp; email sender',['../index.html#autotoc_md23',1,'']]],
-  ['frontendcfg_5f_13',['frontendcfg_',['../structapi_1_1v2_1_1Types_1_1StaffData.html#a37f2a8adfb205f92804835dd6d8e242f',1,'api::v2::Types::StaffData']]]
+  ['frontend_5fconfig_5f_13',['frontend_config_',['../classConfigurator.html#a0e0e891626210eec166117bf5aa4b9f8',1,'Configurator']]],
+  ['frontendcfg_5f_14',['frontendcfg_',['../structapi_1_1v2_1_1Types_1_1StaffData.html#a37f2a8adfb205f92804835dd6d8e242f',1,'api::v2::Types::StaffData']]],
+  ['frontendconfig_15',['FrontEndConfig',['../structFrontEndConfig.html',1,'FrontEndConfig'],['../classConfigurator.html#a8b3e99fef2ad5bf59793fa235a97aa3c',1,'Configurator::FrontEndConfig']]]
 ];

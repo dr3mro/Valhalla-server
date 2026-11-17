@@ -74,7 +74,7 @@ Regenerate the API reference documentation with:
 
 ```bash
 doxygen Doxyfile
-# open build/docs/doxygen/html/index.html
+# open docs/doxygen/html/index.html
 ```
 
 ## Build and test

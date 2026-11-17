@@ -133,16 +133,16 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-types" class="groupheader"><a id="pri-types" name="pri-types"></a>
 Private Types</h2></td></tr>
-<tr class="memitem:a87da4787054457b9c0bb0987dcd0030a" id="r_a87da4787054457b9c0bb0987dcd0030a"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#a87da4787054457b9c0bb0987dcd0030a">Color</a> : std::uint8_t { <br />
-&#160;&#160;<a class="el" href="#a87da4787054457b9c0bb0987dcd0030aae2322fba4b3adff1c29dac4a307cc7a1">Red</a>
-, <a class="el" href="#a87da4787054457b9c0bb0987dcd0030aa6471477fc2170c1406cab151cc408fc3">Green</a>
-, <a class="el" href="#a87da4787054457b9c0bb0987dcd0030aa1f63a6ccfabbf1f73b71ea9a7bb20d11">Yellow</a>
-, <a class="el" href="#a87da4787054457b9c0bb0987dcd0030aab132ee8c05459d4b4bb086aead371f73">Blue</a>
+<tr class="memitem:a87da4787054457b9c0bb0987dcd0030a" id="r_a87da4787054457b9c0bb0987dcd0030a"><td class="memItemLeft">enum class &#160;</td><td class="memItemRight"><a class="el" href="#a87da4787054457b9c0bb0987dcd0030a">Color</a> : std::uint8_t { <br />
+&#160;&#160;<a class="el" href="#a87da4787054457b9c0bb0987dcd0030aaee38e4d5dd68c4e440825018d549cb47">Red</a>
+, <a class="el" href="#a87da4787054457b9c0bb0987dcd0030aad382816a3cbeed082c9e216e7392eed1">Green</a>
+, <a class="el" href="#a87da4787054457b9c0bb0987dcd0030aa51e6cd92b6c45f9affdc158ecca2b8b8">Yellow</a>
+, <a class="el" href="#a87da4787054457b9c0bb0987dcd0030aa9594eec95be70e7b1710f730fdda33d9">Blue</a>
 , <br />
-&#160;&#160;<a class="el" href="#a87da4787054457b9c0bb0987dcd0030aa67f75574bad3cad98bd85ab4b31f928b">Magenta</a>
-, <a class="el" href="#a87da4787054457b9c0bb0987dcd0030aa2452b8b4727e598db8da33ee8da920a1">White</a>
-, <a class="el" href="#a87da4787054457b9c0bb0987dcd0030aa0b21c9bcf230758908c7739987f8969c">Reset</a>
-, <a class="el" href="#a87da4787054457b9c0bb0987dcd0030aa6a0196682c2f0a57a8a0e2b9e2fc7aae">Cyan</a>
+&#160;&#160;<a class="el" href="#a87da4787054457b9c0bb0987dcd0030aab91cc2c1416fcca942b61c7ac5b1a9ac">Magenta</a>
+, <a class="el" href="#a87da4787054457b9c0bb0987dcd0030aa25a81701fbfa4a1efdf660a950c1d006">White</a>
+, <a class="el" href="#a87da4787054457b9c0bb0987dcd0030aa526d688f37a86d3c3f27d0c5016eb71d">Reset</a>
+, <a class="el" href="#a87da4787054457b9c0bb0987dcd0030aa023c239d2f2538f140a20e72c7b73f20">Cyan</a>
 <br />
  }</td></tr>
 <tr class="memdesc:a87da4787054457b9c0bb0987dcd0030a"><td class="mdescLeft">&#160;</td><td class="mdescRight">ANSI colours used when formatting log patterns and messages.  <a href="#a87da4787054457b9c0bb0987dcd0030a">More...</a><br /></td></tr>
@@ -161,12 +161,14 @@ Private Attributes</h2></td></tr>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:ad7e6a73dfe5abb26f51a1502bcab57cf" id="r_ad7e6a73dfe5abb26f51a1502bcab57cf"><td class="memItemLeft">static constexpr uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#ad7e6a73dfe5abb26f51a1502bcab57cf">MAX_LOG_SIZE</a></td></tr>
 <tr class="memdesc:ad7e6a73dfe5abb26f51a1502bcab57cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum size in bytes of a single log file before rotation.  <br /></td></tr>
-<tr class="memitem:acae717b9d2cb047d186ee740872d53fe" id="r_acae717b9d2cb047d186ee740872d53fe"><td class="memItemLeft">static constexpr uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#acae717b9d2cb047d186ee740872d53fe">THREADPOOL</a></td></tr>
+<tr class="memitem:acae717b9d2cb047d186ee740872d53fe" id="r_acae717b9d2cb047d186ee740872d53fe"><td class="memItemLeft">static constexpr uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#acae717b9d2cb047d186ee740872d53fe">THREADPOOL</a> = 8</td></tr>
 <tr class="memdesc:acae717b9d2cb047d186ee740872d53fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Capacity of the spdlog asynchronous message queue.  <br /></td></tr>
-<tr class="memitem:a0f3eebbd1afb203f076c9791306ce250" id="r_a0f3eebbd1afb203f076c9791306ce250"><td class="memItemLeft">static constexpr uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#a0f3eebbd1afb203f076c9791306ce250">THREADS</a></td></tr>
+<tr class="memitem:a0f3eebbd1afb203f076c9791306ce250" id="r_a0f3eebbd1afb203f076c9791306ce250"><td class="memItemLeft">static constexpr uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#a0f3eebbd1afb203f076c9791306ce250">THREADS</a> = 2</td></tr>
 <tr class="memdesc:a0f3eebbd1afb203f076c9791306ce250"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of spdlog worker threads draining the queue.  <br /></td></tr>
-<tr class="memitem:a9295d6101a19ddde8dee20236b86c89d" id="r_a9295d6101a19ddde8dee20236b86c89d"><td class="memItemLeft">static constexpr uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#a9295d6101a19ddde8dee20236b86c89d">MAX_LOG_FILES</a></td></tr>
+<tr class="memitem:a9295d6101a19ddde8dee20236b86c89d" id="r_a9295d6101a19ddde8dee20236b86c89d"><td class="memItemLeft">static constexpr uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#a9295d6101a19ddde8dee20236b86c89d">MAX_LOG_FILES</a> = 3</td></tr>
 <tr class="memdesc:a9295d6101a19ddde8dee20236b86c89d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of rotated log files retained on disk.  <br /></td></tr>
+<tr class="memitem:af27aa5828b228b1e400131f2a0cc359e" id="r_af27aa5828b228b1e400131f2a0cc359e"><td class="memItemLeft">static std::unordered_map&lt; <a class="el" href="#a87da4787054457b9c0bb0987dcd0030a">Logger::Color</a>, std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#af27aa5828b228b1e400131f2a0cc359e">COLOR_MAP</a></td></tr>
+<tr class="memdesc:af27aa5828b228b1e400131f2a0cc359e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A read-only map from <span class="tt"><a class="el" href="#a87da4787054457b9c0bb0987dcd0030a" title="ANSI colours used when formatting log patterns and messages.">Color</a></span> to ANSI escape sequence.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Routes Drogon/Trantor log records through an asynchronous spdlog logger. </p>
@@ -174,7 +176,7 @@ Static Private Attributes</h2></td></tr>
 <p>Intended as a process-wide singleton created by <a class="el" href="classServer.html" title="Owns application startup: configuration, banner, Drogon wiring, and post-run executor shutdown.">Server</a> through <span class="tt"><a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a></span>; spdlog registration is global, so more than one instance would try to register the same name twice. Logging itself is thread-safe via spdlog's sinks and worker pool. </p><dl class="section note"><dt>Note</dt><dd>The file path is <span class="tt">log_dir</span> concatenated with <span class="tt">log_file</span> from <a class="el" href="structServerConfig.html" title="Drogon server identity, networking, logging and upload settings.">ServerConfig</a>; rotation occurs at MAX_LOG_SIZE bytes across MAX_LOG_FILES files. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classMessage.html" title="Stateless facade for emitting coloured status messages.">Message</a>, <a class="el" href="classServer.html" title="Owns application startup: configuration, banner, Drogon wiring, and post-run executor shutdown.">Server</a>, <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="logger_8hpp_source.html#l00071">71</a> of file <a class="el" href="logger_8hpp_source.html">logger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logger_8hpp_source.html#l00075">75</a> of file <a class="el" href="logger_8hpp_source.html">logger.hpp</a>.</p>
 </div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Member Enumeration Documentation</h2>
 <a id="a87da4787054457b9c0bb0987dcd0030a" name="a87da4787054457b9c0bb0987dcd0030a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a87da4787054457b9c0bb0987dcd0030a">&#9670;&#160;</a></span>Color</h2>
@@ -186,29 +188,29 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="#a87da4787054457b9c0bb0987dcd0030a">Logger::Color</a> : std::uint8_t</td>
+          <td class="memname">enum class <a class="el" href="#a87da4787054457b9c0bb0987dcd0030a">Logger::Color</a> : std::uint8_t</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel strong">strong</span><span class="mlabel private">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>ANSI colours used when formatting log patterns and messages. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a87da4787054457b9c0bb0987dcd0030aae2322fba4b3adff1c29dac4a307cc7a1" name="a87da4787054457b9c0bb0987dcd0030aae2322fba4b3adff1c29dac4a307cc7a1"></a>Red&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a87da4787054457b9c0bb0987dcd0030aa6471477fc2170c1406cab151cc408fc3" name="a87da4787054457b9c0bb0987dcd0030aa6471477fc2170c1406cab151cc408fc3"></a>Green&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a87da4787054457b9c0bb0987dcd0030aa1f63a6ccfabbf1f73b71ea9a7bb20d11" name="a87da4787054457b9c0bb0987dcd0030aa1f63a6ccfabbf1f73b71ea9a7bb20d11"></a>Yellow&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a87da4787054457b9c0bb0987dcd0030aab132ee8c05459d4b4bb086aead371f73" name="a87da4787054457b9c0bb0987dcd0030aab132ee8c05459d4b4bb086aead371f73"></a>Blue&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a87da4787054457b9c0bb0987dcd0030aa67f75574bad3cad98bd85ab4b31f928b" name="a87da4787054457b9c0bb0987dcd0030aa67f75574bad3cad98bd85ab4b31f928b"></a>Magenta&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a87da4787054457b9c0bb0987dcd0030aa2452b8b4727e598db8da33ee8da920a1" name="a87da4787054457b9c0bb0987dcd0030aa2452b8b4727e598db8da33ee8da920a1"></a>White&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a87da4787054457b9c0bb0987dcd0030aa0b21c9bcf230758908c7739987f8969c" name="a87da4787054457b9c0bb0987dcd0030aa0b21c9bcf230758908c7739987f8969c"></a>Reset&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a87da4787054457b9c0bb0987dcd0030aa6a0196682c2f0a57a8a0e2b9e2fc7aae" name="a87da4787054457b9c0bb0987dcd0030aa6a0196682c2f0a57a8a0e2b9e2fc7aae"></a>Cyan&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a87da4787054457b9c0bb0987dcd0030aaee38e4d5dd68c4e440825018d549cb47" name="a87da4787054457b9c0bb0987dcd0030aaee38e4d5dd68c4e440825018d549cb47"></a>Red&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a87da4787054457b9c0bb0987dcd0030aad382816a3cbeed082c9e216e7392eed1" name="a87da4787054457b9c0bb0987dcd0030aad382816a3cbeed082c9e216e7392eed1"></a>Green&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a87da4787054457b9c0bb0987dcd0030aa51e6cd92b6c45f9affdc158ecca2b8b8" name="a87da4787054457b9c0bb0987dcd0030aa51e6cd92b6c45f9affdc158ecca2b8b8"></a>Yellow&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a87da4787054457b9c0bb0987dcd0030aa9594eec95be70e7b1710f730fdda33d9" name="a87da4787054457b9c0bb0987dcd0030aa9594eec95be70e7b1710f730fdda33d9"></a>Blue&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a87da4787054457b9c0bb0987dcd0030aab91cc2c1416fcca942b61c7ac5b1a9ac" name="a87da4787054457b9c0bb0987dcd0030aab91cc2c1416fcca942b61c7ac5b1a9ac"></a>Magenta&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a87da4787054457b9c0bb0987dcd0030aa25a81701fbfa4a1efdf660a950c1d006" name="a87da4787054457b9c0bb0987dcd0030aa25a81701fbfa4a1efdf660a950c1d006"></a>White&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a87da4787054457b9c0bb0987dcd0030aa526d688f37a86d3c3f27d0c5016eb71d" name="a87da4787054457b9c0bb0987dcd0030aa526d688f37a86d3c3f27d0c5016eb71d"></a>Reset&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a87da4787054457b9c0bb0987dcd0030aa023c239d2f2538f140a20e72c7b73f20" name="a87da4787054457b9c0bb0987dcd0030aa023c239d2f2538f140a20e72c7b73f20"></a>Cyan&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="logger_8hpp_source.html#l00137">137</a> of file <a class="el" href="logger_8hpp_source.html">logger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logger_8hpp_source.html#l00142">142</a> of file <a class="el" href="logger_8hpp_source.html">logger.hpp</a>.</p>
 
 </div>
 </div>
@@ -232,9 +234,9 @@ Static Private Attributes</h2></td></tr>
 <p>Reads <a class="el" href="structServerConfig.html" title="Drogon server identity, networking, logging and upload settings.">ServerConfig</a> from <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a> (via <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a>), initialises the spdlog thread pool (queue size THREADPOOL, THREADS workers), builds the console and rotating-file sinks with a shared pattern, adds only the sinks enabled by <span class="tt">log_to_console</span> / <span class="tt">log_to_file</span>, then registers the logger as "Project Valhalla" and enables Trantor's spdlog forwarding. </p><dl class="section post"><dt>Postcondition</dt><dd>spdlog has a registered default logger and Trantor routes to it. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>On spdlog_ex (e.g. a duplicate registration) the error is printed to stdout and construction succeeds with logger_ unset; later <a class="el" href="#ad5bca94a0174ce580d9d36c807fbe107" title="Forwards a Trantor log record at the matching spdlog severity.">log()</a> calls would then dereference a null pointer. Construct once, before any component starts logging. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="logger_8cpp_source.html#l00044">44</a> of file <a class="el" href="logger_8cpp_source.html">logger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logger_8cpp_source.html#l00086">86</a> of file <a class="el" href="logger_8cpp_source.html">logger.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="logger_8cpp_source.html#l00181">get_color()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, <a class="el" href="logger_8hpp_source.html#l00105">logger_</a>, <a class="el" href="logger_8hpp_source.html#l00142">Magenta</a>, <a class="el" href="logger_8hpp_source.html#l00128">MAX_LOG_FILES</a>, <a class="el" href="logger_8hpp_source.html#l00110">MAX_LOG_SIZE</a>, <a class="el" href="logger_8hpp_source.html#l00138">Red</a>, <a class="el" href="logger_8hpp_source.html#l00144">Reset</a>, <a class="el" href="logger_8hpp_source.html#l00116">THREADPOOL</a>, and <a class="el" href="logger_8hpp_source.html#l00122">THREADS</a>.</p>
+<p class="reference">References <a class="el" href="store_8hpp_source.html#l00260">Store::cachedObject()</a>, <a class="el" href="logger_8cpp_source.html#l00230">get_color()</a>, <a class="el" href="logger_8hpp_source.html#l00109">logger_</a>, <a class="el" href="logger_8hpp_source.html#l00147">Magenta</a>, <a class="el" href="logger_8hpp_source.html#l00133">MAX_LOG_FILES</a>, <a class="el" href="logger_8hpp_source.html#l00114">MAX_LOG_SIZE</a>, <a class="el" href="logger_8hpp_source.html#l00143">Red</a>, <a class="el" href="logger_8hpp_source.html#l00149">Reset</a>, <a class="el" href="logger_8hpp_source.html#l00121">THREADPOOL</a>, and <a class="el" href="logger_8hpp_source.html#l00127">THREADS</a>.</p>
 
 </div>
 </div>
@@ -277,11 +279,11 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="logger_8cpp_source.html#l00181">181</a> of file <a class="el" href="logger_8cpp_source.html">logger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logger_8cpp_source.html#l00230">230</a> of file <a class="el" href="logger_8cpp_source.html">logger.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="logger_8hpp_source.html#l00141">Blue</a>, <a class="el" href="logger_8hpp_source.html#l00145">Cyan</a>, <a class="el" href="logger_8hpp_source.html#l00139">Green</a>, <a class="el" href="logger_8hpp_source.html#l00142">Magenta</a>, <a class="el" href="logger_8hpp_source.html#l00138">Red</a>, <a class="el" href="logger_8hpp_source.html#l00144">Reset</a>, <a class="el" href="logger_8hpp_source.html#l00143">White</a>, and <a class="el" href="logger_8hpp_source.html#l00140">Yellow</a>.</p>
+<p class="reference">References <a class="el" href="logger_8hpp_source.html#l00166">COLOR_MAP</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="logger_8cpp_source.html#l00044">Logger()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="logger_8cpp_source.html#l00086">Logger()</a>.</p>
 
 </div>
 </div>
@@ -314,13 +316,73 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>Unrecognised levels are silently ignored. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="logger_8cpp_source.html#l00154">154</a> of file <a class="el" href="logger_8cpp_source.html">logger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logger_8cpp_source.html#l00202">202</a> of file <a class="el" href="logger_8cpp_source.html">logger.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="logger_8hpp_source.html#l00105">logger_</a>.</p>
+<p class="reference">References <a class="el" href="logger_8hpp_source.html#l00109">logger_</a>.</p>
 
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
+<a id="af27aa5828b228b1e400131f2a0cc359e" name="af27aa5828b228b1e400131f2a0cc359e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af27aa5828b228b1e400131f2a0cc359e">&#9670;&#160;</a></span>COLOR_MAP</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt; <a class="el" href="#a87da4787054457b9c0bb0987dcd0030a">Logger::Color</a>, std::string &gt; Logger::COLOR_MAP</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">                                 =  </div>
+<div class="line">std::unordered_map&lt;Logger::Color, std::string&gt;({</div>
+<div class="line">    </div>
+<div class="line">    {<a class="code hl_enumvalue" href="#a87da4787054457b9c0bb0987dcd0030aaee38e4d5dd68c4e440825018d549cb47">Logger::Color::Red</a>, <span class="stringliteral">&quot;\033[1;91m&quot;</span>},     </div>
+<div class="line">    {<a class="code hl_enumvalue" href="#a87da4787054457b9c0bb0987dcd0030aad382816a3cbeed082c9e216e7392eed1">Logger::Color::Green</a>, <span class="stringliteral">&quot;\033[1;92m&quot;</span>},   </div>
+<div class="line">    {<a class="code hl_enumvalue" href="#a87da4787054457b9c0bb0987dcd0030aa51e6cd92b6c45f9affdc158ecca2b8b8">Logger::Color::Yellow</a>, <span class="stringliteral">&quot;\033[1;93m&quot;</span>},  </div>
+<div class="line">    {</div>
+<div class="line">        <a class="code hl_enumvalue" href="#a87da4787054457b9c0bb0987dcd0030aa9594eec95be70e7b1710f730fdda33d9">Logger::Color::Blue</a>,</div>
+<div class="line">        <span class="stringliteral">&quot;\033[1;34m&quot;</span>,</div>
+<div class="line">    },  </div>
+<div class="line">    {</div>
+<div class="line">        <a class="code hl_enumvalue" href="#a87da4787054457b9c0bb0987dcd0030aab91cc2c1416fcca942b61c7ac5b1a9ac">Logger::Color::Magenta</a>,</div>
+<div class="line">        <span class="stringliteral">&quot;\033[38;5;140m&quot;</span>,</div>
+<div class="line">    },  </div>
+<div class="line">    {</div>
+<div class="line">        <a class="code hl_enumvalue" href="#a87da4787054457b9c0bb0987dcd0030aa25a81701fbfa4a1efdf660a950c1d006">Logger::Color::White</a>,</div>
+<div class="line">        <span class="stringliteral">&quot;\033[1;97m&quot;</span>,</div>
+<div class="line">    },  </div>
+<div class="line">    {</div>
+<div class="line">        <a class="code hl_enumvalue" href="#a87da4787054457b9c0bb0987dcd0030aa023c239d2f2538f140a20e72c7b73f20">Logger::Color::Cyan</a>,</div>
+<div class="line">        <span class="stringliteral">&quot;\033[1;96m&quot;</span>,</div>
+<div class="line">    },  </div>
+<div class="line">    {<a class="code hl_enumvalue" href="#a87da4787054457b9c0bb0987dcd0030aa526d688f37a86d3c3f27d0c5016eb71d">Logger::Color::Reset</a>, <span class="stringliteral">&quot;\033[0m&quot;</span>},</div>
+<div class="line">})</div>
+<div class="ttc" id="aclassLogger_html_a87da4787054457b9c0bb0987dcd0030aa023c239d2f2538f140a20e72c7b73f20"><div class="ttname"><a href="#a87da4787054457b9c0bb0987dcd0030aa023c239d2f2538f140a20e72c7b73f20">Logger::Color::Cyan</a></div><div class="ttdeci">@ Cyan</div><div class="ttdef"><b>Definition</b> <a href="logger_8hpp_source.html#l00150">logger.hpp:150</a></div></div>
+<div class="ttc" id="aclassLogger_html_a87da4787054457b9c0bb0987dcd0030aa25a81701fbfa4a1efdf660a950c1d006"><div class="ttname"><a href="#a87da4787054457b9c0bb0987dcd0030aa25a81701fbfa4a1efdf660a950c1d006">Logger::Color::White</a></div><div class="ttdeci">@ White</div><div class="ttdef"><b>Definition</b> <a href="logger_8hpp_source.html#l00148">logger.hpp:148</a></div></div>
+<div class="ttc" id="aclassLogger_html_a87da4787054457b9c0bb0987dcd0030aa51e6cd92b6c45f9affdc158ecca2b8b8"><div class="ttname"><a href="#a87da4787054457b9c0bb0987dcd0030aa51e6cd92b6c45f9affdc158ecca2b8b8">Logger::Color::Yellow</a></div><div class="ttdeci">@ Yellow</div><div class="ttdef"><b>Definition</b> <a href="logger_8hpp_source.html#l00145">logger.hpp:145</a></div></div>
+<div class="ttc" id="aclassLogger_html_a87da4787054457b9c0bb0987dcd0030aa526d688f37a86d3c3f27d0c5016eb71d"><div class="ttname"><a href="#a87da4787054457b9c0bb0987dcd0030aa526d688f37a86d3c3f27d0c5016eb71d">Logger::Color::Reset</a></div><div class="ttdeci">@ Reset</div><div class="ttdef"><b>Definition</b> <a href="logger_8hpp_source.html#l00149">logger.hpp:149</a></div></div>
+<div class="ttc" id="aclassLogger_html_a87da4787054457b9c0bb0987dcd0030aa9594eec95be70e7b1710f730fdda33d9"><div class="ttname"><a href="#a87da4787054457b9c0bb0987dcd0030aa9594eec95be70e7b1710f730fdda33d9">Logger::Color::Blue</a></div><div class="ttdeci">@ Blue</div><div class="ttdef"><b>Definition</b> <a href="logger_8hpp_source.html#l00146">logger.hpp:146</a></div></div>
+<div class="ttc" id="aclassLogger_html_a87da4787054457b9c0bb0987dcd0030aab91cc2c1416fcca942b61c7ac5b1a9ac"><div class="ttname"><a href="#a87da4787054457b9c0bb0987dcd0030aab91cc2c1416fcca942b61c7ac5b1a9ac">Logger::Color::Magenta</a></div><div class="ttdeci">@ Magenta</div><div class="ttdef"><b>Definition</b> <a href="logger_8hpp_source.html#l00147">logger.hpp:147</a></div></div>
+<div class="ttc" id="aclassLogger_html_a87da4787054457b9c0bb0987dcd0030aad382816a3cbeed082c9e216e7392eed1"><div class="ttname"><a href="#a87da4787054457b9c0bb0987dcd0030aad382816a3cbeed082c9e216e7392eed1">Logger::Color::Green</a></div><div class="ttdeci">@ Green</div><div class="ttdef"><b>Definition</b> <a href="logger_8hpp_source.html#l00144">logger.hpp:144</a></div></div>
+<div class="ttc" id="aclassLogger_html_a87da4787054457b9c0bb0987dcd0030aaee38e4d5dd68c4e440825018d549cb47"><div class="ttname"><a href="#a87da4787054457b9c0bb0987dcd0030aaee38e4d5dd68c4e440825018d549cb47">Logger::Color::Red</a></div><div class="ttdeci">@ Red</div><div class="ttdef"><b>Definition</b> <a href="logger_8hpp_source.html#l00143">logger.hpp:143</a></div></div>
+</div><!-- fragment -->
+<p>A read-only map from <span class="tt"><a class="el" href="#a87da4787054457b9c0bb0987dcd0030a" title="ANSI colours used when formatting log patterns and messages.">Color</a></span> to ANSI escape sequence. </p>
+
+<p class="definition">Definition at line <a class="el" href="logger_8hpp_source.html#l00166">166</a> of file <a class="el" href="logger_8hpp_source.html">logger.hpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="logger_8cpp_source.html#l00230">get_color()</a>.</p>
+
+</div>
+</div>
 <a id="aeae0a292d6930a7c81a1a0c4ece5534c" name="aeae0a292d6930a7c81a1a0c4ece5534c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aeae0a292d6930a7c81a1a0c4ece5534c">&#9670;&#160;</a></span>logger_</h2>
 
@@ -343,9 +405,9 @@ Static Private Attributes</h2></td></tr>
 
 <p>The shared async logger, also registered globally with spdlog. </p>
 
-<p class="definition">Definition at line <a class="el" href="logger_8hpp_source.html#l00105">105</a> of file <a class="el" href="logger_8hpp_source.html">logger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logger_8hpp_source.html#l00109">109</a> of file <a class="el" href="logger_8hpp_source.html">logger.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="logger_8cpp_source.html#l00154">log()</a>, and <a class="el" href="logger_8cpp_source.html#l00044">Logger()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="logger_8cpp_source.html#l00202">log()</a>, and <a class="el" href="logger_8cpp_source.html#l00086">Logger()</a>.</p>
 
 </div>
 </div>
@@ -359,7 +421,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t Logger::MAX_LOG_FILES</td>
+          <td class="memname">uint64_t Logger::MAX_LOG_FILES = 3</td>
         </tr>
       </table>
   </td>
@@ -368,14 +430,12 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">                                    =</div>
-<div class="line">3</div>
-</div><!-- fragment -->
+
 <p>Number of rotated log files retained on disk. </p>
 
-<p class="definition">Definition at line <a class="el" href="logger_8hpp_source.html#l00128">128</a> of file <a class="el" href="logger_8hpp_source.html">logger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logger_8hpp_source.html#l00133">133</a> of file <a class="el" href="logger_8hpp_source.html">logger.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="logger_8cpp_source.html#l00044">Logger()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="logger_8cpp_source.html#l00086">Logger()</a>.</p>
 
 </div>
 </div>
@@ -398,14 +458,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">                                   = <span class="keyword">static_cast&lt;</span>uint64_t<span class="keyword">&gt;</span>(</div>
-<div class="line">1024 * 1024 * 5)</div>
+<b>Initial value:</b><div class="fragment"><div class="line">                                   =</div>
+<div class="line"><span class="keyword">static_cast&lt;</span>uint64_t<span class="keyword">&gt;</span>(1024 * 1024 * 5)</div>
 </div><!-- fragment -->
 <p>Maximum size in bytes of a single log file before rotation. </p>
 
-<p class="definition">Definition at line <a class="el" href="logger_8hpp_source.html#l00110">110</a> of file <a class="el" href="logger_8hpp_source.html">logger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logger_8hpp_source.html#l00114">114</a> of file <a class="el" href="logger_8hpp_source.html">logger.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="logger_8cpp_source.html#l00044">Logger()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="logger_8cpp_source.html#l00086">Logger()</a>.</p>
 
 </div>
 </div>
@@ -419,7 +479,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t Logger::THREADPOOL</td>
+          <td class="memname">uint64_t Logger::THREADPOOL = 8</td>
         </tr>
       </table>
   </td>
@@ -428,14 +488,12 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">                                 =</div>
-<div class="line">8</div>
-</div><!-- fragment -->
+
 <p>Capacity of the spdlog asynchronous message queue. </p>
 
-<p class="definition">Definition at line <a class="el" href="logger_8hpp_source.html#l00116">116</a> of file <a class="el" href="logger_8hpp_source.html">logger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logger_8hpp_source.html#l00121">121</a> of file <a class="el" href="logger_8hpp_source.html">logger.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="logger_8cpp_source.html#l00044">Logger()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="logger_8cpp_source.html#l00086">Logger()</a>.</p>
 
 </div>
 </div>
@@ -449,7 +507,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t Logger::THREADS</td>
+          <td class="memname">uint64_t Logger::THREADS = 2</td>
         </tr>
       </table>
   </td>
@@ -458,20 +516,18 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">                              =</div>
-<div class="line">2</div>
-</div><!-- fragment -->
+
 <p>Number of spdlog worker threads draining the queue. </p>
 
-<p class="definition">Definition at line <a class="el" href="logger_8hpp_source.html#l00122">122</a> of file <a class="el" href="logger_8hpp_source.html">logger.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logger_8hpp_source.html#l00127">127</a> of file <a class="el" href="logger_8hpp_source.html">logger.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="logger_8cpp_source.html#l00044">Logger()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="logger_8cpp_source.html#l00086">Logger()</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/utils/Logger/<a class="el" href="logger_8hpp_source.html">logger.hpp</a></li>
-<li>src/utils/Logger/<a class="el" href="logger_8cpp_source.html">logger.cpp</a></li>
+<li>libs/logger/<a class="el" href="logger_8hpp_source.html">logger.hpp</a></li>
+<li>libs/logger/<a class="el" href="logger_8cpp_source.html">logger.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

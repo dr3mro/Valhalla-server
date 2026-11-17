@@ -5,7 +5,7 @@
     <includes local="no">drogon/orm/DbClient.h</includes>
     <includes local="no">memory</includes>
     <includes local="no">string</includes>
-    <includes local="yes">configurator/configurator.hpp</includes>
+    <includes refid="configurator_8hpp" local="yes">configurator/configurator.hpp</includes>
     <includedby refid="clients_8hpp" local="yes">src/api/v2/routes/clients.hpp</includedby>
     <includedby refid="controller_8hpp" local="yes">src/controllers/base/controller/controller.hpp</includedby>
     <includedby refid="databasecontroller_8cpp" local="yes">src/controllers/databasecontroller/databasecontroller.cpp</includedby>
@@ -14,6 +14,74 @@
     <includedby refid="permissionmanager__private_8hpp" local="yes">src/gatekeeper/permissionmanager/permissionmanager_private.hpp</includedby>
     <includedby refid="server_8cpp" local="yes">src/server/server.cpp</includedby>
     <incdepgraph>
+      <node id="5">
+        <label>configurator/configurator.hpp</label>
+        <link refid="configurator_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>defaults.hpp</label>
+        <link refid="defaults_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>envloader/envloader.hpp</label>
+        <link refid="envloader_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>envvars/envvars.hpp</label>
+        <link refid="envvars_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>message/message.hpp</label>
+        <link refid="message_8hpp"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
       <node id="1">
         <label>src/database/asyncdbclient.hpp</label>
         <link refid="asyncdbclient_8hpp"/>
@@ -26,17 +94,44 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="5">
-        <label>configurator/configurator.hpp</label>
+      <node id="9">
+        <label>chrono</label>
+      </node>
+      <node id="10">
+        <label>cstdint</label>
       </node>
       <node id="2">
         <label>drogon/orm/DbClient.h</label>
       </node>
+      <node id="14">
+        <label>exception</label>
+      </node>
+      <node id="6">
+        <label>fmt/core.h</label>
+      </node>
+      <node id="7">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="8">
+        <label>fmt/ranges.h</label>
+      </node>
       <node id="3">
         <label>memory</label>
       </node>
+      <node id="16">
+        <label>optional</label>
+      </node>
       <node id="4">
         <label>string</label>
+      </node>
+      <node id="18">
+        <label>trantor/utils/Logger.h</label>
+      </node>
+      <node id="11">
+        <label>type_traits</label>
+      </node>
+      <node id="12">
+        <label>unordered_set</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
@@ -693,7 +788,7 @@
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Configurator::DatabaseConfig,<sp/>the<sp/>DB_*<sp/>settings<sp/>used<sp/>to<sp/>build<sp/>the<sp/>connection</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;configurator/configurator.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="configurator_8hpp" kindref="compound">configurator/configurator.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="53"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="54"><highlight class="comment"><sp/>*<sp/>@class<sp/>AsyncDbClient</highlight></codeline>
@@ -780,7 +875,7 @@
 <codeline lineno="135"><highlight class="comment"><sp/><sp/><sp/>*<sp/>deliberately<sp/>redacts<sp/>the<sp/>same<sp/>field.</highlight></codeline>
 <codeline lineno="136"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classAsyncDbClient_1a060a2df97483204c119b2d3322de7455" kindref="member">connectionString</ref>(</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Configurator::DatabaseConfig&amp;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classConfigurator_1a78caa68d4554c8ab0d0c1753ce8edbe2" kindref="member">Configurator::DatabaseConfig</ref>&amp;</highlight></codeline>
 <codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>config);<sp/><sp/></highlight><highlight class="comment">//<sp/>Pure<sp/>formatting:<sp/>no<sp/>connection<sp/>is<sp/>opened,<sp/>only<sp/>text<sp/>is</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>produced.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="141"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>

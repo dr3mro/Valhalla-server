@@ -63,7 +63,7 @@
 </parameterlist>
 <simplesect kind="return"><para>True when a token was produced; false on a signing/configuration error. </para>
 </simplesect>
-<simplesect kind="note"><para>The token embeds the issue/expiry times and last-logout time; signing failures are logged via Message::CriticalMessage. </para>
+<simplesect kind="note"><para>The token embeds the issue/expiry times and last-logout time; signing failures are logged via <ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>. </para>
 </simplesect>
 <simplesect kind="note"><para>Failure paths (missing claims, signing exception) are covered by tests/gatekeeper/test_tokenmanager.cpp.</para>
 </simplesect>
@@ -76,6 +76,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="73" column="12" bodyfile="src/gatekeeper/tokenmanager/tokenmanager.cpp" bodystart="43" bodyend="124"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <references refid="classapi_1_1v2_1_1KeeprBase_1a769b4981f124c8bc48570a2ec0aaa01d" compoundref="keeprbase_8hpp" startline="300" endline="302">api::v2::KeeprBase::getTokenManagerParameters</references>
         <referencedby refid="classapi_1_1v2_1_1TokenManager_1a1776a30879fdb359d4cdcd6451835e81">~TokenManager</referencedby>
       </memberdef>
@@ -121,6 +122,7 @@ Decodes the token, then validates it with <ref refid="classapi_1_1v2_1_1KeeprBas
         <inbodydescription>
         </inbodydescription>
         <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="87" column="12" bodyfile="src/gatekeeper/tokenmanager/tokenmanager.cpp" bodystart="131" bodyend="162"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <references refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" compoundref="keeprbase_8cpp" startline="378" endline="429">api::v2::KeeprBase::decodeToken</references>
         <references refid="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" compoundref="keeprbase_8cpp" startline="440" endline="500">api::v2::KeeprBase::validateToken</references>
         <referencedby refid="classapi_1_1v2_1_1TokenManager_1a1776a30879fdb359d4cdcd6451835e81">~TokenManager</referencedby>
@@ -177,6 +179,7 @@ Decodes the token, then validates it with <ref refid="classapi_1_1v2_1_1KeeprBas
         <inbodydescription>
         </inbodydescription>
         <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="101" column="20" bodyfile="src/gatekeeper/tokenmanager/tokenmanager.cpp" bodystart="167" bodyend="206"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <references refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" compoundref="keeprbase_8cpp" startline="378" endline="429">api::v2::KeeprBase::decodeToken</references>
         <references refid="classapi_1_1v2_1_1KeeprBase_1adc936836bc32e25fd2348e738289c83a" compoundref="keeprbase_8cpp" startline="572" endline="627">api::v2::KeeprBase::validateTokenCoro</references>
         <referencedby refid="classapi_1_1v2_1_1TokenManager_1a1776a30879fdb359d4cdcd6451835e81">~TokenManager</referencedby>
@@ -186,7 +189,7 @@ Decodes the token, then validates it with <ref refid="classapi_1_1v2_1_1KeeprBas
 <para>Issues and validates the HS256 JWTs that authenticate clients. </para>
     </briefdescription>
     <detaileddescription>
-<para>Token parameters (issuer, type, validity and secret) come from the Configurator via <ref refid="classapi_1_1v2_1_1KeeprBase" kindref="compound">KeeprBase</ref>. Generated tokens carry identity claims and last-logout time so a later logout can be detected. Validation first decodes the token into the <ref refid="structClientLoginData" kindref="compound">ClientLoginData</ref>, then verifies it with <ref refid="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" kindref="member">KeeprBase::validateToken</ref>; the coroutine form awaits the async variant. <simplesect kind="see"><para><ref refid="classapi_1_1v2_1_1KeeprBase" kindref="compound">KeeprBase</ref> In everyday words: this class is like a badge printer and badge checker. It stamps a badge with the user&apos;s identity and an expiry, and later checks that a presented badge is genuine and still current. </para>
+<para>Token parameters (issuer, type, validity and secret) come from the <ref refid="classConfigurator" kindref="compound">Configurator</ref> via <ref refid="classapi_1_1v2_1_1KeeprBase" kindref="compound">KeeprBase</ref>. Generated tokens carry identity claims and last-logout time so a later logout can be detected. Validation first decodes the token into the <ref refid="structClientLoginData" kindref="compound">ClientLoginData</ref>, then verifies it with <ref refid="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" kindref="member">KeeprBase::validateToken</ref>; the coroutine form awaits the async variant. <simplesect kind="see"><para><ref refid="classapi_1_1v2_1_1KeeprBase" kindref="compound">KeeprBase</ref> In everyday words: this class is like a badge printer and badge checker. It stamps a badge with the user&apos;s identity and an expiry, and later checks that a presented badge is genuine and still current. </para>
 </simplesect>
 </para>
     </detaileddescription>
@@ -203,9 +206,16 @@ Decodes the token, then validates it with <ref refid="classapi_1_1v2_1_1KeeprBas
       </node>
     </inheritancegraph>
     <collaborationgraph>
+      <node id="3">
+        <label>TokenManagerParameters</label>
+        <link refid="structTokenManagerParameters"/>
+      </node>
       <node id="2">
         <label>api::v2::KeeprBase</label>
         <link refid="classapi_1_1v2_1_1KeeprBase"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>tokenManagerParameters_</edgelabel>
+        </childnode>
       </node>
       <node id="1">
         <label>api::v2::TokenManager</label>

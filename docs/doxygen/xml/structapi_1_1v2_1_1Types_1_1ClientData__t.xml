@@ -149,7 +149,9 @@
         </inbodydescription>
         <location file="src/entities/base/types.hpp" line="511" column="5" bodyfile="src/entities/base/types.hpp" bodystart="511" bodyend="548"/>
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1adc52add57f54dc3d0d39360a71e1ff22" compoundref="entities_2base_2types_8hpp" startline="577">data_j</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a4caf1579ffb2a759b0cfd74e92050c8d" compoundref="entities_2base_2types_8hpp" startline="582">id</references>
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="123">api::v2::Http::INTERNAL_SERVER_ERROR</references>
       </memberdef>

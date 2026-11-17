@@ -144,8 +144,8 @@ Public Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abd16610d356d1e768aff5a1b4897c65e" id="r_abd16610d356d1e768aff5a1b4897c65e"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#abd16610d356d1e768aff5a1b4897c65e">DOSDetector</a> ()</td></tr>
-<tr class="memdesc:abd16610d356d1e768aff5a1b4897c65e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Production constructor: loads configuration from the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> Configurator.  <br /></td></tr>
-<tr class="memitem:a02b5e5995faaeca724ecf87bdeb6601f" id="r_a02b5e5995faaeca724ecf87bdeb6601f"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a02b5e5995faaeca724ecf87bdeb6601f">DOSDetector</a> (Configurator::DOSDetectorConfig config, <a class="el" href="#ac7575b7d29bfc8bd94cb54bb6321799a">ClockFn</a> clock)</td></tr>
+<tr class="memdesc:abd16610d356d1e768aff5a1b4897c65e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Production constructor: loads configuration from the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a>.  <br /></td></tr>
+<tr class="memitem:a02b5e5995faaeca724ecf87bdeb6601f" id="r_a02b5e5995faaeca724ecf87bdeb6601f"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a02b5e5995faaeca724ecf87bdeb6601f">DOSDetector</a> (<a class="el" href="classConfigurator.html#a73f1bdb52e6a9845bd21b01baf868205">Configurator::DOSDetectorConfig</a> config, <a class="el" href="#ac7575b7d29bfc8bd94cb54bb6321799a">ClockFn</a> clock)</td></tr>
 <tr class="memdesc:a02b5e5995faaeca724ecf87bdeb6601f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test/embedding constructor taking an explicit config and clock.  <br /></td></tr>
 <tr class="memitem:aeacc9da23e23c51f1f45120e742db41f" id="r_aeacc9da23e23c51f1f45120e742db41f"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aeacc9da23e23c51f1f45120e742db41f">DOSDetector</a> (const <a class="el" href="classDOSDetector.html">DOSDetector</a> &amp;)=delete</td></tr>
 <tr class="memitem:ac46c08f34730ac62b4ed19270dcae3c3" id="r_ac46c08f34730ac62b4ed19270dcae3c3"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ac46c08f34730ac62b4ed19270dcae3c3">DOSDetector</a> (<a class="el" href="classDOSDetector.html">DOSDetector</a> &amp;&amp;)=delete</td></tr>
@@ -196,9 +196,9 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a2b0c5dddb5473f80e8241ad5b73c52a1" id="r_a2b0c5dddb5473f80e8241ad5b73c52a1"><td class="memItemLeft">std::shared_ptr&lt; Configurator &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a2b0c5dddb5473f80e8241ad5b73c52a1">configurator_</a></td></tr>
-<tr class="memitem:ac85a9453160ecbc88fa0195399746a2c" id="r_ac85a9453160ecbc88fa0195399746a2c"><td class="memItemLeft">std::optional&lt; Configurator::DOSDetectorConfig &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ac85a9453160ecbc88fa0195399746a2c">owned_config_</a></td></tr>
-<tr class="memitem:a7f2d8e67c8965359df70c5d6f04b8850" id="r_a7f2d8e67c8965359df70c5d6f04b8850"><td class="memItemLeft">const Configurator::DOSDetectorConfig &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a7f2d8e67c8965359df70c5d6f04b8850">config_</a></td></tr>
+<tr class="memitem:a2b0c5dddb5473f80e8241ad5b73c52a1" id="r_a2b0c5dddb5473f80e8241ad5b73c52a1"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classConfigurator.html">Configurator</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a2b0c5dddb5473f80e8241ad5b73c52a1">configurator_</a></td></tr>
+<tr class="memitem:ac85a9453160ecbc88fa0195399746a2c" id="r_ac85a9453160ecbc88fa0195399746a2c"><td class="memItemLeft">std::optional&lt; <a class="el" href="classConfigurator.html#a73f1bdb52e6a9845bd21b01baf868205">Configurator::DOSDetectorConfig</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ac85a9453160ecbc88fa0195399746a2c">owned_config_</a></td></tr>
+<tr class="memitem:a7f2d8e67c8965359df70c5d6f04b8850" id="r_a7f2d8e67c8965359df70c5d6f04b8850"><td class="memItemLeft">const <a class="el" href="classConfigurator.html#a73f1bdb52e6a9845bd21b01baf868205">Configurator::DOSDetectorConfig</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a7f2d8e67c8965359df70c5d6f04b8850">config_</a></td></tr>
 <tr class="memitem:a224e823915842704075388f6db617817" id="r_a224e823915842704075388f6db617817"><td class="memItemLeft"><a class="el" href="#ac7575b7d29bfc8bd94cb54bb6321799a">ClockFn</a>&#160;</td><td class="memItemRight"><a class="el" href="#a224e823915842704075388f6db617817">clock_</a></td></tr>
 <tr class="memitem:aea7f4706caa63d2ddd7036ec3640355c" id="r_aea7f4706caa63d2ddd7036ec3640355c"><td class="memItemLeft">std::unordered_map&lt; std::string, std::unordered_map&lt; std::string, std::deque&lt; std::chrono::steady_clock::time_point &gt; &gt; &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aea7f4706caa63d2ddd7036ec3640355c">requests_</a></td></tr>
 <tr class="memitem:a7414d016492551e5efb514c3a37c46aa" id="r_a7414d016492551e5efb514c3a37c46aa"><td class="memItemLeft">std::unordered_map&lt; std::string, std::chrono::steady_clock::time_point &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a7414d016492551e5efb514c3a37c46aa">ratelimited_ips_</a></td></tr>
@@ -350,14 +350,14 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Production constructor: loads configuration from the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> Configurator. </p>
+<p>Production constructor: loads configuration from the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a>. </p>
 <p>Production constructor: compiles configured matchers and starts the cleanup thread.</p>
 <p>Compiles the whitelist/blacklist patterns and starts the background cleanup thread using the real steady clock.</p>
-<p>Configuration comes from the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> Configurator and the real steady clock is used. Exceptions during setup are logged rather than propagated, which may leave the detector partially initialized (for example without a cleanup thread). </p>
+<p>Configuration comes from the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a> and the real steady clock is used. Exceptions during setup are logged rather than propagated, which may leave the detector partially initialized (for example without a cleanup thread). </p>
 
 <p class="definition">Definition at line <a class="el" href="dosdetector_8cpp_source.html#l00081">81</a> of file <a class="el" href="dosdetector_8cpp_source.html">dosdetector.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="dosdetector_8hpp_source.html#l00282">async_task_clean_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00268">blacklist_</a>, <a class="el" href="dosdetector_8cpp_source.html#l00307">cleanUpTask()</a>, <a class="el" href="dosdetector_8cpp_source.html#l00400">compileMatcher()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00222">config_</a>, and <a class="el" href="dosdetector_8hpp_source.html#l00265">whitelist_</a>.</p>
+<p class="reference">References <a class="el" href="dosdetector_8hpp_source.html#l00282">async_task_clean_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00268">blacklist_</a>, <a class="el" href="dosdetector_8cpp_source.html#l00307">cleanUpTask()</a>, <a class="el" href="dosdetector_8cpp_source.html#l00400">compileMatcher()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00222">config_</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, and <a class="el" href="dosdetector_8hpp_source.html#l00265">whitelist_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#aeacc9da23e23c51f1f45120e742db41f">DOSDetector()</a>, <a class="el" href="#ac46c08f34730ac62b4ed19270dcae3c3">DOSDetector()</a>, <a class="el" href="dosdetector_8cpp_source.html#l00356">generateRequestFingerprint()</a>, <a class="el" href="#aa8f02f1497249d1e3c995d4b319afcfe">operator=()</a>, and <a class="el" href="#a96b9c916229fe8d55daa393178db01a3">operator=()</a>.</p>
 
@@ -372,7 +372,7 @@ Static Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">DOSDetector::DOSDetector </td>
           <td>(</td>
-          <td class="paramtype">Configurator::DOSDetectorConfig</td>          <td class="paramname"><span class="paramname"><em>config</em></span>, </td>
+          <td class="paramtype"><a class="el" href="classConfigurator.html#a73f1bdb52e6a9845bd21b01baf868205">Configurator::DOSDetectorConfig</a></td>          <td class="paramname"><span class="paramname"><em>config</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -383,7 +383,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Test/embedding constructor taking an explicit config and clock. </p>
-<p>Test seam: fully specified config + clock. Production behaviour is unchanged; the default constructor still reads the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> Configurator and uses the real steady clock. Owns the supplied config for the detector's lifetime so <span class="tt"><a class="el" href="#a7f2d8e67c8965359df70c5d6f04b8850">config_</a></span> stays valid. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Test seam: fully specified config + clock. Production behaviour is unchanged; the default constructor still reads the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a> and uses the real steady clock. Owns the supplied config for the detector's lifetime so <span class="tt"><a class="el" href="#a7f2d8e67c8965359df70c5d6f04b8850">config_</a></span> stays valid. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">config</td><td>Fully specified detector configuration. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">clock</td><td>Clock source used for all time comparisons and cleanup scheduling.</td></tr>
@@ -394,7 +394,7 @@ Static Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="dosdetector_8cpp_source.html#l00108">108</a> of file <a class="el" href="dosdetector_8cpp_source.html">dosdetector.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="dosdetector_8hpp_source.html#l00282">async_task_clean_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00268">blacklist_</a>, <a class="el" href="dosdetector_8cpp_source.html#l00307">cleanUpTask()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00227">clock_</a>, <a class="el" href="dosdetector_8cpp_source.html#l00400">compileMatcher()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00222">config_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00219">owned_config_</a>, and <a class="el" href="dosdetector_8hpp_source.html#l00265">whitelist_</a>.</p>
+<p class="reference">References <a class="el" href="dosdetector_8hpp_source.html#l00282">async_task_clean_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00268">blacklist_</a>, <a class="el" href="dosdetector_8cpp_source.html#l00307">cleanUpTask()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00227">clock_</a>, <a class="el" href="dosdetector_8cpp_source.html#l00400">compileMatcher()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00222">config_</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00219">owned_config_</a>, and <a class="el" href="dosdetector_8hpp_source.html#l00265">whitelist_</a>.</p>
 
 </div>
 </div>
@@ -481,7 +481,7 @@ Static Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="dosdetector_8cpp_source.html#l00139">139</a> of file <a class="el" href="dosdetector_8cpp_source.html">dosdetector.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="dosdetector_8hpp_source.html#l00282">async_task_clean_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00289">clean_cv_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00287">clean_mutex_</a>, and <a class="el" href="dosdetector_8hpp_source.html#l00284">running_clean_</a>.</p>
+<p class="reference">References <a class="el" href="dosdetector_8hpp_source.html#l00282">async_task_clean_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00289">clean_cv_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00287">clean_mutex_</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, and <a class="el" href="dosdetector_8hpp_source.html#l00284">running_clean_</a>.</p>
 
 </div>
 </div>
@@ -527,7 +527,7 @@ forget_time</span>. The caller passes the mutex that guards <code class="param">
 
 <p class="definition">Definition at line <a class="el" href="dosdetector_8cpp_source.html#l00587">587</a> of file <a class="el" href="dosdetector_8cpp_source.html">dosdetector.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="dosdetector_8hpp_source.html#l00227">clock_</a>.</p>
+<p class="reference">References <a class="el" href="dosdetector_8hpp_source.html#l00227">clock_</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, and <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="dosdetector_8cpp_source.html#l00539">isBanned()</a>, and <a class="el" href="dosdetector_8cpp_source.html#l00558">isRateLimited()</a>.</p>
 
@@ -682,7 +682,7 @@ forget_time</span>. The caller passes the mutex that guards <code class="param">
 
 <p class="definition">Definition at line <a class="el" href="dosdetector_8cpp_source.html#l00307">307</a> of file <a class="el" href="dosdetector_8cpp_source.html">dosdetector.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="dosdetector_8cpp_source.html#l00286">clean_banned_ips()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00289">clean_cv_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00287">clean_mutex_</a>, <a class="el" href="dosdetector_8cpp_source.html#l00264">clean_ratelimited_ips()</a>, <a class="el" href="dosdetector_8cpp_source.html#l00221">clean_requests()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00227">clock_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00222">config_</a>, and <a class="el" href="dosdetector_8hpp_source.html#l00284">running_clean_</a>.</p>
+<p class="reference">References <a class="el" href="dosdetector_8cpp_source.html#l00286">clean_banned_ips()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00289">clean_cv_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00287">clean_mutex_</a>, <a class="el" href="dosdetector_8cpp_source.html#l00264">clean_ratelimited_ips()</a>, <a class="el" href="dosdetector_8cpp_source.html#l00221">clean_requests()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00227">clock_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00222">config_</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, and <a class="el" href="dosdetector_8hpp_source.html#l00284">running_clean_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="dosdetector_8cpp_source.html#l00081">DOSDetector()</a>, and <a class="el" href="dosdetector_8cpp_source.html#l00108">DOSDetector()</a>.</p>
 
@@ -765,7 +765,7 @@ request" for repeat counting; an empty body still yields a digest of the header 
 
 <p class="definition">Definition at line <a class="el" href="dosdetector_8cpp_source.html#l00356">356</a> of file <a class="el" href="dosdetector_8cpp_source.html">dosdetector.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="dosdetector_8cpp_source.html#l00081">DOSDetector()</a>, and <a class="el" href="dosdetector_8cpp_source.html#l00356">generateRequestFingerprint()</a>.</p>
+<p class="reference">References <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="dosdetector_8cpp_source.html#l00081">DOSDetector()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, and <a class="el" href="dosdetector_8cpp_source.html#l00356">generateRequestFingerprint()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="dosdetector_8cpp_source.html#l00356">generateRequestFingerprint()</a>, and <a class="el" href="dosdetector_8cpp_source.html#l00630">processRequest()</a>.</p>
 
@@ -845,7 +845,7 @@ template&lt;typename Range&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="dosdetector_8cpp_source.html#l00172">172</a> of file <a class="el" href="dosdetector_8cpp_source.html">dosdetector.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="dosdetector_8hpp_source.html#l00112">BANNED</a>, <a class="el" href="dosdetector_8hpp_source.html#l00109">BLACKLISTED</a>, <a class="el" href="dosdetector_8hpp_source.html#l00113">ERROR</a>, <a class="el" href="dosdetector_8cpp_source.html#l00539">isBanned()</a>, <a class="el" href="dosdetector_8cpp_source.html#l00520">isBlacklisted()</a>, <a class="el" href="dosdetector_8cpp_source.html#l00558">isRateLimited()</a>, <a class="el" href="dosdetector_8cpp_source.html#l00500">isWhitelisted()</a>, <a class="el" href="dosdetector_8cpp_source.html#l00630">processRequest()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00110">RATELIMITED</a>, and <a class="el" href="dosdetector_8hpp_source.html#l00108">WHITELISTED</a>.</p>
+<p class="reference">References <a class="el" href="dosdetector_8hpp_source.html#l00112">BANNED</a>, <a class="el" href="dosdetector_8hpp_source.html#l00109">BLACKLISTED</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00113">ERROR</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="dosdetector_8cpp_source.html#l00539">isBanned()</a>, <a class="el" href="dosdetector_8cpp_source.html#l00520">isBlacklisted()</a>, <a class="el" href="dosdetector_8cpp_source.html#l00558">isRateLimited()</a>, <a class="el" href="dosdetector_8cpp_source.html#l00500">isWhitelisted()</a>, <a class="el" href="dosdetector_8cpp_source.html#l00630">processRequest()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00110">RATELIMITED</a>, and <a class="el" href="dosdetector_8hpp_source.html#l00108">WHITELISTED</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a96b9c916229fe8d55daa393178db01a3">operator=()</a>.</p>
 
@@ -880,7 +880,7 @@ template&lt;typename Range&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="dosdetector_8cpp_source.html#l00539">539</a> of file <a class="el" href="dosdetector_8cpp_source.html">dosdetector.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="dosdetector_8hpp_source.html#l00276">ban_mutex_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00259">banned_ips_</a>, and <a class="el" href="dosdetector_8cpp_source.html#l00587">checkStatus()</a>.</p>
+<p class="reference">References <a class="el" href="dosdetector_8hpp_source.html#l00276">ban_mutex_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00259">banned_ips_</a>, <a class="el" href="dosdetector_8cpp_source.html#l00587">checkStatus()</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, and <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="dosdetector_8cpp_source.html#l00172">is_dos_attack()</a>.</p>
 
@@ -916,7 +916,7 @@ blacklisted". </p>
 
 <p class="definition">Definition at line <a class="el" href="dosdetector_8cpp_source.html#l00520">520</a> of file <a class="el" href="dosdetector_8cpp_source.html">dosdetector.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="dosdetector_8hpp_source.html#l00268">blacklist_</a>.</p>
+<p class="reference">References <a class="el" href="dosdetector_8hpp_source.html#l00268">blacklist_</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, and <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="dosdetector_8cpp_source.html#l00172">is_dos_attack()</a>.</p>
 
@@ -951,7 +951,7 @@ blacklisted". </p>
 
 <p class="definition">Definition at line <a class="el" href="dosdetector_8cpp_source.html#l00558">558</a> of file <a class="el" href="dosdetector_8cpp_source.html">dosdetector.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="dosdetector_8cpp_source.html#l00587">checkStatus()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00274">ratelimit_mutex_</a>, and <a class="el" href="dosdetector_8hpp_source.html#l00256">ratelimited_ips_</a>.</p>
+<p class="reference">References <a class="el" href="dosdetector_8cpp_source.html#l00587">checkStatus()</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00274">ratelimit_mutex_</a>, and <a class="el" href="dosdetector_8hpp_source.html#l00256">ratelimited_ips_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="dosdetector_8cpp_source.html#l00172">is_dos_attack()</a>.</p>
 
@@ -987,7 +987,7 @@ whitelisted". </p>
 
 <p class="definition">Definition at line <a class="el" href="dosdetector_8cpp_source.html#l00500">500</a> of file <a class="el" href="dosdetector_8cpp_source.html">dosdetector.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="dosdetector_8hpp_source.html#l00265">whitelist_</a>.</p>
+<p class="reference">References <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, and <a class="el" href="dosdetector_8hpp_source.html#l00265">whitelist_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="dosdetector_8cpp_source.html#l00172">is_dos_attack()</a>.</p>
 
@@ -1083,7 +1083,7 @@ whitelisted". </p>
 
 <p class="definition">Definition at line <a class="el" href="dosdetector_8cpp_source.html#l00630">630</a> of file <a class="el" href="dosdetector_8cpp_source.html">dosdetector.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="dosdetector_8hpp_source.html#l00107">ALLOWED</a>, <a class="el" href="dosdetector_8hpp_source.html#l00276">ban_mutex_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00112">BANNED</a>, <a class="el" href="dosdetector_8hpp_source.html#l00259">banned_ips_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00227">clock_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00222">config_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00113">ERROR</a>, <a class="el" href="dosdetector_8cpp_source.html#l00356">generateRequestFingerprint()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00274">ratelimit_mutex_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00110">RATELIMITED</a>, <a class="el" href="dosdetector_8hpp_source.html#l00256">ratelimited_ips_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00271">request_mutex_</a>, and <a class="el" href="dosdetector_8hpp_source.html#l00253">requests_</a>.</p>
+<p class="reference">References <a class="el" href="dosdetector_8hpp_source.html#l00107">ALLOWED</a>, <a class="el" href="dosdetector_8hpp_source.html#l00276">ban_mutex_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00112">BANNED</a>, <a class="el" href="dosdetector_8hpp_source.html#l00259">banned_ips_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00227">clock_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00222">config_</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00113">ERROR</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="dosdetector_8cpp_source.html#l00356">generateRequestFingerprint()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00274">ratelimit_mutex_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00110">RATELIMITED</a>, <a class="el" href="dosdetector_8hpp_source.html#l00256">ratelimited_ips_</a>, <a class="el" href="dosdetector_8hpp_source.html#l00271">request_mutex_</a>, and <a class="el" href="dosdetector_8hpp_source.html#l00253">requests_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="dosdetector_8cpp_source.html#l00172">is_dos_attack()</a>.</p>
 
@@ -1289,7 +1289,7 @@ whitelisted". </p>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const Configurator::DOSDetectorConfig&amp; DOSDetector::config_</td>
+          <td class="memname">const <a class="el" href="classConfigurator.html#a73f1bdb52e6a9845bd21b01baf868205">Configurator::DOSDetectorConfig</a>&amp; DOSDetector::config_</td>
         </tr>
       </table>
   </td>
@@ -1299,7 +1299,8 @@ whitelisted". </p>
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">                                          = <a class="code hl_variable" href="#a2b0c5dddb5473f80e8241ad5b73c52a1">configurator_</a>-&gt;get&lt;</div>
-<div class="line">Configurator::DOSDetectorConfig&gt;()</div>
+<div class="line"><a class="code hl_typedef" href="classConfigurator.html#a73f1bdb52e6a9845bd21b01baf868205">Configurator::DOSDetectorConfig</a>&gt;()</div>
+<div class="ttc" id="aclassConfigurator_html_a73f1bdb52e6a9845bd21b01baf868205"><div class="ttname"><a href="classConfigurator.html#a73f1bdb52e6a9845bd21b01baf868205">Configurator::DOSDetectorConfig</a></div><div class="ttdeci">struct DOSDetectorConfig//Declares a struct and an alias of the same name,//inheriting the env helpers. :public EnvLoader {/**@brief Maximum requests accepted within one @ref period before *limiting applies. */ uint32_t max_requests;//How many requests one client may make per period.//32-bit unsigned is plenty and cannot be negative./**@brief Interval(seconds) between sweeps of expired rate-limit/ban *entries. */ uint32_t clean_freq;//Seconds between cleanups;unsigned because a//negative interval is meaningless./**@brief Upper bound on the number of distinct client fingerprints *retained. */ uint32_t max_fingerprints;//Caps how many unique clients are tracked,//limiting memory use./**@brief Length(seconds) of the sliding counting window for @ref *max_requests. */ std::chrono::seconds period;//A duration type makes the unit explicit;the detector//counts requests over this window./**@brief Duration(seconds) a client stays rate-limited. */ std::chrono::seconds ratelimit_duration;//How long excess requests are refused before//the client is allowed again./**@brief Duration(seconds) a banned client stays blocked. */ std::chrono::seconds ban_duration;//Longer penalty than rate limiting;//used for serious abusers./**@brief Fingerprints exempt from limiting;parsed from a *comma-separated value. */ std::unordered_set&lt; std::string &gt; whitelist;//A set gives fast &quot;is this client exempt?&quot; checks and//ignores duplicates./**@brief Fingerprints always subject to limiting;parsed from a *comma-separated value. */ std::unordered_set&lt; std::string &gt; blacklist;//Clients here are always limited;a set keeps//membership checks quick./** *@brief Reads each DOS limit from its environment variable, using *Defaults on absence or parse failure. *@note Duration variables use EnvLoader &#39;s seconds overload, which *falls back to the default for negative or unparsable values. */ DOSDetectorConfig()//Initialises every field by reading its variable,//with a Defaults fallback. :max_requests( getEnvironmentVariable(&quot;MAX_REQUESTS&quot;, Defaults::DosDetector:: MAX_REQUESTS_)), clean_freq( getEnvironmentVariable(&quot;CLN_FRQ&quot;, Defaults::DosDetector:: CLN_FRQ_)), max_fingerprints( getEnvironmentVariable(&quot;MAX_FPS&quot;, Defaults::DosDetector:: MAX_FPS_)), period( getEnvironmentVariable(&quot;PERIOD&quot;, std::chrono::seconds( Defaults::DosDetector:: PERIOD_))), ratelimit_duration( getEnvironmentVariable(&quot;RL_DURATION&quot;, std::chrono::seconds( Defaults::DosDetector:: RL_DURATION_))), ban_duration( getEnvironmentVariable(&quot;BAN_DURATION&quot;, std::chrono::seconds( Defaults::DosDetector:: BAN_DURATION_))), whitelist(getEnvironmentVariable(&quot;WHITELIST&quot;)), blacklist(getEnvironmentVariable(&quot;BLACKLIST&quot;)) { } void printValues() const override { Message::ConfMessage( &quot;------------------------------------------------&quot;); Message::ConfMessage( &quot;---------------DOS Detector Config--------------&quot;); Message::ConfMessage( &quot;------------------------------------------------&quot;); Message::ConfMessage( fmt::format(&quot;Max Requests: {}&quot;, max_requests)); Message::ConfMessage( fmt::format(&quot;Period: {} seconds&quot;, period.count())); Message::ConfMessage( fmt::format(&quot;Max FPS: {}&quot;, max_fingerprints)); Message::ConfMessage( fmt::format(&quot;Rate Limit Duration: {} seconds&quot;, ratelimit_duration .count())); Message::ConfMessage( fmt::format(&quot;Ban Duration: {} seconds&quot;, ban_duration.count())); Message::ConfMessage(fmt::format(&quot;Cleanup Frequency: {} seconds&quot;, clean_freq)); Message::ConfMessage( fmt::format(&quot;Whitelist: {}&quot;, fmt::join(whitelist, &quot;, &quot;))); Message::ConfMessage( fmt::format(&quot;Blacklist: {}&quot;, fmt::join(blacklist, &quot;, &quot;))); } } DOSDetectorConfig</div><div class="ttdef"><b>Definition</b> <a href="configurator_8hpp_source.html#l00165">configurator.hpp:165</a></div></div>
 <div class="ttc" id="aclassDOSDetector_html_a2b0c5dddb5473f80e8241ad5b73c52a1"><div class="ttname"><a href="#a2b0c5dddb5473f80e8241ad5b73c52a1">DOSDetector::configurator_</a></div><div class="ttdeci">std::shared_ptr&lt; Configurator &gt; configurator_</div><div class="ttdef"><b>Definition</b> <a href="dosdetector_8hpp_source.html#l00214">dosdetector.hpp:214</a></div></div>
 </div><!-- fragment --><p>Effective config; aliases either the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> or owned_config_. A reference avoids copying the settings. </p>
 
@@ -1319,7 +1320,7 @@ whitelisted". </p>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;Configurator&gt; DOSDetector::configurator_</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classConfigurator.html">Configurator</a>&gt; DOSDetector::configurator_</td>
         </tr>
       </table>
   </td>
@@ -1331,7 +1332,7 @@ whitelisted". </p>
 <b>Initial value:</b><div class="fragment"><div class="line">                          =</div>
 <div class="line"><a class="code hl_function" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject&lt;Configurator&gt;</a>()</div>
 <div class="ttc" id="aclassStore_html_a0607fb3b583c06ca910ed6c9881e790c"><div class="ttname"><a href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject</a></div><div class="ttdeci">static std::shared_ptr&lt; T &gt; getObject(Args &amp;&amp;... args)</div><div class="ttdoc">Returns the singleton for T, constructing it on first use.</div><div class="ttdef"><b>Definition</b> <a href="store_8hpp_source.html#l00190">store.hpp:190</a></div></div>
-</div><!-- fragment --><p>Configuration source used by the default constructor; also keeps the Configurator alive. </p>
+</div><!-- fragment --><p>Configuration source used by the default constructor; also keeps the <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a> alive. </p>
 
 <p class="definition">Definition at line <a class="el" href="dosdetector_8hpp_source.html#l00214">214</a> of file <a class="el" href="dosdetector_8hpp_source.html">dosdetector.hpp</a>.</p>
 
@@ -1347,7 +1348,7 @@ whitelisted". </p>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::optional&lt;Configurator::DOSDetectorConfig&gt; DOSDetector::owned_config_</td>
+          <td class="memname">std::optional&lt;<a class="el" href="classConfigurator.html#a73f1bdb52e6a9845bd21b01baf868205">Configurator::DOSDetectorConfig</a>&gt; DOSDetector::owned_config_</td>
         </tr>
       </table>
   </td>

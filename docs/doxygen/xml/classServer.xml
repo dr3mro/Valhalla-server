@@ -5,7 +5,7 @@
     <includes refid="server_8hpp" local="no">server.hpp</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classServer_1aa84ff16ac0dff01780bb1f1fbc6b3d0f" prot="private" static="no" mutable="no">
-        <type>std::shared_ptr&lt; Logger &gt;</type>
+        <type>std::shared_ptr&lt; <ref refid="classLogger" kindref="compound">Logger</ref> &gt;</type>
         <definition>std::shared_ptr&lt;Logger&gt; Server::logger_</definition>
         <argsstring></argsstring>
         <name>logger_</name>
@@ -13,7 +13,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Shared Logger instance used by the application; held here for the lifetime of the <ref refid="classServer" kindref="compound">Server</ref>. </para>
+<para>Shared <ref refid="classLogger" kindref="compound">Logger</ref> instance used by the application; held here for the lifetime of the <ref refid="classServer" kindref="compound">Server</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -21,7 +21,7 @@
         <referencedby refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" compoundref="server_8cpp" startline="103" endline="135">Server</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classServer_1adb978249d96530b9b06c6a88d73fd097" prot="private" static="no" mutable="no">
-        <type>std::shared_ptr&lt; Configurator &gt;</type>
+        <type>std::shared_ptr&lt; <ref refid="classConfigurator" kindref="compound">Configurator</ref> &gt;</type>
         <definition>std::shared_ptr&lt;Configurator&gt; Server::configurator_</definition>
         <argsstring></argsstring>
         <name>configurator_</name>
@@ -38,7 +38,7 @@
         <referencedby refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" compoundref="server_8cpp" startline="103" endline="135">Server</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classServer_1a9187a361704ab4a8649b189969582ad8" prot="private" static="no" mutable="no">
-        <type>Configurator::ServerConfig</type>
+        <type><ref refid="classConfigurator_1a927a53596c80ae2c5f02c21f85af9d83" kindref="member">Configurator::ServerConfig</ref></type>
         <definition>Configurator::ServerConfig Server::config_</definition>
         <argsstring></argsstring>
         <name>config_</name>
@@ -56,7 +56,7 @@
         <referencedby refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" compoundref="server_8cpp" startline="103" endline="135">Server</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classServer_1add9a2053fd3293d3ea32f90174f31362" prot="private" static="no" mutable="no">
-        <type>Configurator::DatabaseConfig</type>
+        <type><ref refid="classConfigurator_1a78caa68d4554c8ab0d0c1753ce8edbe2" kindref="member">Configurator::DatabaseConfig</ref></type>
         <definition>Configurator::DatabaseConfig Server::db_config_</definition>
         <argsstring></argsstring>
         <name>db_config_</name>
@@ -151,7 +151,7 @@
         <detaileddescription>
 <para>Resolves the <ref refid="classStore" kindref="compound">Store</ref> singletons and snapshots the configuration used throughout startup.</para>
 <para>Objects come from <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>, so a later registration through <ref refid="classStore_1a2a4bfc0b18f2999216eda3067988cf57" kindref="member">Store::replaceObject</ref> will not replace the instances held here. The filter and middleware instances are constructed here and owned by the <ref refid="classServer" kindref="compound">Server</ref> for its entire lifetime.</para>
-<para>Objects fetched here are shared_ptrs, so they remain valid for the lifetime of the <ref refid="classServer" kindref="compound">Server</ref>. The two Configurator structs are copied by value; configuration changes made after construction are not observed. </para>
+<para>Objects fetched here are shared_ptrs, so they remain valid for the lifetime of the <ref refid="classServer" kindref="compound">Server</ref>. The two <ref refid="classConfigurator" kindref="compound">Configurator</ref> structs are copied by value; configuration changes made after construction are not observed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -274,7 +274,7 @@
         </briefdescription>
         <detaileddescription>
 <para>Configures and runs the Drogon application, then drains the worker pools.</para>
-<para>Blocks in Drogon&apos;s <ref refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" kindref="member">run()</ref> until the event loops stop. On the way out it shuts down <ref refid="classDbExecutor" kindref="compound">DbExecutor</ref> first and <ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref> second, because database tasks may hand work to the password worker. Any std::exception from setup or teardown is reported through Message and turned into EXIT_FAILURE. <simplesect kind="return"><para>EXIT_SUCCESS after a clean run and shutdown, EXIT_FAILURE on a reported exception. </para>
+<para>Blocks in Drogon&apos;s <ref refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" kindref="member">run()</ref> until the event loops stop. On the way out it shuts down <ref refid="classDbExecutor" kindref="compound">DbExecutor</ref> first and <ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref> second, because database tasks may hand work to the password worker. Any std::exception from setup or teardown is reported through <ref refid="classMessage" kindref="compound">Message</ref> and turned into EXIT_FAILURE. <simplesect kind="return"><para>EXIT_SUCCESS after a clean run and shutdown, EXIT_FAILURE on a reported exception. </para>
 </simplesect>
 <simplesect kind="note"><para>SIGTERM handling is disabled (see the .disableSigtermHandling() call in the implementation), so shutdown is driven by the framework event loops stopping rather than by Drogon&apos;s own signal handler. </para>
 </simplesect>
@@ -295,7 +295,9 @@ Registers the listener, thread count, upload path, log level, a custom 404 page 
         <references refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="222" endline="328">Cors::apply</references>
         <references refid="classServer_1a9187a361704ab4a8649b189969582ad8" compoundref="server_8hpp" startline="189">config_</references>
         <references refid="classAsyncDbClient_1ac0396c3d59602cf860e6fef52c98a736" compoundref="asyncdbclient_8cpp" startline="71" endline="96">AsyncDbClient::createClient</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <references refid="classServer_1add9a2053fd3293d3ea32f90174f31362" compoundref="server_8hpp" startline="196">db_config_</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
         <references refid="classServer_1a5bc93a8ab4205adcfc43ee9d8f4aaa83" compoundref="server_8cpp" startline="364" endline="371">isConventionalMethod</references>
         <references refid="classapi_1_1v2_1_1JsonHelper_1a641560db2243ef5bca5bb763e98b3b43" compoundref="jsonhelper_8cpp" startline="32" endline="40">api::v2::JsonHelper::jsonify</references>
@@ -316,8 +318,8 @@ Registers the listener, thread count, upload path, log level, a custom 404 page 
         </briefdescription>
         <detaileddescription>
 <para>Prints the effective configuration and the startup logo.</para>
-<para>The configuration dump is produced by Configurator::printValues() and is followed by version, port, thread count, database connection count, and documentation URL. stdout is explicitly flushed so the banner is visible before the Drogon loggers take over the console.</para>
-<para>Writes to stdout and explicitly flushes it so the banner appears before framework logging begins. The displayed version comes from the build-time VALHALLA_GIT_TAG, not from the Configurator snapshot. </para>
+<para>The configuration dump is produced by <ref refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" kindref="member">Configurator::printValues()</ref> and is followed by version, port, thread count, database connection count, and documentation URL. stdout is explicitly flushed so the banner is visible before the Drogon loggers take over the console.</para>
+<para>Writes to stdout and explicitly flushes it so the banner appears before framework logging begins. The displayed version comes from the build-time VALHALLA_GIT_TAG, not from the <ref refid="classConfigurator" kindref="compound">Configurator</ref> snapshot. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -373,12 +375,32 @@ Registers the listener, thread count, upload path, log level, a custom 404 page 
 <para>Owns application startup: configuration, banner, Drogon wiring, and post-run executor shutdown. </para>
     </briefdescription>
     <detaileddescription>
-<para>The constructor resolves long-lived singletons from the <ref refid="classStore" kindref="compound">Store</ref> and copies the server and database configuration by value, so later changes to the Configurator are not seen through those copies. <ref refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" kindref="member">run()</ref> configures and starts the Drogon application, installs the pre-routing and pre-sending advice (method filtering and CORS), and blocks until the event loops stop. Only then does it shut the worker pools down, while the <ref refid="classStore" kindref="compound">Store</ref> singletons they depend on are still alive. The filter and middleware members are created eagerly so one instance is reused. Registration of the included Drogon components (including the route headers brought in by <ref refid="all__routes_8hpp" kindref="compound">all_routes.hpp</ref>) is handled by Drogon itself, outside this class. <simplesect kind="note"><para>Not copyable. Move construction is defaulted; move assignment is deleted. </para>
+<para>The constructor resolves long-lived singletons from the <ref refid="classStore" kindref="compound">Store</ref> and copies the server and database configuration by value, so later changes to the <ref refid="classConfigurator" kindref="compound">Configurator</ref> are not seen through those copies. <ref refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" kindref="member">run()</ref> configures and starts the Drogon application, installs the pre-routing and pre-sending advice (method filtering and CORS), and blocks until the event loops stop. Only then does it shut the worker pools down, while the <ref refid="classStore" kindref="compound">Store</ref> singletons they depend on are still alive. The filter and middleware members are created eagerly so one instance is reused. Registration of the included Drogon components (including the route headers brought in by <ref refid="all__routes_8hpp" kindref="compound">all_routes.hpp</ref>) is handled by Drogon itself, outside this class. <simplesect kind="note"><para>Not copyable. Move construction is defaulted; move assignment is deleted. </para>
 </simplesect>
-<simplesect kind="see"><para><ref refid="namespaceCors" kindref="compound">Cors</ref>, <ref refid="classStore" kindref="compound">Store</ref>, Configurator </para>
+<simplesect kind="see"><para><ref refid="namespaceCors" kindref="compound">Cors</ref>, <ref refid="classStore" kindref="compound">Store</ref>, <ref refid="classConfigurator" kindref="compound">Configurator</ref> </para>
 </simplesect>
 </para>
     </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>DatabaseConfig</label>
+        <link refid="structDatabaseConfig"/>
+      </node>
+      <node id="1">
+        <label>Server</label>
+        <link refid="classServer"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>config_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>db_config_</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ServerConfig</label>
+        <link refid="structServerConfig"/>
+      </node>
+    </collaborationgraph>
     <location file="src/server/server.hpp" line="80" column="1" bodyfile="src/server/server.hpp" bodystart="80" bodyend="227"/>
     <listofallmembers>
       <member refid="classServer_1aaaa0c607dbdbdf1fe064a1b247cc33f1" prot="private" virt="non-virtual"><scope>Server</scope><name>auth_filter_</name></member>

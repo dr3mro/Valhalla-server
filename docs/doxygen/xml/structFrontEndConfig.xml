@@ -9,7 +9,7 @@
     <detaileddescription>
 <para><computeroutput>cors_allowed_origins</computeroutput> is the raw value sent in the CORS response; the default wildcard permits any origin and should be tightened in production. </para>
     </detaileddescription>
-    <location file="src/configurator/configurator.hpp" line="707" column="1"/>
+    <location file="libs/configurator/configurator.hpp" line="707" column="1"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

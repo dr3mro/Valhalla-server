@@ -277,6 +277,8 @@
         <references refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="178" endline="184">Base::Binder::bind</references>
         <references refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" compoundref="client_8hpp" startline="418">client_id</references>
         <references refid="structapi_1_1v2_1_1Types_1_1SuspendData_1ad5b052303873a9083234af598934e180" compoundref="entities_2base_2types_8hpp" startline="812">api::v2::Types::SuspendData::client_id</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="222" endline="224">Entity::getData</references>
         <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="575">Entity::tablename</references>
         <referencedby refid="classapi_1_1v2_1_1Client_1ab03dd8f46bcaed9b5899d016715b5181" compoundref="client_8hpp" startline="238" endline="240">getSqlActivateStatement</referencedby>
@@ -474,6 +476,8 @@
         </inbodydescription>
         <location file="src/entities/base/client.hpp" line="314" column="21" bodyfile="src/entities/base/client.hpp" bodystart="314" bodyend="350"/>
         <references refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="178" endline="184">Base::Binder::bind</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="222" endline="224">Entity::getData</references>
         <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="575">Entity::tablename</references>
         <referencedby refid="classapi_1_1v2_1_1Client_1a994474b95fd751b3672b0abf6dd01269" compoundref="client_8hpp" startline="146" endline="153">getSqlCreateStatement</referencedby>
@@ -524,6 +528,8 @@
         <location file="src/entities/base/client.hpp" line="368" column="21" bodyfile="src/entities/base/client.hpp" bodystart="368" bodyend="412"/>
         <references refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="178" endline="184">Base::Binder::bind</references>
         <references refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" compoundref="client_8hpp" startline="418">client_id</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="222" endline="224">Entity::getData</references>
         <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="575">Entity::tablename</references>
         <referencedby refid="classapi_1_1v2_1_1Client_1a8f03cab52fd829c80e7eb46751f7f1e4" compoundref="client_8hpp" startline="163" endline="169">getSqlUpdateStatement</referencedby>

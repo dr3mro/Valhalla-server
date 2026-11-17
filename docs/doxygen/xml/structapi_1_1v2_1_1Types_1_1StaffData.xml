@@ -137,13 +137,13 @@
     </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="structapi_1_1v2_1_1Types_1_1StaffData_1a8762db475d5d6d78ed62d3cd947ec0ad" prot="private" static="no" mutable="no">
-        <type>const std::shared_ptr&lt; Configurator &gt;</type>
+        <type>const std::shared_ptr&lt; <ref refid="classConfigurator" kindref="compound">Configurator</ref> &gt;</type>
         <definition>const std::shared_ptr&lt;Configurator&gt; api::v2::Types::StaffData::cfg_</definition>
         <argsstring></argsstring>
         <name>cfg_</name>
         <qualifiedname>api::v2::Types::StaffData::cfg_</qualifiedname>
         <initializer>                       =
-<ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;Configurator&gt;()</initializer>
+<ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>&gt;()</initializer>
         <briefdescription>
 <para>Shared configurator used to read server and frontend settings. </para>
         </briefdescription>
@@ -154,13 +154,13 @@
         <location file="src/entities/base/types.hpp" line="975" column="27" bodyfile="src/entities/base/types.hpp" bodystart="975" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structapi_1_1v2_1_1Types_1_1StaffData_1a195401809f6f777e4ccd460ddda407c9" prot="private" static="no" mutable="no">
-        <type>const Configurator::ServerConfig &amp;</type>
+        <type>const <ref refid="classConfigurator_1a927a53596c80ae2c5f02c21f85af9d83" kindref="member">Configurator::ServerConfig</ref> &amp;</type>
         <definition>const Configurator::ServerConfig&amp; api::v2::Types::StaffData::servercfg_</definition>
         <argsstring></argsstring>
         <name>servercfg_</name>
         <qualifiedname>api::v2::Types::StaffData::servercfg_</qualifiedname>
         <initializer>                                        =
-<ref refid="structapi_1_1v2_1_1Types_1_1StaffData_1a8762db475d5d6d78ed62d3cd947ec0ad" kindref="member">cfg_</ref>-&gt;get&lt;Configurator::ServerConfig&gt;()</initializer>
+<ref refid="structapi_1_1v2_1_1Types_1_1StaffData_1a8762db475d5d6d78ed62d3cd947ec0ad" kindref="member">cfg_</ref>-&gt;get&lt;<ref refid="classConfigurator_1a927a53596c80ae2c5f02c21f85af9d83" kindref="member">Configurator::ServerConfig</ref>&gt;()</initializer>
         <briefdescription>
 <para><ref refid="classServer" kindref="compound">Server</ref> configuration, source of project_name. </para>
         </briefdescription>
@@ -172,13 +172,13 @@
         <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="891" endline="917">StaffData</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structapi_1_1v2_1_1Types_1_1StaffData_1a37f2a8adfb205f92804835dd6d8e242f" prot="private" static="no" mutable="no">
-        <type>const Configurator::FrontEndConfig &amp;</type>
+        <type>const <ref refid="classConfigurator_1a8b3e99fef2ad5bf59793fa235a97aa3c" kindref="member">Configurator::FrontEndConfig</ref> &amp;</type>
         <definition>const Configurator::FrontEndConfig&amp; api::v2::Types::StaffData::frontendcfg_</definition>
         <argsstring></argsstring>
         <name>frontendcfg_</name>
         <qualifiedname>api::v2::Types::StaffData::frontendcfg_</qualifiedname>
         <initializer>                                            =
-<ref refid="structapi_1_1v2_1_1Types_1_1StaffData_1a8762db475d5d6d78ed62d3cd947ec0ad" kindref="member">cfg_</ref>-&gt;get&lt;Configurator::FrontEndConfig&gt;()</initializer>
+<ref refid="structapi_1_1v2_1_1Types_1_1StaffData_1a8762db475d5d6d78ed62d3cd947ec0ad" kindref="member">cfg_</ref>-&gt;get&lt;<ref refid="classConfigurator_1a8b3e99fef2ad5bf59793fa235a97aa3c" kindref="member">Configurator::FrontEndConfig</ref>&gt;()</initializer>
         <briefdescription>
 <para>Frontend configuration, source of the invitation link host/port/path. </para>
         </briefdescription>
@@ -224,6 +224,7 @@
         <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a934cdbfb066d40a61dc51340a2678e7f" compoundref="entities_2base_2types_8hpp" startline="862">email</references>
         <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a7bda1a424286fc0ad26f050d4146e6e9" compoundref="entities_2base_2types_8hpp" startline="852">entity_id</references>
         <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a5b9177176c26303a73791ec96a8f7dcb" compoundref="entities_2base_2types_8hpp" startline="872">entity_name</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1adce6b262c001a216cef9d1281fe4f272" compoundref="entities_2base_2types_8hpp" startline="867">nominee_group</references>
         <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a3459bc31d13d7f54c2ff43b7a5553562" compoundref="entities_2base_2types_8hpp" startline="845">nominee_id</references>
         <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a55ae36cc256cb39ff371140e5dbe7ddd" compoundref="entities_2base_2types_8hpp" startline="839">parse_status</references>
@@ -261,6 +262,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="src/entities/base/types.hpp" line="932" column="10" bodyfile="src/entities/base/types.hpp" bodystart="932" bodyend="963"/>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a37f2a8adfb205f92804835dd6d8e242f" compoundref="entities_2base_2types_8hpp" startline="992">frontendcfg_</references>
         <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1abb3a4632b592b92f0c949c156cc0256a" compoundref="entities_2base_2types_8hpp" startline="877">project_name</references>
       </memberdef>

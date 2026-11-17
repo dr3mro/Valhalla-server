@@ -95,8 +95,12 @@ The loop leases a connection through a <ref refid="classDatabaseHanndler" kindre
         </inbodydescription>
         <location file="src/database/watchdog.hpp" line="67" column="3" bodyfile="src/database/watchdog.cpp" bodystart="71" bodyend="207"/>
         <references refid="classWatchDog_1afb7703d71422aa4eb2163ee9550227c3" compoundref="watchdog_8hpp" startline="94" endline="95">check_interval</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" compoundref="message_8cpp" startline="48" endline="50">Message::InfoMessage</references>
         <references refid="classWatchDog_1a98e4f26093742829ffff056ccdda85e8" compoundref="watchdog_8hpp" startline="100">monitor_thread</references>
         <references refid="classWatchDog_1a16372b8cab4cdd8c7b6e591d44cf6d30" compoundref="watchdog_8hpp" startline="87" endline="88">should_monitor</references>
+        <references refid="classMessage_1a3d5db738594c8af1428053227959259e" compoundref="message_8cpp" startline="51" endline="53">Message::WarningMessage</references>
         <referencedby refid="classWatchDog_1a4d8d5ca9267f3bceb4e579aaa877a3a6">operator=</referencedby>
         <referencedby refid="classWatchDog_1a957bca000c5227fb1d95352b5ee2e2db">operator=</referencedby>
         <referencedby refid="classWatchDog_1a26378fc6e5fb99263282c1ab7424da94">WatchDog</referencedby>

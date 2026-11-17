@@ -132,6 +132,35 @@
     <member refid="classBlockingPool_1a2cdad342573ef45e2ba4e0325e753004" kind="function"><name>idle</name></member>
     <member refid="classBlockingPool_1a5f53d641019a9e2d276f21f7bee1723a" kind="function"><name>forEachIdle</name></member>
   </compound>
+  <compound refid="classBoundedExecutor" kind="class"><name>BoundedExecutor</name>
+    <member refid="classBoundedExecutor_1a99feeabf885fe43e0196051f6a80803e" kind="variable"><name>workers_</name></member>
+    <member refid="classBoundedExecutor_1a4b55370d142b9901015c7106e19a98ec" kind="variable"><name>queue_max_</name></member>
+    <member refid="classBoundedExecutor_1a8df5c3b6d47a7bb92e508c4df34581fe" kind="variable"><name>name_</name></member>
+    <member refid="classBoundedExecutor_1a2fe4e0d777523f51d59935f89030ac1c" kind="variable"><name>stopping_</name></member>
+    <member refid="classBoundedExecutor_1a567da16c5009c3a32c8b6d052ed11e39" kind="variable"><name>next_</name></member>
+    <member refid="classBoundedExecutor_1afbb5f9247d4cf5e3e52a9c25c036d0a6" kind="variable"><name>queued_</name></member>
+    <member refid="classBoundedExecutor_1a586729a32716a35da700a96fbc590333" kind="variable"><name>submitted_</name></member>
+    <member refid="classBoundedExecutor_1a1ba84f816094cdfc44f7cbf5faf1704c" kind="variable"><name>rejected_</name></member>
+    <member refid="classBoundedExecutor_1a2279dc6bf7730b6dd74cfa7c5a3ecc0c" kind="variable"><name>max_queue_</name></member>
+    <member refid="classBoundedExecutor_1a70d24f4375b291df10a0145de6de32d6" kind="variable"><name>wait_ns_</name></member>
+    <member refid="classBoundedExecutor_1a651cb39909b6c74ca951ff00808901f0" kind="variable"><name>waited_tasks_</name></member>
+    <member refid="classBoundedExecutor_1a2100a9eea1114c0b39094c7a5e4bda83" kind="function"><name>BoundedExecutor</name></member>
+    <member refid="classBoundedExecutor_1a9a159a4e6c10282bbd73960ec8527039" kind="function"><name>BoundedExecutor</name></member>
+    <member refid="classBoundedExecutor_1ac3bc3b2e136a2da3b6c0eb080b69daf5" kind="function"><name>BoundedExecutor</name></member>
+    <member refid="classBoundedExecutor_1a8907e36d0d8e8f509ad165e11d56e1fd" kind="function"><name>operator=</name></member>
+    <member refid="classBoundedExecutor_1aacbf4b69d06b66824a929caa6e0585df" kind="function"><name>operator=</name></member>
+    <member refid="classBoundedExecutor_1a8f39a779cb5d5a79e3442b21635be122" kind="function"><name>~BoundedExecutor</name></member>
+    <member refid="classBoundedExecutor_1a4ce5576deaf59219ec40e8402a6817ba" kind="function"><name>shutdown</name></member>
+    <member refid="classBoundedExecutor_1a23e0bc9b4043755faf6f7b419cfec09b" kind="function"><name>submit</name></member>
+    <member refid="classBoundedExecutor_1aa3c7def6899c02451c22a5ec458939d2" kind="function"><name>pending</name></member>
+    <member refid="classBoundedExecutor_1a49df17e54d15d8a492f13e876c74f4cf" kind="function"><name>inlineMode</name></member>
+    <member refid="classBoundedExecutor_1ab0246f1fb4aff4e008f03c2542976df2" kind="function"><name>workerCount</name></member>
+    <member refid="classBoundedExecutor_1a4d2a977a3f48f26956a39f5f5cd4ddb3" kind="function"><name>onWorkerThread</name></member>
+    <member refid="classBoundedExecutor_1a37f079e009f3b711023b031941cb7e2e" kind="function"><name>stats</name></member>
+    <member refid="classBoundedExecutor_1a14e1a972664d0af29d59d074675c5ffe" kind="function"><name>run</name></member>
+    <member refid="classBoundedExecutor_1a161a33a863940e718dc25a66dd4c3aa9" kind="function"><name>take</name></member>
+    <member refid="classBoundedExecutor_1ada1436c03655174b30be553eacacba3d" kind="function"><name>account</name></member>
+  </compound>
   <compound refid="classMemCache_1_1CacheEntry" kind="class"><name>MemCache::CacheEntry</name>
     <member refid="classMemCache_1_1CacheEntry_1ad20f7970764f778950f643497352428e" kind="variable"><name>key</name></member>
     <member refid="classMemCache_1_1CacheEntry_1ac1fa09aff91d5fecfbd559bcc7927727" kind="variable"><name>value</name></member>
@@ -374,6 +403,32 @@
     <member refid="classCommunicate_1a0a4ddbbf7176276436c6c9f8bd3fa9f1" kind="function"><name>handleResponse</name></member>
     <member refid="classCommunicate_1a16c7e1e24d2610ef8d00d8ebe3b7c59b" kind="function"><name>WriteCallback</name></member>
   </compound>
+  <compound refid="classConfigurator" kind="class"><name>Configurator</name>
+    <member refid="classConfigurator_1a73f1bdb52e6a9845bd21b01baf868205" kind="typedef"><name>DOSDetectorConfig</name></member>
+    <member refid="classConfigurator_1a78caa68d4554c8ab0d0c1753ce8edbe2" kind="typedef"><name>DatabaseConfig</name></member>
+    <member refid="classConfigurator_1a927a53596c80ae2c5f02c21f85af9d83" kind="typedef"><name>ServerConfig</name></member>
+    <member refid="classConfigurator_1af1c24b094032c664c8f543c85ed36b14" kind="typedef"><name>TokenManagerParameters</name></member>
+    <member refid="classConfigurator_1a8b3e99fef2ad5bf59793fa235a97aa3c" kind="typedef"><name>FrontEndConfig</name></member>
+    <member refid="classConfigurator_1ae7a8c53bf3a5ab860650fbc02354b222" kind="typedef"><name>EmailSenderConfig</name></member>
+    <member refid="classConfigurator_1a32f2368e1e72e5bd29909e000c0c9e4c" kind="typedef"><name>PermissionCacheConfig</name></member>
+    <member refid="classConfigurator_1a49c1e1c556694b995447dd4a4cad1935" kind="typedef"><name>PasswordWorkerConfig</name></member>
+    <member refid="classConfigurator_1a6552d2f57b9bbb898d49d7512cc3c829" kind="typedef"><name>DbExecutorConfig</name></member>
+    <member refid="classConfigurator_1a6029dd81a8d2fe9a1eaa17bf2a508e03" kind="typedef"><name>Testing</name></member>
+    <member refid="classConfigurator_1a82ddf2d428d4ec06403a61f242a8b806" kind="variable"><name>server_config_</name></member>
+    <member refid="classConfigurator_1a6d21bcd329d6c2fadbcf48b1efa7b56b" kind="variable"><name>database_config_</name></member>
+    <member refid="classConfigurator_1a953a9938a91816807e761f78f91de20c" kind="variable"><name>dos_detector_config_</name></member>
+    <member refid="classConfigurator_1a6c0b1beecdd34ed7cc9a57a1de960715" kind="variable"><name>token_manager_parameters_</name></member>
+    <member refid="classConfigurator_1a0e0e891626210eec166117bf5aa4b9f8" kind="variable"><name>frontend_config_</name></member>
+    <member refid="classConfigurator_1a8e754f2350e68b7668065eae1ded1b2e" kind="variable"><name>email_sender_config_</name></member>
+    <member refid="classConfigurator_1aea1e4e0be48a562b8aa5616ee596b513" kind="variable"><name>permission_cache_config_</name></member>
+    <member refid="classConfigurator_1ad245f8d60306d7915fb3f2857bbf341c" kind="variable"><name>password_worker_config_</name></member>
+    <member refid="classConfigurator_1a9c2028d7fb1d041cbd4c8d79b118863b" kind="variable"><name>db_executor_config_</name></member>
+    <member refid="classConfigurator_1a2d5be41d723d735ca02725171f487377" kind="variable"><name>testing_</name></member>
+    <member refid="classConfigurator_1a3169a899e75a9c609012778685f882b8" kind="function"><name>Configurator</name></member>
+    <member refid="classConfigurator_1a553baa4562680a91034b5f0a7ec756c9" kind="function"><name>~Configurator</name></member>
+    <member refid="classConfigurator_1aa1007b1c4fab1119faf6c4398d8e1f71" kind="function"><name>printValues</name></member>
+    <member refid="classConfigurator_1a656bf84cc5f0920ae21cd952164fbaef" kind="function"><name>get</name></member>
+  </compound>
   <compound refid="classController" kind="class"><name>Controller</name>
     <member refid="classController_1a576e9528aae60df4325fdd721c2eba23" kind="variable"><name>databaseController</name></member>
     <member refid="classController_1ae6fd410649122f029bd60165049aca25" kind="variable"><name>dbexec</name></member>
@@ -443,6 +498,8 @@
   </compound>
   <compound refid="classDatabaseBusy" kind="class"><name>DatabaseBusy</name>
     <member refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" kind="function"><name>DatabaseBusy</name></member>
+  </compound>
+  <compound refid="structDatabaseConfig" kind="struct"><name>DatabaseConfig</name>
   </compound>
   <compound refid="classDatabaseConnectionPool" kind="class"><name>DatabaseConnectionPool</name>
     <member refid="classDatabaseConnectionPool_1a0f880bf20fea3484b52e50084dfa9887" kind="variable"><name>configurator_</name></member>
@@ -526,6 +583,8 @@
     <member refid="classDbExecutor_1a2aa554b6f63dcd750b482fc6c3dcff61" kind="function"><name>DbExecutor</name></member>
     <member refid="classDbExecutor_1a5d6abf2368cd71250974124d570b7f2b" kind="function"><name>ioFastPath</name></member>
   </compound>
+  <compound refid="structDbExecutorConfig" kind="struct"><name>DbExecutorConfig</name>
+  </compound>
   <compound refid="classDbProbe" kind="class"><name>DbProbe</name>
     <member refid="classDbProbe_1a86209915d051bd2999972e9e448d00c2" kind="variable"><name>active_</name></member>
     <member refid="classDbProbe_1a05c72d2e76a859f168c039bb0a13b802" kind="function"><name>DbProbe</name></member>
@@ -590,9 +649,13 @@
     <member refid="classDOSDetector_1ab7e6cf04bd21b93f1cc36f71dd65f9d3" kind="function"><name>checkStatus</name></member>
     <member refid="classDOSDetector_1aee42ffb7cac8307be5d3846f5faf7b3c" kind="function"><name>processRequest</name></member>
   </compound>
+  <compound refid="structDOSDetectorConfig" kind="struct"><name>DOSDetectorConfig</name>
+  </compound>
   <compound refid="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime" kind="class"><name>api::v2::MiddleWares::ElapsedTime</name>
     <member refid="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime_1a1e14e432f06cd74f76c257205eb92986" kind="function"><name>ElapsedTime</name></member>
     <member refid="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime_1ac1c141fd55634453fade2848128cb706" kind="function"><name>invoke</name></member>
+  </compound>
+  <compound refid="structEmailSenderConfig" kind="struct"><name>EmailSenderConfig</name>
   </compound>
   <compound refid="classEntity" kind="class"><name>Entity</name>
     <member refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kind="variable"><name>tablename</name></member>
@@ -666,6 +729,28 @@
   <compound refid="structBasicPermissionCache_1_1Entry" kind="struct"><name>BasicPermissionCache::Entry</name>
     <member refid="structBasicPermissionCache_1_1Entry_1a5347d94d5d97e1193e67b5947e1f2cbc" kind="variable"><name>value</name></member>
     <member refid="structBasicPermissionCache_1_1Entry_1aa4d64f4c1a99f8b22a2be95d0a4a2844" kind="variable"><name>expires</name></member>
+  </compound>
+  <compound refid="classEnvLoader" kind="class"><name>EnvLoader</name>
+    <member refid="classEnvLoader_1a6733b841e754089ebd18db384588a59a" kind="function"><name>EnvLoader</name></member>
+    <member refid="classEnvLoader_1aed2c3c2f939f2b0b7b033bc3d67d2a5b" kind="function"><name>EnvLoader</name></member>
+    <member refid="classEnvLoader_1a3591039030f01c57b167e6f1ba57ebb9" kind="function"><name>operator=</name></member>
+    <member refid="classEnvLoader_1a79df74667a8349147b1b02867e220b95" kind="function"><name>operator=</name></member>
+    <member refid="classEnvLoader_1a20a23295f90e857692c0f2759fa4a3d4" kind="function"><name>EnvLoader</name></member>
+    <member refid="classEnvLoader_1a6a34c4493098a7fc9327fc80a520287c" kind="function"><name>~EnvLoader</name></member>
+    <member refid="classEnvLoader_1a4f95654bec2fd3765dd4d725e0581d9f" kind="function"><name>printValues</name></member>
+    <member refid="classEnvLoader_1a3433869e7d95286c2dcf0360cd9c06eb" kind="function"><name>getEnvironmentVariable</name></member>
+    <member refid="classEnvLoader_1a77a3c407cae008484f177781e216d1f3" kind="function"><name>getEnvironmentVariable</name></member>
+    <member refid="classEnvLoader_1a0a9c2b2459e1cffa605caad9957153df" kind="function"><name>getEnvironmentVariable</name></member>
+    <member refid="classEnvLoader_1a1866cb32c9be29f42152a1c0c9e7b2bb" kind="function"><name>getEnvironmentVariable</name></member>
+    <member refid="classEnvLoader_1a5b217a34a87ae9d70716e42d7d2cc96b" kind="function"><name>getEnvironmentVariable</name></member>
+    <member refid="classEnvLoader_1a5001a46f772e4564fd39201debbe7a30" kind="function"><name>optimize_performance</name></member>
+    <member refid="classEnvLoader_1ad54a73563266bd46fda3994caf3aede7" kind="function"><name>parseSet</name></member>
+  </compound>
+  <compound refid="classEnvVars" kind="class"><name>EnvVars</name>
+    <member refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" kind="function"><name>get</name></member>
+    <member refid="classEnvVars_1a711d3932ab9abc4998c8acbb454f36a8" kind="function"><name>set</name></member>
+  </compound>
+  <compound refid="structFrontEndConfig" kind="struct"><name>FrontEndConfig</name>
   </compound>
   <compound refid="classapi_1_1v2_1_1GateKeeper" kind="class"><name>api::v2::GateKeeper</name>
     <member refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" kind="variable"><name>sessionManager_</name></member>
@@ -741,6 +826,10 @@
     <member refid="classapi_1_1v2_1_1Helper_1a0e93abbeb3346f2d972a1894c31cb245" kind="function"><name>prepare</name></member>
     <member refid="classapi_1_1v2_1_1Helper_1ac64aa8b347960cbc8cf263633241a633" kind="function"><name>reply</name></member>
   </compound>
+  <compound refid="structBoundedExecutor_1_1Item" kind="struct"><name>BoundedExecutor::Item</name>
+    <member refid="structBoundedExecutor_1_1Item_1aa125e56076f6e422bd8cae6f15a45a4d" kind="variable"><name>task</name></member>
+    <member refid="structBoundedExecutor_1_1Item_1adc96783d42c064529d14066b52728e4f" kind="variable"><name>queued_at</name></member>
+  </compound>
   <compound refid="classapi_1_1v2_1_1JsonHelper" kind="class"><name>api::v2::JsonHelper</name>
     <member refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec" kind="function"><name>JsonHelper</name></member>
     <member refid="classapi_1_1v2_1_1JsonHelper_1ac95eb89cccec4cdb2d2fe73aaf59baba" kind="function"><name>~JsonHelper</name></member>
@@ -796,6 +885,26 @@
     <member refid="classLaboratoryAppointment_1a368ccccd84c7a292536042fbc4fc7f7f" kind="function"><name>getServicePermissionsQuery</name></member>
     <member refid="classLaboratoryAppointment_1a595757aaaa3f41e2f6fd744a2fcdb5fe" kind="function"><name>getPermissionsQueryForRead</name></member>
   </compound>
+  <compound refid="classLogger" kind="class"><name>Logger</name>
+    <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030a" kind="enum"><name>Color</name></member>
+    <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aaee38e4d5dd68c4e440825018d549cb47" kind="enumvalue"><name>Red</name></member>
+    <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aad382816a3cbeed082c9e216e7392eed1" kind="enumvalue"><name>Green</name></member>
+    <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa51e6cd92b6c45f9affdc158ecca2b8b8" kind="enumvalue"><name>Yellow</name></member>
+    <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa9594eec95be70e7b1710f730fdda33d9" kind="enumvalue"><name>Blue</name></member>
+    <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aab91cc2c1416fcca942b61c7ac5b1a9ac" kind="enumvalue"><name>Magenta</name></member>
+    <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa25a81701fbfa4a1efdf660a950c1d006" kind="enumvalue"><name>White</name></member>
+    <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa526d688f37a86d3c3f27d0c5016eb71d" kind="enumvalue"><name>Reset</name></member>
+    <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa023c239d2f2538f140a20e72c7b73f20" kind="enumvalue"><name>Cyan</name></member>
+    <member refid="classLogger_1aeae0a292d6930a7c81a1a0c4ece5534c" kind="variable"><name>logger_</name></member>
+    <member refid="classLogger_1ad7e6a73dfe5abb26f51a1502bcab57cf" kind="variable"><name>MAX_LOG_SIZE</name></member>
+    <member refid="classLogger_1acae717b9d2cb047d186ee740872d53fe" kind="variable"><name>THREADPOOL</name></member>
+    <member refid="classLogger_1a0f3eebbd1afb203f076c9791306ce250" kind="variable"><name>THREADS</name></member>
+    <member refid="classLogger_1a9295d6101a19ddde8dee20236b86c89d" kind="variable"><name>MAX_LOG_FILES</name></member>
+    <member refid="classLogger_1af27aa5828b228b1e400131f2a0cc359e" kind="variable"><name>COLOR_MAP</name></member>
+    <member refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" kind="function"><name>Logger</name></member>
+    <member refid="classLogger_1ad5bca94a0174ce580d9d36c807fbe107" kind="function"><name>log</name></member>
+    <member refid="classLogger_1aaffbcae12c11b5435c8a1743c7402acc" kind="function"><name>get_color</name></member>
+  </compound>
   <compound refid="classMemCache" kind="class"><name>MemCache</name>
     <member refid="classMemCache_1ab849b6bdf3b4922b00f173434e61d073" kind="typedef"><name>Clock</name></member>
     <member refid="classMemCache_1ae2921b17188672eabd81d40c51c8d10f" kind="typedef"><name>TimePoint</name></member>
@@ -820,6 +929,25 @@
     <member refid="classMemCache_1adb42b6b587c94d97c22dbb8370dc57d2" kind="function"><name>moveToFront</name></member>
     <member refid="classMemCache_1a11d03343bb5f441b140b075a2912eead" kind="function"><name>evictOldest</name></member>
     <member refid="classMemCache_1a6353c6d238fd6837b033a90a389218fe" kind="function"><name>cleanExpiredEntries</name></member>
+  </compound>
+  <compound refid="classMessage" kind="class"><name>Message</name>
+    <member refid="classMessage_1a4e0c3e0a2be25186519ba075d7851b71" kind="function"><name>Message</name></member>
+    <member refid="classMessage_1a5a489bb5624b522457e07724510523ac" kind="function"><name>~Message</name></member>
+    <member refid="classMessage_1a86c3737ea3a70780ed5ea7c5403b9507" kind="function"><name>Message</name></member>
+    <member refid="classMessage_1a2a8c28d1a44fbc15a2bd8b974bbfa242" kind="function"><name>Message</name></member>
+    <member refid="classMessage_1a7da4c19efcee0fbbe592e3fe67a95021" kind="function"><name>operator=</name></member>
+    <member refid="classMessage_1a7307e42c5da334c23ad52a2e7eaf755c" kind="function"><name>operator=</name></member>
+    <member refid="classMessage_1a35ba4529b26ccea626d1b885815369cb" kind="function"><name>DebugMessage</name></member>
+    <member refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" kind="function"><name>InfoMessage</name></member>
+    <member refid="classMessage_1a3d5db738594c8af1428053227959259e" kind="function"><name>WarningMessage</name></member>
+    <member refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kind="function"><name>ErrorMessage</name></member>
+    <member refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kind="function"><name>CriticalMessage</name></member>
+    <member refid="classMessage_1a99a776d45a1c2b0f99fc0125663d9cea" kind="function"><name>ConfMessage</name></member>
+    <member refid="classMessage_1aaa3d510c50f46a224c9021dfd5d33ecb" kind="function"><name>InitMessage</name></member>
+    <member refid="classMessage_1ab1578286398f61ef66338441d1ea99e3" kind="function"><name>get_color</name></member>
+    <member refid="classMessage_1a2491b74248227f3621af9b740c352ab9" kind="function"><name>MessageImpl</name></member>
+    <member refid="classMessage_1ad8533b3d0c485b9d43149a4e506fd311" kind="function"><name>MessageImpl</name></member>
+    <member refid="classMessage_1a866730d10417555fd9cf17fe1b94b0f4" kind="function"><name>removeNewLine</name></member>
   </compound>
   <compound refid="classPaidServices" kind="class"><name>PaidServices</name>
     <member refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41" kind="variable"><name>TABLENAME</name></member>
@@ -847,6 +975,8 @@
   <compound refid="classPasswordWorker" kind="class"><name>PasswordWorker</name>
     <member refid="classPasswordWorker_1a050aae21a943a6c8ba3c784adff171d9" kind="function"><name>PasswordWorker</name></member>
     <member refid="classPasswordWorker_1a7cca8bf870ca568aec6afe48fe57dd68" kind="function"><name>PasswordWorker</name></member>
+  </compound>
+  <compound refid="structPasswordWorkerConfig" kind="struct"><name>PasswordWorkerConfig</name>
   </compound>
   <compound refid="classPatient" kind="class"><name>Patient</name>
     <member refid="classPatient_1aaf177b2592e249054d93a81efafad800" kind="variable"><name>TABLENAME</name></member>
@@ -877,6 +1007,8 @@
     <member refid="classPatientDrugs_1ac31b08ce384c3752980683b134ffa47d" kind="function"><name>getPermissionsQueryForRead</name></member>
     <member refid="classPatientDrugs_1a48388f38b4a60efb58c0456bb91fc6f6" kind="function"><name>getPermissionsQueryForUpdate</name></member>
     <member refid="classPatientDrugs_1afd534a42f237d038d793e91293d188fb" kind="function"><name>getPermissionsQueryForDelete</name></member>
+  </compound>
+  <compound refid="structPermissionCacheConfig" kind="struct"><name>PermissionCacheConfig</name>
   </compound>
   <compound refid="classapi_1_1v2_1_1PermissionManager" kind="class"><name>api::v2::PermissionManager</name>
     <member refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea" kind="function"><name>PermissionManager</name></member>
@@ -1116,6 +1248,8 @@
     <member refid="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" kind="function"><name>print_banner</name></member>
     <member refid="classServer_1a5bc93a8ab4205adcfc43ee9d8f4aaa83" kind="function"><name>isConventionalMethod</name></member>
   </compound>
+  <compound refid="structServerConfig" kind="struct"><name>ServerConfig</name>
+  </compound>
   <compound refid="classService" kind="class"><name>Service</name>
     <member refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kind="function"><name>Service</name></member>
     <member refid="classService_1a0b54b15cd18155406cdd605c2fe6d46f" kind="function"><name>Service</name></member>
@@ -1256,6 +1390,12 @@
     <member refid="structapi_1_1v2_1_1Types_1_1StaffData_1a45122c90e774a3c1e67316590dd15245" kind="function"><name>toInviteJson</name></member>
     <member refid="structapi_1_1v2_1_1Types_1_1StaffData_1a5f84bb5253746416586719750ca7cb03" kind="function"><name>StaffData</name></member>
   </compound>
+  <compound refid="structBoundedExecutor_1_1Stats" kind="struct"><name>BoundedExecutor::Stats</name>
+    <member refid="structBoundedExecutor_1_1Stats_1ad0368dc91edec0dec6888b7b84ce56dc" kind="variable"><name>submitted</name></member>
+    <member refid="structBoundedExecutor_1_1Stats_1a2f37f73a813fb86da316726f626484f6" kind="variable"><name>rejected</name></member>
+    <member refid="structBoundedExecutor_1_1Stats_1a5f799a6d74c3df717d4fcae67d3abea3" kind="variable"><name>max_queue</name></member>
+    <member refid="structBoundedExecutor_1_1Stats_1a931a680e89a8537c30d0608926235507" kind="variable"><name>avg_wait_us</name></member>
+  </compound>
   <compound refid="classStore" kind="class"><name>Store</name>
     <member refid="classStore_1a27825898458fa79d1665a31030fdcd77" kind="variable"><name>inventory</name></member>
     <member refid="classStore_1a76db2e16906c8ffed79259a532795255" kind="variable"><name>inventoryMutex</name></member>
@@ -1274,6 +1414,8 @@
   <compound refid="structapi_1_1v2_1_1Types_1_1SuspendData" kind="struct"><name>api::v2::Types::SuspendData</name>
     <member refid="structapi_1_1v2_1_1Types_1_1SuspendData_1ad5b052303873a9083234af598934e180" kind="variable"><name>client_id</name></member>
     <member refid="structapi_1_1v2_1_1Types_1_1SuspendData_1ac6b1fa980e9a1e983755e42a20cc1415" kind="function"><name>SuspendData</name></member>
+  </compound>
+  <compound refid="structTesting" kind="struct"><name>Testing</name>
   </compound>
   <compound refid="classThreadSafeQueue" kind="class"><name>ThreadSafeQueue</name>
     <member refid="classThreadSafeQueue_1ace0d7b833c9302eb30f6bd5bcf0f36be" kind="variable"><name>mutex_</name></member>
@@ -1295,6 +1437,8 @@
     <member refid="classapi_1_1v2_1_1TokenManager_1ae35221cdefeaad8255a896481af08403" kind="function"><name>generateToken</name></member>
     <member refid="classapi_1_1v2_1_1TokenManager_1ad59c01322c709811a7f499f4e1d3fa95" kind="function"><name>isTokenValid</name></member>
     <member refid="classapi_1_1v2_1_1TokenManager_1ae2353b4f71d0b7f35474f8d7bba4e6b5" kind="function"><name>isTokenValidCoro</name></member>
+  </compound>
+  <compound refid="structTokenManagerParameters" kind="struct"><name>TokenManagerParameters</name>
   </compound>
   <compound refid="classUpdate__t" kind="class"><name>Update_t</name>
   </compound>
@@ -1368,6 +1512,14 @@
     <member refid="classWatchDog_1a957bca000c5227fb1d95352b5ee2e2db" kind="function"><name>operator=</name></member>
     <member refid="classWatchDog_1a3528415da2eaba98430532547b786b17" kind="function"><name>~WatchDog</name></member>
   </compound>
+  <compound refid="structBoundedExecutor_1_1Worker" kind="struct"><name>BoundedExecutor::Worker</name>
+    <member refid="structBoundedExecutor_1_1Worker_1a93f2577dc374b3da707f8ac94b17b73c" kind="variable"><name>mutex</name></member>
+    <member refid="structBoundedExecutor_1_1Worker_1a67b3712ac7683ac32a183909d82c4407" kind="variable"><name>cv</name></member>
+    <member refid="structBoundedExecutor_1_1Worker_1ae377b765251b61e956eefe01e2eee129" kind="variable"><name>queue</name></member>
+    <member refid="structBoundedExecutor_1_1Worker_1a30bd7b8412c2f314a3a2b9e07e21cb5f" kind="variable"><name>depth</name></member>
+    <member refid="structBoundedExecutor_1_1Worker_1ad2c5a6f211775e44ced8f1bc7f3787ea" kind="variable"><name>idle</name></member>
+    <member refid="structBoundedExecutor_1_1Worker_1ae3cda487924221535ebcdebad35539f9" kind="variable"><name>thread</name></member>
+  </compound>
   <compound refid="structWouldBlock" kind="struct"><name>WouldBlock</name>
   </compound>
   <compound refid="conceptapi_1_1v2_1_1ClientData__t" kind="concept"><name>api::v2::ClientData_t</name>
@@ -1378,7 +1530,12 @@
   </compound>
   <compound refid="conceptClient__t" kind="concept"><name>Client_t</name>
   </compound>
+  <compound refid="conceptConfig" kind="concept"><name>Config</name>
+  </compound>
   <compound refid="conceptService__t" kind="concept"><name>Service_t</name>
+  </compound>
+  <compound refid="namespaceanonymous__namespace_02boundedexecutor_8cpp_03" kind="namespace"><name>anonymous_namespace{boundedexecutor.cpp}</name>
+    <member refid="namespaceanonymous__namespace_02boundedexecutor_8cpp_03_1ab84b8609fe5c97780788c6d292a2c64c" kind="variable"><name>currentExecutor</name></member>
   </compound>
   <compound refid="namespaceanonymous__namespace_02dbexecutor_8cpp_03" kind="namespace"><name>anonymous_namespace{dbexecutor.cpp}</name>
     <member refid="namespaceanonymous__namespace_02dbexecutor_8cpp_03_1a620e60141d4e4ce74d6607d537dc171b" kind="function"><name>config</name></member>
@@ -1494,6 +1651,71 @@
     <member refid="namespaceCorsTokens_1ab923849059179cf6c8fb446aa5cb5e5d" kind="function"><name>sanitizeRequestedHeaders</name></member>
     <member refid="namespaceCorsTokens_1a0868524c04d18e34760e18676a1ff72f" kind="function"><name>mergeVary</name></member>
   </compound>
+  <compound refid="namespaceDefaults" kind="namespace"><name>Defaults</name>
+  </compound>
+  <compound refid="namespaceDefaults_1_1Database" kind="namespace"><name>Defaults::Database</name>
+    <member refid="namespaceDefaults_1_1Database_1a9c16e4f27c3f3b9e80f897a1df1b52d8" kind="variable"><name>DB_SSL_</name></member>
+    <member refid="namespaceDefaults_1_1Database_1a18363b0d02fa671504bd6b17cee4fe6e" kind="variable"><name>DB_ASYNC_</name></member>
+    <member refid="namespaceDefaults_1_1Database_1a7cb6887a36fd11f1b999b11806ea28bb" kind="variable"><name>DB_MAX_CONN_</name></member>
+    <member refid="namespaceDefaults_1_1Database_1a4beafb87f90b2ca03b55ac18ad0fdc8a" kind="variable"><name>DB_ACQUIRE_TIMEOUT_MS_</name></member>
+    <member refid="namespaceDefaults_1_1Database_1a0cb8a029c93f4a2f6bcd49e66024c4e2" kind="variable"><name>DB_PORT_</name></member>
+    <member refid="namespaceDefaults_1_1Database_1a7e4ef467bcf44500097539bd2a0b3e5d" kind="variable"><name>DB_HOST_</name></member>
+    <member refid="namespaceDefaults_1_1Database_1a54161f583a9af3c55158a6aeea9db362" kind="variable"><name>DB_NAME_</name></member>
+    <member refid="namespaceDefaults_1_1Database_1adc651e7d941513e9a7597124eed52ad8" kind="variable"><name>DB_USER_</name></member>
+    <member refid="namespaceDefaults_1_1Database_1a01a6ae2031f44305b102d31f618af968" kind="variable"><name>DB_PASS_</name></member>
+  </compound>
+  <compound refid="namespaceDefaults_1_1DbExecutor" kind="namespace"><name>Defaults::DbExecutor</name>
+    <member refid="namespaceDefaults_1_1DbExecutor_1a345f84e7eeea992a99e3cbae2dca7290" kind="variable"><name>QUEUE_MAX_</name></member>
+    <member refid="namespaceDefaults_1_1DbExecutor_1ab524f389c372937b494a2a6d4c390f15" kind="variable"><name>IO_FAST_PATH_</name></member>
+  </compound>
+  <compound refid="namespaceDefaults_1_1DosDetector" kind="namespace"><name>Defaults::DosDetector</name>
+    <member refid="namespaceDefaults_1_1DosDetector_1a8527abee682bdccd83f9213bae5d1a35" kind="variable"><name>MAX_REQUESTS_</name></member>
+    <member refid="namespaceDefaults_1_1DosDetector_1a6170311a433902f56c1ca536e94fdaac" kind="variable"><name>PERIOD_</name></member>
+    <member refid="namespaceDefaults_1_1DosDetector_1ac32f0f7494c6b02b3e8541f42ce22a62" kind="variable"><name>MAX_FPS_</name></member>
+    <member refid="namespaceDefaults_1_1DosDetector_1a8b50cd2a12eef40213278a2e73b89b85" kind="variable"><name>RL_DURATION_</name></member>
+    <member refid="namespaceDefaults_1_1DosDetector_1a952d9f6e74ca67618063ea922bd63e9e" kind="variable"><name>BAN_DURATION_</name></member>
+    <member refid="namespaceDefaults_1_1DosDetector_1aa72b7148cbba28dbfc3d579918e2868f" kind="variable"><name>CLN_FRQ_</name></member>
+  </compound>
+  <compound refid="namespaceDefaults_1_1EmailSenderDaemon" kind="namespace"><name>Defaults::EmailSenderDaemon</name>
+    <member refid="namespaceDefaults_1_1EmailSenderDaemon_1a3fc77c83bff77d646cdd2704390875fa" kind="variable"><name>HOST_</name></member>
+    <member refid="namespaceDefaults_1_1EmailSenderDaemon_1a6d7e3bdbf9e255b7f8fb4c4fcea32066" kind="variable"><name>PORT_</name></member>
+    <member refid="namespaceDefaults_1_1EmailSenderDaemon_1aa7e2fa2cb5d49696f5642a85d5f01f89" kind="variable"><name>QUEUE_PATH_</name></member>
+  </compound>
+  <compound refid="namespaceDefaults_1_1FrontEnd" kind="namespace"><name>Defaults::FrontEnd</name>
+    <member refid="namespaceDefaults_1_1FrontEnd_1ae72d244ab81b3948dfe1e81b79973476" kind="variable"><name>HOST_</name></member>
+    <member refid="namespaceDefaults_1_1FrontEnd_1abccafb81dfba89c194e3e4b2a1da39cf" kind="variable"><name>PORT_</name></member>
+    <member refid="namespaceDefaults_1_1FrontEnd_1a2f75870d28630538f7e42843bf4cbf9c" kind="variable"><name>INVITE_PATH_</name></member>
+  </compound>
+  <compound refid="namespaceDefaults_1_1PasswordWorker" kind="namespace"><name>Defaults::PasswordWorker</name>
+    <member refid="namespaceDefaults_1_1PasswordWorker_1aef760679652d4d0d25022ada37ee585a" kind="variable"><name>WORKERS_</name></member>
+    <member refid="namespaceDefaults_1_1PasswordWorker_1aa4bfeb05249d7adeb81bfe90df069bf0" kind="variable"><name>QUEUE_MAX_</name></member>
+  </compound>
+  <compound refid="namespaceDefaults_1_1PermissionCache" kind="namespace"><name>Defaults::PermissionCache</name>
+    <member refid="namespaceDefaults_1_1PermissionCache_1abb0e056ea4186b11f107c5572f390830" kind="variable"><name>TTL_</name></member>
+  </compound>
+  <compound refid="namespaceDefaults_1_1Server" kind="namespace"><name>Defaults::Server</name>
+    <member refid="namespaceDefaults_1_1Server_1afe08909b6c29309b2efb7f468f73f57b" kind="variable"><name>SERVER_THREADS_</name></member>
+    <member refid="namespaceDefaults_1_1Server_1ae720bc6d0fb01a3144a54f3a6d5e24c8" kind="variable"><name>SERVER_PORT_</name></member>
+    <member refid="namespaceDefaults_1_1Server_1a3afe392d625a7c873fb12484b77c9cde" kind="variable"><name>SERVER_NAME_</name></member>
+    <member refid="namespaceDefaults_1_1Server_1ac147eb21c925844b32d2f34b7e481368" kind="variable"><name>SERVER_VER_</name></member>
+    <member refid="namespaceDefaults_1_1Server_1aa7b551a3340ddcdba720445bea35c784" kind="variable"><name>SERVER_DESC_</name></member>
+    <member refid="namespaceDefaults_1_1Server_1a32b80f9853a725d120d97a88f00d5c28" kind="variable"><name>SERVER_HOST_</name></member>
+    <member refid="namespaceDefaults_1_1Server_1a487839278f4fe06b8c5bd3c8fbcdea9e" kind="variable"><name>SERVER_DEBUG_LEVEL_</name></member>
+    <member refid="namespaceDefaults_1_1Server_1adc26c17a02a2ccbd2b1b146107c4c1e3" kind="variable"><name>SERVER_LOG_TO_CONSOLE_</name></member>
+    <member refid="namespaceDefaults_1_1Server_1a1d7d0d640e76ca7a0a32f83aa553d986" kind="variable"><name>SERVER_LOG_TO_FILE_</name></member>
+    <member refid="namespaceDefaults_1_1Server_1aad9f4b542f006079d47922c2dc5517bb" kind="variable"><name>SERVER_LOG_DIR_</name></member>
+    <member refid="namespaceDefaults_1_1Server_1a08f05b0dbdbbd1ccea7f66ceb6f8e582" kind="variable"><name>SERVER_LOG_FILE_</name></member>
+    <member refid="namespaceDefaults_1_1Server_1a95f015a8a849c6d8a5cfaf9adfb5fc9d" kind="variable"><name>SERVER_UPLOAD_DIR_</name></member>
+  </compound>
+  <compound refid="namespaceDefaults_1_1Testing" kind="namespace"><name>Defaults::Testing</name>
+    <member refid="namespaceDefaults_1_1Testing_1a797b761e7035e9593588e27408f1b55b" kind="variable"><name>VALHALLA_TEST_NO_DB_</name></member>
+  </compound>
+  <compound refid="namespaceDefaults_1_1TokenParameters" kind="namespace"><name>Defaults::TokenParameters</name>
+    <member refid="namespaceDefaults_1_1TokenParameters_1ada29f7e4f7ebcc44ed863b1f845ca546" kind="variable"><name>TOKEN_VALIDITY_</name></member>
+    <member refid="namespaceDefaults_1_1TokenParameters_1a149299356bd51590ac0178d7efb271c0" kind="variable"><name>TOKEN_ISSUER_</name></member>
+    <member refid="namespaceDefaults_1_1TokenParameters_1a6c11dc93d055319b522a61cf797cc937" kind="variable"><name>TOKEN_TYPE_</name></member>
+    <member refid="namespaceDefaults_1_1TokenParameters_1af82d2e7594dd9a9e542d7a9584b73e30" kind="variable"><name>TOKEN_SECRET_</name></member>
+  </compound>
   <compound refid="namespacedrogon" kind="namespace"><name>drogon</name>
   </compound>
   <compound refid="namespacestd" kind="namespace"><name>std</name>
@@ -1501,6 +1723,45 @@
   <compound refid="ARCHITECTURE_8md" kind="file"><name>ARCHITECTURE.md</name>
   </compound>
   <compound refid="CONTRIBUTING_8md" kind="file"><name>CONTRIBUTING.md</name>
+  </compound>
+  <compound refid="boundedexecutor_8cpp" kind="file"><name>boundedexecutor.cpp</name>
+  </compound>
+  <compound refid="boundedexecutor_8hpp" kind="file"><name>boundedexecutor.hpp</name>
+    <member refid="boundedexecutor_8hpp_1af76f5db524067c26a058b1fee7e90e82" kind="function"><name>runOnExecutor</name></member>
+  </compound>
+  <compound refid="configurator_8cpp" kind="file"><name>configurator.cpp</name>
+    <member refid="configurator_8cpp_1abf9f7867bfca11a980bedbaf2ebe38dc" kind="function"><name>Configurator::get&lt; Configurator::DOSDetectorConfig &gt;</name></member>
+    <member refid="configurator_8cpp_1a37fe145d060f2d2124ff314a7c8c42e3" kind="function"><name>Configurator::get&lt; Configurator::DatabaseConfig &gt;</name></member>
+    <member refid="configurator_8cpp_1a2463f6649c49aeed4c5ad140e53fbdc4" kind="function"><name>Configurator::get&lt; Configurator::ServerConfig &gt;</name></member>
+    <member refid="configurator_8cpp_1ae7adf245069916dc41b1f06a4874b69f" kind="function"><name>Configurator::get&lt; Configurator::TokenManagerParameters &gt;</name></member>
+    <member refid="configurator_8cpp_1a9e84e3dd8087b35e1eed2332bd4b6beb" kind="function"><name>Configurator::get&lt; Configurator::FrontEndConfig &gt;</name></member>
+    <member refid="configurator_8cpp_1ae91a8d5b9607f23dae89cbb1d173bad4" kind="function"><name>Configurator::get&lt; Configurator::PermissionCacheConfig &gt;</name></member>
+    <member refid="configurator_8cpp_1a0a76733ed0e1cd48b51b3ace0e1843d7" kind="function"><name>Configurator::get&lt; Configurator::PasswordWorkerConfig &gt;</name></member>
+    <member refid="configurator_8cpp_1a6aad408bff1e378942af2b63e73635b9" kind="function"><name>Configurator::get&lt; Configurator::DbExecutorConfig &gt;</name></member>
+    <member refid="configurator_8cpp_1af3566eb568e2adec6a05e7cc81d096eb" kind="function"><name>Configurator::get&lt; Configurator::EmailSenderConfig &gt;</name></member>
+    <member refid="configurator_8cpp_1a89637a28842c84e0f22e8bb067b0aad1" kind="function"><name>Configurator::get&lt; Configurator::Testing &gt;</name></member>
+  </compound>
+  <compound refid="configurator_8hpp" kind="file"><name>configurator.hpp</name>
+    <member refid="configurator_8hpp_1a98546a0a9b863b8f8ace5b4a566fae7c" kind="variable"><name>dev</name></member>
+  </compound>
+  <compound refid="defaults_8hpp" kind="file"><name>defaults.hpp</name>
+    <member refid="defaults_8hpp_1a98546a0a9b863b8f8ace5b4a566fae7c" kind="variable"><name>dev</name></member>
+  </compound>
+  <compound refid="envloader_8cpp" kind="file"><name>envloader.cpp</name>
+  </compound>
+  <compound refid="envloader_8hpp" kind="file"><name>envloader.hpp</name>
+  </compound>
+  <compound refid="envvars_8cpp" kind="file"><name>envvars.cpp</name>
+  </compound>
+  <compound refid="envvars_8hpp" kind="file"><name>envvars.hpp</name>
+  </compound>
+  <compound refid="logger_8cpp" kind="file"><name>logger.cpp</name>
+  </compound>
+  <compound refid="logger_8hpp" kind="file"><name>logger.hpp</name>
+  </compound>
+  <compound refid="message_8cpp" kind="file"><name>message.cpp</name>
+  </compound>
+  <compound refid="message_8hpp" kind="file"><name>message.hpp</name>
   </compound>
   <compound refid="README_8md" kind="file"><name>README.md</name>
   </compound>
@@ -1848,6 +2109,10 @@
   </compound>
   <compound refid="dir_c8bc8b37a9c838b93d418370c445a4ed" kind="dir"><name>src/utils/communicate</name>
   </compound>
+  <compound refid="dir_a95e9d16d1d6472bd9ba6e3b5774a613" kind="dir"><name>libs/concurrency</name>
+  </compound>
+  <compound refid="dir_21095bce345e24e4e3d4860c8c3571a6" kind="dir"><name>libs/configurator</name>
+  </compound>
   <compound refid="dir_ddb45738169a606da0a81141822100f2" kind="dir"><name>src/controllers/base/controller</name>
   </compound>
   <compound refid="dir_bbd6674d859f4cefaacb708974cac240" kind="dir"><name>src/controllers</name>
@@ -1866,6 +2131,10 @@
   </compound>
   <compound refid="dir_3c1fe72fbedd1f1da4337d53e0cfa929" kind="dir"><name>src/controllers/entitycontroller</name>
   </compound>
+  <compound refid="dir_629e5eafe7b51b5c70e97b50670b4ff5" kind="dir"><name>libs/configurator/envloader</name>
+  </compound>
+  <compound refid="dir_39d7e4083dd9b259e863d83effc86063" kind="dir"><name>libs/configurator/envloader/envvars</name>
+  </compound>
   <compound refid="dir_a856a2a6c805eaacc331031967167fd5" kind="dir"><name>src/server/extras</name>
   </compound>
   <compound refid="dir_830c168f2763a4fbe21a24ffe69786fc" kind="dir"><name>src/api/v2/filters</name>
@@ -1880,7 +2149,13 @@
   </compound>
   <compound refid="dir_e41cde642ca878ae4e5072d357f89c14" kind="dir"><name>src/gatekeeper/keeprbase</name>
   </compound>
+  <compound refid="dir_6719ab1f1f7655efc2fa43f7eb574fd1" kind="dir"><name>libs</name>
+  </compound>
+  <compound refid="dir_6c7e384648d47264394868fbb7af8ef7" kind="dir"><name>libs/logger</name>
+  </compound>
   <compound refid="dir_b3a3f116620f69a0dd273db55d342609" kind="dir"><name>src/utils/memcache</name>
+  </compound>
+  <compound refid="dir_ffe88d93b30ce0d9dfe79a976a3e9e60" kind="dir"><name>libs/message</name>
   </compound>
   <compound refid="dir_13ca3731eacf1297efe44978d8a16c00" kind="dir"><name>src/api/v2/middlewares</name>
   </compound>

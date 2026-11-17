@@ -4,15 +4,19 @@
     <compoundname>logger.hpp</compoundname>
     <includes local="no">drogon/drogon.h</includes>
     <includes local="no">spdlog/async.h</includes>
+    <includes local="no">spdlog/async_logger.h</includes>
     <includes local="no">spdlog/spdlog.h</includes>
+    <includes local="no">trantor/utils/Logger.h</includes>
     <includes local="no">cstddef</includes>
+    <includes local="no">cstdint</includes>
     <includes local="no">memory</includes>
     <includes local="no">string</includes>
+    <includes local="no">unordered_map</includes>
+    <includedby refid="logger_8cpp" local="yes">libs/logger/logger.cpp</includedby>
     <includedby refid="server_8cpp" local="yes">src/server/server.cpp</includedby>
-    <includedby refid="logger_8cpp" local="yes">src/utils/Logger/logger.cpp</includedby>
     <incdepgraph>
       <node id="1">
-        <label>src/utils/Logger/logger.hpp</label>
+        <label>libs/logger/logger.hpp</label>
         <link refid="logger_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -26,42 +30,62 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
       </node>
-      <node id="5">
+      <node id="7">
         <label>cstddef</label>
+      </node>
+      <node id="8">
+        <label>cstdint</label>
       </node>
       <node id="2">
         <label>drogon/drogon.h</label>
       </node>
-      <node id="6">
+      <node id="9">
         <label>memory</label>
       </node>
       <node id="3">
         <label>spdlog/async.h</label>
       </node>
       <node id="4">
+        <label>spdlog/async_logger.h</label>
+      </node>
+      <node id="5">
         <label>spdlog/spdlog.h</label>
       </node>
-      <node id="7">
+      <node id="10">
         <label>string</label>
+      </node>
+      <node id="6">
+        <label>trantor/utils/Logger.h</label>
+      </node>
+      <node id="11">
+        <label>unordered_map</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
       <node id="2">
-        <label>src/server/server.cpp</label>
-        <link refid="server_8cpp"/>
-      </node>
-      <node id="3">
-        <label>src/utils/Logger/logger.cpp</label>
+        <label>libs/logger/logger.cpp</label>
         <link refid="logger_8cpp"/>
       </node>
       <node id="1">
-        <label>src/utils/Logger/logger.hpp</label>
+        <label>libs/logger/logger.hpp</label>
         <link refid="logger_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
+      </node>
+      <node id="3">
+        <label>src/server/server.cpp</label>
+        <link refid="server_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classLogger" prot="public">Logger</innerclass>
@@ -124,125 +148,135 @@
 <codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Provides<sp/>spdlog::async_logger<sp/>and<sp/>the<sp/>thread-pool<sp/>support.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;spdlog/async.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>core<sp/>spdlog<sp/>API<sp/>(register_logger,<sp/>set_default_logger,<sp/>etc.).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;spdlog/spdlog.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Provides<sp/>fixed-size<sp/>integer<sp/>types<sp/>such<sp/>as<sp/>std::uint8_t<sp/>used<sp/>by<sp/>the<sp/>colour</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>enum.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::shared_ptr<sp/>is<sp/>used<sp/>to<sp/>own<sp/>the<sp/>logger.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>std::string<sp/>is<sp/>the<sp/>message<sp/>type<sp/>and<sp/>the<sp/>colour-map<sp/>value<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Logger<sp/>routes<sp/>Trantor<sp/>log<sp/>records<sp/>through<sp/>an<sp/>asynchronous<sp/>spdlog<sp/>backend.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="50"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>@class<sp/>Logger</highlight></codeline>
-<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Routes<sp/>Drogon/Trantor<sp/>log<sp/>records<sp/>through<sp/>an<sp/>asynchronous<sp/>spdlog</highlight></codeline>
-<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>logger.</highlight></codeline>
-<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>@details<sp/>Owns<sp/>one<sp/>spdlog<sp/>`async_logger`<sp/>writing<sp/>to<sp/>a<sp/>rotating<sp/>file<sp/>sink</highlight></codeline>
-<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>and/or<sp/>a<sp/>colour<sp/>console<sp/>sink,<sp/>selected<sp/>from<sp/>Configurator&apos;s<sp/>ServerConfig.</highlight></codeline>
-<codeline lineno="56"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Construction<sp/>initialises<sp/>spdlog&apos;s<sp/>shared<sp/>thread<sp/>pool,<sp/>registers<sp/>the</highlight></codeline>
-<codeline lineno="57"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger<sp/>by<sp/>name,<sp/>and<sp/>installs<sp/>it<sp/>as<sp/>both<sp/>spdlog&apos;s<sp/>default<sp/>logger<sp/>and</highlight></codeline>
-<codeline lineno="58"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Trantor&apos;s<sp/>spdlog<sp/>backend,<sp/>so<sp/>framework,<sp/>utility<sp/>and<sp/>application</highlight></codeline>
-<codeline lineno="59"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>records<sp/>all<sp/>use<sp/>the<sp/>same<sp/>sink<sp/>configuration.</highlight></codeline>
-<codeline lineno="60"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="61"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Intended<sp/>as<sp/>a<sp/>process-wide<sp/>singleton<sp/>created<sp/>by<sp/>Server<sp/>through</highlight></codeline>
-<codeline lineno="62"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`Store`;<sp/>spdlog<sp/>registration<sp/>is<sp/>global,<sp/>so<sp/>more<sp/>than<sp/>one<sp/>instance</highlight></codeline>
-<codeline lineno="63"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>would<sp/>try<sp/>to<sp/>register<sp/>the<sp/>same<sp/>name<sp/>twice.<sp/>Logging<sp/>itself<sp/>is</highlight></codeline>
-<codeline lineno="64"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>thread-safe<sp/>via<sp/>spdlog&apos;s<sp/>sinks<sp/>and<sp/>worker<sp/>pool.</highlight></codeline>
-<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>@note<sp/>The<sp/>file<sp/>path<sp/>is<sp/>`log_dir`<sp/>concatenated<sp/>with<sp/>`log_file`<sp/>from</highlight></codeline>
-<codeline lineno="66"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>ServerConfig;<sp/>rotation<sp/>occurs<sp/>at<sp/>MAX_LOG_SIZE<sp/>bytes<sp/>across</highlight></codeline>
-<codeline lineno="67"><highlight class="comment"><sp/>*<sp/>MAX_LOG_FILES<sp/>files.</highlight></codeline>
-<codeline lineno="68"><highlight class="comment"><sp/>*<sp/>@see<sp/>Message,<sp/>Server,<sp/>Configurator</highlight></codeline>
-<codeline lineno="69"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Owns<sp/>the<sp/>process-wide<sp/>spdlog<sp/>logger;<sp/>create<sp/>only<sp/>one<sp/>instance.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="71" refid="classLogger" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" kindref="member">Logger</ref><sp/>{</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="73"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds,<sp/>configures<sp/>and<sp/>globally<sp/>registers<sp/>the<sp/>asynchronous<sp/>logger.</highlight></codeline>
-<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Reads<sp/>ServerConfig<sp/>from<sp/>Configurator<sp/>(via<sp/>Store),<sp/>initialises</highlight></codeline>
-<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/>*<sp/>the<sp/>spdlog<sp/>thread<sp/>pool<sp/>(queue<sp/>size<sp/>THREADPOOL,<sp/>THREADS<sp/>workers),<sp/>builds</highlight></codeline>
-<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>console<sp/>and<sp/>rotating-file<sp/>sinks<sp/>with<sp/>a<sp/>shared<sp/>pattern,<sp/>adds</highlight></codeline>
-<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>only<sp/>the<sp/>sinks<sp/>enabled<sp/>by<sp/>`log_to_console`<sp/>/<sp/>`log_to_file`,<sp/>then</highlight></codeline>
-<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>registers<sp/>the<sp/>logger<sp/>as<sp/>&quot;Project<sp/>Valhalla&quot;<sp/>and<sp/>enables<sp/>Trantor&apos;s</highlight></codeline>
-<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>spdlog<sp/>forwarding.</highlight></codeline>
-<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@post<sp/>spdlog<sp/>has<sp/>a<sp/>registered<sp/>default<sp/>logger<sp/>and<sp/>Trantor<sp/>routes<sp/>to<sp/>it.</highlight></codeline>
-<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@warning<sp/>On<sp/>spdlog_ex<sp/>(e.g.<sp/>a<sp/>duplicate<sp/>registration)<sp/>the<sp/>error<sp/>is</highlight></codeline>
-<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/>*<sp/>printed<sp/>to<sp/>stdout<sp/>and<sp/>construction<sp/>succeeds<sp/>with<sp/>logger_<sp/>unset;<sp/>later</highlight></codeline>
-<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log()<sp/>calls<sp/>would<sp/>then<sp/>dereference<sp/>a<sp/>null<sp/>pointer.<sp/>Construct</highlight></codeline>
-<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/>*<sp/>once,<sp/>before<sp/>any<sp/>component<sp/>starts<sp/>logging.</highlight></codeline>
-<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><ref refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" kindref="member">Logger</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Constructor<sp/>does<sp/>all<sp/>the<sp/>setup<sp/>and<sp/>global<sp/>registration.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="89"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Forwards<sp/>a<sp/>Trantor<sp/>log<sp/>record<sp/>at<sp/>the<sp/>matching<sp/>spdlog<sp/>severity.</highlight></codeline>
-<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>message<sp/>Text<sp/>to<sp/>log.</highlight></codeline>
-<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>level<sp/>Trantor<sp/>severity;<sp/>kDebug/kInfo/kWarn/kError/kFatal<sp/>map</highlight></codeline>
-<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/>*<sp/>to<sp/>debug/info/warn/error/critical<sp/>respectively.</highlight></codeline>
-<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@note<sp/>Unrecognised<sp/>levels<sp/>are<sp/>silently<sp/>ignored.</highlight></codeline>
-<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLogger_1ad5bca94a0174ce580d9d36c807fbe107" kindref="member">log</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>message,</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trantor::Logger::LogLevel</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>level);<sp/><sp/></highlight><highlight class="comment">//<sp/>Maps<sp/>a<sp/>Trantor<sp/>level<sp/>to<sp/>the<sp/>matching<sp/>spdlog<sp/>call.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="101"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>The<sp/>shared<sp/>async<sp/>logger,<sp/>also<sp/>registered<sp/>globally<sp/>with<sp/>spdlog.</highlight></codeline>
-<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;spdlog::async_logger&gt;</highlight></codeline>
-<codeline lineno="105" refid="classLogger_1aeae0a292d6930a7c81a1a0c4ece5534c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLogger_1aeae0a292d6930a7c81a1a0c4ece5534c" kindref="member">logger_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Shared<sp/>ownership<sp/>of<sp/>the<sp/>logger<sp/>so<sp/>spdlog<sp/>and<sp/>this<sp/>class<sp/>can</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>both<sp/>hold<sp/>it.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="107"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Maximum<sp/>size<sp/>in<sp/>bytes<sp/>of<sp/>a<sp/>single<sp/>log<sp/>file<sp/>before<sp/>rotation.</highlight></codeline>
-<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="110" refid="classLogger_1ad7e6a73dfe5abb26f51a1502bcab57cf" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint64_t<sp/><ref refid="classLogger_1ad7e6a73dfe5abb26f51a1502bcab57cf" kindref="member">MAX_LOG_SIZE</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">uint64_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>1024<sp/>*<sp/>1024<sp/>*<sp/>5);<sp/><sp/></highlight><highlight class="comment">//<sp/>5<sp/>MiB:<sp/>when<sp/>the<sp/>active<sp/>file<sp/>reaches<sp/>this<sp/>size,</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>spdlog<sp/>starts<sp/>a<sp/>new<sp/>one.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="113"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="114"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Capacity<sp/>of<sp/>the<sp/>spdlog<sp/>asynchronous<sp/>message<sp/>queue.</highlight></codeline>
-<codeline lineno="115"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="116" refid="classLogger_1acae717b9d2cb047d186ee740872d53fe" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint64_t<sp/><ref refid="classLogger_1acae717b9d2cb047d186ee740872d53fe" kindref="member">THREADPOOL</ref><sp/>=</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>8;<sp/><sp/></highlight><highlight class="comment">//<sp/>Queue<sp/>holds<sp/>up<sp/>to<sp/>8<sp/>pending<sp/>messages<sp/>before<sp/>the<sp/>overflow<sp/>policy</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>kicks<sp/>in.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="119"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Number<sp/>of<sp/>spdlog<sp/>worker<sp/>threads<sp/>draining<sp/>the<sp/>queue.</highlight></codeline>
-<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="122" refid="classLogger_1a0f3eebbd1afb203f076c9791306ce250" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint64_t<sp/><ref refid="classLogger_1a0f3eebbd1afb203f076c9791306ce250" kindref="member">THREADS</ref><sp/>=</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>2;<sp/><sp/></highlight><highlight class="comment">//<sp/>Two<sp/>background<sp/>threads<sp/>write<sp/>messages<sp/>out,<sp/>so<sp/>callers<sp/>are<sp/>not</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>blocked<sp/>by<sp/>disk<sp/>I/O.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="125"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Number<sp/>of<sp/>rotated<sp/>log<sp/>files<sp/>retained<sp/>on<sp/>disk.</highlight></codeline>
-<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="128" refid="classLogger_1a9295d6101a19ddde8dee20236b86c89d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint64_t<sp/><ref refid="classLogger_1a9295d6101a19ddde8dee20236b86c89d" kindref="member">MAX_LOG_FILES</ref><sp/>=</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>3;<sp/><sp/></highlight><highlight class="comment">//<sp/>Keep<sp/>at<sp/>most<sp/>three<sp/>files;<sp/>older<sp/>ones<sp/>are<sp/>discarded<sp/>as<sp/>rotation</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>continues.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="132"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="133"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>ANSI<sp/>colours<sp/>used<sp/>when<sp/>formatting<sp/>log<sp/>patterns<sp/>and<sp/>messages.</highlight></codeline>
-<codeline lineno="134"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Named<sp/>colours<sp/>stored<sp/>compactly<sp/>as<sp/>8-bit</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>numbers;<sp/>used<sp/>to<sp/>build<sp/>ANSI<sp/>escape<sp/>sequences.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="137" refid="classLogger_1a87da4787054457b9c0bb0987dcd0030a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030a" kindref="member">Color</ref><sp/>:<sp/>std::uint8_t<sp/>{</highlight></codeline>
-<codeline lineno="138" refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aae2322fba4b3adff1c29dac4a307cc7a1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aae2322fba4b3adff1c29dac4a307cc7a1" kindref="member">Red</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bright<sp/>red,<sp/>used<sp/>for<sp/>errors.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="139" refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa6471477fc2170c1406cab151cc408fc3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa6471477fc2170c1406cab151cc408fc3" kindref="member">Green</ref>,<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bright<sp/>green,<sp/>used<sp/>for<sp/>success.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="140" refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa1f63a6ccfabbf1f73b71ea9a7bb20d11" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa1f63a6ccfabbf1f73b71ea9a7bb20d11" kindref="member">Yellow</ref>,<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bright<sp/>yellow,<sp/>used<sp/>for<sp/>warnings.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="141" refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aab132ee8c05459d4b4bb086aead371f73" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aab132ee8c05459d4b4bb086aead371f73" kindref="member">Blue</ref>,<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bold<sp/>blue,<sp/>used<sp/>for<sp/>informational<sp/>messages.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="142" refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa67f75574bad3cad98bd85ab4b31f928b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa67f75574bad3cad98bd85ab4b31f928b" kindref="member">Magenta</ref>,<sp/><sp/></highlight><highlight class="comment">//<sp/>Soft<sp/>purple,<sp/>used<sp/>for<sp/>debug<sp/>messages.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="143" refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa2452b8b4727e598db8da33ee8da920a1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa2452b8b4727e598db8da33ee8da920a1" kindref="member">White</ref>,<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bright<sp/>white,<sp/>used<sp/>for<sp/>general<sp/>messages.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="144" refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa0b21c9bcf230758908c7739987f8969c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa0b21c9bcf230758908c7739987f8969c" kindref="member">Reset</ref>,<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Resets<sp/>terminal<sp/>colour<sp/>back<sp/>to<sp/>normal.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="145" refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa6a0196682c2f0a57a8a0e2b9e2fc7aae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa6a0196682c2f0a57a8a0e2b9e2fc7aae" kindref="member">Cyan</ref><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bold<sp/>cyan,<sp/>used<sp/>for<sp/>optional<sp/>context.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/>};</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="147"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="148"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>ANSI<sp/>escape<sp/>sequence<sp/>for<sp/>a<sp/>log<sp/>colour.</highlight></codeline>
-<codeline lineno="149"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>color<sp/>Colour<sp/>to<sp/>look<sp/>up.</highlight></codeline>
-<codeline lineno="150"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>Escape<sp/>sequence<sp/>for<sp/>`color`.</highlight></codeline>
-<codeline lineno="151"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@throws<sp/>std::out_of_range<sp/>If<sp/>`color`<sp/>is<sp/>absent<sp/>from<sp/>the<sp/>internal<sp/>map</highlight></codeline>
-<codeline lineno="152"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(all<sp/>declared<sp/>enumerators<sp/>are<sp/>present).</highlight></codeline>
-<codeline lineno="153"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classLogger_1aaffbcae12c11b5435c8a1743c7402acc" kindref="member">get_color</ref>(</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030a" kindref="member">Color</ref><sp/>color);<sp/><sp/></highlight><highlight class="comment">//<sp/>Looks<sp/>up<sp/>the<sp/>terminal<sp/>escape<sp/>code<sp/>for<sp/>one<sp/>of<sp/>the</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>colours<sp/>above.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;spdlog/async_logger.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;spdlog/spdlog.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;trantor/utils/Logger.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Provides<sp/>fixed-size<sp/>integer<sp/>types<sp/>such<sp/>as<sp/>std::uint8_t<sp/>used<sp/>by<sp/>the<sp/>colour</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>enum.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::shared_ptr<sp/>is<sp/>used<sp/>to<sp/>own<sp/>the<sp/>logger.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>std::string<sp/>is<sp/>the<sp/>message<sp/>type<sp/>and<sp/>the<sp/>colour-map<sp/>value<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Logger<sp/>routes<sp/>Trantor<sp/>log<sp/>records<sp/>through<sp/>an<sp/>asynchronous<sp/>spdlog<sp/>backend.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="54"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>@class<sp/>Logger</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Routes<sp/>Drogon/Trantor<sp/>log<sp/>records<sp/>through<sp/>an<sp/>asynchronous<sp/>spdlog</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/>logger.</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/>@details<sp/>Owns<sp/>one<sp/>spdlog<sp/>`async_logger`<sp/>writing<sp/>to<sp/>a<sp/>rotating<sp/>file<sp/>sink</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>and/or<sp/>a<sp/>colour<sp/>console<sp/>sink,<sp/>selected<sp/>from<sp/>Configurator&apos;s<sp/>ServerConfig.</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Construction<sp/>initialises<sp/>spdlog&apos;s<sp/>shared<sp/>thread<sp/>pool,<sp/>registers<sp/>the</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger<sp/>by<sp/>name,<sp/>and<sp/>installs<sp/>it<sp/>as<sp/>both<sp/>spdlog&apos;s<sp/>default<sp/>logger<sp/>and</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Trantor&apos;s<sp/>spdlog<sp/>backend,<sp/>so<sp/>framework,<sp/>utility<sp/>and<sp/>application</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>records<sp/>all<sp/>use<sp/>the<sp/>same<sp/>sink<sp/>configuration.</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Intended<sp/>as<sp/>a<sp/>process-wide<sp/>singleton<sp/>created<sp/>by<sp/>Server<sp/>through</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`Store`;<sp/>spdlog<sp/>registration<sp/>is<sp/>global,<sp/>so<sp/>more<sp/>than<sp/>one<sp/>instance</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>would<sp/>try<sp/>to<sp/>register<sp/>the<sp/>same<sp/>name<sp/>twice.<sp/>Logging<sp/>itself<sp/>is</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>thread-safe<sp/>via<sp/>spdlog&apos;s<sp/>sinks<sp/>and<sp/>worker<sp/>pool.</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*<sp/>@note<sp/>The<sp/>file<sp/>path<sp/>is<sp/>`log_dir`<sp/>concatenated<sp/>with<sp/>`log_file`<sp/>from</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>ServerConfig;<sp/>rotation<sp/>occurs<sp/>at<sp/>MAX_LOG_SIZE<sp/>bytes<sp/>across</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*<sp/>MAX_LOG_FILES<sp/>files.</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/>*<sp/>@see<sp/>Message,<sp/>Server,<sp/>Configurator</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Owns<sp/>the<sp/>process-wide<sp/>spdlog<sp/>logger;<sp/>create<sp/>only<sp/>one<sp/>instance.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="classLogger" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" kindref="member">Logger</ref><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds,<sp/>configures<sp/>and<sp/>globally<sp/>registers<sp/>the<sp/>asynchronous<sp/>logger.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Reads<sp/>ServerConfig<sp/>from<sp/>Configurator<sp/>(via<sp/>Store),<sp/>initialises</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/>*<sp/>the<sp/>spdlog<sp/>thread<sp/>pool<sp/>(queue<sp/>size<sp/>THREADPOOL,<sp/>THREADS<sp/>workers),<sp/>builds</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>console<sp/>and<sp/>rotating-file<sp/>sinks<sp/>with<sp/>a<sp/>shared<sp/>pattern,<sp/>adds</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>only<sp/>the<sp/>sinks<sp/>enabled<sp/>by<sp/>`log_to_console`<sp/>/<sp/>`log_to_file`,<sp/>then</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>registers<sp/>the<sp/>logger<sp/>as<sp/>&quot;Project<sp/>Valhalla&quot;<sp/>and<sp/>enables<sp/>Trantor&apos;s</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>spdlog<sp/>forwarding.</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@post<sp/>spdlog<sp/>has<sp/>a<sp/>registered<sp/>default<sp/>logger<sp/>and<sp/>Trantor<sp/>routes<sp/>to<sp/>it.</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@warning<sp/>On<sp/>spdlog_ex<sp/>(e.g.<sp/>a<sp/>duplicate<sp/>registration)<sp/>the<sp/>error<sp/>is</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/>*<sp/>printed<sp/>to<sp/>stdout<sp/>and<sp/>construction<sp/>succeeds<sp/>with<sp/>logger_<sp/>unset;<sp/>later</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log()<sp/>calls<sp/>would<sp/>then<sp/>dereference<sp/>a<sp/>null<sp/>pointer.<sp/>Construct</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/>*<sp/>once,<sp/>before<sp/>any<sp/>component<sp/>starts<sp/>logging.</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><ref refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" kindref="member">Logger</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Constructor<sp/>does<sp/>all<sp/>the<sp/>setup<sp/>and<sp/>global<sp/>registration.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Forwards<sp/>a<sp/>Trantor<sp/>log<sp/>record<sp/>at<sp/>the<sp/>matching<sp/>spdlog<sp/>severity.</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>message<sp/>Text<sp/>to<sp/>log.</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>level<sp/>Trantor<sp/>severity;<sp/>kDebug/kInfo/kWarn/kError/kFatal<sp/>map</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/>*<sp/>to<sp/>debug/info/warn/error/critical<sp/>respectively.</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@note<sp/>Unrecognised<sp/>levels<sp/>are<sp/>silently<sp/>ignored.</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLogger_1ad5bca94a0174ce580d9d36c807fbe107" kindref="member">log</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>message,</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trantor::Logger::LogLevel</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>level);<sp/><sp/></highlight><highlight class="comment">//<sp/>Maps<sp/>a<sp/>Trantor<sp/>level<sp/>to<sp/>the<sp/>matching<sp/>spdlog<sp/>call.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>The<sp/>shared<sp/>async<sp/>logger,<sp/>also<sp/>registered<sp/>globally<sp/>with<sp/>spdlog.</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;spdlog::async_logger&gt;</highlight></codeline>
+<codeline lineno="109" refid="classLogger_1aeae0a292d6930a7c81a1a0c4ece5534c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLogger_1aeae0a292d6930a7c81a1a0c4ece5534c" kindref="member">logger_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Shared<sp/>ownership<sp/>of<sp/>the<sp/>logger<sp/>so<sp/>spdlog<sp/>and<sp/>this<sp/>class<sp/>can</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>both<sp/>hold<sp/>it.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Maximum<sp/>size<sp/>in<sp/>bytes<sp/>of<sp/>a<sp/>single<sp/>log<sp/>file<sp/>before<sp/>rotation.</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="classLogger_1ad7e6a73dfe5abb26f51a1502bcab57cf" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint64_t<sp/><ref refid="classLogger_1ad7e6a73dfe5abb26f51a1502bcab57cf" kindref="member">MAX_LOG_SIZE</ref><sp/>=</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">uint64_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(1024<sp/>*<sp/>1024<sp/>*<sp/>5);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>5<sp/>MiB:<sp/>when<sp/>the<sp/>active<sp/>file<sp/>reaches<sp/>this<sp/>size,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>spdlog<sp/>starts<sp/>a<sp/>new<sp/>one.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Capacity<sp/>of<sp/>the<sp/>spdlog<sp/>asynchronous<sp/>message<sp/>queue.</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="classLogger_1acae717b9d2cb047d186ee740872d53fe" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint64_t<sp/><ref refid="classLogger_1acae717b9d2cb047d186ee740872d53fe" kindref="member">THREADPOOL</ref><sp/>=<sp/>8;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Queue<sp/>holds<sp/>up<sp/>to<sp/>8<sp/>pending<sp/>messages<sp/>before<sp/>the<sp/>overflow<sp/>policy</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>kicks<sp/>in.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Number<sp/>of<sp/>spdlog<sp/>worker<sp/>threads<sp/>draining<sp/>the<sp/>queue.</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="classLogger_1a0f3eebbd1afb203f076c9791306ce250" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint64_t<sp/><ref refid="classLogger_1a0f3eebbd1afb203f076c9791306ce250" kindref="member">THREADS</ref><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Two<sp/>background<sp/>threads<sp/>write<sp/>messages<sp/>out,<sp/>so<sp/>callers<sp/>are<sp/>not</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>blocked<sp/>by<sp/>disk<sp/>I/O.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Number<sp/>of<sp/>rotated<sp/>log<sp/>files<sp/>retained<sp/>on<sp/>disk.</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="classLogger_1a9295d6101a19ddde8dee20236b86c89d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint64_t<sp/><ref refid="classLogger_1a9295d6101a19ddde8dee20236b86c89d" kindref="member">MAX_LOG_FILES</ref><sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Keep<sp/>at<sp/>most<sp/>three<sp/>files;<sp/>older<sp/>ones<sp/>are<sp/>discarded<sp/>as<sp/>rotation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>continues.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>ANSI<sp/>colours<sp/>used<sp/>when<sp/>formatting<sp/>log<sp/>patterns<sp/>and<sp/>messages.</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Named<sp/>colours<sp/>stored<sp/>compactly<sp/>as<sp/>8-bit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>numbers;<sp/>used<sp/>to<sp/>build<sp/>ANSI<sp/>escape<sp/>sequences.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="classLogger_1a87da4787054457b9c0bb0987dcd0030a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030a" kindref="member">Color</ref><sp/>:<sp/>std::uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="143" refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aaee38e4d5dd68c4e440825018d549cb47" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Red,<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bright<sp/>red,<sp/>used<sp/>for<sp/>errors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aad382816a3cbeed082c9e216e7392eed1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Green,<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bright<sp/>green,<sp/>used<sp/>for<sp/>success.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145" refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa51e6cd92b6c45f9affdc158ecca2b8b8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Yellow,<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bright<sp/>yellow,<sp/>used<sp/>for<sp/>warnings.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa9594eec95be70e7b1710f730fdda33d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Blue,<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bold<sp/>blue,<sp/>used<sp/>for<sp/>informational<sp/>messages.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aab91cc2c1416fcca942b61c7ac5b1a9ac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Magenta,<sp/><sp/></highlight><highlight class="comment">//<sp/>Soft<sp/>purple,<sp/>used<sp/>for<sp/>debug<sp/>messages.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148" refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa25a81701fbfa4a1efdf660a950c1d006" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>White,<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bright<sp/>white,<sp/>used<sp/>for<sp/>general<sp/>messages.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149" refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa526d688f37a86d3c3f27d0c5016eb71d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Reset,<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Resets<sp/>terminal<sp/>colour<sp/>back<sp/>to<sp/>normal.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa023c239d2f2538f140a20e72c7b73f20" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Cyan,<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bold<sp/>cyan,<sp/>used<sp/>for<sp/>optional<sp/>context.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/>};</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>ANSI<sp/>escape<sp/>sequence<sp/>for<sp/>a<sp/>log<sp/>colour.</highlight></codeline>
+<codeline lineno="154"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>color<sp/>Colour<sp/>to<sp/>look<sp/>up.</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>Escape<sp/>sequence<sp/>for<sp/>`color`.</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@throws<sp/>std::out_of_range<sp/>If<sp/>`color`<sp/>is<sp/>absent<sp/>from<sp/>the<sp/>internal<sp/>map</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(all<sp/>declared<sp/>enumerators<sp/>are<sp/>present).</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classLogger_1aaffbcae12c11b5435c8a1743c7402acc" kindref="member">get_color</ref>(</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030a" kindref="member">Color</ref><sp/>color);<sp/><sp/></highlight><highlight class="comment">//<sp/>Looks<sp/>up<sp/>the<sp/>terminal<sp/>escape<sp/>code<sp/>for<sp/>one<sp/>of<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>colours<sp/>above.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>A<sp/>read-only<sp/>map<sp/>from<sp/>`Color`<sp/>to<sp/>ANSI<sp/>escape<sp/>sequence.</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="classLogger_1af27aa5828b228b1e400131f2a0cc359e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::unordered_map&lt;Logger::Color,<sp/>std::string&gt;<sp/><ref refid="classLogger_1af27aa5828b228b1e400131f2a0cc359e" kindref="member">COLOR_MAP</ref>;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="src/utils/Logger/logger.hpp"/>
+    <location file="libs/logger/logger.hpp"/>
   </compounddef>
 </doxygen>

@@ -19,26 +19,94 @@
     <includes local="no">unordered_map</includes>
     <includes local="no">unordered_set</includes>
     <includes local="no">utility</includes>
-    <includes local="yes">message/message.hpp</includes>
+    <includes refid="message_8hpp" local="yes">message/message.hpp</includes>
     <incdepgraph>
+      <node id="18">
+        <label>configurator/configurator.hpp</label>
+        <link refid="configurator_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>defaults.hpp</label>
+        <link refid="defaults_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>envloader/envloader.hpp</label>
+        <link refid="envloader_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>envvars/envvars.hpp</label>
+        <link refid="envvars_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>message/message.hpp</label>
+        <link refid="message_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
       <node id="1">
         <label>src/gatekeeper/dosdetector/dosdetector.cpp</label>
         <link refid="dosdetector_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -46,19 +114,19 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -96,10 +164,10 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="19">
+      <node id="29">
         <label>store/store.hpp</label>
         <link refid="store_8hpp"/>
         <childnode refid="4" relation="include">
@@ -110,16 +178,16 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="24">
+      <node id="32">
         <label>algorithm</label>
       </node>
       <node id="4">
@@ -131,23 +199,23 @@
       <node id="6">
         <label>condition_variable</label>
       </node>
-      <node id="18">
-        <label>configurator/configurator.hpp</label>
-      </node>
       <node id="7">
         <label>cstdint</label>
       </node>
       <node id="8">
         <label>deque</label>
       </node>
-      <node id="25">
+      <node id="24">
         <label>exception</label>
       </node>
-      <node id="22">
+      <node id="19">
         <label>fmt/core.h</label>
       </node>
-      <node id="23">
+      <node id="20">
         <label>fmt/format.h</label>
+      </node>
+      <node id="21">
+        <label>fmt/ranges.h</label>
       </node>
       <node id="9">
         <label>functional</label>
@@ -158,19 +226,16 @@
       <node id="11">
         <label>memory</label>
       </node>
-      <node id="29">
-        <label>message/message.hpp</label>
-      </node>
       <node id="12">
         <label>mutex</label>
       </node>
       <node id="13">
         <label>optional</label>
       </node>
-      <node id="26">
+      <node id="33">
         <label>regex</label>
       </node>
-      <node id="20">
+      <node id="30">
         <label>stdexcept</label>
       </node>
       <node id="14">
@@ -179,10 +244,16 @@
       <node id="15">
         <label>string_view</label>
       </node>
-      <node id="27">
+      <node id="34">
         <label>thread</label>
       </node>
-      <node id="21">
+      <node id="27">
+        <label>trantor/utils/Logger.h</label>
+      </node>
+      <node id="22">
+        <label>type_traits</label>
+      </node>
+      <node id="31">
         <label>typeindex</label>
       </node>
       <node id="16">
@@ -191,7 +262,7 @@
       <node id="17">
         <label>unordered_set</label>
       </node>
-      <node id="28">
+      <node id="35">
         <label>utility</label>
       </node>
       <node id="3">
@@ -203,7 +274,7 @@
     </briefdescription>
     <detaileddescription>
 <para>This file contains the working logic of the per-IP abuse detector. The constructors turn configuration strings (regular expressions, CIDR ranges, wildcards, exact IPs) into small predicate functions and launch a background cleanup thread. is_dos_attack() is the main entry point: it checks the static lists first, then the dynamic rate/ban state, and records each request so repeat offenders can be escalated. A separate helper hashes the request into a fingerprint, and several mutex-guarded maps hold the timestamps and block/unblock times.</para>
-<para>WHY THIS FILE MATTERS IN THE SERVER: This file is the actual &quot;bouncer&quot; behind Filters::RateLimit. Every request that reaches the rate-limit filter ends up in is_dos_attack(), which returns a Status the filter turns into an allow or an HTTP error. It calls into Configurator (read at construction), xxHash (to fingerprint requests) and Message (for logging). Without this implementation the detector class in the header would have no behaviour, and the server would be unable to detect or slow down flooding and brute-force clients.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: This file is the actual &quot;bouncer&quot; behind Filters::RateLimit. Every request that reaches the rate-limit filter ends up in is_dos_attack(), which returns a Status the filter turns into an allow or an HTTP error. It calls into <ref refid="classConfigurator" kindref="compound">Configurator</ref> (read at construction), xxHash (to fingerprint requests) and <ref refid="classMessage" kindref="compound">Message</ref> (for logging). Without this implementation the detector class in the header would have no behaviour, and the server would be unable to detect or slow down flooding and brute-force clients.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
 <listitem><para>Mutex/lock_guard (automatic lock that unlocks when the scope ends): <ulink url="https://en.cppreference.com/w/cpp/thread/lock_guard">https://en.cppreference.com/w/cpp/thread/lock_guard</ulink></para>
 </listitem><listitem><para>Condition variable / wait_for (sleep until woken or a timeout): <ulink url="https://en.cppreference.com/w/cpp/thread/condition_variable">https://en.cppreference.com/w/cpp/thread/condition_variable</ulink></para>
@@ -294,7 +365,7 @@
 <codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::move<sp/>for<sp/>config/clock<sp/>in<sp/>the<sp/>test<sp/>constructor.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Message::ErrorMessage<sp/>/<sp/>CriticalMessage<sp/>for<sp/>logging<sp/>failures.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;message/message.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">message/message.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="73"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="74"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Production<sp/>constructor:<sp/>compiles<sp/>configured<sp/>matchers<sp/>and<sp/>starts<sp/>the</highlight></codeline>
@@ -317,10 +388,10 @@
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDOSDetector_1a85a29786faddab10befa275001efafb1" kindref="member">async_task_clean_</ref><sp/>=</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::async(std::launch::async,<sp/>&amp;<ref refid="classDOSDetector_1ada39f5488bee5dc50c8b1d43759e68b8" kindref="member">DOSDetector::cleanUpTask</ref>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::ErrorMessage(</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>a<sp/>short<sp/>user-facing<sp/>error.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Exception<sp/>during<sp/>DOSDetector<sp/>initialization.&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>underlying<sp/>exception<sp/>text<sp/>for<sp/>debugging.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="99"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="100"><highlight class="normal">}</highlight></codeline>
@@ -331,7 +402,7 @@
 <codeline lineno="105"><highlight class="comment"><sp/>*<sp/>valid<sp/>independently<sp/>of<sp/>the<sp/>caller&apos;s<sp/>lifetime.<sp/>config:<sp/>Fully<sp/>specified</highlight></codeline>
 <codeline lineno="106"><highlight class="comment"><sp/>*<sp/>detector<sp/>configuration.<sp/>clock:<sp/>Clock<sp/>source<sp/>for<sp/>all<sp/>timing<sp/>decisions.</highlight></codeline>
 <codeline lineno="107"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="108" refid="classDOSDetector_1a02b5e5995faaeca724ecf87bdeb6601f" refkind="member"><highlight class="normal"><ref refid="classDOSDetector_1abd16610d356d1e768aff5a1b4897c65e" kindref="member">DOSDetector::DOSDetector</ref>(Configurator::DOSDetectorConfig<sp/>config,</highlight></codeline>
+<codeline lineno="108" refid="classDOSDetector_1a02b5e5995faaeca724ecf87bdeb6601f" refkind="member"><highlight class="normal"><ref refid="classDOSDetector_1abd16610d356d1e768aff5a1b4897c65e" kindref="member">DOSDetector::DOSDetector</ref>(<ref refid="classConfigurator_1a73f1bdb52e6a9845bd21b01baf868205" kindref="member">Configurator::DOSDetectorConfig</ref><sp/>config,</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDOSDetector_1ac7575b7d29bfc8bd94cb54bb6321799a" kindref="member">ClockFn</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>clock)</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Own<sp/>the<sp/>config<sp/>so<sp/>the<sp/>reference<sp/>stays<sp/>valid;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>take<sp/>the<sp/>injected<sp/>clock.</highlight><highlight class="normal"></highlight></codeline>
@@ -348,10 +419,10 @@
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="classDOSDetector_1ada39f5488bee5dc50c8b1d43759e68b8" kindref="member">DOSDetector::cleanUpTask</ref>,</highlight></codeline>
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>cleanup<sp/>with<sp/>the<sp/>injected<sp/>clock.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="124"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::ErrorMessage(</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>initialization<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Exception<sp/>during<sp/>DOSDetector<sp/>initialization.&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="130"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
@@ -380,10 +451,10 @@
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>no<sp/>code<sp/>touches<sp/>this<sp/>object<sp/>afterwards.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::ErrorMessage(</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
 <codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Exception<sp/>during<sp/>DOSDetector<sp/>destruction.&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>a<sp/>shutdown</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>problem.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(e.what());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="161"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="162"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="163"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
@@ -430,8 +501,8 @@
 <codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classDOSDetector_1aee42ffb7cac8307be5d3846f5faf7b3c" kindref="member">processRequest</ref>(request);</highlight></codeline>
 <codeline lineno="205"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
 <codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::ErrorMessage(</highlight><highlight class="stringliteral">&quot;Failure<sp/>in<sp/>is_dos_attack.&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight><highlight class="stringliteral">&quot;Failure<sp/>in<sp/>is_dos_attack.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56abb230e74fde1ec798a86be9890e48949" kindref="member">Status::ERROR</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Fail<sp/>safe:<sp/>signal<sp/>an<sp/>internal<sp/>error<sp/>to<sp/>the</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>filter.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="211"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -562,9 +633,9 @@
 <codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>spurious<sp/>wakeups.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="338"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::ErrorMessage(</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
 <codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Exception<sp/>in<sp/>cleanUpTask.&quot;</highlight><highlight class="normal">);<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>a<sp/>cleanup<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="342"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="343"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="344"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
@@ -604,10 +675,10 @@
 <codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hashed_key);<sp/><sp/></highlight><highlight class="comment">//<sp/>Turn<sp/>the<sp/>number<sp/>into<sp/>a<sp/>string<sp/>so<sp/>it<sp/>can</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>be<sp/>a<sp/>map<sp/>key.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="380"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::ErrorMessage(</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
 <codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Exception<sp/>in<sp/>generateRequestFingerprint.&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>hashing</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(e.what());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Signal<sp/>that<sp/>no<sp/>fingerprint<sp/>could<sp/>be<sp/>made.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="386"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="387"><highlight class="normal">}</highlight></codeline>
@@ -731,9 +802,9 @@
 <codeline lineno="505"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>matcher<sp/>that<sp/>accepts<sp/>means<sp/>whitelisted.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="506"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>matcher<sp/>accepted.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="507"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="508"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::ErrorMessage(</highlight></codeline>
+<codeline lineno="508"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
 <codeline lineno="509"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Exception<sp/>in<sp/>isWhitelisted&quot;</highlight><highlight class="normal">);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>matcher<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="510"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="510"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="511"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Fail<sp/>closed:<sp/>treat<sp/>as<sp/>not<sp/>whitelisted.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="512"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="513"><highlight class="normal">}</highlight></codeline>
@@ -751,9 +822,9 @@
 <codeline lineno="525"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>accepting<sp/>matcher<sp/>means<sp/>blacklisted.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="526"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>matcher<sp/>accepted.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="527"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="528"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::ErrorMessage(</highlight></codeline>
+<codeline lineno="528"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
 <codeline lineno="529"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Exception<sp/>in<sp/>isBlacklisted.&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>matcher<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="530"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="530"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="531"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Fail<sp/>closed:<sp/>do<sp/>not<sp/>block<sp/>on<sp/>an<sp/>internal<sp/>error.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="532"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="533"><highlight class="normal">}</highlight></codeline>
@@ -770,8 +841,8 @@
 <codeline lineno="544"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDOSDetector_1a398b33ad9f7f4cee2864295fa2181e17" kindref="member">ban_mutex_</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Ask<sp/>the<sp/>shared<sp/>helper<sp/>with<sp/>the<sp/>ban<sp/>map</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="545"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>its<sp/>lock.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="546"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="547"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::ErrorMessage(</highlight><highlight class="stringliteral">&quot;Exception<sp/>in<sp/>isBanned.&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>lookup<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="548"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(e.what());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="547"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight><highlight class="stringliteral">&quot;Exception<sp/>in<sp/>isBanned.&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>lookup<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="548"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="549"><highlight class="normal"></highlight></codeline>
 <codeline lineno="550"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Fail<sp/>closed:<sp/>do<sp/>not<sp/>treat<sp/>an<sp/>error<sp/>as<sp/>a<sp/>ban.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="551"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -789,9 +860,9 @@
 <codeline lineno="563"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDOSDetector_1acbb2b440f8a6672b17d891e67bdfd645" kindref="member">ratelimit_mutex_</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>the<sp/>shared<sp/>helper<sp/>with<sp/>the</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="564"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>rate-limit<sp/>map<sp/>and<sp/>lock.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="565"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="566"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::ErrorMessage(</highlight></codeline>
+<codeline lineno="566"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
 <codeline lineno="567"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;Exception<sp/>in<sp/>isRateLimited.&quot;</highlight><highlight class="normal">));<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>lookup<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="568"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(e.what());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="568"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="569"><highlight class="normal"></highlight></codeline>
 <codeline lineno="570"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Fail<sp/>closed.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="571"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -835,8 +906,8 @@
 <codeline lineno="609"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="610"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>entry<sp/>(or<sp/>it<sp/>was<sp/>expired):<sp/>not<sp/>blocked.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="611"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="612"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::ErrorMessage(</highlight><highlight class="stringliteral">&quot;Exception<sp/>in<sp/>checkStatus.&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>lookup<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="613"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(e.what());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="612"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight><highlight class="stringliteral">&quot;Exception<sp/>in<sp/>checkStatus.&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>lookup<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="613"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="614"><highlight class="normal"></highlight></codeline>
 <codeline lineno="615"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Fail<sp/>closed<sp/>on<sp/>error.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="616"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -865,14 +936,14 @@
 <codeline lineno="639"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Defensive:<sp/>if<sp/>there<sp/>were<sp/>no<sp/>IP<sp/>we<sp/>could<sp/>not<sp/>key<sp/>the</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="640"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>counters.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="641"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!remote_ip)<sp/>{</highlight></codeline>
-<codeline lineno="642"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Message::ErrorMessage(</highlight></codeline>
+<codeline lineno="642"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
 <codeline lineno="643"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>get<sp/>ip<sp/>from<sp/>request.&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>problem.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="644"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56abb230e74fde1ec798a86be9890e48949" kindref="member">Status::ERROR</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Cannot<sp/>classify.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="645"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="646"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fmt::print(&quot;Request<sp/>from<sp/>{}\n&quot;,<sp/>remote_ip.value());</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="647"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Hashing<sp/>failed.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="648"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!request_fingerprint)<sp/>{</highlight></codeline>
-<codeline lineno="649"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Message::ErrorMessage(</highlight></codeline>
+<codeline lineno="649"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
 <codeline lineno="650"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>problem.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="651"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>generate<sp/>request<sp/>fingerprint.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="652"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56abb230e74fde1ec798a86be9890e48949" kindref="member">Status::ERROR</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Cannot<sp/>classify.</highlight><highlight class="normal"></highlight></codeline>
@@ -943,9 +1014,9 @@
 <codeline lineno="717"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>request_fingerprint.value());</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="718"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="719"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="720"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::ErrorMessage(</highlight></codeline>
+<codeline lineno="720"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
 <codeline lineno="721"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Failure<sp/>in<sp/>processRequest.&quot;</highlight><highlight class="normal">);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>unexpected<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="722"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="722"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="723"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56abb230e74fde1ec798a86be9890e48949" kindref="member">Status::ERROR</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fail<sp/>safe.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="724"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="725"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56ae4f0885433f4027329da7e965b38a756" kindref="member">Status::ALLOWED</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>threshold<sp/>exceeded:<sp/>the<sp/>request<sp/>may<sp/>proceed.</highlight><highlight class="normal"></highlight></codeline>

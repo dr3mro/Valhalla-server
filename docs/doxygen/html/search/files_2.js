@@ -16,8 +16,10 @@ var searchData=
   ['communicate_2ecpp_13',['communicate.cpp',['../communicate_8cpp.html',1,'']]],
   ['communicate_2ehpp_14',['communicate.hpp',['../communicate_8hpp.html',1,'']]],
   ['concepts_2ehpp_15',['concepts.hpp',['../concepts_8hpp.html',1,'']]],
-  ['contributing_2emd_16',['CONTRIBUTING.md',['../CONTRIBUTING_8md.html',1,'']]],
-  ['controller_2ehpp_17',['controller.hpp',['../controller_8hpp.html',1,'']]],
-  ['cors_2ehpp_18',['cors.hpp',['../cors_8hpp.html',1,'']]],
-  ['cors_5ftokens_2ehpp_19',['cors_tokens.hpp',['../cors__tokens_8hpp.html',1,'']]]
+  ['configurator_2ecpp_16',['configurator.cpp',['../configurator_8cpp.html',1,'']]],
+  ['configurator_2ehpp_17',['configurator.hpp',['../configurator_8hpp.html',1,'']]],
+  ['contributing_2emd_18',['CONTRIBUTING.md',['../CONTRIBUTING_8md.html',1,'']]],
+  ['controller_2ehpp_19',['controller.hpp',['../controller_8hpp.html',1,'']]],
+  ['cors_2ehpp_20',['cors.hpp',['../cors_8hpp.html',1,'']]],
+  ['cors_5ftokens_2ehpp_21',['cors_tokens.hpp',['../cors__tokens_8hpp.html',1,'']]]
 ];

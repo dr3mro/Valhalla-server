@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.18.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Valhalla Server: src/configurator/envloader/envvars/envvars.cpp Source File</title>
+<title>Valhalla Server: libs/configurator/envloader/envvars/envvars.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="codefolding.js"></script>
@@ -155,55 +155,58 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('envvars_8cpp_s
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">// Provides std::getenv and setenv, the C functions that access the process</span></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">// environment.</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">// Provides Message::ErrorMessage used to log a failed set operation.</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#include &quot;<a class="code" href="message_8hpp.html">message/message.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">// Returns the raw value or an empty optional when</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">// the variable is not set.</span></div>
-<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classEnvVars.html#a84ea9a96f8f19c0d80cec58da34d7861">   45</a></span>std::optional&lt;std::string&gt; <a class="code hl_function" href="classEnvVars.html#a84ea9a96f8f19c0d80cec58da34d7861">EnvVars::get</a>(<span class="keyword">const</span> std::string&amp; key) {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="comment">// Retrieve the value associated with the environment variable key</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* _key = key.c_str();  <span class="comment">// The C API needs a null-terminated char</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                                   <span class="comment">// array, so convert the C++ string to one.</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* value =</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>      std::getenv(_key);  <span class="comment">// Ask the OS for the value; it returns nullptr when</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                          <span class="comment">// the name does not exist.</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <span class="comment">// If the value exists, copy it into a std::string that outlives this call</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  <span class="comment">// A non-null pointer means the variable is present;</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <span class="comment">// otherwise it is absent.</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  <span class="keywordflow">if</span> (value != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">return</span> std::string(</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        value);  <span class="comment">// Copy the C string into a C++ string so the caller owns</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                 <span class="comment">// the memory after getenv&#39;s buffer may change.</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  }</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="comment">// Otherwise, return an empty optional</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keywordflow">return</span> std::nullopt;  <span class="comment">// Signal &quot;not set&quot; explicitly, which is clearer than</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                        <span class="comment">// returning an empty string.</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &lt;optional&gt;</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">// Provides Message::ErrorMessage used to log a failed set operation.</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &quot;<a class="code" href="message_8hpp.html">message/message.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// Returns the raw value or an empty optional when</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">// the variable is not set.</span></div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classEnvVars.html#a84ea9a96f8f19c0d80cec58da34d7861">   47</a></span>std::optional&lt;std::string&gt; <a class="code hl_function" href="classEnvVars.html#a84ea9a96f8f19c0d80cec58da34d7861">EnvVars::get</a>(<span class="keyword">const</span> std::string&amp; key) {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="comment">// Retrieve the value associated with the environment variable key</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* _key  = key.c_str();  <span class="comment">// The C API needs a null-terminated char</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                                    <span class="comment">// array, so convert the C++ string to one.</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keyword">const</span> <span class="keywordtype">char</span>* value = std::getenv(_key);  <span class="comment">// NOLINT</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="comment">// Ask the OS for the value; it returns nullptr</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <span class="comment">//  when the name does not exist.</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <span class="comment">// If the value exists, copy it into a std::string that outlives this call</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  <span class="comment">// A non-null pointer means the variable is present;</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="comment">// otherwise it is absent.</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="keywordflow">if</span> (value != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordflow">return</span> std::string(</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        value);  <span class="comment">// Copy the C string into a C++ string so the caller owns</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                 <span class="comment">// the memory after getenv&#39;s buffer may change.</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <span class="comment">// Otherwise, return an empty optional</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <span class="keywordflow">return</span> std::nullopt;  <span class="comment">// Signal &quot;not set&quot; explicitly, which is clearer than</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                        <span class="comment">// returning an empty string.</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
 </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">// Stores value under key; used by tests to fake</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">// settings, not on the request path.</span></div>
-<div class="foldopen" id="foldopen00069" data-start="{" data-end="}">
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classEnvVars.html#a711d3932ab9abc4998c8acbb454f36a8">   69</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classEnvVars.html#a711d3932ab9abc4998c8acbb454f36a8">EnvVars::set</a>(<span class="keyword">const</span> std::string&amp; key, <span class="keyword">const</span> std::string&amp; value) {</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  <span class="comment">// Overwrite = 1 so repeated calls replace the existing value rather than</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <span class="comment">// being ignored.</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  <span class="comment">// The OS returns 0 on success; any other result means the write</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  <span class="comment">// failed (bad name, no memory, etc.).</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  <span class="keywordflow">if</span> (setenv(key.c_str(), value.c_str(), 1) != 0) {</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <a class="code hl_function" href="classMessage.html#a1fd9a043b58e6adceb8d111bc891feba">Message::ErrorMessage</a>(</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        fmt::format(<span class="stringliteral">&quot;Failed to set environment variable {}.&quot;</span>,</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                    key));  <span class="comment">// Log the failure with the variable name; do not</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                            <span class="comment">// throw so callers keep running.</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>  }</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>}</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">// Stores value under key; used by tests to fake</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">// settings, not on the request path.</span></div>
+<div class="foldopen" id="foldopen00071" data-start="{" data-end="}">
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classEnvVars.html#a711d3932ab9abc4998c8acbb454f36a8">   71</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classEnvVars.html#a711d3932ab9abc4998c8acbb454f36a8">EnvVars::set</a>(<span class="keyword">const</span> std::string&amp; key,</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                  <span class="keyword">const</span> std::string&amp; value) {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  <span class="comment">// Overwrite = 1 so repeated calls replace the existing value rather than</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  <span class="comment">// being ignored.</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  <span class="comment">// The OS returns 0 on success; any other result means the write</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  <span class="comment">// failed (bad name, no memory, etc.).</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="keywordflow">if</span> (setenv(key.c_str(), value.c_str(), 1) != 0) {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <a class="code hl_function" href="classMessage.html#a1fd9a043b58e6adceb8d111bc891feba">Message::ErrorMessage</a>(</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        fmt::format(<span class="stringliteral">&quot;Failed to set environment variable {}.&quot;</span>,</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                    key));  <span class="comment">// Log the failure with the variable name; do not</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                            <span class="comment">// throw so callers keep running.</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  }</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>}</div>
 </div>
-<div class="ttc" id="aclassEnvVars_html_a711d3932ab9abc4998c8acbb454f36a8"><div class="ttname"><a href="classEnvVars.html#a711d3932ab9abc4998c8acbb454f36a8">EnvVars::set</a></div><div class="ttdeci">static void set(const std::string &amp;key, const std::string &amp;value)</div><div class="ttdoc">Sets (or overwrites) an environment variable in the current process.</div><div class="ttdef"><b>Definition</b> <a href="#l00069">envvars.cpp:69</a></div></div>
-<div class="ttc" id="aclassEnvVars_html_a84ea9a96f8f19c0d80cec58da34d7861"><div class="ttname"><a href="classEnvVars.html#a84ea9a96f8f19c0d80cec58da34d7861">EnvVars::get</a></div><div class="ttdeci">static std::optional&lt; std::string &gt; get(const std::string &amp;key)</div><div class="ttdoc">Reads a raw environment variable.</div><div class="ttdef"><b>Definition</b> <a href="#l00045">envvars.cpp:45</a></div></div>
+<div class="ttc" id="aclassEnvVars_html_a711d3932ab9abc4998c8acbb454f36a8"><div class="ttname"><a href="classEnvVars.html#a711d3932ab9abc4998c8acbb454f36a8">EnvVars::set</a></div><div class="ttdeci">static void set(const std::string &amp;key, const std::string &amp;value)</div><div class="ttdoc">Sets (or overwrites) an environment variable in the current process.</div><div class="ttdef"><b>Definition</b> <a href="#l00071">envvars.cpp:71</a></div></div>
+<div class="ttc" id="aclassEnvVars_html_a84ea9a96f8f19c0d80cec58da34d7861"><div class="ttname"><a href="classEnvVars.html#a84ea9a96f8f19c0d80cec58da34d7861">EnvVars::get</a></div><div class="ttdeci">static std::optional&lt; std::string &gt; get(const std::string &amp;key)</div><div class="ttdoc">Reads a raw environment variable.</div><div class="ttdef"><b>Definition</b> <a href="#l00047">envvars.cpp:47</a></div></div>
 <div class="ttc" id="aclassMessage_html_a1fd9a043b58e6adceb8d111bc891feba"><div class="ttname"><a href="classMessage.html#a1fd9a043b58e6adceb8d111bc891feba">Message::ErrorMessage</a></div><div class="ttdeci">static void ErrorMessage(const std::string &amp;status_message)</div><div class="ttdoc">Logs a message at error severity.</div><div class="ttdef"><b>Definition</b> <a href="message_8cpp_source.html#l00054">message.cpp:54</a></div></div>
 <div class="ttc" id="aenvvars_8hpp_html"><div class="ttname"><a href="envvars_8hpp.html">envvars.hpp</a></div><div class="ttdoc">Thin protected wrapper around the process environment (getenv/setenv).</div></div>
 <div class="ttc" id="amessage_8hpp_html"><div class="ttname"><a href="message_8hpp.html">message.hpp</a></div><div class="ttdoc">Static helpers for coloured console/status logging.</div></div>
@@ -213,7 +216,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('envvars_8cpp_s
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_f855cd1749e901f58634957bc935d1ef.html">configurator</a></li><li class="navelem"><a href="dir_ac9adb22fe21f493e7e53f211daaa8f8.html">envloader</a></li><li class="navelem"><a href="dir_108e78e2e059a0753235d44222a7ac25.html">envvars</a></li><li class="navelem"><a href="envvars_8cpp.html">envvars.cpp</a></li>
+    <li class="navelem"><a href="dir_6719ab1f1f7655efc2fa43f7eb574fd1.html">libs</a></li><li class="navelem"><a href="dir_21095bce345e24e4e3d4860c8c3571a6.html">configurator</a></li><li class="navelem"><a href="dir_629e5eafe7b51b5c70e97b50670b4ff5.html">envloader</a></li><li class="navelem"><a href="dir_39d7e4083dd9b259e863d83effc86063.html">envvars</a></li><li class="navelem"><a href="envvars_8cpp.html">envvars.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
   </ul>
 </div>

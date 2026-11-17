@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('index.html',''
 <p><b>Status:</b> Active development. The API surface and data model are still evolving. </p>
 </blockquote>
 <blockquote class="doxtable">
-<p><b>Documentation &amp; code architecture:</b> The generated <a href="https://dr3mro.github.io/Valhalla-server/doxygen/html/index.html">Doxygen reference</a> documents the C++ API, class hierarchy, and source layout. For the HTTP API itself, see Interactive API docs. </p>
+<p><b>Documentation &amp; code architecture:</b> The generated <a href="https://dr3mro.github.io/Valhalla-server/doxygen/html/index.html">Doxygen reference</a> documents the C++ API, class hierarchy, and source layout. For the HTTP API itself, see the “Interactive API docs” section below. </p>
 </blockquote>
 <hr  />
 <h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
@@ -240,9 +240,9 @@ Architecture</h1>
 <li><b>Controllers</b> (<span class="tt">src/controllers</span>) implement CRUD/search logic against a generic base.</li>
 <li><b>Entities</b> (<span class="tt">src/entities</span>) model the domain: people (users, providers), services (clinics, laboratories, pharmacies, radiology centers), patients, visits, and appointments.</li>
 <li><b>Gatekeeper</b> (<span class="tt">src/gatekeeper</span>) holds the cross-cutting security concerns: DoS detector, token and session managers, the permission manager with its idle-expiry cache, and password hashing (Argon2id, with legacy scrypt hashes still accepted at login).</li>
-<li><b>Concurrency</b> (<span class="tt">src/concurrency</span>) has <span class="tt">BoundedExecutor</span>, the fixed-size thread pool with a bounded queue that <span class="tt">submit()</span> never blocks on. The DB executor (<span class="tt">src/database/dbexecutor</span>, legacy <span class="tt">DB_ASYNC=false</span> path) and the password worker are two instances. With zero workers a task runs inline, which the unit tests use.</li>
+<li><b>Concurrency</b> (<span class="tt">libs/concurrency</span>) has <span class="tt"><a class="el" href="classBoundedExecutor.html" title="Fixed-size worker pool with a shared bounded queue for slow, blocking work.">BoundedExecutor</a></span>, the fixed-size thread pool with a bounded queue that <span class="tt">submit()</span> never blocks on. The DB executor (<span class="tt">src/database/dbexecutor</span>, legacy <span class="tt">DB_ASYNC=false</span> path) and the password worker are two instances. With zero workers a task runs inline, which the unit tests use.</li>
 <li><b><a class="el" href="classDatabase.html" title="Owns one synchronous PostgreSQL connection used by the synchronous database path.">Database</a></b> (<span class="tt">src/database</span>) has the asynchronous client wrapper (<span class="tt"><a class="el" href="classAsyncDbClient.html" title="Store-registered holder for the Drogon PostgreSQL client used when DB_ASYNC=true.">AsyncDbClient</a></span>, the default <span class="tt">DB_ASYNC=true</span> path), the legacy connection pool (<span class="tt"><a class="el" href="classBlockingPool.html" title="Thread-safe fixed set of reusable items leased one caller at a time.">BlockingPool</a></span>, waits with a timeout and throws <span class="tt"><a class="el" href="classDatabaseBusy.html" title="Exception signalling that the connection pool could not lease a connection in time.">DatabaseBusy</a></span>, which becomes 503), the watchdog that reconnects dropped connections, and the handler that borrows a connection for one query.</li>
-<li><b>Configurator</b> (<span class="tt">src/configurator</span>) loads and validates configuration from the environment at startup.</li>
+<li><b><a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a></b> (<span class="tt">libs/configurator</span>) loads and validates configuration from the environment at startup.</li>
 <li><b><a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a></b> (<span class="tt">src/store</span>) provides shared singleton object access. Objects built for every request use <span class="tt"><a class="el" href="classStore.html#aaf81da54b109478891030b7e04653bad" title="Thread-local cached lookup of T, refreshed only when the Store generation changes.">Store::cachedObject</a>&lt;T&gt;()</span>, which keeps a per-thread pointer and only goes back to the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> when an object has been replaced (tests replace the database controller with a fake).</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
@@ -263,7 +263,7 @@ Tech Stack</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">JSON  </td><td class="markdownTableBodyNone">jsoncons, picojson (jsoncpp via Drogon)  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Config  </td><td class="markdownTableBodyNone">Environment variables  </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="conceptConfig.html" title="Constrains the configuration-section types retrievable through Configurator::get().">Config</a>  </td><td class="markdownTableBodyNone">Environment variables  </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Logging  </td><td class="markdownTableBodyNone">spdlog / fmt  </td></tr>
 <tr class="markdownTableRowOdd">
@@ -271,7 +271,7 @@ Tech Stack</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Hashing / utils  </td><td class="markdownTableBodyNone">xxhash, cppcodec, zlib  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Testing  </td><td class="markdownTableBodyNone">Catch2  </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="structTesting.html" title="Switches used only by the test harness.">Testing</a>  </td><td class="markdownTableBodyNone">Catch2  </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Build  </td><td class="markdownTableBodyNone">CMake (≥ 4.0) + Conan 2  </td></tr>
 </table>
@@ -763,7 +763,7 @@ Run with Docker</h2>
 <div class="line">is reset on every start.</div>
 </div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
 Configuration</h1>
-<p>All configuration is supplied through environment variables; defaults live in <span class="tt">src/configurator/defaults.hpp</span>. The frontend and email-sender defaults point at fixed Docker-network IPs (<span class="tt">172.20.0.5</span>/<span class="tt">.6</span>), and the token secret and database credentials are development values, so override them for any real deployment.</p>
+<p>All configuration is supplied through environment variables; defaults live in <span class="tt"><a class="el" href="defaults_8hpp.html" title="Default values for every environment-driven configuration option.">libs/configurator/defaults.hpp</a></span>. The frontend and email-sender defaults point at fixed Docker-network IPs (<span class="tt">172.20.0.5</span>/<span class="tt">.6</span>), and the token secret and database credentials are development values, so override them for any real deployment.</p>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
 Server</h2>
 <table class="markdownTable">
@@ -1040,36 +1040,58 @@ Misc</h2>
 </blockquote>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md33"></a>
 Project Layout</h1>
-<div class="fragment"><div class="line">src/</div>
+<div class="fragment"><div class="line">CMakeLists.txt          # Thin root: project() + includes the modules below</div>
+<div class="line">cmake/                  # Configure-time CMake modules (see cmake/README.md)</div>
+<div class="line">├── CompilerSetup.cmake   # compiler, warnings, LTO, ccache</div>
+<div class="line">├── ProjectSetup.cmake    # include dirs, version.cpp generation</div>
+<div class="line">├── CoreTargets.cmake     # server_core, server, valhalla_version</div>
+<div class="line">├── Dependencies.cmake    # Conan find_package calls</div>
+<div class="line">├── Doxygen.cmake         # valhalla_doxygen (defined only on tagged HEADs)</div>
+<div class="line">├── ApiEmbed.cmake        # embeds docs/api.html into a generated header</div>
+<div class="line">├── ApiDocs.cmake         # valhalla_docs regeneration target</div>
+<div class="line">├── ConanVariables.cmake  # third-party dependency switches</div>
+<div class="line">├── Linking.cmake         # local libs + final links</div>
+<div class="line">├── Sanitizers.cmake      # Linux Debug ASan/UBSan/LSan</div>
+<div class="line">└── Testing.cmake         # ENABLE_TESTS + CTest registration</div>
+<div class="line">libs/                   # Reusable static libraries</div>
+<div class="line">├── concurrency/        # BoundedExecutor: thread pool with a bounded queue</div>
+<div class="line">├── configurator/       # Environment-driven configuration + defaults</div>
+<div class="line">├── logger/             # Async spdlog logging (wired into Trantor)</div>
+<div class="line">└── message/            # Shared message / error types</div>
+<div class="line">src/</div>
 <div class="line">├── api/v2/             # REST API: routes, filters, middlewares, helpers</div>
 <div class="line">├── controllers/        # Business logic per resource (clients, clinics, services, …)</div>
 <div class="line">├── entities/           # Domain models (people, services, patients, visits, appointments)</div>
-<div class="line">├── gatekeeper/         # Security: DoS detector, tokens, sessions, RBAC, password hashing and its worker pool</div>
-<div class="line">├── concurrency/        # BoundedExecutor: thread pool with a bounded queue</div>
-<div class="line">├── configurator/       # Environment-driven configuration + defaults</div>
+<div class="line">├── gatekeeper/         # Security: DoS detector, tokens, sessions, RBAC, password hashing</div>
 <div class="line">├── database/           # Connection pool, watchdog, handlers, DB executor</div>
 <div class="line">├── validator/          # Request + database-schema validation</div>
 <div class="line">├── store/              # Shared object store</div>
-<div class="line">├── server/             # Server bootstrap (entry point)</div>
-<div class="line">└── utils/              # Logging, caching, messaging, JSON helpers, thread-safe queue</div>
+<div class="line">├── server/             # Server bootstrap and CORS configuration</div>
+<div class="line">├── utils/              # Communicate, JSON helpers, memcache, thread-safe queue</div>
+<div class="line">├── main.cpp            # Entry point</div>
+<div class="line">└── version.cpp.in      # Template for the generated version.cpp</div>
 <div class="line">scripts/</div>
 <div class="line">├── build/              # build.sh, get_tag.sh, run_all_tests.sh</div>
 <div class="line">├── db/init.sql         # Database schema</div>
 <div class="line">├── lib/ui.sh           # Shared shell UI helpers</div>
 <div class="line">├── qa/                 # Format, hygiene and project-rule checks</div>
 <div class="line">├── run/                # db_init.sh, run_debug.sh, run_release.sh, run4bench.sh</div>
-<div class="line">├── test/               # test_api.sh, cors_test.sh, cors_react_check.sh, fuzz_auth.sh, sqlmap_test.sh, schemathesis_test.sh</div>
+<div class="line">├── test/               # API, CORS, fuzz and schema test scripts</div>
 <div class="line">└── vdt/valhalla.sh     # Docker/Apple Container deployment tool (the `vdt` command)</div>
-<div class="line">tests/                  # Catch2 unit tests (+ vendored Catch CMake helpers)</div>
+<div class="line">tests/                  # Catch2 unit tests, organized by module (+ vendored Catch CMake helpers)</div>
 <div class="line">tests/api_tests/        # Request payloads and samples used by test_api.sh</div>
-<div class="line">docs/                   # API docs (api.html, openapi.json, Postman collection) + ARCHITECTURE.md, CONTRIBUTING.md</div>
-<div class="line">│   └── doxygen/        # Published Doxygen reference (HTML + XML), excluded from Doxygen input</div>
+<div class="line">docs/                   # API docs + ARCHITECTURE.md, CONTRIBUTING.md</div>
+<div class="line">├── doxygen/            # Published Doxygen reference (HTML + XML), excluded from Doxygen input</div>
+<div class="line">└── perf/               # Performance reports</div>
 <div class="line">tools/</div>
-<div class="line">├── cmake/              # CMake helpers (HTML embedding, docs generation, versioning)</div>
-<div class="line">├── conan/              # Conan helper variables, lockfile update script</div>
-<div class="line">└── docs/               # API docs generator (build.sh, build_docs.py, Swagger UI assets)</div>
+<div class="line">├── cmake/              # Script-mode helpers (cmake -P): version, docs, HTML embedding</div>
+<div class="line">├── conan/              # Conan helper variables, default profile, lockfile update script</div>
+<div class="line">├── cors/               # CORS browser check page</div>
+<div class="line">├── docs/               # API docs generator (build.sh, build_docs.py, Swagger UI assets)</div>
+<div class="line">└── k6/                 # Load-test scripts</div>
 <div class="line">docker/                 # All-in-one Alpine image (Dockerfile + entrypoint)</div>
-<div class="line">.github/                # Release and CI workflows, Dependabot config</div>
+<div class="line">.github/                # Release and CI workflows, reusable actions, Dependabot config</div>
+<div class="line">.githooks/              # pre-commit, commit-msg and pre-push checks</div>
 <div class="line">config                  # Default server settings (tracked)</div>
 <div class="line">Doxyfile                # Doxygen configuration</div>
 <div class="line">conan.lock              # Pinned dependency versions (all platforms)</div>
@@ -1133,7 +1155,7 @@ Known limitation: malformed requests (HTTP 400)</h2>
 <div class="line">ctest --test-dir build/Debug --output-on-failure</div>
 </div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md38"></a>
 Source documentation</h2>
-<p>The C++ source is documented with Doxygen: every class, function and non-obvious implementation detail has a Doxygen-compatible comment. See <a class="el" href="md_docs_2ARCHITECTURE.html" title="Architecture"><span class="tt">docs/ARCHITECTURE.md</span></a> for the component map and <a class="el" href="md_docs_2CONTRIBUTING.html" title="Contributing"><span class="tt">docs/CONTRIBUTING.md</span></a> for the documentation conventions. The HTML/XML reference is generated by the <span class="tt">valhalla_doxygen</span> CMake target, which runs on every <span class="tt">cmake --build</span> when Doxygen is available. The result is published under <span class="tt">docs/doxygen/</span> (HTML and XML, tracked alongside the API docs). Doxygen excludes that directory from its own input, so it never documents its output:</p>
+<p>The C++ source is documented with Doxygen: every class, function and non-obvious implementation detail has a Doxygen-compatible comment. See <a class="el" href="md_docs_2ARCHITECTURE.html" title="Architecture"><span class="tt">docs/ARCHITECTURE.md</span></a> for the component map and <a class="el" href="md_docs_2CONTRIBUTING.html" title="Contributing"><span class="tt">docs/CONTRIBUTING.md</span></a> for the documentation conventions. The HTML/XML reference is generated by the <span class="tt">valhalla_doxygen</span> CMake target. The target is defined only when the current commit has a git tag, so on a tagged HEAD it runs as part of every <span class="tt">cmake --build</span>; untagged builds skip it. The result is published under <span class="tt">docs/doxygen/</span> (HTML and XML, tracked alongside the API docs) and served at <a href="https://dr3mro.github.io/Valhalla-server/doxygen/html/index.html">https://dr3mro.github.io/Valhalla-server/doxygen/html/index.html</a>. Doxygen excludes that directory from its own input, so it never documents its output:</p>
 <div class="fragment"><div class="line">cmake --build build/Debug --target valhalla_doxygen</div>
 <div class="line"># open docs/doxygen/html/index.html</div>
 </div><!-- fragment --><p><span class="tt">docs/index.html</span> redirects to that page, so serving the <span class="tt">docs/</span> directory as static files gives a single entry point for the published documentation.</p>

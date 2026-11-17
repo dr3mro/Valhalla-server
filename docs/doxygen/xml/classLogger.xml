@@ -4,60 +4,60 @@
     <compoundname>Logger</compoundname>
     <includes refid="logger_8hpp" local="no">logger.hpp</includes>
     <sectiondef kind="private-type">
-      <memberdef kind="enum" id="classLogger_1a87da4787054457b9c0bb0987dcd0030a" prot="private" static="no" strong="no">
+      <memberdef kind="enum" id="classLogger_1a87da4787054457b9c0bb0987dcd0030a" prot="private" static="no" strong="yes">
         <type>std::uint8_t</type>
         <name>Color</name>
         <qualifiedname>Logger::Color</qualifiedname>
-        <enumvalue id="classLogger_1a87da4787054457b9c0bb0987dcd0030aae2322fba4b3adff1c29dac4a307cc7a1" prot="private">
+        <enumvalue id="classLogger_1a87da4787054457b9c0bb0987dcd0030aaee38e4d5dd68c4e440825018d549cb47" prot="private">
           <name>Red</name>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="classLogger_1a87da4787054457b9c0bb0987dcd0030aa6471477fc2170c1406cab151cc408fc3" prot="private">
+        <enumvalue id="classLogger_1a87da4787054457b9c0bb0987dcd0030aad382816a3cbeed082c9e216e7392eed1" prot="private">
           <name>Green</name>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="classLogger_1a87da4787054457b9c0bb0987dcd0030aa1f63a6ccfabbf1f73b71ea9a7bb20d11" prot="private">
+        <enumvalue id="classLogger_1a87da4787054457b9c0bb0987dcd0030aa51e6cd92b6c45f9affdc158ecca2b8b8" prot="private">
           <name>Yellow</name>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="classLogger_1a87da4787054457b9c0bb0987dcd0030aab132ee8c05459d4b4bb086aead371f73" prot="private">
+        <enumvalue id="classLogger_1a87da4787054457b9c0bb0987dcd0030aa9594eec95be70e7b1710f730fdda33d9" prot="private">
           <name>Blue</name>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="classLogger_1a87da4787054457b9c0bb0987dcd0030aa67f75574bad3cad98bd85ab4b31f928b" prot="private">
+        <enumvalue id="classLogger_1a87da4787054457b9c0bb0987dcd0030aab91cc2c1416fcca942b61c7ac5b1a9ac" prot="private">
           <name>Magenta</name>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="classLogger_1a87da4787054457b9c0bb0987dcd0030aa2452b8b4727e598db8da33ee8da920a1" prot="private">
+        <enumvalue id="classLogger_1a87da4787054457b9c0bb0987dcd0030aa25a81701fbfa4a1efdf660a950c1d006" prot="private">
           <name>White</name>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="classLogger_1a87da4787054457b9c0bb0987dcd0030aa0b21c9bcf230758908c7739987f8969c" prot="private">
+        <enumvalue id="classLogger_1a87da4787054457b9c0bb0987dcd0030aa526d688f37a86d3c3f27d0c5016eb71d" prot="private">
           <name>Reset</name>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="classLogger_1a87da4787054457b9c0bb0987dcd0030aa6a0196682c2f0a57a8a0e2b9e2fc7aae" prot="private">
+        <enumvalue id="classLogger_1a87da4787054457b9c0bb0987dcd0030aa023c239d2f2538f140a20e72c7b73f20" prot="private">
           <name>Cyan</name>
           <briefdescription>
           </briefdescription>
@@ -71,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/Logger/logger.hpp" line="137" column="3" bodyfile="src/utils/Logger/logger.hpp" bodystart="137" bodyend="146"/>
+        <location file="libs/logger/logger.hpp" line="142" column="3" bodyfile="libs/logger/logger.hpp" bodystart="142" bodyend="151"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -88,9 +88,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/Logger/logger.hpp" line="105" column="7" bodyfile="src/utils/Logger/logger.hpp" bodystart="105" bodyend="-1"/>
-        <referencedby refid="classLogger_1ad5bca94a0174ce580d9d36c807fbe107" compoundref="logger_8cpp" startline="154" endline="178">log</referencedby>
-        <referencedby refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" compoundref="logger_8cpp" startline="44" endline="150">Logger</referencedby>
+        <location file="libs/logger/logger.hpp" line="109" column="7" bodyfile="libs/logger/logger.hpp" bodystart="109" bodyend="-1"/>
+        <referencedby refid="classLogger_1ad5bca94a0174ce580d9d36c807fbe107" compoundref="logger_8cpp" startline="202" endline="227">log</referencedby>
+        <referencedby refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" compoundref="logger_8cpp" startline="86" endline="198">Logger</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-attrib">
@@ -100,8 +100,8 @@
         <argsstring></argsstring>
         <name>MAX_LOG_SIZE</name>
         <qualifiedname>Logger::MAX_LOG_SIZE</qualifiedname>
-        <initializer>                                   = static_cast&lt;uint64_t&gt;(
-1024 * 1024 * 5)</initializer>
+        <initializer>                                   =
+static_cast&lt;uint64_t&gt;(1024 * 1024 * 5)</initializer>
         <briefdescription>
 <para>Maximum size in bytes of a single log file before rotation. </para>
         </briefdescription>
@@ -109,8 +109,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/Logger/logger.hpp" line="110" column="29" bodyfile="src/utils/Logger/logger.hpp" bodystart="110" bodyend="-1"/>
-        <referencedby refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" compoundref="logger_8cpp" startline="44" endline="150">Logger</referencedby>
+        <location file="libs/logger/logger.hpp" line="114" column="29" bodyfile="libs/logger/logger.hpp" bodystart="114" bodyend="-1"/>
+        <referencedby refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" compoundref="logger_8cpp" startline="86" endline="198">Logger</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classLogger_1acae717b9d2cb047d186ee740872d53fe" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>uint64_t</type>
@@ -118,8 +118,7 @@
         <argsstring></argsstring>
         <name>THREADPOOL</name>
         <qualifiedname>Logger::THREADPOOL</qualifiedname>
-        <initializer>                                 =
-8</initializer>
+        <initializer>= 8</initializer>
         <briefdescription>
 <para>Capacity of the spdlog asynchronous message queue. </para>
         </briefdescription>
@@ -127,8 +126,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/Logger/logger.hpp" line="116" column="29" bodyfile="src/utils/Logger/logger.hpp" bodystart="116" bodyend="-1"/>
-        <referencedby refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" compoundref="logger_8cpp" startline="44" endline="150">Logger</referencedby>
+        <location file="libs/logger/logger.hpp" line="121" column="29" bodyfile="libs/logger/logger.hpp" bodystart="121" bodyend="-1"/>
+        <referencedby refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" compoundref="logger_8cpp" startline="86" endline="198">Logger</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classLogger_1a0f3eebbd1afb203f076c9791306ce250" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>uint64_t</type>
@@ -136,8 +135,7 @@
         <argsstring></argsstring>
         <name>THREADS</name>
         <qualifiedname>Logger::THREADS</qualifiedname>
-        <initializer>                              =
-2</initializer>
+        <initializer>= 2</initializer>
         <briefdescription>
 <para>Number of spdlog worker threads draining the queue. </para>
         </briefdescription>
@@ -145,8 +143,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/Logger/logger.hpp" line="122" column="29" bodyfile="src/utils/Logger/logger.hpp" bodystart="122" bodyend="-1"/>
-        <referencedby refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" compoundref="logger_8cpp" startline="44" endline="150">Logger</referencedby>
+        <location file="libs/logger/logger.hpp" line="127" column="29" bodyfile="libs/logger/logger.hpp" bodystart="127" bodyend="-1"/>
+        <referencedby refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" compoundref="logger_8cpp" startline="86" endline="198">Logger</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classLogger_1a9295d6101a19ddde8dee20236b86c89d" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>uint64_t</type>
@@ -154,8 +152,7 @@
         <argsstring></argsstring>
         <name>MAX_LOG_FILES</name>
         <qualifiedname>Logger::MAX_LOG_FILES</qualifiedname>
-        <initializer>                                    =
-3</initializer>
+        <initializer>= 3</initializer>
         <briefdescription>
 <para>Number of rotated log files retained on disk. </para>
         </briefdescription>
@@ -163,8 +160,48 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/Logger/logger.hpp" line="128" column="29" bodyfile="src/utils/Logger/logger.hpp" bodystart="128" bodyend="-1"/>
-        <referencedby refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" compoundref="logger_8cpp" startline="44" endline="150">Logger</referencedby>
+        <location file="libs/logger/logger.hpp" line="133" column="29" bodyfile="libs/logger/logger.hpp" bodystart="133" bodyend="-1"/>
+        <referencedby refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" compoundref="logger_8cpp" startline="86" endline="198">Logger</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classLogger_1af27aa5828b228b1e400131f2a0cc359e" prot="private" static="yes" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030a" kindref="member">Logger::Color</ref>, std::string &gt;</type>
+        <definition>std::unordered_map&lt; Logger::Color, std::string &gt; Logger::COLOR_MAP</definition>
+        <argsstring></argsstring>
+        <name>COLOR_MAP</name>
+        <qualifiedname>Logger::COLOR_MAP</qualifiedname>
+        <initializer>                                 =  
+std::unordered_map&lt;<ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030a" kindref="member">Logger::Color</ref>, std::string&gt;({
+    
+    {<ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aaee38e4d5dd68c4e440825018d549cb47" kindref="member">Logger::Color::Red</ref>, &quot;\033[1;91m&quot;},     
+    {<ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aad382816a3cbeed082c9e216e7392eed1" kindref="member">Logger::Color::Green</ref>, &quot;\033[1;92m&quot;},   
+    {<ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa51e6cd92b6c45f9affdc158ecca2b8b8" kindref="member">Logger::Color::Yellow</ref>, &quot;\033[1;93m&quot;},  
+    {
+        <ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa9594eec95be70e7b1710f730fdda33d9" kindref="member">Logger::Color::Blue</ref>,
+        &quot;\033[1;34m&quot;,
+    },  
+    {
+        <ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aab91cc2c1416fcca942b61c7ac5b1a9ac" kindref="member">Logger::Color::Magenta</ref>,
+        &quot;\033[38;5;140m&quot;,
+    },  
+    {
+        <ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa25a81701fbfa4a1efdf660a950c1d006" kindref="member">Logger::Color::White</ref>,
+        &quot;\033[1;97m&quot;,
+    },  
+    {
+        <ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa023c239d2f2538f140a20e72c7b73f20" kindref="member">Logger::Color::Cyan</ref>,
+        &quot;\033[1;96m&quot;,
+    },  
+    {<ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa526d688f37a86d3c3f27d0c5016eb71d" kindref="member">Logger::Color::Reset</ref>, &quot;\033[0m&quot;},
+})</initializer>
+        <briefdescription>
+<para>A read-only map from <computeroutput><ref refid="classLogger_1a87da4787054457b9c0bb0987dcd0030a" kindref="member">Color</ref></computeroutput> to ANSI escape sequence. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="libs/logger/logger.hpp" line="166" column="29" bodyfile="libs/logger/logger.hpp" bodystart="166" bodyend="-1"/>
+        <referencedby refid="classLogger_1aaffbcae12c11b5435c8a1743c7402acc" compoundref="logger_8cpp" startline="230" endline="233">get_color</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -186,17 +223,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/Logger/logger.hpp" line="87" column="3" bodyfile="src/utils/Logger/logger.cpp" bodystart="44" bodyend="150"/>
-        <references refid="classLogger_1aaffbcae12c11b5435c8a1743c7402acc" compoundref="logger_8cpp" startline="181" endline="199">get_color</references>
-        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
-        <references refid="classLogger_1aeae0a292d6930a7c81a1a0c4ece5534c" compoundref="logger_8hpp" startline="105">logger_</references>
-        <references refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa67f75574bad3cad98bd85ab4b31f928b" compoundref="logger_8hpp" startline="142">Magenta</references>
-        <references refid="classLogger_1a9295d6101a19ddde8dee20236b86c89d" compoundref="logger_8hpp" startline="128">MAX_LOG_FILES</references>
-        <references refid="classLogger_1ad7e6a73dfe5abb26f51a1502bcab57cf" compoundref="logger_8hpp" startline="110">MAX_LOG_SIZE</references>
-        <references refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aae2322fba4b3adff1c29dac4a307cc7a1" compoundref="logger_8hpp" startline="138">Red</references>
-        <references refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa0b21c9bcf230758908c7739987f8969c" compoundref="logger_8hpp" startline="144">Reset</references>
-        <references refid="classLogger_1acae717b9d2cb047d186ee740872d53fe" compoundref="logger_8hpp" startline="116">THREADPOOL</references>
-        <references refid="classLogger_1a0f3eebbd1afb203f076c9791306ce250" compoundref="logger_8hpp" startline="122">THREADS</references>
+        <location file="libs/logger/logger.hpp" line="91" column="3" bodyfile="libs/logger/logger.cpp" bodystart="86" bodyend="198"/>
+        <references refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="260" endline="278">Store::cachedObject</references>
+        <references refid="classLogger_1aaffbcae12c11b5435c8a1743c7402acc" compoundref="logger_8cpp" startline="230" endline="233">get_color</references>
+        <references refid="classLogger_1aeae0a292d6930a7c81a1a0c4ece5534c" compoundref="logger_8hpp" startline="109">logger_</references>
+        <references refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aab91cc2c1416fcca942b61c7ac5b1a9ac" compoundref="logger_8hpp" startline="147">Magenta</references>
+        <references refid="classLogger_1a9295d6101a19ddde8dee20236b86c89d" compoundref="logger_8hpp" startline="133">MAX_LOG_FILES</references>
+        <references refid="classLogger_1ad7e6a73dfe5abb26f51a1502bcab57cf" compoundref="logger_8hpp" startline="114">MAX_LOG_SIZE</references>
+        <references refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aaee38e4d5dd68c4e440825018d549cb47" compoundref="logger_8hpp" startline="143">Red</references>
+        <references refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa526d688f37a86d3c3f27d0c5016eb71d" compoundref="logger_8hpp" startline="149">Reset</references>
+        <references refid="classLogger_1acae717b9d2cb047d186ee740872d53fe" compoundref="logger_8hpp" startline="121">THREADPOOL</references>
+        <references refid="classLogger_1a0f3eebbd1afb203f076c9791306ce250" compoundref="logger_8hpp" startline="127">THREADS</references>
       </memberdef>
       <memberdef kind="function" id="classLogger_1ad5bca94a0174ce580d9d36c807fbe107" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -239,8 +276,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/Logger/logger.hpp" line="96" column="8" bodyfile="src/utils/Logger/logger.cpp" bodystart="154" bodyend="178"/>
-        <references refid="classLogger_1aeae0a292d6930a7c81a1a0c4ece5534c" compoundref="logger_8hpp" startline="105">logger_</references>
+        <location file="libs/logger/logger.hpp" line="100" column="8" bodyfile="libs/logger/logger.cpp" bodystart="202" bodyend="227"/>
+        <references refid="classLogger_1aeae0a292d6930a7c81a1a0c4ece5534c" compoundref="logger_8hpp" startline="109">logger_</references>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-func">
@@ -282,16 +319,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/Logger/logger.hpp" line="154" column="22" bodyfile="src/utils/Logger/logger.cpp" bodystart="181" bodyend="199"/>
-        <references refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aab132ee8c05459d4b4bb086aead371f73" compoundref="logger_8hpp" startline="141">Blue</references>
-        <references refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa6a0196682c2f0a57a8a0e2b9e2fc7aae" compoundref="logger_8hpp" startline="145">Cyan</references>
-        <references refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa6471477fc2170c1406cab151cc408fc3" compoundref="logger_8hpp" startline="139">Green</references>
-        <references refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa67f75574bad3cad98bd85ab4b31f928b" compoundref="logger_8hpp" startline="142">Magenta</references>
-        <references refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aae2322fba4b3adff1c29dac4a307cc7a1" compoundref="logger_8hpp" startline="138">Red</references>
-        <references refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa0b21c9bcf230758908c7739987f8969c" compoundref="logger_8hpp" startline="144">Reset</references>
-        <references refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa2452b8b4727e598db8da33ee8da920a1" compoundref="logger_8hpp" startline="143">White</references>
-        <references refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa1f63a6ccfabbf1f73b71ea9a7bb20d11" compoundref="logger_8hpp" startline="140">Yellow</references>
-        <referencedby refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" compoundref="logger_8cpp" startline="44" endline="150">Logger</referencedby>
+        <location file="libs/logger/logger.hpp" line="159" column="22" bodyfile="libs/logger/logger.cpp" bodystart="230" bodyend="233"/>
+        <references refid="classLogger_1af27aa5828b228b1e400131f2a0cc359e" compoundref="logger_8hpp" startline="166">COLOR_MAP</references>
+        <referencedby refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" compoundref="logger_8cpp" startline="86" endline="198">Logger</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -305,25 +335,18 @@
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/utils/Logger/logger.hpp" line="71" column="1" bodyfile="src/utils/Logger/logger.hpp" bodystart="71" bodyend="157"/>
+    <location file="libs/logger/logger.hpp" line="75" column="1" bodyfile="libs/logger/logger.hpp" bodystart="75" bodyend="167"/>
     <listofallmembers>
-      <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aab132ee8c05459d4b4bb086aead371f73" prot="private" virt="non-virtual"><scope>Logger</scope><name>Blue</name></member>
       <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030a" prot="private" virt="non-virtual"><scope>Logger</scope><name>Color</name></member>
-      <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa6a0196682c2f0a57a8a0e2b9e2fc7aae" prot="private" virt="non-virtual"><scope>Logger</scope><name>Cyan</name></member>
+      <member refid="classLogger_1af27aa5828b228b1e400131f2a0cc359e" prot="private" virt="non-virtual"><scope>Logger</scope><name>COLOR_MAP</name></member>
       <member refid="classLogger_1aaffbcae12c11b5435c8a1743c7402acc" prot="private" virt="non-virtual"><scope>Logger</scope><name>get_color</name></member>
-      <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa6471477fc2170c1406cab151cc408fc3" prot="private" virt="non-virtual"><scope>Logger</scope><name>Green</name></member>
       <member refid="classLogger_1ad5bca94a0174ce580d9d36c807fbe107" prot="public" virt="non-virtual"><scope>Logger</scope><name>log</name></member>
       <member refid="classLogger_1abc41bfb031d896170c7675fa96a6b30c" prot="public" virt="non-virtual"><scope>Logger</scope><name>Logger</name></member>
       <member refid="classLogger_1aeae0a292d6930a7c81a1a0c4ece5534c" prot="private" virt="non-virtual"><scope>Logger</scope><name>logger_</name></member>
-      <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa67f75574bad3cad98bd85ab4b31f928b" prot="private" virt="non-virtual"><scope>Logger</scope><name>Magenta</name></member>
       <member refid="classLogger_1a9295d6101a19ddde8dee20236b86c89d" prot="private" virt="non-virtual"><scope>Logger</scope><name>MAX_LOG_FILES</name></member>
       <member refid="classLogger_1ad7e6a73dfe5abb26f51a1502bcab57cf" prot="private" virt="non-virtual"><scope>Logger</scope><name>MAX_LOG_SIZE</name></member>
-      <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aae2322fba4b3adff1c29dac4a307cc7a1" prot="private" virt="non-virtual"><scope>Logger</scope><name>Red</name></member>
-      <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa0b21c9bcf230758908c7739987f8969c" prot="private" virt="non-virtual"><scope>Logger</scope><name>Reset</name></member>
       <member refid="classLogger_1acae717b9d2cb047d186ee740872d53fe" prot="private" virt="non-virtual"><scope>Logger</scope><name>THREADPOOL</name></member>
       <member refid="classLogger_1a0f3eebbd1afb203f076c9791306ce250" prot="private" virt="non-virtual"><scope>Logger</scope><name>THREADS</name></member>
-      <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa2452b8b4727e598db8da33ee8da920a1" prot="private" virt="non-virtual"><scope>Logger</scope><name>White</name></member>
-      <member refid="classLogger_1a87da4787054457b9c0bb0987dcd0030aa1f63a6ccfabbf1f73b71ea9a7bb20d11" prot="private" virt="non-virtual"><scope>Logger</scope><name>Yellow</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

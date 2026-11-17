@@ -1,10 +1,11 @@
 # Architecture
 
 This document describes the runtime architecture of Project Valhalla as it is
-implemented in `src/`. It is complementary to `README.md`, which focuses on
-installation, configuration and API usage. For generated API reference
-documentation, run `doxygen Doxyfile` and open
-`build/docs/doxygen/html/index.html`.
+implemented in `src/` and the reusable libraries under `libs/`. It is
+complementary to `README.md`, which focuses on installation, configuration and
+API usage. The generated API reference is published at
+https://dr3mro.github.io/Valhalla-server/doxygen/html/index.html; to build it
+locally, run `doxygen Doxyfile` and open `docs/doxygen/html/index.html`.
 
 ## 1. System purpose
 
@@ -74,7 +75,7 @@ registers two pieces of advice:
 the `DbExecutor` and `PasswordWorker` queues *before* static destruction, in
 that order, because database tasks may enqueue password work.
 
-### 3.2 Configuration — `src/configurator/`
+### 3.2 Configuration — `libs/configurator/`
 
 `Configurator` owns one `EnvLoader`-derived settings group per subsystem
 (server, database, DoS detector, token manager, permission cache, password
@@ -145,11 +146,13 @@ Two interchangeable paths:
   rows back to domain values; `AsyncDbError` represents failures. This client
   is registered in the `Store` only when the flag is enabled.
 
-### 3.8 Utilities — `src/utils/`, `src/concurrency/`
+### 3.8 Utilities — `src/utils/`, `libs/`
 
-Logging (`Logger`, `Message`), JSON helpers, an in-process `MemCache`, a
-`ThreadSafeQueue`, CORS token helpers, global HTTP/status types, and
-`BoundedExecutor` (a bounded worker pool used where work must be throttled).
+`libs/logger/` holds the async `Logger` (spdlog with console and rotating file
+sinks, also wired into Trantor) and `libs/message/` holds `Message`. JSON
+helpers, an in-process `MemCache`, a `ThreadSafeQueue`, CORS token helpers and
+global HTTP/status types live in `src/utils/`. `libs/concurrency/` provides
+`BoundedExecutor`, a bounded worker pool used where work must be throttled.
 
 ## 4. Execution and data flow
 

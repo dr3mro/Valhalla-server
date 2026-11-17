@@ -77,7 +77,7 @@
 </parameterlist>
 <simplesect kind="return"><para>Response body on success, <computeroutput>std::nullopt</computeroutput> on any failure. </para>
 </simplesect>
-<simplesect kind="note"><para>All exceptions (init failure, unsupported method, cURL error, empty body) are caught internally, logged via Message and converted to <computeroutput>std::nullopt</computeroutput>; nothing is thrown to the caller. </para>
+<simplesect kind="note"><para>All exceptions (init failure, unsupported method, cURL error, empty body) are caught internally, logged via <ref refid="classMessage" kindref="compound">Message</ref> and converted to <computeroutput>std::nullopt</computeroutput>; nothing is thrown to the caller. </para>
 </simplesect>
 <simplesect kind="warning"><para><computeroutput>data</computeroutput> is passed to libcurl by pointer, so it must outlive the call; this holds for normal synchronous use. </para>
 </simplesect>
@@ -86,6 +86,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="src/utils/communicate/communicate.hpp" line="69" column="3" bodyfile="src/utils/communicate/communicate.cpp" bodystart="47" bodyend="160"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classCommunicate_1a0a4ddbbf7176276436c6c9f8bd3fa9f1" compoundref="communicate_8cpp" startline="162" endline="193">handleResponse</references>
         <referencedby refid="classStaffController_1aca79920a9fdd6da89333627992bf6287" compoundref="staffcontroller_8cpp" startline="263" endline="339">StaffController&lt; T &gt;::InviteStaffToEntity</referencedby>
         <referencedby refid="classStaffController_1a7bfaae0026f9082bb42968cf04b421d5" compoundref="staffcontroller_8cpp" startline="445" endline="514">StaffController&lt; T &gt;::InviteStaffToEntityAsync</referencedby>
@@ -117,13 +119,15 @@
 </parameterlist>
 <simplesect kind="return"><para>Accumulated body, or an empty string on error. </para>
 </simplesect>
-<simplesect kind="note"><para>A cURL error or thrown exception is logged via Message and produces an empty string; callers treat that as failure. </para>
+<simplesect kind="note"><para>A cURL error or thrown exception is logged via <ref refid="classMessage" kindref="compound">Message</ref> and produces an empty string; callers treat that as failure. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="src/utils/communicate/communicate.hpp" line="87" column="24" bodyfile="src/utils/communicate/communicate.cpp" bodystart="162" bodyend="193"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
         <references refid="classCommunicate_1a16c7e1e24d2610ef8d00d8ebe3b7c59b" compoundref="communicate_8cpp" startline="196" endline="206">WriteCallback</references>
         <referencedby refid="classCommunicate_1ac17ede80bd387e5c096fcf9fcb481aee" compoundref="communicate_8cpp" startline="47" endline="160">sendRequest</referencedby>
       </memberdef>
@@ -200,7 +204,7 @@
 <para>Thin static-only wrapper around libcurl for outbound HTTP calls. </para>
     </briefdescription>
     <detaileddescription>
-<para>Builds <computeroutput>server:port/path</computeroutput>, sends a JSON content-type header and performs either a GET or a POST with the supplied body. There is no instance state: each call creates and cleans up its own CURL handle, and failures are reported to the console via Message and signalled to the caller by an empty optional rather than by an exception. <simplesect kind="note"><para>Only GET and POST are supported; all calls are blocking. </para>
+<para>Builds <computeroutput>server:port/path</computeroutput>, sends a JSON content-type header and performs either a GET or a POST with the supplied body. There is no instance state: each call creates and cleans up its own CURL handle, and failures are reported to the console via <ref refid="classMessage" kindref="compound">Message</ref> and signalled to the caller by an empty optional rather than by an exception. <simplesect kind="note"><para>Only GET and POST are supported; all calls are blocking. </para>
 </simplesect>
 </para>
     </detaileddescription>
