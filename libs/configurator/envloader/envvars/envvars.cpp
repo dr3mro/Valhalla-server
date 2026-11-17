@@ -74,9 +74,7 @@ void EnvVars::set(const std::string& key,
   // being ignored.
   // The OS returns 0 on success; any other result means the write
   // failed (bad name, no memory, etc.).
-  if (setenv(key.c_str(),  // NOLINT
-             value.c_str(),
-             1) != 0) {
+  if (setenv(key.c_str(), value.c_str(), 1) != 0) {
     Message::ErrorMessage(
         fmt::format("Failed to set environment variable {}.",
                     key));  // Log the failure with the variable name; do not

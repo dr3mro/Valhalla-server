@@ -1,48 +1,59 @@
+# clangd project configuration.
+#
+# This is a clangd config file, not a list of clangd command-line options.
+# Flags such as --clang-tidy, --background-index, -j and
+# --completion-style=detailed belong in the editor's server launch arguments;
+# where a config key exists, it is used below instead.
+
 CompileFlags:
-  CompilationDatabase: .
-  Add:
-    - "--background-index"
-    - "--clang-tidy"
-    - "--header-insertion=never"
-    - "--completion-style=detailed"
-    - "--cross-file-rename"
-    - "--function-arg-placeholders"
-    - "--compile-commands-dir=${workspaceFolder}/build"
-    - "-j=1"
+  # CMake copies the database to <repo>/build/compile_commands.json via the
+  # copy_compile_commands target (cmake/CompilerSetup.cmake).
+  CompilationDatabase: build
+  # The GCC-only diagnostic and LTO flags from the compile database add nothing
+  # to clangd's parse and can produce "unknown argument" diagnostics.
+  Remove:
+    - -fdiagnostics-color=always
+    - -fdiagnostics-color
+    - -fcolor-diagnostics
+    - -fdiagnostics-show-option
+    - -fdiagnostics-show-caret
+    - -fdiagnostics-show-labels
+    - -fdiagnostics-text-art-charset=unicode
+    - -fdiagnostics-show-template-tree
+    - -fdiagnostics-fixit-info
+    - -fcaret-diagnostics-max-lines=0
+    - -flto=auto
+    - -fno-fat-lto-objects
+
+Index:
+  Background: Build
+  StandardLibrary: true
 
 Diagnostics:
   MissingIncludes: Strict
   UnusedIncludes: Strict
-
   ClangTidy:
+    # Broad globs over every module (cert-*, llvm-*, hicpp-*, ...) make
+    # clangd noticeably slower; keep a focused set of useful checks.
     Add:
-      # Modern C++ checks
-      - modernize-*
-      - performance-*
       - bugprone-*
-      - readability-*
-      - cppcoreguidelines-*
-      - cert-*
-      - concurrency-*
-      - darwin-*
-      - google-*
-      - hicpp-*
-      - llvm-*
-      - misc-*
-      - portability-*
-
+      - performance-*
+      - modernize-*
     Remove:
+      - bugprone-easily-swappable-parameters
+      - bugprone-narrowing-conversions
       - modernize-use-trailing-return-type
+      - modernize-avoid-c-arrays
       - readability-named-parameter
       - readability-magic-numbers
       - google-readability-namespace-comments
       - cppcoreguidelines-pro-type-union-access
-
-Index:
-  StandardLibrary: true
+    FastCheckFilter: Strict
 
 Completion:
   AllScopes: true
+  ArgumentLists: FullPlaceholders  # config equivalent of --function-arg-placeholders
+  HeaderInsertion: Never           # config equivalent of --header-insertion=never
 
 InlayHints:
   Enabled: true
@@ -52,3 +63,6 @@ InlayHints:
 
 Hover:
   ShowAKA: true
+
+Documentation:
+  CommentFormat: Doxygen
