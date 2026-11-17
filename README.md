@@ -4,6 +4,8 @@ A high-performance, multi-tenant healthcare backend written in modern C++20. Val
 
 > **Status:** Active development. The API surface and data model are still evolving.
 
+> **Documentation & code architecture:** The generated [Doxygen reference](https://dr3mro.github.io/Valhalla-server/doxygen/html/index.html) documents the C++ API, class hierarchy, and source layout. For the HTTP API itself, see [Interactive API docs](#interactive-api-docs).
+
 ---
 
 ## Quick Start
