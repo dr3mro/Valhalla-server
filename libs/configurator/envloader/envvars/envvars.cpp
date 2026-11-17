@@ -35,10 +35,10 @@
 
 // Provides std::getenv and setenv, the C functions that access the process
 // environment.
+
 #include <cstdlib>
 #include <optional>
 #include <string>
-
 // Provides Message::ErrorMessage used to log a failed set operation.
 #include "message/message.hpp"
 
