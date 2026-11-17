@@ -31,7 +31,6 @@
 #include "envvars.hpp"
 
 // Used to build the error text in set() by filling in the {}.
-#include <_stdlib.h>
 #include <fmt/format.h>
 
 // Provides std::getenv and setenv, the C functions that access the process
