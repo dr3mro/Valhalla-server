@@ -93,7 +93,7 @@ SortUsingDeclarations: LexicographicNumeric
 # Comments, preprocessor directives, and file hygiene
 # -----------------------------------------------------------------------------
 CommentPragmas: "^ IWYU pragma:"
-ReflowComments: true
+ReflowComments: Always
 NamespaceIndentation: All
 FixNamespaceComments: true
 IndentPPDirectives: AfterHash

@@ -1,14 +1,14 @@
 CompileFlags:
   CompilationDatabase: .
-  # Add:
-  #   - "--background-index"
-  #   - "--clang-tidy"
-  #   - "--header-insertion=never"
-  #   - "--completion-style=detailed"
-  #   - "--cross-file-rename"
-  #   - "--function-arg-placeholders"
-  #   - "--compile-commands-dir=${workspaceFolder}/build"
-  #   - "-j=1"
+  Add:
+    - "--background-index"
+    - "--clang-tidy"
+    - "--header-insertion=never"
+    - "--completion-style=detailed"
+    - "--cross-file-rename"
+    - "--function-arg-placeholders"
+    - "--compile-commands-dir=${workspaceFolder}/build"
+    - "-j=1"
 
 Diagnostics:
   MissingIncludes: Strict

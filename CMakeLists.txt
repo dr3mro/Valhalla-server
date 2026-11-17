@@ -156,6 +156,9 @@ endforeach()
 target_include_directories(server_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src
                                               ${PACKAGE_INCLUDES})
 
+# Doxygen reference: the target is defined only when HEAD carries a git tag.
+include(cmake/Doxygen.cmake)
+
 # API docs page (docs/api.html) embedded into the binary as a constexpr string_view.
 # The header ${CMAKE_BINARY_DIR}/generated/api_html.hpp (included by src/api/v2/routes/doc.hpp) is created now so it
 # exists for tooling, and refreshed on every build by the valhalla_docs target below.
