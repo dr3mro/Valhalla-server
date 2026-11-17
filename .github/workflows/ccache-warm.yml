@@ -22,6 +22,7 @@ on:
       - docs/api.html
       - tools/cmake/**
       - tools/conan/**
+      - cmake/**
       - docker/Dockerfile
       - .github/workflows/ccache-warm.yml
       - .github/actions/ccache-buildkit/**

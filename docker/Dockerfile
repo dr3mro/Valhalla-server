@@ -56,6 +56,7 @@ COPY CMakeLists.txt ./
 COPY scripts/build/get_tag.sh scripts/build/get_tag.sh
 COPY tools/cmake tools/cmake
 COPY tools/conan tools/conan
+COPY cmake cmake
 COPY docs/api.html docs/api.html
 COPY src src
 COPY tests tests
