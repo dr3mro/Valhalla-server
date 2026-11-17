@@ -13,7 +13,9 @@ on:
       - main
     paths:
       - src/**
+      - libs/**
       - tests/**
+      - cmake/**
       - CMakeLists.txt
       - scripts/build/get_tag.sh
       - conanfile.txt
