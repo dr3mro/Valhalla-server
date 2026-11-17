@@ -52,14 +52,13 @@
  * @param[in] argc Unused; retained only for the standard signature.
  * @param[in] argv Unused; retained only for the standard signature.
  * @return The status returned by Server::run(), or EXIT_FAILURE if a
- * std::exception escapes it.
- * @note Only std::exception is caught; an exception that does not derive from
- * it would terminate the process.
+ * std::exception.
  * @see Server::run()
  */
 // Program entry point; argc/argv are kept only because the
 // C++ standard requires this shape.
-int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
+int main([[maybe_unused]] int    argc,
+         [[maybe_unused]] char** argv) {
   // Guard the entire startup and shutdown so a thrown exception cannot
   // crash the process silently.
   try {
@@ -78,5 +77,8 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
                           // separate from normal logs.
     return EXIT_FAILURE;  // Tell the OS or supervisor the process failed,
                           // instead of accidentally reporting success.
+  } catch (...) {
+    std::cerr << "Unknown Error: The Process Exited Unexpectedly\n";
+    return EXIT_FAILURE;
   }
 }
