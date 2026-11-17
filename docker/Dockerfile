@@ -58,6 +58,7 @@ COPY tools/cmake tools/cmake
 COPY tools/conan tools/conan
 COPY cmake cmake
 COPY docs/api.html docs/api.html
+COPY libs libs
 COPY src src
 COPY tests tests
 
