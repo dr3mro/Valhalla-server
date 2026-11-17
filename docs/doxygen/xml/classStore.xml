@@ -367,14 +367,14 @@
         <references refid="classStore_1ad9ed1336388988b3382f9e95229262ce" compoundref="store_8hpp" startline="54" endline="55">generation</references>
         <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">getObject</references>
         <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="222" endline="328">Cors::apply</referencedby>
-        <referencedby refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="915" endline="962">Controller::crudsAsync</referencedby>
+        <referencedby refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="946" endline="994">Controller::crudsAsync</referencedby>
         <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a913563947fb79295de1f2278e6cb5e62" compoundref="keeprbase_8hpp" startline="308" endline="311">api::v2::KeeprBase::databaseController</referencedby>
-        <referencedby refid="classEntity_1a154ae0093211626370549e2924f9c954" compoundref="entity_8hpp" startline="585" endline="587">Entity::databaseController</referencedby>
+        <referencedby refid="classEntity_1a154ae0093211626370549e2924f9c954" compoundref="entity_8hpp" startline="587" endline="589">Entity::databaseController</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Filters_1_1Auth_1a3b6912ca8535567fb2c00dc07e0cc1ce" compoundref="auth_8hpp" startline="115" endline="338">api::v2::Filters::Auth::doFilter</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3e7c77aa55023f9d5ccc345e7b68f2ab" compoundref="permissionmanager__private_8hpp" startline="306" endline="357">api::v2::PermissionManagerPrivate::getPermissionsOfEntity</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a070d79b55b8f3262de2b815a636defd7" compoundref="permissionmanager__private_8hpp" startline="382" endline="430">api::v2::PermissionManagerPrivate::getPermissionsOfEntityCoro</referencedby>
-        <referencedby refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="674" endline="712">Controller::GetServicesAsync</referencedby>
-        <referencedby refid="classController_1a2af2297a7b4fcce1f987510786aaa5d7" compoundref="controller_8hpp" startline="769" endline="800">Controller::GetVisitsAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3e7c77aa55023f9d5ccc345e7b68f2ab" compoundref="permissionmanager__private_8hpp" startline="307" endline="358">api::v2::PermissionManagerPrivate::getPermissionsOfEntity</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a070d79b55b8f3262de2b815a636defd7" compoundref="permissionmanager__private_8hpp" startline="384" endline="433">api::v2::PermissionManagerPrivate::getPermissionsOfEntityCoro</referencedby>
+        <referencedby refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="694" endline="734">Controller::GetServicesAsync</referencedby>
+        <referencedby refid="classController_1a2af2297a7b4fcce1f987510786aaa5d7" compoundref="controller_8hpp" startline="793" endline="826">Controller::GetVisitsAsync</referencedby>
       </memberdef>
       <memberdef kind="function" id="classStore_1a2a4bfc0b18f2999216eda3067988cf57" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>

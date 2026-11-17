@@ -13,6 +13,8 @@
 <codeline></codeline>
 <codeline><highlight class="normal">&gt;<sp/>**Status:**<sp/>Active<sp/>development.<sp/>The<sp/>API<sp/>surface<sp/>and<sp/>data<sp/>model<sp/>are<sp/>still<sp/>evolving.</highlight></codeline>
 <codeline></codeline>
+<codeline><highlight class="normal">&gt;<sp/>**Documentation<sp/>&amp;<sp/>code<sp/>architecture:**<sp/>The<sp/>generated<sp/>[Doxygen<sp/>reference](https://dr3mro.github.io/Valhalla-server/doxygen/html/index.html)<sp/>documents<sp/>the<sp/>C++<sp/>API,<sp/>class<sp/>hierarchy,<sp/>and<sp/>source<sp/>layout.<sp/>For<sp/>the<sp/>HTTP<sp/>API<sp/>itself,<sp/>see<sp/>[Interactive<sp/>API<sp/>docs](#interactive-api-docs).</highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal">---</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>Quick<sp/>Start</highlight></codeline>

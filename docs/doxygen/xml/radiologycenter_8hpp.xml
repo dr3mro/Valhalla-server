@@ -1,94 +1,19 @@
-<?xml version='1.0' encoding='UTF-8' standalone='no' ?>
-<doxygen
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="compound.xsd"
-    version="1.18.0"
-    xml:lang="en-US"
->
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
   <compounddef id="radiologycenter_8hpp" kind="file" language="C++">
     <compoundname>radiologycenter.hpp</compoundname>
     <includes local="no">cstdint</includes>
     <includes local="no">jsoncons/json.hpp</includes>
     <includes local="no">optional</includes>
     <includes local="no">string</includes>
-    <includes
-            refid="appointment_8hpp"
-            local="yes"
-        >entities/appointments/base/appointment.hpp</includes>
-    <includedby
-            refid="appointments_8hpp"
-            local="yes"
-        >src/api/v2/routes/appointments.hpp</includedby>
-    <includedby
-            refid="appointmentcontroller_8cpp"
-            local="yes"
-        >src/controllers/appointmentcontroller/appointmentcontroller.cpp</includedby>
-    <includedby
-            refid="includes_8hpp"
-            local="yes"
-        >src/gatekeeper/includes.hpp</includedby>
+    <includes refid="appointment_8hpp" local="yes">entities/appointments/base/appointment.hpp</includes>
+    <includedby refid="appointments_8hpp" local="yes">src/api/v2/routes/appointments.hpp</includedby>
+    <includedby refid="appointmentcontroller_8cpp" local="yes">src/controllers/appointmentcontroller/appointmentcontroller.cpp</includedby>
+    <includedby refid="includes_8hpp" local="yes">src/gatekeeper/includes.hpp</includedby>
     <incdepgraph>
-      <node id="22">
-        <label>configurator/configurator.hpp</label>
-        <link refid="configurator_8hpp" />
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-      </node>
-      <node id="30">
-        <label>defaults.hpp</label>
-        <link refid="defaults_8hpp" />
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="26">
-        <label>configurator/envloader/envloader.hpp</label>
-        <link refid="envloader_8hpp" />
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-      </node>
-      <node id="27">
-        <label>envvars/envvars.hpp</label>
-        <link refid="envvars_8hpp" />
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
       <node id="14">
         <label>controllers/databasecontroller/databasecontroller.hpp</label>
-        <link refid="databasecontroller_8hpp" />
+        <link refid="databasecontroller_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
@@ -119,31 +44,31 @@
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
-        <childnode refid="45" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
       </node>
-      <node id="31">
+      <node id="23">
         <label>database/asyncdbclient.hpp</label>
-        <link refid="asyncdbclient_8hpp" />
-        <childnode refid="32" relation="include">
+        <link refid="asyncdbclient_8hpp"/>
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
@@ -152,10 +77,10 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="25">
         <label>database/asyncresultmapper.hpp</label>
-        <link refid="asyncresultmapper_8hpp" />
-        <childnode refid="34" relation="include">
+        <link refid="asyncresultmapper_8hpp"/>
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
@@ -166,14 +91,14 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="35">
+      <node id="27">
         <label>database/asyncsqlbinder.hpp</label>
-        <link refid="asyncsqlbinder_8hpp" />
-        <childnode refid="32" relation="include">
+        <link refid="asyncsqlbinder_8hpp"/>
+        <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -184,27 +109,27 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="38">
+      <node id="30">
         <label>database/databasebusy.hpp</label>
-        <link refid="databasebusy_8hpp" />
-        <childnode refid="39" relation="include">
+        <link refid="databasebusy_8hpp"/>
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="32">
         <label>database/databasehandler.hpp</label>
-        <link refid="databasehandler_8hpp" />
+        <link refid="databasehandler_8hpp"/>
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="41">
+      <node id="33">
         <label>database/dbprobe.hpp</label>
-        <link refid="dbprobe_8hpp" />
+        <link refid="dbprobe_8hpp"/>
       </node>
       <node id="6">
         <label>entities/appointments/base/appointment.hpp</label>
-        <link refid="appointment_8hpp" />
+        <link refid="appointment_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
@@ -218,7 +143,7 @@
       </node>
       <node id="1">
         <label>src/entities/appointments/radiologycenter.hpp</label>
-        <link refid="radiologycenter_8hpp" />
+        <link refid="radiologycenter_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
@@ -230,12 +155,12 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="46">
+      <node id="39">
         <label>entities/base/base.hpp</label>
-        <link refid="base_8hpp" />
+        <link refid="base_8hpp"/>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -246,7 +171,7 @@
       </node>
       <node id="8">
         <label>entities/base/entity.hpp</label>
-        <link refid="entity_8hpp" />
+        <link refid="entity_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
@@ -267,33 +192,33 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
-      <node id="48">
+      <node id="41">
         <label>entities/base/types.hpp</label>
-        <link refid="entities_2base_2types_8hpp" />
+        <link refid="entities_2base_2types_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
-        <childnode refid="50" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
@@ -307,42 +232,42 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="53" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="54" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
       </node>
-      <node id="54">
+      <node id="47">
         <label>gatekeeper/passwordcrypt/passwordcrypt.hpp</label>
-        <link refid="passwordcrypt_8hpp" />
+        <link refid="passwordcrypt_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="42">
+      <node id="35">
         <label>store/store.hpp</label>
-        <link refid="store_8hpp" />
+        <link refid="store_8hpp"/>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
@@ -351,41 +276,33 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
-      <node id="55">
+      <node id="48">
         <label>utils/global/http.hpp</label>
-        <link refid="http_8hpp" />
+        <link refid="http_8hpp"/>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
-      <node id="45">
+      <node id="38">
         <label>utils/global/types.hpp</label>
-        <link refid="utils_2global_2types_8hpp" />
+        <link refid="utils_2global_2types_8hpp"/>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="28">
-        <label>message/message.hpp</label>
-        <link refid="message_8hpp" />
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="56">
+      <node id="49">
         <label>validator/validator.hpp</label>
-        <link refid="validator_8hpp" />
-        <childnode refid="49" relation="include">
+        <link refid="validator_8hpp"/>
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
@@ -393,48 +310,48 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
       </node>
-      <node id="49">
+      <node id="42">
         <label>algorithm</label>
       </node>
       <node id="16">
         <label>atomic</label>
       </node>
-      <node id="50">
+      <node id="43">
         <label>cctype</label>
       </node>
-      <node id="24">
-        <label>chrono</label>
+      <node id="22">
+        <label>configurator/configurator.hpp</label>
       </node>
-      <node id="51">
+      <node id="44">
         <label>cppcodec/base64_rfc4648.hpp</label>
       </node>
-      <node id="47">
+      <node id="40">
         <label>cstddef</label>
       </node>
       <node id="2">
         <label>cstdint</label>
       </node>
-      <node id="32">
+      <node id="24">
         <label>drogon/orm/DbClient.h</label>
       </node>
-      <node id="34">
+      <node id="26">
         <label>drogon/orm/Result.h</label>
       </node>
-      <node id="36">
+      <node id="28">
         <label>drogon/orm/SqlBinder.h</label>
       </node>
-      <node id="37">
+      <node id="29">
         <label>drogon/utils/coroutine.h</label>
       </node>
       <node id="10">
@@ -445,9 +362,6 @@
       </node>
       <node id="15">
         <label>fmt/format.h</label>
-      </node>
-      <node id="23">
-        <label>fmt/ranges.h</label>
       </node>
       <node id="11">
         <label>iterator</label>
@@ -461,6 +375,9 @@
       <node id="12">
         <label>memory</label>
       </node>
+      <node id="34">
+        <label>message/message.hpp</label>
+      </node>
       <node id="18">
         <label>mutex</label>
       </node>
@@ -470,28 +387,22 @@
       <node id="19">
         <label>pqxx/pqxx</label>
       </node>
-      <node id="39">
+      <node id="31">
         <label>stdexcept</label>
       </node>
       <node id="5">
         <label>string</label>
       </node>
-      <node id="52">
+      <node id="45">
         <label>string_view</label>
       </node>
       <node id="9">
         <label>sys/types.h</label>
       </node>
-      <node id="29">
-        <label>trantor/utils/Logger.h</label>
-      </node>
-      <node id="25">
-        <label>type_traits</label>
-      </node>
-      <node id="43">
+      <node id="36">
         <label>typeindex</label>
       </node>
-      <node id="44">
+      <node id="37">
         <label>unordered_map</label>
       </node>
       <node id="20">
@@ -500,7 +411,7 @@
       <node id="21">
         <label>utility</label>
       </node>
-      <node id="53">
+      <node id="46">
         <label>variant</label>
       </node>
       <node id="13">
@@ -510,32 +421,31 @@
     <invincdepgraph>
       <node id="3">
         <label>src/api/v2/all_routes.hpp</label>
-        <link refid="all__routes_8hpp" />
+        <link refid="all__routes_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
       <node id="2">
         <label>src/api/v2/routes/appointments.hpp</label>
-        <link refid="appointments_8hpp" />
+        <link refid="appointments_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
       <node id="5">
-        <label
-                >src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
-        <link refid="appointmentcontroller_8cpp" />
+        <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
+        <link refid="appointmentcontroller_8cpp"/>
       </node>
       <node id="7">
         <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
-        <link refid="cliniccontroller_8cpp" />
+        <link refid="cliniccontroller_8cpp"/>
       </node>
       <node id="8">
         <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
-        <link refid="entitycontroller_8cpp" />
+        <link refid="entitycontroller_8cpp"/>
       </node>
       <node id="1">
         <label>src/entities/appointments/radiologycenter.hpp</label>
-        <link refid="radiologycenter_8hpp" />
+        <link refid="radiologycenter_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
@@ -545,11 +455,11 @@
       </node>
       <node id="9">
         <label>src/gatekeeper/gatekeeper.cpp</label>
-        <link refid="gatekeeper_8cpp" />
+        <link refid="gatekeeper_8cpp"/>
       </node>
       <node id="6">
         <label>src/gatekeeper/includes.hpp</label>
-        <link refid="includes_8hpp" />
+        <link refid="includes_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
@@ -561,54 +471,27 @@
       </node>
       <node id="10">
         <label>src/gatekeeper/permissionmanager/permissionmanager.cpp</label>
-        <link refid="permissionmanager_8cpp" />
+        <link refid="permissionmanager_8cpp"/>
       </node>
       <node id="4">
         <label>src/server/server.cpp</label>
-        <link refid="server_8cpp" />
+        <link refid="server_8cpp"/>
       </node>
     </invincdepgraph>
-    <innerclass
-            refid="classRadiologyCenterAppointment"
-            prot="public"
-        >RadiologyCenterAppointment</innerclass>
+    <innerclass refid="classRadiologyCenterAppointment" prot="public">RadiologyCenterAppointment</innerclass>
     <briefdescription>
-<para><ref
-                    refid="classAppointment"
-                    kindref="compound"
-                >Appointment</ref> entity bound to the radiologycenters organisation and its appointment table. </para>
+<para><ref refid="classAppointment" kindref="compound">Appointment</ref> entity bound to the radiologycenters organisation and its appointment table. </para>
     </briefdescription>
     <detaileddescription>
-<para>This is a thin concrete specialisation of <ref
-                    refid="classAppointment"
-                    kindref="compound"
-                >Appointment</ref>. It fixes the table name (&quot;radiologycenters_appointments&quot;) and organisation name (&quot;radiologycenters&quot;), forwards a payload to the base constructor, and exposes two static permission-query helpers by calling the shared <ref
-                    refid="classAppointment"
-                    kindref="compound"
-                >Appointment</ref> implementations. It adds no state or logic of its own.</para>
-<para
-            >WHY THIS FILE MATTERS IN THE SERVER: Controllers that work with radiology-centre appointments construct this class so the generic <ref
-                    refid="classAppointment"
-                    kindref="compound"
-                >Appointment</ref> code is tied to the right table and organisation. <ref
-                    refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21"
-                    kindref="member"
-                >PermissionManager</ref> calls its two static helpers to authorise appointment actions. Without it, the shared permission logic would have no radiology-centre-specific table and organisation names to work with.</para>
+<para>This is a thin concrete specialisation of <ref refid="classAppointment" kindref="compound">Appointment</ref>. It fixes the table name (&quot;radiologycenters_appointments&quot;) and organisation name (&quot;radiologycenters&quot;), forwards a payload to the base constructor, and exposes two static permission-query helpers by calling the shared <ref refid="classAppointment" kindref="compound">Appointment</ref> implementations. It adds no state or logic of its own.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: Controllers that work with radiology-centre appointments construct this class so the generic <ref refid="classAppointment" kindref="compound">Appointment</ref> code is tied to the right table and organisation. <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref> calls its two static helpers to authorise appointment actions. Without it, the shared permission logic would have no radiology-centre-specific table and organisation names to work with.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
-<listitem><para>std::optional: <ulink
-                                url="https://en.cppreference.com/w/cpp/utility/optional"
-                            >https://en.cppreference.com/w/cpp/utility/optional</ulink></para>
-</listitem><listitem><para
-                        >Static constexpr member: a compile-time constant stored on the class, usable without an object.</para>
-</listitem><listitem><para>Inheritance: deriving from <ref
-                                refid="classAppointment"
-                                kindref="compound"
-                            >Appointment</ref> means this class automatically gets its CRUD builders.</para>
+<listitem><para>std::optional: <ulink url="https://en.cppreference.com/w/cpp/utility/optional">https://en.cppreference.com/w/cpp/utility/optional</ulink></para>
+</listitem><listitem><para>Static constexpr member: a compile-time constant stored on the class, usable without an object.</para>
+</listitem><listitem><para>Inheritance: deriving from <ref refid="classAppointment" kindref="compound">Appointment</ref> means this class automatically gets its CRUD builders.</para>
 </listitem></itemizedlist>
 </para>
-<para><simplesect kind="author"><para>Amr Osman <ulink
-                            url="mailto:dr3mro@gmail.com"
-                        >dr3mro@gmail.com</ulink> </para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
 </simplesect>
 <simplesect kind="date"><para>2026-11-16 </para>
 </simplesect>
@@ -616,750 +499,154 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="2"><highlight class="comment"><sp />*<sp />@file<sp
-                    />radiologycenter.hpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp />*<sp />@brief<sp
-                    />Appointment<sp />entity<sp />bound<sp />to<sp />the<sp
-                    />radiologycenters<sp />organisation<sp />and<sp
-                    />its</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp />*<sp />appointment<sp
-                    />table.</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp />*<sp />@details<sp
-                    />This<sp />is<sp />a<sp />thin<sp />concrete<sp
-                    />specialisation<sp />of<sp />Appointment.<sp />It<sp
-                    />fixes<sp />the</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp />*<sp />table<sp
-                    />name</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp />*<sp
-                    />(&quot;radiologycenters_appointments&quot;)<sp />and<sp
-                    />organisation<sp />name<sp
-                    />(&quot;radiologycenters&quot;),</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp />*<sp />forwards<sp />a<sp
-                    />payload<sp />to<sp />the<sp />base<sp />constructor,<sp
-                    />and<sp />exposes<sp />two<sp
-                    />static</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp />*<sp />permission-query<sp
-                    />helpers<sp />by<sp />calling<sp />the<sp />shared<sp
-                    />Appointment<sp />implementations.</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp />*<sp />It<sp />adds<sp
-                    />no<sp />state<sp />or<sp />logic<sp />of<sp />its<sp
-                    />own.</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp />*</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp />*<sp />WHY<sp />THIS<sp
-                    />FILE<sp />MATTERS<sp />IN<sp />THE<sp
-                    />SERVER:</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp />*<sp />Controllers<sp
-                    />that<sp />work<sp />with<sp />radiology-centre<sp
-                    />appointments<sp />construct<sp />this<sp
-                    />class</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp />*<sp />so<sp />the<sp
-                    />generic<sp />Appointment<sp />code<sp />is<sp />tied<sp
-                    />to<sp />the<sp />right<sp />table<sp />and<sp
-                    />organisation.</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp />*<sp
-                    />PermissionManager<sp />calls<sp />its<sp />two<sp
-                    />static<sp />helpers<sp />to<sp />authorise<sp
-                    />appointment</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp />*<sp />actions.<sp
-                    />Without<sp />it,<sp />the<sp />shared<sp />permission<sp
-                    />logic<sp />would<sp />have<sp />no</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp />*<sp
-                    />radiology-centre-specific<sp />table<sp />and<sp
-                    />organisation<sp />names<sp />to<sp />work<sp
-                    />with.</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp />*</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp />*<sp />CONCEPTS<sp
-                    />TO<sp />LEARN<sp />(for<sp
-                    />beginners):</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp />*<sp />-<sp
-                    />std::optional:<sp
-                    />https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp />*<sp />-<sp />Static<sp
-                    />constexpr<sp />member:<sp />a<sp />compile-time<sp
-                    />constant<sp />stored<sp />on<sp />the<sp
-                    />class,</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp />*<sp />usable<sp
-                    />without<sp />an<sp />object.</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp />*<sp />-<sp
-                    />Inheritance:<sp />deriving<sp />from<sp />Appointment<sp
-                    />means<sp />this<sp />class<sp />automatically<sp
-                    />gets</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp />*<sp />its<sp />CRUD<sp
-                    />builders.</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp />*</highlight></codeline>
-<codeline lineno="26"><highlight class="comment"><sp />*<sp />@author<sp
-                    />Amr<sp />Osman<sp
-                    />&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="27"><highlight class="comment"><sp />*<sp />@date<sp
-                    />2026-11-16</highlight></codeline>
-<codeline lineno="28"><highlight class="comment"><sp />*/</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="29"><highlight class="normal" /></codeline>
-<codeline lineno="30"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#pragma<sp />once<sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Include<sp />this<sp />header<sp />at<sp />most<sp
-                    />once<sp />per<sp />source<sp />file.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="31"><highlight class="normal" /></codeline>
-<codeline lineno="32"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />std::uint64_t,<sp />the<sp />type<sp />used<sp />for<sp
-                    />ids<sp />in<sp />the<sp />permission<sp
-                    />helpers.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="33"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#include<sp />&lt;cstdint&gt;</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="34"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />jsoncons::json,<sp />kept<sp />available<sp />for<sp
-                    />payloads<sp />passed<sp />to<sp />the<sp />base<sp
-                    />constructor.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="35"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#include<sp />&lt;jsoncons/json.hpp&gt;</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="36"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />std::optional&lt;std::string&gt;,<sp />the<sp
-                    />return<sp />type<sp />of<sp />the<sp
-                    />helpers.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="37"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#include<sp />&lt;optional&gt;</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="38"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#include<sp />&lt;string&gt;</highlight><highlight
-                    class="normal"
-                ><sp /><sp /></highlight><highlight class="comment">//<sp
-                    />std::string<sp />for<sp />table<sp
-                    />names.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="39"><highlight class="normal" /></codeline>
-<codeline lineno="40"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Appointment,<sp />the<sp />base<sp />class<sp />with<sp
-                    />the<sp />shared<sp />permission-query<sp
-                    />implementations.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="41"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#include<sp />&quot;<ref
-                        refid="appointment_8hpp"
-                        kindref="compound"
-                    >entities/appointments/base/appointment.hpp</ref>&quot;</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="42"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>radiologycenter.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Appointment<sp/>entity<sp/>bound<sp/>to<sp/>the<sp/>radiologycenters<sp/>organisation<sp/>and<sp/>its</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>appointment<sp/>table.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>is<sp/>a<sp/>thin<sp/>concrete<sp/>specialisation<sp/>of<sp/>Appointment.<sp/>It<sp/>fixes<sp/>the</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>table<sp/>name</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>(&quot;radiologycenters_appointments&quot;)<sp/>and<sp/>organisation<sp/>name<sp/>(&quot;radiologycenters&quot;),</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>forwards<sp/>a<sp/>payload<sp/>to<sp/>the<sp/>base<sp/>constructor,<sp/>and<sp/>exposes<sp/>two<sp/>static</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>permission-query<sp/>helpers<sp/>by<sp/>calling<sp/>the<sp/>shared<sp/>Appointment<sp/>implementations.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>It<sp/>adds<sp/>no<sp/>state<sp/>or<sp/>logic<sp/>of<sp/>its<sp/>own.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>Controllers<sp/>that<sp/>work<sp/>with<sp/>radiology-centre<sp/>appointments<sp/>construct<sp/>this<sp/>class</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>so<sp/>the<sp/>generic<sp/>Appointment<sp/>code<sp/>is<sp/>tied<sp/>to<sp/>the<sp/>right<sp/>table<sp/>and<sp/>organisation.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>PermissionManager<sp/>calls<sp/>its<sp/>two<sp/>static<sp/>helpers<sp/>to<sp/>authorise<sp/>appointment</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>actions.<sp/>Without<sp/>it,<sp/>the<sp/>shared<sp/>permission<sp/>logic<sp/>would<sp/>have<sp/>no</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>radiology-centre-specific<sp/>table<sp/>and<sp/>organisation<sp/>names<sp/>to<sp/>work<sp/>with.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>std::optional:<sp/>https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>Static<sp/>constexpr<sp/>member:<sp/>a<sp/>compile-time<sp/>constant<sp/>stored<sp/>on<sp/>the<sp/>class,</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>usable<sp/>without<sp/>an<sp/>object.</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>-<sp/>Inheritance:<sp/>deriving<sp/>from<sp/>Appointment<sp/>means<sp/>this<sp/>class<sp/>automatically<sp/>gets</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>its<sp/>CRUD<sp/>builders.</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>std::uint64_t,<sp/>the<sp/>type<sp/>used<sp/>for<sp/>ids<sp/>in<sp/>the<sp/>permission<sp/>helpers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>jsoncons::json,<sp/>kept<sp/>available<sp/>for<sp/>payloads<sp/>passed<sp/>to<sp/>the<sp/>base<sp/>constructor.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/json.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>std::optional&lt;std::string&gt;,<sp/>the<sp/>return<sp/>type<sp/>of<sp/>the<sp/>helpers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>for<sp/>table<sp/>names.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Appointment,<sp/>the<sp/>base<sp/>class<sp/>with<sp/>the<sp/>shared<sp/>permission-query<sp/>implementations.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="appointment_8hpp" kindref="compound">entities/appointments/base/appointment.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="43"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="44"><highlight class="comment"><sp />*<sp />@class<sp
-                    />RadiologyCenterAppointment</highlight></codeline>
-<codeline lineno="45"><highlight class="comment"><sp />*<sp />@brief<sp
-                    />Appointment<sp />entity<sp />bound<sp />to<sp />the<sp
-                    />radiologycenters<sp />organisation<sp />and<sp
-                    />its</highlight></codeline>
-<codeline lineno="46"><highlight class="comment"><sp />*<sp />appointment<sp
-                    />table.</highlight></codeline>
-<codeline lineno="47"><highlight class="comment"><sp />*<sp />@details<sp
-                    />Fixes<sp />TABLENAME<sp />and<sp />ORGNAME<sp />and<sp
-                    />forwards<sp />the<sp />two<sp
-                    />permission-query</highlight></codeline>
-<codeline lineno="48"><highlight class="comment"><sp />*<sp />requests<sp
-                    />to<sp />the<sp />shared<sp />Appointment<sp
-                    />implementations.</highlight></codeline>
-<codeline lineno="49"><highlight class="comment"><sp />*<sp />@see<sp
-                    />Appointment</highlight></codeline>
-<codeline lineno="50"><highlight class="comment"><sp />*/</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline
-                lineno="51"
-                refid="classRadiologyCenterAppointment"
-                refkind="compound"
-            ><highlight class="normal" /><highlight class="keyword">class<sp
-                    /></highlight><highlight class="normal"><ref
-                        refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f"
-                        kindref="member"
-                    >RadiologyCenterAppointment</ref></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Public<sp
-                    />inheritance<sp />keeps<sp />the<sp />base<sp />CRUD<sp
-                    />interface</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="53"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp
-                    />available.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="54"><highlight class="normal"><sp /><sp /><sp /><sp />:<sp
-                    /></highlight><highlight
-                    class="keyword"
-                >public</highlight><highlight class="normal"><sp /><ref
-                        refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9"
-                        kindref="member"
-                    >Appointment</ref><sp />{</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp /></highlight><highlight
-                    class="keyword"
-                >private</highlight><highlight
-                    class="normal"
-                >:</highlight><highlight class="comment" /></codeline>
-<codeline lineno="56"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="57"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Database<sp />table<sp />holding<sp
-                    />radiology<sp />centre<sp
-                    />appointments.</highlight></codeline>
-<codeline lineno="58"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="59"
-                refid="classRadiologyCenterAppointment_1a4e8b07cf5d0bdcd80c4f7b91d27425a7"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /></highlight><highlight
-                    class="keyword"
-                >static</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >constexpr</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >auto</highlight><highlight class="normal"><sp /><ref
-                        refid="classRadiologyCenterAppointment_1a4e8b07cf5d0bdcd80c4f7b91d27425a7"
-                        kindref="member"
-                    >TABLENAME</ref><sp />=</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="stringliteral"
-                >&quot;radiologycenters_appointments&quot;</highlight><highlight
-                    class="normal"
-                >;<sp /><sp /></highlight><highlight class="comment">//<sp
-                    />The<sp />exact<sp />table<sp />this<sp />class<sp
-                    />reads</highlight><highlight class="normal" /></codeline>
-<codeline lineno="61"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />and<sp />writes.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="62"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
-<codeline lineno="63"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="64"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Plural<sp />organisation<sp />name<sp
-                    />used<sp />for<sp />permission<sp />service<sp
-                    />lookup.</highlight></codeline>
-<codeline lineno="65"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="66"
-                refid="classRadiologyCenterAppointment_1a89762770070203831eeef785f7fbbf8b"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /></highlight><highlight
-                    class="keyword"
-                >static</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >constexpr</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >auto</highlight><highlight class="normal"><sp /><ref
-                        refid="classRadiologyCenterAppointment_1a89762770070203831eeef785f7fbbf8b"
-                        kindref="member"
-                    >ORGNAME</ref><sp />=</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="stringliteral"
-                >&quot;radiologycenters&quot;</highlight><highlight
-                    class="normal"
-                >;<sp /><sp /></highlight><highlight class="comment">//<sp
-                    />The<sp />owning<sp />organisation<sp />for<sp
-                    />permission<sp />queries.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="68"><highlight class="normal" /></codeline>
-<codeline lineno="69"><highlight class="normal"><sp /></highlight><highlight
-                    class="keyword"
-                >public</highlight><highlight
-                    class="normal"
-                >:</highlight><highlight class="comment" /></codeline>
-<codeline lineno="70"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="71"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Stores<sp />the<sp />appointment<sp
-                    />payload,<sp />binding<sp />it<sp />to<sp />the<sp
-                    />radiology<sp />centre</highlight></codeline>
-<codeline lineno="72"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />appointment<sp />table.</highlight></codeline>
-<codeline lineno="73"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@tparam<sp />T<sp />Payload<sp />type<sp />held<sp />by<sp
-                    />EntityType.</highlight></codeline>
-<codeline lineno="74"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@param[in]<sp />_data<sp />Operation<sp
-                    />payload.</highlight></codeline>
-<codeline lineno="75"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline lineno="76"><highlight class="normal"><sp /><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >template</highlight><highlight class="normal"><sp
-                    />&lt;</highlight><highlight
-                    class="keyword"
-                >typename</highlight><highlight class="normal"><sp
-                    />T&gt;</highlight></codeline>
-<codeline
-                lineno="77"
-                refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /></highlight><highlight
-                    class="keyword"
-                >explicit</highlight><highlight class="normal"><sp /><ref
-                        refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f"
-                        kindref="member"
-                    >RadiologyCenterAppointment</ref>(</highlight><highlight
-                    class="keyword"
-                >const</highlight><highlight class="normal"><sp />T&amp;<sp
-                    />_data)</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight class="comment">//<sp
-                    />&quot;explicit&quot;<sp />requires<sp />a<sp />direct<sp
-                    />call;<sp />TABLENAME</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="79"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight class="comment">//<sp
-                    />fixes<sp />the<sp />target<sp
-                    />table.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="80"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp />:<sp /><ref
-                        refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9"
-                        kindref="member"
-                    >Appointment</ref>(_data,<sp /><ref
-                        refid="classRadiologyCenterAppointment_1a4e8b07cf5d0bdcd80c4f7b91d27425a7"
-                        kindref="member"
-                    >TABLENAME</ref>)<sp />{</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp /><sp
-                    />}</highlight></codeline>
-<codeline lineno="82"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
-<codeline lineno="83"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="84"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Non-copyable<sp />and<sp />non-movable;<sp
-                    />construct<sp />in<sp />place<sp />for<sp />the<sp
-                    />request</highlight></codeline>
-<codeline lineno="85"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />that<sp />uses<sp />it.</highlight></codeline>
-<codeline lineno="86"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="87"
-                refid="classRadiologyCenterAppointment_1ad7ea3fc53d0b72e89cd78a4a7b153ba1"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /><ref
-                        refid="classRadiologyCenterAppointment_1ad7ea3fc53d0b72e89cd78a4a7b153ba1"
-                        kindref="member"
-                    >RadiologyCenterAppointment</ref>(</highlight><highlight
-                    class="keyword"
-                >const</highlight><highlight class="normal"><sp /><ref
-                        refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f"
-                        kindref="member"
-                    >RadiologyCenterAppointment</ref>&amp;)<sp
-                    />=</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="keyword"
-                >delete</highlight><highlight class="normal">;<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />No<sp
-                    />copy.</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="89"
-                refid="classRadiologyCenterAppointment_1a822e9b4a653bbabb669b7b6a0927fabb"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /><ref
-                        refid="classRadiologyCenterAppointment_1a822e9b4a653bbabb669b7b6a0927fabb"
-                        kindref="member"
-                    >RadiologyCenterAppointment</ref>(<ref
-                        refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f"
-                        kindref="member"
-                    >RadiologyCenterAppointment</ref>&amp;&amp;)<sp
-                    />=</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="keyword"
-                >delete</highlight><highlight class="normal">;<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />No<sp
-                    />move.</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="91"
-                refid="classRadiologyCenterAppointment_1aadc88d5cbdde227766ce558eb8e07d18"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /><ref
-                        refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f"
-                        kindref="member"
-                    >RadiologyCenterAppointment</ref>&amp;<sp /><ref
-                        refid="classRadiologyCenterAppointment_1aadc88d5cbdde227766ce558eb8e07d18"
-                        kindref="member"
-                    >operator=</ref>(</highlight><highlight
-                    class="keyword"
-                >const</highlight><highlight class="normal"><sp /><ref
-                        refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f"
-                        kindref="member"
-                    >RadiologyCenterAppointment</ref>&amp;)<sp
-                    />=</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="keyword"
-                >delete</highlight><highlight class="normal">;<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />No<sp
-                    />copy<sp />assignment.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline
-                lineno="93"
-                refid="classRadiologyCenterAppointment_1afc3b51487de0521db2a57e24b0c1d755"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /><ref
-                        refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f"
-                        kindref="member"
-                    >RadiologyCenterAppointment</ref>&amp;<sp /><ref
-                        refid="classRadiologyCenterAppointment_1afc3b51487de0521db2a57e24b0c1d755"
-                        kindref="member"
-                    >operator=</ref>(<ref
-                        refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f"
-                        kindref="member"
-                    >RadiologyCenterAppointment</ref>&amp;&amp;)<sp
-                    />=</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="keyword"
-                >delete</highlight><highlight class="normal">;<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />No<sp
-                    />move<sp />assignment.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="95"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
-<codeline lineno="96"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="97"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Returns<sp />the<sp />radiology<sp />centre<sp
-                    />appointment<sp />table<sp />name.</highlight></codeline>
-<codeline lineno="98"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="99"
-                refid="classRadiologyCenterAppointment_1a8b941280ccea9f69a8c7f73fa3123db0"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /></highlight><highlight
-                    class="keyword"
-                >static</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >constexpr</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >auto</highlight><highlight class="normal"><sp /><ref
-                        refid="classRadiologyCenterAppointment_1a8b941280ccea9f69a8c7f73fa3123db0"
-                        kindref="member"
-                    >getTableName</ref>()<sp />{</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp /><ref
-                        refid="classRadiologyCenterAppointment_1a4e8b07cf5d0bdcd80c4f7b91d27425a7"
-                        kindref="member"
-                    >TABLENAME</ref>;</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp /><sp />}<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Static<sp
-                    />accessor<sp />for<sp />the<sp />table<sp
-                    />name.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="102"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
-<codeline lineno="103"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="104"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Returns<sp />the<sp />owning<sp
-                    />organisation<sp />name<sp
-                    />(&quot;radiologycenters&quot;).</highlight></codeline>
-<codeline lineno="105"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="106"
-                refid="classRadiologyCenterAppointment_1ab1162564687b33a4b200b5bf5d40b944"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /></highlight><highlight
-                    class="keyword"
-                >static</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >constexpr</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >auto</highlight><highlight class="normal"><sp /><ref
-                        refid="classRadiologyCenterAppointment_1ab1162564687b33a4b200b5bf5d40b944"
-                        kindref="member"
-                    >getOrgName</ref>()<sp />{</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp /><ref
-                        refid="classRadiologyCenterAppointment_1a89762770070203831eeef785f7fbbf8b"
-                        kindref="member"
-                    >ORGNAME</ref>;</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp /><sp />}<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Static<sp
-                    />accessor<sp />for<sp />the<sp />organisation<sp
-                    />name.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="109"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
-<codeline lineno="110"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="111"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Default<sp />destructor;<sp />no<sp />state<sp
-                    />beyond<sp />the<sp />base<sp
-                    />Appointment.</highlight></codeline>
-<codeline lineno="112"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="113"
-                refid="classRadiologyCenterAppointment_1ab8277c75180149f32f3a1f2c88f4e929"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /><ref
-                        refid="classRadiologyCenterAppointment_1ab8277c75180149f32f3a1f2c88f4e929"
-                        kindref="member"
-                    >~RadiologyCenterAppointment</ref>()<sp
-                    /></highlight><highlight
-                    class="keyword"
-                >override</highlight><highlight class="normal"><sp
-                    />=</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="keywordflow"
-                >default</highlight><highlight class="normal">;<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Nothing<sp
-                    />extra<sp />to<sp />clean<sp />up.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="115"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
-<codeline lineno="116"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="117"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Builds<sp />the<sp />permission<sp />query<sp
-                    />for<sp />a<sp />radiology<sp />centre<sp />service<sp
-                    />row.</highlight></codeline>
-<codeline lineno="118"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@param[in]<sp />service_name<sp />Organisation<sp
-                    />table<sp />name.</highlight></codeline>
-<codeline lineno="119"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@param[in]<sp />service_id<sp />Organisation<sp />row<sp
-                    />id.</highlight></codeline>
-<codeline lineno="120"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@return<sp />SELECT<sp />of<sp />the<sp />radiology<sp
-                    />centre&apos;s<sp
-                    />owner/admin/staff.</highlight></codeline>
-<codeline lineno="121"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline lineno="122"><highlight class="normal"><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Public<sp
-                    />wrapper<sp />with<sp />the<sp />expected<sp
-                    />name.</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="123"
-                refid="classRadiologyCenterAppointment_1a18feeb99c9350f3f52342b33e2fb8644"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /></highlight><highlight
-                    class="keyword"
-                >static</highlight><highlight class="normal"><sp
-                    />std::optional&lt;std::string&gt;<sp /><ref
-                        refid="classRadiologyCenterAppointment_1a18feeb99c9350f3f52342b33e2fb8644"
-                        kindref="member"
-                    >getServicePermissionsQuery</ref>(</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="keyword"
-                >const</highlight><highlight class="normal"><sp
-                    />std::string&amp;<sp />service_name,<sp />std::uint64_t<sp
-                    />service_id)<sp />{</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp /><ref
-                        refid="classAppointment_1a26159d8e97aa5b0e286e9bb22d1e923e"
-                        kindref="member"
-                    >getServicePermissionsQueryImpl</ref>(service_name,</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp />service_id);<sp
-                    /><sp /></highlight><highlight class="comment">//<sp
-                    />Delegate<sp />to<sp />the</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="127"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight class="comment">//<sp
-                    />shared<sp />base</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="128"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight class="comment">//<sp
-                    />implementation.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="129"><highlight class="normal"><sp /><sp
-                    />}</highlight></codeline>
-<codeline lineno="130"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
-<codeline lineno="131"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="132"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Builds<sp />the<sp />permission<sp />query<sp
-                    />that<sp />resolves<sp />the<sp />owning<sp />centre<sp
-                    />from</highlight></codeline>
-<codeline lineno="133"><highlight class="comment"><sp /><sp /><sp />*<sp />an<sp
-                    />appointment<sp />id.</highlight></codeline>
-<codeline lineno="134"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@param[in]<sp />appointment_id<sp />Appointment<sp
-                    />row<sp />id.</highlight></codeline>
-<codeline lineno="135"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@return<sp />SELECT<sp />of<sp />the<sp />owning<sp
-                    />radiology<sp />centre&apos;s<sp
-                    />owner/admin/staff.</highlight></codeline>
-<codeline lineno="136"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline lineno="137"><highlight class="normal"><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Public<sp
-                    />wrapper<sp />for<sp />the<sp />owner<sp
-                    />lookup.</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="138"
-                refid="classRadiologyCenterAppointment_1a875b5ef628661ebc4be5b7b10446be2d"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /></highlight><highlight
-                    class="keyword"
-                >static</highlight><highlight class="normal"><sp
-                    />std::optional&lt;std::string&gt;<sp /><ref
-                        refid="classRadiologyCenterAppointment_1a875b5ef628661ebc4be5b7b10446be2d"
-                        kindref="member"
-                    >getPermissionsQueryForRead</ref>(</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp />std::uint64_t<sp />appointment_id)<sp
-                    />{</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp /><ref
-                        refid="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0"
-                        kindref="member"
-                    >getPermissionsQueryForReadImpl</ref>(<ref
-                        refid="classRadiologyCenterAppointment_1a89762770070203831eeef785f7fbbf8b"
-                        kindref="member"
-                    >ORGNAME</ref>,</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><ref
-                        refid="classRadiologyCenterAppointment_1a4e8b07cf5d0bdcd80c4f7b91d27425a7"
-                        kindref="member"
-                    >TABLENAME</ref>,</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    />appointment_id);<sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Supply<sp />this</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="143"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />class&apos;s</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="144"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />organisation<sp />and</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="145"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />table<sp />names<sp />to</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="146"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />the<sp />base.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="147"><highlight class="normal"><sp /><sp
-                    />}</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>@class<sp/>RadiologyCenterAppointment</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Appointment<sp/>entity<sp/>bound<sp/>to<sp/>the<sp/>radiologycenters<sp/>organisation<sp/>and<sp/>its</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>appointment<sp/>table.</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>@details<sp/>Fixes<sp/>TABLENAME<sp/>and<sp/>ORGNAME<sp/>and<sp/>forwards<sp/>the<sp/>two<sp/>permission-query</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>requests<sp/>to<sp/>the<sp/>shared<sp/>Appointment<sp/>implementations.</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>@see<sp/>Appointment</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classRadiologyCenterAppointment" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" kindref="member">RadiologyCenterAppointment</ref></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Public<sp/>inheritance<sp/>keeps<sp/>the<sp/>base<sp/>CRUD<sp/>interface</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>available.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" kindref="member">Appointment</ref><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Database<sp/>table<sp/>holding<sp/>radiology<sp/>centre<sp/>appointments.</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classRadiologyCenterAppointment_1a4e8b07cf5d0bdcd80c4f7b91d27425a7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classRadiologyCenterAppointment_1a4e8b07cf5d0bdcd80c4f7b91d27425a7" kindref="member">TABLENAME</ref><sp/>=</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;radiologycenters_appointments&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>exact<sp/>table<sp/>this<sp/>class<sp/>reads</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>writes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Plural<sp/>organisation<sp/>name<sp/>used<sp/>for<sp/>permission<sp/>service<sp/>lookup.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classRadiologyCenterAppointment_1a89762770070203831eeef785f7fbbf8b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classRadiologyCenterAppointment_1a89762770070203831eeef785f7fbbf8b" kindref="member">ORGNAME</ref><sp/>=</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;radiologycenters&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>owning<sp/>organisation<sp/>for<sp/>permission<sp/>queries.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Stores<sp/>the<sp/>appointment<sp/>payload,<sp/>binding<sp/>it<sp/>to<sp/>the<sp/>radiology<sp/>centre</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/>*<sp/>appointment<sp/>table.</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Payload<sp/>type<sp/>held<sp/>by<sp/>EntityType.</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_data<sp/>Operation<sp/>payload.</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="77" refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" kindref="member">RadiologyCenterAppointment</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T&amp;<sp/>_data)</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;explicit&quot;<sp/>requires<sp/>a<sp/>direct<sp/>call;<sp/>TABLENAME</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fixes<sp/>the<sp/>target<sp/>table.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" kindref="member">Appointment</ref>(_data,<sp/><ref refid="classRadiologyCenterAppointment_1a4e8b07cf5d0bdcd80c4f7b91d27425a7" kindref="member">TABLENAME</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Non-copyable<sp/>and<sp/>non-movable;<sp/>construct<sp/>in<sp/>place<sp/>for<sp/>the<sp/>request</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/>*<sp/>that<sp/>uses<sp/>it.</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="classRadiologyCenterAppointment_1ad7ea3fc53d0b72e89cd78a4a7b153ba1" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classRadiologyCenterAppointment_1ad7ea3fc53d0b72e89cd78a4a7b153ba1" kindref="member">RadiologyCenterAppointment</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" kindref="member">RadiologyCenterAppointment</ref>&amp;)<sp/>=</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="classRadiologyCenterAppointment_1a822e9b4a653bbabb669b7b6a0927fabb" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classRadiologyCenterAppointment_1a822e9b4a653bbabb669b7b6a0927fabb" kindref="member">RadiologyCenterAppointment</ref>(<ref refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" kindref="member">RadiologyCenterAppointment</ref>&amp;&amp;)<sp/>=</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="classRadiologyCenterAppointment_1aadc88d5cbdde227766ce558eb8e07d18" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" kindref="member">RadiologyCenterAppointment</ref>&amp;<sp/><ref refid="classRadiologyCenterAppointment_1aadc88d5cbdde227766ce558eb8e07d18" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" kindref="member">RadiologyCenterAppointment</ref>&amp;)<sp/>=</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="classRadiologyCenterAppointment_1afc3b51487de0521db2a57e24b0c1d755" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" kindref="member">RadiologyCenterAppointment</ref>&amp;<sp/><ref refid="classRadiologyCenterAppointment_1afc3b51487de0521db2a57e24b0c1d755" kindref="member">operator=</ref>(<ref refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" kindref="member">RadiologyCenterAppointment</ref>&amp;&amp;)<sp/>=</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>radiology<sp/>centre<sp/>appointment<sp/>table<sp/>name.</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="classRadiologyCenterAppointment_1a8b941280ccea9f69a8c7f73fa3123db0" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classRadiologyCenterAppointment_1a8b941280ccea9f69a8c7f73fa3123db0" kindref="member">getTableName</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classRadiologyCenterAppointment_1a4e8b07cf5d0bdcd80c4f7b91d27425a7" kindref="member">TABLENAME</ref>;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Static<sp/>accessor<sp/>for<sp/>the<sp/>table<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>owning<sp/>organisation<sp/>name<sp/>(&quot;radiologycenters&quot;).</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="classRadiologyCenterAppointment_1ab1162564687b33a4b200b5bf5d40b944" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classRadiologyCenterAppointment_1ab1162564687b33a4b200b5bf5d40b944" kindref="member">getOrgName</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classRadiologyCenterAppointment_1a89762770070203831eeef785f7fbbf8b" kindref="member">ORGNAME</ref>;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Static<sp/>accessor<sp/>for<sp/>the<sp/>organisation<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>destructor;<sp/>no<sp/>state<sp/>beyond<sp/>the<sp/>base<sp/>Appointment.</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="classRadiologyCenterAppointment_1ab8277c75180149f32f3a1f2c88f4e929" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classRadiologyCenterAppointment_1ab8277c75180149f32f3a1f2c88f4e929" kindref="member">~RadiologyCenterAppointment</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Nothing<sp/>extra<sp/>to<sp/>clean<sp/>up.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>permission<sp/>query<sp/>for<sp/>a<sp/>radiology<sp/>centre<sp/>service<sp/>row.</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_name<sp/>Organisation<sp/>table<sp/>name.</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_id<sp/>Organisation<sp/>row<sp/>id.</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>SELECT<sp/>of<sp/>the<sp/>radiology<sp/>centre&apos;s<sp/>owner/admin/staff.</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Public<sp/>wrapper<sp/>with<sp/>the<sp/>expected<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="classRadiologyCenterAppointment_1a18feeb99c9350f3f52342b33e2fb8644" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classRadiologyCenterAppointment_1a18feeb99c9350f3f52342b33e2fb8644" kindref="member">getServicePermissionsQuery</ref>(</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_name,<sp/>std::uint64_t<sp/>service_id)<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classAppointment_1a26159d8e97aa5b0e286e9bb22d1e923e" kindref="member">getServicePermissionsQueryImpl</ref>(service_name,</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>service_id);<sp/><sp/></highlight><highlight class="comment">//<sp/>Delegate<sp/>to<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>shared<sp/>base</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>implementation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>permission<sp/>query<sp/>that<sp/>resolves<sp/>the<sp/>owning<sp/>centre<sp/>from</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/><sp/><sp/>*<sp/>an<sp/>appointment<sp/>id.</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>appointment_id<sp/>Appointment<sp/>row<sp/>id.</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>SELECT<sp/>of<sp/>the<sp/>owning<sp/>radiology<sp/>centre&apos;s<sp/>owner/admin/staff.</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Public<sp/>wrapper<sp/>for<sp/>the<sp/>owner<sp/>lookup.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138" refid="classRadiologyCenterAppointment_1a875b5ef628661ebc4be5b7b10446be2d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classRadiologyCenterAppointment_1a875b5ef628661ebc4be5b7b10446be2d" kindref="member">getPermissionsQueryForRead</ref>(</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::uint64_t<sp/>appointment_id)<sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0" kindref="member">getPermissionsQueryForReadImpl</ref>(<ref refid="classRadiologyCenterAppointment_1a89762770070203831eeef785f7fbbf8b" kindref="member">ORGNAME</ref>,</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classRadiologyCenterAppointment_1a4e8b07cf5d0bdcd80c4f7b91d27425a7" kindref="member">TABLENAME</ref>,</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>appointment_id);<sp/><sp/></highlight><highlight class="comment">//<sp/>Supply<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>class&apos;s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>organisation<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>table<sp/>names<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>base.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="148"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="src/entities/appointments/radiologycenter.hpp" />
+    <location file="src/entities/appointments/radiologycenter.hpp"/>
   </compounddef>
 </doxygen>

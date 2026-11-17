@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['frontendconfig_0',['FrontEndConfig',['../classConfigurator.html#a8b3e99fef2ad5bf59793fa235a97aa3c',1,'Configurator']]]
+  ['gatekeeper_0',['GateKeeper',['../controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1',1,'controller.hpp']]]
 ];

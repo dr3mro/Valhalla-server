@@ -33,7 +33,7 @@
         <name>DbExecutor</name>
         <qualifiedname>DbExecutor::DbExecutor</qualifiedname>
         <briefdescription>
-<para>Constructs the executor sized and configured from the <ref refid="classConfigurator" kindref="compound">Configurator</ref>. </para>
+<para>Constructs the executor sized and configured from the Configurator. </para>
         </briefdescription>
         <detaileddescription>
 <para>Builds the executor from configuration, naming it &quot;DB executor&quot; for diagnostics. </para>

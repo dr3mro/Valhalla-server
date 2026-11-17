@@ -1,7 +1,6 @@
 var dir_68267d1309a1af8e8297ef4c3efbcdba =
 [
     [ "api", "dir_da61e3e9a357748887e3ca8d7c5a0c16.html", "dir_da61e3e9a357748887e3ca8d7c5a0c16" ],
-    [ "configurator", "dir_f855cd1749e901f58634957bc935d1ef.html", "dir_f855cd1749e901f58634957bc935d1ef" ],
     [ "controllers", "dir_bbd6674d859f4cefaacb708974cac240.html", "dir_bbd6674d859f4cefaacb708974cac240" ],
     [ "database", "dir_803ee67260c130b45d29089798491ab2.html", "dir_803ee67260c130b45d29089798491ab2" ],
     [ "entities", "dir_d691984d1d74be3b164cee16192654be.html", "dir_d691984d1d74be3b164cee16192654be" ],

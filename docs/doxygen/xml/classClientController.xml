@@ -1061,7 +1061,7 @@
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
         <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="110">api::v2::Http::NOT_ACCEPTABLE</references>
-        <references refid="classController_1acf60ad2a21b8d7c3c7a81d9412b6cd3c" compoundref="controller_8hpp" startline="536" endline="543">Controller::Suspend</references>
+        <references refid="classController_1acf60ad2a21b8d7c3c7a81d9412b6cd3c" compoundref="controller_8hpp" startline="546" endline="555">Controller::Suspend</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1a77e043006883f4a959679df477d0ad39" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -1121,7 +1121,7 @@
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
         <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="110">api::v2::Http::NOT_ACCEPTABLE</references>
-        <references refid="classController_1a82399a341c86ed94ac1ade56ced71dc7" compoundref="controller_8hpp" startline="576" endline="586">Controller::SuspendAsync</references>
+        <references refid="classController_1a82399a341c86ed94ac1ade56ced71dc7" compoundref="controller_8hpp" startline="590" endline="602">Controller::SuspendAsync</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1a42c57adab458feeb209485ce13c48b0f" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -1181,7 +1181,7 @@
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
         <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="110">api::v2::Http::NOT_ACCEPTABLE</references>
-        <references refid="classController_1a9b6e3fd0227fcb95b0831aef3b4e5f08" compoundref="controller_8hpp" startline="556" endline="563">Controller::Unsuspend</references>
+        <references refid="classController_1a9b6e3fd0227fcb95b0831aef3b4e5f08" compoundref="controller_8hpp" startline="568" endline="577">Controller::Unsuspend</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1af7b6b7c90918fc3068478538f2e1b37d" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -1241,7 +1241,7 @@
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
         <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="110">api::v2::Http::NOT_ACCEPTABLE</references>
-        <references refid="classController_1a0044a385830517e3a97e0b250dce4748" compoundref="controller_8hpp" startline="599" endline="609">Controller::UnsuspendAsync</references>
+        <references refid="classController_1a0044a385830517e3a97e0b250dce4748" compoundref="controller_8hpp" startline="615" endline="627">Controller::UnsuspendAsync</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1a98c472a091deb653605efb4049936c9e" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -1359,7 +1359,7 @@
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
         <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
-        <references refid="classController_1ad8517f93d94b2584124d06d0904c8c28" compoundref="controller_8hpp" startline="626" endline="659">Controller::GetServices</references>
+        <references refid="classController_1ad8517f93d94b2584124d06d0904c8c28" compoundref="controller_8hpp" startline="644" endline="679">Controller::GetServices</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1aebd0c741055d14e284ea633eee9bd18d" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -1419,7 +1419,7 @@
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
         <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
-        <references refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="674" endline="712">Controller::GetServicesAsync</references>
+        <references refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="694" endline="734">Controller::GetServicesAsync</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
     </sectiondef>
@@ -1479,7 +1479,7 @@
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa3c71b3c24152de804ac03bd896fb4856" compoundref="http_8hpp" startline="112">api::v2::Http::CONFLICT</references>
-        <references refid="classController_1a092b50bf54ca1d6d6f706a5a052992b1" compoundref="controller_8hpp" startline="187" endline="196">Controller::Create</references>
+        <references refid="classController_1a092b50bf54ca1d6d6f706a5a052992b1" compoundref="controller_8hpp" startline="187" endline="197">Controller::Create</references>
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
         <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
         <referencedby refid="classClientController_1a7b3e95c9052e2b4646f014ca9af39140" compoundref="clientcontroller_8cpp" startline="79" endline="93">ClientController&lt; T &gt;::Create</referencedby>
@@ -1553,7 +1553,7 @@
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
         <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
-        <references refid="classController_1a19c2ebed1725708ab253bc0ba1d9b2c5" compoundref="controller_8hpp" startline="278" endline="286">Controller::Update</references>
+        <references refid="classController_1a19c2ebed1725708ab253bc0ba1d9b2c5" compoundref="controller_8hpp" startline="282" endline="291">Controller::Update</references>
         <referencedby refid="classClientController_1a671dfda3ad96e247286fe44d22a1b478" compoundref="clientcontroller_8cpp" startline="167" endline="182">ClientController&lt; T &gt;::Update</referencedby>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>

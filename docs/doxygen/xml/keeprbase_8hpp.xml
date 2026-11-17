@@ -9,7 +9,7 @@
     <includes local="no">memory</includes>
     <includes local="no">optional</includes>
     <includes local="no">string</includes>
-    <includes refid="configurator_8hpp" local="yes">configurator/configurator.hpp</includes>
+    <includes local="yes">configurator/configurator.hpp</includes>
     <includes refid="databasecontroller_8hpp" local="yes">controllers/databasecontroller/databasecontroller.hpp</includes>
     <includes local="yes">drogon/utils/coroutine.h</includes>
     <includes refid="gatekeeper_2types_8hpp" local="yes">gatekeeper/types.hpp</includes>
@@ -18,11 +18,9 @@
     <includedby refid="sessionmanager_8hpp" local="yes">src/gatekeeper/sessionmanager/sessionmanager.hpp</includedby>
     <includedby refid="tokenmanager_8hpp" local="yes">src/gatekeeper/tokenmanager/tokenmanager.hpp</includedby>
     <incdepgraph>
-      <node id="9">
-        <label>configurator/configurator.hpp</label>
-        <link refid="configurator_8hpp"/>
-        <childnode refid="10" relation="include">
-        </childnode>
+      <node id="10">
+        <label>controllers/databasecontroller/databasecontroller.hpp</label>
+        <link refid="databasecontroller_8hpp"/>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
@@ -31,109 +29,53 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
         <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-      </node>
-      <node id="21">
-        <label>defaults.hpp</label>
-        <link refid="defaults_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
-      <node id="16">
-        <label>configurator/envloader/envloader.hpp</label>
-        <link refid="envloader_8hpp"/>
-        <childnode refid="13" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-      </node>
-      <node id="18">
-        <label>envvars/envvars.hpp</label>
-        <link refid="envvars_8hpp"/>
-        <childnode refid="7" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-      </node>
-      <node id="22">
-        <label>controllers/databasecontroller/databasecontroller.hpp</label>
-        <link refid="databasecontroller_8hpp"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
         <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="43" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
       </node>
-      <node id="28">
+      <node id="20">
         <label>database/asyncdbclient.hpp</label>
         <link refid="asyncdbclient_8hpp"/>
-        <childnode refid="29" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -142,53 +84,53 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="22">
         <label>database/asyncresultmapper.hpp</label>
         <link refid="asyncresultmapper_8hpp"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="24">
         <label>database/asyncsqlbinder.hpp</label>
         <link refid="asyncsqlbinder_8hpp"/>
-        <childnode refid="29" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="36">
+      <node id="28">
         <label>database/databasebusy.hpp</label>
         <link refid="databasebusy_8hpp"/>
-        <childnode refid="37" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="38">
+      <node id="30">
         <label>database/databasehandler.hpp</label>
         <link refid="databasehandler_8hpp"/>
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="39">
+      <node id="31">
         <label>database/dbprobe.hpp</label>
         <link refid="dbprobe_8hpp"/>
       </node>
@@ -211,19 +153,19 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
       </node>
-      <node id="44">
+      <node id="37">
         <label>gatekeeper/types.hpp</label>
         <link refid="gatekeeper_2types_8hpp"/>
-        <childnode refid="13" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -232,77 +174,69 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="33">
         <label>store/store.hpp</label>
         <link refid="store_8hpp"/>
-        <childnode refid="23" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
       </node>
-      <node id="43">
+      <node id="36">
         <label>utils/global/types.hpp</label>
         <link refid="utils_2global_2types_8hpp"/>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="19">
-        <label>message/message.hpp</label>
-        <link refid="message_8hpp"/>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
-      <node id="23">
+      <node id="13">
         <label>atomic</label>
       </node>
-      <node id="13">
+      <node id="38">
         <label>chrono</label>
+      </node>
+      <node id="9">
+        <label>configurator/configurator.hpp</label>
       </node>
       <node id="4">
         <label>cstdint</label>
       </node>
-      <node id="29">
+      <node id="21">
         <label>drogon/orm/DbClient.h</label>
       </node>
-      <node id="31">
+      <node id="23">
         <label>drogon/orm/Result.h</label>
       </node>
-      <node id="33">
+      <node id="25">
         <label>drogon/orm/SqlBinder.h</label>
       </node>
-      <node id="34">
+      <node id="26">
         <label>drogon/utils/coroutine.h</label>
       </node>
-      <node id="17">
+      <node id="14">
         <label>exception</label>
       </node>
-      <node id="10">
+      <node id="11">
         <label>fmt/core.h</label>
       </node>
-      <node id="11">
-        <label>fmt/format.h</label>
-      </node>
       <node id="12">
-        <label>fmt/ranges.h</label>
+        <label>fmt/format.h</label>
       </node>
       <node id="5">
         <label>jsoncons/basic_json.hpp</label>
       </node>
-      <node id="24">
+      <node id="15">
         <label>jsoncons/json.hpp</label>
       </node>
       <node id="2">
@@ -314,40 +248,37 @@
       <node id="6">
         <label>memory</label>
       </node>
-      <node id="25">
+      <node id="32">
+        <label>message/message.hpp</label>
+      </node>
+      <node id="16">
         <label>mutex</label>
       </node>
       <node id="7">
         <label>optional</label>
       </node>
-      <node id="26">
+      <node id="17">
         <label>pqxx/pqxx</label>
       </node>
-      <node id="37">
+      <node id="29">
         <label>stdexcept</label>
       </node>
       <node id="8">
         <label>string</label>
       </node>
-      <node id="20">
-        <label>trantor/utils/Logger.h</label>
-      </node>
-      <node id="14">
-        <label>type_traits</label>
-      </node>
-      <node id="41">
+      <node id="34">
         <label>typeindex</label>
       </node>
-      <node id="42">
+      <node id="35">
         <label>unordered_map</label>
       </node>
-      <node id="15">
+      <node id="18">
         <label>unordered_set</label>
       </node>
-      <node id="27">
+      <node id="19">
         <label>utility</label>
       </node>
-      <node id="35">
+      <node id="27">
         <label>vector</label>
       </node>
     </incdepgraph>
@@ -672,7 +603,7 @@
 <codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>for<sp/>timestamps,<sp/>groups<sp/>and<sp/>messages.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Configurator<sp/>and<sp/>TokenManagerParameters.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="configurator_8hpp" kindref="compound">configurator/configurator.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;configurator/configurator.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>DatabaseController,<sp/>used<sp/>for<sp/>all<sp/>SQL.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="databasecontroller_8hpp" kindref="compound">controllers/databasecontroller/databasecontroller.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;drogon/utils/coroutine.h&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>drogon::Task<sp/>coroutine<sp/>return<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
@@ -714,9 +645,9 @@
 <codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>signing<sp/>settings<sp/>for<sp/>this<sp/>object.</highlight></codeline>
 <codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="98" refid="classapi_1_1v2_1_1KeeprBase_1ab09740b221922b51de0a8c45c54daa85" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1KeeprBase_1ab09740b221922b51de0a8c45c54daa85" kindref="member">KeeprBase</ref>()</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classapi_1_1v2_1_1KeeprBase_1a3b36fc37ac1fa5d0b98ca85a33513d43" kindref="member">configurator_</ref>(<ref refid="classStore" kindref="compound">Store</ref>::getObject&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>&gt;()),</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classapi_1_1v2_1_1KeeprBase_1a3b36fc37ac1fa5d0b98ca85a33513d43" kindref="member">configurator_</ref>(<ref refid="classStore" kindref="compound">Store</ref>::getObject&lt;Configurator&gt;()),</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1KeeprBase_1a1d23b660f409ad68088514c4de125a4b" kindref="member">tokenManagerParameters_</ref>(</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1KeeprBase_1a3b36fc37ac1fa5d0b98ca85a33513d43" kindref="member">configurator_</ref>-&gt;get&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>::<ref refid="structTokenManagerParameters" kindref="compound">TokenManagerParameters</ref>&gt;())<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1KeeprBase_1a3b36fc37ac1fa5d0b98ca85a33513d43" kindref="member">configurator_</ref>-&gt;get&lt;Configurator::TokenManagerParameters&gt;())<sp/>{</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Fetch<sp/>the<sp/>shared<sp/>config,<sp/>then<sp/>copy<sp/>the<sp/>token<sp/>settings<sp/>out<sp/>of<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="103" refid="classapi_1_1v2_1_1KeeprBase_1add3bdbaa73fd820198bd4e19122e02dd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1KeeprBase_1add3bdbaa73fd820198bd4e19122e02dd" kindref="member">KeeprBase</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1KeeprBase_1ab09740b221922b51de0a8c45c54daa85" kindref="member">KeeprBase</ref>&amp;<sp/>other)<sp/>=</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>is<sp/>fine:<sp/>it<sp/>copies<sp/>the<sp/>cached<sp/>settings<sp/>and<sp/>shared</highlight><highlight class="normal"></highlight></codeline>
@@ -914,7 +845,7 @@
 <codeline lineno="296"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@warning<sp/>The<sp/>returned<sp/>parameters<sp/>contain<sp/>the<sp/>JWT<sp/>secret;<sp/>do<sp/>not</highlight></codeline>
 <codeline lineno="297"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>expose<sp/>them<sp/>to<sp/>clients.</highlight></codeline>
 <codeline lineno="298"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/><ref refid="classConfigurator_1af1c24b094032c664c8f543c85ed36b14" kindref="member">Configurator::TokenManagerParameters</ref></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>Configurator::TokenManagerParameters</highlight></codeline>
 <codeline lineno="300" refid="classapi_1_1v2_1_1KeeprBase_1a769b4981f124c8bc48570a2ec0aaa01d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1KeeprBase_1a769b4981f124c8bc48570a2ec0aaa01d" kindref="member">getTokenManagerParameters</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1KeeprBase_1a1d23b660f409ad68088514c4de125a4b" kindref="member">tokenManagerParameters_</ref>;</highlight></codeline>
 <codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>by<sp/>value<sp/>so<sp/>callers<sp/>cannot<sp/>mutate<sp/>the<sp/>cached<sp/>copy.</highlight><highlight class="normal"></highlight></codeline>
@@ -932,7 +863,7 @@
 <codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;Configurator&gt;</highlight></codeline>
 <codeline lineno="315" refid="classapi_1_1v2_1_1KeeprBase_1a3b36fc37ac1fa5d0b98ca85a33513d43" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1KeeprBase_1a3b36fc37ac1fa5d0b98ca85a33513d43" kindref="member">configurator_</ref>;<sp/></highlight><highlight class="comment">/**&lt;<sp/>Owned<sp/>handle<sp/>keeping<sp/>the<sp/>configuration<sp/>source</highlight></codeline>
 <codeline lineno="316"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>alive.<sp/>Shared<sp/>from<sp/>Store.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classConfigurator_1af1c24b094032c664c8f543c85ed36b14" kindref="member">Configurator::TokenManagerParameters</ref></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/>Configurator::TokenManagerParameters</highlight></codeline>
 <codeline lineno="318" refid="classapi_1_1v2_1_1KeeprBase_1a1d23b660f409ad68088514c4de125a4b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1KeeprBase_1a1d23b660f409ad68088514c4de125a4b" kindref="member">tokenManagerParameters_</ref>;<sp/></highlight><highlight class="comment">/**&lt;<sp/>Cached<sp/>copy<sp/>of<sp/>JWT<sp/>signing/validation</highlight></codeline>
 <codeline lineno="319"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>parameters.<sp/>Includes<sp/>the<sp/>secret;<sp/>never</highlight></codeline>
 <codeline lineno="320"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>log<sp/>it.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>

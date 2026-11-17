@@ -10,6 +10,8 @@
 <para>A high-performance, multi-tenant healthcare backend written in modern C++20. Valhalla exposes a versioned REST API for managing medical service providers (clinics, laboratories, pharmacies, radiology centers), their staff, patients, visits, and appointments — with authentication, role-based permissions, and built-in abuse protection baked into the request pipeline.</para>
 <para><blockquote><para><bold>Status:</bold> Active development. The API surface and data model are still evolving. </para>
 </blockquote></para>
+<para><blockquote><para><bold>Documentation &amp; code architecture:</bold> The generated <ulink url="https://dr3mro.github.io/Valhalla-server/doxygen/html/index.html">Doxygen reference</ulink> documents the C++ API, class hierarchy, and source layout. For the HTTP API itself, see Interactive API docs. </para>
+</blockquote></para>
 <para><hruler/>
 </para>
 <sect1 id="index_1autotoc_md2">
@@ -133,7 +135,7 @@
 </listitem><listitem><para><bold>Gatekeeper</bold> (<computeroutput>src/gatekeeper</computeroutput>) holds the cross-cutting security concerns: DoS detector, token and session managers, the permission manager with its idle-expiry cache, and password hashing (Argon2id, with legacy scrypt hashes still accepted at login).</para>
 </listitem><listitem><para><bold>Concurrency</bold> (<computeroutput>src/concurrency</computeroutput>) has <computeroutput>BoundedExecutor</computeroutput>, the fixed-size thread pool with a bounded queue that <computeroutput>submit()</computeroutput> never blocks on. The DB executor (<computeroutput>src/database/dbexecutor</computeroutput>, legacy <computeroutput>DB_ASYNC=false</computeroutput> path) and the password worker are two instances. With zero workers a task runs inline, which the unit tests use.</para>
 </listitem><listitem><para><bold><ref refid="classDatabase" kindref="compound">Database</ref></bold> (<computeroutput>src/database</computeroutput>) has the asynchronous client wrapper (<computeroutput><ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref></computeroutput>, the default <computeroutput>DB_ASYNC=true</computeroutput> path), the legacy connection pool (<computeroutput><ref refid="classBlockingPool" kindref="compound">BlockingPool</ref></computeroutput>, waits with a timeout and throws <computeroutput><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></computeroutput>, which becomes 503), the watchdog that reconnects dropped connections, and the handler that borrows a connection for one query.</para>
-</listitem><listitem><para><bold><ref refid="classConfigurator" kindref="compound">Configurator</ref></bold> (<computeroutput>src/configurator</computeroutput>) loads and validates configuration from the environment at startup.</para>
+</listitem><listitem><para><bold>Configurator</bold> (<computeroutput>src/configurator</computeroutput>) loads and validates configuration from the environment at startup.</para>
 </listitem><listitem><para><bold><ref refid="classStore" kindref="compound">Store</ref></bold> (<computeroutput>src/store</computeroutput>) provides shared singleton object access. Objects built for every request use <computeroutput><ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;T&gt;()</computeroutput>, which keeps a per-thread pointer and only goes back to the <ref refid="classStore" kindref="compound">Store</ref> when an object has been replaced (tests replace the database controller with a fake).</para>
 </listitem></itemizedlist>
 </para>
@@ -168,7 +170,7 @@
 </entry><entry thead="no"><para>jsoncons, picojson (jsoncpp via Drogon)  </para>
 </entry></row>
 <row>
-<entry thead="no"><para><ref refid="conceptConfig" kindref="compound">Config</ref>  </para>
+<entry thead="no"><para>Config  </para>
 </entry><entry thead="no"><para>Environment variables  </para>
 </entry></row>
 <row>
@@ -184,7 +186,7 @@
 </entry><entry thead="no"><para>xxhash, cppcodec, zlib  </para>
 </entry></row>
 <row>
-<entry thead="no"><para><ref refid="structTesting" kindref="compound">Testing</ref>  </para>
+<entry thead="no"><para>Testing  </para>
 </entry><entry thead="no"><para>Catch2  </para>
 </entry></row>
 <row>
@@ -728,7 +730,7 @@
 </sect2>
 </sect1>
 <sect1 id="index_1autotoc_md15">
-<title>Configuration</title><para>All configuration is supplied through environment variables; defaults live in <computeroutput><ref refid="defaults_8hpp" kindref="compound">src/configurator/defaults.hpp</ref></computeroutput>. The frontend and email-sender defaults point at fixed Docker-network IPs (<computeroutput>172.20.0.5</computeroutput>/<computeroutput>.6</computeroutput>), and the token secret and database credentials are development values, so override them for any real deployment.</para>
+<title>Configuration</title><para>All configuration is supplied through environment variables; defaults live in <computeroutput>src/configurator/defaults.hpp</computeroutput>. The frontend and email-sender defaults point at fixed Docker-network IPs (<computeroutput>172.20.0.5</computeroutput>/<computeroutput>.6</computeroutput>), and the token secret and database credentials are development values, so override them for any real deployment.</para>
 <sect2 id="index_1autotoc_md16">
 <title>Server</title><para><table rows="8" cols="3"><row>
 <entry thead="yes"><para>Variable  </para>

@@ -156,7 +156,7 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p>Common parsing and field extraction for client-style create/update payloads. </p>
 <p>Parses a raw JSON body, records parse errors through error/success, and keeps both the parsed JSON and a flat set of (column, value) pairs used by the <a class="el" href="classapi_1_1v2_1_1Client.html" title="Entity for client-style tables (users, providers) with dedicated create/update builders.">Client</a> SQL builders. Password hashing on the flat set is available to subclasses. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="structapi_1_1v2_1_1Types_1_1CreateClient__t.html" title="ClientData_t for creating a client: validates a create schema and hashes any password.">CreateClient_t</a>, <a class="el" href="structapi_1_1v2_1_1Types_1_1UpdateClient__t.html" title="ClientData_t for updating a client: validates an update schema with a caller-supplied rule.">UpdateClient_t</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00485">485</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00499">499</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6c90d78e4dd68ae25af5e18582fb3910" name="a6c90d78e4dd68ae25af5e18582fb3910"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6c90d78e4dd68ae25af5e18582fb3910">&#9670;&#160;</a></span>ClientData_t()</h2>
@@ -206,9 +206,9 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00497">497</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00511">511</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="http_8hpp_source.html#l00103">api::v2::Http::BAD_REQUEST</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00563">data_j</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00568">id</a>, and <a class="el" href="http_8hpp_source.html#l00123">api::v2::Http::INTERNAL_SERVER_ERROR</a>.</p>
+<p class="reference">References <a class="el" href="http_8hpp_source.html#l00103">api::v2::Http::BAD_REQUEST</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00577">data_j</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00582">id</a>, and <a class="el" href="http_8hpp_source.html#l00123">api::v2::Http::INTERNAL_SERVER_ERROR</a>.</p>
 
 </div>
 </div>
@@ -238,11 +238,11 @@ Private Attributes</h2></td></tr>
 
 <p>Returns the parsed body, if parsing succeeded. </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00539">539</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00553">553</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="entities_2base_2types_8hpp_source.html#l00563">data_j</a>.</p>
+<p class="reference">References <a class="el" href="entities_2base_2types_8hpp_source.html#l00577">data_j</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00723">api::v2::Types::UpdateClient_t::UpdateClient_t()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00741">api::v2::Types::UpdateClient_t::UpdateClient_t()</a>.</p>
 
 </div>
 </div>
@@ -271,9 +271,9 @@ Private Attributes</h2></td></tr>
 
 <p>Returns the optional client id supplied at construction. </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00547">547</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00561">561</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="entities_2base_2types_8hpp_source.html#l00568">id</a>.</p>
+<p class="reference">References <a class="el" href="entities_2base_2types_8hpp_source.html#l00582">id</a>.</p>
 
 </div>
 </div>
@@ -304,11 +304,11 @@ Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>true when a password was found and hashed; false when there was no password or hashing failed. Logs a critical message on a hashing failure in the caller path. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Operates on the flat pair set rather than data_j, so it must run after validation has populated data_set. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00581">581</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00595">595</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="entities_2base_2types_8hpp_source.html#l00557">data_set</a>, and <a class="el" href="entities_2base_2types_8hpp_source.html#l00612">passwordCrypt</a>.</p>
+<p class="reference">References <a class="el" href="entities_2base_2types_8hpp_source.html#l00571">data_set</a>, and <a class="el" href="entities_2base_2types_8hpp_source.html#l00626">passwordCrypt</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00638">api::v2::Types::CreateClient_t::CreateClient_t()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00652">api::v2::Types::CreateClient_t::CreateClient_t()</a>.</p>
 
 </div>
 </div>
@@ -335,9 +335,9 @@ Private Attributes</h2></td></tr>
 
 <p>The parsed JSON body, or nullopt if parsing failed. </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00563">563</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00577">577</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00497">ClientData_t()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00638">api::v2::Types::CreateClient_t::CreateClient_t()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00539">get_data_json()</a>, and <a class="el" href="entities_2base_2types_8hpp_source.html#l00723">api::v2::Types::UpdateClient_t::UpdateClient_t()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00511">ClientData_t()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00652">api::v2::Types::CreateClient_t::CreateClient_t()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00553">get_data_json()</a>, and <a class="el" href="entities_2base_2types_8hpp_source.html#l00741">api::v2::Types::UpdateClient_t::UpdateClient_t()</a>.</p>
 
 </div>
 </div>
@@ -363,9 +363,9 @@ Private Attributes</h2></td></tr>
 
 <p>Flattened (column, value) pairs derived from the validated body. </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00557">557</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00571">571</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00638">api::v2::Types::CreateClient_t::CreateClient_t()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00692">api::v2::Types::CreateClient_t::get_data_set()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00776">api::v2::Types::UpdateClient_t::get_data_set()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00581">hashPassword()</a>, and <a class="el" href="entities_2base_2types_8hpp_source.html#l00723">api::v2::Types::UpdateClient_t::UpdateClient_t()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00652">api::v2::Types::CreateClient_t::CreateClient_t()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00710">api::v2::Types::CreateClient_t::get_data_set()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00798">api::v2::Types::UpdateClient_t::get_data_set()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00595">hashPassword()</a>, and <a class="el" href="entities_2base_2types_8hpp_source.html#l00741">api::v2::Types::UpdateClient_t::UpdateClient_t()</a>.</p>
 
 </div>
 </div>
@@ -391,9 +391,9 @@ Private Attributes</h2></td></tr>
 
 <p>Optional client id. </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00568">568</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00582">582</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00497">ClientData_t()</a>, and <a class="el" href="entities_2base_2types_8hpp_source.html#l00547">get_id()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00511">ClientData_t()</a>, and <a class="el" href="entities_2base_2types_8hpp_source.html#l00561">get_id()</a>.</p>
 
 </div>
 </div>
@@ -422,9 +422,9 @@ Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p>Shared password hasher obtained from the global object store. </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00612">612</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00626">626</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00581">hashPassword()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00595">hashPassword()</a>.</p>
 
 </div>
 </div>

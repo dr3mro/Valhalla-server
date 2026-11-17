@@ -55,8 +55,8 @@
         <argsstring></argsstring>
         <name>asyncDb_</name>
         <qualifiedname>api::v2::Staff::asyncDb_</qualifiedname>
-        <initializer>= <ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>&gt;()
-      -&gt;get&lt;<ref refid="classConfigurator_1a78caa68d4554c8ab0d0c1753ce8edbe2" kindref="member">Configurator::DatabaseConfig</ref>&gt;()
+        <initializer>= <ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;Configurator&gt;()
+      -&gt;get&lt;Configurator::DatabaseConfig&gt;()
       .async</initializer>
         <briefdescription>
         </briefdescription>

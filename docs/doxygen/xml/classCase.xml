@@ -178,9 +178,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="src/entities/base/case.hpp" line="94" column="3" bodyfile="src/entities/base/case.hpp" bodystart="94" bodyend="98"/>
-        <references refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" compoundref="entity_8hpp" startline="596">Entity::data</references>
+        <references refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" compoundref="entity_8hpp" startline="598">Entity::data</references>
         <references refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93">Entity::Entity</references>
-        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="573">Entity::tablename</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="575">Entity::tablename</references>
       </memberdef>
       <memberdef kind="function" id="classCase_1afc12c279a9ecdde1f571dee7ddd185a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -293,7 +293,7 @@
         </inbodydescription>
         <location file="src/entities/base/case.hpp" line="154" column="24" bodyfile="src/entities/base/case.hpp" bodystart="154" bodyend="170"/>
         <references refid="classCase_1a5617a4962ddeaabd3094fae406c860f6" compoundref="case_8hpp" startline="154" endline="170">getPermissionsQueryForCreateImpl</references>
-        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="573">Entity::tablename</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="575">Entity::tablename</references>
         <referencedby refid="classHealth_1acdfeb4a8a3a38cb292b0e68a8349ca84" compoundref="health_8hpp" startline="149" endline="178">Health::getPermissionsQueryForCreate</referencedby>
         <referencedby refid="classPaidServices_1abde5fe3fd3d0658ea4853bc11b53671e" compoundref="paidservices_8hpp" startline="150" endline="181">PaidServices::getPermissionsQueryForCreate</referencedby>
         <referencedby refid="classPatientDrugs_1ac6fc5c6fb8c16220d1bf0fa5f456c27c" compoundref="patientdrugs_8hpp" startline="147" endline="176">PatientDrugs::getPermissionsQueryForCreate</referencedby>
@@ -347,7 +347,7 @@
         </inbodydescription>
         <location file="src/entities/base/case.hpp" line="181" column="24" bodyfile="src/entities/base/case.hpp" bodystart="181" bodyend="194"/>
         <references refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" compoundref="case_8hpp" startline="74">ORGNAME</references>
-        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="573">Entity::tablename</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="575">Entity::tablename</references>
         <referencedby refid="classHealth_1a51b63d4482da29ad120116f8ef3496a9" compoundref="health_8hpp" startline="188" endline="191">Health::getPermissionsQueryForRead</referencedby>
         <referencedby refid="classPaidServices_1a47913b71949e337709093c73ab3112c8" compoundref="paidservices_8hpp" startline="191" endline="194">PaidServices::getPermissionsQueryForRead</referencedby>
         <referencedby refid="classPatient_1a9c0cf980a6d81bf7736d9873b1d8954a" compoundref="patient_8hpp" startline="241" endline="244">Patient::getPermissionsQueryForRead</referencedby>
@@ -401,7 +401,7 @@
         </inbodydescription>
         <location file="src/entities/base/case.hpp" line="205" column="24" bodyfile="src/entities/base/case.hpp" bodystart="205" bodyend="218"/>
         <references refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" compoundref="case_8hpp" startline="74">ORGNAME</references>
-        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="573">Entity::tablename</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="575">Entity::tablename</references>
         <referencedby refid="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff" compoundref="case_8hpp" startline="229" endline="242">getPermissionsQueryForDeleteImp</referencedby>
         <referencedby refid="classHealth_1a2f8d9ca4d8ad64ab51128c8322c205ad" compoundref="health_8hpp" startline="199" endline="202">Health::getPermissionsQueryForUpdate</referencedby>
         <referencedby refid="classPaidServices_1a4ce072d333dbd0975f9f0296f85eaf7c" compoundref="paidservices_8hpp" startline="202" endline="205">PaidServices::getPermissionsQueryForUpdate</referencedby>
@@ -457,7 +457,7 @@
         <location file="src/entities/base/case.hpp" line="229" column="24" bodyfile="src/entities/base/case.hpp" bodystart="229" bodyend="242"/>
         <references refid="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf" compoundref="case_8hpp" startline="205" endline="218">getPermissionsQueryForUpdateImpl</references>
         <references refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" compoundref="case_8hpp" startline="74">ORGNAME</references>
-        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="573">Entity::tablename</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="575">Entity::tablename</references>
         <referencedby refid="classHealth_1a34f190d38ad4031c79953aca78fc68bd" compoundref="health_8hpp" startline="210" endline="213">Health::getPermissionsQueryForDelete</referencedby>
         <referencedby refid="classPaidServices_1a2170417b8fab478a0b4cc3493fb9008f" compoundref="paidservices_8hpp" startline="213" endline="216">PaidServices::getPermissionsQueryForDelete</referencedby>
         <referencedby refid="classPatient_1a35aec1ab81bfaaac3433608c530e8a43" compoundref="patient_8hpp" startline="265" endline="268">Patient::getPermissionsQueryForDelete</referencedby>

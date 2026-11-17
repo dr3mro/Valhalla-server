@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('databasecontro
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#include &lt;utility&gt;</span>        <span class="comment">// std::forward for the helper template.</span></div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">// Test configuration (e.g. no-db mode).</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#include &quot;<a class="code" href="configurator_8hpp.html">configurator/configurator.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#include &quot;configurator/configurator.hpp&quot;</span></div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#include &quot;<a class="code" href="asyncdbclient_8hpp.html">database/asyncdbclient.hpp</a>&quot;</span>      <span class="comment">// Async DB client declaration.</span></div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#include &quot;<a class="code" href="asyncresultmapper_8hpp.html">database/asyncresultmapper.hpp</a>&quot;</span>  <span class="comment">// Maps async rows to JSON.</span></div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#include &quot;<a class="code" href="asyncsqlbinder_8hpp.html">database/asyncsqlbinder.hpp</a>&quot;</span>     <span class="comment">// Binds parameters to async SQL.</span></div>
@@ -186,9 +186,9 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('databasecontro
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#include &quot;<a class="code" href="dbprobe_8hpp.html">database/dbprobe.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">// Drogon Task return type of the async methods.</span></div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#include &quot;drogon/utils/coroutine.h&quot;</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#include &quot;<a class="code" href="store_8hpp.html">store/store.hpp</a>&quot;</span>  <span class="comment">// Service locator for backends and fake injection.</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#include &quot;<a class="code" href="utils_2global_2types_8hpp.html">utils/global/types.hpp</a>&quot;</span>     <span class="comment">// ColumnInfo and other shared types.</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#include &quot;<a class="code" href="message_8hpp.html">message/message.hpp</a>&quot;</span>  <span class="comment">// Logging helpers.</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#include &quot;message/message.hpp&quot;</span>  <span class="comment">// Logging helpers.</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#include &quot;<a class="code" href="store_8hpp.html">store/store.hpp</a>&quot;</span>  <span class="comment">// Service locator for backends and fake injection.</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#include &quot;<a class="code" href="utils_2global_2types_8hpp.html">utils/global/types.hpp</a>&quot;</span>  <span class="comment">// ColumnInfo and other shared types.</span></div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="keyword">class </span><a class="code hl_class" href="classCase.html">Case</a>;     <span class="comment">// Forward declaration: only a pointer/name is needed in this</span></div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                <span class="comment">// header.</span></div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keyword">class </span><a class="code hl_class" href="classService.html">Service</a>;  <span class="comment">// Forward declaration to avoid a heavy include.</span></div>
@@ -522,53 +522,56 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('databasecontro
 <div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span><span class="comment">   * @throws DatabaseBusy rethrown so callers can answer 503; other exceptions</span></div>
 <div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span><span class="comment">   * are logged and swallowed.</span></div>
 <div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span><span class="comment">   */</span></div>
-<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Result, <span class="keyword">typename</span> Func, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="foldopen" id="foldopen00403" data-start="{" data-end="}">
-<div class="line"><a id="l00403" name="l00403"></a><span class="lineno"><a class="line" href="classDatabaseController.html#a17754cf11f19b559b1fd8c3077817556">  403</a></span>  std::optional&lt;Result&gt; <a class="code hl_function" href="classDatabaseController.html#a17754cf11f19b559b1fd8c3077817556">executer</a>(<span class="keyword">const</span> Func&amp; func, Args&amp;&amp;... args) {</div>
-<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>    <a class="code hl_function" href="classDbProbe.html#af3b9ebe61addb4dd1885a3d117221a1f">DbProbe::check</a>();  <span class="comment">// on the IO-thread fast path this throws WouldBlock:</span></div>
-<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>                       <span class="comment">// the request moves to the DB executor</span></div>
-<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>    <span class="keywordflow">try</span> {</div>
-<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>      <a class="code hl_function" href="classDatabaseController.html#a2685c684b979ee32be0f286df38c1449">ensureBackends</a>();</div>
-<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span> </div>
-<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>      <span class="comment">// Hermetic test mode: no backends were created, so report the</span></div>
-<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>      <span class="comment">// database as unavailable without constructing a handler (which</span></div>
-<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>      <span class="comment">// would create a pool via Store and exit() on init failure).</span></div>
-<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>      <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classDatabaseController.html#a31ddc963543c94188989eab4aa24e2ec">databaseConnectionPool_</a>) {</div>
-<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>        <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>      }</div>
-<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span> </div>
-<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>      std::unique_ptr&lt;DatabaseHanndler&gt; dbHandler =</div>
-<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>          std::make_unique&lt;DatabaseHanndler&gt;(<a class="code hl_variable" href="classDatabaseController.html#a31ddc963543c94188989eab4aa24e2ec">databaseConnectionPool_</a>);</div>
-<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>      std::shared_ptr&lt;Database&gt; db_ptr = dbHandler-&gt;get_connection();</div>
-<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span> </div>
-<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>      <span class="keywordflow">if</span> (db_ptr == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>        <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span>      }</div>
-<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span> </div>
-<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>      std::optional&lt;Result&gt; results =</div>
-<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>          std::invoke(func, db_ptr.get(), std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Result,</div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>            <span class="keyword">typename</span> Func,</div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>            <span class="keyword">typename</span>... Args&gt;</div>
+<div class="foldopen" id="foldopen00405" data-start="{" data-end="}">
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno"><a class="line" href="classDatabaseController.html#a17754cf11f19b559b1fd8c3077817556">  405</a></span>  std::optional&lt;Result&gt; <a class="code hl_function" href="classDatabaseController.html#a17754cf11f19b559b1fd8c3077817556">executer</a>(<span class="keyword">const</span> Func&amp; func,</div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>                                 Args&amp;&amp;... args) {</div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>    <a class="code hl_function" href="classDbProbe.html#af3b9ebe61addb4dd1885a3d117221a1f">DbProbe::check</a>();  <span class="comment">// on the IO-thread fast path this throws WouldBlock:</span></div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>                       <span class="comment">// the request moves to the DB executor</span></div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>    <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>      <a class="code hl_function" href="classDatabaseController.html#a2685c684b979ee32be0f286df38c1449">ensureBackends</a>();</div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span> </div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>      <span class="comment">// Hermetic test mode: no backends were created, so report the</span></div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>      <span class="comment">// database as unavailable without constructing a handler (which</span></div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>      <span class="comment">// would create a pool via Store and exit() on init failure).</span></div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>      <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classDatabaseController.html#a31ddc963543c94188989eab4aa24e2ec">databaseConnectionPool_</a>) {</div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>        <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>      }</div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span> </div>
+<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>      std::unique_ptr&lt;DatabaseHanndler&gt; dbHandler =</div>
+<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>          std::make_unique&lt;DatabaseHanndler&gt;(<a class="code hl_variable" href="classDatabaseController.html#a31ddc963543c94188989eab4aa24e2ec">databaseConnectionPool_</a>);</div>
+<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>      std::shared_ptr&lt;Database&gt; db_ptr = dbHandler-&gt;get_connection();</div>
+<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span> </div>
+<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>      <span class="keywordflow">if</span> (db_ptr == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>        <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>      }</div>
 <div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span> </div>
-<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>      <span class="keywordflow">if</span> (results.has_value()) {</div>
-<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>        <span class="keywordflow">return</span> results;</div>
-<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>      }</div>
-<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span> </div>
-<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span>      <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_class" href="classDatabaseBusy.html">DatabaseBusy</a>&amp;) {</div>
-<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>      <span class="keywordflow">throw</span>;  <span class="comment">// the pool is exhausted: callers answer 503 instead of</span></div>
-<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>              <span class="comment">// treating it as a failed query</span></div>
-<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>      <a class="code hl_function" href="classMessage.html#aa085f3b7f644c7c1075eac59e3c2f7a9">Message::CriticalMessage</a>(</div>
-<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>          fmt::format(<span class="stringliteral">&quot;Exception occurred during query execution: {}&quot;</span>,</div>
-<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>                      e.what()));</div>
-<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span>      <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span>    } <span class="keywordflow">catch</span> (...) {</div>
-<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span>      <a class="code hl_function" href="classMessage.html#aa085f3b7f644c7c1075eac59e3c2f7a9">Message::CriticalMessage</a>(</div>
-<div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span>          <span class="stringliteral">&quot;Unknown exception occurred during query execution.&quot;</span>);</div>
-<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span>      <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span>    }</div>
-<div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span>  }</div>
+<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>      std::optional&lt;Result&gt; results =</div>
+<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>          std::invoke(func, db_ptr.get(), std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span> </div>
+<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>      <span class="keywordflow">if</span> (results.has_value()) {</div>
+<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span>        <span class="keywordflow">return</span> results;</div>
+<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>      }</div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span> </div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>      <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_class" href="classDatabaseBusy.html">DatabaseBusy</a>&amp;) {</div>
+<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>      <span class="keywordflow">throw</span>;  <span class="comment">// the pool is exhausted: callers answer 503 instead of</span></div>
+<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>              <span class="comment">// treating it as a failed query</span></div>
+<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
+<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span>      Message::CriticalMessage(</div>
+<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span>          fmt::format(<span class="stringliteral">&quot;Exception occurred during query execution: {}&quot;</span>,</div>
+<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span>                      e.what()));</div>
+<div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span>      <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span>    } <span class="keywordflow">catch</span> (...) {</div>
+<div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span>      Message::CriticalMessage(</div>
+<div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span>          <span class="stringliteral">&quot;Unknown exception occurred during query execution.&quot;</span>);</div>
+<div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span>      <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span>    }</div>
+<div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span>  }</div>
 </div>
-<div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span>};</div>
+<div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span>};</div>
 </div>
 <div class="ttc" id="aasyncdbclient_8hpp_html"><div class="ttname"><a href="asyncdbclient_8hpp.html">asyncdbclient.hpp</a></div><div class="ttdoc">Store-registered holder for the Drogon PostgreSQL client used when DB_ASYNC=true.</div></div>
 <div class="ttc" id="aasyncresultmapper_8hpp_html"><div class="ttname"><a href="asyncresultmapper_8hpp.html">asyncresultmapper.hpp</a></div><div class="ttdoc">Maps Drogon PostgreSQL result sets to jsoncons values with the outcomes of the synchronous path in mi...</div></div>
@@ -579,7 +582,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('databasecontro
 <div class="ttc" id="aclassDatabaseController_html_a0368a631e0488b14c619a0672620c84e"><div class="ttname"><a href="classDatabaseController.html#a0368a631e0488b14c619a0672620c84e">DatabaseController::DatabaseController</a></div><div class="ttdeci">DatabaseController()</div><div class="ttdoc">Constructs the controller without creating database backends.</div><div class="ttdef"><b>Definition</b> <a href="databasecontroller_8cpp_source.html#l00056">databasecontroller.cpp:56</a></div></div>
 <div class="ttc" id="aclassDatabaseController_html_a0389040d66c5126fd7750a189aefaa14"><div class="ttname"><a href="classDatabaseController.html#a0389040d66c5126fd7750a189aefaa14">DatabaseController::getPasswordHashForUserNameCoro</a></div><div class="ttdeci">virtual drogon::Task&lt; std::optional&lt; jsoncons::json &gt; &gt; getPasswordHashForUserNameCoro(const std::string &amp;username, const std::string &amp;tablename)</div><div class="ttdoc">Async counterpart of getPasswordHashForUserName(); same fixed-table restriction applies.</div><div class="ttdef"><b>Definition</b> <a href="databasecontroller_8cpp_source.html#l00394">databasecontroller.cpp:394</a></div></div>
 <div class="ttc" id="aclassDatabaseController_html_a107e601b43f856547bc04d97e8975b8d"><div class="ttname"><a href="classDatabaseController.html#a107e601b43f856547bc04d97e8975b8d">DatabaseController::executeQuery</a></div><div class="ttdeci">virtual std::optional&lt; jsoncons::json &gt; executeQuery(const std::string &amp;query, const pqxx::params &amp;params={})</div><div class="ttdoc">Executes a write/statement query and maps one JSON object result.</div><div class="ttdef"><b>Definition</b> <a href="databasecontroller_8cpp_source.html#l00112">databasecontroller.cpp:112</a></div></div>
-<div class="ttc" id="aclassDatabaseController_html_a17754cf11f19b559b1fd8c3077817556"><div class="ttname"><a href="classDatabaseController.html#a17754cf11f19b559b1fd8c3077817556">DatabaseController::executer</a></div><div class="ttdeci">std::optional&lt; Result &gt; executer(const Func &amp;func, Args &amp;&amp;... args)</div><div class="ttdoc">Common implementation for every synchronous query method.</div><div class="ttdef"><b>Definition</b> <a href="#l00403">databasecontroller.hpp:403</a></div></div>
+<div class="ttc" id="aclassDatabaseController_html_a17754cf11f19b559b1fd8c3077817556"><div class="ttname"><a href="classDatabaseController.html#a17754cf11f19b559b1fd8c3077817556">DatabaseController::executer</a></div><div class="ttdeci">std::optional&lt; Result &gt; executer(const Func &amp;func, Args &amp;&amp;... args)</div><div class="ttdoc">Common implementation for every synchronous query method.</div><div class="ttdef"><b>Definition</b> <a href="#l00405">databasecontroller.hpp:405</a></div></div>
 <div class="ttc" id="aclassDatabaseController_html_a2685c684b979ee32be0f286df38c1449"><div class="ttname"><a href="classDatabaseController.html#a2685c684b979ee32be0f286df38c1449">DatabaseController::ensureBackends</a></div><div class="ttdeci">void ensureBackends()</div><div class="ttdef"><b>Definition</b> <a href="databasecontroller_8cpp_source.html#l00061">databasecontroller.cpp:61</a></div></div>
 <div class="ttc" id="aclassDatabaseController_html_a2a0585031d4e0a5e8dfdeb7d77041563"><div class="ttname"><a href="classDatabaseController.html#a2a0585031d4e0a5e8dfdeb7d77041563">DatabaseController::getPermissionsCoro</a></div><div class="ttdeci">virtual drogon::Task&lt; std::optional&lt; jsoncons::json &gt; &gt; getPermissionsCoro(const std::string &amp;query)</div><div class="ttdoc">Async counterpart of getPermissions(); maps a permissions query to a JSON object.</div><div class="ttdef"><b>Definition</b> <a href="databasecontroller_8cpp_source.html#l00512">databasecontroller.cpp:512</a></div></div>
 <div class="ttc" id="aclassDatabaseController_html_a31ddc963543c94188989eab4aa24e2ec"><div class="ttname"><a href="classDatabaseController.html#a31ddc963543c94188989eab4aa24e2ec">DatabaseController::databaseConnectionPool_</a></div><div class="ttdeci">std::shared_ptr&lt; DatabaseConnectionPool &gt; databaseConnectionPool_</div><div class="ttdef"><b>Definition</b> <a href="#l00361">databasecontroller.hpp:361</a></div></div>
@@ -608,14 +611,11 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('databasecontro
 <div class="ttc" id="aclassDatabaseController_html_af159676154ecf5aa9dec2379f85df322"><div class="ttname"><a href="classDatabaseController.html#af159676154ecf5aa9dec2379f85df322">DatabaseController::operator=</a></div><div class="ttdeci">DatabaseController &amp; operator=(const DatabaseController &amp;)=delete</div></div>
 <div class="ttc" id="aclassDatabase_html"><div class="ttname"><a href="classDatabase.html">Database</a></div><div class="ttdoc">Owns one synchronous PostgreSQL connection used by the synchronous database path.</div><div class="ttdef"><b>Definition</b> <a href="database_8hpp_source.html#l00090">database.hpp:90</a></div></div>
 <div class="ttc" id="aclassDbProbe_html_af3b9ebe61addb4dd1885a3d117221a1f"><div class="ttname"><a href="classDbProbe.html#af3b9ebe61addb4dd1885a3d117221a1f">DbProbe::check</a></div><div class="ttdeci">static void check()</div><div class="ttdoc">Guards a database-access point against running on an IO thread.</div><div class="ttdef"><b>Definition</b> <a href="dbprobe_8hpp_source.html#l00113">dbprobe.hpp:113</a></div></div>
-<div class="ttc" id="aclassMessage_html_aa085f3b7f644c7c1075eac59e3c2f7a9"><div class="ttname"><a href="classMessage.html#aa085f3b7f644c7c1075eac59e3c2f7a9">Message::CriticalMessage</a></div><div class="ttdeci">static void CriticalMessage(const std::string &amp;status_message)</div><div class="ttdoc">Logs a message at fatal severity (used for critical errors).</div><div class="ttdef"><b>Definition</b> <a href="message_8cpp_source.html#l00057">message.cpp:57</a></div></div>
 <div class="ttc" id="aclassService_html"><div class="ttname"><a href="classService.html">Service</a></div><div class="ttdoc">Entity for service/organisation tables (clinics, pharmacies, laboratories, ...).</div><div class="ttdef"><b>Definition</b> <a href="service_8hpp_source.html#l00072">service.hpp:72</a></div></div>
 <div class="ttc" id="aclassWatchDog_html"><div class="ttname"><a href="classWatchDog.html">WatchDog</a></div><div class="ttdoc">Background health monitor for the pooled database connections.</div><div class="ttdef"><b>Definition</b> <a href="watchdog_8hpp_source.html#l00059">watchdog.hpp:59</a></div></div>
-<div class="ttc" id="aconfigurator_8hpp_html"><div class="ttname"><a href="configurator_8hpp.html">configurator.hpp</a></div><div class="ttdoc">Environment-driven configuration sections and typed accessors for the server.</div></div>
 <div class="ttc" id="adatabasebusy_8hpp_html"><div class="ttname"><a href="databasebusy_8hpp.html">databasebusy.hpp</a></div><div class="ttdoc">Exception signalling that the connection pool could not lease a connection in time.</div></div>
 <div class="ttc" id="adatabasehandler_8hpp_html"><div class="ttname"><a href="databasehandler_8hpp.html">databasehandler.hpp</a></div><div class="ttdoc">RAII lease of a single pooled Database connection.</div></div>
 <div class="ttc" id="adbprobe_8hpp_html"><div class="ttname"><a href="dbprobe_8hpp.html">dbprobe.hpp</a></div><div class="ttdoc">Control-flow signal that a request needs the database and must move off the IO thread.</div></div>
-<div class="ttc" id="amessage_8hpp_html"><div class="ttname"><a href="message_8hpp.html">message.hpp</a></div><div class="ttdoc">Static helpers for coloured console/status logging.</div></div>
 <div class="ttc" id="astore_8hpp_html"><div class="ttname"><a href="store_8hpp.html">store.hpp</a></div><div class="ttdoc">Process-wide service locator keyed by C++ type.</div></div>
 <div class="ttc" id="autils_2global_2types_8hpp_html"><div class="ttname"><a href="utils_2global_2types_8hpp.html">types.hpp</a></div><div class="ttdoc">Shared value types and their hash specialisations.</div></div>
 </div><!-- fragment --></div><!-- contents -->

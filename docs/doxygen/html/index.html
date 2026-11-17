@@ -123,6 +123,9 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('index.html',''
 <blockquote class="doxtable">
 <p><b>Status:</b> Active development. The API surface and data model are still evolving. </p>
 </blockquote>
+<blockquote class="doxtable">
+<p><b>Documentation &amp; code architecture:</b> The generated <a href="https://dr3mro.github.io/Valhalla-server/doxygen/html/index.html">Doxygen reference</a> documents the C++ API, class hierarchy, and source layout. For the HTTP API itself, see Interactive API docs. </p>
+</blockquote>
 <hr  />
 <h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
 Quick Start</h1>
@@ -239,7 +242,7 @@ Architecture</h1>
 <li><b>Gatekeeper</b> (<span class="tt">src/gatekeeper</span>) holds the cross-cutting security concerns: DoS detector, token and session managers, the permission manager with its idle-expiry cache, and password hashing (Argon2id, with legacy scrypt hashes still accepted at login).</li>
 <li><b>Concurrency</b> (<span class="tt">src/concurrency</span>) has <span class="tt">BoundedExecutor</span>, the fixed-size thread pool with a bounded queue that <span class="tt">submit()</span> never blocks on. The DB executor (<span class="tt">src/database/dbexecutor</span>, legacy <span class="tt">DB_ASYNC=false</span> path) and the password worker are two instances. With zero workers a task runs inline, which the unit tests use.</li>
 <li><b><a class="el" href="classDatabase.html" title="Owns one synchronous PostgreSQL connection used by the synchronous database path.">Database</a></b> (<span class="tt">src/database</span>) has the asynchronous client wrapper (<span class="tt"><a class="el" href="classAsyncDbClient.html" title="Store-registered holder for the Drogon PostgreSQL client used when DB_ASYNC=true.">AsyncDbClient</a></span>, the default <span class="tt">DB_ASYNC=true</span> path), the legacy connection pool (<span class="tt"><a class="el" href="classBlockingPool.html" title="Thread-safe fixed set of reusable items leased one caller at a time.">BlockingPool</a></span>, waits with a timeout and throws <span class="tt"><a class="el" href="classDatabaseBusy.html" title="Exception signalling that the connection pool could not lease a connection in time.">DatabaseBusy</a></span>, which becomes 503), the watchdog that reconnects dropped connections, and the handler that borrows a connection for one query.</li>
-<li><b><a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a></b> (<span class="tt">src/configurator</span>) loads and validates configuration from the environment at startup.</li>
+<li><b>Configurator</b> (<span class="tt">src/configurator</span>) loads and validates configuration from the environment at startup.</li>
 <li><b><a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a></b> (<span class="tt">src/store</span>) provides shared singleton object access. Objects built for every request use <span class="tt"><a class="el" href="classStore.html#aaf81da54b109478891030b7e04653bad" title="Thread-local cached lookup of T, refreshed only when the Store generation changes.">Store::cachedObject</a>&lt;T&gt;()</span>, which keeps a per-thread pointer and only goes back to the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> when an object has been replaced (tests replace the database controller with a fake).</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
@@ -260,7 +263,7 @@ Tech Stack</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">JSON  </td><td class="markdownTableBodyNone">jsoncons, picojson (jsoncpp via Drogon)  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="conceptConfig.html" title="Constrains the configuration-section types retrievable through Configurator::get().">Config</a>  </td><td class="markdownTableBodyNone">Environment variables  </td></tr>
+<td class="markdownTableBodyNone">Config  </td><td class="markdownTableBodyNone">Environment variables  </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Logging  </td><td class="markdownTableBodyNone">spdlog / fmt  </td></tr>
 <tr class="markdownTableRowOdd">
@@ -268,7 +271,7 @@ Tech Stack</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Hashing / utils  </td><td class="markdownTableBodyNone">xxhash, cppcodec, zlib  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="structTesting.html" title="Switches used only by the test harness.">Testing</a>  </td><td class="markdownTableBodyNone">Catch2  </td></tr>
+<td class="markdownTableBodyNone">Testing  </td><td class="markdownTableBodyNone">Catch2  </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Build  </td><td class="markdownTableBodyNone">CMake (≥ 4.0) + Conan 2  </td></tr>
 </table>
@@ -760,7 +763,7 @@ Run with Docker</h2>
 <div class="line">is reset on every start.</div>
 </div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
 Configuration</h1>
-<p>All configuration is supplied through environment variables; defaults live in <span class="tt"><a class="el" href="defaults_8hpp.html" title="Default values for every environment-driven configuration option.">src/configurator/defaults.hpp</a></span>. The frontend and email-sender defaults point at fixed Docker-network IPs (<span class="tt">172.20.0.5</span>/<span class="tt">.6</span>), and the token secret and database credentials are development values, so override them for any real deployment.</p>
+<p>All configuration is supplied through environment variables; defaults live in <span class="tt">src/configurator/defaults.hpp</span>. The frontend and email-sender defaults point at fixed Docker-network IPs (<span class="tt">172.20.0.5</span>/<span class="tt">.6</span>), and the token secret and database credentials are development values, so override them for any real deployment.</p>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
 Server</h2>
 <table class="markdownTable">

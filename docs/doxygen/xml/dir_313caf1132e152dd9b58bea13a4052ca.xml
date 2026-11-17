@@ -6,7 +6,6 @@
     <innerdir refid="dir_91b2e3fcc73fbd2120a08d79e3a1558f">src/utils/global</innerdir>
     <innerdir refid="dir_c497795109aedca4a3c21e46e404f9eb">src/utils/jsonhelper</innerdir>
     <innerdir refid="dir_b3a3f116620f69a0dd273db55d342609">src/utils/memcache</innerdir>
-    <innerdir refid="dir_77f707c5b80b456f3b1a38cd703ff070">src/utils/message</innerdir>
     <innerdir refid="dir_088ed1582b174901760d4506843eb8a4">src/utils/threadsafequeue</innerdir>
     <briefdescription>
     </briefdescription>

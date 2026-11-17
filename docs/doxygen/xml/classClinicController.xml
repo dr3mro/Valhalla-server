@@ -103,7 +103,7 @@
         <location file="src/controllers/cliniccontroller/cliniccontroller.hpp" line="92" column="8" bodyfile="src/controllers/cliniccontroller/cliniccontroller.cpp" bodystart="40" bodyend="129"/>
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
-        <references refid="classController_1a092b50bf54ca1d6d6f706a5a052992b1" compoundref="controller_8hpp" startline="187" endline="196">Controller::Create</references>
+        <references refid="classController_1a092b50bf54ca1d6d6f706a5a052992b1" compoundref="controller_8hpp" startline="187" endline="197">Controller::Create</references>
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
         <references refid="classClinicController_1a3ab0131af56e26c37cfdd1e367966b77" compoundref="cliniccontroller_8hpp" startline="73">ClinicController&lt; T &gt;::gateKeeper</references>
         <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7acf64a80b49ebda9168c3d7a2b6f95f15" compoundref="validator_8hpp" startline="108">Validator::Rule::IGNORE_IF_MISSING_FROM_SCHEMA</references>
@@ -830,7 +830,7 @@
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
         <references refid="classClinicController_1a3ab0131af56e26c37cfdd1e367966b77" compoundref="cliniccontroller_8hpp" startline="73">ClinicController&lt; T &gt;::gateKeeper</references>
-        <references refid="classController_1acd1d7cb00688b69469719ff7789f3cd9" compoundref="controller_8hpp" startline="729" endline="755">Controller::GetVisits</references>
+        <references refid="classController_1acd1d7cb00688b69469719ff7789f3cd9" compoundref="controller_8hpp" startline="751" endline="779">Controller::GetVisits</references>
         <referencedby refid="classClinicController_1ac39bb42de6ca02ad70eb6ed1064a1d61" compoundref="cliniccontroller_8cpp" startline="480" endline="486">ClinicController&lt; T &gt;::GetVisits</referencedby>
         <referencedby refid="classClinicController_1a050bbf264fca0420bb50a50c7ca14bd2">ClinicController&lt; T &gt;::SearchImpl</referencedby>
       </memberdef>
@@ -977,7 +977,7 @@
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
         <references refid="classClinicController_1a3ab0131af56e26c37cfdd1e367966b77" compoundref="cliniccontroller_8hpp" startline="73">ClinicController&lt; T &gt;::gateKeeper</references>
-        <references refid="classController_1a2af2297a7b4fcce1f987510786aaa5d7" compoundref="controller_8hpp" startline="769" endline="800">Controller::GetVisitsAsync</references>
+        <references refid="classController_1a2af2297a7b4fcce1f987510786aaa5d7" compoundref="controller_8hpp" startline="793" endline="826">Controller::GetVisitsAsync</references>
         <referencedby refid="classClinicController_1a8ed0fcaa92bbfb7e6d1d2c4c7b6dbea9" compoundref="cliniccontroller_8cpp" startline="542" endline="549">ClinicController&lt; T &gt;::GetVisitsAsync</referencedby>
         <referencedby refid="classClinicController_1a2559ebca049ca4adb8075c324a621350">ClinicController&lt; T &gt;::GetVisitsImpl</referencedby>
       </memberdef>

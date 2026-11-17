@@ -821,7 +821,7 @@ Validates service creation: payload present, ids extractable, caller is the prov
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="306" column="26" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" bodystart="306" bodyend="357"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="307" column="26" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" bodystart="307" bodyend="358"/>
         <references refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="260" endline="278">Store::cachedObject</references>
         <references refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f" compoundref="permissioncache_8hpp" startline="213" endline="220">BasicPermissionCache&lt; ClockT &gt;::instance</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a850868371bb029e826761eff3b329c5c" compoundref="permissionmanager_8cpp" startline="251" endline="269">api::v2::PermissionManager::canManageStaff</referencedby>
@@ -896,7 +896,7 @@ Validates service creation: payload present, ids extractable, caller is the prov
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="382" column="5" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" bodystart="382" bodyend="430"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="384" column="5" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" bodystart="384" bodyend="433"/>
         <references refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="260" endline="278">Store::cachedObject</references>
         <references refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f" compoundref="permissioncache_8hpp" startline="213" endline="220">BasicPermissionCache&lt; ClockT &gt;::instance</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1af314003136240877cbf15fe24c288a05" compoundref="permissionmanager_8cpp" startline="691" endline="708">api::v2::PermissionManager::canManageStaffAsync</referencedby>
@@ -910,7 +910,7 @@ Validates service creation: payload present, ids extractable, caller is the prov
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="72" column="3" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" bodystart="72" bodyend="433"/>
+    <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="72" column="3" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" bodystart="72" bodyend="436"/>
     <listofallmembers>
       <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>assert_group_id_match</name></member>
       <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a8243a8ac1bf2b9855448e67fa959c6fc" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>extract_json_value_safely</name></member>

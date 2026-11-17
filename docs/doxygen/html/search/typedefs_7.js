@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['keeprbase_0',['KeeprBase',['../keeprbase_8cpp.html#a62ac81c874d900289fbf508f81a219c0',1,'keeprbase.cpp']]]
+  ['matcher_0',['Matcher',['../classDOSDetector.html#ad8b341c07d5e83619f002dd65b9f7977',1,'DOSDetector']]]
 ];

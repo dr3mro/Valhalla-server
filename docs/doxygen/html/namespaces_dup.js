@@ -50,6 +50,5 @@ var namespaces_dup =
       [ "trim", "namespaceCorsTokens.html#a7a178dc1be0dd0b0753320d19435ff96", null ],
       [ "tokenPunctuation", "namespaceCorsTokens.html#a6d06cb55654db9c60bbbbbd0ee486ae3", null ]
     ] ],
-    [ "Defaults", "namespaceDefaults.html", "namespaceDefaults" ],
     [ "std", "namespacestd.html", "namespacestd" ]
 ];

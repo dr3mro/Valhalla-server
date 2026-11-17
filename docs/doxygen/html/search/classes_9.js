@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['keeprbase_0',['KeeprBase',['../classapi_1_1v2_1_1KeeprBase.html',1,'api::v2']]]
+  ['laboratories_0',['Laboratories',['../classLaboratories.html',1,'']]],
+  ['laboratoryappointment_1',['LaboratoryAppointment',['../classLaboratoryAppointment.html',1,'']]]
 ];

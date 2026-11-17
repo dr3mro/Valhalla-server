@@ -19,13 +19,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="808" column="7" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="808" bodyend="-1"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="834" column="7" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="834" bodyend="-1"/>
         <referencedby refid="classController_1a95c56822d667e94b031451729ce069a9" compoundref="controller_8hpp" startline="136" endline="150">Controller</referencedby>
-        <referencedby refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="847" endline="894">cruds</referencedby>
-        <referencedby refid="classController_1ad8517f93d94b2584124d06d0904c8c28" compoundref="controller_8hpp" startline="626" endline="659">GetServices</referencedby>
-        <referencedby refid="classController_1acd1d7cb00688b69469719ff7789f3cd9" compoundref="controller_8hpp" startline="729" endline="755">GetVisits</referencedby>
-        <referencedby refid="classController_1aaa9930fa3fdd7c91a56392f3e1440736" compoundref="controller_8hpp" startline="374" endline="443">Search</referencedby>
-        <referencedby refid="classController_1ae3f0e461a7a50529945f6e70ba5572be" compoundref="controller_8hpp" startline="458" endline="522">SearchAsync</referencedby>
+        <referencedby refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="876" endline="924">cruds</referencedby>
+        <referencedby refid="classController_1ad8517f93d94b2584124d06d0904c8c28" compoundref="controller_8hpp" startline="644" endline="679">GetServices</referencedby>
+        <referencedby refid="classController_1acd1d7cb00688b69469719ff7789f3cd9" compoundref="controller_8hpp" startline="751" endline="779">GetVisits</referencedby>
+        <referencedby refid="classController_1aaa9930fa3fdd7c91a56392f3e1440736" compoundref="controller_8hpp" startline="382" endline="452">Search</referencedby>
+        <referencedby refid="classController_1ae3f0e461a7a50529945f6e70ba5572be" compoundref="controller_8hpp" startline="467" endline="532">SearchAsync</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classController_1ae6fd410649122f029bd60165049aca25" prot="private" static="no" mutable="no">
         <type>std::optional&lt; jsoncons::json &gt;(DatabaseController::*)</type>
@@ -42,14 +42,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="808" column="7" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="814" bodyend="-1"/>
-        <referencedby refid="classController_1a29dac549946db2810cb4435323502c75" compoundref="controller_8hpp" startline="974" endline="979">addStaff</referencedby>
-        <referencedby refid="classController_1a092b50bf54ca1d6d6f706a5a052992b1" compoundref="controller_8hpp" startline="187" endline="196">Create</referencedby>
-        <referencedby refid="classController_1a1aee6ba4e59315c76893a2221808d719" compoundref="controller_8hpp" startline="321" endline="329">Delete</referencedby>
-        <referencedby refid="classController_1ae33c97548e0d8cdd3f2289573d1a0dba" compoundref="controller_8hpp" startline="991" endline="996">removeStaff</referencedby>
-        <referencedby refid="classController_1acf60ad2a21b8d7c3c7a81d9412b6cd3c" compoundref="controller_8hpp" startline="536" endline="543">Suspend</referencedby>
-        <referencedby refid="classController_1a9b6e3fd0227fcb95b0831aef3b4e5f08" compoundref="controller_8hpp" startline="556" endline="563">Unsuspend</referencedby>
-        <referencedby refid="classController_1a19c2ebed1725708ab253bc0ba1d9b2c5" compoundref="controller_8hpp" startline="278" endline="286">Update</referencedby>
+        <location file="src/controllers/base/controller/controller.hpp" line="834" column="7" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="840" bodyend="-1"/>
+        <referencedby refid="classController_1a29dac549946db2810cb4435323502c75" compoundref="controller_8hpp" startline="1006" endline="1012">addStaff</referencedby>
+        <referencedby refid="classController_1a092b50bf54ca1d6d6f706a5a052992b1" compoundref="controller_8hpp" startline="187" endline="197">Create</referencedby>
+        <referencedby refid="classController_1a1aee6ba4e59315c76893a2221808d719" compoundref="controller_8hpp" startline="327" endline="336">Delete</referencedby>
+        <referencedby refid="classController_1ae33c97548e0d8cdd3f2289573d1a0dba" compoundref="controller_8hpp" startline="1024" endline="1030">removeStaff</referencedby>
+        <referencedby refid="classController_1acf60ad2a21b8d7c3c7a81d9412b6cd3c" compoundref="controller_8hpp" startline="546" endline="555">Suspend</referencedby>
+        <referencedby refid="classController_1a9b6e3fd0227fcb95b0831aef3b4e5f08" compoundref="controller_8hpp" startline="568" endline="577">Unsuspend</referencedby>
+        <referencedby refid="classController_1a19c2ebed1725708ab253bc0ba1d9b2c5" compoundref="controller_8hpp" startline="282" endline="291">Update</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classController_1a2f842d61277276dde02ce616b56fff59" prot="private" static="no" mutable="no">
         <type>std::optional&lt; jsoncons::json &gt;(DatabaseController::*)</type>
@@ -66,8 +66,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="808" column="7" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="821" bodyend="-1"/>
-        <referencedby refid="classController_1a99ba169c6f8163fd44cf966510c2730c" compoundref="controller_8hpp" startline="234" endline="242">Read</referencedby>
+        <location file="src/controllers/base/controller/controller.hpp" line="834" column="7" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="848" bodyend="-1"/>
+        <referencedby refid="classController_1a99ba169c6f8163fd44cf966510c2730c" compoundref="controller_8hpp" startline="236" endline="245">Read</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -96,7 +96,7 @@
         </inbodydescription>
         <location file="src/controllers/base/controller/controller.hpp" line="136" column="3" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="136" bodyend="150"/>
         <references refid="global_8hpp_1a68447123f2c27bb7bcdbbaec4091dab7" compoundref="global_8hpp" startline="48" endline="54">CRITICALMESSAGE</references>
-        <references refid="classController_1a576e9528aae60df4325fdd721c2eba23" compoundref="controller_8hpp" startline="808">databaseController</references>
+        <references refid="classController_1a576e9528aae60df4325fdd721c2eba23" compoundref="controller_8hpp" startline="834">databaseController</references>
         <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
         <referencedby refid="classController_1ac6a59b454d3645fb5bef2a31020ead86">Controller</referencedby>
         <referencedby refid="classController_1a5a91bf889588243924bd2365eec28370">Controller</referencedby>
@@ -248,10 +248,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="187" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="187" bodyend="196"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="187" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="187" bodyend="197"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
-        <references refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="847" endline="894">cruds</references>
-        <references refid="classController_1ae6fd410649122f029bd60165049aca25" compoundref="controller_8hpp" startline="814">dbexec</references>
+        <references refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="876" endline="924">cruds</references>
+        <references refid="classController_1ae6fd410649122f029bd60165049aca25" compoundref="controller_8hpp" startline="840">dbexec</references>
         <referencedby refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" compoundref="entitycontroller_8cpp" startline="76" endline="150">EntityController&lt; T &gt;::Create</referencedby>
         <referencedby refid="classClinicController_1af9be5b8c32bde11f7907d8ad6c031c92" compoundref="cliniccontroller_8cpp" startline="40" endline="129">ClinicController&lt; T &gt;::CreateImpl</referencedby>
         <referencedby refid="classClientController_1a0373ac4a58de1a4105939a0db1c64699" compoundref="clientcontroller_8cpp" startline="96" endline="155">ClientController&lt; T &gt;::createNow</referencedby>
@@ -311,9 +311,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="211" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="211" bodyend="220"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="212" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="212" bodyend="222"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
-        <references refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="915" endline="962">crudsAsync</references>
+        <references refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="946" endline="994">crudsAsync</references>
         <references refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="205" endline="246">DatabaseController::executeQueryCoro</references>
         <referencedby refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="370" endline="442">EntityController&lt; T &gt;::CreateAsync</referencedby>
       </memberdef>
@@ -374,10 +374,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="234" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="234" bodyend="242"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="236" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="236" bodyend="245"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
-        <references refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="847" endline="894">cruds</references>
-        <references refid="classController_1a2f842d61277276dde02ce616b56fff59" compoundref="controller_8hpp" startline="821">dbrexec</references>
+        <references refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="876" endline="924">cruds</references>
+        <references refid="classController_1a2f842d61277276dde02ce616b56fff59" compoundref="controller_8hpp" startline="848">dbrexec</references>
         <referencedby refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="153" endline="219">EntityController&lt; T &gt;::Read</referencedby>
       </memberdef>
       <memberdef kind="function" id="classController_1a055ea60472dc93fbb1c8af3d9f9d9091" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -435,9 +435,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="256" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="256" bodyend="264"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="259" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="259" bodyend="268"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
-        <references refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="915" endline="962">crudsAsync</references>
+        <references refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="946" endline="994">crudsAsync</references>
         <references refid="classDatabaseController_1aa3de6b2217aa0ba75ec4eb5286d36799" compoundref="databasecontroller_8cpp" startline="249" endline="278">DatabaseController::executeReadQueryCoro</references>
         <referencedby refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="444" endline="510">EntityController&lt; T &gt;::ReadAsync</referencedby>
       </memberdef>
@@ -498,10 +498,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="278" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="278" bodyend="286"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="282" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="282" bodyend="291"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
-        <references refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="847" endline="894">cruds</references>
-        <references refid="classController_1ae6fd410649122f029bd60165049aca25" compoundref="controller_8hpp" startline="814">dbexec</references>
+        <references refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="876" endline="924">cruds</references>
+        <references refid="classController_1ae6fd410649122f029bd60165049aca25" compoundref="controller_8hpp" startline="840">dbexec</references>
         <referencedby refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" compoundref="entitycontroller_8cpp" startline="221" endline="294">EntityController&lt; T &gt;::Update</referencedby>
         <referencedby refid="classClientController_1a8f17ab1fcb71e5c9d8e03f6cfe69559b" compoundref="clientcontroller_8cpp" startline="185" endline="225">ClientController&lt; T &gt;::updateNow</referencedby>
       </memberdef>
@@ -560,9 +560,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="300" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="300" bodyend="308"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="305" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="305" bodyend="314"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
-        <references refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="915" endline="962">crudsAsync</references>
+        <references refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="946" endline="994">crudsAsync</references>
         <references refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="205" endline="246">DatabaseController::executeQueryCoro</references>
         <referencedby refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="512" endline="588">EntityController&lt; T &gt;::UpdateAsync</referencedby>
       </memberdef>
@@ -623,10 +623,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="321" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="321" bodyend="329"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="327" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="327" bodyend="336"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
-        <references refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="847" endline="894">cruds</references>
-        <references refid="classController_1ae6fd410649122f029bd60165049aca25" compoundref="controller_8hpp" startline="814">dbexec</references>
+        <references refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="876" endline="924">cruds</references>
+        <references refid="classController_1ae6fd410649122f029bd60165049aca25" compoundref="controller_8hpp" startline="840">dbexec</references>
         <referencedby refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" compoundref="entitycontroller_8cpp" startline="297" endline="328">EntityController&lt; T &gt;::Delete</referencedby>
       </memberdef>
       <memberdef kind="function" id="classController_1a7a0500b8cc369da32375933abd6e1fb1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -684,9 +684,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="343" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="343" bodyend="351"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="350" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="350" bodyend="359"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
-        <references refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="915" endline="962">crudsAsync</references>
+        <references refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="946" endline="994">crudsAsync</references>
         <references refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="205" endline="246">DatabaseController::executeQueryCoro</references>
         <referencedby refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" compoundref="entitycontroller_8cpp" startline="590" endline="624">EntityController&lt; T &gt;::DeleteAsync</referencedby>
       </memberdef>
@@ -750,10 +750,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="374" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="374" bodyend="443"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="382" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="382" bodyend="452"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
-        <references refid="classController_1a576e9528aae60df4325fdd721c2eba23" compoundref="controller_8hpp" startline="808">databaseController</references>
+        <references refid="classController_1a576e9528aae60df4325fdd721c2eba23" compoundref="controller_8hpp" startline="834">databaseController</references>
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
         <referencedby refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" compoundref="entitycontroller_8cpp" startline="331" endline="367">EntityController&lt; T &gt;::Search</referencedby>
       </memberdef>
@@ -812,10 +812,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="458" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="458" bodyend="522"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="467" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="467" bodyend="532"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
-        <references refid="classController_1a576e9528aae60df4325fdd721c2eba23" compoundref="controller_8hpp" startline="808">databaseController</references>
+        <references refid="classController_1a576e9528aae60df4325fdd721c2eba23" compoundref="controller_8hpp" startline="834">databaseController</references>
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
         <referencedby refid="classEntityController_1a430903208b20b59481d07c88b66ac4f6" compoundref="entitycontroller_8cpp" startline="626" endline="662">EntityController&lt; T &gt;::SearchAsync</referencedby>
       </memberdef>
@@ -875,10 +875,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="536" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="536" bodyend="543"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="546" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="546" bodyend="555"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
-        <references refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="847" endline="894">cruds</references>
-        <references refid="classController_1ae6fd410649122f029bd60165049aca25" compoundref="controller_8hpp" startline="814">dbexec</references>
+        <references refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="876" endline="924">cruds</references>
+        <references refid="classController_1ae6fd410649122f029bd60165049aca25" compoundref="controller_8hpp" startline="840">dbexec</references>
         <referencedby refid="classClientController_1ac9f28aab768cb85f02f2ca84b694f149" compoundref="clientcontroller_8cpp" startline="302" endline="335">ClientController&lt; T &gt;::Suspend</referencedby>
       </memberdef>
       <memberdef kind="function" id="classController_1a9b6e3fd0227fcb95b0831aef3b4e5f08" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -937,10 +937,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="556" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="556" bodyend="563"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="568" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="568" bodyend="577"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
-        <references refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="847" endline="894">cruds</references>
-        <references refid="classController_1ae6fd410649122f029bd60165049aca25" compoundref="controller_8hpp" startline="814">dbexec</references>
+        <references refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="876" endline="924">cruds</references>
+        <references refid="classController_1ae6fd410649122f029bd60165049aca25" compoundref="controller_8hpp" startline="840">dbexec</references>
         <referencedby refid="classClientController_1a42c57adab458feeb209485ce13c48b0f" compoundref="clientcontroller_8cpp" startline="376" endline="407">ClientController&lt; T &gt;::Activate</referencedby>
       </memberdef>
       <memberdef kind="function" id="classController_1a82399a341c86ed94ac1ade56ced71dc7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -999,9 +999,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="576" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="576" bodyend="586"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="590" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="590" bodyend="602"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
-        <references refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="915" endline="962">crudsAsync</references>
+        <references refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="946" endline="994">crudsAsync</references>
         <references refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="205" endline="246">DatabaseController::executeQueryCoro</references>
         <referencedby refid="classClientController_1a77e043006883f4a959679df477d0ad39" compoundref="clientcontroller_8cpp" startline="338" endline="373">ClientController&lt; T &gt;::SuspendAsync</referencedby>
       </memberdef>
@@ -1061,9 +1061,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="599" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="599" bodyend="609"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="615" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="615" bodyend="627"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
-        <references refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="915" endline="962">crudsAsync</references>
+        <references refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="946" endline="994">crudsAsync</references>
         <references refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="205" endline="246">DatabaseController::executeQueryCoro</references>
         <referencedby refid="classClientController_1af7b6b7c90918fc3068478538f2e1b37d" compoundref="clientcontroller_8cpp" startline="410" endline="442">ClientController&lt; T &gt;::ActivateAsync</referencedby>
       </memberdef>
@@ -1125,10 +1125,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="626" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="626" bodyend="659"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="644" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="644" bodyend="679"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
-        <references refid="classController_1a576e9528aae60df4325fdd721c2eba23" compoundref="controller_8hpp" startline="808">databaseController</references>
+        <references refid="classController_1a576e9528aae60df4325fdd721c2eba23" compoundref="controller_8hpp" startline="834">databaseController</references>
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
         <references refid="classapi_1_1v2_1_1JsonHelper_1a1b5317049b9d7659fea55b9f6c96c379" compoundref="jsonhelper_8cpp" startline="50" endline="52">api::v2::JsonHelper::stringify</references>
         <referencedby refid="classClientController_1abdee410951d9aa19b082955197f53162" compoundref="clientcontroller_8cpp" startline="457" endline="487">ClientController&lt; T &gt;::GetServices</referencedby>
@@ -1189,7 +1189,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="674" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="674" bodyend="712"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="694" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="694" bodyend="734"/>
         <references refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="260" endline="278">Store::cachedObject</references>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
@@ -1253,10 +1253,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="729" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="729" bodyend="755"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="751" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="751" bodyend="779"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
-        <references refid="classController_1a576e9528aae60df4325fdd721c2eba23" compoundref="controller_8hpp" startline="808">databaseController</references>
+        <references refid="classController_1a576e9528aae60df4325fdd721c2eba23" compoundref="controller_8hpp" startline="834">databaseController</references>
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
         <references refid="classapi_1_1v2_1_1JsonHelper_1a1b5317049b9d7659fea55b9f6c96c379" compoundref="jsonhelper_8cpp" startline="50" endline="52">api::v2::JsonHelper::stringify</references>
         <referencedby refid="classClinicController_1a49ca9ae245f2ca94ee937754a5d433ea" compoundref="cliniccontroller_8cpp" startline="344" endline="373">ClinicController&lt; T &gt;::GetVisitsImpl</referencedby>
@@ -1317,7 +1317,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="769" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="769" bodyend="800"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="793" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="793" bodyend="826"/>
         <references refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="260" endline="278">Store::cachedObject</references>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
@@ -1417,20 +1417,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="847" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="847" bodyend="894"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="876" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="876" bodyend="924"/>
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
-        <references refid="classController_1a576e9528aae60df4325fdd721c2eba23" compoundref="controller_8hpp" startline="808">databaseController</references>
+        <references refid="classController_1a576e9528aae60df4325fdd721c2eba23" compoundref="controller_8hpp" startline="834">databaseController</references>
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
-        <referencedby refid="classController_1a29dac549946db2810cb4435323502c75" compoundref="controller_8hpp" startline="974" endline="979">addStaff</referencedby>
-        <referencedby refid="classController_1a092b50bf54ca1d6d6f706a5a052992b1" compoundref="controller_8hpp" startline="187" endline="196">Create</referencedby>
-        <referencedby refid="classController_1a1aee6ba4e59315c76893a2221808d719" compoundref="controller_8hpp" startline="321" endline="329">Delete</referencedby>
-        <referencedby refid="classController_1a99ba169c6f8163fd44cf966510c2730c" compoundref="controller_8hpp" startline="234" endline="242">Read</referencedby>
-        <referencedby refid="classController_1ae33c97548e0d8cdd3f2289573d1a0dba" compoundref="controller_8hpp" startline="991" endline="996">removeStaff</referencedby>
-        <referencedby refid="classController_1acf60ad2a21b8d7c3c7a81d9412b6cd3c" compoundref="controller_8hpp" startline="536" endline="543">Suspend</referencedby>
-        <referencedby refid="classController_1a9b6e3fd0227fcb95b0831aef3b4e5f08" compoundref="controller_8hpp" startline="556" endline="563">Unsuspend</referencedby>
-        <referencedby refid="classController_1a19c2ebed1725708ab253bc0ba1d9b2c5" compoundref="controller_8hpp" startline="278" endline="286">Update</referencedby>
+        <referencedby refid="classController_1a29dac549946db2810cb4435323502c75" compoundref="controller_8hpp" startline="1006" endline="1012">addStaff</referencedby>
+        <referencedby refid="classController_1a092b50bf54ca1d6d6f706a5a052992b1" compoundref="controller_8hpp" startline="187" endline="197">Create</referencedby>
+        <referencedby refid="classController_1a1aee6ba4e59315c76893a2221808d719" compoundref="controller_8hpp" startline="327" endline="336">Delete</referencedby>
+        <referencedby refid="classController_1a99ba169c6f8163fd44cf966510c2730c" compoundref="controller_8hpp" startline="236" endline="245">Read</referencedby>
+        <referencedby refid="classController_1ae33c97548e0d8cdd3f2289573d1a0dba" compoundref="controller_8hpp" startline="1024" endline="1030">removeStaff</referencedby>
+        <referencedby refid="classController_1acf60ad2a21b8d7c3c7a81d9412b6cd3c" compoundref="controller_8hpp" startline="546" endline="555">Suspend</referencedby>
+        <referencedby refid="classController_1a9b6e3fd0227fcb95b0831aef3b4e5f08" compoundref="controller_8hpp" startline="568" endline="577">Unsuspend</referencedby>
+        <referencedby refid="classController_1a19c2ebed1725708ab253bc0ba1d9b2c5" compoundref="controller_8hpp" startline="282" endline="291">Update</referencedby>
       </memberdef>
       <memberdef kind="function" id="classController_1a5ae88e721040afcd58e0bbc23f22a72e" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -1522,20 +1522,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="915" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="915" bodyend="962"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="946" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="946" bodyend="994"/>
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
         <references refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="260" endline="278">Store::cachedObject</references>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
-        <referencedby refid="classController_1a1bb3245ec82d14644a2359cd546ea218" compoundref="controller_8hpp" startline="1009" endline="1017">addStaffAsync</referencedby>
-        <referencedby refid="classController_1a020c9869a16a1ac31bc2b2ce128cf51b" compoundref="controller_8hpp" startline="211" endline="220">CreateAsync</referencedby>
-        <referencedby refid="classController_1a7a0500b8cc369da32375933abd6e1fb1" compoundref="controller_8hpp" startline="343" endline="351">DeleteAsync</referencedby>
-        <referencedby refid="classController_1a055ea60472dc93fbb1c8af3d9f9d9091" compoundref="controller_8hpp" startline="256" endline="264">ReadAsync</referencedby>
-        <referencedby refid="classController_1a417810c27071d4c1fae298b518d7819f" compoundref="controller_8hpp" startline="1030" endline="1038">removeStaffAsync</referencedby>
-        <referencedby refid="classController_1a82399a341c86ed94ac1ade56ced71dc7" compoundref="controller_8hpp" startline="576" endline="586">SuspendAsync</referencedby>
-        <referencedby refid="classController_1a0044a385830517e3a97e0b250dce4748" compoundref="controller_8hpp" startline="599" endline="609">UnsuspendAsync</referencedby>
-        <referencedby refid="classController_1a146f10399fc24f1052079827e6248b2a" compoundref="controller_8hpp" startline="300" endline="308">UpdateAsync</referencedby>
+        <referencedby refid="classController_1a1bb3245ec82d14644a2359cd546ea218" compoundref="controller_8hpp" startline="1043" endline="1052">addStaffAsync</referencedby>
+        <referencedby refid="classController_1a020c9869a16a1ac31bc2b2ce128cf51b" compoundref="controller_8hpp" startline="212" endline="222">CreateAsync</referencedby>
+        <referencedby refid="classController_1a7a0500b8cc369da32375933abd6e1fb1" compoundref="controller_8hpp" startline="350" endline="359">DeleteAsync</referencedby>
+        <referencedby refid="classController_1a055ea60472dc93fbb1c8af3d9f9d9091" compoundref="controller_8hpp" startline="259" endline="268">ReadAsync</referencedby>
+        <referencedby refid="classController_1a417810c27071d4c1fae298b518d7819f" compoundref="controller_8hpp" startline="1065" endline="1074">removeStaffAsync</referencedby>
+        <referencedby refid="classController_1a82399a341c86ed94ac1ade56ced71dc7" compoundref="controller_8hpp" startline="590" endline="602">SuspendAsync</referencedby>
+        <referencedby refid="classController_1a0044a385830517e3a97e0b250dce4748" compoundref="controller_8hpp" startline="615" endline="627">UnsuspendAsync</referencedby>
+        <referencedby refid="classController_1a146f10399fc24f1052079827e6248b2a" compoundref="controller_8hpp" startline="305" endline="314">UpdateAsync</referencedby>
       </memberdef>
       <memberdef kind="function" id="classController_1a29dac549946db2810cb4435323502c75" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -1592,10 +1592,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="974" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="974" bodyend="979"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="1006" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="1006" bodyend="1012"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
-        <references refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="847" endline="894">cruds</references>
-        <references refid="classController_1ae6fd410649122f029bd60165049aca25" compoundref="controller_8hpp" startline="814">dbexec</references>
+        <references refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="876" endline="924">cruds</references>
+        <references refid="classController_1ae6fd410649122f029bd60165049aca25" compoundref="controller_8hpp" startline="840">dbexec</references>
         <referencedby refid="classStaffController_1a454ac6b5d362f6b9be674eac131f4da7" compoundref="staffcontroller_8cpp" startline="149" endline="199">StaffController&lt; T &gt;::AddStaffToEntity</referencedby>
       </memberdef>
       <memberdef kind="function" id="classController_1ae33c97548e0d8cdd3f2289573d1a0dba" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -1653,10 +1653,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="991" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="991" bodyend="996"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="1024" column="8" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="1024" bodyend="1030"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
-        <references refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="847" endline="894">cruds</references>
-        <references refid="classController_1ae6fd410649122f029bd60165049aca25" compoundref="controller_8hpp" startline="814">dbexec</references>
+        <references refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="876" endline="924">cruds</references>
+        <references refid="classController_1ae6fd410649122f029bd60165049aca25" compoundref="controller_8hpp" startline="840">dbexec</references>
         <referencedby refid="classStaffController_1aefd020493c2178716433285aca94ae50" compoundref="staffcontroller_8cpp" startline="211" endline="248">StaffController&lt; T &gt;::RemoveStaffFromEntity</referencedby>
       </memberdef>
       <memberdef kind="function" id="classController_1a1bb3245ec82d14644a2359cd546ea218" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -1714,9 +1714,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="1009" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="1009" bodyend="1017"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="1043" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="1043" bodyend="1052"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
-        <references refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="915" endline="962">crudsAsync</references>
+        <references refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="946" endline="994">crudsAsync</references>
         <references refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="205" endline="246">DatabaseController::executeQueryCoro</references>
         <referencedby refid="classStaffController_1a53a028cf301c7a9765b3633a06275546" compoundref="staffcontroller_8cpp" startline="353" endline="389">StaffController&lt; T &gt;::AddStaffToEntityAsync</referencedby>
       </memberdef>
@@ -1775,9 +1775,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/base/controller/controller.hpp" line="1030" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="1030" bodyend="1038"/>
+        <location file="src/controllers/base/controller/controller.hpp" line="1065" column="16" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="1065" bodyend="1074"/>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
-        <references refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="915" endline="962">crudsAsync</references>
+        <references refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="946" endline="994">crudsAsync</references>
         <references refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="205" endline="246">DatabaseController::executeQueryCoro</references>
         <referencedby refid="classStaffController_1ac220308be6bf24122bfe037ea8c75e9c" compoundref="staffcontroller_8cpp" startline="400" endline="433">StaffController&lt; T &gt;::RemoveStaffFromEntityAsync</referencedby>
       </memberdef>
@@ -1834,7 +1834,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="src/controllers/base/controller/controller.hpp" line="125" column="1" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="125" bodyend="1039"/>
+    <location file="src/controllers/base/controller/controller.hpp" line="125" column="1" bodyfile="src/controllers/base/controller/controller.hpp" bodystart="125" bodyend="1075"/>
     <listofallmembers>
       <member refid="classController_1a29dac549946db2810cb4435323502c75" prot="protected" virt="non-virtual"><scope>Controller</scope><name>addStaff</name></member>
       <member refid="classController_1a1bb3245ec82d14644a2359cd546ea218" prot="protected" virt="non-virtual"><scope>Controller</scope><name>addStaffAsync</name></member>

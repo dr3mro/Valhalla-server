@@ -154,18 +154,18 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a8762db475d5d6d78ed62d3cd947ec0ad" id="r_a8762db475d5d6d78ed62d3cd947ec0ad"><td class="memItemLeft">const std::shared_ptr&lt; <a class="el" href="classConfigurator.html">Configurator</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a8762db475d5d6d78ed62d3cd947ec0ad">cfg_</a></td></tr>
+<tr class="memitem:a8762db475d5d6d78ed62d3cd947ec0ad" id="r_a8762db475d5d6d78ed62d3cd947ec0ad"><td class="memItemLeft">const std::shared_ptr&lt; Configurator &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a8762db475d5d6d78ed62d3cd947ec0ad">cfg_</a></td></tr>
 <tr class="memdesc:a8762db475d5d6d78ed62d3cd947ec0ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shared configurator used to read server and frontend settings.  <br /></td></tr>
-<tr class="memitem:a195401809f6f777e4ccd460ddda407c9" id="r_a195401809f6f777e4ccd460ddda407c9"><td class="memItemLeft">const <a class="el" href="classConfigurator.html#a927a53596c80ae2c5f02c21f85af9d83">Configurator::ServerConfig</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a195401809f6f777e4ccd460ddda407c9">servercfg_</a></td></tr>
+<tr class="memitem:a195401809f6f777e4ccd460ddda407c9" id="r_a195401809f6f777e4ccd460ddda407c9"><td class="memItemLeft">const Configurator::ServerConfig &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a195401809f6f777e4ccd460ddda407c9">servercfg_</a></td></tr>
 <tr class="memdesc:a195401809f6f777e4ccd460ddda407c9"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classServer.html" title="Owns application startup: configuration, banner, Drogon wiring, and post-run executor shutdown.">Server</a> configuration, source of project_name.  <br /></td></tr>
-<tr class="memitem:a37f2a8adfb205f92804835dd6d8e242f" id="r_a37f2a8adfb205f92804835dd6d8e242f"><td class="memItemLeft">const <a class="el" href="classConfigurator.html#a8b3e99fef2ad5bf59793fa235a97aa3c">Configurator::FrontEndConfig</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a37f2a8adfb205f92804835dd6d8e242f">frontendcfg_</a></td></tr>
+<tr class="memitem:a37f2a8adfb205f92804835dd6d8e242f" id="r_a37f2a8adfb205f92804835dd6d8e242f"><td class="memItemLeft">const Configurator::FrontEndConfig &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a37f2a8adfb205f92804835dd6d8e242f">frontendcfg_</a></td></tr>
 <tr class="memdesc:a37f2a8adfb205f92804835dd6d8e242f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frontend configuration, source of the invitation link host/port/path.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Parsed staff-invitation data and rendering of the invitation link payload. </p>
 <p>Constructed from the JSON body of a staff add/remove request. When parsed successfully it can also augment an invite JSON object with the fields the mail template needs, including a base64-encoded link back into the frontend. </p><dl class="section note"><dt>Note</dt><dd>parse_status must be checked before relying on the other fields; a missing key leaves them uninitialised. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00813">813</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00835">835</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a818a674284397d061b1cee9f60170271" name="a818a674284397d061b1cee9f60170271"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a818a674284397d061b1cee9f60170271">&#9670;&#160;</a></span>StaffData() <span class="overload">[1/2]</span></h2>
@@ -199,9 +199,9 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>On a missing or mistyped key an error is logged and parse_status is set false. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00869">869</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00891">891</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="entities_2base_2types_8hpp_source.html#l00840">email</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00830">entity_id</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00850">entity_name</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00845">nominee_group</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00823">nominee_id</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00817">parse_status</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00855">project_name</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00835">role</a>, and <a class="el" href="entities_2base_2types_8hpp_source.html#l00961">servercfg_</a>.</p>
+<p class="reference">References <a class="el" href="entities_2base_2types_8hpp_source.html#l00862">email</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00852">entity_id</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00872">entity_name</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00867">nominee_group</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00845">nominee_id</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00839">parse_status</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00877">project_name</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00857">role</a>, and <a class="el" href="entities_2base_2types_8hpp_source.html#l00983">servercfg_</a>.</p>
 
 </div>
 </div>
@@ -265,9 +265,9 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true when the fields were added; false if an exception occurred. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00910">910</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00932">932</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00970">frontendcfg_</a>, and <a class="el" href="entities_2base_2types_8hpp_source.html#l00855">project_name</a>.</p>
+<p class="reference">References <a class="el" href="entities_2base_2types_8hpp_source.html#l00992">frontendcfg_</a>, and <a class="el" href="entities_2base_2types_8hpp_source.html#l00877">project_name</a>.</p>
 
 </div>
 </div>
@@ -282,7 +282,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::shared_ptr&lt;<a class="el" href="classConfigurator.html">Configurator</a>&gt; api::v2::Types::StaffData::cfg_</td>
+          <td class="memname">const std::shared_ptr&lt;Configurator&gt; api::v2::Types::StaffData::cfg_</td>
         </tr>
       </table>
   </td>
@@ -297,7 +297,7 @@ Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 <p>Shared configurator used to read server and frontend settings. </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00953">953</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00975">975</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
 </div>
 </div>
@@ -315,9 +315,9 @@ Private Attributes</h2></td></tr>
 
 <p>Email address used in the invitation. </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00840">840</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00862">862</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00869">StaffData()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00891">StaffData()</a>.</p>
 
 </div>
 </div>
@@ -335,9 +335,9 @@ Private Attributes</h2></td></tr>
 
 <p>Id of the entity (service/organisation) the staff member is added to or removed from. </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00830">830</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00852">852</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00869">StaffData()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00891">StaffData()</a>.</p>
 
 </div>
 </div>
@@ -355,9 +355,9 @@ Private Attributes</h2></td></tr>
 
 <p>Human-readable name of the entity. </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00850">850</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00872">872</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00869">StaffData()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00891">StaffData()</a>.</p>
 
 </div>
 </div>
@@ -371,7 +371,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="classConfigurator.html#a8b3e99fef2ad5bf59793fa235a97aa3c">Configurator::FrontEndConfig</a>&amp; api::v2::Types::StaffData::frontendcfg_</td>
+          <td class="memname">const Configurator::FrontEndConfig&amp; api::v2::Types::StaffData::frontendcfg_</td>
         </tr>
       </table>
   </td>
@@ -381,15 +381,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">                                            =</div>
-<div class="line"><a class="code hl_variable" href="#a8762db475d5d6d78ed62d3cd947ec0ad">cfg_</a>-&gt;get&lt;<a class="code hl_typedef" href="classConfigurator.html#a8b3e99fef2ad5bf59793fa235a97aa3c">Configurator::FrontEndConfig</a>&gt;()</div>
-<div class="ttc" id="aclassConfigurator_html_a8b3e99fef2ad5bf59793fa235a97aa3c"><div class="ttname"><a href="classConfigurator.html#a8b3e99fef2ad5bf59793fa235a97aa3c">Configurator::FrontEndConfig</a></div><div class="ttdeci">struct FrontEndConfig :public EnvLoader { uint16_t port; std::string host; std::string invite_path; std::string cors_allowed_origins; FrontEndConfig() :port(getEnvironmentVariable(&quot;FRONTEND_PORT&quot;, Defaults::FrontEnd:: PORT_)), host(getEnvironmentVariable(&quot;FRONTEND_HOST&quot;, Defaults::FrontEnd:: HOST_)), invite_path(getEnvironmentVariable(&quot;FRONTEND_INVITE_PATH&quot;, Defaults::FrontEnd::INVITE_PATH_)), cors_allowed_origins(getEnvironmentVariable(&quot;CORS_ALLOWED_ORIGINS&quot;, std::string(&quot;*&quot;))) { } void printValues() const override { Message::ConfMessage( &quot;------------------------------------------------&quot;); Message::ConfMessage( &quot;------------------FrontEnd Config----------------&quot;); Message::ConfMessage( &quot;------------------------------------------------&quot;); Message::ConfMessage( fmt::format(&quot;Frontend host: {}&quot;, host)); Message::ConfMessage( fmt::format(&quot;Frontend port: {}&quot;, port)); Message::ConfMessage(fmt::format(&quot;Frontend invite path: {}&quot;, invite_path)); Message::ConfMessage( fmt::format(&quot;CORS allowed origins: {}&quot;, cors_allowed_origins)); } } FrontEndConfig</div><div class="ttdef"><b>Definition</b> <a href="configurator_8hpp_source.html#l00713">configurator.hpp:713</a></div></div>
-<div class="ttc" id="astructapi_1_1v2_1_1Types_1_1StaffData_html_a8762db475d5d6d78ed62d3cd947ec0ad"><div class="ttname"><a href="#a8762db475d5d6d78ed62d3cd947ec0ad">api::v2::Types::StaffData::cfg_</a></div><div class="ttdeci">const std::shared_ptr&lt; Configurator &gt; cfg_</div><div class="ttdoc">Shared configurator used to read server and frontend settings.</div><div class="ttdef"><b>Definition</b> <a href="entities_2base_2types_8hpp_source.html#l00953">types.hpp:953</a></div></div>
+<div class="line"><a class="code hl_variable" href="#a8762db475d5d6d78ed62d3cd947ec0ad">cfg_</a>-&gt;get&lt;Configurator::FrontEndConfig&gt;()</div>
+<div class="ttc" id="astructapi_1_1v2_1_1Types_1_1StaffData_html_a8762db475d5d6d78ed62d3cd947ec0ad"><div class="ttname"><a href="#a8762db475d5d6d78ed62d3cd947ec0ad">api::v2::Types::StaffData::cfg_</a></div><div class="ttdeci">const std::shared_ptr&lt; Configurator &gt; cfg_</div><div class="ttdoc">Shared configurator used to read server and frontend settings.</div><div class="ttdef"><b>Definition</b> <a href="entities_2base_2types_8hpp_source.html#l00975">types.hpp:975</a></div></div>
 </div><!-- fragment -->
 <p>Frontend configuration, source of the invitation link host/port/path. </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00970">970</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00992">992</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00910">toInviteJson()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00932">toInviteJson()</a>.</p>
 
 </div>
 </div>
@@ -407,9 +406,9 @@ Private Attributes</h2></td></tr>
 
 <p>Group the nominee belongs to (for example "providers"). </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00845">845</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00867">867</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00869">StaffData()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00891">StaffData()</a>.</p>
 
 </div>
 </div>
@@ -427,9 +426,9 @@ Private Attributes</h2></td></tr>
 
 <p>Id of the staff member being nominated. </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00823">823</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00845">845</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00869">StaffData()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00891">StaffData()</a>.</p>
 
 </div>
 </div>
@@ -447,9 +446,9 @@ Private Attributes</h2></td></tr>
 
 <p>Whether all required JSON fields were parsed successfully. </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00817">817</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00839">839</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00869">StaffData()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00891">StaffData()</a>.</p>
 
 </div>
 </div>
@@ -467,9 +466,9 @@ Private Attributes</h2></td></tr>
 
 <p>Project name injected from the server configuration. </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00855">855</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00877">877</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00869">StaffData()</a>, and <a class="el" href="entities_2base_2types_8hpp_source.html#l00910">toInviteJson()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00891">StaffData()</a>, and <a class="el" href="entities_2base_2types_8hpp_source.html#l00932">toInviteJson()</a>.</p>
 
 </div>
 </div>
@@ -487,9 +486,9 @@ Private Attributes</h2></td></tr>
 
 <p>Role assigned to the nominee (for example "Doctor"). </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00835">835</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00857">857</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00869">StaffData()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00891">StaffData()</a>.</p>
 
 </div>
 </div>
@@ -503,7 +502,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="classConfigurator.html#a927a53596c80ae2c5f02c21f85af9d83">Configurator::ServerConfig</a>&amp; api::v2::Types::StaffData::servercfg_</td>
+          <td class="memname">const Configurator::ServerConfig&amp; api::v2::Types::StaffData::servercfg_</td>
         </tr>
       </table>
   </td>
@@ -513,14 +512,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">                                        =</div>
-<div class="line"><a class="code hl_variable" href="#a8762db475d5d6d78ed62d3cd947ec0ad">cfg_</a>-&gt;get&lt;<a class="code hl_typedef" href="classConfigurator.html#a927a53596c80ae2c5f02c21f85af9d83">Configurator::ServerConfig</a>&gt;()</div>
-<div class="ttc" id="aclassConfigurator_html_a927a53596c80ae2c5f02c21f85af9d83"><div class="ttname"><a href="classConfigurator.html#a927a53596c80ae2c5f02c21f85af9d83">Configurator::ServerConfig</a></div><div class="ttdeci">struct ServerConfig :public EnvLoader { std::string host; std::string name; std::string ver; std::string desc; uint16_t port; uint16_t threads; uint8_t debug_level; bool log_to_console; bool log_to_file; std::string log_dir; std::string log_file; std::string upload_dir; ServerConfig() :host( getEnvironmentVariable(&quot;SERVER_HOST&quot;, Defaults::Server:: SERVER_HOST_)), name(getEnvironmentVariable(&quot;SERVER_NAME&quot;, Defaults::Server:: SERVER_NAME_)), ver(getEnvironmentVariable(&quot;dev&quot;, Defaults::Server:: SERVER_VER_)), desc(getEnvironmentVariable(&quot;SERVER_DESCRIPTION&quot;, Defaults::Server:: SERVER_DESC_)), port( getEnvironmentVariable(&quot;SERVER_PORT&quot;, Defaults::Server:: SERVER_PORT_)), threads( getEnvironmentVariable(&quot;SERVER_THREADS&quot;, Defaults::Server:: SERVER_THREADS_)), debug_level( getEnvironmentVariable(&quot;SERVER_DEBUG_LEVEL&quot;, Defaults::Server::SERVER_DEBUG_LEVEL_)), log_to_console( getEnvironmentVariable(&quot;SERVER_LOG_TO_CONSOLE&quot;, Defaults::Server::SERVER_LOG_TO_CONSOLE_)), log_to_file( getEnvironmentVariable(&quot;SERVER_LOG_TO_FILE&quot;, Defaults::Server:: SERVER_LOG_TO_FILE_)), log_dir(getEnvironmentVariable(&quot;SERVER_LOG_DIR&quot;, Defaults::Server:: SERVER_LOG_DIR_)), log_file( getEnvironmentVariable(&quot;SERVER_LOG_FILE&quot;, Defaults::Server:: SERVER_LOG_FILE_)), upload_dir(getEnvironmentVariable(&quot;SERVER_UPLOAD_DIR&quot;, Defaults::Server:: SERVER_UPLOAD_DIR_)) { optimize_performance(threads, 4); } void printValues() const override { Message::ConfMessage( &quot;------------------------------------------------&quot;); Message::ConfMessage( &quot;-------------------ServerConfig-----------------&quot;); Message::ConfMessage( &quot;------------------------------------------------&quot;); Message::ConfMessage( fmt::format(&quot;Host: {}&quot;, host)); Message::ConfMessage( fmt::format(&quot;Port: {}&quot;, port)); Message::ConfMessage( fmt::format(&quot;Name: {}&quot;, name)); Message::ConfMessage( fmt::format(&quot;Version: {}&quot;, ver)); Message::ConfMessage( fmt::format(&quot;Description: {}&quot;, desc)); Message::ConfMessage( fmt::format(&quot;Threads: {}&quot;, threads)); Message::ConfMessage( fmt::format(&quot;Debug Level: {}&quot;, debug_level)); Message::ConfMessage( fmt::format(&quot;Log to console: {}&quot;, log_to_console)); Message::ConfMessage( fmt::format(&quot;Log to file: {}&quot;, log_to_file)); Message::ConfMessage( fmt::format(&quot;Log directory: {}&quot;, log_dir)); Message::ConfMessage( fmt::format(&quot;Log file: {}&quot;, log_file)); Message::ConfMessage(fmt::format(&quot;Upload directory: {}&quot;, upload_dir)); } } ServerConfig</div><div class="ttdef"><b>Definition</b> <a href="configurator_8hpp_source.html#l00454">configurator.hpp:454</a></div></div>
+<div class="line"><a class="code hl_variable" href="#a8762db475d5d6d78ed62d3cd947ec0ad">cfg_</a>-&gt;get&lt;Configurator::ServerConfig&gt;()</div>
 </div><!-- fragment -->
 <p><a class="el" href="classServer.html" title="Owns application startup: configuration, banner, Drogon wiring, and post-run executor shutdown.">Server</a> configuration, source of project_name. </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00961">961</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00983">983</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00869">StaffData()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entities_2base_2types_8hpp_source.html#l00891">StaffData()</a>.</p>
 
 </div>
 </div>

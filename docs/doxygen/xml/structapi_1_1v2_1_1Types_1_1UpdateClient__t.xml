@@ -94,13 +94,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="723" column="5" bodyfile="src/entities/base/types.hpp" bodystart="723" bodyend="770"/>
+        <location file="src/entities/base/types.hpp" line="741" column="5" bodyfile="src/entities/base/types.hpp" bodystart="741" bodyend="791"/>
         <references refid="classValidator_1adf618a4a20efe4f1bd832993affd8b7a" compoundref="validator_8cpp" startline="275" endline="390">Validator::clientRegexValidation</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1adc52add57f54dc3d0d39360a71e1ff22" compoundref="entities_2base_2types_8hpp" startline="563">api::v2::Types::ClientData_t::data_j</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1ad6c132aa0d6b24951d7933dfffa81260" compoundref="entities_2base_2types_8hpp" startline="557">api::v2::Types::ClientData_t::data_set</references>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a1ae1de4ae01c497a90e0820734c7fcd0" compoundref="entities_2base_2types_8hpp" startline="539" endline="541">api::v2::Types::ClientData_t::get_data_json</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1adc52add57f54dc3d0d39360a71e1ff22" compoundref="entities_2base_2types_8hpp" startline="577">api::v2::Types::ClientData_t::data_j</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1ad6c132aa0d6b24951d7933dfffa81260" compoundref="entities_2base_2types_8hpp" startline="571">api::v2::Types::ClientData_t::data_set</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a1ae1de4ae01c497a90e0820734c7fcd0" compoundref="entities_2base_2types_8hpp" startline="553" endline="555">api::v2::Types::ClientData_t::get_data_json</references>
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="123">api::v2::Http::INTERNAL_SERVER_ERROR</references>
         <references refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" compoundref="validator_8cpp" startline="148" endline="202">Validator::validateDatabaseUpdateSchema</references>
       </memberdef>
@@ -117,8 +115,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="776" column="5" bodyfile="src/entities/base/types.hpp" bodystart="776" bodyend="778"/>
-        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1ad6c132aa0d6b24951d7933dfffa81260" compoundref="entities_2base_2types_8hpp" startline="557">api::v2::Types::ClientData_t::data_set</references>
+        <location file="src/entities/base/types.hpp" line="798" column="5" bodyfile="src/entities/base/types.hpp" bodystart="798" bodyend="800"/>
+        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1ad6c132aa0d6b24951d7933dfffa81260" compoundref="entities_2base_2types_8hpp" startline="571">api::v2::Types::ClientData_t::data_set</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -151,7 +149,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/entities/base/types.hpp" line="705" column="3" bodyfile="src/entities/base/types.hpp" bodystart="705" bodyend="779"/>
+    <location file="src/entities/base/types.hpp" line="723" column="3" bodyfile="src/entities/base/types.hpp" bodystart="723" bodyend="801"/>
     <listofallmembers>
       <member refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a6c90d78e4dd68ae25af5e18582fb3910" prot="public" virt="non-virtual"><scope>api::v2::Types::UpdateClient_t</scope><name>ClientData_t</name></member>
       <member refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1adc52add57f54dc3d0d39360a71e1ff22" prot="protected" virt="non-virtual"><scope>api::v2::Types::UpdateClient_t</scope><name>data_j</name></member>

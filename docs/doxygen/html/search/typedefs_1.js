@@ -7,7 +7,7 @@ var searchData=
   ['clock_4',['Clock',['../classBasicPermissionCache.html#a3e99cd08033671e7ac34d935c0abc383',1,'BasicPermissionCache::Clock'],['../classMemCache.html#ab849b6bdf3b4922b00f173434e61d073',1,'MemCache::Clock']]],
   ['clockfn_5',['ClockFn',['../classDOSDetector.html#ac7575b7d29bfc8bd94cb54bb6321799a',1,'DOSDetector']]],
   ['columninfo_6',['ColumnInfo',['../namespaceapi_1_1v2.html#aaed92c04eb1e44678c97ae468bd8a42b',1,'api::v2']]],
-  ['create_5ft_7',['Create_t',['../entitycontroller_8cpp.html#ae441f2f0dc07feb7ea9ffef43f2640bb',1,'Create_t:&#160;entitycontroller.cpp'],['../namespaceapi_1_1v2_1_1Types.html#a3c62a5c40f89f4df780a0aa64a374461',1,'api::v2::Types::Create_t']]],
+  ['create_5ft_7',['Create_t',['../entitycontroller_8cpp.html#ae441f2f0dc07feb7ea9ffef43f2640bb',1,'Create_t:&#160;entitycontroller.cpp'],['../namespaceapi_1_1v2_1_1Types.html#a6fa63bd25d7f545aad8e21d39edfaed3',1,'api::v2::Types::Create_t']]],
   ['createclient_5ft_8',['CreateClient_t',['../clientcontroller_8cpp.html#af3be12d85abf03f08c24f20bc2e06c14',1,'clientcontroller.cpp']]],
   ['credentials_9',['Credentials',['../gatekeeper_8cpp.html#ad80db233ba3d6a423eadaa24b9a54b4b',1,'Credentials:&#160;gatekeeper.cpp'],['../namespaceapi_1_1v2_1_1Types.html#a249a6e076b477aa182c10bc4334e1268',1,'api::v2::Types::Credentials']]]
 ];

@@ -90,7 +90,7 @@
 <parametername>T</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A type accepted by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref>, e.g. <ref refid="namespaceapi_1_1v2_1_1Types_1a3c62a5c40f89f4df780a0aa64a374461" kindref="member">api::v2::Types::Create_t</ref> or <ref refid="classRead__t" kindref="compound">Read_t</ref>. </para>
+<para>A type accepted by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref>, e.g. <ref refid="namespaceapi_1_1v2_1_1Types_1a6fa63bd25d7f545aad8e21d39edfaed3" kindref="member">api::v2::Types::Create_t</ref> or <ref refid="classRead__t" kindref="compound">Read_t</ref>. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>

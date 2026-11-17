@@ -12,13 +12,13 @@
     </templateparamlist>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classStaffController_1a3f42581637f6b2711eac8ada82ad135a" prot="private" static="no" mutable="no">
-        <type>std::shared_ptr&lt; <ref refid="classConfigurator" kindref="compound">Configurator</ref> &gt;</type>
+        <type>std::shared_ptr&lt; Configurator &gt;</type>
         <definition>std::shared_ptr&lt;Configurator&gt; StaffController&lt; T &gt;::cfg_</definition>
         <argsstring></argsstring>
         <name>cfg_</name>
         <qualifiedname>StaffController::cfg_</qualifiedname>
         <briefdescription>
-<para>Retained <ref refid="classConfigurator" kindref="compound">Configurator</ref> service handle obtained at construction. </para>
+<para>Retained Configurator service handle obtained at construction. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
@@ -28,7 +28,7 @@
         <referencedby refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" compoundref="staffcontroller_8cpp" startline="116" endline="129">StaffController&lt; T &gt;::StaffController</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classStaffController_1aab325c701b76d68ee35fb4202a1c4693" prot="private" static="no" mutable="no">
-        <type><ref refid="classConfigurator_1ae7a8c53bf3a5ab860650fbc02354b222" kindref="member">Configurator::EmailSenderConfig</ref></type>
+        <type>Configurator::EmailSenderConfig</type>
         <definition>Configurator::EmailSenderConfig StaffController&lt; T &gt;::email_sender_daemon_config_</definition>
         <argsstring></argsstring>
         <name>email_sender_daemon_config_</name>
@@ -80,9 +80,9 @@
         </briefdescription>
         <detaileddescription>
 <para>Resolves shared services from the global <ref refid="classStore" kindref="compound">Store</ref> and snapshots the email-daemon config.</para>
-<para>Reads the registered <ref refid="classConfigurator" kindref="compound">Configurator</ref> and <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> instances through <computeroutput><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref></computeroutput>, then copies <computeroutput><ref refid="structEmailSenderConfig" kindref="compound">EmailSenderConfig</ref></computeroutput> out of the <ref refid="classConfigurator" kindref="compound">Configurator</ref> so the invite path does not have to query configuration per request. <simplesect kind="note"><para>Failure behaviour when a service is absent from the <ref refid="classStore" kindref="compound">Store</ref> is that of <computeroutput><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref></computeroutput>.</para>
+<para>Reads the registered Configurator and <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> instances through <computeroutput><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref></computeroutput>, then copies <computeroutput>EmailSenderConfig</computeroutput> out of the Configurator so the invite path does not have to query configuration per request. <simplesect kind="note"><para>Failure behaviour when a service is absent from the <ref refid="classStore" kindref="compound">Store</ref> is that of <computeroutput><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref></computeroutput>.</para>
 </simplesect>
-<computeroutput><ref refid="classStaffController_1a3f42581637f6b2711eac8ada82ad135a" kindref="member">cfg_</ref></computeroutput> and <computeroutput><ref refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" kindref="member">gateKeeper</ref></computeroutput> are service-locator handles; the <computeroutput><ref refid="structEmailSenderConfig" kindref="compound">EmailSenderConfig</ref></computeroutput> value is copied out once so the invite path does not re-read configuration per request. <simplesect kind="note"><para>Failure behaviour when a service is absent from the <ref refid="classStore" kindref="compound">Store</ref> is that of <computeroutput><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref></computeroutput>. </para>
+<computeroutput><ref refid="classStaffController_1a3f42581637f6b2711eac8ada82ad135a" kindref="member">cfg_</ref></computeroutput> and <computeroutput><ref refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" kindref="member">gateKeeper</ref></computeroutput> are service-locator handles; the <computeroutput>EmailSenderConfig</computeroutput> value is copied out once so the invite path does not re-read configuration per request. <simplesect kind="note"><para>Failure behaviour when a service is absent from the <ref refid="classStore" kindref="compound">Store</ref> is that of <computeroutput><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref></computeroutput>. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -248,7 +248,7 @@ Adds a staff member described by <computeroutput>data</computeroutput> to the se
         <inbodydescription>
         </inbodydescription>
         <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="153" column="8" bodyfile="src/controllers/staffcontroller/staffcontroller.cpp" bodystart="149" bodyend="199"/>
-        <references refid="classController_1a29dac549946db2810cb4435323502c75" compoundref="controller_8hpp" startline="974" endline="979">Controller::addStaff</references>
+        <references refid="classController_1a29dac549946db2810cb4435323502c75" compoundref="controller_8hpp" startline="1006" endline="1012">Controller::addStaff</references>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
         <references refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" compoundref="staffcontroller_8hpp" startline="252">StaffController&lt; T &gt;::gateKeeper</references>
@@ -310,7 +310,7 @@ Removes a staff member from the service entity named in <computeroutput>data</co
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
         <references refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" compoundref="staffcontroller_8hpp" startline="252">StaffController&lt; T &gt;::gateKeeper</references>
-        <references refid="classController_1ae33c97548e0d8cdd3f2289573d1a0dba" compoundref="controller_8hpp" startline="991" endline="996">Controller::removeStaff</references>
+        <references refid="classController_1ae33c97548e0d8cdd3f2289573d1a0dba" compoundref="controller_8hpp" startline="1024" endline="1030">Controller::removeStaff</references>
         <referencedby refid="classStaffController_1a0e4a65120d9fea6f89fa8ed411fe536a">StaffController&lt; T &gt;::~StaffController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classStaffController_1aca79920a9fdd6da89333627992bf6287" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -428,7 +428,7 @@ Coroutine form of <ref refid="classStaffController_1a454ac6b5d362f6b9be674eac131
         <inbodydescription>
         </inbodydescription>
         <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="201" column="16" bodyfile="src/controllers/staffcontroller/staffcontroller.cpp" bodystart="353" bodyend="389"/>
-        <references refid="classController_1a1bb3245ec82d14644a2359cd546ea218" compoundref="controller_8hpp" startline="1009" endline="1017">Controller::addStaffAsync</references>
+        <references refid="classController_1a1bb3245ec82d14644a2359cd546ea218" compoundref="controller_8hpp" startline="1043" endline="1052">Controller::addStaffAsync</references>
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
         <references refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" compoundref="staffcontroller_8hpp" startline="252">StaffController&lt; T &gt;::gateKeeper</references>
@@ -490,7 +490,7 @@ Coroutine form of <ref refid="classStaffController_1aefd020493c2178716433285aca9
         <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
         <references refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" compoundref="staffcontroller_8hpp" startline="252">StaffController&lt; T &gt;::gateKeeper</references>
-        <references refid="classController_1a417810c27071d4c1fae298b518d7819f" compoundref="controller_8hpp" startline="1030" endline="1038">Controller::removeStaffAsync</references>
+        <references refid="classController_1a417810c27071d4c1fae298b518d7819f" compoundref="controller_8hpp" startline="1065" endline="1074">Controller::removeStaffAsync</references>
         <referencedby refid="classStaffController_1a0e4a65120d9fea6f89fa8ed411fe536a">StaffController&lt; T &gt;::~StaffController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classStaffController_1a7bfaae0026f9082bb42968cf04b421d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -575,7 +575,7 @@ Unlike <ref refid="classServiceController" kindref="compound">ServiceController<
 </verbatim> The class relies on <computeroutput>T</computeroutput> being constructible from staff data and on <computeroutput>T</computeroutput> providing the add/remove staff SQL statements; those are compile-time expectations rather than an enforced concept. The three jobs here do real work (parse, check permission, act), unlike the pure forwarding service controllers. <verbatim>     Explicit instantiations exist for `Clinics`, `Pharmacies`,
 </verbatim> <computeroutput><ref refid="classLaboratories" kindref="compound">Laboratories</ref></computeroutput> and <computeroutput><ref refid="classRadiologyCenters" kindref="compound">RadiologyCenters</ref></computeroutput>; the staff route registry stores instances as shared pointers and selects one by service name. <simplesect kind="note"><para>Instances are shared across Drogon workers; the cached dependencies below are populated in the constructor and are not mutated by the operations. </para>
 </simplesect>
-<simplesect kind="see"><para><ref refid="classStaffControllerBase" kindref="compound">StaffControllerBase</ref>, <ref refid="classController" kindref="compound">Controller</ref>, <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref>, <ref refid="classConfigurator" kindref="compound">Configurator</ref> </para>
+<simplesect kind="see"><para><ref refid="classStaffControllerBase" kindref="compound">StaffControllerBase</ref>, <ref refid="classController" kindref="compound">Controller</ref>, <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref>, Configurator </para>
 </simplesect>
 </para>
     </detaileddescription>
@@ -602,19 +602,12 @@ Unlike <ref refid="classServiceController" kindref="compound">ServiceController<
         <label>Controller</label>
         <link refid="classController"/>
       </node>
-      <node id="4">
-        <label>EmailSenderConfig</label>
-        <link refid="structEmailSenderConfig"/>
-      </node>
       <node id="1">
         <label>StaffController&lt; T &gt;</label>
         <link refid="classStaffController"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
         <childnode refid="3" relation="public-inheritance">
-        </childnode>
-        <childnode refid="4" relation="usage">
-          <edgelabel>email_sender_daemon_config_</edgelabel>
         </childnode>
       </node>
       <node id="2">

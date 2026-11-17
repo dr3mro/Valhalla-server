@@ -196,7 +196,7 @@ See <ref refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" kindref="memb
         <references refid="classValidator_1ac4c157ed48ccadad45abcf3176d96075" compoundref="validator_8cpp" startline="422" endline="432">nullCheck</references>
         <referencedby refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" compoundref="entitycontroller_8cpp" startline="76" endline="150">EntityController&lt; T &gt;::Create</referencedby>
         <referencedby refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="370" endline="442">EntityController&lt; T &gt;::CreateAsync</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="638" endline="686">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="652" endline="703">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
         <referencedby refid="classClinicController_1af9be5b8c32bde11f7907d8ad6c031c92" compoundref="cliniccontroller_8cpp" startline="40" endline="129">ClinicController&lt; T &gt;::CreateImpl</referencedby>
       </memberdef>
       <memberdef kind="function" id="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -272,7 +272,7 @@ Checks null/empty input and key-level constraints; unlike the create path it doe
         <references refid="classValidator_1ac4c157ed48ccadad45abcf3176d96075" compoundref="validator_8cpp" startline="422" endline="432">nullCheck</references>
         <referencedby refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" compoundref="entitycontroller_8cpp" startline="221" endline="294">EntityController&lt; T &gt;::Update</referencedby>
         <referencedby refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="512" endline="588">EntityController&lt; T &gt;::UpdateAsync</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="723" endline="770">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="741" endline="791">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
       </memberdef>
       <memberdef kind="function" id="classValidator_1a950c1350bd04c695d0add09b31db3974" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -405,8 +405,8 @@ See <ref refid="classValidator_1adf618a4a20efe4f1bd832993affd8b7a" kindref="memb
         </inbodydescription>
         <location file="src/validator/validator.hpp" line="309" column="15" bodyfile="src/validator/validator.cpp" bodystart="275" bodyend="390"/>
         <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="638" endline="686">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="723" endline="770">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="652" endline="703">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="741" endline="791">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-func">

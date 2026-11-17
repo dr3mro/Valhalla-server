@@ -421,7 +421,7 @@
 <parametername direction="in">message</parametername>
 </parameternamelist>
 <parameterdescription>
-<para><ref refid="classMessage" kindref="compound">Message</ref> to store under the message key. </para>
+<para>Message to store under the message key. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>

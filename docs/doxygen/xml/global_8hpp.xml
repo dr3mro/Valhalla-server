@@ -394,12 +394,12 @@
                                          __func__,                     \
                                          __FILE__,                     \
                                          __LINE__);                    \
-<ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(critical_error);</initializer>
+Message::CriticalMessage(critical_error);</initializer>
         <briefdescription>
 <para>Logs the active exception together with function, file and line. </para>
         </briefdescription>
         <detaileddescription>
-<para>Expands to several statements that build <computeroutput>critical_error</computeroutput> via fmt and pass it to <ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>. <simplesect kind="pre"><para>Must be expanded inside a catch handler with an exception variable named <computeroutput>e</computeroutput> in scope, and with fmt and <ref refid="classMessage" kindref="compound">Message</ref> available. </para>
+<para>Expands to several statements that build <computeroutput>critical_error</computeroutput> via fmt and pass it to Message::CriticalMessage. <simplesect kind="pre"><para>Must be expanded inside a catch handler with an exception variable named <computeroutput>e</computeroutput> in scope, and with fmt and Message available. </para>
 </simplesect>
 <simplesect kind="warning"><para>Declares a local variable named <computeroutput>critical_error</computeroutput>; avoid using the macro where that name is already taken. It expands to more than one statement, so guard it with braces when used as a single statement. </para>
 </simplesect>
@@ -410,7 +410,7 @@
         <location file="src/utils/global/global.hpp" line="48" column="9" bodyfile="src/utils/global/global.hpp" bodystart="48" bodyend="54"/>
         <referencedby refid="classController_1a95c56822d667e94b031451729ce069a9" compoundref="controller_8hpp" startline="136" endline="150">Controller::Controller</referencedby>
         <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a96a366e05f18b668479c2da9000d6289" compoundref="keeprbase_8cpp" startline="111" endline="169">api::v2::KeeprBase::getLastLogoutTimeIfActive</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a25af0d69c7a5d1f0fa209b6002ec8c28" compoundref="keeprbase_8cpp" startline="508" endline="558">api::v2::KeeprBase::getLastLogoutTimeIfActiveCoro</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1KeeprBase_1a25af0d69c7a5d1f0fa209b6002ec8c28" compoundref="keeprbase_8cpp" startline="510" endline="560">api::v2::KeeprBase::getLastLogoutTimeIfActiveCoro</referencedby>
         <referencedby refid="classHealth_1acdfeb4a8a3a38cb292b0e68a8349ca84" compoundref="health_8hpp" startline="149" endline="178">Health::getPermissionsQueryForCreate</referencedby>
         <referencedby refid="classPaidServices_1abde5fe3fd3d0658ea4853bc11b53671e" compoundref="paidservices_8hpp" startline="150" endline="181">PaidServices::getPermissionsQueryForCreate</referencedby>
         <referencedby refid="classPatient_1a885121ad678761986a02430b9ba09527" compoundref="patient_8hpp" startline="207" endline="230">Patient::getPermissionsQueryForCreate</referencedby>
@@ -451,16 +451,16 @@ callback(<ref refid="namespaceapi_1_1v2_1_1Http_1aaddeb034a51d7050d6cc65cc2b46fd
         <referencedby refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="370" endline="442">EntityController&lt; T &gt;::CreateAsync</referencedby>
         <referencedby refid="classClinicController_1af9be5b8c32bde11f7907d8ad6c031c92" compoundref="cliniccontroller_8cpp" startline="40" endline="129">ClinicController&lt; T &gt;::CreateImpl</referencedby>
         <referencedby refid="classClientController_1a0373ac4a58de1a4105939a0db1c64699" compoundref="clientcontroller_8cpp" startline="96" endline="155">ClientController&lt; T &gt;::createNow</referencedby>
-        <referencedby refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="847" endline="894">Controller::cruds</referencedby>
-        <referencedby refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="915" endline="962">Controller::crudsAsync</referencedby>
+        <referencedby refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="876" endline="924">Controller::cruds</referencedby>
+        <referencedby refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="946" endline="994">Controller::crudsAsync</referencedby>
         <referencedby refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" compoundref="entitycontroller_8cpp" startline="297" endline="328">EntityController&lt; T &gt;::Delete</referencedby>
         <referencedby refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" compoundref="entitycontroller_8cpp" startline="590" endline="624">EntityController&lt; T &gt;::DeleteAsync</referencedby>
         <referencedby refid="classClientController_1abdee410951d9aa19b082955197f53162" compoundref="clientcontroller_8cpp" startline="457" endline="487">ClientController&lt; T &gt;::GetServices</referencedby>
-        <referencedby refid="classController_1ad8517f93d94b2584124d06d0904c8c28" compoundref="controller_8hpp" startline="626" endline="659">Controller::GetServices</referencedby>
+        <referencedby refid="classController_1ad8517f93d94b2584124d06d0904c8c28" compoundref="controller_8hpp" startline="644" endline="679">Controller::GetServices</referencedby>
         <referencedby refid="classClientController_1aebd0c741055d14e284ea633eee9bd18d" compoundref="clientcontroller_8cpp" startline="490" endline="524">ClientController&lt; T &gt;::GetServicesAsync</referencedby>
-        <referencedby refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="674" endline="712">Controller::GetServicesAsync</referencedby>
-        <referencedby refid="classController_1acd1d7cb00688b69469719ff7789f3cd9" compoundref="controller_8hpp" startline="729" endline="755">Controller::GetVisits</referencedby>
-        <referencedby refid="classController_1a2af2297a7b4fcce1f987510786aaa5d7" compoundref="controller_8hpp" startline="769" endline="800">Controller::GetVisitsAsync</referencedby>
+        <referencedby refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="694" endline="734">Controller::GetServicesAsync</referencedby>
+        <referencedby refid="classController_1acd1d7cb00688b69469719ff7789f3cd9" compoundref="controller_8hpp" startline="751" endline="779">Controller::GetVisits</referencedby>
+        <referencedby refid="classController_1a2af2297a7b4fcce1f987510786aaa5d7" compoundref="controller_8hpp" startline="793" endline="826">Controller::GetVisitsAsync</referencedby>
         <referencedby refid="classClinicController_1ada8df541cb356fd8a275832960e9eb99" compoundref="cliniccontroller_8cpp" startline="490" endline="524">ClinicController&lt; T &gt;::GetVisitsAsyncImpl</referencedby>
         <referencedby refid="classClinicController_1a49ca9ae245f2ca94ee937754a5d433ea" compoundref="cliniccontroller_8cpp" startline="344" endline="373">ClinicController&lt; T &gt;::GetVisitsImpl</referencedby>
         <referencedby refid="classStaffController_1aca79920a9fdd6da89333627992bf6287" compoundref="staffcontroller_8cpp" startline="263" endline="339">StaffController&lt; T &gt;::InviteStaffToEntity</referencedby>
@@ -472,9 +472,9 @@ callback(<ref refid="namespaceapi_1_1v2_1_1Http_1aaddeb034a51d7050d6cc65cc2b46fd
         <referencedby refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="444" endline="510">EntityController&lt; T &gt;::ReadAsync</referencedby>
         <referencedby refid="classStaffController_1aefd020493c2178716433285aca94ae50" compoundref="staffcontroller_8cpp" startline="211" endline="248">StaffController&lt; T &gt;::RemoveStaffFromEntity</referencedby>
         <referencedby refid="classStaffController_1ac220308be6bf24122bfe037ea8c75e9c" compoundref="staffcontroller_8cpp" startline="400" endline="433">StaffController&lt; T &gt;::RemoveStaffFromEntityAsync</referencedby>
-        <referencedby refid="classController_1aaa9930fa3fdd7c91a56392f3e1440736" compoundref="controller_8hpp" startline="374" endline="443">Controller::Search</referencedby>
+        <referencedby refid="classController_1aaa9930fa3fdd7c91a56392f3e1440736" compoundref="controller_8hpp" startline="382" endline="452">Controller::Search</referencedby>
         <referencedby refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" compoundref="entitycontroller_8cpp" startline="331" endline="367">EntityController&lt; T &gt;::Search</referencedby>
-        <referencedby refid="classController_1ae3f0e461a7a50529945f6e70ba5572be" compoundref="controller_8hpp" startline="458" endline="522">Controller::SearchAsync</referencedby>
+        <referencedby refid="classController_1ae3f0e461a7a50529945f6e70ba5572be" compoundref="controller_8hpp" startline="467" endline="532">Controller::SearchAsync</referencedby>
         <referencedby refid="classEntityController_1a430903208b20b59481d07c88b66ac4f6" compoundref="entitycontroller_8cpp" startline="626" endline="662">EntityController&lt; T &gt;::SearchAsync</referencedby>
         <referencedby refid="classClientController_1ac9f28aab768cb85f02f2ca84b694f149" compoundref="clientcontroller_8cpp" startline="302" endline="335">ClientController&lt; T &gt;::Suspend</referencedby>
         <referencedby refid="classClientController_1a77e043006883f4a959679df477d0ad39" compoundref="clientcontroller_8cpp" startline="338" endline="373">ClientController&lt; T &gt;::SuspendAsync</referencedby>
@@ -488,7 +488,7 @@ callback(<ref refid="namespaceapi_1_1v2_1_1Http_1aaddeb034a51d7050d6cc65cc2b46fd
     </briefdescription>
     <detaileddescription>
 <para>Defines two preprocessor macros. CRITICALMESSAGE builds a detailed error string (message, function, file and line) and logs it at critical severity. CRITICALMESSAGERESPONSE does that logging and then answers the caller through a callback, choosing 503 for a busy database and 500 for anything else. Because they are macros, the error text picks up the caller&apos;s <bold>func</bold>, <bold>FILE</bold> and <bold>LINE</bold> automatically instead of always pointing here.</para>
-<para>WHY THIS FILE MATTERS IN THE SERVER: Many controllers and entities can fail in the same way, and each one must both log the failure and send a sensible HTTP reply. These macros make that a single line at every catch site, so error handling looks and behaves the same across the whole API. They depend on statusForException (<ref refid="errorstatus_8hpp" kindref="compound">errorstatus.hpp</ref>) for the status code and on <ref refid="classMessage" kindref="compound">Message</ref> for the log. Without them, error handling would be duplicated and would drift apart over time.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: Many controllers and entities can fail in the same way, and each one must both log the failure and send a sensible HTTP reply. These macros make that a single line at every catch site, so error handling looks and behaves the same across the whole API. They depend on statusForException (<ref refid="errorstatus_8hpp" kindref="compound">errorstatus.hpp</ref>) for the status code and on Message for the log. Without them, error handling would be duplicated and would drift apart over time.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
 <listitem><para>Preprocessor macros: <ulink url="https://en.cppreference.com/w/cpp/preprocessor/replace">https://en.cppreference.com/w/cpp/preprocessor/replace</ulink></para>
 </listitem><listitem><para>std::string: <ulink url="https://en.cppreference.com/w/cpp/string/basic_string">https://en.cppreference.com/w/cpp/string/basic_string</ulink></para>

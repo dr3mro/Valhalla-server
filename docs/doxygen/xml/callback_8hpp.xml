@@ -456,8 +456,8 @@
         <referencedby refid="classClientController_1af7b6b7c90918fc3068478538f2e1b37d" compoundref="clientcontroller_8cpp" startline="410" endline="442">ClientController&lt; T &gt;::ActivateAsync</referencedby>
         <referencedby refid="classClientControllerBase_1a9d1d1653cfcd791bc46fceb6b6ff3983">ClientControllerBase::ActivateAsync</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="210" endline="295">api::v2::Staff::Add</referencedby>
-        <referencedby refid="classController_1a29dac549946db2810cb4435323502c75" compoundref="controller_8hpp" startline="974" endline="979">Controller::addStaff</referencedby>
-        <referencedby refid="classController_1a1bb3245ec82d14644a2359cd546ea218" compoundref="controller_8hpp" startline="1009" endline="1017">Controller::addStaffAsync</referencedby>
+        <referencedby refid="classController_1a29dac549946db2810cb4435323502c75" compoundref="controller_8hpp" startline="1006" endline="1012">Controller::addStaff</referencedby>
+        <referencedby refid="classController_1a1bb3245ec82d14644a2359cd546ea218" compoundref="controller_8hpp" startline="1043" endline="1052">Controller::addStaffAsync</referencedby>
         <referencedby refid="classStaffController_1a454ac6b5d362f6b9be674eac131f4da7" compoundref="staffcontroller_8cpp" startline="149" endline="199">StaffController&lt; T &gt;::AddStaffToEntity</referencedby>
         <referencedby refid="classStaffControllerBase_1a968ab96cf0d0caaa4c86d4a8330c9393">StaffControllerBase::AddStaffToEntity</referencedby>
         <referencedby refid="classStaffController_1a53a028cf301c7a9765b3633a06275546" compoundref="staffcontroller_8cpp" startline="353" endline="389">StaffController&lt; T &gt;::AddStaffToEntityAsync</referencedby>
@@ -471,7 +471,7 @@
         <referencedby refid="classClientControllerBase_1ac42570557775dc71a68a685ed2114265">ClientControllerBase::Create</referencedby>
         <referencedby refid="classClinicController_1a4dee307e46cd9d8a3cc2b76e603e9b24" compoundref="cliniccontroller_8cpp" startline="393" endline="399">ClinicController&lt; T &gt;::Create</referencedby>
         <referencedby refid="classClinicControllerBase_1a572b7956fa1d19e1c688458f4108dca0">ClinicControllerBase::Create</referencedby>
-        <referencedby refid="classController_1a092b50bf54ca1d6d6f706a5a052992b1" compoundref="controller_8hpp" startline="187" endline="196">Controller::Create</referencedby>
+        <referencedby refid="classController_1a092b50bf54ca1d6d6f706a5a052992b1" compoundref="controller_8hpp" startline="187" endline="197">Controller::Create</referencedby>
         <referencedby refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" compoundref="entitycontroller_8cpp" startline="76" endline="150">EntityController&lt; T &gt;::Create</referencedby>
         <referencedby refid="classEntityControllerBase_1a1094cb5fe08aaaba8cd5ec5c57784cf0">EntityControllerBase::Create</referencedby>
         <referencedby refid="classServiceController_1a138db9b26dcc863d6895ccb1f01a7123" compoundref="servicecontroller_8cpp" startline="84" endline="92">ServiceController&lt; T &gt;::Create</referencedby>
@@ -482,7 +482,7 @@
         <referencedby refid="classClientControllerBase_1a44832e389a940272db5c22f0d75cdce3">ClientControllerBase::CreateAsync</referencedby>
         <referencedby refid="classClinicController_1a223487282b083a736ff5ad040a9b79af" compoundref="cliniccontroller_8cpp" startline="402" endline="408">ClinicController&lt; T &gt;::CreateAsync</referencedby>
         <referencedby refid="classClinicControllerBase_1a69c52c140626bbe5abb2cc9bfcc3d1b8">ClinicControllerBase::CreateAsync</referencedby>
-        <referencedby refid="classController_1a020c9869a16a1ac31bc2b2ce128cf51b" compoundref="controller_8hpp" startline="211" endline="220">Controller::CreateAsync</referencedby>
+        <referencedby refid="classController_1a020c9869a16a1ac31bc2b2ce128cf51b" compoundref="controller_8hpp" startline="212" endline="222">Controller::CreateAsync</referencedby>
         <referencedby refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="370" endline="442">EntityController&lt; T &gt;::CreateAsync</referencedby>
         <referencedby refid="classEntityControllerBase_1a7d18b72b305783a247f3d70c64ad391b">EntityControllerBase::CreateAsync</referencedby>
         <referencedby refid="classServiceController_1a5cdd73e0b08ae45f2d808070e5680025" compoundref="servicecontroller_8cpp" startline="104" endline="111">ServiceController&lt; T &gt;::CreateAsync</referencedby>
@@ -490,8 +490,8 @@
         <referencedby refid="classClinicController_1a6cc12150aba468806260399172fcd9ce" compoundref="cliniccontroller_8cpp" startline="148" endline="157">ClinicController&lt; T &gt;::CreateAsyncImpl</referencedby>
         <referencedby refid="classClinicController_1af9be5b8c32bde11f7907d8ad6c031c92" compoundref="cliniccontroller_8cpp" startline="40" endline="129">ClinicController&lt; T &gt;::CreateImpl</referencedby>
         <referencedby refid="classClientController_1a0373ac4a58de1a4105939a0db1c64699" compoundref="clientcontroller_8cpp" startline="96" endline="155">ClientController&lt; T &gt;::createNow</referencedby>
-        <referencedby refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="847" endline="894">Controller::cruds</referencedby>
-        <referencedby refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="915" endline="962">Controller::crudsAsync</referencedby>
+        <referencedby refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="876" endline="924">Controller::cruds</referencedby>
+        <referencedby refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="946" endline="994">Controller::crudsAsync</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Appointments_1a515ae728e10e637a657f1c912ccf9e7a" compoundref="appointments_8hpp" startline="435" endline="525">api::v2::Appointments::Delete</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Clinic_1a0041b3b3e1be2e86ea5b2aef2544d8fd" compoundref="api_2v2_2routes_2clinics_8hpp" startline="418" endline="504">api::v2::Clinic::Delete</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" compoundref="services_8hpp" startline="407" endline="495">api::v2::Services::Delete</referencedby>
@@ -501,7 +501,7 @@
         <referencedby refid="classClientControllerBase_1a6909aac7912d8a88f7845eaa0a074f80">ClientControllerBase::Delete</referencedby>
         <referencedby refid="classClinicController_1af4377661c51a748d9df8056f70ad2a03" compoundref="cliniccontroller_8cpp" startline="452" endline="458">ClinicController&lt; T &gt;::Delete</referencedby>
         <referencedby refid="classClinicControllerBase_1ab1d608f74cb516ca9d1663d6f86358a5">ClinicControllerBase::Delete</referencedby>
-        <referencedby refid="classController_1a1aee6ba4e59315c76893a2221808d719" compoundref="controller_8hpp" startline="321" endline="329">Controller::Delete</referencedby>
+        <referencedby refid="classController_1a1aee6ba4e59315c76893a2221808d719" compoundref="controller_8hpp" startline="327" endline="336">Controller::Delete</referencedby>
         <referencedby refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" compoundref="entitycontroller_8cpp" startline="297" endline="328">EntityController&lt; T &gt;::Delete</referencedby>
         <referencedby refid="classEntityControllerBase_1ad7023964ed22d27aa3adc12dd5ac3d93">EntityControllerBase::Delete</referencedby>
         <referencedby refid="classServiceController_1adc89e37530112d08d7ee85aae48d8d3c" compoundref="servicecontroller_8cpp" startline="201" endline="208">ServiceController&lt; T &gt;::Delete</referencedby>
@@ -513,7 +513,7 @@
         <referencedby refid="classClientControllerBase_1a889f63f5215973988659ccd5f2d01e86">ClientControllerBase::DeleteAsync</referencedby>
         <referencedby refid="classClinicController_1a046bf1ade561188314d73665933e5aec" compoundref="cliniccontroller_8cpp" startline="461" endline="468">ClinicController&lt; T &gt;::DeleteAsync</referencedby>
         <referencedby refid="classClinicControllerBase_1a3c0dca8c5c1ba3d19a2c53ee4775653b">ClinicControllerBase::DeleteAsync</referencedby>
-        <referencedby refid="classController_1a7a0500b8cc369da32375933abd6e1fb1" compoundref="controller_8hpp" startline="343" endline="351">Controller::DeleteAsync</referencedby>
+        <referencedby refid="classController_1a7a0500b8cc369da32375933abd6e1fb1" compoundref="controller_8hpp" startline="350" endline="359">Controller::DeleteAsync</referencedby>
         <referencedby refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" compoundref="entitycontroller_8cpp" startline="590" endline="624">EntityController&lt; T &gt;::DeleteAsync</referencedby>
         <referencedby refid="classEntityControllerBase_1a0edce522edd2a4970d7853b433adbb7d">EntityControllerBase::DeleteAsync</referencedby>
         <referencedby refid="classServiceController_1a69e19ca4bc442fd85af8df06ed98b5dc" compoundref="servicecontroller_8cpp" startline="218" endline="226">ServiceController&lt; T &gt;::DeleteAsync</referencedby>
@@ -523,18 +523,18 @@
         <referencedby refid="namespaceapi_1_1v2_1aa679c4967ecfe1f25818539f137414d3" compoundref="common_8hpp" startline="188" endline="371">api::v2::executeControllerMethod</referencedby>
         <referencedby refid="classClientController_1abdee410951d9aa19b082955197f53162" compoundref="clientcontroller_8cpp" startline="457" endline="487">ClientController&lt; T &gt;::GetServices</referencedby>
         <referencedby refid="classClientControllerBase_1af9f1272d9d14a2a2d1b4ba8117728cf8">ClientControllerBase::GetServices</referencedby>
-        <referencedby refid="classController_1ad8517f93d94b2584124d06d0904c8c28" compoundref="controller_8hpp" startline="626" endline="659">Controller::GetServices</referencedby>
+        <referencedby refid="classController_1ad8517f93d94b2584124d06d0904c8c28" compoundref="controller_8hpp" startline="644" endline="679">Controller::GetServices</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="747" endline="838">api::v2::Clients::getservices</referencedby>
         <referencedby refid="classClientController_1aebd0c741055d14e284ea633eee9bd18d" compoundref="clientcontroller_8cpp" startline="490" endline="524">ClientController&lt; T &gt;::GetServicesAsync</referencedby>
         <referencedby refid="classClientControllerBase_1aa2bc82cd6f33a4c24caa63536a0f5917">ClientControllerBase::GetServicesAsync</referencedby>
-        <referencedby refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="674" endline="712">Controller::GetServicesAsync</referencedby>
+        <referencedby refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="694" endline="734">Controller::GetServicesAsync</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Clinic_1ad05abb43349c46b4bc7fc67fab45ed11" compoundref="api_2v2_2routes_2clinics_8hpp" startline="612" endline="706">api::v2::Clinic::GetVisits</referencedby>
         <referencedby refid="classClinicController_1ac39bb42de6ca02ad70eb6ed1064a1d61" compoundref="cliniccontroller_8cpp" startline="480" endline="486">ClinicController&lt; T &gt;::GetVisits</referencedby>
         <referencedby refid="classClinicControllerBase_1a14f6857ba85561fd62cb5280a94e8eb1">ClinicControllerBase::GetVisits</referencedby>
-        <referencedby refid="classController_1acd1d7cb00688b69469719ff7789f3cd9" compoundref="controller_8hpp" startline="729" endline="755">Controller::GetVisits</referencedby>
+        <referencedby refid="classController_1acd1d7cb00688b69469719ff7789f3cd9" compoundref="controller_8hpp" startline="751" endline="779">Controller::GetVisits</referencedby>
         <referencedby refid="classClinicController_1a8ed0fcaa92bbfb7e6d1d2c4c7b6dbea9" compoundref="cliniccontroller_8cpp" startline="542" endline="549">ClinicController&lt; T &gt;::GetVisitsAsync</referencedby>
         <referencedby refid="classClinicControllerBase_1a80c5adbbef552507ede8c823171d15b0">ClinicControllerBase::GetVisitsAsync</referencedby>
-        <referencedby refid="classController_1a2af2297a7b4fcce1f987510786aaa5d7" compoundref="controller_8hpp" startline="769" endline="800">Controller::GetVisitsAsync</referencedby>
+        <referencedby refid="classController_1a2af2297a7b4fcce1f987510786aaa5d7" compoundref="controller_8hpp" startline="793" endline="826">Controller::GetVisitsAsync</referencedby>
         <referencedby refid="classClinicController_1ada8df541cb356fd8a275832960e9eb99" compoundref="cliniccontroller_8cpp" startline="490" endline="524">ClinicController&lt; T &gt;::GetVisitsAsyncImpl</referencedby>
         <referencedby refid="classClinicController_1a49ca9ae245f2ca94ee937754a5d433ea" compoundref="cliniccontroller_8cpp" startline="344" endline="373">ClinicController&lt; T &gt;::GetVisitsImpl</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="108" endline="195">api::v2::Staff::Invite</referencedby>
@@ -562,7 +562,7 @@
         <referencedby refid="classClientControllerBase_1a335901d9fb13af79560b866138a48af9">ClientControllerBase::Read</referencedby>
         <referencedby refid="classClinicController_1a0f109a3105237cccf7b29263ad6ff4ea" compoundref="cliniccontroller_8cpp" startline="411" endline="417">ClinicController&lt; T &gt;::Read</referencedby>
         <referencedby refid="classClinicControllerBase_1abd99fedc56554304ebf14698b28cdb7c">ClinicControllerBase::Read</referencedby>
-        <referencedby refid="classController_1a99ba169c6f8163fd44cf966510c2730c" compoundref="controller_8hpp" startline="234" endline="242">Controller::Read</referencedby>
+        <referencedby refid="classController_1a99ba169c6f8163fd44cf966510c2730c" compoundref="controller_8hpp" startline="236" endline="245">Controller::Read</referencedby>
         <referencedby refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="153" endline="219">EntityController&lt; T &gt;::Read</referencedby>
         <referencedby refid="classEntityControllerBase_1a8a392d8c3fd918f13c644079d727effa">EntityControllerBase::Read</referencedby>
         <referencedby refid="classServiceController_1a92157307a0c39b6623d7a5cb75a0e7bf" compoundref="servicecontroller_8cpp" startline="122" endline="129">ServiceController&lt; T &gt;::Read</referencedby>
@@ -573,15 +573,15 @@
         <referencedby refid="classClientControllerBase_1ac2b421697b171b2c7800843eba059186">ClientControllerBase::ReadAsync</referencedby>
         <referencedby refid="classClinicController_1a00e426195a2f2a48140a94d7e258bf94" compoundref="cliniccontroller_8cpp" startline="420" endline="426">ClinicController&lt; T &gt;::ReadAsync</referencedby>
         <referencedby refid="classClinicControllerBase_1a37d9bbe872aad4f871c285c5af09d24b">ClinicControllerBase::ReadAsync</referencedby>
-        <referencedby refid="classController_1a055ea60472dc93fbb1c8af3d9f9d9091" compoundref="controller_8hpp" startline="256" endline="264">Controller::ReadAsync</referencedby>
+        <referencedby refid="classController_1a055ea60472dc93fbb1c8af3d9f9d9091" compoundref="controller_8hpp" startline="259" endline="268">Controller::ReadAsync</referencedby>
         <referencedby refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="444" endline="510">EntityController&lt; T &gt;::ReadAsync</referencedby>
         <referencedby refid="classEntityControllerBase_1a023b63c4973ca2d03539b11cb9693453">EntityControllerBase::ReadAsync</referencedby>
         <referencedby refid="classServiceController_1ab279214d55b6c2fa43ad6ee069413c97" compoundref="servicecontroller_8cpp" startline="139" endline="147">ServiceController&lt; T &gt;::ReadAsync</referencedby>
         <referencedby refid="classServiceControllerBase_1aa418b013aa53894745ca9595e40b62ca">ServiceControllerBase::ReadAsync</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Clients_1ae5420af7a0b9609ca0536d2d9643679e" compoundref="clients_8hpp" startline="964" endline="1146">api::v2::Clients::readAsyncImpl</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="310" endline="395">api::v2::Staff::Remove</referencedby>
-        <referencedby refid="classController_1ae33c97548e0d8cdd3f2289573d1a0dba" compoundref="controller_8hpp" startline="991" endline="996">Controller::removeStaff</referencedby>
-        <referencedby refid="classController_1a417810c27071d4c1fae298b518d7819f" compoundref="controller_8hpp" startline="1030" endline="1038">Controller::removeStaffAsync</referencedby>
+        <referencedby refid="classController_1ae33c97548e0d8cdd3f2289573d1a0dba" compoundref="controller_8hpp" startline="1024" endline="1030">Controller::removeStaff</referencedby>
+        <referencedby refid="classController_1a417810c27071d4c1fae298b518d7819f" compoundref="controller_8hpp" startline="1065" endline="1074">Controller::removeStaffAsync</referencedby>
         <referencedby refid="classStaffController_1aefd020493c2178716433285aca94ae50" compoundref="staffcontroller_8cpp" startline="211" endline="248">StaffController&lt; T &gt;::RemoveStaffFromEntity</referencedby>
         <referencedby refid="classStaffControllerBase_1a5d310e956312329648957207868ed549">StaffControllerBase::RemoveStaffFromEntity</referencedby>
         <referencedby refid="classStaffController_1ac220308be6bf24122bfe037ea8c75e9c" compoundref="staffcontroller_8cpp" startline="400" endline="433">StaffController&lt; T &gt;::RemoveStaffFromEntityAsync</referencedby>
@@ -598,7 +598,7 @@
         <referencedby refid="classClientControllerBase_1a560976768576af7af11239fde7e634f6">ClientControllerBase::Search</referencedby>
         <referencedby refid="classClinicController_1ad3d21099d98ec1e52ab290ca38389c98" compoundref="cliniccontroller_8cpp" startline="471" endline="477">ClinicController&lt; T &gt;::Search</referencedby>
         <referencedby refid="classClinicControllerBase_1a021464e215ff55abfa11f3b684117934">ClinicControllerBase::Search</referencedby>
-        <referencedby refid="classController_1aaa9930fa3fdd7c91a56392f3e1440736" compoundref="controller_8hpp" startline="374" endline="443">Controller::Search</referencedby>
+        <referencedby refid="classController_1aaa9930fa3fdd7c91a56392f3e1440736" compoundref="controller_8hpp" startline="382" endline="452">Controller::Search</referencedby>
         <referencedby refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" compoundref="entitycontroller_8cpp" startline="331" endline="367">EntityController&lt; T &gt;::Search</referencedby>
         <referencedby refid="classEntityControllerBase_1ace1793314727472edb5aeb5e03cdf622">EntityControllerBase::Search</referencedby>
         <referencedby refid="classServiceController_1af655c40238892ccf0103ebf85ac4d438" compoundref="servicecontroller_8cpp" startline="239" endline="247">ServiceController&lt; T &gt;::Search</referencedby>
@@ -606,19 +606,19 @@
         <referencedby refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="651" endline="734">api::v2::Clients::search</referencedby>
         <referencedby refid="classClientController_1ab7c4ffff79c0e56214abb463ae375925" compoundref="clientcontroller_8cpp" startline="588" endline="595">ClientController&lt; T &gt;::SearchAsync</referencedby>
         <referencedby refid="classClientControllerBase_1a2f72684ebb458b74a3c9a8c8b2647ac4">ClientControllerBase::SearchAsync</referencedby>
-        <referencedby refid="classController_1ae3f0e461a7a50529945f6e70ba5572be" compoundref="controller_8hpp" startline="458" endline="522">Controller::SearchAsync</referencedby>
+        <referencedby refid="classController_1ae3f0e461a7a50529945f6e70ba5572be" compoundref="controller_8hpp" startline="467" endline="532">Controller::SearchAsync</referencedby>
         <referencedby refid="classEntityController_1a430903208b20b59481d07c88b66ac4f6" compoundref="entitycontroller_8cpp" startline="626" endline="662">EntityController&lt; T &gt;::SearchAsync</referencedby>
         <referencedby refid="classEntityControllerBase_1a3ed2dd3c8c29b82c86ace136191b6c30">EntityControllerBase::SearchAsync</referencedby>
         <referencedby refid="classClinicController_1a1f5a5a8c1ec63ea2d5e3e7ac89be22ad" compoundref="cliniccontroller_8cpp" startline="317" endline="325">ClinicController&lt; T &gt;::SearchImpl</referencedby>
         <referencedby refid="classClientController_1ac9f28aab768cb85f02f2ca84b694f149" compoundref="clientcontroller_8cpp" startline="302" endline="335">ClientController&lt; T &gt;::Suspend</referencedby>
         <referencedby refid="classClientControllerBase_1a6a58bc8fd2e226e47f00d74de0e47f65">ClientControllerBase::Suspend</referencedby>
-        <referencedby refid="classController_1acf60ad2a21b8d7c3c7a81d9412b6cd3c" compoundref="controller_8hpp" startline="536" endline="543">Controller::Suspend</referencedby>
+        <referencedby refid="classController_1acf60ad2a21b8d7c3c7a81d9412b6cd3c" compoundref="controller_8hpp" startline="546" endline="555">Controller::Suspend</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="261" endline="349">api::v2::Clients::suspend</referencedby>
         <referencedby refid="classClientController_1a77e043006883f4a959679df477d0ad39" compoundref="clientcontroller_8cpp" startline="338" endline="373">ClientController&lt; T &gt;::SuspendAsync</referencedby>
         <referencedby refid="classClientControllerBase_1ab604c168d7eb829127b21b5d7f4de43d">ClientControllerBase::SuspendAsync</referencedby>
-        <referencedby refid="classController_1a82399a341c86ed94ac1ade56ced71dc7" compoundref="controller_8hpp" startline="576" endline="586">Controller::SuspendAsync</referencedby>
-        <referencedby refid="classController_1a9b6e3fd0227fcb95b0831aef3b4e5f08" compoundref="controller_8hpp" startline="556" endline="563">Controller::Unsuspend</referencedby>
-        <referencedby refid="classController_1a0044a385830517e3a97e0b250dce4748" compoundref="controller_8hpp" startline="599" endline="609">Controller::UnsuspendAsync</referencedby>
+        <referencedby refid="classController_1a82399a341c86ed94ac1ade56ced71dc7" compoundref="controller_8hpp" startline="590" endline="602">Controller::SuspendAsync</referencedby>
+        <referencedby refid="classController_1a9b6e3fd0227fcb95b0831aef3b4e5f08" compoundref="controller_8hpp" startline="568" endline="577">Controller::Unsuspend</referencedby>
+        <referencedby refid="classController_1a0044a385830517e3a97e0b250dce4748" compoundref="controller_8hpp" startline="615" endline="627">Controller::UnsuspendAsync</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Appointments_1ab7c172b45fbfbc8580bf0a69505e111b" compoundref="appointments_8hpp" startline="331" endline="423">api::v2::Appointments::Update</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Clinic_1ab966bc6c2f287a66e363365398ebacd7" compoundref="api_2v2_2routes_2clinics_8hpp" startline="315" endline="405">api::v2::Clinic::Update</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" compoundref="services_8hpp" startline="302" endline="394">api::v2::Services::Update</referencedby>
@@ -628,7 +628,7 @@
         <referencedby refid="classClientControllerBase_1a19ad4f57a4d721aa57723a6ca379abaf">ClientControllerBase::Update</referencedby>
         <referencedby refid="classClinicController_1ac9602c4667f7e5dadd4be920a9258d48" compoundref="cliniccontroller_8cpp" startline="429" endline="437">ClinicController&lt; T &gt;::Update</referencedby>
         <referencedby refid="classClinicControllerBase_1a75870953c9e268b975a0433484ffaf76">ClinicControllerBase::Update</referencedby>
-        <referencedby refid="classController_1a19c2ebed1725708ab253bc0ba1d9b2c5" compoundref="controller_8hpp" startline="278" endline="286">Controller::Update</referencedby>
+        <referencedby refid="classController_1a19c2ebed1725708ab253bc0ba1d9b2c5" compoundref="controller_8hpp" startline="282" endline="291">Controller::Update</referencedby>
         <referencedby refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" compoundref="entitycontroller_8cpp" startline="221" endline="294">EntityController&lt; T &gt;::Update</referencedby>
         <referencedby refid="classEntityControllerBase_1ae5d92e66680e04f297ac7449f1a8d9f4">EntityControllerBase::Update</referencedby>
         <referencedby refid="classServiceController_1a0bdcfc6e76c7864d0c84acd7be675ce4" compoundref="servicecontroller_8cpp" startline="159" endline="169">ServiceController&lt; T &gt;::Update</referencedby>
@@ -638,7 +638,7 @@
         <referencedby refid="classClientController_1ad218f6587a3135d5b5466401aac514e9" compoundref="clientcontroller_8cpp" startline="550" endline="560">ClientController&lt; T &gt;::UpdateAsync</referencedby>
         <referencedby refid="classClientControllerBase_1a7500d9081800672565b50021165aaefc">ClientControllerBase::UpdateAsync</referencedby>
         <referencedby refid="classClinicController_1ae01eb0d9ae50dc1e58a118201030b89f" compoundref="cliniccontroller_8cpp" startline="440" endline="449">ClinicController&lt; T &gt;::UpdateAsync</referencedby>
-        <referencedby refid="classController_1a146f10399fc24f1052079827e6248b2a" compoundref="controller_8hpp" startline="300" endline="308">Controller::UpdateAsync</referencedby>
+        <referencedby refid="classController_1a146f10399fc24f1052079827e6248b2a" compoundref="controller_8hpp" startline="305" endline="314">Controller::UpdateAsync</referencedby>
         <referencedby refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="512" endline="588">EntityController&lt; T &gt;::UpdateAsync</referencedby>
         <referencedby refid="classEntityControllerBase_1a65cfe323fc4255e1b8a06d5864be2616">EntityControllerBase::UpdateAsync</referencedby>
         <referencedby refid="classServiceController_1abbe959a26ec829cc66e5e1cfd8175577" compoundref="servicecontroller_8cpp" startline="180" endline="190">ServiceController&lt; T &gt;::UpdateAsync</referencedby>

@@ -1,16 +1,8 @@
-<?xml version='1.0' encoding='UTF-8' standalone='no' ?>
-<doxygen
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="compound.xsd"
-    version="1.18.0"
-    xml:lang="en-US"
->
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
   <compounddef id="asyncresultmapper_8cpp" kind="file" language="C++">
     <compoundname>asyncresultmapper.cpp</compoundname>
-    <includes
-            refid="asyncresultmapper_8hpp"
-            local="yes"
-        >database/asyncresultmapper.hpp</includes>
+    <includes refid="asyncresultmapper_8hpp" local="yes">database/asyncresultmapper.hpp</includes>
     <includes local="no">drogon/orm/Field.h</includes>
     <includes local="no">drogon/orm/Result.h</includes>
     <includes local="no">drogon/orm/Row.h</includes>
@@ -19,11 +11,11 @@
     <includes local="no">jsoncons/basic_json.hpp</includes>
     <includes local="no">jsoncons/json.hpp</includes>
     <includes local="no">string</includes>
-    <includes refid="message_8hpp" local="yes">message/message.hpp</includes>
+    <includes local="yes">message/message.hpp</includes>
     <incdepgraph>
       <node id="1">
         <label>src/database/asyncresultmapper.cpp</label>
-        <link refid="asyncresultmapper_8cpp" />
+        <link refid="asyncresultmapper_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
@@ -47,7 +39,7 @@
       </node>
       <node id="2">
         <label>database/asyncresultmapper.hpp</label>
-        <link refid="asyncresultmapper_8hpp" />
+        <link refid="asyncresultmapper_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
@@ -55,14 +47,6 @@
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>message/message.hpp</label>
-        <link refid="message_8hpp" />
-        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -88,51 +72,32 @@
       <node id="5">
         <label>jsoncons/json.hpp</label>
       </node>
+      <node id="12">
+        <label>message/message.hpp</label>
+      </node>
       <node id="6">
         <label>optional</label>
       </node>
       <node id="7">
         <label>string</label>
       </node>
-      <node id="13">
-        <label>trantor/utils/Logger.h</label>
-      </node>
     </incdepgraph>
     <innernamespace refid="namespaceasyncdb">asyncdb</innernamespace>
     <briefdescription>
-<para
-            >Implementation for asyncresultmapper: Converts one row into a JSON object using name- and value-based type inference. </para>
+<para>Implementation for asyncresultmapper: Converts one row into a JSON object using name- and value-based type inference. </para>
     </briefdescription>
     <detaileddescription>
-<para
-            >This file implements the row-to-JSON conversion. For each column it checks whether the value is SQL NULL, whether the column is a known boolean or identifier field, whether the text looks like JSON, and otherwise keeps the text as a string. The first-row and all-row helpers simply call the row mapper in a loop or at index zero.</para>
-<para
-            >WHY THIS FILE MATTERS IN THE SERVER: Async controller methods receive a Drogon Result and must return JSON to the HTTP layer. This file performs that translation and deliberately mirrors the older synchronous <ref
-                    refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e"
-                    kindref="member"
-                >Database::executeQuery</ref> outcomes: nulls stay null, the active flag is a boolean, ids are numbers, and json/jsonb columns become nested JSON. Because parsing errors are caught and the raw text is kept, one unusual database value cannot crash a whole list response. Without this file, the async database path could not produce the same JSON contract that the rest of the API relies on.</para>
+<para>This file implements the row-to-JSON conversion. For each column it checks whether the value is SQL NULL, whether the column is a known boolean or identifier field, whether the text looks like JSON, and otherwise keeps the text as a string. The first-row and all-row helpers simply call the row mapper in a loop or at index zero.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: Async controller methods receive a Drogon Result and must return JSON to the HTTP layer. This file performs that translation and deliberately mirrors the older synchronous <ref refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" kindref="member">Database::executeQuery</ref> outcomes: nulls stay null, the active flag is a boolean, ids are numbers, and json/jsonb columns become nested JSON. Because parsing errors are caught and the raw text is kept, one unusual database value cannot crash a whole list response. Without this file, the async database path could not produce the same JSON contract that the rest of the API relies on.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
-<listitem><para>Drogon result sets, rows and fields: <ulink
-                                url="https://drogon.docsforge.com/master/database/"
-                            >https://drogon.docsforge.com/master/database/</ulink></para>
-</listitem><listitem><para>jsoncons JSON values and parsing: <ulink
-                                url="https://danielaparker.github.io/jsoncons/"
-                            >https://danielaparker.github.io/jsoncons/</ulink></para>
-</listitem><listitem><para
-                        >std::string_view (a cheap, non-owning look at text): <ulink
-                                url="https://en.cppreference.com/w/cpp/string/basic_string_view"
-                            >https://en.cppreference.com/w/cpp/string/basic_string_view</ulink></para>
-</listitem><listitem><para>C++ exceptions and catch-all handlers: <ulink
-                                url="https://en.cppreference.com/w/cpp/language/try_catch"
-                            >https://en.cppreference.com/w/cpp/language/try_catch</ulink></para>
-</listitem><listitem><para>C++20 coroutines: <ulink
-                                url="https://en.cppreference.com/w/cpp/language/coroutines"
-                            >https://en.cppreference.com/w/cpp/language/coroutines</ulink></para>
+<listitem><para>Drogon result sets, rows and fields: <ulink url="https://drogon.docsforge.com/master/database/">https://drogon.docsforge.com/master/database/</ulink></para>
+</listitem><listitem><para>jsoncons JSON values and parsing: <ulink url="https://danielaparker.github.io/jsoncons/">https://danielaparker.github.io/jsoncons/</ulink></para>
+</listitem><listitem><para>std::string_view (a cheap, non-owning look at text): <ulink url="https://en.cppreference.com/w/cpp/string/basic_string_view">https://en.cppreference.com/w/cpp/string/basic_string_view</ulink></para>
+</listitem><listitem><para>C++ exceptions and catch-all handlers: <ulink url="https://en.cppreference.com/w/cpp/language/try_catch">https://en.cppreference.com/w/cpp/language/try_catch</ulink></para>
+</listitem><listitem><para>C++20 coroutines: <ulink url="https://en.cppreference.com/w/cpp/language/coroutines">https://en.cppreference.com/w/cpp/language/coroutines</ulink></para>
 </listitem></itemizedlist>
 </para>
-<para><simplesect kind="author"><para>Amr Osman <ulink
-                            url="mailto:dr3mro@gmail.com"
-                        >dr3mro@gmail.com</ulink> </para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
 </simplesect>
 <simplesect kind="date"><para>2026-11-16 </para>
 </simplesect>
@@ -140,994 +105,200 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="2"><highlight class="comment"><sp />*<sp />@file<sp
-                    />asyncresultmapper.cpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp />*<sp />@brief<sp
-                    />Implementation<sp />for<sp />asyncresultmapper:<sp
-                    />Converts<sp />one<sp />row<sp />into<sp />a<sp
-                    />JSON</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp />*<sp />object<sp
-                    />using<sp />name-<sp />and<sp />value-based<sp />type<sp
-                    />inference.</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp />*<sp />@details<sp
-                    />This<sp />file<sp />implements<sp />the<sp
-                    />row-to-JSON<sp />conversion.<sp />For<sp />each<sp
-                    />column<sp />it</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp />*<sp />checks<sp
-                    />whether<sp />the<sp />value<sp />is<sp />SQL<sp />NULL,<sp
-                    />whether<sp />the<sp />column<sp />is<sp />a<sp />known<sp
-                    />boolean</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp />*<sp />or<sp
-                    />identifier<sp />field,<sp />whether<sp />the<sp />text<sp
-                    />looks<sp />like<sp />JSON,<sp />and<sp />otherwise<sp
-                    />keeps</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp />*<sp />the<sp />text<sp
-                    />as<sp />a<sp />string.<sp />The<sp />first-row<sp />and<sp
-                    />all-row<sp />helpers<sp />simply<sp />call<sp />the<sp
-                    />row</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp />*<sp />mapper<sp />in<sp
-                    />a<sp />loop<sp />or<sp />at<sp />index<sp
-                    />zero.</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp />*</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp />*<sp />WHY<sp />THIS<sp
-                    />FILE<sp />MATTERS<sp />IN<sp />THE<sp
-                    />SERVER:</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp />*<sp />Async<sp
-                    />controller<sp />methods<sp />receive<sp />a<sp />Drogon<sp
-                    />Result<sp />and<sp />must<sp />return<sp />JSON<sp />to<sp
-                    />the</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp />*<sp />HTTP<sp
-                    />layer.<sp />This<sp />file<sp />performs<sp />that<sp
-                    />translation<sp />and<sp />deliberately<sp />mirrors<sp
-                    />the</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp />*<sp />older<sp
-                    />synchronous<sp />Database::executeQuery<sp />outcomes:<sp
-                    />nulls<sp />stay<sp />null,<sp />the</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp />*<sp />active<sp
-                    />flag<sp />is<sp />a<sp />boolean,<sp />ids<sp />are<sp
-                    />numbers,<sp />and<sp />json/jsonb<sp />columns<sp
-                    />become</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp />*<sp />nested<sp
-                    />JSON.<sp />Because<sp />parsing<sp />errors<sp />are<sp
-                    />caught<sp />and<sp />the<sp />raw<sp />text<sp />is<sp
-                    />kept,<sp />one</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp />*<sp />unusual<sp
-                    />database<sp />value<sp />cannot<sp />crash<sp />a<sp
-                    />whole<sp />list<sp />response.<sp />Without<sp />this<sp
-                    />file,</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp />*<sp />the<sp />async<sp
-                    />database<sp />path<sp />could<sp />not<sp />produce<sp
-                    />the<sp />same<sp />JSON<sp />contract<sp />that<sp
-                    />the</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp />*<sp />rest<sp />of<sp
-                    />the<sp />API<sp />relies<sp />on.</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp />*</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp />*<sp />CONCEPTS<sp
-                    />TO<sp />LEARN<sp />(for<sp
-                    />beginners):</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp />*<sp />-<sp />Drogon<sp
-                    />result<sp />sets,<sp />rows<sp />and<sp
-                    />fields:</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp />*<sp
-                    />https://drogon.docsforge.com/master/database/</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp />*<sp />-<sp />jsoncons<sp
-                    />JSON<sp />values<sp />and<sp />parsing:<sp
-                    />https://danielaparker.github.io/jsoncons/</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp />*<sp />-<sp
-                    />std::string_view<sp />(a<sp />cheap,<sp />non-owning<sp
-                    />look<sp />at<sp />text):</highlight></codeline>
-<codeline lineno="26"><highlight class="comment"><sp />*<sp
-                    />https://en.cppreference.com/w/cpp/string/basic_string_view</highlight></codeline>
-<codeline lineno="27"><highlight class="comment"><sp />*<sp />-<sp />C++<sp
-                    />exceptions<sp />and<sp />catch-all<sp
-                    />handlers:</highlight></codeline>
-<codeline lineno="28"><highlight class="comment"><sp />*<sp
-                    />https://en.cppreference.com/w/cpp/language/try_catch</highlight></codeline>
-<codeline lineno="29"><highlight class="comment"><sp />*<sp />-<sp />C++20<sp
-                    />coroutines:<sp
-                    />https://en.cppreference.com/w/cpp/language/coroutines</highlight></codeline>
-<codeline lineno="30"><highlight class="comment"><sp />*</highlight></codeline>
-<codeline lineno="31"><highlight class="comment"><sp />*<sp />@author<sp
-                    />Amr<sp />Osman<sp
-                    />&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="32"><highlight class="comment"><sp />*<sp />@date<sp
-                    />2026-11-16</highlight></codeline>
-<codeline lineno="33"><highlight class="comment"><sp />*/</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="34"><highlight class="normal" /></codeline>
-<codeline lineno="35"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Our<sp />own<sp />declarations,<sp />verified<sp
-                    />against<sp />these<sp />definitions.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="36"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#include<sp />&quot;<ref
-                        refid="asyncresultmapper_8hpp"
-                        kindref="compound"
-                    >database/asyncresultmapper.hpp</ref>&quot;</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="37"><highlight class="normal" /></codeline>
-<codeline lineno="38"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Field,<sp />a<sp />single<sp />cell<sp />value,<sp
-                    />with<sp />isNull()<sp />and<sp
-                    />c_str().</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="39"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#include<sp />&lt;drogon/orm/Field.h&gt;</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="40"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Result,<sp />the<sp />whole<sp />set<sp />of<sp
-                    />rows<sp />returned<sp />by<sp />a<sp
-                    />query.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="41"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#include<sp />&lt;drogon/orm/Result.h&gt;</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="42"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#include<sp />&lt;drogon/orm/Row.h&gt;</highlight><highlight
-                    class="normal"
-                ><sp /><sp /></highlight><highlight class="comment">//<sp
-                    />Row,<sp />one<sp />record<sp />inside<sp />a<sp
-                    />Result.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="43"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Formatting<sp />library;<sp />this<sp />file<sp
-                    />makes<sp />no<sp />fmt::<sp />calls<sp />itself<sp
-                    />(kept<sp />for</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="44"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />consistency<sp />with<sp />sibling<sp
-                    />files).</highlight><highlight class="normal" /></codeline>
-<codeline lineno="45"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#include<sp />&lt;fmt/core.h&gt;</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="46"><highlight class="normal" /></codeline>
-<codeline lineno="47"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#include<sp />&lt;cstddef&gt;</highlight><highlight
-                    class="normal"
-                ><sp /><sp /></highlight><highlight class="comment">//<sp
-                    />Size<sp />types<sp />used<sp />for<sp />column<sp />and<sp
-                    />row<sp />indexes.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="48"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#include<sp
-                    />&lt;jsoncons/basic_json.hpp&gt;</highlight><highlight
-                    class="normal"
-                ><sp /><sp /></highlight><highlight class="comment">//<sp
-                    />The<sp />underlying<sp />JSON<sp />value<sp
-                    />template.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="49"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#include<sp />&lt;jsoncons/json.hpp&gt;</highlight><highlight
-                    class="normal"
-                ><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp
-                    />jsoncons::json<sp />and<sp />its<sp />parse()<sp
-                    />function.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="50"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />std::string,<sp />the<sp />owned<sp />copy<sp />of<sp
-                    />a<sp />column<sp />name<sp />or<sp />field<sp
-                    />value.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="51"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#include<sp />&lt;string&gt;</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="52"><highlight class="normal" /></codeline>
-<codeline lineno="53"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Project<sp />logging<sp />helpers,<sp />kept<sp
-                    />available<sp />for<sp />diagnostics;<sp />this<sp
-                    />file<sp />itself</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="54"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />does<sp />not<sp />log.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="55"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#include<sp />&quot;<ref
-                        refid="message_8hpp"
-                        kindref="compound"
-                    >message/message.hpp</ref>&quot;</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="56"><highlight class="normal" /></codeline>
-<codeline lineno="57"><highlight class="normal" /><highlight
-                    class="keyword"
-                >namespace<sp /></highlight><highlight class="normal"><ref
-                        refid="namespaceasyncdb"
-                        kindref="compound"
-                    >asyncdb</ref><sp />{</highlight><highlight
-                    class="comment"
-                /></codeline>
-<codeline lineno="58"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="59"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Converts<sp />one<sp />row<sp />into<sp />a<sp
-                    />JSON<sp />object<sp />using<sp />name-<sp />and<sp
-                    />value-based</highlight></codeline>
-<codeline lineno="60"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />type<sp />inference.</highlight></codeline>
-<codeline lineno="61"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@details<sp />Each<sp />row<sp />gets<sp />its<sp />own<sp
-                    />object.<sp />Parse<sp />failures<sp />are<sp
-                    />swallowed<sp />and</highlight></codeline>
-<codeline lineno="62"><highlight class="comment"><sp /><sp /><sp />*<sp />the<sp
-                    />raw<sp />text<sp />is<sp />kept,<sp />so<sp />this<sp
-                    />function<sp />never<sp />throws<sp />for<sp />a<sp
-                    />malformed</highlight></codeline>
-<codeline lineno="63"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />integer<sp />or<sp />JSON<sp />value.<sp />Field<sp
-                    />values<sp />are<sp />read<sp />through<sp />their<sp
-                    />C-string<sp />text</highlight></codeline>
-<codeline lineno="64"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />form.</highlight></codeline>
-<codeline lineno="65"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="66"
-                refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp />jsoncons::json<sp /><ref
-                        refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb"
-                        kindref="member"
-                    >mapRow</ref>(</highlight><highlight
-                    class="keyword"
-                >const</highlight><highlight class="normal"><sp
-                    />drogon::orm::Result&amp;<sp /><sp /><sp /><sp
-                    />result,</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    />drogon::orm::Result::SizeType<sp />row)<sp
-                    />{</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp /><sp /><sp /><sp
-                    />jsoncons::json<sp />object;<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />A<sp
-                    />fresh,<sp />empty<sp />JSON<sp />object<sp />for<sp
-                    />this<sp />row;</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="69"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />nothing<sp />from<sp />another<sp />row<sp />can<sp
-                    />leak<sp />into<sp />it.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="70"><highlight class="normal" /></codeline>
-<codeline lineno="71"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >const</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >auto</highlight><highlight class="normal"><sp />column_count<sp
-                    />=</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp />result.columns();<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />How<sp
-                    />many<sp />columns<sp />this<sp />result<sp />has,<sp
-                    />so<sp />we<sp />know</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="73"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /></highlight><highlight class="comment">//<sp
-                    />how<sp />far<sp />to<sp />walk.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="74"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >for</highlight><highlight class="normal"><sp
-                    />(drogon::orm::Result::RowSizeType<sp />i<sp />=<sp />0;<sp
-                    />i<sp />&lt;<sp />column_count;</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Visit<sp />each<sp />column<sp />exactly<sp />once,<sp
-                    />from<sp />left<sp />to<sp />right;<sp
-                    />stop</highlight><highlight class="normal" /></codeline>
-<codeline lineno="76"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />after<sp />the<sp />last<sp
-                    />column.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="77"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp />++i)<sp />{</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="keyword"
-                >const</highlight><highlight class="normal"><sp
-                    />std::string_view<sp />field_name<sp
-                    />=</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp />result.columnName(i);<sp
-                    /><sp /></highlight><highlight class="comment">//<sp />A<sp
-                    />non-owning<sp />view<sp />of<sp />the<sp
-                    />column&apos;s<sp />name,<sp />used</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="80"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />for<sp
-                    />comparisons<sp />and<sp />as<sp />the<sp />JSON<sp
-                    />key.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="81"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="keyword"
-                >const</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >auto</highlight><highlight class="normal"><sp />field<sp />=<sp
-                    />result[row][i];<sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />The<sp />single<sp />cell<sp />at<sp />(row,<sp
-                    />column):</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="82"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />its<sp
-                    />value<sp />and<sp />null<sp />flag.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="83"><highlight class="normal" /></codeline>
-<codeline lineno="84"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight class="comment">//<sp
-                    />SQL<sp />NULL<sp />must<sp />become<sp />JSON<sp
-                    />null,<sp />not<sp />the</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="85"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight class="comment">//<sp
-                    />string<sp />&quot;NULL&quot;<sp />or<sp />an<sp />empty<sp
-                    />string.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="86"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="keywordflow"
-                >if</highlight><highlight class="normal"><sp
-                    />(field.isNull())<sp />{</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="keywordtype"
-                >object</highlight><highlight
-                    class="normal"
-                >[std::string(field_name)]<sp />=</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >nullptr</highlight><highlight class="normal">;<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Copy<sp
-                    />the<sp />name<sp />into<sp />an<sp />owning<sp />string<sp
-                    />for<sp />the</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="89"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />key,<sp
-                    />then<sp />store<sp />a<sp />JSON<sp />null<sp
-                    />value.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="90"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="keywordflow"
-                >continue</highlight><highlight class="normal">;<sp /><sp /><sp
-                    /><sp /><sp /></highlight><highlight class="comment">//<sp
-                    />Nothing<sp />else<sp />can<sp />be<sp />inferred<sp
-                    />from<sp />a<sp />null<sp />value,<sp
-                    />so</highlight><highlight class="normal" /></codeline>
-<codeline lineno="91"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />move<sp
-                    />on<sp />to<sp />the<sp />next<sp
-                    />column.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="92"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp />}</highlight></codeline>
-<codeline lineno="93"><highlight class="normal" /></codeline>
-<codeline lineno="94"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="keyword"
-                >const</highlight><highlight class="normal"><sp />std::string<sp
-                    />name(</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp />field_name);<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Own<sp
-                    />the<sp />column<sp />name<sp />now,<sp />so<sp />it<sp
-                    />can<sp />be<sp />compared</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="96"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />and<sp
-                    />reused<sp />as<sp />a<sp />JSON<sp />key<sp
-                    />safely.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="97"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="keyword"
-                >const</highlight><highlight class="normal"><sp />std::string<sp
-                    />value(</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp />field.c_str());<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Read<sp
-                    />the<sp />cell<sp />as<sp />text;<sp />copying<sp />it<sp
-                    />keeps<sp />the</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="99"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /></highlight><highlight class="comment">//<sp
-                    />data<sp />valid<sp />after<sp />the<sp />Result<sp />is<sp
-                    />touched<sp />again.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="100"><highlight class="normal" /></codeline>
-<codeline lineno="101"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight class="comment">//<sp
-                    />The<sp />active<sp />flag<sp />is<sp />known<sp />to<sp
-                    />be<sp />a<sp />boolean,</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="102"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight class="comment">//<sp
-                    />whatever<sp />text<sp />PostgreSQL<sp
-                    />used.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="103"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="keywordflow"
-                >if</highlight><highlight class="normal"><sp />(name<sp />==<sp
-                    /></highlight><highlight
-                    class="stringliteral"
-                >&quot;active&quot;</highlight><highlight class="normal">)<sp
-                    />{</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />PostgreSQL<sp />emits<sp />t/f<sp />for<sp
-                    />booleans;<sp />accept<sp />the<sp />common<sp
-                    />truthy</highlight><highlight class="normal" /></codeline>
-<codeline lineno="105"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />spellings<sp />too.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="106"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />The<sp />comparison<sp />produces<sp />a<sp />C++<sp
-                    />bool,<sp />which</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="107"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />jsoncons<sp />stores<sp />as<sp />JSON<sp />true<sp
-                    />or<sp />false.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="108"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />These<sp />column<sp />names</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="109"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />mark<sp />values<sp />that<sp
-                    />the</highlight><highlight class="normal" /></codeline>
-<codeline lineno="110"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />API<sp />exposes<sp />as<sp
-                    />whole</highlight><highlight class="normal" /></codeline>
-<codeline lineno="111"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />numbers.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="112"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="keywordtype"
-                >object</highlight><highlight class="normal">[name]<sp />=<sp
-                    />(value<sp />==<sp /></highlight><highlight
-                    class="stringliteral"
-                >&quot;t&quot;</highlight><highlight class="normal"><sp />||<sp
-                    />value<sp />==<sp /></highlight><highlight
-                    class="stringliteral"
-                >&quot;true&quot;</highlight><highlight class="normal"><sp
-                    />||<sp />value<sp />==<sp /></highlight><highlight
-                    class="stringliteral"
-                >&quot;1&quot;</highlight><highlight
-                    class="normal"
-                >);</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp />}<sp /></highlight><highlight
-                    class="keywordflow"
-                >else</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >if</highlight><highlight class="normal"><sp />(name<sp />==<sp
-                    /></highlight><highlight
-                    class="stringliteral"
-                >&quot;id&quot;</highlight><highlight class="normal"><sp />||<sp
-                    />name.ends_with(</highlight><highlight
-                    class="stringliteral"
-                >&quot;_id&quot;</highlight><highlight class="normal">)<sp
-                    />||</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp />name<sp />==<sp /></highlight><highlight
-                    class="stringliteral"
-                >&quot;appointment_duration&quot;</highlight><highlight
-                    class="normal"
-                ><sp />||</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp />name<sp />==<sp /></highlight><highlight
-                    class="stringliteral"
-                >&quot;appointment_payment_amount&quot;</highlight><highlight
-                    class="normal"
-                >)<sp />{</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />These<sp />columns<sp />are<sp />numbers<sp />in<sp
-                    />the<sp />API,<sp />but<sp />keep<sp />the<sp />text<sp
-                    />if<sp />it</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="117"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />does<sp />not<sp />parse.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="118"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="keywordflow"
-                >try</highlight><highlight class="normal"><sp
-                    />{</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Convert<sp />the<sp />text<sp />to<sp />an<sp
-                    />integer;<sp />stoi<sp />throws</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="120"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />if<sp />the<sp />text<sp />is<sp />not<sp />a<sp
-                    />valid<sp />number.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="121"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Catch<sp />every<sp />exception<sp />type<sp />from<sp
-                    />the<sp />conversion,</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="122"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />including<sp />out-of-range<sp
-                    />numbers.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="123"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="keywordtype"
-                >object</highlight><highlight class="normal">[name]<sp />=<sp
-                    />std::stoi(value);</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp />}<sp /></highlight><highlight
-                    class="keywordflow"
-                >catch</highlight><highlight class="normal"><sp />(...)<sp
-                    />{</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Fall<sp />back<sp />to<sp />the<sp />original<sp
-                    />text<sp />so<sp />a<sp />single</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="126"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />odd<sp />value<sp />cannot<sp />abort<sp />the<sp
-                    />row.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="127"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />A<sp />value<sp />starting<sp />with<sp />a<sp
-                    />brace<sp />or<sp />bracket</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="128"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />is<sp />probably<sp />a<sp />JSON<sp />object<sp
-                    />or<sp />array.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="129"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="keywordtype"
-                >object</highlight><highlight class="normal">[name]<sp />=<sp
-                    />value;</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp />}</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp />}<sp /></highlight><highlight
-                    class="keywordflow"
-                >else</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >if</highlight><highlight class="normal"><sp
-                    />(!value.empty()<sp />&amp;&amp;</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp />(value.front()<sp />==<sp
-                    /></highlight><highlight
-                    class="charliteral"
-                >&apos;{&apos;</highlight><highlight class="normal"><sp />||<sp
-                    />value.front()<sp />==<sp /></highlight><highlight
-                    class="charliteral"
-                >&apos;[&apos;</highlight><highlight class="normal">))<sp
-                    />{</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />json/jsonb<sp />arrive<sp />as<sp />text;<sp />a<sp
-                    />failed<sp />parse<sp />degrades<sp />to<sp />a<sp
-                    />plain</highlight><highlight class="normal" /></codeline>
-<codeline lineno="134"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />string.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="135"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="keywordflow"
-                >try</highlight><highlight class="normal"><sp
-                    />{</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Parse<sp />the<sp />text<sp />into<sp />real<sp
-                    />nested</highlight><highlight class="normal" /></codeline>
-<codeline lineno="137"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />JSON<sp />when<sp />it<sp />is<sp />well<sp
-                    />formed.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="138"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Any<sp />parse<sp />error<sp />is<sp />deliberately<sp
-                    />ignored<sp />here.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="139"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="keywordtype"
-                >object</highlight><highlight class="normal">[name]<sp />=<sp
-                    />jsoncons::json::parse(value);</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp />}<sp /></highlight><highlight
-                    class="keywordflow"
-                >catch</highlight><highlight class="normal"><sp />(...)<sp
-                    />{</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Keep<sp />the<sp />raw<sp />text<sp />as<sp />a<sp
-                    />string<sp />instead<sp />of</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="142"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />failing<sp />the<sp />whole<sp
-                    />request.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="143"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />No<sp />special<sp />rule<sp />matched,<sp />so<sp
-                    />this<sp />is<sp />an<sp />ordinary<sp
-                    />text</highlight><highlight class="normal" /></codeline>
-<codeline lineno="144"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />column.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="145"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="keywordtype"
-                >object</highlight><highlight class="normal">[name]<sp />=<sp
-                    />value;</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp />}</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp />}<sp /></highlight><highlight
-                    class="keywordflow"
-                >else</highlight><highlight class="normal"><sp
-                    />{</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="keywordtype"
-                >object</highlight><highlight class="normal">[name]<sp />=<sp
-                    />value;<sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Store<sp />the<sp />value<sp />as<sp />a<sp />plain<sp
-                    />JSON<sp />string.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="149"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp />}</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp /><sp /><sp /><sp
-                    />}</highlight></codeline>
-<codeline lineno="151"><highlight class="normal" /></codeline>
-<codeline lineno="152"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp />object;<sp
-                    /><sp /></highlight><highlight class="comment">//<sp
-                    />The<sp />caller<sp />receives<sp />one<sp />JSON<sp
-                    />entry<sp />per<sp />column,<sp />in</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="153"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />column<sp />order.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="154"><highlight class="normal"><sp /><sp
-                    />}</highlight></codeline>
-<codeline lineno="155"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
-<codeline lineno="156"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="157"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Maps<sp />the<sp />first<sp />row,<sp
-                    />using<sp />a<sp />null<sp />JSON<sp />value<sp />to<sp
-                    />represent<sp />an<sp />empty</highlight></codeline>
-<codeline lineno="158"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />result.</highlight></codeline>
-<codeline lineno="159"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@details<sp />The<sp />emptiness<sp />check<sp />also<sp
-                    />avoids<sp />indexing<sp />into<sp />a<sp />result<sp
-                    />with<sp />no</highlight></codeline>
-<codeline lineno="160"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />rows.</highlight></codeline>
-<codeline lineno="161"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="162"
-                refid="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp />jsoncons::json<sp /><ref
-                        refid="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8"
-                        kindref="member"
-                    >mapResultToObject</ref>(</highlight><highlight
-                    class="keyword"
-                >const</highlight><highlight class="normal"><sp
-                    />drogon::orm::Result&amp;<sp />result)<sp
-                    />{</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />A<sp
-                    />SELECT<sp />can<sp />legitimately<sp />return<sp />no<sp
-                    />rows,<sp />e.g.<sp />a</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="164"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />lookup<sp
-                    />for<sp />a<sp />missing<sp />id.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="165"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >if</highlight><highlight class="normal"><sp
-                    />(result.empty())<sp />{</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp
-                    />jsoncons::json();<sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />A<sp />default-constructed<sp />jsoncons::json<sp
-                    />is</highlight><highlight class="normal" /></codeline>
-<codeline lineno="167"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />a<sp
-                    />JSON<sp />null,<sp />matching<sp />the<sp
-                    />synchronous</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="168"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp
-                    />path.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="169"><highlight class="normal"><sp /><sp /><sp /><sp
-                    />}</highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp /><ref
-                        refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb"
-                        kindref="member"
-                    >mapRow</ref>(result,</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp />0);<sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Row<sp />indexes<sp />start<sp />at<sp />zero,<sp
-                    />so<sp />this<sp />converts<sp />the<sp
-                    />first</highlight><highlight class="normal" /></codeline>
-<codeline lineno="172"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />(and<sp
-                    />possibly<sp />only)<sp />row.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="173"><highlight class="normal"><sp /><sp
-                    />}</highlight></codeline>
-<codeline lineno="174"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
-<codeline lineno="175"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="176"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Maps<sp />rows<sp />sequentially<sp />into<sp
-                    />an<sp />array,<sp />preserving<sp />the<sp
-                    />query&apos;s<sp />row</highlight></codeline>
-<codeline lineno="177"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />order.</highlight></codeline>
-<codeline lineno="178"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="179"
-                refid="namespaceasyncdb_1a0c9b2304653f373d0ec4ac262d7cf2bf"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp />jsoncons::json::array<sp
-                    /><ref
-                        refid="namespaceasyncdb_1a0c9b2304653f373d0ec4ac262d7cf2bf"
-                        kindref="member"
-                    >mapResultToArray</ref>(</highlight><highlight
-                    class="keyword"
-                >const</highlight><highlight class="normal"><sp
-                    />drogon::orm::Result&amp;<sp />result)<sp
-                    />{</highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp /><sp /><sp /><sp
-                    />jsoncons::json::array</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp />reply;<sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Empty<sp />array<sp />that<sp />will<sp />hold<sp
-                    />one<sp />JSON<sp />object<sp />per<sp
-                    />row.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="182"><highlight class="normal" /></codeline>
-<codeline lineno="183"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >for</highlight><highlight class="normal"><sp
-                    />(drogon::orm::Result::SizeType<sp />row<sp />=<sp />0;<sp
-                    />row<sp />&lt;<sp />result.size();</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Walk<sp />rows<sp />from<sp />first<sp />to<sp
-                    />last;<sp />stop<sp />when<sp />every<sp />row<sp
-                    />has</highlight><highlight class="normal" /></codeline>
-<codeline lineno="185"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />been<sp />converted.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="186"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp />++row)<sp
-                    />{</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp />reply.push_back(<ref
-                        refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb"
-                        kindref="member"
-                    >mapRow</ref>(result,</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp />row));<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Convert<sp
-                    />the<sp />row<sp />and<sp />append<sp />it,<sp
-                    />keeping</highlight><highlight class="normal" /></codeline>
-<codeline lineno="189"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /></highlight><highlight class="comment">//<sp
-                    />the<sp />database&apos;s<sp />order<sp
-                    />intact.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="190"><highlight class="normal"><sp /><sp /><sp /><sp
-                    />}</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp />reply;<sp
-                    /><sp /></highlight><highlight class="comment">//<sp />An<sp
-                    />empty<sp />result<sp />simply<sp />produces<sp />an<sp
-                    />empty<sp />array,<sp />which</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="192"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />is<sp />what<sp />list<sp />endpoints<sp
-                    />return.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="193"><highlight class="normal"><sp /><sp
-                    />}</highlight></codeline>
-<codeline lineno="194"><highlight class="normal">}<sp /><sp
-                    /></highlight><highlight class="comment">//<sp
-                    />namespace<sp />asyncdb</highlight><highlight
-                    class="normal"
-                /></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>asyncresultmapper.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Implementation<sp/>for<sp/>asyncresultmapper:<sp/>Converts<sp/>one<sp/>row<sp/>into<sp/>a<sp/>JSON</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>object<sp/>using<sp/>name-<sp/>and<sp/>value-based<sp/>type<sp/>inference.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>file<sp/>implements<sp/>the<sp/>row-to-JSON<sp/>conversion.<sp/>For<sp/>each<sp/>column<sp/>it</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>checks<sp/>whether<sp/>the<sp/>value<sp/>is<sp/>SQL<sp/>NULL,<sp/>whether<sp/>the<sp/>column<sp/>is<sp/>a<sp/>known<sp/>boolean</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>or<sp/>identifier<sp/>field,<sp/>whether<sp/>the<sp/>text<sp/>looks<sp/>like<sp/>JSON,<sp/>and<sp/>otherwise<sp/>keeps</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>the<sp/>text<sp/>as<sp/>a<sp/>string.<sp/>The<sp/>first-row<sp/>and<sp/>all-row<sp/>helpers<sp/>simply<sp/>call<sp/>the<sp/>row</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>mapper<sp/>in<sp/>a<sp/>loop<sp/>or<sp/>at<sp/>index<sp/>zero.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Async<sp/>controller<sp/>methods<sp/>receive<sp/>a<sp/>Drogon<sp/>Result<sp/>and<sp/>must<sp/>return<sp/>JSON<sp/>to<sp/>the</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>HTTP<sp/>layer.<sp/>This<sp/>file<sp/>performs<sp/>that<sp/>translation<sp/>and<sp/>deliberately<sp/>mirrors<sp/>the</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>older<sp/>synchronous<sp/>Database::executeQuery<sp/>outcomes:<sp/>nulls<sp/>stay<sp/>null,<sp/>the</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>active<sp/>flag<sp/>is<sp/>a<sp/>boolean,<sp/>ids<sp/>are<sp/>numbers,<sp/>and<sp/>json/jsonb<sp/>columns<sp/>become</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>nested<sp/>JSON.<sp/>Because<sp/>parsing<sp/>errors<sp/>are<sp/>caught<sp/>and<sp/>the<sp/>raw<sp/>text<sp/>is<sp/>kept,<sp/>one</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>unusual<sp/>database<sp/>value<sp/>cannot<sp/>crash<sp/>a<sp/>whole<sp/>list<sp/>response.<sp/>Without<sp/>this<sp/>file,</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>the<sp/>async<sp/>database<sp/>path<sp/>could<sp/>not<sp/>produce<sp/>the<sp/>same<sp/>JSON<sp/>contract<sp/>that<sp/>the</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>rest<sp/>of<sp/>the<sp/>API<sp/>relies<sp/>on.</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>Drogon<sp/>result<sp/>sets,<sp/>rows<sp/>and<sp/>fields:</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>https://drogon.docsforge.com/master/database/</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>-<sp/>jsoncons<sp/>JSON<sp/>values<sp/>and<sp/>parsing:<sp/>https://danielaparker.github.io/jsoncons/</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>-<sp/>std::string_view<sp/>(a<sp/>cheap,<sp/>non-owning<sp/>look<sp/>at<sp/>text):</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/string/basic_string_view</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>-<sp/>C++<sp/>exceptions<sp/>and<sp/>catch-all<sp/>handlers:</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/language/try_catch</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>-<sp/>C++20<sp/>coroutines:<sp/>https://en.cppreference.com/w/cpp/language/coroutines</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Our<sp/>own<sp/>declarations,<sp/>verified<sp/>against<sp/>these<sp/>definitions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="asyncresultmapper_8hpp" kindref="compound">database/asyncresultmapper.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Field,<sp/>a<sp/>single<sp/>cell<sp/>value,<sp/>with<sp/>isNull()<sp/>and<sp/>c_str().</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/orm/Field.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Result,<sp/>the<sp/>whole<sp/>set<sp/>of<sp/>rows<sp/>returned<sp/>by<sp/>a<sp/>query.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/orm/Result.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/orm/Row.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Row,<sp/>one<sp/>record<sp/>inside<sp/>a<sp/>Result.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Formatting<sp/>library;<sp/>this<sp/>file<sp/>makes<sp/>no<sp/>fmt::<sp/>calls<sp/>itself<sp/>(kept<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>consistency<sp/>with<sp/>sibling<sp/>files).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/core.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Size<sp/>types<sp/>used<sp/>for<sp/>column<sp/>and<sp/>row<sp/>indexes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/basic_json.hpp&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>underlying<sp/>JSON<sp/>value<sp/>template.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/json.hpp&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>jsoncons::json<sp/>and<sp/>its<sp/>parse()<sp/>function.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>std::string,<sp/>the<sp/>owned<sp/>copy<sp/>of<sp/>a<sp/>column<sp/>name<sp/>or<sp/>field<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Project<sp/>logging<sp/>helpers,<sp/>kept<sp/>available<sp/>for<sp/>diagnostics;<sp/>this<sp/>file<sp/>itself</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>does<sp/>not<sp/>log.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;message/message.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceasyncdb" kindref="compound">asyncdb</ref><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Converts<sp/>one<sp/>row<sp/>into<sp/>a<sp/>JSON<sp/>object<sp/>using<sp/>name-<sp/>and<sp/>value-based</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/>*<sp/>type<sp/>inference.</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Each<sp/>row<sp/>gets<sp/>its<sp/>own<sp/>object.<sp/>Parse<sp/>failures<sp/>are<sp/>swallowed<sp/>and</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/>*<sp/>the<sp/>raw<sp/>text<sp/>is<sp/>kept,<sp/>so<sp/>this<sp/>function<sp/>never<sp/>throws<sp/>for<sp/>a<sp/>malformed</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/>*<sp/>integer<sp/>or<sp/>JSON<sp/>value.<sp/>Field<sp/>values<sp/>are<sp/>read<sp/>through<sp/>their<sp/>C-string<sp/>text</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/>*<sp/>form.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" refkind="member"><highlight class="normal"><sp/><sp/>jsoncons::json<sp/><ref refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" kindref="member">mapRow</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::orm::Result&amp;<sp/><sp/><sp/><sp/>result,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::orm::Result::SizeType<sp/>row)<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>jsoncons::json<sp/>object;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>fresh,<sp/>empty<sp/>JSON<sp/>object<sp/>for<sp/>this<sp/>row;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>nothing<sp/>from<sp/>another<sp/>row<sp/>can<sp/>leak<sp/>into<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>column_count<sp/>=</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.columns();<sp/><sp/></highlight><highlight class="comment">//<sp/>How<sp/>many<sp/>columns<sp/>this<sp/>result<sp/>has,<sp/>so<sp/>we<sp/>know</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>how<sp/>far<sp/>to<sp/>walk.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(drogon::orm::Result::RowSizeType<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>column_count;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Visit<sp/>each<sp/>column<sp/>exactly<sp/>once,<sp/>from<sp/>left<sp/>to<sp/>right;<sp/>stop</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>after<sp/>the<sp/>last<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>field_name<sp/>=</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.columnName(i);<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>non-owning<sp/>view<sp/>of<sp/>the<sp/>column&apos;s<sp/>name,<sp/>used</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>comparisons<sp/>and<sp/>as<sp/>the<sp/>JSON<sp/>key.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>field<sp/>=<sp/>result[row][i];<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>single<sp/>cell<sp/>at<sp/>(row,<sp/>column):</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>its<sp/>value<sp/>and<sp/>null<sp/>flag.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>SQL<sp/>NULL<sp/>must<sp/>become<sp/>JSON<sp/>null,<sp/>not<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>string<sp/>&quot;NULL&quot;<sp/>or<sp/>an<sp/>empty<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(field.isNull())<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[std::string(field_name)]<sp/>=</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>the<sp/>name<sp/>into<sp/>an<sp/>owning<sp/>string<sp/>for<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>key,<sp/>then<sp/>store<sp/>a<sp/>JSON<sp/>null<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Nothing<sp/>else<sp/>can<sp/>be<sp/>inferred<sp/>from<sp/>a<sp/>null<sp/>value,<sp/>so</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>move<sp/>on<sp/>to<sp/>the<sp/>next<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>name(</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field_name);<sp/><sp/></highlight><highlight class="comment">//<sp/>Own<sp/>the<sp/>column<sp/>name<sp/>now,<sp/>so<sp/>it<sp/>can<sp/>be<sp/>compared</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>reused<sp/>as<sp/>a<sp/>JSON<sp/>key<sp/>safely.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>value(</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.c_str());<sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>the<sp/>cell<sp/>as<sp/>text;<sp/>copying<sp/>it<sp/>keeps<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>data<sp/>valid<sp/>after<sp/>the<sp/>Result<sp/>is<sp/>touched<sp/>again.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>active<sp/>flag<sp/>is<sp/>known<sp/>to<sp/>be<sp/>a<sp/>boolean,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>whatever<sp/>text<sp/>PostgreSQL<sp/>used.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(name<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;active&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PostgreSQL<sp/>emits<sp/>t/f<sp/>for<sp/>booleans;<sp/>accept<sp/>the<sp/>common<sp/>truthy</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>spellings<sp/>too.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>comparison<sp/>produces<sp/>a<sp/>C++<sp/>bool,<sp/>which</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>jsoncons<sp/>stores<sp/>as<sp/>JSON<sp/>true<sp/>or<sp/>false.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>These<sp/>column<sp/>names</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>mark<sp/>values<sp/>that<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>API<sp/>exposes<sp/>as<sp/>whole</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>numbers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[name]<sp/>=<sp/>(value<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;t&quot;</highlight><highlight class="normal"><sp/>||<sp/>value<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;true&quot;</highlight><highlight class="normal"><sp/>||<sp/>value<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;1&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(name<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal"><sp/>||<sp/>name.ends_with(</highlight><highlight class="stringliteral">&quot;_id&quot;</highlight><highlight class="normal">)<sp/>||</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>name<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;appointment_duration&quot;</highlight><highlight class="normal"><sp/>||</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>name<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;appointment_payment_amount&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>These<sp/>columns<sp/>are<sp/>numbers<sp/>in<sp/>the<sp/>API,<sp/>but<sp/>keep<sp/>the<sp/>text<sp/>if<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>does<sp/>not<sp/>parse.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>the<sp/>text<sp/>to<sp/>an<sp/>integer;<sp/>stoi<sp/>throws</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>the<sp/>text<sp/>is<sp/>not<sp/>a<sp/>valid<sp/>number.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Catch<sp/>every<sp/>exception<sp/>type<sp/>from<sp/>the<sp/>conversion,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>including<sp/>out-of-range<sp/>numbers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[name]<sp/>=<sp/>std::stoi(value);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fall<sp/>back<sp/>to<sp/>the<sp/>original<sp/>text<sp/>so<sp/>a<sp/>single</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>odd<sp/>value<sp/>cannot<sp/>abort<sp/>the<sp/>row.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>value<sp/>starting<sp/>with<sp/>a<sp/>brace<sp/>or<sp/>bracket</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>is<sp/>probably<sp/>a<sp/>JSON<sp/>object<sp/>or<sp/>array.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[name]<sp/>=<sp/>value;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!value.empty()<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(value.front()<sp/>==<sp/></highlight><highlight class="charliteral">&apos;{&apos;</highlight><highlight class="normal"><sp/>||<sp/>value.front()<sp/>==<sp/></highlight><highlight class="charliteral">&apos;[&apos;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>json/jsonb<sp/>arrive<sp/>as<sp/>text;<sp/>a<sp/>failed<sp/>parse<sp/>degrades<sp/>to<sp/>a<sp/>plain</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Parse<sp/>the<sp/>text<sp/>into<sp/>real<sp/>nested</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>JSON<sp/>when<sp/>it<sp/>is<sp/>well<sp/>formed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Any<sp/>parse<sp/>error<sp/>is<sp/>deliberately<sp/>ignored<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[name]<sp/>=<sp/>jsoncons::json::parse(value);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Keep<sp/>the<sp/>raw<sp/>text<sp/>as<sp/>a<sp/>string<sp/>instead<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>failing<sp/>the<sp/>whole<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>special<sp/>rule<sp/>matched,<sp/>so<sp/>this<sp/>is<sp/>an<sp/>ordinary<sp/>text</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[name]<sp/>=<sp/>value;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[name]<sp/>=<sp/>value;<sp/><sp/></highlight><highlight class="comment">//<sp/>Store<sp/>the<sp/>value<sp/>as<sp/>a<sp/>plain<sp/>JSON<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>object;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>caller<sp/>receives<sp/>one<sp/>JSON<sp/>entry<sp/>per<sp/>column,<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>column<sp/>order.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Maps<sp/>the<sp/>first<sp/>row,<sp/>using<sp/>a<sp/>null<sp/>JSON<sp/>value<sp/>to<sp/>represent<sp/>an<sp/>empty</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/><sp/><sp/>*<sp/>result.</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>The<sp/>emptiness<sp/>check<sp/>also<sp/>avoids<sp/>indexing<sp/>into<sp/>a<sp/>result<sp/>with<sp/>no</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/><sp/><sp/>*<sp/>rows.</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162" refid="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8" refkind="member"><highlight class="normal"><sp/><sp/>jsoncons::json<sp/><ref refid="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8" kindref="member">mapResultToObject</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::orm::Result&amp;<sp/>result)<sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>SELECT<sp/>can<sp/>legitimately<sp/>return<sp/>no<sp/>rows,<sp/>e.g.<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>lookup<sp/>for<sp/>a<sp/>missing<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result.empty())<sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>jsoncons::json();<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>default-constructed<sp/>jsoncons::json<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>JSON<sp/>null,<sp/>matching<sp/>the<sp/>synchronous</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>path.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" kindref="member">mapRow</ref>(result,</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0);<sp/><sp/></highlight><highlight class="comment">//<sp/>Row<sp/>indexes<sp/>start<sp/>at<sp/>zero,<sp/>so<sp/>this<sp/>converts<sp/>the<sp/>first</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(and<sp/>possibly<sp/>only)<sp/>row.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Maps<sp/>rows<sp/>sequentially<sp/>into<sp/>an<sp/>array,<sp/>preserving<sp/>the<sp/>query&apos;s<sp/>row</highlight></codeline>
+<codeline lineno="177"><highlight class="comment"><sp/><sp/><sp/>*<sp/>order.</highlight></codeline>
+<codeline lineno="178"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179" refid="namespaceasyncdb_1a0c9b2304653f373d0ec4ac262d7cf2bf" refkind="member"><highlight class="normal"><sp/><sp/>jsoncons::json::array<sp/><ref refid="namespaceasyncdb_1a0c9b2304653f373d0ec4ac262d7cf2bf" kindref="member">mapResultToArray</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::orm::Result&amp;<sp/>result)<sp/>{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>jsoncons::json::array</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reply;<sp/><sp/></highlight><highlight class="comment">//<sp/>Empty<sp/>array<sp/>that<sp/>will<sp/>hold<sp/>one<sp/>JSON<sp/>object<sp/>per<sp/>row.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(drogon::orm::Result::SizeType<sp/>row<sp/>=<sp/>0;<sp/>row<sp/>&lt;<sp/>result.size();</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Walk<sp/>rows<sp/>from<sp/>first<sp/>to<sp/>last;<sp/>stop<sp/>when<sp/>every<sp/>row<sp/>has</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>been<sp/>converted.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++row)<sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>reply.push_back(<ref refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" kindref="member">mapRow</ref>(result,</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>row));<sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>the<sp/>row<sp/>and<sp/>append<sp/>it,<sp/>keeping</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>database&apos;s<sp/>order<sp/>intact.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>reply;<sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>empty<sp/>result<sp/>simply<sp/>produces<sp/>an<sp/>empty<sp/>array,<sp/>which</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>is<sp/>what<sp/>list<sp/>endpoints<sp/>return.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>asyncdb</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="src/database/asyncresultmapper.cpp" />
+    <location file="src/database/asyncresultmapper.cpp"/>
   </compounddef>
 </doxygen>

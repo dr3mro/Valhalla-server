@@ -58,7 +58,6 @@ var hierarchy =
     ] ],
     [ "ColumnInfo", "structColumnInfo.html", null ],
     [ "Communicate", "classCommunicate.html", null ],
-    [ "Configurator", "classConfigurator.html", null ],
     [ "Controller", "classController.html", [
       [ "EntityController< T >", "classEntityController.html", [
         [ "AppointmentController< T >", "classAppointmentController.html", null ],
@@ -72,26 +71,18 @@ var hierarchy =
     [ "Credentials", "structCredentials.html", null ],
     [ "Data_t", "classData__t.html", null ],
     [ "Database", "classDatabase.html", null ],
-    [ "DatabaseConfig", "structDatabaseConfig.html", null ],
     [ "DatabaseConnectionPool", "classDatabaseConnectionPool.html", null ],
     [ "DatabaseController", "classDatabaseController.html", null ],
     [ "DatabaseHanndler", "classDatabaseHanndler.html", null ],
     [ "DatabaseSchema", "classDatabaseSchema.html", null ],
-    [ "DbExecutorConfig", "structDbExecutorConfig.html", null ],
     [ "DbProbe", "classDbProbe.html", null ],
     [ "Delete_t", "classDelete__t.html", null ],
     [ "DOSDetector", "classDOSDetector.html", null ],
-    [ "DOSDetectorConfig", "structDOSDetectorConfig.html", null ],
-    [ "EmailSenderConfig", "structEmailSenderConfig.html", null ],
     [ "api::v2::Types::Entity_t&lt; S &gt;", "structapi_1_1v2_1_1Types_1_1Entity__t.html", null ],
     [ "EntityControllerBase", "classEntityControllerBase.html", [
       [ "EntityController< T >", "classEntityController.html", null ]
     ] ],
     [ "BasicPermissionCache&lt; ClockT &gt;::Entry", "structBasicPermissionCache_1_1Entry.html", null ],
-    [ "EnvVars", "classEnvVars.html", [
-      [ "EnvLoader", "classEnvLoader.html", null ]
-    ] ],
-    [ "FrontEndConfig", "structFrontEndConfig.html", null ],
     [ "api::v2::GateKeeper", "classapi_1_1v2_1_1GateKeeper.html", null ],
     [ "std::hash&lt; api::v2::ColumnInfo &gt;", "structstd_1_1hash_3_01api_1_1v2_1_1ColumnInfo_01_4.html", null ],
     [ "std::hash&lt; std::pair&lt; std::string, std::string &gt; &gt;", "structstd_1_1hash_3_01std_1_1pair_3_01std_1_1string_00_01std_1_1string_01_4_01_4.html", null ],
@@ -118,10 +109,7 @@ var hierarchy =
       [ "api::v2::TokenManager", "classapi_1_1v2_1_1TokenManager.html", null ]
     ] ],
     [ "MemCache&lt; T, ClockT &gt;", "classMemCache.html", null ],
-    [ "Message", "classMessage.html", null ],
     [ "PasswordCrypt", "classPasswordCrypt.html", null ],
-    [ "PasswordWorkerConfig", "structPasswordWorkerConfig.html", null ],
-    [ "PermissionCacheConfig", "structPermissionCacheConfig.html", null ],
     [ "api::v2::PermissionManager", "classapi_1_1v2_1_1PermissionManager.html", null ],
     [ "api::v2::PermissionManagerPrivate", "classapi_1_1v2_1_1PermissionManagerPrivate.html", null ],
     [ "Permissions", "structPermissions.html", null ],
@@ -133,7 +121,6 @@ var hierarchy =
     ] ],
     [ "Search_t", "classSearch__t.html", null ],
     [ "Server", "classServer.html", null ],
-    [ "ServerConfig", "structServerConfig.html", null ],
     [ "ServiceControllerBase", "classServiceControllerBase.html", [
       [ "ServiceController< T >", "classServiceController.html", null ]
     ] ],
@@ -143,9 +130,7 @@ var hierarchy =
     [ "api::v2::Types::StaffData", "structapi_1_1v2_1_1Types_1_1StaffData.html", null ],
     [ "Store", "classStore.html", null ],
     [ "api::v2::Types::SuspendData", "structapi_1_1v2_1_1Types_1_1SuspendData.html", null ],
-    [ "Testing", "structTesting.html", null ],
     [ "ThreadSafeQueue&lt; T &gt;", "classThreadSafeQueue.html", null ],
-    [ "TokenManagerParameters", "structTokenManagerParameters.html", null ],
     [ "Update_t", "classUpdate__t.html", null ],
     [ "Validator", "classValidator.html", null ],
     [ "WatchDog", "classWatchDog.html", null ],

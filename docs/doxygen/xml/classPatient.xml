@@ -152,7 +152,7 @@
 <parametername>T</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A type accepted by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref>, e.g. <ref refid="namespaceapi_1_1v2_1_1Types_1a3c62a5c40f89f4df780a0aa64a374461" kindref="member">api::v2::Types::Create_t</ref> or <ref refid="classData__t" kindref="compound">Data_t</ref>. </para>
+<para>A type accepted by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref>, e.g. <ref refid="namespaceapi_1_1v2_1_1Types_1a6fa63bd25d7f545aad8e21d39edfaed3" kindref="member">api::v2::Types::Create_t</ref> or <ref refid="classData__t" kindref="compound">Data_t</ref>. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -239,7 +239,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="src/entities/services/clinics/patient/patient.hpp" line="177" column="17" bodyfile="src/entities/services/clinics/patient/patient.hpp" bodystart="177" bodyend="189"/>
-        <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="220" endline="222">Entity::getData</references>
+        <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="222" endline="224">Entity::getData</references>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">

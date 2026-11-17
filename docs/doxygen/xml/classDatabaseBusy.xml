@@ -25,7 +25,7 @@
 <parametername direction="in">what</parametername>
 </parameternamelist>
 <parameterdescription>
-<para><ref refid="classMessage" kindref="compound">Message</ref> describing the busy condition. </para>
+<para>Message describing the busy condition. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>

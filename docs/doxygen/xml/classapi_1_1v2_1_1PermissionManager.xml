@@ -1297,7 +1297,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="347" column="10" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="251" bodyend="269"/>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3e7c77aa55023f9d5ccc345e7b68f2ab" compoundref="permissionmanager__private_8hpp" startline="306" endline="357">api::v2::PermissionManagerPrivate::getPermissionsOfEntity</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3e7c77aa55023f9d5ccc345e7b68f2ab" compoundref="permissionmanager__private_8hpp" startline="307" endline="358">api::v2::PermissionManagerPrivate::getPermissionsOfEntity</references>
         <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a64b26a6beda50b382d489eb1459f907e">api::v2::PermissionManagerPrivate::isOwnerOrAdmin</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a984d7b5d477fa1a100f742adda535fb3">canDeleteAsync</referencedby>
       </memberdef>
@@ -1333,7 +1333,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="355" column="18" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="691" bodyend="708"/>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a070d79b55b8f3262de2b815a636defd7" compoundref="permissionmanager__private_8hpp" startline="382" endline="430">api::v2::PermissionManagerPrivate::getPermissionsOfEntityCoro</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a070d79b55b8f3262de2b815a636defd7" compoundref="permissionmanager__private_8hpp" startline="384" endline="433">api::v2::PermissionManagerPrivate::getPermissionsOfEntityCoro</references>
         <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a64b26a6beda50b382d489eb1459f907e">api::v2::PermissionManagerPrivate::isOwnerOrAdmin</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a984d7b5d477fa1a100f742adda535fb3">canDeleteAsync</referencedby>
       </memberdef>

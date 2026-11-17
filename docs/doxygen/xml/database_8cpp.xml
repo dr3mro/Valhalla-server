@@ -19,66 +19,8 @@
     <includes local="no">utility</includes>
     <includes refid="controller_8hpp" local="yes">controllers/base/controller/controller.hpp</includes>
     <includes refid="utils_2global_2types_8hpp" local="yes">utils/global/types.hpp</includes>
-    <includes refid="message_8hpp" local="yes">message/message.hpp</includes>
+    <includes local="yes">message/message.hpp</includes>
     <incdepgraph>
-      <node id="27">
-        <label>configurator/configurator.hpp</label>
-        <link refid="configurator_8hpp"/>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-      </node>
-      <node id="32">
-        <label>defaults.hpp</label>
-        <link refid="defaults_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-      </node>
-      <node id="29">
-        <label>configurator/envloader/envloader.hpp</label>
-        <link refid="envloader_8hpp"/>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-      </node>
-      <node id="30">
-        <label>envvars/envvars.hpp</label>
-        <link refid="envvars_8hpp"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-      </node>
       <node id="20">
         <label>controllers/base/controller/controller.hpp</label>
         <link refid="controller_8hpp"/>
@@ -110,29 +52,29 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="53" relation="include">
-        </childnode>
-        <childnode refid="62" relation="include">
-        </childnode>
-        <childnode refid="64" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
-        </childnode>
-        <childnode refid="74" relation="include">
-        </childnode>
-        <childnode refid="60" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="58" relation="include">
         </childnode>
-        <childnode refid="87" relation="include">
+        <childnode refid="60" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
         </childnode>
       </node>
       <node id="24">
@@ -168,31 +110,31 @@
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
       </node>
-      <node id="33">
+      <node id="28">
         <label>database/asyncdbclient.hpp</label>
         <link refid="asyncdbclient_8hpp"/>
-        <childnode refid="34" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -201,10 +143,10 @@
         <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="35">
+      <node id="30">
         <label>database/asyncresultmapper.hpp</label>
         <link refid="asyncresultmapper_8hpp"/>
-        <childnode refid="36" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -215,14 +157,14 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="37">
+      <node id="32">
         <label>database/asyncsqlbinder.hpp</label>
         <link refid="asyncsqlbinder_8hpp"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
         <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -230,7 +172,7 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -270,7 +212,7 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -299,7 +241,7 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="41">
+      <node id="36">
         <label>database/databasebusy.hpp</label>
         <link refid="databasebusy_8hpp"/>
         <childnode refid="23" relation="include">
@@ -307,17 +249,17 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="42">
+      <node id="37">
         <label>database/databasehandler.hpp</label>
         <link refid="databasehandler_8hpp"/>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="43">
+      <node id="38">
         <label>database/dbprobe.hpp</label>
         <link refid="dbprobe_8hpp"/>
       </node>
-      <node id="52">
+      <node id="48">
         <label>entities/base/base.hpp</label>
         <link refid="base_8hpp"/>
         <childnode refid="3" relation="include">
@@ -331,7 +273,7 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="63">
+      <node id="59">
         <label>entities/base/case.hpp</label>
         <link refid="case_8hpp"/>
         <childnode refid="14" relation="include">
@@ -342,25 +284,25 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="60" relation="include">
+        <childnode refid="56" relation="include">
         </childnode>
       </node>
-      <node id="47">
+      <node id="43">
         <label>entities/base/client.hpp</label>
         <link refid="client_8hpp"/>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="50" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -372,31 +314,31 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="53" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="60" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="56" relation="include">
         </childnode>
       </node>
-      <node id="51">
+      <node id="47">
         <label>entities/base/entity.hpp</label>
         <link refid="entity_8hpp"/>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="50" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -404,35 +346,35 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="53" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
       </node>
-      <node id="53">
+      <node id="49">
         <label>entities/base/types.hpp</label>
         <link refid="entities_2base_2types_8hpp"/>
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="54" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -458,22 +400,22 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="57" relation="include">
+        <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
-        <childnode refid="58" relation="include">
+        <childnode refid="54" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="59" relation="include">
+        <childnode refid="55" relation="include">
         </childnode>
       </node>
-      <node id="62">
+      <node id="58">
         <label>entities/services/clinics/patient/patient.hpp</label>
         <link refid="patient_8hpp"/>
         <childnode refid="14" relation="include">
@@ -490,29 +432,29 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="63" relation="include">
+        <childnode refid="59" relation="include">
         </childnode>
-        <childnode refid="53" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
       </node>
-      <node id="66">
+      <node id="62">
         <label>gatekeeper/dosdetector/dosdetector.hpp</label>
         <link refid="dosdetector_8hpp"/>
-        <childnode refid="67" relation="include">
+        <childnode refid="63" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="64" relation="include">
         </childnode>
-        <childnode refid="68" relation="include">
+        <childnode refid="65" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="69" relation="include">
+        <childnode refid="66" relation="include">
         </childnode>
-        <childnode refid="70" relation="include">
+        <childnode refid="67" relation="include">
         </childnode>
-        <childnode refid="71" relation="include">
+        <childnode refid="68" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -524,19 +466,19 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
       </node>
-      <node id="64">
+      <node id="60">
         <label>gatekeeper/gatekeeper.hpp</label>
         <link refid="gatekeeper_8hpp"/>
-        <childnode refid="65" relation="include">
+        <childnode refid="61" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -552,35 +494,35 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="66" relation="include">
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
         </childnode>
         <childnode refid="72" relation="include">
         </childnode>
         <childnode refid="75" relation="include">
         </childnode>
-        <childnode refid="78" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
-        <childnode refid="86" relation="include">
+        <childnode refid="79" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
         </childnode>
         <childnode refid="74" relation="include">
         </childnode>
-        <childnode refid="76" relation="include">
-        </childnode>
-        <childnode refid="58" relation="include">
-        </childnode>
-        <childnode refid="77" relation="include">
-        </childnode>
       </node>
-      <node id="79">
+      <node id="76">
         <label>gatekeeper/keeprbase/keeprbase.hpp</label>
         <link refid="keeprbase_8hpp"/>
-        <childnode refid="80" relation="include">
+        <childnode refid="77" relation="include">
         </childnode>
-        <childnode refid="81" relation="include">
+        <childnode refid="78" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -596,14 +538,14 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+        <childnode refid="79" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
       </node>
-      <node id="57">
+      <node id="53">
         <label>gatekeeper/passwordcrypt/passwordcrypt.hpp</label>
         <link refid="passwordcrypt_8hpp"/>
         <childnode refid="9" relation="include">
@@ -611,19 +553,19 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="72">
+      <node id="69">
         <label>gatekeeper/passwordcrypt/passwordworker.hpp</label>
         <link refid="passwordworker_8hpp"/>
         <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="70" relation="include">
         </childnode>
-        <childnode refid="74" relation="include">
+        <childnode refid="71" relation="include">
         </childnode>
       </node>
-      <node id="75">
+      <node id="72">
         <label>gatekeeper/permissionmanager/permissionmanager.hpp</label>
         <link refid="permissionmanager_8hpp"/>
         <childnode refid="5" relation="include">
@@ -632,19 +574,19 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="76" relation="include">
+        <childnode refid="73" relation="include">
         </childnode>
-        <childnode refid="58" relation="include">
+        <childnode refid="54" relation="include">
         </childnode>
-        <childnode refid="77" relation="include">
+        <childnode refid="74" relation="include">
         </childnode>
       </node>
-      <node id="78">
+      <node id="75">
         <label>gatekeeper/sessionmanager/sessionmanager.hpp</label>
         <link refid="sessionmanager_8hpp"/>
-        <childnode refid="28" relation="include">
+        <childnode refid="64" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -652,33 +594,33 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
         </childnode>
         <childnode refid="79" relation="include">
         </childnode>
-        <childnode refid="57" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+        <childnode refid="71" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
-        </childnode>
-        <childnode refid="74" relation="include">
-        </childnode>
-        <childnode refid="83" relation="include">
+        <childnode refid="80" relation="include">
         </childnode>
       </node>
-      <node id="86">
+      <node id="83">
         <label>gatekeeper/tokenmanager/tokenmanager.hpp</label>
         <link refid="tokenmanager_8hpp"/>
-        <childnode refid="39" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="79" relation="include">
+        <childnode refid="76" relation="include">
         </childnode>
       </node>
-      <node id="82">
+      <node id="79">
         <label>gatekeeper/types.hpp</label>
         <link refid="gatekeeper_2types_8hpp"/>
-        <childnode refid="28" relation="include">
+        <childnode refid="64" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -687,7 +629,7 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="44">
+      <node id="40">
         <label>store/store.hpp</label>
         <link refid="store_8hpp"/>
         <childnode refid="25" relation="include">
@@ -702,48 +644,48 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
       </node>
-      <node id="74">
+      <node id="71">
         <label>utils/global/callback.hpp</label>
         <link refid="callback_8hpp"/>
-        <childnode refid="70" relation="include">
+        <childnode refid="67" relation="include">
         </childnode>
       </node>
-      <node id="76">
+      <node id="73">
         <label>utils/global/concepts.hpp</label>
         <link refid="concepts_8hpp"/>
         <childnode refid="18" relation="include">
         </childnode>
       </node>
-      <node id="61">
+      <node id="57">
         <label>utils/global/errorstatus.hpp</label>
         <link refid="errorstatus_8hpp"/>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="58" relation="include">
+        <childnode refid="54" relation="include">
         </childnode>
       </node>
-      <node id="60">
+      <node id="56">
         <label>utils/global/global.hpp</label>
         <link refid="global_8hpp"/>
-        <childnode refid="61" relation="include">
+        <childnode refid="57" relation="include">
         </childnode>
       </node>
-      <node id="58">
+      <node id="54">
         <label>utils/global/http.hpp</label>
         <link refid="http_8hpp"/>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
       </node>
-      <node id="77">
+      <node id="74">
         <label>utils/global/requester.hpp</label>
         <link refid="requester_8hpp"/>
         <childnode refid="5" relation="include">
@@ -759,46 +701,38 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="87">
+      <node id="84">
         <label>utils/jsonhelper/jsonhelper.hpp</label>
         <link refid="jsonhelper_8hpp"/>
-        <childnode refid="88" relation="include">
+        <childnode refid="85" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="83">
+      <node id="80">
         <label>utils/memcache/memcache.hpp</label>
         <link refid="memcache_8hpp"/>
-        <childnode refid="28" relation="include">
+        <childnode refid="64" relation="include">
         </childnode>
-        <childnode refid="68" relation="include">
+        <childnode refid="65" relation="include">
         </childnode>
-        <childnode refid="84" relation="include">
+        <childnode refid="81" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="85" relation="include">
+        <childnode refid="82" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="31">
-        <label>message/message.hpp</label>
-        <link refid="message_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-      </node>
-      <node id="59">
+      <node id="55">
         <label>validator/validator.hpp</label>
         <link refid="validator_8hpp"/>
-        <childnode refid="49" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -806,36 +740,39 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="58" relation="include">
+        <childnode refid="54" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="49">
+      <node id="45">
         <label>algorithm</label>
       </node>
       <node id="25">
         <label>atomic</label>
       </node>
-      <node id="54">
+      <node id="50">
         <label>cctype</label>
       </node>
-      <node id="28">
+      <node id="64">
         <label>chrono</label>
       </node>
-      <node id="73">
+      <node id="70">
         <label>concurrency/boundedexecutor.hpp</label>
       </node>
-      <node id="68">
+      <node id="65">
         <label>condition_variable</label>
       </node>
-      <node id="55">
+      <node id="27">
+        <label>configurator/configurator.hpp</label>
+      </node>
+      <node id="51">
         <label>cppcodec/base64_rfc4648.hpp</label>
       </node>
       <node id="22">
@@ -847,22 +784,22 @@
       <node id="15">
         <label>cstdlib</label>
       </node>
-      <node id="69">
+      <node id="66">
         <label>deque</label>
       </node>
-      <node id="65">
+      <node id="61">
         <label>drogon/DrTemplateBase.h</label>
       </node>
-      <node id="34">
+      <node id="29">
         <label>drogon/orm/DbClient.h</label>
       </node>
-      <node id="36">
+      <node id="31">
         <label>drogon/orm/Result.h</label>
       </node>
-      <node id="38">
+      <node id="33">
         <label>drogon/orm/SqlBinder.h</label>
       </node>
-      <node id="39">
+      <node id="34">
         <label>drogon/utils/coroutine.h</label>
       </node>
       <node id="16">
@@ -877,16 +814,16 @@
       <node id="21">
         <label>fmt/ranges.h</label>
       </node>
-      <node id="70">
+      <node id="67">
         <label>functional</label>
       </node>
-      <node id="71">
+      <node id="68">
         <label>future</label>
       </node>
-      <node id="50">
+      <node id="46">
         <label>iterator</label>
       </node>
-      <node id="88">
+      <node id="85">
         <label>json/value.h</label>
       </node>
       <node id="6">
@@ -895,17 +832,20 @@
       <node id="7">
         <label>jsoncons/json.hpp</label>
       </node>
-      <node id="80">
+      <node id="77">
         <label>jwt-cpp/jwt.h</label>
       </node>
-      <node id="81">
+      <node id="78">
         <label>jwt-cpp/traits/kazuho-picojson/traits.h</label>
       </node>
-      <node id="84">
+      <node id="81">
         <label>list</label>
       </node>
       <node id="8">
         <label>memory</label>
+      </node>
+      <node id="39">
+        <label>message/message.hpp</label>
       </node>
       <node id="26">
         <label>mutex</label>
@@ -925,10 +865,10 @@
       <node id="17">
         <label>string_view</label>
       </node>
-      <node id="48">
+      <node id="44">
         <label>sys/types.h</label>
       </node>
-      <node id="85">
+      <node id="82">
         <label>thread</label>
       </node>
       <node id="4">
@@ -937,10 +877,10 @@
       <node id="18">
         <label>type_traits</label>
       </node>
-      <node id="45">
+      <node id="41">
         <label>typeindex</label>
       </node>
-      <node id="46">
+      <node id="42">
         <label>unordered_map</label>
       </node>
       <node id="12">
@@ -949,13 +889,13 @@
       <node id="19">
         <label>utility</label>
       </node>
-      <node id="56">
+      <node id="52">
         <label>variant</label>
       </node>
-      <node id="40">
+      <node id="35">
         <label>vector</label>
       </node>
-      <node id="67">
+      <node id="63">
         <label>xxhash.h</label>
       </node>
     </incdepgraph>
@@ -978,8 +918,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.cpp" line="530" column="1" declfile="src/database/database.cpp" declline="530" declcolumn="1"/>
-        <references refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" compoundref="database_8cpp" startline="495" endline="523">Database::doSimpleQuery</references>
+        <location file="src/database/database.cpp" line="531" column="1" declfile="src/database/database.cpp" declline="531" declcolumn="1"/>
+        <references refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" compoundref="database_8cpp" startline="496" endline="524">Database::doSimpleQuery</references>
       </memberdef>
       <memberdef kind="function" id="database_8cpp_1a93a7b5be58f322ccae0d3b1564eb4011" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template std::optional&lt; jsoncons::json &gt;</type>
@@ -999,8 +939,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.cpp" line="532" column="1" declfile="src/database/database.cpp" declline="532" declcolumn="1"/>
-        <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="356" endline="484">Database::executeQuery</references>
+        <location file="src/database/database.cpp" line="534" column="1" declfile="src/database/database.cpp" declline="534" declcolumn="1"/>
+        <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="357" endline="485">Database::executeQuery</references>
       </memberdef>
       <memberdef kind="function" id="database_8cpp_1adea7d8276ce4e36cb3acb79558b4204d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template std::optional&lt; jsoncons::json &gt;</type>
@@ -1020,8 +960,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.cpp" line="535" column="1" declfile="src/database/database.cpp" declline="535" declcolumn="1"/>
-        <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="356" endline="484">Database::executeQuery</references>
+        <location file="src/database/database.cpp" line="538" column="1" declfile="src/database/database.cpp" declline="538" declcolumn="1"/>
+        <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="357" endline="485">Database::executeQuery</references>
       </memberdef>
       <memberdef kind="function" id="database_8cpp_1abf10deee0aec368650df99ba1df909b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>template std::optional&lt; jsoncons::json::array &gt;</type>
@@ -1041,8 +981,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.cpp" line="538" column="1" declfile="src/database/database.cpp" declline="538" declcolumn="1"/>
-        <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="356" endline="484">Database::executeQuery</references>
+        <location file="src/database/database.cpp" line="542" column="1" declfile="src/database/database.cpp" declline="542" declcolumn="1"/>
+        <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="357" endline="485">Database::executeQuery</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1141,7 +1081,7 @@
 <codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//<sp/>api::v2::ColumnInfo,<sp/>filled<sp/>in<sp/>by<sp/>getTableSchema().</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utils_2global_2types_8hpp" kindref="compound">utils/global/types.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Message::{Critical,Info,Error}Message<sp/>used<sp/>for<sp/>all<sp/>logging<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">message/message.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;message/message.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="77"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="78"><highlight class="comment"><sp/>*<sp/>Takes<sp/>ownership<sp/>of<sp/>a<sp/>connection,<sp/>validates<sp/>it<sp/>and<sp/>caches<sp/>its<sp/>connection</highlight></codeline>
@@ -1175,7 +1115,7 @@
 <codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classDatabase_1adec58b4f1a163f78c57d6631c5caf6b0" kindref="member">connection_info</ref><sp/>=<sp/><ref refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" kindref="member">connection</ref>-&gt;connection_string();</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;Exception<sp/>caught<sp/>during<sp/>database<sp/>connection:<sp/>{}&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e.what()));<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>exact<sp/>driver<sp/>error<sp/>for<sp/>diagnosis.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -1185,7 +1125,7 @@
 <codeline lineno="116"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Logs<sp/>that<sp/>this<sp/>connection<sp/>wrapper<sp/>is<sp/>being<sp/>destroyed.</highlight></codeline>
 <codeline lineno="117"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="118" refid="classDatabase_1a84d399a2ad58d69daab9b05330e1316d" refkind="member"><highlight class="normal"><ref refid="classDatabase_1a84d399a2ad58d69daab9b05330e1316d" kindref="member">Database::~Database</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><ref refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" kindref="member">Message::InfoMessage</ref>(</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/>Message::InfoMessage(</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;Database<sp/>connection<sp/>{}<sp/>is<sp/>now<sp/>exterminated.&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">this</highlight><highlight class="normal">)));</highlight></codeline>
 <codeline lineno="122"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>Logging<sp/>the<sp/>address<sp/>makes<sp/>each<sp/>connection&apos;s<sp/>lifetime<sp/>traceable.</highlight><highlight class="normal"></highlight></codeline>
@@ -1232,7 +1172,7 @@
 <codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>from<sp/>&quot;not<sp/>found&quot;<sp/>for<sp/>callers.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result[0][0].as&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">&gt;();</highlight></codeline>
 <codeline lineno="165"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;Error<sp/>executing<sp/>query:<sp/>{}&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e.what()));<sp/><sp/></highlight><highlight class="comment">//<sp/>Still<sp/>log<sp/>it<sp/>so<sp/>the<sp/>failure<sp/>is<sp/>visible<sp/>in</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>logs.</highlight><highlight class="normal"></highlight></codeline>
@@ -1292,7 +1232,7 @@
 <codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>failure<sp/>leaves<sp/>the<sp/>old<sp/>pointer<sp/>in<sp/>place;<sp/>report<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classDatabase_1a5941bc7b94fbacc46dd8acc818712afd" kindref="member">check_connection</ref>();</highlight></codeline>
 <codeline lineno="225"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(</highlight></codeline>
 <codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>reconnect<sp/>to<sp/>database,{}&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e.what()));<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>driver&apos;s<sp/>reason<sp/>for<sp/>the<sp/>reconnect</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
@@ -1361,7 +1301,7 @@
 <codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>failed<sp/>query<sp/>must<sp/>not<sp/>crash<sp/>the<sp/>caller.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>schema;</highlight></codeline>
 <codeline lineno="294"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(</highlight></codeline>
 <codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;Error<sp/>executing<sp/>query:<sp/>{}&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e.what()));<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>failure<sp/>with<sp/>the<sp/>driver&apos;s<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>the<sp/>empty<sp/>optional<sp/>to<sp/>signal<sp/>&quot;schema</highlight><highlight class="normal"></highlight></codeline>
@@ -1401,7 +1341,7 @@
 <codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>failed<sp/>query<sp/>must<sp/>not<sp/>crash<sp/>the<sp/>caller.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tables;</highlight></codeline>
 <codeline lineno="334"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(fmt::format(</highlight><highlight class="stringliteral">&quot;Error<sp/>executing<sp/>query:<sp/>{}&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(fmt::format(</highlight><highlight class="stringliteral">&quot;Error<sp/>executing<sp/>query:<sp/>{}&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e.what()));<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Signal<sp/>that<sp/>the<sp/>table<sp/>list<sp/>could<sp/>not<sp/>be<sp/>read.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="338"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -1421,192 +1361,197 @@
 <codeline lineno="352"><highlight class="comment"><sp/>*<sp/>specialisation<sp/>an<sp/>empty<sp/>result<sp/>yields<sp/>a<sp/>default-constructed<sp/>JSON<sp/>value,<sp/>not</highlight></codeline>
 <codeline lineno="353"><highlight class="comment"><sp/>*<sp/>`std::nullopt`<sp/>(only<sp/>exceptions<sp/>produce<sp/>`std::nullopt`).</highlight></codeline>
 <codeline lineno="354"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="355"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>jsonType,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TransactionType&gt;</highlight></codeline>
-<codeline lineno="356" refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" refkind="member"><highlight class="normal">std::optional&lt;jsonType&gt;<sp/><ref refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" kindref="member">Database::executeQuery</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><sp/>query,</highlight></codeline>
-<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;<sp/>params)<sp/>{</highlight></codeline>
-<codeline lineno="358"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(std::is_same_v&lt;jsonType,<sp/>jsoncons::json&gt;<sp/>||</highlight></codeline>
-<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::is_same_v&lt;jsonType,<sp/>jsoncons::json::array&gt;,</highlight></codeline>
-<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Unsupported<sp/>jsonType<sp/>specialization&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Fail<sp/>at<sp/>compile<sp/>time</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>a<sp/>caller<sp/>passes</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>an<sp/>unsupported<sp/>JSON</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>shape.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="364"><highlight class="normal"></highlight></codeline>
-<codeline lineno="365"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Any<sp/>conversion<sp/>or<sp/>SQL<sp/>error<sp/>becomes<sp/>an<sp/>empty<sp/>optional<sp/>below.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="366"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/>pqxx::result<sp/>results;<sp/><sp/></highlight><highlight class="comment">//<sp/>Kept<sp/>outside<sp/>the<sp/>transaction<sp/>scope<sp/>so<sp/>rows</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>survive<sp/>after<sp/>it<sp/>closes.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="369"><highlight class="normal"></highlight></codeline>
-<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TransactionType<sp/>txn(</highlight></codeline>
-<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" kindref="member">connection</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Uses<sp/>either<sp/>a<sp/>work<sp/>or<sp/>a<sp/>nontransaction,<sp/>chosen</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>by<sp/>the<sp/>template<sp/>argument.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="374"><highlight class="normal"></highlight></codeline>
-<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>results<sp/>=<sp/>txn.exec(pqxx::zview(query),</highlight></codeline>
-<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>params);<sp/><sp/></highlight><highlight class="comment">//<sp/>Run<sp/>the<sp/>SQL<sp/>with<sp/>the<sp/>parameters<sp/>bound</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>separately.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="378"><highlight class="normal"></highlight></codeline>
-<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>a<sp/>real<sp/>transaction</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>needs<sp/>an<sp/>explicit<sp/>commit;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>check<sp/>happens<sp/>at</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>compile<sp/>time.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>(std::is_same_v&lt;TransactionType,<sp/>pqxx::work&gt;)<sp/>{</highlight></codeline>
-<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>txn.commit();<sp/><sp/></highlight><highlight class="comment">//<sp/>Make<sp/>the<sp/>writes<sp/>permanent<sp/>for<sp/>work</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>transactions.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="388"><highlight class="normal"></highlight></codeline>
-<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/>jsonType<sp/>reply;<sp/><sp/></highlight><highlight class="comment">//<sp/>Either<sp/>a<sp/>JSON<sp/>array<sp/>to<sp/>fill,<sp/>or<sp/>a<sp/>default<sp/>JSON</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>object<sp/>for<sp/>the<sp/>single-row<sp/>case.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="391"><highlight class="normal"></highlight></codeline>
-<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Walk<sp/>every<sp/>row<sp/>returned<sp/>by<sp/>the<sp/>query.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>row<sp/>:<sp/>results)<sp/>{</highlight></codeline>
-<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>fresh<sp/>object<sp/>per<sp/>row,<sp/>so<sp/>no<sp/>field<sp/>can<sp/>leak<sp/>from<sp/>one<sp/>row<sp/>into</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>next.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>jsoncons::json<sp/>object;<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>one<sp/>JSON<sp/>object<sp/>for<sp/>this<sp/>row.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="397"><highlight class="normal"></highlight></codeline>
-<codeline lineno="398"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Walk<sp/>every<sp/>column<sp/>in<sp/>the<sp/>current<sp/>row.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>field<sp/>:<sp/>row)<sp/>{</highlight></codeline>
-<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>field_name<sp/>=</highlight></codeline>
-<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.name();<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>view<sp/>avoids<sp/>copying<sp/>the<sp/>column<sp/>name;<sp/>it</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>stays<sp/>valid<sp/>for<sp/>the<sp/>row&apos;s<sp/>lifetime.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>field_type<sp/>=</highlight></codeline>
-<codeline lineno="404"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.type();<sp/><sp/></highlight><highlight class="comment">//<sp/>PostgreSQL<sp/>type<sp/>OID,<sp/>used<sp/>below<sp/>to<sp/>pick</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>right<sp/>conversion.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="406"><highlight class="normal"></highlight></codeline>
-<codeline lineno="407"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>SQL<sp/>NULL<sp/>has<sp/>to<sp/>become<sp/>JSON<sp/>null,<sp/>not</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="408"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>string<sp/>&quot;null&quot;.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="409"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(field.is_null())<sp/>{</highlight></codeline>
-<codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[field_name]<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Represent<sp/>a<sp/>SQL<sp/>NULL<sp/>explicitly<sp/>in</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="411"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>JSON<sp/>output.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Dispatch<sp/>on<sp/>the<sp/>column&apos;s<sp/>OID<sp/>so</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>values<sp/>keep<sp/>their<sp/>proper<sp/>JSON<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="415"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(field_type)<sp/>{</highlight></codeline>
-<codeline lineno="416"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDatabase_1a0be5b2122215021626f1150c89302594" kindref="member">TEXT</ref>:<sp/><sp/></highlight><highlight class="comment">//<sp/>TEXT<sp/>or<sp/>VARCHAR:<sp/>database<sp/>text<sp/>becomes<sp/>a</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="417"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>JSON<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="418"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[field_name]<sp/>=</highlight></codeline>
-<codeline lineno="419"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.as&lt;std::string&gt;();<sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>the<sp/>field<sp/>to<sp/>a<sp/>C++</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="420"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>string,<sp/>which<sp/>jsoncons</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="421"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>stores<sp/>as<sp/>a<sp/>JSON<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="422"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>on<sp/>to<sp/>the<sp/>next<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="423"><highlight class="normal"></highlight></codeline>
-<codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDatabase_1ad09259c9f7ccae773cbd03b9bf1eb6e6" kindref="member">INTEGER</ref>:<sp/><sp/></highlight><highlight class="comment">//<sp/>INTEGER:<sp/>keep<sp/>it<sp/>a<sp/>number<sp/>rather<sp/>than</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="425"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="426"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[field_name]<sp/>=<sp/>field.as&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;();<sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>to<sp/>int<sp/>so<sp/>the</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>JSON<sp/>value<sp/>is<sp/>numeric.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>on<sp/>to<sp/>the<sp/>next<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="429"><highlight class="normal"></highlight></codeline>
-<codeline lineno="430"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDatabase_1a9647c8b7198f626b7d461e472fa70f9b" kindref="member">BOOLEAN</ref>:<sp/><sp/></highlight><highlight class="comment">//<sp/>BOOLEAN:<sp/>keep<sp/>the<sp/>true/false<sp/>meaning.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="431"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[field_name]<sp/>=<sp/>field.as&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">&gt;();<sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>to<sp/>a<sp/>C++<sp/>bool,</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="432"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>which<sp/>becomes<sp/>a<sp/>JSON</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="433"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>boolean.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="434"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>on<sp/>to<sp/>the<sp/>next<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="435"><highlight class="normal"></highlight></codeline>
-<codeline lineno="436"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDatabase_1a8fad4151f7565d3b3f57d53d50080c05" kindref="member">JSON</ref>:<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>JSON:<sp/>the<sp/>field<sp/>holds<sp/>JSON<sp/>text<sp/>that</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="437"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>should<sp/>stay<sp/>structured.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="438"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDatabase_1a3f5fa0c674ad45ee587e735cb37bdb4b" kindref="member">JSONB</ref>:<sp/><sp/></highlight><highlight class="comment">//<sp/>JSONB:<sp/>binary<sp/>JSON,<sp/>delivered<sp/>as<sp/>text<sp/>by</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="439"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>libpqxx,<sp/>parsed<sp/>the<sp/>same<sp/>way.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="440"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[field_name]<sp/>=<sp/>jsoncons::json::parse(</highlight></codeline>
-<codeline lineno="441"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.as&lt;std::string&gt;());<sp/><sp/></highlight><highlight class="comment">//<sp/>Parse<sp/>the<sp/>text<sp/>so</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="442"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>result<sp/>is<sp/>a</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="443"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>nested<sp/>JSON<sp/>value,</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="444"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>not<sp/>an<sp/>escaped</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="445"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="446"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>on<sp/>to<sp/>the<sp/>next<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="447"><highlight class="normal"></highlight></codeline>
-<codeline lineno="448"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>unknown<sp/>or<sp/>unhandled<sp/>types:<sp/>fall</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="449"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>back<sp/>safely<sp/>instead<sp/>of<sp/>throwing.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="450"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[field_name]<sp/>=<sp/>field.c_str();<sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>to<sp/>string</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="451"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>representation,<sp/>so<sp/>no<sp/>data<sp/>is<sp/>lost<sp/>for<sp/>unfamiliar</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="452"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>on<sp/>to<sp/>the<sp/>next<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="454"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="455"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="456"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="457"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>the<sp/>array</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="458"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>shape,<sp/>accumulate</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="459"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>every<sp/>row<sp/>at</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="460"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>compile<sp/>time.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="461"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>(std::is_same_v&lt;jsonType,<sp/>jsoncons::json::array&gt;)<sp/>{</highlight></codeline>
-<codeline lineno="462"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reply.push_back(</highlight></codeline>
-<codeline lineno="463"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">));<sp/><sp/></highlight><highlight class="comment">//<sp/>Transfer<sp/>this<sp/>row&apos;s<sp/>object<sp/>into<sp/>the</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="464"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>result<sp/>array<sp/>without<sp/>copying.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="465"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="466"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>object;<sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>the<sp/>single-object<sp/>shape,<sp/>return<sp/>the<sp/>first</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="467"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>row<sp/>immediately<sp/>and<sp/>ignore<sp/>the<sp/>rest.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="468"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="469"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="470"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>the<sp/>array<sp/>shape,<sp/>return<sp/>all<sp/>collected<sp/>rows<sp/>after</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="471"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>loop.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="472"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>SQL<sp/>or<sp/>conversion<sp/>error<sp/>must<sp/>not</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="473"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>propagate<sp/>to<sp/>the<sp/>caller.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="474"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>reply;</highlight></codeline>
-<codeline lineno="475"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="476"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
-<codeline lineno="477"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>executing<sp/>query:&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>a<sp/>short<sp/>marker<sp/>first.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="478"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" kindref="member">Message::InfoMessage</ref>(query);<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>exact<sp/>SQL<sp/>to<sp/>make<sp/>the<sp/>failing</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="479"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>statement<sp/>identifiable.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="480"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(</highlight></codeline>
-<codeline lineno="481"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>driver/conversion<sp/>error<sp/>itself.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="482"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="483"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Signal<sp/>failure<sp/>with<sp/>an<sp/>empty<sp/>optional.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="484"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="485"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="486"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="487"><highlight class="comment"><sp/>*<sp/>Executes<sp/>a<sp/>query<sp/>in<sp/>a<sp/>nontransaction<sp/>and<sp/>returns<sp/>a<sp/>single<sp/>scalar<sp/>value.</highlight></codeline>
-<codeline lineno="488"><highlight class="comment"><sp/>*<sp/>Reads<sp/>the<sp/>first<sp/>column<sp/>of<sp/>the<sp/>first<sp/>row;<sp/>an<sp/>empty<sp/>result<sp/>becomes</highlight></codeline>
-<codeline lineno="489"><highlight class="comment"><sp/>*<sp/>`std::nullopt`.<sp/>Template<sp/>parameter<sp/>T:<sp/>Target<sp/>scalar<sp/>type</highlight></codeline>
-<codeline lineno="490"><highlight class="comment"><sp/>*<sp/>(`as&lt;std::optional&lt;T&gt;&gt;()`<sp/>maps<sp/>SQL<sp/>NULL<sp/>to<sp/>`std::nullopt`).<sp/>query:<sp/>SQL<sp/>text</highlight></codeline>
-<codeline lineno="491"><highlight class="comment"><sp/>*<sp/>with<sp/>placeholders.<sp/>params:<sp/>Values<sp/>bound<sp/>to<sp/>those<sp/>placeholders.<sp/>Returns<sp/>The</highlight></codeline>
-<codeline lineno="492"><highlight class="comment"><sp/>*<sp/>value,<sp/>or<sp/>`std::nullopt`<sp/>on<sp/>empty<sp/>result<sp/>or<sp/>any<sp/>caught<sp/>exception.</highlight></codeline>
-<codeline lineno="493"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="494"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="495" refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" refkind="member"><highlight class="normal">std::optional&lt;T&gt;<sp/><ref refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" kindref="member">Database::doSimpleQuery</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><sp/>query,</highlight></codeline>
-<codeline lineno="496"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;<sp/>params)<sp/>{</highlight></codeline>
-<codeline lineno="497"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Guard<sp/>against<sp/>SQL<sp/>and<sp/>conversion<sp/>errors.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="498"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="499"><highlight class="normal"><sp/><sp/><sp/><sp/>pqxx::result<sp/>result;<sp/><sp/></highlight><highlight class="comment">//<sp/>Holds<sp/>rows<sp/>after<sp/>the<sp/>transaction<sp/>scope<sp/>ends.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="500"><highlight class="normal"></highlight></codeline>
-<codeline lineno="501"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="502"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>pqxx::nontransaction<sp/>txn(</highlight></codeline>
-<codeline lineno="503"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" kindref="member">connection</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>simple<sp/>lookup<sp/>needs<sp/>no<sp/>transaction.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="504"><highlight class="normal"></highlight></codeline>
-<codeline lineno="505"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>txn.exec(pqxx::zview(query),</highlight></codeline>
-<codeline lineno="506"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>params);<sp/><sp/></highlight><highlight class="comment">//<sp/>Run<sp/>the<sp/>query<sp/>with<sp/>bound<sp/>parameters.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="507"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="508"><highlight class="normal"></highlight></codeline>
-<codeline lineno="509"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result.empty()<sp/>?<sp/>std::nullopt</highlight></codeline>
-<codeline lineno="510"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>rows<sp/>means<sp/>no<sp/>value;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="511"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>optional<sp/>conversion</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="512"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>also<sp/>turns<sp/>a<sp/>SQL<sp/>NULL<sp/>into</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="513"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>nullopt.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="514"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>any<sp/>error<sp/>into<sp/>the<sp/>empty<sp/>result.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="515"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>result[0][0].as&lt;std::optional&lt;T&gt;&gt;();</highlight></codeline>
-<codeline lineno="516"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
-<codeline lineno="517"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight><highlight class="stringliteral">&quot;Error<sp/>executing<sp/>query:&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Marker<sp/>line<sp/>in<sp/>the<sp/>log.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="518"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" kindref="member">Message::InfoMessage</ref>(query);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>failing<sp/>SQL<sp/>statement.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="519"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>error<sp/>text<sp/>from<sp/>libpqxx.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="520"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Report<sp/>failure<sp/>to<sp/>the<sp/>caller.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="521"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>throw;<sp/><sp/>//<sp/>Rethrow<sp/>the<sp/>exception<sp/>to<sp/>indicate<sp/>failure</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="522"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="523"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="524"><highlight class="normal"></highlight></codeline>
-<codeline lineno="525"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Explicit<sp/>instantiations:<sp/>these<sp/>are<sp/>the<sp/>only<sp/>supported<sp/>specialisations<sp/>of<sp/>the</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="526"><highlight class="normal"></highlight><highlight class="comment">//<sp/>templates<sp/>defined<sp/>above,<sp/>provided<sp/>here<sp/>so<sp/>callers<sp/>link<sp/>against<sp/>them.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="527"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>std::optional&lt;uint64_t&gt;<sp/><ref refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" kindref="member">Database::doSimpleQuery&lt;uint64_t&gt;</ref>(</highlight></codeline>
-<codeline lineno="528"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;,</highlight></codeline>
-<codeline lineno="529"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;);<sp/><sp/></highlight><highlight class="comment">//<sp/>64-bit<sp/>integer<sp/>lookups<sp/>(ids,<sp/>counts).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="530" refid="database_8cpp_1af71e8706984c45b60a2cc047d2245d98" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" kindref="member">Database::doSimpleQuery&lt;std::string&gt;</ref>(</highlight></codeline>
-<codeline lineno="531"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;);<sp/><sp/></highlight><highlight class="comment">//<sp/>Text<sp/>lookups.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="532" refid="database_8cpp_1a93a7b5be58f322ccae0d3b1564eb4011" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;</highlight></codeline>
-<codeline lineno="533"><highlight class="normal"><ref refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" kindref="member">Database::executeQuery&lt;jsoncons::json, pqxx::nontransaction&gt;</ref>(</highlight></codeline>
-<codeline lineno="534"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;);<sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>row,<sp/>no<sp/>transaction.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="535" refid="database_8cpp_1adea7d8276ce4e36cb3acb79558b4204d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;</highlight></codeline>
-<codeline lineno="536"><highlight class="normal"><ref refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" kindref="member">Database::executeQuery&lt;jsoncons::json, pqxx::work&gt;</ref>(</highlight></codeline>
-<codeline lineno="537"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;);<sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>row,<sp/>committing<sp/>writes.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="538" refid="database_8cpp_1abf10deee0aec368650df99ba1df909b8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json::array&gt;</highlight></codeline>
-<codeline lineno="539"><highlight class="normal"><ref refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" kindref="member">Database::executeQuery&lt;jsoncons::json::array, pqxx::nontransaction&gt;</ref>(</highlight></codeline>
-<codeline lineno="540"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;);<sp/><sp/></highlight><highlight class="comment">//<sp/>All<sp/>rows,<sp/>no<sp/>transaction.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>jsonType,</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>TransactionType&gt;</highlight></codeline>
+<codeline lineno="357" refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" refkind="member"><highlight class="normal">std::optional&lt;jsonType&gt;<sp/><ref refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" kindref="member">Database::executeQuery</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><sp/>query,</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;<sp/>params)<sp/>{</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(std::is_same_v&lt;jsonType,<sp/>jsoncons::json&gt;<sp/>||</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::is_same_v&lt;jsonType,<sp/>jsoncons::json::array&gt;,</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Unsupported<sp/>jsonType<sp/>specialization&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Fail<sp/>at<sp/>compile<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>a<sp/>caller<sp/>passes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>an<sp/>unsupported<sp/>JSON</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>shape.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Any<sp/>conversion<sp/>or<sp/>SQL<sp/>error<sp/>becomes<sp/>an<sp/>empty<sp/>optional<sp/>below.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/>pqxx::result<sp/>results;<sp/><sp/></highlight><highlight class="comment">//<sp/>Kept<sp/>outside<sp/>the<sp/>transaction<sp/>scope<sp/>so<sp/>rows</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>survive<sp/>after<sp/>it<sp/>closes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TransactionType<sp/>txn(</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" kindref="member">connection</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Uses<sp/>either<sp/>a<sp/>work<sp/>or<sp/>a<sp/>nontransaction,<sp/>chosen</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>by<sp/>the<sp/>template<sp/>argument.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>results<sp/>=<sp/>txn.exec(pqxx::zview(query),</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>params);<sp/><sp/></highlight><highlight class="comment">//<sp/>Run<sp/>the<sp/>SQL<sp/>with<sp/>the<sp/>parameters<sp/>bound</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>separately.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="normal"></highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>a<sp/>real<sp/>transaction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>needs<sp/>an<sp/>explicit<sp/>commit;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>check<sp/>happens<sp/>at</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>compile<sp/>time.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>(std::is_same_v&lt;TransactionType,<sp/>pqxx::work&gt;)<sp/>{</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>txn.commit();<sp/><sp/></highlight><highlight class="comment">//<sp/>Make<sp/>the<sp/>writes<sp/>permanent<sp/>for<sp/>work</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>transactions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"></highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/>jsonType<sp/>reply;<sp/><sp/></highlight><highlight class="comment">//<sp/>Either<sp/>a<sp/>JSON<sp/>array<sp/>to<sp/>fill,<sp/>or<sp/>a<sp/>default<sp/>JSON</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>object<sp/>for<sp/>the<sp/>single-row<sp/>case.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="392"><highlight class="normal"></highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Walk<sp/>every<sp/>row<sp/>returned<sp/>by<sp/>the<sp/>query.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>row<sp/>:<sp/>results)<sp/>{</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>fresh<sp/>object<sp/>per<sp/>row,<sp/>so<sp/>no<sp/>field<sp/>can<sp/>leak<sp/>from<sp/>one<sp/>row<sp/>into</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>next.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>jsoncons::json<sp/>object;<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>one<sp/>JSON<sp/>object<sp/>for<sp/>this<sp/>row.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="398"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Walk<sp/>every<sp/>column<sp/>in<sp/>the<sp/>current<sp/>row.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>field<sp/>:<sp/>row)<sp/>{</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>field_name<sp/>=</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.name();<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>view<sp/>avoids<sp/>copying<sp/>the<sp/>column<sp/>name;<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>stays<sp/>valid<sp/>for<sp/>the<sp/>row&apos;s<sp/>lifetime.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>field_type<sp/>=</highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.type();<sp/><sp/></highlight><highlight class="comment">//<sp/>PostgreSQL<sp/>type<sp/>OID,<sp/>used<sp/>below<sp/>to<sp/>pick</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="406"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>right<sp/>conversion.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="407"><highlight class="normal"></highlight></codeline>
+<codeline lineno="408"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>SQL<sp/>NULL<sp/>has<sp/>to<sp/>become<sp/>JSON<sp/>null,<sp/>not</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="409"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>string<sp/>&quot;null&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(field.is_null())<sp/>{</highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[field_name]<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Represent<sp/>a<sp/>SQL<sp/>NULL<sp/>explicitly<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>JSON<sp/>output.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Dispatch<sp/>on<sp/>the<sp/>column&apos;s<sp/>OID<sp/>so</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="415"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>values<sp/>keep<sp/>their<sp/>proper<sp/>JSON<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="416"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(field_type)<sp/>{</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDatabase_1a0be5b2122215021626f1150c89302594" kindref="member">TEXT</ref>:<sp/><sp/></highlight><highlight class="comment">//<sp/>TEXT<sp/>or<sp/>VARCHAR:<sp/>database<sp/>text<sp/>becomes<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="418"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>JSON<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="419"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[field_name]<sp/>=</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.as&lt;std::string&gt;();<sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>the<sp/>field<sp/>to<sp/>a<sp/>C++</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="421"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>string,<sp/>which<sp/>jsoncons</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="422"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>stores<sp/>as<sp/>a<sp/>JSON<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>on<sp/>to<sp/>the<sp/>next<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="424"><highlight class="normal"></highlight></codeline>
+<codeline lineno="425"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDatabase_1ad09259c9f7ccae773cbd03b9bf1eb6e6" kindref="member">INTEGER</ref>:<sp/><sp/></highlight><highlight class="comment">//<sp/>INTEGER:<sp/>keep<sp/>it<sp/>a<sp/>number<sp/>rather<sp/>than</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="426"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[field_name]<sp/>=<sp/>field.as&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;();<sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>to<sp/>int<sp/>so<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>JSON<sp/>value<sp/>is<sp/>numeric.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>on<sp/>to<sp/>the<sp/>next<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="430"><highlight class="normal"></highlight></codeline>
+<codeline lineno="431"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDatabase_1a9647c8b7198f626b7d461e472fa70f9b" kindref="member">BOOLEAN</ref>:<sp/><sp/></highlight><highlight class="comment">//<sp/>BOOLEAN:<sp/>keep<sp/>the<sp/>true/false<sp/>meaning.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[field_name]<sp/>=<sp/>field.as&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">&gt;();<sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>to<sp/>a<sp/>C++<sp/>bool,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>which<sp/>becomes<sp/>a<sp/>JSON</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="434"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>boolean.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="435"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>on<sp/>to<sp/>the<sp/>next<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="436"><highlight class="normal"></highlight></codeline>
+<codeline lineno="437"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDatabase_1a8fad4151f7565d3b3f57d53d50080c05" kindref="member">JSON</ref>:<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>JSON:<sp/>the<sp/>field<sp/>holds<sp/>JSON<sp/>text<sp/>that</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="438"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>should<sp/>stay<sp/>structured.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="439"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classDatabase_1a3f5fa0c674ad45ee587e735cb37bdb4b" kindref="member">JSONB</ref>:<sp/><sp/></highlight><highlight class="comment">//<sp/>JSONB:<sp/>binary<sp/>JSON,<sp/>delivered<sp/>as<sp/>text<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="440"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>libpqxx,<sp/>parsed<sp/>the<sp/>same<sp/>way.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="441"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[field_name]<sp/>=<sp/>jsoncons::json::parse(</highlight></codeline>
+<codeline lineno="442"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>field.as&lt;std::string&gt;());<sp/><sp/></highlight><highlight class="comment">//<sp/>Parse<sp/>the<sp/>text<sp/>so</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="443"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>result<sp/>is<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="444"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>nested<sp/>JSON<sp/>value,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="445"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>not<sp/>an<sp/>escaped</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="446"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="447"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>on<sp/>to<sp/>the<sp/>next<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="448"><highlight class="normal"></highlight></codeline>
+<codeline lineno="449"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>unknown<sp/>or<sp/>unhandled<sp/>types:<sp/>fall</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="450"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>back<sp/>safely<sp/>instead<sp/>of<sp/>throwing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="451"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">[field_name]<sp/>=<sp/>field.c_str();<sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>to<sp/>string</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="452"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>representation,<sp/>so<sp/>no<sp/>data<sp/>is<sp/>lost<sp/>for<sp/>unfamiliar</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>types.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>on<sp/>to<sp/>the<sp/>next<sp/>column.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="455"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="456"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="457"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="458"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>the<sp/>array</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="459"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>shape,<sp/>accumulate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="460"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>every<sp/>row<sp/>at</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="461"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>compile<sp/>time.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="462"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>(std::is_same_v&lt;jsonType,<sp/>jsoncons::json::array&gt;)<sp/>{</highlight></codeline>
+<codeline lineno="463"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reply.push_back(</highlight></codeline>
+<codeline lineno="464"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">));<sp/><sp/></highlight><highlight class="comment">//<sp/>Transfer<sp/>this<sp/>row&apos;s<sp/>object<sp/>into<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="465"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>result<sp/>array<sp/>without<sp/>copying.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="466"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="467"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>object;<sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>the<sp/>single-object<sp/>shape,<sp/>return<sp/>the<sp/>first</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="468"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>row<sp/>immediately<sp/>and<sp/>ignore<sp/>the<sp/>rest.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="469"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="470"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="471"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>the<sp/>array<sp/>shape,<sp/>return<sp/>all<sp/>collected<sp/>rows<sp/>after</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="472"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>loop.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="473"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>SQL<sp/>or<sp/>conversion<sp/>error<sp/>must<sp/>not</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="474"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>propagate<sp/>to<sp/>the<sp/>caller.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="475"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>reply;</highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="477"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::ErrorMessage(</highlight></codeline>
+<codeline lineno="478"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>executing<sp/>query:&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>a<sp/>short<sp/>marker<sp/>first.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="479"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::InfoMessage(query);<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>exact<sp/>SQL<sp/>to<sp/>make<sp/>the<sp/>failing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="480"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>statement<sp/>identifiable.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="481"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(</highlight></codeline>
+<codeline lineno="482"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>driver/conversion<sp/>error<sp/>itself.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="483"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="484"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Signal<sp/>failure<sp/>with<sp/>an<sp/>empty<sp/>optional.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="485"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="486"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="487"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="488"><highlight class="comment"><sp/>*<sp/>Executes<sp/>a<sp/>query<sp/>in<sp/>a<sp/>nontransaction<sp/>and<sp/>returns<sp/>a<sp/>single<sp/>scalar<sp/>value.</highlight></codeline>
+<codeline lineno="489"><highlight class="comment"><sp/>*<sp/>Reads<sp/>the<sp/>first<sp/>column<sp/>of<sp/>the<sp/>first<sp/>row;<sp/>an<sp/>empty<sp/>result<sp/>becomes</highlight></codeline>
+<codeline lineno="490"><highlight class="comment"><sp/>*<sp/>`std::nullopt`.<sp/>Template<sp/>parameter<sp/>T:<sp/>Target<sp/>scalar<sp/>type</highlight></codeline>
+<codeline lineno="491"><highlight class="comment"><sp/>*<sp/>(`as&lt;std::optional&lt;T&gt;&gt;()`<sp/>maps<sp/>SQL<sp/>NULL<sp/>to<sp/>`std::nullopt`).<sp/>query:<sp/>SQL<sp/>text</highlight></codeline>
+<codeline lineno="492"><highlight class="comment"><sp/>*<sp/>with<sp/>placeholders.<sp/>params:<sp/>Values<sp/>bound<sp/>to<sp/>those<sp/>placeholders.<sp/>Returns<sp/>The</highlight></codeline>
+<codeline lineno="493"><highlight class="comment"><sp/>*<sp/>value,<sp/>or<sp/>`std::nullopt`<sp/>on<sp/>empty<sp/>result<sp/>or<sp/>any<sp/>caught<sp/>exception.</highlight></codeline>
+<codeline lineno="494"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="495"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="496" refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" refkind="member"><highlight class="normal">std::optional&lt;T&gt;<sp/><ref refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" kindref="member">Database::doSimpleQuery</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><sp/>query,</highlight></codeline>
+<codeline lineno="497"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;<sp/>params)<sp/>{</highlight></codeline>
+<codeline lineno="498"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Guard<sp/>against<sp/>SQL<sp/>and<sp/>conversion<sp/>errors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="499"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="500"><highlight class="normal"><sp/><sp/><sp/><sp/>pqxx::result<sp/>result;<sp/><sp/></highlight><highlight class="comment">//<sp/>Holds<sp/>rows<sp/>after<sp/>the<sp/>transaction<sp/>scope<sp/>ends.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="501"><highlight class="normal"></highlight></codeline>
+<codeline lineno="502"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="503"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>pqxx::nontransaction<sp/>txn(</highlight></codeline>
+<codeline lineno="504"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" kindref="member">connection</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>simple<sp/>lookup<sp/>needs<sp/>no<sp/>transaction.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="505"><highlight class="normal"></highlight></codeline>
+<codeline lineno="506"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>txn.exec(pqxx::zview(query),</highlight></codeline>
+<codeline lineno="507"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>params);<sp/><sp/></highlight><highlight class="comment">//<sp/>Run<sp/>the<sp/>query<sp/>with<sp/>bound<sp/>parameters.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="508"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="509"><highlight class="normal"></highlight></codeline>
+<codeline lineno="510"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result.empty()<sp/>?<sp/>std::nullopt</highlight></codeline>
+<codeline lineno="511"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>rows<sp/>means<sp/>no<sp/>value;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="512"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>optional<sp/>conversion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="513"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>also<sp/>turns<sp/>a<sp/>SQL<sp/>NULL<sp/>into</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="514"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>nullopt.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="515"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>any<sp/>error<sp/>into<sp/>the<sp/>empty<sp/>result.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="516"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>result[0][0].as&lt;std::optional&lt;T&gt;&gt;();</highlight></codeline>
+<codeline lineno="517"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="518"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::ErrorMessage(</highlight><highlight class="stringliteral">&quot;Error<sp/>executing<sp/>query:&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Marker<sp/>line<sp/>in<sp/>the<sp/>log.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="519"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::InfoMessage(query);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>failing<sp/>SQL<sp/>statement.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="520"><highlight class="normal"><sp/><sp/><sp/><sp/>Message::CriticalMessage(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>error<sp/>text<sp/>from<sp/>libpqxx.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="521"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Report<sp/>failure<sp/>to<sp/>the<sp/>caller.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="522"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>throw;<sp/><sp/>//<sp/>Rethrow<sp/>the<sp/>exception<sp/>to<sp/>indicate<sp/>failure</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="523"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="524"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="525"><highlight class="normal"></highlight></codeline>
+<codeline lineno="526"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Explicit<sp/>instantiations:<sp/>these<sp/>are<sp/>the<sp/>only<sp/>supported<sp/>specialisations<sp/>of<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="527"><highlight class="normal"></highlight><highlight class="comment">//<sp/>templates<sp/>defined<sp/>above,<sp/>provided<sp/>here<sp/>so<sp/>callers<sp/>link<sp/>against<sp/>them.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="528"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>std::optional&lt;uint64_t&gt;<sp/><ref refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" kindref="member">Database::doSimpleQuery&lt;uint64_t&gt;</ref>(</highlight></codeline>
+<codeline lineno="529"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;,</highlight></codeline>
+<codeline lineno="530"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;);<sp/><sp/></highlight><highlight class="comment">//<sp/>64-bit<sp/>integer<sp/>lookups<sp/>(ids,<sp/>counts).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="531" refid="database_8cpp_1af71e8706984c45b60a2cc047d2245d98" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" kindref="member">Database::doSimpleQuery&lt;std::string&gt;</ref>(</highlight></codeline>
+<codeline lineno="532"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;,</highlight></codeline>
+<codeline lineno="533"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;);<sp/><sp/></highlight><highlight class="comment">//<sp/>Text<sp/>lookups.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="534" refid="database_8cpp_1a93a7b5be58f322ccae0d3b1564eb4011" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;<sp/><ref refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" kindref="member">Database::executeQuery</ref>&lt;</highlight></codeline>
+<codeline lineno="535"><highlight class="normal"><sp/><sp/><sp/><sp/>jsoncons::json,</highlight></codeline>
+<codeline lineno="536"><highlight class="normal"><sp/><sp/><sp/><sp/>pqxx::nontransaction&gt;(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;,</highlight></codeline>
+<codeline lineno="537"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;);<sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>row,<sp/>no<sp/>transaction.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="538" refid="database_8cpp_1adea7d8276ce4e36cb3acb79558b4204d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;<sp/><ref refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" kindref="member">Database::executeQuery</ref>&lt;jsoncons::json,</highlight></codeline>
+<codeline lineno="539"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pqxx::work&gt;(</highlight></codeline>
+<codeline lineno="540"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;,</highlight></codeline>
+<codeline lineno="541"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;);<sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>row,<sp/>committing<sp/>writes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="542" refid="database_8cpp_1abf10deee0aec368650df99ba1df909b8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json::array&gt;<sp/><ref refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" kindref="member">Database::executeQuery</ref>&lt;</highlight></codeline>
+<codeline lineno="543"><highlight class="normal"><sp/><sp/><sp/><sp/>jsoncons::json::array,</highlight></codeline>
+<codeline lineno="544"><highlight class="normal"><sp/><sp/><sp/><sp/>pqxx::nontransaction&gt;(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;,</highlight></codeline>
+<codeline lineno="545"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pqxx::params&amp;);<sp/><sp/></highlight><highlight class="comment">//<sp/>All<sp/>rows,<sp/>no<sp/>transaction.</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/database/database.cpp"/>
   </compounddef>

@@ -106,16 +106,16 @@
         <location file="src/entities/base/base.hpp" line="178" column="17" bodyfile="src/entities/base/base.hpp" bodystart="178" bodyend="184"/>
         <references refid="structBase_1_1Binder_1aa2c6aab342d4d62357fb8c8c15ff61be" compoundref="base_8hpp" startline="198">index</references>
         <references refid="structBase_1_1Binder_1aa2f67f67cd827fa79329b85e1757145e" compoundref="base_8hpp" startline="191">params</references>
-        <referencedby refid="classapi_1_1v2_1_1Client_1a9d8ec7236a309400e90639c194bb7017" compoundref="client_8hpp" startline="311" endline="347">api::v2::Client::buildClientCreateStatement</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Client_1af26bfc187b1d8c93e829d05032c7bdb3" compoundref="client_8hpp" startline="365" endline="409">api::v2::Client::buildClientUpdateStatement</referencedby>
-        <referencedby refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" compoundref="entity_8hpp" startline="295" endline="354">Entity::buildCreateStatement</referencedby>
-        <referencedby refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" compoundref="entity_8hpp" startline="490" endline="513">Entity::buildDeleteStatement</referencedby>
-        <referencedby refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" compoundref="entity_8hpp" startline="368" endline="410">Entity::buildReadStatement</referencedby>
-        <referencedby refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" compoundref="entity_8hpp" startline="533" endline="567">Entity::buildSearchStatement</referencedby>
-        <referencedby refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" compoundref="entity_8hpp" startline="425" endline="476">Entity::buildUpdateStatement</referencedby>
-        <referencedby refid="classService_1a1a762691efab98926ce3c34988ccc51a" compoundref="service_8hpp" startline="114" endline="151">Service::getSqlAddStaffStatement</referencedby>
-        <referencedby refid="classService_1a6b8a06b26521f411f8c21104031ab5fe" compoundref="service_8hpp" startline="165" endline="200">Service::getSqlRemoveStaffStatement</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Client_1aca2d94a63d7099b47ce5b1fce6ff49b1" compoundref="client_8hpp" startline="184" endline="215">api::v2::Client::getSqlToggleSuspendStatement</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1a9d8ec7236a309400e90639c194bb7017" compoundref="client_8hpp" startline="314" endline="350">api::v2::Client::buildClientCreateStatement</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1af26bfc187b1d8c93e829d05032c7bdb3" compoundref="client_8hpp" startline="368" endline="412">api::v2::Client::buildClientUpdateStatement</referencedby>
+        <referencedby refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" compoundref="entity_8hpp" startline="297" endline="356">Entity::buildCreateStatement</referencedby>
+        <referencedby refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" compoundref="entity_8hpp" startline="492" endline="515">Entity::buildDeleteStatement</referencedby>
+        <referencedby refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" compoundref="entity_8hpp" startline="370" endline="412">Entity::buildReadStatement</referencedby>
+        <referencedby refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" compoundref="entity_8hpp" startline="535" endline="569">Entity::buildSearchStatement</referencedby>
+        <referencedby refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" compoundref="entity_8hpp" startline="427" endline="478">Entity::buildUpdateStatement</referencedby>
+        <referencedby refid="classService_1a1a762691efab98926ce3c34988ccc51a" compoundref="service_8hpp" startline="116" endline="153">Service::getSqlAddStaffStatement</referencedby>
+        <referencedby refid="classService_1a6b8a06b26521f411f8c21104031ab5fe" compoundref="service_8hpp" startline="167" endline="202">Service::getSqlRemoveStaffStatement</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1aca2d94a63d7099b47ce5b1fce6ff49b1" compoundref="client_8hpp" startline="186" endline="218">api::v2::Client::getSqlToggleSuspendStatement</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>

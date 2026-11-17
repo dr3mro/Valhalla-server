@@ -168,8 +168,8 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('permissionmana
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#include &quot;<a class="code" href="store_8hpp.html">store/store.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#include &quot;<a class="code" href="http_8hpp.html">utils/global/http.hpp</a>&quot;</span>  <span class="comment">// Http::Error and status codes for denials.</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">// Requester, the caller whose identity is checked.</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#include &quot;<a class="code" href="requester_8hpp.html">utils/global/requester.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#include &quot;<a class="code" href="message_8hpp.html">message/message.hpp</a>&quot;</span>  <span class="comment">// Logging helpers for errors.</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#include &quot;message/message.hpp&quot;</span>  <span class="comment">// Logging helpers for errors.</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#include &quot;<a class="code" href="requester_8hpp.html">utils/global/requester.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">// Same namespace as the public manager.</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceapi_1_1v2.html">api::v2</a> {<span class="comment"></span></div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">  /**</span></div>
@@ -425,152 +425,155 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('permissionmana
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    <span class="comment">// Fetches permissions</span></div>
 <div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    <span class="comment">// (cache first, database</span></div>
 <div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    <span class="comment">// on a miss).</span></div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Func, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="foldopen" id="foldopen00306" data-start="{" data-end="}">
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno"><a class="line" href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a3e7c77aa55023f9d5ccc345e7b68f2ab">  306</a></span>    <span class="keyword">static</span> std::optional&lt;jsoncons::json&gt; <a class="code hl_function" href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a3e7c77aa55023f9d5ccc345e7b68f2ab">getPermissionsOfEntity</a>(Func&amp;&amp; func,</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>                                                                Args&amp;... args) {</div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>      std::optional&lt;std::string&gt; query =</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>          std::invoke(std::forward&lt;Func&gt;(func),</div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>                      std::forward&lt;Args&gt;(</div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>                          args)...);  <span class="comment">// Build the query/key string by calling</span></div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>                                      <span class="comment">// the supplied generator with its</span></div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>                                      <span class="comment">// arguments.</span></div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span> </div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>      <span class="comment">// No query means there is nothing to look up;</span></div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>      <span class="comment">// fail early.</span></div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>      <span class="keywordflow">if</span> (!query.has_value() || query-&gt;empty()) {</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>        <span class="keywordflow">return</span> std::nullopt;  <span class="comment">// No usable value; caller must treat this</span></div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>                              <span class="comment">// as failure.</span></div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>      }</div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span> </div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>      <span class="keyword">auto</span>&amp; cache = <a class="code hl_function" href="classBasicPermissionCache.html#a6282dd3b2250a617863292fa8e42701f">PermissionCache::instance</a>();  <span class="comment">// Get the shared cache object</span></div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>                                                  <span class="comment">// (a process-wide singleton).</span></div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>      <span class="keywordflow">if</span> (<span class="keyword">auto</span> cached = cache.get(query.value());</div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>          <span class="comment">// Cache hit: reuse the stored answer and</span></div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>          <span class="comment">// skip the database entirely.</span></div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>          cached.has_value()) {</div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>        <span class="keywordflow">return</span> cached;  <span class="comment">// Return the cached JSON to the caller.</span></div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>      }</div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span> </div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>      <span class="keyword">const</span> std::shared_ptr&lt;DatabaseController&gt; db_ctl =</div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>          <a class="code hl_function" href="classStore.html#aaf81da54b109478891030b7e04653bad">Store::cachedObject&lt;DatabaseController&gt;</a>();  <span class="comment">// Only needed on a cache</span></div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>                                                      <span class="comment">// miss; cachedObject</span></div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>                                                      <span class="comment">// returns a shared</span></div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>                                                      <span class="comment">// pointer kept for reuse.</span></div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>      <span class="keyword">const</span> uint64_t generation =</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>          cache.generation();  <span class="comment">// Remember the current epoch before</span></div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>                               <span class="comment">// reading, so a concurrent flush can</span></div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>                               <span class="comment">// invalidate our result.</span></div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>      std::optional&lt;jsoncons::json&gt; permissions_j = db_ctl-&gt;getPermissions(</div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>          query.value());  <span class="comment">// Cache miss: read the permissions from</span></div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>                           <span class="comment">// PostgreSQL (blocking version).</span></div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span> </div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>      <span class="comment">// The database had no data; do not</span></div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>      <span class="comment">// cache an empty result.</span></div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>      <span class="keywordflow">if</span> (!permissions_j.has_value() || permissions_j-&gt;empty()) {</div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>        <span class="keywordflow">return</span> std::nullopt;  <span class="comment">// No usable value; caller must treat this</span></div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>                              <span class="comment">// as failure.</span></div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>      }</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span> </div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>      cache.put(query.value(),</div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>                permissions_j.value(),</div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>                generation);  <span class="comment">// Store the fresh result, but only if no flush</span></div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>                              <span class="comment">// happened in the meantime.</span></div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>      <span class="keywordflow">return</span> permissions_j;   <span class="comment">// Return the freshly read permissions to the</span></div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>                              <span class="comment">// caller.</span></div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>    }</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Func,</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>              <span class="keyword">typename</span>... Args&gt;</div>
+<div class="foldopen" id="foldopen00307" data-start="{" data-end="}">
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno"><a class="line" href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a3e7c77aa55023f9d5ccc345e7b68f2ab">  307</a></span>    <span class="keyword">static</span> std::optional&lt;jsoncons::json&gt; <a class="code hl_function" href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a3e7c77aa55023f9d5ccc345e7b68f2ab">getPermissionsOfEntity</a>(Func&amp;&amp; func,</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>                                                                Args&amp;... args) {</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>      std::optional&lt;std::string&gt; query =</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>          std::invoke(std::forward&lt;Func&gt;(func),</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>                      std::forward&lt;Args&gt;(</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>                          args)...);  <span class="comment">// Build the query/key string by calling</span></div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>                                      <span class="comment">// the supplied generator with its</span></div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>                                      <span class="comment">// arguments.</span></div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span> </div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>      <span class="comment">// No query means there is nothing to look up;</span></div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>      <span class="comment">// fail early.</span></div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>      <span class="keywordflow">if</span> (!query.has_value() || query-&gt;empty()) {</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>        <span class="keywordflow">return</span> std::nullopt;  <span class="comment">// No usable value; caller must treat this</span></div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>                              <span class="comment">// as failure.</span></div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>      }</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span> </div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>      <span class="keyword">auto</span>&amp; cache = <a class="code hl_function" href="classBasicPermissionCache.html#a6282dd3b2250a617863292fa8e42701f">PermissionCache::instance</a>();  <span class="comment">// Get the shared cache object</span></div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>                                                  <span class="comment">// (a process-wide singleton).</span></div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>      <span class="keywordflow">if</span> (<span class="keyword">auto</span> cached = cache.get(query.value());</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>          <span class="comment">// Cache hit: reuse the stored answer and</span></div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>          <span class="comment">// skip the database entirely.</span></div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>          cached.has_value()) {</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>        <span class="keywordflow">return</span> cached;  <span class="comment">// Return the cached JSON to the caller.</span></div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>      }</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span> </div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>      <span class="keyword">const</span> std::shared_ptr&lt;DatabaseController&gt; db_ctl =</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>          <a class="code hl_function" href="classStore.html#aaf81da54b109478891030b7e04653bad">Store::cachedObject&lt;DatabaseController&gt;</a>();  <span class="comment">// Only needed on a cache</span></div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>                                                      <span class="comment">// miss; cachedObject</span></div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>                                                      <span class="comment">// returns a shared</span></div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>                                                      <span class="comment">// pointer kept for reuse.</span></div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>      <span class="keyword">const</span> uint64_t generation =</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>          cache.generation();  <span class="comment">// Remember the current epoch before</span></div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>                               <span class="comment">// reading, so a concurrent flush can</span></div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>                               <span class="comment">// invalidate our result.</span></div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>      std::optional&lt;jsoncons::json&gt; permissions_j = db_ctl-&gt;getPermissions(</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>          query.value());  <span class="comment">// Cache miss: read the permissions from</span></div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>                           <span class="comment">// PostgreSQL (blocking version).</span></div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span> </div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>      <span class="comment">// The database had no data; do not</span></div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>      <span class="comment">// cache an empty result.</span></div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>      <span class="keywordflow">if</span> (!permissions_j.has_value() || permissions_j-&gt;empty()) {</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>        <span class="keywordflow">return</span> std::nullopt;  <span class="comment">// No usable value; caller must treat this</span></div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>                              <span class="comment">// as failure.</span></div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>      }</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span> </div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>      cache.put(query.value(),</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>                permissions_j.value(),</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>                generation);  <span class="comment">// Store the fresh result, but only if no flush</span></div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>                              <span class="comment">// happened in the meantime.</span></div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>      <span class="keywordflow">return</span> permissions_j;   <span class="comment">// Return the freshly read permissions to the</span></div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>                              <span class="comment">// caller.</span></div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>    }</div>
 </div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span><span class="comment"></span> </div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span><span class="comment">     * @brief Coroutine form of getPermissionsOfEntity(); awaits the async</span></div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span><span class="comment">     * database read.</span></div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span><span class="comment">     * @details Same cache-key generation, hit short-circuit and</span></div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span><span class="comment">     * generation-token protection as the synchronous version, but does not</span></div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span><span class="comment">     * block a Drogon IO thread.</span></div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span><span class="comment">     * @tparam Func Callable returning `std::optional&lt;std::string&gt;` (the</span></div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span><span class="comment">     * query/key).</span></div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span><span class="comment">     * @tparam Args Argument types forwarded to @p func.</span></div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span><span class="comment">     * @param[in,out] func Query generator.</span></div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span><span class="comment">     * @param[in,out] args Arguments for @p func.</span></div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span><span class="comment">     * @return Cached or freshly read permissions, or `std::nullopt` on no</span></div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span><span class="comment">     * query/no data.</span></div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span><span class="comment">     * @note The caller must drive the returned task; the query string must</span></div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span><span class="comment">     * outlive the awaited read.</span></div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>    <span class="comment">// Generic helper; Func builds the query and Args</span></div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    <span class="comment">// are its inputs.</span></div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>    <span class="comment">// Coroutine version of the</span></div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>    <span class="comment">// fetch; awaits the async</span></div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>    <span class="comment">// database read.</span></div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Func, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    <span class="keyword">static</span> drogon::Task&lt;std::optional&lt;jsoncons::json&gt;&gt;</div>
-<div class="foldopen" id="foldopen00382" data-start="{" data-end="}">
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno"><a class="line" href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a070d79b55b8f3262de2b815a636defd7">  382</a></span>    <a class="code hl_function" href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a070d79b55b8f3262de2b815a636defd7">getPermissionsOfEntityCoro</a>(Func&amp;&amp; func, Args&amp;... args) {</div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>      std::optional&lt;std::string&gt; query =</div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>          std::invoke(std::forward&lt;Func&gt;(func),</div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>                      std::forward&lt;Args&gt;(</div>
-<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>                          args)...);  <span class="comment">// Build the query/key string by calling</span></div>
-<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>                                      <span class="comment">// the supplied generator with its</span></div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>                                      <span class="comment">// arguments.</span></div>
-<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span> </div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>      <span class="comment">// No query means there is nothing to look up;</span></div>
-<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>      <span class="comment">// fail early.</span></div>
-<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>      <span class="keywordflow">if</span> (!query.has_value() || query-&gt;empty()) {</div>
-<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>        <span class="keyword">co_return</span> std::nullopt;  <span class="comment">// Coroutine return of &#39;no value&#39; when</span></div>
-<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>                                 <span class="comment">// there is nothing usable.</span></div>
-<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>      }</div>
-<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span> </div>
-<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>      <span class="keyword">auto</span>&amp; cache = <a class="code hl_function" href="classBasicPermissionCache.html#a6282dd3b2250a617863292fa8e42701f">PermissionCache::instance</a>();  <span class="comment">// Get the shared cache object</span></div>
-<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>                                                  <span class="comment">// (a process-wide singleton).</span></div>
-<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>      <span class="keywordflow">if</span> (<span class="keyword">auto</span> cached = cache.get(query.value());</div>
-<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>          <span class="comment">// Cache hit: reuse the stored answer and</span></div>
-<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>          <span class="comment">// skip the database entirely.</span></div>
-<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>          cached.has_value()) {</div>
-<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>        <span class="keyword">co_return</span> cached;  <span class="comment">// Coroutine return of the cached answer.</span></div>
-<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>      }</div>
-<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span> </div>
-<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>      <span class="keyword">const</span> std::shared_ptr&lt;DatabaseController&gt; db_ctl =</div>
-<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>          <a class="code hl_function" href="classStore.html#aaf81da54b109478891030b7e04653bad">Store::cachedObject&lt;DatabaseController&gt;</a>();</div>
-<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>      <span class="keyword">const</span> uint64_t generation =</div>
-<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>          cache.generation();  <span class="comment">// Remember the current epoch before the</span></div>
-<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>                               <span class="comment">// async read for the same stale-write</span></div>
-<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>                               <span class="comment">// protection.</span></div>
-<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>      std::optional&lt;jsoncons::json&gt; permissions_j =</div>
-<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>          <span class="keyword">co_await</span> db_ctl-&gt;getPermissionsCoro(</div>
-<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>              query.value());  <span class="comment">// Cache miss: await the async read without</span></div>
-<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>                               <span class="comment">// blocking the IO thread.</span></div>
-<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span> </div>
-<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>      <span class="comment">// The database had no data; do not</span></div>
-<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>      <span class="comment">// cache an empty result.</span></div>
-<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>      <span class="keywordflow">if</span> (!permissions_j.has_value() || permissions_j-&gt;empty()) {</div>
-<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>        <span class="keyword">co_return</span> std::nullopt;  <span class="comment">// Coroutine return of &#39;no value&#39; when</span></div>
-<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>                                 <span class="comment">// there is nothing usable.</span></div>
-<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span>      }</div>
-<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span> </div>
-<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>      cache.put(query.value(),</div>
-<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>                permissions_j.value(),</div>
-<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>                generation);    <span class="comment">// Store the fresh result, but only if no flush</span></div>
-<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>                                <span class="comment">// happened in the meantime.</span></div>
-<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>      <span class="keyword">co_return</span> permissions_j;  <span class="comment">// Coroutine return of the freshly read</span></div>
-<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>                                <span class="comment">// answer.</span></div>
-<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>    }</div>
-</div>
-<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span> </div>
-<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>   <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>  };</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span><span class="comment"></span> </div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span><span class="comment">     * @brief Coroutine form of getPermissionsOfEntity(); awaits the async</span></div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span><span class="comment">     * database read.</span></div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span><span class="comment">     * @details Same cache-key generation, hit short-circuit and</span></div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span><span class="comment">     * generation-token protection as the synchronous version, but does not</span></div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span><span class="comment">     * block a Drogon IO thread.</span></div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span><span class="comment">     * @tparam Func Callable returning `std::optional&lt;std::string&gt;` (the</span></div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span><span class="comment">     * query/key).</span></div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span><span class="comment">     * @tparam Args Argument types forwarded to @p func.</span></div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span><span class="comment">     * @param[in,out] func Query generator.</span></div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span><span class="comment">     * @param[in,out] args Arguments for @p func.</span></div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span><span class="comment">     * @return Cached or freshly read permissions, or `std::nullopt` on no</span></div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span><span class="comment">     * query/no data.</span></div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span><span class="comment">     * @note The caller must drive the returned task; the query string must</span></div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span><span class="comment">     * outlive the awaited read.</span></div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    <span class="comment">// Generic helper; Func builds the query and Args</span></div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>    <span class="comment">// are its inputs.</span></div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>    <span class="comment">// Coroutine version of the</span></div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>    <span class="comment">// fetch; awaits the async</span></div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>    <span class="comment">// database read.</span></div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Func,</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>              <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>    <span class="keyword">static</span> drogon::Task&lt;std::optional&lt;jsoncons::json&gt;&gt;</div>
+<div class="foldopen" id="foldopen00384" data-start="{" data-end="}">
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno"><a class="line" href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a070d79b55b8f3262de2b815a636defd7">  384</a></span>    <a class="code hl_function" href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a070d79b55b8f3262de2b815a636defd7">getPermissionsOfEntityCoro</a>(Func&amp;&amp; func,</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>                               Args&amp;... args) {</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>      std::optional&lt;std::string&gt; query =</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>          std::invoke(std::forward&lt;Func&gt;(func),</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>                      std::forward&lt;Args&gt;(</div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>                          args)...);  <span class="comment">// Build the query/key string by calling</span></div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>                                      <span class="comment">// the supplied generator with its</span></div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>                                      <span class="comment">// arguments.</span></div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span> </div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>      <span class="comment">// No query means there is nothing to look up;</span></div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>      <span class="comment">// fail early.</span></div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>      <span class="keywordflow">if</span> (!query.has_value() || query-&gt;empty()) {</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>        <span class="keyword">co_return</span> std::nullopt;  <span class="comment">// Coroutine return of &#39;no value&#39; when</span></div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>                                 <span class="comment">// there is nothing usable.</span></div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>      }</div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span> </div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>      <span class="keyword">auto</span>&amp; cache = <a class="code hl_function" href="classBasicPermissionCache.html#a6282dd3b2250a617863292fa8e42701f">PermissionCache::instance</a>();  <span class="comment">// Get the shared cache object</span></div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>                                                  <span class="comment">// (a process-wide singleton).</span></div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>      <span class="keywordflow">if</span> (<span class="keyword">auto</span> cached = cache.get(query.value());</div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>          <span class="comment">// Cache hit: reuse the stored answer and</span></div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>          <span class="comment">// skip the database entirely.</span></div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>          cached.has_value()) {</div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>        <span class="keyword">co_return</span> cached;  <span class="comment">// Coroutine return of the cached answer.</span></div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>      }</div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span> </div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>      <span class="keyword">const</span> std::shared_ptr&lt;DatabaseController&gt; db_ctl =</div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>          <a class="code hl_function" href="classStore.html#aaf81da54b109478891030b7e04653bad">Store::cachedObject&lt;DatabaseController&gt;</a>();</div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>      <span class="keyword">const</span> uint64_t generation =</div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>          cache.generation();  <span class="comment">// Remember the current epoch before the</span></div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>                               <span class="comment">// async read for the same stale-write</span></div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>                               <span class="comment">// protection.</span></div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>      std::optional&lt;jsoncons::json&gt; permissions_j =</div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>          <span class="keyword">co_await</span> db_ctl-&gt;getPermissionsCoro(</div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>              query.value());  <span class="comment">// Cache miss: await the async read without</span></div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>                               <span class="comment">// blocking the IO thread.</span></div>
+<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span> </div>
+<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>      <span class="comment">// The database had no data; do not</span></div>
+<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>      <span class="comment">// cache an empty result.</span></div>
+<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span>      <span class="keywordflow">if</span> (!permissions_j.has_value() || permissions_j-&gt;empty()) {</div>
+<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>        <span class="keyword">co_return</span> std::nullopt;  <span class="comment">// Coroutine return of &#39;no value&#39; when</span></div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>                                 <span class="comment">// there is nothing usable.</span></div>
+<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>      }</div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span> </div>
+<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>      cache.put(query.value(),</div>
+<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>                permissions_j.value(),</div>
+<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>                generation);    <span class="comment">// Store the fresh result, but only if no flush</span></div>
+<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>                                <span class="comment">// happened in the meantime.</span></div>
+<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span>      <span class="keyword">co_return</span> permissions_j;  <span class="comment">// Coroutine return of the freshly read</span></div>
+<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>                                <span class="comment">// answer.</span></div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>    }</div>
 </div>
 <div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span> </div>
-<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>}  <span class="comment">// namespace api::v2</span></div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>   <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>  };</div>
+</div>
+<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span> </div>
+<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>}  <span class="comment">// namespace api::v2</span></div>
 <div class="ttc" id="aasyncdbclient_8hpp_html"><div class="ttname"><a href="asyncdbclient_8hpp.html">asyncdbclient.hpp</a></div><div class="ttdoc">Store-registered holder for the Drogon PostgreSQL client used when DB_ASYNC=true.</div></div>
 <div class="ttc" id="aclassBasicPermissionCache_html_a6282dd3b2250a617863292fa8e42701f"><div class="ttname"><a href="classBasicPermissionCache.html#a6282dd3b2250a617863292fa8e42701f">BasicPermissionCache::instance</a></div><div class="ttdeci">static BasicPermissionCache &amp; instance()</div><div class="ttdoc">Returns the process-wide singleton, configured from Configurator.</div><div class="ttdef"><b>Definition</b> <a href="permissioncache_8hpp_source.html#l00213">permissioncache.hpp:213</a></div></div>
 <div class="ttc" id="aclassStore_html_aaf81da54b109478891030b7e04653bad"><div class="ttname"><a href="classStore.html#aaf81da54b109478891030b7e04653bad">Store::cachedObject</a></div><div class="ttdeci">static std::shared_ptr&lt; T &gt; cachedObject()</div><div class="ttdoc">Thread-local cached lookup of T, refreshed only when the Store generation changes.</div><div class="ttdef"><b>Definition</b> <a href="store_8hpp_source.html#l00260">store.hpp:260</a></div></div>
-<div class="ttc" id="aclassapi_1_1v2_1_1PermissionManagerPrivate_html_a070d79b55b8f3262de2b815a636defd7"><div class="ttname"><a href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a070d79b55b8f3262de2b815a636defd7">api::v2::PermissionManagerPrivate::getPermissionsOfEntityCoro</a></div><div class="ttdeci">static drogon::Task&lt; std::optional&lt; jsoncons::json &gt; &gt; getPermissionsOfEntityCoro(Func &amp;&amp;func, Args &amp;... args)</div><div class="ttdoc">Coroutine form of getPermissionsOfEntity(); awaits the async database read.</div><div class="ttdef"><b>Definition</b> <a href="#l00382">permissionmanager_private.hpp:382</a></div></div>
+<div class="ttc" id="aclassapi_1_1v2_1_1PermissionManagerPrivate_html_a070d79b55b8f3262de2b815a636defd7"><div class="ttname"><a href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a070d79b55b8f3262de2b815a636defd7">api::v2::PermissionManagerPrivate::getPermissionsOfEntityCoro</a></div><div class="ttdeci">static drogon::Task&lt; std::optional&lt; jsoncons::json &gt; &gt; getPermissionsOfEntityCoro(Func &amp;&amp;func, Args &amp;... args)</div><div class="ttdoc">Coroutine form of getPermissionsOfEntity(); awaits the async database read.</div><div class="ttdef"><b>Definition</b> <a href="#l00384">permissionmanager_private.hpp:384</a></div></div>
 <div class="ttc" id="aclassapi_1_1v2_1_1PermissionManagerPrivate_html_a261f7f649b795efc1d1dd8955510f9ea"><div class="ttname"><a href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a261f7f649b795efc1d1dd8955510f9ea">api::v2::PermissionManagerPrivate::isOwnerOfService</a></div><div class="ttdeci">static bool isOwnerOfService(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, Http::Error &amp;error)</div><div class="ttdoc">Checks that the requester is the service owner, comparing against owner_id.</div><div class="ttdef"><b>Definition</b> <a href="permissionmanager__private_8cpp_source.html#l00102">permissionmanager_private.cpp:102</a></div></div>
 <div class="ttc" id="aclassapi_1_1v2_1_1PermissionManagerPrivate_html_a2ca7a0ee58dc0ceb4dfc2ef1374471dc"><div class="ttname"><a href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a2ca7a0ee58dc0ceb4dfc2ef1374471dc">api::v2::PermissionManagerPrivate::isOwnerOrAdminOrHasPermission</a></div><div class="ttdeci">static bool isOwnerOrAdminOrHasPermission(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, Http::Error &amp;error, Permissions::PowerLevel required=Permissions::PowerLevel::CAN_DELETE)</div><div class="ttdoc">Allows owner/admin unconditionally, or staff carrying the required capability bit.</div><div class="ttdef"><b>Definition</b> <a href="permissionmanager__private_8cpp_source.html#l00356">permissionmanager_private.cpp:356</a></div></div>
 <div class="ttc" id="aclassapi_1_1v2_1_1PermissionManagerPrivate_html_a2f2b1ad9fadb824a62df52bfe07f80fd"><div class="ttname"><a href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a2f2b1ad9fadb824a62df52bfe07f80fd">api::v2::PermissionManagerPrivate::operator=</a></div><div class="ttdeci">PermissionManagerPrivate &amp; operator=(const PermissionManagerPrivate &amp;other)=default</div></div>
 <div class="ttc" id="aclassapi_1_1v2_1_1PermissionManagerPrivate_html_a3067393d17904c3c949b387bf23b1b0b"><div class="ttname"><a href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a3067393d17904c3c949b387bf23b1b0b">api::v2::PermissionManagerPrivate::PermissionManagerPrivate</a></div><div class="ttdeci">PermissionManagerPrivate(const PermissionManagerPrivate &amp;other)=default</div></div>
 <div class="ttc" id="aclassapi_1_1v2_1_1PermissionManagerPrivate_html_a3caddef9d89e865e1a4e44805f61c959"><div class="ttname"><a href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a3caddef9d89e865e1a4e44805f61c959">api::v2::PermissionManagerPrivate::~PermissionManagerPrivate</a></div><div class="ttdeci">virtual ~PermissionManagerPrivate()=default</div></div>
-<div class="ttc" id="aclassapi_1_1v2_1_1PermissionManagerPrivate_html_a3e7c77aa55023f9d5ccc345e7b68f2ab"><div class="ttname"><a href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a3e7c77aa55023f9d5ccc345e7b68f2ab">api::v2::PermissionManagerPrivate::getPermissionsOfEntity</a></div><div class="ttdeci">static std::optional&lt; jsoncons::json &gt; getPermissionsOfEntity(Func &amp;&amp;func, Args &amp;... args)</div><div class="ttdoc">Fetches an entity&#39;s permission JSON, serving the idle-expiry cache when possible.</div><div class="ttdef"><b>Definition</b> <a href="#l00306">permissionmanager_private.hpp:306</a></div></div>
+<div class="ttc" id="aclassapi_1_1v2_1_1PermissionManagerPrivate_html_a3e7c77aa55023f9d5ccc345e7b68f2ab"><div class="ttname"><a href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a3e7c77aa55023f9d5ccc345e7b68f2ab">api::v2::PermissionManagerPrivate::getPermissionsOfEntity</a></div><div class="ttdeci">static std::optional&lt; jsoncons::json &gt; getPermissionsOfEntity(Func &amp;&amp;func, Args &amp;... args)</div><div class="ttdoc">Fetches an entity&#39;s permission JSON, serving the idle-expiry cache when possible.</div><div class="ttdef"><b>Definition</b> <a href="#l00307">permissionmanager_private.hpp:307</a></div></div>
 <div class="ttc" id="aclassapi_1_1v2_1_1PermissionManagerPrivate_html_a64b26a6beda50b382d489eb1459f907e"><div class="ttname"><a href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a64b26a6beda50b382d489eb1459f907e">api::v2::PermissionManagerPrivate::isOwnerOrAdmin</a></div><div class="ttdeci">static bool isOwnerOrAdmin(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, Http::Error &amp;error)</div><div class="ttdoc">Allows only the service owner or admin.</div></div>
 <div class="ttc" id="aclassapi_1_1v2_1_1PermissionManagerPrivate_html_a6a68b225b7b685e9ed7293606870fafc"><div class="ttname"><a href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a6a68b225b7b685e9ed7293606870fafc">api::v2::PermissionManagerPrivate::hasPermission</a></div><div class="ttdeci">static bool hasPermission(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const Permissions::PowerLevel &amp;powerlevel, const std::string &amp;service_name, Http::Error &amp;error)</div><div class="ttdoc">Checks that the requester is a staff member of the service holding powerlevel.</div><div class="ttdef"><b>Definition</b> <a href="permissionmanager__private_8cpp_source.html#l00068">permissionmanager_private.cpp:68</a></div></div>
 <div class="ttc" id="aclassapi_1_1v2_1_1PermissionManagerPrivate_html_a7e6031ab93f769c852bb999b4f2bdc7b"><div class="ttname"><a href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a7e6031ab93f769c852bb999b4f2bdc7b">api::v2::PermissionManagerPrivate::preServiceCreateChecks</a></div><div class="ttdeci">static bool preServiceCreateChecks(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;service_j, Http::Error &amp;error)</div><div class="ttdoc">Validates a service-creation payload: present, valid owner/admin ids, and provider caller.</div><div class="ttdef"><b>Definition</b> <a href="permissionmanager__private_8cpp_source.html#l00289">permissionmanager_private.cpp:289</a></div></div>
@@ -583,7 +586,6 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('permissionmana
 <div class="ttc" id="aclassapi_1_1v2_1_1PermissionManagerPrivate_html_acc3187ff8d1189d0e1b02d23908847c9"><div class="ttname"><a href="classapi_1_1v2_1_1PermissionManagerPrivate.html#acc3187ff8d1189d0e1b02d23908847c9">api::v2::PermissionManagerPrivate::assert_group_id_match</a></div><div class="ttdeci">static bool assert_group_id_match(const Requester &amp;requester, const std::string &amp;groupname, uint64_t client_id, Http::Error &amp;error)</div><div class="ttdoc">Requires both the requester&#39;s group and id to match the target client.</div><div class="ttdef"><b>Definition</b> <a href="permissionmanager__private_8cpp_source.html#l00265">permissionmanager_private.cpp:265</a></div></div>
 <div class="ttc" id="adatabasecontroller_8hpp_html"><div class="ttname"><a href="databasecontroller_8hpp.html">databasecontroller.hpp</a></div><div class="ttdoc">Single gateway through which controllers execute SQL, in both blocking and coroutine form.</div></div>
 <div class="ttc" id="ahttp_8hpp_html"><div class="ttname"><a href="http_8hpp.html">http.hpp</a></div><div class="ttdoc">HTTP status codes and error payloads shared by the API layer.</div></div>
-<div class="ttc" id="amessage_8hpp_html"><div class="ttname"><a href="message_8hpp.html">message.hpp</a></div><div class="ttdoc">Static helpers for coloured console/status logging.</div></div>
 <div class="ttc" id="anamespaceapi_1_1v2_1_1Http_html_a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc"><div class="ttname"><a href="namespaceapi_1_1v2_1_1Http.html#a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc">api::v2::Http::BAD_REQUEST</a></div><div class="ttdeci">@ BAD_REQUEST</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00103">http.hpp:103</a></div></div>
 <div class="ttc" id="anamespaceapi_1_1v2_1_1Http_html_abe54a513da8236be4d5e32f641ed5ba5"><div class="ttname"><a href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">api::v2::Http::Error</a></div><div class="ttdeci">struct Error { int code; std::string message; } Error</div><div class="ttdoc">Validation/error payload: a numeric code and a human-readable message.</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00048">http.hpp:48</a></div></div>
 <div class="ttc" id="anamespaceapi_1_1v2_html"><div class="ttname"><a href="namespaceapi_1_1v2.html">api::v2</a></div><div class="ttdef"><b>Definition</b> <a href="common_8hpp_source.html#l00096">common.hpp:96</a></div></div>

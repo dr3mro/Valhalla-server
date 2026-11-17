@@ -18,10 +18,9 @@ var searchData=
   ['helper_15',['Helper',['../classapi_1_1v2_1_1Helper.html',1,'api::v2::Helper'],['../classapi_1_1v2_1_1Helper.html#a8628cae20d07c86b011fd649b77d7de6',1,'api::v2::Helper::Helper()=default'],['../classapi_1_1v2_1_1Helper.html#a5c59bc23cc7580cf706220dae65687f1',1,'api::v2::Helper::Helper(const Helper &amp;)=default'],['../classapi_1_1v2_1_1Helper.html#a709e62e62bbedcf44abc53a03e9ccaf5',1,'api::v2::Helper::Helper(Helper &amp;&amp;)=delete'],['../helper_8cpp.html#a5993cee5fba70417c6e9bb08de6b2016',1,'Helper:&#160;helper.cpp']]],
   ['helper_2ecpp_16',['helper.cpp',['../helper_8cpp.html',1,'']]],
   ['helper_2ehpp_17',['helper.hpp',['../helper_8hpp.html',1,'']]],
-  ['host_5f_18',['HOST_',['../namespaceDefaults_1_1FrontEnd.html#ae72d244ab81b3948dfe1e81b79973476',1,'Defaults::FrontEnd::HOST_'],['../namespaceDefaults_1_1EmailSenderDaemon.html#a3fc77c83bff77d646cdd2704390875fa',1,'Defaults::EmailSenderDaemon::HOST_']]],
-  ['http_20400_19',['Known limitation: malformed requests (HTTP 400)',['../index.html#autotoc_md37',1,'']]],
-  ['http_2ehpp_20',['http.hpp',['../http_8hpp.html',1,'']]],
-  ['http_5fversion_5fnot_5fsupported_21',['HTTP_VERSION_NOT_SUPPORTED',['../namespaceapi_1_1v2_1_1Http.html#a6199aeb84d745378b1befef28d78892fac7da099c2cbe9f3b620829632dcfc89f',1,'api::v2::Http']]],
-  ['httperror_22',['HttpError',['../clientcontroller_8cpp.html#aade4e0beb5a1397789e7ccb602ef175f',1,'clientcontroller.cpp']]],
-  ['httpstatus_23',['HttpStatus',['../gatekeeper_8cpp.html#ac167080aefdd46391115a8c42fb66636',1,'gatekeeper.cpp']]]
+  ['http_20400_18',['Known limitation: malformed requests (HTTP 400)',['../index.html#autotoc_md37',1,'']]],
+  ['http_2ehpp_19',['http.hpp',['../http_8hpp.html',1,'']]],
+  ['http_5fversion_5fnot_5fsupported_20',['HTTP_VERSION_NOT_SUPPORTED',['../namespaceapi_1_1v2_1_1Http.html#a6199aeb84d745378b1befef28d78892fac7da099c2cbe9f3b620829632dcfc89f',1,'api::v2::Http']]],
+  ['httperror_21',['HttpError',['../clientcontroller_8cpp.html#aade4e0beb5a1397789e7ccb602ef175f',1,'clientcontroller.cpp']]],
+  ['httpstatus_22',['HttpStatus',['../gatekeeper_8cpp.html#ac167080aefdd46391115a8c42fb66636',1,'gatekeeper.cpp']]]
 ];

@@ -9,7 +9,7 @@
     <detaileddescription>
 <para>The char payload is an unused sentinel; the id is the only meaningful state. </para>
     </detaileddescription>
-    <location file="src/entities/base/types.hpp" line="252" column="1"/>
+    <location file="src/entities/base/types.hpp" line="261" column="1"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

@@ -182,7 +182,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a743181f5f295cdc6b9113defd29f7162" id="r_a743181f5f295cdc6b9113defd29f7162"><td class="memItemLeft">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a743181f5f295cdc6b9113defd29f7162">backendsReady_</a></td></tr>
 <tr class="memitem:a31ddc963543c94188989eab4aa24e2ec" id="r_a31ddc963543c94188989eab4aa24e2ec"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classDatabaseConnectionPool.html">DatabaseConnectionPool</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a31ddc963543c94188989eab4aa24e2ec">databaseConnectionPool_</a></td></tr>
 <tr class="memitem:abbc84ebe21df91c2d77041778e86d199" id="r_abbc84ebe21df91c2d77041778e86d199"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classWatchDog.html">WatchDog</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#abbc84ebe21df91c2d77041778e86d199">watchDog_</a></td></tr>
-<tr class="memitem:ac8c9c76391d1ebcaa3fd2abdd93754b3" id="r_ac8c9c76391d1ebcaa3fd2abdd93754b3"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classConfigurator.html#a6029dd81a8d2fe9a1eaa17bf2a508e03">Configurator::Testing</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ac8c9c76391d1ebcaa3fd2abdd93754b3">testing_config_</a></td></tr>
+<tr class="memitem:ac8c9c76391d1ebcaa3fd2abdd93754b3" id="r_ac8c9c76391d1ebcaa3fd2abdd93754b3"><td class="memItemLeft">std::shared_ptr&lt; Configurator::Testing &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ac8c9c76391d1ebcaa3fd2abdd93754b3">testing_config_</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Single gateway through which controllers execute SQL, in both blocking and coroutine form. </p>
@@ -351,7 +351,7 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="databasecontroller_8cpp_source.html#l00148">148</a> of file <a class="el" href="databasecontroller_8cpp_source.html">databasecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="database_8cpp_source.html#l00134">Database::checkExists()</a>, and <a class="el" href="databasecontroller_8hpp_source.html#l00403">executer()</a>.</p>
+<p class="reference">References <a class="el" href="database_8cpp_source.html#l00134">Database::checkExists()</a>, and <a class="el" href="databasecontroller_8hpp_source.html#l00405">executer()</a>.</p>
 
 </div>
 </div>
@@ -407,7 +407,7 @@ $1)</span>; table and column are interpolated identifiers and must be trusted, w
 
 <p class="definition">Definition at line <a class="el" href="databasecontroller_8cpp_source.html#l00351">351</a> of file <a class="el" href="databasecontroller_8cpp_source.html">databasecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="databasebusy_8hpp_source.html#l00063">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">asyncdb::execSqlCoro()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, and <a class="el" href="asyncdberror_8cpp_source.html#l00045">asyncdb::isBusy()</a>.</p>
+<p class="reference">References <a class="el" href="databasebusy_8hpp_source.html#l00063">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">asyncdb::execSqlCoro()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, and <a class="el" href="asyncdberror_8cpp_source.html#l00045">asyncdb::isBusy()</a>.</p>
 
 </div>
 </div>
@@ -456,7 +456,7 @@ $1)</span>; table and column are interpolated identifiers and must be trusted, w
 
 <p class="definition">Definition at line <a class="el" href="databasecontroller_8cpp_source.html#l00141">141</a> of file <a class="el" href="databasecontroller_8cpp_source.html">databasecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="database_8cpp_source.html#l00495">Database::doSimpleQuery()</a>, and <a class="el" href="databasecontroller_8hpp_source.html#l00403">executer()</a>.</p>
+<p class="reference">References <a class="el" href="database_8cpp_source.html#l00496">Database::doSimpleQuery()</a>, and <a class="el" href="databasecontroller_8hpp_source.html#l00405">executer()</a>.</p>
 
 </div>
 </div>
@@ -505,7 +505,7 @@ $1)</span>; table and column are interpolated identifiers and must be trusted, w
 
 <p class="definition">Definition at line <a class="el" href="databasecontroller_8cpp_source.html#l00313">313</a> of file <a class="el" href="databasecontroller_8cpp_source.html">databasecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="databasebusy_8hpp_source.html#l00063">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">asyncdb::execSqlCoro()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, and <a class="el" href="asyncdberror_8cpp_source.html#l00045">asyncdb::isBusy()</a>.</p>
+<p class="reference">References <a class="el" href="databasebusy_8hpp_source.html#l00063">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">asyncdb::execSqlCoro()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, and <a class="el" href="asyncdberror_8cpp_source.html#l00045">asyncdb::isBusy()</a>.</p>
 
 </div>
 </div>
@@ -537,7 +537,7 @@ $1)</span>; table and column are interpolated identifiers and must be trusted, w
 
 <p class="reference">References <a class="el" href="databasecontroller_8hpp_source.html#l00355">backendsReady_</a>, <a class="el" href="databasecontroller_8hpp_source.html#l00361">databaseConnectionPool_</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, <a class="el" href="databasecontroller_8hpp_source.html#l00373">testing_config_</a>, and <a class="el" href="databasecontroller_8hpp_source.html#l00368">watchDog_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="databasecontroller_8hpp_source.html#l00403">executer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databasecontroller_8hpp_source.html#l00405">executer()</a>.</p>
 
 </div>
 </div>
@@ -586,7 +586,7 @@ $1)</span>; table and column are interpolated identifiers and must be trusted, w
 
 <p class="definition">Definition at line <a class="el" href="databasecontroller_8cpp_source.html#l00112">112</a> of file <a class="el" href="databasecontroller_8cpp_source.html">databasecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="database_8cpp_source.html#l00356">Database::executeQuery()</a>, and <a class="el" href="databasecontroller_8hpp_source.html#l00403">executer()</a>.</p>
+<p class="reference">References <a class="el" href="database_8cpp_source.html#l00357">Database::executeQuery()</a>, and <a class="el" href="databasecontroller_8hpp_source.html#l00405">executer()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a6a80262c961a35e637be98299041fdaf">~DatabaseController()</a>.</p>
 
@@ -637,9 +637,9 @@ $1)</span>; table and column are interpolated identifiers and must be trusted, w
 
 <p class="definition">Definition at line <a class="el" href="databasecontroller_8cpp_source.html#l00205">205</a> of file <a class="el" href="databasecontroller_8cpp_source.html">databasecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="databasebusy_8hpp_source.html#l00063">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">asyncdb::execSqlCoro()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, <a class="el" href="asyncdberror_8cpp_source.html#l00045">asyncdb::isBusy()</a>, and <a class="el" href="asyncresultmapper_8cpp_source.html#l00162">asyncdb::mapResultToObject()</a>.</p>
+<p class="reference">References <a class="el" href="databasebusy_8hpp_source.html#l00063">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">asyncdb::execSqlCoro()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, <a class="el" href="asyncdberror_8cpp_source.html#l00045">asyncdb::isBusy()</a>, and <a class="el" href="asyncresultmapper_8cpp_source.html#l00162">asyncdb::mapResultToObject()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="controller_8hpp_source.html#l01009">Controller::addStaffAsync()</a>, <a class="el" href="controller_8hpp_source.html#l00211">Controller::CreateAsync()</a>, <a class="el" href="controller_8hpp_source.html#l00343">Controller::DeleteAsync()</a>, <a class="el" href="controller_8hpp_source.html#l01030">Controller::removeStaffAsync()</a>, <a class="el" href="controller_8hpp_source.html#l00576">Controller::SuspendAsync()</a>, <a class="el" href="controller_8hpp_source.html#l00599">Controller::UnsuspendAsync()</a>, and <a class="el" href="controller_8hpp_source.html#l00300">Controller::UpdateAsync()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="controller_8hpp_source.html#l01043">Controller::addStaffAsync()</a>, <a class="el" href="controller_8hpp_source.html#l00212">Controller::CreateAsync()</a>, <a class="el" href="controller_8hpp_source.html#l00350">Controller::DeleteAsync()</a>, <a class="el" href="controller_8hpp_source.html#l01065">Controller::removeStaffAsync()</a>, <a class="el" href="controller_8hpp_source.html#l00590">Controller::SuspendAsync()</a>, <a class="el" href="controller_8hpp_source.html#l00615">Controller::UnsuspendAsync()</a>, and <a class="el" href="controller_8hpp_source.html#l00305">Controller::UpdateAsync()</a>.</p>
 
 </div>
 </div>
@@ -696,9 +696,9 @@ template&lt;typename Result, typename Func, typename... Args&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="databasecontroller_8hpp_source.html#l00403">403</a> of file <a class="el" href="databasecontroller_8hpp_source.html">databasecontroller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databasecontroller_8hpp_source.html#l00405">405</a> of file <a class="el" href="databasecontroller_8hpp_source.html">databasecontroller.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="dbprobe_8hpp_source.html#l00113">DbProbe::check()</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="databasecontroller_8hpp_source.html#l00361">databaseConnectionPool_</a>, and <a class="el" href="databasecontroller_8cpp_source.html#l00061">ensureBackends()</a>.</p>
+<p class="reference">References <a class="el" href="dbprobe_8hpp_source.html#l00113">DbProbe::check()</a>, <a class="el" href="databasecontroller_8hpp_source.html#l00361">databaseConnectionPool_</a>, and <a class="el" href="databasecontroller_8cpp_source.html#l00061">ensureBackends()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="databasecontroller_8cpp_source.html#l00148">checkItemExists()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00141">doReadQuery()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00112">executeQuery()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00123">executeReadQuery()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00132">executeSearchQuery()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00186">getAllTables()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00158">getPasswordHashForUserName()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00190">getPermissions()</a>, and <a class="el" href="databasecontroller_8cpp_source.html#l00179">getTableSchema()</a>.</p>
 
@@ -749,7 +749,7 @@ template&lt;typename Result, typename Func, typename... Args&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="databasecontroller_8cpp_source.html#l00123">123</a> of file <a class="el" href="databasecontroller_8cpp_source.html">databasecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="database_8cpp_source.html#l00356">Database::executeQuery()</a>, and <a class="el" href="databasecontroller_8hpp_source.html#l00403">executer()</a>.</p>
+<p class="reference">References <a class="el" href="database_8cpp_source.html#l00357">Database::executeQuery()</a>, and <a class="el" href="databasecontroller_8hpp_source.html#l00405">executer()</a>.</p>
 
 </div>
 </div>
@@ -798,9 +798,9 @@ template&lt;typename Result, typename Func, typename... Args&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="databasecontroller_8cpp_source.html#l00249">249</a> of file <a class="el" href="databasecontroller_8cpp_source.html">databasecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="databasebusy_8hpp_source.html#l00063">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">asyncdb::execSqlCoro()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, <a class="el" href="asyncdberror_8cpp_source.html#l00045">asyncdb::isBusy()</a>, and <a class="el" href="asyncresultmapper_8cpp_source.html#l00162">asyncdb::mapResultToObject()</a>.</p>
+<p class="reference">References <a class="el" href="databasebusy_8hpp_source.html#l00063">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">asyncdb::execSqlCoro()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, <a class="el" href="asyncdberror_8cpp_source.html#l00045">asyncdb::isBusy()</a>, and <a class="el" href="asyncresultmapper_8cpp_source.html#l00162">asyncdb::mapResultToObject()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="databasecontroller_8cpp_source.html#l00394">getPasswordHashForUserNameCoro()</a>, and <a class="el" href="controller_8hpp_source.html#l00256">Controller::ReadAsync()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databasecontroller_8cpp_source.html#l00394">getPasswordHashForUserNameCoro()</a>, and <a class="el" href="controller_8hpp_source.html#l00259">Controller::ReadAsync()</a>.</p>
 
 </div>
 </div>
@@ -849,7 +849,7 @@ template&lt;typename Result, typename Func, typename... Args&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="databasecontroller_8cpp_source.html#l00132">132</a> of file <a class="el" href="databasecontroller_8cpp_source.html">databasecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="database_8cpp_source.html#l00356">Database::executeQuery()</a>, and <a class="el" href="databasecontroller_8hpp_source.html#l00403">executer()</a>.</p>
+<p class="reference">References <a class="el" href="database_8cpp_source.html#l00357">Database::executeQuery()</a>, and <a class="el" href="databasecontroller_8hpp_source.html#l00405">executer()</a>.</p>
 
 </div>
 </div>
@@ -898,7 +898,7 @@ template&lt;typename Result, typename Func, typename... Args&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="databasecontroller_8cpp_source.html#l00281">281</a> of file <a class="el" href="databasecontroller_8cpp_source.html">databasecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="databasebusy_8hpp_source.html#l00063">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">asyncdb::execSqlCoro()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, <a class="el" href="asyncdberror_8cpp_source.html#l00045">asyncdb::isBusy()</a>, and <a class="el" href="asyncresultmapper_8cpp_source.html#l00179">asyncdb::mapResultToArray()</a>.</p>
+<p class="reference">References <a class="el" href="databasebusy_8hpp_source.html#l00063">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">asyncdb::execSqlCoro()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, <a class="el" href="asyncdberror_8cpp_source.html#l00045">asyncdb::isBusy()</a>, and <a class="el" href="asyncresultmapper_8cpp_source.html#l00179">asyncdb::mapResultToArray()</a>.</p>
 
 </div>
 </div>
@@ -936,7 +936,7 @@ template&lt;typename Result, typename Func, typename... Args&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="databasecontroller_8cpp_source.html#l00186">186</a> of file <a class="el" href="databasecontroller_8cpp_source.html">databasecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="databasecontroller_8hpp_source.html#l00403">executer()</a>, and <a class="el" href="database_8cpp_source.html#l00309">Database::getAllTables()</a>.</p>
+<p class="reference">References <a class="el" href="databasecontroller_8hpp_source.html#l00405">executer()</a>, and <a class="el" href="database_8cpp_source.html#l00309">Database::getAllTables()</a>.</p>
 
 </div>
 </div>
@@ -974,7 +974,7 @@ template&lt;typename Result, typename Func, typename... Args&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="databasecontroller_8cpp_source.html#l00474">474</a> of file <a class="el" href="databasecontroller_8cpp_source.html">databasecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="databasebusy_8hpp_source.html#l00063">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">asyncdb::execSqlCoro()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, and <a class="el" href="asyncdberror_8cpp_source.html#l00045">asyncdb::isBusy()</a>.</p>
+<p class="reference">References <a class="el" href="databasebusy_8hpp_source.html#l00063">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">asyncdb::execSqlCoro()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, and <a class="el" href="asyncdberror_8cpp_source.html#l00045">asyncdb::isBusy()</a>.</p>
 
 </div>
 </div>
@@ -1023,7 +1023,7 @@ template&lt;typename Result, typename Func, typename... Args&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="databasecontroller_8cpp_source.html#l00158">158</a> of file <a class="el" href="databasecontroller_8cpp_source.html">databasecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="database_8cpp_source.html#l00356">Database::executeQuery()</a>, and <a class="el" href="databasecontroller_8hpp_source.html#l00403">executer()</a>.</p>
+<p class="reference">References <a class="el" href="database_8cpp_source.html#l00357">Database::executeQuery()</a>, and <a class="el" href="databasecontroller_8hpp_source.html#l00405">executer()</a>.</p>
 
 </div>
 </div>
@@ -1072,7 +1072,7 @@ template&lt;typename Result, typename Func, typename... Args&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="databasecontroller_8cpp_source.html#l00394">394</a> of file <a class="el" href="databasecontroller_8cpp_source.html">databasecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, and <a class="el" href="databasecontroller_8cpp_source.html#l00249">executeReadQueryCoro()</a>.</p>
+<p class="reference">References <a class="el" href="databasecontroller_8cpp_source.html#l00249">executeReadQueryCoro()</a>.</p>
 
 </div>
 </div>
@@ -1116,7 +1116,7 @@ template&lt;typename Result, typename Func, typename... Args&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="databasecontroller_8cpp_source.html#l00190">190</a> of file <a class="el" href="databasecontroller_8cpp_source.html">databasecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="database_8cpp_source.html#l00356">Database::executeQuery()</a>, and <a class="el" href="databasecontroller_8hpp_source.html#l00403">executer()</a>.</p>
+<p class="reference">References <a class="el" href="database_8cpp_source.html#l00357">Database::executeQuery()</a>, and <a class="el" href="databasecontroller_8hpp_source.html#l00405">executer()</a>.</p>
 
 </div>
 </div>
@@ -1160,7 +1160,7 @@ template&lt;typename Result, typename Func, typename... Args&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="databasecontroller_8cpp_source.html#l00512">512</a> of file <a class="el" href="databasecontroller_8cpp_source.html">databasecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="databasebusy_8hpp_source.html#l00063">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">asyncdb::execSqlCoro()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, <a class="el" href="asyncdberror_8cpp_source.html#l00045">asyncdb::isBusy()</a>, and <a class="el" href="asyncresultmapper_8cpp_source.html#l00162">asyncdb::mapResultToObject()</a>.</p>
+<p class="reference">References <a class="el" href="databasebusy_8hpp_source.html#l00063">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">asyncdb::execSqlCoro()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, <a class="el" href="asyncdberror_8cpp_source.html#l00045">asyncdb::isBusy()</a>, and <a class="el" href="asyncresultmapper_8cpp_source.html#l00162">asyncdb::mapResultToObject()</a>.</p>
 
 </div>
 </div>
@@ -1204,7 +1204,7 @@ template&lt;typename Result, typename Func, typename... Args&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="databasecontroller_8cpp_source.html#l00179">179</a> of file <a class="el" href="databasecontroller_8cpp_source.html">databasecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="databasecontroller_8hpp_source.html#l00403">executer()</a>, and <a class="el" href="database_8cpp_source.html#l00243">Database::getTableSchema()</a>.</p>
+<p class="reference">References <a class="el" href="databasecontroller_8hpp_source.html#l00405">executer()</a>, and <a class="el" href="database_8cpp_source.html#l00243">Database::getTableSchema()</a>.</p>
 
 </div>
 </div>
@@ -1248,7 +1248,7 @@ template&lt;typename Result, typename Func, typename... Args&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="databasecontroller_8cpp_source.html#l00415">415</a> of file <a class="el" href="databasecontroller_8cpp_source.html">databasecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="databasebusy_8hpp_source.html#l00063">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">asyncdb::execSqlCoro()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, and <a class="el" href="asyncdberror_8cpp_source.html#l00045">asyncdb::isBusy()</a>.</p>
+<p class="reference">References <a class="el" href="databasebusy_8hpp_source.html#l00063">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">asyncdb::execSqlCoro()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, and <a class="el" href="asyncdberror_8cpp_source.html#l00045">asyncdb::isBusy()</a>.</p>
 
 </div>
 </div>
@@ -1359,7 +1359,7 @@ template&lt;typename Result, typename Func, typename... Args&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="databasecontroller_8hpp_source.html#l00361">361</a> of file <a class="el" href="databasecontroller_8hpp_source.html">databasecontroller.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="databasecontroller_8cpp_source.html#l00061">ensureBackends()</a>, and <a class="el" href="databasecontroller_8hpp_source.html#l00403">executer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databasecontroller_8cpp_source.html#l00061">ensureBackends()</a>, and <a class="el" href="databasecontroller_8hpp_source.html#l00405">executer()</a>.</p>
 
 </div>
 </div>
@@ -1373,7 +1373,7 @@ template&lt;typename Result, typename Func, typename... Args&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classConfigurator.html#a6029dd81a8d2fe9a1eaa17bf2a508e03">Configurator::Testing</a>&gt; DatabaseController::testing_config_</td>
+          <td class="memname">std::shared_ptr&lt;Configurator::Testing&gt; DatabaseController::testing_config_</td>
         </tr>
       </table>
   </td>

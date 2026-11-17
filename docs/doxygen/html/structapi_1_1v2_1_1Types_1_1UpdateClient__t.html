@@ -155,7 +155,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p><a class="el" href="structapi_1_1v2_1_1Types_1_1ClientData__t.html" title="Common parsing and field extraction for client-style create/update payloads.">ClientData_t</a> for updating a client: validates an update schema with a caller-supplied rule. </p>
 <p>Unlike <a class="el" href="structapi_1_1v2_1_1Types_1_1CreateClient__t.html" title="ClientData_t for creating a client: validates a create schema and hashes any password.">CreateClient_t</a> it does not hash passwords; the validation rule is provided by the caller because different update endpoints permit different field sets. </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00705">705</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00723">723</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae44d3b57fc3fc6e35d58b83da0f8ef8d" name="ae44d3b57fc3fc6e35d58b83da0f8ef8d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae44d3b57fc3fc6e35d58b83da0f8ef8d">&#9670;&#160;</a></span>UpdateClient_t()</h2>
@@ -218,9 +218,9 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>Unlike <a class="el" href="structapi_1_1v2_1_1Types_1_1CreateClient__t.html" title="ClientData_t for creating a client: validates a create schema and hashes any password.">CreateClient_t</a> this type does not re-hash the password: the generic Update path marks <span class="tt">password</span> as ASSERT_IMMUTABLE, so no new password can arrive here. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00723">723</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00741">741</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="validator_8cpp_source.html#l00275">Validator::clientRegexValidation()</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00563">api::v2::Types::ClientData_t::data_j</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00557">api::v2::Types::ClientData_t::data_set</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00539">api::v2::Types::ClientData_t::get_data_json()</a>, <a class="el" href="http_8hpp_source.html#l00123">api::v2::Http::INTERNAL_SERVER_ERROR</a>, and <a class="el" href="validator_8cpp_source.html#l00148">Validator::validateDatabaseUpdateSchema()</a>.</p>
+<p class="reference">References <a class="el" href="validator_8cpp_source.html#l00275">Validator::clientRegexValidation()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00577">api::v2::Types::ClientData_t::data_j</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00571">api::v2::Types::ClientData_t::data_set</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00553">api::v2::Types::ClientData_t::get_data_json()</a>, <a class="el" href="http_8hpp_source.html#l00123">api::v2::Http::INTERNAL_SERVER_ERROR</a>, and <a class="el" href="validator_8cpp_source.html#l00148">Validator::validateDatabaseUpdateSchema()</a>.</p>
 
 </div>
 </div>
@@ -250,9 +250,9 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Returns the validated column/value pairs for the UPDATE SET clause. </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00776">776</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00798">798</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="entities_2base_2types_8hpp_source.html#l00557">api::v2::Types::ClientData_t::data_set</a>.</p>
+<p class="reference">References <a class="el" href="entities_2base_2types_8hpp_source.html#l00571">api::v2::Types::ClientData_t::data_set</a>.</p>
 
 </div>
 </div>

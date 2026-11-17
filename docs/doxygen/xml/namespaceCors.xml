@@ -186,7 +186,7 @@
 <para>Decorates a response with CORS headers; invoked once per response from the pre-sending advice. </para>
         </briefdescription>
         <detaileddescription>
-<para>If the response already carries Access-Control-Allow-Origin: &quot;*&quot;, it is left untouched. Otherwise the current cors_allowed_origins setting is read from the <ref refid="classConfigurator" kindref="compound">Configurator</ref>. An exact match to the request&apos;s Origin is reflected back with Allow-Credentials and Vary: Origin; if origins are configured but none match, the first configured origin is used without credentials; if the setting is &quot;*&quot;, the wildcard is used. For OPTIONS requests a sanitized echo of Access-Control-Request-Headers replaces the default header list, and Max-Age plus Vary are added. Every write uses HttpResponse::addHeader, which replaces an existing value rather than duplicating it. <parameterlist kind="param"><parameteritem>
+<para>If the response already carries Access-Control-Allow-Origin: &quot;*&quot;, it is left untouched. Otherwise the current cors_allowed_origins setting is read from the Configurator. An exact match to the request&apos;s Origin is reflected back with Allow-Credentials and Vary: Origin; if origins are configured but none match, the first configured origin is used without credentials; if the setting is &quot;*&quot;, the wildcard is used. For OPTIONS requests a sanitized echo of Access-Control-Request-Headers replaces the default header list, and Max-Age plus Vary are added. Every write uses HttpResponse::addHeader, which replaces an existing value rather than duplicating it. <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">req</parametername>
 </parameternamelist>

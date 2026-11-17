@@ -186,10 +186,10 @@
         </inbodydescription>
         <location file="src/utils/jsonhelper/jsonhelper.hpp" line="104" column="24" bodyfile="src/utils/jsonhelper/jsonhelper.cpp" bodystart="50" bodyend="52"/>
         <referencedby refid="classapi_1_1v2_1_1Filters_1_1Auth_1a3b6912ca8535567fb2c00dc07e0cc1ce" compoundref="auth_8hpp" startline="115" endline="338">api::v2::Filters::Auth::doFilter</referencedby>
-        <referencedby refid="classController_1ad8517f93d94b2584124d06d0904c8c28" compoundref="controller_8hpp" startline="626" endline="659">Controller::GetServices</referencedby>
-        <referencedby refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="674" endline="712">Controller::GetServicesAsync</referencedby>
-        <referencedby refid="classController_1acd1d7cb00688b69469719ff7789f3cd9" compoundref="controller_8hpp" startline="729" endline="755">Controller::GetVisits</referencedby>
-        <referencedby refid="classController_1a2af2297a7b4fcce1f987510786aaa5d7" compoundref="controller_8hpp" startline="769" endline="800">Controller::GetVisitsAsync</referencedby>
+        <referencedby refid="classController_1ad8517f93d94b2584124d06d0904c8c28" compoundref="controller_8hpp" startline="644" endline="679">Controller::GetServices</referencedby>
+        <referencedby refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="694" endline="734">Controller::GetServicesAsync</referencedby>
+        <referencedby refid="classController_1acd1d7cb00688b69469719ff7789f3cd9" compoundref="controller_8hpp" startline="751" endline="779">Controller::GetVisits</referencedby>
+        <referencedby refid="classController_1a2af2297a7b4fcce1f987510786aaa5d7" compoundref="controller_8hpp" startline="793" endline="826">Controller::GetVisitsAsync</referencedby>
         <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="343" endline="458">api::v2::SessionManager::logout</referencedby>
         <referencedby refid="classapi_1_1v2_1_1JsonHelper_1a260ef7e1999f9d532d74694dbcfc515b">operator=</referencedby>
       </memberdef>

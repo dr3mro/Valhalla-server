@@ -9,7 +9,7 @@
     <detaileddescription>
 <para>With an explicit id the insert keeps that column; without one the id column is omitted so the database generates it. </para>
     </detaileddescription>
-    <location file="src/entities/base/types.hpp" line="151" column="1"/>
+    <location file="src/entities/base/types.hpp" line="153" column="1"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

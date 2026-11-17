@@ -85,7 +85,6 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
@@ -97,14 +96,13 @@ var NAVTREEINDEX =
 [
 "all__routes_8hpp.html",
 "classClinicController.html#a49ca9ae245f2ca94ee937754a5d433ea",
-"classDbProbe.html",
-"classProvider.html#aaa88add3f2765173dc916334d4dc611e",
-"classapi_1_1v2_1_1Appointments.html#af86bad11dd97edc907a87ddd2cefa8dd",
-"classapi_1_1v2_1_1Helper.html#a9633fc9b2cf52a1fec90c3241c0da359",
-"classapi_1_1v2_1_1SessionManager.html#a64bf884c729b388729752c9163db479f",
-"envvars_8cpp_source.html",
-"namespaceDefaults_1_1TokenParameters.html#af82d2e7594dd9a9e542d7a9584b73e30",
-"structValidator_1_1Rule.html#ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006"
+"classEntity.html#ad32e6480f1780dc4b3c6466edc214f34",
+"classServer.html#aa84ff16ac0dff01780bb1f1fbc6b3d0f",
+"classapi_1_1v2_1_1Clients.html#a4fbe27eadcfb26e6b6bfe9963c23847d",
+"classapi_1_1v2_1_1KeeprBase.html#aaf8aa6b3f37ca047d975238a41fe8285",
+"classapi_1_1v2_1_1TokenManager.html#ae35221cdefeaad8255a896481af08403",
+"helper_8hpp.html",
+"reports_8hpp_source.html"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';

@@ -1,84 +1,15 @@
-<?xml version='1.0' encoding='UTF-8' standalone='no' ?>
-<doxygen
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="compound.xsd"
-    version="1.18.0"
-    xml:lang="en-US"
->
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.18.0" xml:lang="en-US">
   <compounddef id="paidservices_8hpp" kind="file" language="C++">
     <compoundname>paidservices.hpp</compoundname>
     <includes local="no">jsoncons/json.hpp</includes>
     <includes refid="case_8hpp" local="yes">entities/base/case.hpp</includes>
-    <includedby
-            refid="api_2v2_2routes_2clinics_8hpp"
-            local="yes"
-        >src/api/v2/routes/clinics.hpp</includedby>
-    <includedby
-            refid="includes_8hpp"
-            local="yes"
-        >src/gatekeeper/includes.hpp</includedby>
+    <includedby refid="api_2v2_2routes_2clinics_8hpp" local="yes">src/api/v2/routes/clinics.hpp</includedby>
+    <includedby refid="includes_8hpp" local="yes">src/gatekeeper/includes.hpp</includedby>
     <incdepgraph>
-      <node id="22">
-        <label>configurator/configurator.hpp</label>
-        <link refid="configurator_8hpp" />
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-      </node>
-      <node id="30">
-        <label>defaults.hpp</label>
-        <link refid="defaults_8hpp" />
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="26">
-        <label>configurator/envloader/envloader.hpp</label>
-        <link refid="envloader_8hpp" />
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-      </node>
-      <node id="27">
-        <label>envvars/envvars.hpp</label>
-        <link refid="envvars_8hpp" />
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
       <node id="14">
         <label>controllers/databasecontroller/databasecontroller.hpp</label>
-        <link refid="databasecontroller_8hpp" />
+        <link refid="databasecontroller_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
@@ -109,31 +40,31 @@
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
-        <childnode refid="45" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
       </node>
-      <node id="31">
+      <node id="23">
         <label>database/asyncdbclient.hpp</label>
-        <link refid="asyncdbclient_8hpp" />
-        <childnode refid="32" relation="include">
+        <link refid="asyncdbclient_8hpp"/>
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
@@ -142,10 +73,10 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="25">
         <label>database/asyncresultmapper.hpp</label>
-        <link refid="asyncresultmapper_8hpp" />
-        <childnode refid="34" relation="include">
+        <link refid="asyncresultmapper_8hpp"/>
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
@@ -156,14 +87,14 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="35">
+      <node id="27">
         <label>database/asyncsqlbinder.hpp</label>
-        <link refid="asyncsqlbinder_8hpp" />
-        <childnode refid="32" relation="include">
+        <link refid="asyncsqlbinder_8hpp"/>
+        <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -174,30 +105,30 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="38">
+      <node id="30">
         <label>database/databasebusy.hpp</label>
-        <link refid="databasebusy_8hpp" />
-        <childnode refid="39" relation="include">
+        <link refid="databasebusy_8hpp"/>
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="32">
         <label>database/databasehandler.hpp</label>
-        <link refid="databasehandler_8hpp" />
+        <link refid="databasehandler_8hpp"/>
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="41">
+      <node id="33">
         <label>database/dbprobe.hpp</label>
-        <link refid="dbprobe_8hpp" />
+        <link refid="dbprobe_8hpp"/>
       </node>
-      <node id="46">
+      <node id="39">
         <label>entities/base/base.hpp</label>
-        <link refid="base_8hpp" />
+        <link refid="base_8hpp"/>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -208,7 +139,7 @@
       </node>
       <node id="3">
         <label>entities/base/case.hpp</label>
-        <link refid="case_8hpp" />
+        <link refid="case_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
@@ -219,12 +150,12 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="57" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
       </node>
       <node id="8">
         <label>entities/base/entity.hpp</label>
-        <link refid="entity_8hpp" />
+        <link refid="entity_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
@@ -245,33 +176,33 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
-      <node id="48">
+      <node id="41">
         <label>entities/base/types.hpp</label>
-        <link refid="entities_2base_2types_8hpp" />
+        <link refid="entities_2base_2types_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
-        <childnode refid="50" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -285,50 +216,50 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="53" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="54" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
       </node>
       <node id="1">
         <label>src/entities/services/clinics/visits/paidservices.hpp</label>
-        <link refid="paidservices_8hpp" />
+        <link refid="paidservices_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="54">
+      <node id="47">
         <label>gatekeeper/passwordcrypt/passwordcrypt.hpp</label>
-        <link refid="passwordcrypt_8hpp" />
+        <link refid="passwordcrypt_8hpp"/>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="42">
+      <node id="35">
         <label>store/store.hpp</label>
-        <link refid="store_8hpp" />
+        <link refid="store_8hpp"/>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
@@ -337,57 +268,49 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
-      <node id="58">
+      <node id="51">
         <label>utils/global/errorstatus.hpp</label>
-        <link refid="errorstatus_8hpp" />
+        <link refid="errorstatus_8hpp"/>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
       </node>
-      <node id="57">
+      <node id="50">
         <label>utils/global/global.hpp</label>
-        <link refid="global_8hpp" />
-        <childnode refid="58" relation="include">
+        <link refid="global_8hpp"/>
+        <childnode refid="51" relation="include">
         </childnode>
       </node>
-      <node id="55">
+      <node id="48">
         <label>utils/global/http.hpp</label>
-        <link refid="http_8hpp" />
+        <link refid="http_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
-      <node id="45">
+      <node id="38">
         <label>utils/global/types.hpp</label>
-        <link refid="utils_2global_2types_8hpp" />
+        <link refid="utils_2global_2types_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="28">
-        <label>message/message.hpp</label>
-        <link refid="message_8hpp" />
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="56">
+      <node id="49">
         <label>validator/validator.hpp</label>
-        <link refid="validator_8hpp" />
-        <childnode refid="49" relation="include">
+        <link refid="validator_8hpp"/>
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -395,48 +318,48 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
       </node>
-      <node id="49">
+      <node id="42">
         <label>algorithm</label>
       </node>
       <node id="16">
         <label>atomic</label>
       </node>
-      <node id="50">
+      <node id="43">
         <label>cctype</label>
       </node>
-      <node id="24">
-        <label>chrono</label>
+      <node id="22">
+        <label>configurator/configurator.hpp</label>
       </node>
-      <node id="51">
+      <node id="44">
         <label>cppcodec/base64_rfc4648.hpp</label>
       </node>
-      <node id="47">
+      <node id="40">
         <label>cstddef</label>
       </node>
       <node id="5">
         <label>cstdint</label>
       </node>
-      <node id="32">
+      <node id="24">
         <label>drogon/orm/DbClient.h</label>
       </node>
-      <node id="34">
+      <node id="26">
         <label>drogon/orm/Result.h</label>
       </node>
-      <node id="36">
+      <node id="28">
         <label>drogon/orm/SqlBinder.h</label>
       </node>
-      <node id="37">
+      <node id="29">
         <label>drogon/utils/coroutine.h</label>
       </node>
       <node id="10">
@@ -447,9 +370,6 @@
       </node>
       <node id="15">
         <label>fmt/format.h</label>
-      </node>
-      <node id="23">
-        <label>fmt/ranges.h</label>
       </node>
       <node id="11">
         <label>iterator</label>
@@ -463,6 +383,9 @@
       <node id="12">
         <label>memory</label>
       </node>
+      <node id="34">
+        <label>message/message.hpp</label>
+      </node>
       <node id="18">
         <label>mutex</label>
       </node>
@@ -472,28 +395,22 @@
       <node id="19">
         <label>pqxx/pqxx</label>
       </node>
-      <node id="39">
+      <node id="31">
         <label>stdexcept</label>
       </node>
       <node id="7">
         <label>string</label>
       </node>
-      <node id="52">
+      <node id="45">
         <label>string_view</label>
       </node>
       <node id="9">
         <label>sys/types.h</label>
       </node>
-      <node id="29">
-        <label>trantor/utils/Logger.h</label>
-      </node>
-      <node id="25">
-        <label>type_traits</label>
-      </node>
-      <node id="43">
+      <node id="36">
         <label>typeindex</label>
       </node>
-      <node id="44">
+      <node id="37">
         <label>unordered_map</label>
       </node>
       <node id="20">
@@ -502,7 +419,7 @@
       <node id="21">
         <label>utility</label>
       </node>
-      <node id="53">
+      <node id="46">
         <label>variant</label>
       </node>
       <node id="13">
@@ -512,27 +429,27 @@
     <invincdepgraph>
       <node id="3">
         <label>src/api/v2/all_routes.hpp</label>
-        <link refid="all__routes_8hpp" />
+        <link refid="all__routes_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
       <node id="2">
         <label>src/api/v2/routes/clinics.hpp</label>
-        <link refid="api_2v2_2routes_2clinics_8hpp" />
+        <link refid="api_2v2_2routes_2clinics_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
       <node id="6">
         <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
-        <link refid="cliniccontroller_8cpp" />
+        <link refid="cliniccontroller_8cpp"/>
       </node>
       <node id="7">
         <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
-        <link refid="entitycontroller_8cpp" />
+        <link refid="entitycontroller_8cpp"/>
       </node>
       <node id="1">
         <label>src/entities/services/clinics/visits/paidservices.hpp</label>
-        <link refid="paidservices_8hpp" />
+        <link refid="paidservices_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
@@ -540,11 +457,11 @@
       </node>
       <node id="8">
         <label>src/gatekeeper/gatekeeper.cpp</label>
-        <link refid="gatekeeper_8cpp" />
+        <link refid="gatekeeper_8cpp"/>
       </node>
       <node id="5">
         <label>src/gatekeeper/includes.hpp</label>
-        <link refid="includes_8hpp" />
+        <link refid="includes_8hpp"/>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
@@ -556,64 +473,27 @@
       </node>
       <node id="9">
         <label>src/gatekeeper/permissionmanager/permissionmanager.cpp</label>
-        <link refid="permissionmanager_8cpp" />
+        <link refid="permissionmanager_8cpp"/>
       </node>
       <node id="4">
         <label>src/server/server.cpp</label>
-        <link refid="server_8cpp" />
+        <link refid="server_8cpp"/>
       </node>
     </invincdepgraph>
-    <innerclass
-            refid="classPaidServices"
-            prot="public"
-        >PaidServices</innerclass>
+    <innerclass refid="classPaidServices" prot="public">PaidServices</innerclass>
     <briefdescription>
-<para><ref
-                    refid="classCase"
-                    kindref="compound"
-                >Case</ref> entity for the <computeroutput
-                >clinics_paidservices</computeroutput> table (a visit&apos;s paid services). </para>
+<para><ref refid="classCase" kindref="compound">Case</ref> entity for the <computeroutput>clinics_paidservices</computeroutput> table (a visit&apos;s paid services). </para>
     </briefdescription>
     <detaileddescription>
-<para>This header declares the <ref
-                    refid="classPaidServices"
-                    kindref="compound"
-                >PaidServices</ref> class, a small C++ type that stands for the paid-services record of one visit in the <computeroutput
-                >clinics_paidservices</computeroutput> database table. There is at most one such record per visit because the visit id is the table&apos;s primary key. The class itself holds no data; it names the table and leaves SQL generation to its parent <ref
-                    refid="classCase"
-                    kindref="compound"
-                >Case</ref>. It also supplies small helper functions that build permission-checking SQL for create, read, update and delete operations.</para>
-<para>WHY THIS FILE MATTERS IN THE SERVER: <ref
-                    refid="classPaidServices"
-                    kindref="compound"
-                >PaidServices</ref> is one of the clinic-owned &quot;case&quot; types exposed through the clinic routes as <ref
-                    refid="classClinicController"
-                    kindref="compound"
-                >ClinicController&lt;PaidServices&gt;</ref> under the <computeroutput
-                >paidservices</computeroutput> service type. When a client wants to add or change a visit&apos;s paid services, <ref
-                    refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21"
-                    kindref="member"
-                >PermissionManager</ref> calls the static getPermissionsQueryFor* helpers here to build a SELECT that finds which clinic owns the visit (via <computeroutput
-                >clinics_visits</computeroutput>), then checks whether the requesting user is that clinic&apos;s owner, admin or staff. Without this file there would be no C++ type connecting the <computeroutput
-                >clinics_paidservices</computeroutput> table to the CRUD and permission machinery, so paid-services endpoints could not work.</para>
+<para>This header declares the <ref refid="classPaidServices" kindref="compound">PaidServices</ref> class, a small C++ type that stands for the paid-services record of one visit in the <computeroutput>clinics_paidservices</computeroutput> database table. There is at most one such record per visit because the visit id is the table&apos;s primary key. The class itself holds no data; it names the table and leaves SQL generation to its parent <ref refid="classCase" kindref="compound">Case</ref>. It also supplies small helper functions that build permission-checking SQL for create, read, update and delete operations.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: <ref refid="classPaidServices" kindref="compound">PaidServices</ref> is one of the clinic-owned &quot;case&quot; types exposed through the clinic routes as <ref refid="classClinicController" kindref="compound">ClinicController&lt;PaidServices&gt;</ref> under the <computeroutput>paidservices</computeroutput> service type. When a client wants to add or change a visit&apos;s paid services, <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref> calls the static getPermissionsQueryFor* helpers here to build a SELECT that finds which clinic owns the visit (via <computeroutput>clinics_visits</computeroutput>), then checks whether the requesting user is that clinic&apos;s owner, admin or staff. Without this file there would be no C++ type connecting the <computeroutput>clinics_paidservices</computeroutput> table to the CRUD and permission machinery, so paid-services endpoints could not work.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
-<listitem><para
-                        >static constexpr: a value fixed at compile time that belongs to the class, not to one object. <ulink
-                                url="https://en.cppreference.com/w/cpp/language/static"
-                            >https://en.cppreference.com/w/cpp/language/static</ulink></para>
-</listitem><listitem><para
-                        >JSON: a text format used to carry request data; this project uses the jsoncons library to read it. <ulink
-                                url="https://jsoncons.github.io/jsoncons/"
-                            >https://jsoncons.github.io/jsoncons/</ulink></para>
-</listitem><listitem><para
-                        >Foreign key / ON DELETE CASCADE: a column that points to a row in another table, with the database automatically deleting this row when that parent row is deleted. <ulink
-                                url="https://en.cppreference.com/w/cpp"
-                            >https://en.cppreference.com/w/cpp</ulink></para>
+<listitem><para>static constexpr: a value fixed at compile time that belongs to the class, not to one object. <ulink url="https://en.cppreference.com/w/cpp/language/static">https://en.cppreference.com/w/cpp/language/static</ulink></para>
+</listitem><listitem><para>JSON: a text format used to carry request data; this project uses the jsoncons library to read it. <ulink url="https://jsoncons.github.io/jsoncons/">https://jsoncons.github.io/jsoncons/</ulink></para>
+</listitem><listitem><para>Foreign key / ON DELETE CASCADE: a column that points to a row in another table, with the database automatically deleting this row when that parent row is deleted. <ulink url="https://en.cppreference.com/w/cpp">https://en.cppreference.com/w/cpp</ulink></para>
 </listitem></itemizedlist>
 </para>
-<para><simplesect kind="author"><para>Amr Osman <ulink
-                            url="mailto:dr3mro@gmail.com"
-                        >dr3mro@gmail.com</ulink> </para>
+<para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
 </simplesect>
 <simplesect kind="date"><para>2026-11-16 </para>
 </simplesect>
@@ -621,1054 +501,223 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="2"><highlight class="comment"><sp />*<sp />@file<sp
-                    />paidservices.hpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp />*<sp />@brief<sp />Case<sp
-                    />entity<sp />for<sp />the<sp />`clinics_paidservices`<sp
-                    />table<sp />(a<sp />visit&apos;s<sp
-                    />paid</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp />*<sp
-                    />services).</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp />*<sp />@details<sp
-                    />This<sp />header<sp />declares<sp />the<sp
-                    />PaidServices<sp />class,<sp />a<sp />small<sp />C++<sp
-                    />type<sp />that</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp />*<sp />stands<sp />for<sp
-                    />the<sp />paid-services<sp />record<sp />of<sp />one<sp
-                    />visit<sp />in<sp />the</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp />*<sp
-                    />`clinics_paidservices`<sp />database<sp />table.<sp
-                    />There<sp />is<sp />at<sp />most<sp />one<sp />such<sp
-                    />record<sp />per</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp />*<sp />visit<sp
-                    />because<sp />the<sp />visit<sp />id<sp />is<sp />the<sp
-                    />table&apos;s<sp />primary<sp />key.<sp />The<sp />class<sp
-                    />itself<sp />holds</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp />*<sp />no<sp />data;<sp
-                    />it<sp />names<sp />the<sp />table<sp />and<sp />leaves<sp
-                    />SQL<sp />generation<sp />to<sp />its<sp />parent<sp
-                    />Case.<sp />It</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp />*<sp />also<sp
-                    />supplies<sp />small<sp />helper<sp />functions<sp
-                    />that<sp />build<sp />permission-checking<sp />SQL<sp
-                    />for</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp />*<sp />create,<sp
-                    />read,<sp />update<sp />and<sp />delete<sp
-                    />operations.</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp />*</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp />*<sp />WHY<sp />THIS<sp
-                    />FILE<sp />MATTERS<sp />IN<sp />THE<sp
-                    />SERVER:</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp />*<sp />PaidServices<sp
-                    />is<sp />one<sp />of<sp />the<sp />clinic-owned<sp
-                    />&quot;case&quot;<sp />types<sp />exposed<sp />through<sp
-                    />the</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp />*<sp />clinic<sp
-                    />routes<sp />as<sp
-                    />ClinicController&lt;PaidServices&gt;<sp />under<sp
-                    />the<sp />`paidservices`</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp />*<sp />service<sp
-                    />type.<sp />When<sp />a<sp />client<sp />wants<sp />to<sp
-                    />add<sp />or<sp />change<sp />a<sp />visit&apos;s<sp
-                    />paid<sp />services,</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp />*<sp
-                    />PermissionManager<sp />calls<sp />the<sp />static<sp
-                    />getPermissionsQueryFor*<sp />helpers<sp />here<sp
-                    />to</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp />*<sp />build<sp />a<sp
-                    />SELECT<sp />that<sp />finds<sp />which<sp />clinic<sp
-                    />owns<sp />the<sp />visit<sp />(via<sp
-                    />`clinics_visits`),</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp />*<sp />then<sp
-                    />checks<sp />whether<sp />the<sp />requesting<sp />user<sp
-                    />is<sp />that<sp />clinic&apos;s<sp />owner,<sp />admin<sp
-                    />or</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp />*<sp />staff.<sp
-                    />Without<sp />this<sp />file<sp />there<sp />would<sp
-                    />be<sp />no<sp />C++<sp />type<sp />connecting<sp
-                    />the</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp />*<sp
-                    />`clinics_paidservices`<sp />table<sp />to<sp />the<sp
-                    />CRUD<sp />and<sp />permission<sp />machinery,<sp
-                    />so</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp />*<sp />paid-services<sp
-                    />endpoints<sp />could<sp />not<sp
-                    />work.</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp />*</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp />*<sp />CONCEPTS<sp
-                    />TO<sp />LEARN<sp />(for<sp
-                    />beginners):</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp />*<sp />-<sp />static<sp
-                    />constexpr:<sp />a<sp />value<sp />fixed<sp />at<sp
-                    />compile<sp />time<sp />that<sp />belongs<sp />to<sp
-                    />the<sp />class,</highlight></codeline>
-<codeline lineno="26"><highlight class="comment"><sp />*<sp />not<sp />to<sp
-                    />one<sp />object.<sp
-                    />https://en.cppreference.com/w/cpp/language/static</highlight></codeline>
-<codeline lineno="27"><highlight class="comment"><sp />*<sp />-<sp />JSON:<sp
-                    />a<sp />text<sp />format<sp />used<sp />to<sp />carry<sp
-                    />request<sp />data;<sp />this<sp />project<sp />uses<sp
-                    />the</highlight></codeline>
-<codeline lineno="28"><highlight class="comment"><sp />*<sp />jsoncons<sp
-                    />library<sp />to<sp />read<sp />it.<sp
-                    />https://jsoncons.github.io/jsoncons/</highlight></codeline>
-<codeline lineno="29"><highlight class="comment"><sp />*<sp />-<sp />Foreign<sp
-                    />key<sp />/<sp />ON<sp />DELETE<sp />CASCADE:<sp />a<sp
-                    />column<sp />that<sp />points<sp />to<sp />a<sp />row<sp
-                    />in<sp />another</highlight></codeline>
-<codeline lineno="30"><highlight class="comment"><sp />*<sp />table,<sp
-                    />with<sp />the<sp />database<sp />automatically<sp
-                    />deleting<sp />this<sp />row<sp />when<sp />that<sp
-                    />parent<sp />row</highlight></codeline>
-<codeline lineno="31"><highlight class="comment"><sp />*<sp />is<sp
-                    />deleted.<sp
-                    />https://en.cppreference.com/w/cpp</highlight></codeline>
-<codeline lineno="32"><highlight class="comment"><sp />*</highlight></codeline>
-<codeline lineno="33"><highlight class="comment"><sp />*<sp />@author<sp
-                    />Amr<sp />Osman<sp
-                    />&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="34"><highlight class="comment"><sp />*<sp />@date<sp
-                    />2026-11-16</highlight></codeline>
-<codeline lineno="35"><highlight class="comment"><sp />*/</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="36"><highlight class="normal" /></codeline>
-<codeline lineno="37"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#pragma<sp />once<sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Compiler-enforced<sp />header<sp />guard:<sp
-                    />include<sp />this<sp />file<sp />at<sp />most<sp
-                    />once</highlight><highlight class="normal" /></codeline>
-<codeline lineno="38"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />per<sp
-                    />translation<sp />unit.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="39"><highlight class="normal" /></codeline>
-<codeline lineno="40"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />jsoncons<sp />JSON<sp />library:<sp />reads<sp />the<sp
-                    />create<sp />payload<sp />from<sp />which<sp />a<sp
-                    />key<sp />is</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="41"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />extracted.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="42"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#include<sp />&lt;jsoncons/json.hpp&gt;</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="43"><highlight class="normal" /></codeline>
-<codeline lineno="44"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Case<sp />is<sp />the<sp />parent<sp />class<sp
-                    />that<sp />supplies<sp />CRUD<sp />and<sp
-                    />permission-query<sp />builders.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="45"><highlight class="normal" /><highlight
-                    class="preprocessor"
-                >#include<sp />&quot;<ref
-                        refid="case_8hpp"
-                        kindref="compound"
-                    >entities/base/case.hpp</ref>&quot;</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="46"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>paidservices.hpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Case<sp/>entity<sp/>for<sp/>the<sp/>`clinics_paidservices`<sp/>table<sp/>(a<sp/>visit&apos;s<sp/>paid</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>services).</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>declares<sp/>the<sp/>PaidServices<sp/>class,<sp/>a<sp/>small<sp/>C++<sp/>type<sp/>that</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>stands<sp/>for<sp/>the<sp/>paid-services<sp/>record<sp/>of<sp/>one<sp/>visit<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>`clinics_paidservices`<sp/>database<sp/>table.<sp/>There<sp/>is<sp/>at<sp/>most<sp/>one<sp/>such<sp/>record<sp/>per</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>visit<sp/>because<sp/>the<sp/>visit<sp/>id<sp/>is<sp/>the<sp/>table&apos;s<sp/>primary<sp/>key.<sp/>The<sp/>class<sp/>itself<sp/>holds</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>no<sp/>data;<sp/>it<sp/>names<sp/>the<sp/>table<sp/>and<sp/>leaves<sp/>SQL<sp/>generation<sp/>to<sp/>its<sp/>parent<sp/>Case.<sp/>It</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>also<sp/>supplies<sp/>small<sp/>helper<sp/>functions<sp/>that<sp/>build<sp/>permission-checking<sp/>SQL<sp/>for</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>create,<sp/>read,<sp/>update<sp/>and<sp/>delete<sp/>operations.</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>PaidServices<sp/>is<sp/>one<sp/>of<sp/>the<sp/>clinic-owned<sp/>&quot;case&quot;<sp/>types<sp/>exposed<sp/>through<sp/>the</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>clinic<sp/>routes<sp/>as<sp/>ClinicController&lt;PaidServices&gt;<sp/>under<sp/>the<sp/>`paidservices`</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>service<sp/>type.<sp/>When<sp/>a<sp/>client<sp/>wants<sp/>to<sp/>add<sp/>or<sp/>change<sp/>a<sp/>visit&apos;s<sp/>paid<sp/>services,</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>PermissionManager<sp/>calls<sp/>the<sp/>static<sp/>getPermissionsQueryFor*<sp/>helpers<sp/>here<sp/>to</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>build<sp/>a<sp/>SELECT<sp/>that<sp/>finds<sp/>which<sp/>clinic<sp/>owns<sp/>the<sp/>visit<sp/>(via<sp/>`clinics_visits`),</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>then<sp/>checks<sp/>whether<sp/>the<sp/>requesting<sp/>user<sp/>is<sp/>that<sp/>clinic&apos;s<sp/>owner,<sp/>admin<sp/>or</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>staff.<sp/>Without<sp/>this<sp/>file<sp/>there<sp/>would<sp/>be<sp/>no<sp/>C++<sp/>type<sp/>connecting<sp/>the</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>`clinics_paidservices`<sp/>table<sp/>to<sp/>the<sp/>CRUD<sp/>and<sp/>permission<sp/>machinery,<sp/>so</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>paid-services<sp/>endpoints<sp/>could<sp/>not<sp/>work.</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>-<sp/>static<sp/>constexpr:<sp/>a<sp/>value<sp/>fixed<sp/>at<sp/>compile<sp/>time<sp/>that<sp/>belongs<sp/>to<sp/>the<sp/>class,</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>not<sp/>to<sp/>one<sp/>object.<sp/>https://en.cppreference.com/w/cpp/language/static</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>-<sp/>JSON:<sp/>a<sp/>text<sp/>format<sp/>used<sp/>to<sp/>carry<sp/>request<sp/>data;<sp/>this<sp/>project<sp/>uses<sp/>the</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>jsoncons<sp/>library<sp/>to<sp/>read<sp/>it.<sp/>https://jsoncons.github.io/jsoncons/</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>-<sp/>Foreign<sp/>key<sp/>/<sp/>ON<sp/>DELETE<sp/>CASCADE:<sp/>a<sp/>column<sp/>that<sp/>points<sp/>to<sp/>a<sp/>row<sp/>in<sp/>another</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>table,<sp/>with<sp/>the<sp/>database<sp/>automatically<sp/>deleting<sp/>this<sp/>row<sp/>when<sp/>that<sp/>parent<sp/>row</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>is<sp/>deleted.<sp/>https://en.cppreference.com/w/cpp</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Compiler-enforced<sp/>header<sp/>guard:<sp/>include<sp/>this<sp/>file<sp/>at<sp/>most<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>per<sp/>translation<sp/>unit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>jsoncons<sp/>JSON<sp/>library:<sp/>reads<sp/>the<sp/>create<sp/>payload<sp/>from<sp/>which<sp/>a<sp/>key<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>extracted.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/json.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Case<sp/>is<sp/>the<sp/>parent<sp/>class<sp/>that<sp/>supplies<sp/>CRUD<sp/>and<sp/>permission-query<sp/>builders.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="case_8hpp" kindref="compound">entities/base/case.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="47"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="48"><highlight class="comment"><sp />*<sp />@class<sp
-                    />PaidServices</highlight></codeline>
-<codeline lineno="49"><highlight class="comment"><sp />*<sp />@brief<sp
-                    />Case<sp />entity<sp />for<sp />the<sp
-                    />`clinics_paidservices`<sp />table<sp />(a<sp
-                    />visit&apos;s<sp />paid</highlight></codeline>
-<codeline lineno="50"><highlight class="comment"><sp />*<sp
-                    />services).</highlight></codeline>
-<codeline lineno="51"><highlight class="comment"><sp />*<sp />@details<sp />A<sp
-                    />thin<sp />value<sp />type<sp />that<sp />binds<sp />the<sp
-                    />generic<sp />Case/Entity<sp />CRUD<sp
-                    />machinery</highlight></codeline>
-<codeline lineno="52"><highlight class="comment"><sp />*<sp />to<sp />one<sp
-                    />table.<sp />The<sp />table&apos;s<sp />primary<sp />key<sp
-                    />is<sp />the<sp />visit<sp />id<sp />(a<sp />foreign<sp
-                    />key<sp />to</highlight></codeline>
-<codeline lineno="53"><highlight class="comment"><sp />*<sp
-                    />`clinics_visits`<sp />with<sp />ON<sp />DELETE<sp
-                    />CASCADE),<sp />so<sp />there<sp />is<sp />at<sp />most<sp
-                    />one</highlight></codeline>
-<codeline lineno="54"><highlight class="comment"><sp />*<sp />paid-services<sp
-                    />record<sp />per<sp />visit.<sp />SQL<sp />generation<sp
-                    />is<sp />inherited;<sp />this<sp />class<sp
-                    />fixes</highlight></codeline>
-<codeline lineno="55"><highlight class="comment"><sp />*<sp />the<sp />table<sp
-                    />name<sp />and<sp />the<sp />visit<sp />table<sp />used<sp
-                    />to<sp />resolve<sp />the<sp />owning<sp />clinic<sp
-                    />during</highlight></codeline>
-<codeline lineno="56"><highlight class="comment"><sp />*<sp
-                    />create-authorisation.<sp />The<sp />static<sp
-                    />getPermissionsQueryFor*<sp />helpers<sp />are<sp
-                    />taken<sp />as</highlight></codeline>
-<codeline lineno="57"><highlight class="comment"><sp />*<sp />function<sp
-                    />pointers<sp />by<sp
-                    />PermissionManager::canCreate/canRead/canUpdate/</highlight></codeline>
-<codeline lineno="58"><highlight class="comment"><sp />*<sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp />canDelete<sp />for<sp
-                    />api::v2::Case_t<sp />T.<sp />Registered<sp
-                    />as</highlight></codeline>
-<codeline lineno="59"><highlight class="comment"><sp />*<sp
-                    />ClinicController&lt;PaidServices&gt;<sp />under<sp
-                    />the<sp />`paidservices`<sp
-                    />serviceType.</highlight></codeline>
-<codeline lineno="60"><highlight class="comment"><sp />*<sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp />Ownership:<sp />the<sp
-                    />data<sp />wrapper<sp />is<sp />copied<sp />into<sp
-                    />Entity<sp />and<sp />is<sp />const</highlight></codeline>
-<codeline lineno="61"><highlight class="comment"><sp />*<sp />thereafter;<sp
-                    />no<sp />mutable<sp />state<sp />and<sp />no<sp
-                    />locking<sp />of<sp />its<sp />own.<sp />Copy<sp />and<sp
-                    />move<sp />are</highlight></codeline>
-<codeline lineno="62"><highlight class="comment"><sp />*<sp />deleted<sp />by<sp
-                    />Case.</highlight></codeline>
-<codeline lineno="63"><highlight class="comment"><sp />*<sp />@note<sp />No<sp
-                    />default<sp />constructor:<sp />Entity<sp />needs<sp />a<sp
-                    />data<sp />wrapper<sp />to<sp />build<sp
-                    />statements</highlight></codeline>
-<codeline lineno="64"><highlight class="comment"><sp />*<sp
-                    />from.</highlight></codeline>
-<codeline lineno="65"><highlight class="comment"><sp />*<sp />@see<sp />Case,<sp
-                    />Entity,<sp />PermissionManager,<sp
-                    />ClinicController</highlight></codeline>
-<codeline lineno="66"><highlight class="comment"><sp />*/</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="67"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />Inherits<sp />the<sp />CRUD<sp />builders<sp />and<sp
-                    />adds</highlight><highlight class="normal" /></codeline>
-<codeline lineno="68"><highlight class="normal" /><highlight
-                    class="comment"
-                >//<sp />paid-services<sp />permission-query<sp
-                    />helpers.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="69" refid="classPaidServices" refkind="compound"><highlight
-                    class="normal"
-                /><highlight class="keyword">class<sp /></highlight><highlight
-                    class="normal"
-                ><ref
-                        refid="classPaidServices_1a5a89ca95432f5de4e7174a7e5941b19a"
-                        kindref="member"
-                    >PaidServices</ref><sp />:<sp /></highlight><highlight
-                    class="keyword"
-                >public</highlight><highlight class="normal"><sp /><ref
-                        refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911"
-                        kindref="member"
-                    >Case</ref><sp />{</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp /></highlight><highlight
-                    class="keyword"
-                >private</highlight><highlight class="normal">:<sp /><sp
-                    /></highlight><highlight class="comment">//<sp
-                    />Implementation<sp />details<sp />kept<sp />hidden<sp
-                    />from<sp />outside<sp />callers.</highlight><highlight
-                    class="comment"
-                /></codeline>
-<codeline lineno="71"><highlight class="comment"><sp /><sp />/**<sp />@brief<sp
-                    />Table<sp />bound<sp />to<sp />this<sp />entity;<sp
-                    />used<sp />by<sp />CRUD<sp />builders<sp />and<sp
-                    />the</highlight></codeline>
-<codeline lineno="72"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />read/update/delete<sp />permission<sp />joins.<sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="73"
-                refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /></highlight><highlight
-                    class="keyword"
-                >static</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >constexpr</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >auto</highlight><highlight class="normal"><sp /><ref
-                        refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41"
-                        kindref="member"
-                    >TABLENAME</ref><sp />=</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="stringliteral"
-                >&quot;clinics_paidservices&quot;</highlight><highlight
-                    class="normal"
-                >;<sp /><sp /></highlight><highlight class="comment">//<sp
-                    />The<sp />SQL<sp />table<sp />this<sp />class<sp />reads<sp
-                    />and<sp />writes;</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="75"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />fixed<sp />at<sp />compile<sp />time<sp />so<sp />it<sp
-                    />can<sp />be<sp />pasted</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="76"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />straight<sp />into<sp />queries.</highlight><highlight
-                    class="comment"
-                /></codeline>
-<codeline lineno="77"><highlight class="comment"><sp /><sp />/**<sp />@brief<sp
-                    />Table<sp />whose<sp />`id`<sp />is<sp />the<sp
-                    />create-payload<sp />key<sp />and<sp />whose<sp
-                    />`clinic_id`</highlight></codeline>
-<codeline lineno="78"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />identifies<sp />the<sp />owning<sp />clinic.<sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="79"
-                refid="classPaidServices_1abd9535d4acba63098136c4880e38e60a"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /></highlight><highlight
-                    class="keyword"
-                >static</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >constexpr</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >auto</highlight><highlight class="normal"><sp /><ref
-                        refid="classPaidServices_1abd9535d4acba63098136c4880e38e60a"
-                        kindref="member"
-                    >KEYREFTABLENAME</ref><sp />=</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="stringliteral"
-                >&quot;clinics_visits&quot;</highlight><highlight
-                    class="normal"
-                >;<sp /><sp /></highlight><highlight class="comment">//<sp
-                    />On<sp />create<sp />we<sp />only<sp />know<sp />a<sp
-                    />visit<sp />id,<sp />so<sp />we<sp
-                    />join</highlight><highlight class="normal" /></codeline>
-<codeline lineno="81"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp
-                    />`clinics_visits`<sp />to<sp />discover<sp />which<sp
-                    />clinic<sp />owns<sp />it.</highlight><highlight
-                    class="comment"
-                /></codeline>
-<codeline lineno="82"><highlight class="comment"><sp /><sp />/**<sp />@brief<sp
-                    />Create-payload<sp />key<sp />holding<sp />the<sp
-                    />visit<sp />id<sp />used<sp />to<sp />resolve<sp
-                    />clinic</highlight></codeline>
-<codeline lineno="83"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />ownership.<sp />*/</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline
-                lineno="84"
-                refid="classPaidServices_1ac071e51fc326b90ccc7e6edca088b27a"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /></highlight><highlight
-                    class="keyword"
-                >static</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >constexpr</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >auto</highlight><highlight class="normal"><sp /><ref
-                        refid="classPaidServices_1ac071e51fc326b90ccc7e6edca088b27a"
-                        kindref="member"
-                    >CREATE_KEY</ref><sp />=</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="stringliteral"
-                >&quot;id&quot;</highlight><highlight class="normal">;<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Name<sp
-                    />of<sp />the<sp />JSON<sp />field<sp />in<sp />a<sp
-                    />create<sp />request<sp />that<sp />carries<sp
-                    />that</highlight><highlight class="normal" /></codeline>
-<codeline lineno="86"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />visit<sp
-                    />id.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="87"><highlight class="normal" /></codeline>
-<codeline lineno="88"><highlight class="normal"><sp /></highlight><highlight
-                    class="keyword"
-                >public</highlight><highlight class="normal">:<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Public<sp
-                    />interface:<sp />construction,<sp />lookups<sp />and<sp
-                    />permission-query</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="89"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />builders.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="90"><highlight class="normal"><sp /><sp
-                    /></highlight><highlight class="comment">//<sp
-                    />PaidServices()<sp />:<sp />Case(TABLENAME)<sp />{}<sp
-                    /><sp />//<sp />Deliberately<sp />disabled:<sp
-                    />Entity</highlight><highlight class="normal" /></codeline>
-<codeline lineno="91"><highlight class="normal"><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />needs<sp
-                    />a<sp />data<sp />wrapper<sp />before<sp />it<sp />can<sp
-                    />build<sp />any<sp />statement.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="92"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
-<codeline lineno="93"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="94"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Constructs<sp />a<sp />paid-services<sp
-                    />entity<sp />bound<sp />to<sp
-                    />`clinics_paidservices`.</highlight></codeline>
-<codeline lineno="95"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@details<sp />Forwards<sp />the<sp />wrapper<sp />and<sp
-                    />table<sp />name<sp />to<sp />Case,<sp />which<sp
-                    />stores<sp />the</highlight></codeline>
-<codeline lineno="96"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />wrapper<sp />in<sp />Entity.<sp />The<sp
-                    />wrapper&apos;s<sp />alternative<sp />decides<sp />which<sp
-                    />inherited<sp />SQL</highlight></codeline>
-<codeline lineno="97"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />builder<sp />is<sp />applicable.</highlight></codeline>
-<codeline lineno="98"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@tparam<sp />T<sp />A<sp />type<sp />accepted<sp />by<sp
-                    />EntityType,<sp />e.g.<sp />api::v2::Types::Create_t<sp
-                    />or</highlight></codeline>
-<codeline lineno="99"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />Read_t.</highlight></codeline>
-<codeline lineno="100"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@param[in]<sp />_data<sp />Operation<sp />data<sp />to<sp
-                    />copy<sp />into<sp />the<sp
-                    />entity.</highlight></codeline>
-<codeline lineno="101"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline lineno="102"><highlight class="normal"><sp /><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >template</highlight><highlight class="normal"><sp
-                    />&lt;</highlight><highlight
-                    class="keyword"
-                >typename</highlight><highlight class="normal"><sp />T&gt;<sp
-                    /><sp /></highlight><highlight class="comment">//<sp />T<sp
-                    />is<sp />deduced<sp />from<sp />the<sp />wrapper<sp
-                    />the<sp />caller<sp />passes,</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="103"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />so<sp
-                    />several<sp />wrapper<sp />types<sp />work<sp
-                    />here.</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="104"
-                refid="classPaidServices_1a5a89ca95432f5de4e7174a7e5941b19a"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /><ref
-                        refid="classPaidServices_1a5a89ca95432f5de4e7174a7e5941b19a"
-                        kindref="member"
-                    >PaidServices</ref>(</highlight><highlight
-                    class="keyword"
-                >const</highlight><highlight class="normal"><sp />T&amp;<sp
-                    />_data)</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight class="comment">//<sp
-                    />Pass<sp />the<sp />data<sp />and<sp />table<sp />name<sp
-                    />up<sp />to<sp />Case,<sp />which</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="106"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight class="comment">//<sp
-                    />stores<sp />them<sp />in<sp
-                    />Entity.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="107"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp />:<sp /><ref
-                        refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911"
-                        kindref="member"
-                    >Case</ref>(_data,<sp /><ref
-                        refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41"
-                        kindref="member"
-                    >TABLENAME</ref>)<sp />{</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp /><sp
-                    />}</highlight></codeline>
-<codeline lineno="109"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
-<codeline lineno="110"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="111"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Returns<sp />the<sp />table<sp />this<sp
-                    />entity<sp />is<sp />bound<sp />to.</highlight></codeline>
-<codeline lineno="112"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@return<sp />The<sp />constant<sp
-                    />`clinics_paidservices`<sp />string.</highlight></codeline>
-<codeline lineno="113"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="114"
-                refid="classPaidServices_1a5977670ca02d1f563e1f6a26486db6ef"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /></highlight><highlight
-                    class="keyword"
-                >static</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >constexpr</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >auto</highlight><highlight class="normal"><sp /><ref
-                        refid="classPaidServices_1a5977670ca02d1f563e1f6a26486db6ef"
-                        kindref="member"
-                    >getTableName</ref>()<sp />{</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp /><ref
-                        refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41"
-                        kindref="member"
-                    >TABLENAME</ref>;</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp /><sp />}<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Lets<sp
-                    />callers<sp />(e.g.<sp />PermissionManager)<sp />build<sp
-                    />SQL<sp />for<sp />the<sp />correct<sp
-                    />table.</highlight><highlight class="comment" /></codeline>
-<codeline lineno="117"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="118"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Returns<sp />the<sp />create-payload<sp
-                    />key<sp />used<sp />to<sp />resolve<sp />the<sp />owning<sp
-                    />clinic.</highlight></codeline>
-<codeline lineno="119"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@return<sp />The<sp />constant<sp />`id`<sp />string<sp
-                    />(the<sp />visit<sp />id).</highlight></codeline>
-<codeline lineno="120"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="121"
-                refid="classPaidServices_1ab6512516d1682f2a292b8d40f18958cf"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /></highlight><highlight
-                    class="keyword"
-                >static</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >constexpr</highlight><highlight class="normal"><sp
-                    /></highlight><highlight
-                    class="keyword"
-                >auto</highlight><highlight class="normal"><sp /><ref
-                        refid="classPaidServices_1ab6512516d1682f2a292b8d40f18958cf"
-                        kindref="member"
-                    >getCreateKey</ref>()<sp />{</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp /><ref
-                        refid="classPaidServices_1ac071e51fc326b90ccc7e6edca088b27a"
-                        kindref="member"
-                    >CREATE_KEY</ref>;</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp /><sp />}<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Exposes<sp
-                    />the<sp />JSON<sp />field<sp />name<sp />so<sp />the<sp
-                    />controller<sp />can<sp />read<sp />the<sp />visit<sp
-                    />id</highlight><highlight class="normal" /></codeline>
-<codeline lineno="124"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp
-                    />consistently.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="125"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
-<codeline lineno="126"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="127"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Default<sp />destructor;<sp />the<sp
-                    />entity<sp />owns<sp />nothing<sp />beyond<sp />the<sp
-                    />data</highlight></codeline>
-<codeline lineno="128"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />wrapper<sp />held<sp />by<sp
-                    />Entity.</highlight></codeline>
-<codeline lineno="129"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="130"
-                refid="classPaidServices_1ac08715110953c52fc0d91ba6cda62a70"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /><ref
-                        refid="classPaidServices_1ac08715110953c52fc0d91ba6cda62a70"
-                        kindref="member"
-                    >~PaidServices</ref>()<sp /></highlight><highlight
-                    class="keyword"
-                >override</highlight><highlight class="normal"><sp
-                    />=</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="keywordflow"
-                >default</highlight><highlight class="normal">;<sp /><sp
-                    /></highlight><highlight class="comment">//<sp
-                    />`override`<sp />confirms<sp />the<sp />parent<sp />has<sp
-                    />a<sp />virtual<sp />destructor;<sp
-                    />`=</highlight><highlight class="normal" /></codeline>
-<codeline lineno="132"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight class="comment">//<sp
-                    />default`<sp />keeps<sp />the<sp />compiler-generated<sp
-                    />cleanup.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="133"><highlight class="normal" /><highlight
-                    class="comment"
-                /></codeline>
-<codeline lineno="134"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="135"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Builds<sp />the<sp />SQL<sp />that<sp
-                    />resolves<sp />the<sp />owning<sp />clinic<sp />for<sp
-                    />a<sp />create</highlight></codeline>
-<codeline lineno="136"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />request.</highlight></codeline>
-<codeline lineno="137"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@details<sp />Reads<sp />the<sp />visit<sp />id<sp
-                    />from<sp />`data_j`<sp />using<sp />CREATE_KEY<sp />and<sp
-                    />delegates</highlight></codeline>
-<codeline lineno="138"><highlight class="comment"><sp /><sp /><sp />*<sp />to<sp
-                    />the<sp />Case<sp />base,<sp />which<sp />joins<sp
-                    />`clinics`<sp />with<sp />`clinics_visits`<sp
-                    />on</highlight></codeline>
-<codeline lineno="139"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />clinic_id.<sp />PermissionManager<sp />runs<sp />the<sp
-                    />returned<sp />SELECT<sp />before<sp />the<sp
-                    />insert;</highlight></codeline>
-<codeline lineno="140"><highlight class="comment"><sp /><sp /><sp />*<sp />no<sp
-                    />insert<sp />occurs<sp />here.</highlight></codeline>
-<codeline lineno="141"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@param[in]<sp />data_j<sp />Create<sp />payload;<sp
-                    />must<sp />be<sp />engaged<sp />and<sp />contain<sp
-                    />an</highlight></codeline>
-<codeline lineno="142"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />unsigned-integer<sp />CREATE_KEY<sp />(the<sp
-                    />optional<sp />is<sp />dereferenced<sp />without<sp
-                    />a</highlight></codeline>
-<codeline lineno="143"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />has_value()<sp />check).</highlight></codeline>
-<codeline lineno="144"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@return<sp />The<sp />SELECT<sp />statement,<sp />or<sp
-                    />std::nullopt<sp />if<sp />reading<sp />or<sp
-                    />converting</highlight></codeline>
-<codeline lineno="145"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />the<sp />key<sp />throws;<sp />the<sp />exception<sp
-                    />is<sp />logged<sp />via<sp
-                    />CRITICALMESSAGE.</highlight></codeline>
-<codeline lineno="146"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@see<sp
-                    />Case::getPermissionsQueryForCreateImpl</highlight></codeline>
-<codeline lineno="147"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline lineno="148"><highlight class="normal"><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Returns<sp
-                    />a<sp />query<sp />string,<sp />or<sp />nothing<sp />if<sp
-                    />the<sp />payload<sp />is</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="149"><highlight class="normal"><sp /><sp
-                    /></highlight><highlight class="comment">//<sp
-                    />malformed.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline
-                lineno="150"
-                refid="classPaidServices_1abde5fe3fd3d0658ea4853bc11b53671e"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /></highlight><highlight
-                    class="keyword"
-                >static</highlight><highlight class="normal"><sp
-                    />std::optional&lt;std::string&gt;<sp /><ref
-                        refid="classPaidServices_1abde5fe3fd3d0658ea4853bc11b53671e"
-                        kindref="member"
-                    >getPermissionsQueryForCreate</ref>(</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="keyword"
-                >const</highlight><highlight class="normal"><sp
-                    />std::optional&lt;jsoncons::json&gt;&amp;<sp />data_j)<sp
-                    />{</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp /><sp /><sp /><sp
-                    />uint64_t<sp />id;<sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Will<sp />hold<sp />the<sp />visit<sp />id<sp
-                    />pulled<sp />from<sp />the<sp />JSON<sp />payload;<sp
-                    />an</highlight><highlight class="normal" /></codeline>
-<codeline lineno="153"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />unsigned<sp />64-bit<sp />integer<sp />matches<sp
-                    />database<sp />ids.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="154"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Reading<sp
-                    />JSON<sp />can<sp />fail<sp />(missing<sp />field<sp
-                    />or<sp />wrong<sp />type),<sp />so<sp
-                    />guard</highlight><highlight class="normal" /></codeline>
-<codeline lineno="155"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp
-                    />it.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="156"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >try</highlight><highlight class="normal"><sp
-                    />{</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight class="comment">//<sp
-                    />Dereference<sp />the<sp />optional<sp />payload,<sp
-                    />look</highlight><highlight class="normal" /></codeline>
-<codeline lineno="158"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight class="comment">//<sp />up<sp
-                    />the<sp />&quot;id&quot;<sp />field<sp />and<sp
-                    />convert<sp />it<sp />to<sp />an</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="159"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight class="comment">//<sp
-                    />integer.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="160"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight class="comment">//<sp
-                    />Any<sp />read/conversion<sp />problem<sp />lands<sp
-                    />here.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="161"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="keywordtype"
-                >id</highlight><highlight class="normal"><sp />=<sp
-                    />data_j-&gt;at(<ref
-                        refid="classPaidServices_1ac071e51fc326b90ccc7e6edca088b27a"
-                        kindref="member"
-                    >CREATE_KEY</ref>).as&lt;uint64_t&gt;();</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp /><sp /><sp /><sp />}<sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >catch</highlight><highlight class="normal"><sp
-                    />(</highlight><highlight
-                    class="keyword"
-                >const</highlight><highlight class="normal"><sp
-                    />std::exception&amp;<sp />e)<sp />{</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><ref
-                        refid="global_8hpp_1a68447123f2c27bb7bcdbbaec4091dab7"
-                        kindref="member"
-                    >CRITICALMESSAGE</ref><sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Log<sp />the<sp />failure<sp />(macro<sp />uses<sp
-                    />the<sp />caught</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="164"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp
-                    />exception)<sp />so<sp />the<sp />problem<sp />is<sp
-                    />visible<sp />in<sp />server</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="165"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp
-                    />logs.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="166"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp
-                    />std::nullopt;<sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />No<sp />trustworthy<sp />id<sp />means<sp />no<sp
-                    />safe<sp />query</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="167"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp />can<sp
-                    />be<sp />built,<sp />so<sp />report<sp />failure<sp />to<sp
-                    />the</highlight><highlight class="normal" /></codeline>
-<codeline lineno="168"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /></highlight><highlight class="comment">//<sp
-                    />caller.</highlight><highlight class="normal" /></codeline>
-<codeline lineno="169"><highlight class="normal"><sp /><sp /><sp /><sp
-                    />}</highlight></codeline>
-<codeline lineno="170"><highlight class="normal" /></codeline>
-<codeline lineno="171"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp /><ref
-                        refid="classCase_1a5617a4962ddeaabd3094fae406c860f6"
-                        kindref="member"
-                    >getPermissionsQueryForCreateImpl</ref>(</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /></highlight><highlight
-                    class="keywordtype"
-                >id</highlight><highlight
-                    class="normal"
-                >,</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><ref
-                        refid="classPaidServices_1abd9535d4acba63098136c4880e38e60a"
-                        kindref="member"
-                    >KEYREFTABLENAME</ref>);<sp /><sp /></highlight><highlight
-                    class="comment"
-                >//<sp />Hand<sp />the<sp />id</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="174"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /></highlight><highlight class="comment">//<sp
-                    />and</highlight><highlight class="normal" /></codeline>
-<codeline lineno="175"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /></highlight><highlight class="comment">//<sp
-                    />`clinics_visits`</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="176"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /></highlight><highlight class="comment">//<sp
-                    />table<sp />to<sp />Case,</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="177"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /></highlight><highlight class="comment">//<sp
-                    />which<sp />writes</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="178"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /></highlight><highlight class="comment">//<sp
-                    />the<sp />join<sp />SQL</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="179"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /></highlight><highlight class="comment">//<sp
-                    />that<sp />finds<sp />the</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="180"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp
-                    /><sp /><sp /></highlight><highlight class="comment">//<sp
-                    />owning<sp />clinic.</highlight><highlight
-                    class="normal"
-                /></codeline>
-<codeline lineno="181"><highlight class="normal"><sp /><sp
-                    />}</highlight><highlight class="comment" /></codeline>
-<codeline lineno="182"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="183"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Builds<sp />the<sp />SQL<sp />that<sp
-                    />fetches<sp />the<sp />owning<sp />clinic&apos;s<sp
-                    />permission<sp />columns</highlight></codeline>
-<codeline lineno="184"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />for<sp />a<sp />row<sp />id.</highlight></codeline>
-<codeline lineno="185"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@details<sp />Delegates<sp />to<sp />the<sp />Case<sp
-                    />base,<sp />joining<sp />`clinics`<sp
-                    />with</highlight></codeline>
-<codeline lineno="186"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />`clinics_paidservices`<sp />on<sp
-                    />clinic_id.</highlight></codeline>
-<codeline lineno="187"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@param[in]<sp />id<sp />Row<sp />id<sp />to<sp
-                    />authorise.</highlight></codeline>
-<codeline lineno="188"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@return<sp />The<sp />SELECT<sp />statement;<sp />the<sp
-                    />base<sp />helper<sp />has<sp />no<sp />failure<sp
-                    />path<sp />despite</highlight></codeline>
-<codeline lineno="189"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />the<sp />optional<sp />return.</highlight></codeline>
-<codeline lineno="190"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="191"
-                refid="classPaidServices_1a47913b71949e337709093c73ab3112c8"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /></highlight><highlight
-                    class="keyword"
-                >static</highlight><highlight class="normal"><sp
-                    />std::optional&lt;std::string&gt;<sp /><ref
-                        refid="classPaidServices_1a47913b71949e337709093c73ab3112c8"
-                        kindref="member"
-                    >getPermissionsQueryForRead</ref>(</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="keyword"
-                >const</highlight><highlight class="normal"><sp />uint64_t<sp
-                    /></highlight><highlight
-                    class="keywordtype"
-                >id</highlight><highlight class="normal">)<sp
-                    />{</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp /><ref
-                        refid="classCase_1a549bb017161d692a03db738d940b9b2f"
-                        kindref="member"
-                    >getPermissionsQueryForReadImp</ref>(</highlight><highlight
-                    class="keywordtype"
-                >id</highlight><highlight class="normal">,<sp /><ref
-                        refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41"
-                        kindref="member"
-                    >TABLENAME</ref>);</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp /><sp />}<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />One-line<sp
-                    />pass-through<sp />to<sp />Case,<sp />swapping<sp />in<sp
-                    />this<sp />class&apos;s<sp />table<sp
-                    />name.</highlight><highlight class="comment" /></codeline>
-<codeline lineno="195"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="196"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Builds<sp />the<sp />SQL<sp />that<sp
-                    />fetches<sp />the<sp />owning<sp />clinic&apos;s<sp
-                    />permission<sp />columns</highlight></codeline>
-<codeline lineno="197"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />for<sp />an<sp />update.</highlight></codeline>
-<codeline lineno="198"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@param[in]<sp />id<sp />Row<sp />id<sp />to<sp
-                    />authorise.</highlight></codeline>
-<codeline lineno="199"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@return<sp />The<sp />SELECT<sp />statement;<sp />the<sp
-                    />base<sp />helper<sp />has<sp />no<sp />failure<sp
-                    />path<sp />despite</highlight></codeline>
-<codeline lineno="200"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />the<sp />optional<sp />return.</highlight></codeline>
-<codeline lineno="201"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="202"
-                refid="classPaidServices_1a4ce072d333dbd0975f9f0296f85eaf7c"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /></highlight><highlight
-                    class="keyword"
-                >static</highlight><highlight class="normal"><sp
-                    />std::optional&lt;std::string&gt;<sp /><ref
-                        refid="classPaidServices_1a4ce072d333dbd0975f9f0296f85eaf7c"
-                        kindref="member"
-                    >getPermissionsQueryForUpdate</ref>(</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="keyword"
-                >const</highlight><highlight class="normal"><sp />uint64_t<sp
-                    /></highlight><highlight
-                    class="keywordtype"
-                >id</highlight><highlight class="normal">)<sp
-                    />{</highlight></codeline>
-<codeline lineno="204"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp /><ref
-                        refid="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf"
-                        kindref="member"
-                    >getPermissionsQueryForUpdateImpl</ref>(</highlight><highlight
-                    class="keywordtype"
-                >id</highlight><highlight class="normal">,<sp /><ref
-                        refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41"
-                        kindref="member"
-                    >TABLENAME</ref>);</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp /><sp />}<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Same<sp
-                    />idea<sp />for<sp />update:<sp />build<sp />the<sp
-                    />permission<sp />SELECT<sp />with<sp />our<sp />table<sp
-                    />name.</highlight><highlight class="comment" /></codeline>
-<codeline lineno="206"><highlight class="comment"><sp /><sp
-                    />/**</highlight></codeline>
-<codeline lineno="207"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@brief<sp />Builds<sp />the<sp />SQL<sp />that<sp
-                    />fetches<sp />the<sp />owning<sp />clinic&apos;s<sp
-                    />permission<sp />columns</highlight></codeline>
-<codeline lineno="208"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />for<sp />a<sp />delete.</highlight></codeline>
-<codeline lineno="209"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@param[in]<sp />id<sp />Row<sp />id<sp />to<sp
-                    />authorise.</highlight></codeline>
-<codeline lineno="210"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />@return<sp />The<sp />SELECT<sp />statement;<sp />the<sp
-                    />base<sp />helper<sp />has<sp />no<sp />failure<sp
-                    />path<sp />despite</highlight></codeline>
-<codeline lineno="211"><highlight class="comment"><sp /><sp /><sp />*<sp
-                    />the<sp />optional<sp />return.</highlight></codeline>
-<codeline lineno="212"><highlight class="comment"><sp /><sp /><sp
-                    />*/</highlight><highlight class="normal" /></codeline>
-<codeline
-                lineno="213"
-                refid="classPaidServices_1a2170417b8fab478a0b4cc3493fb9008f"
-                refkind="member"
-            ><highlight class="normal"><sp /><sp /></highlight><highlight
-                    class="keyword"
-                >static</highlight><highlight class="normal"><sp
-                    />std::optional&lt;std::string&gt;<sp /><ref
-                        refid="classPaidServices_1a2170417b8fab478a0b4cc3493fb9008f"
-                        kindref="member"
-                    >getPermissionsQueryForDelete</ref>(</highlight></codeline>
-<codeline lineno="214"><highlight class="normal"><sp /><sp /><sp /><sp /><sp
-                    /><sp /></highlight><highlight
-                    class="keyword"
-                >const</highlight><highlight class="normal"><sp />uint64_t<sp
-                    /></highlight><highlight
-                    class="keywordtype"
-                >id</highlight><highlight class="normal">)<sp
-                    />{</highlight></codeline>
-<codeline lineno="215"><highlight class="normal"><sp /><sp /><sp /><sp
-                    /></highlight><highlight
-                    class="keywordflow"
-                >return</highlight><highlight class="normal"><sp /><ref
-                        refid="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff"
-                        kindref="member"
-                    >getPermissionsQueryForDeleteImp</ref>(</highlight><highlight
-                    class="keywordtype"
-                >id</highlight><highlight class="normal">,<sp /><ref
-                        refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41"
-                        kindref="member"
-                    >TABLENAME</ref>);</highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp /><sp />}<sp /><sp
-                    /></highlight><highlight class="comment">//<sp />Same<sp
-                    />idea<sp />for<sp />delete:<sp />build<sp />the<sp
-                    />permission<sp />SELECT<sp />with<sp />our<sp />table<sp
-                    />name.</highlight><highlight class="normal" /></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>@class<sp/>PaidServices</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Case<sp/>entity<sp/>for<sp/>the<sp/>`clinics_paidservices`<sp/>table<sp/>(a<sp/>visit&apos;s<sp/>paid</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>services).</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>@details<sp/>A<sp/>thin<sp/>value<sp/>type<sp/>that<sp/>binds<sp/>the<sp/>generic<sp/>Case/Entity<sp/>CRUD<sp/>machinery</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>to<sp/>one<sp/>table.<sp/>The<sp/>table&apos;s<sp/>primary<sp/>key<sp/>is<sp/>the<sp/>visit<sp/>id<sp/>(a<sp/>foreign<sp/>key<sp/>to</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>`clinics_visits`<sp/>with<sp/>ON<sp/>DELETE<sp/>CASCADE),<sp/>so<sp/>there<sp/>is<sp/>at<sp/>most<sp/>one</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>paid-services<sp/>record<sp/>per<sp/>visit.<sp/>SQL<sp/>generation<sp/>is<sp/>inherited;<sp/>this<sp/>class<sp/>fixes</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>the<sp/>table<sp/>name<sp/>and<sp/>the<sp/>visit<sp/>table<sp/>used<sp/>to<sp/>resolve<sp/>the<sp/>owning<sp/>clinic<sp/>during</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/>create-authorisation.<sp/>The<sp/>static<sp/>getPermissionsQueryFor*<sp/>helpers<sp/>are<sp/>taken<sp/>as</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/>function<sp/>pointers<sp/>by<sp/>PermissionManager::canCreate/canRead/canUpdate/</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>canDelete<sp/>for<sp/>api::v2::Case_t<sp/>T.<sp/>Registered<sp/>as</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>ClinicController&lt;PaidServices&gt;<sp/>under<sp/>the<sp/>`paidservices`<sp/>serviceType.</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Ownership:<sp/>the<sp/>data<sp/>wrapper<sp/>is<sp/>copied<sp/>into<sp/>Entity<sp/>and<sp/>is<sp/>const</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>thereafter;<sp/>no<sp/>mutable<sp/>state<sp/>and<sp/>no<sp/>locking<sp/>of<sp/>its<sp/>own.<sp/>Copy<sp/>and<sp/>move<sp/>are</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>deleted<sp/>by<sp/>Case.</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>@note<sp/>No<sp/>default<sp/>constructor:<sp/>Entity<sp/>needs<sp/>a<sp/>data<sp/>wrapper<sp/>to<sp/>build<sp/>statements</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>from.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>@see<sp/>Case,<sp/>Entity,<sp/>PermissionManager,<sp/>ClinicController</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Inherits<sp/>the<sp/>CRUD<sp/>builders<sp/>and<sp/>adds</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/>paid-services<sp/>permission-query<sp/>helpers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classPaidServices" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPaidServices_1a5a89ca95432f5de4e7174a7e5941b19a" kindref="member">PaidServices</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" kindref="member">Case</ref><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:<sp/><sp/></highlight><highlight class="comment">//<sp/>Implementation<sp/>details<sp/>kept<sp/>hidden<sp/>from<sp/>outside<sp/>callers.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/>/**<sp/>@brief<sp/>Table<sp/>bound<sp/>to<sp/>this<sp/>entity;<sp/>used<sp/>by<sp/>CRUD<sp/>builders<sp/>and<sp/>the</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/>*<sp/>read/update/delete<sp/>permission<sp/>joins.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41" kindref="member">TABLENAME</ref><sp/>=</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;clinics_paidservices&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>SQL<sp/>table<sp/>this<sp/>class<sp/>reads<sp/>and<sp/>writes;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fixed<sp/>at<sp/>compile<sp/>time<sp/>so<sp/>it<sp/>can<sp/>be<sp/>pasted</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>straight<sp/>into<sp/>queries.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/>/**<sp/>@brief<sp/>Table<sp/>whose<sp/>`id`<sp/>is<sp/>the<sp/>create-payload<sp/>key<sp/>and<sp/>whose<sp/>`clinic_id`</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/>*<sp/>identifies<sp/>the<sp/>owning<sp/>clinic.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="classPaidServices_1abd9535d4acba63098136c4880e38e60a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classPaidServices_1abd9535d4acba63098136c4880e38e60a" kindref="member">KEYREFTABLENAME</ref><sp/>=</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;clinics_visits&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>On<sp/>create<sp/>we<sp/>only<sp/>know<sp/>a<sp/>visit<sp/>id,<sp/>so<sp/>we<sp/>join</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>`clinics_visits`<sp/>to<sp/>discover<sp/>which<sp/>clinic<sp/>owns<sp/>it.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/>/**<sp/>@brief<sp/>Create-payload<sp/>key<sp/>holding<sp/>the<sp/>visit<sp/>id<sp/>used<sp/>to<sp/>resolve<sp/>clinic</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/>*<sp/>ownership.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classPaidServices_1ac071e51fc326b90ccc7e6edca088b27a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classPaidServices_1ac071e51fc326b90ccc7e6edca088b27a" kindref="member">CREATE_KEY</ref><sp/>=</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Name<sp/>of<sp/>the<sp/>JSON<sp/>field<sp/>in<sp/>a<sp/>create<sp/>request<sp/>that<sp/>carries<sp/>that</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>visit<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:<sp/><sp/></highlight><highlight class="comment">//<sp/>Public<sp/>interface:<sp/>construction,<sp/>lookups<sp/>and<sp/>permission-query</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>builders.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>PaidServices()<sp/>:<sp/>Case(TABLENAME)<sp/>{}<sp/><sp/>//<sp/>Deliberately<sp/>disabled:<sp/>Entity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>needs<sp/>a<sp/>data<sp/>wrapper<sp/>before<sp/>it<sp/>can<sp/>build<sp/>any<sp/>statement.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Constructs<sp/>a<sp/>paid-services<sp/>entity<sp/>bound<sp/>to<sp/>`clinics_paidservices`.</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Forwards<sp/>the<sp/>wrapper<sp/>and<sp/>table<sp/>name<sp/>to<sp/>Case,<sp/>which<sp/>stores<sp/>the</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/>*<sp/>wrapper<sp/>in<sp/>Entity.<sp/>The<sp/>wrapper&apos;s<sp/>alternative<sp/>decides<sp/>which<sp/>inherited<sp/>SQL</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/>*<sp/>builder<sp/>is<sp/>applicable.</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>A<sp/>type<sp/>accepted<sp/>by<sp/>EntityType,<sp/>e.g.<sp/>api::v2::Types::Create_t<sp/>or</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Read_t.</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_data<sp/>Operation<sp/>data<sp/>to<sp/>copy<sp/>into<sp/>the<sp/>entity.</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>T<sp/>is<sp/>deduced<sp/>from<sp/>the<sp/>wrapper<sp/>the<sp/>caller<sp/>passes,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>so<sp/>several<sp/>wrapper<sp/>types<sp/>work<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="classPaidServices_1a5a89ca95432f5de4e7174a7e5941b19a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classPaidServices_1a5a89ca95432f5de4e7174a7e5941b19a" kindref="member">PaidServices</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T&amp;<sp/>_data)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pass<sp/>the<sp/>data<sp/>and<sp/>table<sp/>name<sp/>up<sp/>to<sp/>Case,<sp/>which</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>stores<sp/>them<sp/>in<sp/>Entity.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" kindref="member">Case</ref>(_data,<sp/><ref refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41" kindref="member">TABLENAME</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>table<sp/>this<sp/>entity<sp/>is<sp/>bound<sp/>to.</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>constant<sp/>`clinics_paidservices`<sp/>string.</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="classPaidServices_1a5977670ca02d1f563e1f6a26486db6ef" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classPaidServices_1a5977670ca02d1f563e1f6a26486db6ef" kindref="member">getTableName</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41" kindref="member">TABLENAME</ref>;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Lets<sp/>callers<sp/>(e.g.<sp/>PermissionManager)<sp/>build<sp/>SQL<sp/>for<sp/>the<sp/>correct<sp/>table.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>create-payload<sp/>key<sp/>used<sp/>to<sp/>resolve<sp/>the<sp/>owning<sp/>clinic.</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>constant<sp/>`id`<sp/>string<sp/>(the<sp/>visit<sp/>id).</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="classPaidServices_1ab6512516d1682f2a292b8d40f18958cf" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classPaidServices_1ab6512516d1682f2a292b8d40f18958cf" kindref="member">getCreateKey</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPaidServices_1ac071e51fc326b90ccc7e6edca088b27a" kindref="member">CREATE_KEY</ref>;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Exposes<sp/>the<sp/>JSON<sp/>field<sp/>name<sp/>so<sp/>the<sp/>controller<sp/>can<sp/>read<sp/>the<sp/>visit<sp/>id</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>consistently.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>destructor;<sp/>the<sp/>entity<sp/>owns<sp/>nothing<sp/>beyond<sp/>the<sp/>data</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/><sp/>*<sp/>wrapper<sp/>held<sp/>by<sp/>Entity.</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="classPaidServices_1ac08715110953c52fc0d91ba6cda62a70" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classPaidServices_1ac08715110953c52fc0d91ba6cda62a70" kindref="member">~PaidServices</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>`override`<sp/>confirms<sp/>the<sp/>parent<sp/>has<sp/>a<sp/>virtual<sp/>destructor;<sp/>`=</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>default`<sp/>keeps<sp/>the<sp/>compiler-generated<sp/>cleanup.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>SQL<sp/>that<sp/>resolves<sp/>the<sp/>owning<sp/>clinic<sp/>for<sp/>a<sp/>create</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/><sp/><sp/>*<sp/>request.</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Reads<sp/>the<sp/>visit<sp/>id<sp/>from<sp/>`data_j`<sp/>using<sp/>CREATE_KEY<sp/>and<sp/>delegates</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/><sp/><sp/>*<sp/>to<sp/>the<sp/>Case<sp/>base,<sp/>which<sp/>joins<sp/>`clinics`<sp/>with<sp/>`clinics_visits`<sp/>on</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/><sp/><sp/>*<sp/>clinic_id.<sp/>PermissionManager<sp/>runs<sp/>the<sp/>returned<sp/>SELECT<sp/>before<sp/>the<sp/>insert;</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/><sp/><sp/>*<sp/>no<sp/>insert<sp/>occurs<sp/>here.</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data_j<sp/>Create<sp/>payload;<sp/>must<sp/>be<sp/>engaged<sp/>and<sp/>contain<sp/>an</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/><sp/><sp/>*<sp/>unsigned-integer<sp/>CREATE_KEY<sp/>(the<sp/>optional<sp/>is<sp/>dereferenced<sp/>without<sp/>a</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/><sp/><sp/>*<sp/>has_value()<sp/>check).</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>SELECT<sp/>statement,<sp/>or<sp/>std::nullopt<sp/>if<sp/>reading<sp/>or<sp/>converting</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/><sp/><sp/>*<sp/>the<sp/>key<sp/>throws;<sp/>the<sp/>exception<sp/>is<sp/>logged<sp/>via<sp/>CRITICALMESSAGE.</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@see<sp/>Case::getPermissionsQueryForCreateImpl</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>a<sp/>query<sp/>string,<sp/>or<sp/>nothing<sp/>if<sp/>the<sp/>payload<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>malformed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="classPaidServices_1abde5fe3fd3d0658ea4853bc11b53671e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classPaidServices_1abde5fe3fd3d0658ea4853bc11b53671e" kindref="member">getPermissionsQueryForCreate</ref>(</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;jsoncons::json&gt;&amp;<sp/>data_j)<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>id;<sp/><sp/></highlight><highlight class="comment">//<sp/>Will<sp/>hold<sp/>the<sp/>visit<sp/>id<sp/>pulled<sp/>from<sp/>the<sp/>JSON<sp/>payload;<sp/>an</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>unsigned<sp/>64-bit<sp/>integer<sp/>matches<sp/>database<sp/>ids.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reading<sp/>JSON<sp/>can<sp/>fail<sp/>(missing<sp/>field<sp/>or<sp/>wrong<sp/>type),<sp/>so<sp/>guard</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Dereference<sp/>the<sp/>optional<sp/>payload,<sp/>look</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>up<sp/>the<sp/>&quot;id&quot;<sp/>field<sp/>and<sp/>convert<sp/>it<sp/>to<sp/>an</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>integer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Any<sp/>read/conversion<sp/>problem<sp/>lands<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>=<sp/>data_j-&gt;at(<ref refid="classPaidServices_1ac071e51fc326b90ccc7e6edca088b27a" kindref="member">CREATE_KEY</ref>).as&lt;uint64_t&gt;();</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="global_8hpp_1a68447123f2c27bb7bcdbbaec4091dab7" kindref="member">CRITICALMESSAGE</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>failure<sp/>(macro<sp/>uses<sp/>the<sp/>caught</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>exception)<sp/>so<sp/>the<sp/>problem<sp/>is<sp/>visible<sp/>in<sp/>server</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>logs.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>trustworthy<sp/>id<sp/>means<sp/>no<sp/>safe<sp/>query</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>can<sp/>be<sp/>built,<sp/>so<sp/>report<sp/>failure<sp/>to<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>caller.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classCase_1a5617a4962ddeaabd3094fae406c860f6" kindref="member">getPermissionsQueryForCreateImpl</ref>(</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPaidServices_1abd9535d4acba63098136c4880e38e60a" kindref="member">KEYREFTABLENAME</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>the<sp/>id</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>`clinics_visits`</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>table<sp/>to<sp/>Case,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>which<sp/>writes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>join<sp/>SQL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>that<sp/>finds<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>owning<sp/>clinic.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/>}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="182"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="183"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>SQL<sp/>that<sp/>fetches<sp/>the<sp/>owning<sp/>clinic&apos;s<sp/>permission<sp/>columns</highlight></codeline>
+<codeline lineno="184"><highlight class="comment"><sp/><sp/><sp/>*<sp/>for<sp/>a<sp/>row<sp/>id.</highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Delegates<sp/>to<sp/>the<sp/>Case<sp/>base,<sp/>joining<sp/>`clinics`<sp/>with</highlight></codeline>
+<codeline lineno="186"><highlight class="comment"><sp/><sp/><sp/>*<sp/>`clinics_paidservices`<sp/>on<sp/>clinic_id.</highlight></codeline>
+<codeline lineno="187"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>id<sp/>Row<sp/>id<sp/>to<sp/>authorise.</highlight></codeline>
+<codeline lineno="188"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>SELECT<sp/>statement;<sp/>the<sp/>base<sp/>helper<sp/>has<sp/>no<sp/>failure<sp/>path<sp/>despite</highlight></codeline>
+<codeline lineno="189"><highlight class="comment"><sp/><sp/><sp/>*<sp/>the<sp/>optional<sp/>return.</highlight></codeline>
+<codeline lineno="190"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191" refid="classPaidServices_1a47913b71949e337709093c73ab3112c8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classPaidServices_1a47913b71949e337709093c73ab3112c8" kindref="member">getPermissionsQueryForRead</ref>(</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classCase_1a549bb017161d692a03db738d940b9b2f" kindref="member">getPermissionsQueryForReadImp</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/><ref refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41" kindref="member">TABLENAME</ref>);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>One-line<sp/>pass-through<sp/>to<sp/>Case,<sp/>swapping<sp/>in<sp/>this<sp/>class&apos;s<sp/>table<sp/>name.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="195"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>SQL<sp/>that<sp/>fetches<sp/>the<sp/>owning<sp/>clinic&apos;s<sp/>permission<sp/>columns</highlight></codeline>
+<codeline lineno="197"><highlight class="comment"><sp/><sp/><sp/>*<sp/>for<sp/>an<sp/>update.</highlight></codeline>
+<codeline lineno="198"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>id<sp/>Row<sp/>id<sp/>to<sp/>authorise.</highlight></codeline>
+<codeline lineno="199"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>SELECT<sp/>statement;<sp/>the<sp/>base<sp/>helper<sp/>has<sp/>no<sp/>failure<sp/>path<sp/>despite</highlight></codeline>
+<codeline lineno="200"><highlight class="comment"><sp/><sp/><sp/>*<sp/>the<sp/>optional<sp/>return.</highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202" refid="classPaidServices_1a4ce072d333dbd0975f9f0296f85eaf7c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classPaidServices_1a4ce072d333dbd0975f9f0296f85eaf7c" kindref="member">getPermissionsQueryForUpdate</ref>(</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf" kindref="member">getPermissionsQueryForUpdateImpl</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/><ref refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41" kindref="member">TABLENAME</ref>);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Same<sp/>idea<sp/>for<sp/>update:<sp/>build<sp/>the<sp/>permission<sp/>SELECT<sp/>with<sp/>our<sp/>table<sp/>name.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="206"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="207"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>SQL<sp/>that<sp/>fetches<sp/>the<sp/>owning<sp/>clinic&apos;s<sp/>permission<sp/>columns</highlight></codeline>
+<codeline lineno="208"><highlight class="comment"><sp/><sp/><sp/>*<sp/>for<sp/>a<sp/>delete.</highlight></codeline>
+<codeline lineno="209"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>id<sp/>Row<sp/>id<sp/>to<sp/>authorise.</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>SELECT<sp/>statement;<sp/>the<sp/>base<sp/>helper<sp/>has<sp/>no<sp/>failure<sp/>path<sp/>despite</highlight></codeline>
+<codeline lineno="211"><highlight class="comment"><sp/><sp/><sp/>*<sp/>the<sp/>optional<sp/>return.</highlight></codeline>
+<codeline lineno="212"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213" refid="classPaidServices_1a2170417b8fab478a0b4cc3493fb9008f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classPaidServices_1a2170417b8fab478a0b4cc3493fb9008f" kindref="member">getPermissionsQueryForDelete</ref>(</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff" kindref="member">getPermissionsQueryForDeleteImp</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/><ref refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41" kindref="member">TABLENAME</ref>);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Same<sp/>idea<sp/>for<sp/>delete:<sp/>build<sp/>the<sp/>permission<sp/>SELECT<sp/>with<sp/>our<sp/>table<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="217"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="src/entities/services/clinics/visits/paidservices.hpp" />
+    <location file="src/entities/services/clinics/visits/paidservices.hpp"/>
   </compounddef>
 </doxygen>
