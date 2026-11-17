@@ -49,7 +49,7 @@
 // for Configurator::FrontEndConfig and its cors_allowed_origins field
 #include "configurator/configurator.hpp"
 // for the Drogon-free token helpers mergeVary() and sanitizeRequestedHeaders()
-#include "server/cors_tokens.hpp"
+#include "server/extras/cors_tokens.hpp"
 // for Store::cachedObject<Configurator>() used to read live settings
 #include "store/store.hpp"
 

@@ -79,7 +79,7 @@
 // PasswordWorker, drained after the DB executor
 #include "gatekeeper/passwordcrypt/passwordworker.hpp"
 // Cors::apply(), which adds CORS headers in the pre-sending hook
-#include "server/cors.hpp"
+#include "server/extras/cors.hpp"
 // Banner helpers used to print the startup banner
 #include "server/extras/banner.hpp"
 // Store, the global registry of shared singleton objects

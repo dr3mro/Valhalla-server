@@ -42,7 +42,7 @@
 #include <string>   // std::string / std::to_string for cache keys.
 #include <vector>   // Vector support for callers of this code.
 
-#include "server/cors.hpp"  // Cors::apply, one of the benchmarked operations.
+#include "server/extras/cors.hpp"  // Cors::apply, one of the benchmarked operations.
 // MemCache, the expiring cache being measured.
 #include "utils/memcache/memcache.hpp"
 // ThreadSafeQueue, the queue being measured.
@@ -91,7 +91,8 @@ namespace {
   // Runs a callable many times and
   // returns elapsed milliseconds.
   template <typename Callable>
-  long long measure(Callable&& callable, const int iterations) {
+  long long measure(Callable&& callable,
+                    const int  iterations) {
     const auto start = std::chrono::steady_clock::now();  // Record the start on
                                                           // a monotonic clock.
     // Repeat the measured operation
@@ -111,12 +112,14 @@ namespace {
 void* operator new(std::size_t size) {
   return countedAllocate(size);
 }  // Ordinary single-object new.
-void* operator new(std::size_t size, std::align_val_t) {
+void* operator new(std::size_t size,
+                   std::align_val_t) {
   return countedAllocate(size);
 }  // Aligned single-object new; alignment is handled by malloc.
 // Non-throwing new: return
 // null instead of throwing.
-void* operator new(std::size_t size, const std::nothrow_t&) noexcept {
+void* operator new(std::size_t size,
+                   const std::nothrow_t&) noexcept {
   try {
     // Try the normal counted allocation.
     // Catch any exception (normally bad_alloc).
@@ -141,38 +144,48 @@ void* operator new(std::size_t size,
 void* operator new[](std::size_t size) {
   return countedAllocate(size);
 }  // Ordinary array new.
-void* operator new[](std::size_t size, std::align_val_t) {
+void* operator new[](std::size_t size,
+                     std::align_val_t) {
   return countedAllocate(size);
 }  // Aligned array new.
 
 void operator delete(void* ptr) noexcept {
   std::free(ptr);
 }  // Free memory from ordinary new.
-void operator delete(void* ptr, std::size_t) noexcept {
+void operator delete(void* ptr,
+                     std::size_t) noexcept {
   std::free(ptr);
 }  // Sized delete; size is ignored.
-void operator delete(void* ptr, std::align_val_t) noexcept {
+void operator delete(void* ptr,
+                     std::align_val_t) noexcept {
   std::free(ptr);
 }  // Aligned delete; alignment is ignored.
-void operator delete(void* ptr, std::size_t, std::align_val_t) noexcept {
+void operator delete(void* ptr,
+                     std::size_t,
+                     std::align_val_t) noexcept {
   std::free(ptr);
 }  // Sized aligned delete.
 void operator delete[](void* ptr) noexcept {
   std::free(ptr);
 }  // Free memory from array new.
-void operator delete[](void* ptr, std::size_t) noexcept {
+void operator delete[](void* ptr,
+                       std::size_t) noexcept {
   std::free(ptr);
 }  // Sized array delete.
-void operator delete[](void* ptr, std::align_val_t) noexcept {
+void operator delete[](void* ptr,
+                       std::align_val_t) noexcept {
   std::free(ptr);
 }  // Aligned array delete.
-void operator delete[](void* ptr, std::size_t, std::align_val_t) noexcept {
+void operator delete[](void* ptr,
+                       std::size_t,
+                       std::align_val_t) noexcept {
   std::free(ptr);
 }  // Sized aligned array delete.
 
 // Throughput of the lock-based queue: push N items, then drain them.
 // Hidden by the leading dot in the tag.
-TEST_CASE("Benchmark: ThreadSafeQueue push/pop round trips", "[.benchmark]") {
+TEST_CASE("Benchmark: ThreadSafeQueue push/pop round trips",
+          "[.benchmark]") {
   // Check the opt-in gate.
   if (!benchmarksRequested()) {
     SKIP();  // Skip without failing when benchmarks were not requested.
@@ -206,7 +219,8 @@ TEST_CASE("Benchmark: ThreadSafeQueue push/pop round trips", "[.benchmark]") {
 
 // Throughput of the expiring cache's insert and get paths.
 // Cache throughput.
-TEST_CASE("Benchmark: MemCache insert/get round trips", "[.benchmark]") {
+TEST_CASE("Benchmark: MemCache insert/get round trips",
+          "[.benchmark]") {
   // Opt-in gate.
   if (!benchmarksRequested()) {
     SKIP();  // Skip unless explicitly requested.
@@ -239,7 +253,8 @@ TEST_CASE("Benchmark: MemCache insert/get round trips", "[.benchmark]") {
 // approach and bare response creation, and counts allocations per call to
 // verify the header-setting path does not regress.
 // CORS timing and allocation comparison.
-TEST_CASE("Benchmark: Cors::apply", "[.benchmark]") {
+TEST_CASE("Benchmark: Cors::apply",
+          "[.benchmark]") {
   // Opt-in gate.
   if (!benchmarksRequested()) {
     SKIP();  // Skip unless explicitly requested.

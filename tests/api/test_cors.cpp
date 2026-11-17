@@ -38,7 +38,7 @@
 #include <catch2/catch_test_macros.hpp>
 #include <string>  // std::string for header values and text searches.
 
-#include "server/cors.hpp"  // Cors, the class under test.
+#include "server/extras/cors.hpp"  // Cors, the class under test.
 
 // These tests pin down the CORS response contract: which headers are always
 // emitted, which are preflight-only, and how the preflight echo is hardened so
@@ -129,7 +129,8 @@ TEST_CASE("Cors::detail helpers are ASCII-only and trim tokens",
 // Vary de-duplication compares tokens case-insensitively, as HTTP field values
 // are case-insensitive, so an existing lowercase entry is not duplicated.
 // Same header in different case must not be added twice.
-TEST_CASE("Cors::detail addToVary is case-insensitive", "[api][cors]") {
+TEST_CASE("Cors::detail addToVary is case-insensitive",
+          "[api][cors]") {
   auto response = drogon::HttpResponse::newHttpResponse();  // A fresh response.
   response->addHeader("Vary",
                       // Pre-seed the token in lowercase.
@@ -186,7 +187,8 @@ TEST_CASE("Cors::apply is idempotent: applying it twice changes nothing",
 // Vary must not be clobbered: a wildcard stays a wildcard, existing tokens in
 // any case are preserved, and non-preflight responses do not introduce Vary.
 // Several independent Vary rules.
-TEST_CASE("Cors::apply Vary edge cases", "[api][cors]") {
+TEST_CASE("Cors::apply Vary edge cases",
+          "[api][cors]") {
   auto response =
       drogon::HttpResponse::newHttpResponse();  // Shared response; each
                                                 // SECTION starts from a fresh
@@ -235,7 +237,8 @@ TEST_CASE("Cors::apply Vary edge cases", "[api][cors]") {
 // Existing Vary values from other layers must survive; our token is appended
 // exactly once even when apply runs repeatedly.
 // Rules for appending our Vary token.
-TEST_CASE("Cors::apply preserves and appends Vary", "[api][cors]") {
+TEST_CASE("Cors::apply preserves and appends Vary",
+          "[api][cors]") {
   auto response = drogon::HttpResponse::newHttpResponse();  // Shared response
                                                             // for the sections.
 
@@ -276,7 +279,8 @@ TEST_CASE("Cors::apply preserves and appends Vary", "[api][cors]") {
 // embedded spaces/control characters and mixed invalid tokens must never widen
 // the response beyond the default allow-list.
 // Security-focused cases for hostile input.
-TEST_CASE("Cors::apply hardens the preflight echo", "[api][cors]") {
+TEST_CASE("Cors::apply hardens the preflight echo",
+          "[api][cors]") {
   auto response = drogon::HttpResponse::newHttpResponse();  // Shared response
                                                             // for the sections.
 

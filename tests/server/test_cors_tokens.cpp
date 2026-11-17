@@ -36,7 +36,7 @@
 #include <string>  // std::string, used for the test inputs.
 #include <vector>  // std::vector, used to hold the collected tokens.
 
-#include "server/cors_tokens.hpp"  // CorsTokens, the set of helpers under test.
+#include "server/extras/cors_tokens.hpp"  // CorsTokens, the set of helpers under test.
 
 // Low-level string helpers used by CORS processing. These tests pin the exact
 // tokenization rules the higher-level Cors::apply behaviour relies on.
@@ -44,7 +44,8 @@
 // Trimming tabs/spaces is what lets header values with incidental whitespace
 // compare and validate correctly.
 // Whitespace-only and padded inputs.
-TEST_CASE("CorsTokens::trim removes tabs and spaces", "[server][cors]") {
+TEST_CASE("CorsTokens::trim removes tabs and spaces",
+          "[server][cors]") {
   using CorsTokens::trim;  // Shorthand for the function under test.
   CHECK(trim("\t content-type ") ==
         "content-type");     // Leading tab and trailing space are removed.
@@ -53,7 +54,8 @@ TEST_CASE("CorsTokens::trim removes tabs and spaces", "[server][cors]") {
 
 // Consecutive commas must not produce empty tokens in the reflected list.
 // Splitting behaviour.
-TEST_CASE("CorsTokens::tokens drops empty entries", "[server][cors]") {
+TEST_CASE("CorsTokens::tokens drops empty entries",
+          "[server][cors]") {
   std::vector<std::string_view>
        values;  // Holds the tokens copied out of the lazy view.
   auto toks = CorsTokens::tokens("a,,b");  // Get a view that splits on commas.
@@ -90,7 +92,8 @@ TEST_CASE("CorsTokens::sanitizeRequestedHeaders validates tokens",
 // Merging a token into an existing Vary must be case-insensitive, preserve a
 // wildcard, tolerate empty/odd input, and append exactly once.
 // Vary merge rules.
-TEST_CASE("CorsTokens::mergeVary is case-insensitive", "[server][cors]") {
+TEST_CASE("CorsTokens::mergeVary is case-insensitive",
+          "[server][cors]") {
   using CorsTokens::mergeVary;  // Shorthand for the function under test.
   CHECK(mergeVary("Accept-Encoding, access-control-request-headers",
                   "Access-Control-Request-Headers") ==
